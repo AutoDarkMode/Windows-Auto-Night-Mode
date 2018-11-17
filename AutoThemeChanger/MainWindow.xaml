@@ -1,0 +1,23 @@
+﻿<Window x:Class="AutoThemeChanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoThemeChanger"
+        mc:Ignorable="d"
+        Title="Windows Auto-Night Mode" Height="298.933" Width="279.332" ResizeMode="NoResize">
+    <Grid x:Name="mainWin">
+        <RadioButton x:Name="darkRadio" GroupName="themeChange" Content="Dark mode" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Click="darkRadio_Click" Height="16" Width="80"/>
+        <RadioButton x:Name="lightRadio" GroupName="themeChange" Content="Light mode" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Click="lightRadio_Click"/>
+        <RadioButton x:Name="autoRadio" GroupName="themeChange" Content="Change automatic" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Click="autoRadio_Click"/>
+        <Button x:Name="applyButton" Content="Apply" HorizontalAlignment="Left" Margin="161,149,0,0" VerticalAlignment="Top" Width="75" Click="applyButton_Click" IsEnabled="False" Height="23"/>
+        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="86,149,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="53" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="darkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,149,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="48" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="lightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="Choose custom start time..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Choose your mode..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,133,0,0" TextWrapping="Wrap" Text="Light" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="86,133,0,0" TextWrapping="Wrap" Text="Dark" VerticalAlignment="Top"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,177,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="239,231,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
+    </Grid>
+</Window>
