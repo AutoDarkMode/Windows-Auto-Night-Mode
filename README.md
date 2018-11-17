@@ -1,6 +1,6 @@
 # Windows 10 Auto-Night-Mode
 Automatically switches between the dark and light theme of Windows 10
-![Image](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.PNG)
+![Image](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.png)
 
 ## Description
 Microsoft provides a dark theme in Windows 10. You can switch manually between the implemented dark and white theme in the settings app. On the other side some programs or operating systems are allowing a automatic switch at a specific time. While it is bright outside, you have a bright OS. At afternoon it begins to get darker, so your operating system also switches to a darker look to take care of your eyes.
