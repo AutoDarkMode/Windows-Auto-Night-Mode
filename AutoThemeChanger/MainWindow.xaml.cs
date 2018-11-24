@@ -21,6 +21,8 @@ namespace AutoThemeChanger
             if (taskShedHandler.checkExistingClass() != null)
             {
                 autoRadio.IsChecked = true;
+                darkStartBox.Text = Convert.ToString(taskShedHandler.getRunTime("dark"));
+                lightStartBox.Text = Convert.ToString(taskShedHandler.getRunTime("light"));
                 uiHandler();
             }
             else
@@ -53,7 +55,7 @@ namespace AutoThemeChanger
                 applyButton.IsEnabled = true;
                 darkStartBox.IsEnabled = true;
                 lightStartBox.IsEnabled = true;
-                userFeedback.Text = "click on apply to save changes\n\nbefore uninstalling the program\nplease switch to light or dark";
+                userFeedback.Text = "click on apply to save changes\n\nbefore uninstalling the program,\nplease switch to light or dark";
             }
             else if(autoRadio.IsChecked.Value == false)
             {
@@ -101,7 +103,7 @@ namespace AutoThemeChanger
                 else if (time >= lightStart || time <= darkStart) RegEditHandler.themeToLight();
 
                 //UI
-                userFeedback.Text = "changes were saved!\n\nbefore uninstalling the program\nplease switch to light or dark";
+                userFeedback.Text = "changes were saved!\n\nbefore uninstalling the program,\nplease switch to light or dark";
             }
             catch{
                 userFeedback.Text = "error occurred :(";

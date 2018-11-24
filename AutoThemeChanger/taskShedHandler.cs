@@ -77,9 +77,24 @@ namespace AutoThemeChanger
             }
         }
 
-        public void getRunTime()
+        public int getRunTime(string theme)
         {
-            // TODO get start times of the tasks for the UI
+            using (TaskService taskService = new TaskService())
+            {
+                if(theme == "dark")
+                {
+                    return getRunHour(taskService.FindTask("Auto-Night Mode Dark"));
+                }else{
+                    return getRunHour(taskService.FindTask("Auto-Night Mode Light"));
+                }
+            }
+        }
+
+        private int getRunHour(Task task)
+        {
+                DateTime time = task.NextRunTime;
+                int runHour = time.Hour;
+                return runHour;
         }
     }
 }
