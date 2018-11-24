@@ -12,10 +12,12 @@ namespace AutoThemeChanger
     {
         taskShedHandler taskShedHandler = new taskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
+        Updater updater = new Updater();
 
         public MainWindow()
         {
             InitializeComponent();
+            updater.checkNewVersion();
 
             //check if task already exists
             if (taskShedHandler.checkExistingClass() != null)

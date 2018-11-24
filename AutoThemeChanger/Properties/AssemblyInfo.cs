@@ -11,8 +11,8 @@ using System.Windows;
 [assembly: AssemblyDescription("Enables automatic switch between light and dark theme")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Armin Osaj")]
-[assembly: AssemblyProduct("AutoThemeChanger")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("© 2018 Armin Osaj")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

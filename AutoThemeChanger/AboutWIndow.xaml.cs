@@ -19,6 +19,9 @@ namespace AutoThemeChanger
     /// </summary>
     public partial class aboutWindow : Window
     {
+        Updater updater = new Updater();
+        bool update = false;
+
         public aboutWindow()
         {
             InitializeComponent();
@@ -36,7 +39,24 @@ namespace AutoThemeChanger
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/releases");
+            if (!update)
+            {
+                updateInfoText.Text = "searching for update...";
+                if (updater.silentUpdater())
+                {
+                    updateInfoText.Text = "a new update is available!";
+                    updateButton.Content = "Download Update";
+                    update = true;
+                }
+                else
+                {
+                    updateInfoText.Text = "no new updates are available.";
+                }
+            }
+            else
+            {
+                System.Diagnostics.Process.Start(updater.getURL());
+            }
         }
 
         private void TaskShedulerLicense_Click(object sender, RoutedEventArgs e)
