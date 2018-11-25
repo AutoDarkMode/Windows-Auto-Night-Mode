@@ -141,11 +141,16 @@ namespace AutoThemeChanger
             }
         }
 
-        //open about window
+        //open aboutWindow
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
             AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.ShowDialog();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
