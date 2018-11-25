@@ -10,47 +10,47 @@ namespace AutoThemeChanger
     /// </summary>
     public partial class MainWindow : Window
     {
-        taskShedHandler taskShedHandler = new taskShedHandler();
+        TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
 
         public MainWindow()
         {
             InitializeComponent();
-            updater.checkNewVersion();
+            updater.CheckNewVersion();
 
             //check if task already exists
-            if (taskShedHandler.checkExistingClass() != null)
+            if (taskShedHandler.CheckExistingClass() != null)
             {
                 autoRadio.IsChecked = true;
-                darkStartBox.Text = Convert.ToString(taskShedHandler.getRunTime("dark"));
-                lightStartBox.Text = Convert.ToString(taskShedHandler.getRunTime("light"));
-                uiHandler();
+                darkStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("dark"));
+                lightStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("light"));
+                UiHandler();
             }
             else
             {
                 //check which value the registry key has
                 if (RegEditHandler.AppsUseLightTheme() == true) lightRadio.IsChecked = true;
                 else if (RegEditHandler.AppsUseLightTheme() == false) darkRadio.IsChecked = true;
-                uiHandler();
+                UiHandler();
             }
         }
 
-        private void lightRadio_Click(object sender, RoutedEventArgs e)
+        private void LightRadio_Click(object sender, RoutedEventArgs e)
         {
-            RegEditHandler.themeToLight();
-            taskShedHandler.removeTask();
-            uiHandler();
+            RegEditHandler.ThemeToLight();
+            taskShedHandler.RemoveTask();
+            UiHandler();
         }
 
-        private void darkRadio_Click(object sender, RoutedEventArgs e)
+        private void DarkRadio_Click(object sender, RoutedEventArgs e)
         {
-            RegEditHandler.themeToDark();
-            taskShedHandler.removeTask();
-            uiHandler();
+            RegEditHandler.ThemeToDark();
+            taskShedHandler.RemoveTask();
+            UiHandler();
         }
 
-        private void uiHandler()
+        private void UiHandler()
         {
             if(autoRadio.IsChecked.Value == true)
             {
@@ -64,21 +64,22 @@ namespace AutoThemeChanger
                 applyButton.IsEnabled = false;
                 darkStartBox.IsEnabled = false;
                 lightStartBox.IsEnabled = false;
-                userFeedback.Text = "Choose automatic to enable auto switch";
+                userFeedback.Text = "Choose change automatic to enable auto switch";
             }
         }
 
-        private void autoRadio_Click(object sender, RoutedEventArgs e)
+        private void AutoRadio_Click(object sender, RoutedEventArgs e)
         {
-            uiHandler();
+            UiHandler();
         }
 
-        private void applyButton_Click(object sender, RoutedEventArgs e)
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            //get Values from TextBox
+            //get values from TextBox
             int darkStart = int.Parse(darkStartBox.Text);
             int lightStart = int.Parse(lightStartBox.Text);
 
+            //check values from TextBox
             if(darkStart > 24)
             {
                 darkStart = 24;
@@ -97,12 +98,12 @@ namespace AutoThemeChanger
 
             try
             {
-                taskShedHandler.createTask(darkStart, lightStart);
+                taskShedHandler.CreateTask(darkStart, lightStart);
 
                 //fit current theme to the time
                 var time = DateTime.Now.Hour;
-                if (time <= lightStart || time >= darkStart) RegEditHandler.themeToDark();
-                else if (time >= lightStart || time <= darkStart) RegEditHandler.themeToLight();
+                if (time <= lightStart || time >= darkStart) RegEditHandler.ThemeToDark();
+                else if (time >= lightStart || time <= darkStart) RegEditHandler.ThemeToLight();
 
                 //UI
                 userFeedback.Text = "changes were saved!\n\nbefore uninstalling the program,\nplease switch to light or dark";
@@ -112,7 +113,7 @@ namespace AutoThemeChanger
             }
         }
 
-        //textbox numbers only allowed
+        //textbox allow only numbers
         private void LightStartBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -124,15 +125,15 @@ namespace AutoThemeChanger
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        //textbox block cut copy paste
-        private void lightStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        //textbox block cut, copy & paste
+        private void LightStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
             {
                 e.Handled = true;
             }
         }
-        private void darkStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void DarkStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
             {
@@ -140,11 +141,11 @@ namespace AutoThemeChanger
             }
         }
 
+        //open about window
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            aboutWindow aboutWindow = new aboutWindow();
+            AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.ShowDialog();
-            
         }
     }
 }

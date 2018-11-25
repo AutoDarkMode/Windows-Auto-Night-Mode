@@ -3,9 +3,9 @@ using Microsoft.Win32.TaskScheduler;
 
 namespace AutoThemeChanger
 {
-    public class taskShedHandler
+    public class TaskShedHandler
     {
-        public void createTask(int startTime, int endTime)
+        public void CreateTask(int startTime, int endTime)
         {
             using (TaskService taskService = new TaskService())
             {
@@ -43,7 +43,7 @@ namespace AutoThemeChanger
             }
         }
 
-        public void removeTask()
+        public void RemoveTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -60,7 +60,7 @@ namespace AutoThemeChanger
             }
         }
 
-        public string checkExistingClass()
+        public string CheckExistingClass()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -77,24 +77,23 @@ namespace AutoThemeChanger
             }
         }
 
-        public int getRunTime(string theme)
+        public int GetRunTime(string theme)
         {
             using (TaskService taskService = new TaskService())
             {
                 if(theme == "dark")
                 {
-                    return getRunHour(taskService.FindTask("Auto-Night Mode Dark"));
+                    return GetRunHour(taskService.FindTask("Auto-Night Mode Dark"));
                 }else{
-                    return getRunHour(taskService.FindTask("Auto-Night Mode Light"));
+                    return GetRunHour(taskService.FindTask("Auto-Night Mode Light"));
                 }
             }
         }
 
-        private int getRunHour(Task task)
+        private int GetRunHour(Task task)
         {
                 DateTime time = task.NextRunTime;
-                int runHour = time.Hour;
-                return runHour;
+                return time.Hour;
         }
     }
 }

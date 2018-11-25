@@ -13,19 +13,19 @@ namespace AutoThemeChanger
         bool silent = false;
         bool updateAvailable = false;
 
-        public bool silentUpdater()
+        public bool SilentUpdater()
         {
             silent = true;
-            checkNewVersion();
+            CheckNewVersion();
             return updateAvailable;
         }
 
-        public string getURL()
+        public string GetURL()
         {
             return url;
         }
 
-        public void checkNewVersion()
+        public void CheckNewVersion()
         {
             XmlTextReader reader;
             try
@@ -57,7 +57,7 @@ namespace AutoThemeChanger
                     }
                 }
                 reader.Close();
-                messageBoxHandler();
+                MessageBoxHandler();
             }
             catch
             {
@@ -65,7 +65,7 @@ namespace AutoThemeChanger
             }
         }
 
-        private void messageBoxHandler()
+        private void MessageBoxHandler()
         {
             if (currentVersion.CompareTo(newVersion) < 0)
             {

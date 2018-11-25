@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
 
 namespace AutoThemeChanger
 {
@@ -19,7 +13,7 @@ namespace AutoThemeChanger
             //handle command line arguments
             if (e.Args.Length > 0)
             {
-                taskShedHandler taskShedHandler = new taskShedHandler();
+                TaskShedHandler taskShedHandler = new TaskShedHandler();
                 RegEditHandler regEditHandler = new RegEditHandler();
 
                 string[] args = Environment.GetCommandLineArgs();
@@ -27,17 +21,16 @@ namespace AutoThemeChanger
                 {
                     if(value == "/dark")
                     {
-                        regEditHandler.themeToDark();
+                        regEditHandler.ThemeToDark();
                     }
                     else if(value == "/light")
                     {
-                        regEditHandler.themeToLight();
+                        regEditHandler.ThemeToLight();
                     }else if(value == "/removeTask")
                     {
-                        taskShedHandler.removeTask();
+                        taskShedHandler.RemoveTask();
                     }
                 }
-
                 Shutdown();
             }
             else
