@@ -57,7 +57,7 @@ namespace AutoThemeChanger
                 applyButton.IsEnabled = true;
                 darkStartBox.IsEnabled = true;
                 lightStartBox.IsEnabled = true;
-                userFeedback.Text = "click on apply to save changes\n\nbefore uninstalling the program,\nplease switch to light or dark";
+                userFeedback.Text = "click on apply to save changes";
             }
             else if(autoRadio.IsChecked.Value == false)
             {
@@ -106,7 +106,7 @@ namespace AutoThemeChanger
                 else if (time >= lightStart || time <= darkStart) RegEditHandler.ThemeToLight();
 
                 //UI
-                userFeedback.Text = "changes were saved!\n\nbefore uninstalling the program,\nplease switch to light or dark";
+                userFeedback.Text = "changes were saved!";
             }
             catch{
                 userFeedback.Text = "error occurred :(";
