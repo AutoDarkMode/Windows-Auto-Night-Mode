@@ -21,6 +21,12 @@ namespace AutoThemeChanger
             else return false;
         }
 
+        public string GetOSversion()
+        {
+            var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
+            return osVersion;
+        }
+
         private RegistryKey GetKey()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);

@@ -13,11 +13,15 @@ namespace AutoThemeChanger
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
+        bool is1903 = false;
 
         public MainWindow()
         {
             InitializeComponent();
             updater.CheckNewVersion();
+
+            //checkOSVersion
+            if (RegEditHandler.GetOSversion().Equals("1903")) is1903 = true;
 
             //check if task already exists
             if (taskShedHandler.CheckExistingClass() != null)
