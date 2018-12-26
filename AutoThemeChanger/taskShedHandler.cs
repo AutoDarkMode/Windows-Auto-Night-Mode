@@ -69,14 +69,28 @@ namespace AutoThemeChanger
         {
             using (TaskService taskService = new TaskService())
             {
+                TaskFolder taskFolder = taskService.RootFolder;
                 try
                 {
-                    TaskFolder taskFolder = taskService.RootFolder;
                     taskFolder.DeleteTask("Auto-Night Mode Light");
+                }
+                catch
+                {
+
+                }
+                try
+                {
                     taskFolder.DeleteTask("Auto-Night Mode Dark");
+                }
+                catch
+                {
+
+                }
+                try
+                {
                     taskFolder.DeleteTask("Auto-Night Mode Updater");
                 }
-                catch (Exception)
+                catch
                 {
 
                 }
@@ -105,8 +119,6 @@ namespace AutoThemeChanger
             {
                 try
                 {
-                    var task1 = taskService.FindTask("Auto-Night Mode Dark").ToString();
-                    var task2 = taskService.FindTask("Auto-Night Mode Light").ToString();
                     var task3 = taskService.FindTask("Auto-Night Mode Updater").ToString();
                     return 2;
                 }
