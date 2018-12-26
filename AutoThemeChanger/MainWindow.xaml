@@ -17,19 +17,19 @@
         <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="221,349,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
         <CheckBox x:Name="locationCheckBox" Content="Use Location Service" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
         <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" SelectionChanged="AppComboBox_SelectionChanged">
+        <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True">Adjust to theme</ComboBoxItem>
             <ComboBoxItem>Always white</ComboBoxItem>
             <ComboBoxItem>Always dark</ComboBoxItem>
         </ComboBox>
         <Label Content="Apps:" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top"/>
         <Label Content="System:" HorizontalAlignment="Left" Margin="53,82,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" SelectionChanged="SystemComboBox_SelectionChanged">
+        <ComboBox HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" DropDownClosed="SystemComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True">Adjust to theme</ComboBoxItem>
             <ComboBoxItem>Always white</ComboBoxItem>
             <ComboBoxItem>Always dark</ComboBoxItem>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="53,161,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" SelectionChanged="EdgeComboBox_SelectionChanged">
+        <ComboBox HorizontalAlignment="Left" Margin="53,161,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True">Adjust to theme</ComboBoxItem>
             <ComboBoxItem>Always white</ComboBoxItem>
             <ComboBoxItem>Always dark</ComboBoxItem>

@@ -40,6 +40,13 @@ namespace AutoThemeChanger
             else return false;
         }
 
+        public bool SystemUsesLightTheme()
+        {
+            var keyValue = GetKey().GetValue("SystemUsesLightTheme");
+            if ((int)keyValue == 1) return true;
+            else return false;
+        }
+
         public string GetOSversion()
         {
             var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();

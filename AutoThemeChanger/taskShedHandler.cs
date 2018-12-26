@@ -9,6 +9,11 @@ namespace AutoThemeChanger
         {
             using (TaskService taskService = new TaskService())
             {
+                try
+                {
+                    taskService.RootFolder.CreateFolder("Auto-Night Mode");
+                }catch{}
+
                 //create task for DARK
                 TaskDefinition tdDark = taskService.NewTask();
 
@@ -22,7 +27,7 @@ namespace AutoThemeChanger
                 tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTime) });
                 tdDark.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/dark"));
 
-                taskService.RootFolder.RegisterTaskDefinition(@"Auto-Night Mode Dark", tdDark);
+                taskService.GetFolder("Auto-Night Mode").RegisterTaskDefinition(@"Auto-Night Mode Dark", tdDark);
                 Console.WriteLine("created task for dark theme");
 
                 //create task for LIGHT
@@ -38,7 +43,7 @@ namespace AutoThemeChanger
                 tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTime) });
                 tdLight.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/light"));
 
-                taskService.RootFolder.RegisterTaskDefinition(@"Auto-Night Mode Light", tdLight);
+                taskService.GetFolder("Auto-Night Mode").RegisterTaskDefinition(@"Auto-Night Mode Light", tdLight);
                 Console.WriteLine("created task for light theme");
             }
         }
@@ -60,7 +65,7 @@ namespace AutoThemeChanger
                 tdLocation.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddHours(14) });
                 tdLocation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/location"));
 
-                taskService.RootFolder.RegisterTaskDefinition(@"Auto-Night Mode Updater", tdLocation);
+                taskService.GetFolder("Auto-Night Mode").RegisterTaskDefinition(@"Auto-Night Mode Updater", tdLocation);
                 Console.WriteLine("created task for location time updates");
             }
         }
@@ -69,7 +74,7 @@ namespace AutoThemeChanger
         {
             using (TaskService taskService = new TaskService())
             {
-                TaskFolder taskFolder = taskService.RootFolder;
+                TaskFolder taskFolder = taskService.GetFolder("Auto-Night Mode");
                 try
                 {
                     taskFolder.DeleteTask("Auto-Night Mode Light");
@@ -94,6 +99,14 @@ namespace AutoThemeChanger
                 {
 
                 }
+                try
+                {
+                    taskService.RootFolder.DeleteFolder("Auto-Night Mode");
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -103,7 +116,7 @@ namespace AutoThemeChanger
             {
                 try
                 {
-                    TaskFolder taskFolder = taskService.RootFolder;
+                    TaskFolder taskFolder = taskService.GetFolder("Auto-Night Mode");
                     taskFolder.DeleteTask("Auto-Night Mode Updater");
                 }
                 catch

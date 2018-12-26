@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
+using System.Diagnostics;
+using System.Threading;
 
 namespace AutoThemeChanger
 {
@@ -23,7 +25,7 @@ namespace AutoThemeChanger
             updater.CheckNewVersion();
 
             //checkOSVersion
-            if (RegEditHandler.GetOSversion().Equals("1903")) is1903 = true;
+            if (int.Parse(RegEditHandler.GetOSversion()) > 1900) is1903 = true;
 
             //check if task already exists
             if (taskShedHandler.CheckExistingClass().Equals(1))
@@ -39,8 +41,17 @@ namespace AutoThemeChanger
             else
             {
                 //check which value the registry key has
-                if (RegEditHandler.AppsUseLightTheme() == true) { /*lightRadio.IsChecked = true;*/ themeSettingDark = false; }
-                else if (RegEditHandler.AppsUseLightTheme() == false) { /*darkRadio.IsChecked = true*/; themeSettingDark = true; }
+                if (!is1903)
+                {
+                    if (RegEditHandler.AppsUseLightTheme() == true) themeSettingDark = false;
+                    else if (RegEditHandler.AppsUseLightTheme() == false) themeSettingDark = true;
+                }
+                else
+                {
+                    if (RegEditHandler.SystemUsesLightTheme() == true) themeSettingDark = false;
+                    else if (RegEditHandler.AppsUseLightTheme() == false) themeSettingDark = true;
+                }
+                
                 autoCheckBox.IsChecked = false;
                 AutoCheckBox_Unchecked(this, null);
             }
@@ -50,6 +61,7 @@ namespace AutoThemeChanger
         private void UiHandlerComboBox()
         {
             Properties.Settings.Default.Upgrade();
+
             int appTheme = Properties.Settings.Default.AppThemeChange;
             Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
@@ -108,6 +120,7 @@ namespace AutoThemeChanger
 
                 //UI
                 userFeedback.Text = "changes were saved!";
+                applyButton.IsEnabled = false;
             }
             catch{
                 userFeedback.Text = "error occurred :(";
@@ -117,11 +130,13 @@ namespace AutoThemeChanger
         //textbox allow only numbers
         private void LightStartBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            applyButton.IsEnabled = true;
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
         private void DarkStartBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            applyButton.IsEnabled = true;
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
@@ -153,7 +168,9 @@ namespace AutoThemeChanger
         private void Window_Closed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            Thread.Sleep(5000);
+            Process.GetCurrentProcess().Kill();
         }
 
         // set start time based on user location
@@ -209,8 +226,29 @@ namespace AutoThemeChanger
             taskShedHandler.RemoveLocationTask();
         }
 
+        // automatic theme switch checkbox
+        private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            locationCheckBox.IsEnabled = true;
+            applyButton.IsEnabled = true;
+            darkStartBox.IsEnabled = true;
+            lightStartBox.IsEnabled = true;
+            userFeedback.Text = "Click on apply to save changes";
+        }
+        private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            taskShedHandler.RemoveTask();
+
+            locationCheckBox.IsEnabled = false;
+            locationCheckBox.IsChecked = false;
+            applyButton.IsEnabled = false;
+            darkStartBox.IsEnabled = false;
+            lightStartBox.IsEnabled = false;
+            userFeedback.Text = "Activate the checkbox to enable automatic theme switching";
+        }
+
         //ComboBox
-        private void AppComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void AppComboBox_DropDownClosed(object sender, EventArgs e)
         {
             if (AppComboBox.SelectedIndex.Equals(0))
             {
@@ -229,7 +267,7 @@ namespace AutoThemeChanger
                 RegEditHandler.AppTheme(0);
             }
         }
-        private void SystemComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
@@ -248,7 +286,7 @@ namespace AutoThemeChanger
                 RegEditHandler.SystemTheme(0);
             }
         }
-        private void EdgeComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
         {
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
@@ -266,26 +304,6 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.EdgeThemeChange = 2;
                 RegEditHandler.EdgeTheme(0);
             }
-        }
-
-        private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            locationCheckBox.IsEnabled = true;
-            applyButton.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
-            lightStartBox.IsEnabled = true;
-            userFeedback.Text = "click on apply to save changes";
-        }
-        private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            taskShedHandler.RemoveTask();
-
-            locationCheckBox.IsEnabled = false;
-            locationCheckBox.IsChecked = false;
-            applyButton.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
-            lightStartBox.IsEnabled = false;
-            userFeedback.Text = "Activate the checkbox to enable automatic theme switching";
         }
     }
 }
