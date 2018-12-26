@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
-using System.Threading.Tasks;
 
 namespace AutoThemeChanger
 {
@@ -15,6 +14,7 @@ namespace AutoThemeChanger
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
+        bool themeSettingDark;
         bool is1903 = false;
 
         public MainWindow()
@@ -28,63 +28,50 @@ namespace AutoThemeChanger
             //check if task already exists
             if (taskShedHandler.CheckExistingClass().Equals(1))
             {
-                autoRadio.IsChecked = true;
+                autoCheckBox.IsChecked = true;
                 darkStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("dark"));
                 lightStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("light"));
-                UiHandler();
             }else if (taskShedHandler.CheckExistingClass().Equals(2))
             {
-                autoRadio.IsChecked = true;
+                autoCheckBox.IsChecked = true;
                 locationCheckBox.IsChecked = true;
-                UiHandler();
             }
             else
             {
                 //check which value the registry key has
-                if (RegEditHandler.AppsUseLightTheme() == true) lightRadio.IsChecked = true;
-                else if (RegEditHandler.AppsUseLightTheme() == false) darkRadio.IsChecked = true;
-                UiHandler();
+                if (RegEditHandler.AppsUseLightTheme() == true) { /*lightRadio.IsChecked = true;*/ themeSettingDark = false; }
+                else if (RegEditHandler.AppsUseLightTheme() == false) { /*darkRadio.IsChecked = true*/; themeSettingDark = true; }
+                autoCheckBox.IsChecked = false;
+                AutoCheckBox_Unchecked(this, null);
             }
+            UiHandlerComboBox();
         }
 
-        private void LightRadio_Click(object sender, RoutedEventArgs e)
+        private void UiHandlerComboBox()
         {
-            RegEditHandler.ThemeToLight();
-            taskShedHandler.RemoveTask();
-            UiHandler();
-        }
+            Properties.Settings.Default.Upgrade();
+            int appTheme = Properties.Settings.Default.AppThemeChange;
+            Console.WriteLine("appTheme Value: " + appTheme);
+            if (appTheme == 0) AppComboBox.SelectedIndex = 0;
+            if (appTheme == 1) AppComboBox.SelectedIndex = 1;
+            if (appTheme == 2) AppComboBox.SelectedIndex = 2;
 
-        private void DarkRadio_Click(object sender, RoutedEventArgs e)
-        {
-            RegEditHandler.ThemeToDark();
-            taskShedHandler.RemoveTask();
-            UiHandler();
-        }
+            int systemTheme = Properties.Settings.Default.SystemThemeChange;
+            Console.WriteLine("SystemTheme Value: " + systemTheme);
+            if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
+            if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
+            if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
 
-        private void UiHandler()
-        {
-            if(autoRadio.IsChecked.Value == true)
+            int edgeTheme = Properties.Settings.Default.EdgeThemeChange;
+            Console.WriteLine("EdgeTheme Value: " + edgeTheme);
+            if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
+            if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
+            if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
+
+            if (!is1903)
             {
-                locationCheckBox.IsEnabled = true;
-                applyButton.IsEnabled = true;
-                darkStartBox.IsEnabled = true;
-                lightStartBox.IsEnabled = true;
-                userFeedback.Text = "click on apply to save changes";
+                SystemComboBox.IsEnabled = false;
             }
-            else if(autoRadio.IsChecked.Value == false)
-            {
-                locationCheckBox.IsEnabled = false;
-                locationCheckBox.IsChecked = false;
-                applyButton.IsEnabled = false;
-                darkStartBox.IsEnabled = false;
-                lightStartBox.IsEnabled = false;
-                userFeedback.Text = "Choose change automatic to enable auto switch";
-            }
-        }
-
-        private void AutoRadio_Click(object sender, RoutedEventArgs e)
-        {
-            UiHandler();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -116,8 +103,8 @@ namespace AutoThemeChanger
 
                 //fit current theme to the time
                 var time = DateTime.Now.Hour;
-                if (time <= lightStart || time >= darkStart) RegEditHandler.ThemeToDark();
-                else if (time >= lightStart || time <= darkStart) RegEditHandler.ThemeToLight();
+                if (time <= lightStart || time >= darkStart) { RegEditHandler.ThemeToDark(); themeSettingDark = true; }
+                else if (time >= lightStart || time <= darkStart) { RegEditHandler.ThemeToLight(); themeSettingDark = false; }
 
                 //UI
                 userFeedback.Text = "changes were saved!";
@@ -162,8 +149,10 @@ namespace AutoThemeChanger
             aboutWindow.ShowDialog();
         }
 
+        //applicatin close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Save();
             Application.Current.Shutdown();
         }
 
@@ -172,7 +161,6 @@ namespace AutoThemeChanger
         {
             GetLocation();
         }
-
         public async void GetLocation()
         {
             locationBlock.Text = "Searching your location...";
@@ -212,15 +200,92 @@ namespace AutoThemeChanger
             locationBlock.Text = "The App needs permission to location";
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
-
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             lightStartBox.IsEnabled = true;
             darkStartBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             locationBlock.Text = "";
-            TaskShedHandler taskShedHandler = new TaskShedHandler();
             taskShedHandler.RemoveLocationTask();
+        }
+
+        //ComboBox
+        private void AppComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (AppComboBox.SelectedIndex.Equals(0))
+            {
+                Properties.Settings.Default.AppThemeChange = 0;
+                if (themeSettingDark) RegEditHandler.AppTheme(0);
+                if (!themeSettingDark) RegEditHandler.AppTheme(1);
+            }
+            if (AppComboBox.SelectedIndex.Equals(1))
+            {
+                Properties.Settings.Default.AppThemeChange = 1;
+                RegEditHandler.AppTheme(1);
+            }
+            if (AppComboBox.SelectedIndex.Equals(2))
+            {
+                Properties.Settings.Default.AppThemeChange = 2;
+                RegEditHandler.AppTheme(0);
+            }
+        }
+        private void SystemComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (SystemComboBox.SelectedIndex.Equals(0))
+            {
+                Properties.Settings.Default.SystemThemeChange = 0;
+                if (themeSettingDark) RegEditHandler.SystemTheme(0);
+                if (!themeSettingDark) RegEditHandler.SystemTheme(1);
+            }
+            if (SystemComboBox.SelectedIndex.Equals(1))
+            {
+                Properties.Settings.Default.SystemThemeChange = 1;
+                RegEditHandler.SystemTheme(1);
+            }
+            if (SystemComboBox.SelectedIndex.Equals(2))
+            {
+                Properties.Settings.Default.SystemThemeChange = 2;
+                RegEditHandler.SystemTheme(0);
+            }
+        }
+        private void EdgeComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (EdgeComboBox.SelectedIndex.Equals(0))
+            {
+                Properties.Settings.Default.EdgeThemeChange = 0;
+                if (themeSettingDark) RegEditHandler.EdgeTheme(0);
+                if (!themeSettingDark) RegEditHandler.EdgeTheme(1);
+            }
+            if (EdgeComboBox.SelectedIndex.Equals(1))
+            {
+                Properties.Settings.Default.EdgeThemeChange = 1;
+                RegEditHandler.EdgeTheme(1);
+            }
+            if (EdgeComboBox.SelectedIndex.Equals(2))
+            {
+                Properties.Settings.Default.EdgeThemeChange = 2;
+                RegEditHandler.EdgeTheme(0);
+            }
+        }
+
+        private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            locationCheckBox.IsEnabled = true;
+            applyButton.IsEnabled = true;
+            darkStartBox.IsEnabled = true;
+            lightStartBox.IsEnabled = true;
+            userFeedback.Text = "click on apply to save changes";
+        }
+        private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            taskShedHandler.RemoveTask();
+
+            locationCheckBox.IsEnabled = false;
+            locationCheckBox.IsChecked = false;
+            applyButton.IsEnabled = false;
+            darkStartBox.IsEnabled = false;
+            lightStartBox.IsEnabled = false;
+            userFeedback.Text = "Activate the checkbox to enable automatic theme switching";
         }
     }
 }

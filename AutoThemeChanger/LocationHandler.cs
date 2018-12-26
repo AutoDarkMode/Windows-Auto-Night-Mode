@@ -36,7 +36,7 @@ namespace AutoThemeChanger
                 Longitude = position.Longitude
             });
 
-            var source = new CancellationTokenSource(400);
+            var source = new CancellationTokenSource(1500);
             MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low).AsTask(source.Token);
 
             if (result.Status == MapLocationFinderStatus.Success)

@@ -6,14 +6,31 @@ namespace AutoThemeChanger
     {
         public void ThemeToDark()
         {
-            GetKey().SetValue("AppsUseLightTheme", "0", RegistryValueKind.DWord);
-            GetEdgeKey().SetValue("Theme", "0", RegistryValueKind.DWord);
+            if(Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
+            if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
+            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
         }
 
         public void ThemeToLight()
         {
-            GetKey().SetValue("AppsUseLightTheme", "1", RegistryValueKind.DWord);
-            GetEdgeKey().SetValue("Theme", "1", RegistryValueKind.DWord);
+            if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
+            if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
+            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
+        }
+
+        public void AppTheme(int theme)
+        {
+            GetKey().SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
+        }
+
+        public void SystemTheme(int theme)
+        {
+            GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
+        }
+
+        public void EdgeTheme(int theme)
+        {
+            GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
         }
 
         public bool AppsUseLightTheme()

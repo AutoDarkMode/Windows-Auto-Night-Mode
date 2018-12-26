@@ -5,21 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="Windows Auto-Night Mode" Height="307.933" Width="270.332" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="Windows Auto-Night Mode" Height="419.933" Width="275.332" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid x:Name="mainWin">
-        <RadioButton x:Name="darkRadio" GroupName="themeChange" Content="Dark mode" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Click="DarkRadio_Click" Height="16" Width="80"/>
-        <RadioButton x:Name="lightRadio" GroupName="themeChange" Content="Light mode" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Click="LightRadio_Click"/>
-        <RadioButton x:Name="autoRadio" GroupName="themeChange" Content="Change automatic" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Click="AutoRadio_Click"/>
-        <Button x:Name="applyButton" Content="Apply" HorizontalAlignment="Left" Margin="161,149,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
-        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="86,149,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="53" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,149,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="48" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="Choose custom start time..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Choose your mode..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,133,0,0" TextWrapping="Wrap" Text="Light" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="86,133,0,0" TextWrapping="Wrap" Text="Dark" VerticalAlignment="Top"/>
-        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,222,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="230,244,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
-        <CheckBox x:Name="locationCheckBox" Content="Use Location Service" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
-        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="applyButton" Content="Apply" HorizontalAlignment="Left" Margin="161,243,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
+        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="86,243,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="53" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,243,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="48" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,202,0,0" TextWrapping="Wrap" Text="Choose custom start time..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,227,0,0" TextWrapping="Wrap" Text="Light" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="86,227,0,0" TextWrapping="Wrap" Text="Dark" VerticalAlignment="Top"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="221,349,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
+        <CheckBox x:Name="locationCheckBox" Content="Use Location Service" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
+        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" SelectionChanged="AppComboBox_SelectionChanged">
+            <ComboBoxItem IsSelected="True">Adjust to theme</ComboBoxItem>
+            <ComboBoxItem>Always white</ComboBoxItem>
+            <ComboBoxItem>Always dark</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Apps:" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="System:" HorizontalAlignment="Left" Margin="53,82,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" SelectionChanged="SystemComboBox_SelectionChanged">
+            <ComboBoxItem IsSelected="True">Adjust to theme</ComboBoxItem>
+            <ComboBoxItem>Always white</ComboBoxItem>
+            <ComboBoxItem>Always dark</ComboBoxItem>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="53,161,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" SelectionChanged="EdgeComboBox_SelectionChanged">
+            <ComboBoxItem IsSelected="True">Adjust to theme</ComboBoxItem>
+            <ComboBoxItem>Always white</ComboBoxItem>
+            <ComboBoxItem>Always dark</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Edge:" HorizontalAlignment="Left" Margin="54,135,0,0" VerticalAlignment="Top"/>
+        <Label Content="&#xE71D;" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
+        <Label Content="&#xE977;" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
+        <Label Content="&#xE701;" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
+        <CheckBox Content="Enable automatic theme switching" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked"/>
     </Grid>
 </Window>
