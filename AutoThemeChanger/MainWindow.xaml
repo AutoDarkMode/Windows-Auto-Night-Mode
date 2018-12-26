@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="Windows Auto-Night Mode" Height="267.933" Width="270.332" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="Windows Auto-Night Mode" Height="307.933" Width="270.332" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid x:Name="mainWin">
         <RadioButton x:Name="darkRadio" GroupName="themeChange" Content="Dark mode" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Click="DarkRadio_Click" Height="16" Width="80"/>
         <RadioButton x:Name="lightRadio" GroupName="themeChange" Content="Light mode" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Click="LightRadio_Click"/>
@@ -17,7 +17,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Choose your mode..." VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,133,0,0" TextWrapping="Wrap" Text="Light" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="86,133,0,0" TextWrapping="Wrap" Text="Dark" VerticalAlignment="Top"/>
-        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,178,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="230,200,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,222,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="230,244,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
+        <CheckBox x:Name="locationCheckBox" Content="Use Location Service" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
+        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </Window>

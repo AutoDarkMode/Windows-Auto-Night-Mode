@@ -145,12 +145,10 @@ namespace AutoThemeChanger
 
         public static int[] CalculateSunriseSunset(double lat, double lon)
         {
-            //Calendar calendar = Calendar.getInstance();
-            //calendar.setTimeInMillis(System.currentTimeMillis());
             DateTime calendar = DateTime.Now;
             double[] sun = new double[2];
-            SunRiseSetForYear(calendar.Year, calendar.Month, calendar.Day, lon, lat, sun); // calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), lon, lat, sun);
-            int timeZoneOffset = (int)TimeZoneInfo.Local.GetUtcOffset(calendar).TotalMinutes; // TimeZone.getDefault().getOffset(System.currentTimeMillis()) / 1000 / 60;
+            SunRiseSetForYear(calendar.Year, calendar.Month, calendar.Day, lon, lat, sun); 
+            int timeZoneOffset = (int)TimeZoneInfo.Local.GetUtcOffset(calendar).TotalMinutes;
             int sunrise = (int)(sun[0] * 60) + timeZoneOffset;
             int sunset = (int)(sun[1] * 60) + timeZoneOffset;
             if (sunrise < 0)

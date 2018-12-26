@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
+using Windows.Devices.Geolocation;
+using System.Threading.Tasks;
 
 namespace AutoThemeChanger
 {
@@ -24,11 +26,16 @@ namespace AutoThemeChanger
             if (RegEditHandler.GetOSversion().Equals("1903")) is1903 = true;
 
             //check if task already exists
-            if (taskShedHandler.CheckExistingClass() != null)
+            if (taskShedHandler.CheckExistingClass().Equals(1))
             {
                 autoRadio.IsChecked = true;
                 darkStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("dark"));
                 lightStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("light"));
+                UiHandler();
+            }else if (taskShedHandler.CheckExistingClass().Equals(2))
+            {
+                autoRadio.IsChecked = true;
+                locationCheckBox.IsChecked = true;
                 UiHandler();
             }
             else
@@ -58,6 +65,7 @@ namespace AutoThemeChanger
         {
             if(autoRadio.IsChecked.Value == true)
             {
+                locationCheckBox.IsEnabled = true;
                 applyButton.IsEnabled = true;
                 darkStartBox.IsEnabled = true;
                 lightStartBox.IsEnabled = true;
@@ -65,6 +73,8 @@ namespace AutoThemeChanger
             }
             else if(autoRadio.IsChecked.Value == false)
             {
+                locationCheckBox.IsEnabled = false;
+                locationCheckBox.IsChecked = false;
                 applyButton.IsEnabled = false;
                 darkStartBox.IsEnabled = false;
                 lightStartBox.IsEnabled = false;
@@ -155,6 +165,62 @@ namespace AutoThemeChanger
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        // set start time based on user location
+        private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            GetLocation();
+        }
+
+        public async void GetLocation()
+        {
+            locationBlock.Text = "Searching your location...";
+            LocationHandler locationHandler = new LocationHandler();
+
+            var accesStatus = await Geolocator.RequestAccessAsync();
+            switch (accesStatus)
+            {
+                case GeolocationAccessStatus.Allowed:
+                    //locate user + get sunrise & sunset times
+                    locationBlock.Text = "City: " + await locationHandler.GetCityName();
+                    int[] sundate = await locationHandler.CalculateSunTime();
+
+                    //apply settings & change UI
+                    lightStartBox.Text = sundate[0].ToString();
+                    darkStartBox.Text = sundate[1].ToString();
+                    lightStartBox.IsEnabled = false;
+                    darkStartBox.IsEnabled = false;
+                    applyButton.IsEnabled = false;
+                    ApplyButton_Click(this, null);
+                    taskShedHandler.CreateLocationTask();
+                    break;
+
+                case GeolocationAccessStatus.Denied:
+                    NoLocationAccess();
+                    break;
+
+                case GeolocationAccessStatus.Unspecified:
+                    NoLocationAccess();
+                    break;
+            }
+            return;
+        }
+        private async void NoLocationAccess()
+        {
+            locationCheckBox.IsChecked = false;
+            locationBlock.Text = "The App needs permission to location";
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
+        }
+
+        private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lightStartBox.IsEnabled = true;
+            darkStartBox.IsEnabled = true;
+            applyButton.IsEnabled = true;
+            locationBlock.Text = "";
+            TaskShedHandler taskShedHandler = new TaskShedHandler();
+            taskShedHandler.RemoveLocationTask();
         }
     }
 }

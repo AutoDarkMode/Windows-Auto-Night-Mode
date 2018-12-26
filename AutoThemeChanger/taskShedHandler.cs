@@ -43,6 +43,28 @@ namespace AutoThemeChanger
             }
         }
 
+        public void CreateLocationTask()
+        {
+            using(TaskService taskService = new TaskService())
+            {
+                TaskDefinition tdLocation = taskService.NewTask();
+
+                tdLocation.RegistrationInfo.Description = "Updates the activation time of dark & light theme based on user location. " +
+                    "Task of the program Windows Auto-Night Mode.";
+                tdLocation.RegistrationInfo.Author = "Armin Osaj";
+                tdLocation.RegistrationInfo.Source = "Windows Auto Night-Mode";
+                tdLocation.Settings.DisallowStartIfOnBatteries = false;
+                tdLocation.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
+                tdLocation.Settings.StartWhenAvailable = true;
+
+                tdLocation.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddHours(14) });
+                tdLocation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/location"));
+
+                taskService.RootFolder.RegisterTaskDefinition(@"Auto-Night Mode Updater", tdLocation);
+                Console.WriteLine("created task for location time updates");
+            }
+        }
+
         public void RemoveTask()
         {
             using (TaskService taskService = new TaskService())
@@ -52,6 +74,7 @@ namespace AutoThemeChanger
                     TaskFolder taskFolder = taskService.RootFolder;
                     taskFolder.DeleteTask("Auto-Night Mode Light");
                     taskFolder.DeleteTask("Auto-Night Mode Dark");
+                    taskFolder.DeleteTask("Auto-Night Mode Updater");
                 }
                 catch (Exception)
                 {
@@ -60,7 +83,23 @@ namespace AutoThemeChanger
             }
         }
 
-        public string CheckExistingClass()
+        public void RemoveLocationTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                try
+                {
+                    TaskFolder taskFolder = taskService.RootFolder;
+                    taskFolder.DeleteTask("Auto-Night Mode Updater");
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        public int CheckExistingClass()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -68,11 +107,22 @@ namespace AutoThemeChanger
                 {
                     var task1 = taskService.FindTask("Auto-Night Mode Dark").ToString();
                     var task2 = taskService.FindTask("Auto-Night Mode Light").ToString();
-                    return task1 + task2;
+                    var task3 = taskService.FindTask("Auto-Night Mode Updater").ToString();
+                    return 2;
                 }
                 catch
                 {
-                    return null;
+                    
+                }
+                try
+                {
+                    var task1 = taskService.FindTask("Auto-Night Mode Dark").ToString();
+                    var task2 = taskService.FindTask("Auto-Night Mode Light").ToString();
+                    return 1;
+                }
+                catch
+                {
+                    return 0;
                 }
             }
         }
