@@ -8,11 +8,19 @@ namespace AutoThemeChanger
 {
     class LocationHandler
     {
-        public async Task<int[]> CalculateSunTime()
+        public async Task<int[]> CalculateSunTime(bool background)
         {
             int[] sundate = new int[2];
-            BasicGeoposition position = await GetUserPosition();
-            int[] sun = SunDate.CalculateSunriseSunset(position.Latitude, position.Longitude);
+            int[] sun = new int[2];
+            if (!background){
+                BasicGeoposition position = await GetUserPosition();
+                Properties.Settings.Default.LocationLatitude = position.Latitude;
+                Properties.Settings.Default.LocationLongitude = position.Longitude;
+                sun = SunDate.CalculateSunriseSunset(position.Latitude, position.Longitude);
+            }else if (background)
+            {
+                sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
+            }
             sundate[0] = new DateTime(1, 1, 1, 1 + sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0).Hour; //sunrise
             sundate[1] = new DateTime(1, 1, 1, 1 + sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0).Hour; //sunset
             return sundate;
@@ -52,13 +60,8 @@ namespace AutoThemeChanger
         public async Task SetLocationSilent()
         {
             TaskShedHandler taskShedHandler = new TaskShedHandler();
-
-            var accesStatus = await Geolocator.RequestAccessAsync();
-            if (accesStatus == GeolocationAccessStatus.Allowed)
-            {
-                int[] sundate = await CalculateSunTime();
-                taskShedHandler.CreateTask(sundate[1], sundate[0]);
-            }
+            int[] sundate = await CalculateSunTime(true);
+            taskShedHandler.CreateTask(sundate[1], sundate[0]);
         }
     }
 }
