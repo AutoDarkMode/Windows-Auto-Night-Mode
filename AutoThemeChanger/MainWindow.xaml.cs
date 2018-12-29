@@ -25,7 +25,7 @@ namespace AutoThemeChanger
             updater.CheckNewVersion();
 
             //checkOSVersion
-            if (int.Parse(RegEditHandler.GetOSversion()) > 1900) is1903 = true;
+            if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
 
             //check if task already exists
             if (taskShedHandler.CheckExistingClass().Equals(1))

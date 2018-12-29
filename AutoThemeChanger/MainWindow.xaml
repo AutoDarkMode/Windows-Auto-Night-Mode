@@ -14,7 +14,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,227,0,0" TextWrapping="Wrap" Text="Light" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="86,227,0,0" TextWrapping="Wrap" Text="Dark" VerticalAlignment="Top"/>
         <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="221,349,0,0" VerticalAlignment="Top" Width="15" Click="AboutButton_Click"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="221,349,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="15" Height="20"/>
         <CheckBox x:Name="locationCheckBox" Content="Use Location Service" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
         <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed">
