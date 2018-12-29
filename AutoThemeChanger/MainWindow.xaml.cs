@@ -60,7 +60,7 @@ namespace AutoThemeChanger
 
         private void UiHandlerComboBox()
         {
-            Properties.Settings.Default.Upgrade();
+            //Properties.Settings.Default.Upgrade();
 
             int appTheme = Properties.Settings.Default.AppThemeChange;
             Console.WriteLine("appTheme Value: " + appTheme);
@@ -168,9 +168,19 @@ namespace AutoThemeChanger
         private void Window_Closed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
+            DebugSettings();
             //Application.Current.Shutdown();
             Thread.Sleep(5000);
             Process.GetCurrentProcess().Kill();
+        }
+
+        private void DebugSettings()
+        {
+            Console.WriteLine(Properties.Settings.Default.SystemThemeChange);
+            Console.WriteLine(Properties.Settings.Default.AppThemeChange);
+            Console.WriteLine(Properties.Settings.Default.EdgeThemeChange);
+            Console.WriteLine(Properties.Settings.Default.LocationLatitude);
+            Console.WriteLine(Properties.Settings.Default.LocationLongitude);
         }
 
         // set start time based on user location
@@ -304,6 +314,16 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.EdgeThemeChange = 2;
                 RegEditHandler.EdgeTheme(0);
             }
+        }
+
+        private void DebugModeCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            SystemComboBox.IsEnabled = true;
+        }
+
+        private void DebugModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SystemComboBox.IsEnabled = false;
         }
     }
 }

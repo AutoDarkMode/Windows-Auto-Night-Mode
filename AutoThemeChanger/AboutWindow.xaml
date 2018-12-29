@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Auto-Night Mode Version 1.0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="222"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Auto-Night Mode Version 1.1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="222"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="Author: Armin Osaj © 2018" VerticalAlignment="Top" Height="16" Width="144"/>
         <Button x:Name="githubButton" Content="GitHub" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="75" Click="GithubButton_Click" Height="20"/>
         <Button x:Name="twitterButton" Content="Twitter" HorizontalAlignment="Left" Margin="90,57,0,0" VerticalAlignment="Top" Width="75" Click="TwitterButton_Click" Height="20"/>
