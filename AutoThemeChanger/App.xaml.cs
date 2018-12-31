@@ -33,6 +33,10 @@ namespace AutoThemeChanger
                     {
                         LocationHandler locationHandler = new LocationHandler();
                         await locationHandler.SetLocationSilent();
+                    }else if (value == "/switch")
+                    {
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        regEditHandler.SwitchThemeBasedOnTime();
                     }
                 }
                 Shutdown();

@@ -25,7 +25,7 @@ namespace AutoThemeChanger
                 tdDark.Settings.StartWhenAvailable = true;
 
                 tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTime) });
-                tdDark.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/dark"));
+                tdDark.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
 
                 taskService.GetFolder("Auto-Night Mode").RegisterTaskDefinition(@"Auto-Night Mode Dark", tdDark);
                 Console.WriteLine("created task for dark theme");
@@ -41,7 +41,7 @@ namespace AutoThemeChanger
                 tdLight.Settings.StartWhenAvailable = true;
 
                 tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTime) });
-                tdLight.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/light"));
+                tdLight.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
 
                 taskService.GetFolder("Auto-Night Mode").RegisterTaskDefinition(@"Auto-Night Mode Light", tdLight);
                 Console.WriteLine("created task for light theme");
@@ -167,8 +167,8 @@ namespace AutoThemeChanger
 
         private int GetRunHour(Task task)
         {
-                DateTime time = task.NextRunTime;
-                return time.Hour;
+            DateTime time = task.NextRunTime;
+            return time.Hour;
         }
     }
 }

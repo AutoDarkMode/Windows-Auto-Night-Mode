@@ -16,8 +16,10 @@ namespace AutoThemeChanger
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
-        bool themeSettingDark;
+        static bool themeSettingDark;
         bool is1903 = false;
+
+        public static bool ThemeSettingDark { get => themeSettingDark; set => themeSettingDark = value; }
 
         public MainWindow()
         {
@@ -26,6 +28,17 @@ namespace AutoThemeChanger
 
             //checkOSVersion
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
+            //Get current theme and set bool
+            if (!is1903)
+            {
+                if (RegEditHandler.AppsUseLightTheme() == true) ThemeSettingDark = false;
+                else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
+            }
+            else
+            {
+                if (RegEditHandler.SystemUsesLightTheme() == true) ThemeSettingDark = false;
+                else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
+            }
 
             //check if task already exists
             if (taskShedHandler.CheckExistingClass().Equals(1))
@@ -40,18 +53,6 @@ namespace AutoThemeChanger
             }
             else
             {
-                //check which value the registry key has
-                if (!is1903)
-                {
-                    if (RegEditHandler.AppsUseLightTheme() == true) themeSettingDark = false;
-                    else if (RegEditHandler.AppsUseLightTheme() == false) themeSettingDark = true;
-                }
-                else
-                {
-                    if (RegEditHandler.SystemUsesLightTheme() == true) themeSettingDark = false;
-                    else if (RegEditHandler.AppsUseLightTheme() == false) themeSettingDark = true;
-                }
-                
                 autoCheckBox.IsChecked = false;
                 AutoCheckBox_Unchecked(this, null);
             }
@@ -112,11 +113,7 @@ namespace AutoThemeChanger
             try
             {
                 taskShedHandler.CreateTask(darkStart, lightStart);
-
-                //fit current theme to the time
-                var time = DateTime.Now.Hour;
-                if (time <= lightStart || time >= darkStart) { RegEditHandler.ThemeToDark(); themeSettingDark = true; }
-                else if (time >= lightStart || time <= darkStart) { RegEditHandler.ThemeToLight(); themeSettingDark = false; }
+                RegEditHandler.SwitchThemeBasedOnTime();
 
                 //UI
                 userFeedback.Text = "changes were saved!";
@@ -170,7 +167,7 @@ namespace AutoThemeChanger
             Properties.Settings.Default.Save();
             DebugSettings();
             //Application.Current.Shutdown();
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
             Process.GetCurrentProcess().Kill();
         }
 
@@ -233,6 +230,7 @@ namespace AutoThemeChanger
             darkStartBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             locationBlock.Text = "";
+            userFeedback.Text = "Click on apply to save changes";
             taskShedHandler.RemoveLocationTask();
         }
 
@@ -263,8 +261,8 @@ namespace AutoThemeChanger
             if (AppComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.AppThemeChange = 0;
-                if (themeSettingDark) RegEditHandler.AppTheme(0);
-                if (!themeSettingDark) RegEditHandler.AppTheme(1);
+                if (ThemeSettingDark) RegEditHandler.AppTheme(0);
+                if (!ThemeSettingDark) RegEditHandler.AppTheme(1);
             }
             if (AppComboBox.SelectedIndex.Equals(1))
             {
@@ -282,8 +280,8 @@ namespace AutoThemeChanger
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.SystemThemeChange = 0;
-                if (themeSettingDark) RegEditHandler.SystemTheme(0);
-                if (!themeSettingDark) RegEditHandler.SystemTheme(1);
+                if (ThemeSettingDark) RegEditHandler.SystemTheme(0);
+                if (!ThemeSettingDark) RegEditHandler.SystemTheme(1);
             }
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
@@ -301,8 +299,8 @@ namespace AutoThemeChanger
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.EdgeThemeChange = 0;
-                if (themeSettingDark) RegEditHandler.EdgeTheme(0);
-                if (!themeSettingDark) RegEditHandler.EdgeTheme(1);
+                if (ThemeSettingDark) RegEditHandler.EdgeTheme(0);
+                if (!ThemeSettingDark) RegEditHandler.EdgeTheme(1);
             }
             if (EdgeComboBox.SelectedIndex.Equals(1))
             {

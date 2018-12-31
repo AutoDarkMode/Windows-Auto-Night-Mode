@@ -1,9 +1,22 @@
 ﻿using Microsoft.Win32;
+using System;
 
 namespace AutoThemeChanger
 {
     class RegEditHandler
     {
+        public void SwitchThemeBasedOnTime()
+        {
+            TaskShedHandler task = new TaskShedHandler();
+            var time = DateTime.Now.Hour;
+            var lightStart = task.GetRunTime("light");
+            var darkStart = task.GetRunTime("dark");
+
+
+            if (time < lightStart || time >= darkStart) { ThemeToDark(); MainWindow.ThemeSettingDark = true; }
+            else if (time >= lightStart || time < darkStart) { ThemeToLight(); MainWindow.ThemeSettingDark = false; }
+        }
+
         public void ThemeToDark()
         {
             if(Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
@@ -20,17 +33,23 @@ namespace AutoThemeChanger
 
         public void AppTheme(int theme)
         {
+            GetKey().OpenSubKey("AppsUseLightTheme", true);
             GetKey().SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
+            GetKey().Close();
         }
 
         public void SystemTheme(int theme)
         {
+            GetKey().OpenSubKey("SystemUsesLightTheme", true);
             GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
+            GetKey().Close();
         }
 
         public void EdgeTheme(int theme)
         {
+            GetKey().OpenSubKey("Theme", true);
             GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            GetKey().Close();
         }
 
         public bool AppsUseLightTheme()
