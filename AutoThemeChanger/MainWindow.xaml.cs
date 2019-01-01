@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Shell;
 
 namespace AutoThemeChanger
 {
@@ -17,7 +18,7 @@ namespace AutoThemeChanger
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
         static bool themeSettingDark = false;
-        bool is1903 = false;
+        static bool is1903 = false;
 
         public static bool ThemeSettingDark { get => themeSettingDark; set => themeSettingDark = value; }
 
@@ -25,10 +26,12 @@ namespace AutoThemeChanger
         {
             InitializeComponent();
             updater.CheckNewVersion();
+            AddJumpList();
 
-            //checkOSVersion
+            //check OS-Version
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
-            //Get current theme and set bool
+
+            //Get current theme and set dark-theme-bool
             try
             {
                 if (!is1903)
@@ -109,13 +112,15 @@ namespace AutoThemeChanger
             }
             if(lightStart >= darkStart)
             {
-                lightStart = darkStart - 1;
+                lightStart = darkStart - 2;
                 lightStartBox.Text = Convert.ToString(lightStart);
             }
             if (lightStart < 0)
             {
-                lightStart = 23;
+                lightStart = 1;
                 lightStartBox.Text = Convert.ToString(lightStart);
+                darkStart = 3;
+                darkStartBox.Text = Convert.ToString(darkStart);
             }
 
             try
@@ -165,7 +170,10 @@ namespace AutoThemeChanger
         //open aboutWindow
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            AboutWindow aboutWindow = new AboutWindow();
+            AboutWindow aboutWindow = new AboutWindow
+            {
+                Owner = GetWindow(this)
+            };
             aboutWindow.ShowDialog();
         }
 
@@ -173,7 +181,7 @@ namespace AutoThemeChanger
         private void Window_Closed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            DebugSettings();
+            //DebugSettings();
             //Application.Current.Shutdown();
             Thread.Sleep(2000);
             Process.GetCurrentProcess().Kill();
@@ -188,7 +196,7 @@ namespace AutoThemeChanger
             Console.WriteLine(Properties.Settings.Default.LocationLongitude);
         }
 
-        // set start time based on user location
+        // set starttime based on user location
         private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             GetLocation();
@@ -242,7 +250,7 @@ namespace AutoThemeChanger
             taskShedHandler.RemoveLocationTask();
         }
 
-        // automatic theme switch checkbox
+        //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             locationCheckBox.IsEnabled = true;
@@ -330,6 +338,30 @@ namespace AutoThemeChanger
         private void DebugModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             SystemComboBox.IsEnabled = false;
+        }
+
+        private void AddJumpList()
+        {
+            JumpTask darkJumpTask = new JumpTask
+            {
+                Title = "Dark theme",
+                Arguments = "/dark",
+                CustomCategory = "Switch current theme"
+            };
+            JumpTask lightJumpTask = new JumpTask
+            {
+                Title = "Light theme",
+                Arguments = "/light",
+                CustomCategory = "Switch current theme"
+            };
+
+            JumpList jumpList = new JumpList();
+            jumpList.JumpItems.Add(darkJumpTask);
+            jumpList.JumpItems.Add(lightJumpTask);
+            jumpList.ShowFrequentCategory = false;
+            jumpList.ShowRecentCategory = false;
+
+            JumpList.SetJumpList(Application.Current, jumpList);
         }
     }
 }

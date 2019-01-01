@@ -33,23 +33,17 @@ namespace AutoThemeChanger
 
         public void AppTheme(int theme)
         {
-            GetKey().OpenSubKey("AppsUseLightTheme", true);
             GetKey().SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
-            GetKey().Close();
         }
 
         public void SystemTheme(int theme)
         {
-            GetKey().OpenSubKey("SystemUsesLightTheme", true);
             GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
-            GetKey().Close();
         }
 
         public void EdgeTheme(int theme)
         {
-            GetKey().OpenSubKey("Theme", true);
             GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
-            GetKey().Close();
         }
 
         public bool AppsUseLightTheme()
