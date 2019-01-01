@@ -177,7 +177,10 @@
     <Resource Include="AutoNightModeIconDark.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutIcon.ico" />
+    <Resource Include="Resources\AboutIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Edge_Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -37,8 +37,8 @@
         <Label Content="Edge:" HorizontalAlignment="Left" Margin="54,135,0,0" VerticalAlignment="Top"/>
         <Label Content="&#xE71D;" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
         <Label Content="&#xE977;" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
-        <Label Content="&#xE701;" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
         <CheckBox Content="Enable automatic theme switching" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked"/>
         <CheckBox x:Name="debugModeCheckBox" Content="Enable DebugMode for 1903" HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" Checked="DebugModeCheckBox_Checked" Unchecked="DebugModeCheckBox_Unchecked"/>
+        <Image HorizontalAlignment="Left" Height="31" Margin="14,150,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png"/>
     </Grid>
 </Window>

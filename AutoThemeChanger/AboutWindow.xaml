@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="About" Height="263.401" Width="269.193" ResizeMode="NoResize">
+        Title="About" Height="263.401" Width="269.193" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

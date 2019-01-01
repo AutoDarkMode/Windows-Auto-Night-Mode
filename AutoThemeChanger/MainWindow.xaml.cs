@@ -16,7 +16,7 @@ namespace AutoThemeChanger
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
-        static bool themeSettingDark;
+        static bool themeSettingDark = false;
         bool is1903 = false;
 
         public static bool ThemeSettingDark { get => themeSettingDark; set => themeSettingDark = value; }
@@ -29,16 +29,24 @@ namespace AutoThemeChanger
             //checkOSVersion
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             //Get current theme and set bool
-            if (!is1903)
+            try
             {
-                if (RegEditHandler.AppsUseLightTheme() == true) ThemeSettingDark = false;
-                else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
+                if (!is1903)
+                {
+                    if (RegEditHandler.AppsUseLightTheme() == true) ThemeSettingDark = false;
+                    else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
+                }
+                else
+                {
+                    if (RegEditHandler.SystemUsesLightTheme() == true) ThemeSettingDark = false;
+                    else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
+                }
             }
-            else
+            catch
             {
-                if (RegEditHandler.SystemUsesLightTheme() == true) ThemeSettingDark = false;
-                else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
+                locationBlock.Text = "Warning: We couldn't read your current theme.";
             }
+            
 
             //check if task already exists
             if (taskShedHandler.CheckExistingClass().Equals(1))
