@@ -15,6 +15,7 @@ namespace AutoThemeChanger
         public AboutWindow()
         {
             InitializeComponent();
+            if (MainWindow.Is1903) debugModeCheckBox.IsChecked = true;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -87,6 +88,16 @@ namespace AutoThemeChanger
         {
             System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
             
+        }
+
+        private void DebugModeCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Is1903 = true;
+        }
+
+        private void DebugModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Is1903 = false;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="About" Height="292.735" Width="269.193" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
+        Title="About" Height="336.735" Width="269.193" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,5 +22,7 @@
         <Image HorizontalAlignment="Left" Height="36" Margin="10,59,0,0" VerticalAlignment="Top" Width="37" Source="Resources/GitHub_Logo_Black.png"/>
         <Image HorizontalAlignment="Left" Height="59" Margin="90,49,0,0" VerticalAlignment="Top" Width="79" Source="Resources/Twitter_Logo_Blue.png"/>
         <TextBlock x:Name="TwitterTextBlock" HorizontalAlignment="Left" Margin="141,71,0,0" TextWrapping="Wrap" Text="Twitter" VerticalAlignment="Top" MouseEnter="TwitterTextBlock_MouseEnter" MouseLeave="TwitterTextBlock_MouseLeave" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,240,0,0" TextWrapping="Wrap" Text="Settings" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="debugModeCheckBox" Content="Enable features for Windows 1903" HorizontalAlignment="Left" Margin="9,264,0,0" VerticalAlignment="Top" Checked="DebugModeCheckBox_Checked" Unchecked="DebugModeCheckBox_Unchecked"/>
     </Grid>
 </Window>

@@ -21,6 +21,7 @@ namespace AutoThemeChanger
         static bool is1903 = false;
 
         public static bool ThemeSettingDark { get => themeSettingDark; set => themeSettingDark = value; }
+        public static bool Is1903 { get => is1903; set => is1903 = value; }
 
         public MainWindow()
         {
@@ -29,12 +30,12 @@ namespace AutoThemeChanger
             AddJumpList();
 
             //check OS-Version
-            if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
+            if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) Is1903 = true;
 
             //Get current theme and set dark-theme-bool
             try
             {
-                if (!is1903)
+                if (!Is1903)
                 {
                     if (RegEditHandler.AppsUseLightTheme() == true) ThemeSettingDark = false;
                     else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
@@ -92,7 +93,7 @@ namespace AutoThemeChanger
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
             if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
 
-            if (!is1903)
+            if (!Is1903)
             {
                 SystemComboBox.IsEnabled = false;
             }
@@ -174,7 +175,13 @@ namespace AutoThemeChanger
             {
                 Owner = GetWindow(this)
             };
+            aboutWindow.Closed += new EventHandler(AboutWindow_Closed);
             aboutWindow.ShowDialog();
+        }
+        private void AboutWindow_Closed(object sender, EventArgs e)
+        {
+            if (Is1903) SystemComboBox.IsEnabled = true;
+            if (!Is1903) SystemComboBox.IsEnabled = false;
         }
 
         //applicatin close behaviour
@@ -328,16 +335,6 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.EdgeThemeChange = 2;
                 RegEditHandler.EdgeTheme(0);
             }
-        }
-
-        private void DebugModeCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            SystemComboBox.IsEnabled = true;
-        }
-
-        private void DebugModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SystemComboBox.IsEnabled = false;
         }
 
         private void AddJumpList()
