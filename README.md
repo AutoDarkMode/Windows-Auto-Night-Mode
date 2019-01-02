@@ -20,5 +20,8 @@ With enabling the automatic theme switcher in the app, it creates a task in the 
 ## Download
 [Click here to download the newest version of Windows Auto-Night Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
 
+## Note about the download
+Google Chrome, Windows Smartscreen and some antivirus-programs may warn you from downloading this program. This is caused to the small user base. Sadly I can't change anything about that.
+
 ## Support
 [Here you can spend me a coffee for my work. Thank you <3](https://www.paypal.me/arminosaj)
