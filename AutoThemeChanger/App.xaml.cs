@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
 
 namespace AutoThemeChanger
 {
@@ -14,30 +8,37 @@ namespace AutoThemeChanger
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             //handle command line arguments
             if (e.Args.Length > 0)
             {
-                taskShedHandler taskShedHandler = new taskShedHandler();
-                RegEditHandler regEditHandler = new RegEditHandler();
-
                 string[] args = Environment.GetCommandLineArgs();
                 foreach (var value in args)
                 {
                     if(value == "/dark")
                     {
-                        regEditHandler.themeToDark();
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        regEditHandler.ThemeToDark();
                     }
                     else if(value == "/light")
                     {
-                        regEditHandler.themeToLight();
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        regEditHandler.ThemeToLight();
                     }else if(value == "/removeTask")
                     {
-                        taskShedHandler.removeTask();
+                        TaskShedHandler taskShedHandler = new TaskShedHandler();
+                        taskShedHandler.RemoveTask();
+                    }else if (value == "/location")
+                    {
+                        LocationHandler locationHandler = new LocationHandler();
+                        await locationHandler.SetLocationSilent();
+                    }else if (value == "/switch")
+                    {
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        regEditHandler.SwitchThemeBasedOnTime();
                     }
                 }
-
                 Shutdown();
             }
             else
