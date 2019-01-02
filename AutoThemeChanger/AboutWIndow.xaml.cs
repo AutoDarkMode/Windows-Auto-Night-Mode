@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AutoThemeChanger
 {
@@ -13,16 +15,7 @@ namespace AutoThemeChanger
         public AboutWindow()
         {
             InitializeComponent();
-        }
-
-        private void TwitterButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
-        }
-
-        private void GithubButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode");
+            if (MainWindow.Is1903) debugModeCheckBox.IsChecked = true;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -34,7 +27,7 @@ namespace AutoThemeChanger
                 if (updater.SilentUpdater())
                 {
                     updateInfoText.Text = "a new update is available!";
-                    updateButton.Content = "Download Update";
+                    updateButton.Content = "Download update";
                     update = true;
                     updateButton.IsEnabled = true;
                 }
@@ -60,6 +53,68 @@ namespace AutoThemeChanger
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, " +
                 "WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
             MessageBox.Show(messageBoxText, "TaskSheduler License Information");
+        }
+
+        private void GitHubTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GitHubTextBlock.Foreground = Brushes.Blue;
+            GitHubTextBlock.Cursor = Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void GitHubTextBlock_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GitHubTextBlock.Foreground = Brushes.Black;
+            GitHubTextBlock.Cursor = Mouse.OverrideCursor = null;
+        }
+
+        private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode");
+        }
+
+        private void TwitterTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TwitterTextBlock.Foreground = Brushes.Blue;
+            TwitterTextBlock.Cursor = Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void TwitterTextBlock_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TwitterTextBlock.Foreground = Brushes.Black;
+            TwitterTextBlock.Cursor = Mouse.OverrideCursor = null;
+        }
+
+        private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
+            
+        }
+
+        private void DebugModeCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Is1903 = true;
+        }
+
+        private void DebugModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Is1903 = false;
+        }
+
+        private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            PayPalTextBlock.Foreground = Brushes.Blue;
+            PayPalTextBlock.Cursor = Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void PayPalTextBlock_MouseLeave(object sender, MouseEventArgs e)
+        {
+            PayPalTextBlock.Foreground = Brushes.Black;
+            PayPalTextBlock.Cursor = Mouse.OverrideCursor = null;
+        }
+
+        private void PayPalTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
         }
     }
 }

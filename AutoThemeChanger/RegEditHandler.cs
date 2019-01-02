@@ -1,17 +1,49 @@
 ﻿using Microsoft.Win32;
+using System;
 
 namespace AutoThemeChanger
 {
     class RegEditHandler
     {
+        public void SwitchThemeBasedOnTime()
+        {
+            TaskShedHandler task = new TaskShedHandler();
+            var time = DateTime.Now.Hour;
+            var lightStart = task.GetRunTime("light");
+            var darkStart = task.GetRunTime("dark");
+
+
+            if (time < lightStart || time >= darkStart) { ThemeToDark(); MainWindow.ThemeSettingDark = true; }
+            else if (time >= lightStart || time < darkStart) { ThemeToLight(); MainWindow.ThemeSettingDark = false; }
+        }
+
         public void ThemeToDark()
         {
-            GetKey().SetValue("AppsUseLightTheme", "0", RegistryValueKind.DWord);
+            if(Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
+            if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
+            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
         }
 
         public void ThemeToLight()
         {
-            GetKey().SetValue("AppsUseLightTheme", "1", RegistryValueKind.DWord);
+            if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
+            if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
+            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
+        }
+
+        public void AppTheme(int theme)
+        {
+            GetKey().SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
+        }
+
+        public void SystemTheme(int theme)
+        {
+            GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
+        }
+
+        public void EdgeTheme(int theme)
+        {
+            GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
         }
 
         public bool AppsUseLightTheme()
@@ -21,9 +53,28 @@ namespace AutoThemeChanger
             else return false;
         }
 
+        public bool SystemUsesLightTheme()
+        {
+            var keyValue = GetKey().GetValue("SystemUsesLightTheme");
+            if ((int)keyValue == 1) return true;
+            else return false;
+        }
+
+        public string GetOSversion()
+        {
+            var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
+            return osVersion;
+        }
+
         private RegistryKey GetKey()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);
+            return registryKey;
+        }
+
+        private RegistryKey GetEdgeKey()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main", true);
             return registryKey;
         }
     }

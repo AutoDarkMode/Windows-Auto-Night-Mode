@@ -67,7 +67,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>AutoNightModeIconDark.ico</ApplicationIcon>
+    <ApplicationIcon>AutoNightModeIconNew.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutoThemeChanger.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.8.6.0, Culture=neutral, PublicKeyToken=c416bc1b32d97233, processorArchitecture=MSIL">
@@ -77,6 +80,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.WindowsRuntime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETCore\v4.5\System.Runtime.WindowsRuntime.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -85,6 +92,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Windows Kits\10\UnionMetadata\Windows.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -106,6 +116,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LocationHandler.cs" />
     <Compile Include="Updater.cs" />
     <Compile Include="SunDate.cs" />
     <Compile Include="RegEditHandler.cs" />
@@ -146,7 +157,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
@@ -161,10 +174,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AutoNightModeIconDark.ico" />
+    <Resource Include="Resources\AboutIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutIcon.ico" />
+    <Resource Include="Resources\Microsoft_Edge_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GitHub_Logo_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Twitter_Logo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PayPal_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoNightModeIconNew.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
