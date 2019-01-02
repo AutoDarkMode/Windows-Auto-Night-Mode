@@ -99,5 +99,22 @@ namespace AutoThemeChanger
         {
             MainWindow.Is1903 = false;
         }
+
+        private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            PayPalTextBlock.Foreground = Brushes.Blue;
+            PayPalTextBlock.Cursor = Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void PayPalTextBlock_MouseLeave(object sender, MouseEventArgs e)
+        {
+            PayPalTextBlock.Foreground = Brushes.Black;
+            PayPalTextBlock.Cursor = Mouse.OverrideCursor = null;
+        }
+
+        private void PayPalTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
+        }
     }
 }

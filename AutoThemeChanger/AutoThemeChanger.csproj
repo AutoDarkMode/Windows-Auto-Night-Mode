@@ -67,7 +67,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>AutoNightModeIconDark.ico</ApplicationIcon>
+    <ApplicationIcon>AutoNightModeIconNew.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AutoThemeChanger.App</StartupObject>
@@ -174,9 +174,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AutoNightModeIconDark.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\AboutIcon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +184,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Twitter_Logo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PayPal_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoNightModeIconNew.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
