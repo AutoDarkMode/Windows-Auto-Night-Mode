@@ -219,7 +219,7 @@ namespace AutoThemeChanger
             {
                 case GeolocationAccessStatus.Allowed:
                     //locate user + get sunrise & sunset times
-                    locationBlock.Text = "City: " + await locationHandler.GetCityName();
+                    locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
                     int[] sundate = await locationHandler.CalculateSunTime(false);
 
                     //apply settings & change UI

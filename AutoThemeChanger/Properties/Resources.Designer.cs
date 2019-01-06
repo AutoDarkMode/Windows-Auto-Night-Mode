@@ -142,6 +142,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu City.
+        /// </summary>
+        public static string lblCity {
+            get {
+                return ResourceManager.GetString("lblCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Choose custom start time.
         /// </summary>
         public static string lblCustomStart {

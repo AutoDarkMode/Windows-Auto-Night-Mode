@@ -236,4 +236,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="lblTranslator" xml:space="preserve">
     <value />
   </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>City</value>
+  </data>
 </root>
