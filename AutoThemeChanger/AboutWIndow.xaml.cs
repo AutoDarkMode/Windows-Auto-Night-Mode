@@ -22,18 +22,18 @@ namespace AutoThemeChanger
         {
             if (!update)
             {
-                updateInfoText.Text = "searching for update...";
+                updateInfoText.Text = Properties.Resources.msgSearchUpd;//searching for update...
                 updateButton.IsEnabled = false;
                 if (updater.SilentUpdater())
                 {
-                    updateInfoText.Text = "a new update is available!";
-                    updateButton.Content = "Download update";
+                    updateInfoText.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
+                    updateButton.Content = Properties.Resources.msgDownloadUpd;//Download update
                     update = true;
                     updateButton.IsEnabled = true;
                 }
                 else
                 {
-                    updateInfoText.Text = "no new updates are available.";
+                    updateInfoText.Text = Properties.Resources.msgNoUpd;//no new updates are available.
                 }
             }
             else

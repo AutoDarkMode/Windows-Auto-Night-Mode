@@ -48,7 +48,8 @@ namespace AutoThemeChanger
             }
             catch
             {
-                locationBlock.Text = "Warning: We couldn't read your current theme.";
+               
+                locationBlock.Text = Properties.Resources.msgThemeError;  //Warning: We couldn't read your current theme.
             }
             
 
@@ -130,11 +131,11 @@ namespace AutoThemeChanger
                 RegEditHandler.SwitchThemeBasedOnTime();
 
                 //UI
-                userFeedback.Text = "changes were saved!";
+                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
                 applyButton.IsEnabled = false;
             }
             catch{
-                userFeedback.Text = "error occurred :(";
+                userFeedback.Text = Properties.Resources.msgErrorOcc;//error occurred :(
             }
         }
 
@@ -210,7 +211,7 @@ namespace AutoThemeChanger
         }
         public async void GetLocation()
         {
-            locationBlock.Text = "Searching your location...";
+            locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             LocationHandler locationHandler = new LocationHandler();
 
             var accesStatus = await Geolocator.RequestAccessAsync();
@@ -244,7 +245,7 @@ namespace AutoThemeChanger
         private async void NoLocationAccess()
         {
             locationCheckBox.IsChecked = false;
-            locationBlock.Text = "The App needs permission to location";
+            locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -253,7 +254,7 @@ namespace AutoThemeChanger
             darkStartBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             locationBlock.Text = "";
-            userFeedback.Text = "Click on apply to save changes";
+            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             taskShedHandler.RemoveLocationTask();
         }
 
@@ -264,7 +265,7 @@ namespace AutoThemeChanger
             applyButton.IsEnabled = true;
             darkStartBox.IsEnabled = true;
             lightStartBox.IsEnabled = true;
-            userFeedback.Text = "Click on apply to save changes";
+            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -275,7 +276,7 @@ namespace AutoThemeChanger
             applyButton.IsEnabled = false;
             darkStartBox.IsEnabled = false;
             lightStartBox.IsEnabled = false;
-            userFeedback.Text = "Activate the checkbox to enable automatic theme switching";
+            userFeedback.Text = Properties.Resources.welcomeText;
         }
 
         //ComboBox
@@ -341,15 +342,15 @@ namespace AutoThemeChanger
         {
             JumpTask darkJumpTask = new JumpTask
             {
-                Title = "Dark theme",
+                Title = Properties.Resources.lblDarkTheme,//Dark theme
                 Arguments = "/dark",
-                CustomCategory = "Switch current theme"
+                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
             };
             JumpTask lightJumpTask = new JumpTask
             {
-                Title = "Light theme",
+                Title = Properties.Resources.lblLightTheme,//Light theme
                 Arguments = "/light",
-                CustomCategory = "Switch current theme"
+                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
             };
 
             JumpList jumpList = new JumpList();

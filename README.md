@@ -1,3 +1,4 @@
+
 # Windows 10 Auto-Night-Mode
 Automatically switches between the dark and light theme of Windows 10
 ![Screenshot](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.png)

@@ -118,122 +118,122 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>O programie</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Apply</value>
+    <value>Zastosuj</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Enable automatic theme switching</value>
+    <value>Włącz automatyczne przełączanie motywu</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Adjust to theme</value>
+    <value>Dostosuj do motywu</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Always dark</value>
+    <value>Zawsze ciemny</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Always white</value>
+    <value>Zawsze jasny</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Enable features for Windows 1903</value>
+    <value>Włącz funkcje dla Windowsa 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Aplikacje:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Author: Armin Osaj © 2019</value>
+    <value>Twórca: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Choose custom start time</value>
+    <value>Wybierz czas uruchamiania</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Ciemny</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Dark theme</value>
+    <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
     <value>Edge:</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Light</value>
+    <value>Jasny</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Light theme</value>
+    <value>Jasny motyw</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ustawienia</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Switch current theme</value>
+    <value>Zmień obecny motyw</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Used third party software</value>
+    <value>Zawiera oprogramowanie</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Aktualizacje</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>Użyj usługi lokalizacji</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>changes were saved!</value>
+    <value>Zapisano zmiany!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Click on apply to save changes</value>
+    <value>Kliknij 'Zastosuj', aby zapisać zmiany</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Download update</value>
+    <value>Pobierz aktualizację</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>error occurred :(</value>
+    <value>Wystąpił błąd :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>The App needs permission to location</value>
+    <value>Aplikacja potrzebuje dostępu do lokalizacji</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>no new updates are available.</value>
+    <value>Brak aktualizacji</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Searching your location...</value>
+    <value>Szukanie lokalizacji...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>searching for update...</value>
+    <value>Szukanie aktualizacji...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>Uwaga: Nie można wczytać obecnego motywu.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>a new update is available!</value>
+    <value>Nowa aktualizacja jest dostępna</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Thank you for using Auto-Night Mode!
+    <value>Dziękujemy za używanie Auto-Night Mode!
 
-A new version is available on GitHub with fixes and enhancements.
-Do you want to download it?
+Nowa wersja programu z poprawkami i dodatkami jest dostępna na GitHubie.
+Chcesz ją pobrać?
 
-Currently installed version: {0}, new version: {1}</value>
+Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Windows Auto-Night Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>Szukaj aktualizacji</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>we check at every program start for updates.</value>
+    <value>Program szuka aktualizacji przy uruchomieniu</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Witamy</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Activate the checkbox to enable automatic theme switching</value>
+    <value>Aktywuj kontrolkę na górze, aby automatycznie przełączać motyw!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value />
+    <value>Spolszczenie: Lee Bartula</value>
   </data>
 </root>
