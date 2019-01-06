@@ -37,10 +37,10 @@ namespace AutoThemeChanger
                 if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "AutoNightMode"))
                 {
                     while (reader.Read())
-                    { 
+                    {
                         if (reader.NodeType == XmlNodeType.Element) elementName = reader.Name;
                         else
-                        { 
+                        {
                             if ((reader.NodeType == XmlNodeType.Text) && (reader.HasValue))
                             {
                                 switch (elementName)
@@ -71,7 +71,7 @@ namespace AutoThemeChanger
             {
                 if (!silent)
                 {
-                    string text = "Thank you for using Auto-Night Mode!\n\nA new version is available on GitHub with fixes and enhancements.\nDo you want to download it?\n\nCurrently installed version: " + currentVersion + ", new Version: " + newVersion;
+                    string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
                     var result = MessageBox.Show(text, "Auto-Night Mode Updater", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                     if (result == MessageBoxResult.Yes)
@@ -79,7 +79,8 @@ namespace AutoThemeChanger
                         System.Diagnostics.Process.Start(url);
                         Application.Current.Shutdown();
                     }
-                }else
+                }
+                else
                 {
                     updateAvailable = true;
                 }
