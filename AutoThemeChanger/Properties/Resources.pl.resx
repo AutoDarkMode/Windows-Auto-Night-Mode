@@ -236,4 +236,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="lblTranslator" xml:space="preserve">
     <value>Spolszczenie: Lee Bartula</value>
   </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Miasto</value>
+  </data>
 </root>

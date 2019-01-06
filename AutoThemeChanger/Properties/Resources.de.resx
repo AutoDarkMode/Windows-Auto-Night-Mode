@@ -137,7 +137,6 @@
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Funktionen für Windows 1903 aktivieren</value>
-    <comment> </comment>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>Anwendungen:</value>
@@ -236,5 +235,8 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Übersetzung: Lee Bartula</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Stadt</value>
   </data>
 </root>
