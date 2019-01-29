@@ -12,10 +12,10 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto-Night Mode Version 2.1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
-        <Button x:Name="updateButton" Content="{x:Static p:Resources.updateButton}" HorizontalAlignment="Left" Margin="11,159,0,0" VerticalAlignment="Top" Width="110" Click="UpdateButton_Click" Height="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="252"/>
+        <Button x:Name="updateButton" Content="{x:Static p:Resources.updateButton}" HorizontalAlignment="Left" Margin="11,159,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="20" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
         <Button x:Name="taskShedulerLicense" Content="TaskScheduler" HorizontalAlignment="Left" Margin="11,234,0,0" VerticalAlignment="Top" Width="93" Click="TaskShedulerLicense_Click" Height="20"/>
         <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="11,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static p:Resources.updateInfoText}" Width="250" Height="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="11,135,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>

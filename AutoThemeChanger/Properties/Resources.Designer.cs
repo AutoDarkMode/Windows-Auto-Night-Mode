@@ -376,7 +376,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thank you for using Auto-Night Mode!
+        ///   Looks up a localized string similar to Thank you for using Auto Dark Mode!
         ///
         ///A new version is available on GitHub with fixes and enhancements.
         ///Do you want to download it?
@@ -399,7 +399,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Auto-Night Mode.
+        ///   Looks up a localized string similar to Windows Auto Dark Mode.
         /// </summary>
         public static string Title {
             get {
