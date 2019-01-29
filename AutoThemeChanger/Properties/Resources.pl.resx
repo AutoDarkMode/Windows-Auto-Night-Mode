@@ -239,4 +239,13 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="lblCity" xml:space="preserve">
     <value>Miasto</value>
   </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Ta opcja nie jest dostępna, ponieważ nie masz zainstalowanego Windowsa 10 April 2019 Update.</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Aby zastosować zmiany, uruchom ponownie aplikację</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Język:</value>
+  </data>
 </root>

@@ -6,29 +6,34 @@
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="376.735" Width="277.175" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
+        Title="{x:Static p:Resources.About}" Height="438.734" Width="277.175" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="224*"/>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto-Night Mode Version 2.0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0" Grid.ColumnSpan="3"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251" Grid.ColumnSpan="3"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto-Night Mode Version 2.1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
         <Button x:Name="updateButton" Content="{x:Static p:Resources.updateButton}" HorizontalAlignment="Left" Margin="11,159,0,0" VerticalAlignment="Top" Width="110" Click="UpdateButton_Click" Height="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="252" Grid.ColumnSpan="3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="252"/>
         <Button x:Name="taskShedulerLicense" Content="TaskScheduler" HorizontalAlignment="Left" Margin="11,234,0,0" VerticalAlignment="Top" Width="93" Click="TaskShedulerLicense_Click" Height="20"/>
-        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="11,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static p:Resources.updateInfoText}" Width="250" Grid.ColumnSpan="3"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,135,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="GitHubTextBlock" HorizontalAlignment="Left" Margin="52,61,0,0" TextWrapping="Wrap" Text="GitHub" VerticalAlignment="Top" MouseEnter="GitHubTextBlock_MouseEnter" MouseLeave="GitHubTextBlock_MouseLeave" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" Width="38"/>
+        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="11,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static p:Resources.updateInfoText}" Width="250" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,135,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
+        <TextBlock x:Name="GitHubTextBlock" HorizontalAlignment="Left" Margin="52,61,0,0" TextWrapping="Wrap" Text="GitHub" VerticalAlignment="Top" MouseEnter="GitHubTextBlock_MouseEnter" MouseLeave="GitHubTextBlock_MouseLeave" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" Width="38" Height="16"/>
         <Image HorizontalAlignment="Left" Height="36" Margin="10,49,0,0" VerticalAlignment="Top" Width="38" Source="Resources/GitHub_Logo_Black.png"/>
         <Image HorizontalAlignment="Left" Height="59" Margin="90,39,0,0" VerticalAlignment="Top" Width="80" Source="Resources/Twitter_Logo_Blue.png"/>
-        <TextBlock x:Name="TwitterTextBlock" HorizontalAlignment="Left" Margin="141,61,0,0" TextWrapping="Wrap" Text="Twitter" VerticalAlignment="Top" MouseEnter="TwitterTextBlock_MouseEnter" MouseLeave="TwitterTextBlock_MouseLeave" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" Width="36"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Grid.ColumnSpan="3"/>
-        <CheckBox x:Name="debugModeCheckBox" Content="{x:Static p:Resources.debugModeCheckBox}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Checked="DebugModeCheckBox_Checked" Unchecked="DebugModeCheckBox_Unchecked" Width="253" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="TwitterTextBlock" HorizontalAlignment="Left" Margin="141,61,0,0" TextWrapping="Wrap" Text="Twitter" VerticalAlignment="Top" MouseEnter="TwitterTextBlock_MouseEnter" MouseLeave="TwitterTextBlock_MouseLeave" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" Width="36" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
+        <CheckBox x:Name="debugModeCheckBox" Content="{x:Static p:Resources.debugModeCheckBox}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Checked="DebugModeCheckBox_Checked" Unchecked="DebugModeCheckBox_Unchecked" Width="253" Height="15"/>
         <Image HorizontalAlignment="Left" Height="35" Margin="15,92,0,0" VerticalAlignment="Top" Width="31" Source="Resources/PayPal_Logo.png"/>
-        <TextBlock x:Name="PayPalTextBlock" HorizontalAlignment="Left" Margin="52,101,0,0" TextWrapping="Wrap" Text="PayPal" VerticalAlignment="Top" MouseEnter="PayPalTextBlock_MouseEnter" MouseLeave="PayPalTextBlock_MouseLeave" MouseDown="PayPalTextBlock_MouseDown" Width="34"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,312,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top" Height="16" Width="251" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="PayPalTextBlock" HorizontalAlignment="Left" Margin="52,101,0,0" TextWrapping="Wrap" Text="PayPal" VerticalAlignment="Top" MouseEnter="PayPalTextBlock_MouseEnter" MouseLeave="PayPalTextBlock_MouseLeave" MouseDown="PayPalTextBlock_MouseDown" Width="34" Height="16"/>
+        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="11,342,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" HorizontalAlignment="Left" Margin="74,314,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22">
+            <ComboBoxItem Content="Deutsch"/>
+            <ComboBoxItem Content="English"/>
+            <ComboBoxItem Content="Polski"/>
+        </ComboBox>
+        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="11,363,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,317,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
     </Grid>
 </Window>

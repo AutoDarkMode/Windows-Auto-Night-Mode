@@ -55,16 +55,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>F6C406BC866F9EB0721FB7AC58329A1A7C2D19BB</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>67F1262CBA1BD9EBE7C79402C1FF2E3ABEA979A5</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AutoThemeChanger_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>AutoThemeChanger_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>AutoNightModeIconNew.ico</ApplicationIcon>
@@ -167,6 +167,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AutoThemeChanger_1_TemporaryKey.pfx" />
     <None Include="AutoThemeChanger_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

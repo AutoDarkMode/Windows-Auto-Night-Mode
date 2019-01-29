@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Globalization;
+using System.Threading;
 
 namespace AutoThemeChanger
 {
@@ -15,7 +17,21 @@ namespace AutoThemeChanger
         public AboutWindow()
         {
             InitializeComponent();
+
             if (MainWindow.Is1903) debugModeCheckBox.IsChecked = true;
+
+            switch (Properties.Settings.Default.Language.ToString())
+            {
+                case "de":
+                    LangComBox.SelectedIndex = 0;
+                    break;
+                case "en":
+                    LangComBox.SelectedIndex = 1;
+                    break;
+                case "pl":
+                    LangComBox.SelectedIndex = 2;
+                    break;
+            }
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -115,6 +131,30 @@ namespace AutoThemeChanger
         private void PayPalTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
+        }
+
+        private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
+        {
+            if (LangComBox.SelectedIndex == 0)
+            {
+                SetLanguage("de");
+            }
+            if (LangComBox.SelectedIndex == 1)
+            {
+                SetLanguage("en");
+            }
+            if(LangComBox.SelectedIndex == 2)
+            {
+                SetLanguage("pl");
+            }
+            RestartText.Text = Properties.Resources.restartNeeded;
+            Translator.Text = Properties.Resources.lblTranslator;
+        }
+        private void SetLanguage(string lang)
+        {
+            Properties.Settings.Default.Language = lang;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
         }
     }
 }

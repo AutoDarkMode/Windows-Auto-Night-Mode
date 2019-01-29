@@ -234,9 +234,18 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Activate the checkbox to enable automatic theme switching</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value />
+    <value>  </value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>City</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>App restart needed to see the changes</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Language:</value>
   </data>
 </root>

@@ -6,6 +6,7 @@ using Windows.Devices.Geolocation;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Shell;
+using System.Globalization;
 
 namespace AutoThemeChanger
 {
@@ -25,14 +26,31 @@ namespace AutoThemeChanger
 
         public MainWindow()
         {
+            LanguageHelper();
             InitializeComponent();
             updater.CheckNewVersion();
             AddJumpList();
 
             //check OS-Version
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) Is1903 = true;
+            //Properties.Settings.Default.Upgrade();
 
-            //Get current theme and set dark-theme-bool
+            DoesTaskExists();
+            UiHandlerComboBox();
+        }
+
+        private void LanguageHelper()
+        {
+            if (Properties.Settings.Default.Language.ToString() == "")
+            {
+                Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+            }
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+        }
+
+        private void GetCurTheme()
+        {
             try
             {
                 if (!Is1903)
@@ -48,18 +66,19 @@ namespace AutoThemeChanger
             }
             catch
             {
-               
                 locationBlock.Text = Properties.Resources.msgThemeError;  //Warning: We couldn't read your current theme.
             }
-            
+        }
 
-            //check if task already exists
+        private void DoesTaskExists()
+        {
             if (taskShedHandler.CheckExistingClass().Equals(1))
             {
                 autoCheckBox.IsChecked = true;
                 darkStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("dark"));
                 lightStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("light"));
-            }else if (taskShedHandler.CheckExistingClass().Equals(2))
+            }
+            else if (taskShedHandler.CheckExistingClass().Equals(2))
             {
                 autoCheckBox.IsChecked = true;
                 locationCheckBox.IsChecked = true;
@@ -69,13 +88,10 @@ namespace AutoThemeChanger
                 autoCheckBox.IsChecked = false;
                 AutoCheckBox_Unchecked(this, null);
             }
-            UiHandlerComboBox();
         }
 
         private void UiHandlerComboBox()
         {
-            //Properties.Settings.Default.Upgrade();
-
             int appTheme = Properties.Settings.Default.AppThemeChange;
             Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
@@ -97,6 +113,7 @@ namespace AutoThemeChanger
             if (!Is1903)
             {
                 SystemComboBox.IsEnabled = false;
+                SystemComboBox.ToolTip = Properties.Resources.cmb1903;
             }
         }
 
@@ -276,7 +293,7 @@ namespace AutoThemeChanger
             applyButton.IsEnabled = false;
             darkStartBox.IsEnabled = false;
             lightStartBox.IsEnabled = false;
-            userFeedback.Text = Properties.Resources.welcomeText;
+            userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
 
         //ComboBox

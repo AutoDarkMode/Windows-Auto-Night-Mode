@@ -9,7 +9,7 @@ namespace AutoThemeChanger
     public partial class App : Application
     {
         protected override async void OnStartup(StartupEventArgs e)
-        { 
+        {
             //handle command line arguments
             if (e.Args.Length > 0)
             {

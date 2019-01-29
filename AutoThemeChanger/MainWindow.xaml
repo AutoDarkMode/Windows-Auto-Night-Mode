@@ -23,7 +23,7 @@
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" DropDownClosed="SystemComboBox_DropDownClosed">
+        <ComboBox HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="SystemComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
