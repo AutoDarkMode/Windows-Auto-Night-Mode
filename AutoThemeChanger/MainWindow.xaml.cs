@@ -340,18 +340,18 @@ namespace AutoThemeChanger
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.EdgeThemeChange = 0;
-                if (ThemeSettingDark) RegEditHandler.EdgeTheme(0);
-                if (!ThemeSettingDark) RegEditHandler.EdgeTheme(1);
+                if (ThemeSettingDark) RegEditHandler.EdgeTheme(1);
+                if (!ThemeSettingDark) RegEditHandler.EdgeTheme(0);
             }
             if (EdgeComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.EdgeThemeChange = 1;
-                RegEditHandler.EdgeTheme(1);
+                RegEditHandler.EdgeTheme(0);
             }
             if (EdgeComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.EdgeThemeChange = 2;
-                RegEditHandler.EdgeTheme(0);
+                RegEditHandler.EdgeTheme(1);
             }
         }
 

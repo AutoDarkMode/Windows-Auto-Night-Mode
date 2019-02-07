@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="Windows Auto Dark Mode" Height="411.933" Width="275.332" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="{x:Static p:Resources.Title}" Height="411.933" Width="275.332" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid x:Name="mainWin">
         <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="161,243,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
         <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="86,243,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="53" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>

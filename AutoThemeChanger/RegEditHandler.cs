@@ -21,14 +21,14 @@ namespace AutoThemeChanger
         {
             if(Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
-            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
+            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
         }
 
         public void ThemeToLight()
         {
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
-            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
+            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
         }
 
         public void AppTheme(int theme)

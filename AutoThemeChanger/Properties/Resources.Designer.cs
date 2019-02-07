@@ -399,7 +399,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Auto Dark Mode.
+        ///   Looks up a localized string similar to Auto Dark Mode.
         /// </summary>
         public static string Title {
             get {
