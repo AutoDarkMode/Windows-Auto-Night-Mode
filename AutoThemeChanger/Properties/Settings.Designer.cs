@@ -94,5 +94,17 @@ namespace AutoThemeChanger.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AccentColor {
+            get {
+                return ((bool)(this["AccentColor"]));
+            }
+            set {
+                this["AccentColor"] = value;
+            }
+        }
     }
 }

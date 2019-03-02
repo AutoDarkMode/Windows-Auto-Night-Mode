@@ -35,6 +35,7 @@ namespace AutoThemeChanger
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) Is1903 = true;
             //Properties.Settings.Default.Upgrade();
 
+            GetCurTheme();
             DoesTaskExists();
             UiHandlerComboBox();
         }
@@ -114,6 +115,13 @@ namespace AutoThemeChanger
             {
                 SystemComboBox.IsEnabled = false;
                 SystemComboBox.ToolTip = Properties.Resources.cmb1903;
+                AccentColorCheckBox.IsEnabled = false;
+                AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
+            }
+
+            if (Properties.Settings.Default.AccentColor)
+            {
+                AccentColorCheckBox.IsChecked = true;
             }
         }
 
@@ -198,8 +206,16 @@ namespace AutoThemeChanger
         }
         private void AboutWindow_Closed(object sender, EventArgs e)
         {
-            if (Is1903) SystemComboBox.IsEnabled = true;
-            if (!Is1903) SystemComboBox.IsEnabled = false;
+            if (Is1903)
+            {
+                SystemComboBox.IsEnabled = true;
+                AccentColorCheckBox.IsEnabled = true;
+            }
+            if (!Is1903)
+            {
+                SystemComboBox.IsEnabled = false;
+                AccentColorCheckBox.IsEnabled = false;
+            }
         }
 
         //applicatin close behaviour
@@ -321,17 +337,24 @@ namespace AutoThemeChanger
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.SystemThemeChange = 0;
+                if (Properties.Settings.Default.AccentColor)
+                {
+                    if (ThemeSettingDark) RegEditHandler.ColorPrevalence(1);
+                    if (!ThemeSettingDark) RegEditHandler.ColorPrevalence(0);
+                }
                 if (ThemeSettingDark) RegEditHandler.SystemTheme(0);
                 if (!ThemeSettingDark) RegEditHandler.SystemTheme(1);
             }
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
+                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(0);
                 RegEditHandler.SystemTheme(1);
             }
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
+                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(1);
                 RegEditHandler.SystemTheme(0);
             }
         }
@@ -377,6 +400,18 @@ namespace AutoThemeChanger
             jumpList.ShowRecentCategory = false;
 
             JumpList.SetJumpList(Application.Current, jumpList);
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.AccentColor = true;
+            if(themeSettingDark) RegEditHandler.ColorPrevalence(1);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.AccentColor = false;
+            RegEditHandler.ColorPrevalence(0);
         }
     }
 }

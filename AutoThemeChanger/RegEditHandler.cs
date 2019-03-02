@@ -19,13 +19,15 @@ namespace AutoThemeChanger
 
         public void ThemeToDark()
         {
-            if(Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
+            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0)) ColorPrevalence(1);
+            if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
         }
 
         public void ThemeToLight()
         {
+            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0)) ColorPrevalence(0);
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
@@ -44,6 +46,11 @@ namespace AutoThemeChanger
         public void EdgeTheme(int theme)
         {
             GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+        }
+
+        public void ColorPrevalence(int theme)
+        {
+            GetKey().SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
         }
 
         public bool AppsUseLightTheme()

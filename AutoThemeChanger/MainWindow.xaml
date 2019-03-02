@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="411.933" Width="275.332" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="{x:Static p:Resources.Title}" Height="439.933" Width="275.332" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid x:Name="mainWin">
-        <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="161,243,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
-        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="86,243,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="53" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,243,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="48" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,202,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,227,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="86,227,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top"/>
-        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="217,336,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="19" Height="25" FontWeight="Bold" FontSize="14"/>
-        <CheckBox x:Name="locationCheckBox" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
-        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="161,259,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
+        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="86,259,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="53" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,259,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="48" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,218,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,243,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="86,243,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,332,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="219,355,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="19" Height="25" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="locationCheckBox" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,287,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
+        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
@@ -28,7 +28,7 @@
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="53,161,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed">
+        <ComboBox HorizontalAlignment="Left" Margin="53,177,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
@@ -36,9 +36,10 @@
         <Label Content="&#xE71D;" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
         <Label Content="&#xE977;" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
         <CheckBox Content="{x:Static p:Resources.autoCheckBox}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked"/>
-        <Image HorizontalAlignment="Left" Height="31" Margin="14,150,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png"/>
+        <Image HorizontalAlignment="Left" Height="31" Margin="14,166,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png"/>
         <TextBlock HorizontalAlignment="Left" Margin="54,34,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="54,87,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,140,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,156,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>
+        <CheckBox x:Name="AccentColorCheckBox" Content="Accent Color for Taskbar" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ToolTipService.ShowOnDisabled="true"/>
     </Grid>
 </Window>
