@@ -5,31 +5,29 @@ namespace AutoThemeChanger
 {
     public class TaskShedHandler
     {
-        readonly string dark = "Auto-Night Mode Dark";
-        readonly string light = "Auto-Night Mode Light";
-        readonly string folder = "Auto-Night Mode";
-        readonly string updater = "Auto-Night Mode Updater";
+        readonly string dark = "Auto Dark Mode DARK";
+        readonly string light = "Auto Dark Mode LIGHT";
+        readonly string hibernation = "Auto Dark Mode HIBERNATION";
+        readonly string folder = "Auto Dark Mode";
+        readonly string updater = "Auto Dark Mode UPDATER";
         readonly string author = "Armin Osaj";
-        readonly string program = "Windows Auto Night-Mode";
-        readonly string descrpition = "Task of the program Windows Auto-Night Mode.";
+        readonly string program = "Windows Auto Dark Mode";
+        readonly string description = "Task of the program Windows Auto Dark Mode.";
 
         public void CreateTask(int startTime, int startTimeMinutes, int endTime, int endTimeMinutes)
         {
             using (TaskService taskService = new TaskService())
             {
-                try
-                {
-                    taskService.RootFolder.CreateFolder(folder);
-                }catch{}
+                taskService.RootFolder.CreateFolder(folder, null, false);
 
                 //create task for DARK
                 TaskDefinition tdDark = taskService.NewTask();
 
-                tdDark.RegistrationInfo.Description = "Automatically switches to the Windows dark theme. " + descrpition;
+                tdDark.RegistrationInfo.Description = "Automatically switches to the Windows dark theme. " + description;
                 tdDark.RegistrationInfo.Author = author;
                 tdDark.RegistrationInfo.Source = program;
                 tdDark.Settings.DisallowStartIfOnBatteries = false;
-                tdDark.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
+                tdDark.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
                 tdDark.Settings.StartWhenAvailable = true;
 
                 tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTime).AddMinutes(startTimeMinutes) });
@@ -41,11 +39,11 @@ namespace AutoThemeChanger
                 //create task for LIGHT
                 TaskDefinition tdLight = taskService.NewTask();
 
-                tdLight.RegistrationInfo.Description = "Automatically switches to the Windows light theme. " + descrpition;
+                tdLight.RegistrationInfo.Description = "Automatically switches to the Windows light theme. " + description;
                 tdLight.RegistrationInfo.Author = author;
                 tdLight.RegistrationInfo.Source = program;
                 tdLight.Settings.DisallowStartIfOnBatteries = false;
-                tdLight.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
+                tdLight.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
                 tdLight.Settings.StartWhenAvailable = true;
 
                 tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTime).AddMinutes(endTimeMinutes) });
@@ -53,6 +51,23 @@ namespace AutoThemeChanger
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(light, tdLight);
                 Console.WriteLine("created task for light theme");
+
+                //create EventLog task
+                TaskDefinition tdHibernation = taskService.NewTask();
+
+                tdHibernation.RegistrationInfo.Description = "Improves reliability of the theme switch. " + description;
+                tdHibernation.RegistrationInfo.Author = author;
+                tdHibernation.RegistrationInfo.Source = program;
+                tdHibernation.Settings.DisallowStartIfOnBatteries = false;
+                tdHibernation.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
+                tdHibernation.Settings.StartWhenAvailable = true;
+
+                EventTrigger eventTrigger = tdHibernation.Triggers.Add(new EventTrigger());
+                eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Power-Troubleshooter'] and (Level=4 or Level=0) and (EventID=1)]]</Select></Query></QueryList>";
+                tdHibernation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
+
+                taskService.GetFolder(folder).RegisterTaskDefinition(hibernation, tdHibernation);
+                Console.WriteLine("created task for hibernation");
             }
         }
 
@@ -62,7 +77,7 @@ namespace AutoThemeChanger
             {
                 TaskDefinition tdLocation = taskService.NewTask();
 
-                tdLocation.RegistrationInfo.Description = "Updates the activation time of dark & light theme based on user location. " + descrpition;
+                tdLocation.RegistrationInfo.Description = "Updates the activation time of dark & light theme based on user location. " + description;
                 tdLocation.RegistrationInfo.Author = author;
                 tdLocation.RegistrationInfo.Source = program;
                 tdLocation.Settings.DisallowStartIfOnBatteries = false;
@@ -82,38 +97,11 @@ namespace AutoThemeChanger
             using (TaskService taskService = new TaskService())
             {
                 TaskFolder taskFolder = taskService.GetFolder(folder);
-                try
-                {
-                    taskFolder.DeleteTask(light);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(dark);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(updater);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskService.RootFolder.DeleteFolder(folder);
-                }
-                catch
-                {
-
-                }
+                taskFolder.DeleteTask(light, false);
+                taskFolder.DeleteTask(dark, false);
+                taskFolder.DeleteTask(hibernation, false);
+                taskFolder.DeleteTask(updater, false);
+                taskService.RootFolder.DeleteFolder(folder, false);
             }
         }
 
@@ -121,15 +109,8 @@ namespace AutoThemeChanger
         {
             using (TaskService taskService = new TaskService())
             {
-                try
-                {
-                    TaskFolder taskFolder = taskService.GetFolder(folder);
-                    taskFolder.DeleteTask(updater);
-                }
-                catch
-                {
-
-                }
+                TaskFolder taskFolder = taskService.GetFolder(folder);
+                taskFolder.DeleteTask(updater, false);
             }
         }
 
