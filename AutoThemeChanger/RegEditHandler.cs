@@ -130,5 +130,23 @@ namespace AutoThemeChanger
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main", true);
             return registryKey;
         }
+
+        public void AddAutoStart()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            registryKey.SetValue("AutoDarkMode", '\u0022' + System.Reflection.Assembly.GetExecutingAssembly().Location + '\u0022' + @" /switch");
+        }
+        public void RemoveAutoStart()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            try
+            {
+                registryKey.DeleteValue("AutoDarkMode");
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

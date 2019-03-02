@@ -169,6 +169,7 @@ namespace AutoThemeChanger
             {
                 taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
                 RegEditHandler.SwitchThemeBasedOnTime();
+                RegEditHandler.AddAutoStart();
 
                 //UI
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
@@ -352,6 +353,7 @@ namespace AutoThemeChanger
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             taskShedHandler.RemoveTask();
+            RegEditHandler.RemoveAutoStart();
 
             locationCheckBox.IsEnabled = false;
             locationCheckBox.IsChecked = false;
