@@ -37,7 +37,7 @@ namespace AutoThemeChanger
 
             GetCurTheme();
             DoesTaskExists();
-            UiHandlerComboBox();
+            UiHandler();
         }
 
         private void LanguageHelper()
@@ -54,7 +54,7 @@ namespace AutoThemeChanger
         {
             try
             {
-                if (!Is1903)
+                if (!Is1903 || !Properties.Settings.Default.SystemThemeChange.Equals(0))
                 {
                     if (RegEditHandler.AppsUseLightTheme() == true) ThemeSettingDark = false;
                     else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
@@ -91,7 +91,7 @@ namespace AutoThemeChanger
             }
         }
 
-        private void UiHandlerComboBox()
+        private void UiHandler()
         {
             int appTheme = Properties.Settings.Default.AppThemeChange;
             Console.WriteLine("appTheme Value: " + appTheme);
@@ -337,25 +337,27 @@ namespace AutoThemeChanger
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.SystemThemeChange = 0;
+                if (ThemeSettingDark) RegEditHandler.SystemTheme(0);
+                if (!ThemeSettingDark) RegEditHandler.SystemTheme(1);
                 if (Properties.Settings.Default.AccentColor)
                 {
                     if (ThemeSettingDark) RegEditHandler.ColorPrevalence(1);
                     if (!ThemeSettingDark) RegEditHandler.ColorPrevalence(0);
                 }
-                if (ThemeSettingDark) RegEditHandler.SystemTheme(0);
-                if (!ThemeSettingDark) RegEditHandler.SystemTheme(1);
             }
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
-                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(0);
                 RegEditHandler.SystemTheme(1);
+                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(0);
+                GetCurTheme();
             }
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
-                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(1);
                 RegEditHandler.SystemTheme(0);
+                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(1);
+                GetCurTheme();
             }
         }
         private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
