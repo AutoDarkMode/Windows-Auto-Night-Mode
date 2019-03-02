@@ -69,7 +69,7 @@ namespace AutoThemeChanger
                 tdLocation.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
                 tdLocation.Settings.StartWhenAvailable = true;
 
-                tdLocation.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddHours(14) });
+                tdLocation.Triggers.Add(new WeeklyTrigger { StartBoundary = DateTime.Today.AddDays(7) });
                 tdLocation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/location"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(updater, tdLocation);
