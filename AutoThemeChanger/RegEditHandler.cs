@@ -8,13 +8,59 @@ namespace AutoThemeChanger
         public void SwitchThemeBasedOnTime()
         {
             TaskShedHandler task = new TaskShedHandler();
-            var time = DateTime.Now.Hour;
+            var hour = DateTime.Now.Hour;
+            var minute = DateTime.Now.Minute;
             var lightStart = task.GetRunTime("light");
             var darkStart = task.GetRunTime("dark");
 
-
-            if (time < lightStart || time >= darkStart) { ThemeToDark(); MainWindow.ThemeSettingDark = true; }
-            else if (time >= lightStart || time < darkStart) { ThemeToLight(); MainWindow.ThemeSettingDark = false; }
+            if (hour < lightStart[0] || hour >= darkStart[0])
+            {
+                if (hour == darkStart[0])
+                {
+                    if (minute < darkStart[1])
+                    {
+                        ThemeToLight();
+                        MainWindow.ThemeSettingDark = false;
+                        Console.WriteLine("Theme to Light");
+                    }
+                    if (minute >= darkStart[1])
+                    {
+                        ThemeToDark();
+                        MainWindow.ThemeSettingDark = true;
+                        Console.WriteLine("Theme to Dark");
+                    }
+                }
+                else
+                {
+                    ThemeToDark();
+                    MainWindow.ThemeSettingDark = true;
+                    Console.WriteLine("Theme to Dark");
+                }
+            }
+            else if (hour >= lightStart[0] || hour < darkStart[0])
+            {
+                if(hour == lightStart[0])
+                {
+                    if(minute < lightStart[1])
+                    {
+                        ThemeToDark();
+                        MainWindow.ThemeSettingDark = true;
+                        Console.WriteLine("Theme to Dark");
+                    }
+                    if(minute >= lightStart[1])
+                    {
+                        ThemeToLight();
+                        MainWindow.ThemeSettingDark = false;
+                        Console.WriteLine("Theme to Light");
+                    }
+                }
+                else
+                {
+                    ThemeToLight();
+                    MainWindow.ThemeSettingDark = false;
+                    Console.WriteLine("Theme to Light");
+                }
+            }
         }
 
         public void ThemeToDark()

@@ -10,7 +10,7 @@ namespace AutoThemeChanger
     {
         public async Task<int[]> CalculateSunTime(bool background)
         {
-            int[] sundate = new int[2];
+            int[] sundate = new int[4];
             int[] sun = new int[2];
             if (!background){
                 BasicGeoposition position = await GetUserPosition();
@@ -21,8 +21,10 @@ namespace AutoThemeChanger
             {
                 sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
             }
-            sundate[0] = new DateTime(1, 1, 1, 1 + sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0).Hour; //sunrise
-            sundate[1] = new DateTime(1, 1, 1, 1 + sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0).Hour; //sunset
+            sundate[0] = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0).Hour; //sunrise hour
+            sundate[1] = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0).Minute; //sunrise minute
+            sundate[2] = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0).Hour; //sunset hour
+            sundate[3] = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0).Minute; //sunset minute
             return sundate;
         }
 
@@ -61,7 +63,7 @@ namespace AutoThemeChanger
         {
             TaskShedHandler taskShedHandler = new TaskShedHandler();
             int[] sundate = await CalculateSunTime(true);
-            taskShedHandler.CreateTask(sundate[1], sundate[0]);
+            taskShedHandler.CreateTask(sundate[0], sundate[1], sundate[2], sundate[3]);
         }
     }
 }

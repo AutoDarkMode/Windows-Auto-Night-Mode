@@ -76,8 +76,12 @@ namespace AutoThemeChanger
             if (taskShedHandler.CheckExistingClass().Equals(1))
             {
                 autoCheckBox.IsChecked = true;
-                darkStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("dark"));
-                lightStartBox.Text = Convert.ToString(taskShedHandler.GetRunTime("light"));
+                int[] darkStart = taskShedHandler.GetRunTime("dark");
+                int[] lightStart = taskShedHandler.GetRunTime("light");
+                darkStartBox.Text = Convert.ToString(darkStart[0]);
+                DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
+                lightStartBox.Text = Convert.ToString(lightStart[0]);
+                LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
             }
             else if (taskShedHandler.CheckExistingClass().Equals(2))
             {
@@ -129,30 +133,41 @@ namespace AutoThemeChanger
         {
             //get values from TextBox
             int darkStart = int.Parse(darkStartBox.Text);
+            int darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
             int lightStart = int.Parse(lightStartBox.Text);
+            int lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
 
             //check values from TextBox
             if(darkStart > 24)
             {
                 darkStart = 24;
-                darkStartBox.Text = Convert.ToString(darkStart);
             }
             if(lightStart >= darkStart)
             {
                 lightStart = darkStart - 2;
-                lightStartBox.Text = Convert.ToString(lightStart);
             }
             if (lightStart < 0)
             {
                 lightStart = 1;
-                lightStartBox.Text = Convert.ToString(lightStart);
                 darkStart = 3;
-                darkStartBox.Text = Convert.ToString(darkStart);
             }
+            if (lightStartMinutes > 59)
+            {
+                lightStartMinutes = 59;
+            }
+            if (darkStartMinutes > 59)
+            {
+                darkStartMinutes = 59;
+            }
+
+            darkStartBox.Text = Convert.ToString(darkStart);
+            lightStartBox.Text = Convert.ToString(lightStart);
+            LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
+            DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
 
             try
             {
-                taskShedHandler.CreateTask(darkStart, lightStart);
+                taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
                 RegEditHandler.SwitchThemeBasedOnTime();
 
                 //UI
@@ -177,6 +192,18 @@ namespace AutoThemeChanger
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+        private void LightStartMinutesBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            applyButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void DarkStartMinutesBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            applyButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
         //textbox block cut, copy & paste
         private void LightStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -187,6 +214,20 @@ namespace AutoThemeChanger
             }
         }
         private void DarkStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+        private void LightStartMinutesBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+        private void DarkStartMinutesBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
             {
@@ -257,9 +298,13 @@ namespace AutoThemeChanger
 
                     //apply settings & change UI
                     lightStartBox.Text = sundate[0].ToString();
-                    darkStartBox.Text = sundate[1].ToString();
+                    LightStartMinutesBox.Text = sundate[1].ToString();
+                    darkStartBox.Text = sundate[2].ToString();
+                    DarkStartMinutesBox.Text = sundate[3].ToString();
                     lightStartBox.IsEnabled = false;
+                    LightStartMinutesBox.IsEnabled = false;
                     darkStartBox.IsEnabled = false;
+                    DarkStartMinutesBox.IsEnabled = false;
                     applyButton.IsEnabled = false;
                     ApplyButton_Click(this, null);
                     taskShedHandler.CreateLocationTask();
@@ -284,7 +329,9 @@ namespace AutoThemeChanger
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             lightStartBox.IsEnabled = true;
+            LightStartMinutesBox.IsEnabled = true;
             darkStartBox.IsEnabled = true;
+            DarkStartMinutesBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             locationBlock.Text = "";
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
@@ -297,7 +344,9 @@ namespace AutoThemeChanger
             locationCheckBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             darkStartBox.IsEnabled = true;
+            DarkStartMinutesBox.IsEnabled = true;
             lightStartBox.IsEnabled = true;
+            LightStartMinutesBox.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -308,7 +357,9 @@ namespace AutoThemeChanger
             locationCheckBox.IsChecked = false;
             applyButton.IsEnabled = false;
             darkStartBox.IsEnabled = false;
+            DarkStartMinutesBox.IsEnabled = false;
             lightStartBox.IsEnabled = false;
+            LightStartMinutesBox.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
 

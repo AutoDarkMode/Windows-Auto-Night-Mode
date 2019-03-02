@@ -13,7 +13,7 @@ namespace AutoThemeChanger
         readonly string program = "Windows Auto Night-Mode";
         readonly string descrpition = "Task of the program Windows Auto-Night Mode.";
 
-        public void CreateTask(int startTime, int endTime)
+        public void CreateTask(int startTime, int startTimeMinutes, int endTime, int endTimeMinutes)
         {
             using (TaskService taskService = new TaskService())
             {
@@ -32,7 +32,7 @@ namespace AutoThemeChanger
                 tdDark.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
                 tdDark.Settings.StartWhenAvailable = true;
 
-                tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTime) });
+                tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTime).AddMinutes(startTimeMinutes) });
                 tdDark.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(dark, tdDark);
@@ -48,7 +48,7 @@ namespace AutoThemeChanger
                 tdLight.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
                 tdLight.Settings.StartWhenAvailable = true;
 
-                tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTime) });
+                tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTime).AddMinutes(endTimeMinutes) });
                 tdLight.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(light, tdLight);
@@ -159,16 +159,22 @@ namespace AutoThemeChanger
             }
         }
 
-        public int GetRunTime(string theme)
+        public int[] GetRunTime(string theme)
         {
             using (TaskService taskService = new TaskService())
             {
+                int[] runTime = new int[2];
+
                 if(theme == "dark")
                 {
-                    return GetRunHour(taskService.FindTask(dark));
-                }else{
-                    return GetRunHour(taskService.FindTask(light));
+                    runTime[0] = GetRunHour(taskService.FindTask(dark));
+                    runTime[1] = GetRunMinute(taskService.FindTask(dark));
                 }
+                else{
+                    runTime[0] = GetRunHour(taskService.FindTask(light));
+                    runTime[1] = GetRunMinute(taskService.FindTask(light));
+                }
+                return runTime;
             }
         }
 
@@ -176,6 +182,12 @@ namespace AutoThemeChanger
         {
             DateTime time = task.NextRunTime;
             return time.Hour;
+        }
+
+        private int GetRunMinute(Task task)
+        {
+            DateTime time = task.NextRunTime;
+            return time.Minute;
         }
     }
 }
