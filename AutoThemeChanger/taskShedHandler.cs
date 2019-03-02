@@ -97,11 +97,46 @@ namespace AutoThemeChanger
             using (TaskService taskService = new TaskService())
             {
                 TaskFolder taskFolder = taskService.GetFolder(folder);
-                taskFolder.DeleteTask(light, false);
-                taskFolder.DeleteTask(dark, false);
-                taskFolder.DeleteTask(hibernation, false);
-                taskFolder.DeleteTask(updater, false);
-                taskService.RootFolder.DeleteFolder(folder, false);
+                try
+                {
+                    taskFolder.DeleteTask(light, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    taskFolder.DeleteTask(dark, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    taskFolder.DeleteTask(hibernation, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    taskFolder.DeleteTask(updater, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    taskService.RootFolder.DeleteFolder(folder, false);
+                }
+                catch
+                {
+
+                } 
             }
         }
 
@@ -110,7 +145,14 @@ namespace AutoThemeChanger
             using (TaskService taskService = new TaskService())
             {
                 TaskFolder taskFolder = taskService.GetFolder(folder);
-                taskFolder.DeleteTask(updater, false);
+                try
+                {
+                    taskFolder.DeleteTask(updater, false);
+                }
+                catch
+                {
+
+                }
             }
         }
 

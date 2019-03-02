@@ -260,7 +260,7 @@ namespace AutoThemeChanger
             }
         }
 
-        //applicatin close behaviour
+        //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
@@ -390,26 +390,43 @@ namespace AutoThemeChanger
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.SystemThemeChange = 0;
-                if (ThemeSettingDark) RegEditHandler.SystemTheme(0);
-                if (!ThemeSettingDark) RegEditHandler.SystemTheme(1);
-                if (Properties.Settings.Default.AccentColor)
+                if (Properties.Settings.Default.AccentColor && !ThemeSettingDark)
                 {
-                    if (ThemeSettingDark) RegEditHandler.ColorPrevalence(1);
-                    if (!ThemeSettingDark) RegEditHandler.ColorPrevalence(0);
+                    RegEditHandler.ColorPrevalence(0);
+                    Thread.Sleep(500);
+                    RegEditHandler.SystemTheme(1);
                 }
+                if(Properties.Settings.Default.AccentColor && ThemeSettingDark)
+                {
+                    RegEditHandler.SystemTheme(0);
+                    Thread.Sleep(500);
+                    RegEditHandler.ColorPrevalence(1);
+                }
+                AccentColorCheckBox.IsEnabled = true;
             }
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
+                if (Properties.Settings.Default.AccentColor)
+                {
+                    RegEditHandler.ColorPrevalence(0);
+                    Thread.Sleep(500);
+                }
                 RegEditHandler.SystemTheme(1);
-                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(0);
+                AccentColorCheckBox.IsEnabled = false;
+                AccentColorCheckBox.IsChecked = false;
                 GetCurTheme();
             }
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
                 RegEditHandler.SystemTheme(0);
-                if (Properties.Settings.Default.AccentColor) RegEditHandler.ColorPrevalence(1);
+                if (Properties.Settings.Default.AccentColor)
+                {
+                    Thread.Sleep(500);
+                    RegEditHandler.ColorPrevalence(1);
+                }
+                AccentColorCheckBox.IsEnabled = true;
                 GetCurTheme();
             }
         }

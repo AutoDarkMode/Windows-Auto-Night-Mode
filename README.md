@@ -1,5 +1,5 @@
-# Windows 10 Auto-Night-Mode
-Automatically switches between the dark and light theme of Windows 10
+# Windows 10 Auto Dark Mode
+Automatically switches between the dark and light theme of Windows 10 at sheduled times
 ![Screenshot](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.png)
 
 ## Description
@@ -15,6 +15,7 @@ With enabling the automatic theme switcher in the app, it creates a task in the 
 - Theme switch based on the sunrise and sunset of your location.
 - Easy theme switch with a Jump-List from the Startmenu or Taskbar.
 - You can choose if only Apps should change their theme, or both apps and the system.
+- Support for Accent Color on the Taskbar and system elements.
 - Lightweight with 100% clean uninstall. No admin-rights needed.
 
 ## Download

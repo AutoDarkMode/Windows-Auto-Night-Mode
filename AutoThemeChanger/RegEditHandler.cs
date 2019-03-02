@@ -21,20 +21,20 @@ namespace AutoThemeChanger
                     {
                         ThemeToLight();
                         MainWindow.ThemeSettingDark = false;
-                        Console.WriteLine("Theme to Light");
+                        //Console.WriteLine("Theme to Light");
                     }
                     if (minute >= darkStart[1])
                     {
                         ThemeToDark();
                         MainWindow.ThemeSettingDark = true;
-                        Console.WriteLine("Theme to Dark");
+                        //Console.WriteLine("Theme to Dark");
                     }
                 }
                 else
                 {
                     ThemeToDark();
                     MainWindow.ThemeSettingDark = true;
-                    Console.WriteLine("Theme to Dark");
+                    //Console.WriteLine("Theme to Dark");
                 }
             }
             else if (hour >= lightStart[0] || hour < darkStart[0])
@@ -45,20 +45,20 @@ namespace AutoThemeChanger
                     {
                         ThemeToDark();
                         MainWindow.ThemeSettingDark = true;
-                        Console.WriteLine("Theme to Dark");
+                        //Console.WriteLine("Theme to Dark");
                     }
                     if(minute >= lightStart[1])
                     {
                         ThemeToLight();
                         MainWindow.ThemeSettingDark = false;
-                        Console.WriteLine("Theme to Light");
+                        //Console.WriteLine("Theme to Light");
                     }
                 }
                 else
                 {
                     ThemeToLight();
                     MainWindow.ThemeSettingDark = false;
-                    Console.WriteLine("Theme to Light");
+                    //Console.WriteLine("Theme to Light");
                 }
             }
         }
@@ -68,15 +68,23 @@ namespace AutoThemeChanger
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
-            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0)) ColorPrevalence(1);
+            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+            {
+                System.Threading.Thread.Sleep(1000);
+                ColorPrevalence(1);
+            }
         }
 
         public void ThemeToLight()
         {
+            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+            {
+                ColorPrevalence(0);
+                System.Threading.Thread.Sleep(1000);
+            }
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
-            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0)) ColorPrevalence(0);
         }
 
         public void AppTheme(int theme)
@@ -139,14 +147,7 @@ namespace AutoThemeChanger
         public void RemoveAutoStart()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            try
-            {
-                registryKey.DeleteValue("AutoDarkMode");
-            }
-            catch
-            {
-
-            }
+            registryKey.DeleteValue("AutoDarkMode", false);
         }
     }
 }

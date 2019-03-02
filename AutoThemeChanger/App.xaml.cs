@@ -37,6 +37,10 @@ namespace AutoThemeChanger
                     {
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.SwitchThemeBasedOnTime();
+                    }else if (value == "/removeAutostart")
+                    {
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        regEditHandler.RemoveAutoStart();
                     }
                 }
                 Shutdown();
