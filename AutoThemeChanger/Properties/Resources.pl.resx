@@ -248,4 +248,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="lblLanguage" xml:space="preserve">
     <value>Język:</value>
   </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Kolor akcentu paska zadań</value>
+  </data>
 </root>

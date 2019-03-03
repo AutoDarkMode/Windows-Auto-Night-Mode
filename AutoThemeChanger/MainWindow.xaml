@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="439.933" Width="288.332" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="{x:Static p:Resources.Title}" Height="439.933" Width="288.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
     <Grid x:Name="mainWin">
         <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,259,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
         <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="95,259,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
@@ -40,7 +40,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="54,34,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="54,87,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,156,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>
-        <CheckBox x:Name="AccentColorCheckBox" Content="Accent Color for Taskbar" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ToolTipService.ShowOnDisabled="true"/>
+        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ToolTipService.ShowOnDisabled="true"/>
         <TextBox x:Name="LightStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="48,260,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartMinutesBox_PreviewExecuted"/>
         <TextBlock HorizontalAlignment="Left" Margin="42,260,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="127,259,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>

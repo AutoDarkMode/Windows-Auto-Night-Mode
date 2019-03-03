@@ -63,7 +63,7 @@ namespace AutoThemeChanger
         {
             TaskShedHandler taskShedHandler = new TaskShedHandler();
             int[] sundate = await CalculateSunTime(true);
-            taskShedHandler.CreateTask(sundate[0], sundate[1], sundate[2], sundate[3]);
+            taskShedHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
         }
     }
 }

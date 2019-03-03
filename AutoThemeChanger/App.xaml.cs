@@ -25,19 +25,23 @@ namespace AutoThemeChanger
                     {
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.ThemeToLight();
-                    }else if(value == "/removeTask")
+                    }
+                    else if(value == "/removeTask")
                     {
                         TaskShedHandler taskShedHandler = new TaskShedHandler();
                         taskShedHandler.RemoveTask();
-                    }else if (value == "/location")
+                    }
+                    else if (value == "/location")
                     {
                         LocationHandler locationHandler = new LocationHandler();
                         await locationHandler.SetLocationSilent();
-                    }else if (value == "/switch")
+                    }
+                    else if (value == "/switch")
                     {
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.SwitchThemeBasedOnTime();
-                    }else if (value == "/removeAutostart")
+                    }
+                    else if (value == "/removeAutostart")
                     {
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.RemoveAutoStart();

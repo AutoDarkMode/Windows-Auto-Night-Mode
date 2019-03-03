@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Threading;
 
 namespace AutoThemeChanger
 {
@@ -20,20 +21,17 @@ namespace AutoThemeChanger
                     if (minute < darkStart[1])
                     {
                         ThemeToLight();
-                        MainWindow.ThemeSettingDark = false;
                         //Console.WriteLine("Theme to Light");
                     }
                     if (minute >= darkStart[1])
                     {
                         ThemeToDark();
-                        MainWindow.ThemeSettingDark = true;
                         //Console.WriteLine("Theme to Dark");
                     }
                 }
                 else
                 {
                     ThemeToDark();
-                    MainWindow.ThemeSettingDark = true;
                     //Console.WriteLine("Theme to Dark");
                 }
             }
@@ -44,20 +42,17 @@ namespace AutoThemeChanger
                     if(minute < lightStart[1])
                     {
                         ThemeToDark();
-                        MainWindow.ThemeSettingDark = true;
                         //Console.WriteLine("Theme to Dark");
                     }
                     if(minute >= lightStart[1])
                     {
                         ThemeToLight();
-                        MainWindow.ThemeSettingDark = false;
                         //Console.WriteLine("Theme to Light");
                     }
                 }
                 else
                 {
                     ThemeToLight();
-                    MainWindow.ThemeSettingDark = false;
                     //Console.WriteLine("Theme to Light");
                 }
             }
@@ -68,9 +63,10 @@ namespace AutoThemeChanger
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
+
             if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
             {
-                System.Threading.Thread.Sleep(1000);
+                Thread.Sleep(200);
                 ColorPrevalence(1);
             }
         }
@@ -80,8 +76,9 @@ namespace AutoThemeChanger
             if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
             {
                 ColorPrevalence(0);
-                System.Threading.Thread.Sleep(1000);
+                Thread.Sleep(200);
             }
+
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
