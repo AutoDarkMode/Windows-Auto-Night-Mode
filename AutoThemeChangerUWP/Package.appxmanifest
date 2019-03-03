@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10" IgnorableNamespaces="uap mp rescap iot">
-  <Identity Name="43533ArminOsaj.AutoNightMode" Publisher="CN=A89B5A27-B079-404F-8E97-D240105E7DE8" Version="2.0.0.0" />
+  <Identity Name="43533ArminOsaj.AutoNightMode" Publisher="CN=A89B5A27-B079-404F-8E97-D240105E7DE8" Version="2.1.1.0" />
   <Properties>
-    <DisplayName>Auto Night Mode</DisplayName>
+    <DisplayName>Auto Dark Mode</DisplayName>
     <PublisherDisplayName>Armin Osaj</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>

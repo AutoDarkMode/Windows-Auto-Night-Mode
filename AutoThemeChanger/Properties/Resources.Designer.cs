@@ -97,6 +97,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accent Color for Taskbar.
+        /// </summary>
+        public static string cmbAccentColor {
+            get {
+                return ResourceManager.GetString("cmbAccentColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adjust to theme.
         /// </summary>
         public static string cmbAdjTheme {

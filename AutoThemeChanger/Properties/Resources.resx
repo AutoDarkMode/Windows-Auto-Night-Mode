@@ -248,4 +248,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="lblLanguage" xml:space="preserve">
     <value>Language:</value>
   </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Accent Color for Taskbar</value>
+  </data>
 </root>
