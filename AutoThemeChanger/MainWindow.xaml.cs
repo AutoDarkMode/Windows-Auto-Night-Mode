@@ -20,7 +20,7 @@ namespace AutoThemeChanger
         Updater updater = new Updater();
         static bool is1903 = false;
 
-        public static bool Is1903 { get => is1903; set => is1903 = value; }
+        private static bool Is1903 { get => is1903; set => is1903 = value; }
 
         public MainWindow()
         {
@@ -241,16 +241,7 @@ namespace AutoThemeChanger
         }
         private void AboutWindow_Closed(object sender, EventArgs e)
         {
-            if (Is1903)
-            {
-                SystemComboBox.IsEnabled = true;
-                AccentColorCheckBox.IsEnabled = true;
-            }
-            if (!Is1903)
-            {
-                SystemComboBox.IsEnabled = false;
-                AccentColorCheckBox.IsEnabled = false;
-            }
+            
         }
 
         //application close behaviour
@@ -345,6 +336,7 @@ namespace AutoThemeChanger
             DarkStartMinutesBox.IsEnabled = true;
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
+            BGWinButton.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -363,6 +355,7 @@ namespace AutoThemeChanger
             DarkStartMinutesBox.IsEnabled = false;
             lightStartBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
+            BGWinButton.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
 

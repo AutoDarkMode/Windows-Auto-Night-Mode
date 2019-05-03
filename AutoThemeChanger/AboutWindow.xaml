@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="438.734" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
+        Title="{x:Static p:Resources.About}" Height="418.067" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -24,16 +24,15 @@
         <Image HorizontalAlignment="Left" Height="59" Margin="90,39,0,0" VerticalAlignment="Top" Width="80" Source="Resources/Twitter_Logo_Blue.png"/>
         <TextBlock x:Name="TwitterTextBlock" HorizontalAlignment="Left" Margin="141,61,0,0" TextWrapping="Wrap" Text="Twitter" VerticalAlignment="Top" MouseEnter="TwitterTextBlock_MouseEnter" MouseLeave="TwitterTextBlock_MouseLeave" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" Width="36" Height="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <CheckBox x:Name="debugModeCheckBox" Content="{x:Static p:Resources.debugModeCheckBox}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Checked="DebugModeCheckBox_Checked" Unchecked="DebugModeCheckBox_Unchecked" Width="253" Height="15"/>
         <Image HorizontalAlignment="Left" Height="35" Margin="15,92,0,0" VerticalAlignment="Top" Width="31" Source="Resources/PayPal_Logo.png"/>
         <TextBlock x:Name="PayPalTextBlock" HorizontalAlignment="Left" Margin="52,101,0,0" TextWrapping="Wrap" Text="PayPal" VerticalAlignment="Top" MouseEnter="PayPalTextBlock_MouseEnter" MouseLeave="PayPalTextBlock_MouseLeave" MouseDown="PayPalTextBlock_MouseDown" Width="34" Height="16"/>
-        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="11,342,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" HorizontalAlignment="Left" Margin="74,314,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22">
+        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" HorizontalAlignment="Left" Margin="73,288,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22">
             <ComboBoxItem Content="Deutsch"/>
             <ComboBoxItem Content="English"/>
             <ComboBoxItem Content="Polski"/>
         </ComboBox>
-        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="11,363,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,317,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -18,8 +18,6 @@ namespace AutoThemeChanger
         {
             InitializeComponent();
 
-            if (MainWindow.Is1903) debugModeCheckBox.IsChecked = true;
-
             switch (Properties.Settings.Default.Language.ToString())
             {
                 case "de":
@@ -104,16 +102,6 @@ namespace AutoThemeChanger
         {
             System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
             
-        }
-
-        private void DebugModeCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Is1903 = true;
-        }
-
-        private void DebugModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Is1903 = false;
         }
 
         private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
