@@ -64,6 +64,11 @@ namespace AutoThemeChanger
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
 
+            if (Properties.Settings.Default.WallpaperSwitch)
+            {
+                DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperDark);
+            }
+
             if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
             {
                 Thread.Sleep(200);
@@ -82,6 +87,11 @@ namespace AutoThemeChanger
             if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
             if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
+
+            if (Properties.Settings.Default.WallpaperSwitch)
+            {
+                DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperLight);
+            }
         }
 
         public void AppTheme(int theme)

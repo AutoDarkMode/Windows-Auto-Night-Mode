@@ -106,5 +106,41 @@ namespace AutoThemeChanger.Properties {
                 this["AccentColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WallpaperLight {
+            get {
+                return ((string)(this["WallpaperLight"]));
+            }
+            set {
+                this["WallpaperLight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WallpaperDark {
+            get {
+                return ((string)(this["WallpaperDark"]));
+            }
+            set {
+                this["WallpaperDark"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WallpaperSwitch {
+            get {
+                return ((bool)(this["WallpaperSwitch"]));
+            }
+            set {
+                this["WallpaperSwitch"] = value;
+            }
+        }
     }
 }

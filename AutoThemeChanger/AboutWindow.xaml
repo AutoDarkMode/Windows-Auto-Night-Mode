@@ -12,7 +12,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.1.1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
         <Button x:Name="updateButton" Content="{x:Static p:Resources.updateButton}" HorizontalAlignment="Left" Margin="11,159,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="22" Width="150"/>
         <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>

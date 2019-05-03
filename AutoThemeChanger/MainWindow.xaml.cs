@@ -118,6 +118,8 @@ namespace AutoThemeChanger
             {
                 AccentColorCheckBox.IsChecked = true;
             }
+
+            ShowDeskBGStatus();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -535,6 +537,35 @@ namespace AutoThemeChanger
 
             DoesTaskExists();
             UiHandler();
+        }
+
+        //open desktop background window
+        private void BGWinButton_Click(object sender, RoutedEventArgs e)
+        {
+            DesktopBGui BGui = new DesktopBGui
+            {
+                Owner = GetWindow(this)
+            };
+            BGui.Closed += new EventHandler(BGui_Closed);
+            BGui.ShowDialog();
+        }
+        private void BGui_Closed(object sender, EventArgs e)
+        {
+            ShowDeskBGStatus();
+        }
+
+        private void ShowDeskBGStatus()
+        {
+            if (Properties.Settings.Default.WallpaperSwitch == true)
+            {
+                DeskBGStatus.Text = "Enabled";
+                ApplyButton_Click(this,null);
+                
+            }
+            else
+            {
+                DeskBGStatus.Text = "Disabled";
+            }
         }
     }
 }

@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="439.933" Width="288.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
+        Title="{x:Static p:Resources.Title}" Height="545.433" Width="288.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" Loaded="Window_Loaded">
     <Grid x:Name="mainWin">
-        <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,259,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
-        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="95,259,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,260,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,218,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,243,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="95,242,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top"/>
-        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,332,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="236,362,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="19" Height="25" FontWeight="Bold" FontSize="14"/>
-        <CheckBox x:Name="locationCheckBox" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,287,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
-        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,341,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
+        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="95,341,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,342,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,298,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,325,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="95,324,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,414,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="236,445,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="19" Height="25" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="locationCheckBox" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
+        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
@@ -41,9 +41,14 @@
         <TextBlock HorizontalAlignment="Left" Margin="54,87,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,156,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>
         <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ToolTipService.ShowOnDisabled="true"/>
-        <TextBox x:Name="LightStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="48,260,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartMinutesBox_PreviewExecuted"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,260,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="127,259,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="DarkStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="133,259,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartMinutesBox_PreviewExecuted"/>
+        <TextBox x:Name="LightStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="48,342,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartMinutesBox_PreviewExecuted"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,342,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="127,341,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="DarkStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="133,341,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartMinutesBox_PreviewExecuted"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Text="Desktop Background" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="14,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
+        <Button x:Name="BGWinButton" Content="Configure Desktop Background" HorizontalAlignment="Left" Margin="51,242,0,0" VerticalAlignment="Top" Width="187" Click="BGWinButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,265,0,0" TextWrapping="Wrap" Text="Currently:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="116,265,0,0" TextWrapping="Wrap" Text="Disabled" VerticalAlignment="Top"/>
     </Grid>
 </Window>

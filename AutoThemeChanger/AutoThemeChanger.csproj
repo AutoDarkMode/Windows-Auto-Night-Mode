@@ -114,6 +114,10 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="DesktopBGui.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +125,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DeskBGHandler.cs" />
+    <Compile Include="DesktopBGui.xaml.cs">
+      <DependentUpon>DesktopBGui.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocationHandler.cs" />
     <Compile Include="Properties\Resources.de.Designer.cs">
@@ -216,6 +224,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AutoNightModeIconNew.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Photo_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
