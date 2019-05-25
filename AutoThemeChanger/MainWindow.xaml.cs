@@ -20,22 +20,16 @@ namespace AutoThemeChanger
         {
             LanguageHelper();
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //check OS-Version
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
-
             DoesTaskExists();
             UiHandler();
+            AddJumpList();
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             Updater updater = new Updater();
             updater.CheckNewVersion();
-            AddJumpList();
         }
 
         private void LanguageHelper()

@@ -8,7 +8,7 @@ namespace AutoThemeChanger
     /// </summary>
     public partial class App : Application
     {
-        protected override async void OnStartup(StartupEventArgs e)
+        private async void Application_Startup(object sender, StartupEventArgs e)
         {
             //handle command line arguments
             if (e.Args.Length > 0)
@@ -51,7 +51,8 @@ namespace AutoThemeChanger
             }
             else
             {
-                base.OnStartup(e);
+                MainWindow mainWin = new MainWindow();
+                mainWin.Show();
             }
         }
     }

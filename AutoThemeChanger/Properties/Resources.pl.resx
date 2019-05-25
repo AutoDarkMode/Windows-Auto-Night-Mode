@@ -312,6 +312,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Wystąpił błąd</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value />
+    <value>Widoczny tylko w ciemnym motywie</value>
   </data>
 </root>
