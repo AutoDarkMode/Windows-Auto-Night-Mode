@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="418.067" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner">
+        Title="{x:Static p:Resources.About}" Height="418.067" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner" SizeToContent="Height">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -34,5 +34,6 @@
         </ComboBox>
         <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <Button Name="FluentWPF" Content="FluentWPF" HorizontalAlignment="Left" Margin="109,235,0,0" VerticalAlignment="Top" Width="93" Height="21" Click="FluentWPF_Click"/>
     </Grid>
 </Window>

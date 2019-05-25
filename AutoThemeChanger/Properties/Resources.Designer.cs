@@ -97,6 +97,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only visible in dark mode.
+        /// </summary>
+        public static string cbAccentColor {
+            get {
+                return ResourceManager.GetString("cbAccentColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This option is disabled, because you haven&apos;t installed the Windows 10 April 2019 Update on your machine..
         /// </summary>
         public static string cmb1903 {

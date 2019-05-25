@@ -311,4 +311,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten</value>
   </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Nur im dunklen Design sichtbar</value>
+  </data>
 </root>

@@ -10,11 +10,10 @@ using System.Globalization;
 
 namespace AutoThemeChanger
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
-        Updater updater = new Updater();
         bool is1903 = false;
 
         public MainWindow()
@@ -34,6 +33,7 @@ namespace AutoThemeChanger
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            Updater updater = new Updater();
             updater.CheckNewVersion();
             AddJumpList();
         }
@@ -98,6 +98,10 @@ namespace AutoThemeChanger
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
             }
+            else
+            {
+                AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+            }
 
             if (Properties.Settings.Default.AccentColor)
             {
@@ -116,13 +120,14 @@ namespace AutoThemeChanger
             int lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
 
             //check values from TextBox
-            if(darkStart > 24)
+            if(darkStart >= 24)
             {
-                darkStart = 24;
+                darkStart = 23;
+                darkStartMinutes = 59;
             }
             if(lightStart >= darkStart)
             {
-                lightStart = darkStart - 2;
+                lightStart = darkStart - 3;
             }
             if (lightStart < 0)
             {
@@ -221,12 +226,7 @@ namespace AutoThemeChanger
             {
                 Owner = GetWindow(this)
             };
-            aboutWindow.Closed += AboutWindow_Closed;
             aboutWindow.ShowDialog();
-        }
-        private void AboutWindow_Closed(object sender, EventArgs e)
-        {
-            
         }
 
         //application close behaviour
@@ -235,7 +235,7 @@ namespace AutoThemeChanger
             Properties.Settings.Default.Save();
             //DebugSettings();
             //Application.Current.Shutdown();
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Process.GetCurrentProcess().Kill();
         }
 
