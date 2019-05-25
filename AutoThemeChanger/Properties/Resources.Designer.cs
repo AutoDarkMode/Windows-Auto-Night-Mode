@@ -88,6 +88,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This option is disabled, because you haven&apos;t installed the Windows 10 April 2019 Update on your machine..
         /// </summary>
         public static string cmb1903 {
@@ -133,11 +142,164 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currently:.
+        /// </summary>
+        public static string dbCurrently {
+            get {
+                return ResourceManager.GetString("dbCurrently", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper for dark theme.
+        /// </summary>
+        public static string dbDark {
+            get {
+                return ResourceManager.GetString("dbDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete/Disable.
+        /// </summary>
+        public static string dbDel {
+            get {
+                return ResourceManager.GetString("dbDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maybe your picture file is corrupted or the path doesn&apos;t exist..
+        /// </summary>
+        public static string dbErrorText {
+            get {
+                return ResourceManager.GetString("dbErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick file.
+        /// </summary>
+        public static string dbFilePicker {
+            get {
+                return ResourceManager.GetString("dbFilePicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper for light theme.
+        /// </summary>
+        public static string dbLight {
+            get {
+                return ResourceManager.GetString("dbLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop Background.
+        /// </summary>
+        public static string dbMainHeader {
+            get {
+                return ResourceManager.GetString("dbMainHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pictures.
+        /// </summary>
+        public static string dbPictures {
+            get {
+                return ResourceManager.GetString("dbPictures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn&apos;t generate a preview of your image, sorry!.
+        /// </summary>
+        public static string dbPreviewError {
+            get {
+                return ResourceManager.GetString("dbPreviewError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn&apos;t save your settings, sorry!.
+        /// </summary>
+        public static string dbSavedError {
+            get {
+                return ResourceManager.GetString("dbSavedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select two wallpaper.
+        /// </summary>
+        public static string dbSaveToolTip {
+            get {
+                return ResourceManager.GetString("dbSaveToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an image.
+        /// </summary>
+        public static string dbSelectImage {
+            get {
+                return ResourceManager.GetString("dbSelectImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configure Desktop Background.
+        /// </summary>
+        public static string dbTitle {
+            get {
+                return ResourceManager.GetString("dbTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to use current background.
+        /// </summary>
+        public static string dbUseCurrent {
+            get {
+                return ResourceManager.GetString("dbUseCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable features for Windows 1903.
         /// </summary>
         public static string debugModeCheckBox {
             get {
                 return ResourceManager.GetString("debugModeCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        public static string disabled {
+            get {
+                return ResourceManager.GetString("disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string enabled {
+            get {
+                return ResourceManager.GetString("enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has occured.
+        /// </summary>
+        public static string errorOcurredTitle {
+            get {
+                return ResourceManager.GetString("errorOcurredTitle", resourceCulture);
             }
         }
         
@@ -399,11 +561,29 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to or.
+        /// </summary>
+        public static string or {
+            get {
+                return ResourceManager.GetString("or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App restart needed to see the changes.
         /// </summary>
         public static string restartNeeded {
             get {
                 return ResourceManager.GetString("restartNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
             }
         }
         

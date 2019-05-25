@@ -8,9 +8,6 @@ using Microsoft.Win32;
 
 namespace AutoThemeChanger
 {
-    /// <summary>
-    /// Interaction logic for DesktopBGui.xaml
-    /// </summary>
     public partial class DesktopBGui : Window
     {
         DeskBGHandler deskBGHandler = new DeskBGHandler();
@@ -21,31 +18,45 @@ namespace AutoThemeChanger
         readonly string folderPath = "Wallpaper/";
         bool picture1 = false;
         bool picture2 = false;
-        bool folderExist;
+        public bool saved = false;
 
         public DesktopBGui()
         {
             InitializeComponent();
-            CreateFolder();
-            if(pathCur1 != "" && pathCur2 != "" & folderExist  == true)
+            StartVoid();
+        }
+
+        private void StartVoid()
+        {
+            if (Properties.Settings.Default.WallpaperSwitch == true)
             {
-                ShowPreview(pathCur1, 1);
-                ShowPreview(pathCur2, 2); 
+                try
+                {
+                    ShowPreview(pathCur1, 1);
+                    ShowPreview(pathCur2, 2);
+                }
+                catch
+                {
+                    Properties.Settings.Default.WallpaperSwitch = false;
+                    StartVoid();
+                }
             }
             else
             {
+                CreateFolder();
                 SaveButton1.IsEnabled = false;
-                SaveButton1.ToolTip = "Please select two Wallpaper";
+                SaveButton1.ToolTip = Properties.Resources.dbSaveToolTip;
             }
         }
 
         private void FilePicker1_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "Pictures |*.png; *.jpg; *jpeg";
-            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+            };
             bool? result = dlg.ShowDialog();
-
             if (result == true)
             {
                 if (((Button)sender).CommandParameter.ToString().Equals("FilePicker1"))
@@ -67,68 +78,82 @@ namespace AutoThemeChanger
             {
                 pathOrig1 = deskBGHandler.GetBackground();
                 ShowPreview(pathOrig1, 1);
-                PictureText1.Text = "";
-                picture1 = true;
             }
             if (((Button)sender).CommandParameter.ToString().Equals("GetCurrentBG2"))
             {
                 pathOrig2 = deskBGHandler.GetBackground();
                 ShowPreview(pathOrig2, 2);
-                PictureText2.Text = "";
-                picture2 = true;
             }
-            EnableSaveButton();
         }
 
         private void ShowPreview(string picture, int thumb)
         {
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.UriSource = new Uri(picture, UriKind.Absolute);
-            bitmap.EndInit();
+            try
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.UriSource = new Uri(picture, UriKind.Absolute);
+                bitmap.EndInit();
 
-            if (thumb == 1)
-            {
-                Thumb1.Source = bitmap;
-                PictureText1.Text = "";
-                picture1 = true;
+                if (thumb == 1)
+                {
+                    Thumb1.Source = bitmap;
+                    PictureText1.Text = "";
+                    picture1 = true;
+                }
+                if (thumb == 2)
+                {
+                    Thumb2.Source = bitmap;
+                    PictureText2.Text = "";
+                    picture2 = true;
+                }
+                EnableSaveButton();
             }
-            if (thumb == 2)
+            catch
             {
-                Thumb2.Source = bitmap;
-                PictureText2.Text = "";
-                picture2 = true;
+                MessageBox.Show(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            EnableSaveButton();
         }
 
         private void CopyFileLight()
         {
-            try
+            if (pathOrig1 != null)
             {
-                File.Delete(pathCur1);
-            }
-            catch
-            {
+                string pathTemp1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight_Temp" + Path.GetExtension(pathOrig1);
+                File.Copy(pathOrig1, pathTemp1, true);
+                try
+                {
+                    File.Delete(pathCur1);
+                }
+                catch
+                {
 
+                }
+                pathCur1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight" + Path.GetExtension(pathOrig1);
+                File.Copy(pathTemp1, pathCur1, true);
+                File.Delete(pathTemp1);
             }
-            pathCur1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight" + Path.GetExtension(pathOrig1);
-            File.Copy(pathOrig1, pathCur1, true);
         }
 
         private void CopyFileDark()
         {
-            try
+            if(pathOrig2 != null)
             {
-                File.Delete(pathCur2);
-            }
-            catch
-            {
+                string pathTemp2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark_Temp" + Path.GetExtension(pathOrig2);
+                File.Copy(pathOrig2, pathTemp2, true);
+                try
+                {
+                    File.Delete(pathCur2);
+                }
+                catch
+                {
 
-            }
-            pathCur2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark" + Path.GetExtension(pathOrig2);
-            File.Copy(pathOrig2, pathCur2, true);
+                }
+                pathCur2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark" + Path.GetExtension(pathOrig2);
+                File.Copy(pathTemp2, pathCur2, true);
+                File.Delete(pathTemp2);
+                }
         }
 
         private void CreateFolder()
@@ -136,11 +161,6 @@ namespace AutoThemeChanger
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
-                folderExist = false;
-            }
-            else
-            {
-                folderExist = true;
             }
         }
 
@@ -155,17 +175,25 @@ namespace AutoThemeChanger
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void SaveButton1_Click(object sender, RoutedEventArgs e)
         {
-            CopyFileLight();
-            CopyFileDark();
-            Properties.Settings.Default.WallpaperLight = pathCur1;
-            Properties.Settings.Default.WallpaperDark = pathCur2;
-            Properties.Settings.Default.WallpaperSwitch = true;
-            this.Close();
+            try
+            {
+                CopyFileLight();
+                CopyFileDark();
+                Properties.Settings.Default.WallpaperLight = pathCur1;
+                Properties.Settings.Default.WallpaperDark = pathCur2;
+                Properties.Settings.Default.WallpaperSwitch = true;
+                saved = true;
+                Close();
+            }
+            catch
+            {
+                MessageBox.Show(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void DeleButton_Click(object sender, RoutedEventArgs e)
@@ -174,7 +202,7 @@ namespace AutoThemeChanger
             Properties.Settings.Default.WallpaperLight = "";
             Properties.Settings.Default.WallpaperDark = "";
             Properties.Settings.Default.WallpaperSwitch = false;
-            this.Close();
+            Close();
         }
     }
 }

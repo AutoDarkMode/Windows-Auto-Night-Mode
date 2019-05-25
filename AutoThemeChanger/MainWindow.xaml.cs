@@ -10,23 +10,32 @@ using System.Globalization;
 
 namespace AutoThemeChanger
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
         Updater updater = new Updater();
-        static bool is1903 = false;
-
-        private static bool Is1903 { get => is1903; set => is1903 = value; }
+        bool is1903 = false;
 
         public MainWindow()
         {
             LanguageHelper();
             InitializeComponent();
-            //Properties.Settings.Default.Upgrade();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //check OS-Version
+            if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
+
+            DoesTaskExists();
+            UiHandler();
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            updater.CheckNewVersion();
+            AddJumpList();
         }
 
         private void LanguageHelper()
@@ -38,29 +47,6 @@ namespace AutoThemeChanger
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
         }
-
-        //replaced with time based theme switching
-        /*private void GetCurTheme()
-        {
-            try
-            {
-                if (!Is1903 || !Properties.Settings.Default.SystemThemeChange.Equals(0))
-                {
-                    if (RegEditHandler.AppsUseLightTheme() == true) ThemeSettingDark = false;
-                    else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
-                }
-                else
-                {
-                    if (RegEditHandler.SystemUsesLightTheme() == true) ThemeSettingDark = false;
-                    else if (RegEditHandler.AppsUseLightTheme() == false) ThemeSettingDark = true;
-                }
-            }
-            catch
-            {
-                locationBlock.Text = Properties.Resources.msgThemeError;  //Warning: We couldn't read your current theme.
-            }
-        }
-        */
 
         private void DoesTaskExists()
         {
@@ -81,7 +67,6 @@ namespace AutoThemeChanger
             }
             else
             {
-                autoCheckBox.IsChecked = false;
                 AutoCheckBox_Unchecked(this, null);
             }
         }
@@ -106,7 +91,7 @@ namespace AutoThemeChanger
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
             if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
 
-            if (!Is1903)
+            if (!is1903)
             {
                 SystemComboBox.IsEnabled = false;
                 SystemComboBox.ToolTip = Properties.Resources.cmb1903;
@@ -236,7 +221,7 @@ namespace AutoThemeChanger
             {
                 Owner = GetWindow(this)
             };
-            aboutWindow.Closed += new EventHandler(AboutWindow_Closed);
+            aboutWindow.Closed += AboutWindow_Closed;
             aboutWindow.ShowDialog();
         }
         private void AboutWindow_Closed(object sender, EventArgs e)
@@ -341,8 +326,15 @@ namespace AutoThemeChanger
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            taskShedHandler.RemoveTask();
-            RegEditHandler.RemoveAutoStart();
+            if(e != null)
+            {
+                taskShedHandler.RemoveTask();
+                RegEditHandler.RemoveAutoStart();
+            }
+
+            Properties.Settings.Default.WallpaperSwitch = false;
+            Properties.Settings.Default.WallpaperLight = "";
+            Properties.Settings.Default.WallpaperDark = "";
 
             AccentColorCheckBox.IsEnabled = false;
             SystemComboBox.IsEnabled = false;
@@ -357,6 +349,7 @@ namespace AutoThemeChanger
             LightStartMinutesBox.IsEnabled = false;
             BGWinButton.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
+            ShowDeskBGStatus();
         }
 
         //ComboBox
@@ -391,27 +384,6 @@ namespace AutoThemeChanger
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.SystemThemeChange = 0;
-                //replaced with time based theme switch
-                /*
-                if (!ThemeSettingDark)
-                {
-                    if (Properties.Settings.Default.AccentColor)
-                    {
-                        RegEditHandler.ColorPrevalence(0);
-                        Thread.Sleep(500);
-                    }
-                    RegEditHandler.SystemTheme(1);
-                }
-                if (ThemeSettingDark)
-                {
-                    RegEditHandler.SystemTheme(0);
-                    if (Properties.Settings.Default.AccentColor)
-                    {
-                        RegEditHandler.ColorPrevalence(1);
-                        Thread.Sleep(500);
-                    }
-                }
-                */
                 try
                 {
                     RegEditHandler.SwitchThemeBasedOnTime();
@@ -496,7 +468,7 @@ namespace AutoThemeChanger
             JumpList.SetJumpList(Application.Current, jumpList);
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.AccentColor = true;
             try
@@ -511,25 +483,10 @@ namespace AutoThemeChanger
             
         }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.AccentColor = false;
             RegEditHandler.ColorPrevalence(0);
-        }
-
-        private void Window_ContentRendered(object sender, EventArgs e)
-        {
-            updater.CheckNewVersion();
-            AddJumpList();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //check OS-Version
-            if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) Is1903 = true;
-
-            DoesTaskExists();
-            UiHandler();
         }
 
         //open desktop background window
@@ -539,25 +496,22 @@ namespace AutoThemeChanger
             {
                 Owner = GetWindow(this)
             };
-            BGui.Closed += new EventHandler(BGui_Closed);
             BGui.ShowDialog();
-        }
-        private void BGui_Closed(object sender, EventArgs e)
-        {
+            if(BGui.saved == true)
+            {
+                ApplyButton_Click(this, null);
+            }
             ShowDeskBGStatus();
         }
-
         private void ShowDeskBGStatus()
         {
             if (Properties.Settings.Default.WallpaperSwitch == true)
             {
-                DeskBGStatus.Text = "Enabled";
-                ApplyButton_Click(this,null);
-                
+                DeskBGStatus.Text = Properties.Resources.enabled;
             }
             else
             {
-                DeskBGStatus.Text = "Disabled";
+                DeskBGStatus.Text = Properties.Resources.disabled;
             }
         }
     }

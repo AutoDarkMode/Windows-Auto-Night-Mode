@@ -251,4 +251,64 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
   <data name="cmbAccentColor" xml:space="preserve">
     <value>Akzentfarbe für Taskleiste</value>
   </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Aktuell:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Hintergrund für dunkles Design</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Löschen/Deaktivieren</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>aus Datei</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Hintergrund für helles Design</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Hintergrundbild</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Bitte wähle zwei Hintergrundbilder aus</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Bitte wähle ein Bild aus</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Konfiguriere Hintergrundbild</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>aktueller Hintergrund</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>oder</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Möglicherweise ist die Bilddatei fehlerhaft oder der Pfad existiert nicht.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Wir konnten keine Vorschau der Bilddatei erstellen, tut uns leid!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Wir konnten deine Einstellungen nicht speichern, tut uns leid!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten</value>
+  </data>
 </root>

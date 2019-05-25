@@ -251,4 +251,64 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="cmbAccentColor" xml:space="preserve">
     <value>Accent Color for Taskbar</value>
   </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Currently:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Wallpaper for dark theme</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Delete/Disable</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Pick file</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Wallpaper for light theme</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Desktop Background</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Please select two wallpaper</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Please select an image</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Configure Desktop Background</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>use current background</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>We couldn't generate a preview of your image, sorry!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>We couldn't save your settings, sorry!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>An error has occured</value>
+  </data>
 </root>

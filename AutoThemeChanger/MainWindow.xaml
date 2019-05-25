@@ -40,15 +40,15 @@
         <TextBlock HorizontalAlignment="Left" Margin="54,34,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="54,87,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,156,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>
-        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ToolTipService.ShowOnDisabled="true"/>
+        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true"/>
         <TextBox x:Name="LightStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="48,342,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartMinutesBox_PreviewExecuted"/>
         <TextBlock HorizontalAlignment="Left" Margin="42,342,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="127,341,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <TextBox x:Name="DarkStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="133,341,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartMinutesBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartMinutesBox_PreviewExecuted"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Text="Desktop Background" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="14,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
-        <Button x:Name="BGWinButton" Content="Configure Desktop Background" HorizontalAlignment="Left" Margin="51,242,0,0" VerticalAlignment="Top" Width="187" Click="BGWinButton_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,265,0,0" TextWrapping="Wrap" Text="Currently:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="116,265,0,0" TextWrapping="Wrap" Text="Disabled" VerticalAlignment="Top"/>
+        <Button x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,242,0,0" VerticalAlignment="Top" Width="187" Click="BGWinButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,265,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="116,265,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top"/>
     </Grid>
 </Window>

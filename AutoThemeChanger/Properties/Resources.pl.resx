@@ -251,4 +251,64 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="cmbAccentColor" xml:space="preserve">
     <value>Kolor akcentu paska zadań</value>
   </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Tapeta ciemnego motywu</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Wyłącz funkcję</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Wybierz plik</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Tapeta jasnego motywu</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Zmiana tapety pulpitu</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Pliki graficzne</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Proszę wybrać dwie tapety pulpitu!</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Proszę wybrać obraz</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Ustaw tapetę</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>Użyj obecnej tapety</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Wyłączona</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Włączona</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>albo</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Proszę upewnić się, że dany plik istnieje i nie jest uszkodzony.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Wystąpił błąd podczas wczytywania podglądu pliku graficznego!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Wystąpił błąd podczas zapisywania ustawień!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Wystąpił błąd</value>
+  </data>
 </root>

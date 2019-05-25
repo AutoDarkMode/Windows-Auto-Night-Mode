@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoThemeChanger"
+        xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="DesktopBGui" Height="343.706" Width="700.277" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png">
+        Title="{x:Static p:Resources.dbTitle}" Height="356.184" Width="700.276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png">
     <Grid x:Name="SaveButton">
-        <Button x:Name="FilePicker1" Content="File Picker" HorizontalAlignment="Left" Margin="29,53,0,0" VerticalAlignment="Top" Width="101" Click="FilePicker1_Click" CommandParameter="FilePicker1"/>
-        <Image x:Name="Thumb1" HorizontalAlignment="Left" Height="146" Margin="25,91,0,0" VerticalAlignment="Top" Width="278"/>
-        <Separator HorizontalAlignment="Left" Height="102" Margin="169,110,0,0" VerticalAlignment="Top" Width="319" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="FilePicker1" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="11,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker1" Width="80"/>
+        <Separator HorizontalAlignment="Center" Height="102" Margin="188,100,218,0" VerticalAlignment="Top" Width="288" RenderTransformOrigin="0.5,0.5">
             <Separator.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -19,21 +19,30 @@
                 </TransformGroup>
             </Separator.RenderTransform>
         </Separator>
-        <Button x:Name="FilePicker2" Content="File Picker" HorizontalAlignment="Left" Margin="371,58,0,0" VerticalAlignment="Top" Width="75" Click="FilePicker1_Click" CommandParameter="FilePicker2"/>
-        <Image x:Name="Thumb2" HorizontalAlignment="Left" Height="140" Margin="368,97,0,0" VerticalAlignment="Top" Width="297"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="600,277,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
-        <Button x:Name="SaveButton1" Content="Save" HorizontalAlignment="Left" Margin="511,277,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.553,0.612" ToolTipService.ShowOnDisabled="True" Click="SaveButton1_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="147,55,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="465,59,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top"/>
-        <Button x:Name="GetCurrentBG1" Content="Use Current" HorizontalAlignment="Left" Margin="173,55,0,0" VerticalAlignment="Top" Width="82" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG1"/>
-        <Button x:Name="GetCurrentBG2" Content="Use Current" HorizontalAlignment="Left" Margin="497,58,0,0" VerticalAlignment="Top" Width="89" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG2"/>
-        <TextBlock x:Name="PictureText1" HorizontalAlignment="Left" Margin="110,156,0,0" TextWrapping="Wrap" Text="Please select a picture" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="25,18,0,0" TextWrapping="Wrap" Text="&#xE706;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="24" Height="30" Width="29" RenderTransformOrigin="0.673,0.524" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="54,18,0,0" TextWrapping="Wrap" Text="Light Wallpaper" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="371,17,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="24" FontWeight="Bold" Height="29" Width="26"/>
-        <TextBlock HorizontalAlignment="Left" Margin="403,18,0,0" TextWrapping="Wrap" Text="Dark Wallpaper" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <TextBlock x:Name="PictureText2" HorizontalAlignment="Left" Margin="447,159,0,0" TextWrapping="Wrap" Text="Please select a picture" VerticalAlignment="Top"/>
-        <Button x:Name="DeleButton" Content="Delete/Disable" HorizontalAlignment="Left" Margin="403,277,0,0" VerticalAlignment="Top" Width="90" Click="DeleButton_Click"/>
+        <Button x:Name="FilePicker2" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="355,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker2" Width="80"/>
+        <Button x:Name="CancelButton" Content="{x:Static p:Resources.cancel}" HorizontalAlignment="Left" Margin="565,285,0,0" VerticalAlignment="Top" Click="CancelButton_Click" Width="71"/>
+        <Button x:Name="SaveButton1" Content="{x:Static p:Resources.save}" HorizontalAlignment="Left" Margin="492,285,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.612" ToolTipService.ShowOnDisabled="True" Click="SaveButton1_Click" Width="68"/>
+        <TextBlock HorizontalAlignment="Left" Margin="98,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="42" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="442,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="38" TextAlignment="Center"/>
+        <Button x:Name="GetCurrentBG1" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="145,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG1" Width="149"/>
+        <Button x:Name="GetCurrentBG2" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="485,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG2" Width="149"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="&#xE706;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30" RenderTransformOrigin="0.673,0.524"/>
+        <TextBlock HorizontalAlignment="Left" Margin="45,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbLight}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="355,12,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="394,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbDark}" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="DeleButton" Content="{x:Static p:Resources.dbDel}" HorizontalAlignment="Left" Margin="365,285,0,0" VerticalAlignment="Top" Click="DeleButton_Click" RenderTransformOrigin="0.515,0.539" Width="122"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="354,86,0,0" VerticalAlignment="Top" Width="283">
+            <StackPanel>
+                <TextBlock x:Name="PictureText2" Margin="0,70,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbSelectImage}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image x:Name="Thumb2" HorizontalAlignment="Left" Height="170" Margin="0,-87,0,0" Width="283" Stretch="Fill" VerticalAlignment="Top"/>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="12,86,0,0" VerticalAlignment="Top" Width="283">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock x:Name="PictureText1" HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbSelectImage}" VerticalAlignment="Top"/>
+                <Image x:Name="Thumb1" HorizontalAlignment="Left" Height="170" Margin="0,-87,0,0" VerticalAlignment="Top" Width="283" Stretch="Fill"/>
+            </StackPanel>
+        </Border>
 
     </Grid>
 </Window>
