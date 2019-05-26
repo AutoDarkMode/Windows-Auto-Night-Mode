@@ -35,5 +35,7 @@
         <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
         <Button Name="FluentWPF" Content="FluentWPF" HorizontalAlignment="Left" Margin="109,235,0,0" VerticalAlignment="Top" Width="93" Height="21" Click="FluentWPF_Click"/>
+        <Image HorizontalAlignment="Left" Height="35" Margin="103,92,0,0" VerticalAlignment="Top" Width="33" Source="Resources/Telegram_Logo.png"/>
+        <TextBlock x:Name="telegramTextBlock" HorizontalAlignment="Left" Margin="141,103,0,0" TextWrapping="Wrap" Text="Telegram" VerticalAlignment="Top" MouseEnter="TelegramTextBlock_MouseEnter" MouseLeave="TelegramTextBlock_MouseLeave" MouseDown="TelegramTextBlock_MouseDown"/>
     </Grid>
 </Window>

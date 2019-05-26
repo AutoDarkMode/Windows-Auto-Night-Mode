@@ -177,5 +177,22 @@ namespace AutoThemeChanger
                 "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
             MessageBox.Show(messageBoxText, "FluentWPF License Information");
         }
+
+        private void TelegramTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            telegramTextBlock.Foreground = Brushes.Blue;
+            telegramTextBlock.Cursor = Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void TelegramTextBlock_MouseLeave(object sender, MouseEventArgs e)
+        {
+            telegramTextBlock.Foreground = Foreground;
+            telegramTextBlock.Cursor = Mouse.OverrideCursor = null;
+        }
+
+        private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://t.me/autodarkmode");
+        }
     }
 }

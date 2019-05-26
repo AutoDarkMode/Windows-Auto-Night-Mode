@@ -314,4 +314,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Widoczny tylko w ciemnym motywie</value>
   </data>
+  <data name="info" xml:space="preserve">
+    <value>Informacja</value>
+  </data>
 </root>

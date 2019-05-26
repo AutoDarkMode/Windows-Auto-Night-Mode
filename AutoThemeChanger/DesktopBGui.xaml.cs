@@ -31,12 +31,7 @@ namespace AutoThemeChanger
         private void darkTheme()
         {
             RegEditHandler regEditHandler = new RegEditHandler();
-            if (regEditHandler.AppsUseLightTheme())
-            {
-                Foreground = Brushes.Black;
-                Background = Brushes.White;
-            }
-            else
+            if (!regEditHandler.AppsUseLightTheme())
             {
                 Foreground = Brushes.White;
                 Background = Brushes.Black;

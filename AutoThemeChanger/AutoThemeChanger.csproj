@@ -238,5 +238,8 @@
   <ItemGroup>
     <Resource Include="Resources\GitHub_Logo_White.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Telegram_Logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
