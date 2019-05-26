@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.dbTitle}" Height="356.184" Width="700.276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png">
+        Title="{x:Static p:Resources.dbTitle}" Height="356.184" Width="700.276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png" Foreground="Black" Background="White">
     <Grid x:Name="SaveButton">
         <Button x:Name="FilePicker1" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="11,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker1" Width="80"/>
         <Separator HorizontalAlignment="Center" Height="102" Margin="188,100,218,0" VerticalAlignment="Top" Width="288" RenderTransformOrigin="0.5,0.5">

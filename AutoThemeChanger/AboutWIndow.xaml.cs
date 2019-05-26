@@ -3,6 +3,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Globalization;
 using System.Threading;
+using System.Windows.Media.Imaging;
+using System;
 
 namespace AutoThemeChanger
 {
@@ -17,6 +19,7 @@ namespace AutoThemeChanger
         public AboutWindow()
         {
             InitializeComponent();
+            darkTheme();
 
             switch (Properties.Settings.Default.Language.ToString())
             {
@@ -29,6 +32,17 @@ namespace AutoThemeChanger
                 case "pl":
                     LangComBox.SelectedIndex = 2;
                     break;
+            }
+        }
+
+        private void darkTheme()
+        {
+            RegEditHandler regEditHandler = new RegEditHandler();
+            if (!regEditHandler.AppsUseLightTheme())
+            {
+                Foreground = Brushes.White;
+                Background = Brushes.Black;
+                gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }
 
@@ -77,7 +91,7 @@ namespace AutoThemeChanger
 
         private void GitHubTextBlock_MouseLeave(object sender, MouseEventArgs e)
         {
-            GitHubTextBlock.Foreground = Brushes.Black;
+            GitHubTextBlock.Foreground = Foreground;
             GitHubTextBlock.Cursor = Mouse.OverrideCursor = null;
         }
 
@@ -94,7 +108,7 @@ namespace AutoThemeChanger
 
         private void TwitterTextBlock_MouseLeave(object sender, MouseEventArgs e)
         {
-            TwitterTextBlock.Foreground = Brushes.Black;
+            TwitterTextBlock.Foreground = Foreground;
             TwitterTextBlock.Cursor = Mouse.OverrideCursor = null;
         }
 
@@ -112,7 +126,7 @@ namespace AutoThemeChanger
 
         private void PayPalTextBlock_MouseLeave(object sender, MouseEventArgs e)
         {
-            PayPalTextBlock.Foreground = Brushes.Black;
+            PayPalTextBlock.Foreground = Foreground;
             PayPalTextBlock.Cursor = Mouse.OverrideCursor = null;
         }
 

@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace AutoThemeChanger
 {
-    public partial class MainWindow
+    public partial class MainWindow 
     {
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegEditHandler RegEditHandler = new RegEditHandler();
@@ -23,13 +23,14 @@ namespace AutoThemeChanger
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             DoesTaskExists();
             UiHandler();
-            AddJumpList();
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             Updater updater = new Updater();
             updater.CheckNewVersion();
+            AddJumpList();
+            LanguageHelper();
         }
 
         private void LanguageHelper()

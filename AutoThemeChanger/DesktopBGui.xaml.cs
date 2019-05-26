@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 
@@ -23,7 +24,23 @@ namespace AutoThemeChanger
         public DesktopBGui()
         {
             InitializeComponent();
+            darkTheme();
             StartVoid();
+        }
+
+        private void darkTheme()
+        {
+            RegEditHandler regEditHandler = new RegEditHandler();
+            if (regEditHandler.AppsUseLightTheme())
+            {
+                Foreground = Brushes.Black;
+                Background = Brushes.White;
+            }
+            else
+            {
+                Foreground = Brushes.White;
+                Background = Brushes.Black;
+            }
         }
 
         private void StartVoid()

@@ -15,8 +15,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,298,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,325,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="95,324,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top"/>
-        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,414,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="236,445,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="19" Height="25" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,438,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
+        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="234,408,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="21" Height="25" FontWeight="Bold" FontSize="14"/>
         <CheckBox x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
         <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed">
@@ -51,5 +51,6 @@
         <Button x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,242,0,0" VerticalAlignment="Top" Width="187" Click="BGWinButton_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,265,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="116,265,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,409,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
     </Grid>
 </fw:AcrylicWindow>
