@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace AutoThemeChanger
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private async void Application_Startup(object sender, StartupEventArgs e)
@@ -16,7 +13,24 @@ namespace AutoThemeChanger
                 string[] args = Environment.GetCommandLineArgs();
                 foreach (var value in args)
                 {
-                    if(value == "/dark")
+                    if (value == "/switch")
+                    {
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        regEditHandler.SwitchThemeBasedOnTime();
+                    }
+                    else if (value == "/swap")
+                    {
+                        RegEditHandler regEditHandler = new RegEditHandler();
+                        if (regEditHandler.AppsUseLightTheme())
+                        {
+                            regEditHandler.ThemeToDark();
+                        }
+                        else
+                        {
+                            regEditHandler.ThemeToLight();
+                        }
+                    }
+                    else if (value == "/dark")
                     {
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.ThemeToDark();
@@ -26,20 +40,15 @@ namespace AutoThemeChanger
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.ThemeToLight();
                     }
-                    else if(value == "/removeTask")
-                    {
-                        TaskShedHandler taskShedHandler = new TaskShedHandler();
-                        taskShedHandler.RemoveTask();
-                    }
                     else if (value == "/location")
                     {
                         LocationHandler locationHandler = new LocationHandler();
                         await locationHandler.SetLocationSilent();
                     }
-                    else if (value == "/switch")
+                    else if(value == "/removeTask")
                     {
-                        RegEditHandler regEditHandler = new RegEditHandler();
-                        regEditHandler.SwitchThemeBasedOnTime();
+                        TaskShedHandler taskShedHandler = new TaskShedHandler();
+                        taskShedHandler.RemoveTask();
                     }
                     else if (value == "/removeAutostart")
                     {
