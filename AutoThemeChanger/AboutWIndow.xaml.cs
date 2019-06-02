@@ -29,8 +29,11 @@ namespace AutoThemeChanger
                 case "en":
                     LangComBox.SelectedIndex = 1;
                     break;
-                case "pl":
+                case "it":
                     LangComBox.SelectedIndex = 2;
+                    break;
+                case "pl":
+                    LangComBox.SelectedIndex = 3;
                     break;
             }
         }
@@ -146,6 +149,10 @@ namespace AutoThemeChanger
                 SetLanguage("en");
             }
             if(LangComBox.SelectedIndex == 2)
+            {
+                SetLanguage("it");
+            }
+            if(LangComBox.SelectedIndex == 3)
             {
                 SetLanguage("pl");
             }
