@@ -11,7 +11,7 @@ namespace AutoThemeChanger
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class AboutWindow : Window 
+    public partial class AboutWindow
     {
         Updater updater = new Updater();
         bool update = false;
@@ -43,8 +43,6 @@ namespace AutoThemeChanger
             RegEditHandler regEditHandler = new RegEditHandler();
             if (!regEditHandler.AppsUseLightTheme())
             {
-                Foreground = Brushes.White;
-                Background = Brushes.Black;
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }

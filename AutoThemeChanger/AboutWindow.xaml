@@ -1,13 +1,14 @@
-﻿<Window x:Name="AboutWindowXAML" x:Class="AutoThemeChanger.AboutWindow"
+﻿<fw:AcrylicWindow x:Name="AboutWindowXAML" x:Class="AutoThemeChanger.AboutWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         xmlns:local="clr-namespace:AutoThemeChanger"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="418.067" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner" SizeToContent="Height">
-    <Grid>
+        Title="{x:Static p:Resources.About}" Height="418.067" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon">
+    <Grid Background="#20FFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
@@ -39,4 +40,4 @@
         <TextBlock x:Name="telegramTextBlock" HorizontalAlignment="Left" Margin="141,103,0,0" TextWrapping="Wrap" Text="Telegram" VerticalAlignment="Top" MouseEnter="TelegramTextBlock_MouseEnter" MouseLeave="TelegramTextBlock_MouseLeave" MouseDown="TelegramTextBlock_MouseDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="102,95,0,0" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="32"/>
     </Grid>
-</Window>
+</fw:AcrylicWindow>

@@ -9,7 +9,7 @@ using Microsoft.Win32;
 
 namespace AutoThemeChanger
 {
-    public partial class DesktopBGui : Window
+    public partial class DesktopBGui
     {
         DeskBGHandler deskBGHandler = new DeskBGHandler();
         string pathOrig1;
@@ -24,18 +24,7 @@ namespace AutoThemeChanger
         public DesktopBGui()
         {
             InitializeComponent();
-            darkTheme();
             StartVoid();
-        }
-
-        private void darkTheme()
-        {
-            RegEditHandler regEditHandler = new RegEditHandler();
-            if (!regEditHandler.AppsUseLightTheme())
-            {
-                Foreground = Brushes.White;
-                Background = Brushes.Black;
-            }
         }
 
         private void StartVoid()
