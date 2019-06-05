@@ -448,7 +448,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to   .
+        ///   Looks up a localized string similar to Translator: Armin Osaj.
         /// </summary>
         public static string lblTranslator {
             get {

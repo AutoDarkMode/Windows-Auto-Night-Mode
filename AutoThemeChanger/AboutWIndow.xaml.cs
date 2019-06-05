@@ -29,11 +29,17 @@ namespace AutoThemeChanger
                 case "en":
                     LangComBox.SelectedIndex = 1;
                     break;
-                case "it":
+                case "fr":
                     LangComBox.SelectedIndex = 2;
                     break;
-                case "pl":
+                case "it":
                     LangComBox.SelectedIndex = 3;
+                    break;
+                case "pl":
+                    LangComBox.SelectedIndex = 4;
+                    break;
+                case "uk":
+                    LangComBox.SelectedIndex = 5;
                     break;
             }
         }
@@ -142,17 +148,25 @@ namespace AutoThemeChanger
             {
                 SetLanguage("de");
             }
-            if (LangComBox.SelectedIndex == 1)
+            else if (LangComBox.SelectedIndex == 1)
             {
                 SetLanguage("en");
             }
-            if(LangComBox.SelectedIndex == 2)
+            else if(LangComBox.SelectedIndex == 2)
+            {
+                SetLanguage("fr");
+            }
+            else if(LangComBox.SelectedIndex == 3)
             {
                 SetLanguage("it");
             }
-            if(LangComBox.SelectedIndex == 3)
+            else if(LangComBox.SelectedIndex == 4)
             {
                 SetLanguage("pl");
+            }
+            else if (LangComBox.SelectedIndex == 5)
+            {
+                SetLanguage("uk");
             }
             RestartText.Text = Properties.Resources.restartNeeded;
             Translator.Text = Properties.Resources.lblTranslator;

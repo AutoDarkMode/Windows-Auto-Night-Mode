@@ -31,8 +31,10 @@
         <ComboBox x:Name="LangComBox" HorizontalAlignment="Left" Margin="73,288,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22">
             <ComboBoxItem Content="Deutsch"/>
             <ComboBoxItem Content="English"/>
+            <ComboBoxItem Content="Français"/>
             <ComboBoxItem Content="Italiano"/>
             <ComboBoxItem Content="Polski"/>
+            <ComboBoxItem Content="український"/>
         </ComboBox>
         <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>

@@ -234,7 +234,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Activate the checkbox to enable automatic theme switching</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>  </value>
+    <value>Translator: Armin Osaj</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>City</value>
