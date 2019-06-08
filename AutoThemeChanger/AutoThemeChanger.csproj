@@ -241,5 +241,8 @@
   <ItemGroup>
     <Resource Include="Resources\GitHub_Logo_White.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Edge_Logo_White.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

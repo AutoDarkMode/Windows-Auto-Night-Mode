@@ -8,7 +8,7 @@
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.Title}" Height="520.433" Width="281.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Background="{x:Null}">
-    <Grid x:Name="mainWin" Background="#30FFFFFF">
+    <Grid x:Name="mainWin" Background="#20FFFFFF">
         <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,341,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
         <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="95,341,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
         <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,342,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
@@ -37,7 +37,7 @@
         <TextBlock Text="&#xE71D;" HorizontalAlignment="Left" Margin="15,46,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
         <TextBlock Text="&#xE977;" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
         <CheckBox Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked"/>
-        <Image HorizontalAlignment="Left" Height="31" Margin="14,166,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png"/>
+        <Image HorizontalAlignment="Left" Height="31" Margin="14,166,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
         <TextBlock HorizontalAlignment="Left" Margin="54,34,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="54,87,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,156,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>

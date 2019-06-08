@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Shell;
 using System.Globalization;
+using System.Windows.Media.Imaging;
 
 namespace AutoThemeChanger
 {
@@ -18,11 +19,14 @@ namespace AutoThemeChanger
 
         public MainWindow()
         {
+            
             LanguageHelper();
             InitializeComponent();
             if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             DoesTaskExists();
             UiHandler();
+            ThemeChange(this, null);
+            SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -41,6 +45,18 @@ namespace AutoThemeChanger
             }
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+        }
+
+        private void ThemeChange(object sender, EventArgs e)
+        {
+            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            {
+                EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
+            }
         }
 
         private void DoesTaskExists()

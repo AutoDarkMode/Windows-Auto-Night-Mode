@@ -28,7 +28,7 @@
         <Image HorizontalAlignment="Left" Height="35" Margin="15,92,0,0" VerticalAlignment="Top" Width="31" Source="Resources/PayPal_Logo.png"/>
         <TextBlock x:Name="PayPalTextBlock" HorizontalAlignment="Left" Margin="52,101,0,0" TextWrapping="Wrap" Text="PayPal" VerticalAlignment="Top" MouseEnter="PayPalTextBlock_MouseEnter" MouseLeave="PayPalTextBlock_MouseLeave" MouseDown="PayPalTextBlock_MouseDown" Width="34" Height="16"/>
         <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,288,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22">
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,288,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22" SelectedIndex="1">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>
