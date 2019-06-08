@@ -20,28 +20,7 @@ namespace AutoThemeChanger
         {
             InitializeComponent();
             darkTheme();
-
-            switch (Properties.Settings.Default.Language.ToString())
-            {
-                case "de":
-                    LangComBox.SelectedIndex = 0;
-                    break;
-                case "en":
-                    LangComBox.SelectedIndex = 1;
-                    break;
-                case "fr":
-                    LangComBox.SelectedIndex = 2;
-                    break;
-                case "it":
-                    LangComBox.SelectedIndex = 3;
-                    break;
-                case "pl":
-                    LangComBox.SelectedIndex = 4;
-                    break;
-                case "uk":
-                    LangComBox.SelectedIndex = 5;
-                    break;
-            }
+            LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
         }
 
         private void darkTheme()
@@ -144,30 +123,7 @@ namespace AutoThemeChanger
 
         private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
         {
-            if (LangComBox.SelectedIndex == 0)
-            {
-                SetLanguage("de");
-            }
-            else if (LangComBox.SelectedIndex == 1)
-            {
-                SetLanguage("en");
-            }
-            else if(LangComBox.SelectedIndex == 2)
-            {
-                SetLanguage("fr");
-            }
-            else if(LangComBox.SelectedIndex == 3)
-            {
-                SetLanguage("it");
-            }
-            else if(LangComBox.SelectedIndex == 4)
-            {
-                SetLanguage("pl");
-            }
-            else if (LangComBox.SelectedIndex == 5)
-            {
-                SetLanguage("uk");
-            }
+            SetLanguage(LangComBox.SelectedValue.ToString());
             RestartText.Text = Properties.Resources.restartNeeded;
             Translator.Text = Properties.Resources.lblTranslator;
         }

@@ -7,8 +7,8 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="520.433" Width="281.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon">
-    <Grid x:Name="mainWin" Background="#20FFFFFF">
+        Title="{x:Static p:Resources.Title}" Height="520.433" Width="281.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Background="{x:Null}">
+    <Grid x:Name="mainWin" Background="#30FFFFFF">
         <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,341,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
         <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="95,341,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" PreviewTextInput="DarkStartBox_PreviewTextInput" CommandManager.PreviewExecuted="DarkStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
         <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,342,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" PreviewTextInput="LightStartBox_PreviewTextInput" CommandManager.PreviewExecuted="LightStartBox_PreviewExecuted" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>

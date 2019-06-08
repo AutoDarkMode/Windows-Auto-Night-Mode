@@ -234,7 +234,7 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
     <value>Cochez la case pour activer le changement de thème automatique</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Lukcraissin</value>
+    <value>Traducteur : Lukcraissin</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Ville</value>
@@ -261,7 +261,7 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
     <value>Arrière-plan pour le thème sombre</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Supprimer / Désactiver</value>
+    <value>Supprimer/Désactiver</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>Choisissez le fichier</value>

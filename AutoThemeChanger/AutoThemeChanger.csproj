@@ -190,7 +190,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.ua.resx" />
+    <EmbeddedResource Include="Properties\Resources.uk.resx" />
     <None Include="AutoThemeChanger_1_TemporaryKey.pfx" />
     <None Include="AutoThemeChanger_TemporaryKey.pfx" />
     <None Include="packages.config" />
