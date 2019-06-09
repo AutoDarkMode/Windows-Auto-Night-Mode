@@ -19,15 +19,19 @@ namespace AutoThemeChanger
         public AboutWindow()
         {
             InitializeComponent();
-            darkTheme();
-            LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
+            UiHandler();
         }
 
-        private void darkTheme()
+        private void UiHandler()
         {
-            RegEditHandler regEditHandler = new RegEditHandler();
-            if (!regEditHandler.AppsUseLightTheme())
+            LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
+
+            if (Properties.Settings.Default.AlterTime)
             {
+                AlterTimeCheckBox.IsChecked = true;
+            }
+
+            if(SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }
@@ -168,6 +172,16 @@ namespace AutoThemeChanger
         private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://t.me/autodarkmode");
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

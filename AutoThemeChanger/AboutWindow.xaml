@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="418.067" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon">
+        Title="{x:Static p:Resources.About}" Height="441.4" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon">
     <Grid Background="#20FFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -27,8 +27,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
         <Image HorizontalAlignment="Left" Height="35" Margin="15,92,0,0" VerticalAlignment="Top" Width="31" Source="Resources/PayPal_Logo.png"/>
         <TextBlock x:Name="PayPalTextBlock" HorizontalAlignment="Left" Margin="52,101,0,0" TextWrapping="Wrap" Text="PayPal" VerticalAlignment="Top" MouseEnter="PayPalTextBlock_MouseEnter" MouseLeave="PayPalTextBlock_MouseLeave" MouseDown="PayPalTextBlock_MouseDown" Width="34" Height="16"/>
-        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,288,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22" SelectedIndex="1">
+        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,344,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,316,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22" SelectedIndex="1">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>
@@ -36,10 +36,11 @@
             <ComboBoxItem Content="Polski" Name="pl"/>
             <ComboBoxItem Content="українська" Name="uk"/>
         </ComboBox>
-        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,365,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,319,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
         <Button Name="FluentWPF" Content="FluentWPF" HorizontalAlignment="Left" Margin="109,235,0,0" VerticalAlignment="Top" Width="93" Height="21" Click="FluentWPF_Click"/>
         <TextBlock x:Name="telegramTextBlock" HorizontalAlignment="Left" Margin="141,103,0,0" TextWrapping="Wrap" Text="Telegram" VerticalAlignment="Top" MouseEnter="TelegramTextBlock_MouseEnter" MouseLeave="TelegramTextBlock_MouseLeave" MouseDown="TelegramTextBlock_MouseDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="102,95,0,0" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="32"/>
+        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
     </Grid>
 </fw:AcrylicWindow>

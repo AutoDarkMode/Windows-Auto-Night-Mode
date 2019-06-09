@@ -145,7 +145,7 @@
     <value>Author: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Choose custom start time</value>
+    <value>Custom start time</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Dark</value>
@@ -316,5 +316,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12 hour clock</value>
   </data>
 </root>

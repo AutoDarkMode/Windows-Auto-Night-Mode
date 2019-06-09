@@ -14,19 +14,19 @@ namespace AutoThemeChanger
     public partial class MainWindow 
     {
         TaskShedHandler taskShedHandler = new TaskShedHandler();
-        RegEditHandler RegEditHandler = new RegEditHandler();
+        RegEditHandler regEditHandler = new RegEditHandler();
         bool is1903 = false;
 
         public MainWindow()
         {
-            
             LanguageHelper();
             InitializeComponent();
-            if (int.Parse(RegEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
+            if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             DoesTaskExists();
             UiHandler();
             ThemeChange(this, null);
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
+            if (Properties.Settings.Default.AlterTime) AlterTime(true);
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -131,20 +131,44 @@ namespace AutoThemeChanger
             int lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
 
             //check values from TextBox
-            if(darkStart >= 24)
+            if (!Properties.Settings.Default.AlterTime)
             {
-                darkStart = 23;
-                darkStartMinutes = 59;
+                if (darkStart >= 24)
+                {
+                    darkStart = 23;
+                    darkStartMinutes = 59;
+                }
+                if (lightStart >= darkStart)
+                {
+                    lightStart = darkStart - 3;
+                }
+                if (lightStart < 0)
+                {
+                    lightStart = 6;
+                    darkStart = 17;
+                }
             }
-            if(lightStart >= darkStart)
+            else
             {
-                lightStart = darkStart - 3;
+                if(darkStart >= 13)
+                {
+                    darkStart = 12;
+                    darkStartMinutes = 59;
+                }
+                if(darkStart == 12)
+                {
+                    darkStartMinutes = 0;
+                }
+                if(lightStart >= 13)
+                {
+                    lightStart = 12;
+                }
+                if(lightStart == 12)
+                {
+                    lightStartMinutes = 0;
+                }
             }
-            if (lightStart < 0)
-            {
-                lightStart = 1;
-                darkStart = 3;
-            }
+
             if (lightStartMinutes > 59)
             {
                 lightStartMinutes = 59;
@@ -161,9 +185,14 @@ namespace AutoThemeChanger
 
             try
             {
+                if (Properties.Settings.Default.AlterTime)
+                {
+                    darkStart += 12;
+                }
+
                 taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
-                RegEditHandler.SwitchThemeBasedOnTime();
-                RegEditHandler.AddAutoStart();
+                regEditHandler.SwitchThemeBasedOnTime();
+                regEditHandler.AddAutoStart();
 
                 //UI
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
@@ -238,6 +267,15 @@ namespace AutoThemeChanger
                 Owner = GetWindow(this)
             };
             aboutWindow.ShowDialog();
+
+            if (aboutWindow.AlterTimeCheckBox.IsChecked == true && Properties.Settings.Default.AlterTime == false)
+            {
+                AlterTime(true);
+            }
+            else if (aboutWindow.AlterTimeCheckBox.IsChecked == false && Properties.Settings.Default.AlterTime == true)
+            {
+                AlterTime(false);
+            }
         }
 
         //application close behaviour
@@ -280,7 +318,15 @@ namespace AutoThemeChanger
                     //apply settings & change UI
                     lightStartBox.Text = sundate[0].ToString();
                     LightStartMinutesBox.Text = sundate[1].ToString();
-                    darkStartBox.Text = sundate[2].ToString();
+                    if (Properties.Settings.Default.AlterTime)
+                    {
+                        sundate[2] -= 12;
+                        darkStartBox.Text = sundate[2].ToString();
+                    }
+                    else
+                    {
+                        darkStartBox.Text = sundate[2].ToString();
+                    }
                     DarkStartMinutesBox.Text = sundate[3].ToString();
                     lightStartBox.IsEnabled = false;
                     LightStartMinutesBox.IsEnabled = false;
@@ -340,7 +386,7 @@ namespace AutoThemeChanger
             if(e != null)
             {
                 taskShedHandler.RemoveTask();
-                RegEditHandler.RemoveAutoStart();
+                regEditHandler.RemoveAutoStart();
             }
 
             Properties.Settings.Default.WallpaperSwitch = false;
@@ -371,7 +417,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.AppThemeChange = 0;
                 try
                 {
-                    RegEditHandler.SwitchThemeBasedOnTime();
+                    regEditHandler.SwitchThemeBasedOnTime();
                 }
                 catch
                 {
@@ -382,12 +428,12 @@ namespace AutoThemeChanger
             if (AppComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.AppThemeChange = 1;
-                RegEditHandler.AppTheme(1);
+                regEditHandler.AppTheme(1);
             }
             if (AppComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.AppThemeChange = 2;
-                RegEditHandler.AppTheme(0);
+                regEditHandler.AppTheme(0);
             }
         }
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
@@ -397,7 +443,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.SystemThemeChange = 0;
                 try
                 {
-                    RegEditHandler.SwitchThemeBasedOnTime();
+                    regEditHandler.SwitchThemeBasedOnTime();
                 }
                 catch
                 {
@@ -410,21 +456,21 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.SystemThemeChange = 1;
                 if (Properties.Settings.Default.AccentColor)
                 {
-                    RegEditHandler.ColorPrevalence(0);
+                    regEditHandler.ColorPrevalence(0);
                     Thread.Sleep(200);
                 }
-                RegEditHandler.SystemTheme(1);
+                regEditHandler.SystemTheme(1);
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.IsChecked = false;
             }
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
-                RegEditHandler.SystemTheme(0);
+                regEditHandler.SystemTheme(0);
                 if (Properties.Settings.Default.AccentColor)
                 {
                     Thread.Sleep(200);
-                    RegEditHandler.ColorPrevalence(1);
+                    regEditHandler.ColorPrevalence(1);
                 }
                 AccentColorCheckBox.IsEnabled = true;
             }
@@ -436,7 +482,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.EdgeThemeChange = 0;
                 try
                 {
-                    RegEditHandler.SwitchThemeBasedOnTime();
+                    regEditHandler.SwitchThemeBasedOnTime();
                 }
                 catch
                 {
@@ -446,12 +492,12 @@ namespace AutoThemeChanger
             if (EdgeComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.EdgeThemeChange = 1;
-                RegEditHandler.EdgeTheme(0);
+                regEditHandler.EdgeTheme(0);
             }
             if (EdgeComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.EdgeThemeChange = 2;
-                RegEditHandler.EdgeTheme(1);
+                regEditHandler.EdgeTheme(1);
             }
         }
 
@@ -484,8 +530,8 @@ namespace AutoThemeChanger
             Properties.Settings.Default.AccentColor = true;
             try
             {
-                if (SystemComboBox.SelectedIndex.Equals(0)) RegEditHandler.SwitchThemeBasedOnTime();
-                if (SystemComboBox.SelectedIndex.Equals(2)) RegEditHandler.ColorPrevalence(1);
+                if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
+                if (SystemComboBox.SelectedIndex.Equals(2)) regEditHandler.ColorPrevalence(1);
             }
             catch
             {
@@ -497,7 +543,7 @@ namespace AutoThemeChanger
         private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.AccentColor = false;
-            RegEditHandler.ColorPrevalence(0);
+            regEditHandler.ColorPrevalence(0);
         }
 
         //open desktop background window
@@ -524,6 +570,48 @@ namespace AutoThemeChanger
             {
                 DeskBGStatus.Text = Properties.Resources.disabled;
             }
+        }
+
+        private void AlterTime(bool enable)
+        {
+            if (enable)
+            {
+                Properties.Settings.Default.AlterTime = true;
+                amTextBlock.Text = "am";
+                pmTextBlock.Text = "pm";
+                applyButton.Margin = new Thickness(195, 344, 0, 0);
+                int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
+                if(darkTime < 1)
+                {
+                    darkTime = 7;
+                }
+                darkStartBox.Text = Convert.ToString(darkTime);
+
+                int lightTime = Convert.ToInt32(lightStartBox.Text);
+                if(lightTime > 12)
+                {
+                    lightTime = 7;
+                }
+                lightStartBox.Text = Convert.ToString(lightTime);
+            }
+            else
+            {
+                Properties.Settings.Default.AlterTime = false;
+                amTextBlock.Text = "";
+                pmTextBlock.Text = "";
+                applyButton.Margin = new Thickness(180, 344, 0, 0);
+                int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
+                if(darkTime > 24)
+                {
+                    darkTime = 19;
+                }
+                if(darkTime == 24)
+                {
+                    darkTime = 23;
+                }
+                darkStartBox.Text = Convert.ToString(darkTime);
+            }
+            
         }
     }
 }

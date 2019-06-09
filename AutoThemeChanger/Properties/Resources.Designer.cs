@@ -97,6 +97,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 12 hour clock.
+        /// </summary>
+        public static string cb12HourTime {
+            get {
+                return ResourceManager.GetString("cb12HourTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only visible in dark mode.
         /// </summary>
         public static string cbAccentColor {
@@ -349,7 +358,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose custom start time.
+        ///   Looks up a localized string similar to Custom start time.
         /// </summary>
         public static string lblCustomStart {
             get {
