@@ -72,9 +72,13 @@ namespace AutoThemeChanger
                 if (!silent)
                 {
                     string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
-                    var result = MessageBox.Show(text, "Auto-Night Mode Updater", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                    if (result == MessageBoxResult.Yes)
+                    MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
+                    {
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen
+                    };
+                    msgBox.ShowDialog();
+                    var result = msgBox.DialogResult;
+                    if (result == true)
                     {
                         System.Diagnostics.Process.Start(url);
                         Application.Current.Shutdown();

@@ -320,4 +320,13 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="cb12HourTime" xml:space="preserve">
     <value>12 hour clock</value>
   </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

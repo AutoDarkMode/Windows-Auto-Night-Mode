@@ -502,6 +502,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string msgClose {
+            get {
+                return ResourceManager.GetString("msgClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download update.
         /// </summary>
         public static string msgDownloadUpd {
@@ -525,6 +534,15 @@ namespace AutoThemeChanger.Properties {
         public static string msgLocPerm {
             get {
                 return ResourceManager.GetString("msgLocPerm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string msgNo {
+            get {
+                return ResourceManager.GetString("msgNo", resourceCulture);
             }
         }
         
@@ -584,6 +602,15 @@ namespace AutoThemeChanger.Properties {
         public static string msgUpdaterText {
             get {
                 return ResourceManager.GetString("msgUpdaterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string MsgYes {
+            get {
+                return ResourceManager.GetString("MsgYes", resourceCulture);
             }
         }
         

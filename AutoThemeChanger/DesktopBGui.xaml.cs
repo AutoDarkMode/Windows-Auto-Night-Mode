@@ -113,7 +113,11 @@ namespace AutoThemeChanger
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                MsgBox msgBox = new MsgBox(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "error", "close")
+                {
+                    Owner = GetWindow(this)
+                };
+                msgBox.ShowDialog();
             }
         }
 
@@ -193,7 +197,11 @@ namespace AutoThemeChanger
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                MsgBox msgBox = new MsgBox(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "error", "close")
+                {
+                    Owner = GetWindow(this)
+                };
+                msgBox.Show();
             }
         }
 

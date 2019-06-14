@@ -70,7 +70,11 @@ namespace AutoThemeChanger
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, " +
                 "WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MessageBox.Show(messageBoxText, "TaskSheduler License Information");
+            MsgBox msgBox = new MsgBox(messageBoxText, "TaskSheduler License Information", "info", "close")
+            {
+                Owner = GetWindow(this)
+            };
+            msgBox.Show();
         }
 
         private void GitHubTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -154,7 +158,11 @@ namespace AutoThemeChanger
                 "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
                 "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MessageBox.Show(messageBoxText, "FluentWPF License Information");
+            MsgBox msgBox = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close")
+            {
+                Owner = GetWindow(this)
+            };
+            msgBox.Show();
         }
 
         private void TelegramTextBlock_MouseEnter(object sender, MouseEventArgs e)
