@@ -34,6 +34,7 @@
             <ComboBoxItem Content="Français" Name="fr"/>
             <ComboBoxItem Content="Italiano" Name="it"/>
             <ComboBoxItem Content="Polski" Name="pl"/>
+            <ComboBoxItem Content="Русский" Name="ru"/>
             <ComboBoxItem Content="українська" Name="uk"/>
         </ComboBox>
         <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,365,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
