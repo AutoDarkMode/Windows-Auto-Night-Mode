@@ -154,5 +154,17 @@ namespace AutoThemeChanger.Properties {
                 this["AlterTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BackgroundUpdate {
+            get {
+                return ((bool)(this["BackgroundUpdate"]));
+            }
+            set {
+                this["BackgroundUpdate"] = value;
+            }
+        }
     }
 }

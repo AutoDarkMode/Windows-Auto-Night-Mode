@@ -30,6 +30,10 @@ namespace AutoThemeChanger
             {
                 AlterTimeCheckBox.IsChecked = true;
             }
+            if(Properties.Settings.Default.BackgroundUpdate)
+            {
+                BckgrUpdateCB.IsChecked = true;
+            }
 
             if(SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
@@ -180,16 +184,6 @@ namespace AutoThemeChanger
         private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://t.me/autodarkmode");
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -10,6 +10,7 @@ namespace AutoThemeChanger
         readonly string hibernation = "Auto Dark Mode HIBERNATION";
         readonly string folder = "Auto Dark Mode";
         readonly string updater = "Auto Dark Mode UPDATER";
+        readonly string appupdater = "Auto Dark Mode APPUPDATER";
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
         readonly string description = "Task of the program Windows Auto Dark Mode.";
@@ -77,7 +78,7 @@ namespace AutoThemeChanger
             {
                 TaskDefinition tdLocation = taskService.NewTask();
 
-                tdLocation.RegistrationInfo.Description = "Updates the activation time of dark & light theme based on user location. " + description;
+                tdLocation.RegistrationInfo.Description = "Updates the sunset and sunrise dates with the user location. " + description;
                 tdLocation.RegistrationInfo.Author = author;
                 tdLocation.RegistrationInfo.Source = program;
                 tdLocation.Settings.DisallowStartIfOnBatteries = false;
@@ -89,6 +90,26 @@ namespace AutoThemeChanger
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(updater, tdLocation);
                 Console.WriteLine("created task for location time updates");
+            }
+        }
+
+        public void CreateAppUpdaterTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskDefinition tdUpdate = taskService.NewTask();
+
+                tdUpdate.RegistrationInfo.Description = "Checks the GitHub-Server for new app version in the background. " + description;
+                tdUpdate.RegistrationInfo.Author = author;
+                tdUpdate.RegistrationInfo.Source = program;
+                tdUpdate.Settings.DisallowStartIfOnBatteries = false;
+                tdUpdate.Settings.StartWhenAvailable = true;
+
+                tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) });
+                tdUpdate.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/update"));
+
+                taskService.GetFolder(folder).RegisterTaskDefinition(appupdater, tdUpdate);
+                Console.WriteLine("created task for app updates");
             }
         }
 
@@ -131,6 +152,14 @@ namespace AutoThemeChanger
                 }
                 try
                 {
+                    taskFolder.DeleteTask(appupdater, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
                     taskService.RootFolder.DeleteFolder(folder, false);
                 }
                 catch
@@ -148,6 +177,22 @@ namespace AutoThemeChanger
                 try
                 {
                     taskFolder.DeleteTask(updater, false);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void RemoveAppUpdaterTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskFolder taskFolder = taskService.GetFolder(folder);
+                try
+                {
+                    taskFolder.DeleteTask(appupdater, false);
                 }
                 catch
                 {

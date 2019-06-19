@@ -193,6 +193,11 @@ namespace AutoThemeChanger
                 taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
                 regEditHandler.SwitchThemeBasedOnTime();
                 regEditHandler.AddAutoStart();
+                if (Properties.Settings.Default.BackgroundUpdate)
+                {
+                    taskShedHandler.CreateAppUpdaterTask();
+                }
+                
 
                 //UI
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
@@ -275,6 +280,17 @@ namespace AutoThemeChanger
             else if (aboutWindow.AlterTimeCheckBox.IsChecked == false && Properties.Settings.Default.AlterTime == true)
             {
                 AlterTime(false);
+            }
+
+            if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
+            {
+                taskShedHandler.CreateAppUpdaterTask();
+                Properties.Settings.Default.BackgroundUpdate = true;
+            }
+            else if (aboutWindow.BckgrUpdateCB.IsChecked == false && Properties.Settings.Default.BackgroundUpdate == true)
+            {
+                taskShedHandler.RemoveAppUpdaterTask();
+                Properties.Settings.Default.BackgroundUpdate = false;
             }
         }
 

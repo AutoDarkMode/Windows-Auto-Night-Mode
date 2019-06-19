@@ -40,6 +40,11 @@ namespace AutoThemeChanger
                         RegEditHandler regEditHandler = new RegEditHandler();
                         regEditHandler.ThemeToLight();
                     }
+                    else if (value == "/update")
+                    {
+                        Updater updater = new Updater();
+                        updater.CheckNewVersion();
+                    }
                     else if (value == "/location")
                     {
                         LocationHandler locationHandler = new LocationHandler();

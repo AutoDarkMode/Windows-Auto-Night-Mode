@@ -329,4 +329,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="MsgYes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Search for updates in background</value>
+  </data>
 </root>

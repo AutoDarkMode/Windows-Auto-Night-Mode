@@ -329,4 +329,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
   <data name="MsgYes" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Im Hintergrund nach Updates suchen</value>
+  </data>
 </root>
