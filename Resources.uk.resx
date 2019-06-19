@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Про програму</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Застосувати</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Увімкнути автоматичне перемикання тем</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Як в поточній темі</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Завжди темна</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Завжди світла</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Увімкнути функції для Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Програми:</value>
+  </data>
+  <data name="lblAuthor" xml:space="preserve">
+    <value>Автор: Armin Osaj © 2019</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Оберіть свій час початку</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Темна тема</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Темна тема</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge:</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Світла тема</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Світла тема</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Перемкнути поточну тему</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>Система:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Використане програмне забезпечення третіх сторін</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Оновлення</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>Використовувати службу місцезнаходження</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>зміни були збережені!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>Натисніть на Застосувати, аби зберегти налаштування</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Завантажити оновлення</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>сталася помилка :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>Програма потребує дозволу для визначення місцезнаходження</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>немає нових оновлень.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Пошук Вашого місцезнаходження...</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>Пошук оновлень...</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Попередження: Ми не змогли визначити Вашу поточну тему.</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>Доступне нове оновлення!</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Дякуємо за використання Auto Dark Mode!
+
+Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
+Ви хочете її завантажити?
+
+Зараз встановлена версія: {0}, нова версія: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Перевірити оновлення</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>перевіряємо оновлення при кожному запуску.</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Ласкаво просимо</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Активуйте прапорець для автоматичного перемикання тем</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Перекладач: Mykhailo Lytvynenko</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Місто</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Ця функція недоступна, оскільки Ви не встановили травневе оновлення Windows 10 May 2019 Update на Ваш комп'ютер...</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Необхідний перезапуск програми, аби побачити зміни</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Мова:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Основний колір для панелі задач</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Зараз:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Фон для темної теми</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Видалити/Вимкнути</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Оберіть файл</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Фон для світлої теми</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Фон робочого стола</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Картинки</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Оберіть два фони</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Оберіть картинку</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Налаштувати фон робочого стола</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>взяти поточний фон</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Вимкнено</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Увімкнено</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>або</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Можливо, Ваш файл із зображенням пошкоджено або шляху до нього не існує.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Ми не змогли сформувати передперегляд Вашої картинки, вибачте!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Ми не змогли зберегти Ваші налаштування, просимо вибачення!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Сталася помилка</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Видимий лише в темному режимі</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Інформація</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12-годинний формат</value>
+  </data>
+</root>
