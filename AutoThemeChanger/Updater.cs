@@ -74,7 +74,7 @@ namespace AutoThemeChanger
                     string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
                     MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
                     {
-                        WindowStartupLocation = WindowStartupLocation.CenterScreen
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen, Topmost = true
                     };
                     msgBox.ShowDialog();
                     var result = msgBox.DialogResult;
