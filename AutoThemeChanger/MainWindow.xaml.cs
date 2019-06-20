@@ -208,60 +208,27 @@ namespace AutoThemeChanger
             }
         }
 
-        //textbox allow only numbers
-        private void LightStartBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //textbox event handler
+        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
         {
             applyButton.IsEnabled = true;
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void DarkStartBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void LightStartMinutesBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void DarkStartMinutesBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        //textbox block cut, copy & paste
-        private void LightStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
             {
                 e.Handled = true;
             }
         }
-        private void DarkStartBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            var textBox = ((System.Windows.Controls.TextBox)sender);
+            textBox.Dispatcher.BeginInvoke(new Action(() =>
             {
-                e.Handled = true;
-            }
-        }
-        private void LightStartMinutesBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
-        }
-        private void DarkStartMinutesBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
+                textBox.SelectAll();
+            }));
         }
 
         //open aboutWindow
