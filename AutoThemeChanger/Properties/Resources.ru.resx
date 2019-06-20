@@ -267,7 +267,7 @@
     <value>Выбрать файл</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Обои для темной темы</value>
+    <value>Обои для светлой темы</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Обои</value>
@@ -285,7 +285,7 @@
     <value>Настроить рабочий стол</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>использовать текущие обои</value>
+    <value>использовать текущие</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Отключено</value>
