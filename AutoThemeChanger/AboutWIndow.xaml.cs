@@ -81,6 +81,29 @@ namespace AutoThemeChanger
             msgBox.Show();
         }
 
+        private void FluentWPF_Click(object sender, RoutedEventArgs e)
+        {
+            string messageBoxText = "MIT License Copyright(c) 2016 minami_SC\n\n" +
+                "Permission is hereby granted, free of charge, to any person obtaining a copy" +
+                "of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights " +
+                "to use, copy, modify, merge, publish, distribute, sublicense, and/ or sell" +
+                "copies of the Software, and to permit persons to whom the Software is" +
+                "furnished to do so, subject to the following conditions:\n\n" +
+                "The above copyright notice and this permission notice shall be included in all" +
+                "copies or substantial portions of the Software.\n\n" +
+                "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR" +
+                "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY," +
+                "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE" +
+                "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
+                "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
+                "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+            MsgBox msgBox = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close")
+            {
+                Owner = GetWindow(this)
+            };
+            msgBox.Show();
+        }
+
         private void GitHubTextBlock_MouseEnter(object sender, MouseEventArgs e)
         {
             GitHubTextBlock.Foreground = Brushes.Blue;
@@ -133,42 +156,6 @@ namespace AutoThemeChanger
             System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
         }
 
-        private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
-        {
-            SetLanguage(LangComBox.SelectedValue.ToString());
-            RestartText.Text = Properties.Resources.restartNeeded;
-            Translator.Text = Properties.Resources.lblTranslator;
-        }
-        private void SetLanguage(string lang)
-        {
-            Properties.Settings.Default.Language = lang;
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
-        }
-
-        private void FluentWPF_Click(object sender, RoutedEventArgs e)
-        {
-            string messageBoxText = "MIT License Copyright(c) 2016 minami_SC\n\n" +
-                "Permission is hereby granted, free of charge, to any person obtaining a copy" +
-                "of this software and associated documentation files(the 'Software'), to deal in the Software without restriction, including without limitation the rights " +
-                "to use, copy, modify, merge, publish, distribute, sublicense, and/ or sell" +
-                "copies of the Software, and to permit persons to whom the Software is" +
-                "furnished to do so, subject to the following conditions:\n\n" +
-                "The above copyright notice and this permission notice shall be included in all" +
-                "copies or substantial portions of the Software.\n\n" +
-                "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR" +
-                "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY," +
-                "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE" +
-                "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
-                "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
-                "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msgBox = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close")
-            {
-                Owner = GetWindow(this)
-            };
-            msgBox.Show();
-        }
-
         private void TelegramTextBlock_MouseEnter(object sender, MouseEventArgs e)
         {
             telegramTextBlock.Foreground = Brushes.Blue;
@@ -184,6 +171,40 @@ namespace AutoThemeChanger
         private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://t.me/autodarkmode");
+        }
+
+        private void GitHubTextBlock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) GitHubTextBlock_MouseLeftButtonDown(this, null);
+
+        }
+
+        private void PayPalTextBlock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) PayPalTextBlock_MouseDown(this, null);
+        }
+
+        private void TelegramTextBlock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) TelegramTextBlock_MouseDown(this, null);
+        }
+
+        private void TwitterTextBlock_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) TwitterTextBlock_MouseLeftButtonDown(this, null);
+        }
+
+        private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
+        {
+            SetLanguage(LangComBox.SelectedValue.ToString());
+            RestartText.Text = Properties.Resources.restartNeeded;
+            Translator.Text = Properties.Resources.lblTranslator;
+        }
+        private void SetLanguage(string lang)
+        {
+            Properties.Settings.Default.Language = lang;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
         }
     }
 }
