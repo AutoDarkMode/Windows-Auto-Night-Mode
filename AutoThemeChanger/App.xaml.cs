@@ -15,12 +15,12 @@ namespace AutoThemeChanger
                 {
                     if (value == "/switch")
                     {
-                        RegEditHandler regEditHandler = new RegEditHandler();
+                        RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.SwitchThemeBasedOnTime();
                     }
                     else if (value == "/swap")
                     {
-                        RegEditHandler regEditHandler = new RegEditHandler();
+                        RegeditHandler regEditHandler = new RegeditHandler();
                         if (regEditHandler.AppsUseLightTheme())
                         {
                             regEditHandler.ThemeToDark();
@@ -32,12 +32,12 @@ namespace AutoThemeChanger
                     }
                     else if (value == "/dark")
                     {
-                        RegEditHandler regEditHandler = new RegEditHandler();
+                        RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.ThemeToDark();
                     }
                     else if(value == "/light")
                     {
-                        RegEditHandler regEditHandler = new RegEditHandler();
+                        RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.ThemeToLight();
                     }
                     else if (value == "/update")
@@ -57,7 +57,7 @@ namespace AutoThemeChanger
                     }
                     else if (value == "/removeAutostart")
                     {
-                        RegEditHandler regEditHandler = new RegEditHandler();
+                        RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.RemoveAutoStart();
                     }
                 }

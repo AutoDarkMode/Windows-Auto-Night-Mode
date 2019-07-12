@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace AutoThemeChanger
 {
-    class RegEditHandler
+    class RegeditHandler
     {
         public void SwitchThemeBasedOnTime()
         {

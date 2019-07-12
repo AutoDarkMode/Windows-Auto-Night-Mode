@@ -153,9 +153,9 @@
     </Compile>
     <Compile Include="Updater.cs" />
     <Compile Include="SunDate.cs" />
-    <Compile Include="RegEditHandler.cs" />
+    <Compile Include="RegeditHandler.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="taskShedHandler.cs" />
+    <Compile Include="TaskShedHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -226,9 +226,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\AboutIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Microsoft_Edge_Logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Microsoft_Edge_Logo_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Settings_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

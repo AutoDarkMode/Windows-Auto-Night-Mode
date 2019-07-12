@@ -62,7 +62,7 @@
 
         <!-- Apply and About -->
         <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,342,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
-        <Button x:Name="aboutButton" Content="?" HorizontalAlignment="Left" Margin="234,408,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="21" Height="25" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="aboutButton" Content="&#xE713;" HorizontalAlignment="Left" Margin="229,408,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="25" Height="25" FontSize="14" FontFamily="Segoe MDL2 Assets"/>
 
         <!-- Info -->
         <TextBlock HorizontalAlignment="Left" Margin="10,409,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>

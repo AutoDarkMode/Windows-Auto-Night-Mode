@@ -14,7 +14,7 @@ namespace AutoThemeChanger
     public partial class MainWindow 
     {
         TaskShedHandler taskShedHandler = new TaskShedHandler();
-        RegEditHandler regEditHandler = new RegEditHandler();
+        RegeditHandler regEditHandler = new RegeditHandler();
         bool is1903 = false;
 
         public MainWindow()

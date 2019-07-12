@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Über das Programm</value>
+    <value>Einstellungen</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Anwenden</value>

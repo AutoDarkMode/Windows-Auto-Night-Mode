@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="450.733" Width="280.508" ResizeMode="NoResize" Icon="Resources/AboutIcon.ico" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon">
+        Title="{x:Static p:Resources.About}" Height="450.733" Width="280.508" ResizeMode="NoResize" Icon="Resources/Settings_Icon.png" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon">
     <Grid Background="#20FFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

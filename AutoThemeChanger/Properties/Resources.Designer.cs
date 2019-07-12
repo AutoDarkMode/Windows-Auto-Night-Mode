@@ -61,7 +61,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string About {
             get {
