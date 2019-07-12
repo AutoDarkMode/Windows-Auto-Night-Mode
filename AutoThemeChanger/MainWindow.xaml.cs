@@ -8,10 +8,11 @@ using System.Threading;
 using System.Windows.Shell;
 using System.Globalization;
 using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 
 namespace AutoThemeChanger
 {
-    public partial class MainWindow 
+    public partial class MainWindow
     {
         TaskShedHandler taskShedHandler = new TaskShedHandler();
         RegeditHandler regEditHandler = new RegeditHandler();
@@ -150,20 +151,20 @@ namespace AutoThemeChanger
             }
             else
             {
-                if(darkStart >= 13)
+                if (darkStart >= 13)
                 {
                     darkStart = 12;
                     darkStartMinutes = 59;
                 }
-                if(darkStart == 12)
+                if (darkStart == 12)
                 {
                     darkStartMinutes = 0;
                 }
-                if(lightStart >= 13)
+                if (lightStart >= 13)
                 {
                     lightStart = 12;
                 }
-                if(lightStart == 12)
+                if (lightStart == 12)
                 {
                     lightStartMinutes = 0;
                 }
@@ -197,13 +198,14 @@ namespace AutoThemeChanger
                 {
                     taskShedHandler.CreateAppUpdaterTask();
                 }
-                
+
 
                 //UI
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
                 applyButton.IsEnabled = false;
             }
-            catch{
+            catch
+            {
                 userFeedback.Text = Properties.Resources.msgErrorOcc;//error occurred :(
             }
         }
@@ -229,6 +231,15 @@ namespace AutoThemeChanger
             {
                 textBox.SelectAll();
             }));
+        }
+        private void TexttBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
+            {
+                var ue = e.OriginalSource as FrameworkElement;
+                e.Handled = true;
+                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            }
         }
 
         //open aboutWindow
@@ -351,7 +362,7 @@ namespace AutoThemeChanger
         //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if(is1903) SystemComboBox.IsEnabled = true;
+            if (is1903) SystemComboBox.IsEnabled = true;
             if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
             AppComboBox.IsEnabled = true;
             EdgeComboBox.IsEnabled = true;
@@ -366,7 +377,7 @@ namespace AutoThemeChanger
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            if(e != null)
+            if (e != null)
             {
                 taskShedHandler.RemoveTask();
                 regEditHandler.RemoveAutoStart();
@@ -406,7 +417,7 @@ namespace AutoThemeChanger
                 {
 
                 }
-                
+
             }
             if (AppComboBox.SelectedIndex.Equals(1))
             {
@@ -520,7 +531,6 @@ namespace AutoThemeChanger
             {
 
             }
-            
         }
 
         private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -537,7 +547,7 @@ namespace AutoThemeChanger
                 Owner = GetWindow(this)
             };
             BGui.ShowDialog();
-            if(BGui.saved == true)
+            if (BGui.saved == true)
             {
                 ApplyButton_Click(this, null);
             }
@@ -564,14 +574,14 @@ namespace AutoThemeChanger
                 pmTextBlock.Text = "pm";
                 applyButton.Margin = new Thickness(195, 344, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
-                if(darkTime < 1)
+                if (darkTime < 1)
                 {
                     darkTime = 7;
                 }
                 darkStartBox.Text = Convert.ToString(darkTime);
 
                 int lightTime = Convert.ToInt32(lightStartBox.Text);
-                if(lightTime > 12)
+                if (lightTime > 12)
                 {
                     lightTime = 7;
                 }
@@ -584,17 +594,17 @@ namespace AutoThemeChanger
                 pmTextBlock.Text = "";
                 applyButton.Margin = new Thickness(180, 344, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
-                if(darkTime > 24)
+                if (darkTime > 24)
                 {
                     darkTime = 19;
                 }
-                if(darkTime == 24)
+                if (darkTime == 24)
                 {
                     darkTime = 23;
                 }
                 darkStartBox.Text = Convert.ToString(darkTime);
             }
-            
+
         }
     }
 }

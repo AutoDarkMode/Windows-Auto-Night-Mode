@@ -43,7 +43,7 @@
         <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,334,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="ComboBox_DropDownClosed" Height="22" SelectedIndex="1">
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,334,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>

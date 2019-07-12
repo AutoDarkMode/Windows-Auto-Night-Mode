@@ -200,6 +200,7 @@ namespace AutoThemeChanger
             RestartText.Text = Properties.Resources.restartNeeded;
             Translator.Text = Properties.Resources.lblTranslator;
         }
+
         private void SetLanguage(string lang)
         {
             Properties.Settings.Default.Language = lang;
