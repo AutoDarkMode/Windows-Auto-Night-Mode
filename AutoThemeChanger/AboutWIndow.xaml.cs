@@ -1,10 +1,10 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
+﻿using System;
 using System.Globalization;
 using System.Threading;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System;
 
 namespace AutoThemeChanger
 {
@@ -24,18 +24,22 @@ namespace AutoThemeChanger
 
         private void UiHandler()
         {
-            LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
+            string lang = Properties.Settings.Default.Language.ToString();
+            if (lang == "zh-CN")
+                lang = "zh";
+            LangComBox.SelectedValue = lang;
 
             if (Properties.Settings.Default.AlterTime)
             {
                 AlterTimeCheckBox.IsChecked = true;
             }
-            if(Properties.Settings.Default.BackgroundUpdate)
+            if (Properties.Settings.Default.BackgroundUpdate)
             {
                 BckgrUpdateCB.IsChecked = true;
             }
 
-            if(SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
+            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            {
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }
@@ -136,7 +140,7 @@ namespace AutoThemeChanger
         private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
-            
+
         }
 
         private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -196,7 +200,10 @@ namespace AutoThemeChanger
 
         private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
         {
-            SetLanguage(LangComBox.SelectedValue.ToString());
+            string lang = LangComBox.SelectedValue.ToString();
+            if (lang == "zh")
+                lang = "zh-CN";
+            SetLanguage(lang);
             RestartText.Text = Properties.Resources.restartNeeded;
             Translator.Text = Properties.Resources.lblTranslator;
         }

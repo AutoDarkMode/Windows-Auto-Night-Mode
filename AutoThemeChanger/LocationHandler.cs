@@ -1,8 +1,8 @@
 ﻿using System;
-using Windows.Services.Maps;
-using Windows.Devices.Geolocation;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.Services.Maps;
 
 namespace AutoThemeChanger
 {
@@ -12,12 +12,14 @@ namespace AutoThemeChanger
         {
             int[] sundate = new int[4];
             int[] sun = new int[2];
-            if (!background){
+            if (!background)
+            {
                 BasicGeoposition position = await GetUserPosition();
                 Properties.Settings.Default.LocationLatitude = position.Latitude;
                 Properties.Settings.Default.LocationLongitude = position.Longitude;
                 sun = SunDate.CalculateSunriseSunset(position.Latitude, position.Longitude);
-            }else if (background)
+            }
+            else if (background)
             {
                 sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
             }

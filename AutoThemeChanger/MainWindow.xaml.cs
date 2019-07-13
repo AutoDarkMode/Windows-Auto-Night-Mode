@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Text.RegularExpressions;
-using Windows.Devices.Geolocation;
 using System.Diagnostics;
-using System.Threading;
-using System.Windows.Shell;
 using System.Globalization;
-using System.Windows.Media.Imaging;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.Windows.Shell;
+using Windows.Devices.Geolocation;
 
 namespace AutoThemeChanger
 {
@@ -44,7 +44,7 @@ namespace AutoThemeChanger
             {
                 Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
         }
 
