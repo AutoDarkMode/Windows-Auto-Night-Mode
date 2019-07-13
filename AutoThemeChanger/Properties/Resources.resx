@@ -332,4 +332,17 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Search for updates in background</value>
   </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Sorry, but we couldn't apply your settings.
+
+Here are some things you can try:
+- Uninstall and then reinstall auto dark mode.
+- Try to run Auto Dark Mode as administrator.
+- If you enabled Desktop Wallpaper, disable the feature and try again.
+
+If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Error: Your input is invalid</value>
+  </data>
 </root>

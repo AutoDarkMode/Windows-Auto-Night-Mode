@@ -322,11 +322,36 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error: Your input is invalid.
+        /// </summary>
+        public static string errorNumberInput {
+            get {
+                return ResourceManager.GetString("errorNumberInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occured.
         /// </summary>
         public static string errorOcurredTitle {
             get {
                 return ResourceManager.GetString("errorOcurredTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, but we couldn&apos;t apply your settings.
+        ///
+        ///Here are some things you can try:
+        ///- Uninstall and then reinstall auto dark mode.
+        ///- Try to run Auto Dark Mode as administrator.
+        ///- If you enabled Desktop Wallpaper, disable the feature and try again.
+        ///
+        ///If these things didn&apos;t help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the &quot;Yes&quot; button..
+        /// </summary>
+        public static string errorThemeApply {
+            get {
+                return ResourceManager.GetString("errorThemeApply", resourceCulture);
             }
         }
         

@@ -125,11 +125,24 @@ namespace AutoThemeChanger
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            int darkStart;
+            int darkStartMinutes;
+            int lightStart;
+            int lightStartMinutes;
+
             //get values from TextBox
-            int darkStart = int.Parse(darkStartBox.Text);
-            int darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
-            int lightStart = int.Parse(lightStartBox.Text);
-            int lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
+            try
+            {
+                darkStart = int.Parse(darkStartBox.Text);
+                darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
+                lightStart = int.Parse(lightStartBox.Text);
+                lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
+            }
+            catch
+            {
+                userFeedback.Text = Properties.Resources.errorNumberInput;
+                return;
+            }
 
             //check values from TextBox
             if (!Properties.Settings.Default.AlterTime)
@@ -190,24 +203,90 @@ namespace AutoThemeChanger
                 {
                     darkStart += 12;
                 }
-
                 taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateTask()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
                 regEditHandler.SwitchThemeBasedOnTime();
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.SwitchThemeBasedOnTime()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
                 regEditHandler.AddAutoStart();
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.AddAutoStart()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
                 if (Properties.Settings.Default.BackgroundUpdate)
                 {
                     taskShedHandler.CreateAppUpdaterTask();
                 }
-
-
-                //UI
-                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
-                applyButton.IsEnabled = false;
             }
-            catch
+            catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;//error occurred :(
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateAppUpdaterTask()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
             }
+
+            userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+            applyButton.IsEnabled = false;
         }
 
         //textbox event handler
