@@ -7,17 +7,17 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="450.733" Width="280.508" ResizeMode="NoResize" Icon="Resources/Settings_Icon.png" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Closed="AboutWindowXAML_Closed">
+        Title="{x:Static p:Resources.About}" Height="470.066" Width="280.508" ResizeMode="NoResize" Icon="Resources/Settings_Icon.png" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Closed="AboutWindowXAML_Closed">
     <Grid Background="#20FFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!-- Info -->
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
-        
+
         <!-- Social Media links-->
         <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="36" Margin="10,49,0,0" VerticalAlignment="Top" Width="38" Source="Resources/GitHub_Logo_Black.png"/>
         <TextBlock x:Name="GitHubTextBlock" HorizontalAlignment="Left" Margin="52,61,0,0" TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseEnter="GitHubTextBlock_MouseEnter" MouseLeave="GitHubTextBlock_MouseLeave" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown" Width="38" Height="16"/>
@@ -42,8 +42,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
         <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,337,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,334,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
+        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,358,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,355,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>
@@ -53,7 +54,7 @@
             <ComboBoxItem Content="українська" Name="uk"/>
             <ComboBoxItem Content="简体中文" Name="zh"/>
         </ComboBox>
-        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,362,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
-        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,383,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
+        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,383,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,404,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
     </Grid>
 </fw:AcrylicWindow>

@@ -166,5 +166,17 @@ namespace AutoThemeChanger.Properties {
                 this["BackgroundUpdate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool connectedStandby {
+            get {
+                return ((bool)(this["connectedStandby"]));
+            }
+            set {
+                this["connectedStandby"] = value;
+            }
+        }
     }
 }

@@ -345,4 +345,12 @@ If these things didn't help, you can comment the GitHub issue with posting a scr
   <data name="errorNumberInput" xml:space="preserve">
     <value>Error: Your input is invalid</value>
   </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Switch after Connected Standby</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+But it also reduces the battery life!</value>
+  </data>
 </root>

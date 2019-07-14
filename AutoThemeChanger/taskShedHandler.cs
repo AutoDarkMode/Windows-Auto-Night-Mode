@@ -8,9 +8,10 @@ namespace AutoThemeChanger
         readonly string dark = "Auto Dark Mode DARK";
         readonly string light = "Auto Dark Mode LIGHT";
         readonly string hibernation = "Auto Dark Mode HIBERNATION";
-        readonly string folder = "Auto Dark Mode";
         readonly string updater = "Auto Dark Mode UPDATER";
         readonly string appupdater = "Auto Dark Mode APPUPDATER";
+        readonly string connected = "Auto Dark Mode CONNECTED STANDBY";
+        readonly string folder = "Auto Dark Mode";
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
         readonly string description = "Task of the program Windows Auto Dark Mode.";
@@ -66,7 +67,6 @@ namespace AutoThemeChanger
                 EventTrigger eventTrigger = tdHibernation.Triggers.Add(new EventTrigger());
                 eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Power-Troubleshooter'] and (Level=4 or Level=0) and (EventID=1)]]</Select></Query></QueryList>";
                 tdHibernation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
-
                 taskService.GetFolder(folder).RegisterTaskDefinition(hibernation, tdHibernation);
                 Console.WriteLine("created task for hibernation");
             }
@@ -110,6 +110,27 @@ namespace AutoThemeChanger
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(appupdater, tdUpdate);
                 Console.WriteLine("created task for app updates");
+            }
+        }
+
+        public void CreateConnectedStandbyTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskDefinition tdConnected = taskService.NewTask();
+
+                tdConnected.RegistrationInfo.Description = "Improves reliability of the theme switch for devices that support connected standby. " + description;
+                tdConnected.RegistrationInfo.Author = author;
+                tdConnected.RegistrationInfo.Source = program;
+                tdConnected.Settings.DisallowStartIfOnBatteries = false;
+                tdConnected.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
+                tdConnected.Settings.StartWhenAvailable = true;
+
+                EventTrigger eventTrigger = tdConnected.Triggers.Add(new EventTrigger());
+                eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Kernel-Power'] and (Level=4 or Level=0) and (EventID=507)]]</Select></Query></QueryList>";
+                tdConnected.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
+                taskService.GetFolder(folder).RegisterTaskDefinition(connected, tdConnected);
+                Console.WriteLine("created task for connected standby");
             }
         }
 
@@ -160,12 +181,20 @@ namespace AutoThemeChanger
                 }
                 try
                 {
+                    taskFolder.DeleteTask(connected, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
                     taskService.RootFolder.DeleteFolder(folder, false);
                 }
                 catch
                 {
 
-                } 
+                }
             }
         }
 
@@ -193,6 +222,22 @@ namespace AutoThemeChanger
                 try
                 {
                     taskFolder.DeleteTask(appupdater, false);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void RemoveConnectedStandbyTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskFolder taskFolder = taskService.GetFolder(folder);
+                try
+                {
+                    taskFolder.DeleteTask(connected, false);
                 }
                 catch
                 {

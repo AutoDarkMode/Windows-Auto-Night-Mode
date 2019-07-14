@@ -35,6 +35,10 @@ namespace AutoThemeChanger
             {
                 BckgrUpdateCB.IsChecked = true;
             }
+            if (Properties.Settings.Default.connectedStandby)
+            {
+                conStandByCB.IsChecked = true;
+            }
 
             if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));

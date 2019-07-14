@@ -283,6 +283,28 @@ namespace AutoThemeChanger
                 }
                 return;
             }
+            try
+            {
+                if (Properties.Settings.Default.connectedStandby)
+                {
+                    taskShedHandler.CreateConnectedStandbyTask();
+                }
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateConnectedStandbyTask()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+            }
 
             userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             applyButton.IsEnabled = false;
@@ -347,6 +369,17 @@ namespace AutoThemeChanger
             {
                 taskShedHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
+            }
+
+            if (aboutWindow.conStandByCB.IsChecked == true && Properties.Settings.Default.connectedStandby == false)
+            {
+                taskShedHandler.CreateConnectedStandbyTask();
+                Properties.Settings.Default.connectedStandby = true;
+            }
+            else if (aboutWindow.conStandByCB.IsChecked == false && Properties.Settings.Default.connectedStandby == true)
+            {
+                taskShedHandler.RemoveConnectedStandbyTask();
+                Properties.Settings.Default.connectedStandby = false;
             }
         }
 

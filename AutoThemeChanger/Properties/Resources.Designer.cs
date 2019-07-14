@@ -124,6 +124,26 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Switch after Connected Standby.
+        /// </summary>
+        public static string cbConnectedStandby {
+            get {
+                return ResourceManager.GetString("cbConnectedStandby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
+        ///Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+        ///But it also reduces the battery life!.
+        /// </summary>
+        public static string cbConnectedStandbyTooltip {
+            get {
+                return ResourceManager.GetString("cbConnectedStandbyTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This option is disabled, because you haven&apos;t installed the Windows 10 April 2019 Update on your machine..
         /// </summary>
         public static string cmb1903 {
