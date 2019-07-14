@@ -15,6 +15,7 @@ namespace AutoThemeChanger
     {
         Updater updater = new Updater();
         bool update = false;
+        bool restart = false;
 
         public AboutWindow()
         {
@@ -206,6 +207,20 @@ namespace AutoThemeChanger
             Properties.Settings.Default.Language = lang;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            restart = true;
+        }
+
+        private void AboutWindowXAML_Closed(object sender, EventArgs e)
+        {
+            if (restart)
+            {
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                Close();
+            }
         }
     }
 }
