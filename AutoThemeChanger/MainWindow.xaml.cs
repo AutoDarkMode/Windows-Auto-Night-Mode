@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using System.Text.RegularExpressions;
-using Windows.Devices.Geolocation;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows.Shell;
-using System.Globalization;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
+using System.Windows.Shell;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
+using System.Threading;
+using System.Globalization;
+using Windows.Devices.Geolocation;
 
 namespace AutoThemeChanger
 {
@@ -40,12 +40,11 @@ namespace AutoThemeChanger
 
         private void LanguageHelper()
         {
-            if (Properties.Settings.Default.Language.ToString() == "")
+            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.Language.ToString()))
             {
                 Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
         }
 
         private void ThemeChange(object sender, EventArgs e)
@@ -311,7 +310,7 @@ namespace AutoThemeChanger
                 textBox.SelectAll();
             }));
         }
-        private void TexttBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
             {
@@ -355,19 +354,8 @@ namespace AutoThemeChanger
         private void Window_Closed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            //DebugSettings();
-            //Application.Current.Shutdown();
-            Thread.Sleep(1000);
+            Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
-        }
-
-        private void DebugSettings()
-        {
-            Console.WriteLine(Properties.Settings.Default.SystemThemeChange);
-            Console.WriteLine(Properties.Settings.Default.AppThemeChange);
-            Console.WriteLine(Properties.Settings.Default.EdgeThemeChange);
-            Console.WriteLine(Properties.Settings.Default.LocationLatitude);
-            Console.WriteLine(Properties.Settings.Default.LocationLongitude);
         }
 
         // set starttime based on user location

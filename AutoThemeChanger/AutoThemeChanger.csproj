@@ -199,6 +199,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
     <EmbeddedResource Include="Properties\Resources.uk.resx" />
+    <EmbeddedResource Include="Properties\Resources.zh.resx" />
     <None Include="AutoThemeChanger_1_TemporaryKey.pfx" />
     <None Include="AutoThemeChanger_TemporaryKey.pfx" />
     <None Include="packages.config" />

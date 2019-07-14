@@ -1,10 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Globalization;
 using System.Threading;
-using System.Windows.Media.Imaging;
-using System;
 
 namespace AutoThemeChanger
 {
@@ -30,12 +30,12 @@ namespace AutoThemeChanger
             {
                 AlterTimeCheckBox.IsChecked = true;
             }
-            if(Properties.Settings.Default.BackgroundUpdate)
+            if (Properties.Settings.Default.BackgroundUpdate)
             {
                 BckgrUpdateCB.IsChecked = true;
             }
 
-            if(SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
+            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }

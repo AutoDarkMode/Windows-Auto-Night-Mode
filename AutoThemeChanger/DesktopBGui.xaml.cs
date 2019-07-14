@@ -3,7 +3,6 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 
@@ -158,7 +157,7 @@ namespace AutoThemeChanger
                 pathCur2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark" + Path.GetExtension(pathOrig2);
                 File.Copy(pathTemp2, pathCur2, true);
                 File.Delete(pathTemp2);
-                }
+            }
         }
 
         private void CreateFolder()
@@ -171,7 +170,7 @@ namespace AutoThemeChanger
 
         private void EnableSaveButton()
         {
-            if(picture1 == true && picture2 == true)
+            if (picture1 == true && picture2 == true)
             {
                 SaveButton1.IsEnabled = true;
                 SaveButton1.ToolTip = null;
