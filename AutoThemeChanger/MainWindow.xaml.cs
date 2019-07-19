@@ -398,6 +398,7 @@ namespace AutoThemeChanger
         }
         public async void GetLocation()
         {
+            locationBlock.Visibility = Visibility.Visible;
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             LocationHandler locationHandler = new LocationHandler();
 
@@ -445,6 +446,7 @@ namespace AutoThemeChanger
         {
             locationCheckBox.IsChecked = false;
             locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
+            locationBlock.Visibility = Visibility.Visible;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -454,7 +456,7 @@ namespace AutoThemeChanger
             darkStartBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
             applyButton.IsEnabled = true;
-            locationBlock.Text = "";
+            locationBlock.Visibility = Visibility.Collapsed;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             taskShedHandler.RemoveLocationTask();
         }
@@ -672,7 +674,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.AlterTime = true;
                 amTextBlock.Text = "am";
                 pmTextBlock.Text = "pm";
-                applyButton.Margin = new Thickness(195, 344, 0, 0);
+                applyButton.Margin = new Thickness(205, 25, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
                 if (darkTime < 1)
                 {
@@ -692,7 +694,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.AlterTime = false;
                 amTextBlock.Text = "";
                 pmTextBlock.Text = "";
-                applyButton.Margin = new Thickness(180, 344, 0, 0);
+                applyButton.Margin = new Thickness(184, 25, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
                 if (darkTime > 24)
                 {
