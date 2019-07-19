@@ -53,7 +53,6 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -317,4 +316,7 @@
   <data name="info" xml:space="preserve">
     <value>Інформація</value>
   </data>
-</root>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12-годинний формат</value>
+  </data>
+</root> 

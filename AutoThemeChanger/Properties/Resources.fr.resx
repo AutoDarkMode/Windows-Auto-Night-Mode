@@ -53,7 +53,6 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -145,7 +144,7 @@
     <value>Auteur : Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Choisissez l'heure de début personnalisée</value>
+    <value>Choisissez votre heure de début</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Sombre</value>
@@ -249,7 +248,7 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
     <value>Langue :</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Couleur d'accentuation pour la barre des tâches</value>
+    <value>Couleur d'accent pour la barre des tâches</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Annuler</value>
@@ -317,4 +316,7 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
   <data name="info" xml:space="preserve">
     <value>Info</value>
   </data>
-</root>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Système horaire sur 12 heures</value>
+  </data>
+</root> 
