@@ -135,7 +135,7 @@ namespace AutoThemeChanger.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
         ///Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
-        ///But it also reduces the battery life!.
+        ///But it also reduces the battery life! ONLY activate if necessary!.
         /// </summary>
         public static string cbConnectedStandbyTooltip {
             get {
@@ -534,6 +534,15 @@ namespace AutoThemeChanger.Properties {
         public static string locationCheckBox {
             get {
                 return ResourceManager.GetString("locationCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due to a Windows bug the taskbar doesn&apos;t properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues..
+        /// </summary>
+        public static string msgBatterySaver {
+            get {
+                return ResourceManager.GetString("msgBatterySaver", resourceCulture);
             }
         }
         

@@ -351,6 +351,9 @@ If these things didn't help, you can comment the GitHub issue with posting a scr
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
 Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
-But it also reduces the battery life!</value>
+But it also reduces the battery life! ONLY activate if necessary!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
   </data>
 </root>

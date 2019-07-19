@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Globalization;
 using Windows.Devices.Geolocation;
+using Windows.System.Power;
 
 namespace AutoThemeChanger
 {
@@ -306,7 +307,14 @@ namespace AutoThemeChanger
                 }
             }
 
-            userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            {
+                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+            }
+            else
+            {
+                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+            }
             applyButton.IsEnabled = false;
         }
 
