@@ -307,15 +307,16 @@ namespace AutoThemeChanger
                 }
             }
 
+            applyButton.IsEnabled = false;
             if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+                applyButton.IsEnabled = true;
             }
             else
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
-            applyButton.IsEnabled = false;
         }
 
         //textbox event handler
