@@ -56,7 +56,7 @@
         <!-- Desktop Background -->
         <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
         <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
-        <Button Grid.Row="3" Grid.ColumnSpan="5" x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" Width="Auto" Click="BGWinButton_Click" Height="20"/>
+        <Button Grid.Row="3" Grid.ColumnSpan="5" x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" MinWidth="180" Width="Auto" Click="BGWinButton_Click" Height="20"/>
         <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="Auto"/>
         <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="5,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto"/>
 

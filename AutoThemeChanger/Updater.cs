@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Xml;
 using System.Windows;
+using System.Globalization;
 
 namespace AutoThemeChanger
 {
@@ -67,6 +68,7 @@ namespace AutoThemeChanger
 
         private void MessageBoxHandler()
         {
+            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
             if (currentVersion.CompareTo(newVersion) < 0)
             {
                 if (!silent)

@@ -28,6 +28,12 @@ namespace AutoThemeChanger
             UiHandler();
             ThemeChange(this, null);
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
+            if (Properties.Settings.Default.FirstRun)
+            {
+                SystemTimeFormat();
+                AddJumpList();
+                Properties.Settings.Default.FirstRun = false;
+            }
             if (Properties.Settings.Default.AlterTime) AlterTime(true);
         }
 
@@ -35,7 +41,6 @@ namespace AutoThemeChanger
         {
             Updater updater = new Updater();
             updater.CheckNewVersion();
-            AddJumpList();
             LanguageHelper();
         }
 
@@ -46,6 +51,16 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
+        }
+
+        private void SystemTimeFormat()
+        {
+            string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+            sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
+            if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+            {
+                Properties.Settings.Default.AlterTime = true;
+            }
         }
 
         private void ThemeChange(object sender, EventArgs e)
@@ -164,22 +179,14 @@ namespace AutoThemeChanger
             }
             else
             {
-                if (darkStart >= 13)
+                if (darkStart >= 12)
                 {
-                    darkStart = 12;
+                    darkStart = 11;
                     darkStartMinutes = 59;
-                }
-                if (darkStart == 12)
-                {
-                    darkStartMinutes = 0;
                 }
                 if (lightStart >= 13)
                 {
                     lightStart = 12;
-                }
-                if (lightStart == 12)
-                {
-                    lightStartMinutes = 0;
                 }
             }
 
