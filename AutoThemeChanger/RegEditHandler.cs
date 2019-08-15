@@ -100,7 +100,14 @@ namespace AutoThemeChanger
 
         public void EdgeTheme(int theme)
         {
-            GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            try
+            {
+                GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            }
+            catch
+            {
+
+            }
         }
 
         public void ColorPrevalence(int theme)
