@@ -15,7 +15,7 @@ namespace AutoThemeChanger
     {
         Updater updater = new Updater();
         bool update = false;
-        bool restart = false;
+        readonly string curLanguage = Properties.Settings.Default.Language;
 
         public AboutWindow()
         {
@@ -40,7 +40,6 @@ namespace AutoThemeChanger
                 conStandByCB.IsChecked = true;
             }
             if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
-                Console.WriteLine("HIIII");
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }
@@ -202,8 +201,15 @@ namespace AutoThemeChanger
         private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
         {
             SetLanguage(LangComBox.SelectedValue.ToString());
-            RestartText.Text = Properties.Resources.restartNeeded;
             Translator.Text = Properties.Resources.lblTranslator;
+            if (Properties.Settings.Default.Language != curLanguage)
+            {
+                RestartText.Text = Properties.Resources.restartNeeded;
+            }
+            else
+            {
+                RestartText.Text = null;
+            }
         }
 
         private void SetLanguage(string lang)
@@ -211,12 +217,11 @@ namespace AutoThemeChanger
             Properties.Settings.Default.Language = lang;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
-            restart = true;
         }
 
         private void AboutWindowXAML_Closed(object sender, EventArgs e)
         {
-            if (restart)
+            if (Properties.Settings.Default.Language != curLanguage)
             {
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();
