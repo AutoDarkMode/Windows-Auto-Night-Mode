@@ -39,8 +39,8 @@ namespace AutoThemeChanger
             {
                 conStandByCB.IsChecked = true;
             }
-
-            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
+            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
+                Console.WriteLine("HIIII");
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }

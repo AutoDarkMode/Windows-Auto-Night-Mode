@@ -7,7 +7,7 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" MinHeight="530" Width="300" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Background="{x:Null}" SizeToContent="Height">
+        Title="{x:Static p:Resources.Title}" MinHeight="530" Width="300" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height">
     <Grid x:Name="mainWin" Background="#20FFFFFF">
         <!-- Grid Layout -->
         <Grid.RowDefinitions>

@@ -65,7 +65,7 @@ namespace AutoThemeChanger
 
         private void ThemeChange(object sender, EventArgs e)
         {
-            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
             {
                 EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
