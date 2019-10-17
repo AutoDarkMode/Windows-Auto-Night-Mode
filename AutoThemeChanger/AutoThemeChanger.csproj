@@ -67,7 +67,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>AutoNightModeIconNew.ico</ApplicationIcon>
+    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AutoThemeChanger.App</StartupObject>
@@ -239,9 +239,6 @@
     <Resource Include="Resources\PayPal_Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AutoNightModeIconNew.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Photo_Icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Settings_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoDarkModeIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
