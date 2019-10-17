@@ -55,11 +55,18 @@ namespace AutoThemeChanger
 
         private void SystemTimeFormat()
         {
-            string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-            sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
-            if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+            try
             {
-                Properties.Settings.Default.AlterTime = true;
+                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
+                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+                {
+                    Properties.Settings.Default.AlterTime = true;
+                }
+            }
+            catch
+            {
+
             }
         }
 
