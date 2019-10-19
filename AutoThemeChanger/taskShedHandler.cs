@@ -5,12 +5,12 @@ namespace AutoThemeChanger
 {
     public class TaskShedHandler
     {
-        readonly string dark = "Auto Dark Mode DARK";
-        readonly string light = "Auto Dark Mode LIGHT";
-        readonly string hibernation = "Auto Dark Mode HIBERNATION";
-        readonly string updater = "Auto Dark Mode UPDATER";
-        readonly string appupdater = "Auto Dark Mode APPUPDATER";
-        readonly string connected = "Auto Dark Mode CONNECTED STANDBY";
+        readonly string dark = "Dark switch";
+        readonly string light = "Light switch";
+        readonly string hibernation = "Hibernation trigger";
+        readonly string updater = "Location times updater";
+        readonly string appupdater = "App updater";
+        readonly string connected = "Connected standby trigger";
         readonly string folder = "Auto Dark Mode";
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
