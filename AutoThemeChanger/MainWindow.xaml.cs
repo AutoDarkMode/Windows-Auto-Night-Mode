@@ -21,6 +21,7 @@ namespace AutoThemeChanger
 
         public MainWindow()
         {
+            Console.WriteLine("--------- AppStart");
             LanguageHelper();
             InitializeComponent();
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
@@ -42,6 +43,25 @@ namespace AutoThemeChanger
             Updater updater = new Updater();
             updater.CheckNewVersion();
             LanguageHelper();
+            DonationScreen();
+        }
+
+        private void DonationScreen()
+        {
+            Random rdmnumber = new Random();
+            int generatedNumber = rdmnumber.Next(1, 100);
+            if (generatedNumber == 50)
+            {
+                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno");
+                msgBox.Owner = GetWindow(this);
+                msgBox.ShowDialog();
+                var result = msgBox.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
+                }
+            }
+
         }
 
         private void LanguageHelper()

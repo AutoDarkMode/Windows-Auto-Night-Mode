@@ -333,6 +333,30 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hello! Thanks for using Auto Dark Mode. I hope you like it so far :)
+        ///
+        ///Yes, this developer really created a popup to remind people that he accepts donations via paypal. What a shame!
+        ///
+        ///But hey, this app makes your everyday life a bit easier. Even a small donation makes me happy :D
+        ///
+        ///Do you want to open the PayPal donation page now?.
+        /// </summary>
+        public static string donationDescription {
+            get {
+                return ResourceManager.GetString("donationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you like Auto Dark Mode?.
+        /// </summary>
+        public static string donationTitle {
+            get {
+                return ResourceManager.GetString("donationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabled.
         /// </summary>
         public static string enabled {

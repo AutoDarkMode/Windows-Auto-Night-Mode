@@ -30,6 +30,10 @@ namespace AutoThemeChanger
             {
                 IconTextBlock.Text = "\xECC5";
             }
+            else if (pIcon.Equals("smiley"))
+            {
+                IconTextBlock.Text = "\xED54";
+            }
         }
 
         private void ButtonLayout(string pButton)

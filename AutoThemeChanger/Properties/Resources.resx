@@ -356,4 +356,16 @@ But it also reduces the battery life! ONLY activate if necessary!</value>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
   </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hello! Thanks for using Auto Dark Mode. I hope you like it so far :)
+
+Yes, this developer really created a popup to remind people that he accepts donations via paypal. What a shame!
+
+But hey, this app makes your everyday life a bit easier. Even a small donation makes me happy :D
+
+Do you want to open the PayPal donation page now?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Do you like Auto Dark Mode?</value>
+  </data>
 </root>
