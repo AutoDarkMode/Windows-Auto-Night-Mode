@@ -25,7 +25,5 @@ With enabling the automatic theme switcher in the app it creates a task in the T
 ## Note about the download
 Windows Smartscreen and some antivirus software may warn you from downloading this program. This is caused to the small user base. Sadly I can't change anything about that.
 
-## Support
+## Telegram Group
 [Join my Telegram group to get early access to new versions](https://t.me/autodarkmode)
-
-[Here you can donate me a coffee for my work. Thank you <3](https://www.paypal.me/arminosaj)
