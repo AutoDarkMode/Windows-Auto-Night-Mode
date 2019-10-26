@@ -50,8 +50,10 @@
             <ComboBoxItem Content="Français" Name="fr"/>
             <ComboBoxItem Content="Italiano" Name="it"/>
             <ComboBoxItem Content="Polski" Name="pl"/>
+            <ComboBoxItem Content="Português" Name="pt"/>
             <ComboBoxItem Content="Русский" Name="ru"/>
             <ComboBoxItem Content="українська" Name="uk"/>
+            <ComboBoxItem Content="日本の" Name="ja"/>
             <ComboBoxItem Content="简体中文" Name="zh"/>
         </ComboBox>
         <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,383,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
