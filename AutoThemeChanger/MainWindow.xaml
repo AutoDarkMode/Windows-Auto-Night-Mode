@@ -51,6 +51,7 @@
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
         </ComboBox>
 
         <!-- Desktop Background -->

@@ -144,6 +144,7 @@ namespace AutoThemeChanger
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
             if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
+            if (edgeTheme == 3) EdgeComboBox.SelectedIndex = 3;
 
             if (!is1903)
             {
@@ -637,6 +638,10 @@ namespace AutoThemeChanger
             {
                 Properties.Settings.Default.EdgeThemeChange = 2;
                 regEditHandler.EdgeTheme(1);
+            }
+            if (EdgeComboBox.SelectedIndex.Equals(3))
+            {
+                Properties.Settings.Default.EdgeThemeChange = 3;
             }
         }
 

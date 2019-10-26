@@ -154,7 +154,7 @@
     <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (old version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Light</value>

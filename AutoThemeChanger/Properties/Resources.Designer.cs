@@ -463,7 +463,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edge:.
+        ///   Looks up a localized string similar to Edge (old version):.
         /// </summary>
         public static string lblEdge {
             get {
