@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>套用</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>自動切換主題</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>跟隨系統主題</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>總是深色</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>總是淺色</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>啟用Windows 1903的功能</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>應用程式：</value>
+  </data>
+  <data name="lblAuthor" xml:space="preserve">
+    <value>作者：Armin Osaj © 2019</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>自訂開始時間</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>深色主題</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge（舊版）：</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>淺色主題</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>切換當前主題</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>系統：</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>使用的第三方軟件</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>使用位置服務</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>已儲存變更！</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>點擊套用以儲存變更</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>下載更新</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>發生了錯誤 :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>此程式需要位置許可</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>已是最新版本</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>正在搜尋你的位置…</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>正在搜尋更新…</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>警告：此程式無法獲取當前的主題</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>有可用的更新</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>感謝你使用自動主題切換！
+
+新版本已在GitHub上提供，包含修復和增強功能。你要下載嗎？
+
+目前版本：{0}；新版本：{1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>自動主題切換</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>在程序啟動時檢查更新</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>歡迎</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>點選選框以啟用自動主題切換</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>翻譯者：hugoalh</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>此選項已被停用，因為你尚未在此裝置上安裝Windows 10 April 2019更新。</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>需要重新啟動程式才能套用變更</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>語言：</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>工作列使用輔色</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>目前：</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>深色主題背景</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>刪除／停用</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>選擇檔案</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>淺色主題背景</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>桌面背景</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>請選擇兩個背景</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>請選擇一張圖片</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>設置桌面背景</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>使用目前背景</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>或</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>可能你的圖片已損壞或路徑不存在。</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>很抱歉，無法生成圖片的預覽！</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>很抱歉，無法儲存你的設置！</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>發生錯誤</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>僅在深色主題下可見</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>資訊</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12小時格式</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>在背景搜尋更新</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>很抱歉，無法套用你的設置！
+
+你可以嘗試以下操作：
+- 解除安裝後重新安裝此程式。
+- 嘗試以管理員身份運行此程式。
+- 如果啟用了桌面背景，請停用該功能，然後重試。
+
+如果這些操作都沒有幫助，你可以在GitHub Issue中發佈包含該錯誤的截圖。你可以通過點擊「是」按鈕來訪問。</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>錯誤：無效的輸入</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>待機後切換</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>諸如微軟Surface產品之類的移動設備正在使用一種新型的待機模式。
+啟用此選項可確保在喚醒裝置後可以立即切換主題。
+但是這也會縮短電池壽命！僅在必要時啟用！</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.由於Windows的問題，工作列無法在節電模式下正確切換其顏色。如果遇到問題，請關閉節電模式。</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>你好！感謝使用自動主題切換。我希望你到目前為止喜歡它 :)
+
+是的，這位開發人員確實創建了一個彈出式視窗，以提醒人們他接受PayPal捐贈。真丟臉！
+
+但是，此程式使你的日常生活更加輕鬆。即使是一小筆捐款也讓我開心 :D
+
+你要立即打開PayPal捐贈頁面嗎？</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>你喜歡自動主題切換嗎？</value>
+  </data>
+</root>
