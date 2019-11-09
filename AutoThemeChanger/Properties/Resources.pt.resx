@@ -154,7 +154,7 @@
     <value>Tema escuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (versão antiga):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Claro</value>
@@ -231,7 +231,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Bem vindo</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Ative a Activate the caixa de seleção para habilitar a troca automatica de temas</value>
+    <value>Ative a caixa de seleção para habilitar a troca automatica de temas</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Tradutor: Vítor Gomes (vctgomes)</value>
@@ -356,5 +356,15 @@ Isso também pode reduzir a duração da bateria! APENAS ative se for necessári
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Por conta da um problema com o Windows, a barra de tarefas não alterna corretamente sua cor no modo de economia de bateria. Por favor, desligue a economia de bateria se você estiver tendo problemas.</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Sim, esse desenvolvedor criou um pop-up para lembrar as pessoas que ele aceita doações via PayPal. Que vergonha! 
+
+Mas, ei, esse app faz sua vida diária um pouco mais fácil. Mesmo uma pequena doação, ficarei feliz :D
+
+Você deseja abrir a página de doações do PayPal agora?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Você gosta do Auto Dark Mode?</value>
   </data>
 </root>

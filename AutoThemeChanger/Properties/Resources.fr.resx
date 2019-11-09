@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -153,7 +154,7 @@
     <value>Thème sombre</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge :</value>
+    <value>Edge (ancienne version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Clair</value>
@@ -319,4 +320,16 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
   <data name="cb12HourTime" xml:space="preserve">
     <value>Système horaire sur 12 heures</value>
   </data>
-</root> 
+  <data name="donationDescription" xml:space="preserve">
+    <value>Salut ! Merci d'utiliser Auto Dark Mode. J'espère que vous l'aimez jusqu'à présent :)
+
+Oui, ce développeur a vraiment créé un popup pour rappeler qu'il accepte les dons via PayPal. Quelle honte !
+
+Mais bon, cette application rend votre quotidien un peu plus facile. Même un petit don me rend heureux: D
+
+Voulez-vous ouvrir la page de don PayPal maintenant ?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Vous aimez Auto Dark Mode ?</value>
+  </data>
+</root>

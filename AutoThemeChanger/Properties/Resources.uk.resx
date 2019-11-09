@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -147,16 +148,16 @@
     <value>Оберіть свій час початку</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Темна тема</value>
+    <value>Темна</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
     <value>Темна тема</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (стара версія):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Світла тема</value>
+    <value>Світла</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>Світла тема</value>
@@ -198,13 +199,13 @@
     <value>немає нових оновлень.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Пошук Вашого місцезнаходження...</value>
+    <value>Пошук місцезнаходження...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
     <value>Пошук оновлень...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Попередження: Ми не змогли визначити Вашу поточну тему.</value>
+    <value>Попередження: Ми не змогли визначити поточну тему.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Доступне нове оновлення!</value>
@@ -224,22 +225,22 @@
     <value>Перевірити оновлення</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>перевіряємо оновлення при кожному запуску.</value>
+    <value>ми перевіряємо наявність оновлень при кожному запуску.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Ласкаво просимо</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Активуйте прапорець для автоматичного перемикання тем</value>
+    <value>Активувати прапорець для автоматичного перемикання тем</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Перекладач: Mykhailo Lytvynenko</value>
+    <value>Mykhailo Lytvynenko</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Місто</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Ця функція недоступна, оскільки Ви не встановили травневе оновлення Windows 10 May 2019 Update на Ваш комп'ютер...</value>
+    <value>Ця функція недоступна, оскільки не було встановлено травневе оновлення Windows 10 May 2019 Update на комп'ютер...</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>Необхідний перезапуск програми, аби побачити зміни</value>
@@ -248,7 +249,7 @@
     <value>Мова:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Основний колір для панелі задач</value>
+    <value>Колір для панелі задач</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Скасувати</value>
@@ -257,16 +258,16 @@
     <value>Зараз:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Фон для темної теми</value>
+    <value>Шпалери для темної теми</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Видалити/Вимкнути</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Оберіть файл</value>
+    <value>Обрати файл</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Фон для світлої теми</value>
+    <value>Шпалери для світлої теми</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Фон робочого стола</value>
@@ -275,16 +276,16 @@
     <value>Картинки</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Оберіть два фони</value>
+    <value>Обрати дві шпалери</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Оберіть картинку</value>
+    <value>Обрати картинку</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Налаштувати фон робочого стола</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>взяти поточний фон</value>
+    <value>використовувати поточний фон</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Вимкнено</value>
@@ -299,13 +300,13 @@
     <value>Зберегти</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Можливо, Ваш файл із зображенням пошкоджено або шляху до нього не існує.</value>
+    <value>Можливо, файл із зображенням пошкоджено або шляху до нього не існує.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Ми не змогли сформувати передперегляд Вашої картинки, вибачте!</value>
+    <value>Передперегляд картинки не було сформовано, просимо вибачення!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Ми не змогли зберегти Ваші налаштування, просимо вибачення!</value>
+    <value>Налаштування не були збережені, просимо вибачення!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Сталася помилка</value>
@@ -316,7 +317,16 @@
   <data name="info" xml:space="preserve">
     <value>Інформація</value>
   </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12-годинний формат</value>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Вітаю! Дякую за використання Auto Dark Mode. Я сподіваюсь, що зараз тобі все подобається :)
+
+Так, розробник дійсно створив спливаюче повідомлення, аби нагадати, що він приймає пожертви через PayPal. Яка ганьба!
+
+Але постривай, цей застосунок робить твоє повсякденне життя трохи легшим. Навть невелика пожертва робить мене щасливим :D
+
+Хочеш зараз відкрити сторінку пожертвування PayPal?</value>
   </data>
-</root> 
+  <data name="donationTitle" xml:space="preserve">
+    <value>Подобається Auto Dark Mode?</value>
+  </data>
+</root>

@@ -154,7 +154,7 @@
     <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (stara wersja):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Jasny</value>
@@ -357,5 +357,20 @@ Kliknij ""Tak"", aby otworzyć stronę GitHub.
   </data>
   <data name="MsgYes" xml:space="preserve">
     <value>Tak</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Witaj! Dziękujemy za używanie Auto Dark Mode!
+Mamy nadzieje, że lubisz naszą aplikację!
+
+Tak, programista tej aplikacji naprawdę wbudował okienko proszące o darowiznę, co za wstyd!
+
+Ale jeśli ta aplikacja ułatwia Ci życie codzienne, mógłbyś pomóc także nam.
+Nawet mała darowizna nas uszczęśliwi.
+
+Chcesz otworzyć stronę PayPal-a w celu przekazania darowizny?
+</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Lubisz Auto Dark Mode?</value>
   </data>
 </root>

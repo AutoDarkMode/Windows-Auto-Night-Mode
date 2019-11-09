@@ -154,7 +154,7 @@
     <value>Tema scuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (vecchia versione):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Chiaro</value>
@@ -356,5 +356,17 @@ Se ciò non è sufficiente, puoi commentare su GitHub il problema, caricando uno
   </data>
   <data name="MsgYes" xml:space="preserve">
     <value>Sì</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Ciao! Grazie per usare Auto Dark Mode. Spero tiu abbia apprezzato finora :)
+
+Sì, lo sviluppatore ha veramente creato un messaggio per ricordare alle persone che accetta donazioni via PayPal. Che vergogna!
+
+Ma hey, questa app rende la tua vita quotidiana più semplice. Anche una piccola donazione mi renderebbe felice :D
+
+Vuoi aprire la pagina PayPal per una donazione ora?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Ti piace Auto Dark Mode?</value>
   </data>
 </root>

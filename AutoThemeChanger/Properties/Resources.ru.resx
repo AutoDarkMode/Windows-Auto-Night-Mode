@@ -154,7 +154,7 @@
     <value>Темная тема</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (Старая версия):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Светлая</value>
@@ -328,5 +328,17 @@
   </data>
   <data name="MsgYes" xml:space="preserve">
     <value>Да</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Привет! Спасибо что используете Auto Dark Mode. Надеюсь эта программа вам нравится :)
+
+Да, разработчик действительно создал это окно что-бы напомнить пользователям что он собирает донаты через PayPal. Какой позор!
+
+Но серьезно, это приложение каждый день делает вашу жизнь чуточку легче. Даже небольшое пожертвование может сделать меня счастливым.
+
+Вы хотите открыть страницу для пожертвований PayPal прямо сейчас?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Вам нравится Auto Dark Mode?</value>
   </data>
 </root>
