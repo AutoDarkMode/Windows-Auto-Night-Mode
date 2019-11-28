@@ -118,6 +118,7 @@ namespace AutoThemeChanger
             {
                 autoCheckBox.IsChecked = true;
                 locationCheckBox.IsChecked = true;
+                InitOffset();
             }
             else
             {
@@ -165,6 +166,91 @@ namespace AutoThemeChanger
 
             ShowDeskBGStatus();
         }
+
+        private void PopulateOffsetFields(int offsetDark, int offsetLight)
+        {
+            if (offsetLight < 0)
+            {
+                OffsetLightModeButton.Content = "-";
+                OffsetLightBox.Text = Convert.ToString(-offsetLight);
+            }
+            else
+            {
+                OffsetLightBox.Text = Convert.ToString(offsetLight);
+            }
+            if (offsetDark < 0)
+            {
+                OffsetDarkModeButton.Content = "-";
+                OffsetDarkBox.Text = Convert.ToString(-offsetDark);
+            }
+            else
+            {
+                OffsetDarkBox.Text = Convert.ToString(offsetDark);
+            }            
+        }
+
+        private void InitOffset()
+        {
+            PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
+        }
+
+        private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Content.ToString() == "+")
+                {
+                    button.Content = "-";
+                }
+                else
+                {
+                    button.Content = "+";
+                }
+                OffsetButton.IsEnabled = true;
+            }
+        }
+
+        private void OffsetButton_Click(object sender, RoutedEventArgs e)
+        {
+            int offsetDark;
+            int offsetLight;
+
+            //get values from TextBox
+            try
+            {
+                offsetDark = int.Parse(OffsetDarkBox.Text);
+                offsetLight = int.Parse(OffsetLightBox.Text);
+            }
+            catch
+            {
+                userFeedback.Text = Properties.Resources.errorNumberInput;
+                return;
+            }
+
+            PopulateOffsetFields(offsetDark, offsetLight);
+
+            if (OffsetLightModeButton.Content.ToString() == "+")
+            {
+                Properties.Settings.Default.LightOffset = offsetLight;
+            }
+            else
+            {
+                Properties.Settings.Default.LightOffset = -offsetLight;
+            }
+
+            if (OffsetDarkModeButton.Content.ToString() == "+")
+            {
+                Properties.Settings.Default.DarkOffset = offsetDark;
+            }
+            else
+            {
+                Properties.Settings.Default.DarkOffset = -offsetDark;
+            }
+
+            OffsetButton.IsEnabled = false;
+            GetLocation();
+        }
+
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -226,11 +312,24 @@ namespace AutoThemeChanger
             {
                 darkStartMinutes = 59;
             }
-
             darkStartBox.Text = Convert.ToString(darkStart);
             lightStartBox.Text = Convert.ToString(lightStart);
-            LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
-            DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
+            if (lightStartMinutes < 10) {
+                LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
+            }
+            else
+            {
+                LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
+            }
+            if (darkStartMinutes < 10)
+            {
+                DarkStartMinutesBox.Text = "0" + Convert.ToString(darkStartMinutes);
+            }
+            else
+            {
+                DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
+            }
+            
 
             try
             {
@@ -361,6 +460,12 @@ namespace AutoThemeChanger
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
+        {
+            OffsetButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
@@ -442,6 +547,7 @@ namespace AutoThemeChanger
         }
         public async void GetLocation()
         {
+            SetOffsetVisibility(Visibility.Visible);
             locationBlock.Visibility = Visibility.Visible;
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             LocationHandler locationHandler = new LocationHandler();
@@ -501,6 +607,8 @@ namespace AutoThemeChanger
             DarkStartMinutesBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             locationBlock.Visibility = Visibility.Collapsed;
+            SetOffsetVisibility(Visibility.Collapsed);
+
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             taskShedHandler.RemoveLocationTask();
         }
@@ -754,6 +862,21 @@ namespace AutoThemeChanger
                 }
                 darkStartBox.Text = Convert.ToString(darkTime);
             }
+
+        }
+        
+        private void SetOffsetVisibility(Visibility value)
+        {
+            OffsetLbl.Visibility = value;
+            OffsetDarkLbl.Visibility = value;
+            OffsetDarkModeButton.Visibility = value;
+            OffsetLightLbl.Visibility = value;
+            OffsetLightModeButton.Visibility = value;
+            OffsetLightBox.Visibility = value;
+            OffsetDarkBox.Visibility = value;
+            OffsetDarkDot.Visibility = value;
+            OffsetLightDot.Visibility = value;
+            OffsetButton.Visibility = value;
 
         }
     }

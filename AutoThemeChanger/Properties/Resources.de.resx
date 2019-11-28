@@ -357,4 +357,10 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Ein Fehler von Windows verhindert den Design-Wechsel der Taskleiste im Stromsparmodus. Bitte deaktiviere den Stromsparmodus, falls bei dir Probleme auftreten.</value>
   </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Festlegen</value>
+  </data>
 </root>

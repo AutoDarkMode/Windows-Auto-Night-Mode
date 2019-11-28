@@ -368,4 +368,10 @@ Do you want to open the PayPal donation page now?</value>
   <data name="donationTitle" xml:space="preserve">
     <value>Do you like Auto Dark Mode?</value>
   </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Set</value>
+  </data>
 </root>

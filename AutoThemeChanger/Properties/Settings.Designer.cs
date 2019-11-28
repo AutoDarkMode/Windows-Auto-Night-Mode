@@ -190,5 +190,29 @@ namespace AutoThemeChanger.Properties {
                 this["FirstRun"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LightOffset {
+            get {
+                return ((int)(this["LightOffset"]));
+            }
+            set {
+                this["LightOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DarkOffset {
+            get {
+                return ((int)(this["DarkOffset"]));
+            }
+            set {
+                this["DarkOffset"] = value;
+            }
+        }
     }
 }

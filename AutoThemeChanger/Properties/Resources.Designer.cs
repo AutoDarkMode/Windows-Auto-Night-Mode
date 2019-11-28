@@ -499,6 +499,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offset.
+        /// </summary>
+        public static string lblOffset {
+            get {
+                return ResourceManager.GetString("lblOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string lblSettings {
@@ -698,6 +707,15 @@ namespace AutoThemeChanger.Properties {
         public static string MsgYes {
             get {
                 return ResourceManager.GetString("MsgYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set.
+        /// </summary>
+        public static string offsetButton {
+            get {
+                return ResourceManager.GetString("offsetButton", resourceCulture);
             }
         }
         
