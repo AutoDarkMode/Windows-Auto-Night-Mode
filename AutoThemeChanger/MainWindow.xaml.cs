@@ -773,7 +773,6 @@ namespace AutoThemeChanger
             jumpList.JumpItems.Add(lightJumpTask);
             jumpList.ShowFrequentCategory = false;
             jumpList.ShowRecentCategory = false;
-
             JumpList.SetJumpList(Application.Current, jumpList);
         }
 

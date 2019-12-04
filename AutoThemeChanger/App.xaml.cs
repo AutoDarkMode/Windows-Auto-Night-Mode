@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows;
-using System.Windows.Media.Imaging;
 
 namespace AutoThemeChanger
 {
@@ -78,24 +77,31 @@ namespace AutoThemeChanger
 
         private void InitiateNotifyIcon()
         {
+            // string variables from resources
+            string notifyIconExitText = AutoThemeChanger.Properties.Resources.notifyIconExitContentItemText;
+            string notifyBalloonTipTitle = AutoThemeChanger.Properties.Resources.Title;
+            string notifyBalloonTipText = AutoThemeChanger.Properties.Resources.notifyBalloonTipText;
+
             notifyIcon = new System.Windows.Forms.NotifyIcon();
             notifyIcon.DoubleClick += ShowMainWindow;
 
-            // Control Icon Path - .could be more dynamic
+            // accessing to the icon with path could be more dynamic
             notifyIcon.Icon = new Icon("../../AutoDarkModeIcon.ico");
             notifyIcon.Visible = true;
             notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
 
-            // Get text from Resources accoring to the languages
-            notifyIcon.ContextMenuStrip.Items.Add("MainWindow...").Click += ShowMainWindow;
-            notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += ExitApplication;
-            notifyIcon.ShowBalloonTip(1000, "Auto Dark Mode", "Application still running...", System.Windows.Forms.ToolTipIcon.Info);
+            notifyIcon.ContextMenuStrip.Items.Add(notifyBalloonTipTitle).Click += ShowMainWindow;
+            notifyIcon.ContextMenuStrip.Items.Add(notifyIconExitText).Click += ExitApplication;
+            notifyIcon.ShowBalloonTip(1000, notifyBalloonTipTitle, notifyBalloonTipText, System.Windows.Forms.ToolTipIcon.Info);
 
+            //
+            // Add ContextMenuStrip that is able to switch themes
+            // 
         }
 
         private void DisposeNotifyIcon()
         {
-            if (notifyIcon != null)
+            if (notifyIcon != null) 
             {
                 notifyIcon.Dispose();
                 notifyIcon = null;

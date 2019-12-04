@@ -711,6 +711,24 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application is still running....
+        /// </summary>
+        public static string notifyBalloonTipText {
+            get {
+                return ResourceManager.GetString("notifyBalloonTipText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string notifyIconExitContentItemText {
+            get {
+                return ResourceManager.GetString("notifyIconExitContentItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set.
         /// </summary>
         public static string offsetButton {
