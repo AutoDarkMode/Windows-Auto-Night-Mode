@@ -77,10 +77,10 @@ namespace AutoThemeChanger
 
         private void InitiateNotifyIcon()
         {
-            // string variables from resources
             string notifyIconExitText = AutoThemeChanger.Properties.Resources.notifyIconExitContentItemText;
             string notifyBalloonTipTitle = AutoThemeChanger.Properties.Resources.Title;
             string notifyBalloonTipText = AutoThemeChanger.Properties.Resources.notifyBalloonTipText;
+            string notifySwapThemeText = AutoThemeChanger.Properties.Resources.notifyIconSwapThemeContentItemText;
 
             notifyIcon = new System.Windows.Forms.NotifyIcon();
             notifyIcon.DoubleClick += ShowMainWindow;
@@ -89,14 +89,28 @@ namespace AutoThemeChanger
             notifyIcon.Icon = new Icon("../../AutoDarkModeIcon.ico");
             notifyIcon.Visible = true;
             notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
-
             notifyIcon.ContextMenuStrip.Items.Add(notifyBalloonTipTitle).Click += ShowMainWindow;
+            notifyIcon.ContextMenuStrip.Items.Add(notifySwapThemeText).Click += SwapTheme;
             notifyIcon.ContextMenuStrip.Items.Add(notifyIconExitText).Click += ExitApplication;
             notifyIcon.ShowBalloonTip(1000, notifyBalloonTipTitle, notifyBalloonTipText, System.Windows.Forms.ToolTipIcon.Info);
+        }
 
+        private void SwapTheme(object sender, EventArgs e)
+        {
             //
-            // Add ContextMenuStrip that is able to switch themes
-            // 
+            // It just swaps the current theme but should behave according to the custom preferences of the user
+            // like edge theme, app theme and system theme
+            //
+
+            RegeditHandler regEditHandler = new RegeditHandler();
+            if (regEditHandler.AppsUseLightTheme())
+            {
+                regEditHandler.ThemeToDark();
+            }
+            else
+            {
+                regEditHandler.ThemeToLight();
+            }
         }
 
         private void DisposeNotifyIcon()

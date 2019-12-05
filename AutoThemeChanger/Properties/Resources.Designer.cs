@@ -729,6 +729,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Swap Theme.
+        /// </summary>
+        public static string notifyIconSwapThemeContentItemText {
+            get {
+                return ResourceManager.GetString("notifyIconSwapThemeContentItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set.
         /// </summary>
         public static string offsetButton {

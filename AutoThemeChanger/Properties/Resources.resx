@@ -380,4 +380,7 @@ Do you want to open the PayPal donation page now?</value>
   <data name="notifyIconExitContentItemText" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="notifyIconSwapThemeContentItemText" xml:space="preserve">
+    <value>Swap Theme</value>
+  </data>
 </root>
