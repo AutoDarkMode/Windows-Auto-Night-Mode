@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoThemeChanger.Config;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows;
