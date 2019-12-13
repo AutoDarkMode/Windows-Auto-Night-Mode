@@ -10,14 +10,19 @@ using System.Threading;
 using System.Globalization;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
+using AutoThemeChanger.Config;
 
 namespace AutoThemeChanger
 {
     public partial class MainWindow
     {
-        TaskShedHandler taskShedHandler = new TaskShedHandler();
-        RegeditHandler regEditHandler = new RegeditHandler();
-        bool is1903 = false;
+        private readonly TaskShedHandler taskShedHandler = new TaskShedHandler();
+        private readonly RegeditHandler regEditHandler = new RegeditHandler();
+
+        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.GetInstance();
+
+
+        private readonly bool is1903 = false;
 
         public MainWindow()
         {
@@ -186,7 +191,7 @@ namespace AutoThemeChanger
             else
             {
                 OffsetDarkBox.Text = Convert.ToString(offsetDark);
-            }            
+            }
         }
 
         private void InitOffset()
@@ -251,7 +256,6 @@ namespace AutoThemeChanger
             GetLocation();
         }
 
-
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             int darkStart;
@@ -314,7 +318,8 @@ namespace AutoThemeChanger
             }
             darkStartBox.Text = Convert.ToString(darkStart);
             lightStartBox.Text = Convert.ToString(lightStart);
-            if (lightStartMinutes < 10) {
+            if (lightStartMinutes < 10)
+            {
                 LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
             }
             else
@@ -329,7 +334,7 @@ namespace AutoThemeChanger
             {
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
-            
+
 
             try
             {
@@ -535,6 +540,7 @@ namespace AutoThemeChanger
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
+            autoDarkModeConfigBuilder.WriteConfig();
             Properties.Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
@@ -556,6 +562,8 @@ namespace AutoThemeChanger
             switch (accesStatus)
             {
                 case GeolocationAccessStatus.Allowed:
+                    autoDarkModeConfigBuilder.Config.Time.IsLocationBased = true;
+
                     //locate user + get sunrise & sunset times
                     locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
                     int[] sundate = await locationHandler.CalculateSunTime(false);
@@ -601,6 +609,8 @@ namespace AutoThemeChanger
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.Time.IsLocationBased = false;
+
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
             darkStartBox.IsEnabled = true;
@@ -616,6 +626,9 @@ namespace AutoThemeChanger
         //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.Enabled = true;
+
+
             if (is1903) SystemComboBox.IsEnabled = true;
             if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
             AppComboBox.IsEnabled = true;
@@ -631,6 +644,8 @@ namespace AutoThemeChanger
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.Enabled = false;
+
             if (e != null)
             {
                 taskShedHandler.RemoveTask();
@@ -660,6 +675,9 @@ namespace AutoThemeChanger
         //ComboBox
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
+
+
             if (AppComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.AppThemeChange = 0;
@@ -686,6 +704,9 @@ namespace AutoThemeChanger
         }
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
+
+
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.SystemThemeChange = 0;
@@ -725,6 +746,8 @@ namespace AutoThemeChanger
         }
         private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.EdgeTheme = EdgeComboBox.SelectedIndex;
+
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.EdgeThemeChange = 0;
@@ -773,12 +796,13 @@ namespace AutoThemeChanger
             jumpList.JumpItems.Add(lightJumpTask);
             jumpList.ShowFrequentCategory = false;
             jumpList.ShowRecentCategory = false;
-
             JumpList.SetJumpList(Application.Current, jumpList);
         }
 
         private void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.AccentColorTaskbar = true;
+
             Properties.Settings.Default.AccentColor = true;
             try
             {
@@ -793,6 +817,8 @@ namespace AutoThemeChanger
 
         private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            autoDarkModeConfigBuilder.Config.AccentColorTaskbar = false;
+
             Properties.Settings.Default.AccentColor = false;
             regEditHandler.ColorPrevalence(0);
         }
@@ -864,7 +890,7 @@ namespace AutoThemeChanger
             }
 
         }
-        
+
         private void SetOffsetVisibility(Visibility value)
         {
             OffsetLbl.Visibility = value;
