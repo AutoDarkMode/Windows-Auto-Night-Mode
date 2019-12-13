@@ -12,6 +12,8 @@ namespace AutoThemeChanger.Config
     {
         private static AutoDarkModeConfigBuilder instance;
         public AutoDarkModeConfig Config { get; set; }
+
+        private const string FileName = "AutoDarkMode.json";
         protected AutoDarkModeConfigBuilder()
         {
             if (instance == null)
@@ -30,11 +32,10 @@ namespace AutoThemeChanger.Config
             return instance;
         }
 
-        public void WriteJsonConfig()
+        public void WriteConfig()
         {
             string jsonConfig = JsonConvert.SerializeObject(Config);
-            string path = @"C:\Users\utkucanturkan\Desktop\AutoDarkModeConfig.json";
-            using (StreamWriter file = new StreamWriter(path,false))
+            using (StreamWriter file = new StreamWriter(Path.Combine(Environment.CurrentDirectory, combinedPath), false))
             {
                 file.WriteLine(jsonConfig);
                 file.Close();

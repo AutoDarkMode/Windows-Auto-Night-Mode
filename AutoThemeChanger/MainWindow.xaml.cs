@@ -540,7 +540,7 @@ namespace AutoThemeChanger
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
-            autoDarkModeConfigBuilder.WriteJsonConfig();
+            autoDarkModeConfigBuilder.WriteConfig();
             Properties.Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
