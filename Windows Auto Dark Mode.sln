@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoThemeChanger", "AutoThemeChanger\AutoThemeChanger.csproj", "{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoThemeChangerSvc", "AutoThemeChangerSvc\AutoThemeChangerSvc.csproj", "{7FEF1AD0-2885-4906-816B-9FE607320B15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,26 @@ Global
 		{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}.Release|x64.Build.0 = Release|Any CPU
 		{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}.Release|x86.Build.0 = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|x64.Build.0 = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Debug|x86.Build.0 = Debug|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|ARM.Build.0 = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|ARM64.Build.0 = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|x64.ActiveCfg = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|x64.Build.0 = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FEF1AD0-2885-4906-816B-9FE607320B15}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

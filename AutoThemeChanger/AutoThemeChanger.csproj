@@ -255,5 +255,8 @@
   <ItemGroup>
     <Resource Include="AutoDarkModeIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Communication\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
