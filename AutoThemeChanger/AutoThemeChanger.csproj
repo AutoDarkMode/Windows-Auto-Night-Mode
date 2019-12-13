@@ -137,6 +137,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Communication\PipeClient.cs" />
     <Compile Include="Config\AutoDarkModeConfig.cs" />
     <Compile Include="DeskBGHandler.cs" />
     <Compile Include="DesktopBGui.xaml.cs">
@@ -260,8 +261,6 @@
   <ItemGroup>
     <Resource Include="AutoDarkModeIcon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Communication\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

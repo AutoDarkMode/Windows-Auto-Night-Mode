@@ -1,4 +1,5 @@
-﻿using AutoThemeChanger.Config;
+﻿using AutoThemeChanger.Communication;
+using AutoThemeChanger.Config;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -64,6 +65,12 @@ namespace AutoThemeChanger
                     {
                         RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.RemoveAutoStart();
+                    }
+                    else if (value == "/pipeclienttest")
+                    {
+                        PipeClient pc = new PipeClient("WindowsAutoDarkMode");
+                        pc.SendMessage("Test");
+                        
                     }
                 }
                 Shutdown();

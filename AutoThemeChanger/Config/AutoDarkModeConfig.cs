@@ -35,7 +35,7 @@ namespace AutoThemeChanger.Config
         public void WriteConfig()
         {
             string jsonConfig = JsonConvert.SerializeObject(Config);
-            using (StreamWriter file = new StreamWriter(Path.Combine(Environment.CurrentDirectory, combinedPath), false))
+            using (StreamWriter file = new StreamWriter(Path.Combine(Environment.CurrentDirectory, FileName), false))
             {
                 file.WriteLine(jsonConfig);
                 file.Close();
