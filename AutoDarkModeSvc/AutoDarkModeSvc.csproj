@@ -20,10 +20,12 @@
 
   <ItemGroup>
     <Compile Include="..\AutoDarkModeApp\Config\AutoDarkModeConfig.cs" Link="Config\AutoDarkModeConfig.cs" />
+    <Compile Include="..\AutoDarkModeApp\SunDate.cs" Link="SunDate.cs" />
     <Compile Include="..\AutoDarkModeApp\Tools.cs" Link="Tools.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="TaskScheduler" Version="2.8.17" />
   </ItemGroup>

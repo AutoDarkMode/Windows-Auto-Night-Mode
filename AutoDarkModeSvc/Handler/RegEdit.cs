@@ -5,7 +5,7 @@ using AutoDarkModeApp.Config;
 using System.IO;
 using AutoDarkModeApp;
 
-namespace AutoDarkModeSvc.Handlers
+namespace AutoDarkModeSvc.Handler
 {
     class RegEdit
     {

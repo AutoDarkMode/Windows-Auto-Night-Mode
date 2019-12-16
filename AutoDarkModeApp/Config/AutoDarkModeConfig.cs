@@ -59,6 +59,8 @@ namespace AutoDarkModeApp.Config
             {
                 Disabled = true
             };
+            Location = new Location();
+
         }
 
         public bool Enabled { get; set; }
@@ -105,6 +107,7 @@ namespace AutoDarkModeApp.Config
         }
         public Wallpaper Wallpaper { get; set; }
         public Time Time { get; set; }
+        public Location Location { get; set; }
 
     }
 
@@ -118,6 +121,12 @@ namespace AutoDarkModeApp.Config
         public bool Disabled { get; set; }
         public ICollection<string> LightThemeWallpapers { get; set; }
         public ICollection<string> DarkThemeWallpapers { get; set; }
+    }
+
+    public class Location
+    {
+        public double Lat { get; set; }
+        public double Lon { get; set; }
     }
 
     public class Time

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
+using AutoDarkModeApp;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -29,13 +31,14 @@ namespace AutoDarkModeSvc.Communication
                     pipeServer.WaitForConnection();
                     using (StreamReader sr = new StreamReader(pipeServer))
                     {
+                        List<string> msg = new List<string>();
                         string temp;
                         while ((temp = sr.ReadLine()) != null)
                         {
-                            Console.WriteLine("Message from Pipe: {0}", temp);
+                            msg.Add(temp);
                         }
+                        MsgParser(msg);
                     }
-
                 }
             }
 
@@ -61,6 +64,50 @@ namespace AutoDarkModeSvc.Communication
                 }
             }
             Console.WriteLine("Successfully stopped PipeServer");
+        }
+
+        public void MsgParser(List<string> msg)
+        {
+            Handler.RegEdit rh = new Handler.RegEdit();
+            Handler.TaskSchd tschd = new Handler.TaskSchd();
+
+            msg.ForEach(message =>
+            {
+                switch (message)
+                {
+                    case Tools.Switch: 
+                        rh.SwitchThemeBasedOnTime();
+                        break;
+                    case Tools.Swap:
+                        if (rh.AppsUseLightTheme())
+                        {
+                            rh.ThemeToDark();
+                        }
+                        else
+                        {
+                            rh.ThemeToLight();
+                        }
+                        break;
+                    case Tools.Dark:
+                        rh.ThemeToDark();
+                        break;
+                    case Tools.Light:
+                        rh.ThemeToLight();
+                        break;
+                    case Tools.AddAutostart:
+                        rh.AddAutoStart();
+                        break;
+                    case Tools.RemoveAutostart:
+                        rh.RemoveAutoStart();
+                        break;
+                    case Tools.CreateTask:
+                        Console.WriteLine("Not implemented yet");
+                        break;
+                    case Tools.RemoveTask:
+                        tschd.RemoveTask();
+                        break;
+                }
+            });
         }
     }
 }

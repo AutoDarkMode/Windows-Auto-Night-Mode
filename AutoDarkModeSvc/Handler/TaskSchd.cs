@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Win32.TaskScheduler;
 using AutoDarkModeApp;
 
-namespace AutoDarkModeSvc.Handlers
+namespace AutoDarkModeSvc.Handler
 {
     public class TaskSchd
     {
