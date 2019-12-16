@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Enable automatic theme switching</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Adjust to theme</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Always dark</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Always white</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Enable features for Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Apps:</value>
+  </data>
+  <data name="lblAuthor" xml:space="preserve">
+    <value>Author: Armin Osaj © 2019</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Custom start time</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Dark theme</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (old version):</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Light theme</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Switch current theme</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>System:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Used third party software</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>Use Location Service</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>changes were saved!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>Click on apply to save changes</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Download update</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>error occurred :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>The App needs permission to location</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>no new updates are available.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Searching your location...</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>searching for update...</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Warning: We couldn't read your current theme.</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>a new update is available!</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Thank you for using Auto Dark Mode!
+
+A new version is available on GitHub with fixes and enhancements.
+Do you want to download it?
+
+Currently installed version: {0}, new version: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>we check at every program start for updates.</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Activate the checkbox to enable automatic theme switching</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Translator: Armin Osaj</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>App restart needed to see the changes</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Accent Color for Taskbar</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Currently:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Wallpaper for dark theme</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Delete/Disable</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Pick file</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Wallpaper for light theme</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Desktop Background</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Please select two wallpaper</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Please select an image</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Configure Desktop Background</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>use current background</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>We couldn't generate a preview of your image, sorry!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>We couldn't save your settings, sorry!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>An error has occured</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Only visible in dark mode</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12 hour clock</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Search for updates in background</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Sorry, but we couldn't apply your settings.
+
+Here are some things you can try:
+- Uninstall and then reinstall auto dark mode.
+- Try to run Auto Dark Mode as administrator.
+- If you enabled Desktop Wallpaper, disable the feature and try again.
+
+If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Error: Your input is invalid</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Switch after Connected Standby</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+But it also reduces the battery life! ONLY activate if necessary!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hello! Thanks for using Auto Dark Mode. I hope you like it so far :)
+
+Yes, this developer really created a popup to remind people that he accepts donations via paypal. What a shame!
+
+But hey, this app makes your everyday life a bit easier. Even a small donation makes me happy :D
+
+Do you want to open the PayPal donation page now?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Do you like Auto Dark Mode?</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="notifyBalloonTipText" xml:space="preserve">
+    <value>Application is still running...</value>
+  </data>
+  <data name="notifyIconExitContentItemText" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="notifyIconSwapThemeContentItemText" xml:space="preserve">
+    <value>Swap Theme</value>
+  </data>
+</root>
