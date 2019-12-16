@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Compile Include="..\AutoDarkModeApp\Config\AutoDarkModeConfig.cs" Link="Config\AutoDarkModeConfig.cs" />
+    <Compile Include="..\AutoDarkModeApp\Tools.cs" Link="Tools.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace AutoDarkModeApp
@@ -150,7 +151,7 @@ namespace AutoDarkModeApp
         public void AddAutoStart()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registryKey.SetValue("AutoDarkMode", '\u0022' + System.Reflection.Assembly.GetExecutingAssembly().Location + '\u0022' + @" /switch");
+            registryKey.SetValue("AutoDarkMode", '\u0022' + Tools.ExecutionDir + '\u0022' + @" /switch");
         }
         public void RemoveAutoStart()
         {

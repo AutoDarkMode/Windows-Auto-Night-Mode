@@ -2,6 +2,8 @@
 using System;
 using System.Threading;
 using AutoDarkModeApp.Config;
+using System.IO;
+using AutoDarkModeApp;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -87,7 +89,7 @@ namespace AutoDarkModeSvc.Handlers
 
             if (!Properties.Config.Wallpaper.Disabled)
             {
-                DeskBG.SetBackground(Properties.Config.Wallpaper.);
+                DeskBG.SetBackground(Properties.Config.Wallpaper.LightThemeWallpapers);
             }
         }
 
@@ -153,7 +155,7 @@ namespace AutoDarkModeSvc.Handlers
         public void AddAutoStart()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registryKey.SetValue("AutoDarkMode", '\u0022' + System.Reflection.Assembly.GetExecutingAssembly().Location + '\u0022' + @" /switch");
+            registryKey.SetValue("AutoDarkMode", '\u0022' + Tools.ExecutionDir + '\u0022' + @" /switch");
         }
         public void RemoveAutoStart()
         {
