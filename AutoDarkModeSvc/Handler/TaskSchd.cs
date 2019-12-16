@@ -18,8 +18,16 @@ namespace AutoDarkModeSvc.Handler
         readonly string program = "Windows Auto Dark Mode";
         readonly string description = "Task of the program Windows Auto Dark Mode.";
 
-        public void CreateTask(int startTime, int startTimeMinutes, int endTime, int endTimeMinutes)
+        /// <summary>
+        /// Create tasks for dark and light mode switching based on time
+        /// </summary>
+        /// <param name="startTimeHour">Sunrise hour</param>
+        /// <param name="startTimeMinute">Sunrise minute</param>
+        /// <param name="endTimeHour">Sunset hour</param>
+        /// <param name="endTimeMinute">Sunset minute</param>
+        public void CreateTask(int startTimeHour, int startTimeMinute, int endTimeHour, int endTimeMinute)
         {
+            //NEEDS TO BE REWRITTEN TO CREATE TASK FOR THINSERVER!!
             using (TaskService taskService = new TaskService())
             {
                 taskService.RootFolder.CreateFolder(folder, null, false);
@@ -34,7 +42,7 @@ namespace AutoDarkModeSvc.Handler
                 tdDark.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
                 tdDark.Settings.StartWhenAvailable = true;
 
-                tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTime).AddMinutes(startTimeMinutes) });
+                tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTimeHour).AddMinutes(startTimeMinute) });
                 tdDark.Actions.Add(new ExecAction(Tools.ExecutionDir, "/switch"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(dark, tdDark);
@@ -50,7 +58,7 @@ namespace AutoDarkModeSvc.Handler
                 tdLight.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
                 tdLight.Settings.StartWhenAvailable = true;
 
-                tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTime).AddMinutes(endTimeMinutes) });
+                tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTimeHour).AddMinutes(endTimeMinute) });
                 tdLight.Actions.Add(new ExecAction(Tools.ExecutionDir, "/switch"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(light, tdLight);

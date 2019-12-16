@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using AutoDarkModeApp;
+using AutoDarkModeApp.Config;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -68,6 +69,7 @@ namespace AutoDarkModeSvc.Communication
 
         public void MsgParser(List<string> msg)
         {
+            AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.GetInstance();
             Handler.RegEdit rh = new Handler.RegEdit();
             Handler.TaskSchd tschd = new Handler.TaskSchd();
 
@@ -101,7 +103,18 @@ namespace AutoDarkModeSvc.Communication
                         rh.RemoveAutoStart();
                         break;
                     case Tools.CreateTask:
-                        Console.WriteLine("Not implemented yet");
+                        try
+                        {
+                            DateTime sunrise = Convert.ToDateTime(Properties.Config.Time.SunRise);
+                            DateTime sunset = Convert.ToDateTime(Properties.Config.Time.SunSet);
+                            tschd.CreateTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
+                        }
+                        catch (FormatException e)
+                        {
+                            //todo: logger here!
+                            Console.WriteLine(e);
+                        }
+
                         break;
                     case Tools.RemoveTask:
                         tschd.RemoveTask();
