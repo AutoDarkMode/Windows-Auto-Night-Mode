@@ -70,8 +70,8 @@ namespace AutoDarkModeSvc.Communication
         public void MsgParser(List<string> msg)
         {
             AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.GetInstance();
-            Handler.RegEdit rh = new Handler.RegEdit();
-            Handler.TaskSchd tschd = new Handler.TaskSchd();
+            Handler.RegistryHandler rh = new Handler.RegistryHandler();
+            Handler.TaskSchdHandler tschd = new Handler.TaskSchdHandler();
 
             msg.ForEach(message =>
             {

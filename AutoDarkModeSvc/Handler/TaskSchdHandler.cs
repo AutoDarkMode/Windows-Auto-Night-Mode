@@ -5,7 +5,7 @@ using AutoDarkModeApp;
 
 namespace AutoDarkModeSvc.Handler
 {
-    public class TaskSchd
+    public class TaskSchdHandler
     {
         readonly string dark = "Dark switch";
         readonly string light = "Light switch";

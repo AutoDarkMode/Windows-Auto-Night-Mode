@@ -8,7 +8,7 @@ using AutoDarkModeSvc.Handler;
 
 namespace AutoDarkModeApp
 {
-    class Location
+    class LocationHandler
     {
         private AutoDarkModeConfigBuilder Properties { get; set; }
 
@@ -77,7 +77,7 @@ namespace AutoDarkModeApp
 
         public async Task SetLocationSilent()
         {
-            TaskSchd taskShedHandler = new TaskSchd();
+            TaskSchdHandler taskShedHandler = new TaskSchdHandler();
             int[] sundate = await CalculateSunTime(true);
             taskShedHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
         }

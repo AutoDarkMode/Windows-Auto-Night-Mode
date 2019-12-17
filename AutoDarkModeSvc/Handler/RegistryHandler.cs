@@ -7,13 +7,13 @@ using AutoDarkModeApp;
 
 namespace AutoDarkModeSvc.Handler
 {
-    class RegEdit
+    class RegistryHandler
     {
         private AutoDarkModeConfigBuilder Properties{ get; set; }
         public void SwitchThemeBasedOnTime()
         {
             Properties = AutoDarkModeConfigBuilder.GetInstance();
-            TaskSchd task = new TaskSchd();
+            TaskSchdHandler task = new TaskSchdHandler();
             var hour = DateTime.Now.Hour;
             var minute = DateTime.Now.Minute;
             var lightStart = task.GetRunTime("light");
@@ -65,7 +65,7 @@ namespace AutoDarkModeSvc.Handler
 
             if (!Properties.Config.Wallpaper.Disabled)
             {
-                DeskBG.SetBackground(Properties.Config.Wallpaper.LightThemeWallpapers);
+                WallpaperHandler.SetBackground(Properties.Config.Wallpaper.LightThemeWallpapers);
             }
 
             if (Properties.Config.AccentColorTaskbar && Properties.Config.SystemTheme.Equals(0))
@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.Handler
 
             if (!Properties.Config.Wallpaper.Disabled)
             {
-                DeskBG.SetBackground(Properties.Config.Wallpaper.LightThemeWallpapers);
+                WallpaperHandler.SetBackground(Properties.Config.Wallpaper.LightThemeWallpapers);
             }
         }
 

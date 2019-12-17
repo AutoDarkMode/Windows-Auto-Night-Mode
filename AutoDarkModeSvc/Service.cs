@@ -23,7 +23,6 @@ namespace AutoDarkModeSvc
             {
                 ps.StartServer();
             });
-            BackgroundTask ts = new BackgroundTask(this);
         }
 
         public void Stop()

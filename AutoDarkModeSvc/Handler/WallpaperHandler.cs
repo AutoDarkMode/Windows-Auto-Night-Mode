@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace AutoDarkModeSvc.Handler
 {
-    class DeskBG
+    class WallpaperHandler
     {
-        public DeskBG()
+        public WallpaperHandler()
         {
         }
 
