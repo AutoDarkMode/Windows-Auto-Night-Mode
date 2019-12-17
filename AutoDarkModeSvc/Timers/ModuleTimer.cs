@@ -3,21 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Timers;
 
-namespace AutoDarkModeSvc
+namespace AutoDarkModeSvc.Timers
 {
     class ModuleTimer
     {
-        private List<IAutoDarkModeModule> Tasks { get; set; }
+        private List<IAutoDarkModeModule> Modules { get; set; }
         private Timer Timer { get; set; }
         public ModuleTimer(int interval)
         {
-            Tasks = new List<IAutoDarkModeModule>();
+            Modules = new List<IAutoDarkModeModule>();
             Timer = new Timer
             {
-                Interval = 10000,
+                Interval = interval,
                 Enabled = false,
-                AutoReset = true
-                
+                AutoReset = true                
             };
             Timer.Elapsed += OnTimedEvent;
         }
@@ -25,21 +24,35 @@ namespace AutoDarkModeSvc
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             Console.WriteLine("{0}: Timer Signal triggered", e.SignalTime);
-            Tasks.ForEach(t =>
+            Modules.ForEach(t =>
             {
-                t.RunTask();
+                t.Poll();
             });
         }
 
         public void RegisterModule(IAutoDarkModeModule module)
         {
-            Tasks.Add(module);
+            Modules.Add(module);
         }
 
         public void DeregisterModule(IAutoDarkModeModule module) 
         {
-            Tasks.Remove(Tasks.Find(m => m.Name == module.Name));
+            Modules.Remove(Modules.Find(m => m.Name == module.Name));
         }
 
+        public void Start()
+        {
+            Timer.Start();
+        }
+
+        public void Stop()
+        {
+            Timer.Stop();
+        }
+
+        public void Dispose()
+        {
+            Timer.Dispose();
+        }
     }
 }

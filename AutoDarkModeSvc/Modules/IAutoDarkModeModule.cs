@@ -6,7 +6,7 @@ namespace AutoDarkModeSvc.Modules
 {
     interface IAutoDarkModeModule
     {
-        public bool RunTask();
+        public void Poll();
 
         public string Name { get; }
     }

@@ -64,7 +64,7 @@ namespace AutoDarkModeSvc.Communication
                     }
                 }
             }
-            Console.WriteLine("Successfully stopped PipeServer");
+            Console.WriteLine("Successfully stopped listen loop");
         }
 
         public void MsgParser(List<string> msg)

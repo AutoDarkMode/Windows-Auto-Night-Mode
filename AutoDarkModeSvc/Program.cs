@@ -9,14 +9,18 @@ namespace AutoDarkModeSvc
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Service svc = new Service();
-            svc.Start();
+            int timerMillis = 0;
+            if (args.Length != 0)
+            {
+                Int32.TryParse(args[0], out timerMillis);
+            }
+            timerMillis = (timerMillis == 0) ? 10000 : timerMillis;
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrayIcon());
+            Application.Run(new Service(timerMillis));
         }
     }
 }

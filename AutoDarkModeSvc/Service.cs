@@ -1,33 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Windows.Forms;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeSvc.Modules;
+using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc
 {
-    class Service
+    class Service : ApplicationContext
     {
-        public PipeServer ps;
-        private Task task { get; set; }
-        public Service()
-        {
-            ps = new PipeServer("WindowsAutoDarkMode");
+        NotifyIcon NotifyIcon { get; }
+        ModuleTimer ManhThai { get; }
+        PipeService PipeSvc { get;  }
+        public Service(int timerMillis)
+        { 
+            NotifyIcon = new NotifyIcon();
+            InitTray();
+            PipeSvc = new PipeService();
+            PipeSvc.Start();
+            ManhThai = new ModuleTimer(timerMillis);
+            ManhThai.RegisterModule(new TimeSwitchModule("TimeSwitch"));
+            ManhThai.Start();
         }
 
-        public void Start()
+        private void InitTray()
         {
-            task = Task.Run(() =>
+            MenuItem exitMenuItem = new MenuItem("Close", new EventHandler(Exit));
+            MenuItem switchMenuItem = new MenuItem("Switch theme", new EventHandler(SwitchThemeNow));
+
+            NotifyIcon.Icon = Properties.Resources.AutoDarkModeIcon;
+            NotifyIcon.Text = "Auto Dark Mode";
+            NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
+            NotifyIcon.ContextMenu = new ContextMenu(new MenuItem[] { switchMenuItem, exitMenuItem });
+            NotifyIcon.Visible = true;
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            PipeSvc.Stop();
+            NotifyIcon.Dispose();
+            ManhThai.Dispose();
+            Application.Exit();
+        }
+        private void SwitchThemeNow(object sender, EventArgs e)
+        {
+            Console.WriteLine("Switch Theme");
+        }
+        private void OpenApp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
             {
-                ps.StartServer();
-            });
-        }
-
-        public void Stop()
-        {
-            ps.StopServer();
+                Console.WriteLine("Start App");
+                Process.Start(@"AutoDarkModeApp.exe");
+            }
         }
     }
 }
