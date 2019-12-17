@@ -12,11 +12,12 @@
     <Authors>Armin Osaj</Authors>
     <Description>"Automatically switches between the dark and light theme of Windows 10 at sheduled times."</Description>
     <Copyright>© 2019 Armin Osaj</Copyright>
-    <AssemblyName>AutoDarkMode</AssemblyName>
+    <AssemblyName>AutoDarkModeApp</AssemblyName>
+    <PackageId>AutoDarkModeGUI</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
