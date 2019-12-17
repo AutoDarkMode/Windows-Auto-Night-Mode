@@ -10,6 +10,7 @@ namespace AutoDarkModeSvc.Communication
 {
     class PipeService
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public PipeServer ps;
         private Task Task { get; set; }
         public PipeService()
@@ -28,9 +29,9 @@ namespace AutoDarkModeSvc.Communication
         public void Stop()
         {
             ps.StopServer();
-            Console.WriteLine("Waiting for PipeServer to shut down");
+            Logger.Info("Waiting for the pipe service thread to shut down");
             Task.Wait();
-            Console.WriteLine("PipeServer thread shutdown confirmed");
+            Logger.Info("Pipe service thread shutdown confirmed");
         }
     }
 }

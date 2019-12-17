@@ -7,6 +7,7 @@ namespace AutoDarkModeSvc.Timers
 {
     class ModuleTimer
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private List<IAutoDarkModeModule> Modules { get; set; }
         private Timer Timer { get; set; }
         public ModuleTimer(int interval)
@@ -23,7 +24,7 @@ namespace AutoDarkModeSvc.Timers
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            Console.WriteLine("{0}: Timer Signal triggered", e.SignalTime);
+            Logger.Debug("{0}: Timer Signal triggered", e.SignalTime);
             Modules.ForEach(t =>
             {
                 t.Poll();

@@ -9,6 +9,7 @@ namespace AutoDarkModeSvc.Communication
 {
     class PipeServer
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string PipeName { get; set; }
         public bool Running { get; private set; }
         private bool AcceptConnections;
@@ -25,11 +26,13 @@ namespace AutoDarkModeSvc.Communication
         {
             Running = true;
             AcceptConnections = true;
+            Logger.Info("starting pipe server");
             while (AcceptConnections)
             {
                 using (NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.In))
                 {
                     pipeServer.WaitForConnection();
+                    Logger.Debug("client connection received");
                     using (StreamReader sr = new StreamReader(pipeServer))
                     {
                         List<string> msg = new List<string>();
@@ -60,11 +63,11 @@ namespace AutoDarkModeSvc.Communication
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Waiting for pipe to disconnect...");
+                       Logger.Warn("pipe server shutdown signal failed, retrying...");
                     }
                 }
             }
-            Console.WriteLine("Successfully stopped listen loop");
+            Logger.Info("pipe server shutdown confirmed");
         }
 
         public void MsgParser(List<string> msg)
