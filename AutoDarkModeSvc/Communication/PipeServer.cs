@@ -108,8 +108,8 @@ namespace AutoDarkModeSvc.Communication
                     case Tools.CreateTask:
                         try
                         {
-                            DateTime sunrise = Convert.ToDateTime(Properties.Config.Time.SunRise);
-                            DateTime sunset = Convert.ToDateTime(Properties.Config.Time.SunSet);
+                            DateTime sunrise = Convert.ToDateTime(Properties.Config.SunRise);
+                            DateTime sunset = Convert.ToDateTime(Properties.Config.SunSet);
                             tschd.CreateTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
                         }
                         catch (FormatException e)

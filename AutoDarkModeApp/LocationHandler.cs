@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
+using AutoDarkModeApp.Config;
 
 namespace AutoDarkModeApp
 {
@@ -10,6 +11,7 @@ namespace AutoDarkModeApp
     {
         public async Task<int[]> CalculateSunTime(bool background)
         {
+            AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.GetInstance();
             int[] sundate = new int[4];
             int[] sun = new int[2];
             if (!background)
@@ -17,11 +19,14 @@ namespace AutoDarkModeApp
                 BasicGeoposition position = await GetUserPosition();
                 Properties.Settings.Default.LocationLatitude = position.Latitude;
                 Properties.Settings.Default.LocationLongitude = position.Longitude;
+                autoDarkModeConfigBuilder.Config.Location.Lat = position.Latitude;
+                autoDarkModeConfigBuilder.Config.Location.Lon = position.Longitude;
                 sun = SunDate.CalculateSunriseSunset(position.Latitude, position.Longitude);
             }
             else if (background)
             {
-                sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
+                sun = SunDate.CalculateSunriseSunset(autoDarkModeConfigBuilder.Config.Location.Lat, autoDarkModeConfigBuilder.Config.Location.Lon);
+                //sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
             }
 
 
@@ -29,10 +34,15 @@ namespace AutoDarkModeApp
 
             //Remove old offset first if new offset is zero to preserve temporal integrity
             DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(Properties.Settings.Default.LightOffset);
+            autoDarkModeConfigBuilder.Config.SunRise = sunrise;
+            //sunrise = sunrise.AddMinutes(Properties.Settings.Default.LightOffset);
+            sunrise = sunrise.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin);
+
 
             DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(Properties.Settings.Default.DarkOffset);
+            autoDarkModeConfigBuilder.Config.SunSet = sunset;
+            //sunset = sunset.AddMinutes(Properties.Settings.Default.DarkOffset);
+            sunset = sunset.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
             sundate[1] = sunrise.Minute; //sunrise minute

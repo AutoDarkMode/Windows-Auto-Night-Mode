@@ -27,6 +27,10 @@ namespace AutoDarkModeApp
         public MainWindow()
         {
             Console.WriteLine("--------- AppStart");
+
+            // Read json config file
+            autoDarkModeConfigBuilder.Read();
+
             LanguageHelper();
             InitializeComponent();
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
@@ -133,19 +137,22 @@ namespace AutoDarkModeApp
 
         private void UiHandler()
         {
-            int appTheme = Properties.Settings.Default.AppThemeChange;
+            //int appTheme = Properties.Settings.Default.AppThemeChange;
+            int appTheme = autoDarkModeConfigBuilder.Config.AppsTheme;
             Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
             if (appTheme == 1) AppComboBox.SelectedIndex = 1;
             if (appTheme == 2) AppComboBox.SelectedIndex = 2;
 
-            int systemTheme = Properties.Settings.Default.SystemThemeChange;
+            //int systemTheme = Properties.Settings.Default.SystemThemeChange;
+            int systemTheme = autoDarkModeConfigBuilder.Config.SystemTheme;
             Console.WriteLine("SystemTheme Value: " + systemTheme);
             if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
             if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
             if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
 
-            int edgeTheme = Properties.Settings.Default.EdgeThemeChange;
+            //int edgeTheme = Properties.Settings.Default.EdgeThemeChange;
+            int edgeTheme = autoDarkModeConfigBuilder.Config.EdgeTheme;
             Console.WriteLine("EdgeTheme Value: " + edgeTheme);
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
@@ -164,7 +171,8 @@ namespace AutoDarkModeApp
                 AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
             }
 
-            if (Properties.Settings.Default.AccentColor)
+            if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
+            //if (Properties.Settings.Default.AccentColor)
             {
                 AccentColorCheckBox.IsChecked = true;
             }
@@ -196,7 +204,8 @@ namespace AutoDarkModeApp
 
         private void InitOffset()
         {
-            PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
+            //PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
+            PopulateOffsetFields(autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin, autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin);
         }
 
         private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
@@ -236,19 +245,23 @@ namespace AutoDarkModeApp
 
             if (OffsetLightModeButton.Content.ToString() == "+")
             {
+                autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin = offsetLight;
                 Properties.Settings.Default.LightOffset = offsetLight;
             }
             else
             {
+                autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin = -offsetLight;
                 Properties.Settings.Default.LightOffset = -offsetLight;
             }
 
             if (OffsetDarkModeButton.Content.ToString() == "+")
             {
+                autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin = offsetDark;
                 Properties.Settings.Default.DarkOffset = offsetDark;
             }
             else
             {
+                autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin = -offsetDark;
                 Properties.Settings.Default.DarkOffset = -offsetDark;
             }
 
@@ -335,6 +348,8 @@ namespace AutoDarkModeApp
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
 
+            autoDarkModeConfigBuilder.Config.SunRise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            autoDarkModeConfigBuilder.Config.SunSet = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
 
             try
             {
@@ -402,7 +417,8 @@ namespace AutoDarkModeApp
             }
             try
             {
-                if (Properties.Settings.Default.BackgroundUpdate)
+                if (!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
+                //if (Properties.Settings.Default.BackgroundUpdate)
                 {
                     taskShedHandler.CreateAppUpdaterTask();
                 }
@@ -540,7 +556,7 @@ namespace AutoDarkModeApp
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
-            autoDarkModeConfigBuilder.WriteConfig();
+            autoDarkModeConfigBuilder.Write();
             Properties.Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
@@ -562,7 +578,7 @@ namespace AutoDarkModeApp
             switch (accesStatus)
             {
                 case GeolocationAccessStatus.Allowed:
-                    autoDarkModeConfigBuilder.Config.Time.IsLocationBased = true;
+                    autoDarkModeConfigBuilder.Config.Location.Disabled = false;
 
                     //locate user + get sunrise & sunset times
                     locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
@@ -602,6 +618,7 @@ namespace AutoDarkModeApp
         }
         private async void NoLocationAccess()
         {
+            autoDarkModeConfigBuilder.Config.Location.Disabled = true;
             locationCheckBox.IsChecked = false;
             locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
             locationBlock.Visibility = Visibility.Visible;
@@ -609,7 +626,7 @@ namespace AutoDarkModeApp
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            autoDarkModeConfigBuilder.Config.Time.IsLocationBased = false;
+            autoDarkModeConfigBuilder.Config.Location.Disabled = true;
 
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
@@ -656,6 +673,11 @@ namespace AutoDarkModeApp
             Properties.Settings.Default.WallpaperLight = "";
             Properties.Settings.Default.WallpaperDark = "";
 
+            autoDarkModeConfigBuilder.Config.Wallpaper.Disabled = true;
+            autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+            autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
+
+
             AccentColorCheckBox.IsEnabled = false;
             SystemComboBox.IsEnabled = false;
             AppComboBox.IsEnabled = false;
@@ -677,7 +699,6 @@ namespace AutoDarkModeApp
         {
             autoDarkModeConfigBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
 
-
             if (AppComboBox.SelectedIndex.Equals(0))
             {
                 Properties.Settings.Default.AppThemeChange = 0;
@@ -689,7 +710,6 @@ namespace AutoDarkModeApp
                 {
 
                 }
-
             }
             if (AppComboBox.SelectedIndex.Equals(1))
             {
@@ -723,7 +743,8 @@ namespace AutoDarkModeApp
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
-                if (Properties.Settings.Default.AccentColor)
+                if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
+                //if (Properties.Settings.Default.AccentColor)
                 {
                     regEditHandler.ColorPrevalence(0);
                     Thread.Sleep(200);
@@ -736,7 +757,8 @@ namespace AutoDarkModeApp
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
                 regEditHandler.SystemTheme(0);
-                if (Properties.Settings.Default.AccentColor)
+                if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
+                //if (Properties.Settings.Default.AccentColor)
                 {
                     Thread.Sleep(200);
                     regEditHandler.ColorPrevalence(1);
@@ -839,7 +861,8 @@ namespace AutoDarkModeApp
         }
         private void ShowDeskBGStatus()
         {
-            if (Properties.Settings.Default.WallpaperSwitch == true)
+            if(!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
+            //if (Properties.Settings.Default.WallpaperSwitch == true)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }

@@ -30,8 +30,8 @@ namespace AutoDarkModeSvc.Modules
                 int[] sunset = new int[2];
                 try
                 {
-                    DateTime sunriseDT = Convert.ToDateTime(Builder.Config.Time.SunRise);
-                    DateTime sunsetDT = Convert.ToDateTime(Builder.Config.Time.SunSet);
+                    DateTime sunriseDT = Convert.ToDateTime(Builder.Config.SunRise);
+                    DateTime sunsetDT = Convert.ToDateTime(Builder.Config.SunSet);
                     sunrise[0] = sunriseDT.Hour;
                     sunrise[1] = sunriseDT.Minute;
                     sunset[0] = sunsetDT.Hour;
@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.Modules
 
                 }
 
-                if (Builder.Config.Time.IsLocationBased)
+                if (!Builder.Config.Location.Disabled)
                 {
                     DateTime[] suntimes = CalculateSunTimes();
                     DateTime sunriseDT = suntimes[0];
@@ -102,10 +102,10 @@ namespace AutoDarkModeSvc.Modules
 
             //Add offset to sunrise and sunset hours using Settings
             DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(Builder.Config.Time.SunRiseOffsetMin);
+            sunrise = sunrise.AddMinutes(Builder.Config.Location.SunRiseOffsetMin);
 
             DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(Builder.Config.Time.SunSetOffsetMin);
+            sunset = sunset.AddMinutes(Builder.Config.Location.SunSetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
             sundate[1] = sunrise.Minute; //sunrise minute

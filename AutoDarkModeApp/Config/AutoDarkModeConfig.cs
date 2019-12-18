@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Config
 {
@@ -13,7 +10,7 @@ namespace AutoDarkModeApp.Config
         private static AutoDarkModeConfigBuilder instance;
         public AutoDarkModeConfig Config { get; set; }
 
-        private const string FileName = "AutoDarkMode.json";
+        private const string FileName = "AutoDarkModeConfig.json";
         protected AutoDarkModeConfigBuilder()
         {
             if (instance == null)
@@ -24,7 +21,6 @@ namespace AutoDarkModeApp.Config
 
         public static AutoDarkModeConfigBuilder GetInstance()
         {
-            // not thread safe singleton pattern
             if (instance == null)
             {
                 instance = new AutoDarkModeConfigBuilder();
@@ -32,13 +28,38 @@ namespace AutoDarkModeApp.Config
             return instance;
         }
 
-        public void WriteConfig()
+        public void Write()
         {
-            string jsonConfig = JsonConvert.SerializeObject(Config);
-            using (StreamWriter file = new StreamWriter(Path.Combine(Environment.CurrentDirectory, FileName), false))
+            try
             {
-                file.WriteLine(jsonConfig);
-                file.Close();
+                string jsonConfig = JsonConvert.SerializeObject(Config);
+                using StreamWriter writer = new StreamWriter(Path.Combine(Environment.CurrentDirectory, FileName), false);
+                writer.WriteLine(jsonConfig);
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Read()
+        {
+            string path = Path.Combine(Environment.CurrentDirectory, FileName);
+            if (!File.Exists(path))
+            {
+                Write();
+            }
+            try
+            {
+                using StreamReader reader = File.OpenText(path);
+                JsonSerializer serializer = new JsonSerializer();
+                Config = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
@@ -47,25 +68,18 @@ namespace AutoDarkModeApp.Config
     {
         public AutoDarkModeConfig()
         {
-            Time = new Time()
-            {
-                IsLocationBased = false,
-                SunRise = "07:00",
-                SunRiseOffsetMin = 0,
-                SunSet = "19:00",
-                SunSetOffsetMin = 0,
-            };
-            Wallpaper = new Wallpaper
-            {
-                Disabled = true
-            };
+            Wallpaper = new Wallpaper();
             Location = new Location();
-
         }
 
-        public bool Enabled { get; set; }
-
         private int appsTheme;
+        private int systemTheme;
+        private int egdeTheme;
+
+        public DateTime SunRise { get; set; }
+        public DateTime SunSet { get; set; }
+        public bool Enabled { get; set; }
+        public bool AccentColorTaskbar { get; set; }
         public int AppsTheme
         {
             get { return appsTheme; }
@@ -75,10 +89,13 @@ namespace AutoDarkModeApp.Config
                 {
                     appsTheme = value;
                 }
+                else
+                {
+                    // DEFAULT
+                    appsTheme = 0;
+                }
             }
         }
-
-        private int systemTheme;
         public int SystemTheme
         {
             get { return systemTheme; }
@@ -88,12 +105,13 @@ namespace AutoDarkModeApp.Config
                 {
                     systemTheme = value;
                 }
+                else
+                {
+                    // DEFAULT
+                    systemTheme = 0;
+                }
             }
         }
-
-        public bool AccentColorTaskbar { get; set; }
-
-        private int egdeTheme;
         public int EdgeTheme
         {
             get { return egdeTheme; }
@@ -103,12 +121,15 @@ namespace AutoDarkModeApp.Config
                 {
                     egdeTheme = value;
                 }
+                else
+                {
+                    // DEFAULT
+                    egdeTheme = 3;
+                }
             }
         }
         public Wallpaper Wallpaper { get; set; }
-        public Time Time { get; set; }
         public Location Location { get; set; }
-
     }
 
     public class Wallpaper
@@ -125,17 +146,10 @@ namespace AutoDarkModeApp.Config
 
     public class Location
     {
+        public bool Disabled { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
-    }
-
-    public class Time
-    {
-        public bool IsLocationBased { get; set; }
-        public string SunRise { get; set; }
-        public string SunSet { get; set; }
         public int SunSetOffsetMin { get; set; }
         public int SunRiseOffsetMin { get; set; }
     }
-
 }

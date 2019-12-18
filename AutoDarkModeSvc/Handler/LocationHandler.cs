@@ -33,10 +33,10 @@ namespace AutoDarkModeApp
 
             //Remove old offset first if new offset is zero to preserve temporal integrity
             DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(Properties.Config.Time.SunRiseOffsetMin);
+            sunrise = sunrise.AddMinutes(Properties.Config.Location.SunRiseOffsetMin);
 
             DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(Properties.Config.Time.SunSetOffsetMin);
+            sunset = sunset.AddMinutes(Properties.Config.Location.SunSetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
             sundate[1] = sunrise.Minute; //sunrise minute
