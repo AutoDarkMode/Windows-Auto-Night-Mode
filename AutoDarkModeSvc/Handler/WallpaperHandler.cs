@@ -5,12 +5,8 @@ using System.Linq;
 
 namespace AutoDarkModeSvc.Handler
 {
-    class WallpaperHandler
+    static class WallpaperHandler
     {
-        public WallpaperHandler()
-        {
-        }
-
         public static void SetBackground(ICollection<string> wallpaperCollection)
         {
             List<string> wallpapers = wallpaperCollection.ToList();
@@ -21,7 +17,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public string GetBackground()
+        public static string GetBackground()
         {
             string currentWallpaper = new string('\0', 260);
             win32.SystemParametersInfo(0x0073, currentWallpaper.Length, currentWallpaper, 0);

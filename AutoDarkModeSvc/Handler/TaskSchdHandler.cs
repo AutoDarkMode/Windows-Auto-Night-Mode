@@ -5,18 +5,18 @@ using AutoDarkModeApp;
 
 namespace AutoDarkModeSvc.Handler
 {
-    public class TaskSchdHandler
+    public static class TaskSchdHandler
     {
-        readonly string dark = "Dark switch";
-        readonly string light = "Light switch";
-        readonly string hibernation = "Hibernation trigger";
-        readonly string updater = "Location times updater";
-        readonly string appupdater = "App updater";
-        readonly string connected = "Connected standby trigger";
-        readonly string folder = "Auto Dark Mode";
-        readonly string author = "Armin Osaj";
-        readonly string program = "Windows Auto Dark Mode";
-        readonly string description = "Task of the program Windows Auto Dark Mode.";
+        private static readonly string dark = "Dark switch";
+        private static readonly string light = "Light switch";
+        private static readonly string hibernation = "Hibernation trigger";
+        private static readonly string updater = "Location times updater";
+        private static readonly string appupdater = "App updater";
+        private static readonly string connected = "Connected standby trigger";
+        private static readonly string folder = "Auto Dark Mode";
+        private static readonly string author = "Armin Osaj";
+        private static readonly string program = "Windows Auto Dark Mode";
+        private static readonly string description = "Task of the program Windows Auto Dark Mode.";
 
         /// <summary>
         /// Create tasks for dark and light mode switching based on time
@@ -25,7 +25,7 @@ namespace AutoDarkModeSvc.Handler
         /// <param name="startTimeMinute">Sunrise minute</param>
         /// <param name="endTimeHour">Sunset hour</param>
         /// <param name="endTimeMinute">Sunset minute</param>
-        public void CreateTask(int startTimeHour, int startTimeMinute, int endTimeHour, int endTimeMinute)
+        public static void CreateTask(int startTimeHour, int startTimeMinute, int endTimeHour, int endTimeMinute)
         {
             //NEEDS TO BE REWRITTEN TO CREATE TASK FOR THINSERVER!!
             using (TaskService taskService = new TaskService())
@@ -82,7 +82,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void CreateLocationTask()
+        public static void CreateLocationTask()
         {
             using(TaskService taskService = new TaskService())
             {
@@ -103,7 +103,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void CreateAppUpdaterTask()
+        public static void CreateAppUpdaterTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -123,7 +123,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void CreateConnectedStandbyTask()
+        public static void CreateConnectedStandbyTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -144,7 +144,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void RemoveTask()
+        public static void RemoveTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -208,7 +208,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void RemoveLocationTask()
+        public static void RemoveLocationTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -224,7 +224,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void RemoveAppUpdaterTask()
+        public static void RemoveAppUpdaterTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -240,7 +240,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public void RemoveConnectedStandbyTask()
+        public static void RemoveConnectedStandbyTask()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -256,7 +256,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public int CheckExistingClass()
+        public static int CheckExistingClass()
         {
             using (TaskService taskService = new TaskService())
             {
@@ -282,7 +282,7 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        public int[] GetRunTime(string theme)
+        public static int[] GetRunTime(string theme)
         {
             using (TaskService taskService = new TaskService())
             {
@@ -301,13 +301,13 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
-        private int GetRunHour(Task task)
+        private static int GetRunHour(Task task)
         {
             DateTime time = task.NextRunTime;
             return time.Hour;
         }
 
-        private int GetRunMinute(Task task)
+        private static int GetRunMinute(Task task)
         {
             DateTime time = task.NextRunTime;
             return time.Minute;

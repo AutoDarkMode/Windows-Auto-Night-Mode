@@ -19,7 +19,7 @@ namespace AutoDarkModeApp
         private readonly TaskShedHandler taskShedHandler = new TaskShedHandler();
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
 
-        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.GetInstance();
+        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
 
 
         private readonly bool is1903 = false;
@@ -205,7 +205,7 @@ namespace AutoDarkModeApp
         private void InitOffset()
         {
             //PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
-            PopulateOffsetFields(autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin, autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin);
+            PopulateOffsetFields(autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin, autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin);
         }
 
         private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
@@ -245,23 +245,23 @@ namespace AutoDarkModeApp
 
             if (OffsetLightModeButton.Content.ToString() == "+")
             {
-                autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin = offsetLight;
+                autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin = offsetLight;
                 Properties.Settings.Default.LightOffset = offsetLight;
             }
             else
             {
-                autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin = -offsetLight;
+                autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin = -offsetLight;
                 Properties.Settings.Default.LightOffset = -offsetLight;
             }
 
             if (OffsetDarkModeButton.Content.ToString() == "+")
             {
-                autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin = offsetDark;
+                autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin = offsetDark;
                 Properties.Settings.Default.DarkOffset = offsetDark;
             }
             else
             {
-                autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin = -offsetDark;
+                autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
                 Properties.Settings.Default.DarkOffset = -offsetDark;
             }
 
@@ -348,8 +348,8 @@ namespace AutoDarkModeApp
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
 
-            autoDarkModeConfigBuilder.Config.SunRise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
-            autoDarkModeConfigBuilder.Config.SunSet = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            autoDarkModeConfigBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            autoDarkModeConfigBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
 
             try
             {

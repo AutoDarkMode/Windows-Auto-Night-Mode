@@ -33,10 +33,10 @@ namespace AutoDarkModeApp
 
             //Remove old offset first if new offset is zero to preserve temporal integrity
             DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(Properties.Config.Location.SunRiseOffsetMin);
+            sunrise = sunrise.AddMinutes(Properties.Config.Location.SunriseOffsetMin);
 
             DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(Properties.Config.Location.SunSetOffsetMin);
+            sunset = sunset.AddMinutes(Properties.Config.Location.SunsetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
             sundate[1] = sunrise.Minute; //sunrise minute
@@ -77,9 +77,8 @@ namespace AutoDarkModeApp
 
         public async Task SetLocationSilent()
         {
-            TaskSchdHandler taskShedHandler = new TaskSchdHandler();
             int[] sundate = await CalculateSunTime(true);
-            taskShedHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
+            TaskSchdHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
         }
     }
 }

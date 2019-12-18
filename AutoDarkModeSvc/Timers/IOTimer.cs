@@ -1,19 +1,20 @@
-﻿using AutoDarkModeSvc.Modules;
+﻿using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Timers;
-using AutoDarkModeApp.Config;
 
 namespace AutoDarkModeSvc.Timers
 {
-    class ModuleTimer
+    class IOTimer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         AutoDarkModeConfigBuilder ConfigBuilder { get; set; }
 
         private List<IAutoDarkModeModule> Modules { get; set; }
         private Timer Timer { get; set; }
-        public ModuleTimer(int interval)
+        public IOTimer(int interval)
         {
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             Modules = new List<IAutoDarkModeModule>();
@@ -63,4 +64,6 @@ namespace AutoDarkModeSvc.Timers
             Timer.Dispose();
         }
     }
+
+
 }

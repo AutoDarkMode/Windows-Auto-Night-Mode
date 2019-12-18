@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeSvc.Handler;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 
@@ -9,18 +11,27 @@ namespace AutoDarkModeSvc
 {
     class Service : ApplicationContext
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         NotifyIcon NotifyIcon { get; }
-        ModuleTimer ManhThai { get; }
+        ModuleTimer ModuleTimer { get; }
+        IOTimer IOTimer { get; }
         PipeService PipeSvc { get;  }
         public Service(int timerMillis)
         { 
             NotifyIcon = new NotifyIcon();
             InitTray();
+
             PipeSvc = new PipeService();
             PipeSvc.Start();
-            ManhThai = new ModuleTimer(timerMillis);
-            ManhThai.RegisterModule(new TimeSwitchModule("TimeSwitch"));
-            ManhThai.Start();
+
+            ModuleTimer = new ModuleTimer(timerMillis);
+            ModuleTimer.RegisterModule(new TimeSwitchModule("TimeSwitch"));
+            ModuleTimer.Start();
+
+            IOTimer = new IOTimer(300000);
+            IOTimer.RegisterModule(new ConfigRefreshModule("ConfigRefresh"));
+            IOTimer.Start();
         }
 
         private void InitTray()
@@ -39,12 +50,25 @@ namespace AutoDarkModeSvc
         {
             PipeSvc.Stop();
             NotifyIcon.Dispose();
-            ManhThai.Dispose();
+            ModuleTimer.Stop();
+            ModuleTimer.Dispose();
+            IOTimer.Stop();
+            IOTimer.Dispose();
+            NLog.LogManager.Shutdown();
             Application.Exit();
         }
         private void SwitchThemeNow(object sender, EventArgs e)
         {
-            Console.WriteLine("Switch Theme");
+            AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().Config;
+            Logger.Info("ui signal received: switching theme");
+            if (RegistryHandler.AppsUseLightTheme())
+            {
+                ThemeManager.SwitchTheme(config, Theme.Dark);
+            }
+            else
+            {
+                ThemeManager.SwitchTheme(config, Theme.Light);
+            }
         }
         private void OpenApp(object sender, MouseEventArgs e)
         {

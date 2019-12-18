@@ -11,7 +11,7 @@ namespace AutoDarkModeApp
     {
         public async Task<int[]> CalculateSunTime(bool background)
         {
-            AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.GetInstance();
+            AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             int[] sundate = new int[4];
             int[] sun = new int[2];
             if (!background)
@@ -34,15 +34,15 @@ namespace AutoDarkModeApp
 
             //Remove old offset first if new offset is zero to preserve temporal integrity
             DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            autoDarkModeConfigBuilder.Config.SunRise = sunrise;
+            autoDarkModeConfigBuilder.Config.Sunrise = sunrise;
             //sunrise = sunrise.AddMinutes(Properties.Settings.Default.LightOffset);
-            sunrise = sunrise.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunRiseOffsetMin);
+            sunrise = sunrise.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin);
 
 
             DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            autoDarkModeConfigBuilder.Config.SunSet = sunset;
+            autoDarkModeConfigBuilder.Config.Sunset = sunset;
             //sunset = sunset.AddMinutes(Properties.Settings.Default.DarkOffset);
-            sunset = sunset.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunSetOffsetMin);
+            sunset = sunset.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
             sundate[1] = sunrise.Minute; //sunrise minute

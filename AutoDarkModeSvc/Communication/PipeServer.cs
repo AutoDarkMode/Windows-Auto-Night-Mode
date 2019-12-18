@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Pipes;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Handler;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -72,55 +73,82 @@ namespace AutoDarkModeSvc.Communication
 
         public void MsgParser(List<string> msg)
         {
-            AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.GetInstance();
-            Handler.RegistryHandler rh = new Handler.RegistryHandler();
-            Handler.TaskSchdHandler tschd = new Handler.TaskSchdHandler();
+            AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.Instance();
+            try
+            {
+                Properties.Read();
+            } catch (Exception ex)
+            {
+                Logger.Fatal(ex, "could not read config file");
+                return;
+            }
 
             msg.ForEach(message =>
             {
                 switch (message)
                 {
-                    case Tools.Switch: 
-                        rh.SwitchThemeBasedOnTime();
+                    case Tools.Switch:
+                        Logger.Info("signal received: time based theme switch");
+                        ThemeManager.TimedSwitch(Properties.Config);
                         break;
                     case Tools.Swap:
-                        if (rh.AppsUseLightTheme())
+                        Logger.Info("signal received: swap themes");
+                        if (RegistryHandler.AppsUseLightTheme())
                         {
-                            rh.ThemeToDark();
+                            ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
                         }
                         else
                         {
-                            rh.ThemeToLight();
+                            ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
                         }
                         break;
                     case Tools.Dark:
-                        rh.ThemeToDark();
+                        Logger.Info("signal received: switch to dark mode");
+                        ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
                         break;
                     case Tools.Light:
-                        rh.ThemeToLight();
+                        Logger.Info("signal received: switch to light mode");
+                        ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
                         break;
                     case Tools.AddAutostart:
-                        rh.AddAutoStart();
+                        Logger.Info("signal received: adding service to autostart");
+                        RegistryHandler.AddAutoStart();
                         break;
                     case Tools.RemoveAutostart:
-                        rh.RemoveAutoStart();
+                        Logger.Info("signal received: removing service from autostart");
+                        RegistryHandler.RemoveAutoStart();
                         break;
                     case Tools.CreateTask:
+                        Logger.Info("signal received: creating win scheduler based time switch task");
                         try
                         {
-                            DateTime sunrise = Convert.ToDateTime(Properties.Config.SunRise);
-                            DateTime sunset = Convert.ToDateTime(Properties.Config.SunSet);
-                            tschd.CreateTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
+                            DateTime sunrise = Convert.ToDateTime(Properties.Config.Sunrise);
+                            DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
+                            if (!Properties.Config.Location.Disabled)
+                            {
+                                ThemeManager.CalculateSunTimes(Properties.Config, out sunrise, out sunset);
+                            }
+                            TaskSchdHandler.CreateTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
+
                         }
                         catch (FormatException e)
                         {
-                            //todo: logger here!
+                            Logger.Error(e, "could not create win scheduler tasks");
                             Console.WriteLine(e);
                         }
-
                         break;
                     case Tools.RemoveTask:
-                        tschd.RemoveTask();
+                        TaskSchdHandler.RemoveTask();
+                        break;
+                    case Tools.UpdateConfig:
+                        try
+                        {
+                            AutoDarkModeConfigBuilder.Instance().Read();
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e, "could not read config file");
+                        }
                         break;
                 }
             });

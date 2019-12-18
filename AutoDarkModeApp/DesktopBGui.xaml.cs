@@ -13,7 +13,7 @@ namespace AutoDarkModeApp
     public partial class DesktopBGui
     {
         DeskBGHandler deskBGHandler = new DeskBGHandler();
-        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.GetInstance();
+        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         string pathOrig1;
         string pathOrig2;
         string pathCur1 = Properties.Settings.Default.WallpaperLight;

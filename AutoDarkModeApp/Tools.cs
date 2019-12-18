@@ -28,5 +28,6 @@ namespace AutoDarkModeApp
         public const string AddAutostart = "/addAutostart";
         public const string RemoveAutostart = "/removeAutoStart";
         public const string PipeClientTest = "/pipeclienttest";
+        public const string UpdateConfig = "/updateConfig";
     }
 }

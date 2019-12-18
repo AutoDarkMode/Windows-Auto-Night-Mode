@@ -8,7 +8,7 @@ namespace AutoDarkModeApp.Config
     public class AutoDarkModeConfigBuilder
     {
         private static AutoDarkModeConfigBuilder instance;
-        public AutoDarkModeConfig Config { get; set; }
+        public AutoDarkModeConfig Config { get; private set; }
 
         private const string FileName = "AutoDarkModeConfig.json";
         protected AutoDarkModeConfigBuilder()
@@ -19,7 +19,7 @@ namespace AutoDarkModeApp.Config
             }
         }
 
-        public static AutoDarkModeConfigBuilder GetInstance()
+        public static AutoDarkModeConfigBuilder Instance()
         {
             if (instance == null)
             {
@@ -32,7 +32,7 @@ namespace AutoDarkModeApp.Config
         {
             try
             {
-                string jsonConfig = JsonConvert.SerializeObject(Config);
+                string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
                 using StreamWriter writer = new StreamWriter(Path.Combine(Environment.CurrentDirectory, FileName), false);
                 writer.WriteLine(jsonConfig);
                 writer.Close();
@@ -76,8 +76,8 @@ namespace AutoDarkModeApp.Config
         private int systemTheme;
         private int egdeTheme;
 
-        public DateTime SunRise { get; set; }
-        public DateTime SunSet { get; set; }
+        public DateTime Sunrise { get; set; }
+        public DateTime Sunset { get; set; }
         public bool Enabled { get; set; }
         public bool AccentColorTaskbar { get; set; }
         public int AppsTheme
@@ -149,7 +149,7 @@ namespace AutoDarkModeApp.Config
         public bool Disabled { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
-        public int SunSetOffsetMin { get; set; }
-        public int SunRiseOffsetMin { get; set; }
+        public int SunsetOffsetMin { get; set; }
+        public int SunriseOffsetMin { get; set; }
     }
 }
