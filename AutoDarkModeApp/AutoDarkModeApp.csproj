@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <Version>3.0.0.0</Version>
+    <Company />
+    <Product />
+    <Authors>Armin Osaj</Authors>
+    <Description>"Automatically switches between the dark and light theme of Windows 10 at sheduled times."</Description>
+    <Copyright>© 2019 Armin Osaj</Copyright>
+    <AssemblyName>AutoDarkModeApp</AssemblyName>
+    <PackageId>AutoDarkModeGUI</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>C:\Users\Armin\source\repos\AutoDarkMode\Output\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\GitHub_Logo_Black.png" />
+    <None Remove="Resources\GitHub_Logo_White.png" />
+    <None Remove="Resources\Microsoft_Edge_Logo.png" />
+    <None Remove="Resources\Microsoft_Edge_Logo_White.png" />
+    <None Remove="Resources\PayPal_Logo.png" />
+    <None Remove="Resources\Photo_Icon.png" />
+    <None Remove="Resources\Settings_Icon.png" />
+    <None Remove="Resources\Twitter_Logo_Blue.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentWPF" Version="0.8.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="TaskScheduler" Version="2.8.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\GitHub_Logo_Black.png" />
+    <Resource Include="Resources\GitHub_Logo_White.png" />
+    <Resource Include="Resources\Microsoft_Edge_Logo.png" />
+    <Resource Include="Resources\Microsoft_Edge_Logo_White.png" />
+    <Resource Include="Resources\PayPal_Logo.png" />
+    <Resource Include="Resources\Photo_Icon.png" />
+    <Resource Include="Resources\Settings_Icon.png" />
+    <Resource Include="Resources\Twitter_Logo_Blue.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="DesktopBGui.xaml.cs">
+      <DependentUpon>DesktopBGui.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="MsgBox.xaml.cs">
+      <DependentUpon>MsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DesktopBGui.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="MsgBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>
