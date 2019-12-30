@@ -154,7 +154,7 @@
     <value>ダークテーマ</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (古いバージョン用):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>ライト</value>
@@ -211,7 +211,7 @@
     <value>最新版があります。</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Auto Dark Modeをご利用いただきありがとうございます。
+    <value>Auto Dark Mode をご利用いただきありがとうございます。
 
 最新版が GitHub にあります。修正と機能が強化されています。
 ダウンロードしますか？
@@ -366,6 +366,12 @@
 PayPal の寄付ページを開きますか？</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>Auto Dark Mode を気に入っていますか？</value>
+    <value>Auto Dark Mode を気に入りましたでしょうか？</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>補正</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>適用</value>
   </data>
 </root>
