@@ -11,12 +11,12 @@ using System.Globalization;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Handler;
 
 namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
-        private readonly TaskShedHandler taskShedHandler = new TaskShedHandler();
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
 
         private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
@@ -70,7 +70,6 @@ namespace AutoDarkModeApp
                     System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
                 }
             }
-
         }
 
         private void LanguageHelper()
@@ -113,17 +112,17 @@ namespace AutoDarkModeApp
 
         private void DoesTaskExists()
         {
-            if (taskShedHandler.CheckExistingClass().Equals(1))
+            if (TaskSchdHandler.CheckExistingClass().Equals(1))
             {
                 autoCheckBox.IsChecked = true;
-                int[] darkStart = taskShedHandler.GetRunTime("dark");
-                int[] lightStart = taskShedHandler.GetRunTime("light");
+                int[] darkStart = TaskSchdHandler.GetRunTime("dark");
+                int[] lightStart = TaskSchdHandler.GetRunTime("light");
                 darkStartBox.Text = Convert.ToString(darkStart[0]);
                 DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
                 lightStartBox.Text = Convert.ToString(lightStart[0]);
                 LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
             }
-            else if (taskShedHandler.CheckExistingClass().Equals(2))
+            else if (TaskSchdHandler.CheckExistingClass().Equals(2))
             {
                 autoCheckBox.IsChecked = true;
                 locationCheckBox.IsChecked = true;
@@ -137,21 +136,18 @@ namespace AutoDarkModeApp
 
         private void UiHandler()
         {
-            //int appTheme = Properties.Settings.Default.AppThemeChange;
             int appTheme = autoDarkModeConfigBuilder.Config.AppsTheme;
             Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
             if (appTheme == 1) AppComboBox.SelectedIndex = 1;
             if (appTheme == 2) AppComboBox.SelectedIndex = 2;
 
-            //int systemTheme = Properties.Settings.Default.SystemThemeChange;
             int systemTheme = autoDarkModeConfigBuilder.Config.SystemTheme;
             Console.WriteLine("SystemTheme Value: " + systemTheme);
             if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
             if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
             if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
 
-            //int edgeTheme = Properties.Settings.Default.EdgeThemeChange;
             int edgeTheme = autoDarkModeConfigBuilder.Config.EdgeTheme;
             Console.WriteLine("EdgeTheme Value: " + edgeTheme);
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
@@ -172,7 +168,6 @@ namespace AutoDarkModeApp
             }
 
             if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
-            //if (Properties.Settings.Default.AccentColor)
             {
                 AccentColorCheckBox.IsChecked = true;
             }
@@ -204,7 +199,6 @@ namespace AutoDarkModeApp
 
         private void InitOffset()
         {
-            //PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
             PopulateOffsetFields(autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin, autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin);
         }
 
@@ -267,6 +261,7 @@ namespace AutoDarkModeApp
 
             OffsetButton.IsEnabled = false;
             GetLocation();
+            autoDarkModeConfigBuilder.Write();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -357,7 +352,7 @@ namespace AutoDarkModeApp
                 {
                     darkStart += 12;
                 }
-                taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+                TaskSchdHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
             }
             catch (Exception ex)
             {
@@ -418,9 +413,8 @@ namespace AutoDarkModeApp
             try
             {
                 if (!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
-                //if (Properties.Settings.Default.BackgroundUpdate)
                 {
-                    taskShedHandler.CreateAppUpdaterTask();
+                    TaskSchdHandler.CreateAppUpdaterTask();
                 }
             }
             catch (Exception ex)
@@ -443,7 +437,7 @@ namespace AutoDarkModeApp
             {
                 if (Properties.Settings.Default.connectedStandby)
                 {
-                    taskShedHandler.CreateConnectedStandbyTask();
+                    TaskSchdHandler.CreateConnectedStandbyTask();
                 }
             }
             catch (Exception ex)
@@ -472,6 +466,7 @@ namespace AutoDarkModeApp
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
+            autoDarkModeConfigBuilder.Write();
         }
 
         //textbox event handler
@@ -532,23 +527,23 @@ namespace AutoDarkModeApp
 
             if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
             {
-                taskShedHandler.CreateAppUpdaterTask();
+                TaskSchdHandler.CreateAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = true;
             }
             else if (aboutWindow.BckgrUpdateCB.IsChecked == false && Properties.Settings.Default.BackgroundUpdate == true)
             {
-                taskShedHandler.RemoveAppUpdaterTask();
+                TaskSchdHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
             }
 
             if (aboutWindow.conStandByCB.IsChecked == true && Properties.Settings.Default.connectedStandby == false)
             {
-                taskShedHandler.CreateConnectedStandbyTask();
+                TaskSchdHandler.CreateConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = true;
             }
             else if (aboutWindow.conStandByCB.IsChecked == false && Properties.Settings.Default.connectedStandby == true)
             {
-                taskShedHandler.RemoveConnectedStandbyTask();
+                TaskSchdHandler.RemoveConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = false;
             }
         }
@@ -603,7 +598,7 @@ namespace AutoDarkModeApp
                     DarkStartMinutesBox.IsEnabled = false;
                     applyButton.IsEnabled = false;
                     ApplyButton_Click(this, null);
-                    taskShedHandler.CreateLocationTask();
+                    TaskSchdHandler.CreateLocationTask();
                     break;
 
                 case GeolocationAccessStatus.Denied:
@@ -637,7 +632,7 @@ namespace AutoDarkModeApp
             SetOffsetVisibility(Visibility.Collapsed);
 
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-            taskShedHandler.RemoveLocationTask();
+            TaskSchdHandler.RemoveLocationTask();
         }
 
         //automatic theme switch checkbox
@@ -665,7 +660,7 @@ namespace AutoDarkModeApp
 
             if (e != null)
             {
-                taskShedHandler.RemoveTask();
+                TaskSchdHandler.RemoveTask();
                 regEditHandler.RemoveAutoStart();
             }
 
@@ -744,7 +739,6 @@ namespace AutoDarkModeApp
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
                 if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
-                //if (Properties.Settings.Default.AccentColor)
                 {
                     regEditHandler.ColorPrevalence(0);
                     Thread.Sleep(200);
@@ -758,7 +752,6 @@ namespace AutoDarkModeApp
                 Properties.Settings.Default.SystemThemeChange = 2;
                 regEditHandler.SystemTheme(0);
                 if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
-                //if (Properties.Settings.Default.AccentColor)
                 {
                     Thread.Sleep(200);
                     regEditHandler.ColorPrevalence(1);
@@ -824,8 +817,6 @@ namespace AutoDarkModeApp
         private void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             autoDarkModeConfigBuilder.Config.AccentColorTaskbar = true;
-
-            Properties.Settings.Default.AccentColor = true;
             try
             {
                 if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
@@ -840,8 +831,6 @@ namespace AutoDarkModeApp
         private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             autoDarkModeConfigBuilder.Config.AccentColorTaskbar = false;
-
-            Properties.Settings.Default.AccentColor = false;
             regEditHandler.ColorPrevalence(0);
         }
 
@@ -862,7 +851,6 @@ namespace AutoDarkModeApp
         private void ShowDeskBGStatus()
         {
             if(!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
-            //if (Properties.Settings.Default.WallpaperSwitch == true)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }
@@ -911,7 +899,6 @@ namespace AutoDarkModeApp
                 }
                 darkStartBox.Text = Convert.ToString(darkTime);
             }
-
         }
 
         private void SetOffsetVisibility(Visibility value)
@@ -926,7 +913,6 @@ namespace AutoDarkModeApp
             OffsetDarkDot.Visibility = value;
             OffsetLightDot.Visibility = value;
             OffsetButton.Visibility = value;
-
         }
     }
 }

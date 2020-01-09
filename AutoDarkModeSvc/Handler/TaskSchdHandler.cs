@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using AutoDarkModeApp;
 using Microsoft.Win32.TaskScheduler;
-using AutoDarkModeApp;
+using System;
 
 namespace AutoDarkModeSvc.Handler
 {

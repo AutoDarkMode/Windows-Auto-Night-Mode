@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Handler;
 
 namespace AutoDarkModeApp
 {
@@ -26,7 +27,6 @@ namespace AutoDarkModeApp
             else if (background)
             {
                 sun = SunDate.CalculateSunriseSunset(autoDarkModeConfigBuilder.Config.Location.Lat, autoDarkModeConfigBuilder.Config.Location.Lon);
-                //sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
             }
 
 
@@ -35,13 +35,11 @@ namespace AutoDarkModeApp
             //Remove old offset first if new offset is zero to preserve temporal integrity
             DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
             autoDarkModeConfigBuilder.Config.Sunrise = sunrise;
-            //sunrise = sunrise.AddMinutes(Properties.Settings.Default.LightOffset);
             sunrise = sunrise.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin);
 
 
             DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
             autoDarkModeConfigBuilder.Config.Sunset = sunset;
-            //sunset = sunset.AddMinutes(Properties.Settings.Default.DarkOffset);
             sunset = sunset.AddMinutes(autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
@@ -83,9 +81,8 @@ namespace AutoDarkModeApp
 
         public async Task SetLocationSilent()
         {
-            TaskShedHandler taskShedHandler = new TaskShedHandler();
             int[] sundate = await CalculateSunTime(true);
-            taskShedHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
+            TaskSchdHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
         }
     }
 }

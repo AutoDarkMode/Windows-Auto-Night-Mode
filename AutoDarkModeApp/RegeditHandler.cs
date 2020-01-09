@@ -1,6 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using AutoDarkModeSvc.Handler;
+using Microsoft.Win32;
 using System;
-using System.IO;
 using System.Threading;
 
 namespace AutoDarkModeApp
@@ -9,11 +9,10 @@ namespace AutoDarkModeApp
     {
         public void SwitchThemeBasedOnTime()
         {
-            TaskShedHandler task = new TaskShedHandler();
             var hour = DateTime.Now.Hour;
             var minute = DateTime.Now.Minute;
-            var lightStart = task.GetRunTime("light");
-            var darkStart = task.GetRunTime("dark");
+            var lightStart = TaskSchdHandler.GetRunTime("light");
+            var darkStart = TaskSchdHandler.GetRunTime("dark");
 
             if (hour < lightStart[0] || hour >= darkStart[0])
             {

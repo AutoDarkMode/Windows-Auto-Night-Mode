@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 namespace AutoDarkModeApp
 {
@@ -29,5 +26,6 @@ namespace AutoDarkModeApp
         public const string RemoveAutostart = "/removeAutoStart";
         public const string PipeClientTest = "/pipeclienttest";
         public const string UpdateConfig = "/updateConfig";
+        public const string SystemThemeDark = "/systemThemeDark";
     }
 }

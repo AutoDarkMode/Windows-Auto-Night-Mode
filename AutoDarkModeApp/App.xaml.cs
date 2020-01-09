@@ -1,9 +1,6 @@
 ﻿using AutoDarkModeApp.Communication;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Handler;
 using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
 using System.Windows;
 
 namespace AutoDarkModeApp
@@ -57,8 +54,7 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/removeTask")
                     {
-                        TaskShedHandler taskShedHandler = new TaskShedHandler();
-                        taskShedHandler.RemoveTask();
+                        TaskSchdHandler.RemoveTask();
                     }
                     else if (value == "/removeAutostart")
                     {
@@ -79,45 +75,6 @@ namespace AutoDarkModeApp
                 MainWindow mainWin = new MainWindow();
                 mainWin.Show();
             }
-        }
-
-        private void SwapTheme(object sender, EventArgs e)
-        {
-            //
-            // It just swaps the current theme but should behave according to the custom preferences of the user
-            // like edge theme, app theme and system theme
-            //
-
-            RegeditHandler regEditHandler = new RegeditHandler();
-            if (regEditHandler.AppsUseLightTheme())
-            {
-                regEditHandler.ThemeToDark();
-            }
-            else
-            {
-                regEditHandler.ThemeToLight();
-            }
-        }
-
-        private void ShowMainWindow(object sender, EventArgs e)
-        {
-            if (MainWindow.IsVisible)
-            {
-                if (MainWindow.WindowState == WindowState.Minimized)
-                {
-                    MainWindow.WindowState = WindowState.Normal;
-                }
-                MainWindow.Activate();
-            }
-            else
-            {
-                MainWindow.Show();
-            }
-        }
-
-        private void ExitApplication(object sender, EventArgs e)
-        {
-            MainWindow.Close();
         }
     }
 }
