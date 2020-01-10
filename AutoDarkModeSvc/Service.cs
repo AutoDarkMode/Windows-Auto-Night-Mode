@@ -15,7 +15,7 @@ namespace AutoDarkModeSvc
 
         NotifyIcon NotifyIcon { get; }
         ModuleTimer ModuleTimer { get; }
-        IOTimer IOTimer { get; }
+        ModuleTimer IOTimer { get; }
         PipeService PipeSvc { get;  }
         public Service(int timerMillis)
         { 
@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc
             ModuleTimer.RegisterModule(new TimeSwitchModule("TimeSwitch"));
             ModuleTimer.Start();
 
-            IOTimer = new IOTimer(300000);
+            IOTimer = new ModuleTimer(300000);
             IOTimer.RegisterModule(new ConfigRefreshModule("ConfigRefresh"));
             IOTimer.Start();
         }

@@ -17,27 +17,16 @@ namespace AutoDarkModeApp.Communication
 
         public void SendMessage(string message)
         {
-            while (Count++ < 3)
+            System.Threading.Thread.Sleep(3000);
+            using (NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName, PipeDirection.Out))
             {
-                System.Threading.Thread.Sleep(3000);
-                using (NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName, PipeDirection.Out))
+                pipeClient.Connect();
+                using (StreamWriter sw = new StreamWriter(pipeClient))
                 {
-                    pipeClient.Connect();
-                    try
-                    {
-                        using (StreamWriter sw = new StreamWriter(pipeClient))
-                        {
-                            sw.AutoFlush = true;
-                            sw.WriteLine(message);
-                        }
-                    }
-                    catch (IOException e)
-                    {
-                        Console.WriteLine("Could not write to pipe: {0}", e.Message);
-                    }
+                    sw.AutoFlush = true;
+                    sw.WriteLine(message);
                 }
             }
-           
         }
     }
 }
