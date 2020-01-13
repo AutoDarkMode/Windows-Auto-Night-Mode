@@ -63,9 +63,9 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/pipeclienttest")
                     {
-                        PipeClient pc = new PipeClient("WindowsAutoDarkMode");
-                        pc.SendMessage("Test");
-
+                        PipeClient pc = new PipeClient(Tools.DefaultPipeName);
+                        var response = pc.SendMessage(Tools.TestError);
+                        Console.Out.WriteLine(response);
                     }
                 }
                 Shutdown();

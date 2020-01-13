@@ -15,7 +15,7 @@ namespace AutoDarkModeSvc.Communication
         private Task Task { get; set; }
         public PipeService()
         {
-            ps = new PipeServer("WindowsAutoDarkMode");
+            ps = new PipeServer(AutoDarkModeApp.Tools.DefaultPipeName);
         }
 
         public void Start()

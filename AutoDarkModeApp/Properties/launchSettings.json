@@ -1,7 +1,8 @@
 {
   "profiles": {
     "AutoDarkModeApp": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "/pipeclienttest"
     }
   }
 }

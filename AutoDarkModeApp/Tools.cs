@@ -14,6 +14,10 @@ namespace AutoDarkModeApp
             return Path.Combine(executablePath + executableName);
         }
 
+        public const string DefaultPipeName = "WindowsAutoDarkMode";
+        public const string DefaultPipeResponse = "_response";
+        public const string DefaultPipeCommand = "_command";
+
         public const string Switch = "/switch";
         public const string Swap = "/swap";
         public const string Light = "/light";
@@ -27,5 +31,8 @@ namespace AutoDarkModeApp
         public const string PipeClientTest = "/pipeclienttest";
         public const string UpdateConfig = "/updateConfig";
         public const string SystemThemeDark = "/systemThemeDark";
+        public const string Err = "Err";
+        public const string Ok = "Ok";
+        public const string TestError = "/testError";
     }
 }
