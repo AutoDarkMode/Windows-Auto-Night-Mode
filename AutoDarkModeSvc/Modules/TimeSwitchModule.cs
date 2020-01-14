@@ -8,24 +8,17 @@ namespace AutoDarkModeSvc.Modules
 {
     class TimeSwitchModule : IAutoDarkModeModule
     {
+        public string Name { get; }
         public TimeSwitchModule(string name)
         {
             Name = name;
         }
-
-        public string Name { get; }
-
-        public void Poll(AutoDarkModeConfig config)
+        public void Poll()
         {
             Task.Run(() =>
             {
-                ThemeManager.TimedSwitch(config);
+                ThemeManager.TimedSwitch(AutoDarkModeConfigBuilder.Instance().Config);
             });
-        }
-
-        public void Poll()
-        {
-            throw new NotImplementedException();
         }
     }
 }

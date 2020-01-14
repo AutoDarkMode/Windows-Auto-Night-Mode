@@ -356,7 +356,7 @@ namespace AutoDarkModeApp
                 {
                     darkStart += 12;
                 }
-                TaskSchdHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+                TaskSchdHandler.CreateSwitchTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
             }
             catch (Exception ex)
             {
@@ -921,6 +921,27 @@ namespace AutoDarkModeApp
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
+            try
+            {
+                autoDarkModeConfigBuilder.Write();
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: MainWindow.OnClosing.autoDarkModeConfigBuilder.Write()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues");
+                }
+                return;
+            }
+
             if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(Tools.Shutdown);
             NetMQConfig.Cleanup();
             base.OnClosing(e);

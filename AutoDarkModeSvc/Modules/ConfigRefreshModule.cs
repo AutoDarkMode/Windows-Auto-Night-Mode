@@ -10,17 +10,10 @@ namespace AutoDarkModeSvc.Modules
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public string Name { get; }
-
         public ConfigRefreshModule(string name)
         {
             Name = name;
         }
-
-        public void Poll(AutoDarkModeConfig Config)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Poll()
         {
             AutoDarkModeConfigBuilder Builder = AutoDarkModeConfigBuilder.Instance();

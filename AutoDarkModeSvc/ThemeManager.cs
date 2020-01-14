@@ -17,7 +17,7 @@ namespace AutoDarkModeSvc
             DateTime sunset = config.Sunset;
             if (!config.Location.Disabled)
             {
-                CalculateSunTimes(config, out sunrise, out sunset);
+                LocationHandler.ApplySunDateOffset(config, out sunrise, out sunset);
             }
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
@@ -75,22 +75,6 @@ namespace AutoDarkModeSvc
                     RegistryHandler.SetColorPrevalence((int)newTheme);
                 });                
             }
-        }
-
-
-        public static void CalculateSunTimes(AutoDarkModeConfig config, out DateTime sunrise_out, out DateTime sunset_out)
-        {
-            int[] sun = SunDate.CalculateSunriseSunset(config.Location.Lat, config.Location.Lon);
-
-            //Add offset to sunrise and sunset hours using Settings
-            DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(config.Location.SunriseOffsetMin);
-
-            DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(config.Location.SunsetOffsetMin);
-
-            sunrise_out = sunrise;
-            sunset_out = sunset;
         }
     }
 }

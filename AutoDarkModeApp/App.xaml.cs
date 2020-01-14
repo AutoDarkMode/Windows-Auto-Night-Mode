@@ -57,30 +57,19 @@ namespace AutoDarkModeApp
                 {
                     if (value == "/switch")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.SwitchThemeBasedOnTime();
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/swap")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        if (regEditHandler.AppsUseLightTheme())
-                        {
-                            regEditHandler.ThemeToDark();
-                        }
-                        else
-                        {
-                            regEditHandler.ThemeToLight();
-                        }
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/dark")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.ThemeToDark();
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/light")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.ThemeToLight();
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/update")
                     {

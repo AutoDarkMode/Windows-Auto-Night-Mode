@@ -74,6 +74,7 @@ namespace AutoDarkModeSvc
             }
             finally 
             {
+                //clean shutdown
                 Service.Cleanup();
                 mutex.ReleaseMutex();
             }

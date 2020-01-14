@@ -5,80 +5,65 @@ using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc;
 
 namespace AutoDarkModeApp
 {
-    class LocationHandler
+    static class LocationHandler
     {
-        private AutoDarkModeConfigBuilder Properties { get; set; }
-
-        public async Task<int[]> CalculateSunTime(bool background)
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public static void UpdateSunTime(AutoDarkModeConfigBuilder configBuilder)
         {
-            int[] sundate = new int[4];
-            int[] sun = new int[2];
-            if (!background)
+            int[] sun = SunDate.CalculateSunriseSunset(configBuilder.Config.Location.Lat, configBuilder.Config.Location.Lon);
+            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
+            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
+            try
             {
-                BasicGeoposition position = await GetUserPosition();
-                Properties.Config.Location.Lat = position.Latitude;
-                Properties.Config.Location.Lon = position.Longitude;
-                sun = SunDate.CalculateSunriseSunset(position.Latitude, position.Longitude);
+                configBuilder.Write();
+                Logger.Info($"Updated sunrise {configBuilder.Config.Sunrise.ToString("HH:mm")} and sunset {configBuilder.Config.Sunset.ToString("HH:mm")}");
             }
-            else if (background)
+            catch (Exception e)
             {
-                sun = SunDate.CalculateSunriseSunset(Properties.Config.Location.Lat, Properties.Config.Location.Lon);
+                Logger.Error(e, "could not update configuration file while updating sundates");
             }
+        }
 
+        private static async Task GetUserPosition(AutoDarkModeConfigBuilder configBuilder)
+        {
+            Geolocator locator = new Geolocator();
+            Geoposition location = await locator.GetGeopositionAsync();
+            BasicGeoposition position = location.Coordinate.Point.Position;
+            configBuilder.Config.Location.Lon = position.Longitude;
+            configBuilder.Config.Location.Lat = position.Latitude;
+            try
+            {
+                configBuilder.Write();
+                Logger.Info($"Updated latitude {position.Latitude} and longitude {position.Longitude}");
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e, "could not update configuration file while retrieving location");
+            }
+        }
 
+        public static void CreateLocationTask(AutoDarkModeConfigBuilder configBuilder)
+        {
+            UpdateSunTime(configBuilder);
+            ApplySunDateOffset(configBuilder.Config, out DateTime Sunrise, out DateTime Sunset);
+            TaskSchdHandler.CreateSwitchTask(Sunrise.Hour, Sunrise.Minute, Sunset.Hour, Sunset.Minute);
+        }
+
+        public static void ApplySunDateOffset(AutoDarkModeConfig config, out DateTime sunrise_out, out DateTime sunset_out)
+        {
             //Add offset to sunrise and sunset hours using Settings
+            DateTime sunrise = config.Sunrise;
+            sunrise = sunrise.AddMinutes(config.Location.SunriseOffsetMin);
 
-            //Remove old offset first if new offset is zero to preserve temporal integrity
-            DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(Properties.Config.Location.SunriseOffsetMin);
+            DateTime sunset = config.Sunset;
+            sunset = sunset.AddMinutes(config.Location.SunsetOffsetMin);
 
-            DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(Properties.Config.Location.SunsetOffsetMin);
-
-            sundate[0] = sunrise.Hour; //sunrise hour
-            sundate[1] = sunrise.Minute; //sunrise minute
-            sundate[2] = sunset.Hour; //sunset hour
-            sundate[3] = sunset.Minute; //sunset minute
-            return sundate;
-        }
-
-        private async Task<BasicGeoposition> GetUserPosition()
-        {
-            var locator = new Geolocator();
-            var location = await locator.GetGeopositionAsync();
-            var position = location.Coordinate.Point.Position;
-            return position;
-        }
-
-        public async Task<string> GetCityName()
-        {
-            BasicGeoposition position = await GetUserPosition();
-
-            Geopoint geopoint = new Geopoint(new BasicGeoposition
-            {
-                Latitude = position.Latitude,
-                Longitude = position.Longitude
-            });
-
-            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low);
-
-            if (result.Status == MapLocationFinderStatus.Success)
-            {
-                return result.Locations[0].Address.Town;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public async Task SetLocationSilent()
-        {
-            int[] sundate = await CalculateSunTime(true);
-            TaskSchdHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
+            sunrise_out = sunrise;
+            sunset_out = sunset;
         }
     }
 }

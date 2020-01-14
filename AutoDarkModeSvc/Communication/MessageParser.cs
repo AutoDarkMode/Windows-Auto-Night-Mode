@@ -73,9 +73,9 @@ namespace AutoDarkModeSvc.Communication
                             DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
                             if (!Properties.Config.Location.Disabled)
                             {
-                                ThemeManager.CalculateSunTimes(Properties.Config, out sunrise, out sunset);
+                                LocationHandler.ApplySunDateOffset(Properties.Config, out sunrise, out sunset);
                             }
-                            TaskSchdHandler.CreateTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
+                            TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
                             SendResponse(Tools.Ok);
                         }
                         catch (FormatException e)

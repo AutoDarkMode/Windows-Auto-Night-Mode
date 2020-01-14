@@ -9,14 +9,11 @@ namespace AutoDarkModeSvc.Timers
     class ModuleTimer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        AutoDarkModeConfigBuilder ConfigBuilder { get; set; }
-
         private List<IAutoDarkModeModule> Modules { get; set; }
         private Timer Timer { get; set; }
         private string Name { get; }
         public ModuleTimer(int interval, string name)
         {
-            ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             Name = name;
             Modules = new List<IAutoDarkModeModule>();
             Timer = new Timer
@@ -33,7 +30,7 @@ namespace AutoDarkModeSvc.Timers
             Logger.Debug("timer signal received");
             Modules.ForEach(t =>
             {
-                t.Poll(ConfigBuilder.Config);
+                t.Poll();
             });
         }
 
@@ -51,6 +48,7 @@ namespace AutoDarkModeSvc.Timers
         {
             Logger.Info($"starting {Name} timer with {Timer.Interval} ms timer interval");
             Timer.Start();
+            OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
         }
 
         public void Stop()

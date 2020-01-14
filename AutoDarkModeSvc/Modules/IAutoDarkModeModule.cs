@@ -7,7 +7,6 @@ namespace AutoDarkModeSvc.Modules
 {
     interface IAutoDarkModeModule
     {
-        public void Poll(AutoDarkModeConfig Config);
         public void Poll();
         public string Name { get; }
     }

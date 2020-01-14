@@ -82,7 +82,7 @@ namespace AutoDarkModeApp
         public async Task SetLocationSilent()
         {
             int[] sundate = await CalculateSunTime(true);
-            TaskSchdHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
+            TaskSchdHandler.CreateSwitchTask(sundate[2], sundate[3], sundate[0], sundate[1]);
         }
     }
 }

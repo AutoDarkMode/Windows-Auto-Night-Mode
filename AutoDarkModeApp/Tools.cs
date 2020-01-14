@@ -41,6 +41,9 @@ namespace AutoDarkModeApp
         public const string UpdateConfig = "/updateConfig";
         public const string SystemThemeDark = "/systemThemeDark";
         public const string Shutdown = "/exit";
+
+        //return types
+        public const string Available = "Available";
         public const string Err = "Err";
         public const string Ok = "Ok";
         public const string TestError = "/testError";
