@@ -17,6 +17,7 @@ namespace AutoDarkModeApp
         public const string DefaultPipeName = "WindowsAutoDarkMode";
         public const string DefaultPipeResponse = "_response";
         public const string DefaultPipeCommand = "_command";
+        public const string DefaultPort = "54345";
 
         public const string Switch = "/switch";
         public const string Swap = "/swap";

@@ -9,13 +9,13 @@ using AutoDarkModeSvc.Handler;
 
 namespace AutoDarkModeSvc.Communication
 {
-    class PipeServer
+    class PipeServer : ICommandServer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string PipeName { get; set; }
+        private Task Task { get; set; }
         public bool Running { get; private set; }
-        private bool AcceptConnections;
-
+        private bool AcceptConnections { get; set; }
 
         public PipeServer(string pipename)
         {
@@ -24,31 +24,35 @@ namespace AutoDarkModeSvc.Communication
             AcceptConnections = false;
         }
 
-        public void StartServer()
+        public void Start()
         {
-            Running = true;
-            AcceptConnections = true;
-            Logger.Info("starting command pipe server");
-            while (AcceptConnections)
+            Task = Task.Run(() =>
             {
-                using NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName + Tools.DefaultPipeCommand, PipeDirection.In);
-                pipeServer.WaitForConnection();
-                using StreamReader sr = new StreamReader(pipeServer);
-                List<string> msg = new List<string>();
-                string temp;
-                while ((temp = sr.ReadLine()) != null)
+                Running = true;
+                AcceptConnections = true;
+                Logger.Info("starting command pipe server");
+                while (AcceptConnections)
                 {
-                    msg.Add(temp);
+                    using NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName + Tools.DefaultPipeCommand, PipeDirection.In);
+                    pipeServer.WaitForConnection();
+                    using StreamReader sr = new StreamReader(pipeServer);
+                    List<string> msg = new List<string>();
+                    string temp;
+                    while ((temp = sr.ReadLine()) != null)
+                    {
+                        msg.Add(temp);
+                    }
+                    Logger.Debug("client connection received with command: " + string.Join(",", msg));
+                    MessageParser.Parse(msg, SendResponse);
                 }
-                Logger.Debug("client connection received with command: " + string.Join(",", msg));
-                MsgParser(msg);
-            }
 
-            Running = false;
+                Running = false;
+            });            
         }
 
-        public void StopServer()
+        public void Stop()
         {
+            Logger.Info("pipe server exit signal received, waiting for task shutdown");
             AcceptConnections = false;
             while (Running)
             {
@@ -62,104 +66,8 @@ namespace AutoDarkModeSvc.Communication
                     Logger.Warn("pipe server shutdown signal failed, retrying...");
                 }
             }
+            Task.Wait();
             Logger.Info("pipe server shutdown confirmed");
-        }
-
-        public void MsgParser(List<string> msg)
-        {
-            AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.Instance();
-            try
-            {
-                Properties.Read();
-            }
-            catch (Exception ex)
-            {
-                Logger.Fatal(ex, "could not read config file");
-                return;
-            }
-
-            msg.ForEach(message =>
-            {
-                switch (message)
-                {
-                    case Tools.Switch:
-                        Logger.Info("signal received: time based theme switch");
-                        ThemeManager.TimedSwitch(Properties.Config);
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.Swap:
-                        Logger.Info("signal received: swap themes");
-                        if (RegistryHandler.AppsUseLightTheme())
-                        {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
-                        }
-                        else
-                        {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
-                        }
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.Dark:
-                        Logger.Info("signal received: switch to dark mode");
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.Light:
-                        Logger.Info("signal received: switch to light mode");
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.AddAutostart:
-                        Logger.Info("signal received: adding service to autostart");
-                        RegistryHandler.AddAutoStart();
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.RemoveAutostart:
-                        Logger.Info("signal received: removing service from autostart");
-                        RegistryHandler.RemoveAutoStart();
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.CreateTask:
-                        Logger.Info("signal received: creating win scheduler based time switch task");
-                        try
-                        {
-                            DateTime sunrise = Convert.ToDateTime(Properties.Config.Sunrise);
-                            DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
-                            if (!Properties.Config.Location.Disabled)
-                            {
-                                ThemeManager.CalculateSunTimes(Properties.Config, out sunrise, out sunset);
-                            }
-                            TaskSchdHandler.CreateTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
-                            SendResponse(Tools.Ok);
-                        }
-                        catch (FormatException e)
-                        {
-                            Logger.Error(e, "could not create win scheduler tasks");
-                            SendResponse(Tools.Err);
-                            Console.WriteLine(e);
-                        }
-                        break;
-                    case Tools.RemoveTask:
-                        TaskSchdHandler.RemoveTask();
-                        SendResponse(Tools.Ok);
-                        break;
-                    case Tools.UpdateConfig:
-                        try
-                        {
-                            AutoDarkModeConfigBuilder.Instance().Read();
-                            SendResponse(Tools.Ok);
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Error(e, "could not read config file");
-                            SendResponse(Tools.Err);
-                        }
-                        break;
-                    case Tools.TestError:
-                        SendResponse(Tools.Err);
-                        break;
-                }
-            });
         }
 
         private void SendResponse(string message)

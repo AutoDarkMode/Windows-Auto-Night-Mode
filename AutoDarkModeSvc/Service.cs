@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handler;
@@ -16,14 +17,14 @@ namespace AutoDarkModeSvc
         NotifyIcon NotifyIcon { get; }
         ModuleTimer ModuleTimer { get; }
         ModuleTimer IOTimer { get; }
-        PipeService PipeSvc { get;  }
+        ICommandServer CommandServer { get;  }
         public Service(int timerMillis)
         { 
             NotifyIcon = new NotifyIcon();
             InitTray();
 
-            PipeSvc = new PipeService();
-            PipeSvc.Start();
+            CommandServer = new ZeroMQServer(Tools.DefaultPort);
+            CommandServer.Start();
 
             ModuleTimer = new ModuleTimer(timerMillis);
             ModuleTimer.RegisterModule(new TimeSwitchModule("TimeSwitch"));
@@ -48,7 +49,7 @@ namespace AutoDarkModeSvc
 
         private void Exit(object sender, EventArgs e)
         {
-            PipeSvc.Stop();
+            CommandServer.Stop();
             NotifyIcon.Dispose();
             ModuleTimer.Stop();
             ModuleTimer.Dispose();

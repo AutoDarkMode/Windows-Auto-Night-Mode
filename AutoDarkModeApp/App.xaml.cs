@@ -63,8 +63,9 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/pipeclienttest")
                     {
-                        PipeClient pc = new PipeClient(Tools.DefaultPipeName);
-                        var response = pc.SendMessage(Tools.TestError);
+                        //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);
+                        ICommandClient commandClient = new ZeroMQClient(Tools.DefaultPort);
+                        var response = commandClient.SendMessage(Tools.TestError);
                         Console.Out.WriteLine(response);
                     }
                 }

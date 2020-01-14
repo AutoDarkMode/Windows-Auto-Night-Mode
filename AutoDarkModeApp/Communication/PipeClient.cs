@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Communication
 {
-    class PipeClient
+    class PipeClient : ICommandClient
     {
         private string PipeName { get; set; }
         public PipeClient(string pipename)
