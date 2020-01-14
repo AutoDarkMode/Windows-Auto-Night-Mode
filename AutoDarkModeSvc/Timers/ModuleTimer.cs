@@ -13,9 +13,11 @@ namespace AutoDarkModeSvc.Timers
 
         private List<IAutoDarkModeModule> Modules { get; set; }
         private Timer Timer { get; set; }
-        public ModuleTimer(int interval)
+        private string Name { get; }
+        public ModuleTimer(int interval, string name)
         {
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+            Name = name;
             Modules = new List<IAutoDarkModeModule>();
             Timer = new Timer
             {
@@ -47,19 +49,19 @@ namespace AutoDarkModeSvc.Timers
 
         public void Start()
         {
-            Logger.Info($"starting module timer with {Timer.Interval} ms timer interval");
+            Logger.Info($"starting {Name} timer with {Timer.Interval} ms timer interval");
             Timer.Start();
         }
 
         public void Stop()
         {
-            Logger.Info("shutting down module timer");
+            Logger.Info("shutting down {0} timer", Name);
             Timer.Stop();
         }
 
         public void Dispose()
         {
-            Logger.Info("module timer dispoed");
+            Logger.Info("{0} timer disposed", Name);
             Timer.Dispose();
         }
     }

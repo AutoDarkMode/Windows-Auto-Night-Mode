@@ -23,14 +23,14 @@ namespace AutoDarkModeSvc
             NotifyIcon = new NotifyIcon();
             InitTray();
 
-            CommandServer = new ZeroMQServer(Tools.DefaultPort);
+            CommandServer = new ZeroMQServer(Tools.DefaultPort, this);
             CommandServer.Start();
 
-            ModuleTimer = new ModuleTimer(timerMillis);
+            ModuleTimer = new ModuleTimer(timerMillis, "module");
             ModuleTimer.RegisterModule(new TimeSwitchModule("TimeSwitch"));
             ModuleTimer.Start();
 
-            IOTimer = new ModuleTimer(300000);
+            IOTimer = new ModuleTimer(300000, "io");
             IOTimer.RegisterModule(new ConfigRefreshModule("ConfigRefresh"));
             IOTimer.Start();
         }
@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc
             NotifyIcon.Visible = true;
         }
 
-        private void Exit(object sender, EventArgs e)
+        public void Cleanup()
         {
             CommandServer.Stop();
             NotifyIcon.Dispose();
@@ -56,8 +56,13 @@ namespace AutoDarkModeSvc
             IOTimer.Stop();
             IOTimer.Dispose();
             NLog.LogManager.Shutdown();
+        }
+
+        public void Exit(object sender, EventArgs e)
+        {
             Application.Exit();
         }
+
         private void SwitchThemeNow(object sender, EventArgs e)
         {
             AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().Config;

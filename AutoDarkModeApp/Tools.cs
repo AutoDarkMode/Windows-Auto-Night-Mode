@@ -4,14 +4,22 @@ namespace AutoDarkModeApp
 {
     class Tools
     {
-        public static readonly string ExecutionDir = GetExeuctionDir();
+        public static readonly string ExecutionPath = GetExecutionPath();
+        public static readonly string ExecutionDir = GetExecutionDir();
 
-        private static string GetExeuctionDir()
+        private static string GetExecutionPath()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var executableName = Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(assemblyLocation) + ".exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath + executableName);
+        }
+
+        private static string GetExecutionDir()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return executablePath;
         }
 
         public const string DefaultPipeName = "WindowsAutoDarkMode";
@@ -32,6 +40,7 @@ namespace AutoDarkModeApp
         public const string PipeClientTest = "/pipeclienttest";
         public const string UpdateConfig = "/updateConfig";
         public const string SystemThemeDark = "/systemThemeDark";
+        public const string Shutdown = "/exit";
         public const string Err = "Err";
         public const string Ok = "Ok";
         public const string TestError = "/testError";

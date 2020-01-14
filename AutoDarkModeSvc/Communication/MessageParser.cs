@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.Communication
     static class MessageParser
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static void Parse(List<string> msg, Action<string> SendResponse)
+        public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
 
             AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.Instance();
@@ -102,6 +102,11 @@ namespace AutoDarkModeSvc.Communication
                             Logger.Error(e, "could not read config file");
                             SendResponse(Tools.Err);
                         }
+                        break;
+                    case Tools.Shutdown:
+                        Logger.Info("signal received, exiting");
+                        SendResponse(Tools.Ok);
+                        service.Exit(null, null);
                         break;
                     case Tools.TestError:
                         Logger.Info("signal received: test error");

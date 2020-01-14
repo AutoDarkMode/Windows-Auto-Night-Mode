@@ -12,14 +12,17 @@ using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Handler;
+using AutoDarkModeApp.Communication;
+using NetMQ;
 
 namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
-
         private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+        private ICommandClient CommandClient { get; }
+
 
 
         private readonly bool is1903 = false;
@@ -30,6 +33,7 @@ namespace AutoDarkModeApp
 
             // Read json config file
             autoDarkModeConfigBuilder.Read();
+            CommandClient = new ZeroMQClient(Tools.DefaultPort);
 
             LanguageHelper();
             InitializeComponent();
@@ -913,6 +917,13 @@ namespace AutoDarkModeApp
             OffsetDarkDot.Visibility = value;
             OffsetLightDot.Visibility = value;
             OffsetButton.Visibility = value;
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(Tools.Shutdown);
+            NetMQConfig.Cleanup();
+            base.OnClosing(e);
         }
     }
 }

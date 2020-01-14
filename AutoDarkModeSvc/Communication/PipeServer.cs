@@ -13,15 +13,17 @@ namespace AutoDarkModeSvc.Communication
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string PipeName { get; set; }
+        private Service Service { get; }
         private Task Task { get; set; }
         public bool Running { get; private set; }
         private bool AcceptConnections { get; set; }
 
-        public PipeServer(string pipename)
+        public PipeServer(string pipename, Service service)
         {
             PipeName = pipename;
             Running = false;
             AcceptConnections = false;
+            Service = service;
         }
 
         public void Start()
@@ -42,8 +44,8 @@ namespace AutoDarkModeSvc.Communication
                     {
                         msg.Add(temp);
                     }
-                    Logger.Debug("client connection received with command: " + string.Join(",", msg));
-                    MessageParser.Parse(msg, SendResponse);
+                    Logger.Info("client connection received with command: " + string.Join(",", msg));
+                    MessageParser.Parse(msg, SendResponse, Service);
                 }
 
                 Running = false;

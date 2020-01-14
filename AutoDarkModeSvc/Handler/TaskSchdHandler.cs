@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc.Handler
                 tdDark.Settings.StartWhenAvailable = true;
 
                 tdDark.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(startTimeHour).AddMinutes(startTimeMinute) });
-                tdDark.Actions.Add(new ExecAction(Tools.ExecutionDir, "/switch"));
+                tdDark.Actions.Add(new ExecAction(Tools.ExecutionPath, "/switch"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(dark, tdDark);
                 Console.WriteLine("created task for dark theme");
@@ -58,7 +58,7 @@ namespace AutoDarkModeSvc.Handler
                 tdLight.Settings.StartWhenAvailable = true;
 
                 tdLight.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(0).AddHours(endTimeHour).AddMinutes(endTimeMinute) });
-                tdLight.Actions.Add(new ExecAction(Tools.ExecutionDir, "/switch"));
+                tdLight.Actions.Add(new ExecAction(Tools.ExecutionPath, "/switch"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(light, tdLight);
                 Console.WriteLine("created task for light theme");
@@ -75,7 +75,7 @@ namespace AutoDarkModeSvc.Handler
 
                 EventTrigger eventTrigger = tdHibernation.Triggers.Add(new EventTrigger());
                 eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Power-Troubleshooter'] and (Level=4 or Level=0) and (EventID=1)]]</Select></Query></QueryList>";
-                tdHibernation.Actions.Add(new ExecAction(Tools.ExecutionDir, "/switch"));
+                tdHibernation.Actions.Add(new ExecAction(Tools.ExecutionPath, "/switch"));
                 taskService.GetFolder(folder).RegisterTaskDefinition(hibernation, tdHibernation);
                 Console.WriteLine("created task for hibernation");
             }
@@ -95,7 +95,7 @@ namespace AutoDarkModeSvc.Handler
                 tdLocation.Settings.StartWhenAvailable = true;
 
                 tdLocation.Triggers.Add(new WeeklyTrigger { StartBoundary = DateTime.Today.AddDays(7) });
-                tdLocation.Actions.Add(new ExecAction(Tools.ExecutionDir, "/location"));
+                tdLocation.Actions.Add(new ExecAction(Tools.ExecutionPath, "/location"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(updater, tdLocation);
                 Console.WriteLine("created task for location time updates");
@@ -115,7 +115,7 @@ namespace AutoDarkModeSvc.Handler
                 tdUpdate.Settings.StartWhenAvailable = true;
 
                 tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) });
-                tdUpdate.Actions.Add(new ExecAction(Tools.ExecutionDir, "/update"));
+                tdUpdate.Actions.Add(new ExecAction(Tools.ExecutionPath, "/update"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(appupdater, tdUpdate);
                 Console.WriteLine("created task for app updates");
@@ -137,7 +137,7 @@ namespace AutoDarkModeSvc.Handler
 
                 EventTrigger eventTrigger = tdConnected.Triggers.Add(new EventTrigger());
                 eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Kernel-Power'] and (Level=4 or Level=0) and (EventID=507)]]</Select></Query></QueryList>";
-                tdConnected.Actions.Add(new ExecAction(Tools.ExecutionDir, "/switch"));
+                tdConnected.Actions.Add(new ExecAction(Tools.ExecutionPath, "/switch"));
                 taskService.GetFolder(folder).RegisterTaskDefinition(connected, tdConnected);
                 Console.WriteLine("created task for connected standby");
             }

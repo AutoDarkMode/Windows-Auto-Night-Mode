@@ -25,7 +25,7 @@ namespace AutoDarkModeSvc.Modules
 
         public void Poll()
         {
-            return;
+            throw new NotImplementedException();
         }
     }
 }

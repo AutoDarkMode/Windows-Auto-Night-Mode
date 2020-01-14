@@ -2,7 +2,7 @@
   "profiles": {
     "AutoDarkModeApp": {
       "commandName": "Project",
-      "commandLineArgs": "/pipeclienttest"
+      "commandLineArgs": "/debug"
     }
   }
 }

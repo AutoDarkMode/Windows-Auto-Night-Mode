@@ -31,8 +31,10 @@ namespace AutoDarkModeApp.Communication
         {
             using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Tools.DefaultPipeCommand, PipeDirection.Out);
             pipeClient.Connect(5000);
-            using StreamWriter sw = new StreamWriter(pipeClient);
-            sw.AutoFlush = true;
+            using StreamWriter sw = new StreamWriter(pipeClient)
+            {
+                AutoFlush = true
+            };
             sw.WriteLine(message);
         }
 
