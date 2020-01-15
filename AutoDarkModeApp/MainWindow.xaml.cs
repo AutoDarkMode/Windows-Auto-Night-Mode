@@ -478,6 +478,8 @@ namespace AutoDarkModeApp
             LightStartMinutesBox.IsEnabled = true;
             BGWinButton.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+
+            //todo: addAutostart call to backend
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -501,6 +503,8 @@ namespace AutoDarkModeApp
             BGWinButton.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
             ShowDeskBGStatus();
+
+            //todo: removeAutostart call to backend
         }
 
         //ComboBox
