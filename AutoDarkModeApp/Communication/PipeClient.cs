@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AutoDarkMode;
+using System;
 using System.IO;
 using System.IO.Pipes;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Communication
 {

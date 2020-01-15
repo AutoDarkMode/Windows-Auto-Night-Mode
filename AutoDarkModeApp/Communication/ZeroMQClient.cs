@@ -3,6 +3,7 @@ using NetMQ;
 using NetMQ.Sockets;
 using System.Collections.Generic;
 using System.Text;
+using AutoDarkMode;
 
 namespace AutoDarkModeApp.Communication
 {
