@@ -78,7 +78,7 @@ namespace AutoDarkModeSvc.Handler
         public static void AddAutoStart()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registryKey.SetValue("AutoDarkMode", '\u0022' + Tools.ExecutionPath + '\u0022');
+            registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
         }
         public static void RemoveAutoStart()
         {

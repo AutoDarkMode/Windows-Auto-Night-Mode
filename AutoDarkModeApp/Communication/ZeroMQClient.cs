@@ -23,11 +23,11 @@ namespace AutoDarkModeApp.Communication
                 var hasResponse = client.TryReceiveFrameString(new TimeSpan(10000000), out string response);
                 if (hasResponse)
                 {
-                    if (response.Contains(Tools.Err))
+                    if (response.Contains(PipeMessage.Err))
                     {
                         return false;
                     }
-                    else if (response.Contains(Tools.Ok))
+                    else if (response.Contains(PipeMessage.Ok))
                     {
                         return true;
                     }

@@ -1,4 +1,5 @@
-﻿using AutoDarkModeApp;
+﻿using AutoDarkMode;
+using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Handler;
 using System;
@@ -28,12 +29,12 @@ namespace AutoDarkModeSvc.Communication
             {
                 switch (message)
                 {
-                    case Tools.Switch:
+                    case PipeMessage.Switch:
                         Logger.Info("signal received: time based theme switch");
                         ThemeManager.TimedSwitch(Properties.Config);
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.Swap:
+                    case PipeMessage.Swap:
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
                         {
@@ -43,29 +44,29 @@ namespace AutoDarkModeSvc.Communication
                         {
                             ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
                         }
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.Dark:
+                    case PipeMessage.Dark:
                         Logger.Info("signal received: switch to dark mode");
                         ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.Light:
+                    case PipeMessage.Light:
                         Logger.Info("signal received: switch to light mode");
                         ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.AddAutostart:
+                    case PipeMessage.AddAutostart:
                         Logger.Info("signal received: adding service to autostart");
                         RegistryHandler.AddAutoStart();
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.RemoveAutostart:
+                    case PipeMessage.RemoveAutostart:
                         Logger.Info("signal received: removing service from autostart");
                         RegistryHandler.RemoveAutoStart();
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.CreateTask:
+                    case PipeMessage.CreateTask:
                         Logger.Info("signal received: creating win scheduler based time switch task");
                         try
                         {
@@ -76,41 +77,41 @@ namespace AutoDarkModeSvc.Communication
                                 LocationHandler.ApplySunDateOffset(Properties.Config, out sunrise, out sunset);
                             }
                             TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
-                            SendResponse(Tools.Ok);
+                            SendResponse(PipeMessage.Ok);
                         }
                         catch (FormatException e)
                         {
                             Logger.Error(e, "could not create win scheduler tasks");
-                            SendResponse(Tools.Err);
+                            SendResponse(PipeMessage.Err);
                             Console.WriteLine(e);
                         }
                         break;
-                    case Tools.RemoveTask:
+                    case PipeMessage.RemoveTask:
                         Logger.Info("signal received: removing win tasks");
                         TaskSchdHandler.RemoveTask();
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         break;
-                    case Tools.UpdateConfig:
+                    case PipeMessage.UpdateConfig:
                         Logger.Info("signal received: updating configuration file");
                         try
                         {
                             AutoDarkModeConfigBuilder.Instance().Read();
-                            SendResponse(Tools.Ok);
+                            SendResponse(PipeMessage.Ok);
                         }
                         catch (Exception e)
                         {
                             Logger.Error(e, "could not read config file");
-                            SendResponse(Tools.Err);
+                            SendResponse(PipeMessage.Err);
                         }
                         break;
-                    case Tools.Shutdown:
+                    case PipeMessage.Shutdown:
                         Logger.Info("signal received, exiting");
-                        SendResponse(Tools.Ok);
+                        SendResponse(PipeMessage.Ok);
                         service.Exit(null, null);
                         break;
-                    case Tools.TestError:
+                    case PipeMessage.TestError:
                         Logger.Info("signal received: test error");
-                        SendResponse(Tools.Err);
+                        SendResponse(PipeMessage.Err);
                         break;
                 }
             });

@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Handler;
+using AutoDarkMode;
 using NetMQ;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace AutoDarkModeApp
             if (e.Args.Length == 0 || e.Args.Length > 0 && e.Args[0] != "/debug")
             {
                 svc.StartInfo.UseShellExecute = false;
-                svc.StartInfo.FileName = Path.Combine(Tools.ExecutionDir, "AutoDarkModeSvc.exe");
+                svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe");
                 svc.StartInfo.CreateNoWindow = true;
                 svc.Start();
             }
@@ -52,7 +53,7 @@ namespace AutoDarkModeApp
             //handle command line arguments
             if (args.Count > 0)
             {
-                ICommandClient commandClient = new ZeroMQClient(Tools.DefaultPort);
+                ICommandClient commandClient = new ZeroMQClient(PipeMessage.DefaultPort);
                 foreach (var value in args)
                 {
                     if (value == "/switch")
@@ -93,10 +94,10 @@ namespace AutoDarkModeApp
                     else if (value == "/pipeclienttest")
                     {
                         //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);
-                        commandClient.SendMessage(Tools.TestError);
+                        commandClient.SendMessage(PipeMessage.TestError);
                     }
 
-                    if (isClassicMode) commandClient.SendMessage(Tools.Shutdown);
+                    if (isClassicMode) commandClient.SendMessage(PipeMessage.Shutdown);
                     NetMQConfig.Cleanup();
                     Shutdown();
                 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using AutoDarkMode;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Communication;
@@ -15,24 +17,30 @@ namespace AutoDarkModeSvc
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         NotifyIcon NotifyIcon { get; }
-        ModuleTimer ModuleTimer { get; }
-        ModuleTimer IOTimer { get; }
+        List<ModuleTimer> Timers { get; set; }
         ICommandServer CommandServer { get;  }
         public Service(int timerMillis)
-        { 
+        {
             NotifyIcon = new NotifyIcon();
             InitTray();
 
-            CommandServer = new ZeroMQServer(Tools.DefaultPort, this);
+            CommandServer = new ZeroMQServer(PipeMessage.DefaultPort, this);
             CommandServer.Start();
 
-            ModuleTimer = new ModuleTimer(timerMillis, "module");
-            ModuleTimer.RegisterModule(new TimeSwitchModule("TimeSwitch"));
-            ModuleTimer.Start();
+            ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main", true);
+            ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io", true);
+            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, "geopos", false);
 
-            IOTimer = new ModuleTimer(300000, "io");
-            IOTimer.RegisterModule(new ConfigRefreshModule("ConfigRefresh"));
-            IOTimer.Start();
+            Timers = new List<ModuleTimer>()
+            {
+                MainTimer, 
+                IOTimer, 
+                GeoposTimer
+            };
+
+            MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers));
+
+            Timers.ForEach(t => t.Start());
         }
 
         private void InitTray()
@@ -49,12 +57,8 @@ namespace AutoDarkModeSvc
 
         public void Cleanup()
         {
-            CommandServer.Stop();
-            NotifyIcon.Dispose();
-            ModuleTimer.Stop();
-            ModuleTimer.Dispose();
-            IOTimer.Stop();
-            IOTimer.Dispose();
+            Timers.ForEach(t => t.Stop());
+            Timers.ForEach(t => t.Dispose());
             NLog.LogManager.Shutdown();
         }
 

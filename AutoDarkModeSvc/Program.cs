@@ -1,5 +1,6 @@
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Timers;
 using NLog;
 using System;
 using System.Threading;
@@ -65,7 +66,7 @@ namespace AutoDarkModeSvc
                 {
                     Int32.TryParse(args[0], out timerMillis);
                 }
-                timerMillis = (timerMillis == 0) ? 10000 : timerMillis;
+                timerMillis = (timerMillis == 0) ? TimerFrequency.Short : timerMillis;
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

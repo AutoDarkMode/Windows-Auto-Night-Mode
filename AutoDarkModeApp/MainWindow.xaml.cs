@@ -13,6 +13,7 @@ using Windows.System.Power;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Handler;
 using AutoDarkModeApp.Communication;
+using AutoDarkMode;
 using NetMQ;
 
 namespace AutoDarkModeApp
@@ -33,7 +34,7 @@ namespace AutoDarkModeApp
 
             // Read json config file
             autoDarkModeConfigBuilder.Read();
-            CommandClient = new ZeroMQClient(Tools.DefaultPort);
+            CommandClient = new ZeroMQClient(PipeMessage.DefaultPort);
 
             LanguageHelper();
             InitializeComponent();
@@ -942,7 +943,7 @@ namespace AutoDarkModeApp
                 return;
             }
 
-            if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(Tools.Shutdown);
+            if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(PipeMessage.Shutdown);
             NetMQConfig.Cleanup();
             base.OnClosing(e);
         }

@@ -1,27 +1,9 @@
 ﻿using System.IO;
 
-namespace AutoDarkModeApp
+namespace AutoDarkMode
 {
-    class Tools
+    class PipeMessage
     {
-        public static readonly string ExecutionPath = GetExecutionPath();
-        public static readonly string ExecutionDir = GetExecutionDir();
-
-        private static string GetExecutionPath()
-        {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            var executableName = Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(assemblyLocation) + ".exe";
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath + executableName);
-        }
-
-        private static string GetExecutionDir()
-        {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return executablePath;
-        }
-
         public const string DefaultPipeName = "WindowsAutoDarkMode";
         public const string DefaultPipeResponse = "_response";
         public const string DefaultPipeCommand = "_command";

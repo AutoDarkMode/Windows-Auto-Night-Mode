@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc
@@ -18,7 +19,9 @@ namespace AutoDarkModeSvc
 
     public static class Extensions
     {
- 
+        public static readonly string ExecutionPath = GetExecutionPath();
+        public static readonly string ExecutionDir = GetExecutionDir();
+
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
         {
             if (start == end)
@@ -49,5 +52,21 @@ namespace AutoDarkModeSvc
 
             return false;
         }
+
+        private static string GetExecutionPath()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var executableName = Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(assemblyLocation) + ".exe";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath + executableName);
+        }
+
+        private static string GetExecutionDir()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return executablePath;
+        }
+
     }
 }

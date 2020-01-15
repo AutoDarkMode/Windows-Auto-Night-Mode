@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
-using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
-using AutoDarkModeSvc;
+using AutoDarkModeApp;
 
-namespace AutoDarkModeApp
+namespace AutoDarkModeSvc.Handler
 {
     static class LocationHandler
     {
@@ -28,7 +25,7 @@ namespace AutoDarkModeApp
             }
         }
 
-        private static async Task GetUserPosition(AutoDarkModeConfigBuilder configBuilder)
+        public static async Task UpdateGeoposition(AutoDarkModeConfigBuilder configBuilder)
         {
             Geolocator locator = new Geolocator();
             Geoposition location = await locator.GetGeopositionAsync();

@@ -9,5 +9,6 @@ namespace AutoDarkModeSvc.Modules
     {
         public void Poll();
         public string Name { get; }
+        public string TimerAffinity { get;  }
     }
 }
