@@ -11,13 +11,20 @@ namespace AutoDarkModeSvc.Communication
     static class MessageParser
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        /// <summary>
+        /// Parses a command message and invokes a callback function delegate for status reporting
+        /// </summary>
+        /// <param name="msg">list of messages to parse</param>
+        /// <param name="SendResponse">Callback taking a string as parameter to report return values back to sender</param>
+        /// <param name="service">Service class for invoking application exit</param>
         public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
 
             AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.Instance();
             try
             {
-                Properties.Read();
+                Properties.Load();
             }
             catch (Exception ex)
             {
@@ -95,7 +102,7 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: updating configuration file");
                         try
                         {
-                            AutoDarkModeConfigBuilder.Instance().Read();
+                            AutoDarkModeConfigBuilder.Instance().Load();
                             SendResponse(PipeMessage.Ok);
                         }
                         catch (Exception e)

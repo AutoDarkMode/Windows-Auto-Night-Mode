@@ -52,7 +52,7 @@ namespace AutoDarkModeSvc
                 AutoDarkModeConfigBuilder Builder = AutoDarkModeConfigBuilder.Instance();
                 try
                 {
-                    Builder.Read();
+                    Builder.Load();
                 }
                 catch (Exception e)
                 {

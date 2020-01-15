@@ -13,6 +13,13 @@ namespace AutoDarkModeSvc.Timers
         private Timer Timer { get; set; }
         public string Name { get; }
         private bool TickOnStart { get;  }
+
+        /// <summary>
+        /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
+        /// </summary>
+        /// <param name="interval">A timer interval to determine when <see cref="ModuleTimer.OnTimedEvent(object, ElapsedEventArgs)" should be invoked/></param>
+        /// <param name="name">unique timer name</param>
+        /// <param name="tickOnStart">set to true if the timer should tick immediately after starting instead of waiting one interval first</param>
         public ModuleTimer(int interval, string name, bool tickOnStart)
         {
             Name = name;
@@ -38,16 +45,32 @@ namespace AutoDarkModeSvc.Timers
             });
         }
 
+        /// <summary>
+        /// Register a new <see cref="IAutoDarkModeModule" module/>
+        /// </summary>
+        /// <param name="module"></param>
         public void RegisterModule(IAutoDarkModeModule module)
         {
-            Modules.Add(module);
-            Logger.Info($"registered module {module.Name} to timer {Name}");
+            if (!Modules.Contains(module))
+            {
+                Modules.Add(module);
+                Logger.Info($"registered module {module.Name} to timer {Name}");
+            }
         }
 
         public void DeregisterModule(IAutoDarkModeModule module) 
         {
-            Modules.Remove(Modules.Find(m => m.Name == module.Name));
-            Logger.Info($"deregistered module {module.Name} to timer {Name}");
+            if (Modules.Contains(module))
+            {
+                Modules.Remove(Modules.Find(m => m.Name == module.Name));
+                Logger.Info($"deregistered module {module.Name} to timer {Name}");
+            }
+        }
+
+        public void DeregisterModule(string moduleName)
+        {
+            IAutoDarkModeModule module = Modules.Find(m => m.Name == moduleName);
+            if (module != null) DeregisterModule(module);
         }
 
         public List<IAutoDarkModeModule> GetModules()

@@ -15,7 +15,12 @@ namespace AutoDarkModeSvc.Communication
         private ResponseSocket Server { set; get; }
         private NetMQPoller Poller { get; set; }
         private Task PollTask { get; set; }
-
+        
+        /// <summary>
+        /// Instantiate a ZeroMQ server for socket based messaging
+        /// </summary>
+        /// <param name="port">the port to use by the server</param>
+        /// <param name="service">Service object to pass through to a MessageParser</param>
         public ZeroMQServer(string port, Service service)
         {
             Port = port;
@@ -24,6 +29,9 @@ namespace AutoDarkModeSvc.Communication
 
         private bool AcceptConnections { get; set; }
 
+        /// <summary>
+        /// Start the ZeroMQ server
+        /// </summary>
         public void Start()
         {
             Server = new ResponseSocket("tcp://127.0.0.1:" + Port);
@@ -50,6 +58,9 @@ namespace AutoDarkModeSvc.Communication
             Logger.Info("started server (polling)");
         }
 
+        /// <summary>
+        /// Stop the ZeroMQ Server and release all resources (including the NetMQ Cleanup)
+        /// </summary>
         public void Stop()
         {
             Logger.Info("stopping server");

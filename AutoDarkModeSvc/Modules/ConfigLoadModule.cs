@@ -1,32 +1,36 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class ConfigRefreshModule : IAutoDarkModeModule
+    class ConfigLoadModule : AutoDarkModeModule
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private AutoDarkModeConfigBuilder ConfigBuilder { get;  }
 
-        public string Name { get; }
 
-        public string TimerAffinity { get; } = TimerName.IO;
-
-        public ConfigRefreshModule(string name)
+        /// <summary>
+        /// Instantiates a new ConfigUpdateModule.
+        /// This module reloads the configuration file periodically
+        /// </summary>
+        /// <param name="name">unique name of the module</param>
+        /// <param name="timerAffinity">name of the timer this module should be assigned to</param>
+        public ConfigLoadModule(string name, string timerAffinity)
         {
             Name = name;
+            TimerAffinity = timerAffinity;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         }
-        public void Poll()
+        public override void Poll()
         {
-
             Task.Run(() =>
             {
                 try
                 {
-                    ConfigBuilder.Read();
+                    ConfigBuilder.Load();
                     Logger.Debug("updated configuration file");
                 }
                 catch (Exception ex)
@@ -35,5 +39,6 @@ namespace AutoDarkModeSvc.Modules
                 }
             });
         }
+
     }
 }

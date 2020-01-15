@@ -33,7 +33,7 @@ namespace AutoDarkModeApp
             Console.WriteLine("--------- AppStart");
 
             // Read json config file
-            autoDarkModeConfigBuilder.Read();
+            autoDarkModeConfigBuilder.Load();
             CommandClient = new ZeroMQClient(PipeMessage.DefaultPort);
 
             LanguageHelper();
@@ -266,7 +266,7 @@ namespace AutoDarkModeApp
 
             OffsetButton.IsEnabled = false;
             GetLocation();
-            autoDarkModeConfigBuilder.Write();
+            autoDarkModeConfigBuilder.Save();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -471,7 +471,7 @@ namespace AutoDarkModeApp
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
-            autoDarkModeConfigBuilder.Write();
+            autoDarkModeConfigBuilder.Save();
         }
 
         //textbox event handler
@@ -556,7 +556,7 @@ namespace AutoDarkModeApp
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
-            autoDarkModeConfigBuilder.Write();
+            autoDarkModeConfigBuilder.Save();
             Properties.Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
@@ -924,7 +924,7 @@ namespace AutoDarkModeApp
         {
             try
             {
-                autoDarkModeConfigBuilder.Write();
+                autoDarkModeConfigBuilder.Save();
             }
             catch (Exception ex)
             {

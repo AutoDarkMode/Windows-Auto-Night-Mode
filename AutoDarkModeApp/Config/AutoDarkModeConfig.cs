@@ -28,7 +28,7 @@ namespace AutoDarkModeApp.Config
             return instance;
         }
 
-        public void Write()
+        public void Save()
         {
             try
             {
@@ -43,12 +43,12 @@ namespace AutoDarkModeApp.Config
             }
         }
 
-        public void Read()
+        public void Load()
         {
             string path = Path.Combine(Environment.CurrentDirectory, FileName);
             if (!File.Exists(path))
             {
-                Write();
+                Save();
             }
             try
             {

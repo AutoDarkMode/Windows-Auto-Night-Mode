@@ -7,6 +7,10 @@ namespace AutoDarkModeSvc.Handler
 {
     static class WallpaperHandler
     {
+        /// <summary>
+        /// Sets the first background in a wallpaper collection
+        /// </summary>
+        /// <param name="wallpaperCollection">List with wallpapers</param>
         public static void SetBackground(ICollection<string> wallpaperCollection)
         {
             List<string> wallpapers = wallpaperCollection.ToList();
@@ -17,6 +21,10 @@ namespace AutoDarkModeSvc.Handler
             }
         }
 
+        /// <summary>
+        /// Gets the currenvt wallpaper
+        /// </summary>
+        /// <returns>string with a path to the current wallpapers</returns>
         public static string GetBackground()
         {
             string currentWallpaper = new string('\0', 260);

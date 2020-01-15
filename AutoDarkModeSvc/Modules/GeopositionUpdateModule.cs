@@ -5,20 +5,25 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class GeopositionUpdateModule : IAutoDarkModeModule
+    class GeopositionUpdateModule : AutoDarkModeModule
     {
-        public string Name { get; }
         private AutoDarkModeConfigBuilder ConfigBuilder { get; }
 
-        public string TimerAffinity { get; } = TimerName.Geopos;
 
-        public GeopositionUpdateModule(string name)
+        /// <summary>
+        /// Instantiates a new GeopositionUpdateModule.
+        /// This module updates the user's geolocation and saves the updated value to the configuration
+        /// </summary>
+        /// <param name="name">unique name of the module</param>
+        /// <param name="timerAffinity">name of the timer this module should be assigned to</param>
+        public GeopositionUpdateModule(string name, string timerAffinity)
         {
             Name = name;
+            TimerAffinity = timerAffinity;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         }
 
-        public void Poll()
+        public override void Poll()
         {
             Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
         }

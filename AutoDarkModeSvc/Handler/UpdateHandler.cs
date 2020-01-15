@@ -9,6 +9,10 @@ namespace AutoDarkModeSvc.Handler
     static class UpdateHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        /// <summary>
+        /// Checks if a new version is available
+        /// </summary>
+        /// <returns>version string with download url</returns>
         public static string CheckNewVersion()
         {
             XmlTextReader reader;

@@ -6,57 +6,57 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class ModuleWardenModule : IAutoDarkModeModule
+    class ModuleWardenModule : AutoDarkModeModule
     {
-        public string Name { get; }
         private AutoDarkModeConfigBuilder ConfigBuilder { get; }
         private List<ModuleTimer> Timers { get; }
-        public string TimerAffinity { get; } = TimerName.Main;
-        public ModuleWardenModule(string name, List<ModuleTimer> timers)
+
+        /// <summary>
+        /// Instantiates a new ModuleWardenModule.
+        /// This module registers and deregisters modules automatically based on the AutoDarkModeConfiguration
+        /// </summary>
+        /// <param name="name">unique name of the module</param>
+        /// <param name="timerAffinity">name of the timer this module should be assigned to</param>
+        public ModuleWardenModule(string name, List<ModuleTimer> timers, string timerAffinity)
         {
             Name = name;
+            TimerAffinity = timerAffinity;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             Timers = timers;
         }
 
-        public void Poll()
+        public override void Poll()
         {
             AutoDarkModeConfig config = ConfigBuilder.Config;
             AutoManageModule("TimeSwitch", typeof(TimeSwitchModule), config.Enabled);
             AutoManageModule("GeopositionUpdate", typeof(GeopositionUpdateModule), !config.Location.Disabled);
-            AutoManageModule("ConfigRefresh", typeof(ConfigRefreshModule), true);
+            AutoManageModule("ConfigRefresh", typeof(ConfigLoadModule), true);
         }
 
+        /// <summary>
+        /// Automatically manages the registration and deregistration of modules based on the current configuration state
+        /// </summary>
+        /// <param name="moduleName">unique name of the module to be managed</param>
+        /// <param name="moduleType">Type of a class implementing the <see cref="IAutoDarkModeModule"/> interface</param>
+        /// <param name="condition">condition whether a module should be registered or deregistered</param>
         private void AutoManageModule(string moduleName, Type moduleType, bool condition)
         {
+            // check if the type impplements the interface for compatibility with a ModuleTimer
             if (typeof(IAutoDarkModeModule).IsAssignableFrom(moduleType))
             {
-                List<IAutoDarkModeModule> registeredModules = new List<IAutoDarkModeModule>();
-                Timers.ForEach(t => registeredModules.AddRange(t.GetModules()));
-
+                // register a module if the condition has been set to true (should be predetermined in Poll() before calling this method
                 if (condition)
                 {
-                    if (registeredModules.FindIndex(m => m.Name == moduleName) == -1)
+                    IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleName) as IAutoDarkModeModule;
+                    var timer = Timers.Find(t => t.Name == module.TimerAffinity);
+                    if (timer != null)
                     {
-                        IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleName) as IAutoDarkModeModule;
-                        var timer = Timers.Find(t => t.Name == module.TimerAffinity);
-                        if (timer != null)
-                        {
-                            timer.RegisterModule(module);
-                        }
+                        timer.RegisterModule(module);
                     }
                 }
                 else
                 {
-                    var module = registeredModules.Find(m => m.Name == moduleName);
-                    if (module != null)
-                    {
-                        var timer = Timers.Find(t => t.Name == module.TimerAffinity);
-                        if (timer != null)
-                        {
-                            timer.DeregisterModule(module);
-                        }
-                    }
+                    Timers.ForEach(t => t.DeregisterModule(moduleName));
                 }
             }            
         }

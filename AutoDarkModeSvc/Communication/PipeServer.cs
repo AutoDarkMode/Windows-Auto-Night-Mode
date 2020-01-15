@@ -19,6 +19,11 @@ namespace AutoDarkModeSvc.Communication
         public bool Running { get; private set; }
         private bool AcceptConnections { get; set; }
 
+        /// <summary>
+        /// Creates a new pipeserver
+        /// </summary>
+        /// <param name="pipename"></param>
+        /// <param name="service">servive class for passthrough to a MessageParser</param>
         public PipeServer(string pipename, Service service)
         {
             PipeName = pipename;
@@ -26,7 +31,9 @@ namespace AutoDarkModeSvc.Communication
             AcceptConnections = false;
             Service = service;
         }
-
+        /// <summary>
+        /// Launch a pipe server in a new thread for message processing
+        /// </summary>
         public void Start()
         {
             Task = Task.Run(() =>
@@ -53,6 +60,10 @@ namespace AutoDarkModeSvc.Communication
             });            
         }
 
+        /// <summary>
+        /// Stop the pipe server and release all resources. If WaitForConnection() is blocking,
+        /// send messages to the pipe until it closes
+        /// </summary>
         public void Stop()
         {
             Logger.Info("pipe server exit signal received, waiting for task shutdown");

@@ -17,6 +17,8 @@ namespace AutoDarkModeSvc.Handler
         private static readonly string program = "Windows Auto Dark Mode";
         private static readonly string description = "Task of the program Windows Auto Dark Mode.";
 
+        //todo: rewrite for use with thinserver!
+
         /// <summary>
         /// Create tasks for dark and light mode switching based on time
         /// </summary>
@@ -26,7 +28,7 @@ namespace AutoDarkModeSvc.Handler
         /// <param name="endTimeMinute">Sunset minute</param>
         public static void CreateSwitchTask(int startTimeHour, int startTimeMinute, int endTimeHour, int endTimeMinute)
         {
-            //NEEDS TO BE REWRITTEN TO CREATE TASK FOR THINSERVER!!
+            //todo: NEEDS TO BE REWRITTEN TO CREATE TASK FOR THINSERVER!!
             using TaskService taskService = new TaskService();
             taskService.RootFolder.CreateFolder(folder, null, false);
 
