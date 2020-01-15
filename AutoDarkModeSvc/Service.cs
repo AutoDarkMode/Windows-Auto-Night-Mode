@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc
             NotifyIcon = new NotifyIcon();
             InitTray();
 
-            CommandServer = new ZeroMQServer(PipeMessage.DefaultPort, this);
+            CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
 
             ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main", true);

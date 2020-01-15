@@ -14,7 +14,7 @@ namespace AutoDarkModeApp
     public partial class App : Application
     {
         private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
-        private async void Application_Startup(object sender, StartupEventArgs e)
+        private void Application_Startup(object sender, StartupEventArgs e)
         {
             bool isClassicMode;
             try
@@ -53,7 +53,7 @@ namespace AutoDarkModeApp
             //handle command line arguments
             if (args.Count > 0)
             {
-                ICommandClient commandClient = new ZeroMQClient(PipeMessage.DefaultPort);
+                ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
                 foreach (var value in args)
                 {
                     if (value == "/switch")
@@ -74,13 +74,18 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/update")
                     {
-                        Updater updater = new Updater();
-                        updater.CheckNewVersion();
+                        var result = commandClient.SendMessageAndGetReply(value);
+
+                        if (result != Command.Err)
+                        {
+                            Updater updater = new Updater();
+                            updater.ParseResponse(result);
+                        }
+
                     }
                     else if (value == "/location")
                     {
-                        LocationHandler locationHandler = new LocationHandler();
-                        await locationHandler.SetLocationSilent();
+                        commandClient.SendMessage(Command.Location);
                     }
                     else if (value == "/removeTask")
                     {
@@ -94,10 +99,11 @@ namespace AutoDarkModeApp
                     else if (value == "/pipeclienttest")
                     {
                         //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);
-                        commandClient.SendMessage(PipeMessage.TestError);
+                        bool result = commandClient.SendMessage(Command.Location);
+                        Console.Out.WriteLine(result);
                     }
 
-                    if (isClassicMode) commandClient.SendMessage(PipeMessage.Shutdown);
+                    if (isClassicMode) commandClient.SendMessage(Command.Shutdown);
                     NetMQConfig.Cleanup();
                     Shutdown();
                 }

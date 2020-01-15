@@ -20,6 +20,10 @@ namespace AutoDarkModeSvc.Handler
             configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
             try
             {
+                if (configBuilder.Config.Location.Disabled)
+                {
+                    configBuilder.Config.Location.Disabled = false;
+                }
                 configBuilder.Save();
                 Logger.Info($"Updated sunrise {configBuilder.Config.Sunrise.ToString("HH:mm")} and sunset {configBuilder.Config.Sunset.ToString("HH:mm")}");
             }
@@ -34,22 +38,37 @@ namespace AutoDarkModeSvc.Handler
         /// </summary>
         /// <param name="configBuilder">config builder for the AutoDarkModeConfig</param>
         /// <returns></returns>
-        public static async Task UpdateGeoposition(AutoDarkModeConfigBuilder configBuilder)
+        public static async Task<bool> UpdateGeoposition(AutoDarkModeConfigBuilder configBuilder)
         {
-            Geolocator locator = new Geolocator();
-            Geoposition location = await locator.GetGeopositionAsync();
-            BasicGeoposition position = location.Coordinate.Point.Position;
-            configBuilder.Config.Location.Lon = position.Longitude;
-            configBuilder.Config.Location.Lat = position.Latitude;
+            var permission = await Geolocator.RequestAccessAsync();
+            var success = false;
+            switch (permission)
+            {
+                case GeolocationAccessStatus.Allowed:
+                    Geolocator locator = new Geolocator();
+                    Geoposition location = await locator.GetGeopositionAsync();
+                    BasicGeoposition position = location.Coordinate.Point.Position;
+                    configBuilder.Config.Location.Lon = position.Longitude;
+                    configBuilder.Config.Location.Lat = position.Latitude;
+                    Logger.Info($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
+                    success = true;
+                    break;
+                default:
+                    configBuilder.Config.Location.Disabled = true;
+                    Logger.Warn($"no geolocation access, please enable in system settings");
+                    break;
+            }
+
             try
             {
                 configBuilder.Save();
-                Logger.Info($"Updated latitude {position.Latitude} and longitude {position.Longitude}");
             }
             catch (Exception e)
             {
                 Logger.Error(e, "could not update configuration file while retrieving location");
             }
+
+            return success;
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace AutoDarkModeSvc.Communication
                 Logger.Info("starting command pipe server");
                 while (AcceptConnections)
                 {
-                    using NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName + PipeMessage.DefaultPipeCommand, PipeDirection.In);
+                    using NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName + Command.DefaultPipeCommand, PipeDirection.In);
                     pipeServer.WaitForConnection();
                     using StreamReader sr = new StreamReader(pipeServer);
                     List<string> msg = new List<string>();
@@ -70,7 +70,7 @@ namespace AutoDarkModeSvc.Communication
             AcceptConnections = false;
             while (Running)
             {
-                using NamedPipeClientStream npcs = new NamedPipeClientStream(".", PipeName + PipeMessage.DefaultPipeCommand, PipeDirection.Out);
+                using NamedPipeClientStream npcs = new NamedPipeClientStream(".", PipeName + Command.DefaultPipeCommand, PipeDirection.Out);
                 try
                 {
                     npcs.Connect(100);
@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.Communication
             bool canClose = false;
             Task.Run(() =>
             {
-                using NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName + PipeMessage.DefaultPipeResponse, PipeDirection.Out);
+                using NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName + Command.DefaultPipeResponse, PipeDirection.Out);
                 Logger.Debug("starting response pipe server after receiving message");
                 pipeServer.WaitForConnection();
                 canClose = true;
@@ -108,7 +108,7 @@ namespace AutoDarkModeSvc.Communication
                 {
                     try
                     {
-                        using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + PipeMessage.DefaultPipeResponse, PipeDirection.In);
+                        using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Command.DefaultPipeResponse, PipeDirection.In);
                         pipeClient.Connect(1000);
                         Logger.Debug("stopping open response pipe server after exceeding timout grace period");
                         using StreamReader sr = new StreamReader(pipeClient);

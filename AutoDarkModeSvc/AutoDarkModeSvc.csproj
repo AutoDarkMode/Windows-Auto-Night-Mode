@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\AutoDarkModeApp\Communication\PipeMessage.cs" Link="Communication\PipeMessage.cs" />
+    <Compile Include="..\AutoDarkModeApp\Communication\Command.cs" Link="Communication\Command.cs" />
     <Compile Include="..\AutoDarkModeApp\Config\AutoDarkModeConfig.cs" Link="Config\AutoDarkModeConfig.cs" />
     <Compile Include="..\AutoDarkModeApp\SunDate.cs" Link="SunDate.cs" />
   </ItemGroup>

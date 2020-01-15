@@ -2,7 +2,7 @@
 
 namespace AutoDarkMode
 {
-    class PipeMessage
+    class Command
     {
         public const string DefaultPipeName = "WindowsAutoDarkMode";
         public const string DefaultPipeResponse = "_response";
@@ -23,11 +23,13 @@ namespace AutoDarkMode
         public const string UpdateConfig = "/updateConfig";
         public const string SystemThemeDark = "/systemThemeDark";
         public const string Shutdown = "/exit";
+        public const string TestError = "/testError";
 
         //return types
         public const string Available = "Available";
+        public const string New = "New";
         public const string Err = "Err";
         public const string Ok = "Ok";
-        public const string TestError = "/testError";
+        public const string Response = "Response";
     }
 }

@@ -21,20 +21,35 @@ namespace AutoDarkModeApp.Communication
             {
                 client.Connect("tcp://127.0.0.1:" + Port);
                 client.SendFrame(message);
-                var hasResponse = client.TryReceiveFrameString(new TimeSpan(10000000), out string response);
-                if (hasResponse)
+                var response = GetResponse(client);
+                if (response.Contains(Command.Err))
                 {
-                    if (response.Contains(PipeMessage.Err))
-                    {
-                        return false;
-                    }
-                    else if (response.Contains(PipeMessage.Ok))
-                    {
-                        return true;
-                    }
-                }                
-                return true;
+                    return false;
+                }
+                else if (response.Contains(Command.Ok))
+                {
+                    return true;
+                }
             }
+            return false;
+        }
+
+        private string GetResponse(RequestSocket client)
+        {
+            var hasResponse = client.TryReceiveFrameString(new TimeSpan(50000000), out string response);
+            if (hasResponse)
+            {
+                return response;   
+            }
+            return Command.Err;
+        }
+
+        public string SendMessageAndGetReply(string message)
+        {
+            using var client = new RequestSocket();
+            client.Connect("tcp://127.0.0.1:" + Port);
+            client.SendFrame(message);
+            return GetResponse(client);
         }
     }
 }

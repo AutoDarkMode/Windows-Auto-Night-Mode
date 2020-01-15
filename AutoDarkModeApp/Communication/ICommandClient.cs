@@ -7,5 +7,6 @@ namespace AutoDarkModeApp.Communication
     interface ICommandClient
     {
         public bool SendMessage(string message);
+        public string SendMessageAndGetReply(string message);
     }
 }

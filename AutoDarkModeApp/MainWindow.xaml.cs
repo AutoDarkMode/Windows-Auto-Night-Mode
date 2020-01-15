@@ -34,7 +34,7 @@ namespace AutoDarkModeApp
 
             // Read json config file
             autoDarkModeConfigBuilder.Load();
-            CommandClient = new ZeroMQClient(PipeMessage.DefaultPort);
+            CommandClient = new ZeroMQClient(Command.DefaultPort);
 
             LanguageHelper();
             InitializeComponent();
@@ -350,7 +350,24 @@ namespace AutoDarkModeApp
 
             autoDarkModeConfigBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
             autoDarkModeConfigBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            
+            SetupClassicMode(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
 
+            applyButton.IsEnabled = false;
+            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            {
+                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+                applyButton.IsEnabled = true;
+            }
+            else
+            {
+                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+            }
+        }
+
+        private void SetupClassicMode(int darkStart, int darkStartMinutes, int lightStart, int lightStartMinutes)
+        {
+            //todo: switch EVERYTHING!!! to PipeMessages
             try
             {
                 if (Properties.Settings.Default.AlterTime)
@@ -460,18 +477,6 @@ namespace AutoDarkModeApp
                     System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
                 }
             }
-
-            applyButton.IsEnabled = false;
-            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
-            {
-                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
-                applyButton.IsEnabled = true;
-            }
-            else
-            {
-                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
-            }
-            autoDarkModeConfigBuilder.Save();
         }
 
         //textbox event handler
@@ -532,22 +537,26 @@ namespace AutoDarkModeApp
 
             if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
             {
+                //todo: switch over to pipe messaging
                 TaskSchdHandler.CreateAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = true;
             }
             else if (aboutWindow.BckgrUpdateCB.IsChecked == false && Properties.Settings.Default.BackgroundUpdate == true)
             {
+                //todo: switch over to pipe messaging
                 TaskSchdHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
             }
 
             if (aboutWindow.conStandByCB.IsChecked == true && Properties.Settings.Default.connectedStandby == false)
             {
+                //todo: switch over to pipe based
                 TaskSchdHandler.CreateConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = true;
             }
             else if (aboutWindow.conStandByCB.IsChecked == false && Properties.Settings.Default.connectedStandby == true)
             {
+                //todo: switch over to pipe based
                 TaskSchdHandler.RemoveConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = false;
             }
@@ -578,11 +587,9 @@ namespace AutoDarkModeApp
             switch (accesStatus)
             {
                 case GeolocationAccessStatus.Allowed:
-                    autoDarkModeConfigBuilder.Config.Location.Disabled = false;
-
                     //locate user + get sunrise & sunset times
                     locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    int[] sundate = await locationHandler.CalculateSunTime(false);
+                    int[] sundate = locationHandler.CalculateSunTime(false);
 
                     //apply settings & change UI
                     lightStartBox.Text = sundate[0].ToString();
@@ -627,6 +634,14 @@ namespace AutoDarkModeApp
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             autoDarkModeConfigBuilder.Config.Location.Disabled = true;
+            try
+            {
+                autoDarkModeConfigBuilder.Save();
+                CommandClient.SendMessage(Command.UpdateConfig);
+            } catch (Exception)
+            {
+                //todo: do something with the error
+            }
 
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
@@ -665,6 +680,8 @@ namespace AutoDarkModeApp
 
             if (e != null)
             {
+                //todo: switch over to pipe based
+
                 TaskSchdHandler.RemoveTask();
                 regEditHandler.RemoveAutoStart();
             }
@@ -697,6 +714,8 @@ namespace AutoDarkModeApp
         //ComboBox
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            //todo: switch over to pipe based
+
             autoDarkModeConfigBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
 
             if (AppComboBox.SelectedIndex.Equals(0))
@@ -704,6 +723,8 @@ namespace AutoDarkModeApp
                 Properties.Settings.Default.AppThemeChange = 0;
                 try
                 {
+
+                    //todo: switch over to pipe based
                     regEditHandler.SwitchThemeBasedOnTime();
                 }
                 catch
@@ -713,11 +734,15 @@ namespace AutoDarkModeApp
             }
             if (AppComboBox.SelectedIndex.Equals(1))
             {
+
+                //todo: switch over to pipe based
                 Properties.Settings.Default.AppThemeChange = 1;
                 regEditHandler.AppTheme(1);
             }
             if (AppComboBox.SelectedIndex.Equals(2))
             {
+
+                //todo: switch over to pipe based
                 Properties.Settings.Default.AppThemeChange = 2;
                 regEditHandler.AppTheme(0);
             }
@@ -725,6 +750,7 @@ namespace AutoDarkModeApp
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
             autoDarkModeConfigBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
+            //todo: switch over to pipe based
 
 
             if (SystemComboBox.SelectedIndex.Equals(0))
@@ -766,6 +792,8 @@ namespace AutoDarkModeApp
         }
         private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            //todo: switch over to pipe based
+
             autoDarkModeConfigBuilder.Config.EdgeTheme = EdgeComboBox.SelectedIndex;
 
             if (EdgeComboBox.SelectedIndex.Equals(0))
@@ -821,6 +849,8 @@ namespace AutoDarkModeApp
 
         private void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            //todo: switch over to pipe based
+
             autoDarkModeConfigBuilder.Config.AccentColorTaskbar = true;
             try
             {
@@ -835,6 +865,8 @@ namespace AutoDarkModeApp
 
         private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            //todo: switch over to pipe based
+
             autoDarkModeConfigBuilder.Config.AccentColorTaskbar = false;
             regEditHandler.ColorPrevalence(0);
         }
@@ -943,7 +975,7 @@ namespace AutoDarkModeApp
                 return;
             }
 
-            if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(PipeMessage.Shutdown);
+            if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
             NetMQConfig.Cleanup();
             base.OnClosing(e);
         }

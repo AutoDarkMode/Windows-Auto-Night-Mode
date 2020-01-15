@@ -27,7 +27,7 @@ namespace AutoDarkModeApp.Communication
 
         private void PipeMessenger(string message)
         {
-            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + PipeMessage.DefaultPipeCommand, PipeDirection.Out);
+            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Command.DefaultPipeCommand, PipeDirection.Out);
             pipeClient.Connect(5000);
             using StreamWriter sw = new StreamWriter(pipeClient)
             {
@@ -39,7 +39,7 @@ namespace AutoDarkModeApp.Communication
         private bool ReceiveReponse()
         {
             bool ok = true;
-            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + PipeMessage.DefaultPipeResponse, PipeDirection.In);
+            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Command.DefaultPipeResponse, PipeDirection.In);
             try
             {
                 pipeClient.Connect(1000);
@@ -47,7 +47,7 @@ namespace AutoDarkModeApp.Communication
                 string temp;
                 while ((temp = sr.ReadLine()) != null)
                 {
-                    if (temp.Contains(PipeMessage.Err))
+                    if (temp.Contains(Command.Err))
                     {
                         ok = false;
                     }
@@ -58,6 +58,11 @@ namespace AutoDarkModeApp.Communication
                 return false;
             }
             return ok;
+        }
+
+        public string SendMessageAndGetReply(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

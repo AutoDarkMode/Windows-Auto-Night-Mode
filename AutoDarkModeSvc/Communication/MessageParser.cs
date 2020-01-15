@@ -5,6 +5,7 @@ using AutoDarkModeSvc.Handler;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -36,12 +37,13 @@ namespace AutoDarkModeSvc.Communication
             {
                 switch (message)
                 {
-                    case PipeMessage.Switch:
+                    case Command.Switch:
                         Logger.Info("signal received: time based theme switch");
                         ThemeManager.TimedSwitch(Properties.Config);
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.Swap:
+
+                    case Command.Swap:
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
                         {
@@ -51,29 +53,34 @@ namespace AutoDarkModeSvc.Communication
                         {
                             ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
                         }
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.Dark:
+
+                    case Command.Dark:
                         Logger.Info("signal received: switch to dark mode");
                         ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.Light:
+
+                    case Command.Light:
                         Logger.Info("signal received: switch to light mode");
                         ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.AddAutostart:
+
+                    case Command.AddAutostart:
                         Logger.Info("signal received: adding service to autostart");
                         RegistryHandler.AddAutoStart();
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.RemoveAutostart:
+
+                    case Command.RemoveAutostart:
                         Logger.Info("signal received: removing service from autostart");
                         RegistryHandler.RemoveAutoStart();
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.CreateTask:
+
+                    case Command.CreateTask:
                         Logger.Info("signal received: creating win scheduler based time switch task");
                         try
                         {
@@ -84,41 +91,65 @@ namespace AutoDarkModeSvc.Communication
                                 LocationHandler.ApplySunDateOffset(Properties.Config, out sunrise, out sunset);
                             }
                             TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
-                            SendResponse(PipeMessage.Ok);
+                            SendResponse(Command.Ok);
                         }
                         catch (FormatException e)
                         {
                             Logger.Error(e, "could not create win scheduler tasks");
-                            SendResponse(PipeMessage.Err);
+                            SendResponse(Command.Err);
                             Console.WriteLine(e);
                         }
                         break;
-                    case PipeMessage.RemoveTask:
+                    case Command.RemoveTask:
+
                         Logger.Info("signal received: removing win tasks");
                         TaskSchdHandler.RemoveTask();
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         break;
-                    case PipeMessage.UpdateConfig:
+
+                    case Command.Location:
+                        Logger.Info("signal received: request location update");
+                        Task<bool> geoTask = Task.Run(() => LocationHandler.UpdateGeoposition(AutoDarkModeConfigBuilder.Instance()));
+                        geoTask.Wait();
+                        var result = geoTask.Result;
+                        if (result)
+                        {
+                            SendResponse(Command.Ok);
+                        }
+                        else
+                        {
+                            SendResponse(Command.Err);
+                        }
+                        break;
+
+                    case Command.UpdateConfig:
                         Logger.Info("signal received: updating configuration file");
                         try
                         {
                             AutoDarkModeConfigBuilder.Instance().Load();
-                            SendResponse(PipeMessage.Ok);
+                            SendResponse(Command.Ok);
                         }
                         catch (Exception e)
                         {
                             Logger.Error(e, "could not read config file");
-                            SendResponse(PipeMessage.Err);
+                            SendResponse(Command.Err);
                         }
                         break;
-                    case PipeMessage.Shutdown:
+
+                    case Command.Update:
+                        Logger.Info("signal received: checking for update");
+                        SendResponse(UpdateHandler.CheckNewVersion());
+                        break;
+
+                    case Command.Shutdown:
                         Logger.Info("signal received, exiting");
-                        SendResponse(PipeMessage.Ok);
+                        SendResponse(Command.Ok);
                         service.Exit(null, null);
                         break;
-                    case PipeMessage.TestError:
+
+                    case Command.TestError:
                         Logger.Info("signal received: test error");
-                        SendResponse(PipeMessage.Err);
+                        SendResponse(Command.Err);
                         break;
                 }
             });

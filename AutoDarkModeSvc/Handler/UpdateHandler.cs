@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoDarkMode;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -51,14 +52,18 @@ namespace AutoDarkModeSvc.Handler
                 if (newVersion != null && url != null && currentVersion.CompareTo(newVersion) < 0)
                 {
                     Logger.Info($"new version ({newVersion.ToString()} available");
-                    return $"{newVersion},{url}";
+                    return $"{Command.New},{newVersion},{url}";
+                }
+                else
+                {
+                    return Command.Ok;
                 }
             }
             catch (Exception e)
             {
                 Logger.Warn(e, "update check failed");
             }
-            return "";
+            return Command.Err;
         }
     }
 }
