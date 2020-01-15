@@ -19,6 +19,8 @@ namespace AutoDarkMode
         public const string RemoveTask = "/removeTask";
         public const string AddAutostart = "/addAutostart";
         public const string RemoveAutostart = "/removeAutoStart";
+        public const string AddLocationTask = "/addLocationTask";
+        public const string RemoveLocationTask = "/removeLocationTask";
         public const string PipeClientTest = "/pipeclienttest";
         public const string UpdateConfig = "/updateConfig";
         public const string SystemThemeDark = "/systemThemeDark";
@@ -28,6 +30,7 @@ namespace AutoDarkMode
         //return types
         public const string Available = "Available";
         public const string New = "New";
+        public const string NoLocAccess = "NoLocAccess";
         public const string Err = "Err";
         public const string Ok = "Ok";
         public const string Response = "Response";

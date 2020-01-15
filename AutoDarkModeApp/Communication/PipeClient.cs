@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.IO.Pipes;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Communication
 {
@@ -61,6 +62,16 @@ namespace AutoDarkModeApp.Communication
         }
 
         public string SendMessageAndGetReply(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SendMessageAsync(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> SendMesssageAndGetReplyAsync(string message)
         {
             throw new NotImplementedException();
         }

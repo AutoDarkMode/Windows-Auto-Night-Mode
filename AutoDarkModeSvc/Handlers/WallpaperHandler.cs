@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Linq;
 
-namespace AutoDarkModeSvc.Handler
+namespace AutoDarkModeSvc.Handlers
 {
     static class WallpaperHandler
     {

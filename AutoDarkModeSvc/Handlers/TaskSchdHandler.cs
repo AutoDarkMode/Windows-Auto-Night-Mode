@@ -2,7 +2,7 @@
 using Microsoft.Win32.TaskScheduler;
 using System;
 
-namespace AutoDarkModeSvc.Handler
+namespace AutoDarkModeSvc.Handlers
 {
     public static class TaskSchdHandler
     {
@@ -137,10 +137,11 @@ namespace AutoDarkModeSvc.Handler
             Console.WriteLine("created task for connected standby");
         }
 
-        public static void RemoveTask()
+        public static void RemoveTasks()
         {
             using TaskService taskService = new TaskService();
             TaskFolder taskFolder = taskService.GetFolder(folder);
+            //fixme: properly do error handling in here
             try
             {
                 taskFolder.DeleteTask(light, false);

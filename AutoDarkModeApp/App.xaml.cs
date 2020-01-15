@@ -1,6 +1,6 @@
 ﻿using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkMode;
 using NetMQ;
 using System;
@@ -89,7 +89,7 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/removeTask")
                     {
-                        TaskSchdHandler.RemoveTask();
+                        TaskSchdHandler.RemoveTasks();
                     }
                     else if (value == "/removeAutostart")
                     {

@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 using AutoDarkModeApp;
 
-namespace AutoDarkModeSvc.Handler
+namespace AutoDarkModeSvc.Handlers
 {
     static class RegistryHandler
     {

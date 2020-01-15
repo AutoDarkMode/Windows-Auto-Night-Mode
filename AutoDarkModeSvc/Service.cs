@@ -6,7 +6,7 @@ using AutoDarkMode;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
 using AutoDarkModeApp;

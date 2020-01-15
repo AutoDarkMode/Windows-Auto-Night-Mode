@@ -34,7 +34,7 @@
 
         <!-- Third Party Software-->
         <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
-        <Button x:Name="taskShedulerLicense" Content="TaskScheduler" HorizontalAlignment="Left" Margin="11,234,0,0" VerticalAlignment="Top" Width="93" Click="TaskShedulerLicense_Click" Height="22"/>
+        <Button x:Name="taskShedulerLicense" Content="TaskScheduler" HorizontalAlignment="Left" Margin="11,234,0,0" VerticalAlignment="Top" Width="93" Click="TaskSchedulerLicense_Click" Height="22"/>
         <Button Name="FluentWPF" Content="FluentWPF" HorizontalAlignment="Left" Margin="109,235,0,0" VerticalAlignment="Top" Width="93" Height="21" Click="FluentWPF_Click"/>
 
         <!-- Settings-->

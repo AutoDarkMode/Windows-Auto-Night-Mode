@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoDarkMode;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Communication
 {

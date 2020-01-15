@@ -45,6 +45,7 @@ namespace AutoDarkModeApp
             {
                 updateInfoText.Text = Properties.Resources.msgSearchUpd;//searching for update...
                 updateButton.IsEnabled = false;
+                //todo: switch to command pipe, use updater.ParseResponse();
                 if (updater.SilentUpdater())
                 {
                     updateInfoText.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
@@ -63,7 +64,7 @@ namespace AutoDarkModeApp
             }
         }
 
-        private void TaskShedulerLicense_Click(object sender, RoutedEventArgs e)
+        private void TaskSchedulerLicense_Click(object sender, RoutedEventArgs e)
         {
             string messageBoxText = "MIT Copyright (c) 2003-2010 David Hall \n\n" +
                 "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the 'Software'), " +

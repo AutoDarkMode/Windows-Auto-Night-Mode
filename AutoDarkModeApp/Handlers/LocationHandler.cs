@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeApp.Communication;
 using AutoDarkMode;
 
@@ -54,9 +54,6 @@ namespace AutoDarkModeApp
         private BasicGeoposition GetUserPosition()
         {
             AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
-            ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
-            //invoking the location command will always enable location services by default
-            commandClient.SendMessage(Command.Location);
             var position = new BasicGeoposition()
             {
                 Latitude = configBuilder.Config.Location.Lat,

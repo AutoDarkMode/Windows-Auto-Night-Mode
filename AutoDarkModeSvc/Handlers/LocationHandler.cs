@@ -4,7 +4,7 @@ using Windows.Devices.Geolocation;
 using AutoDarkModeApp.Config;
 using AutoDarkModeApp;
 
-namespace AutoDarkModeSvc.Handler
+namespace AutoDarkModeSvc.Handlers
 {
     static class LocationHandler
     {
@@ -58,7 +58,6 @@ namespace AutoDarkModeSvc.Handler
                     Logger.Warn($"no geolocation access, please enable in system settings");
                     break;
             }
-
             try
             {
                 configBuilder.Save();

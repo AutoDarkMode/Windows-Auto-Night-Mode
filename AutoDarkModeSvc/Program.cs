@@ -20,12 +20,6 @@ namespace AutoDarkModeSvc
         [STAThread]
         static void Main(string[] args)
         {
-            if (!mutex.WaitOne(TimeSpan.FromSeconds(2), false))
-            {
-                Logger.Debug("app instance already open");
-                return;
-            }
-
             try
             {
                 //Set up Logger
@@ -44,6 +38,13 @@ namespace AutoDarkModeSvc
 
                 // Apply config           
                 LogManager.Configuration = config;
+
+
+                if (!mutex.WaitOne(TimeSpan.FromSeconds(2), false))
+                {
+                    Logger.Debug("app instance already open");
+                    return;
+                }
 
                 //Instantiate Runtime config
                 RuntimeConfig.Instance();

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 
-namespace AutoDarkModeSvc.Handler
+namespace AutoDarkModeSvc.Handlers
 {
     static class UpdateHandler
     {

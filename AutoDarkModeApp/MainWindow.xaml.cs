@@ -11,17 +11,18 @@ using System.Globalization;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeApp.Communication;
 using AutoDarkMode;
 using NetMQ;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
-        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+        private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
         private ICommandClient CommandClient { get; }
 
 
@@ -33,13 +34,14 @@ namespace AutoDarkModeApp
             Console.WriteLine("--------- AppStart");
 
             // Read json config file
-            autoDarkModeConfigBuilder.Load();
+            configBuilder.Load();
             CommandClient = new ZeroMQClient(Command.DefaultPort);
 
             LanguageHelper();
             InitializeComponent();
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
-            DoesTaskExists();
+            AutoThemeSwitchInit();
+            InitOffset();
             UiHandler();
             ThemeChange(this, null);
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
@@ -96,23 +98,19 @@ namespace AutoDarkModeApp
             }
         }
 
-        private void DoesTaskExists()
+        private void AutoThemeSwitchInit()
         {
-            if (TaskSchdHandler.CheckExistingClass().Equals(1))
+            if (configBuilder.Config.Location.Disabled && configBuilder.Config.Enabled)
             {
                 autoCheckBox.IsChecked = true;
-                int[] darkStart = TaskSchdHandler.GetRunTime("dark");
-                int[] lightStart = TaskSchdHandler.GetRunTime("light");
-                darkStartBox.Text = Convert.ToString(darkStart[0]);
-                DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
-                lightStartBox.Text = Convert.ToString(lightStart[0]);
-                LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
+                DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
+                DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
+                LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
+                LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
             }
-            else if (TaskSchdHandler.CheckExistingClass().Equals(2))
+            else if (configBuilder.Config.Enabled && !configBuilder.Config.Location.Disabled)
             {
                 autoCheckBox.IsChecked = true;
-                locationCheckBox.IsChecked = true;
-                InitOffset();
             }
             else
             {
@@ -122,19 +120,19 @@ namespace AutoDarkModeApp
 
         private void UiHandler()
         {
-            int appTheme = autoDarkModeConfigBuilder.Config.AppsTheme;
+            int appTheme = configBuilder.Config.AppsTheme;
             Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
             if (appTheme == 1) AppComboBox.SelectedIndex = 1;
             if (appTheme == 2) AppComboBox.SelectedIndex = 2;
 
-            int systemTheme = autoDarkModeConfigBuilder.Config.SystemTheme;
+            int systemTheme = configBuilder.Config.SystemTheme;
             Console.WriteLine("SystemTheme Value: " + systemTheme);
             if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
             if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
             if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
 
-            int edgeTheme = autoDarkModeConfigBuilder.Config.EdgeTheme;
+            int edgeTheme = configBuilder.Config.EdgeTheme;
             Console.WriteLine("EdgeTheme Value: " + edgeTheme);
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
@@ -153,7 +151,7 @@ namespace AutoDarkModeApp
                 AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
             }
 
-            if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
+            if (configBuilder.Config.AccentColorTaskbar)
             {
                 AccentColorCheckBox.IsChecked = true;
             }
@@ -185,7 +183,7 @@ namespace AutoDarkModeApp
 
         private void InitOffset()
         {
-            PopulateOffsetFields(autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin, autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin);
+            PopulateOffsetFields(configBuilder.Config.Location.SunsetOffsetMin, configBuilder.Config.Location.SunriseOffsetMin);
         }
 
         private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
@@ -225,29 +223,24 @@ namespace AutoDarkModeApp
 
             if (OffsetLightModeButton.Content.ToString() == "+")
             {
-                autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin = offsetLight;
-                Properties.Settings.Default.LightOffset = offsetLight;
+                configBuilder.Config.Location.SunriseOffsetMin = offsetLight;
             }
             else
             {
-                autoDarkModeConfigBuilder.Config.Location.SunriseOffsetMin = -offsetLight;
-                Properties.Settings.Default.LightOffset = -offsetLight;
+                configBuilder.Config.Location.SunriseOffsetMin = -offsetLight;
             }
 
             if (OffsetDarkModeButton.Content.ToString() == "+")
             {
-                autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin = offsetDark;
-                Properties.Settings.Default.DarkOffset = offsetDark;
+                configBuilder.Config.Location.SunsetOffsetMin = offsetDark;
             }
             else
             {
-                autoDarkModeConfigBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
-                Properties.Settings.Default.DarkOffset = -offsetDark;
+                configBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
             }
 
             OffsetButton.IsEnabled = false;
             GetLocation();
-            autoDarkModeConfigBuilder.Save();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -260,9 +253,9 @@ namespace AutoDarkModeApp
             //get values from TextBox
             try
             {
-                darkStart = int.Parse(darkStartBox.Text);
+                darkStart = int.Parse(DarkStartHoursBox.Text);
                 darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
-                lightStart = int.Parse(lightStartBox.Text);
+                lightStart = int.Parse(LightStartHoursBox.Text);
                 lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
             }
             catch
@@ -295,8 +288,8 @@ namespace AutoDarkModeApp
             {
                 darkStartMinutes = 59;
             }
-            darkStartBox.Text = Convert.ToString(darkStart);
-            lightStartBox.Text = Convert.ToString(lightStart);
+            DarkStartHoursBox.Text = Convert.ToString(darkStart);
+            LightStartHoursBox.Text = Convert.ToString(lightStart);
             if (lightStartMinutes < 10)
             {
                 LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
@@ -314,10 +307,10 @@ namespace AutoDarkModeApp
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
 
-            autoDarkModeConfigBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
-            autoDarkModeConfigBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
-            
-            SetupClassicMode(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            configBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+
+            //todo: implement switching logic via commandclient
 
             applyButton.IsEnabled = false;
             if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
@@ -327,118 +320,10 @@ namespace AutoDarkModeApp
             }
             else
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+                userFeedback.Text = Properties.Resources.msgChangesSaved; // changes were saved!
             }
-        }
 
-        private void SetupClassicMode(int darkStart, int darkStartMinutes, int lightStart, int lightStartMinutes)
-        {
-            //todo: switch EVERYTHING!!! to PipeMessages
-            try
-            {
-                TaskSchdHandler.CreateSwitchTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
-            }
-            catch (Exception ex)
-            {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateTask()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
-                return;
-            }
-            try
-            {
-                regEditHandler.SwitchThemeBasedOnTime();
-            }
-            catch (Exception ex)
-            {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.SwitchThemeBasedOnTime()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
-                return;
-            }
-            try
-            {
-                regEditHandler.AddAutoStart();
-            }
-            catch (Exception ex)
-            {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.AddAutoStart()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
-                return;
-            }
-            try
-            {
-                if (!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
-                {
-                    TaskSchdHandler.CreateAppUpdaterTask();
-                }
-            }
-            catch (Exception ex)
-            {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateAppUpdaterTask()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
-                return;
-            }
-            try
-            {
-                if (Properties.Settings.Default.connectedStandby)
-                {
-                    TaskSchdHandler.CreateConnectedStandbyTask();
-                }
-            }
-            catch (Exception ex)
-            {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateConnectedStandbyTask()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
-            }
+            SaveConfigInteractive();
         }
 
         //textbox event handler
@@ -487,124 +372,99 @@ namespace AutoDarkModeApp
                 Owner = GetWindow(this)
             };
             aboutWindow.ShowDialog();
+            // todo: this is fine, can stay like this
             if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
             {
-                //todo: switch over to pipe messaging
                 TaskSchdHandler.CreateAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = true;
             }
             else if (aboutWindow.BckgrUpdateCB.IsChecked == false && Properties.Settings.Default.BackgroundUpdate == true)
             {
-                //todo: switch over to pipe messaging
                 TaskSchdHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
             }
-
-            if (aboutWindow.conStandByCB.IsChecked == true && Properties.Settings.Default.connectedStandby == false)
-            {
-                //todo: switch over to pipe based
-                TaskSchdHandler.CreateConnectedStandbyTask();
-                Properties.Settings.Default.connectedStandby = true;
-            }
-            else if (aboutWindow.conStandByCB.IsChecked == false && Properties.Settings.Default.connectedStandby == true)
-            {
-                //todo: switch over to pipe based
-                TaskSchdHandler.RemoveConnectedStandbyTask();
-                Properties.Settings.Default.connectedStandby = false;
-            }
-        }
-
-        //application close behaviour
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            autoDarkModeConfigBuilder.Save();
-            Properties.Settings.Default.Save();
-            Application.Current.Shutdown();
-            Process.GetCurrentProcess().Kill();
         }
 
         // set starttime based on user location
         private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            // todo: info for utku, I've already partly implemented this
+            // to use the command pipe infrastructure to test if the backend works.
+            // this also serves as an example how to use the new command infrastructure
+            // for UI operations use the Async variant to prevent UI blocking
+            configBuilder.Config.Location.Disabled = false;
             GetLocation();
         }
         public async void GetLocation()
         {
             SetOffsetVisibility(Visibility.Visible);
             locationBlock.Visibility = Visibility.Visible;
-            locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
+            locationBlock.Text = Properties.Resources.msgSearchLoc; // Searching your location...
             LocationHandler locationHandler = new LocationHandler();
+            //invoking the location command will always enable location services by default
 
-            var accesStatus = await Geolocator.RequestAccessAsync();
-            switch (accesStatus)
+            var accessStatus = await CommandClient.SendMesssageAndGetReplyAsync(Command.Location);
+            if (accessStatus != Command.NoLocAccess)
             {
-                case GeolocationAccessStatus.Allowed:
-                    //locate user + get sunrise & sunset times
-                    locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    int[] sundate = locationHandler.CalculateSunTime(false);
+                //locate user + get sunrise & sunset times
+                locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
+                int[] sundate = locationHandler.CalculateSunTime(false);
 
-                    //apply settings & change UI
-                    lightStartBox.Text = sundate[0].ToString();
-                    LightStartMinutesBox.Text = sundate[1].ToString();
-                    darkStartBox.Text = sundate[2].ToString();
+                //apply settings & change UI
+                LightStartHoursBox.Text = sundate[0].ToString();
+                LightStartMinutesBox.Text = sundate[1].ToString();
+                DarkStartHoursBox.Text = sundate[2].ToString();
 
-                    DarkStartMinutesBox.Text = sundate[3].ToString();
-                    lightStartBox.IsEnabled = false;
-                    LightStartMinutesBox.IsEnabled = false;
-                    darkStartBox.IsEnabled = false;
-                    DarkStartMinutesBox.IsEnabled = false;
-                    applyButton.IsEnabled = false;
-                    ApplyButton_Click(this, null);
-                    TaskSchdHandler.CreateLocationTask();
-                    break;
-
-                case GeolocationAccessStatus.Denied:
-                    NoLocationAccess();
-                    break;
-
-                case GeolocationAccessStatus.Unspecified:
-                    NoLocationAccess();
-                    break;
+                DarkStartMinutesBox.Text = sundate[3].ToString();
+                LightStartHoursBox.IsEnabled = false;
+                LightStartMinutesBox.IsEnabled = false;
+                DarkStartHoursBox.IsEnabled = false;
+                DarkStartMinutesBox.IsEnabled = false;
+                applyButton.IsEnabled = false;
+                ApplyButton_Click(this, null);
+            }
+            else
+            {
+                NoLocationAccess();
             }
             return;
         }
         private async void NoLocationAccess()
         {
-            autoDarkModeConfigBuilder.Config.Location.Disabled = true;
+            configBuilder.Config.Location.Disabled = true;
             locationCheckBox.IsChecked = false;
-            locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
+            locationBlock.Text = Properties.Resources.msgLocPerm; // The App needs permission to location
             locationBlock.Visibility = Visibility.Visible;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
-        private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private async void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            autoDarkModeConfigBuilder.Config.Location.Disabled = true;
+            configBuilder.Config.Location.Disabled = true;
             try
             {
-                autoDarkModeConfigBuilder.Save();
-                CommandClient.SendMessage(Command.UpdateConfig);
-            } catch (Exception)
+                configBuilder.Save();
+                await CommandClient.SendMessageAsync(Command.UpdateConfig);
+            }
+            catch (Exception)
             {
                 //todo: do something with the error
             }
 
-            lightStartBox.IsEnabled = true;
+            LightStartHoursBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
+            DarkStartHoursBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             locationBlock.Visibility = Visibility.Collapsed;
             SetOffsetVisibility(Visibility.Collapsed);
 
-            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-            TaskSchdHandler.RemoveLocationTask();
+            userFeedback.Text = Properties.Resources.msgClickApply; // Click on apply to save changes
         }
 
         //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            autoDarkModeConfigBuilder.Config.Enabled = true;
-
+            configBuilder.Config.Enabled = true;
 
             if (is1903) SystemComboBox.IsEnabled = true;
             if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
@@ -612,33 +472,20 @@ namespace AutoDarkModeApp
             EdgeComboBox.IsEnabled = true;
             locationCheckBox.IsEnabled = true;
             applyButton.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
+            DarkStartHoursBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
-            lightStartBox.IsEnabled = true;
+            LightStartHoursBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
             BGWinButton.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            autoDarkModeConfigBuilder.Config.Enabled = false;
+            configBuilder.Config.Enabled = false;
 
-            if (e != null)
-            {
-                //todo: switch over to pipe based
-
-                TaskSchdHandler.RemoveTask();
-                regEditHandler.RemoveAutoStart();
-            }
-
-            Properties.Settings.Default.WallpaperSwitch = false;
-            Properties.Settings.Default.WallpaperLight = "";
-            Properties.Settings.Default.WallpaperDark = "";
-
-            autoDarkModeConfigBuilder.Config.Wallpaper.Disabled = true;
-            autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
-            autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
-
+            configBuilder.Config.Wallpaper.Disabled = true;
+            configBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+            configBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
 
             AccentColorCheckBox.IsEnabled = false;
             SystemComboBox.IsEnabled = false;
@@ -647,9 +494,9 @@ namespace AutoDarkModeApp
             locationCheckBox.IsEnabled = false;
             locationCheckBox.IsChecked = false;
             applyButton.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
+            DarkStartHoursBox.IsEnabled = false;
             DarkStartMinutesBox.IsEnabled = false;
-            lightStartBox.IsEnabled = false;
+            LightStartHoursBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
             BGWinButton.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
@@ -661,7 +508,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            autoDarkModeConfigBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
+            configBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
 
             if (AppComboBox.SelectedIndex.Equals(0))
             {
@@ -694,7 +541,7 @@ namespace AutoDarkModeApp
         }
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            autoDarkModeConfigBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
+            configBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
             //todo: switch over to pipe based
 
 
@@ -714,7 +561,7 @@ namespace AutoDarkModeApp
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
-                if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
+                if (configBuilder.Config.AccentColorTaskbar)
                 {
                     regEditHandler.ColorPrevalence(0);
                     Thread.Sleep(200);
@@ -727,7 +574,7 @@ namespace AutoDarkModeApp
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
                 regEditHandler.SystemTheme(0);
-                if (autoDarkModeConfigBuilder.Config.AccentColorTaskbar)
+                if (configBuilder.Config.AccentColorTaskbar)
                 {
                     Thread.Sleep(200);
                     regEditHandler.ColorPrevalence(1);
@@ -739,7 +586,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            autoDarkModeConfigBuilder.Config.EdgeTheme = EdgeComboBox.SelectedIndex;
+            configBuilder.Config.EdgeTheme = EdgeComboBox.SelectedIndex;
 
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
@@ -796,7 +643,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            autoDarkModeConfigBuilder.Config.AccentColorTaskbar = true;
+            configBuilder.Config.AccentColorTaskbar = true;
             try
             {
                 if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
@@ -812,7 +659,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            autoDarkModeConfigBuilder.Config.AccentColorTaskbar = false;
+            configBuilder.Config.AccentColorTaskbar = false;
             regEditHandler.ColorPrevalence(0);
         }
 
@@ -832,7 +679,7 @@ namespace AutoDarkModeApp
         }
         private void ShowDeskBGStatus()
         {
-            if(!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
+            if (!configBuilder.Config.Wallpaper.Disabled)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }
@@ -855,16 +702,35 @@ namespace AutoDarkModeApp
             OffsetButton.Visibility = value;
         }
 
+        //application close behaviour
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            Application.Current.Shutdown();
+            // workaround to counter async running clients while context is being closed!
+            CommandClient.SendMessage("");
+            NetMQConfig.Cleanup();
+            Process.GetCurrentProcess().Kill();
+        }
+
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            SaveConfigInteractive();
+
+            if (configBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
+            base.OnClosing(e);
+        }
+
+        private void SaveConfigInteractive()
         {
             try
             {
-                autoDarkModeConfigBuilder.Save();
+                configBuilder.Save();
             }
             catch (Exception ex)
             {
                 userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: MainWindow.OnClosing.autoDarkModeConfigBuilder.Write()" + "\n\n" + ex.Message;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: MainWindow.OnClosing.autoDarkModeConfigBuilder.Save()" + "\n\n" + ex.Message;
                 MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
                 {
                     Owner = GetWindow(this)
@@ -877,10 +743,6 @@ namespace AutoDarkModeApp
                 }
                 return;
             }
-
-            if (autoDarkModeConfigBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
-            NetMQConfig.Cleanup();
-            base.OnClosing(e);
         }
     }
 }

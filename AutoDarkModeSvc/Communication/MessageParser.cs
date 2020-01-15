@@ -1,7 +1,7 @@
 ﻿using AutoDarkMode;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -103,7 +103,7 @@ namespace AutoDarkModeSvc.Communication
                     case Command.RemoveTask:
 
                         Logger.Info("signal received: removing win tasks");
-                        TaskSchdHandler.RemoveTask();
+                        TaskSchdHandler.RemoveTasks();
                         SendResponse(Command.Ok);
                         break;
 
@@ -118,7 +118,7 @@ namespace AutoDarkModeSvc.Communication
                         }
                         else
                         {
-                            SendResponse(Command.Err);
+                            SendResponse(Command.NoLocAccess);
                         }
                         break;
 
