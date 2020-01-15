@@ -26,11 +26,6 @@ namespace AutoDarkModeApp
         private void UiHandler()
         {
             LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
-
-            if (Properties.Settings.Default.AlterTime)
-            {
-                AlterTimeCheckBox.IsChecked = true;
-            }
             if (Properties.Settings.Default.BackgroundUpdate)
             {
                 BckgrUpdateCB.IsChecked = true;

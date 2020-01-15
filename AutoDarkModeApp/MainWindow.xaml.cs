@@ -45,11 +45,9 @@ namespace AutoDarkModeApp
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
             if (Properties.Settings.Default.FirstRun)
             {
-                SystemTimeFormat();
                 AddJumpList();
                 Properties.Settings.Default.FirstRun = false;
             }
-            if (Properties.Settings.Default.AlterTime) AlterTime(true);
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -84,23 +82,6 @@ namespace AutoDarkModeApp
                 Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
-        }
-
-        private void SystemTimeFormat()
-        {
-            try
-            {
-                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
-                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
-                {
-                    Properties.Settings.Default.AlterTime = true;
-                }
-            }
-            catch
-            {
-
-            }
         }
 
         private void ThemeChange(object sender, EventArgs e)
@@ -291,34 +272,19 @@ namespace AutoDarkModeApp
             }
 
             //check values from TextBox
-            if (!Properties.Settings.Default.AlterTime)
+            if (darkStart >= 24)
             {
-                if (darkStart >= 24)
-                {
-                    darkStart = 23;
-                    darkStartMinutes = 59;
-                }
-                if (lightStart >= darkStart)
-                {
-                    lightStart = darkStart - 3;
-                }
-                if (lightStart < 0)
-                {
-                    lightStart = 6;
-                    darkStart = 17;
-                }
+                darkStart = 23;
+                darkStartMinutes = 59;
             }
-            else
+            if (lightStart >= darkStart)
             {
-                if (darkStart >= 12)
-                {
-                    darkStart = 11;
-                    darkStartMinutes = 59;
-                }
-                if (lightStart >= 13)
-                {
-                    lightStart = 12;
-                }
+                lightStart = darkStart - 3;
+            }
+            if (lightStart < 0)
+            {
+                lightStart = 6;
+                darkStart = 17;
             }
 
             if (lightStartMinutes > 59)
@@ -370,10 +336,6 @@ namespace AutoDarkModeApp
             //todo: switch EVERYTHING!!! to PipeMessages
             try
             {
-                if (Properties.Settings.Default.AlterTime)
-                {
-                    darkStart += 12;
-                }
                 TaskSchdHandler.CreateSwitchTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
             }
             catch (Exception ex)
@@ -525,16 +487,6 @@ namespace AutoDarkModeApp
                 Owner = GetWindow(this)
             };
             aboutWindow.ShowDialog();
-
-            if (aboutWindow.AlterTimeCheckBox.IsChecked == true && Properties.Settings.Default.AlterTime == false)
-            {
-                AlterTime(true);
-            }
-            else if (aboutWindow.AlterTimeCheckBox.IsChecked == false && Properties.Settings.Default.AlterTime == true)
-            {
-                AlterTime(false);
-            }
-
             if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
             {
                 //todo: switch over to pipe messaging
@@ -594,15 +546,8 @@ namespace AutoDarkModeApp
                     //apply settings & change UI
                     lightStartBox.Text = sundate[0].ToString();
                     LightStartMinutesBox.Text = sundate[1].ToString();
-                    if (Properties.Settings.Default.AlterTime)
-                    {
-                        sundate[2] -= 12;
-                        darkStartBox.Text = sundate[2].ToString();
-                    }
-                    else
-                    {
-                        darkStartBox.Text = sundate[2].ToString();
-                    }
+                    darkStartBox.Text = sundate[2].ToString();
+
                     DarkStartMinutesBox.Text = sundate[3].ToString();
                     lightStartBox.IsEnabled = false;
                     LightStartMinutesBox.IsEnabled = false;
@@ -896,48 +841,6 @@ namespace AutoDarkModeApp
                 DeskBGStatus.Text = Properties.Resources.disabled;
             }
         }
-
-        private void AlterTime(bool enable)
-        {
-            if (enable)
-            {
-                Properties.Settings.Default.AlterTime = true;
-                amTextBlock.Text = "am";
-                pmTextBlock.Text = "pm";
-                applyButton.Margin = new Thickness(205, 25, 0, 0);
-                int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
-                if (darkTime < 1)
-                {
-                    darkTime = 7;
-                }
-                darkStartBox.Text = Convert.ToString(darkTime);
-
-                int lightTime = Convert.ToInt32(lightStartBox.Text);
-                if (lightTime > 12)
-                {
-                    lightTime = 7;
-                }
-                lightStartBox.Text = Convert.ToString(lightTime);
-            }
-            else
-            {
-                Properties.Settings.Default.AlterTime = false;
-                amTextBlock.Text = "";
-                pmTextBlock.Text = "";
-                applyButton.Margin = new Thickness(184, 25, 0, 0);
-                int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
-                if (darkTime > 24)
-                {
-                    darkTime = 19;
-                }
-                if (darkTime == 24)
-                {
-                    darkTime = 23;
-                }
-                darkStartBox.Text = Convert.ToString(darkTime);
-            }
-        }
-
         private void SetOffsetVisibility(Visibility value)
         {
             OffsetLbl.Visibility = value;

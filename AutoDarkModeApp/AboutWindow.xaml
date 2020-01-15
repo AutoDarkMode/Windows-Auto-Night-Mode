@@ -39,7 +39,6 @@
 
         <!-- Settings-->
         <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,358,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
