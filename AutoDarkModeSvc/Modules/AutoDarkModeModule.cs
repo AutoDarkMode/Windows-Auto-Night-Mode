@@ -9,7 +9,7 @@ namespace AutoDarkModeSvc.Modules
     abstract class AutoDarkModeModule : IAutoDarkModeModule
     {
         public string Name { get; protected set; }
-        public string TimerAffinity { get; protected set; } = TimerName.Main;
+        public abstract string TimerAffinity { get; }
         public abstract void Poll();
         public bool Equals(IAutoDarkModeModule other)
         {

@@ -10,18 +10,16 @@ namespace AutoDarkModeSvc.Modules
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private AutoDarkModeConfigBuilder ConfigBuilder { get;  }
-
-
+        public override string TimerAffinity { get; } = TimerName.IO;
+         
         /// <summary>
         /// Instantiates a new ConfigUpdateModule.
         /// This module reloads the configuration file periodically
         /// </summary>
         /// <param name="name">unique name of the module</param>
-        /// <param name="timerAffinity">name of the timer this module should be assigned to</param>
-        public ConfigLoadModule(string name, string timerAffinity)
+        public ConfigLoadModule(string name)
         {
             Name = name;
-            TimerAffinity = timerAffinity;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         }
         public override void Poll()

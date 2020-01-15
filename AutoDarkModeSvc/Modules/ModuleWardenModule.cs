@@ -10,17 +10,17 @@ namespace AutoDarkModeSvc.Modules
     {
         private AutoDarkModeConfigBuilder ConfigBuilder { get; }
         private List<ModuleTimer> Timers { get; }
+        public override string TimerAffinity { get; } = TimerName.Main;
+
 
         /// <summary>
         /// Instantiates a new ModuleWardenModule.
         /// This module registers and deregisters modules automatically based on the AutoDarkModeConfiguration
         /// </summary>
         /// <param name="name">unique name of the module</param>
-        /// <param name="timerAffinity">name of the timer this module should be assigned to</param>
-        public ModuleWardenModule(string name, List<ModuleTimer> timers, string timerAffinity)
+        public ModuleWardenModule(string name, List<ModuleTimer> timers)
         {
             Name = name;
-            TimerAffinity = timerAffinity;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             Timers = timers;
         }
