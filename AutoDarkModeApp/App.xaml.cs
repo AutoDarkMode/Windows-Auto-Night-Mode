@@ -19,7 +19,7 @@ namespace AutoDarkModeApp
             bool isClassicMode;
             try
             {
-                isClassicMode = autoDarkModeConfigBuilder.Config.ClassicMode;
+                isClassicMode = autoDarkModeConfigBuilder.config.ClassicMode;
             }
             catch (Exception)
             {
@@ -36,7 +36,7 @@ namespace AutoDarkModeApp
                 args = new List<string>();
             }
 
-
+            // Starts process unless the UI is debug mode.
             using Process svc = new Process();
             if (e.Args.Length == 0 || e.Args.Length > 0 && e.Args[0] != "/debug")
             {

@@ -15,7 +15,7 @@ namespace AutoDarkModeSvc
         {
             DateTime sunrise = config.Sunrise;
             DateTime sunset = config.Sunset;
-            if (!config.Location.Disabled)
+            if (config.Location.Enabled)
             {
                 LocationHandler.ApplySunDateOffset(config, out sunrise, out sunset);
             }
@@ -51,7 +51,7 @@ namespace AutoDarkModeSvc
                 RegistryHandler.SetSystemTheme((int)newTheme);
                 rtc.CurrentSystemTheme = newTheme;
             }
-            if (!config.Wallpaper.Disabled)
+            if (!config.Wallpaper.Enabled)
             {
                 if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)
                 {

@@ -39,7 +39,7 @@ namespace AutoDarkModeSvc.Communication
                 {
                     case Command.Switch:
                         Logger.Info("signal received: time based theme switch");
-                        ThemeManager.TimedSwitch(Properties.Config);
+                        ThemeManager.TimedSwitch(Properties.config);
                         SendResponse(Command.Ok);
                         break;
 
@@ -47,24 +47,24 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
                         {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
+                            ThemeManager.SwitchTheme(Properties.config, Theme.Dark);
                         }
                         else
                         {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
+                            ThemeManager.SwitchTheme(Properties.config, Theme.Light);
                         }
                         SendResponse(Command.Ok);
                         break;
 
                     case Command.Dark:
                         Logger.Info("signal received: switch to dark mode");
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
+                        ThemeManager.SwitchTheme(Properties.config, Theme.Dark);
                         SendResponse(Command.Ok);
                         break;
 
                     case Command.Light:
                         Logger.Info("signal received: switch to light mode");
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
+                        ThemeManager.SwitchTheme(Properties.config, Theme.Light);
                         SendResponse(Command.Ok);
                         break;
 
@@ -84,11 +84,11 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: creating win scheduler based time switch task");
                         try
                         {
-                            DateTime sunrise = Convert.ToDateTime(Properties.Config.Sunrise);
-                            DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
-                            if (!Properties.Config.Location.Disabled)
+                            DateTime sunrise = Convert.ToDateTime(Properties.config.Sunrise);
+                            DateTime sunset = Convert.ToDateTime(Properties.config.Sunset);
+                            if (Properties.config.Location.Enabled)
                             {
-                                LocationHandler.ApplySunDateOffset(Properties.Config, out sunrise, out sunset);
+                                LocationHandler.ApplySunDateOffset(Properties.config, out sunrise, out sunset);
                             }
                             TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
                             SendResponse(Command.Ok);
