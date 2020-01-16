@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Modules
         {
             Task.Run(() =>
             {
-                ThemeManager.TimedSwitch(AutoDarkModeConfigBuilder.Instance().config);
+                ThemeManager.TimedSwitch(AutoDarkModeConfigBuilder.Instance().Config);
             });
         }
     }

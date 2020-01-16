@@ -69,7 +69,7 @@ namespace AutoDarkModeSvc
 
         private void SwitchThemeNow(object sender, EventArgs e)
         {
-            AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().config;
+            AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().Config;
             Logger.Info("ui signal received: switching theme");
             if (RegistryHandler.AppsUseLightTheme())
             {

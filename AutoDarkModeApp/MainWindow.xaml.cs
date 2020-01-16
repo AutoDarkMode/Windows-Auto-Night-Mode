@@ -98,15 +98,16 @@ namespace AutoDarkModeApp
 
         private void AutoThemeSwitchInit()
         {
-            if (configBuilder.config.Enabled)
+            if (configBuilder.Config.Enabled)
             {
                 autoCheckBox.IsChecked = true;
-                if (configBuilder.config.Location.Enabled)
+                if (configBuilder.Config.Location.Enabled)
                 {
-                    DarkStartHoursBox.Text = Convert.ToString(configBuilder.config.Sunset.Hour);
-                    DarkStartMinutesBox.Text = Convert.ToString(configBuilder.config.Sunset.Minute);
-                    LightStartHoursBox.Text = Convert.ToString(configBuilder.config.Sunrise.Hour);
-                    LightStartMinutesBox.Text = Convert.ToString(configBuilder.config.Sunrise.Minute);
+                    DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
+                    DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
+                    LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
+                    LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
+                    locationCheckBox.IsChecked = true;
                 }
             }
             else
@@ -117,19 +118,19 @@ namespace AutoDarkModeApp
 
         private void UiHandler()
         {
-            int appTheme = configBuilder.config.AppsTheme;
+            int appTheme = configBuilder.Config.AppsTheme;
             Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
             if (appTheme == 1) AppComboBox.SelectedIndex = 1;
             if (appTheme == 2) AppComboBox.SelectedIndex = 2;
 
-            int systemTheme = configBuilder.config.SystemTheme;
+            int systemTheme = configBuilder.Config.SystemTheme;
             Console.WriteLine("SystemTheme Value: " + systemTheme);
             if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
             if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
             if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
 
-            int edgeTheme = configBuilder.config.EdgeTheme;
+            int edgeTheme = configBuilder.Config.EdgeTheme;
             Console.WriteLine("EdgeTheme Value: " + edgeTheme);
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
@@ -148,7 +149,7 @@ namespace AutoDarkModeApp
                 AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
             }
 
-            if (configBuilder.config.AccentColorTaskbar)
+            if (configBuilder.Config.AccentColorTaskbar)
             {
                 AccentColorCheckBox.IsChecked = true;
             }
@@ -180,7 +181,7 @@ namespace AutoDarkModeApp
 
         private void InitOffset()
         {
-            PopulateOffsetFields(configBuilder.config.Location.SunsetOffsetMin, configBuilder.config.Location.SunriseOffsetMin);
+            PopulateOffsetFields(configBuilder.Config.Location.SunsetOffsetMin, configBuilder.Config.Location.SunriseOffsetMin);
         }
 
         private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
@@ -220,20 +221,20 @@ namespace AutoDarkModeApp
 
             if (OffsetLightModeButton.Content.ToString() == "+")
             {
-                configBuilder.config.Location.SunriseOffsetMin = offsetLight;
+                configBuilder.Config.Location.SunriseOffsetMin = offsetLight;
             }
             else
             {
-                configBuilder.config.Location.SunriseOffsetMin = -offsetLight;
+                configBuilder.Config.Location.SunriseOffsetMin = -offsetLight;
             }
 
             if (OffsetDarkModeButton.Content.ToString() == "+")
             {
-                configBuilder.config.Location.SunsetOffsetMin = offsetDark;
+                configBuilder.Config.Location.SunsetOffsetMin = offsetDark;
             }
             else
             {
-                configBuilder.config.Location.SunsetOffsetMin = -offsetDark;
+                configBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
             }
 
             OffsetButton.IsEnabled = false;
@@ -304,8 +305,8 @@ namespace AutoDarkModeApp
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
 
-            configBuilder.config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
-            configBuilder.config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            configBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
 
             //todo: implement switching logic via commandclient
 
@@ -389,7 +390,7 @@ namespace AutoDarkModeApp
             // to use the command pipe infrastructure to test if the backend works.
             // this also serves as an example how to use the new command infrastructure
             // for UI operations use the Async variant to prevent UI blocking
-            configBuilder.config.Location.Enabled = true;
+            configBuilder.Config.Location.Enabled = true;
             GetLocation();
         }
         public async void GetLocation()
@@ -428,7 +429,7 @@ namespace AutoDarkModeApp
         }
         private async void NoLocationAccess()
         {
-            configBuilder.config.Location.Enabled = false;
+            configBuilder.Config.Location.Enabled = false;
             locationCheckBox.IsChecked = false;
             locationBlock.Text = Properties.Resources.msgLocPerm; // The App needs permission to location
             locationBlock.Visibility = Visibility.Visible;
@@ -436,7 +437,7 @@ namespace AutoDarkModeApp
         }
         private async void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            configBuilder.config.Location.Enabled = false;
+            configBuilder.Config.Location.Enabled = false;
             try
             {
                 configBuilder.Save();
@@ -461,7 +462,7 @@ namespace AutoDarkModeApp
         //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            configBuilder.config.Enabled = true;
+            configBuilder.Config.Enabled = true;
 
             if (is1903) SystemComboBox.IsEnabled = true;
             if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
@@ -480,11 +481,11 @@ namespace AutoDarkModeApp
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            configBuilder.config.Enabled = false;
+            configBuilder.Config.Enabled = false;
 
-            configBuilder.config.Wallpaper.Enabled = false;
-            configBuilder.config.Wallpaper.DarkThemeWallpapers.Clear();
-            configBuilder.config.Wallpaper.LightThemeWallpapers.Clear();
+            configBuilder.Config.Wallpaper.Enabled = false;
+            configBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+            configBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
 
             AccentColorCheckBox.IsEnabled = false;
             SystemComboBox.IsEnabled = false;
@@ -509,7 +510,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            configBuilder.config.AppsTheme = AppComboBox.SelectedIndex;
+            configBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
 
             if (AppComboBox.SelectedIndex.Equals(0))
             {
@@ -542,7 +543,7 @@ namespace AutoDarkModeApp
         }
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            configBuilder.config.SystemTheme = SystemComboBox.SelectedIndex;
+            configBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
             //todo: switch over to pipe based
 
 
@@ -562,7 +563,7 @@ namespace AutoDarkModeApp
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
-                if (configBuilder.config.AccentColorTaskbar)
+                if (configBuilder.Config.AccentColorTaskbar)
                 {
                     regEditHandler.ColorPrevalence(0);
                     Thread.Sleep(200);
@@ -575,7 +576,7 @@ namespace AutoDarkModeApp
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
                 regEditHandler.SystemTheme(0);
-                if (configBuilder.config.AccentColorTaskbar)
+                if (configBuilder.Config.AccentColorTaskbar)
                 {
                     Thread.Sleep(200);
                     regEditHandler.ColorPrevalence(1);
@@ -587,7 +588,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            configBuilder.config.EdgeTheme = EdgeComboBox.SelectedIndex;
+            configBuilder.Config.EdgeTheme = EdgeComboBox.SelectedIndex;
 
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
@@ -644,7 +645,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            configBuilder.config.AccentColorTaskbar = true;
+            configBuilder.Config.AccentColorTaskbar = true;
             try
             {
                 if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
@@ -660,7 +661,7 @@ namespace AutoDarkModeApp
         {
             //todo: switch over to pipe based
 
-            configBuilder.config.AccentColorTaskbar = false;
+            configBuilder.Config.AccentColorTaskbar = false;
             regEditHandler.ColorPrevalence(0);
         }
 
@@ -680,7 +681,7 @@ namespace AutoDarkModeApp
         }
         private void ShowDeskBGStatus()
         {
-            if (!configBuilder.config.Wallpaper.Enabled)
+            if (!configBuilder.Config.Wallpaper.Enabled)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }
@@ -718,7 +719,7 @@ namespace AutoDarkModeApp
         {
             SaveConfigInteractive();
 
-            if (configBuilder.config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
+            if (configBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
             base.OnClosing(e);
         }
 

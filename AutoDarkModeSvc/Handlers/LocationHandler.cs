@@ -15,17 +15,17 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="configBuilder">config builder for the AutoDarkModeConfig to allow saving</param>
         public static void UpdateSunTime(AutoDarkModeConfigBuilder configBuilder)
         {
-            int[] sun = SunDate.CalculateSunriseSunset(configBuilder.config.Location.Lat, configBuilder.config.Location.Lon);
-            configBuilder.config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            configBuilder.config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
+            int[] sun = SunDate.CalculateSunriseSunset(configBuilder.Config.Location.Lat, configBuilder.Config.Location.Lon);
+            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
+            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
             try
             {
-                if (!configBuilder.config.Location.Enabled)
+                if (!configBuilder.Config.Location.Enabled)
                 {
-                    configBuilder.config.Location.Enabled = true;
+                    configBuilder.Config.Location.Enabled = true;
                 }
                 configBuilder.Save();
-                Logger.Info($"Updated sunrise {configBuilder.config.Sunrise.ToString("HH:mm")} and sunset {configBuilder.config.Sunset.ToString("HH:mm")}");
+                Logger.Info($"Updated sunrise {configBuilder.Config.Sunrise.ToString("HH:mm")} and sunset {configBuilder.Config.Sunset.ToString("HH:mm")}");
             }
             catch (Exception e)
             {
@@ -48,13 +48,13 @@ namespace AutoDarkModeSvc.Handlers
                     Geolocator locator = new Geolocator();
                     Geoposition location = await locator.GetGeopositionAsync();
                     BasicGeoposition position = location.Coordinate.Point.Position;
-                    configBuilder.config.Location.Lon = position.Longitude;
-                    configBuilder.config.Location.Lat = position.Latitude;
+                    configBuilder.Config.Location.Lon = position.Longitude;
+                    configBuilder.Config.Location.Lat = position.Latitude;
                     Logger.Info($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
                     success = true;
                     break;
                 default:
-                    configBuilder.config.Location.Enabled = false;
+                    configBuilder.Config.Location.Enabled = false;
                     Logger.Warn($"no geolocation access, please enable in system settings");
                     break;
             }
@@ -78,7 +78,7 @@ namespace AutoDarkModeSvc.Handlers
         public static void CreateLocationTask(AutoDarkModeConfigBuilder configBuilder)
         {
             UpdateSunTime(configBuilder);
-            ApplySunDateOffset(configBuilder.config, out DateTime Sunrise, out DateTime Sunset);
+            ApplySunDateOffset(configBuilder.Config, out DateTime Sunrise, out DateTime Sunset);
             TaskSchdHandler.CreateSwitchTask(Sunrise.Hour, Sunrise.Minute, Sunset.Hour, Sunset.Minute);
         }
 

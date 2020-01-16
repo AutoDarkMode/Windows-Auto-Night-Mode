@@ -7,14 +7,17 @@ namespace AutoDarkModeApp.Config
     public class AutoDarkModeConfigBuilder
     {
         private static AutoDarkModeConfigBuilder instance;
-        public AutoDarkModeConfig config { get; private set; }
+        public AutoDarkModeConfig Config { get; private set; }
 
-        private const string configFileName = "AutoDarkModeConfig.json";
+        private string ConfigDir { get; }
+        private string ConfigFilePath { get; }
         protected AutoDarkModeConfigBuilder()
         {
             if (instance == null)
             {
-                config = new AutoDarkModeConfig();
+                Config = new AutoDarkModeConfig();
+                ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+                ConfigFilePath = Path.Combine(ConfigDir, "config.json");
             }
         }
 
@@ -31,8 +34,9 @@ namespace AutoDarkModeApp.Config
         {
             try
             {
-                string jsonConfig = JsonConvert.SerializeObject(config, Formatting.Indented);
-                using StreamWriter writer = new StreamWriter(Path.Combine(Environment.CurrentDirectory, configFileName), false);
+                Directory.CreateDirectory(ConfigDir);
+                string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
+                using StreamWriter writer = new StreamWriter(ConfigFilePath, false);
                 writer.WriteLine(jsonConfig);
                 writer.Close();
             }
@@ -44,16 +48,15 @@ namespace AutoDarkModeApp.Config
 
         public void Load()
         {
-            string path = Path.Combine(Environment.CurrentDirectory, configFileName);
-            if (!File.Exists(path))
+            if (!File.Exists(ConfigFilePath))
             {
                 Save();
             }
             try
             {
-                using StreamReader reader = File.OpenText(path);
+                using StreamReader reader = File.OpenText(ConfigFilePath);
                 JsonSerializer serializer = new JsonSerializer();
-                config = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+                Config = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
                 reader.Close();
             }
             catch (Exception ex)

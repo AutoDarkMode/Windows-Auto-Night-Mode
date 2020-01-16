@@ -19,7 +19,7 @@ namespace AutoDarkModeApp
             bool isClassicMode;
             try
             {
-                isClassicMode = autoDarkModeConfigBuilder.config.ClassicMode;
+                isClassicMode = autoDarkModeConfigBuilder.Config.ClassicMode;
             }
             catch (Exception)
             {
