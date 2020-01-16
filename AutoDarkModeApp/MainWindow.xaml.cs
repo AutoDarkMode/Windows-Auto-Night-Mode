@@ -437,17 +437,6 @@ namespace AutoDarkModeApp
         }
         private async void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            configBuilder.Config.Location.Enabled = false;
-            try
-            {
-                configBuilder.Save();
-                await CommandClient.SendMessageAsync(Command.UpdateConfig);
-            }
-            catch (Exception)
-            {
-                //todo: do something with the error
-            }
-
             LightStartHoursBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
             DarkStartHoursBox.IsEnabled = true;
@@ -455,6 +444,25 @@ namespace AutoDarkModeApp
             applyButton.IsEnabled = true;
             locationBlock.Visibility = Visibility.Collapsed;
             SetOffsetVisibility(Visibility.Collapsed);
+            configBuilder.Config.Location.Enabled = false;
+
+            try
+            {
+                configBuilder.Save();
+                await CommandClient.SendMessageAsync(Command.UpdateConfig);
+            }
+            catch (Exception)
+            {
+                //todo: do something with the error, show interface msg
+                LightStartHoursBox.IsEnabled = false;
+                LightStartMinutesBox.IsEnabled = false;
+                DarkStartHoursBox.IsEnabled = false;
+                DarkStartMinutesBox.IsEnabled = false;
+                applyButton.IsEnabled = false;
+                locationBlock.Visibility = Visibility.Visible;
+                SetOffsetVisibility(Visibility.Visible);
+                configBuilder.Config.Location.Enabled = true;
+            }
 
             userFeedback.Text = Properties.Resources.msgClickApply; // Click on apply to save changes
         }

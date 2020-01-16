@@ -6,8 +6,8 @@ namespace AutoDarkModeSvc.Timers
 {
     static class TimerName
     {
-        public static readonly string Main = "main";
-        public static readonly string IO = "io";
-        public static readonly string Geopos = "geopos";
+        public const string Main = "main";
+        public const string IO = "io";
+        public const string Geopos = "geopos";
     }
 }

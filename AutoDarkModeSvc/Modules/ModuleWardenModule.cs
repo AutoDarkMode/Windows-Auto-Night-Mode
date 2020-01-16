@@ -28,9 +28,9 @@ namespace AutoDarkModeSvc.Modules
         public override void Poll()
         {
             AutoDarkModeConfig config = ConfigBuilder.Config;
-            AutoManageModule("TimeSwitch", typeof(TimeSwitchModule), config.Enabled);
-            AutoManageModule("GeopositionUpdate", typeof(GeopositionUpdateModule), config.Location.Enabled);
-            AutoManageModule("ConfigRefresh", typeof(ConfigLoadModule), true);
+            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), config.Enabled);
+            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(GeopositionUpdateModule), config.Location.Enabled);
+            AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(ConfigLoadModule), true);
         }
 
         /// <summary>
