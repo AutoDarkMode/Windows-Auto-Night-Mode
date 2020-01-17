@@ -28,8 +28,6 @@ namespace AutoDarkModeApp
         {
             Console.WriteLine("--------- AppStart");
 
-            // Read json config file
-            configBuilder.Load();
             CommandClient = new ZeroMQClient(Command.DefaultPort);
 
             LanguageHelper();
@@ -399,6 +397,7 @@ namespace AutoDarkModeApp
             //invoking the location command will always enable location services by default
 
             var accessStatus = await CommandClient.SendMesssageAndGetReplyAsync(Command.Location);
+            configBuilder.Load();
             if (accessStatus != Command.NoLocAccess)
             {
                 //locate user + get sunrise & sunset times

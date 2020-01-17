@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc
                 var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "service.log" };
                 var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
                 {
-                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message}. ${exception:separator=|}"
+                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message} ${exception:separator=|}"
                 };
 
                 // Rules for mapping loggers to targets            
