@@ -6,6 +6,7 @@ using AutoDarkMode;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
@@ -19,6 +20,7 @@ namespace AutoDarkModeSvc
         NotifyIcon NotifyIcon { get; }
         List<ModuleTimer> Timers { get; set; }
         ICommandServer CommandServer { get;  }
+        AutoDarkModeConfigMonitor ConfigMonitor { get; }
         public Service(int timerMillis)
         {
             NotifyIcon = new NotifyIcon();
@@ -27,14 +29,17 @@ namespace AutoDarkModeSvc
             CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
 
+            ConfigMonitor = new AutoDarkModeConfigMonitor();
+            ConfigMonitor.Start();
+
             ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main", true);
-            ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io", true);
+            //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io", true);
             ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, "geopos", false);
 
             Timers = new List<ModuleTimer>()
             {
                 MainTimer, 
-                IOTimer, 
+                //IOTimer, 
                 GeoposTimer
             };
 
@@ -57,6 +62,8 @@ namespace AutoDarkModeSvc
 
         public void Cleanup()
         {
+            CommandServer.Stop();
+            ConfigMonitor.Dispose();
             Timers.ForEach(t => t.Stop());
             Timers.ForEach(t => t.Dispose());
             NLog.LogManager.Shutdown();

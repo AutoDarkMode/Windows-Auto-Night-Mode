@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.Modules
         /// <summary>
         /// Polling method to be periodically called by <see cref="AutoDarkModeSvc.Timers.ModuleTimer.OnTimedEvent(object, System.Timers.ElapsedEventArgs)"/>
         /// </summary>
-        public void Poll();
+        public void Fire();
         /// <summary>
         /// Unique timer identification
         /// </summary>

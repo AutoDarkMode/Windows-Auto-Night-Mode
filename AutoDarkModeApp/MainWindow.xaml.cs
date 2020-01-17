@@ -22,9 +22,6 @@ namespace AutoDarkModeApp
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
         private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
         private ICommandClient CommandClient { get; }
-
-
-
         private readonly bool is1903 = false;
 
         public MainWindow()
@@ -435,7 +432,7 @@ namespace AutoDarkModeApp
             locationBlock.Visibility = Visibility.Visible;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
-        private async void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             LightStartHoursBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
@@ -449,7 +446,6 @@ namespace AutoDarkModeApp
             try
             {
                 configBuilder.Save();
-                await CommandClient.SendMessageAsync(Command.UpdateConfig);
             }
             catch (Exception)
             {
@@ -718,7 +714,7 @@ namespace AutoDarkModeApp
             Properties.Settings.Default.Save();
             Application.Current.Shutdown();
             // workaround to counter async running clients while context is being closed!
-            CommandClient.SendMessage("");
+            CommandClient.SendMessage("frontend shutdown");
             NetMQConfig.Cleanup();
             Process.GetCurrentProcess().Kill();
         }

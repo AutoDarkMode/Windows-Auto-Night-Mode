@@ -17,7 +17,7 @@ namespace AutoDarkModeSvc.Timers
         /// <summary>
         /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
         /// </summary>
-        /// <param name="interval">A timer interval to determine when <see cref="ModuleTimer.OnTimedEvent(object, ElapsedEventArgs)" should be invoked/></param>
+        /// <param name="interval">A timer interval to determine when <see cref="ModuleTimer.OnTimedEvent(object, ElapsedEventArgs)"/> should be invoked</param>
         /// <param name="name">unique timer name</param>
         /// <param name="tickOnStart">set to true if the timer should tick immediately after starting instead of waiting one interval first</param>
         public ModuleTimer(int interval, string name, bool tickOnStart)
@@ -37,11 +37,11 @@ namespace AutoDarkModeSvc.Timers
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             // copying allows dynamic updates of the Module list since it can only be changed once every OnTimedEvent
-            List<IAutoDarkModeModule> pollable = new List<IAutoDarkModeModule>(Modules);
+            List<IAutoDarkModeModule> ready = new List<IAutoDarkModeModule>(Modules);
             Logger.Debug($"{Name}timer signal received");
-            pollable.ForEach(t =>
+            ready.ForEach(t =>
             {
-                t.Poll();
+                t.Fire();
             });
         }
 

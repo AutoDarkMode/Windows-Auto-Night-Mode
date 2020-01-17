@@ -9,8 +9,8 @@ namespace AutoDarkModeApp.Config
         private static AutoDarkModeConfigBuilder instance;
         public AutoDarkModeConfig Config { get; private set; }
 
-        private string ConfigDir { get; }
-        private string ConfigFilePath { get; }
+        public string ConfigDir { get; }
+        public string ConfigFilePath { get; }
         protected AutoDarkModeConfigBuilder()
         {
             if (instance == null)

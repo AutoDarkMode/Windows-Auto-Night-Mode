@@ -25,12 +25,12 @@ namespace AutoDarkModeSvc.Modules
             Timers = timers;
         }
 
-        public override void Poll()
+        public override void Fire()
         {
             AutoDarkModeConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), config.Enabled);
-            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(GeopositionUpdateModule), config.Location.Enabled);
-            AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(ConfigLoadModule), true);
+            AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), config.Location.Enabled);
+            //AutoManageModule(typeof(ConfigLoadModule).Name, typeof(ConfigLoadModule), true);
         }
 
         /// <summary>

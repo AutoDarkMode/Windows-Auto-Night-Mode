@@ -6,6 +6,7 @@ using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules
 {
+    [Obsolete]
     class ConfigLoadModule : AutoDarkModeModule
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -22,7 +23,7 @@ namespace AutoDarkModeSvc.Modules
             Name = name;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         }
-        public override void Poll()
+        public override void Fire()
         {
             Task.Run(() =>
             {

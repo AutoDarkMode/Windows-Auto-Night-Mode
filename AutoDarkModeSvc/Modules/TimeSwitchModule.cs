@@ -22,7 +22,7 @@ namespace AutoDarkModeSvc.Modules
             Name = name;
         }
 
-        public override void Poll()
+        public override void Fire()
         {
             Task.Run(() =>
             {

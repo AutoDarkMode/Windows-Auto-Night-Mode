@@ -21,7 +21,7 @@ namespace AutoDarkModeSvc.Modules
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         }
 
-        public override void Poll()
+        public override void Fire()
         {
             Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
         }

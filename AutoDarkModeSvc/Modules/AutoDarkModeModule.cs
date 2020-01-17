@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.Modules
     {
         public string Name { get; protected set; }
         public abstract string TimerAffinity { get; }
-        public abstract void Poll();
+        public abstract void Fire();
         public bool Equals(IAutoDarkModeModule other)
         {
             if (ReferenceEquals(this, other))
