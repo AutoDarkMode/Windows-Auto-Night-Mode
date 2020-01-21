@@ -1,5 +1,5 @@
 # Windows 10 Auto Dark Mode
-Automatically switches between the dark and light theme of Windows 10 at sheduled times
+Automatically switches between the dark and light theme of Windows 10 at scheduled times
 ![Screenshot](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.png)
 
 ## Description
