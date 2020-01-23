@@ -661,7 +661,7 @@ namespace AutoDarkModeApp
         private void ShowErrorMessage(Exception ex)
         {
             userFeedback.Text = Properties.Resources.msgErrorOcc;
-            string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: MainWindow.OnClosing.autoDarkModeConfigBuilder.Save()" + "\n\n" + ex.Message;
+            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
             MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = GetWindow(this)
