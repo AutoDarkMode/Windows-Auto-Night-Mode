@@ -32,18 +32,11 @@ namespace AutoDarkModeApp.Config
 
         public void Save()
         {
-            try
-            {
-                Directory.CreateDirectory(ConfigDir);
-                string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
-                using StreamWriter writer = new StreamWriter(ConfigFilePath, false);
-                writer.WriteLine(jsonConfig);
-                writer.Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            Directory.CreateDirectory(ConfigDir);
+            string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
+            using StreamWriter writer = new StreamWriter(ConfigFilePath, false);
+            writer.WriteLine(jsonConfig);
+            writer.Close();
         }
 
         public void Load()
@@ -52,17 +45,10 @@ namespace AutoDarkModeApp.Config
             {
                 Save();
             }
-            try
-            {
-                using StreamReader reader = File.OpenText(ConfigFilePath);
-                JsonSerializer serializer = new JsonSerializer();
-                Config = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            using StreamReader reader = File.OpenText(ConfigFilePath);
+            JsonSerializer serializer = new JsonSerializer();
+            Config = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+            reader.Close();
         }
     }
 }

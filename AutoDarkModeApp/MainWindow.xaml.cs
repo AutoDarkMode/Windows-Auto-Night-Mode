@@ -1,17 +1,16 @@
 ﻿using AutoDarkMode;
 using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Config;
+using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Handlers;
 using NetMQ;
 using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using System.Windows.Shell;
 using Windows.System.Power;
 
@@ -28,7 +27,7 @@ namespace AutoDarkModeApp
         {
             CommandClient = new ZeroMQClient(Command.DefaultPort);
             LanguageHelper();
-            configBuilder.Load();
+            LoadConfig();
             InitializeComponent();
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             ConfigureComponents();
@@ -41,6 +40,8 @@ namespace AutoDarkModeApp
             }
         }
 
+        #region UIHandlers
+        // Window Handlers
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             Updater updater = new Updater();
@@ -48,181 +49,81 @@ namespace AutoDarkModeApp
             LanguageHelper();
             DonationScreen();
         }
-
-        private void DonationScreen()
+        private void Window_Closed(object sender, EventArgs e)
         {
-            Random rdmnumber = new Random();
-            int generatedNumber = rdmnumber.Next(1, 100);
-            if (generatedNumber == 50)
+            Properties.Settings.Default.Save();
+            SaveConfig();
+            Application.Current.Shutdown();
+            // workaround to counter async running clients while context is being closed!
+            CommandClient.SendMessage(Command.Shutdown);
+            //CommandClient.SendMessage("frontend shutdown");
+            NetMQConfig.Cleanup();
+            Process.GetCurrentProcess().Kill();
+        }
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (configBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
+            base.OnClosing(e);
+        }
+
+        // Textbox Handlers
+        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            applyButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
+        {
+            OffsetButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno");
-                msgBox.Owner = GetWindow(this);
-                msgBox.ShowDialog();
-                var result = msgBox.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
-                }
+                e.Handled = true;
+            }
+        }
+        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            var textBox = ((System.Windows.Controls.TextBox)sender);
+            textBox.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                textBox.SelectAll();
+            }));
+        }
+        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
+            {
+                var ue = e.OriginalSource as FrameworkElement;
+                e.Handled = true;
+                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
         }
 
-        private void LanguageHelper()
+        // Button Handlers
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.Language.ToString()))
+            AboutWindow aboutWindow = new AboutWindow
             {
-                Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+                Owner = GetWindow(this)
+            };
+            aboutWindow.ShowDialog();
+            // todo: this is fine, can stay like this
+            if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
+            {
+                TaskSchdHandler.CreateAppUpdaterTask();
+                Properties.Settings.Default.BackgroundUpdate = true;
             }
-            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
-        }
-
-        private void ThemeChange(object sender, EventArgs e)
-        {
-            // Edge theme switching has been removed
-            //if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
-            //{
-            //    EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
-            //}
-            //else
-            //{
-            //    EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
-            //}
-        }
-
-        private void ConfigureComponents()
-        {
-            if (configBuilder.Config.AutoThemeSwitchingEnabled)
+            else if (aboutWindow.BckgrUpdateCB.IsChecked == false && Properties.Settings.Default.BackgroundUpdate == true)
             {
-                autoCheckBox.IsChecked = true;
-                if (configBuilder.Config.Location.Enabled)
-                {
-                    locationCheckBox.IsChecked = true;
-                    DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
-                    DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
-                    LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
-                    LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
-                }
-            }
-            else
-            {
-                AutoCheckBox_Unchecked(autoCheckBox, null);
-            }
-
-            AppComboBox.SelectedIndex = configBuilder.Config.AppsTheme;
-            SystemComboBox.SelectedIndex = configBuilder.Config.SystemTheme;
-            //EdgeComboBox.SelectedIndex = configBuilder.Config.EdgeTheme;
-            // Error might be emerged if the index on the config file bigger than th biggest index of any combobox
-
-            if (!is1903)
-            {
-                SystemComboBox.IsEnabled = false;
-                AccentColorCheckBox.IsEnabled = false;
-                SystemComboBox.ToolTip = AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
-            }
-            else
-            {
-                AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
-            }
-
-            if (configBuilder.Config.AccentColorTaskbarEnabled)
-            {
-                AccentColorCheckBox.IsChecked = true;
-            }
-
-            SetDesktopBackgroundStatus();
-            PopulateOffsetFields(configBuilder.Config.Location.SunsetOffsetMin, configBuilder.Config.Location.SunriseOffsetMin);
-        }
-
-        private void SetDesktopBackgroundStatus()
-        {
-            if (!configBuilder.Config.Wallpaper.Enabled)
-            {
-                DeskBGStatus.Text = Properties.Resources.disabled;
-            }
-            else
-            {
-                DeskBGStatus.Text = Properties.Resources.enabled;
+                TaskSchdHandler.RemoveAppUpdaterTask();
+                Properties.Settings.Default.BackgroundUpdate = false;
             }
         }
-
-        private void PopulateOffsetFields(int offsetDark, int offsetLight)
-        {
-            if (offsetLight < 0)
-            {
-                OffsetLightModeButton.Content = "-";
-                OffsetLightBox.Text = Convert.ToString(-offsetLight);
-            }
-            else
-            {
-                OffsetLightBox.Text = Convert.ToString(offsetLight);
-            }
-            if (offsetDark < 0)
-            {
-                OffsetDarkModeButton.Content = "-";
-                OffsetDarkBox.Text = Convert.ToString(-offsetDark);
-            }
-            else
-            {
-                OffsetDarkBox.Text = Convert.ToString(offsetDark);
-            }
-        }
-
-        private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button)
-            {
-                if (button.Content.ToString() == "+")
-                {
-                    button.Content = "-";
-                }
-                else
-                {
-                    button.Content = "+";
-                }
-                OffsetButton.IsEnabled = true;
-            }
-        }
-
-        private void OffsetButton_Click(object sender, RoutedEventArgs e)
-        {
-            int offsetDark;
-            int offsetLight;
-
-            //get values from TextBox
-            try
-            {
-                offsetDark = int.Parse(OffsetDarkBox.Text);
-                offsetLight = int.Parse(OffsetLightBox.Text);
-            }
-            catch
-            {
-                userFeedback.Text = Properties.Resources.errorNumberInput;
-                return;
-            }
-
-            PopulateOffsetFields(offsetDark, offsetLight);
-
-            if (OffsetLightModeButton.Content.ToString() == "+")
-            {
-                configBuilder.Config.Location.SunriseOffsetMin = offsetLight;
-            }
-            else
-            {
-                configBuilder.Config.Location.SunriseOffsetMin = -offsetLight;
-            }
-
-            if (OffsetDarkModeButton.Content.ToString() == "+")
-            {
-                configBuilder.Config.Location.SunsetOffsetMin = offsetDark;
-            }
-            else
-            {
-                configBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
-            }
-
-            OffsetButton.IsEnabled = false;
-            GetLocation();
-        }
-
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             int darkStart;
@@ -290,86 +191,103 @@ namespace AutoDarkModeApp
             configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
             configBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
 
-            SaveConfigInteractive();
-            bool isMessageOK = await CommandClient.SendMessageAsync(Command.Switch);
-            if (!isMessageOK)
+            try
             {
-                // throw an error
+                configBuilder.Save();
+                bool isMessageOK = await CommandClient.SendMessageAsync(Command.Switch);
+                if (!isMessageOK)
+                {
+                    throw new SwitchThemeException();
+                }
+                else
+                {
+                    applyButton.IsEnabled = false;
+                    if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+                    {
+                        userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+                        applyButton.IsEnabled = true;
+                    }
+                    else
+                    {
+                        userFeedback.Text = Properties.Resources.msgChangesSaved; // changes were saved!
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+        private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Content.ToString() == "+")
+                {
+                    button.Content = "-";
+                }
+                else
+                {
+                    button.Content = "+";
+                }
+                OffsetButton.IsEnabled = true;
+            }
+        }
+        private void OffsetButton_Click(object sender, RoutedEventArgs e)
+        {
+            int offsetDark;
+            int offsetLight;
+
+            //get values from TextBox
+            try
+            {
+                offsetDark = int.Parse(OffsetDarkBox.Text);
+                offsetLight = int.Parse(OffsetLightBox.Text);
+            }
+            catch
+            {
+                userFeedback.Text = Properties.Resources.errorNumberInput;
+                return;
             }
 
-            applyButton.IsEnabled = false;
-            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            PopulateOffsetFields(offsetDark, offsetLight);
+
+            if (OffsetLightModeButton.Content.ToString() == "+")
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
-                applyButton.IsEnabled = true;
+                configBuilder.Config.Location.SunriseOffsetMin = offsetLight;
             }
             else
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved; // changes were saved!
+                configBuilder.Config.Location.SunriseOffsetMin = -offsetLight;
             }
 
-        }
-
-        //textbox event handler
-        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
-        {
-            OffsetButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            if (OffsetDarkModeButton.Content.ToString() == "+")
             {
-                e.Handled = true;
+                configBuilder.Config.Location.SunsetOffsetMin = offsetDark;
             }
-        }
-        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            var textBox = ((System.Windows.Controls.TextBox)sender);
-            textBox.Dispatcher.BeginInvoke(new Action(() =>
+            else
             {
-                textBox.SelectAll();
-            }));
-        }
-        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
-            {
-                var ue = e.OriginalSource as FrameworkElement;
-                e.Handled = true;
-                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                configBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
             }
-        }
 
-        //open aboutWindow
-        private void AboutButton_Click(object sender, RoutedEventArgs e)
+            OffsetButton.IsEnabled = false;
+            GetLocation();
+        }
+        private void BGWinButton_Click(object sender, RoutedEventArgs e)
         {
-            AboutWindow aboutWindow = new AboutWindow
+            DesktopBGui BGui = new DesktopBGui
             {
                 Owner = GetWindow(this)
             };
-            aboutWindow.ShowDialog();
-            // todo: this is fine, can stay like this
-            if (aboutWindow.BckgrUpdateCB.IsChecked == true && Properties.Settings.Default.BackgroundUpdate == false)
+            BGui.ShowDialog();
+            if (BGui.saved == true)
             {
-                TaskSchdHandler.CreateAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = true;
+                ApplyButton_Click(applyButton, null);
             }
-            else if (aboutWindow.BckgrUpdateCB.IsChecked == false && Properties.Settings.Default.BackgroundUpdate == true)
-            {
-                TaskSchdHandler.RemoveAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = false;
-            }
+            SetDesktopBackgroundStatus();
         }
 
-        // set starttime based on user location
+        // CheckBox Handlers
         private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             // todo: info for utku, I've already partly implemented this
@@ -379,6 +297,290 @@ namespace AutoDarkModeApp
             configBuilder.Config.Location.Enabled = true;
             GetLocation();
         }
+        private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                configBuilder.Save();
+                LightStartHoursBox.IsEnabled = true;
+                LightStartMinutesBox.IsEnabled = true;
+                DarkStartHoursBox.IsEnabled = true;
+                DarkStartMinutesBox.IsEnabled = true;
+                applyButton.IsEnabled = true;
+                locationBlock.Visibility = Visibility.Collapsed;
+                SetOffsetVisibility(Visibility.Collapsed);
+                configBuilder.Config.Location.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            userFeedback.Text = Properties.Resources.msgClickApply; // Click on apply to save changes
+        }
+        private async void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            configBuilder.Config.AutoThemeSwitchingEnabled = true;
+            if (is1903) SystemComboBox.IsEnabled = true;
+            if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
+            AppComboBox.IsEnabled = true;
+            //EdgeComboBox.IsEnabled = true;
+            locationCheckBox.IsEnabled = true;
+            applyButton.IsEnabled = true;
+            DarkStartHoursBox.IsEnabled = true;
+            DarkStartMinutesBox.IsEnabled = true;
+            LightStartHoursBox.IsEnabled = true;
+            LightStartMinutesBox.IsEnabled = true;
+            BGWinButton.IsEnabled = true;
+            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+
+            try
+            {
+                configBuilder.Save();
+                bool isMessageOk = await CommandClient.SendMessageAsync(Command.AddAutostart);
+                if (!isMessageOk)
+                {
+                    throw new AddAutoStartException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+        private async void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            configBuilder.Config.AutoThemeSwitchingEnabled = false;
+            configBuilder.Config.Wallpaper.Enabled = false;
+            AccentColorCheckBox.IsEnabled = false;
+            SystemComboBox.IsEnabled = false;
+            AppComboBox.IsEnabled = false;
+            //EdgeComboBox.IsEnabled = false;
+            locationCheckBox.IsEnabled = false;
+            locationCheckBox.IsChecked = false;
+            applyButton.IsEnabled = false;
+            DarkStartHoursBox.IsEnabled = false;
+            DarkStartMinutesBox.IsEnabled = false;
+            LightStartHoursBox.IsEnabled = false;
+            LightStartMinutesBox.IsEnabled = false;
+            BGWinButton.IsEnabled = false;
+            userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
+            SetDesktopBackgroundStatus();
+            try
+            {
+                configBuilder.Save();
+                bool isMessageOk = await CommandClient.SendMessageAsync(Command.RemoveAutostart);
+                if (!isMessageOk)
+                {
+                    throw new RemoveAutoStartException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+        private async void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            configBuilder.Config.AccentColorTaskbarEnabled = true;
+            try
+            {
+                configBuilder.Save();
+                bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
+                if (!isMessageOk)
+                {
+                    throw new SwitchThemeException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+        private async void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            configBuilder.Config.AccentColorTaskbarEnabled = false;
+            try
+            {
+                configBuilder.Save();
+                bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
+                if (!isMessageOk)
+                {
+                    throw new SwitchThemeException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+
+        // ComboBox Handlers
+        private async void AppComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            configBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
+            try
+            {
+                configBuilder.Save();
+                bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
+                if (isMessageOk)
+                {
+                    Properties.Settings.Default.AppThemeChange = AppComboBox.SelectedIndex;
+                }
+                else
+                {
+                    throw new SwitchThemeException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+        private async void SystemComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            configBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
+            try
+            {
+                configBuilder.Save();
+                bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
+                if (isMessageOk)
+                {
+                    Properties.Settings.Default.SystemThemeChange = SystemComboBox.SelectedIndex;
+                    if (SystemComboBox.SelectedIndex.Equals(0) || SystemComboBox.SelectedIndex.Equals(2))
+                    {
+                        AccentColorCheckBox.IsEnabled = true;
+                    }
+                    else if (SystemComboBox.SelectedIndex.Equals(1))
+                    {
+                        AccentColorCheckBox.IsEnabled = false;
+                        AccentColorCheckBox.IsChecked = false;
+                    }
+                }
+                else
+                {
+                    throw new SwitchThemeException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+        #endregion
+
+        private void DonationScreen()
+        {
+            Random rdmnumber = new Random();
+            int generatedNumber = rdmnumber.Next(1, 100);
+            if (generatedNumber == 50)
+            {
+                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno");
+                msgBox.Owner = GetWindow(this);
+                msgBox.ShowDialog();
+                var result = msgBox.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
+                }
+            }
+        }
+        private void LanguageHelper()
+        {
+            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.Language.ToString()))
+            {
+                Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+            }
+            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
+        }
+        private void ThemeChange(object sender, EventArgs e)
+        {
+            // Edge theme switching has been removed
+            //if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            //{
+            //    EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
+            //}
+            //else
+            //{
+            //    EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
+            //}
+        }
+        private void ConfigureComponents()
+        {
+            if (configBuilder.Config.AutoThemeSwitchingEnabled)
+            {
+                autoCheckBox.IsChecked = true;
+                if (configBuilder.Config.Location.Enabled)
+                {
+                    locationCheckBox.IsChecked = true;
+                    DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
+                    DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
+                    LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
+                    LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
+                }
+            }
+            else
+            {
+                AutoCheckBox_Unchecked(autoCheckBox, null);
+            }
+
+            AppComboBox.SelectedIndex = configBuilder.Config.AppsTheme;
+            SystemComboBox.SelectedIndex = configBuilder.Config.SystemTheme;
+            //EdgeComboBox.SelectedIndex = configBuilder.Config.EdgeTheme;
+            // Error might be emerged if the index on the config file bigger than th biggest index of any combobox
+
+            if (!is1903)
+            {
+                SystemComboBox.IsEnabled = false;
+                AccentColorCheckBox.IsEnabled = false;
+                SystemComboBox.ToolTip = AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
+            }
+            else
+            {
+                AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+            }
+
+            if (configBuilder.Config.AccentColorTaskbarEnabled)
+            {
+                AccentColorCheckBox.IsChecked = true;
+            }
+
+            SetDesktopBackgroundStatus();
+            PopulateOffsetFields(configBuilder.Config.Location.SunsetOffsetMin, configBuilder.Config.Location.SunriseOffsetMin);
+        }
+        private void SetDesktopBackgroundStatus()
+        {
+            if (!configBuilder.Config.Wallpaper.Enabled)
+            {
+                DeskBGStatus.Text = Properties.Resources.disabled;
+            }
+            else
+            {
+                DeskBGStatus.Text = Properties.Resources.enabled;
+            }
+        }
+        private void PopulateOffsetFields(int offsetDark, int offsetLight)
+        {
+            if (offsetLight < 0)
+            {
+                OffsetLightModeButton.Content = "-";
+                OffsetLightBox.Text = Convert.ToString(-offsetLight);
+            }
+            else
+            {
+                OffsetLightBox.Text = Convert.ToString(offsetLight);
+            }
+            if (offsetDark < 0)
+            {
+                OffsetDarkModeButton.Content = "-";
+                OffsetDarkBox.Text = Convert.ToString(-offsetDark);
+            }
+            else
+            {
+                OffsetDarkBox.Text = Convert.ToString(offsetDark);
+            }
+        }
+
+        // set starttime based on user location
         public async void GetLocation()
         {
             SetOffsetVisibility(Visibility.Visible);
@@ -406,13 +608,12 @@ namespace AutoDarkModeApp
                 DarkStartHoursBox.IsEnabled = false;
                 DarkStartMinutesBox.IsEnabled = false;
                 applyButton.IsEnabled = false;
-                ApplyButton_Click(this, null);
+                ApplyButton_Click(applyButton, null);
             }
             else
             {
                 NoLocationAccess();
             }
-            return;
         }
         private async void NoLocationAccess()
         {
@@ -422,190 +623,6 @@ namespace AutoDarkModeApp
             locationBlock.Visibility = Visibility.Visible;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
-        private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            LightStartHoursBox.IsEnabled = true;
-            LightStartMinutesBox.IsEnabled = true;
-            DarkStartHoursBox.IsEnabled = true;
-            DarkStartMinutesBox.IsEnabled = true;
-            applyButton.IsEnabled = true;
-            locationBlock.Visibility = Visibility.Collapsed;
-            SetOffsetVisibility(Visibility.Collapsed);
-            configBuilder.Config.Location.Enabled = false;
-
-            try
-            {
-                configBuilder.Save();
-            }
-            catch (Exception)
-            {
-                //todo: do something with the error, show interface msg
-                LightStartHoursBox.IsEnabled = false;
-                LightStartMinutesBox.IsEnabled = false;
-                DarkStartHoursBox.IsEnabled = false;
-                DarkStartMinutesBox.IsEnabled = false;
-                applyButton.IsEnabled = false;
-                locationBlock.Visibility = Visibility.Visible;
-                SetOffsetVisibility(Visibility.Visible);
-                configBuilder.Config.Location.Enabled = true;
-            }
-
-            userFeedback.Text = Properties.Resources.msgClickApply; // Click on apply to save changes
-        }
-
-        //automatic theme switch checkbox
-        private async void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            configBuilder.Config.AutoThemeSwitchingEnabled = true;
-
-            if (is1903) SystemComboBox.IsEnabled = true;
-            if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
-            AppComboBox.IsEnabled = true;
-            //EdgeComboBox.IsEnabled = true;
-            locationCheckBox.IsEnabled = true;
-            applyButton.IsEnabled = true;
-            DarkStartHoursBox.IsEnabled = true;
-            DarkStartMinutesBox.IsEnabled = true;
-            LightStartHoursBox.IsEnabled = true;
-            LightStartMinutesBox.IsEnabled = true;
-            BGWinButton.IsEnabled = true;
-            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-
-            configBuilder.Save();
-            bool isMessageOk = await CommandClient.SendMessageAsync(Command.AddAutostart);
-            if (!isMessageOk)
-            {
-                // throw an error
-            }
-        }
-        private async void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            configBuilder.Config.AutoThemeSwitchingEnabled = false;
-            configBuilder.Config.Wallpaper.Enabled = false;
-            AccentColorCheckBox.IsEnabled = false;
-            SystemComboBox.IsEnabled = false;
-            AppComboBox.IsEnabled = false;
-            //EdgeComboBox.IsEnabled = false;
-            locationCheckBox.IsEnabled = false;
-            locationCheckBox.IsChecked = false;
-            applyButton.IsEnabled = false;
-            DarkStartHoursBox.IsEnabled = false;
-            DarkStartMinutesBox.IsEnabled = false;
-            LightStartHoursBox.IsEnabled = false;
-            LightStartMinutesBox.IsEnabled = false;
-            BGWinButton.IsEnabled = false;
-            userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
-            SetDesktopBackgroundStatus();
-
-            configBuilder.Save();
-            bool isMessageOk = await CommandClient.SendMessageAsync(Command.RemoveAutostart);
-            if (!isMessageOk)
-            {
-                // throw an error
-            }
-        }
-
-        //ComboBox
-        private async void AppComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            configBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
-            configBuilder.Save();
-            bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
-            if (isMessageOk)
-            {
-                Properties.Settings.Default.AppThemeChange = AppComboBox.SelectedIndex;
-            } else
-            {
-                // throw an error message
-            }
-
-            #region oldAppComboBoxCodes
-            //if (AppComboBox.SelectedIndex.Equals(0))
-            //{
-            //    Properties.Settings.Default.AppThemeChange = 0;
-            //    try
-            //    {
-            //        regEditHandler.SwitchThemeBasedOnTime();
-            //    }
-            //    catch
-            //    {
-            //    }
-            //}
-            //if (AppComboBox.SelectedIndex.Equals(1))
-            //{
-            //    Properties.Settings.Default.AppThemeChange = 1;
-            //    regEditHandler.AppTheme(1);
-            //}
-            //if (AppComboBox.SelectedIndex.Equals(2))
-            //{
-            //    Properties.Settings.Default.AppThemeChange = 2;
-            //    regEditHandler.AppTheme(0);
-            //}
-            #endregion
-        }
-        private async void SystemComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            configBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
-            configBuilder.Save();
-            bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
-            if (isMessageOk)
-            {
-                Properties.Settings.Default.SystemThemeChange = SystemComboBox.SelectedIndex;
-                if (SystemComboBox.SelectedIndex.Equals(0) || SystemComboBox.SelectedIndex.Equals(2))
-                {
-                    AccentColorCheckBox.IsEnabled = true;
-                }
-                else if (SystemComboBox.SelectedIndex.Equals(1))
-                {
-                    AccentColorCheckBox.IsEnabled = false;
-                    AccentColorCheckBox.IsChecked = false;
-                }
-            }
-            else
-            {
-                // throw the corresponding error message
-            }
-
-            #region oldSystemComboBoxCodes
-            //if (SystemComboBox.SelectedIndex.Equals(0))
-            //{
-            //    Properties.Settings.Default.SystemThemeChange = 0;
-            //    try
-            //    {
-            //        regEditHandler.SwitchThemeBasedOnTime();
-            //    }
-            //    catch
-            //    {
-
-            //    }
-            //    AccentColorCheckBox.IsEnabled = true;
-            //}
-            //if (SystemComboBox.SelectedIndex.Equals(1))
-            //{
-            //    Properties.Settings.Default.SystemThemeChange = 1;
-            //    if (configBuilder.Config.AccentColorTaskbarEnabled)
-            //    {
-            //        regEditHandler.ColorPrevalence(0);
-            //        Thread.Sleep(200);
-            //    }
-            //    regEditHandler.SystemTheme(1);
-            //    AccentColorCheckBox.IsEnabled = false;
-            //    AccentColorCheckBox.IsChecked = false;
-            //}
-            //if (SystemComboBox.SelectedIndex.Equals(2))
-            //{
-            //    Properties.Settings.Default.SystemThemeChange = 2;
-            //    regEditHandler.SystemTheme(0);
-            //    if (configBuilder.Config.AccentColorTaskbarEnabled)
-            //    {
-            //        Thread.Sleep(200);
-            //        regEditHandler.ColorPrevalence(1);
-            //    }
-            //    AccentColorCheckBox.IsEnabled = true;
-            //}
-            #endregion
-        }
-
         private void AddJumpList()
         {
             JumpTask darkJumpTask = new JumpTask
@@ -628,60 +645,6 @@ namespace AutoDarkModeApp
             jumpList.ShowRecentCategory = false;
             JumpList.SetJumpList(Application.Current, jumpList);
         }
-
-        private async void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            configBuilder.Config.AccentColorTaskbarEnabled = true;
-            configBuilder.Save();
-            bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
-            if (!isMessageOk)
-            {
-                // throw an error
-            }
-
-            #region oldCodes
-            //try
-            //{
-            //    if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
-            //    if (SystemComboBox.SelectedIndex.Equals(2)) regEditHandler.ColorPrevalence(1);
-            //}
-            //catch
-            //{
-
-            //}
-            #endregion
-        }
-
-        private async void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            configBuilder.Config.AccentColorTaskbarEnabled = false;
-            configBuilder.Save();
-            bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
-            if (!isMessageOk)
-            {
-                // throw an error
-            }
-
-            #region oldcodes
-            regEditHandler.ColorPrevalence(0);
-            #endregion
-        }
-
-        //open desktop background window
-        private void BGWinButton_Click(object sender, RoutedEventArgs e)
-        {
-            DesktopBGui BGui = new DesktopBGui
-            {
-                Owner = GetWindow(this)
-            };
-            BGui.ShowDialog();
-            if (BGui.saved == true)
-            {
-                ApplyButton_Click(this, null);
-            }
-            SetDesktopBackgroundStatus();
-        }
-
         private void SetOffsetVisibility(Visibility value)
         {
             OffsetLbl.Visibility = value;
@@ -695,27 +658,23 @@ namespace AutoDarkModeApp
             OffsetLightDot.Visibility = value;
             OffsetButton.Visibility = value;
         }
-
-        //application close behaviour
-        private void Window_Closed(object sender, EventArgs e)
+        private void ShowErrorMessage(Exception ex)
         {
-            Properties.Settings.Default.Save();
-            Application.Current.Shutdown();
-            // workaround to counter async running clients while context is being closed!
-            CommandClient.SendMessage("frontend shutdown");
-            NetMQConfig.Cleanup();
-            Process.GetCurrentProcess().Kill();
+            userFeedback.Text = Properties.Resources.msgErrorOcc;
+            string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: MainWindow.OnClosing.autoDarkModeConfigBuilder.Save()" + "\n\n" + ex.Message;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = GetWindow(this)
+            };
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
+            {
+                Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues");
+            }
+            return;
         }
-
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-        {
-            SaveConfigInteractive();
-
-            if (configBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
-            base.OnClosing(e);
-        }
-
-        private void SaveConfigInteractive()
+        private void SaveConfig()
         {
             try
             {
@@ -723,19 +682,18 @@ namespace AutoDarkModeApp
             }
             catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: MainWindow.OnClosing.autoDarkModeConfigBuilder.Save()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues");
-                }
-                return;
+                ShowErrorMessage(ex);
+            }
+        }
+        private void LoadConfig()
+        {
+            try
+            {
+                configBuilder.Load();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
             }
         }
     }
