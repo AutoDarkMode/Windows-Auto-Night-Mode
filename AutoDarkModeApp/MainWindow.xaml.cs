@@ -579,8 +579,6 @@ namespace AutoDarkModeApp
                 OffsetDarkBox.Text = Convert.ToString(offsetDark);
             }
         }
-
-        // set starttime based on user location
         public async void GetLocation()
         {
             SetOffsetVisibility(Visibility.Visible);

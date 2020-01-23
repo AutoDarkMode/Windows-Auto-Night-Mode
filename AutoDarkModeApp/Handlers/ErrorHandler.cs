@@ -12,6 +12,11 @@ namespace AutoDarkModeApp.Handlers
         {
             this.Source = "SwitchThemeException";
         }
+
+        public SwitchThemeException(string message, string source) : base(message)
+        {
+            this.Source = source;
+        }
     }
 
     public class AddAutoStartException : Exception
@@ -36,6 +41,11 @@ namespace AutoDarkModeApp.Handlers
         public RemoveAutoStartException()
         {
             this.Source = "RemoveAutoStartException";
+        }
+
+        public RemoveAutoStartException(string message, string source) : base(message)
+        {
+            this.Source = source;
         }
     }
 }
