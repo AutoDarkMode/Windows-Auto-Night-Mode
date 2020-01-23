@@ -17,8 +17,8 @@ namespace AutoDarkModeApp.Config
 
         public DateTime Sunrise { get; set; }
         public DateTime Sunset { get; set; }
-        public bool Enabled { get; set; }
-        public bool AccentColorTaskbar { get; set; }
+        public bool AutoThemeSwitchingEnabled { get; set; }
+        public bool AccentColorTaskbarEnabled { get; set; }
         public bool ClassicMode { get; set; }
         public int AppsTheme
         {

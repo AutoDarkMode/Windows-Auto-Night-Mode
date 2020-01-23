@@ -7,13 +7,13 @@
         xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         xmlns:local="clr-namespace:AutoDarkModeApp"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="300" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height">
+        Title="{x:Static p:Resources.Title}" MinHeight="410" Width="300" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height">
     <Grid x:Name="mainWin" Background="#20FFFFFF">
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" SharedSizeGroup="Group1"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group2" MinHeight="20"/>
-            <RowDefinition Height="Auto" SharedSizeGroup="Group3" MinHeight="180"/>
+            <RowDefinition Height="Auto" SharedSizeGroup="Group3" MinHeight="110"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group4" MinHeight="82"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group5" MinHeight="25"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group6" MinHeight="20"/>
@@ -46,15 +46,15 @@
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
         </ComboBox>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,131,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+        <!--<TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,131,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>-->
         <CheckBox Grid.Row="2" Grid.ColumnSpan="5" x:Name="AccentColorCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,111,0,0" VerticalAlignment="Top" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
-        <Image Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="31" Margin="14,141,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
+        <!--<Image Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="31" Margin="14,141,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
         <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,152,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed" Height="22" Grid.RowSpan="2">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
             <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
-        </ComboBox>
+        </ComboBox>-->
 
         <!-- Desktop Background -->
         <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>

@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc
 
             if (rtc.CurrentAppsTheme == newTheme 
                 && rtc.CurrentSystemTheme == newTheme 
-                && rtc.CurrentColorPrevalence == config.AccentColorTaskbar)
+                && rtc.CurrentColorPrevalence == config.AccentColorTaskbarEnabled)
             {
                 return;
             }
@@ -67,7 +67,7 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if (config.AccentColorTaskbar && config.SystemTheme == (int)Mode.Switch)
+            if (config.AccentColorTaskbarEnabled && config.SystemTheme == (int)Mode.Switch)
             {
                 Task.Run(async () =>
                 {
