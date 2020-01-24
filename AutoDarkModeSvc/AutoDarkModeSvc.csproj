@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <Version>3.0.0.0</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
-    <ApplicationIcon />
+    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
     <StartupObject />
     <PackageId>AutoDarkModeService</PackageId>
     <Company>AutoDarkModeService</Company>
@@ -23,13 +23,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\AutoDarkModeApp\Communication\Command.cs" Link="Communication\Command.cs" />
     <Compile Include="..\AutoDarkModeApp\Config\AutoDarkModeConfig.cs" Link="Config\AutoDarkModeConfig.cs" />
+    <Compile Include="..\AutoDarkModeApp\Config\AutoDarkModeConfigBuilder.cs" Link="Config\AutoDarkModeConfigBuilder.cs" />
     <Compile Include="..\AutoDarkModeApp\SunDate.cs" Link="SunDate.cs" />
-    <Compile Include="..\AutoDarkModeApp\Tools.cs" Link="Tools.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
+    <PackageReference Include="NetMQ" Version="4.0.0.207" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Schema" Version="4.6.8" />

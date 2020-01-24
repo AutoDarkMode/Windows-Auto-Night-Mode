@@ -1,8 +1,11 @@
 ﻿using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkMode;
+using NetMQ;
 using System;
-using System.ComponentModel;
-using System.Drawing;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 
@@ -10,55 +13,83 @@ namespace AutoDarkModeApp
 {
     public partial class App : Application
     {
-        private async void Application_Startup(object sender, StartupEventArgs e)
+        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+        private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //handle command line arguments
+            bool isClassicMode;
+            try
+            {
+                isClassicMode = autoDarkModeConfigBuilder.Config.ClassicMode;
+            }
+            catch (Exception)
+            {
+                isClassicMode = false;
+            }
+
+            List<string> args;
             if (e.Args.Length > 0)
             {
-                string[] args = Environment.GetCommandLineArgs();
+                args = new List<string>(e.Args);
+            }
+            else
+            {
+                args = new List<string>();
+            }
+
+            // Starts process unless the UI is debug mode.
+            using Process svc = new Process();
+            if (e.Args.Length == 0 || e.Args.Length > 0 && e.Args[0] != "/debug")
+            {
+                svc.StartInfo.UseShellExecute = false;
+                svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe");
+                svc.StartInfo.CreateNoWindow = true;
+                svc.Start();
+            }
+            else
+            {
+                args.Remove("/debug");
+            }
+
+            //handle command line arguments
+            if (args.Count > 0)
+            {
+                ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
                 foreach (var value in args)
                 {
                     if (value == "/switch")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.SwitchThemeBasedOnTime();
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/swap")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        if (regEditHandler.AppsUseLightTheme())
-                        {
-                            regEditHandler.ThemeToDark();
-                        }
-                        else
-                        {
-                            regEditHandler.ThemeToLight();
-                        }
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/dark")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.ThemeToDark();
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/light")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.ThemeToLight();
+                        commandClient.SendMessage(value);
                     }
                     else if (value == "/update")
                     {
-                        Updater updater = new Updater();
-                        updater.CheckNewVersion();
+                        var result = commandClient.SendMessageAndGetReply(value);
+
+                        if (result != Command.Err)
+                        {
+                            Updater updater = new Updater();
+                            updater.ParseResponse(result);
+                        }
+
                     }
                     else if (value == "/location")
                     {
-                        LocationHandler locationHandler = new LocationHandler();
-                        await locationHandler.SetLocationSilent();
+                        commandClient.SendMessage(Command.Location);
                     }
                     else if (value == "/removeTask")
                     {
-                        TaskShedHandler taskShedHandler = new TaskShedHandler();
-                        taskShedHandler.RemoveTask();
+                        TaskSchdHandler.RemoveTasks();
                     }
                     else if (value == "/removeAutostart")
                     {
@@ -67,57 +98,21 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/pipeclienttest")
                     {
-                        PipeClient pc = new PipeClient("WindowsAutoDarkMode");
-                        pc.SendMessage("Test");
-
+                        //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);
+                        bool result = commandClient.SendMessage(Command.Location);
+                        Console.Out.WriteLine(result);
                     }
+
+                    if (isClassicMode) commandClient.SendMessage(Command.Shutdown);
+                    NetMQConfig.Cleanup();
+                    Shutdown();
                 }
-                Shutdown();
             }
             else
             {
                 MainWindow mainWin = new MainWindow();
                 mainWin.Show();
             }
-        }
-
-        private void SwapTheme(object sender, EventArgs e)
-        {
-            //
-            // It just swaps the current theme but should behave according to the custom preferences of the user
-            // like edge theme, app theme and system theme
-            //
-
-            RegeditHandler regEditHandler = new RegeditHandler();
-            if (regEditHandler.AppsUseLightTheme())
-            {
-                regEditHandler.ThemeToDark();
-            }
-            else
-            {
-                regEditHandler.ThemeToLight();
-            }
-        }
-
-        private void ShowMainWindow(object sender, EventArgs e)
-        {
-            if (MainWindow.IsVisible)
-            {
-                if (MainWindow.WindowState == WindowState.Minimized)
-                {
-                    MainWindow.WindowState = WindowState.Normal;
-                }
-                MainWindow.Activate();
-            }
-            else
-            {
-                MainWindow.Show();
-            }
-        }
-
-        private void ExitApplication(object sender, EventArgs e)
-        {
-            MainWindow.Close();
         }
     }
 }

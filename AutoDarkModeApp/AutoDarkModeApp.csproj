@@ -14,6 +14,8 @@
     <Copyright>© 2019 Armin Osaj</Copyright>
     <AssemblyName>AutoDarkModeApp</AssemblyName>
     <PackageId>AutoDarkModeGUI</PackageId>
+    <PackageIcon>AutoDarkModeIcon.ico</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,11 +35,20 @@
     <None Remove="Resources\Photo_Icon.png" />
     <None Remove="Resources\Settings_Icon.png" />
     <None Remove="Resources\Twitter_Logo_Blue.png" />
+    <None Include="..\AutoDarkModeIcon.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AutoDarkModeSvc\Handlers\TaskSchdHandler.cs" Link="Handlers\TaskSchdHandler.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentWPF" Version="0.8.0" />
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
+    <PackageReference Include="NetMQ" Version="4.0.0.207" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="TaskScheduler" Version="2.8.17" />
   </ItemGroup>

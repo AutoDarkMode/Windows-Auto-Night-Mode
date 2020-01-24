@@ -36,7 +36,7 @@ namespace AutoDarkModeApp
 
         private void StartVoid()
         {
-            if(!autoDarkModeConfigBuilder.Config.Wallpaper.Disabled)
+            if(!autoDarkModeConfigBuilder.Config.Wallpaper.Enabled)
             //if (Properties.Settings.Default.WallpaperSwitch == true)
             {
                 try
@@ -46,7 +46,7 @@ namespace AutoDarkModeApp
                 }
                 catch
                 {
-                    autoDarkModeConfigBuilder.Config.Wallpaper.Disabled = true;
+                    autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = true;
                     Properties.Settings.Default.WallpaperSwitch = false;
                     StartVoid();
                 }
@@ -198,7 +198,7 @@ namespace AutoDarkModeApp
             {
                 CopyFileLight();
                 CopyFileDark();
-                autoDarkModeConfigBuilder.Config.Wallpaper.Disabled = false;
+                autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = false;
                 autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Add(pathCur1);
                 autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Add(pathCur2);
                 Properties.Settings.Default.WallpaperLight = pathCur1;
@@ -220,7 +220,7 @@ namespace AutoDarkModeApp
         private void DeleButton_Click(object sender, RoutedEventArgs e)
         {
             Directory.Delete(folderPath, true);
-            autoDarkModeConfigBuilder.Config.Wallpaper.Disabled = true;
+            autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = true;
             autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
             autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
             Properties.Settings.Default.WallpaperLight = "";

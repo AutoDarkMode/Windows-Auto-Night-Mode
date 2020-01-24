@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using AutoDarkMode;
+using AutoDarkModeApp;
 using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 
@@ -14,24 +18,34 @@ namespace AutoDarkModeSvc
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         NotifyIcon NotifyIcon { get; }
-        ModuleTimer ModuleTimer { get; }
-        IOTimer IOTimer { get; }
-        PipeService PipeSvc { get;  }
+        List<ModuleTimer> Timers { get; set; }
+        ICommandServer CommandServer { get;  }
+        AutoDarkModeConfigMonitor ConfigMonitor { get; }
         public Service(int timerMillis)
-        { 
+        {
             NotifyIcon = new NotifyIcon();
             InitTray();
 
-            PipeSvc = new PipeService();
-            PipeSvc.Start();
+            CommandServer = new ZeroMQServer(Command.DefaultPort, this);
+            CommandServer.Start();
 
-            ModuleTimer = new ModuleTimer(timerMillis);
-            ModuleTimer.RegisterModule(new TimeSwitchModule("TimeSwitch"));
-            ModuleTimer.Start();
+            ConfigMonitor = new AutoDarkModeConfigMonitor();
+            ConfigMonitor.Start();
 
-            IOTimer = new IOTimer(300000);
-            IOTimer.RegisterModule(new ConfigRefreshModule("ConfigRefresh"));
-            IOTimer.Start();
+            ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main", true);
+            //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io", true);
+            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, "geopos", false);
+
+            Timers = new List<ModuleTimer>()
+            {
+                MainTimer, 
+                //IOTimer, 
+                GeoposTimer
+            };
+
+            MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers));
+
+            Timers.ForEach(t => t.Start());
         }
 
         private void InitTray()
@@ -46,17 +60,20 @@ namespace AutoDarkModeSvc
             NotifyIcon.Visible = true;
         }
 
-        private void Exit(object sender, EventArgs e)
+        public void Cleanup()
         {
-            PipeSvc.Stop();
-            NotifyIcon.Dispose();
-            ModuleTimer.Stop();
-            ModuleTimer.Dispose();
-            IOTimer.Stop();
-            IOTimer.Dispose();
+            CommandServer.Stop();
+            ConfigMonitor.Dispose();
+            Timers.ForEach(t => t.Stop());
+            Timers.ForEach(t => t.Dispose());
             NLog.LogManager.Shutdown();
+        }
+
+        public void Exit(object sender, EventArgs e)
+        {
             Application.Exit();
         }
+
         private void SwitchThemeNow(object sender, EventArgs e)
         {
             AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().Config;

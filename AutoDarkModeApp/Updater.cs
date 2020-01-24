@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Xml;
 using System.Windows;
 using System.Globalization;
+using System.Collections.Generic;
+using AutoDarkMode;
 
 namespace AutoDarkModeApp
 {
@@ -63,6 +65,17 @@ namespace AutoDarkModeApp
             catch
             {
 
+            }
+        }
+
+        public void ParseResponse(string response)
+        {
+            string[] messages = response.Split(",");
+            if (messages[0] == Command.New)
+            {
+                url = messages[1];
+                newVersion = new Version(messages[2]);
+                MessageBoxHandler();
             }
         }
 
