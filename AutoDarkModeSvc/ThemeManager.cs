@@ -41,16 +41,12 @@ namespace AutoDarkModeSvc
                 return;
             }
 
-            if (config.AppsTheme == (int)Mode.Switch)
-            {
-                RegistryHandler.SetAppsTheme((int)newTheme);
-                rtc.CurrentAppsTheme = newTheme;
-            }
-            if (config.SystemTheme == (int)Mode.Switch)
-            {
-                RegistryHandler.SetSystemTheme((int)newTheme);
-                rtc.CurrentSystemTheme = newTheme;
-            }
+            RegistryHandler.SetAppsTheme((int)newTheme);
+            rtc.CurrentAppsTheme = newTheme;
+
+            RegistryHandler.SetSystemTheme((int)newTheme);
+            rtc.CurrentSystemTheme = newTheme;
+
             if (!config.Wallpaper.Enabled)
             {
                 if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)
@@ -67,7 +63,7 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if (config.AccentColorTaskbarEnabled && config.SystemTheme == (int)Mode.Switch)
+            if (config.AccentColorTaskbarEnabled)
             {
                 Task.Run(async () =>
                 {
