@@ -41,11 +41,37 @@ namespace AutoDarkModeSvc
                 return;
             }
 
-            RegistryHandler.SetAppsTheme((int)newTheme);
-            rtc.CurrentAppsTheme = newTheme;
+            if (config.AppsTheme == (int)Mode.DarkOnly)
+            {
+                RegistryHandler.SetAppsTheme((int)Theme.Dark);
+                rtc.CurrentAppsTheme = Theme.Dark;
+            }
+            else if (config.AppsTheme == (int)Mode.LightOnly)
+            {
+                RegistryHandler.SetAppsTheme((int)Theme.Light);
+                rtc.CurrentSystemTheme = Theme.Light;
+            }
+            else
+            { 
+                RegistryHandler.SetAppsTheme((int)newTheme);
+                rtc.CurrentAppsTheme = newTheme;
+            }
 
-            RegistryHandler.SetSystemTheme((int)newTheme);
-            rtc.CurrentSystemTheme = newTheme;
+            if (config.SystemTheme == (int)Mode.DarkOnly)
+            {
+                RegistryHandler.SetSystemTheme((int)Theme.Dark);
+                rtc.CurrentSystemTheme = Theme.Dark;
+            }
+            else if (config.SystemTheme == (int)Mode.LightOnly)
+            {
+                RegistryHandler.SetSystemTheme((int)Theme.Light);
+                rtc.CurrentSystemTheme = Theme.Light;
+            }
+            else
+            {
+                RegistryHandler.SetSystemTheme((int)newTheme);
+                rtc.CurrentSystemTheme = newTheme;
+            }
 
             if (!config.Wallpaper.Enabled)
             {
