@@ -604,7 +604,7 @@ namespace AutoDarkModeApp
 
                 //apply settings & change UI
                 LightStartHoursBox.Text = sundate[0].ToString();
-                LightStartMinutesBox.Text = sundate[1].ToString();d
+                LightStartMinutesBox.Text = sundate[1].ToString();
                 DarkStartHoursBox.Text = sundate[2].ToString();
 
                 DarkStartMinutesBox.Text = sundate[3].ToString();
