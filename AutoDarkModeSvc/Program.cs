@@ -3,6 +3,7 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Timers;
 using NLog;
 using System;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -24,9 +25,22 @@ namespace AutoDarkModeSvc
             {
                 //Set up Logger
                 var config = new NLog.Config.LoggingConfiguration();
+                var configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+                try
+                {
+                    Directory.CreateDirectory(configDir);
+                }
+                catch (Exception e)
+                {
+                    Logger.Debug(e, "could not create config directory");
+                }
 
                 // Targets where to log to: File and Console
-                var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "service.log" };
+                var logfile = new NLog.Targets.FileTarget("logfile")
+                {
+                    FileName = Path.Combine(configDir, "service.log"),
+                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message} ${exception:separator=|}"
+                };
                 var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
                 {
                     Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message} ${exception:separator=|}"
@@ -34,7 +48,7 @@ namespace AutoDarkModeSvc
 
                 // Rules for mapping loggers to targets            
                 config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
-                //config.AddRule(LogLevel.Info, LogLevel.Fatal, logfile);
+                config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
 
                 // Apply config           
                 LogManager.Configuration = config;

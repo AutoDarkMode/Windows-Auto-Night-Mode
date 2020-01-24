@@ -53,8 +53,7 @@ namespace AutoDarkModeApp
             SaveConfig();
             Application.Current.Shutdown();
             // workaround to counter async running clients while context is being closed!
-            CommandClient.SendMessage(Command.Shutdown);
-            //CommandClient.SendMessage("frontend shutdown");
+            CommandClient.SendMessage("frontend shutdown");
             NetMQConfig.Cleanup();
             Process.GetCurrentProcess().Kill();
         }
@@ -605,7 +604,7 @@ namespace AutoDarkModeApp
 
                 //apply settings & change UI
                 LightStartHoursBox.Text = sundate[0].ToString();
-                LightStartMinutesBox.Text = sundate[1].ToString();
+                LightStartMinutesBox.Text = sundate[1].ToString();d
                 DarkStartHoursBox.Text = sundate[2].ToString();
 
                 DarkStartMinutesBox.Text = sundate[3].ToString();
