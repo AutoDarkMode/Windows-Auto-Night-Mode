@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.Modules
 {
     class TimeSwitchModule : AutoDarkModeModule
     {
-        public override string TimerAffinity { get; } = TimerName.IO;
+        public override string TimerAffinity { get; } = TimerName.Main;
 
         /// <summary>
         /// Instantiates a new TimeSwitchModule.

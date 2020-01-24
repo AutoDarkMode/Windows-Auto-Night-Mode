@@ -268,6 +268,7 @@ namespace AutoDarkModeApp
                 configBuilder.Config.Location.SunsetOffsetMin = -offsetDark;
             }
 
+            configBuilder.Save();
             OffsetButton.IsEnabled = false;
             GetLocation();
         }
@@ -293,13 +294,13 @@ namespace AutoDarkModeApp
             // this also serves as an example how to use the new command infrastructure
             // for UI operations use the Async variant to prevent UI blocking
             configBuilder.Config.Location.Enabled = true;
+            configBuilder.Save();
             GetLocation();
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             try
             {
-                configBuilder.Save();
                 LightStartHoursBox.IsEnabled = true;
                 LightStartMinutesBox.IsEnabled = true;
                 DarkStartHoursBox.IsEnabled = true;
@@ -308,6 +309,8 @@ namespace AutoDarkModeApp
                 locationBlock.Visibility = Visibility.Collapsed;
                 SetOffsetVisibility(Visibility.Collapsed);
                 configBuilder.Config.Location.Enabled = false;
+                configBuilder.Save();
+
             }
             catch (Exception ex)
             {
