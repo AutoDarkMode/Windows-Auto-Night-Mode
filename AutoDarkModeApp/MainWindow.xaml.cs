@@ -31,8 +31,6 @@ namespace AutoDarkModeApp
             InitializeComponent();
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             ConfigureComponents();
-            //ThemeChange(this, null);
-            SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
             if (Properties.Settings.Default.FirstRun)
             {
                 AddJumpList();
@@ -323,7 +321,6 @@ namespace AutoDarkModeApp
             if (is1903) SystemComboBox.IsEnabled = true;
             if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
             AppComboBox.IsEnabled = true;
-            //EdgeComboBox.IsEnabled = true;
             locationCheckBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             DarkStartHoursBox.IsEnabled = true;
@@ -421,7 +418,18 @@ namespace AutoDarkModeApp
             try
             {
                 configBuilder.Save();
-                bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
+
+                string command = Command.Switch;
+                if (AppComboBox.SelectedIndex.Equals(1))
+                {
+                    command = Command.Light;
+                }
+                else if (AppComboBox.SelectedIndex.Equals(2))
+                {
+                    command = Command.Dark;
+                }
+
+                bool isMessageOk = await CommandClient.SendMessageAsync(command);
                 if (isMessageOk)
                 {
                     Properties.Settings.Default.AppThemeChange = AppComboBox.SelectedIndex;
@@ -441,8 +449,19 @@ namespace AutoDarkModeApp
             configBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
             try
             {
-                configBuilder.Save();
-                bool isMessageOk = await CommandClient.SendMessageAsync(Command.Switch);
+                configBuilder.Save(); 
+
+                string command = Command.Switch;
+                if (SystemComboBox.SelectedIndex.Equals(1))
+                {
+                    command = Command.Light;
+                }
+                else if (SystemComboBox.SelectedIndex.Equals(2))
+                {
+                    command = Command.Dark;
+                }
+
+                bool isMessageOk = await CommandClient.SendMessageAsync(command);
                 if (isMessageOk)
                 {
                     Properties.Settings.Default.SystemThemeChange = SystemComboBox.SelectedIndex;
@@ -492,18 +511,6 @@ namespace AutoDarkModeApp
             }
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
         }
-        private void ThemeChange(object sender, EventArgs e)
-        {
-            // Edge theme switching has been removed
-            //if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
-            //{
-            //    EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
-            //}
-            //else
-            //{
-            //    EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
-            //}
-        }
         private void ConfigureComponents()
         {
             if (configBuilder.Config.AutoThemeSwitchingEnabled)
@@ -525,8 +532,6 @@ namespace AutoDarkModeApp
 
             AppComboBox.SelectedIndex = configBuilder.Config.AppsTheme;
             SystemComboBox.SelectedIndex = configBuilder.Config.SystemTheme;
-            //EdgeComboBox.SelectedIndex = configBuilder.Config.EdgeTheme;
-            // Error might be emerged if the index on the config file bigger than th biggest index of any combobox
 
             if (!is1903)
             {
