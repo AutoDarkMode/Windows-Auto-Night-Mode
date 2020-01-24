@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoDarkModeApp.Config;
-using AutoDarkModeSvc.Handler;
+using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
 using AutoDarkModeApp;
@@ -15,9 +15,9 @@ namespace AutoDarkModeSvc
         {
             DateTime sunrise = config.Sunrise;
             DateTime sunset = config.Sunset;
-            if (!config.Location.Disabled)
+            if (config.Location.Enabled)
             {
-                CalculateSunTimes(config, out sunrise, out sunset);
+                LocationHandler.ApplySunDateOffset(config, out sunrise, out sunset);
             }
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
@@ -36,22 +36,44 @@ namespace AutoDarkModeSvc
 
             if (rtc.CurrentAppsTheme == newTheme 
                 && rtc.CurrentSystemTheme == newTheme 
-                && rtc.CurrentColorPrevalence == config.AccentColorTaskbar)
+                && rtc.CurrentColorPrevalence == config.AccentColorTaskbarEnabled)
             {
                 return;
             }
 
-            if (config.AppsTheme == (int)Mode.Switch)
+            if (config.AppsTheme == (int)Mode.DarkOnly)
             {
+                RegistryHandler.SetAppsTheme((int)Theme.Dark);
+                rtc.CurrentAppsTheme = Theme.Dark;
+            }
+            else if (config.AppsTheme == (int)Mode.LightOnly)
+            {
+                RegistryHandler.SetAppsTheme((int)Theme.Light);
+                rtc.CurrentSystemTheme = Theme.Light;
+            }
+            else
+            { 
                 RegistryHandler.SetAppsTheme((int)newTheme);
                 rtc.CurrentAppsTheme = newTheme;
             }
-            if (config.SystemTheme == (int)Mode.Switch)
+
+            if (config.SystemTheme == (int)Mode.DarkOnly)
+            {
+                RegistryHandler.SetSystemTheme((int)Theme.Dark);
+                rtc.CurrentSystemTheme = Theme.Dark;
+            }
+            else if (config.SystemTheme == (int)Mode.LightOnly)
+            {
+                RegistryHandler.SetSystemTheme((int)Theme.Light);
+                rtc.CurrentSystemTheme = Theme.Light;
+            }
+            else
             {
                 RegistryHandler.SetSystemTheme((int)newTheme);
                 rtc.CurrentSystemTheme = newTheme;
             }
-            if (!config.Wallpaper.Disabled)
+
+            if (!config.Wallpaper.Enabled)
             {
                 if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)
                 {
@@ -67,7 +89,7 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if (config.AccentColorTaskbar && config.SystemTheme == (int)Mode.Switch)
+            if (config.AccentColorTaskbarEnabled)
             {
                 Task.Run(async () =>
                 {
@@ -75,22 +97,6 @@ namespace AutoDarkModeSvc
                     RegistryHandler.SetColorPrevalence((int)newTheme);
                 });                
             }
-        }
-
-
-        public static void CalculateSunTimes(AutoDarkModeConfig config, out DateTime sunrise_out, out DateTime sunset_out)
-        {
-            int[] sun = SunDate.CalculateSunriseSunset(config.Location.Lat, config.Location.Lon);
-
-            //Add offset to sunrise and sunset hours using Settings
-            DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            sunrise = sunrise.AddMinutes(config.Location.SunriseOffsetMin);
-
-            DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            sunset = sunset.AddMinutes(config.Location.SunsetOffsetMin);
-
-            sunrise_out = sunrise;
-            sunset_out = sunset;
         }
     }
 }

@@ -1,43 +1,79 @@
-﻿using System;
+﻿using AutoDarkMode;
+using System;
 using System.IO;
 using System.IO.Pipes;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Communication
 {
-    class PipeClient
+    class PipeClient : ICommandClient
     {
         private string PipeName { get; set; }
-        private int Count;
-
         public PipeClient(string pipename)
         {
             PipeName = pipename;
-            Count = 0;
         }
 
-        public void SendMessage(string message)
+        /// <summary>
+        /// Sends a message through the pipe
+        /// </summary>
+        /// <param name="message">Message string to be sent via the pipe</param>
+        /// <returns>true if no error occurred; false otherwise</returns>
+        public bool SendMessage(string message)
         {
-            while (Count++ < 3)
+            //this is needed. If ReceiveResponse is called in PipeMessenger for some reason the application will deadlock.
+            PipeMessenger(message);
+            return ReceiveReponse();
+        }
+
+        private void PipeMessenger(string message)
+        {
+            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Command.DefaultPipeCommand, PipeDirection.Out);
+            pipeClient.Connect(5000);
+            using StreamWriter sw = new StreamWriter(pipeClient)
             {
-                System.Threading.Thread.Sleep(3000);
-                using (NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName, PipeDirection.Out))
+                AutoFlush = true
+            };
+            sw.WriteLine(message);
+        }
+
+        private bool ReceiveReponse()
+        {
+            bool ok = true;
+            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Command.DefaultPipeResponse, PipeDirection.In);
+            try
+            {
+                pipeClient.Connect(1000);
+                using StreamReader sr = new StreamReader(pipeClient);
+                string temp;
+                while ((temp = sr.ReadLine()) != null)
                 {
-                    pipeClient.Connect();
-                    try
+                    if (temp.Contains(Command.Err))
                     {
-                        using (StreamWriter sw = new StreamWriter(pipeClient))
-                        {
-                            sw.AutoFlush = true;
-                            sw.WriteLine(message);
-                        }
-                    }
-                    catch (IOException e)
-                    {
-                        Console.WriteLine("Could not write to pipe: {0}", e.Message);
+                        ok = false;
                     }
                 }
             }
-           
+            catch (TimeoutException)
+            {
+                return false;
+            }
+            return ok;
+        }
+
+        public string SendMessageAndGetReply(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SendMessageAsync(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> SendMesssageAndGetReplyAsync(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

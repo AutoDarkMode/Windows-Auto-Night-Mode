@@ -1,6 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using AutoDarkModeSvc.Handlers;
+using Microsoft.Win32;
 using System;
-using System.IO;
 using System.Threading;
 
 namespace AutoDarkModeApp
@@ -9,11 +9,10 @@ namespace AutoDarkModeApp
     {
         public void SwitchThemeBasedOnTime()
         {
-            TaskShedHandler task = new TaskShedHandler();
             var hour = DateTime.Now.Hour;
             var minute = DateTime.Now.Minute;
-            var lightStart = task.GetRunTime("light");
-            var darkStart = task.GetRunTime("dark");
+            var lightStart = TaskSchdHandler.GetRunTime("light");
+            var darkStart = TaskSchdHandler.GetRunTime("dark");
 
             if (hour < lightStart[0] || hour >= darkStart[0])
             {
@@ -151,7 +150,7 @@ namespace AutoDarkModeApp
         public void AddAutoStart()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registryKey.SetValue("AutoDarkMode", '\u0022' + Tools.ExecutionDir + '\u0022' + @" /switch");
+            registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022' + @" /switch");
         }
         public void RemoveAutoStart()
         {

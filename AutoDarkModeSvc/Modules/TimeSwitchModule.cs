@@ -3,29 +3,31 @@ using AutoDarkModeApp.Config;
 using AutoDarkModeApp;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Timers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class TimeSwitchModule : IAutoDarkModeModule
+    class TimeSwitchModule : AutoDarkModeModule
     {
+        public override string TimerAffinity { get; } = TimerName.Main;
+
+        /// <summary>
+        /// Instantiates a new TimeSwitchModule.
+        /// This module switches themes based on system time and sunrise/sunset
+        /// </summary>
+        /// <param name="name">unique name of the module</param>
         public TimeSwitchModule(string name)
         {
             Name = name;
         }
 
-        public string Name { get; }
-
-        public void Poll(AutoDarkModeConfig config)
+        public override void Fire()
         {
             Task.Run(() =>
             {
-                ThemeManager.TimedSwitch(config);
+                ThemeManager.TimedSwitch(AutoDarkModeConfigBuilder.Instance().Config);
             });
-        }
-
-        public void Poll()
-        {
-            return;
         }
     }
 }

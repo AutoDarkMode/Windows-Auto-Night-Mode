@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutoThemeChanger.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutoDarkModeApp.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="AppThemeChange" Type="System.Int32" Scope="User">
@@ -30,9 +30,6 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WallpaperSwitch" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="AlterTime" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="BackgroundUpdate" Type="System.Boolean" Scope="User">
