@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc
             else if (config.AppsTheme == (int)Mode.LightOnly)
             {
                 RegistryHandler.SetAppsTheme((int)Theme.Light);
-                rtc.CurrentSystemTheme = Theme.Light;
+                rtc.CurrentAppsTheme = Theme.Light;
             }
             else
             { 
@@ -77,7 +77,6 @@ namespace AutoDarkModeSvc
             {
                 if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)
                 {
-
                     WallpaperHandler.SetBackground(config.Wallpaper.DarkThemeWallpapers);
                     rtc.CurrentWallpaperTheme = newTheme;
                 }

@@ -26,42 +26,6 @@ namespace AutoDarkModeApp.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int AppThemeChange {
-            get {
-                return ((int)(this["AppThemeChange"]));
-            }
-            set {
-                this["AppThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int SystemThemeChange {
-            get {
-                return ((int)(this["SystemThemeChange"]));
-            }
-            set {
-                this["SystemThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int EdgeThemeChange {
-            get {
-                return ((int)(this["EdgeThemeChange"]));
-            }
-            set {
-                this["EdgeThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double LocationLatitude {
             get {
                 return ((double)(this["LocationLatitude"]));

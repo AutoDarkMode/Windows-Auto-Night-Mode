@@ -22,6 +22,7 @@ namespace AutoDarkModeApp
         private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
         private ICommandClient CommandClient { get; }
         private readonly bool is1903 = false;
+        private bool isClosed = false;
 
         public MainWindow()
         {
@@ -51,15 +52,20 @@ namespace AutoDarkModeApp
         {
             Properties.Settings.Default.Save();
             SaveConfig();
+            if (App.Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
+            {
+                App.Mutex.ReleaseMutex();
+            }
+            App.Mutex.Dispose();
             Application.Current.Shutdown();
             // workaround to counter async running clients while context is being closed!
             CommandClient.SendMessage("frontend shutdown");
-            NetMQConfig.Cleanup();
             Process.GetCurrentProcess().Kill();
         }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             if (configBuilder.Config.ClassicMode) CommandClient.SendMessage(Command.Shutdown);
+            isClosed = true;
             base.OnClosing(e);
         }
 
@@ -432,11 +438,7 @@ namespace AutoDarkModeApp
                 }
 
                 bool isMessageOk = await CommandClient.SendMessageAsync(command);
-                if (isMessageOk)
-                {
-                    Properties.Settings.Default.AppThemeChange = AppComboBox.SelectedIndex;
-                }
-                else
+                if (!isMessageOk)
                 {
                     throw new SwitchThemeException();
                 }
@@ -466,7 +468,6 @@ namespace AutoDarkModeApp
                 bool isMessageOk = await CommandClient.SendMessageAsync(command);
                 if (isMessageOk)
                 {
-                    Properties.Settings.Default.SystemThemeChange = SystemComboBox.SelectedIndex;
                     if (SystemComboBox.SelectedIndex.Equals(0) || SystemComboBox.SelectedIndex.Equals(2))
                     {
                         AccentColorCheckBox.IsEnabled = true;
@@ -665,6 +666,10 @@ namespace AutoDarkModeApp
         }
         private void ShowErrorMessage(Exception ex)
         {
+            if (isClosed)
+            {
+                return;
+            }
             userFeedback.Text = Properties.Resources.msgErrorOcc;
             string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
             MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")

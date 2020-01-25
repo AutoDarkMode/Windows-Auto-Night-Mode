@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 using AutoDarkMode;
 using AutoDarkModeApp;
@@ -89,10 +90,12 @@ namespace AutoDarkModeSvc
         }
         private void OpenApp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            using Mutex appMutex = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
+            if (e.Button == MouseButtons.Left && appMutex.WaitOne(TimeSpan.FromSeconds(2), false))
             {
                 Console.WriteLine("Start App");
                 Process.Start(@"AutoDarkModeApp.exe");
+                appMutex.ReleaseMutex();
             }
         }
     }

@@ -26,6 +26,7 @@ namespace AutoDarkMode
         public const string SystemThemeDark = "/systemThemeDark";
         public const string Shutdown = "/exit";
         public const string TestError = "/testError";
+        public const string Alive = "/alive";
 
         //return types
         public const string Available = "Available";

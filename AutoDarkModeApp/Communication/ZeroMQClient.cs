@@ -22,7 +22,7 @@ namespace AutoDarkModeApp.Communication
             {
                 client.Connect("tcp://127.0.0.1:" + Port);
                 client.SendFrame(message);
-                var response = GetResponse(client);
+                var response = GetResponse(client, message);
                 if (response.Contains(Command.Err))
                 {
                     return false;
@@ -35,9 +35,15 @@ namespace AutoDarkModeApp.Communication
             return false;
         }
 
-        private string GetResponse(RequestSocket client)
+        private string GetResponse(RequestSocket client, string message)
         {
-            var hasResponse = client.TryReceiveFrameString(new TimeSpan(30000000), out string response);
+            bool hasResponse = false;
+            string response;
+            lock (this)
+            {
+                hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, 3), out response);
+            }
+
             if (hasResponse)
             {
                 return response;   
@@ -50,7 +56,7 @@ namespace AutoDarkModeApp.Communication
             using var client = new RequestSocket();
             client.Connect("tcp://127.0.0.1:" + Port);
             client.SendFrame(message);
-            return GetResponse(client);
+            return GetResponse(client, message);
         }
 
         public Task<bool> SendMessageAsync(string message)

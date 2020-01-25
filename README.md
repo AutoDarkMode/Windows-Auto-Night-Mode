@@ -19,6 +19,66 @@ With enabling the automatic theme switcher in the app it creates a task in the T
 - Support for Accent Color on the Taskbar and other system elements.
 - Lightweight with 100% clean uninstall. No admin-rights needed.
 
+## Adding new modules
+
+In case you want to contribue and add a new module, here's how to:
+
+### Understanding how a module works
+
+AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. That means the first step is usually creating an `Enabled`property in the `Config/AutoDarkModeConfig.cs` class.
+In order to then create a module let's take a look at what a module class looks like:
+```C#
+namespace AutoDarkModeSvc.Modules
+{
+  class MyModule : AutoDarkModeModule
+  {
+     private AutoDarkModeConfigBuilder ConfigBuilder { get; }
+     public override string TimerAffinity { get; } = TimerName.Main;
+     public MyModule(string name)
+     {
+         Name = name;
+     }
+     public override void Fire()
+     {
+         Task.Run(() =>
+         {
+             // call your logic here
+         });
+     }   
+     // implement as usual
+    }
+}
+```
+A module needs to have a constructor with exactly one string parameter which is set as `Name`.
+
+Each module has access to the configuration builder in case it needs to retrieve values from the global configuration. You can call it by invoking the `ConfigBuilder`singleton instance.
+
+In addition, a module must inherit from the AutoDarkModeModule base class. The base class ensures that modules are comparable and implements the `IAutoDarkModeModule` interface. It consists of the `Fire()` method which is called by a timer and `TimerAffinity` which is the unique name of a timer this module should run on. There are preconfigured timer names in `Timers/TimerName.cs` that tick at different intervals. An example on how to add new timers will come at a later point in time.
+
+### Adding a module to the module warden
+Each module is automatically controlled by the module warden, which is a module itself that runs by default. It manages enabling and disabling modules on any timer based on the current configuration file state. You can add your modules to the software by changing the `Fire()` method in `Modules/ModuleWardenModule.cs`
+
+It looks similar to this one:
+```C#
+public override void Fire()
+  {
+    AutoDarkModeConfig config = ConfigBuilder.Config;
+    AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), config.AutoThemeSwitchingEnabled);
+    AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), config.Location.Enabled);
+  }
+```
+
+To add a module, call AutoManageModule which takes the following parameters:
+- Name: Derived from the className so you can use `typeof(MyModule).Name
+- Type: The module's class used for object instantiation, `this is always typeof(MyClass)`
+- Enabled: A boolean value that indicates whether the module should be running currently. Point it to your `Enabled` Property that you created in the configuration file or use an existing one if it fits your needs
+
+Our final call then looks like this:
+
+`AutoManageModule(typeof(MyModule).Name, typeof(MyModule), config.MyModuleProperty.Enabled);`
+
+**And that's it. Your module will now be managed automatically. Next steps would be providing a user interface element that controls your module.**
+
 ## Download
 [Click here to download the newest version of Windows Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
 
