@@ -146,9 +146,16 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(Command.Ok);
                         service.Exit(null, null);
                         break;
-
                     case Command.TestError:
                         Logger.Info("signal received: test error");
+                        SendResponse(Command.Err);
+                        break;
+                    case Command.Alive:
+                        Logger.Info("signal received: am I alive?");
+                        SendResponse(Command.Ok);
+                        break;
+                    default:
+                        Logger.Debug("unknown message received");
                         SendResponse(Command.Err);
                         break;
                 }

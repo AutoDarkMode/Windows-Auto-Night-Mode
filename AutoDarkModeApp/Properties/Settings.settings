@@ -2,15 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutoDarkModeApp.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AppThemeChange" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="SystemThemeChange" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="EdgeThemeChange" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3</Value>
-    </Setting>
     <Setting Name="LocationLatitude" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>

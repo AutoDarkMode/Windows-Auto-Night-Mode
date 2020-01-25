@@ -7,7 +7,7 @@ namespace AutoDarkModeSvc.Timers
     static class TimerFrequency
     {
         // short timer is 10s
-        public const int Short = 10000;
+        public const int Short = 60000;
         // IO Timer is 1h
 
         //public static readonly int IO = 3600000;

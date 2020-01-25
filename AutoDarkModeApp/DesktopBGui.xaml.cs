@@ -28,8 +28,20 @@ namespace AutoDarkModeApp
             //
             // The following bad code will be implemented more efficient and easy to read
             //
-            pathCur1 = ((List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers)[0];
-            pathCur2 = ((List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers)[0];
+            List<string> lightThemeWallpapers = (List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers;
+            List<string> darkThemeWallpapers = (List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers;
+
+            if (lightThemeWallpapers.Count != 0)
+            {
+                pathCur1 = ((List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers)[0];
+            }
+
+            if (darkThemeWallpapers.Count != 0)
+            {
+                pathCur2 = ((List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers)[0];
+            }
+            
+
             InitializeComponent();
             StartVoid();
         }
@@ -220,12 +232,13 @@ namespace AutoDarkModeApp
         private void DeleButton_Click(object sender, RoutedEventArgs e)
         {
             Directory.Delete(folderPath, true);
-            autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = true;
+            autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = false;
             autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
             autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+            autoDarkModeConfigBuilder.Save();
             Properties.Settings.Default.WallpaperLight = "";
             Properties.Settings.Default.WallpaperDark = "";
-            Properties.Settings.Default.WallpaperSwitch = false;
+            Properties.Settings.Default.WallpaperSwitch = false;            
             Close();
         }
     }

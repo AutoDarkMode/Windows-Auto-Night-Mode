@@ -44,7 +44,11 @@ namespace AutoDarkModeSvc.Communication
                 {
                     try
                     {
-                        a.Socket.TrySendFrame(new TimeSpan(10000000), message);
+                        var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
+                        if (!sent)
+                        {
+                            Logger.Error("could not send response: timeout");
+                        }
                     } catch (Exception e)
                     {
                         Logger.Error(e, "could not send response");
