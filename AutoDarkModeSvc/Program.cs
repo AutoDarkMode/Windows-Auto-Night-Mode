@@ -92,9 +92,9 @@ namespace AutoDarkModeSvc
             finally 
             {
                 //clean shutdown
-                if (Service != null) { 
+                if (Service != null) {
+                    Service.Cleanup();
                 }
-                Service.Cleanup();
                 mutex.Dispose();
             }
         }
