@@ -73,6 +73,19 @@ namespace AutoDarkModeSvc
                 rtc.CurrentSystemTheme = newTheme;
             }
 
+            if(config.EdgeTheme == (int)Mode.DarkOnly)
+            {
+                RegistryHandler.SetEdgeTheme((int)Theme.Light);
+            }
+            else if (config.EdgeTheme == (int)Mode.LightOnly)
+            {
+                RegistryHandler.SetEdgeTheme((int)Theme.Dark);
+            }
+            else
+            {
+                RegistryHandler.SetEdgeTheme((int)newTheme);
+            }
+
             if (!config.Wallpaper.Enabled)
             {
                 if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)

@@ -20,12 +20,14 @@ namespace AutoDarkModeSvc.Config
         {
             CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
             CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
+            
             CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
             CurrentWallpaperTheme = Theme.Undefined;
         }
 
         public Theme CurrentAppsTheme { get; set; }
         public Theme CurrentSystemTheme { get; set; }
+        public Theme CurrentEdgeTheme { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
         public bool CurrentColorPrevalence { get; set; }
     }

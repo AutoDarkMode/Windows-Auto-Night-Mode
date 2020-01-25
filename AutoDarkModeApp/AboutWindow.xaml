@@ -45,6 +45,7 @@
         <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,355,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
+            <ComboBoxItem Content="Español" Name="es"/>
             <ComboBoxItem Content="Français" Name="fr"/>
             <ComboBoxItem Content="Italiano" Name="it"/>
             <ComboBoxItem Content="Polski" Name="pl"/>

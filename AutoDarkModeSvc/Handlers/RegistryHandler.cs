@@ -27,17 +27,9 @@ namespace AutoDarkModeSvc.Handlers
             GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
         }
 
-        [Obsolete]
         public static void SetEdgeTheme(int theme)
         {
-            try
-            {
-                GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
-            }
-            catch
-            {
-                Logger.Error("Couldn't set edge theme, but I'm gonna be removed anyway so I will never be called :')");
-            }
+           GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
         }
 
         /// <summary>
@@ -102,7 +94,6 @@ namespace AutoDarkModeSvc.Handlers
             return registryKey;
         }
 
-        [Obsolete]
         private static RegistryKey GetEdgeKey()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main", true);
