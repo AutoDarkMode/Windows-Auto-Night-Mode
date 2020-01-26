@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using System.Windows.Shell;
 using Windows.System.Power;
 
@@ -30,6 +31,8 @@ namespace AutoDarkModeApp
             LanguageHelper();
             LoadConfig();
             InitializeComponent();
+            ThemeChange(this, null);
+            SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             ConfigureComponents();
             if (Properties.Settings.Default.FirstRun)
@@ -486,6 +489,17 @@ namespace AutoDarkModeApp
             catch (Exception ex)
             {
                 ShowErrorMessage(ex);
+            }
+        }
+        private void ThemeChange(object sender, EventArgs e)
+        {
+            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            {
+                EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
             }
         }
         #endregion
