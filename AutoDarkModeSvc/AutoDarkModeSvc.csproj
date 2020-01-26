@@ -9,7 +9,7 @@
     <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
     <StartupObject />
     <PackageId>AutoDarkModeService</PackageId>
-    <Company>AutoDarkModeService</Company>
+    <Company>AutoDarkMode</Company>
     <Authors>AutoDarkModeService</Authors>
     <Product>AutoDarkModeService</Product>
   </PropertyGroup>
