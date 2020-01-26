@@ -109,6 +109,7 @@ namespace AutoDarkModeSvc
                     RegistryHandler.SetColorPrevalence((int)newTheme);
                 });                
             }
+            Logger.Info($"switched to {newTheme} theme as current theme differs from requested theme");
         }
     }
 }

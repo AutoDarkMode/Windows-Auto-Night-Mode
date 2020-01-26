@@ -3,7 +3,9 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Timers;
 using NLog;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -46,9 +48,26 @@ namespace AutoDarkModeSvc
                     Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message} ${exception:separator=|}"
                 };
 
-                // Rules for mapping loggers to targets            
+                List<string> argsList;
+                if (args.Length > 0)
+                {
+                    argsList = new List<string>(args);
+                }
+                else
+                {
+                    argsList = new List<string>();
+                }
+
+                // Rules for mapping loggers to targets       
                 config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
-                config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                if (argsList.Contains("/debug"))
+                {
+                    config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                }
+                else
+                {
+                    config.AddRule(LogLevel.Info, LogLevel.Fatal, logfile);
+                }  
 
                 // Apply config           
                 LogManager.Configuration = config;
