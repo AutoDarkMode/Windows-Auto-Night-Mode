@@ -35,12 +35,12 @@ namespace AutoDarkModeApp
             //Add offset to sunrise and sunset hours using Settings
 
             //Remove old offset first if new offset is zero to preserve temporal integrity
-            DateTime sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
+            DateTime sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
             configBuilder.Config.Sunrise = sunrise;
             sunrise = sunrise.AddMinutes(configBuilder.Config.Location.SunriseOffsetMin);
 
 
-            DateTime sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Minute, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
+            DateTime sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
             configBuilder.Config.Sunset = sunset;
             sunset = sunset.AddMinutes(configBuilder.Config.Location.SunsetOffsetMin);
 
