@@ -12,6 +12,7 @@
     <Company>AutoDarkMode</Company>
     <Authors>AutoDarkModeService</Authors>
     <Product>AutoDarkModeService</Product>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

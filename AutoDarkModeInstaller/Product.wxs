@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <Product Id="*" Name="AutoDarkMode" Language="1033" Version="3.0.0.0" Manufacturer="AutoDarkMode" UpgradeCode="424d8179-0d5c-46bc-9984-24964850059b">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of AutoDarkMode is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Icon Id="icon.ico" SourceFile="$(var.SolutionDir)\AutoDarkModeIcon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    
+    <Feature Id="MainApplication" Title="Auto Dark Mode Setup" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut"/>
+    </Feature>
+
+    <UI>
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg"
+                     Control="Next"
+                     Event="NewDialog"
+                     Value="InstallDirDlg"
+                     Order="2">1</Publish>
+      <Publish Dialog="InstallDirDlg"
+                     Control="Back"
+                     Event="NewDialog"
+                     Value="WelcomeDlg"
+                     Order="2">1</Publish>
+    </UI>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+             Name="Auto Dark Mode"
+           Description="Launches the Auto Dark Mode Application Frontend"
+            Target="[INSTALLFOLDER]AutoDarkModeApp.exe"
+                  WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\AutoDarkMode" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+    
+  </Product>
+
+  <Fragment>    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="AutoDarkMode"/>
+      </Directory>
+      
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLFOLDER" Name="AutoDarkMode" />
+      </Directory>
+      
+    </Directory>
+  </Fragment>
+</Wix>

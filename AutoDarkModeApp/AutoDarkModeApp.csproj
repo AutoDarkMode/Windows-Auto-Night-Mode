@@ -16,6 +16,7 @@
     <PackageId>AutoDarkModeGUI</PackageId>
     <PackageIcon>AutoDarkModeIcon.ico</PackageIcon>
     <PackageIconUrl />
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
