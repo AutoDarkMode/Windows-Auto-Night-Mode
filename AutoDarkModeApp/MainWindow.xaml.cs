@@ -193,9 +193,11 @@ namespace AutoDarkModeApp
             {
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
-
-            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
-            configBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            if (!configBuilder.Config.Location.Enabled)
+            {
+                configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+                configBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            }
 
             try
             {
@@ -536,6 +538,11 @@ namespace AutoDarkModeApp
                 if (configBuilder.Config.Location.Enabled)
                 {
                     locationCheckBox.IsChecked = true;
+                    DateTime Sunset = configBuilder.Config.Sunset;
+                    DateTime Sunrise = configBuilder.Config.Sunrise;
+                    Sunrise.AddMinutes(configBuilder.Config.Location.SunriseOffsetMin);
+                    Sunset.AddMinutes(configBuilder.Config.Location.SunsetOffsetMin);
+
                     DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
                     DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
                     LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
