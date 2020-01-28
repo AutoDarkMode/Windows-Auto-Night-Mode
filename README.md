@@ -21,11 +21,11 @@ With enabling the automatic theme switcher in the app it creates a task in the T
 
 ## Adding new modules
 
-In case you want to contribue and add a new module, here's how to:
+In case you want to contribute and add a new module, here's how:
 
 ### Understanding how a module works
 
-AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. That means the first step is usually creating an `Enabled`property in the `Config/AutoDarkModeConfig.cs` class.
+AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. The first step therefore usually consists of creating an `Enabled` property or config class for your module in `Config/AutoDarkModeConfig.cs`.
 In order to then create a module let's take a look at what a module class looks like:
 ```C#
 namespace AutoDarkModeSvc.Modules
@@ -51,9 +51,14 @@ namespace AutoDarkModeSvc.Modules
 ```
 A module needs to have a constructor with exactly one string parameter which is set as `Name`.
 
-Each module has access to the configuration builder in case it needs to retrieve values from the global configuration. You can call it by invoking the `ConfigBuilder`singleton instance.
+Each module has access to the configuration builder in case it needs to retrieve values from the global configuration. You can call it by invoking the `ConfigBuilder` singleton instance.
 
-In addition, a module must inherit from the AutoDarkModeModule base class. The base class ensures that modules are comparable and implements the `IAutoDarkModeModule` interface. It consists of the `Fire()` method which is called by a timer and `TimerAffinity` which is the unique name of a timer this module should run on. There are preconfigured timer names in `Timers/TimerName.cs` that tick at different intervals. An example on how to add new timers will come at a later point in time.
+A module must inherit from the `AutoDarkModeModule` base class. The base class ensures that modules are comparable and implements the `IAutoDarkModeModule` interface. This ensures that all modules can be controlled by only using the interface.
+You will then need to override 
+- `Fire()`, which is called by the timer and
+- `TimerAffinity`, which is the unique name of a timer this module should run on. 
+
+There are preconfigured timer names in `Timers/TimerName.cs` that tick at different intervals. An example on how to add new timers will come at a later point in time.
 
 ### Adding a module to the module warden
 Each module is automatically controlled by the module warden, which is a module itself that runs by default. It manages enabling and disabling modules on any timer based on the current configuration file state. You can add your modules to the software by changing the `Fire()` method in `Modules/ModuleWardenModule.cs`
