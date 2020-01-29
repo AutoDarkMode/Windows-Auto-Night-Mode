@@ -13,12 +13,9 @@ namespace AutoDarkModeApp
     public partial class DesktopBGui
     {
         DeskBGHandler deskBGHandler = new DeskBGHandler();
-        private readonly AutoDarkModeConfigBuilder autoDarkModeConfigBuilder = AutoDarkModeConfigBuilder.Instance();
-        string pathOrig1;
-        string pathOrig2;
-        string pathCur1 = Properties.Settings.Default.WallpaperLight;
-        string pathCur2 = Properties.Settings.Default.WallpaperDark;
-        readonly string folderPath = "Wallpaper/";
+        private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+        string pathLight;
+        string pathDark;
         bool picture1 = false;
         bool picture2 = false;
         public bool saved = false;
@@ -28,17 +25,17 @@ namespace AutoDarkModeApp
             //
             // The following bad code will be implemented more efficient and easy to read
             //
-            List<string> lightThemeWallpapers = (List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers;
-            List<string> darkThemeWallpapers = (List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers;
+            List<string> lightThemeWallpapers = (List<string>)configBuilder.Config.Wallpaper.LightThemeWallpapers;
+            List<string> darkThemeWallpapers = (List<string>)configBuilder.Config.Wallpaper.DarkThemeWallpapers;
 
             if (lightThemeWallpapers.Count != 0)
             {
-                pathCur1 = ((List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers)[0];
+                pathLight = ((List<string>)configBuilder.Config.Wallpaper.LightThemeWallpapers)[0];
             }
 
             if (darkThemeWallpapers.Count != 0)
             {
-                pathCur2 = ((List<string>)autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers)[0];
+                pathDark = ((List<string>)configBuilder.Config.Wallpaper.DarkThemeWallpapers)[0];
             }
             
 
@@ -48,24 +45,23 @@ namespace AutoDarkModeApp
 
         private void StartVoid()
         {
-            if(!autoDarkModeConfigBuilder.Config.Wallpaper.Enabled)
+            if(configBuilder.Config.Wallpaper.Enabled)
             //if (Properties.Settings.Default.WallpaperSwitch == true)
             {
                 try
                 {
-                    ShowPreview(pathCur1, 1);
-                    ShowPreview(pathCur2, 2);
+                    ShowPreview(pathLight, 1);
+                    ShowPreview(pathDark, 2);
                 }
                 catch
                 {
-                    autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = true;
+                    configBuilder.Config.Wallpaper.Enabled = false;
                     Properties.Settings.Default.WallpaperSwitch = false;
                     StartVoid();
                 }
             }
             else
             {
-                CreateFolder();
                 SaveButton1.IsEnabled = false;
                 SaveButton1.ToolTip = Properties.Resources.dbSaveToolTip;
             }
@@ -83,13 +79,13 @@ namespace AutoDarkModeApp
             {
                 if (((Button)sender).CommandParameter.ToString().Equals("FilePicker1"))
                 {
-                    pathOrig1 = dlg.FileName;
-                    ShowPreview(pathOrig1, 1);
+                    pathLight = dlg.FileName;
+                    ShowPreview(pathLight, 1);
                 }
                 if (((Button)sender).CommandParameter.ToString().Equals("FilePicker2"))
                 {
-                    pathOrig2 = dlg.FileName;
-                    ShowPreview(pathOrig2, 2);
+                    pathDark = dlg.FileName;
+                    ShowPreview(pathDark, 2);
                 }
             }
         }
@@ -98,13 +94,13 @@ namespace AutoDarkModeApp
         {
             if (((Button)sender).CommandParameter.ToString().Equals("GetCurrentBG1"))
             {
-                pathOrig1 = deskBGHandler.GetBackground();
-                ShowPreview(pathOrig1, 1);
+                pathLight = deskBGHandler.GetBackground();
+                ShowPreview(pathLight, 1);
             }
             if (((Button)sender).CommandParameter.ToString().Equals("GetCurrentBG2"))
             {
-                pathOrig2 = deskBGHandler.GetBackground();
-                ShowPreview(pathOrig2, 2);
+                pathDark = deskBGHandler.GetBackground();
+                ShowPreview(pathDark, 2);
             }
         }
 
@@ -142,54 +138,6 @@ namespace AutoDarkModeApp
             }
         }
 
-        private void CopyFileLight()
-        {
-            if (pathOrig1 != null)
-            {
-                string pathTemp1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight_Temp" + Path.GetExtension(pathOrig1);
-                File.Copy(pathOrig1, pathTemp1, true);
-                try
-                {
-                    File.Delete(pathCur1);
-                }
-                catch
-                {
-
-                }
-                pathCur1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight" + Path.GetExtension(pathOrig1);
-                File.Copy(pathTemp1, pathCur1, true);
-                File.Delete(pathTemp1);
-            }
-        }
-
-        private void CopyFileDark()
-        {
-            if(pathOrig2 != null)
-            {
-                string pathTemp2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark_Temp" + Path.GetExtension(pathOrig2);
-                File.Copy(pathOrig2, pathTemp2, true);
-                try
-                {
-                    File.Delete(pathCur2);
-                }
-                catch
-                {
-
-                }
-                pathCur2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark" + Path.GetExtension(pathOrig2);
-                File.Copy(pathTemp2, pathCur2, true);
-                File.Delete(pathTemp2);
-            }
-        }
-
-        private void CreateFolder()
-        {
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-        }
-
         private void EnableSaveButton()
         {
             if (picture1 == true && picture2 == true)
@@ -208,14 +156,13 @@ namespace AutoDarkModeApp
         {
             try
             {
-                CopyFileLight();
-                CopyFileDark();
-                autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = false;
-                autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Add(pathCur1);
-                autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Add(pathCur2);
-                Properties.Settings.Default.WallpaperLight = pathCur1;
-                Properties.Settings.Default.WallpaperDark = pathCur2;
+                configBuilder.Config.Wallpaper.Enabled = true;
+                configBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
+                configBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+                configBuilder.Config.Wallpaper.LightThemeWallpapers.Add(pathLight);
+                configBuilder.Config.Wallpaper.DarkThemeWallpapers.Add(pathDark);
                 Properties.Settings.Default.WallpaperSwitch = true;
+                configBuilder.Save();
                 saved = true;
                 Close();
             }
@@ -231,13 +178,10 @@ namespace AutoDarkModeApp
 
         private void DeleButton_Click(object sender, RoutedEventArgs e)
         {
-            Directory.Delete(folderPath, true);
-            autoDarkModeConfigBuilder.Config.Wallpaper.Enabled = false;
-            autoDarkModeConfigBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
-            autoDarkModeConfigBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
-            autoDarkModeConfigBuilder.Save();
-            Properties.Settings.Default.WallpaperLight = "";
-            Properties.Settings.Default.WallpaperDark = "";
+            configBuilder.Config.Wallpaper.Enabled = false;
+            configBuilder.Config.Wallpaper.LightThemeWallpapers.Clear();
+            configBuilder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+            configBuilder.Save();
             Properties.Settings.Default.WallpaperSwitch = false;            
             Close();
         }

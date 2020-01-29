@@ -36,7 +36,8 @@ namespace AutoDarkModeSvc
 
             if (rtc.CurrentAppsTheme == newTheme 
                 && rtc.CurrentSystemTheme == newTheme 
-                && rtc.CurrentColorPrevalence == config.AccentColorTaskbarEnabled)
+                && rtc.CurrentColorPrevalence == config.AccentColorTaskbarEnabled
+                && rtc.CurrentWallpaperTheme == newTheme)
             {
                 return;
             }
@@ -86,7 +87,7 @@ namespace AutoDarkModeSvc
                 RegistryHandler.SetEdgeTheme((int)newTheme);
             }
 
-            if (!config.Wallpaper.Enabled)
+            if (config.Wallpaper.Enabled)
             {
                 if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)
                 {
@@ -97,7 +98,6 @@ namespace AutoDarkModeSvc
                 {
                     WallpaperHandler.SetBackground(config.Wallpaper.LightThemeWallpapers);
                     rtc.CurrentWallpaperTheme = newTheme;
-
                 }
             }
 
