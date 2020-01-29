@@ -73,9 +73,9 @@ public override void Fire()
   }
 ```
 
-To add a module, call AutoManageModule which takes the following parameters:
-- Name: Derived from the className so you can use `typeof(MyModule).Name
-- Type: The module's class used for object instantiation, `this is always typeof(MyClass)`
+To add a module, call AutoManageModule with type signature `AutoManageModule#(String, Type, Bool)` and takes the following parameters:
+- Name: Derived from the className so you can use `typeof(MyModule).Name`
+- Type: The module's class used for object instantiation, this is always `typeof(MyModule)`
 - Enabled: A boolean value that indicates whether the module should be running currently. Point it to your `Enabled` Property that you created in the configuration file or use an existing one if it fits your needs
 
 Our final call then looks like this:
