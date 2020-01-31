@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.Modules
      {
          Name = name;
          //uncomment the line below if you want a module to execute immediately after it has been registered
-         //Fire()
+         //Fire();
      }
      public override void Fire()
      {
