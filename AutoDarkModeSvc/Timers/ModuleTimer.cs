@@ -19,8 +19,7 @@ namespace AutoDarkModeSvc.Timers
         /// </summary>
         /// <param name="interval">A timer interval to determine when <see cref="ModuleTimer.OnTimedEvent(object, ElapsedEventArgs)"/> should be invoked</param>
         /// <param name="name">unique timer name</param>
-        /// <param name="tickOnStart">set to true if the timer should tick immediately after starting instead of waiting one interval first</param>
-        public ModuleTimer(int interval, string name, bool tickOnStart)
+        public ModuleTimer(int interval, string name)
         {
             Name = name;
             Modules = new List<IAutoDarkModeModule>();
@@ -30,7 +29,6 @@ namespace AutoDarkModeSvc.Timers
                 Enabled = false,
                 AutoReset = true                
             };
-            TickOnStart = tickOnStart;
             Timer.Elapsed += OnTimedEvent;
         }
 

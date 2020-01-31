@@ -33,9 +33,9 @@ namespace AutoDarkModeSvc
             ConfigMonitor = new AutoDarkModeConfigMonitor();
             ConfigMonitor.Start();
 
-            ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main", true);
-            //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io", true);
-            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, "geopos", false);
+            ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main");
+            //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io");
+            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, "geopos");
 
             Timers = new List<ModuleTimer>()
             {
