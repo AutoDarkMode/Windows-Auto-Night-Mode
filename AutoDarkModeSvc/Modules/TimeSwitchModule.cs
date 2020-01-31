@@ -20,6 +20,7 @@ namespace AutoDarkModeSvc.Modules
         public TimeSwitchModule(string name)
         {
             Name = name;
+            Fire();
         }
 
         public override void Fire()

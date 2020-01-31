@@ -12,6 +12,7 @@ namespace AutoDarkModeSvc
     };
     public enum Theme
     {
+        Ignore = -2,
         Undefined = -1,
         Dark = 0,
         Light = 1

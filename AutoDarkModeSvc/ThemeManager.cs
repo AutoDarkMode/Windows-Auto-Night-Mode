@@ -34,10 +34,22 @@ namespace AutoDarkModeSvc
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
 
+            if (!config.Wallpaper.Enabled)
+            {
+                rtc.CurrentWallpaperTheme = Theme.Ignore;
+            }
+            else
+            {
+                if (rtc.CurrentWallpaperTheme == Theme.Ignore)
+                {
+                    rtc.CurrentWallpaperTheme = Theme.Undefined;
+                }
+            }
+
             if (rtc.CurrentAppsTheme == newTheme 
                 && rtc.CurrentSystemTheme == newTheme 
                 && rtc.CurrentColorPrevalence == config.AccentColorTaskbarEnabled
-                && rtc.CurrentWallpaperTheme == newTheme)
+                && (rtc.CurrentWallpaperTheme == newTheme || rtc.CurrentWallpaperTheme == Theme.Ignore))
             {
                 return;
             }
