@@ -3,11 +3,11 @@ Automatically switches between the dark and light theme of Windows 10 at shedule
 ![Screenshot](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.png)
 
 ## Description
-Microsoft provides a dark theme in Windows 10. You can switch manually between the implemented dark and white theme on the Settings app. On the other hand some programs or operating systems are allowing a automatic switch at a specific time. While it is bright outside, you have a bright and clearly readable OS. At afternoon the sun starts to set and your operating system also switches to a darker look to take care of your eyes.
+Microsoft provides a dark theme in Windows 10. You can switch manually between the implemented dark and white theme in the Settings app. On the other hand some programs or operating systems are allowing a automatic switch at a specific time. While it is bright outside, you have a bright and clearly readable OS. At afternoon the sun starts to set and your operating system also switches to a darker look to take care of your eyes.
 
 I wanted to have this kind of solution in Windows, so I wrote this little program.
 
-With enabling the automatic theme switcher in the app it creates a task in the Task Scheduler of Windows. This task will start the app with the right arguments. No background task, no interruption of a CMD-window, no footprint and no reliability issues. You can set your own preferred start-times in the user interface.
+You can set your own preferred start-times in the user interface.
 
 ## Features
 - Easy to use and clean user-interface.
@@ -19,7 +19,16 @@ With enabling the automatic theme switcher in the app it creates a task in the T
 - Support for Accent Color on the Taskbar and other system elements.
 - Lightweight with 100% clean uninstall. No admin-rights needed.
 
-## Adding new modules
+## Download
+[Click here to download the newest version of Windows Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
+
+#### A note about the download
+Windows Smartscreen and some antivirus software may warn you from downloading this program. This is caused to the small user base and missing certificate. Sadly I can't change anything about that.
+
+## Telegram Group
+[Join my Telegram group to get early access to new versions](https://t.me/autodarkmode)
+
+# For developers: adding new modules
 
 In case you want to contribute and add a new module, here's how:
 
@@ -82,13 +91,4 @@ Our final call then looks like this:
 
 `AutoManageModule(typeof(MyModule).Name, typeof(MyModule), config.MyModuleProperty.Enabled);`
 
-**And that's it. Your module will now be managed automatically. Next steps would be providing a user interface element that controls your module.**
-
-## Download
-[Click here to download the newest version of Windows Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
-
-## Note about the download
-Windows Smartscreen and some antivirus software may warn you from downloading this program. This is caused to the small user base. Sadly I can't change anything about that.
-
-## Telegram Group
-[Join my Telegram group to get early access to new versions](https://t.me/autodarkmode)
+And that's it. Your module will now be managed automatically. Next steps would be providing a user interface element that controls your module.
