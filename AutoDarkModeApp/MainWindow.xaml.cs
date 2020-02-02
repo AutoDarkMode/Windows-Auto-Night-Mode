@@ -24,6 +24,7 @@ namespace AutoDarkModeApp
         private ICommandClient CommandClient { get; }
         private readonly bool is1903 = false;
         private bool isClosed = false;
+        private bool initComplete = false;
 
         public MainWindow()
         {
@@ -575,6 +576,7 @@ namespace AutoDarkModeApp
 
             SetDesktopBackgroundStatus();
             PopulateOffsetFields(configBuilder.Config.Location.SunsetOffsetMin, configBuilder.Config.Location.SunriseOffsetMin);
+            initComplete = true;
         }
         private void SetDesktopBackgroundStatus()
         {
@@ -616,7 +618,11 @@ namespace AutoDarkModeApp
             LocationHandler locationHandler = new LocationHandler();
             //invoking the location command will always enable location services by default
 
-            var accessStatus = await CommandClient.SendMesssageAndGetReplyAsync(Command.Location);
+            var accessStatus = Command.Ok;
+            if (initComplete)
+            {
+                accessStatus = await CommandClient.SendMesssageAndGetReplyAsync(Command.Location);
+            }
             configBuilder.Load();
             if (accessStatus != Command.NoLocAccess)
             {

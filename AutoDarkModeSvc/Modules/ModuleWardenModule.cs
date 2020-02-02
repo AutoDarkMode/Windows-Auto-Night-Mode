@@ -23,6 +23,7 @@ namespace AutoDarkModeSvc.Modules
             Name = name;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             Timers = timers;
+            Fire();
         }
 
         public override void Fire()
