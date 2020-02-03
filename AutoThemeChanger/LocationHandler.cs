@@ -68,15 +68,13 @@ namespace AutoThemeChanger
                 {
                     return result.Locations[0].Address.Town;
                 }
-                else
-                {
-                    return null;
-                }
             }
             catch (SEHException)
             {
-                return null;
+                // Ignored
             }
+
+            return String.Format("({0}, {1})", position.Latitude, position.Longitude);
         }
 
         public async Task SetLocationSilent()
