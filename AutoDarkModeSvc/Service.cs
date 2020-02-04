@@ -61,7 +61,8 @@ namespace AutoDarkModeSvc
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
             NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
-            NotifyIcon.ContextMenuStrip.Items.AddRange(new ToolStripItem[] { switchMenuItem, exitMenuItem });
+            NotifyIcon.ContextMenuStrip.Items.Add(exitMenuItem);
+            NotifyIcon.ContextMenuStrip.Items.Insert(0, switchMenuItem);
             NotifyIcon.Visible = true;
         }
 
