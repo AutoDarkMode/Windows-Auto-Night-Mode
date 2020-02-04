@@ -55,14 +55,13 @@ namespace AutoDarkModeSvc
             exitMenuItem.Click += new EventHandler(Exit);
             ToolStripMenuItem switchMenuItem = new ToolStripMenuItem("Switch theme");
             switchMenuItem.Click += new EventHandler(SwitchThemeNow);
-            System.ComponentModel.Container container = new System.ComponentModel.Container();
-            container.Add(switchMenuItem);
-            container.Add(exitMenuItem);
+
 
             NotifyIcon.Icon = Properties.Resources.AutoDarkModeIcon;
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
-            NotifyIcon.ContextMenuStrip = new ContextMenuStrip(container);
+            NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
+            NotifyIcon.ContextMenuStrip.Items.AddRange(new ToolStripItem[] { switchMenuItem, exitMenuItem });
             NotifyIcon.Visible = true;
         }
 
@@ -96,21 +95,24 @@ namespace AutoDarkModeSvc
         }
         private void OpenApp(object sender, MouseEventArgs e)
         {
-            using Mutex appMutex = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
-            try
+            if (e.Button == MouseButtons.Left)
             {
-                if (e.Button == MouseButtons.Left && appMutex.WaitOne(TimeSpan.FromSeconds(2), false))
+                using Mutex appMutex = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
+                try
                 {
-                    Console.WriteLine("Start App");
-                    Process.Start(@"AutoDarkModeApp.exe");
-                    appMutex.ReleaseMutex();
+                    if (e.Button == MouseButtons.Left && appMutex.WaitOne(TimeSpan.FromSeconds(2), false))
+                    {
+                        Console.WriteLine("Start App");
+                        Process.Start(@"AutoDarkModeApp.exe");
+                        appMutex.ReleaseMutex();
+                    }
                 }
-            } 
-            catch (AbandonedMutexException ex)
-            {
-                Logger.Debug(ex, "mutex abandoned before wait");
-            }
+                catch (AbandonedMutexException ex)
+                {
+                    Logger.Debug(ex, "mutex abandoned before wait");
+                }
 
+            }
         }
     }
 }
