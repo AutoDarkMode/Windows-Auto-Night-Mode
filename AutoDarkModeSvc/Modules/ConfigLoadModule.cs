@@ -18,9 +18,8 @@ namespace AutoDarkModeSvc.Modules
         /// This module reloads the configuration file periodically
         /// </summary>
         /// <param name="name">unique name of the module</param>
-        public ConfigLoadModule(string name)
+        public ConfigLoadModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            Name = name;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
         }
         public override void Fire()

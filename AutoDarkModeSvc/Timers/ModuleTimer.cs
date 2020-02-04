@@ -51,6 +51,10 @@ namespace AutoDarkModeSvc.Timers
         {
             if (!Modules.Contains(module))
             {
+                if (module.FireOnRegistration)
+                {
+                    module.Fire();
+                }
                 Modules.Add(module);
                 Logger.Info($"registered {module.Name} to timer {Name}");
             }

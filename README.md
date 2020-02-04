@@ -43,11 +43,9 @@ namespace AutoDarkModeSvc.Modules
   {
      private AutoDarkModeConfigBuilder ConfigBuilder { get; }
      public override string TimerAffinity { get; } = TimerName.Main;
-     public MyModule(string name)
+     public MyModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) 
      {
-         Name = name;
-         //uncomment the line below if you want a module to execute immediately after it has been registered
-         //Fire();
+       //do constructor stuff here
      }
      public override void Fire()
      {
@@ -60,7 +58,7 @@ namespace AutoDarkModeSvc.Modules
     }
 }
 ```
-A module needs to have a constructor with exactly one string parameter which is set as `Name`.
+A module needs to have a constructor that calls its base constructor with exactly one string parameter (name) and one bool parameter (should the module be fired when it was enabled in the config file). 
 
 Each module has access to the configuration builder in case it needs to retrieve values from the global configuration. You can call it by invoking the `ConfigBuilder` singleton instance.
 

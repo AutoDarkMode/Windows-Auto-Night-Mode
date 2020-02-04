@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc
                 GeoposTimer
             };
 
-            MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers));
+            MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers, true));
 
             Timers.ForEach(t => t.Start());
         }

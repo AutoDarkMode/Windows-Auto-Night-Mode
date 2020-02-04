@@ -8,9 +8,16 @@ namespace AutoDarkModeSvc.Modules
 {
     abstract class AutoDarkModeModule : IAutoDarkModeModule
     {
-        public string Name { get; protected set; }
+        public string Name { get; }
         public abstract string TimerAffinity { get; }
         public abstract void Fire();
+        public bool FireOnRegistration { get; }      
+        public AutoDarkModeModule(string name, bool fireOnRegistration)
+        {
+            Name = name;
+            FireOnRegistration = fireOnRegistration;
+        }
+
         public bool Equals(IAutoDarkModeModule other)
         {
             if (ReferenceEquals(this, other))

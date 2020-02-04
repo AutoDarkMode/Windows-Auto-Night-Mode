@@ -48,7 +48,6 @@ namespace AutoDarkModeSvc
 
             if (rtc.CurrentAppsTheme == newTheme 
                 && rtc.CurrentSystemTheme == newTheme 
-                && rtc.CurrentColorPrevalence == config.AccentColorTaskbarEnabled
                 && (rtc.CurrentWallpaperTheme == newTheme || rtc.CurrentWallpaperTheme == Theme.Ignore))
             {
                 return;

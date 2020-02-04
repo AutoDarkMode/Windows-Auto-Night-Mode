@@ -18,6 +18,10 @@ namespace AutoDarkModeSvc.Modules
         /// <summary>
         /// Unique timer name for automatic module registration and deregistration
         /// </summary>
-        public string TimerAffinity { get;  }
+        public string TimerAffinity { get; }
+        /// <summary>
+        /// Determines whether a moudle should fire when it is registered to a timer
+        /// </summary>
+        public bool FireOnRegistration { get; }
     }
 }

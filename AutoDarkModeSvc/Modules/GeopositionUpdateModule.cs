@@ -15,11 +15,9 @@ namespace AutoDarkModeSvc.Modules
         /// This module updates the user's geolocation and saves the updated value to the configuration
         /// </summary>
         /// <param name="name">unique name of the module</param>
-        public GeopositionUpdateModule(string name)
+        public GeopositionUpdateModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            Name = name;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
-            Fire();
         }
 
         public override void Fire()

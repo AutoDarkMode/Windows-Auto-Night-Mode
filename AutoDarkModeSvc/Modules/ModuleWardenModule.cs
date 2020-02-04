@@ -18,20 +18,17 @@ namespace AutoDarkModeSvc.Modules
         /// This module registers and deregisters modules automatically based on the AutoDarkModeConfiguration
         /// </summary>
         /// <param name="name">unique name of the module</param>
-        public ModuleWardenModule(string name, List<ModuleTimer> timers)
+        public ModuleWardenModule(string name, List<ModuleTimer> timers, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            Name = name;
             ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
             Timers = timers;
-            Fire();
         }
 
         public override void Fire()
         {
             AutoDarkModeConfig config = ConfigBuilder.Config;
-            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), config.AutoThemeSwitchingEnabled);
-            AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), config.Location.Enabled);
-            //AutoManageModule(typeof(ConfigLoadModule).Name, typeof(ConfigLoadModule), true);
+            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled);
+            AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
         }
 
         /// <summary>
@@ -39,8 +36,9 @@ namespace AutoDarkModeSvc.Modules
         /// </summary>
         /// <param name="moduleName">unique name of the module to be managed</param>
         /// <param name="moduleType">Type of a class implementing the <see cref="IAutoDarkModeModule"/> interface</param>
+        /// <param name="fireOnRegistration">Determines whether a module should fire upon registration to a timer</param>
         /// <param name="condition">condition whether a module should be registered or deregistered</param>
-        private void AutoManageModule(string moduleName, Type moduleType, bool condition)
+        private void AutoManageModule(string moduleName, Type moduleType, bool fireOnRegistration, bool condition)
         {
             // check if the type impplements the interface for compatibility with a ModuleTimer
             if (typeof(IAutoDarkModeModule).IsAssignableFrom(moduleType))
@@ -48,7 +46,7 @@ namespace AutoDarkModeSvc.Modules
                 // register a module if the condition has been set to true (should be predetermined in Poll() before calling this method
                 if (condition)
                 {
-                    IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleName) as IAutoDarkModeModule;
+                    IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleName, fireOnRegistration) as IAutoDarkModeModule;
                     var timer = Timers.Find(t => t.Name == module.TimerAffinity);
                     if (timer != null)
                     {
