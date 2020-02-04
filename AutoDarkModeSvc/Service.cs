@@ -51,13 +51,18 @@ namespace AutoDarkModeSvc
 
         private void InitTray()
         {
-            MenuItem exitMenuItem = new MenuItem("Close", new EventHandler(Exit));
-            MenuItem switchMenuItem = new MenuItem("Switch theme", new EventHandler(SwitchThemeNow));
+            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Close");
+            exitMenuItem.Click += new EventHandler(Exit);
+            ToolStripMenuItem switchMenuItem = new ToolStripMenuItem("Switch theme");
+            switchMenuItem.Click += new EventHandler(SwitchThemeNow);
+            System.ComponentModel.Container container = new System.ComponentModel.Container();
+            container.Add(switchMenuItem);
+            container.Add(exitMenuItem);
 
             NotifyIcon.Icon = Properties.Resources.AutoDarkModeIcon;
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
-            NotifyIcon.ContextMenu = new ContextMenu(new MenuItem[] { switchMenuItem, exitMenuItem });
+            NotifyIcon.ContextMenuStrip = new ContextMenuStrip(container);
             NotifyIcon.Visible = true;
         }
 
