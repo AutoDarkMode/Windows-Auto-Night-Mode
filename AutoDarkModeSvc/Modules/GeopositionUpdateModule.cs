@@ -1,12 +1,14 @@
 ﻿using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
+using System;
 using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Modules
 {
     class GeopositionUpdateModule : AutoDarkModeModule
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private AutoDarkModeConfigBuilder ConfigBuilder { get; }
         public override string TimerAffinity { get; } = TimerName.Geopos;
 
@@ -22,7 +24,15 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
+            DateTime nextUpdate = ConfigBuilder.Config.Location.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownHours);
+            if (DateTime.Now >= nextUpdate)
+            {
+                Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
+            }
+            else
+            {
+                Logger.Debug($"Next location update scheduled: {nextUpdate}");
+            }
         }
     }
 }

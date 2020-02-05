@@ -50,6 +50,7 @@ namespace AutoDarkModeSvc.Handlers
                     BasicGeoposition position = location.Coordinate.Point.Position;
                     configBuilder.Config.Location.Lon = position.Longitude;
                     configBuilder.Config.Location.Lat = position.Latitude;
+                    configBuilder.Config.Location.LastUpdate = DateTime.Now;
                     Logger.Info($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
                     success = true;
                     break;

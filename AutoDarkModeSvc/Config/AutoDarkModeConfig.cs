@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace AutoDarkModeSvc.Config
 {
@@ -25,7 +26,7 @@ namespace AutoDarkModeSvc.Config
             get { return appsTheme; }
             set
             {
-                if ((int)value >= 0 && (int)value <= 2)
+                if (value >= 0 && (int)value <= 2)
                 {
                     appsTheme = value;
                 }
@@ -41,7 +42,7 @@ namespace AutoDarkModeSvc.Config
             get { return systemTheme; }
             set
             {
-                if ((int)value >= 0 && (int)value <= 2)
+                if (value >= 0 && (int)value <= 2)
                 {
                     systemTheme = value;
                 }
@@ -57,7 +58,7 @@ namespace AutoDarkModeSvc.Config
             get { return egdeTheme; }
             set
             {
-                if ((int)value >= 0 && (int)value <= 3)
+                if (value >= 0 && (int)value <= 3)
                 {
                     egdeTheme = value;
                 }
@@ -86,6 +87,8 @@ namespace AutoDarkModeSvc.Config
 
     public class Location
     {
+        public TimeSpan PollingCooldownHours { get; set; } = TimeSpan.FromHours(24);
+        public DateTime LastUpdate { get; set; }
         public bool Enabled { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
