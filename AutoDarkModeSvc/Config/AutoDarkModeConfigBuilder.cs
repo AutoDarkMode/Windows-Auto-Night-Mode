@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Config
 {
@@ -34,9 +36,20 @@ namespace AutoDarkModeSvc.Config
         {
             Directory.CreateDirectory(ConfigDir);
             string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
-            using StreamWriter writer = new StreamWriter(ConfigFilePath, false);
-            writer.WriteLine(jsonConfig);
-            writer.Close();
+            for (int i = 0; i < 10; i++)
+            {
+                if (IsFileLocked(new FileInfo(ConfigFilePath))) {
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    using StreamWriter writer = new StreamWriter(ConfigFilePath, false);
+                    writer.WriteLine(jsonConfig);
+                    writer.Close();
+                    return;
+                }
+            }
+            throw new TimeoutException("Saving the configuration file failed after 10 retries");
         }
 
         public void Load()
@@ -47,8 +60,42 @@ namespace AutoDarkModeSvc.Config
             }
             using StreamReader reader = File.OpenText(ConfigFilePath);
             JsonSerializer serializer = new JsonSerializer();
-            Config = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+            var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+            Config = deserializedConfig ?? Config;
             reader.Close();
+        }
+
+
+        /// <summary>
+        /// Checks if the config file is locked
+        /// </summary>
+        /// <param name="file">the file to be checked</param>
+        /// <returns>true if locked; false otherwise</returns>
+        public static bool IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+
+            if (!File.Exists(file.FullName))
+            {
+                return false;
+            }
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException)
+            {
+
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+
+            //file is not locked
+            return false;
         }
     }
 }

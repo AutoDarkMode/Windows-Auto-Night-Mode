@@ -16,8 +16,8 @@ namespace AutoDarkModeSvc.Config
         private Mode systemTheme;
         private Mode egdeTheme;
 
-        public DateTime Sunrise { get; set; }
-        public DateTime Sunset { get; set; }
+        public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
+        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
         public bool AutoThemeSwitchingEnabled { get; set; }
         public bool AccentColorTaskbarEnabled { get; set; }
         public bool ClassicMode { get; set; }
