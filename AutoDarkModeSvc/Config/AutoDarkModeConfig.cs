@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.Config
 
     public class Location
     {
-        public TimeSpan PollingCooldownHours { get; set; } = TimeSpan.FromHours(24);
+        public TimeSpan PollingCooldownTimeSpan { get; set; } = TimeSpan.FromHours(24);
         public DateTime LastUpdate { get; set; }
         public bool Enabled { get; set; }
         public double Lat { get; set; }
