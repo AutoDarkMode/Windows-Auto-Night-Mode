@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeApp.Communication;
 using AutoDarkMode;

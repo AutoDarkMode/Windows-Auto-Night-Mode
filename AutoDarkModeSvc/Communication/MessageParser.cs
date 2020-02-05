@@ -1,6 +1,6 @@
 ﻿using AutoDarkMode;
 using AutoDarkModeApp;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,6 @@ namespace AutoDarkModeSvc.Communication
                         ThemeManager.TimedSwitch(Properties.Config);
                         SendResponse(Command.Ok);
                         break;
-
                     case Command.Swap:
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
@@ -55,19 +54,6 @@ namespace AutoDarkModeSvc.Communication
                         }
                         SendResponse(Command.Ok);
                         break;
-
-                    case Command.Dark:
-                        Logger.Info("signal received: switch to dark mode");
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
-                        SendResponse(Command.Ok);
-                        break;
-
-                    case Command.Light:
-                        Logger.Info("signal received: switch to light mode");
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
-                        SendResponse(Command.Ok);
-                        break;
-
                     case Command.AddAutostart:
                         Logger.Info("signal received: adding service to autostart");
                         RegistryHandler.AddAutoStart();

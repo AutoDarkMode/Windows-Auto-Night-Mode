@@ -1,4 +1,3 @@
-using AutoDarkModeApp.Config;
 using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Timers;
 using NLog;

@@ -1,8 +1,7 @@
 ﻿using System;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeApp;
 using System.Threading.Tasks;
-using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Timers;
 using System.Diagnostics.CodeAnalysis;
 

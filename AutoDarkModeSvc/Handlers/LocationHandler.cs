@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeApp;
 
 namespace AutoDarkModeSvc.Handlers

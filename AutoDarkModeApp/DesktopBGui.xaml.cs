@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using Microsoft.Win32;
 
 namespace AutoDarkModeApp

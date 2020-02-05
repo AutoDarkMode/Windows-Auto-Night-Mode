@@ -29,7 +29,26 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void SetEdgeTheme(int theme)
         {
-           GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            if (theme == (int)Theme.Dark)
+            {
+                theme = (int)Theme.Light;
+            }
+            else
+            {
+                theme = (int)Theme.Dark;
+            }
+            GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+        }
+
+        public static bool EdgeUsesLightTheme()
+        {
+            //reverse dark and light for edge because Microsoft
+            var value = GetEdgeKey().GetValue("Theme");
+            if ((int)value == (int)Theme.Dark)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -99,6 +118,7 @@ namespace AutoDarkModeSvc.Handlers
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main", true);
             return registryKey;
         }
+
 
         /// <summary>
         /// Adds the application to Windows autostart

@@ -7,6 +7,8 @@ namespace AutoDarkModeSvc.Config
 {
     class RuntimeConfig
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private static RuntimeConfig rtc;
         public static RuntimeConfig Instance()
         {
@@ -20,7 +22,17 @@ namespace AutoDarkModeSvc.Config
         {
             CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
             CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
-            
+
+            try
+            {
+                CurrentEdgeTheme = RegistryHandler.EdgeUsesLightTheme() ? Theme.Light : Theme.Dark;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not retrieve edge theme key value");
+                CurrentEdgeTheme = Theme.Undefined;
+            }
+
             CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
             CurrentWallpaperTheme = Theme.Undefined;
         }

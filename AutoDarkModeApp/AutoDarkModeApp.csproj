@@ -43,6 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\AutoDarkModeSvc\Config\AutoDarkModeConfig.cs" Link="Config\AutoDarkModeConfig.cs" />
+    <Compile Include="..\AutoDarkModeSvc\Config\AutoDarkModeConfigBuilder.cs" Link="Config\AutoDarkModeConfigBuilder.cs" />
+    <Compile Include="..\AutoDarkModeSvc\Extensions.cs" Link="Extensions.cs" />
     <Compile Include="..\AutoDarkModeSvc\Handlers\TaskSchdHandler.cs" Link="Handlers\TaskSchdHandler.cs" />
   </ItemGroup>
 
@@ -118,6 +121,10 @@
     <Page Update="MsgBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Config\" />
   </ItemGroup>
 
 </Project>

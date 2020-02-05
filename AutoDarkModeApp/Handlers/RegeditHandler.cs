@@ -1,7 +1,5 @@
-﻿using AutoDarkModeSvc.Handlers;
-using Microsoft.Win32;
-using System;
-using System.Threading;
+﻿using Microsoft.Win32;
+using AutoDarkModeSvc;
 
 namespace AutoDarkModeApp
 {

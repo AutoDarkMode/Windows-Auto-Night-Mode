@@ -1,4 +1,4 @@
-﻿using AutoDarkModeApp.Config;
+﻿using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;

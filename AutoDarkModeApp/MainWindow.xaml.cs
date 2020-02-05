@@ -1,6 +1,6 @@
 ﻿using AutoDarkMode;
 using AutoDarkModeApp.Communication;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Handlers;
 using NetMQ;
@@ -365,7 +365,7 @@ namespace AutoDarkModeApp
             AccentColorCheckBox.IsEnabled = false;
             SystemComboBox.IsEnabled = false;
             AppComboBox.IsEnabled = false;
-            //EdgeComboBox.IsEnabled = false;
+            //.IsEnabled = false;
             locationCheckBox.IsEnabled = false;
             locationCheckBox.IsChecked = false;
             applyButton.IsEnabled = false;
@@ -428,20 +428,12 @@ namespace AutoDarkModeApp
         // ComboBox Handlers
         private async void AppComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            configBuilder.Config.AppsTheme = AppComboBox.SelectedIndex;
+            configBuilder.Config.AppsTheme = (AutoDarkModeSvc.Mode)AppComboBox.SelectedIndex;
             try
             {
                 configBuilder.Save();
 
                 string command = Command.Switch;
-                if (AppComboBox.SelectedIndex.Equals(1))
-                {
-                    command = Command.Light;
-                }
-                else if (AppComboBox.SelectedIndex.Equals(2))
-                {
-                    command = Command.Dark;
-                }
 
                 bool isMessageOk = await CommandClient.SendMessageAsync(command);
                 if (!isMessageOk)
@@ -456,20 +448,12 @@ namespace AutoDarkModeApp
         }
         private async void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            configBuilder.Config.SystemTheme = SystemComboBox.SelectedIndex;
+            configBuilder.Config.SystemTheme = (AutoDarkModeSvc.Mode)SystemComboBox.SelectedIndex;
             try
             {
                 configBuilder.Save(); 
 
                 string command = Command.Switch;
-                if (SystemComboBox.SelectedIndex.Equals(1))
-                {
-                    command = Command.Light;
-                }
-                else if (SystemComboBox.SelectedIndex.Equals(2))
-                {
-                    command = Command.Dark;
-                }
 
                 bool isMessageOk = await CommandClient.SendMessageAsync(command);
                 if (isMessageOk)
@@ -555,8 +539,8 @@ namespace AutoDarkModeApp
                 AutoCheckBox_Unchecked(autoCheckBox, null);
             }
 
-            AppComboBox.SelectedIndex = configBuilder.Config.AppsTheme;
-            SystemComboBox.SelectedIndex = configBuilder.Config.SystemTheme;
+            AppComboBox.SelectedIndex = (int)configBuilder.Config.AppsTheme;
+            SystemComboBox.SelectedIndex = (int)configBuilder.Config.SystemTheme;
 
             if (!is1903)
             {

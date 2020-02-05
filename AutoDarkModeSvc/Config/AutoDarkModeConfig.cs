@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutoDarkModeApp.Config
+namespace AutoDarkModeSvc.Config
 {
     public class AutoDarkModeConfig
     {
@@ -11,37 +11,37 @@ namespace AutoDarkModeApp.Config
             Location = new Location();
         }
 
-        private int appsTheme;
-        private int systemTheme;
-        private int egdeTheme;
+        private Mode appsTheme;
+        private Mode systemTheme;
+        private Mode egdeTheme;
 
         public DateTime Sunrise { get; set; }
         public DateTime Sunset { get; set; }
         public bool AutoThemeSwitchingEnabled { get; set; }
         public bool AccentColorTaskbarEnabled { get; set; }
         public bool ClassicMode { get; set; }
-        public int AppsTheme
+        public Mode AppsTheme
         {
             get { return appsTheme; }
             set
             {
-                if (value >= 0 && value <= 2)
+                if ((int)value >= 0 && (int)value <= 2)
                 {
                     appsTheme = value;
                 }
                 else
                 {
                     // DEFAULT
-                    appsTheme = 0;
+                    appsTheme = Mode.Switch;
                 }
             }
         }
-        public int SystemTheme
+        public Mode SystemTheme
         {
             get { return systemTheme; }
             set
             {
-                if (value >= 0 && value <= 2)
+                if ((int)value >= 0 && (int)value <= 2)
                 {
                     systemTheme = value;
                 }
@@ -52,19 +52,19 @@ namespace AutoDarkModeApp.Config
                 }
             }
         }
-        public int EdgeTheme
+        public Mode EdgeTheme
         {
             get { return egdeTheme; }
             set
             {
-                if (value >= 0 && value <= 3)
+                if ((int)value >= 0 && (int)value <= 3)
                 {
                     egdeTheme = value;
                 }
                 else
                 {
                     // DEFAULT
-                    egdeTheme = 3;
+                    egdeTheme = Mode.Switch;
                 }
             }
         }

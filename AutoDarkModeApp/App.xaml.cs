@@ -1,5 +1,5 @@
 ﻿using AutoDarkModeApp.Communication;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkMode;
 using NetMQ;
@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Threading;
+using AutoDarkModeSvc;
 
 namespace AutoDarkModeApp
 {

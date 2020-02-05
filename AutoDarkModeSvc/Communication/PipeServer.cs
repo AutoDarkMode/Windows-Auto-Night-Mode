@@ -5,7 +5,7 @@ using System.IO.Pipes;
 using System.Threading.Tasks;
 using AutoDarkMode;
 using AutoDarkModeApp;
-using AutoDarkModeApp.Config;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Communication

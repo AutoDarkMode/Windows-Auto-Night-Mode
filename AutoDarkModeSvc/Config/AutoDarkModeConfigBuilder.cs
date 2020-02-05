@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace AutoDarkModeApp.Config
+namespace AutoDarkModeSvc.Config
 {
     public class AutoDarkModeConfigBuilder
     {
