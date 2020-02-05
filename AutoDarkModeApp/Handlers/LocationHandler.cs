@@ -7,6 +7,7 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeApp.Communication;
 using AutoDarkMode;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeApp
 {
@@ -72,15 +73,22 @@ namespace AutoDarkModeApp
                 Longitude = configBuilder.Config.Location.Lon
             });
 
-            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low);
+            try
+            {
+                MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low);
 
-            if (result.Status == MapLocationFinderStatus.Success)
-            {
-                return result.Locations[0].Address.Town;
+                if (result.Status == MapLocationFinderStatus.Success)
+                {
+                    return result.Locations[0].Address.Town;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (SEHException)
             {
-                return null;
+                return string.Format("(~{0,00}, ~{1,00})", geopoint.Position.Latitude, geopoint.Position.Longitude);
             }
         }
     }
