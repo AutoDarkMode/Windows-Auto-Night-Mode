@@ -11,7 +11,8 @@ namespace AutoDarkModeSvc.Handlers
         /// Sets the first background in a wallpaper collection
         /// </summary>
         /// <param name="wallpaperCollection">List with wallpapers</param>
-        public static void SetBackground(ICollection<string> wallpaperCollection)
+        /// <return>true if wallpaper switch succeeded</return>
+        public static bool SetBackground(ICollection<string> wallpaperCollection)
         {
             List<string> wallpapers = wallpaperCollection.ToList();
             if (wallpapers.Count > 0)
@@ -19,6 +20,12 @@ namespace AutoDarkModeSvc.Handlers
                 string filePath = wallpapers.ElementAt(0);
                 win32.SystemParametersInfo(0x0014, 0, filePath, 1 | 2);
             }
+            var wallpaper = GetBackground();
+            if (wallpaper == wallpapers.ElementAt(0))
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

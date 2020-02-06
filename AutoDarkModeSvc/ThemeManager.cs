@@ -134,10 +134,13 @@ namespace AutoDarkModeSvc
 
             if (config.Wallpaper.Enabled)
             {
-                if (newTheme == Theme.Dark || rtc.CurrentWallpaperTheme == Theme.Undefined)
+                if (newTheme == Theme.Dark)
                 {
-                    WallpaperHandler.SetBackground(config.Wallpaper.DarkThemeWallpapers);
-                    rtc.CurrentWallpaperTheme = newTheme;
+                    var success = WallpaperHandler.SetBackground(config.Wallpaper.DarkThemeWallpapers);
+                    if (success)
+                    {
+                        rtc.CurrentWallpaperTheme = newTheme;
+                    }
                 }
                 else
                 {
