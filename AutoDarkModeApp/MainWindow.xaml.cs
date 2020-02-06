@@ -509,7 +509,12 @@ namespace AutoDarkModeApp
                 var result = msgBox.DialogResult;
                 if (result == true)
                 {
-                    System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
+                    string donateUri = @"https://www.paypal.me/arminosaj";
+                    Process.Start(new ProcessStartInfo(donateUri)
+                    {
+                        UseShellExecute = true,
+                        Verb = "open"
+                    });
                 }
             }
         }
@@ -697,7 +702,11 @@ namespace AutoDarkModeApp
             var result = msg.DialogResult;
             if (result == true)
             {
-                Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues");
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri) { 
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
             }
             return;
         }

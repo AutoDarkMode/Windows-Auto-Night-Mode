@@ -5,6 +5,7 @@ using System.Windows;
 using System.Globalization;
 using System.Collections.Generic;
 using AutoDarkMode;
+using System.Diagnostics;
 
 namespace AutoDarkModeApp
 {
@@ -95,7 +96,11 @@ namespace AutoDarkModeApp
                     var result = msgBox.DialogResult;
                     if (result == true)
                     {
-                        System.Diagnostics.Process.Start(url);
+                        Process.Start(new ProcessStartInfo(url)
+                        {
+                            UseShellExecute = true,
+                            Verb = "open"
+                        });
                         Application.Current.Shutdown();
                     }
                 }

@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Globalization;
 using System.Threading;
+using System.Diagnostics;
 
 namespace AutoDarkModeApp
 {
@@ -60,7 +61,7 @@ namespace AutoDarkModeApp
             }
             else
             {
-                System.Diagnostics.Process.Start(updater.GetURL());
+                StartProcessByProcessInfo(updater.GetURL());
             }
         }
 
@@ -118,7 +119,7 @@ namespace AutoDarkModeApp
 
         private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode");
+            StartProcessByProcessInfo(@"https://github.com/Armin2208/Windows-Auto-Night-Mode");
         }
 
         private void TwitterTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -135,7 +136,7 @@ namespace AutoDarkModeApp
 
         private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
+            StartProcessByProcessInfo(@"https://twitter.com/Armin2208");
         }
 
         private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -152,7 +153,7 @@ namespace AutoDarkModeApp
 
         private void PayPalTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
+            StartProcessByProcessInfo(@"https://paypal.me/arminosaj");
         }
 
         private void TelegramTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -169,7 +170,7 @@ namespace AutoDarkModeApp
 
         private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://t.me/autodarkmode");
+            StartProcessByProcessInfo(@"https://t.me/autodarkmode");
         }
 
         private void GitHubTextBlock_KeyDown(object sender, KeyEventArgs e)
@@ -214,11 +215,20 @@ namespace AutoDarkModeApp
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
         }
 
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
+        }
+
         private void AboutWindowXAML_Closed(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.Language != curLanguage)
-            {
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            {                
+                StartProcessByProcessInfo(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();
             }
             else
