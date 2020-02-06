@@ -96,6 +96,10 @@ namespace AutoDarkModeApp
                         RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.RemoveAutoStart();
                     }
+                    else if (value =="/shutdownService")
+                    {
+                        commandClient.SendMessage(Command.Shutdown);
+                    }
                     else if (value == "/pipeclienttest")
                     {
                         //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);

@@ -15,7 +15,6 @@ namespace AutoDarkModeSvc
     class Service : ApplicationContext
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
         NotifyIcon NotifyIcon { get; }
         List<ModuleTimer> Timers { get; set; }
         ICommandServer CommandServer { get;  }

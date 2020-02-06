@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <Product Id="*" Name="AutoDarkMode" Language="1033" Version="3.0.1.0" Manufacturer="AutoDarkMode" UpgradeCode="424d8179-0d5c-46bc-9984-24964850059b">
+  <Product Id="*" Name="AutoDarkMode" Language="1033" Version="3.0.4.0" Manufacturer="AutoDarkMode" UpgradeCode="424d8179-0d5c-46bc-9984-24964850059b">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of AutoDarkMode is already installed." />
     <MediaTemplate EmbedCab="yes" />
@@ -40,11 +40,31 @@
         <RegistryValue Root="HKCU" Key="Software\AutoDarkMode" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-    
+
+
+    <!--<Property Id="WixQuietExecCmdLine" Value=" "/>-->
+    <!--<CustomAction Id="QtExecEndSvc" Property="WixQuietExecCmdLine" Value='"[INSTALLFOLDER]AutoDarkModeApp.exe" /shutdownService'/>-->
+    <!--<Property Id="WixQuietExecCmdLine" Value='"taskkill.exe" /IM "AutoDarkModeSvc.exe" /F /FI "STATUS eq RUNNING"'/>-->
+    <!--<CustomAction Id="QtExecEndSvc" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="check"/>-->
+
+    <Property Id="WixQuietExecCmdLine" Value=" "/>
+    <CustomAction Id="QtExecShutdownSvcCommand" Property="WixQuietExecCmdLine" Value='"[INSTALLFOLDER]AutoDarkModeApp.exe" /shutdownService'/>
+    <CustomAction Id="QtExecKillSvcCommand" Property="WixQuietExecCmdLine" Value='"taskkill.exe" /IM "AutoDarkModeSvc.exe" /F /FI "STATUS eq RUNNING"'/>
+    <CustomAction Id="QtExecFirst" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="QtExecSecond" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="check"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="QtExecShutdownSvcCommand" Before="QtExecFirst"></Custom>
+      <Custom Action="QtExecFirst" Before="InstallValidate">(Installed) OR (REMOVE="ALL")</Custom>
+      <Custom Action="QtExecKillSvcCommand" Before="QtExecSecond"></Custom>
+      <Custom Action="QtExecSecond" After="InstallInitialize">(Installed) OR (REMOVE="ALL")</Custom>
+    </InstallExecuteSequence>
   </Product>
 
   <Fragment>    
     <Directory Id="TARGETDIR" Name="SourceDir">
+      
+      <Directory Id="WindowsFolder" Name="WINDOWS"/>
       
       <Directory Id="ProgramMenuFolder">
         <Directory Id="ApplicationProgramsFolder" Name="AutoDarkMode"/>
