@@ -41,12 +41,6 @@
       </Component>
     </DirectoryRef>
 
-
-    <!--<Property Id="WixQuietExecCmdLine" Value=" "/>-->
-    <!--<CustomAction Id="QtExecEndSvc" Property="WixQuietExecCmdLine" Value='"[INSTALLFOLDER]AutoDarkModeApp.exe" /shutdownService'/>-->
-    <!--<Property Id="WixQuietExecCmdLine" Value='"taskkill.exe" /IM "AutoDarkModeSvc.exe" /F /FI "STATUS eq RUNNING"'/>-->
-    <!--<CustomAction Id="QtExecEndSvc" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="check"/>-->
-
     <Property Id="WixQuietExecCmdLine" Value=" "/>
     <CustomAction Id="QtExecShutdownSvcCommand" Property="WixQuietExecCmdLine" Value='"[INSTALLFOLDER]AutoDarkModeApp.exe" /shutdownService'/>
     <CustomAction Id="QtExecKillSvcCommand" Property="WixQuietExecCmdLine" Value='"taskkill.exe" /IM "AutoDarkModeSvc.exe" /F /FI "STATUS eq RUNNING"'/>
@@ -63,17 +57,12 @@
 
   <Fragment>    
     <Directory Id="TARGETDIR" Name="SourceDir">
-      
-      <Directory Id="WindowsFolder" Name="WINDOWS"/>
-      
       <Directory Id="ProgramMenuFolder">
         <Directory Id="ApplicationProgramsFolder" Name="AutoDarkMode"/>
       </Directory>
-      
       <Directory Id="ProgramFiles64Folder">
         <Directory Id="INSTALLFOLDER" Name="AutoDarkMode" />
       </Directory>
-      
     </Directory>
   </Fragment>
 </Wix>

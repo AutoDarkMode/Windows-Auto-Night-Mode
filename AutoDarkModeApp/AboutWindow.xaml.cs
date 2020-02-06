@@ -136,7 +136,6 @@ namespace AutoDarkModeApp
         private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
-            
         }
 
         private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
