@@ -151,7 +151,14 @@ namespace AutoDarkModeSvc
                 Task.Run(async () =>
                 {
                     await Task.Delay(200);
-                    RegistryHandler.SetColorPrevalence((int)newTheme);
+                    if (rtc.CurrentSystemTheme == Theme.Dark)
+                    {
+                        RegistryHandler.SetColorPrevalence(1);
+                    }
+                    else
+                    {
+                        RegistryHandler.SetColorPrevalence(0);
+                    }
                 });                
             }
             Logger.Info($"theme switch performed");
