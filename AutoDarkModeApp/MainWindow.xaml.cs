@@ -464,15 +464,7 @@ namespace AutoDarkModeApp
                 bool isMessageOk = await CommandClient.SendMessageAsync(command);
                 if (isMessageOk)
                 {
-                    if (SystemComboBox.SelectedIndex.Equals(0) || SystemComboBox.SelectedIndex.Equals(2))
-                    {
-                        AccentColorCheckBox.IsEnabled = true;
-                    }
-                    else if (SystemComboBox.SelectedIndex.Equals(1))
-                    {
-                        AccentColorCheckBox.IsEnabled = false;
-                        AccentColorCheckBox.IsChecked = false;
-                    }
+                    AccentColorCheckBox.IsEnabled = true;
                 }
                 else
                 {

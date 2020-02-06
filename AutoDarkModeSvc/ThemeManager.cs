@@ -46,25 +46,25 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if (    (config.SystemTheme == Mode.DarkOnly  && rtc.CurrentSystemTheme != Theme.Dark )
+            if ((config.SystemTheme == Mode.DarkOnly && rtc.CurrentSystemTheme != Theme.Dark)
                  || (config.SystemTheme == Mode.LightOnly && rtc.CurrentSystemTheme != Theme.Light)
-                 || (config.SystemTheme == Mode.Switch    && rtc.CurrentSystemTheme != newTheme   )
+                 || (config.SystemTheme == Mode.Switch && rtc.CurrentSystemTheme != newTheme)
                )
             {
                 return true;
             }
 
-            if (    (config.AppsTheme == Mode.DarkOnly  && rtc.CurrentAppsTheme != Theme.Dark )
+            if ((config.AppsTheme == Mode.DarkOnly && rtc.CurrentAppsTheme != Theme.Dark)
                  || (config.AppsTheme == Mode.LightOnly && rtc.CurrentAppsTheme != Theme.Light)
-                 || (config.AppsTheme == Mode.Switch    && rtc.CurrentAppsTheme != newTheme   )
+                 || (config.AppsTheme == Mode.Switch && rtc.CurrentAppsTheme != newTheme)
                )
             {
                 return true;
             }
 
-            if (   (config.EdgeTheme == Mode.DarkOnly  && rtc.CurrentEdgeTheme != Theme.Dark )
+            if ((config.EdgeTheme == Mode.DarkOnly && rtc.CurrentEdgeTheme != Theme.Dark)
                 || (config.EdgeTheme == Mode.LightOnly && rtc.CurrentEdgeTheme != Theme.Light)
-                || (config.EdgeTheme == Mode.Switch    && rtc.CurrentEdgeTheme != newTheme   )
+                || (config.EdgeTheme == Mode.Switch && rtc.CurrentEdgeTheme != newTheme)
               )
             {
                 return true;
@@ -98,25 +98,9 @@ namespace AutoDarkModeSvc
                 rtc.CurrentAppsTheme = Theme.Light;
             }
             else
-            { 
+            {
                 RegistryHandler.SetAppsTheme((int)newTheme);
                 rtc.CurrentAppsTheme = newTheme;
-            }
-
-            if (config.SystemTheme == Mode.DarkOnly)
-            {
-                RegistryHandler.SetSystemTheme((int)Theme.Dark);
-                rtc.CurrentSystemTheme = Theme.Dark;
-            }
-            else if (config.SystemTheme == Mode.LightOnly)
-            {
-                RegistryHandler.SetSystemTheme((int)Theme.Light);
-                rtc.CurrentSystemTheme = Theme.Light;
-            }
-            else
-            {
-                RegistryHandler.SetSystemTheme((int)newTheme);
-                rtc.CurrentSystemTheme = newTheme;
             }
 
             if (config.EdgeTheme == Mode.DarkOnly)
@@ -149,12 +133,17 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if (config.AccentColorTaskbarEnabled)
+
+            //run async to delay at specific parts due to color prevalence not switching icons correctly
+            int taskdelay = 400;
+            Task.Run(async () =>
             {
-                Task.Run(async () =>
+                if (config.SystemTheme == Mode.DarkOnly)
                 {
-                    await Task.Delay(200);
-                    if (rtc.CurrentSystemTheme == Theme.Dark)
+                    RegistryHandler.SetSystemTheme((int)Theme.Dark);
+                    rtc.CurrentSystemTheme = Theme.Dark;
+                    await Task.Delay(taskdelay);
+                    if (config.AccentColorTaskbarEnabled)
                     {
                         RegistryHandler.SetColorPrevalence(1);
                     }
@@ -162,12 +151,41 @@ namespace AutoDarkModeSvc
                     {
                         RegistryHandler.SetColorPrevalence(0);
                     }
-                });                
-            }
-            Logger.Info($"theme switch performed");
-            Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled})");
-            Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}),");
-            Logger.Info($"is (s:{rtc.CurrentSystemTheme}, a:{rtc.CurrentAppsTheme}, e:{rtc.CurrentEdgeTheme}, w:{rtc.CurrentWallpaperTheme})");
+                }
+                else if (config.SystemTheme == Mode.LightOnly)
+                {
+                    RegistryHandler.SetColorPrevalence(0);
+                    await Task.Delay(taskdelay);
+                    RegistryHandler.SetSystemTheme((int)Theme.Light);
+                    rtc.CurrentSystemTheme = Theme.Light;
+                }
+                else
+                {
+                    if (config.AccentColorTaskbarEnabled)
+                    {
+                        if (newTheme == Theme.Light)
+                        {
+                            RegistryHandler.SetColorPrevalence(0);
+                            await Task.Delay(taskdelay);
+                        }
+                    }
+                    RegistryHandler.SetSystemTheme((int)newTheme);
+                    if (config.AccentColorTaskbarEnabled)
+                    {
+                        if (newTheme == Theme.Dark)
+                        {
+                            await Task.Delay(taskdelay);
+                            RegistryHandler.SetColorPrevalence(1);
+                        }
+                    }
+                    rtc.CurrentSystemTheme = newTheme;
+
+                    Logger.Info($"theme switch performed");
+                    Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled})");
+                    Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}),");
+                    Logger.Info($"is (s:{rtc.CurrentSystemTheme}, a:{rtc.CurrentAppsTheme}, e:{rtc.CurrentEdgeTheme}, w:{rtc.CurrentWallpaperTheme})");
+                }
+            });
         }
     }
 }

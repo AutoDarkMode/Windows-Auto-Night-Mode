@@ -40,11 +40,17 @@ namespace AutoDarkModeSvc
                 var logfile = new NLog.Targets.FileTarget("logfile")
                 {
                     FileName = Path.Combine(configDir, "service.log"),
-                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message} ${exception:separator=|}"
+                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
+                    "${callsite:includeNamespace=False:" +
+                    "cleanNamesOfAnonymousDelegates=true:" +
+                    "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
                 };
                 var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
                 {
-                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | ${callsite:includeNamespace=False}: ${message} ${exception:separator=|}"
+                    Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
+                    "${callsite:includeNamespace=False:" +
+                    "cleanNamesOfAnonymousDelegates=true:" +
+                    "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
                 };
 
                 List<string> argsList;
