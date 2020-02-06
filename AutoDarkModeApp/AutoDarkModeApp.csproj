@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-    <Version>3.0.0.0</Version>
+    <Version>3.0.4.0</Version>
     <Company />
     <Product />
     <Authors>Armin Osaj</Authors>

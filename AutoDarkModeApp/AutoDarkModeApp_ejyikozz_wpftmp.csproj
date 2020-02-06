@@ -1,0 +1,388 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <Version>3.0.0.0</Version>
+    <Company />
+    <Product />
+    <Authors>Armin Osaj</Authors>
+    <Description>"Automatically switches between the dark and light theme of Windows 10 at sheduled times."</Description>
+    <Copyright>© 2019 Armin Osaj</Copyright>
+    <AssemblyName>AutoDarkModeApp</AssemblyName>
+    <PackageId>AutoDarkModeGUI</PackageId>
+    <PackageIcon>AutoDarkModeIcon.ico</PackageIcon>
+    <PackageIconUrl />
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resources\GitHub_Logo_Black.png" />
+    <None Remove="Resources\GitHub_Logo_White.png" />
+    <None Remove="Resources\Microsoft_Edge_Logo.png" />
+    <None Remove="Resources\Microsoft_Edge_Logo_White.png" />
+    <None Remove="Resources\PayPal_Logo.png" />
+    <None Remove="Resources\Photo_Icon.png" />
+    <None Remove="Resources\Settings_Icon.png" />
+    <None Remove="Resources\Twitter_Logo_Blue.png" />
+    <None Include="..\AutoDarkModeIcon.ico">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AutoDarkModeSvc\Config\AutoDarkModeConfig.cs" Link="Config\AutoDarkModeConfig.cs" />
+    <Compile Include="..\AutoDarkModeSvc\Config\AutoDarkModeConfigBuilder.cs" Link="Config\AutoDarkModeConfigBuilder.cs" />
+    <Compile Include="..\AutoDarkModeSvc\Extensions.cs" Link="Extensions.cs" />
+    <Compile Include="..\AutoDarkModeSvc\Handlers\TaskSchdHandler.cs" Link="Handlers\TaskSchdHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentWPF" Version="0.8.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
+    <PackageReference Include="NetMQ" Version="4.0.0.207" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="TaskScheduler" Version="2.8.17" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="DesktopBGui.xaml.cs">
+      <DependentUpon>DesktopBGui.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="MsgBox.xaml.cs">
+      <DependentUpon>MsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\Accessibility.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\asyncio\0.1.69\lib\netstandard2.0\AsyncIO.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\fluentwpf\0.8.0\lib\netcoreapp3.0\FluentWPF.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.CSharp.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.VisualBasic.Core.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.VisualBasic.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.Win32.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.Win32.Registry.AccessControl.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.Win32.Registry.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\taskscheduler\2.8.17\lib\netstandard2.0\Microsoft.Win32.TaskScheduler.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\mscorlib.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\netmq\4.0.0.207\lib\netstandard2.0\NetMQ.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\netstandard.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationCore.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.Aero.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.Aero2.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.AeroLite.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.Classic.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.Luna.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationFramework.Royale.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\PresentationUI.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\ReachFramework.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.AppContext.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Buffers.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.CodeDom.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Collections.Concurrent.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Collections.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Collections.Immutable.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Collections.NonGeneric.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Collections.Specialized.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ComponentModel.Annotations.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ComponentModel.DataAnnotations.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ComponentModel.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ComponentModel.EventBasedAsync.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ComponentModel.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ComponentModel.TypeConverter.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Configuration.ConfigurationManager.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Configuration.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Console.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Core.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Data.Common.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Data.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.Contracts.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.Debug.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.EventLog.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.FileVersionInfo.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.Process.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.StackTrace.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.TextWriterTraceListener.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.Tools.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.TraceSource.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Diagnostics.Tracing.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.DirectoryServices.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Drawing.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Drawing.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Dynamic.Runtime.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Globalization.Calendars.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Globalization.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Globalization.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Compression.Brotli.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Compression.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Compression.FileSystem.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Compression.ZipFile.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.FileSystem.AccessControl.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.FileSystem.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.FileSystem.DriveInfo.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.FileSystem.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.FileSystem.Watcher.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.IsolatedStorage.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.MemoryMappedFiles.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Packaging.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Pipes.AccessControl.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.Pipes.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.IO.UnmanagedMemoryStream.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Linq.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Linq.Expressions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Linq.Parallel.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Linq.Queryable.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Memory.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Http.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.HttpListener.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Mail.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.NameResolution.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.NetworkInformation.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Ping.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Requests.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Security.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.ServicePoint.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.Sockets.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.WebClient.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.WebHeaderCollection.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.WebProxy.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.WebSockets.Client.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Net.WebSockets.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Numerics.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Numerics.Vectors.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ObjectModel.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Printing.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.DispatchProxy.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.Emit.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.Emit.ILGeneration.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.Emit.Lightweight.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.Metadata.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Reflection.TypeExtensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Resources.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Resources.Reader.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Resources.ResourceManager.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Resources.Writer.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.CompilerServices.VisualC.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Handles.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.InteropServices.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.InteropServices.WindowsRuntime.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Intrinsics.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Loader.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Numerics.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Serialization.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Serialization.Formatters.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Serialization.Json.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Serialization.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Runtime.Serialization.Xml.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\system.runtime.windowsruntime\4.6.0\ref\netstandard2.0\System.Runtime.WindowsRuntime.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\system.runtime.windowsruntime.ui.xaml\4.6.0\ref\netstandard2.0\System.Runtime.WindowsRuntime.UI.Xaml.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.AccessControl.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Claims.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Algorithms.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Cng.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Csp.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Encoding.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.X509Certificates.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Xml.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Permissions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Principal.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Principal.Windows.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.SecureString.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\system.servicemodel.primitives\4.4.0\ref\netstandard2.0\System.ServiceModel.Primitives.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ServiceModel.Web.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ServiceProcess.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Text.Encoding.CodePages.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Text.Encoding.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Text.Encoding.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Text.Encodings.Web.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Text.Json.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Text.RegularExpressions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.AccessControl.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Channels.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Overlapped.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Tasks.Dataflow.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Tasks.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Tasks.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Tasks.Parallel.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Thread.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.ThreadPool.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Threading.Timer.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Transactions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Transactions.Local.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.ValueTuple.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Web.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Web.HttpUtility.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Windows.Controls.Ribbon.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Windows.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Windows.Extensions.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Windows.Input.Manipulations.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Windows.Presentation.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xaml.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.Linq.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.ReaderWriter.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.Serialization.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.XDocument.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.XmlDocument.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.XmlSerializer.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.XPath.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Xml.XPath.XDocument.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\UIAutomationClient.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\UIAutomationClientSideProviders.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\UIAutomationProvider.dll" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\UIAutomationTypes.dll" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.AI.MachineLearning.Preview.MachineLearningPreviewContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Activation.ActivatedEventsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Activation.ActivationCameraSettingsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Activation.ContactActivatedEventsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Activation.WebUISearchActivatedEventsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Background.BackgroundAlarmApplicationContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Calls.Background.CallsBackgroundContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Calls.CallsPhoneContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Calls.CallsVoipContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Calls.LockScreenCallContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingContract.WinMD" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.FullTrustAppContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Preview.InkWorkspace.PreviewInkWorkspaceContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Preview.Notes.PreviewNotesContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Resources.Management.ResourceIndexerContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Search.Core.SearchCoreContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Search.SearchContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.SocialInfo.SocialInfoContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.StartupTaskContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.ApplicationModel.Wallet.WalletContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.Custom.CustomDeviceContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.DevicesLowLevelContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.Portable.PortableDeviceContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.Printers.Extensions.ExtensionsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.Printers.PrintersContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.Scanners.ScannerDeviceContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.SmartCards.SmartCardBackgroundTriggerContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.SmartCards.SmartCardEmulatorContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Devices.Sms.LegacySmsApiContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Embedded.DeviceLockdown.DeviceLockdownContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Foundation.FoundationContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Foundation.UniversalApiContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Gaming.Input.GamingInputPreviewContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Gaming.Preview.GamesEnumerationContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Gaming.UI.GameChatOverlayContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Gaming.UI.GamingUIProviderContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Gaming.XboxLive.StorageApiContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Globalization.GlobalizationJapanesePhoneticAnalyzerContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Graphics.Printing3D.Printing3DContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Management.Deployment.Preview.DeploymentPreviewContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Management.Workplace.WorkplaceSettingsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.AppBroadcasting.AppBroadcastingContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.AppRecording.AppRecordingContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Capture.AppBroadcastContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Capture.AppCaptureContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Capture.AppCaptureMetadataContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Capture.CameraCaptureUIContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Capture.GameBarContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Devices.CallControlContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.MediaControlContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Playlists.PlaylistsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Media.Protection.ProtectionRenewalContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Networking.Connectivity.WwanContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Networking.NetworkOperators.LegacyNetworkOperatorsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Networking.NetworkOperators.NetworkOperatorsFdnContract.WinMD" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Networking.Sockets.ControlChannelTriggerContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Networking.XboxLive.XboxLiveSecureSocketsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Perception.Automation.Core.PerceptionAutomationCoreContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Phone.PhoneContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Phone.StartScreen.DualSimTileContract.WinMD" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Security.EnterpriseData.EnterpriseDataContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Security.ExchangeActiveSyncProvisioning.EasContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Services.Maps.GuidanceContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Services.Maps.LocalSearchContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Services.Store.StoreContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Services.TargetedContent.TargetedContentContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Storage.Provider.CloudFilesContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.Profile.ProfileHardwareTokenContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.Profile.ProfileRetailInfoContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.Profile.ProfileSharedModeContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.Profile.SystemManufacturers.SystemManufacturersContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.SystemManagementContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.UserProfile.UserProfileContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.System.UserProfile.UserProfileLockScreenContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.UI.ApplicationSettings.ApplicationsSettingsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.UI.Core.AnimationMetrics.AnimationMetricsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.UI.Core.CoreWindowDialogsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.UI.ViewManagement.ViewManagementViewScalingContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.UI.WebUI.Core.WebUICommandBarContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.UI.Xaml.Hosting.HostingContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\Windows.Web.Http.Diagnostics.HttpDiagnosticsContract.winmd" />
+    <ReferencePath Include="C:\Users\Sam\.nuget\packages\microsoft.windows.sdk.contracts\10.0.17134.1000\ref\netstandard2.0\windows.winmd" />
+    <ReferencePath Include="c:\program files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\3.1.0\ref\netcoreapp3.1\WindowsBase.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="D:\Code\Repos\armin\Windows-Auto-Night-Mode\AutoDarkModeApp\obj\Debug\netcoreapp3.1\win-x64\AboutWindow.g.cs" />
+    <Compile Include="D:\Code\Repos\armin\Windows-Auto-Night-Mode\AutoDarkModeApp\obj\Debug\netcoreapp3.1\win-x64\DesktopBGui.g.cs" />
+    <Compile Include="D:\Code\Repos\armin\Windows-Auto-Night-Mode\AutoDarkModeApp\obj\Debug\netcoreapp3.1\win-x64\MainWindow.g.cs" />
+    <Compile Include="D:\Code\Repos\armin\Windows-Auto-Night-Mode\AutoDarkModeApp\obj\Debug\netcoreapp3.1\win-x64\MsgBox.g.cs" />
+    <Compile Include="D:\Code\Repos\armin\Windows-Auto-Night-Mode\AutoDarkModeApp\obj\Debug\netcoreapp3.1\win-x64\App.g.cs" />
+  </ItemGroup>
+</Project>
