@@ -13,24 +13,12 @@ namespace AutoDarkModeSvc.Handlers
         /// Refreshes sunrise and sunset based on latittude and longitude found in the configuration file.
         /// </summary>
         /// <param name="configBuilder">config builder for the AutoDarkModeConfig to allow saving</param>
-        public static void UpdateSunTime(AutoDarkModeConfigBuilder configBuilder)
+        private static void UpdateSunTime(AutoDarkModeConfigBuilder configBuilder)
         {
             int[] sun = SunDate.CalculateSunriseSunset(configBuilder.Config.Location.Lat, configBuilder.Config.Location.Lon);
             configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            configBuilder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            try
-            {
-                if (!configBuilder.Config.Location.Enabled)
-                {
-                    configBuilder.Config.Location.Enabled = true;
-                }
-                configBuilder.Save();
-                Logger.Info($"Updated sunrise {configBuilder.Config.Sunrise.ToString("HH:mm")} and sunset {configBuilder.Config.Sunset.ToString("HH:mm")}");
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e, "could not update configuration file while updating sundates");
-            }
+            configBuilder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
+            Logger.Info($"new sunrise ({configBuilder.Config.Sunrise.ToString("HH:mm")}) and new sunset ({configBuilder.Config.Sunset.ToString("HH:mm")})");
         }
 
         /// <summary>
@@ -59,6 +47,7 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Warn($"no geolocation access, please enable in system settings");
                     break;
             }
+            UpdateSunTime(configBuilder);
             try
             {
                 configBuilder.Save();

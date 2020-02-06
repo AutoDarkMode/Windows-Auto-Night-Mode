@@ -202,7 +202,10 @@ namespace AutoDarkModeApp
 
             try
             {
-                configBuilder.Save();
+                if (initComplete)
+                {
+                    configBuilder.Save();
+                }
                 bool isMessageOK = await CommandClient.SendMessageAsync(Command.Switch);
                 if (!isMessageOK)
                 {
@@ -304,8 +307,11 @@ namespace AutoDarkModeApp
             // to use the command pipe infrastructure to test if the backend works.
             // this also serves as an example how to use the new command infrastructure
             // for UI operations use the Async variant to prevent UI blocking
-            configBuilder.Config.Location.Enabled = true;
-            configBuilder.Save();
+            if (initComplete)
+            {
+                configBuilder.Config.Location.Enabled = true;
+                configBuilder.Save();
+            }
             GetLocation();
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
