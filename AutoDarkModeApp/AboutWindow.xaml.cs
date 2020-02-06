@@ -6,6 +6,7 @@ using System.Windows.Media.Imaging;
 using System.Globalization;
 using System.Threading;
 using System.Diagnostics;
+using AutoDarkModeSvc;
 
 namespace AutoDarkModeApp
 {
@@ -228,7 +229,7 @@ namespace AutoDarkModeApp
         {
             if (Properties.Settings.Default.Language != curLanguage)
             {                
-                StartProcessByProcessInfo(Application.ResourceAssembly.Location);
+                StartProcessByProcessInfo(Extensions.ExecutionPath);
                 Application.Current.Shutdown();
             }
             else
