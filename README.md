@@ -1,5 +1,5 @@
 # Windows 10 Auto Dark Mode
-Automatically switches between the dark and light theme of Windows 10 at sheduled times
+Automatically switches between the dark and light theme of Windows 10 at scheduled times
 ![Screenshot](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/screenshot.png)
 
 ## Description
@@ -77,18 +77,19 @@ It looks similar to this one:
 public override void Fire()
   {
     AutoDarkModeConfig config = ConfigBuilder.Config;
-    AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), config.AutoThemeSwitchingEnabled);
-    AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), config.Location.Enabled);
+    AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled);
+    AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
   }
 ```
 
-To add a module, call AutoManageModule with type signature `AutoManageModule#(String, Type, Bool)` and takes the following parameters:
+To add a module, call AutoManageModule with type signature `AutoManageModule#(String, Type, Bool, Bool)` and takes the following parameters:
 - Name: Derived from the className so you can use `typeof(MyModule).Name`
 - Type: The module's class used for object instantiation, this is always `typeof(MyModule)`
+- FireOnRegistration: The module event should be triggered as soon as it is registered to a timer, boolean `true/false`
 - Enabled: A boolean value that indicates whether the module should be running currently. Point it to your `Enabled` Property that you created in the configuration file or use an existing one if it fits your needs
 
 Our final call then looks like this:
 
-`AutoManageModule(typeof(MyModule).Name, typeof(MyModule), config.MyModuleProperty.Enabled);`
+`AutoManageModule(typeof(MyModule).Name, typeof(MyModule), true, config.MyModuleProperty.Enabled);`
 
 And that's it. Your module will now be managed automatically. Next steps would be providing a user interface element that controls your module.
