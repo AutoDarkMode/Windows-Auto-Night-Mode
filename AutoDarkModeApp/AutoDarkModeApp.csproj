@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
+    <ApplicationIcon>adm_256x256.ico</ApplicationIcon>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Version>3.0.6.0</Version>
     <Company />

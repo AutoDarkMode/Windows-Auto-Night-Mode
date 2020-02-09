@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Version>3.0.6.0</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
-    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
+    <ApplicationIcon>adm_256x256.ico</ApplicationIcon>
     <StartupObject />
     <PackageId>AutoDarkModeService</PackageId>
     <Company>AutoDarkMode</Company>
