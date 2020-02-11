@@ -10,6 +10,7 @@ namespace AutoDarkModeSvc.Config
         {
             Wallpaper = new Wallpaper();
             Location = new Location();
+            Tunable = new Tunable();
         }
 
         private Mode appsTheme;
@@ -71,6 +72,7 @@ namespace AutoDarkModeSvc.Config
         }
         public Wallpaper Wallpaper { get; set; }
         public Location Location { get; set; }
+        public Tunable Tunable { get; set; }
     }
 
     public class Wallpaper
@@ -94,5 +96,10 @@ namespace AutoDarkModeSvc.Config
         public double Lon { get; set; }
         public int SunsetOffsetMin { get; set; }
         public int SunriseOffsetMin { get; set; }
+    }
+
+    public class Tunable
+    {
+        public int AccentColorSwitchDelay { get; set; } = 500;
     }
 }

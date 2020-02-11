@@ -135,7 +135,7 @@ namespace AutoDarkModeSvc
 
 
             //run async to delay at specific parts due to color prevalence not switching icons correctly
-            int taskdelay = 400;
+            int taskdelay = config.Tunable.AccentColorSwitchDelay;
             Task.Run(async () =>
             {
                 if (config.SystemTheme == Mode.DarkOnly)
