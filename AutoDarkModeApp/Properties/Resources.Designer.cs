@@ -535,6 +535,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay for switching taskbar colors (ms):.
+        /// </summary>
+        public static string lblTaskbarSwitchDelay {
+            get {
+                return ResourceManager.GetString("lblTaskbarSwitchDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Used third party software.
         /// </summary>
         public static string lblThirdParty {

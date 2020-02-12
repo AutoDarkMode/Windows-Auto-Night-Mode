@@ -383,4 +383,7 @@ Do you want to open the PayPal donation page now?</value>
   <data name="notifyIconSwapThemeContentItemText" xml:space="preserve">
     <value>Swap Theme</value>
   </data>
+  <data name="lblTaskbarSwitchDelay" xml:space="preserve">
+    <value>Delay for switching taskbar colors (ms):</value>
+  </data>
 </root>

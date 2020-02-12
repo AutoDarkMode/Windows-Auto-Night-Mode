@@ -7,6 +7,9 @@ using System.Globalization;
 using System.Threading;
 using System.Diagnostics;
 using AutoDarkModeSvc;
+using AutoDarkModeSvc.Config;
+using System.Text.RegularExpressions;
+using System.Windows.Controls;
 
 namespace AutoDarkModeApp
 {
@@ -15,6 +18,8 @@ namespace AutoDarkModeApp
     /// </summary>
     public partial class AboutWindow
     {
+        private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+
         Updater updater = new Updater();
         bool update = false;
         readonly string curLanguage = Properties.Settings.Default.Language;
@@ -28,13 +33,14 @@ namespace AutoDarkModeApp
         private void UiHandler()
         {
             LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
+            SwitchDelayTB.Text = configBuilder.Config.Tunable.AccentColorSwitchDelay.ToString();
             if (Properties.Settings.Default.BackgroundUpdate)
             {
                 BckgrUpdateCB.IsChecked = true;
             }
             if (Properties.Settings.Default.connectedStandby)
             {
-                conStandByCB.IsChecked = true;
+                //conStandByCB.IsChecked = true;
             }
             if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
@@ -104,6 +110,12 @@ namespace AutoDarkModeApp
                 Owner = GetWindow(this)
             };
             msgBox.Show();
+        }
+
+        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void GitHubTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -227,6 +239,25 @@ namespace AutoDarkModeApp
 
         private void AboutWindowXAML_Closed(object sender, EventArgs e)
         {
+            int accentColorSwitchDelay;
+            try
+            {
+                accentColorSwitchDelay = int.Parse(SwitchDelayTB.Text);
+                if (accentColorSwitchDelay < 100)
+                {
+                    accentColorSwitchDelay = 100;
+                }
+            } 
+            catch (Exception ex)
+            {
+                accentColorSwitchDelay = -1;
+                MsgBox.ShowErrorMessage(this, ex);
+            }
+            if (configBuilder.Config.Tunable.AccentColorSwitchDelay != accentColorSwitchDelay && accentColorSwitchDelay != -1)
+            {
+                configBuilder.Config.Tunable.AccentColorSwitchDelay = accentColorSwitchDelay;
+                configBuilder.Save();
+            }
             if (Properties.Settings.Default.Language != curLanguage)
             {                
                 StartProcessByProcessInfo(Extensions.ExecutionPath);
@@ -236,6 +267,11 @@ namespace AutoDarkModeApp
             {
                 Close();
             }
+        }
+
+        private void SwitchDelayTB_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.About}" Height="470.066" Width="280.508" ResizeMode="NoResize" Icon="Resources/Settings_Icon.png" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Closed="AboutWindowXAML_Closed">
+        Title="{x:Static p:Resources.About}" Height="440.690" Width="280.508" ResizeMode="NoResize" Icon="Resources/Settings_Icon.png" WindowStartupLocation="CenterOwner" SizeToContent="Height" Background="{x:Null}" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Closed="AboutWindowXAML_Closed">
     <Grid Background="#20FFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Info -->
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 3.0.4" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version b3.0.6" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
 
         <!-- Social Media links-->
@@ -39,10 +39,11 @@
 
         <!-- Settings-->
         <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
-        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,358,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,355,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
+        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
+        <TextBlock Text="{x:Static p:Resources.lblTaskbarSwitchDelay}" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="SwitchDelayTB" MaxLength="4" PreviewTextInput="TextBox_BlockChars_TextInput" HorizontalAlignment="Left" Margin="221,325,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" TextChanged="SwitchDelayTB_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,350,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,350,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Español" Name="es"/>

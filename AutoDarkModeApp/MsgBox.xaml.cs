@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Windows;
 
 namespace AutoDarkModeApp
 {
@@ -58,6 +60,26 @@ namespace AutoDarkModeApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+        }
+
+        public static void ShowErrorMessage(DependencyObject window, Exception ex)
+        {
+            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = GetWindow(window)
+            };
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
         }
     }
 }
