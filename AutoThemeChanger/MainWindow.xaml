@@ -1,0 +1,73 @@
+﻿<fw:AcrylicWindow x:Class="AutoThemeChanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoThemeChanger"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:p="clr-namespace:AutoThemeChanger.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.Title}" Height="520.433" Width="287.332" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Background="{x:Null}">
+    <Grid x:Name="mainWin" Background="#20FFFFFF">
+        <!-- Start -->
+        <CheckBox Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked"/>
+
+        <!-- System, Apps and Edge -->
+        <TextBlock HorizontalAlignment="Left" Margin="54,34,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top"/>
+        <TextBlock Text="&#xE71D;" HorizontalAlignment="Left" Margin="15,46,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,55,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed">
+            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="54,87,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top"/>
+        <TextBlock Text="&#xE977;" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="SystemComboBox_DropDownClosed">
+            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="55,156,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top"/>
+        <CheckBox x:Name="AccentColorCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,136,0,0" VerticalAlignment="Top" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True"/>
+        <Image HorizontalAlignment="Left" Height="31" Margin="14,166,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,177,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed">
+            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+        </ComboBox>
+
+        <!-- Desktop Background -->
+        <TextBlock HorizontalAlignment="Left" Margin="10,216,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="14,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
+        <Button x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,242,0,0" VerticalAlignment="Top" Width="187" Click="BGWinButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,265,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="116,265,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top"/>
+
+        <!-- Time selection -->
+        <TextBlock HorizontalAlignment="Left" Margin="10,298,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,325,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="99,325,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,342,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="131,342,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <TextBlock Name="amTextBlock" HorizontalAlignment="Left" Margin="80,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock Name="pmTextBlock" HorizontalAlignment="Left" Margin="172,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" Margin="10,342,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TexttBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="LightStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="48,342,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TexttBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="99,342,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TexttBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+        <TextBox x:Name="DarkStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="137,342,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TexttBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+
+        <!-- Apply -->
+        <Button x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="180,342,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
+
+        <!-- Location -->
+        <CheckBox x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked"/>
+        <TextBlock x:Name="locationBlock" HorizontalAlignment="Left" Margin="10,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <!-- About -->
+        <Button x:Name="aboutButton" Content="&#xE713;" HorizontalAlignment="Left" Margin="229,408,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="25" Height="25" FontSize="14" FontFamily="Segoe MDL2 Assets"/>
+
+        <!-- Info -->
+        <TextBlock HorizontalAlignment="Left" Margin="10,409,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,438,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top"/>
+    </Grid>
+</fw:AcrylicWindow>
