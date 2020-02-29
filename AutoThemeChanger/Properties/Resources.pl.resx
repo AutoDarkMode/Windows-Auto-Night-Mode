@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>O programie</value>
+    <value>Ustawienia</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Zastosuj</value>
@@ -154,7 +154,7 @@
     <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (stara wersja):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Jasny</value>
@@ -316,5 +316,61 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informacja</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Zegar 12-godzinny</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Szukaj aktualizacji w tle</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Zmień po obudzeniu z "Connected Standby"</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>"Urządzenia mobilne, np. Microsoft Surface używają nowego trybu uśpienia.
+Ta opcja włącza automatyczną zmianę motywu po obudzeniu komputera,
+jednak powoduje szybsze zużycie baterii."</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Błąd: Wprowadzono nieprawidłowe dane</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>"Przepraszamy, wystąpił błąd podczas zapisywania ustawień.
+
+Zalecamy spróbować:
+- Ponowne zainstalowanie AutoDarkMode'a
+- Uruchomienie programu jako administrator
+- Wyłączyć i ponownie włączyć zmianę tapety
+
+Jeśli to nie pomoże, prosimy o przesłanie zrzutu ekranu błędu na GitHubie.
+Kliknij ""Tak"", aby otworzyć stronę GitHub.
+"</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Z powodu błędu Windowsa zmiana koloru paska zadań w trybie oszczędzania baterii nie działa poprawnie. W przypadku błędów zalecamy wyłączenie tego trybu.</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Witaj! Dziękujemy za używanie Auto Dark Mode!
+Mamy nadzieje, że lubisz naszą aplikację!
+
+Tak, programista tej aplikacji naprawdę wbudował okienko proszące o darowiznę, co za wstyd!
+
+Ale jeśli ta aplikacja ułatwia Ci życie codzienne, mógłbyś pomóc także nam.
+Nawet mała darowizna nas uszczęśliwi.
+
+Chcesz otworzyć stronę PayPal-a w celu przekazania darowizny?
+</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Lubisz Auto Dark Mode?</value>
   </data>
 </root>

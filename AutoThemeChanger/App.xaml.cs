@@ -35,7 +35,7 @@ namespace AutoThemeChanger
                         RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.ThemeToDark();
                     }
-                    else if (value == "/light")
+                    else if(value == "/light")
                     {
                         RegeditHandler regEditHandler = new RegeditHandler();
                         regEditHandler.ThemeToLight();
@@ -50,7 +50,7 @@ namespace AutoThemeChanger
                         LocationHandler locationHandler = new LocationHandler();
                         await locationHandler.SetLocationSilent();
                     }
-                    else if (value == "/removeTask")
+                    else if(value == "/removeTask")
                     {
                         TaskShedHandler taskShedHandler = new TaskShedHandler();
                         taskShedHandler.RemoveTask();

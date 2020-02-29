@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
 using Windows.Services.Maps;
+using Windows.Devices.Geolocation;
+using System.Runtime.InteropServices;
 
 namespace AutoThemeChanger
 {
@@ -23,10 +24,21 @@ namespace AutoThemeChanger
             {
                 sun = SunDate.CalculateSunriseSunset(Properties.Settings.Default.LocationLatitude, Properties.Settings.Default.LocationLongitude);
             }
-            sundate[0] = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0).Hour; //sunrise hour
-            sundate[1] = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0).Minute; //sunrise minute
-            sundate[2] = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0).Hour; //sunset hour
-            sundate[3] = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0).Minute; //sunset minute
+
+
+            //Add offset to sunrise and sunset hours using Settings
+
+            //Remove old offset first if new offset is zero to preserve temporal integrity
+            DateTime sunrise = new DateTime(1, 1, 1, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
+            sunrise = sunrise.AddMinutes(Properties.Settings.Default.LightOffset);
+
+            DateTime sunset = new DateTime(1, 1, 1, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
+            sunset = sunset.AddMinutes(Properties.Settings.Default.DarkOffset);
+
+            sundate[0] = sunrise.Hour; //sunrise hour
+            sundate[1] = sunrise.Minute; //sunrise minute
+            sundate[2] = sunset.Hour; //sunset hour
+            sundate[3] = sunset.Minute; //sunset minute
             return sundate;
         }
 
@@ -48,17 +60,21 @@ namespace AutoThemeChanger
                 Longitude = position.Longitude
             });
 
-            var source = new CancellationTokenSource(1500);
-            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low).AsTask(source.Token);
+            try
+            {
+                MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low);
 
-            if (result.Status == MapLocationFinderStatus.Success)
-            {
-                return result.Locations[0].Address.Town;
+                if (result.Status == MapLocationFinderStatus.Success)
+                {
+                    return result.Locations[0].Address.Town;
+                }
             }
-            else
+            catch (SEHException)
             {
-                return null;
+                // Ignored
             }
+
+            return String.Format("({0}, {1})", position.Latitude, position.Longitude);
         }
 
         public async Task SetLocationSilent()

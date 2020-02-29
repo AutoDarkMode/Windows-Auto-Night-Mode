@@ -7,51 +7,64 @@
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.dbTitle}" Height="356.184" Width="700.276" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon">
+        Title="{x:Static p:Resources.dbTitle}" Height="356" MinWidth="705" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon" SizeToContent="Width">
     <Grid x:Name="WallpaperGrid" Background="#20FFFFFF">
+        <!-- Grid Layout -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         <!-- Pick File Light -->
-        <TextBlock HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="&#xE706;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30" RenderTransformOrigin="0.673,0.524"/>
-        <TextBlock HorizontalAlignment="Left" Margin="45,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbLight}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Button x:Name="FilePicker1" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="11,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker1" Width="80"/>
-        <TextBlock HorizontalAlignment="Left" Margin="98,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="42" TextAlignment="Center"/>
-        <Button x:Name="GetCurrentBG1" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="145,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG1" Width="149"/>
+        <TextBlock Grid.ColumnSpan="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="&#xE706;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30" RenderTransformOrigin="0.673,0.524"/>
+        <TextBlock Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Left" Margin="45,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbLight}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Button Grid.Column="0" x:Name="FilePicker1" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker1" MinWidth="80" Width="Auto"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="Auto" TextAlignment="Center"/>
+        <Button Grid.Column="2" x:Name="GetCurrentBG1" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG1" Width="Auto"/>
 
         <!-- Pick File Dark -->
-        <TextBlock HorizontalAlignment="Left" Margin="355,12,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30"/>
-        <TextBlock HorizontalAlignment="Left" Margin="394,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbDark}" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="FilePicker2" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="355,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker2" Width="80"/>
-        <TextBlock HorizontalAlignment="Left" Margin="442,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="38" TextAlignment="Center"/>
-        <Button x:Name="GetCurrentBG2" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="485,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG2" Width="149"/>
+        <TextBlock Grid.ColumnSpan="70" Grid.Column="4" HorizontalAlignment="Left" Margin="0,12,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30"/>
+        <TextBlock Grid.ColumnSpan="70" Grid.Column="4" HorizontalAlignment="Left" Margin="35,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbDark}" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button Grid.Column="4" x:Name="FilePicker2" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker2" MinWidth="80" Width="Auto"/>
+        <TextBlock Grid.Column="5" HorizontalAlignment="Left" Margin="5,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="Auto" TextAlignment="Center"/>
+        <Button Grid.Column="6" x:Name="GetCurrentBG2" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG2" Width="Auto"/>
 
 
         <!-- Window Buttons -->
-        <Button x:Name="CancelButton" Content="{x:Static p:Resources.cancel}" HorizontalAlignment="Left" Margin="565,285,0,0" VerticalAlignment="Top" Click="CancelButton_Click" Width="71"/>
-        <Button x:Name="SaveButton1" Content="{x:Static p:Resources.save}" HorizontalAlignment="Left" Margin="492,285,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.612" ToolTipService.ShowOnDisabled="True" Click="SaveButton1_Click" Width="68"/>
-        <Button x:Name="DeleButton" Content="{x:Static p:Resources.dbDel}" HorizontalAlignment="Left" Margin="365,285,0,0" VerticalAlignment="Top" Click="DeleButton_Click" RenderTransformOrigin="0.515,0.539" Width="122"/>
+        <StackPanel Grid.ColumnSpan="5" Grid.Column="2" Orientation="Horizontal" Margin="0,280,0,0" HorizontalAlignment="Right" Width="Auto" Height="20">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="DeleButton" Content="{x:Static p:Resources.dbDel}" Click="DeleButton_Click" HorizontalAlignment="Left" MinWidth="100" Width="Auto"/>
+            <Button x:Name="SaveButton1" Content="{x:Static p:Resources.save}" ToolTipService.ShowOnDisabled="True" Click="SaveButton1_Click" HorizontalAlignment="Center" MinWidth="80" Width="Auto"/>
+            <Button x:Name="CancelButton" Content="{x:Static p:Resources.cancel}" Click="CancelButton_Click" HorizontalAlignment="Right" MinWidth="60" Width="Auto"/>
+        </StackPanel>
 
         <!-- Misc -->
-        <Separator HorizontalAlignment="Center" Height="102" Margin="188,100,218,0" VerticalAlignment="Top" Width="288" RenderTransformOrigin="0.5,0.5">
-            <Separator.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="450"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Separator.RenderTransform>
+        <Separator Grid.Column="3" HorizontalAlignment="Left" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.5,0.5">
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
         </Separator>
-        <Border BorderBrush="{DynamicResource SystemBaseHighColorBrush}" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="354,86,0,0" VerticalAlignment="Top" Width="283">
+        <Border Grid.ColumnSpan="3" Grid.Column="4" BorderBrush="{DynamicResource SystemBaseHighColorBrush}" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="0,86,0,0" VerticalAlignment="Top" Width="283">
             <StackPanel>
                 <TextBlock x:Name="PictureText2" Margin="0,70,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbSelectImage}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <Image x:Name="Thumb2" HorizontalAlignment="Left" Height="170" Margin="0,-87,0,0" Width="283" Stretch="Fill" VerticalAlignment="Top"/>
             </StackPanel>
         </Border>
-        <Border BorderBrush="{DynamicResource SystemBaseHighColorBrush}" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="12,86,0,0" VerticalAlignment="Top" Width="283">
+        <Border Grid.ColumnSpan="3" Grid.Column="0" BorderBrush="{DynamicResource SystemBaseHighColorBrush}" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="10,86,0,0" VerticalAlignment="Top" Width="283">
             <StackPanel HorizontalAlignment="Left">
                 <TextBlock x:Name="PictureText1" HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbSelectImage}" VerticalAlignment="Top"/>
                 <Image x:Name="Thumb1" HorizontalAlignment="Left" Height="170" Margin="0,-87,0,0" VerticalAlignment="Top" Width="283" Stretch="Fill"/>
             </StackPanel>
         </Border>
-
     </Grid>
 </fw:AcrylicWindow>

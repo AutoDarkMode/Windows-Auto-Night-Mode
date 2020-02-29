@@ -147,7 +147,7 @@ namespace AutoThemeChanger
         {
             DateTime calendar = DateTime.Now;
             double[] sun = new double[2];
-            SunRiseSetForYear(calendar.Year, calendar.Month, calendar.Day, lon, lat, sun);
+            SunRiseSetForYear(calendar.Year, calendar.Month, calendar.Day, lon, lat, sun); 
             int timeZoneOffset = (int)TimeZoneInfo.Local.GetUtcOffset(calendar).TotalMinutes;
             int sunrise = (int)(sun[0] * 60) + timeZoneOffset;
             int sunset = (int)(sun[1] * 60) + timeZoneOffset;

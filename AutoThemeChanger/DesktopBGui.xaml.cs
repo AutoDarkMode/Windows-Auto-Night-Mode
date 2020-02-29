@@ -1,10 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 
 namespace AutoThemeChanger
 {
@@ -142,7 +142,7 @@ namespace AutoThemeChanger
 
         private void CopyFileDark()
         {
-            if (pathOrig2 != null)
+            if(pathOrig2 != null)
             {
                 string pathTemp2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark_Temp" + Path.GetExtension(pathOrig2);
                 File.Copy(pathOrig2, pathTemp2, true);

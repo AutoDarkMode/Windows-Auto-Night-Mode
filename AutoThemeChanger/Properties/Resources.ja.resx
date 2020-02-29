@@ -118,215 +118,260 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Про програму</value>
+    <value>設定</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Застосувати</value>
+    <value>適用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Увімкнути автоматичне перемикання тем</value>
+    <value>テーマの自動切り替えを有効にする</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Як в поточній темі</value>
+    <value>テーマに合わせる</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Завжди темна</value>
+    <value>常にダーク</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Завжди світла</value>
+    <value>常にホワイト</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Увімкнути функції для Windows 1903</value>
+    <value>Windows 10 バージョン 1903 の機能を有効にする</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Програми:</value>
+    <value>ソフトウェア:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Автор: Armin Osaj © 2019</value>
+    <value>開発者: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Оберіть свій час початку</value>
+    <value>開始時間の指定</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Темна</value>
+    <value>ダーク</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Темна тема</value>
+    <value>ダークテーマ</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (стара версія):</value>
+    <value>Edge (古いバージョン用):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Світла</value>
+    <value>ライト</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Світла тема</value>
+    <value>ライトテーマ</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>設定</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Перемкнути поточну тему</value>
+    <value>現在のテーマを切り替え</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Система:</value>
+    <value>システム:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Використане програмне забезпечення третіх сторін</value>
+    <value>使用しているサードパーティーのソフトウェア</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Оновлення</value>
+    <value>アップデート</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Використовувати службу місцезнаходження</value>
+    <value>位置情報の使用</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>зміни були збережені!</value>
+    <value>変更が保存されました。</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Натисніть на Застосувати, аби зберегти налаштування</value>
+    <value>クリックで変更を保存します</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Завантажити оновлення</value>
+    <value>アップデートをダウンロード</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>сталася помилка :(</value>
+    <value>エラーが発生しました</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Програма потребує дозволу для визначення місцезнаходження</value>
+    <value>位置情報の使用には許可が必要です</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>немає нових оновлень.</value>
+    <value>最新版はありません。</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Пошук місцезнаходження...</value>
+    <value>位置情報を検知中...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Пошук оновлень...</value>
+    <value>アップデートの確認...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Попередження: Ми не змогли визначити поточну тему.</value>
+    <value>警告: システムの現在のテーマを読み込めませんでした。</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Доступне нове оновлення!</value>
+    <value>最新版があります。</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Дякуємо за використання Auto Dark Mode!
+    <value>Auto Dark Mode をご利用いただきありがとうございます。
 
-Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
-Ви хочете її завантажити?
+最新版が GitHub にあります。修正と機能が強化されています。
+ダウンロードしますか？
 
-Зараз встановлена версія: {0}, нова версія: {1}</value>
+お使いのバージョン: {0}, 最新版: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Перевірити оновлення</value>
+    <value>アップデートの確認</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>ми перевіряємо наявність оновлень при кожному запуску.</value>
+    <value>プログラム実行時にアップデートを確認しています。</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Ласкаво просимо</value>
+    <value>ようこそ</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Активувати прапорець для автоматичного перемикання тем</value>
+    <value>チェックボックスを有効にすると、自動のテーマ切替を有効にします</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Mykhailo Lytvynenko</value>
+    <value>翻訳者: maboroshin</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Місто</value>
+    <value>都市</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Ця функція недоступна, оскільки не було встановлено травневе оновлення Windows 10 May 2019 Update на комп'ютер...</value>
+    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Необхідний перезапуск програми, аби побачити зміни</value>
+    <value>変更の反映にはプログラムの再起動が必要です。</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Мова:</value>
+    <value>言語:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Колір для панелі задач</value>
+    <value>タスクバーのアクセントカラー</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Скасувати</value>
+    <value>キャンセル</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Зараз:</value>
+    <value>現在:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Шпалери для темної теми</value>
+    <value>ダークテーマ用の壁紙</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Видалити/Вимкнути</value>
+    <value>削除/無効</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Обрати файл</value>
+    <value>ファイルを選ぶ</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Шпалери для світлої теми</value>
+    <value>ライトテーマ用の壁紙</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Фон робочого стола</value>
+    <value>デスクトップの背景</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Картинки</value>
+    <value>画像</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Обрати дві шпалери</value>
+    <value>壁紙を2つ選択してください</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Обрати картинку</value>
+    <value>画像を選択してください</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Налаштувати фон робочого стола</value>
+    <value>デスクトップの背景の設定</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>використовувати поточний фон</value>
+    <value>現在の背景を使う</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Вимкнено</value>
+    <value>無効</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Увімкнено</value>
+    <value>有効</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>або</value>
+    <value>または</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Зберегти</value>
+    <value>保存</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Можливо, файл із зображенням пошкоджено або шляху до нього не існує.</value>
+    <value>ファイルが破損しているか、パスが存在しません</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Передперегляд картинки не було сформовано, просимо вибачення!</value>
+    <value>画像のプレビューを生成できません。</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Налаштування не були збережені, просимо вибачення!</value>
+    <value>設定が保存できませんでした。</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Сталася помилка</value>
+    <value>エラーが発生しました。</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Видимий лише в темному режимі</value>
+    <value>ダークモードのみ表示</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Інформація</value>
+    <value>情報</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>AM/PMで表示</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>バックグラウンドでアップデートを確認</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>すみません。設定を適用できませんでした。
+
+以下を試してみてください:
+- このソフトをアンインストールし、もう一度インストールしてみる。
+- 管理者権限で Auto Dark Mode を起動する。
+- デスクトップの壁紙が有効にされているなら、その機能を無効にしてから試してみる。
+
+それでも解決しない場合、GitHub 上の issue (問題)  でそのエラーのスクリーンショットを添えてコメントすることもできます。「はい」で GitHub を開きます。</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>エラー: 入力が正しくありません。</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>スタンバイ後に切り替える</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
+このオプションを有効にするとパソコンの起動後、 Auto Dark Mode がただちにテーマを切り替えます。 
+しかし、充電池の寿命を縮めるので、必要な場合にのみ有効化してください。</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Вітаю! Дякую за використання Auto Dark Mode. Я сподіваюсь, що зараз тобі все подобається :)
+    <value>こんにちは！Auto Dark Mode をお使いいただきありがとうございます。 今のところは、気に入ってくれているといいのですが。
 
-Так, розробник дійсно створив спливаюче повідомлення, аби нагадати, що він приймає пожертви через PayPal. Яка ганьба!
+このソフトの開発者は  PayPal 経由での寄付の募集のお知らせ機能を実装しました。残念なことだと思われるでしょう。
 
-Але постривай, цей застосунок робить твоє повсякденне життя трохи легшим. Навть невелика пожертва робить мене щасливим :D
+しかし、このソフトはあなたの日々を少し楽にするものでしょう。少額の寄付でも私は嬉しいんです。(*^ ^*)
 
-Хочеш зараз відкрити сторінку пожертвування PayPal?</value>
+PayPal の寄付ページを開きますか？</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>Подобається Auto Dark Mode?</value>
+    <value>Auto Dark Mode を気に入りましたでしょうか？</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>補正</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>適用</value>
   </data>
 </root>

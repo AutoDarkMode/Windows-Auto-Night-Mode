@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 using System.Windows.Shell;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
+using System.Threading;
+using System.Globalization;
 using Windows.Devices.Geolocation;
+using Windows.System.Power;
 
 namespace AutoThemeChanger
 {
@@ -20,6 +21,7 @@ namespace AutoThemeChanger
 
         public MainWindow()
         {
+            Console.WriteLine("--------- AppStart");
             LanguageHelper();
             InitializeComponent();
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
@@ -27,6 +29,12 @@ namespace AutoThemeChanger
             UiHandler();
             ThemeChange(this, null);
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
+            if (Properties.Settings.Default.FirstRun)
+            {
+                SystemTimeFormat();
+                AddJumpList();
+                Properties.Settings.Default.FirstRun = false;
+            }
             if (Properties.Settings.Default.AlterTime) AlterTime(true);
         }
 
@@ -34,23 +42,57 @@ namespace AutoThemeChanger
         {
             Updater updater = new Updater();
             updater.CheckNewVersion();
-            AddJumpList();
             LanguageHelper();
+            DonationScreen();
+        }
+
+        private void DonationScreen()
+        {
+            Random rdmnumber = new Random();
+            int generatedNumber = rdmnumber.Next(1, 100);
+            if (generatedNumber == 50)
+            {
+                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno");
+                msgBox.Owner = GetWindow(this);
+                msgBox.ShowDialog();
+                var result = msgBox.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
+                }
+            }
+
         }
 
         private void LanguageHelper()
         {
-            if (Properties.Settings.Default.Language.ToString() == "")
+            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.Language.ToString()))
             {
                 Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
-            //Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
+        }
+
+        private void SystemTimeFormat()
+        {
+            try
+            {
+                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
+                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+                {
+                    Properties.Settings.Default.AlterTime = true;
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         private void ThemeChange(object sender, EventArgs e)
         {
-            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
             {
                 EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
@@ -76,6 +118,7 @@ namespace AutoThemeChanger
             {
                 autoCheckBox.IsChecked = true;
                 locationCheckBox.IsChecked = true;
+                InitOffset();
             }
             else
             {
@@ -102,6 +145,7 @@ namespace AutoThemeChanger
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
             if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
+            if (edgeTheme == 3) EdgeComboBox.SelectedIndex = 3;
 
             if (!is1903)
             {
@@ -123,13 +167,111 @@ namespace AutoThemeChanger
             ShowDeskBGStatus();
         }
 
+        private void PopulateOffsetFields(int offsetDark, int offsetLight)
+        {
+            if (offsetLight < 0)
+            {
+                OffsetLightModeButton.Content = "-";
+                OffsetLightBox.Text = Convert.ToString(-offsetLight);
+            }
+            else
+            {
+                OffsetLightBox.Text = Convert.ToString(offsetLight);
+            }
+            if (offsetDark < 0)
+            {
+                OffsetDarkModeButton.Content = "-";
+                OffsetDarkBox.Text = Convert.ToString(-offsetDark);
+            }
+            else
+            {
+                OffsetDarkBox.Text = Convert.ToString(offsetDark);
+            }            
+        }
+
+        private void InitOffset()
+        {
+            PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
+        }
+
+        private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.Content.ToString() == "+")
+                {
+                    button.Content = "-";
+                }
+                else
+                {
+                    button.Content = "+";
+                }
+                OffsetButton.IsEnabled = true;
+            }
+        }
+
+        private void OffsetButton_Click(object sender, RoutedEventArgs e)
+        {
+            int offsetDark;
+            int offsetLight;
+
+            //get values from TextBox
+            try
+            {
+                offsetDark = int.Parse(OffsetDarkBox.Text);
+                offsetLight = int.Parse(OffsetLightBox.Text);
+            }
+            catch
+            {
+                userFeedback.Text = Properties.Resources.errorNumberInput;
+                return;
+            }
+
+            PopulateOffsetFields(offsetDark, offsetLight);
+
+            if (OffsetLightModeButton.Content.ToString() == "+")
+            {
+                Properties.Settings.Default.LightOffset = offsetLight;
+            }
+            else
+            {
+                Properties.Settings.Default.LightOffset = -offsetLight;
+            }
+
+            if (OffsetDarkModeButton.Content.ToString() == "+")
+            {
+                Properties.Settings.Default.DarkOffset = offsetDark;
+            }
+            else
+            {
+                Properties.Settings.Default.DarkOffset = -offsetDark;
+            }
+
+            OffsetButton.IsEnabled = false;
+            GetLocation();
+        }
+
+
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            int darkStart;
+            int darkStartMinutes;
+            int lightStart;
+            int lightStartMinutes;
+
             //get values from TextBox
-            int darkStart = int.Parse(darkStartBox.Text);
-            int darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
-            int lightStart = int.Parse(lightStartBox.Text);
-            int lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
+            try
+            {
+                darkStart = int.Parse(darkStartBox.Text);
+                darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
+                lightStart = int.Parse(lightStartBox.Text);
+                lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
+            }
+            catch
+            {
+                userFeedback.Text = Properties.Resources.errorNumberInput;
+                return;
+            }
 
             //check values from TextBox
             if (!Properties.Settings.Default.AlterTime)
@@ -151,22 +293,14 @@ namespace AutoThemeChanger
             }
             else
             {
-                if (darkStart >= 13)
+                if (darkStart >= 12)
                 {
-                    darkStart = 12;
+                    darkStart = 11;
                     darkStartMinutes = 59;
-                }
-                if (darkStart == 12)
-                {
-                    darkStartMinutes = 0;
                 }
                 if (lightStart >= 13)
                 {
                     lightStart = 12;
-                }
-                if (lightStart == 12)
-                {
-                    lightStartMinutes = 0;
                 }
             }
 
@@ -178,11 +312,24 @@ namespace AutoThemeChanger
             {
                 darkStartMinutes = 59;
             }
-
             darkStartBox.Text = Convert.ToString(darkStart);
             lightStartBox.Text = Convert.ToString(lightStart);
-            LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
-            DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
+            if (lightStartMinutes < 10) {
+                LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
+            }
+            else
+            {
+                LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
+            }
+            if (darkStartMinutes < 10)
+            {
+                DarkStartMinutesBox.Text = "0" + Convert.ToString(darkStartMinutes);
+            }
+            else
+            {
+                DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
+            }
+            
 
             try
             {
@@ -190,23 +337,119 @@ namespace AutoThemeChanger
                 {
                     darkStart += 12;
                 }
-
                 taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateTask()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
                 regEditHandler.SwitchThemeBasedOnTime();
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.SwitchThemeBasedOnTime()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
                 regEditHandler.AddAutoStart();
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.AddAutoStart()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
                 if (Properties.Settings.Default.BackgroundUpdate)
                 {
                     taskShedHandler.CreateAppUpdaterTask();
                 }
-
-
-                //UI
-                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
-                applyButton.IsEnabled = false;
             }
-            catch
+            catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;//error occurred :(
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateAppUpdaterTask()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+                return;
+            }
+            try
+            {
+                if (Properties.Settings.Default.connectedStandby)
+                {
+                    taskShedHandler.CreateConnectedStandbyTask();
+                }
+            }
+            catch (Exception ex)
+            {
+                userFeedback.Text = Properties.Resources.msgErrorOcc;
+                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateConnectedStandbyTask()" + "\n\n" + ex.Message;
+                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
+                msg.ShowDialog();
+                var result = msg.DialogResult;
+                if (result == true)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                }
+            }
+
+            applyButton.IsEnabled = false;
+            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            {
+                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+                applyButton.IsEnabled = true;
+            }
+            else
+            {
+                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
         }
 
@@ -214,6 +457,12 @@ namespace AutoThemeChanger
         private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
         {
             applyButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
+        {
+            OffsetButton.IsEnabled = true;
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
@@ -232,7 +481,7 @@ namespace AutoThemeChanger
                 textBox.SelectAll();
             }));
         }
-        private void TexttBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
             {
@@ -270,25 +519,25 @@ namespace AutoThemeChanger
                 taskShedHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
             }
+
+            if (aboutWindow.conStandByCB.IsChecked == true && Properties.Settings.Default.connectedStandby == false)
+            {
+                taskShedHandler.CreateConnectedStandbyTask();
+                Properties.Settings.Default.connectedStandby = true;
+            }
+            else if (aboutWindow.conStandByCB.IsChecked == false && Properties.Settings.Default.connectedStandby == true)
+            {
+                taskShedHandler.RemoveConnectedStandbyTask();
+                Properties.Settings.Default.connectedStandby = false;
+            }
         }
 
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            //DebugSettings();
-            //Application.Current.Shutdown();
-            Thread.Sleep(1000);
+            Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
-        }
-
-        private void DebugSettings()
-        {
-            Console.WriteLine(Properties.Settings.Default.SystemThemeChange);
-            Console.WriteLine(Properties.Settings.Default.AppThemeChange);
-            Console.WriteLine(Properties.Settings.Default.EdgeThemeChange);
-            Console.WriteLine(Properties.Settings.Default.LocationLatitude);
-            Console.WriteLine(Properties.Settings.Default.LocationLongitude);
         }
 
         // set starttime based on user location
@@ -298,6 +547,8 @@ namespace AutoThemeChanger
         }
         public async void GetLocation()
         {
+            SetOffsetVisibility(Visibility.Visible);
+            locationBlock.Visibility = Visibility.Visible;
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             LocationHandler locationHandler = new LocationHandler();
 
@@ -345,6 +596,7 @@ namespace AutoThemeChanger
         {
             locationCheckBox.IsChecked = false;
             locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
+            locationBlock.Visibility = Visibility.Visible;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
         private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
@@ -354,7 +606,9 @@ namespace AutoThemeChanger
             darkStartBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
             applyButton.IsEnabled = true;
-            locationBlock.Text = "";
+            locationBlock.Visibility = Visibility.Collapsed;
+            SetOffsetVisibility(Visibility.Collapsed);
+
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             taskShedHandler.RemoveLocationTask();
         }
@@ -493,6 +747,10 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.EdgeThemeChange = 2;
                 regEditHandler.EdgeTheme(1);
             }
+            if (EdgeComboBox.SelectedIndex.Equals(3))
+            {
+                Properties.Settings.Default.EdgeThemeChange = 3;
+            }
         }
 
         private void AddJumpList()
@@ -572,7 +830,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.AlterTime = true;
                 amTextBlock.Text = "am";
                 pmTextBlock.Text = "pm";
-                applyButton.Margin = new Thickness(195, 344, 0, 0);
+                applyButton.Margin = new Thickness(205, 25, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
                 if (darkTime < 1)
                 {
@@ -592,7 +850,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.AlterTime = false;
                 amTextBlock.Text = "";
                 pmTextBlock.Text = "";
-                applyButton.Margin = new Thickness(180, 344, 0, 0);
+                applyButton.Margin = new Thickness(184, 25, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
                 if (darkTime > 24)
                 {
@@ -604,6 +862,21 @@ namespace AutoThemeChanger
                 }
                 darkStartBox.Text = Convert.ToString(darkTime);
             }
+
+        }
+        
+        private void SetOffsetVisibility(Visibility value)
+        {
+            OffsetLbl.Visibility = value;
+            OffsetDarkLbl.Visibility = value;
+            OffsetDarkModeButton.Visibility = value;
+            OffsetLightLbl.Visibility = value;
+            OffsetLightModeButton.Visibility = value;
+            OffsetLightBox.Visibility = value;
+            OffsetDarkBox.Visibility = value;
+            OffsetDarkDot.Visibility = value;
+            OffsetLightDot.Visibility = value;
+            OffsetButton.Visibility = value;
 
         }
     }

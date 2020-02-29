@@ -118,222 +118,227 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>设置</value>
+    <value>О программе</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>应用</value>
+    <value>Применить</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自动主题切换</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12小时格式</value>
-  </data>
-  <data name="cbAccentColor" xml:space="preserve">
-    <value>仅暗黑模式可见</value>
-  </data>
-  <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>后台获取更新</value>
-  </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>此选项不可能，需要更新到Window 10 1903及以上</value>
-  </data>
-  <data name="cmbAccentColor" xml:space="preserve">
-    <value>突出任务栏颜色</value>
+    <value>Автоматическая смена темы</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>跟随系统主题</value>
+    <value>Зависит от текущей</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>暗黑模式</value>
+    <value>Всегда темная</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>白色主题</value>
-  </data>
-  <data name="dbCurrently" xml:space="preserve">
-    <value>当前：</value>
-  </data>
-  <data name="dbDark" xml:space="preserve">
-    <value>暗黑模式壁纸</value>
-  </data>
-  <data name="dbDel" xml:space="preserve">
-    <value>删除/禁用</value>
-  </data>
-  <data name="dbErrorText" xml:space="preserve">
-    <value>图片不存在或路径错误</value>
-  </data>
-  <data name="dbFilePicker" xml:space="preserve">
-    <value>选择文件</value>
-  </data>
-  <data name="dbLight" xml:space="preserve">
-    <value>白色主题壁纸</value>
-  </data>
-  <data name="dbMainHeader" xml:space="preserve">
-    <value>桌面背景</value>
-  </data>
-  <data name="dbPictures" xml:space="preserve">
-    <value>照片</value>
-  </data>
-  <data name="dbPreviewError" xml:space="preserve">
-    <value>生成图片预览错误</value>
-  </data>
-  <data name="dbSavedError" xml:space="preserve">
-    <value>保存错误</value>
-  </data>
-  <data name="dbSaveToolTip" xml:space="preserve">
-    <value>请选择两张图片</value>
-  </data>
-  <data name="dbSelectImage" xml:space="preserve">
-    <value>请选择图片</value>
-  </data>
-  <data name="dbTitle" xml:space="preserve">
-    <value>配置桌面背景</value>
-  </data>
-  <data name="dbUseCurrent" xml:space="preserve">
-    <value>使用当前背景</value>
+    <value>Всегда белая</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用Windows 1903的功能</value>
-  </data>
-  <data name="disabled" xml:space="preserve">
-    <value>禁用</value>
-  </data>
-  <data name="enabled" xml:space="preserve">
-    <value>启用</value>
-  </data>
-  <data name="errorOcurredTitle" xml:space="preserve">
-    <value>发生错误</value>
-  </data>
-  <data name="info" xml:space="preserve">
-    <value>信息</value>
+    <value>Включить фичи для Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>应用：</value>
+    <value>Приложения:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>作者: Armin Osaj © 2019</value>
-  </data>
-  <data name="lblCity" xml:space="preserve">
-    <value>城市</value>
+    <value>Автор: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>自定义开始时间</value>
+    <value>Время смены темы</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>暗黑</value>
+    <value>Темная</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>暗黑主题</value>
+    <value>Темная тема</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
-  </data>
-  <data name="lblLanguage" xml:space="preserve">
-    <value>语言：</value>
+    <value>Edge (Старая версия):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>亮</value>
+    <value>Светлая</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>亮主题</value>
+    <value>Светлая тема</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>设置</value>
+    <value>Настройки</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>选择当前主题</value>
+    <value>Сменить текущую тему</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>系统：</value>
+    <value>Система:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>使用的第三方软件</value>
-  </data>
-  <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: 朱赛辉</value>
+    <value>Использовать стороннее ПО</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>Обновления</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>使用位置服务</value>
+    <value>В зависимости от локации</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>更改已保存</value>
+    <value>Изменения сохранены!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>单击“应用”保存更改</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>关闭</value>
+    <value>Нажмите "Применить" что-бы сохранить изменения</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>下载更新</value>
+    <value>Скачать обновление</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>发生错误 :(</value>
+    <value>Ошибка :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>该应用程序需要权限定位</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>否</value>
+    <value>Необходимо разрешение на использование локации</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>暂无更新</value>
+    <value>Нет новых обновлений.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>搜寻你的位置</value>
+    <value>Определяем локацию...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>获取更新</value>
+    <value>Поиск обновлений...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告：我们无法获取您当前的主题。</value>
+    <value>Внимание: мы не можем определить текушую тему.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>有更新可用</value>
+    <value>Доступно новое обновление!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感谢您使用自动暗黑模式</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="or" xml:space="preserve">
-    <value>或</value>
-  </data>
-  <data name="restartNeeded" xml:space="preserve">
-    <value>重启以应用更改</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="String" xml:space="preserve">
-    <value>GitHub上提供了一个新版本，其中包含修复和增强功能。</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value>是否下载？</value>
-  </data>
-  <data name="String2" xml:space="preserve">
-    <value>当前安装版本: {0}, 最新版本: {1}</value>
+    <value>Спасибо за использование Auto Dark Mode!
+
+Новая версия доступна на GitHub с исправлениями и новвоведениями.
+Хотите скачать её?
+
+Сейчас установлена версия: {0}, новая: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>自动暗黑模式</value>
+    <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>检查更新</value>
+    <value>Проверить обновления</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>每次启动检查更新</value>
+    <value>Мы автоматически проверяем обновления при запуске программы.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>欢迎</value>
+    <value>Добро пожаловать</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>选中此复选框以启用自动主题切换</value>
+    <value>Поставьте галочку что-бы включить автоматическую смену темы</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Переводчик: Rikipm</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Недоступно, потому-что вы не установили Windows 10 April 2019 Update.</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Перезагрузите приложение что-бы изменения вступили в силу</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Язык:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Менять цвет панели задач</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Сейчас:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Обои для темной темы</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Удалить/Отключить</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Выбрать файл</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Обои для светлой темы</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Обои</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Картинки</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Выберите обе картинки</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Выберите изображение</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Настроить рабочий стол</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>использовать текущие</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>или</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Возможно изображение испорчено или не существует.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Невозможно сгенерировать превью изображения!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Невозможно сохранить настройки!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Произошла ошибка</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Видно только в темной теме</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Инфо</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12-часовое время</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Привет! Спасибо что используете Auto Dark Mode. Надеюсь эта программа вам нравится :)
+
+Да, разработчик действительно создал это окно что-бы напомнить пользователям что он собирает донаты через PayPal. Какой позор!
+
+Но серьезно, это приложение каждый день делает вашу жизнь чуточку легче. Даже небольшое пожертвование может сделать меня счастливым.
+
+Вы хотите открыть страницу для пожертвований PayPal прямо сейчас?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Вам нравится Auto Dark Mode?</value>
   </data>
 </root>

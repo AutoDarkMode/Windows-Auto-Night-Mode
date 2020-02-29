@@ -21,39 +21,33 @@ namespace AutoThemeChanger
                     if (minute < darkStart[1])
                     {
                         ThemeToLight();
-                        //Console.WriteLine("Theme to Light");
                     }
                     if (minute >= darkStart[1])
                     {
                         ThemeToDark();
-                        //Console.WriteLine("Theme to Dark");
                     }
                 }
                 else
                 {
                     ThemeToDark();
-                    //Console.WriteLine("Theme to Dark");
                 }
             }
             else if (hour >= lightStart[0] || hour < darkStart[0])
             {
-                if (hour == lightStart[0])
+                if(hour == lightStart[0])
                 {
-                    if (minute < lightStart[1])
+                    if(minute < lightStart[1])
                     {
                         ThemeToDark();
-                        //Console.WriteLine("Theme to Dark");
                     }
-                    if (minute >= lightStart[1])
+                    if(minute >= lightStart[1])
                     {
                         ThemeToLight();
-                        //Console.WriteLine("Theme to Light");
                     }
                 }
                 else
                 {
                     ThemeToLight();
-                    //Console.WriteLine("Theme to Light");
                 }
             }
         }
@@ -106,7 +100,14 @@ namespace AutoThemeChanger
 
         public void EdgeTheme(int theme)
         {
-            GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            try
+            {
+                GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            }
+            catch
+            {
+
+            }
         }
 
         public void ColorPrevalence(int theme)

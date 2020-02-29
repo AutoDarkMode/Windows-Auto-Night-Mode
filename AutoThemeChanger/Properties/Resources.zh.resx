@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -53,7 +53,6 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -133,7 +132,7 @@
     <value>12小时格式</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>仅暗黑模式可见</value>
+    <value>仅暗黑主题可见</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>后台获取更新</value>
@@ -148,7 +147,7 @@
     <value>跟随系统主题</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>暗黑模式</value>
+    <value>暗黑主题</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
     <value>白色主题</value>
@@ -157,7 +156,7 @@
     <value>当前：</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>暗黑模式壁纸</value>
+    <value>暗黑主题壁纸</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>删除/禁用</value>
@@ -292,13 +291,17 @@
     <value>获取更新</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告：我们无法获取您当前的主题。</value>
+    <value>警告：无法获取您当前的主题。</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>有更新可用</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感谢您使用自动暗黑模式</value>
+    <value>感谢您使用自动暗黑模式！
+
+GitHub上提供了一个新版本，其中包含修复和增强功能。是否下载？
+
+当前安装版本: {0}, 最新版本: {1}</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
     <value>是</value>
@@ -311,15 +314,6 @@
   </data>
   <data name="save" xml:space="preserve">
     <value>保存</value>
-  </data>
-  <data name="String" xml:space="preserve">
-    <value>GitHub上提供了一个新版本，其中包含修复和增强功能。</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value>是否下载？</value>
-  </data>
-  <data name="String2" xml:space="preserve">
-    <value>当前安装版本: {0}, 最新版本: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>自动暗黑模式</value>
@@ -336,4 +330,42 @@
   <data name="welcomeText" xml:space="preserve">
     <value>选中此复选框以启用自动主题切换</value>
   </data>
-</root>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>抱歉，未能正确应用你的设置。
+你可以尝试下面的几种方法：
+- 卸载并重装本软件。
+- 以管理员模式启动本软件。
+- 如果你启用了桌面壁纸功能，关闭该功能并重试。
+
+如果上述方法无效，您可将错误原因与截图评论至GitHub issue。单击“是”以关闭对话框。</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>错误：输入无效</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>联网待机后仍切换</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Microsoft Surface等移动设备正在使用一种新型的待机模式。
+启用此选项可确保在唤醒计算机后自动暗模式立即切换主题。
+但这也会缩短电池寿命！ 仅在必要时激活！</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>由于Windows错误，任务栏无法在节电模式下正确切换其颜色。 如果遇到问题，请关闭节电模式。</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>你好！ 感谢您使用自动暗模式。 我希望你能喜欢它 :)
+虽然开发者弹出了一个窗口，以提醒用户他通过Paypal进行捐赠，这挺不好意思的！
+但是，此应用使您的日常使用更加便捷。 即使是小额捐赠也让我开心:D
+你想打开Paypal并捐赠吗？</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>你喜欢自动暗黑模式吗?</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>偏离</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>设置</value>
+  </data>
+</root> 

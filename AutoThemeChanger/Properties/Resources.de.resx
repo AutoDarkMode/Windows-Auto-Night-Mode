@@ -124,10 +124,10 @@
     <value>Anwenden</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Automatischen Theme-Wechsel aktivieren</value>
+    <value>Automatischen Design-Wechsel aktivieren</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>An das Theme anpassen</value>
+    <value>An das Design anpassen</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Immer dunkel</value>
@@ -151,22 +151,22 @@
     <value>Dunkel</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Dunkles Theme</value>
+    <value>Dunkles Design</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (alte Version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Hell</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Helles Theme</value>
+    <value>Helles Design</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Aktuelles Theme wechseln</value>
+    <value>Aktuelles Design wechseln</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>System:</value>
@@ -193,7 +193,7 @@
     <value>Ein Fehler ist aufgetreten :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Die Anwendung braucht Zugriff auf die Standort-Dienste</value>
+    <value>Die Anwendung benötigt Zugriff auf die Standort-Dienste</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>Keine Updates verfügbar</value>
@@ -205,7 +205,7 @@
     <value>Updates suchen...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Achtung: Kann aktuelles Theme nicht einlesen.</value>
+    <value>Achtung: Das aktuelle Design kann nicht eingelesen werden.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Ein Update ist verfügbar</value>
@@ -225,7 +225,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Updates suchen</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Programm sucht nach Updates beim Start.</value>
+    <value>Programm sucht beim Start nach Updates.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Willkommen</value>
@@ -234,7 +234,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Aktiviere das Kontrollfeld, um automatisch das Theme zu wechseln!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Übersetzung: Lee Bartula</value>
+    <value>Übersetzer: Armin Osaj</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Stadt</value>
@@ -249,7 +249,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Sprache:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Akzentfarbe für Taskleiste</value>
+    <value>Akzentfarbe für die Taskleiste</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Abbrechen</value>
@@ -331,5 +331,36 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Im Hintergrund nach Updates suchen</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Design-Wechsel nach Connected Standby</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobile Geräte, wie Microsoft Surface-Prdukte, nutzen eine neue Art des Energiesparmodus.
+Wenn du diese Option aktivierst, wird Auto Dark Mode sofort nach dem Aufwecken deines Computers das Design wechseln.
+
+Jedoch senkt diese Option auch die Akkulaufzeit! Aktiviere sie deshalb nur, wenn es notwendig ist!</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Fehler: Deine Eingabe ist nicht zulässig.</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Wir konnten deine Einstellungen leider nicht anwenden :(
+
+Hier sind ein paar Hilfestellungen die du ausprobieren kannst:
+- Deinstalliere Auto Dark Mode, danach installiere es neu.
+- Probiere Auto Dark Mode als Administrator auszuführen.
+- Falls du den automatischen Wechsel vom Desktop Hintergrundbild aktiviert hast, deaktiviere die Funktion und probiere es erneut.
+
+Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kommentieren. Hänge am besten noch ein Screenshot dieser Fehlermeldung an. Mit einem Klick auf "Ja" gelangst du zu GitHub.</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Ein Fehler von Windows verhindert den Design-Wechsel der Taskleiste im Stromsparmodus. Bitte deaktiviere den Stromsparmodus, falls bei dir Probleme auftreten.</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Festlegen</value>
   </data>
 </root>

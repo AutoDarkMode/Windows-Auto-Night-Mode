@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Globalization;
+using System.Threading;
 
 namespace AutoThemeChanger
 {
@@ -15,6 +15,7 @@ namespace AutoThemeChanger
     {
         Updater updater = new Updater();
         bool update = false;
+        readonly string curLanguage = Properties.Settings.Default.Language;
 
         public AboutWindow()
         {
@@ -24,10 +25,7 @@ namespace AutoThemeChanger
 
         private void UiHandler()
         {
-            string lang = Properties.Settings.Default.Language.ToString();
-            if (lang == "zh-CN")
-                lang = "zh";
-            LangComBox.SelectedValue = lang;
+            LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
 
             if (Properties.Settings.Default.AlterTime)
             {
@@ -37,9 +35,11 @@ namespace AutoThemeChanger
             {
                 BckgrUpdateCB.IsChecked = true;
             }
-
-            if (SourceChord.FluentWPF.SystemTheme.Theme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            if (Properties.Settings.Default.connectedStandby)
             {
+                conStandByCB.IsChecked = true;
+            }
+            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark)){
                 gitHubImage.Source = new BitmapImage(new Uri(@"Resources/GitHub_Logo_White.png", UriKind.RelativeOrAbsolute));
             }
         }
@@ -140,7 +140,7 @@ namespace AutoThemeChanger
         private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
-
+            
         }
 
         private void PayPalTextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -200,12 +200,16 @@ namespace AutoThemeChanger
 
         private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
         {
-            string lang = LangComBox.SelectedValue.ToString();
-            if (lang == "zh")
-                lang = "zh-CN";
-            SetLanguage(lang);
-            RestartText.Text = Properties.Resources.restartNeeded;
+            SetLanguage(LangComBox.SelectedValue.ToString());
             Translator.Text = Properties.Resources.lblTranslator;
+            if (Properties.Settings.Default.Language != curLanguage)
+            {
+                RestartText.Text = Properties.Resources.restartNeeded;
+            }
+            else
+            {
+                RestartText.Text = null;
+            }
         }
 
         private void SetLanguage(string lang)
@@ -213,6 +217,19 @@ namespace AutoThemeChanger
             Properties.Settings.Default.Language = lang;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+        }
+
+        private void AboutWindowXAML_Closed(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.Language != curLanguage)
+            {
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                Close();
+            }
         }
     }
 }

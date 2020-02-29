@@ -145,7 +145,7 @@
     <value>Auteur : Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Choisissez l'heure de début personnalisée</value>
+    <value>Choisissez votre heure de début</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Sombre</value>
@@ -154,7 +154,7 @@
     <value>Thème sombre</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge :</value>
+    <value>Edge (ancienne version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Clair</value>
@@ -249,7 +249,7 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
     <value>Langue :</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Couleur d'accentuation pour la barre des tâches</value>
+    <value>Couleur d'accent pour la barre des tâches</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Annuler</value>
@@ -316,5 +316,20 @@ Version actuellement installée : {0}, nouvelle version : {1}</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Système horaire sur 12 heures</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Salut ! Merci d'utiliser Auto Dark Mode. J'espère que vous l'aimez jusqu'à présent :)
+
+Oui, ce développeur a vraiment créé un popup pour rappeler qu'il accepte les dons via PayPal. Quelle honte !
+
+Mais bon, cette application rend votre quotidien un peu plus facile. Même un petit don me rend heureux: D
+
+Voulez-vous ouvrir la page de don PayPal maintenant ?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Vous aimez Auto Dark Mode ?</value>
   </data>
 </root>

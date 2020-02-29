@@ -154,7 +154,7 @@
     <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (old version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Light</value>
@@ -331,5 +331,47 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Search for updates in background</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Sorry, but we couldn't apply your settings.
+
+Here are some things you can try:
+- Uninstall and then reinstall auto dark mode.
+- Try to run Auto Dark Mode as administrator.
+- If you enabled Desktop Wallpaper, disable the feature and try again.
+
+If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Error: Your input is invalid</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Switch after Connected Standby</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+But it also reduces the battery life! ONLY activate if necessary!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hello! Thanks for using Auto Dark Mode. I hope you like it so far :)
+
+Yes, this developer really created a popup to remind people that he accepts donations via paypal. What a shame!
+
+But hey, this app makes your everyday life a bit easier. Even a small donation makes me happy :D
+
+Do you want to open the PayPal donation page now?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Do you like Auto Dark Mode?</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Set</value>
   </data>
 </root>

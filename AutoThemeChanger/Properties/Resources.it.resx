@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>A riguardo</value>
+    <value>Impostazioni</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Applica</value>
@@ -154,7 +154,7 @@
     <value>Tema scuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
+    <value>Edge (vecchia versione):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Chiaro</value>
@@ -316,5 +316,57 @@ Versione in uso: {0}, nuova versione: {1}</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Orologio in modalità 12 ore</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Cerca aggiornamenti in background</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Cambia dopo ConnectedStandby</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>"Dispositivi mobile, come i prodotti Microsoft Surface, usano una modalità standby differente.
+Attivando questa opzione Auto Dark Mode applica il tema subito dopo aver risvegliato il tuo dispositivo. 
+
+Controindicazione: consuma più batteria! Attiva SOLO se necessario!"</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Errore: il tuo input non è valido</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>"Spiacente, non è stato possibile applicare le tue impostazioni.
+
+Ecco come potresti risolvere:
+- Disinstalla e reinstalla Auto Dark Mode.
+- Esegui Auto Dark Mode come amministratore.
+- Se hai attivato gli sfondi desktop, disattiva l'opzione e riprova.
+
+Se ciò non è sufficiente, puoi commentare su GitHub il problema, caricando uno screenshot dell'errore. Puoi inviare l'errore cliccando il pulsante ""Sì"""</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>A causa di un bug di Windows la taskbar non cambia tema in modalità risparmio energetico. Disattivalo se ti imbatti in errori.</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Sì</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Ciao! Grazie per usare Auto Dark Mode. Spero tiu abbia apprezzato finora :)
+
+Sì, lo sviluppatore ha veramente creato un messaggio per ricordare alle persone che accetta donazioni via PayPal. Che vergogna!
+
+Ma hey, questa app rende la tua vita quotidiana più semplice. Anche una piccola donazione mi renderebbe felice :D
+
+Vuoi aprire la pagina PayPal per una donazione ora?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Ti piace Auto Dark Mode?</value>
   </data>
 </root>

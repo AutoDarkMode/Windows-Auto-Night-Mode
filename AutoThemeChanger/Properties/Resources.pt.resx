@@ -118,206 +118,253 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>À propos</value>
+    <value>Configurações</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Appliquer</value>
+    <value>Aplicar</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Activer le changement de thème automatique</value>
+    <value>Habilitar a troca automatica de tema</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Ajuster au thème</value>
+    <value>Ajustar ao tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Toujours sombre</value>
+    <value>Sempre escuro</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Toujours clair</value>
+    <value>Sempre claro</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Activer les fonctionnalités pour Windows 1903</value>
+    <value>Ativar recursos para o Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Applis :</value>
+    <value>Apps:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Auteur : Armin Osaj © 2019</value>
+    <value>Autor: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Choisissez votre heure de début</value>
+    <value>Hora de início personalizada:</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Sombre</value>
+    <value>Escuro</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Thème sombre</value>
+    <value>Tema escuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge :</value>
+    <value>Edge (versão antiga):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Clair</value>
+    <value>Claro</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Thème clair</value>
+    <value>Tema claro</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Paramètres</value>
+    <value>Configurações</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Changer le thème actuel</value>
+    <value>Trocar o tema atual</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Système :</value>
+    <value>Sistema:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Logiciels tiers utilisés</value>
+    <value>Software de terceiros usados</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Mises à jour</value>
+    <value>Atualizações</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Utiliser le service de localisation</value>
+    <value>Usar serviços de localização</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>les changements ont été enregistrés !</value>
+    <value>mudanças foram salvas!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Cliquez sur Appliquer pour enregistrer les modifications</value>
+    <value>Clique em aplicar para salvar as mudanças</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Télécharger la mise à jour</value>
+    <value>Baixar atualização</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>une erreur est survenue :(</value>
+    <value>Erro ocorrido:(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>L'appli a besoin d'une autorisation de localisation</value>
+    <value>O aplicativo precisa da permissão da localização</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>aucune nouvelle mise à jour n'est disponible.</value>
+    <value>nenhuma nova atualização disponível</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Recherche de votre position ...</value>
+    <value>buscando sua localização...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>recherche de mise à jour ...</value>
+    <value>buscando por atualizações...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Attention: nous n'avons pas pu identifier votre thème actuel.</value>
+    <value>Aviso: Nós não podemos detectar seu tema atual.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>une nouvelle mise à jour est disponible !</value>
+    <value>uma nova atualização está disponível!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Merci d'utiliser Auto Dark Mode !
+    <value>Obrigado por usar o Auto Dark Mode!
 
-Une nouvelle version est disponible sur GitHub avec des corrections et des améliorations.
-Voulez-vous la télécharger ?
+Uma nova versão está disponível no GitHub com correções de bugs e aprimoramentos.
+Você quer baixá-lo?
 
-Version actuellement installée : {0}, nouvelle version : {1}</value>
+Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Vérifier les mises à jour</value>
+    <value>Buscar por atualizações</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>on vérifie les mises à jour à chaque démarrage du programme.</value>
+    <value>nós verificamos novas atualizações sempre que o programa é iníciado.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Bienvenue</value>
+    <value>Bem vindo</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Cochez la case pour activer le changement de thème automatique</value>
+    <value>Ative a caixa de seleção para habilitar a troca automatica de temas</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Traducteur : Lukcraissin</value>
+    <value>Tradutor: Vítor Gomes (vctgomes)</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Ville</value>
+    <value>Cidade</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Cette option est désactivée car vous n'avez pas installé la mise à jour Windows 10 May 2019 Update sur votre ordinateur.</value>
+    <value>Essa opção está desativada, porque você não instalou a atualização de abril de 2019 do Windows 10 April 2019 em sua máquina.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Le redémarrage de l'application est nécessaire pour voir les modifications</value>
+    <value>O aplicativo precisa reiniciar para gravar as mudanças</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Langue :</value>
+    <value>Idioma:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Couleur d'accent pour la barre des tâches</value>
+    <value>Cor de destaque para a barra de tarefas</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Annuler</value>
+    <value>Cancelar</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Actuellement :</value>
+    <value>Atualmente:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Arrière-plan pour le thème sombre</value>
+    <value>Papel de parede para o tema escuro</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Supprimer/Désactiver</value>
+    <value>Apagar/Desativar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Choisissez le fichier</value>
+    <value>Escolher arquivo</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Arrière-plan pour le thème clair</value>
+    <value>Papel de parede para o tema claro</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fond d'écran</value>
+    <value>Fundo da área de trabalho</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Images</value>
+    <value>Imagens</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Veuillez sélectionner deux fonds d'écran</value>
+    <value>Por favor, selecione dois papeis de parede</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Veuillez sélectionner une image</value>
+    <value>Por favor, selecione uma imagem</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurer le fond d'écran</value>
+    <value>Configurar fundo da área de trabalho</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>utiliser l'arrière-plan actuel</value>
+    <value>usar o fundo atual</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Désactivé</value>
+    <value>Desativar</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Activé</value>
+    <value>Habilitar</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Enregistrer</value>
+    <value>Salvar</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Peut-être votre fichier d'image est corrompu ou l'adresse n'existe pas.</value>
+    <value>Talvez o seu arquivo de imagem esteja corrompido ou a localização não exista.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>On n'a pas pu générer un aperçu de votre image, désolé !</value>
+    <value>Nós não conseguimos gerar a visualização da imagem, desculpe!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>On n'a pas pu enregistrer vos paramètres, désolé !</value>
+    <value>Nós não conseguimos salvar suas configurações, desculpe!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Une erreur est survenue</value>
+    <value>Um erro ocorreu</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Visible uniquement en mode sombre</value>
+    <value>Apenas visível no modo escuro</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>Informações</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>Système horaire sur 12 heures</value>
+    <value>Hora em formato de 12 horas</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Procurar por atualizações em segundo plano</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Desculpe, mas nós não conseguimos salvar suas configurações.
+
+Aqui estão algumas coisas que você pode tentar:
+- Desinstalar e, então, reinstalar o Auto Dark Mode;
+- Tentar abrir o Auto Dark Mode como administrador.
+- Se você habilitou o papel de parede na área de trabalho, desative e tente novamente.
+
+Se essas dicas não ajudaram, você pode comentar o problema no GitHub, postando uma captura de tela do erro. Você pode acessar o problema clicando no botão "Sim"
+</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Erro: Sua entrada está inválida</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Mudar após o modo de espera</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão usando um novo tipo de modo de espera.
+Habilite essa opção para ter certeza que o Auto Dark Mode troque imediatamente o tema após o seu computar ligar/acordar.
+Isso também pode reduzir a duração da bateria! APENAS ative se for necessário!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Por conta da um problema com o Windows, a barra de tarefas não alterna corretamente sua cor no modo de economia de bateria. Por favor, desligue a economia de bateria se você estiver tendo problemas.</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Sim, esse desenvolvedor criou um pop-up para lembrar as pessoas que ele aceita doações via PayPal. Que vergonha! 
+
+Mas, ei, esse app faz sua vida diária um pouco mais fácil. Mesmo uma pequena doação, ficarei feliz :D
+
+Você deseja abrir a página de doações do PayPal agora?</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Você gosta do Auto Dark Mode?</value>
   </data>
 </root>

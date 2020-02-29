@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Reflection;
-using System.Windows;
 using System.Xml;
+using System.Windows;
+using System.Globalization;
 
 namespace AutoThemeChanger
 {
@@ -67,6 +68,7 @@ namespace AutoThemeChanger
 
         private void MessageBoxHandler()
         {
+            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
             if (currentVersion.CompareTo(newVersion) < 0)
             {
                 if (!silent)
@@ -74,8 +76,7 @@ namespace AutoThemeChanger
                     string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
                     MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
                     {
-                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                        Topmost = true
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen, Topmost = true
                     };
                     msgBox.ShowDialog();
                     var result = msgBox.DialogResult;
