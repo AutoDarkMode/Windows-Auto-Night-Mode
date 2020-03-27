@@ -288,7 +288,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>usa el fondo actual</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desactivar</value>
+    <value>Desactivado</value>
   </data>
   <data name="enabled" xml:space="preserve">
     <value>Activado</value>
