@@ -5,6 +5,8 @@
 Icons/
 Setup/
 Translation/
+AutoDarkModeApp/
+AutoDarkModeSvc/
 
 # User-specific files
 *.suo
@@ -264,3 +266,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/desktop.ini
