@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
+using System.Runtime.InteropServices;
 
 namespace AutoThemeChanger
 {
@@ -59,16 +60,21 @@ namespace AutoThemeChanger
                 Longitude = position.Longitude
             });
 
-            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low);
+            try
+            {
+                MapLocationFinderResult result = await MapLocationFinder.FindLocationsAtAsync(geopoint, MapLocationDesiredAccuracy.Low);
 
-            if (result.Status == MapLocationFinderStatus.Success)
-            {
-                return result.Locations[0].Address.Town;
+                if (result.Status == MapLocationFinderStatus.Success)
+                {
+                    return result.Locations[0].Address.Town;
+                }
             }
-            else
+            catch (SEHException)
             {
-                return null;
+                // Ignored
             }
+
+            return String.Format("({0}, {1})", position.Latitude, position.Longitude);
         }
 
         public async Task SetLocationSilent()
