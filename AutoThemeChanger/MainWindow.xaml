@@ -7,8 +7,9 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="300" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height">
-    <Grid x:Name="mainWin" Background="#20FFFFFF">
+        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="528" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height" Height="574.55">
+
+    <Grid x:Name="mainWin" Background="#10FFFFFF">
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" SharedSizeGroup="Group1"/>
@@ -24,85 +25,15 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Start -->
-        <CheckBox Grid.Row="1" Grid.ColumnSpan="5" Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked" Height="Auto" Width="Auto"/>
+        <!-- Navbar -->
+        <Frame Content="Frame" Name="frameNavbar" Source="/Pages/PageTime.xaml" HorizontalAlignment="Left" Height="470" Margin="10,10,0,0" Grid.Row="2" Grid.RowSpan="8" VerticalAlignment="Top" Width="466" NavigationUIVisibility="Hidden"/>
+        <Button Content="Apps" Name="buttonNavbarApps" HorizontalAlignment="Left" Margin="113,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarApps_Click" Grid.RowSpan="2"/>
+        <Button Content="Wallpaper" Name="buttonNavbarWallpaper" HorizontalAlignment="Left" Margin="207,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarWallpaper_Click" Grid.RowSpan="2"/>
+        <Button Content="Settings" Name="buttonNavbarSettings" HorizontalAlignment="Left" Margin="297,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarSettings_Click" Grid.RowSpan="2"/>
+        <Button Content="Time" Name="buttonNavarTime" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavarTime_Click" Grid.RowSpan="2"/>
 
-        <!-- System, Apps and Edge -->
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="54,9,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Text="&#xE71D;" HorizontalAlignment="Left" Margin="15,21,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed" Height="22">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-        </ComboBox>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="54,62,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Text="&#xE977;" HorizontalAlignment="Left" Margin="15,74,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="53,83,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="SystemComboBox_DropDownClosed" Height="22">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-        </ComboBox>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,131,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
-        <CheckBox Grid.Row="2" Grid.ColumnSpan="5" x:Name="AccentColorCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.cmbAccentColor}" HorizontalAlignment="Left" Margin="53,111,0,0" VerticalAlignment="Top" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
-        <Image Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="31" Margin="14,141,0,0" VerticalAlignment="Top" Width="26" Source="Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,152,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed" Height="22" Grid.RowSpan="2">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
-        </ComboBox>
-
-        <!-- Desktop Background -->
-        <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
-        <Button Grid.Row="3" Grid.ColumnSpan="5" x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" MinWidth="180" Width="Auto" Click="BGWinButton_Click" Height="20"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="5,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-
-        <!-- Time selection -->
-        <TextBlock Grid.Row="4" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="5" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="12,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="5" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="103,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="5" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="44,25,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
-        <TextBlock Grid.Row="5" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="135,25,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
-        <TextBlock Grid.Row="5" Grid.ColumnSpan="5" Name="amTextBlock" HorizontalAlignment="Left" Margin="82,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="5" Grid.ColumnSpan="5" Name="pmTextBlock" HorizontalAlignment="Left" Margin="176,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
-        <TextBox Grid.Row="5" Grid.ColumnSpan="5" x:Name="lightStartBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" Margin="12,25,0,0"/>
-        <TextBox Grid.Row="5" Grid.ColumnSpan="5" x:Name="LightStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="50,25,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBox Grid.Row="5" Grid.ColumnSpan="5" x:Name="darkStartBox" HorizontalAlignment="Left" Height="23" Margin="103,25,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-        <TextBox Grid.Row="5" Grid.ColumnSpan="5" x:Name="DarkStartMinutesBox" HorizontalAlignment="Left" Height="23" Margin="141,25,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
-
-        <!-- Apply -->
-        <Button Grid.Row="5" Grid.ColumnSpan="5" x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="184,25,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="23"/>
-
-        <!-- Location -->
-        <CheckBox Grid.Row="6" Grid.ColumnSpan="5" x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked" Height="15" Width="Auto"/>
-        <TextBlock Grid.Row="6" Grid.ColumnSpan="5" x:Name="locationBlock" Visibility="Collapsed" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
-
-        <!-- Offset -->
-        <TextBlock Grid.Row="7" x:Name="OffsetLbl" Visibility="Collapsed" HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblOffset}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="8" x:Name="OffsetLightLbl" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="12,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="8" x:Name="OffsetDarkLbl" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="103,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <Button Grid.Row="8" Grid.ColumnSpan="5" x:Name="OffsetLightModeButton" Visibility="Collapsed" Content="+" HorizontalAlignment="Left" Margin="12,25,0,0" VerticalAlignment="Top" Width="30" Click="OffsetModeButton_Click" IsEnabled="True" Height="23"/>
-        <TextBox Grid.Row="8" x:Name="OffsetLightBox" Visibility="Collapsed" HorizontalAlignment="Left" Height="23" Margin="50,25,0,0" TextWrapping="Wrap" Text="0" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput_Offset" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" RenderTransformOrigin="0.627,2.026"/>
-        <Button Grid.Row="8" Grid.ColumnSpan="5" x:Name="OffsetDarkModeButton" Visibility="Collapsed" Content="+" HorizontalAlignment="Left" Margin="103,25,0,0" VerticalAlignment="Top" Width="30" Click="OffsetModeButton_Click" IsEnabled="True" Height="23"/>
-        <TextBox Grid.Row="8" x:Name="OffsetDarkBox" Visibility="Collapsed" HorizontalAlignment="Left" Height="23" Margin="141,25,0,0.0" TextWrapping="Wrap" Text="0" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput_Offset" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Row="8" x:Name="OffsetLightDot" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="44,25,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
-        <TextBlock Grid.Row="8" x:Name="OffsetDarkDot" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="135,25,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
-        
-        <!-- Offset Set Button -->
-        <Button Grid.Row="8" Grid.ColumnSpan="5" x:Name="OffsetButton" Visibility="Collapsed" Content="{x:Static p:Resources.offsetButton}" HorizontalAlignment="Left" Margin="184,25,0,0" VerticalAlignment="Top" Width="75" Click="OffsetButton_Click" IsEnabled="False" Height="23"/>
-        
-        
-        <!-- About -->
-        <Button Grid.Row="9" Grid.ColumnSpan="5" x:Name="aboutButton" Content="&#xE713;" HorizontalAlignment="Left" Margin="225,12,0,0" VerticalAlignment="Top" Click="AboutButton_Click" Width="25" Height="25" FontSize="14" FontFamily="Segoe MDL2 Assets"/>
-
-        <!-- Info -->
-        <TextBlock Grid.Row="9" Grid.ColumnSpan="5"  HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="9" Grid.ColumnSpan="5" x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,41,0,10" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
     </Grid>
 </fw:AcrylicWindow>

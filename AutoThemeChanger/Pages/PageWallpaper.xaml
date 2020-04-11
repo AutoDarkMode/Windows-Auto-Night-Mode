@@ -1,0 +1,20 @@
+﻿<Page x:Class="AutoThemeChanger.PageWallpaper"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoThemeChanger"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:p="clr-namespace:AutoThemeChanger.Properties"
+      mc:Ignorable="d"
+      Title="PageWallpaper" Height="100.165" Width="257.846" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+
+    <Grid>
+        <!-- Desktop Background -->
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
+        <Button Grid.Row="3" Grid.ColumnSpan="5" x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" MinWidth="180" Width="Auto" Click="BGWinButton_Click" Height="20"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="Auto"/>
+        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="179,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+    </Grid>
+</Page>

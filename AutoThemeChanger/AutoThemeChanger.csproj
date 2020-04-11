@@ -141,6 +141,18 @@
     <Compile Include="MsgBox.xaml.cs">
       <DependentUpon>MsgBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageApps.xaml.cs">
+      <DependentUpon>PageApps.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageSettings.xaml.cs">
+      <DependentUpon>PageSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageTime.xaml.cs">
+      <DependentUpon>PageTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageWallpaper.xaml.cs">
+      <DependentUpon>PageWallpaper.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.de.Designer.cs">
       <DependentUpon>Resources.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -165,6 +177,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MsgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageApps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageWallpaper.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
