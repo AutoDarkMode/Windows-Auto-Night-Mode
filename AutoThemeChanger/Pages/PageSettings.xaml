@@ -45,6 +45,7 @@
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>
             <ComboBoxItem Content="Italiano" Name="it"/>
+            <ComboBoxItem Content="Nederlands" Name="nl"/>
             <ComboBoxItem Content="Polski" Name="pl"/>
             <ComboBoxItem Content="Português" Name="pt"/>
             <ComboBoxItem Content="Русский" Name="ru"/>
