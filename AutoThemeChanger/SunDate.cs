@@ -2,8 +2,11 @@
 
 namespace AutoThemeChanger
 {
-    // source: https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/messenger/time/SunDate.java
-    // ported to c#
+    // Source: https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/messenger/time/SunDate.java
+    // Licensed under: GNU General Public License v2.0
+    // Copyright: Nikolai Kudashov, 2013-2018.
+    // Changes: Ported to c#
+
     public class SunDate
     {
         private const double DEGRAD = Math.PI / 180.0;

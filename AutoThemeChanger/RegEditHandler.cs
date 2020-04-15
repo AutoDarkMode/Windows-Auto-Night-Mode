@@ -54,38 +54,49 @@ namespace AutoThemeChanger
 
         public void ThemeToDark()
         {
-            if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
-            if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
+            if (Properties.Settings.Default.ThemeSwitch)
+            {
+                ThemeHelper.ChangeTheme(Properties.Settings.Default.ThemeDark);
+            }
+            else
+            {
+                if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
+                if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
+                if (Properties.Settings.Default.WallpaperSwitch)
+                {
+                    DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperDark);
+                }
+
+                if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+                {
+                    Thread.Sleep(400);
+                    ColorPrevalence(1);
+                }
+            }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
-
-            if (Properties.Settings.Default.WallpaperSwitch)
-            {
-                DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperDark);
-            }
-
-            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
-            {
-                Thread.Sleep(200);
-                ColorPrevalence(1);
-            }
         }
 
         public void ThemeToLight()
         {
-            if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+            if (Properties.Settings.Default.ThemeSwitch)
             {
-                ColorPrevalence(0);
-                Thread.Sleep(200);
+                ThemeHelper.ChangeTheme(Properties.Settings.Default.ThemeLight);
             }
-
-            if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
-            if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
+            else
+            {
+                if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+                {
+                    ColorPrevalence(0);
+                    Thread.Sleep(400);
+                }
+                if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
+                if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
+                if (Properties.Settings.Default.WallpaperSwitch)
+                {
+                    DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperLight);
+                }
+            }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
-
-            if (Properties.Settings.Default.WallpaperSwitch)
-            {
-                DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperLight);
-            }
         }
 
         public void AppTheme(int theme)

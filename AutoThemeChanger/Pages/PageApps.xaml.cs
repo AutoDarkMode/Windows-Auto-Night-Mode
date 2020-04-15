@@ -46,6 +46,14 @@ namespace AutoThemeChanger
 
         private void UiHandler()
         {
+            if (!Properties.Settings.Default.Enabled)
+            {
+                AccentColorCheckBox.IsEnabled = false;
+                SystemComboBox.IsEnabled = false;
+                AppComboBox.IsEnabled = false;
+                EdgeComboBox.IsEnabled = false;
+            }
+
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             if (!is1903)
             {

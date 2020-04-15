@@ -160,6 +160,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ThemeHelper.cs" />
     <Compile Include="Updater.cs" />
     <Compile Include="SunDate.cs" />
     <Compile Include="RegeditHandler.cs" />

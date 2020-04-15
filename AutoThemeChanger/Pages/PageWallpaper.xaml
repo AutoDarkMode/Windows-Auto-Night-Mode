@@ -7,14 +7,39 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       mc:Ignorable="d"
-      Title="PageWallpaper" Height="100.165" Width="257.846" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      Title="PageWallpaper" Height="350.052" Width="383.729" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
-    <Grid>
+    <Grid Margin="0,0,-116,-50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition MinHeight="0" Height="Auto"/>
+            <RowDefinition MinHeight="150" Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox HorizontalAlignment="Left" Name="cbSelection" Margin="10,10,0,0" Grid.Row="0" VerticalAlignment="Top" Width="349" SelectionChanged="CbSelection_SelectionChanged">
+            <ComboBoxItem Content="Desktop Wallpaper (recommended)"  Name="admwallpaper"/>
+            <ComboBoxItem Content="Windows Theme (more features)" Name="wintheme"/>
+        </ComboBox>
+
         <!-- Desktop Background -->
-        <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="3" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="14,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
-        <Button Grid.Row="3" Grid.ColumnSpan="5" x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="51,36,0,0" VerticalAlignment="Top" MinWidth="180" Width="Auto" Click="BGWinButton_Click" Height="20"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="Auto"/>
-        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="179,59,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <TextBlock Name="wallpaperHeading" HorizontalAlignment="Left" Margin="6,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="Auto" Width="Auto"/>
+        <TextBlock Name="wallpaperIcon" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="29" Width="32" FontSize="25"/>
+        <Button x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="47,36,0,0" Grid.Row="1" VerticalAlignment="Top" MinWidth="180" Width="Auto" Click="BGWinButton_Click" Height="20"/>
+        <TextBlock Name="wallpaperCurrent" Grid.Column="0" HorizontalAlignment="Left" Margin="51,59,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="Auto"/>
+        <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="175,59,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+
+        <!-- Windows Theme-->
+        <Button Content="Select Light Theme" Name="buttonLightTheme" CommandParameter="LightTheme" HorizontalAlignment="Left" Margin="5,141,0,0" Grid.Row="2" VerticalAlignment="Top" Width="153" Click="buttonSelectTheme_Click"/>
+        <Button Content="Select Dark Theme" Name="buttonDarkTheme" CommandParameter="DarkTheme" HorizontalAlignment="Left" Margin="6,173,0,-10" Grid.Row="2" VerticalAlignment="Top" Width="153" Click="buttonSelectTheme_Click"/>
+        <Button Content="Save + Enable" Name="buttonSaveTheme" IsEnabled="False" HorizontalAlignment="Left" Margin="4,206,0,-40" Grid.Row="2" VerticalAlignment="Top" Width="98" Click="buttonSaveTheme_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="163,141,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="Please select a File with the button" IsReadOnly="True" Name="TextBoxLightTheme" VerticalAlignment="Top" Width="270" />
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="163,173,0,-10" Grid.Row="2" TextWrapping="NoWrap" Text="Please select a File with the button" IsReadOnly="True" Name="TextBoxDarkTheme" VerticalAlignment="Top" Width="270" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Disable" HorizontalAlignment="Left" Margin="107,206,0,-41" Grid.Row="2" VerticalAlignment="Top" Width="102" Name="ButtonDisableTheme" Click="ButtonDisableTheme_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,29,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbOpenThemeCP" Foreground="Blue" Text="Step 1) Click here to open the Windows Theme Settings." VerticalAlignment="Top" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" MouseDown="TextBlock_MouseDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,47,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme1" Text="Step 2) Select your favorite Wallpaper, Mouse Cursor and Accent Color." VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,66,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme2" Text="Step 3) Go back to theme settings and save your theme." VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="6,87,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme3" Text="Step 4) Repeat the process for the second theme and then pick your theme files:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,115,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme4" Text="Select created themes" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,6,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme5" Text="Set up a theme" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
     </Grid>
 </Page>

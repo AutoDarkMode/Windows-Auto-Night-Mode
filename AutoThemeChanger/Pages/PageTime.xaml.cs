@@ -46,7 +46,6 @@ namespace AutoThemeChanger.Pages
             }
         }
 
-
         private void PopulateOffsetFields(int offsetDark, int offsetLight)
         {
             if (offsetLight < 0)
@@ -356,6 +355,7 @@ namespace AutoThemeChanger.Pages
                 ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
         }
+
         // set starttime based on user location
         private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -432,18 +432,14 @@ namespace AutoThemeChanger.Pages
         //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            //if (is1903) SystemComboBox.IsEnabled = true;
-            //if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
-            //AppComboBox.IsEnabled = true;
-            //EdgeComboBox.IsEnabled = true;
             locationCheckBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             darkStartBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
-            //BGWinButton.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+            Properties.Settings.Default.Enabled = true;
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -457,10 +453,6 @@ namespace AutoThemeChanger.Pages
             Properties.Settings.Default.WallpaperLight = "";
             Properties.Settings.Default.WallpaperDark = "";
 
-            //AccentColorCheckBox.IsEnabled = false;
-            //SystemComboBox.IsEnabled = false;
-            //AppComboBox.IsEnabled = false;
-            //EdgeComboBox.IsEnabled = false;
             locationCheckBox.IsEnabled = false;
             locationCheckBox.IsChecked = false;
             applyButton.IsEnabled = false;
@@ -468,8 +460,8 @@ namespace AutoThemeChanger.Pages
             DarkStartMinutesBox.IsEnabled = false;
             lightStartBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
-            //BGWinButton.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
+            Properties.Settings.Default.Enabled = false;
         }
         private void AlterTime(bool enable)
         {

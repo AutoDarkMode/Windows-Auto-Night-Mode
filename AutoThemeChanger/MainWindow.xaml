@@ -7,9 +7,9 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="528" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height" Height="574.55">
+        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="507" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height" Height="543">
 
-    <Grid x:Name="mainWin" Background="#10FFFFFF">
+    <Grid x:Name="mainWin" Background="#10FFFFFF" Margin="0,0,0,48">
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" SharedSizeGroup="Group1"/>
@@ -29,10 +29,10 @@
         </Grid.ColumnDefinitions>
 
         <!-- Navbar -->
-        <Frame Content="Frame" Name="frameNavbar" Source="/Pages/PageTime.xaml" HorizontalAlignment="Left" Height="470" Margin="10,10,0,0" Grid.Row="2" Grid.RowSpan="8" VerticalAlignment="Top" Width="466" NavigationUIVisibility="Hidden"/>
+        <Frame Content="Frame" Name="frameNavbar" Source="/Pages/PageTime.xaml" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Height="427" Margin="4,10,0,0" Grid.Row="2" Grid.RowSpan="8" VerticalAlignment="Top" Width="497" NavigationUIVisibility="Hidden"/>
         <Button Content="Apps" Name="buttonNavbarApps" HorizontalAlignment="Left" Margin="113,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarApps_Click" Grid.RowSpan="2"/>
-        <Button Content="Wallpaper" Name="buttonNavbarWallpaper" HorizontalAlignment="Left" Margin="207,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarWallpaper_Click" Grid.RowSpan="2"/>
-        <Button Content="Settings" Name="buttonNavbarSettings" HorizontalAlignment="Left" Margin="297,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarSettings_Click" Grid.RowSpan="2"/>
+        <Button Content="Wallpaper + Themes" Name="buttonNavbarWallpaper" HorizontalAlignment="Left" Margin="207,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="132" Click="buttonNavbarWallpaper_Click" Grid.RowSpan="2"/>
+        <Button Content="Settings" Name="buttonNavbarSettings" HorizontalAlignment="Left" Margin="370,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarSettings_Click" Grid.RowSpan="2"/>
         <Button Content="Time" Name="buttonNavarTime" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavarTime_Click" Grid.RowSpan="2"/>
 
     </Grid>

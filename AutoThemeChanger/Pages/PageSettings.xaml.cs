@@ -26,6 +26,11 @@ namespace AutoThemeChanger.Pages
         }
         private void UiHandler()
         {
+            if (!Properties.Settings.Default.Enabled)
+            {
+                conStandByCB.IsEnabled = false;
+            }
+
             LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
 
             if (Properties.Settings.Default.AlterTime)
