@@ -3,6 +3,7 @@ using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
 using System.Threading;
+using System.IO;
 
 namespace AutoDarkModeSvc
 {
@@ -34,10 +35,24 @@ namespace AutoDarkModeSvc
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
             {
-                Logger.Error("dark and light theme paths set incorrectly");
+                Logger.Error("dark or light theme path empty");
                 return;
             }
-            if (config.LightThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Dark)
+            if (!File.Exists(config.DarkThemePath)) {
+                Logger.Error("invalid dark theme path");
+                return;
+            }
+            if (!File.Exists(config.LightThemePath))
+            {
+                Logger.Error("invalid light theme path");
+                return;
+            }
+            if (!config.DarkThemePath.EndsWith(".theme") || !config.DarkThemePath.EndsWith(".theme"))
+            {
+                Logger.Error("both theme paths must have a .theme extension");
+                return;
+            }
+            if (Path.GetFileNameWithoutExtension(config.DarkThemePath) != rtc.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
                 if (automatic)
                 {
@@ -49,7 +64,7 @@ namespace AutoDarkModeSvc
                 }
                 ThemeHandler.Apply(config.DarkThemePath);
             }
-            else if (config.DarkThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Light)
+            else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != rtc.CurrentWindowsThemeName && newTheme == Theme.Light)
             {
                 if (automatic)
                 {

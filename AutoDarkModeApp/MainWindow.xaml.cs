@@ -14,6 +14,9 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Shell;
 using Windows.System.Power;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AutoDarkModeApp
 {
@@ -22,7 +25,6 @@ namespace AutoDarkModeApp
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
         private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
         private ICommandClient CommandClient { get; }
-        private readonly bool is1903 = false;
         private bool isClosed = false;
         private bool initComplete = false;
 
@@ -32,9 +34,6 @@ namespace AutoDarkModeApp
             LanguageHelper();
             LoadConfig();
             InitializeComponent();
-            ThemeChange(this, null);
-            SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
-            if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             ConfigureComponents();
             if (Properties.Settings.Default.FirstRun)
             {
@@ -137,6 +136,12 @@ namespace AutoDarkModeApp
             int darkStartMinutes;
             int lightStart;
             int lightStartMinutes;
+
+            string selectedLightTheme = (string)LightThemeComboBox.SelectedItem;
+            configBuilder.Config.LightThemePath = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
+
+            string selectedDarkTheme = (string)DarkThemeComboBox.SelectedItem;
+            configBuilder.Config.DarkThemePath = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
 
             //get values from TextBox
             try
@@ -338,9 +343,7 @@ namespace AutoDarkModeApp
         private async void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             configBuilder.Config.AutoThemeSwitchingEnabled = true;
-            if (is1903) SystemComboBox.IsEnabled = true;
-            if (is1903 && !SystemComboBox.SelectedIndex.Equals(1)) AccentColorCheckBox.IsEnabled = true;
-            AppComboBox.IsEnabled = true;
+            LightThemeComboBox.IsEnabled = true;
             locationCheckBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             DarkStartHoursBox.IsEnabled = true;
@@ -368,9 +371,8 @@ namespace AutoDarkModeApp
         {
             configBuilder.Config.AutoThemeSwitchingEnabled = false;
             configBuilder.Config.Wallpaper.Enabled = false;
-            AccentColorCheckBox.IsEnabled = false;
-            SystemComboBox.IsEnabled = false;
-            AppComboBox.IsEnabled = false;
+            DarkThemeComboBox.IsEnabled = false;
+            LightThemeComboBox.IsEnabled = false;
             //.IsEnabled = false;
             locationCheckBox.IsEnabled = false;
             locationCheckBox.IsChecked = false;
@@ -432,60 +434,13 @@ namespace AutoDarkModeApp
         }
 
         // ComboBox Handlers
-        private async void AppComboBox_DropDownClosed(object sender, EventArgs e)
+        private void LightThemeComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            configBuilder.Config.AppsTheme = (AutoDarkModeSvc.Mode)AppComboBox.SelectedIndex;
-            try
-            {
-                configBuilder.Save();
-
-                string command = Command.Switch;
-
-                bool isMessageOk = await CommandClient.SendMessageAsync(command);
-                if (!isMessageOk)
-                {
-                    throw new SwitchThemeException();
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
+            applyButton.IsEnabled = true;
         }
-        private async void SystemComboBox_DropDownClosed(object sender, EventArgs e)
+        private void DarkThemeComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            configBuilder.Config.SystemTheme = (AutoDarkModeSvc.Mode)SystemComboBox.SelectedIndex;
-            try
-            {
-                configBuilder.Save(); 
-
-                string command = Command.Switch;
-
-                bool isMessageOk = await CommandClient.SendMessageAsync(command);
-                if (isMessageOk)
-                {
-                    AccentColorCheckBox.IsEnabled = true;
-                }
-                else
-                {
-                    throw new SwitchThemeException();
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-        }
-        private void ThemeChange(object sender, EventArgs e)
-        {
-            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
-            {
-                EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
-            }
-            else
-            {
-                EdgyIcon.Source = new BitmapImage(new Uri(@"Resources\Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
-            }
+            applyButton.IsEnabled = true;
         }
         #endregion
 
@@ -542,23 +497,19 @@ namespace AutoDarkModeApp
                 AutoCheckBox_Unchecked(autoCheckBox, null);
             }
 
-            AppComboBox.SelectedIndex = (int)configBuilder.Config.AppsTheme;
-            SystemComboBox.SelectedIndex = (int)configBuilder.Config.SystemTheme;
+            var themePaths = GetUserThemes();
+            var themeNames = themePaths.Select(s => Path.GetFileNameWithoutExtension(s));
+            LightThemeComboBox.ItemsSource = themeNames;
+            DarkThemeComboBox.ItemsSource = themeNames;
 
-            if (!is1903)
-            {
-                SystemComboBox.IsEnabled = false;
-                AccentColorCheckBox.IsEnabled = false;
-                SystemComboBox.ToolTip = AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
-            }
-            else
-            {
-                AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
-            }
 
-            if (configBuilder.Config.AccentColorTaskbarEnabled)
+            if (configBuilder.Config.DarkThemePath != null)
             {
-                AccentColorCheckBox.IsChecked = true;
+                DarkThemeComboBox.SelectedItem = Path.GetFileNameWithoutExtension(configBuilder.Config.DarkThemePath);
+            }
+            if (configBuilder.Config.LightThemePath != null)
+            {
+                LightThemeComboBox.SelectedItem = Path.GetFileNameWithoutExtension(configBuilder.Config.LightThemePath);
             }
 
             SetDesktopBackgroundStatus();
@@ -643,6 +594,13 @@ namespace AutoDarkModeApp
             locationBlock.Visibility = Visibility.Visible;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
+
+        private List<string> GetUserThemes()
+        {
+            string themeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
+            return Directory.EnumerateFiles(themeDirectory, "*.theme", SearchOption.TopDirectoryOnly).ToList();
+        }
+
         private void AddJumpList()
         {
             JumpTask darkJumpTask = new JumpTask

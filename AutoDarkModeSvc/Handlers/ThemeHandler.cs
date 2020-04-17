@@ -78,7 +78,8 @@ namespace AutoDarkModeSvc.Handlers
         [PermissionSet(SecurityAction.LinkDemand)]
         public static void Apply(string themeFilePath)
         {
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
@@ -89,8 +90,10 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Error(ex, $"couldn't apply theme \"{themeFilePath}\"");
                 }
-            });
-            thread.Name = "ThemeThread";
+            })
+            {
+                Name = "COMThemeManagerThread"
+            };
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
