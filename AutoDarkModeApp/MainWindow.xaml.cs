@@ -344,6 +344,7 @@ namespace AutoDarkModeApp
         {
             configBuilder.Config.AutoThemeSwitchingEnabled = true;
             LightThemeComboBox.IsEnabled = true;
+            DarkThemeComboBox.IsEnabled = true;
             locationCheckBox.IsEnabled = true;
             applyButton.IsEnabled = true;
             DarkStartHoursBox.IsEnabled = true;
