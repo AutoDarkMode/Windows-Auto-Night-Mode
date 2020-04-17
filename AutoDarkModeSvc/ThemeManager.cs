@@ -37,30 +37,31 @@ namespace AutoDarkModeSvc
                 Logger.Error("dark and light theme paths set incorrectly");
                 return;
             }
-            //if (config.LightThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Dark)
-            if (newTheme == Theme.Dark)
+            if (config.LightThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Dark)
             {
                 try
                 {
                     ThemeHandler.ChangeTheme(config.DarkThemePath);
-                    rtc.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
                 }
                 catch (Exception ex)
                 {
                     Logger.Error(ex, "couldn't switch to dark theme");
                 }
             }
-            //else if (config.DarkThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Light)
-            else if (newTheme == Theme.Light)
+            else if (config.DarkThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Light)
             {
                 try
                 {
                     ThemeHandler.ChangeTheme(config.LightThemePath);
+                    var updatedTheme = ThemeHandler.GetCurrentThemeName();
+                    if (config.LightThemePath.Contains(updatedTheme))
+                    {
+                        rtc.CurrentWindowsThemeName = updatedTheme;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Logger.Error(ex, "couldn't switch to light theme");
-                    rtc.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
                 }
             }
         }

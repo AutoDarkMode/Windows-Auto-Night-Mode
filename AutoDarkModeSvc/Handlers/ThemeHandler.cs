@@ -5,6 +5,9 @@ using System.Security;
 using System.Security.Permissions;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoDarkModeSvc.Config;
 
 // Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
 // Originally created by Kuchienkz. Email: wahyu.darkflame@gmail.com
@@ -14,6 +17,7 @@ namespace AutoDarkModeSvc.Handlers
 {
     public static class ThemeHandler
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         [ComImport, Guid("D23CC733-5522-406D-8DFB-B3CF5EF52A71"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface ITheme
         {
@@ -74,7 +78,20 @@ namespace AutoDarkModeSvc.Handlers
         [PermissionSet(SecurityAction.LinkDemand)]
         public static void ChangeTheme(string themeFilePath)
         {
-            new ThemeManagerClass().ApplyTheme(themeFilePath);
+            Thread thread = new Thread(() => {
+                try
+                {
+                    new ThemeManagerClass().ApplyTheme(themeFilePath);
+                    RuntimeConfig.Instance().CurrentWindowsThemeName = GetCurrentThemeName();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "couldn't switch theme");
+                }
+            });
+            thread.Name = "ThemeThread";
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
         [PermissionSet(SecurityAction.LinkDemand)]
         public static string GetCurrentVisualStyleName()
