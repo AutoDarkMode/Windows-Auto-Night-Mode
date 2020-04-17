@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Info -->
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version b3.0.10" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version b3.0.12" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="246" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
 
         <!-- Social Media links-->

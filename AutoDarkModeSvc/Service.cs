@@ -98,9 +98,12 @@ namespace AutoDarkModeSvc
             }
             else
             {
-                foreach (ToolStripMenuItem item in NotifyIcon.ContextMenuStrip.Items)
+                foreach (var item in NotifyIcon.ContextMenuStrip.Items)
                 {
-                    item.Checked = false;
+                    if (item is ToolStripMenuItem)
+                    {
+                        (item as ToolStripMenuItem).Checked = false;
+                    }
                 }
                 AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().Config;
                 RuntimeConfig rtc = RuntimeConfig.Instance();
