@@ -503,13 +503,21 @@ namespace AutoDarkModeApp
             DarkThemeComboBox.ItemsSource = themeNames;
 
 
-            if (configBuilder.Config.DarkThemePath != null)
+            if (configBuilder.Config.DarkThemePath != null && File.Exists(configBuilder.Config.DarkThemePath))
             {
                 DarkThemeComboBox.SelectedItem = Path.GetFileNameWithoutExtension(configBuilder.Config.DarkThemePath);
             }
-            if (configBuilder.Config.LightThemePath != null)
+            else
+            {
+                DarkThemeComboBox.SelectedIndex = 0;
+            }
+            if (configBuilder.Config.LightThemePath != null && File.Exists(configBuilder.Config.LightThemePath))
             {
                 LightThemeComboBox.SelectedItem = Path.GetFileNameWithoutExtension(configBuilder.Config.LightThemePath);
+            }
+            else
+            {
+                LightThemeComboBox.SelectedIndex = 0;
             }
 
             SetDesktopBackgroundStatus();

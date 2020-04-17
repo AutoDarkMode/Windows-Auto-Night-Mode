@@ -1,4 +1,5 @@
 using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 using NLog;
 using System;
@@ -99,6 +100,32 @@ namespace AutoDarkModeSvc
                     Logger.Fatal(e, "could not read config file. shutting down application!");
                     NLog.LogManager.Shutdown();
                     Application.Exit();
+                }
+                //if a path is set to null, set it to the currently actvie theme for convenience reasons
+                bool configUpdateNeeded = false;
+                if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.DarkThemePath == null)
+                {
+                    Builder.Config.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) 
+                        + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
+                    configUpdateNeeded = true;
+                }
+                if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.LightThemePath == null)
+                {
+                    Builder.Config.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                       + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
+                    configUpdateNeeded = true;
+                }
+                if (configUpdateNeeded)
+                {
+                    Logger.Warn("one or more theme paths not set at program start, reinstantiation needed");
+                    try
+                    {
+                        Builder.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "couldn't save configuration file");
+                    }
                 }
 
                 int timerMillis = 0;

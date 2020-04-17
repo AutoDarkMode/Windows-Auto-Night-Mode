@@ -46,15 +46,34 @@ namespace AutoDarkModeApp
                 args.Remove("/debug");
             }
 
-
+            ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
             StartService();
+            int maxTries = 3;
+            int tries = 0;
+            bool heartBeatOK = false;
+            while (tries < maxTries && !heartBeatOK)
+            {
+                heartBeatOK = commandClient.SendMessage(Command.Alive);
+            }
+            if (maxTries == tries && !heartBeatOK)
+            {
+                string error = "could not get a heartbeat from the backend. Check if AutoDarkModeSvc.exe is running and try again";
+                MsgBox msg = new MsgBox(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                {
+                };
+                msg.ShowDialog();
+                return;
+            }
+            if (commandClient.SendMessage(Command.Alive))
+            {
+                
+            }
             //handle command line arguments
             if (args.Count > 0)
             {
                 Mutex.Dispose();
                 Mutex = new Mutex(false, "7f326fe1-181c-414f-b7f1-0df4baa578a7");
                 Mutex.WaitOne(TimeSpan.FromMilliseconds(100));
-                ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
                 foreach (var value in args)
                 {
                     if (value == "/switch")

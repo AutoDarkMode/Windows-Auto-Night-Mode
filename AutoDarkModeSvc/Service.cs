@@ -109,7 +109,6 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Debug(ex, "mutex abandoned before wait");
                 }
-
             }
         }
     }

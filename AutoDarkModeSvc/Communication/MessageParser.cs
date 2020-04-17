@@ -137,7 +137,7 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(Command.Err);
                         break;
                     case Command.Alive:
-                        Logger.Info("signal received: am I alive?");
+                        Logger.Info("signal received: request for running status");
                         SendResponse(Command.Ok);
                         break;
                     default:
