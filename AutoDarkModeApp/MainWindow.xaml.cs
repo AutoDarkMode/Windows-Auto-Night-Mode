@@ -291,19 +291,6 @@ namespace AutoDarkModeApp
             OffsetButton.IsEnabled = false;
             GetLocation();
         }
-        private void BGWinButton_Click(object sender, RoutedEventArgs e)
-        {
-            DesktopBGui BGui = new DesktopBGui
-            {
-                Owner = GetWindow(this)
-            };
-            BGui.ShowDialog();
-            if (BGui.saved == true)
-            {
-                ApplyButton_Click(applyButton, null);
-            }
-            SetDesktopBackgroundStatus();
-        }
 
         // CheckBox Handlers
         private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -351,7 +338,6 @@ namespace AutoDarkModeApp
             DarkStartMinutesBox.IsEnabled = true;
             LightStartHoursBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
-            BGWinButton.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
 
             try
@@ -382,9 +368,7 @@ namespace AutoDarkModeApp
             DarkStartMinutesBox.IsEnabled = false;
             LightStartHoursBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
-            BGWinButton.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
-            SetDesktopBackgroundStatus();
             try
             {
                 configBuilder.Save();
@@ -521,20 +505,8 @@ namespace AutoDarkModeApp
                 LightThemeComboBox.SelectedIndex = 0;
             }
 
-            SetDesktopBackgroundStatus();
             PopulateOffsetFields(configBuilder.Config.Location.SunsetOffsetMin, configBuilder.Config.Location.SunriseOffsetMin);
             initComplete = true;
-        }
-        private void SetDesktopBackgroundStatus()
-        {
-            if (!configBuilder.Config.Wallpaper.Enabled)
-            {
-                DeskBGStatus.Text = Properties.Resources.disabled;
-            }
-            else
-            {
-                DeskBGStatus.Text = Properties.Resources.enabled;
-            }
         }
         private void PopulateOffsetFields(int offsetDark, int offsetLight)
         {
