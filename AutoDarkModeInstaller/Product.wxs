@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <Product Id="*" Name="AutoDarkMode" Language="1033" Version="3.0.8.0" Manufacturer="AutoDarkMode" UpgradeCode="424d8179-0d5c-46bc-9984-24964850059b">
+  <Product Id="*" Name="AutoDarkMode" Language="1033" Version="3.0.9.0" Manufacturer="AutoDarkMode" UpgradeCode="424d8179-0d5c-46bc-9984-24964850059b">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of AutoDarkMode is already installed." />
     <MediaTemplate EmbedCab="yes" />

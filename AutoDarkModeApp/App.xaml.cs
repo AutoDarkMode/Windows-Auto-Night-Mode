@@ -64,10 +64,6 @@ namespace AutoDarkModeApp
                 msg.ShowDialog();
                 return;
             }
-            if (commandClient.SendMessage(Command.Alive))
-            {
-                
-            }
             //handle command line arguments
             if (args.Count > 0)
             {
