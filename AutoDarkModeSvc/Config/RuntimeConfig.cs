@@ -35,8 +35,8 @@ namespace AutoDarkModeSvc.Config
 
             CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
             CurrentWallpaperTheme = Theme.Undefined;
-
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
+            ForcedTheme = Theme.Undefined;
         }
 
         public Theme CurrentAppsTheme { get; set; }
@@ -44,6 +44,7 @@ namespace AutoDarkModeSvc.Config
         public Theme CurrentEdgeTheme { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
         public bool CurrentColorPrevalence { get; set; }
+        public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
     }
 }

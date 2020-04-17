@@ -13,6 +13,18 @@ namespace AutoDarkModeSvc
 
         public static void TimedSwitch(AutoDarkModeConfig config)
         {
+            RuntimeConfig rtc = RuntimeConfig.Instance();
+            if (rtc.ForcedTheme == Theme.Dark) 
+            { 
+                SwitchTheme(config, Theme.Dark);
+                return;
+            } 
+            else if (rtc.ForcedTheme == Theme.Light) 
+            {
+                SwitchTheme(config, Theme.Light);
+                return;
+            }
+
             DateTime sunrise = config.Sunrise;
             DateTime sunset = config.Sunset;
             if (config.Location.Enabled)
@@ -87,7 +99,6 @@ namespace AutoDarkModeSvc
         private static bool NeedsUpdate(AutoDarkModeConfig config, Theme newTheme)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
-
             if (config.Wallpaper.Enabled)
             {
                 if (rtc.CurrentWallpaperTheme == Theme.Undefined || rtc.CurrentWallpaperTheme != newTheme)
