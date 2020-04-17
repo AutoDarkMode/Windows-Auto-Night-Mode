@@ -22,6 +22,8 @@ namespace AutoDarkModeSvc.Config
         public bool AutoThemeSwitchingEnabled { get; set; }
         public bool AccentColorTaskbarEnabled { get; set; }
         public bool ClassicMode { get; set; }
+        public string DarkThemePath { get; set; }
+        public string LightThemePath { get; set; }
         public Mode AppsTheme
         {
             get { return appsTheme; }

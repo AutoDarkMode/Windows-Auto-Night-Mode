@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>adm_256x256.ico</ApplicationIcon>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-    <Version>3.0.6.0</Version>
+    <Version>3.0.7.0</Version>
     <Company />
     <Product />
     <Authors>Armin Osaj</Authors>

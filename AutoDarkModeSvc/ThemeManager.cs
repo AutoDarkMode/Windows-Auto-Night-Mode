@@ -2,6 +2,7 @@
 using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
+using System.Threading;
 
 namespace AutoDarkModeSvc
 {
@@ -25,6 +26,42 @@ namespace AutoDarkModeSvc
             else
             {
                 SwitchTheme(config, Theme.Dark);
+            }
+        }
+
+        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme)
+        {
+            RuntimeConfig rtc = RuntimeConfig.Instance();
+            if (config.DarkThemePath == null || config.LightThemePath == null)
+            {
+                Logger.Error("dark and light theme paths set incorrectly");
+                return;
+            }
+            //if (config.LightThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Dark)
+            if (newTheme == Theme.Dark)
+            {
+                try
+                {
+                    ThemeHandler.ChangeTheme(config.DarkThemePath);
+                    rtc.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "couldn't switch to dark theme");
+                }
+            }
+            //else if (config.DarkThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Light)
+            else if (newTheme == Theme.Light)
+            {
+                try
+                {
+                    ThemeHandler.ChangeTheme(config.LightThemePath);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "couldn't switch to light theme");
+                    rtc.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
+                }
             }
         }
 
@@ -73,7 +110,7 @@ namespace AutoDarkModeSvc
             return false;
         }
 
-        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme)
+        public static void SwitchThemeClassic(AutoDarkModeConfig config, Theme newTheme)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
 
