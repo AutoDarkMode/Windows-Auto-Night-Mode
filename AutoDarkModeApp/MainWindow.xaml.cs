@@ -682,5 +682,19 @@ namespace AutoDarkModeApp
                 ShowErrorMessage(ex);
             }
         }
+
+        private void LightThemeComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            var themePaths = GetUserThemes();
+            var themeNames = themePaths.Select(s => Path.GetFileNameWithoutExtension(s));
+            LightThemeComboBox.ItemsSource = themeNames;
+        }
+
+        private void DarkThemeComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            var themePaths = GetUserThemes();
+            var themeNames = themePaths.Select(s => Path.GetFileNameWithoutExtension(s));
+            DarkThemeComboBox.ItemsSource = themeNames;
+        }
     }
 }

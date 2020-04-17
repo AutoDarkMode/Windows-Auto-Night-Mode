@@ -35,11 +35,11 @@
         <!-- System, Apps and Edge -->
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="54,9,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLightTheme}" VerticalAlignment="Top" Height="16" Width="Auto"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="&#xE706;" HorizontalAlignment="Left" Margin="15,21,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="171" Name ="LightThemeComboBox" DropDownClosed="LightThemeComboBox_DropDownClosed" Height="22">
+        <ComboBox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="171" Name ="LightThemeComboBox" DropDownClosed="LightThemeComboBox_DropDownClosed" Height="22" DropDownOpened="LightThemeComboBox_DropDownOpened">
         </ComboBox>
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="54,62,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDarkTheme}" VerticalAlignment="Top" Height="16" Width="Auto"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="&#xE708;" HorizontalAlignment="Left" Margin="15,74,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="53,83,0,0" VerticalAlignment="Top" Width="171" Name="DarkThemeComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="DarkThemeComboBox_DropDownClosed" Height="22">
+        <ComboBox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="53,83,0,0" VerticalAlignment="Top" Width="171" Name="DarkThemeComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="DarkThemeComboBox_DropDownClosed" DropDownOpened="DarkThemeComboBox_DropDownOpened" Height="22">
         </ComboBox>
 
         <!-- Desktop Background -->
