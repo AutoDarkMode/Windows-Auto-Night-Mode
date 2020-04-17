@@ -21,15 +21,15 @@ namespace AutoDarkModeSvc
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
             {
-                SwitchTheme(config, Theme.Light);
+                SwitchTheme(config, Theme.Light, true, sunset, sunrise);
             }
             else
             {
-                SwitchTheme(config, Theme.Dark);
+                SwitchTheme(config, Theme.Dark, true, sunset, sunrise);
             }
         }
 
-        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme)
+        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
@@ -39,11 +39,27 @@ namespace AutoDarkModeSvc
             }
             if (config.LightThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Dark)
             {
-                ThemeHandler.ChangeTheme(config.DarkThemePath);
+                if (automatic)
+                {
+                    Logger.Info($"automatic dark theme switch pending, sunset: {sunset}, now: {DateTime.Now}");
+                }
+                else
+                {
+                    Logger.Info("switching to dark theme");
+                }
+                ThemeHandler.Apply(config.DarkThemePath);
             }
             else if (config.DarkThemePath.Contains(rtc.CurrentWindowsThemeName) && newTheme == Theme.Light)
             {
-                ThemeHandler.ChangeTheme(config.LightThemePath);
+                if (automatic)
+                {
+                    Logger.Info($"automatic light theme switch pending, sunrise: {sunrise}, now: {DateTime.Now}");
+                }
+                else
+                {
+                    Logger.Info("switching to light theme");
+                }
+                ThemeHandler.Apply(config.LightThemePath);
             }
         }
 

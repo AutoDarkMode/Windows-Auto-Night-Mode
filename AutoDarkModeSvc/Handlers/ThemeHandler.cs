@@ -76,17 +76,18 @@ namespace AutoDarkModeSvc.Handlers
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
         [PermissionSet(SecurityAction.LinkDemand)]
-        public static void ChangeTheme(string themeFilePath)
+        public static void Apply(string themeFilePath)
         {
             Thread thread = new Thread(() => {
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
                     RuntimeConfig.Instance().CurrentWindowsThemeName = GetCurrentThemeName();
+                    Logger.Info($"applied theme \"{themeFilePath}\" successfully");
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "couldn't switch theme");
+                    Logger.Error(ex, $"couldn't apply theme \"{themeFilePath}\"");
                 }
             });
             thread.Name = "ThemeThread";
