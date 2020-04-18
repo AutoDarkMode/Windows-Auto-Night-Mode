@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Globalization;
 using System.Security;
 using System.Security.Permissions;
 using System.Runtime.InteropServices;
@@ -85,48 +84,6 @@ namespace AutoThemeChanger
         public static string GetThemeStatus()
         {
             return NativeMethods.IsThemeActive() ? "running" : "stopped";
-        }
-        [STAThread(), PermissionSet(SecurityAction.LinkDemand)]
-        public static void Main(string[] args)
-        {
-            if (args.Length < 1)
-            {
-                return;
-            }
-            string result = "";
-            string methodName = args[0].ToLower(CultureInfo.InvariantCulture);
-            try
-            {
-                if (String.Compare(methodName, "getcurrentthemename") == 0)
-                {
-                    result = GetCurrentThemeName();
-                }
-                else if (String.Compare(methodName, "changetheme") == 0)
-                {
-                    if (args.Length < 2)
-                    {
-                        return;
-                    }
-                    ChangeTheme(args[1]);
-                }
-                else if (String.Compare(methodName, "getcurrentvisualstylename") == 0)
-                {
-                    result = GetCurrentVisualStyleName();
-                }
-                else if (String.Compare(methodName, "getthemestatus") == 0)
-                {
-                    result = GetThemeStatus();
-                }
-                else
-                {
-                    return;
-                }
-            }
-            catch
-            {
-                result = "";
-            }
-            Console.WriteLine(String.Format(CultureInfo.InvariantCulture, result));
         }
     }
 }

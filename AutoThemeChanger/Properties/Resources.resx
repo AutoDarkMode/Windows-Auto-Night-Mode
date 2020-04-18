@@ -374,4 +374,7 @@ Do you want to open the PayPal donation page now?</value>
   <data name="offsetButton" xml:space="preserve">
     <value>Set</value>
   </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>These options are disabled while you are using a Windows Theme. You can set up these settings individually in your Windows Theme.</value>
+  </data>
 </root>

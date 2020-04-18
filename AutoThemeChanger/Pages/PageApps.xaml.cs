@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutoThemeChanger
 {
@@ -52,6 +42,16 @@ namespace AutoThemeChanger
                 SystemComboBox.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
                 EdgeComboBox.IsEnabled = false;
+            }
+
+            if (Properties.Settings.Default.ThemeSwitch)
+            {
+                AccentColorCheckBox.IsEnabled = false;
+                AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                SystemComboBox.IsEnabled = false;
+                SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme; ;
+                AppComboBox.IsEnabled = false;
+                AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
 
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;

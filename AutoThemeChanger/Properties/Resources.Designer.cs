@@ -756,6 +756,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to These options are disabled while you are using a Windows Theme. You can set up these settings individually in your Windows Theme..
+        /// </summary>
+        public static string ToolTipDisabledDueTheme {
+            get {
+                return ResourceManager.GetString("ToolTipDisabledDueTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates.
         /// </summary>
         public static string updateButton {

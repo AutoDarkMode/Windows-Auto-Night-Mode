@@ -9,7 +9,7 @@
       mc:Ignorable="d"
       Title="PageWallpaper" Height="350.052" Width="383.729" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
-    <Grid Margin="0,0,-116,-50">
+    <Grid Margin="0,0,-33,-60">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition MinHeight="0" Height="Auto"/>
@@ -29,17 +29,20 @@
         <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="175,59,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto"/>
 
         <!-- Windows Theme-->
-        <Button Content="Select Light Theme" Name="buttonLightTheme" CommandParameter="LightTheme" HorizontalAlignment="Left" Margin="5,141,0,0" Grid.Row="2" VerticalAlignment="Top" Width="153" Click="buttonSelectTheme_Click"/>
-        <Button Content="Select Dark Theme" Name="buttonDarkTheme" CommandParameter="DarkTheme" HorizontalAlignment="Left" Margin="6,173,0,-10" Grid.Row="2" VerticalAlignment="Top" Width="153" Click="buttonSelectTheme_Click"/>
-        <Button Content="Save + Enable" Name="buttonSaveTheme" IsEnabled="False" HorizontalAlignment="Left" Margin="4,206,0,-40" Grid.Row="2" VerticalAlignment="Top" Width="98" Click="buttonSaveTheme_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="163,141,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="Please select a File with the button" IsReadOnly="True" Name="TextBoxLightTheme" VerticalAlignment="Top" Width="270" />
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="163,173,0,-10" Grid.Row="2" TextWrapping="NoWrap" Text="Please select a File with the button" IsReadOnly="True" Name="TextBoxDarkTheme" VerticalAlignment="Top" Width="270" RenderTransformOrigin="0.5,0.5"/>
-        <Button Content="Disable" HorizontalAlignment="Left" Margin="107,206,0,-41" Grid.Row="2" VerticalAlignment="Top" Width="102" Name="ButtonDisableTheme" Click="ButtonDisableTheme_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="7,29,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbOpenThemeCP" Foreground="Blue" Text="Step 1) Click here to open the Windows Theme Settings." VerticalAlignment="Top" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" MouseDown="TextBlock_MouseDown"/>
+        <Button Content="Save" Name="buttonSaveTheme" IsEnabled="False" HorizontalAlignment="Left" Margin="6,238,0,-30" Grid.Row="2" VerticalAlignment="Top" Width="98" Click="ButtonSaveTheme_Click"/>
+        <Button Content="Disable" HorizontalAlignment="Left" Margin="110,238,0,-26" Grid.Row="2" VerticalAlignment="Top" Width="102" Name="ButtonDisableTheme" Click="ButtonDisableTheme_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,29,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbOpenThemeCP" Foreground="Blue" Text="Step 1) Click here to open Windows Theme Settings." VerticalAlignment="Top" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" MouseDown="TextBlock_MouseDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="7,47,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme1" Text="Step 2) Select your favorite Wallpaper, Mouse Cursor and Accent Color." VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="7,66,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme2" Text="Step 3) Go back to theme settings and save your theme." VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="6,87,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme3" Text="Step 4) Repeat the process for the second theme and then pick your theme files:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="7,115,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme4" Text="Select created themes" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="7,6,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme5" Text="Set up a theme" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="6,87,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme3" Text="Step 4) Repeat the process for the second theme." VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,118,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme4" Text="Pick your themes" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,6,0,0" Grid.Row="2" TextWrapping="Wrap" Name="TbTheme5" Text="Create your themes" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxLightTheme" Margin="39,155,0,0" Grid.Row="2" Text="Test" VerticalAlignment="Top" Width="173" DropDownOpened="ComboBoxLightTheme_DropDownOpened" SelectionChanged="ComboBoxLightTheme_SelectionChanged"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxDarkTheme" Margin="40,202,0,0" Grid.Row="2" Text="Test2" VerticalAlignment="Top" Width="172" DropDownOpened="ComboBoxDarkTheme_DropDownOpened" SelectionChanged="ComboBoxDarkTheme_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,146,0,0" Grid.Row="2" Name="IconLight" TextWrapping="Wrap" Text="&#xE706;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,190,0,0" Grid.Row="2" Name="IconDark" TextWrapping="Wrap" Text="&#xE708;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
+        <Button Content="Open Folder" HorizontalAlignment="Left" Name="ButtonOpenThemePath" Margin="217,238,0,-25" Grid.Row="2" VerticalAlignment="Top" Width="113" Click="ButtonOpenThemePath_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,186,0,0" Grid.Row="2" Name="TbTheme6" TextWrapping="Wrap" Text="Dark Theme:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,139,0,0" Grid.Row="2" Name="TbTheme7" TextWrapping="Wrap" Text="Light Theme:" VerticalAlignment="Top"/>
     </Grid>
 </Page>

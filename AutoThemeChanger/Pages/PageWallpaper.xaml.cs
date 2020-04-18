@@ -1,9 +1,12 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace AutoThemeChanger
 {
@@ -12,9 +15,9 @@ namespace AutoThemeChanger
     /// </summary>
     public partial class PageWallpaper : Page
     {
-        RegeditHandler regEditHandler = new RegeditHandler();
+        readonly RegeditHandler regEditHandler = new RegeditHandler();
         bool theme1 = false;
-        bool theme2 = true;
+        bool theme2 = false;
 
         public PageWallpaper()
         {
@@ -23,19 +26,32 @@ namespace AutoThemeChanger
         }
         private void UiHandler()
         {
-            if (!Properties.Settings.Default.ThemeInsteadOfWallpaper)
+            if (!Properties.Settings.Default.Enabled)
             {
-                if (!Properties.Settings.Default.Enabled) BGWinButton.IsEnabled = false;
+                BGWinButton.IsEnabled = false;
+                ComboBoxLightTheme.IsEnabled = false;
+                ComboBoxDarkTheme.IsEnabled = false;
+                buttonSaveTheme.IsEnabled = false;
+                ButtonDisableTheme.IsEnabled = false;
+            }
+
+            if (!Properties.Settings.Default.ThemeSwitch)
+            {
                 ShowDeskBGStatus();
                 cbSelection.SelectedIndex = 0;
             }
             else
             {
                 cbSelection.SelectedIndex = 1;
-                if (Properties.Settings.Default.ThemeSwitch)
+                if (Properties.Settings.Default.ThemeSwitch && Properties.Settings.Default.ThemeDark != null && Properties.Settings.Default.ThemeLight != null)
                 {
-                    TextBoxDarkTheme.Text = Properties.Settings.Default.ThemeDark;
-                    TextBoxLightTheme.Text = Properties.Settings.Default.ThemeLight;
+                    var themeNames = GetThemeFiles();
+                    ComboBoxDarkTheme.ItemsSource = themeNames;
+                    ComboBoxLightTheme.ItemsSource = themeNames;
+                    ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(Properties.Settings.Default.ThemeLight);
+                    ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(Properties.Settings.Default.ThemeDark);
+                    theme1 = true;
+                    theme2 = true;
                     buttonSaveTheme.IsEnabled = true;
                 }
             }
@@ -87,11 +103,10 @@ namespace AutoThemeChanger
         }
         private void SetThemeVisibility(Visibility value)
         {
-            buttonLightTheme.Visibility = value;
-            buttonDarkTheme.Visibility = value;
+            ComboBoxDarkTheme.Visibility = value;
+            ComboBoxLightTheme.Visibility = value;
             buttonSaveTheme.Visibility = value;
-            TextBoxDarkTheme.Visibility = value;
-            TextBoxLightTheme.Visibility = value;
+            ButtonOpenThemePath.Visibility = value;
             ButtonDisableTheme.Visibility = value;
             TbOpenThemeCP.Visibility = value;
             TbTheme1.Visibility = value;
@@ -99,32 +114,10 @@ namespace AutoThemeChanger
             TbTheme3.Visibility = value;
             TbTheme4.Visibility = value;
             TbTheme5.Visibility = value;
-        }
-
-        private void buttonSelectTheme_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog dlg = new OpenFileDialog
-            {
-                Filter = "THEME FILE" + "|*.theme",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes"
-            };
-            bool? result = dlg.ShowDialog();
-            if (result == true)
-            {
-                if (((Button)sender).CommandParameter.ToString().Equals("LightTheme"))
-                {
-                    Properties.Settings.Default.ThemeLight = dlg.FileName;
-                    TextBoxLightTheme.Text = dlg.FileName;
-                    theme1 = true;
-                }
-                if (((Button)sender).CommandParameter.ToString().Equals("DarkTheme"))
-                {
-                    Properties.Settings.Default.ThemeDark = dlg.FileName;
-                    TextBoxDarkTheme.Text = dlg.FileName;
-                    theme2 = true;
-                }
-                EnableSaveButton();
-            }
+            TbTheme6.Visibility = value;
+            TbTheme7.Visibility = value;
+            IconDark.Visibility = value;
+            IconLight.Visibility = value;
         }
 
         private void EnableSaveButton()
@@ -135,13 +128,19 @@ namespace AutoThemeChanger
             }
         }
 
-        private void buttonSaveTheme_Click(object sender, RoutedEventArgs e)
+        private void ButtonSaveTheme_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.WallpaperSwitch = false;
             Properties.Settings.Default.WallpaperDark = "";
             Properties.Settings.Default.WallpaperLight = "";
             Properties.Settings.Default.ThemeSwitch = true;
-            Properties.Settings.Default.ThemeInsteadOfWallpaper = true;
+
+            string selectedLightTheme = (string)ComboBoxLightTheme.SelectedItem;
+            Properties.Settings.Default.ThemeLight = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
+
+            string selectedDarkTheme = (string)ComboBoxDarkTheme.SelectedItem;
+            Properties.Settings.Default.ThemeDark = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
+
             buttonSaveTheme.IsEnabled = false;
             regEditHandler.SwitchThemeBasedOnTime();
         }
@@ -149,6 +148,14 @@ namespace AutoThemeChanger
         private void ButtonDisableTheme_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.ThemeSwitch = false;
+            Properties.Settings.Default.ThemeLight = null;
+            Properties.Settings.Default.ThemeDark = null;
+            buttonSaveTheme.IsEnabled = false;
+            ComboBoxDarkTheme.SelectedIndex = -1;
+            ComboBoxLightTheme.SelectedIndex = -1;
+            theme1 = false;
+            theme2 = false;
+            cbSelection.SelectedIndex = 0;
         }
 
         private void TextBlock_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -164,6 +171,48 @@ namespace AutoThemeChanger
         private async void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
+        }
+
+        private List<string> GetUserThemes()
+        {
+            string themeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
+            return Directory.EnumerateFiles(themeDirectory, "*.theme", SearchOption.TopDirectoryOnly).ToList();
+        }
+
+        private void ComboBoxDarkTheme_DropDownOpened(object sender, EventArgs e)
+        {
+            var themeNames = GetThemeFiles();
+            ComboBoxDarkTheme.ItemsSource = themeNames;
+        }
+
+        private void ComboBoxLightTheme_DropDownOpened(object sender, EventArgs e)
+        {
+            var themeNames = GetThemeFiles();
+            ComboBoxLightTheme.ItemsSource = themeNames;
+        }
+
+        private void ButtonOpenThemePath_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes");
+        }
+
+        private IEnumerable GetThemeFiles()
+        {
+            var themePaths = GetUserThemes();
+            var themeNames = themePaths.Select(s => Path.GetFileNameWithoutExtension(s));
+            return themeNames;
+        }
+
+        private void ComboBoxLightTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            theme1 = true;
+            EnableSaveButton();
+        }
+
+        private void ComboBoxDarkTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            theme2 = true;
+            EnableSaveButton();
         }
     }
 }

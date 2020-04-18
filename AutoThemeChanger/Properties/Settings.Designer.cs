@@ -262,17 +262,5 @@ namespace AutoThemeChanger.Properties {
                 this["ThemeSwitch"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ThemeInsteadOfWallpaper {
-            get {
-                return ((bool)(this["ThemeInsteadOfWallpaper"]));
-            }
-            set {
-                this["ThemeInsteadOfWallpaper"] = value;
-            }
-        }
     }
 }
