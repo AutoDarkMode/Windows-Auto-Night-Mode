@@ -130,11 +130,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DeskBGHandler.cs" />
+    <Compile Include="Handlers\DeskBGHandler.cs" />
     <Compile Include="DesktopBGui.xaml.cs">
       <DependentUpon>DesktopBGui.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LocationHandler.cs" />
+    <Compile Include="Handlers\LocationHandler.cs" />
     <Compile Include="MsgBox.xaml.cs">
       <DependentUpon>MsgBox.xaml</DependentUpon>
     </Compile>
@@ -160,12 +160,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ThemeHelper.cs" />
-    <Compile Include="Updater.cs" />
+    <Compile Include="Handlers\ThemeHelper.cs" />
+    <Compile Include="Handlers\Updater.cs" />
     <Compile Include="SunDate.cs" />
-    <Compile Include="RegeditHandler.cs" />
+    <Compile Include="Handlers\RegeditHandler.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="TaskShedHandler.cs" />
+    <Compile Include="Handlers\TaskShedHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
