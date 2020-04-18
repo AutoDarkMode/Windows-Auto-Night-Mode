@@ -15,7 +15,9 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme">0 for dark, 1 for light theme</param>
         public static void SetAppsTheme(int theme)
         {
-            GetKey().SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
+            var key = GetKey();
+            key.SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
+            key.Dispose();
         }
 
         /// <summary>
@@ -24,7 +26,9 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme"><0 for dark, 1 for light theme</param>
         public static void SetSystemTheme(int theme)
         {
-            GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
+            var key = GetKey();
+            key.SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
+            key.Dispose();
         }
 
         public static void SetEdgeTheme(int theme)
@@ -37,13 +41,17 @@ namespace AutoDarkModeSvc.Handlers
             {
                 theme = (int)Theme.Dark;
             }
-            GetEdgeKey().SetValue("Theme", theme, RegistryValueKind.DWord);
+            var edgeKey = GetEdgeKey();
+            edgeKey.SetValue("Theme", theme, RegistryValueKind.DWord);
+            edgeKey.Dispose();
         }
 
         public static bool EdgeUsesLightTheme()
         {
             //reverse dark and light for edge because Microsoft
-            var value = GetEdgeKey().GetValue("Theme");
+            var key = GetEdgeKey();
+            var value = key.GetValue("Theme");
+            key.Dispose();
             if ((int)value == (int)Theme.Dark)
             {
                 return true;
@@ -57,7 +65,9 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme">0 for disabled, 1 for enabled</param>
         public static void SetColorPrevalence(int theme)
         {
-            GetKey().SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
+            var key = GetKey();
+            key.SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
+            key.Dispose();
         }
 
         /// <summary>
@@ -77,7 +87,9 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool AppsUseLightTheme()
         {
-            var keyValue = GetKey().GetValue("AppsUseLightTheme");
+            var key = GetKey();
+            var keyValue = key.GetValue("AppsUseLightTheme");
+            key.Dispose();
             if ((int)keyValue == 1) return true;
             else return false;
         }
@@ -88,7 +100,9 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool SystemUsesLightTheme()
         {
-            var keyValue = GetKey().GetValue("SystemUsesLightTheme");
+            var key = GetKey();
+            var keyValue = key.GetValue("SystemUsesLightTheme");
+            key.Dispose();
             if ((int)keyValue == 1) return true;
             else return false;
         }
@@ -125,8 +139,16 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         public static void AddAutoStart()
         {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
+            try
+            {
+                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
+                registryKey.Dispose();
+            } catch (Exception ex)
+            {
+                Logger.Error(ex, "could not add AutoDarkModeSvc to autostart");
+            }
+
         }
 
         /// <summary>
@@ -134,8 +156,17 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         public static void RemoveAutoStart()
         {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            registryKey.DeleteValue("AutoDarkMode", false);
+            try
+            {
+                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                registryKey.DeleteValue("AutoDarkMode", false);
+                registryKey.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not remove AutoDarkModeSvc from autostart");
+            }
+
         }
     }
 }

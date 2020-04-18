@@ -39,7 +39,7 @@ namespace AutoDarkModeSvc.Communication
             Server.ReceiveReady += (s, a) =>
             {
                 string msg = a.Socket.ReceiveFrameString();
-                Logger.Info("received message: {0}", msg);
+                Logger.Debug("received message: {0}", msg);
                 MessageParser.Parse(new List<string>() { msg }, (message) =>
                 {
                     try
