@@ -12,7 +12,7 @@
     <Grid Margin="0,0,10,10" >
         <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="54,9,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top" Height="16" Width="Auto"/>
         <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Text="&#xE71D;" HorizontalAlignment="Left" Margin="15,21,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" DropDownClosed="AppComboBox_DropDownClosed" Height="22">
+        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="AppComboBox_DropDownClosed" Height="22">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
