@@ -35,15 +35,17 @@ namespace AutoDarkModeSvc
             ConfigMonitor = new AutoDarkModeConfigMonitor();
             ConfigMonitor.Start();
 
-            ModuleTimer MainTimer = new ModuleTimer(timerMillis, "main");
+            ModuleTimer MainTimer = new ModuleTimer(timerMillis, TimerName.Main);
             //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io");
-            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, "geopos");
+            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, TimerName.Geopos);
+            ModuleTimer StateUpdateTimer = new ModuleTimer(TimerFrequency.StateUpdate, TimerName.StateUpdate);
 
             Timers = new List<ModuleTimer>()
             {
                 MainTimer, 
                 //IOTimer, 
-                GeoposTimer
+                GeoposTimer,
+                StateUpdateTimer
             };
 
             MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers, true));

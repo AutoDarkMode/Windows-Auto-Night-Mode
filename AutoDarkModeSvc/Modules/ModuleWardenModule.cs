@@ -29,6 +29,7 @@ namespace AutoDarkModeSvc.Modules
             AutoDarkModeConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled);
             AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
+            AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, true);
         }
 
         /// <summary>

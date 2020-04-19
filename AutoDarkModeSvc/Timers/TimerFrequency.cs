@@ -12,6 +12,8 @@ namespace AutoDarkModeSvc.Timers
         public const int IO = 3600000;
         //location Timer is 1h
         public const int Location = 3600000;
+        //update timer for system state
+        public const int StateUpdate = 300000;
 
     }
 }

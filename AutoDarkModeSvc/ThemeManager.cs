@@ -51,12 +51,12 @@ namespace AutoDarkModeSvc
                 return;
             }
             if (!File.Exists(config.DarkThemePath)) {
-                Logger.Error("invalid dark theme path");
+                Logger.Error($"invalid dark theme path: {config.DarkThemePath}");
                 return;
             }
             if (!File.Exists(config.LightThemePath))
             {
-                Logger.Error("invalid light theme path");
+                Logger.Error($"invalid light theme path : {config.LightThemePath}");
                 return;
             }
             if (!config.DarkThemePath.EndsWith(".theme") || !config.DarkThemePath.EndsWith(".theme"))
@@ -64,6 +64,7 @@ namespace AutoDarkModeSvc
                 Logger.Error("both theme paths must have a .theme extension");
                 return;
             }
+
             if (Path.GetFileNameWithoutExtension(config.DarkThemePath) != rtc.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
                 if (automatic)
