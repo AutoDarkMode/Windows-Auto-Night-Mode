@@ -43,7 +43,7 @@ namespace AutoThemeChanger
             else
             {
                 cbSelection.SelectedIndex = 1;
-                if (Properties.Settings.Default.ThemeSwitch && Properties.Settings.Default.ThemeDark != null && Properties.Settings.Default.ThemeLight != null)
+                if (Properties.Settings.Default.Enabled && Properties.Settings.Default.ThemeSwitch && Properties.Settings.Default.ThemeDark != null && Properties.Settings.Default.ThemeLight != null)
                 {
                     var themeNames = GetThemeFiles();
                     ComboBoxDarkTheme.ItemsSource = themeNames;

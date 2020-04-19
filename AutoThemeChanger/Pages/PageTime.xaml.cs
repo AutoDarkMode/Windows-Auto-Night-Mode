@@ -210,7 +210,6 @@ namespace AutoThemeChanger.Pages
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
 
-
             try
             {
                 if (Properties.Settings.Default.AlterTime)
@@ -450,8 +449,12 @@ namespace AutoThemeChanger.Pages
             }
 
             Properties.Settings.Default.WallpaperSwitch = false;
-            Properties.Settings.Default.WallpaperLight = "";
-            Properties.Settings.Default.WallpaperDark = "";
+            Properties.Settings.Default.WallpaperLight = null;
+            Properties.Settings.Default.WallpaperDark = null;
+
+            Properties.Settings.Default.ThemeSwitch = false;
+            Properties.Settings.Default.ThemeLight = null;
+            Properties.Settings.Default.ThemeDark = null;
 
             locationCheckBox.IsEnabled = false;
             locationCheckBox.IsChecked = false;
@@ -504,7 +507,6 @@ namespace AutoThemeChanger.Pages
             }
 
         }
-
         private void SetOffsetVisibility(Visibility value)
         {
             OffsetLbl.Visibility = value;

@@ -711,11 +711,56 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apps.
+        /// </summary>
+        public static string NavbarApps {
+            get {
+                return ResourceManager.GetString("NavbarApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setings.
+        /// </summary>
+        public static string NavbarSettings {
+            get {
+                return ResourceManager.GetString("NavbarSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string NavbarTime {
+            get {
+                return ResourceManager.GetString("NavbarTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper/Theme.
+        /// </summary>
+        public static string NavbarWallpaper {
+            get {
+                return ResourceManager.GetString("NavbarWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set.
         /// </summary>
         public static string offsetButton {
             get {
                 return ResourceManager.GetString("offsetButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Folder.
+        /// </summary>
+        public static string OpenPath {
+            get {
+                return ResourceManager.GetString("OpenPath", resourceCulture);
             }
         }
         
@@ -743,6 +788,96 @@ namespace AutoThemeChanger.Properties {
         public static string save {
             get {
                 return ResourceManager.GetString("save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Theme:.
+        /// </summary>
+        public static string ThemeDark {
+            get {
+                return ResourceManager.GetString("ThemeDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create your themes.
+        /// </summary>
+        public static string ThemeHeaderCreate {
+            get {
+                return ResourceManager.GetString("ThemeHeaderCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick your themes.
+        /// </summary>
+        public static string ThemeHeaderPick {
+            get {
+                return ResourceManager.GetString("ThemeHeaderPick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Theme:.
+        /// </summary>
+        public static string ThemeLight {
+            get {
+                return ResourceManager.GetString("ThemeLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Theme (more features).
+        /// </summary>
+        public static string ThemeSelectionTheme {
+            get {
+                return ResourceManager.GetString("ThemeSelectionTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop Wallpaper (recommended).
+        /// </summary>
+        public static string ThemeSelectionWallaper {
+            get {
+                return ResourceManager.GetString("ThemeSelectionWallaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 1) Click here to open Windows Theme settings..
+        /// </summary>
+        public static string ThemeTutorialStep1 {
+            get {
+                return ResourceManager.GetString("ThemeTutorialStep1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 2) Now set the Windows Theme under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
+        /// </summary>
+        public static string ThemeTutorialStep2 {
+            get {
+                return ResourceManager.GetString("ThemeTutorialStep2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 3) Go back to theme settings and save your theme..
+        /// </summary>
+        public static string ThemeTutorialStep3 {
+            get {
+                return ResourceManager.GetString("ThemeTutorialStep3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 4) Repeat the process for the dark theme..
+        /// </summary>
+        public static string ThemeTutorialStep4 {
+            get {
+                return ResourceManager.GetString("ThemeTutorialStep4", resourceCulture);
             }
         }
         
