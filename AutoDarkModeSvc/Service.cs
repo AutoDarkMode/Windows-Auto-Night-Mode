@@ -17,7 +17,7 @@ namespace AutoDarkModeSvc
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         NotifyIcon NotifyIcon { get; }
         List<ModuleTimer> Timers { get; set; }
-        ICommandServer CommandServer { get;  }
+        ICommandServer CommandServer { get; }
         AutoDarkModeConfigMonitor ConfigMonitor { get; }
         private readonly ToolStripMenuItem forceDarkMenuItem = new ToolStripMenuItem("Force Dark Mode");
         private readonly ToolStripMenuItem forceLightMenuItem = new ToolStripMenuItem("Force Light Mode");
@@ -56,8 +56,9 @@ namespace AutoDarkModeSvc
         private void InitTray()
         {
             ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Close");
+            ToolStripMenuItem openConfigDirItem = new ToolStripMenuItem("Open Config Directory");
             exitMenuItem.Click += new EventHandler(Exit);
-
+            openConfigDirItem.Click += new EventHandler(OpenConfigDir);
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
             forceLightMenuItem.Click += new EventHandler(ForceMode);
 
@@ -65,6 +66,7 @@ namespace AutoDarkModeSvc
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
             NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
+            NotifyIcon.ContextMenuStrip.Items.Add(openConfigDirItem);
             NotifyIcon.ContextMenuStrip.Items.Add("-");
             NotifyIcon.ContextMenuStrip.Items.Add(exitMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceDarkMenuItem);
@@ -115,7 +117,7 @@ namespace AutoDarkModeSvc
                     Logger.Info("ui signal received: forcing light theme");
                     rtc.ForcedTheme = Theme.Light;
                     ThemeManager.SwitchTheme(config, Theme.Light);
-                } 
+                }
                 else if (mi.Name == "forceDark")
                 {
                     Logger.Info("ui signal received: forcing dark theme");
@@ -138,6 +140,17 @@ namespace AutoDarkModeSvc
             {
                 ThemeManager.SwitchTheme(config, Theme.Light);
             }
+        }
+
+        private void OpenConfigDir(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                Arguments = AutoDarkModeConfigBuilder.Instance().ConfigDir,
+                FileName = "explorer.exe"
+            };
+
+            Process.Start(startInfo);
         }
 
         private void OpenApp(object sender, MouseEventArgs e)
