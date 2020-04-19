@@ -97,6 +97,7 @@ namespace AutoDarkModeSvc
                 RuntimeConfig rtc = RuntimeConfig.Instance();
                 rtc.ForcedTheme = Theme.Undefined;
                 ThemeManager.TimedSwitch(config);
+                mi.Checked = false;
             }
             else
             {
