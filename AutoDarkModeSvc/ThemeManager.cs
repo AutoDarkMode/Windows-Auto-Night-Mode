@@ -69,7 +69,7 @@ namespace AutoDarkModeSvc
             {
                 if (automatic)
                 {
-                    Logger.Info($"automatic dark theme switch pending, sunset: {sunset}, now: {DateTime.Now}");
+                    Logger.Info($"automatic dark theme switch pending, sunset: {sunset.ToString("HH:mm:ss")}, now: {DateTime.Now.ToString("HH:mm:ss")}");
                 }
                 else
                 {
@@ -81,7 +81,7 @@ namespace AutoDarkModeSvc
             {
                 if (automatic)
                 {
-                    Logger.Info($"automatic light theme switch pending, sunrise: {sunrise}, now: {DateTime.Now}");
+                    Logger.Info($"automatic light theme switch pending, sunrise: {sunrise.ToString("HH:mm:ss")}, now: {DateTime.Now.ToString("HH:mm:ss")}");
                 }
                 else
                 {
