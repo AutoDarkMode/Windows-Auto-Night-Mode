@@ -363,4 +363,52 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   <data name="offsetButton" xml:space="preserve">
     <value>Festlegen</value>
   </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Uhrzeit</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Hintergrund/Design</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Ordner öffnen</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Dunkles Design:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Erstelle deine Designs</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Wähle deine Designs</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Helles Design:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows Design (mehr Funktionen)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Hintergrundbild (Empfohlen)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Schritt 1) Klicke hier, um die Windows Einstellungen zu öffnen</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Schritt 2) Setze nun unter Farben deine Windows Farbe auf Hell. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Schritt 3) Wechsle zurück zu den Design-Einstellungen und speichere das Design.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Schritt 4) Wiederhole den Vorgang für das dunkle Design.</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert. Du kannst sie individuell in deinem Windows Design ändern.</value>
+  </data>
 </root>
