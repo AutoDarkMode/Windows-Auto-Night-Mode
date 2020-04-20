@@ -7,11 +7,11 @@ namespace AutoThemeChanger
     {
         readonly string dark = "Dark switch";
         readonly string light = "Light switch";
-        readonly string hibernation = "Hibernation trigger";
-        readonly string updater = "Location times updater";
+        readonly string hibernation = "Hibernation";
+        readonly string updater = "Location times";
         readonly string appupdater = "App updater";
-        readonly string connected = "Connected standby trigger";
-        readonly string folder = "Auto Dark Mode";
+        readonly string connected = "Connected standby";
+        readonly string folder = "ADM_" + Environment.UserName;
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
         readonly string description = "Task of the program Windows Auto Dark Mode.";

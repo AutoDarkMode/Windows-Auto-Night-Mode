@@ -9,7 +9,7 @@
       mc:Ignorable="d"
       Title="PageWallpaper" Height="350.052" Width="383.729" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
-    <Grid Margin="0,0,-33,-84">
+    <Grid Margin="0,0,-626,-478">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition MinHeight="0" Height="Auto"/>

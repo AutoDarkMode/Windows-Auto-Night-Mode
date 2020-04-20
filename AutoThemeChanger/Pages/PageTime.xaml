@@ -7,8 +7,8 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageTime" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      d:DesignHeight="450"
+      Title="PageTime" Foreground="{DynamicResource SystemBaseHighColorBrush}" Width="642.5">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
             <RowDefinition Height="Auto" SharedSizeGroup="Group7" MinHeight="0"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <!-- Start -->
         <CheckBox Grid.Row="1" Grid.ColumnSpan="5" Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked" Height="Auto" Width="Auto"/>
 

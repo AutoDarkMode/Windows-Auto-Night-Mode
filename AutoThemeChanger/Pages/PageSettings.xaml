@@ -7,7 +7,7 @@
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
-      Title="PageSettings" Height="423.823" Width="276.454" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      Title="PageSettings" Height="623.492" Width="669.917" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
     <Grid>
         <!-- Info -->
