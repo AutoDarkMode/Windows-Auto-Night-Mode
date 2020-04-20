@@ -792,6 +792,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay for switching taskbar colors (ms):.
+        /// </summary>
+        public static string SettingsAccentColorTimeout {
+            get {
+                return ResourceManager.GetString("SettingsAccentColorTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Theme:.
         /// </summary>
         public static string ThemeDark {

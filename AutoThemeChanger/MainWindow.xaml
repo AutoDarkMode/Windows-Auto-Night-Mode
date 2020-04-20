@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Navbar -->
-        <Frame Content="Frame" Background="{DynamicResource SystemAltHighColorBrush}" Name="frameNavbar" Source="/Pages/PageTime.xaml" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Height="427" Margin="4,10,0,0" Grid.Row="2" Grid.RowSpan="8" VerticalAlignment="Top" Width="497" NavigationUIVisibility="Hidden"/>
+        <Frame Content="Frame" Background="{DynamicResource SystemAltHighColorBrush}" Name="frameNavbar" Source="/Pages/PageTime.xaml" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Height="487" Margin="0,10,0,0" Grid.Row="2" Grid.RowSpan="8" VerticalAlignment="Top" Width="501" NavigationUIVisibility="Hidden"/>
         <Button Content="Apps" Name="buttonNavbarApps" HorizontalAlignment="Left" Margin="113,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarApps_Click" Grid.RowSpan="2"/>
         <Button Content="Wallpaper + Themes" Name="buttonNavbarWallpaper" HorizontalAlignment="Left" Margin="207,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="132" Click="buttonNavbarWallpaper_Click" Grid.RowSpan="2"/>
         <Button Content="Settings" Name="buttonNavbarSettings" HorizontalAlignment="Left" Margin="370,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="buttonNavbarSettings_Click" Grid.RowSpan="2"/>

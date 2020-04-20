@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,6 +50,8 @@ namespace AutoThemeChanger.Pages
             {
                 gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_White.png", UriKind.Relative));
             }
+
+            TextboxAccentColorDelay.Text = Properties.Settings.Default.AccentColorSwitchTime.ToString();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -270,6 +273,36 @@ namespace AutoThemeChanger.Pages
             {
                 taskShedHandler.RemoveConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = false;
+            }
+        }
+
+        private void TextboxAccentColorDelay_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextboxAccentColorDelay.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                TextboxAccentColorDelay.SelectAll();
+            }));
+        }
+
+        private void TextboxAccentColorDelay_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TextboxAccentColorDelay_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextboxAccentColorDelay_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextboxAccentColorDelay.Text != "")
+            {
+                Properties.Settings.Default.AccentColorSwitchTime = int.Parse(TextboxAccentColorDelay.Text);
             }
         }
     }

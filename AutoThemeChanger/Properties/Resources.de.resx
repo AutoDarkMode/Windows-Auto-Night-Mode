@@ -411,4 +411,7 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert. Du kannst sie individuell in deinem Windows Design ändern.</value>
   </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Verzögerung für Taskleiste-Akzentfarbe (ms):</value>
+  </data>
 </root>

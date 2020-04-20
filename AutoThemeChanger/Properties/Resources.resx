@@ -422,4 +422,7 @@ Do you want to open the PayPal donation page now?</value>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value>Step 4) Repeat the process for the dark theme.</value>
   </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Delay for switching taskbar colors (ms):</value>
+  </data>
 </root>

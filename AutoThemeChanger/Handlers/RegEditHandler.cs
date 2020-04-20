@@ -69,7 +69,7 @@ namespace AutoThemeChanger
 
                 if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
                 {
-                    Thread.Sleep(400);
+                    Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
                     ColorPrevalence(1);
                 }
             }
@@ -87,7 +87,7 @@ namespace AutoThemeChanger
                 if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
                 {
                     ColorPrevalence(0);
-                    Thread.Sleep(400);
+                    Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
                 }
                 if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
                 if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
