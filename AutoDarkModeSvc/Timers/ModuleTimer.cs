@@ -56,6 +56,7 @@ namespace AutoDarkModeSvc.Timers
                     module.Fire();
                 }
                 Modules.Add(module);
+                Modules.Sort();
                 Logger.Info($"registered {module.Name} to timer {Name}");
             }
         }
@@ -64,6 +65,7 @@ namespace AutoDarkModeSvc.Timers
         {
             if (Modules.Contains(module))
             {
+                module.Cleanup();
                 Modules.Remove(Modules.Find(m => m.Name == module.Name));
                 Logger.Info($"deregistered {module.Name} from timer {Name}");
             }

@@ -37,6 +37,7 @@ namespace AutoDarkModeSvc.Config
             CurrentWallpaperTheme = Theme.Undefined;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
             ForcedTheme = Theme.Undefined;
+            PostponeSwitch = false;
         }
 
         public Theme CurrentAppsTheme { get; set; }
@@ -46,5 +47,6 @@ namespace AutoDarkModeSvc.Config
         public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
+        public bool PostponeSwitch { get; set; }
     }
 }

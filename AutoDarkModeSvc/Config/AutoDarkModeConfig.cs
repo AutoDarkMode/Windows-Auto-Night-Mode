@@ -11,6 +11,7 @@ namespace AutoDarkModeSvc.Config
             Wallpaper = new Wallpaper();
             Location = new Location();
             Tunable = new Tunable();
+            GPUMonitoring = new GPUMonitoring();
         }
 
         private Mode appsTheme;
@@ -75,6 +76,7 @@ namespace AutoDarkModeSvc.Config
         public Wallpaper Wallpaper { get; set; }
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
+        public GPUMonitoring GPUMonitoring { get; set; }
     }
 
     public class Wallpaper
@@ -103,5 +105,27 @@ namespace AutoDarkModeSvc.Config
     public class Tunable
     {
         public int AccentColorSwitchDelay { get; set; } = 500;
+    }
+
+    public class GPUMonitoring
+    {
+        public bool Enabled { get; set; }
+        public int Threshold { get; set; } = 30;
+        private int monitorTimeSpanMin;
+        public int MonitorTimeSpanMin
+        {
+            get { return monitorTimeSpanMin; }
+            set
+            {
+                if (value <= 3)
+                {
+                    monitorTimeSpanMin = 3;
+                }
+                else
+                {
+                    monitorTimeSpanMin = value;
+                }
+            }
+        }
     }
 }

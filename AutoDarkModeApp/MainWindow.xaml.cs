@@ -468,19 +468,17 @@ namespace AutoDarkModeApp
                     locationCheckBox.IsChecked = true;
                     DateTime Sunset = configBuilder.Config.Sunset;
                     DateTime Sunrise = configBuilder.Config.Sunrise;
-                    Sunrise.AddMinutes(configBuilder.Config.Location.SunriseOffsetMin);
-                    Sunset.AddMinutes(configBuilder.Config.Location.SunsetOffsetMin);
-
-                    DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
-                    DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
-                    LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
-                    LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
                 }
             }
             else
             {
                 AutoCheckBox_Unchecked(autoCheckBox, null);
             }
+
+            DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
+            DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
+            LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
+            LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
 
             var themePaths = GetUserThemes();
             var themeNames = themePaths.Select(s => Path.GetFileNameWithoutExtension(s));

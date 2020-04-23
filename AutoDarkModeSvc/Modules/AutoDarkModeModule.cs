@@ -11,10 +11,12 @@ namespace AutoDarkModeSvc.Modules
         public string Name { get; }
         public abstract string TimerAffinity { get; }
         public abstract void Fire();
-        public bool FireOnRegistration { get; }      
+        public int Priority { get; set; }
+        public bool FireOnRegistration { get; }
         public AutoDarkModeModule(string name, bool fireOnRegistration)
         {
             Name = name;
+            Priority = 0;
             FireOnRegistration = fireOnRegistration;
         }
 
@@ -45,6 +47,25 @@ namespace AutoDarkModeSvc.Modules
         public override string ToString()
         {
             return Name;
+        }
+
+        public int CompareTo(int other)
+        {
+            return Priority.CompareTo(other);
+        }
+
+        public int CompareTo(IAutoDarkModeModule other)
+        {
+            if (other is null)
+            {
+                return 0;
+            }
+            return other.Priority.CompareTo(Priority);
+        }
+
+        public virtual void Cleanup()
+        {
+
         }
     }
 }

@@ -54,6 +54,35 @@ namespace AutoDarkModeSvc
             return false;
         }
 
+        public static bool TimeisBetweenTimes(TimeSpan time, TimeSpan start, TimeSpan end)
+        {
+            if (start == end)
+            {
+                return true;
+            }
+
+            if (start <= end)
+            {
+                // start and stop times are in the same day
+                if (time >= start && time <= end)
+                {
+                    // current time is between start and stop
+                    return true;
+                }
+            }
+            else
+            {
+                // start and stop times are in different days
+                if (time >= start || time <= end)
+                {
+                    // current time is between start and stop
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private static string GetExecutionPath()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
