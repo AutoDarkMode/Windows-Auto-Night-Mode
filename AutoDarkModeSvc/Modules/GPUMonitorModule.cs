@@ -51,7 +51,8 @@ namespace AutoDarkModeSvc.Modules
         {
             if (Extensions.NowIsBetweenTimes(
                 time.AddMinutes(-Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay,
-                time.AddMinutes(Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay))
+                time.AddMinutes(Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay)
+                && !Monitor)
             {
                 Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minutes");
                 Monitor = true;
