@@ -52,7 +52,7 @@ namespace AutoThemeChanger
                     }
                     else if(value == "/removeTask")
                     {
-                        TaskShedHandler taskShedHandler = new TaskShedHandler();
+                        TaskSchHandler taskShedHandler = new TaskSchHandler();
                         taskShedHandler.RemoveTask();
                     }
                     else if (value == "/removeAutostart")

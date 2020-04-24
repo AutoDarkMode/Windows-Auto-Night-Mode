@@ -8,7 +8,7 @@ namespace AutoThemeChanger
     {
         public void SwitchThemeBasedOnTime()
         {
-            TaskShedHandler task = new TaskShedHandler();
+            TaskSchHandler task = new TaskSchHandler();
             var hour = DateTime.Now.Hour;
             var minute = DateTime.Now.Minute;
             var lightStart = task.GetRunTime("light");
@@ -56,7 +56,7 @@ namespace AutoThemeChanger
         {
             if (Properties.Settings.Default.ThemeSwitch)
             {
-                ThemeHelper.ChangeTheme(Properties.Settings.Default.ThemeDark);
+                ThemeHandler.ChangeTheme(Properties.Settings.Default.ThemeDark);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace AutoThemeChanger
                 if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
                 if (Properties.Settings.Default.WallpaperSwitch)
                 {
-                    DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperDark);
+                    WallpaperHandler.SetBackground(Properties.Settings.Default.WallpaperDark);
                 }
 
                 if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
@@ -80,7 +80,7 @@ namespace AutoThemeChanger
         {
             if (Properties.Settings.Default.ThemeSwitch)
             {
-                ThemeHelper.ChangeTheme(Properties.Settings.Default.ThemeLight);
+                ThemeHandler.ChangeTheme(Properties.Settings.Default.ThemeLight);
             }
             else
             {
@@ -93,7 +93,7 @@ namespace AutoThemeChanger
                 if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
                 if (Properties.Settings.Default.WallpaperSwitch)
                 {
-                    DeskBGHandler.SetBackground(Properties.Settings.Default.WallpaperLight);
+                    WallpaperHandler.SetBackground(Properties.Settings.Default.WallpaperLight);
                 }
             }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);

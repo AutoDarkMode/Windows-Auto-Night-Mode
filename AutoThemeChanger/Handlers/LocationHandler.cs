@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
@@ -79,7 +78,7 @@ namespace AutoThemeChanger
 
         public async Task SetLocationSilent()
         {
-            TaskShedHandler taskShedHandler = new TaskShedHandler();
+            TaskSchHandler taskShedHandler = new TaskSchHandler();
             int[] sundate = await CalculateSunTime(true);
             taskShedHandler.CreateTask(sundate[2], sundate[3], sundate[0], sundate[1]);
         }

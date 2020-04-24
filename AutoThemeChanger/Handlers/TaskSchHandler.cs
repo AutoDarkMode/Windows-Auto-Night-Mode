@@ -3,7 +3,7 @@ using Microsoft.Win32.TaskScheduler;
 
 namespace AutoThemeChanger
 {
-    public class TaskShedHandler
+    public class TaskSchHandler
     {
         readonly string dark = "Dark switch";
         readonly string light = "Light switch";

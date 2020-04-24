@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AutoThemeChanger
 {
@@ -26,6 +27,10 @@ namespace AutoThemeChanger
         }
         private void UiHandler()
         {
+            //react to windows theme switch
+            SourceChord.FluentWPF.SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
+
+            //if automatic theme switch isn't enabled
             if (!Properties.Settings.Default.Enabled)
             {
                 BGWinButton.IsEnabled = false;
@@ -56,6 +61,19 @@ namespace AutoThemeChanger
                 }
             }
         }
+
+        private void SystemTheme_ThemeChanged(object sender, EventArgs e)
+        {
+            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
+            {
+                TbOpenThemeCP.Foreground = Brushes.LightBlue;
+            }
+            else
+            {
+                TbOpenThemeCP.Foreground = Brushes.Blue;
+            }
+        }
+
         private void ShowDeskBGStatus()
         {
             if (Properties.Settings.Default.WallpaperSwitch == true)
@@ -179,16 +197,10 @@ namespace AutoThemeChanger
             return Directory.EnumerateFiles(themeDirectory, "*.theme", SearchOption.TopDirectoryOnly).ToList();
         }
 
-        private void ComboBoxDarkTheme_DropDownOpened(object sender, EventArgs e)
+        private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
             var themeNames = GetThemeFiles();
-            ComboBoxDarkTheme.ItemsSource = themeNames;
-        }
-
-        private void ComboBoxLightTheme_DropDownOpened(object sender, EventArgs e)
-        {
-            var themeNames = GetThemeFiles();
-            ComboBoxLightTheme.ItemsSource = themeNames;
+            ((ComboBox)sender).ItemsSource = themeNames;
         }
 
         private void ButtonOpenThemePath_Click(object sender, RoutedEventArgs e)

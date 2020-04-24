@@ -18,6 +18,8 @@ namespace AutoThemeChanger
         {
             InitializeComponent();
             UiHandler();
+            
+            //follow windows theme
             ThemeChange(this, null);
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
         }
@@ -26,16 +28,17 @@ namespace AutoThemeChanger
         {
             if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
             {
-                EdgyIcon.Source = new BitmapImage(new Uri(@"/Resources/Microsoft_Edge_Logo_White.png", UriKind.RelativeOrAbsolute));
+                EdgyIcon.Source = new BitmapImage(new Uri(@"/Resources/Microsoft_Edge_Logo_White.png", UriKind.Relative));
             }
             else
             {
-                EdgyIcon.Source = new BitmapImage(new Uri(@"/Resources/Microsoft_Edge_Logo.png", UriKind.RelativeOrAbsolute));
+                EdgyIcon.Source = new BitmapImage(new Uri(@"/Resources/Microsoft_Edge_Logo.png", UriKind.Relative));
             }
         }
 
         private void UiHandler()
         {
+            //if automatic theme switch isn't enabled
             if (!Properties.Settings.Default.Enabled)
             {
                 AccentColorCheckBox.IsEnabled = false;
@@ -44,6 +47,7 @@ namespace AutoThemeChanger
                 EdgeComboBox.IsEnabled = false;
             }
 
+            //if a windows theme was picked
             if (Properties.Settings.Default.ThemeSwitch)
             {
                 AccentColorCheckBox.IsEnabled = false;
@@ -54,6 +58,7 @@ namespace AutoThemeChanger
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
 
+            //if the OS version is older than 1903
             if (int.Parse(regEditHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             if (!is1903)
             {
@@ -67,25 +72,24 @@ namespace AutoThemeChanger
                 AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
             }
 
+            //accent color switch
             if (Properties.Settings.Default.AccentColor)
             {
                 AccentColorCheckBox.IsChecked = true;
             }
 
+            //combobox
             int appTheme = Properties.Settings.Default.AppThemeChange;
-            Console.WriteLine("appTheme Value: " + appTheme);
             if (appTheme == 0) AppComboBox.SelectedIndex = 0;
             if (appTheme == 1) AppComboBox.SelectedIndex = 1;
             if (appTheme == 2) AppComboBox.SelectedIndex = 2;
 
             int systemTheme = Properties.Settings.Default.SystemThemeChange;
-            Console.WriteLine("SystemTheme Value: " + systemTheme);
             if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
             if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
             if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
 
             int edgeTheme = Properties.Settings.Default.EdgeThemeChange;
-            Console.WriteLine("EdgeTheme Value: " + edgeTheme);
             if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
             if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
@@ -139,7 +143,7 @@ namespace AutoThemeChanger
                 if (Properties.Settings.Default.AccentColor)
                 {
                     regEditHandler.ColorPrevalence(0);
-                    Thread.Sleep(200);
+                    Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
                 }
                 regEditHandler.SystemTheme(1);
                 AccentColorCheckBox.IsEnabled = false;
@@ -151,7 +155,7 @@ namespace AutoThemeChanger
                 regEditHandler.SystemTheme(0);
                 if (Properties.Settings.Default.AccentColor)
                 {
-                    Thread.Sleep(200);
+                    Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
                     regEditHandler.ColorPrevalence(1);
                 }
                 AccentColorCheckBox.IsEnabled = true;

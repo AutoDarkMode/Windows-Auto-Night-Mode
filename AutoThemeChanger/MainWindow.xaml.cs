@@ -8,14 +8,12 @@ namespace AutoThemeChanger
 {
     public partial class MainWindow
     {
-        TaskShedHandler taskShedHandler = new TaskShedHandler();
-        RegeditHandler regEditHandler = new RegeditHandler();
-
         public MainWindow()
         {
             Console.WriteLine("--------- AppStart");
             LanguageHelper();
             InitializeComponent();
+
             if (Properties.Settings.Default.FirstRun)
             {
                 SystemTimeFormat();
@@ -108,22 +106,22 @@ namespace AutoThemeChanger
             JumpList.SetJumpList(Application.Current, jumpList);
         }
 
-        private void buttonNavbarApps_Click(object sender, RoutedEventArgs e)
+        private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
         }
 
-        private void buttonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
+        private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
         }
 
-        private void buttonNavbarSettings_Click(object sender, RoutedEventArgs e)
+        private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
         }
 
-        private void buttonNavarTime_Click(object sender, RoutedEventArgs e)
+        private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
         }

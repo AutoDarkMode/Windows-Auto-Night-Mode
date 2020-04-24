@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Auto Dark Mode")]
-[assembly: AssemblyDescription("Automatically switches between the dark and light theme of Windows 10 at sheduled times.")]
+[assembly: AssemblyDescription("Automatically switches between the dark and light theme of Windows 10 at scheduled times.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Armin Osaj")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("© 2019 Armin Osaj")]
+[assembly: AssemblyCopyright("© 2020 Armin Osaj")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.3.2.0")]
-[assembly: AssemblyFileVersion("2.3.2.0")]
+[assembly: AssemblyVersion("2.3.3.0")]
+[assembly: AssemblyFileVersion("2.3.3.0")]

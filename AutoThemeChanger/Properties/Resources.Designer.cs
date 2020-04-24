@@ -107,6 +107,7 @@ namespace AutoThemeChanger.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Only visible in dark mode.
+        ///If you run into issues: please increase the switching delay in settings. .
         /// </summary>
         public static string cbAccentColor {
             get {

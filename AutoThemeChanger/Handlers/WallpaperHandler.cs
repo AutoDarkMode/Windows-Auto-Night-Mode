@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace AutoThemeChanger
 {
-    class DeskBGHandler
+    class WallpaperHandler
     {
-        public DeskBGHandler()
+        public WallpaperHandler()
         {
         }
 

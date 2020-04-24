@@ -15,8 +15,6 @@ namespace AutoThemeChanger.Pages
     /// </summary>
     public partial class PageSettings : Page
     {
-        Updater updater = new Updater();
-        TaskShedHandler taskShedHandler = new TaskShedHandler();
         bool update = false;
         readonly string curLanguage = Properties.Settings.Default.Language;
 
@@ -56,6 +54,8 @@ namespace AutoThemeChanger.Pages
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
+            Updater updater = new Updater();
+
             if (!update)
             {
                 updateInfoText.Text = Properties.Resources.msgSearchUpd;//searching for update...
@@ -250,6 +250,8 @@ namespace AutoThemeChanger.Pages
 
         private void BckgrUpdateCB_Click(object sender, RoutedEventArgs e)
         {
+            TaskSchHandler taskShedHandler = new TaskSchHandler();
+
             if (BckgrUpdateCB.IsChecked.Value)
             {
                 taskShedHandler.CreateAppUpdaterTask();
@@ -262,8 +264,10 @@ namespace AutoThemeChanger.Pages
             }
         }
 
-        private void conStandByCB_Click(object sender, RoutedEventArgs e)
+        private void ConStandByCB_Click(object sender, RoutedEventArgs e)
         {
+            TaskSchHandler taskShedHandler = new TaskSchHandler();
+
             if (conStandByCB.IsChecked.Value)
             {
                 taskShedHandler.CreateConnectedStandbyTask();

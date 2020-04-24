@@ -312,7 +312,8 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Ein Fehler ist aufgetreten</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Nur im dunklen Design sichtbar</value>
+    <value>Nur im dunklen Design sichtbar.
+Falls die Aktivierung Probleme verursacht: erhöhe die Verzögerungszeit in den Einstellungen.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>

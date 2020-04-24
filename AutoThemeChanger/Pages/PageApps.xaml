@@ -9,25 +9,32 @@
       mc:Ignorable="d"
       Title="PageApps" Height="486.432" Width="587.166" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
-    <Grid Margin="0,0,10,10" >
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="54,9,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Text="&#xE71D;" HorizontalAlignment="Left" Margin="15,21,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top" Width="171" Name ="AppComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="AppComboBox_DropDownClosed" Height="22">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarApps}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
+        
+        <!-- Apps -->
+        <TextBlock HorizontalAlignment="Left" Margin="54,43,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <TextBlock Text="&#xE71D;" HorizontalAlignment="Left" Margin="15,55,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,64,0,0" VerticalAlignment="Top" Width="200" Name ="AppComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="AppComboBox_DropDownClosed" Height="22">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
         </ComboBox>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="54,62,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" Text="&#xE977;" HorizontalAlignment="Left" Margin="15,74,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="53,83,0,0" VerticalAlignment="Top" Width="171" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="SystemComboBox_DropDownClosed" Height="22">
+
+        <!-- System -->
+        <TextBlock HorizontalAlignment="Left" Margin="54,103,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <TextBlock Text="&#xE977;" HorizontalAlignment="Left" Margin="15,115,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25"/>
+        <ComboBox HorizontalAlignment="Left" Margin="53,124,0,0" VerticalAlignment="Top" Width="200" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" DropDownClosed="SystemComboBox_DropDownClosed" Height="22">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
         </ComboBox>
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,131,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
-        <CheckBox Grid.Row="2" Grid.ColumnSpan="5" x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="53,111,0,0" VerticalAlignment="Top" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
-        <Image Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="31" Margin="14,141,0,0" VerticalAlignment="Top" Width="26" Source="/Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="55,152,0,0" VerticalAlignment="Top" Width="171" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed" Height="22" Grid.RowSpan="2">
+
+        <!-- Edge -->
+        <TextBlock HorizontalAlignment="Left" Margin="55,182,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="53,152,0,0" VerticalAlignment="Top" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
+        <Image HorizontalAlignment="Left" Height="31" Margin="14,192,0,0" VerticalAlignment="Top" Width="26" Source="/Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon"/>
+        <ComboBox HorizontalAlignment="Left" Margin="55,203,0,0" VerticalAlignment="Top" Width="200" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed" Height="22">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>

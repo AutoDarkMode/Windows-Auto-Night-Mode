@@ -10,7 +10,7 @@ namespace AutoThemeChanger
 {
     public partial class DesktopBGui
     {
-        DeskBGHandler deskBGHandler = new DeskBGHandler();
+        WallpaperHandler deskBGHandler = new WallpaperHandler();
         string pathOrig1;
         string pathOrig2;
         string pathCur1 = Properties.Settings.Default.WallpaperLight;

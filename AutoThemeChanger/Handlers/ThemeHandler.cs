@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace AutoThemeChanger
 {
-    public static class ThemeHelper
+    public static class ThemeHandler
     {
         [ComImport, Guid("D23CC733-5522-406D-8DFB-B3CF5EF52A71"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface ITheme
