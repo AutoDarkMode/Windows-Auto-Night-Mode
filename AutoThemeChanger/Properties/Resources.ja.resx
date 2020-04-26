@@ -312,7 +312,8 @@
     <value>エラーが発生しました。</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>ダークモードのみ表示</value>
+    <value>ダークモードでのみ表示されます。
+問題が発生する場合、設定の切り替え遅延時間を増やしてください。</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>情報</value>
