@@ -62,7 +62,7 @@ namespace AutoDarkModeSvc
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
             forceLightMenuItem.Click += new EventHandler(ForceMode);
 
-            NotifyIcon.Icon = Properties.Resources.AutoDarkModeIcon;
+            NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
             NotifyIcon.ContextMenuStrip = new ContextMenuStrip();

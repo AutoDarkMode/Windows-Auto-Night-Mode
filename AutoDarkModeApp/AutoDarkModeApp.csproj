@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>adm_256x256.ico</ApplicationIcon>
+    <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Version>3.0.16.0</Version>
     <Company />
@@ -14,7 +14,7 @@
     <Copyright>© 2019 Armin Osaj</Copyright>
     <AssemblyName>AutoDarkModeApp</AssemblyName>
     <PackageId>AutoDarkModeGUI</PackageId>
-    <PackageIcon>AutoDarkModeIcon.ico</PackageIcon>
+    <PackageIcon>adm_new.ico</PackageIcon>
     <PackageIconUrl />
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
@@ -36,6 +36,10 @@
     <None Remove="Resources\Photo_Icon.png" />
     <None Remove="Resources\Settings_Icon.png" />
     <None Remove="Resources\Twitter_Logo_Blue.png" />
+    <None Include="..\adm_new.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="..\AutoDarkModeIcon.ico">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

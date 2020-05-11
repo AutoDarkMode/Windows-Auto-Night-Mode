@@ -6,13 +6,15 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Version>3.0.16.0</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
-    <ApplicationIcon>adm_256x256.ico</ApplicationIcon>
+    <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <StartupObject />
     <PackageId>AutoDarkModeService</PackageId>
     <Company>AutoDarkMode</Company>
     <Authors>AutoDarkModeService</Authors>
     <Product>AutoDarkModeService</Product>
     <Configurations>Debug;Release</Configurations>
+    <PackageIcon>adm_new.ico</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -50,6 +52,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\adm_new.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
