@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace AutoDarkModeSvc.Config
 
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
+        public DateTime LastUpdated { get; set; } = DateTime.MinValue;
         protected AutoDarkModeConfigBuilder()
         {
             if (instance == null)
@@ -58,11 +60,16 @@ namespace AutoDarkModeSvc.Config
             {
                 Save();
             }
-            using StreamReader reader = File.OpenText(ConfigFilePath);
-            JsonSerializer serializer = new JsonSerializer();
-            var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
-            Config = deserializedConfig ?? Config;
-            reader.Close();
+            var writeTime = File.GetLastWriteTimeUtc(ConfigFilePath);
+            if (writeTime > LastUpdated)
+            {
+                using StreamReader reader = File.OpenText(ConfigFilePath);
+                JsonSerializer serializer = new JsonSerializer();
+                var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+                Config = deserializedConfig ?? Config;
+                reader.Close();
+                LastUpdated = writeTime;
+            }
         }
 
 

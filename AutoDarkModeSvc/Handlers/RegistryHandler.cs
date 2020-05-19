@@ -52,7 +52,7 @@ namespace AutoDarkModeSvc.Handlers
             var key = GetEdgeKey();
             var value = key.GetValue("Theme");
             key.Dispose();
-            if ((int)value == (int)Theme.Dark)
+            if (value != null && (int)value == (int)Theme.Dark)
             {
                 return true;
             }
