@@ -40,7 +40,8 @@ namespace AutoDarkModeSvc.Config
             string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
             for (int i = 0; i < 10; i++)
             {
-                if (IsFileLocked(new FileInfo(ConfigFilePath))) {
+                if (IsFileLocked(new FileInfo(ConfigFilePath)))
+                {
                     Thread.Sleep(1000);
                 }
                 else
@@ -63,15 +64,26 @@ namespace AutoDarkModeSvc.Config
             var writeTime = File.GetLastWriteTimeUtc(ConfigFilePath);
             if (writeTime > LastUpdated)
             {
-                using StreamReader reader = File.OpenText(ConfigFilePath);
-                JsonSerializer serializer = new JsonSerializer();
-                var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
-                Config = deserializedConfig ?? Config;
-                reader.Close();
-                LastUpdated = writeTime;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (IsFileLocked(new FileInfo(ConfigFilePath)))
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        using StreamReader reader = File.OpenText(ConfigFilePath);
+                        JsonSerializer serializer = new JsonSerializer();
+                        var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+                        Config = deserializedConfig ?? Config;
+                        reader.Close();
+                        LastUpdated = writeTime;
+                        return;
+                    }
+                }
+                throw new TimeoutException("Loading the configuration file failed after 10 retries");
             }
         }
-
 
         /// <summary>
         /// Checks if the config file is locked
