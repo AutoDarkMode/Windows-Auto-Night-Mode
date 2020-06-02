@@ -712,6 +712,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string NavbarAbout {
+            get {
+                return ResourceManager.GetString("NavbarAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apps.
         /// </summary>
         public static string NavbarApps {
@@ -735,6 +744,15 @@ namespace AutoThemeChanger.Properties {
         public static string NavbarTime {
             get {
                 return ResourceManager.GetString("NavbarTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigation menu.
+        /// </summary>
+        public static string NavbarTitle {
+            get {
+                return ResourceManager.GetString("NavbarTitle", resourceCulture);
             }
         }
         

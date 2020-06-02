@@ -3,6 +3,9 @@ using System.Windows;
 using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
+using System.Drawing;
+using System.Windows.Media;
+using System.Drawing.Printing;
 
 namespace AutoThemeChanger
 {
@@ -24,10 +27,11 @@ namespace AutoThemeChanger
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            LanguageHelper();
+            ButtonNavarTime_Click(this, null);
+            DonationScreen();
             Updater updater = new Updater();
             updater.CheckNewVersion();
-            LanguageHelper();
-            DonationScreen();
         }
 
         private void DonationScreen()
@@ -109,21 +113,31 @@ namespace AutoThemeChanger
         private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 85, 631, 385);
         }
 
         private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 130, 631, 340);
         }
 
         private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 175, 631, 295);
         }
 
         private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 40, 631, 430);
+        }
+
+        private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)
+        {
+            frameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 462, 631, 8);
         }
     }
 }

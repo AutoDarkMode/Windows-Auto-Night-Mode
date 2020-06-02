@@ -13,8 +13,8 @@
             <TextBlock x:Name="IconTextBlock" HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="36"/>
         </Grid>
         <Grid Height="60">
-            <Button x:Name="YesButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,107,0" VerticalAlignment="Center" Width="75" Click="Button_Click"/>
-            <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,17,0" VerticalAlignment="Center" Width="75" Click="CloseButton_Click"/>
+            <Button x:Name="YesButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,107,0" VerticalAlignment="Center" Width="75" Click="Button_Click" BorderBrush="#FFDDDDDD"/>
+            <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,17,0" VerticalAlignment="Center" Width="75" Click="CloseButton_Click" BorderBrush="#FFDDDDDD"/>
         </Grid>
     </StackPanel>
 </fw:AcrylicWindow>

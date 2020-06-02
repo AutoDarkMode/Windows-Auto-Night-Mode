@@ -426,4 +426,10 @@ Do you want to open the PayPal donation page now?</value>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Delay for switching taskbar colors (ms):</value>
   </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Navigation menu</value>
+  </data>
 </root>

@@ -415,4 +415,10 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Verzögerung für Taskleiste-Akzentfarbe (ms):</value>
   </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Navigationsmenü</value>
+  </data>
 </root>

@@ -24,16 +24,16 @@
         <!-- Pick File Light -->
         <TextBlock Grid.ColumnSpan="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="&#xE706;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30" RenderTransformOrigin="0.673,0.524"/>
         <TextBlock Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Left" Margin="45,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbLight}" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <Button Grid.Column="0" x:Name="FilePicker1" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker1" MinWidth="80" Width="Auto"/>
+        <Button Grid.Column="0" x:Name="FilePicker1" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker1" MinWidth="80" Width="Auto" BorderBrush="#FFDDDDDD"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="Auto" TextAlignment="Center"/>
-        <Button Grid.Column="2" x:Name="GetCurrentBG1" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG1" Width="Auto"/>
+        <Button Grid.Column="2" x:Name="GetCurrentBG1" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG1" Width="Auto" BorderBrush="#FFDDDDDD"/>
 
         <!-- Pick File Dark -->
         <TextBlock Grid.ColumnSpan="70" Grid.Column="4" HorizontalAlignment="Left" Margin="0,12,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="30"/>
         <TextBlock Grid.ColumnSpan="70" Grid.Column="4" HorizontalAlignment="Left" Margin="35,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.dbDark}" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Button Grid.Column="4" x:Name="FilePicker2" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker2" MinWidth="80" Width="Auto"/>
+        <Button Grid.Column="4" x:Name="FilePicker2" Content="{x:Static p:Resources.dbFilePicker}" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Click="FilePicker1_Click" CommandParameter="FilePicker2" MinWidth="80" Width="Auto" BorderBrush="#FFDDDDDD"/>
         <TextBlock Grid.Column="5" HorizontalAlignment="Left" Margin="5,56,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.or}" VerticalAlignment="Top" Width="Auto" TextAlignment="Center"/>
-        <Button Grid.Column="6" x:Name="GetCurrentBG2" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG2" Width="Auto"/>
+        <Button Grid.Column="6" x:Name="GetCurrentBG2" Content="{x:Static p:Resources.dbUseCurrent}" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Click="GetCurrentBG1_Click" CommandParameter="GetCurrentBG2" Width="Auto" BorderBrush="#FFDDDDDD"/>
 
 
         <!-- Window Buttons -->
@@ -43,9 +43,9 @@
                     <Setter Property="Margin" Value="0,0,10,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button x:Name="DeleButton" Content="{x:Static p:Resources.dbDel}" Click="DeleButton_Click" HorizontalAlignment="Left" MinWidth="100" Width="Auto"/>
-            <Button x:Name="SaveButton1" Content="{x:Static p:Resources.save}" ToolTipService.ShowOnDisabled="True" Click="SaveButton1_Click" HorizontalAlignment="Center" MinWidth="80" Width="Auto"/>
-            <Button x:Name="CancelButton" Content="{x:Static p:Resources.cancel}" Click="CancelButton_Click" HorizontalAlignment="Right" MinWidth="60" Width="Auto"/>
+            <Button x:Name="DeleButton" Content="{x:Static p:Resources.dbDel}" Click="DeleButton_Click" HorizontalAlignment="Left" MinWidth="100" Width="Auto" BorderBrush="#FFDDDDDD"/>
+            <Button x:Name="SaveButton1" Content="{x:Static p:Resources.save}" ToolTipService.ShowOnDisabled="True" Click="SaveButton1_Click" HorizontalAlignment="Center" MinWidth="80" Width="Auto" BorderBrush="#FFDDDDDD"/>
+            <Button x:Name="CancelButton" Content="{x:Static p:Resources.cancel}" Click="CancelButton_Click" HorizontalAlignment="Right" MinWidth="60" Width="Auto" BorderBrush="#FFDDDDDD"/>
         </StackPanel>
 
         <!-- Misc -->

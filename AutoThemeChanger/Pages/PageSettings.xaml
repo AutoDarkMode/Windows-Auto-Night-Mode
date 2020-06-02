@@ -7,42 +7,19 @@
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
-      Title="PageSettings" Height="623.492" Width="669.917" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      Title="PageSettings" Height="509.492" Width="542.917" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
     <Grid>
-        <!-- Info -->
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.4 BETA" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="256" Margin="10,0,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAuthor}" VerticalAlignment="Top" Height="16" Width="251"/>
-
-        <!-- Social Media links-->
-        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="36" Margin="10,49,0,0" VerticalAlignment="Top" Width="38" Source="/Resources/GitHub_Logo_Black.png"/>
-        <TextBlock x:Name="GitHubTextBlock" HorizontalAlignment="Left" Margin="52,61,0,0" TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseEnter="GitHubTextBlock_MouseEnter" MouseLeave="GitHubTextBlock_MouseLeave" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown" Width="38" Height="16"/>
-        <Image HorizontalAlignment="Left" Height="59" Margin="90,39,0,0" VerticalAlignment="Top" Width="80" Source="/Resources/Twitter_Logo_Blue.png"/>
-        <TextBlock x:Name="TwitterTextBlock" HorizontalAlignment="Left" Margin="141,61,0,0" TextWrapping="Wrap" Focusable="True" Text="Twitter" VerticalAlignment="Top" MouseEnter="TwitterTextBlock_MouseEnter" MouseLeave="TwitterTextBlock_MouseLeave" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" PreviewKeyDown="TwitterTextBlock_PreviewKeyDown" Width="36" Height="16"/>
-        <Image HorizontalAlignment="Left" Height="35" Margin="15,92,0,0" VerticalAlignment="Top" Width="31" Source="/Resources/PayPal_Logo.png"/>
-        <TextBlock x:Name="PayPalTextBlock" HorizontalAlignment="Left" Margin="52,101,0,0" TextWrapping="Wrap" Focusable="True" Text="PayPal" VerticalAlignment="Top" MouseEnter="PayPalTextBlock_MouseEnter" MouseLeave="PayPalTextBlock_MouseLeave" MouseDown="PayPalTextBlock_MouseDown" KeyDown="PayPalTextBlock_KeyDown" Width="34" Height="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="102,95,0,0" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="32"/>
-        <TextBlock x:Name="telegramTextBlock" HorizontalAlignment="Left" Margin="141,103,0,0" TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseEnter="TelegramTextBlock_MouseEnter" MouseLeave="TelegramTextBlock_MouseLeave" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown"/>
-
-        <!-- Update -->
-        <TextBlock HorizontalAlignment="Left" Margin="11,135,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <Button x:Name="updateButton" Content="{x:Static p:Resources.updateButton}" HorizontalAlignment="Left" Margin="11,159,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="22" Width="150"/>
-        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="11,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static p:Resources.updateInfoText}" Width="250" Height="16"/>
-
-        <!-- Third Party Software-->
-        <TextBlock HorizontalAlignment="Left" Margin="11,210,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
-        <Button x:Name="taskShedulerLicense" Content="TaskScheduler" HorizontalAlignment="Left" Margin="11,234,0,0" VerticalAlignment="Top" Width="93" Click="TaskShedulerLicense_Click" Height="22"/>
-        <Button Name="FluentWPF" Content="FluentWPF" HorizontalAlignment="Left" Margin="109,235,0,0" VerticalAlignment="Top" Width="93" Height="21" Click="FluentWPF_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarSettings}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
 
         <!-- Settings-->
-        <TextBlock HorizontalAlignment="Left" Margin="11,267,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSettings}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="AlterTimeCheckBox_Click"/>
-        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="BckgrUpdateCB_Click"/>
-        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="ConStandByCB_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,352,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" Height="23" Margin="249,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" MaxLength="4"/>
-        <TextBlock HorizontalAlignment="Left" Margin="11,380,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="74,377,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
+        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="9,53,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="AlterTimeCheckBox_Click"/>
+        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="9,73,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="BckgrUpdateCB_Click"/>
+        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="9,93,0,0" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="ConStandByCB_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="9,114,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" Height="23" Margin="248,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" MaxLength="4"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="73,139,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>
@@ -57,7 +34,7 @@
             <ComboBoxItem Content="简体中文" Name="zh"/>
             <!-- <ComboBoxItem Content="繁體中文" Name="zhtw"/> -->
         </ComboBox>
-        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="11,405,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,167,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
         <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,395,0,0" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
     </Grid>
 </Page>
