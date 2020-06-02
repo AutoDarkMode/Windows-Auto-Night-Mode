@@ -94,6 +94,12 @@ namespace AutoThemeChanger
             if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
             if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
             if (edgeTheme == 3) EdgeComboBox.SelectedIndex = 3;
+
+            int officeTheme = Properties.Settings.Default.OfficeThemeChange;
+            if (officeTheme == 0) OfficeComboBox.SelectedIndex = 0;
+            if (officeTheme == 1) OfficeComboBox.SelectedIndex = 1;
+            if (officeTheme == 2) OfficeComboBox.SelectedIndex = 2;
+            if (officeTheme == 3) OfficeComboBox.SelectedIndex = 3;
         }
 
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
@@ -207,6 +213,36 @@ namespace AutoThemeChanger
         {
             Properties.Settings.Default.AccentColor = false;
             regEditHandler.ColorPrevalence(0);
+        }
+
+        private void OfficeComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (OfficeComboBox.SelectedIndex.Equals(0))
+            {
+                Properties.Settings.Default.OfficeThemeChange = 0;
+                try
+                {
+                    regEditHandler.SwitchThemeBasedOnTime();
+                }
+                catch
+                {
+
+                }
+            }
+            if (OfficeComboBox.SelectedIndex.Equals(1))
+            {
+                Properties.Settings.Default.OfficeThemeChange = 1;
+                regEditHandler.OfficeTheme(0);
+            }
+            if (OfficeComboBox.SelectedIndex.Equals(2))
+            {
+                Properties.Settings.Default.OfficeThemeChange = 2;
+                regEditHandler.OfficeTheme(4);
+            }
+            if (OfficeComboBox.SelectedIndex.Equals(3))
+            {
+                Properties.Settings.Default.OfficeThemeChange = 3;
+            }
         }
     }
 }

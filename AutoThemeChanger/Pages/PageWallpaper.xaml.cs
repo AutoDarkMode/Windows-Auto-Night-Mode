@@ -29,6 +29,7 @@ namespace AutoThemeChanger
         {
             //react to windows theme switch
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
+            SystemTheme_ThemeChanged(this, null);
 
             //if automatic theme switch isn't enabled
             if (!Properties.Settings.Default.Enabled)

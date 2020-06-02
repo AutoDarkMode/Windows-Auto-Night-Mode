@@ -1,6 +1,8 @@
-﻿using Microsoft.Win32;
+﻿using AutoThemeChanger.Properties;
+using Microsoft.Win32;
 using System;
 using System.Threading;
+using System.Windows.Input;
 
 namespace AutoThemeChanger
 {
@@ -74,6 +76,7 @@ namespace AutoThemeChanger
                 }
             }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
+            if (Properties.Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(4);
         }
 
         public void ThemeToLight()
@@ -97,6 +100,7 @@ namespace AutoThemeChanger
                 }
             }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
+            if (Properties.Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(0);
         }
 
         public void AppTheme(int theme)
@@ -167,6 +171,30 @@ namespace AutoThemeChanger
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
             registryKey.DeleteValue("AutoDarkMode", false);
+        }
+
+        public void OfficeTheme(byte themeValue)
+        {
+            string themeRegKey = @"Software\Microsoft\Office\16.0\Common";
+
+            //edit first registry key
+            RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(themeRegKey, true);
+            commonKey.SetValue("UI Theme", themeValue);
+
+            //search for the second key and then change it
+            RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(themeRegKey + @"\Roaming\Identities\", true);
+            foreach (var v in identityKey.GetSubKeyNames())
+            {
+                try
+                {
+                    RegistryKey settingsKey = identityKey.OpenSubKey(v + @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\", true);
+                    settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                }
+                catch
+                {
+
+                }
+            }
         }
     }
 }

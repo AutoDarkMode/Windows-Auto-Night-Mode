@@ -274,5 +274,17 @@ namespace AutoThemeChanger.Properties {
                 this["AccentColorSwitchTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int OfficeThemeChange {
+            get {
+                return ((int)(this["OfficeThemeChange"]));
+            }
+            set {
+                this["OfficeThemeChange"] = value;
+            }
+        }
     }
 }
