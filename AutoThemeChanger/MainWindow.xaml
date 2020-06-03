@@ -7,18 +7,23 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="637" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="true" fw:PointerTracker.Enabled="True" Background="{x:Null}" SizeToContent="Height" Height="535">
+        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="637" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}" SizeToContent="Height" Height="535">
 
     <Grid x:Name="mainWin" Background="#40FFFFFF">
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" SharedSizeGroup="Group1"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <!-- Titlebar -->
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="30" Margin="180,0,0,0" VerticalAlignment="Top" Width="460" Grid.Column="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" Grid.Column="0"/>
+
 
         <!-- Navbar -->
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarTitle}" FontWeight="Bold" VerticalAlignment="Top"/>
