@@ -382,7 +382,7 @@ Do you want to open the PayPal donation page now?</value>
     <value>Apps</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Setings</value>
+    <value>Settings</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Time</value>

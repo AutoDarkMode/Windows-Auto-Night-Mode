@@ -730,7 +730,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setings.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string NavbarSettings {
             get {
