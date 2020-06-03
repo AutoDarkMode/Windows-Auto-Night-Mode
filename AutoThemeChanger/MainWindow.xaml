@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Titlebar -->
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="30" Margin="180,0,0,0" VerticalAlignment="Top" Width="460" Grid.Column="0"/>
+        <Rectangle Fill="{DynamicResource SystemAltHighColorBrush}" HorizontalAlignment="Left" Height="30" Margin="180,0,0,0" VerticalAlignment="Top" Width="460" Grid.Column="0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" Grid.Column="0"/>
 
 

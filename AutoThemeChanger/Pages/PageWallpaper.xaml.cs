@@ -67,11 +67,11 @@ namespace AutoThemeChanger
         {
             if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
             {
-                TbOpenThemeCP.Foreground = Brushes.LightBlue;
+                
             }
             else
             {
-                TbOpenThemeCP.Foreground = Brushes.Blue;
+                
             }
         }
 

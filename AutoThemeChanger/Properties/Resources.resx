@@ -243,7 +243,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>App restart needed to see the changes</value>
+    <value>App restart required to see the changes</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Language:</value>
@@ -431,5 +431,8 @@ Do you want to open the PayPal donation page now?</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Navigation menu</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Restart</value>
   </data>
 </root>

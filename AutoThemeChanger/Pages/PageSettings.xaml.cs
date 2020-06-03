@@ -22,6 +22,8 @@ namespace AutoThemeChanger.Pages
         }
         private void UiHandler()
         {
+            RestartButton.Visibility = Visibility.Hidden;
+
             if (!Properties.Settings.Default.Enabled)
             {
                 conStandByCB.IsEnabled = false;
@@ -48,14 +50,18 @@ namespace AutoThemeChanger.Pages
         private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
         {
             SetLanguage(LangComBox.SelectedValue.ToString());
-            Translator.Text = Properties.Resources.lblTranslator;
             if (Properties.Settings.Default.Language != curLanguage)
             {
+                Translator.Text = Properties.Resources.lblTranslator;
                 RestartText.Text = Properties.Resources.restartNeeded;
+                RestartButton.Content = Properties.Resources.restart;
+                RestartButton.Visibility = Visibility.Visible;
+
             }
             else
             {
                 RestartText.Text = null;
+                RestartButton.Visibility = Visibility.Hidden;
             }
         }
 
@@ -66,16 +72,16 @@ namespace AutoThemeChanger.Pages
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
         }
 
-        private void AboutWindowXAML_Closed(object sender, EventArgs e)
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.Language != curLanguage)
+            try
             {
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();
             }
-            else
+            catch
             {
-                //Close(); TODO MUSS SPEICHERN BUTTON HIN
+
             }
         }
 

@@ -793,7 +793,16 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App restart needed to see the changes.
+        ///   Looks up a localized string similar to Restart.
+        /// </summary>
+        public static string restart {
+            get {
+                return ResourceManager.GetString("restart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App restart required to see the changes.
         /// </summary>
         public static string restartNeeded {
             get {

@@ -13,7 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" SharedSizeGroup="Group1"/>
             <RowDefinition Height="Auto" SharedSizeGroup="GroupTitle" MinHeight="50"/>
-            <RowDefinition Height="Auto" SharedSizeGroup="Group2" MinHeight="50"/>
+            <RowDefinition Height="Auto" SharedSizeGroup="Group2" MinHeight="30"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group2" MinHeight="30"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group3" MinHeight="25"/>
             <RowDefinition Height="Auto" SharedSizeGroup="Group4" MinHeight="35"/>

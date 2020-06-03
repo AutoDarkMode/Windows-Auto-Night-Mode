@@ -421,4 +421,7 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   <data name="NavbarTitle" xml:space="preserve">
     <value>Navigationsmenü</value>
   </data>
+  <data name="restart" xml:space="preserve">
+    <value>Neu starten</value>
+  </data>
 </root>
