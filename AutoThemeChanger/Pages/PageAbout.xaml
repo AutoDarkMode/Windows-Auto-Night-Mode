@@ -13,7 +13,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarAbout}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
 
         <!-- Info -->
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.4 BETA 6" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="276" Margin="10,48,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode Version 2.4 BETA 7" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Height="21" Width="276" Margin="10,48,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="© 2020 Armin Osaj" VerticalAlignment="Top" Height="16" Width="251"/>
 
         <!-- Social Media links-->
