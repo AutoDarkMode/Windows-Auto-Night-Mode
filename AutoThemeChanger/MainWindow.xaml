@@ -7,7 +7,7 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="637" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="false" Background="{x:Null}" SizeToContent="Height" Height="535">
+        Title="{x:Static p:Resources.Title}" MinHeight="480" Width="637" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="true" fw:PointerTracker.Enabled="True" Background="{x:Null}" SizeToContent="Height" Height="535">
 
     <Grid x:Name="mainWin" Background="#40FFFFFF">
         <!-- Grid Layout -->
@@ -22,37 +22,37 @@
 
         <!-- Navbar -->
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarTitle}" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Rectangle x:Name="NavbarRectangle" Fill="{x:Static fw:AccentColors.ImmersiveSystemAccentBrush}" Margin="0, 40, 631, 430" Grid.Row="1"/>
-        <Button Name="ButtonNavarTime" HorizontalAlignment="Left" Margin="2,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="157" Click="ButtonNavarTime_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#00000000">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="140" Height="40">
-                <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="33" Height="25"/>
+        <Rectangle x:Name="NavbarRectangle" Fill="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" Margin="0, 40, 630, 430" Grid.Row="1"/>
+        <Button Name="ButtonNavarTime" HorizontalAlignment="Left" Margin="0,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Click="ButtonNavarTime_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="155" Height="40">
+                <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="35" Height="25"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarTime}" FontSize="12" Height="18"/>
             </StackPanel>
         </Button>
-        <Button Name="ButtonNavbarApps" HorizontalAlignment="Left" Margin="2,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="157" Click="ButtonNavbarApps_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#00000000">
-            <StackPanel Orientation="Horizontal" Width="140" Height="40">
-                <TextBlock Text="&#xE71D;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="33" Height="25"/>
+        <Button Name="ButtonNavbarApps" HorizontalAlignment="Left" Margin="0,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Click="ButtonNavbarApps_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+            <StackPanel Orientation="Horizontal" Width="155" Height="40">
+                <TextBlock Text="&#xE71D;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="35" Height="25"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarApps}" Height="18"/>
             </StackPanel>
         </Button>
-        <Button Name="ButtonNavbarWallpaper" HorizontalAlignment="Left" Margin="2,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="157" Click="ButtonNavbarWallpaper_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#00000000">
-            <StackPanel Orientation="Horizontal" Width="140" Height="40">
-                <TextBlock Text="&#xE790;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="33" Height="25"/>
+        <Button Name="ButtonNavbarWallpaper" HorizontalAlignment="Left" Margin="0,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Click="ButtonNavbarWallpaper_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+            <StackPanel Orientation="Horizontal" Width="155" Height="40">
+                <TextBlock Text="&#xE790;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="35" Height="25"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarWallpaper}" Height="18"/>
             </StackPanel>
         </Button>
-        <Button Name="ButtonNavbarSettings" HorizontalAlignment="Left" Margin="2,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="157" Click="ButtonNavbarSettings_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#00000000">
-            <StackPanel Orientation="Horizontal" Width="140" Height="40">
-                <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="33" Height="25"/>
+        <Button Name="ButtonNavbarSettings" HorizontalAlignment="Left" Margin="0,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Click="ButtonNavbarSettings_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+            <StackPanel Orientation="Horizontal" Width="155" Height="40">
+                <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="35" Height="25"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarSettings}" Height="18"/>
             </StackPanel>
         </Button>
-        <Button Name="ButtonNavbarAbout" HorizontalAlignment="Left" Margin="2,462,0,0" Grid.Row="1" VerticalAlignment="Top" Width="157" Click="ButtonNavbarAbout_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#00000000">
-            <StackPanel Orientation="Horizontal" Width="140" Height="40">
-                <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="33" Height="25"/>
+        <Button Name="ButtonNavbarAbout" HorizontalAlignment="Left" Margin="0,462,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Click="ButtonNavbarAbout_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+            <StackPanel Orientation="Horizontal" Width="155" Height="40">
+                <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets" FontSize="25" Width="35" Height="25"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarAbout}" Height="18"/>
             </StackPanel>
         </Button>
-        <Frame Content="" Background="{DynamicResource SystemAltHighColorBrush}" Name="frameNavbar" Margin="159,0,-10,0" Grid.Row="1" Grid.RowSpan="2" Width="482" Height="510" NavigationUIVisibility="Hidden"/>
+        <Frame Content="" Background="{DynamicResource SystemAltHighColorBrush}" Name="frameNavbar" Margin="180,0,0,0" Grid.Row="1" Height="510" NavigationUIVisibility="Hidden"/>
     </Grid>
 </fw:AcrylicWindow>

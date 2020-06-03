@@ -46,7 +46,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="7,216,0,-6" Grid.Row="3" Name="IconDark" TextWrapping="Wrap" Text="&#xE708;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Name="ComboBoxDarkTheme" Margin="40,228,0,-15" Grid.Row="3" Text="Test2" VerticalAlignment="Top" Width="172" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBoxDarkTheme_SelectionChanged"/>
         <Button Content="{x:Static p:Resources.save}" Name="buttonSaveTheme" IsEnabled="False" HorizontalAlignment="Left" Margin="6,264,0,-46" Grid.Row="3" VerticalAlignment="Top" Width="114" Click="ButtonSaveTheme_Click" BorderBrush="#FFDDDDDD"/>
-        <Button Content="{x:Static p:Resources.dbDel}" HorizontalAlignment="Left" Margin="125,264,0,-44" Grid.Row="3" VerticalAlignment="Top" Width="116" Name="ButtonDisableTheme" Click="ButtonDisableTheme_Click" BorderBrush="#FFDDDDDD"/>
-        <Button Content="{x:Static p:Resources.OpenPath}" HorizontalAlignment="Left" Name="ButtonOpenThemePath" Margin="246,264,0,-43" Grid.Row="3" VerticalAlignment="Top" Width="120" Click="ButtonOpenThemePath_Click" BorderBrush="#FFDDDDDD"/>
+        <Button Content="{x:Static p:Resources.dbDel}" HorizontalAlignment="Left" Margin="125,264,0,-44" Grid.Row="3" VerticalAlignment="Top" Width="120" Name="ButtonDisableTheme" Click="ButtonDisableTheme_Click" BorderBrush="#FFDDDDDD"/>
+        <Button Content="{x:Static p:Resources.OpenPath}" HorizontalAlignment="Left" Name="ButtonOpenThemePath" Margin="250,264,0,-42" Grid.Row="3" VerticalAlignment="Top" Width="120" Click="ButtonOpenThemePath_Click" BorderBrush="#FFDDDDDD"/>
     </Grid>
 </Page>

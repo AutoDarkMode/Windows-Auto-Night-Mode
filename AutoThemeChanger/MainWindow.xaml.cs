@@ -113,31 +113,31 @@ namespace AutoThemeChanger
         private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 85, 631, 385);
+            NavbarRectangle.Margin = new Thickness(0, 85, 630, 385);
         }
 
         private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 130, 631, 340);
+            NavbarRectangle.Margin = new Thickness(0, 130, 630, 340);
         }
 
         private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 175, 631, 295);
+            NavbarRectangle.Margin = new Thickness(0, 175, 630, 295);
         }
 
         private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 40, 631, 430);
+            NavbarRectangle.Margin = new Thickness(0, 40, 630, 430);
         }
 
         private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)
         {
             frameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 462, 631, 8);
+            NavbarRectangle.Margin = new Thickness(0, 462, 630, 8);
         }
     }
 }

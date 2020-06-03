@@ -6,8 +6,8 @@
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       xmlns:local="clr-namespace:AutoThemeChanger.Pages"
       xmlns:Properties="clr-namespace:AutoThemeChanger.Properties" x:Class="AutoThemeChanger.Pages.PageAbout"
-      mc:Ignorable="d" d:DesignWidth="800"
-      Title="PageAbout" Height="570.914" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      mc:Ignorable="d"
+      Title="PageAbout" Height="635.464" Foreground="{DynamicResource SystemBaseHighColorBrush}" Width="770">
 
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarAbout}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
