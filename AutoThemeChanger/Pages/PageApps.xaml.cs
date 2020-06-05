@@ -46,7 +46,7 @@ namespace AutoThemeChanger
                 SystemComboBox.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
                 EdgeComboBox.IsEnabled = false;
-                EdgeComboBox.IsEnabled = false;
+                OfficeComboBox.IsEnabled = false;
             }
 
             //if a windows theme file was picked
@@ -72,7 +72,7 @@ namespace AutoThemeChanger
             else
             {
                 //inform user about settings
-                AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+                if(!Properties.Settings.Default.ThemeSwitch) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
 
                 //is accent color switch enabled?
                 if (Properties.Settings.Default.AccentColor)
