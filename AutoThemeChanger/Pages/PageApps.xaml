@@ -7,7 +7,7 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       mc:Ignorable="d"
-      Title="PageApps" Height="568.932" Width="963.666" Foreground="Black">
+      Title="PageApps" Height="568.932" Width="963.666" Foreground="{DynamicResource SystemBaseHighColorBrush}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,6 +15,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Header -->
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarApps}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1"/>
 
         <!-- Apps -->
@@ -29,7 +30,7 @@
         <!-- System -->
         <TextBlock HorizontalAlignment="Left" Margin="54,125,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1"/>
         <TextBlock Text="&#xE977;" HorizontalAlignment="Left" Margin="15,137,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25" Grid.Column="1"/>
-        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="53,179,0,0" VerticalAlignment="Top" Grid.Column="1" Checked="AccentColorCheckBox_Checked" Unchecked="AccentColorCheckBox_Unchecked" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
+        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="53,179,0,0" VerticalAlignment="Top" Grid.Column="1" Click="AccentColorCheckBox_Click" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
         <ComboBox HorizontalAlignment="Left" Margin="53,146,0,0" VerticalAlignment="Top" Width="200" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" Grid.Column="1" DropDownClosed="SystemComboBox_DropDownClosed" Height="28" Style="{StaticResource FluentComboBox}">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>

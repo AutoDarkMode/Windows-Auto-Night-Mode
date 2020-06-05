@@ -11,19 +11,20 @@ namespace AutoThemeChanger
     /// </summary>
     public partial class PageApps : Page
     {
-        RegeditHandler regEditHandler = new RegeditHandler();
+        readonly RegeditHandler regEditHandler = new RegeditHandler();
         bool is1903 = false;
 
         public PageApps()
         {
             InitializeComponent();
             UiHandler();
-            
+
             //follow windows theme
             ThemeChange(this, null);
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
         }
 
+        //react to windows theme change
         private void ThemeChange(object sender, EventArgs e)
         {
             if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
@@ -45,15 +46,16 @@ namespace AutoThemeChanger
                 SystemComboBox.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
                 EdgeComboBox.IsEnabled = false;
+                EdgeComboBox.IsEnabled = false;
             }
 
-            //if a windows theme was picked
+            //if a windows theme file was picked
             if (Properties.Settings.Default.ThemeSwitch)
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBox.IsEnabled = false;
-                SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme; ;
+                SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 AppComboBox.IsEnabled = false;
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
@@ -69,37 +71,21 @@ namespace AutoThemeChanger
             }
             else
             {
+                //inform user about settings
                 AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
-            }
 
-            //accent color switch
-            if (Properties.Settings.Default.AccentColor)
-            {
-                AccentColorCheckBox.IsChecked = true;
+                //is accent color switch enabled?
+                if (Properties.Settings.Default.AccentColor)
+                {
+                    AccentColorCheckBox.IsChecked = true;
+                }
             }
 
             //combobox
-            int appTheme = Properties.Settings.Default.AppThemeChange;
-            if (appTheme == 0) AppComboBox.SelectedIndex = 0;
-            if (appTheme == 1) AppComboBox.SelectedIndex = 1;
-            if (appTheme == 2) AppComboBox.SelectedIndex = 2;
-
-            int systemTheme = Properties.Settings.Default.SystemThemeChange;
-            if (systemTheme == 0) SystemComboBox.SelectedIndex = 0;
-            if (systemTheme == 1) SystemComboBox.SelectedIndex = 1;
-            if (systemTheme == 2) SystemComboBox.SelectedIndex = 2;
-
-            int edgeTheme = Properties.Settings.Default.EdgeThemeChange;
-            if (edgeTheme == 0) EdgeComboBox.SelectedIndex = 0;
-            if (edgeTheme == 1) EdgeComboBox.SelectedIndex = 1;
-            if (edgeTheme == 2) EdgeComboBox.SelectedIndex = 2;
-            if (edgeTheme == 3) EdgeComboBox.SelectedIndex = 3;
-
-            int officeTheme = Properties.Settings.Default.OfficeThemeChange;
-            if (officeTheme == 0) OfficeComboBox.SelectedIndex = 0;
-            if (officeTheme == 1) OfficeComboBox.SelectedIndex = 1;
-            if (officeTheme == 2) OfficeComboBox.SelectedIndex = 2;
-            if (officeTheme == 3) OfficeComboBox.SelectedIndex = 3;
+            AppComboBox.SelectedIndex = Properties.Settings.Default.AppThemeChange;
+            SystemComboBox.SelectedIndex = Properties.Settings.Default.SystemThemeChange;
+            EdgeComboBox.SelectedIndex = Properties.Settings.Default.EdgeThemeChange;
+            OfficeComboBox.SelectedIndex = Properties.Settings.Default.OfficeThemeChange;
         }
 
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
@@ -117,17 +103,20 @@ namespace AutoThemeChanger
                 }
 
             }
+
             if (AppComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.AppThemeChange = 1;
                 regEditHandler.AppTheme(1);
             }
+
             if (AppComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.AppThemeChange = 2;
                 regEditHandler.AppTheme(0);
             }
         }
+
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
             if (SystemComboBox.SelectedIndex.Equals(0))
@@ -143,6 +132,7 @@ namespace AutoThemeChanger
                 }
                 AccentColorCheckBox.IsEnabled = true;
             }
+
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.SystemThemeChange = 1;
@@ -155,6 +145,7 @@ namespace AutoThemeChanger
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.IsChecked = false;
             }
+
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
@@ -167,82 +158,132 @@ namespace AutoThemeChanger
                 AccentColorCheckBox.IsEnabled = true;
             }
         }
+
         private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
         {
             if (EdgeComboBox.SelectedIndex.Equals(0))
             {
-                Properties.Settings.Default.EdgeThemeChange = 0;
                 try
                 {
+                    Properties.Settings.Default.EdgeThemeChange = 0;
                     regEditHandler.SwitchThemeBasedOnTime();
                 }
                 catch
                 {
-
+                    DisableEdgeSwitch();
                 }
             }
+
             if (EdgeComboBox.SelectedIndex.Equals(1))
             {
-                Properties.Settings.Default.EdgeThemeChange = 1;
-                regEditHandler.EdgeTheme(0);
+                try
+                {
+                    regEditHandler.EdgeTheme(0);
+                    Properties.Settings.Default.EdgeThemeChange = 1;
+                }
+                catch
+                {
+                    DisableEdgeSwitch();
+                }
             }
+
             if (EdgeComboBox.SelectedIndex.Equals(2))
             {
-                Properties.Settings.Default.EdgeThemeChange = 2;
-                regEditHandler.EdgeTheme(1);
+                try
+                {
+                    regEditHandler.EdgeTheme(1);
+                    Properties.Settings.Default.EdgeThemeChange = 2;
+                }
+                catch
+                {
+                    DisableEdgeSwitch();
+                }
             }
+
             if (EdgeComboBox.SelectedIndex.Equals(3))
             {
                 Properties.Settings.Default.EdgeThemeChange = 3;
             }
         }
-        private void AccentColorCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void DisableEdgeSwitch()
         {
-            Properties.Settings.Default.AccentColor = true;
-            try
-            {
-                if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
-                if (SystemComboBox.SelectedIndex.Equals(2)) regEditHandler.ColorPrevalence(1);
-            }
-            catch
-            {
-
-            }
+            Properties.Settings.Default.EdgeThemeChange = 3;
+            EdgeComboBox.SelectedIndex = 3;
         }
-        private void AccentColorCheckBox_Unchecked(object sender, RoutedEventArgs e)
+
+        private void AccentColorCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.AccentColor = false;
-            regEditHandler.ColorPrevalence(0);
+            if (((CheckBox)sender).IsChecked ?? false)
+            {
+                try
+                {
+                    Properties.Settings.Default.AccentColor = true;
+                    if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
+                    if (SystemComboBox.SelectedIndex.Equals(2)) regEditHandler.ColorPrevalence(1);
+                }
+                catch
+                {
+                    AccentColorCheckBox.IsChecked = false;
+                    Properties.Settings.Default.AccentColor = false;
+                }
+            }
+            else
+            {
+                Properties.Settings.Default.AccentColor = false;
+                regEditHandler.ColorPrevalence(0);
+            }
         }
 
         private void OfficeComboBox_DropDownClosed(object sender, EventArgs e)
         {
             if (OfficeComboBox.SelectedIndex.Equals(0))
             {
-                Properties.Settings.Default.OfficeThemeChange = 0;
                 try
                 {
+                    Properties.Settings.Default.OfficeThemeChange = 0;
                     regEditHandler.SwitchThemeBasedOnTime();
                 }
                 catch
                 {
-
+                    DisableOfficeSwitch();
                 }
             }
+
             if (OfficeComboBox.SelectedIndex.Equals(1))
             {
-                Properties.Settings.Default.OfficeThemeChange = 1;
-                regEditHandler.OfficeTheme(0);
+                try
+                {
+                    regEditHandler.OfficeTheme(0);
+                    Properties.Settings.Default.OfficeThemeChange = 1;
+                }
+                catch
+                {
+                    DisableOfficeSwitch();
+                }
             }
+
             if (OfficeComboBox.SelectedIndex.Equals(2))
             {
-                Properties.Settings.Default.OfficeThemeChange = 2;
-                regEditHandler.OfficeTheme(4);
+                try
+                {
+                    regEditHandler.OfficeTheme(4);
+                    Properties.Settings.Default.OfficeThemeChange = 2;
+                }
+                catch
+                {
+                    DisableOfficeSwitch();
+                }
             }
+
             if (OfficeComboBox.SelectedIndex.Equals(3))
             {
                 Properties.Settings.Default.OfficeThemeChange = 3;
             }
+        }
+        private void DisableOfficeSwitch()
+        {
+            Properties.Settings.Default.OfficeThemeChange = 3;
+            OfficeComboBox.SelectedIndex = 3;
         }
     }
 }
