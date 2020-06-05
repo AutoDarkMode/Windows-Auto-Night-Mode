@@ -7,24 +7,24 @@
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
-      Title="PageSettings" Height="509.492" Width="542.917" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      Title="PageSettings" Height="509.492" Width="542.917" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarSettings}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1"/>
 
         <!-- Settings-->
-        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="9,54,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="AlterTimeCheckBox_Click"/>
-        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="9,75,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="BckgrUpdateCB_Click"/>
-        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="9,95,0,0" Grid.Column="1" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="ConStandByCB_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="9,126,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="23" Margin="10,147,0,0" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" MaxLength="4"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,187,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="10,208,0,0" Grid.Column="1" VerticalAlignment="Top" Width="120" Height="22" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed">
+        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="9,58,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="AlterTimeCheckBox_Click"/>
+        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="9,79,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="BckgrUpdateCB_Click"/>
+        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="9,99,0,0" Grid.Column="1" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="ConStandByCB_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,132,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="26" Margin="10,153,0,0" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" MaxLength="4"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,194,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="10,215,0,0" Grid.Column="1" VerticalAlignment="Top" Width="120" Height="28" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed" Style="{StaticResource FluentComboBox}">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>
@@ -39,8 +39,8 @@
             <ComboBoxItem Content="简体中文" Name="zh"/>
             <!-- <ComboBoxItem Content="繁體中文" Name="zhtw"/> -->
         </ComboBox>
-        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,233,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
-        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,254,0,0" Grid.Column="1" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
-        <Button Name="RestartButton" Content="Restart App" Grid.Column="1" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="RestartButton_Click"/>
+        <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="10,247,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+        <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="10,273,0,0" Grid.Column="1" TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
+        <Button Name="RestartButton" Content="Restart App" Grid.Column="1" HorizontalAlignment="Left" Margin="10,294,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="RestartButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
     </Grid>
 </Page>

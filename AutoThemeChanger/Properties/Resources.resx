@@ -430,7 +430,7 @@ Do you want to open the PayPal donation page now?</value>
     <value>About</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>Navigation menu</value>
+    <value>Menu</value>
   </data>
   <data name="restart" xml:space="preserve">
     <value>Restart</value>

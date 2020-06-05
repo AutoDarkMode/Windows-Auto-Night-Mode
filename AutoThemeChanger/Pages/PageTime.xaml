@@ -7,7 +7,7 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       mc:Ignorable="d"
-      Title="PageTime" Foreground="{DynamicResource SystemBaseHighColorBrush}" Width="772.634" Height="547.216">
+      Title="PageTime" Foreground="Black" Width="772.634" Height="547.216">
 
     <Grid>
         <Grid.RowDefinitions>

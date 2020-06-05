@@ -177,16 +177,6 @@ namespace AutoThemeChanger
             cbSelection.SelectedIndex = 0;
         }
 
-        private void TextBlock_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            TbOpenThemeCP.Cursor = Mouse.OverrideCursor = Cursors.Hand;
-        }
-
-        private void TextBlock_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            TbOpenThemeCP.Cursor = Mouse.OverrideCursor = null;
-        }
-
         private async void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
@@ -226,6 +216,16 @@ namespace AutoThemeChanger
         {
             theme2 = true;
             EnableSaveButton();
+        }
+
+        private void TbOpenThemeCP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) TextBlock_MouseDown(this, null);
+        }
+
+        private void ButtonOpenThemePath_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) ButtonOpenThemePath_Click(this, null);
         }
     }
 }

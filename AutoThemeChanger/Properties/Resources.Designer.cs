@@ -748,7 +748,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navigation menu.
+        ///   Looks up a localized string similar to Menu.
         /// </summary>
         public static string NavbarTitle {
             get {

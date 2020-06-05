@@ -154,7 +154,7 @@
     </Compile>
     <Compile Include="Handlers\ThemeHandler.cs" />
     <Compile Include="Handlers\Updater.cs" />
-    <Compile Include="SunDate.cs" />
+    <Compile Include="Handlers\SunDate.cs" />
     <Compile Include="Handlers\RegeditHandler.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Handlers\TaskSchHandler.cs" />
@@ -276,13 +276,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentWPF">
-      <Version>0.8.0</Version>
+      <Version>0.9.0</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost">
-      <Version>6.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.WindowsRuntime.UI.Xaml">
-      <Version>4.7.0</Version>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.18362.2005</Version>
     </PackageReference>
     <PackageReference Include="TaskScheduler">
       <Version>2.8.18</Version>

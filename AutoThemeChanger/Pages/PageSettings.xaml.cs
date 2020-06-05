@@ -50,6 +50,7 @@ namespace AutoThemeChanger.Pages
         private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
         {
             SetLanguage(LangComBox.SelectedValue.ToString());
+
             if (Properties.Settings.Default.Language != curLanguage)
             {
                 Translator.Text = Properties.Resources.lblTranslator;
@@ -62,6 +63,7 @@ namespace AutoThemeChanger.Pages
             {
                 RestartText.Text = null;
                 RestartButton.Visibility = Visibility.Hidden;
+                Translator.Text = Properties.Resources.lblTranslator;
             }
         }
 
