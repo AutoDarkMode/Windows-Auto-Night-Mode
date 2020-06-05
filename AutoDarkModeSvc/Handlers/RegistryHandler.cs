@@ -168,5 +168,32 @@ namespace AutoDarkModeSvc.Handlers
             }
 
         }
+        /// <summary>
+        /// Changes the office theme
+        /// </summary>
+        /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white</param>
+        public static void OfficeTheme(byte themeValue)
+        {
+            string themeRegKey = @"Software\Microsoft\Office\16.0\Common";
+
+            //edit first registry key
+            RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(themeRegKey, true);
+            commonKey.SetValue("UI Theme", themeValue);
+
+            //search for the second key and then change it
+            RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(themeRegKey + @"\Roaming\Identities\", true);
+            foreach (var v in identityKey.GetSubKeyNames())
+            {
+                try
+                {
+                    RegistryKey settingsKey = identityKey.OpenSubKey(v + @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\", true);
+                    settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                }
+                catch
+                {
+
+                }
+            }
+        }
     }
 }

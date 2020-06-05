@@ -12,6 +12,7 @@ namespace AutoDarkModeSvc.Config
             Location = new Location();
             Tunable = new Tunable();
             GPUMonitoring = new GPUMonitoring();
+            Office = new Office();
         }
 
         private Mode appsTheme;
@@ -73,10 +74,19 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+        public Office Office { get; set; }
         public Wallpaper Wallpaper { get; set; }
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
+    }
+
+    public class Office
+    {
+        public bool Enabled { get; set; } = false;
+        public Mode Mode { get; set; } = Mode.Switch;
+        public byte LightTheme { get; set; } = 0;
+        public byte DarkTheme { get; set; } = 4;
     }
 
     public class Wallpaper

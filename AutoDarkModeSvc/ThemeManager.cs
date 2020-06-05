@@ -16,12 +16,27 @@ namespace AutoDarkModeSvc
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (rtc.ForcedTheme == Theme.Dark) 
             { 
-                SwitchTheme(config, Theme.Dark);
+                if (config.ClassicMode)
+                {
+                    ApplyThemeOptions(config, Theme.Dark);
+                }
+                else
+                {
+                    ApplyTheme(config, Theme.Dark);
+                }
+
                 return;
             } 
             else if (rtc.ForcedTheme == Theme.Light) 
             {
-                SwitchTheme(config, Theme.Light);
+                if (config.ClassicMode)
+                {
+                    ApplyThemeOptions(config, Theme.Light);
+                }
+                else
+                {
+                    ApplyTheme(config, Theme.Light);
+                }
                 return;
             }
 
@@ -34,15 +49,29 @@ namespace AutoDarkModeSvc
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
             {
-                SwitchTheme(config, Theme.Light, true, sunset, sunrise);
+                if (config.ClassicMode)
+                {
+                    ApplyThemeOptions(config, Theme.Light, true, sunset, sunrise);
+                }
+                else
+                {
+                    ApplyTheme(config, Theme.Light, true, sunset, sunrise);
+                }
             }
             else
             {
-                SwitchTheme(config, Theme.Dark, true, sunset, sunrise);
+                if (config.ClassicMode)
+                {
+                    ApplyThemeOptions(config, Theme.Dark, true, sunset, sunrise);
+                }
+                else
+                {
+                    ApplyTheme(config, Theme.Dark, true, sunset, sunrise);
+                }
             }
         }
 
-        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        public static void ApplyTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
@@ -75,6 +104,7 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("switching to dark theme");
                 }
+                SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.DarkThemePath);
             }
             else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != rtc.CurrentWindowsThemeName && newTheme == Theme.Light)
@@ -87,7 +117,184 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("switching to light theme");
                 }
+                SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.LightThemePath);
+            }
+        }
+
+        public static void ApplyThemeOptions(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        {
+            RuntimeConfig rtc = RuntimeConfig.Instance();
+
+            if (!ThemeOptionsNeedUpdate(config, newTheme))
+            {
+                return;
+            }
+
+            var oldsys = rtc.CurrentSystemTheme;
+            var oldapp = rtc.CurrentAppsTheme;
+            var oldedg = rtc.CurrentEdgeTheme;
+            var oldwal = rtc.CurrentWallpaperTheme;
+            var oldoff = rtc.CurrentOfficeTheme;
+
+            SetAppsTheme(config.AppsTheme, newTheme, rtc);
+            SetEdgeTheme(config.EdgeTheme, newTheme, rtc);
+
+            SetWallpaper(newTheme, rtc, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
+            SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
+
+            //run async to delay at specific parts due to color prevalence not switching icons correctly
+            int taskdelay = config.Tunable.AccentColorSwitchDelay;
+            Task.Run(async () =>
+            {
+                await SetSystemTheme(config.SystemTheme, newTheme, taskdelay, rtc, config);
+
+                if (automatic)
+                {
+                    Logger.Info($"theme switch invoked automatically. Sunrise:{sunrise.ToString("HH:mm:ss")}, Sunset{sunrise.ToString("HH:mm:ss")}");
+                }
+                else
+                {
+                    Logger.Info($"theme switch invoked manually");
+                }
+                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}");
+                Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal} o:{oldoff}");
+                Logger.Info($"is (s:{rtc.CurrentSystemTheme}, a:{rtc.CurrentAppsTheme}, e:{rtc.CurrentEdgeTheme}, w:{rtc.CurrentWallpaperTheme}, o:{rtc.CurrentOfficeTheme}");
+            });
+        }
+
+        private static void SetAppsTheme(Mode mode, Theme newTheme, RuntimeConfig rtc)
+        {
+            if (mode == Mode.DarkOnly)
+            {
+                RegistryHandler.SetAppsTheme((int)Theme.Dark);
+                rtc.CurrentAppsTheme = Theme.Dark;
+            }
+            else if (mode == Mode.LightOnly)
+            {
+                RegistryHandler.SetAppsTheme((int)Theme.Light);
+                rtc.CurrentAppsTheme = Theme.Light;
+            }
+            else
+            {
+                RegistryHandler.SetAppsTheme((int)newTheme);
+                rtc.CurrentAppsTheme = newTheme;
+            }
+        }
+
+        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, RuntimeConfig rtc, AutoDarkModeConfig config)
+        {
+            // Set system theme
+            if (mode == Mode.DarkOnly)
+            {
+                RegistryHandler.SetSystemTheme((int)Theme.Dark);
+                rtc.CurrentSystemTheme = Theme.Dark;
+                await Task.Delay(taskdelay);
+                if (config.AccentColorTaskbarEnabled)
+                {
+                    RegistryHandler.SetColorPrevalence(1);
+                }
+                else
+                {
+                    RegistryHandler.SetColorPrevalence(0);
+                }
+            }
+            else if (config.SystemTheme == Mode.LightOnly)
+            {
+                RegistryHandler.SetColorPrevalence(0);
+                await Task.Delay(taskdelay);
+                RegistryHandler.SetSystemTheme((int)Theme.Light);
+                rtc.CurrentSystemTheme = Theme.Light;
+            }
+            else
+            {
+                if (config.AccentColorTaskbarEnabled)
+                {
+                    if (newTheme == Theme.Light)
+                    {
+                        RegistryHandler.SetColorPrevalence(0);
+                        await Task.Delay(taskdelay);
+                    }
+                }
+                RegistryHandler.SetSystemTheme((int)newTheme);
+                if (config.AccentColorTaskbarEnabled)
+                {
+                    if (newTheme == Theme.Dark)
+                    {
+                        await Task.Delay(taskdelay);
+                        RegistryHandler.SetColorPrevalence(1);
+                    }
+                }
+                rtc.CurrentSystemTheme = newTheme;
+            }
+        }
+
+        private static void SetEdgeTheme(Mode mode, Theme newTheme, RuntimeConfig rtc)
+        {
+            if (mode == Mode.DarkOnly)
+            {
+                RegistryHandler.SetEdgeTheme((int)Theme.Dark);
+                rtc.CurrentEdgeTheme = Theme.Dark;
+            }
+            else if (mode == Mode.LightOnly)
+            {
+                RegistryHandler.SetEdgeTheme((int)Theme.Light);
+                rtc.CurrentEdgeTheme = Theme.Light;
+            }
+            else
+            {
+                RegistryHandler.SetEdgeTheme((int)newTheme);
+                rtc.CurrentEdgeTheme = newTheme;
+            }
+        }
+
+        private static void SetOfficeTheme(Mode mode, Theme newTheme, RuntimeConfig rtc, byte lightTheme, byte darkTheme, bool enabled)
+        {
+            if (enabled)
+            {
+                if (mode == Mode.DarkOnly)
+                {
+                    RegistryHandler.OfficeTheme(darkTheme);
+                    rtc.CurrentOfficeTheme = Theme.Dark;
+                }
+                else if (mode == Mode.LightOnly)
+                {
+                    RegistryHandler.OfficeTheme(lightTheme);
+                    rtc.CurrentOfficeTheme = Theme.Light;
+                }
+                else
+                {
+                    if (newTheme == Theme.Dark)
+                    {
+                        RegistryHandler.OfficeTheme(darkTheme);
+                    }
+                    else
+                    {
+                        RegistryHandler.OfficeTheme(lightTheme);
+                    }
+                    rtc.CurrentOfficeTheme = newTheme;
+                }
+            }
+        }
+
+        private static void SetWallpaper(Theme newTheme, RuntimeConfig rtc, System.Collections.Generic.ICollection<string> darkThemeWallpapers,
+            System.Collections.Generic.ICollection<string> lightThemeWallpapers, bool enabled)
+        {
+            if (enabled)
+            {
+                if (newTheme == Theme.Dark)
+                {
+                    var success = WallpaperHandler.SetBackground(darkThemeWallpapers);
+                    if (success)
+                    {
+                        rtc.CurrentWallpaperTheme = newTheme;
+                    }
+                }
+                else
+                {
+                    WallpaperHandler.SetBackground(lightThemeWallpapers);
+                    rtc.CurrentWallpaperTheme = newTheme;
+                }
             }
         }
 
@@ -97,7 +304,7 @@ namespace AutoDarkModeSvc
         /// <param name="config">AutoDarkModeConfig instance</param>
         /// <param name="newTheme">new theme that is requested</param>
         /// <returns></returns>
-        private static bool NeedsUpdate(AutoDarkModeConfig config, Theme newTheme)
+        private static bool ThemeOptionsNeedUpdate(AutoDarkModeConfig config, Theme newTheme)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.Wallpaper.Enabled)
@@ -108,26 +315,22 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if ((config.SystemTheme == Mode.DarkOnly && rtc.CurrentSystemTheme != Theme.Dark)
-                 || (config.SystemTheme == Mode.LightOnly && rtc.CurrentSystemTheme != Theme.Light)
-                 || (config.SystemTheme == Mode.Switch && rtc.CurrentSystemTheme != newTheme)
-               )
+            if (ComponentNeedsUpdate(config.SystemTheme, rtc.CurrentSystemTheme, newTheme))
             {
                 return true;
             }
 
-            if ((config.AppsTheme == Mode.DarkOnly && rtc.CurrentAppsTheme != Theme.Dark)
-                 || (config.AppsTheme == Mode.LightOnly && rtc.CurrentAppsTheme != Theme.Light)
-                 || (config.AppsTheme == Mode.Switch && rtc.CurrentAppsTheme != newTheme)
-               )
+            if (ComponentNeedsUpdate(config.AppsTheme, rtc.CurrentAppsTheme, newTheme))
             {
                 return true;
             }
 
-            if ((config.EdgeTheme == Mode.DarkOnly && rtc.CurrentEdgeTheme != Theme.Dark)
-                || (config.EdgeTheme == Mode.LightOnly && rtc.CurrentEdgeTheme != Theme.Light)
-                || (config.EdgeTheme == Mode.Switch && rtc.CurrentEdgeTheme != newTheme)
-              )
+            if (ComponentNeedsUpdate(config.EdgeTheme, rtc.CurrentEdgeTheme, newTheme))
+            {
+                return true;
+            }
+
+            if (ComponentNeedsUpdate(config.Office.Mode, rtc.CurrentOfficeTheme, newTheme))
             {
                 return true;
             }
@@ -135,122 +338,16 @@ namespace AutoDarkModeSvc
             return false;
         }
 
-        public static void SwitchThemeClassic(AutoDarkModeConfig config, Theme newTheme)
+        private static bool ComponentNeedsUpdate(Mode componentMode, Theme currentComponentTheme, Theme newTheme)
         {
-            RuntimeConfig rtc = RuntimeConfig.Instance();
-
-            if (!NeedsUpdate(config, newTheme))
+            if ((componentMode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
+                || (componentMode == Mode.LightOnly && currentComponentTheme != Theme.Light)
+                || (componentMode == Mode.Switch && currentComponentTheme != newTheme)
+              )
             {
-                return;
+                return true;
             }
-
-            var oldsys = rtc.CurrentSystemTheme;
-            var oldapp = rtc.CurrentAppsTheme;
-            var oldedg = rtc.CurrentEdgeTheme;
-            var oldwal = rtc.CurrentWallpaperTheme;
-
-            if (config.AppsTheme == Mode.DarkOnly)
-            {
-                RegistryHandler.SetAppsTheme((int)Theme.Dark);
-                rtc.CurrentAppsTheme = Theme.Dark;
-            }
-            else if (config.AppsTheme == Mode.LightOnly)
-            {
-                RegistryHandler.SetAppsTheme((int)Theme.Light);
-                rtc.CurrentAppsTheme = Theme.Light;
-            }
-            else
-            {
-                RegistryHandler.SetAppsTheme((int)newTheme);
-                rtc.CurrentAppsTheme = newTheme;
-            }
-
-            if (config.EdgeTheme == Mode.DarkOnly)
-            {
-                RegistryHandler.SetEdgeTheme((int)Theme.Dark);
-                rtc.CurrentEdgeTheme = Theme.Dark;
-            }
-            else if (config.EdgeTheme == Mode.LightOnly)
-            {
-                RegistryHandler.SetEdgeTheme((int)Theme.Light);
-                rtc.CurrentEdgeTheme = Theme.Light;
-            }
-            else
-            {
-                RegistryHandler.SetEdgeTheme((int)newTheme);
-                rtc.CurrentEdgeTheme = newTheme;
-            }
-
-            if (config.Wallpaper.Enabled)
-            {
-                if (newTheme == Theme.Dark)
-                {
-                    var success = WallpaperHandler.SetBackground(config.Wallpaper.DarkThemeWallpapers);
-                    if (success)
-                    {
-                        rtc.CurrentWallpaperTheme = newTheme;
-                    }
-                }
-                else
-                {
-                    WallpaperHandler.SetBackground(config.Wallpaper.LightThemeWallpapers);
-                    rtc.CurrentWallpaperTheme = newTheme;
-                }
-            }
-
-
-            //run async to delay at specific parts due to color prevalence not switching icons correctly
-            int taskdelay = config.Tunable.AccentColorSwitchDelay;
-            Task.Run(async () =>
-            {
-                if (config.SystemTheme == Mode.DarkOnly)
-                {
-                    RegistryHandler.SetSystemTheme((int)Theme.Dark);
-                    rtc.CurrentSystemTheme = Theme.Dark;
-                    await Task.Delay(taskdelay);
-                    if (config.AccentColorTaskbarEnabled)
-                    {
-                        RegistryHandler.SetColorPrevalence(1);
-                    }
-                    else
-                    {
-                        RegistryHandler.SetColorPrevalence(0);
-                    }
-                }
-                else if (config.SystemTheme == Mode.LightOnly)
-                {
-                    RegistryHandler.SetColorPrevalence(0);
-                    await Task.Delay(taskdelay);
-                    RegistryHandler.SetSystemTheme((int)Theme.Light);
-                    rtc.CurrentSystemTheme = Theme.Light;
-                }
-                else
-                {
-                    if (config.AccentColorTaskbarEnabled)
-                    {
-                        if (newTheme == Theme.Light)
-                        {
-                            RegistryHandler.SetColorPrevalence(0);
-                            await Task.Delay(taskdelay);
-                        }
-                    }
-                    RegistryHandler.SetSystemTheme((int)newTheme);
-                    if (config.AccentColorTaskbarEnabled)
-                    {
-                        if (newTheme == Theme.Dark)
-                        {
-                            await Task.Delay(taskdelay);
-                            RegistryHandler.SetColorPrevalence(1);
-                        }
-                    }
-                    rtc.CurrentSystemTheme = newTheme;
-                }
-
-                Logger.Info($"theme switch performed");
-                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled})");
-                Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}),");
-                Logger.Info($"is (s:{rtc.CurrentSystemTheme}, a:{rtc.CurrentAppsTheme}, e:{rtc.CurrentEdgeTheme}, w:{rtc.CurrentWallpaperTheme})");
-            });
+            return false;
         }
     }
 }

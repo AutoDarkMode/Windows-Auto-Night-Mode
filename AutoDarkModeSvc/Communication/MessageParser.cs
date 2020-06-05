@@ -46,11 +46,11 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
                         {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
+                            ThemeManager.ApplyTheme(Properties.Config, Theme.Dark);
                         }
                         else
                         {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
+                            ThemeManager.ApplyTheme(Properties.Config, Theme.Light);
                         }
                         SendResponse(Command.Ok);
                         break;
