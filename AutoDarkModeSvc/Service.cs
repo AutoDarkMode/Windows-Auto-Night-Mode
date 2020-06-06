@@ -116,13 +116,13 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("ui signal received: forcing light theme");
                     rtc.ForcedTheme = Theme.Light;
-                    ThemeManager.ApplyTheme(config, Theme.Light);
+                    ThemeManager.SwitchTheme(config, Theme.Light);
                 }
                 else if (mi.Name == "forceDark")
                 {
                     Logger.Info("ui signal received: forcing dark theme");
                     rtc.ForcedTheme = Theme.Dark;
-                    ThemeManager.ApplyTheme(config, Theme.Dark);
+                    ThemeManager.SwitchTheme(config, Theme.Dark);
                 }
                 mi.Checked = true;
             }
@@ -134,11 +134,11 @@ namespace AutoDarkModeSvc
             Logger.Info("ui signal received: switching theme");
             if (RegistryHandler.AppsUseLightTheme())
             {
-                ThemeManager.ApplyTheme(config, Theme.Dark);
+                ThemeManager.SwitchTheme(config, Theme.Dark);
             }
             else
             {
-                ThemeManager.ApplyTheme(config, Theme.Light);
+                ThemeManager.SwitchTheme(config, Theme.Light);
             }
         }
 

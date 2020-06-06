@@ -15,28 +15,13 @@ namespace AutoDarkModeSvc
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (rtc.ForcedTheme == Theme.Dark) 
-            { 
-                if (config.ClassicMode)
-                {
-                    ApplyThemeOptions(config, Theme.Dark);
-                }
-                else
-                {
-                    ApplyTheme(config, Theme.Dark);
-                }
-
+            {
+                SwitchTheme(config, Theme.Dark);
                 return;
             } 
             else if (rtc.ForcedTheme == Theme.Light) 
             {
-                if (config.ClassicMode)
-                {
-                    ApplyThemeOptions(config, Theme.Light);
-                }
-                else
-                {
-                    ApplyTheme(config, Theme.Light);
-                }
+                SwitchTheme(config, Theme.Light);
                 return;
             }
 
@@ -49,29 +34,27 @@ namespace AutoDarkModeSvc
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
             {
-                if (config.ClassicMode)
-                {
-                    ApplyThemeOptions(config, Theme.Light, true, sunset, sunrise);
-                }
-                else
-                {
-                    ApplyTheme(config, Theme.Light, true, sunset, sunrise);
-                }
+                SwitchTheme(config, Theme.Light, true, sunset, sunrise);
             }
             else
             {
-                if (config.ClassicMode)
-                {
-                    ApplyThemeOptions(config, Theme.Dark, true, sunset, sunrise);
-                }
-                else
-                {
-                    ApplyTheme(config, Theme.Dark, true, sunset, sunrise);
-                }
+                SwitchTheme(config, Theme.Dark, true, sunset, sunrise);
             }
         }
 
-        public static void ApplyTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        {
+            if (config.ClassicMode)
+            {
+                ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
+            }
+            else
+            {
+                ApplyTheme(config, newTheme, automatic, sunset, sunrise);
+            }
+        }
+
+        private static void ApplyTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
@@ -122,7 +105,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        public static void ApplyThemeOptions(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        private static void ApplyThemeOptions(AutoDarkModeConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
 
@@ -151,7 +134,7 @@ namespace AutoDarkModeSvc
 
                 if (automatic)
                 {
-                    Logger.Info($"theme switch invoked automatically. Sunrise:{sunrise.ToString("HH:mm:ss")}, Sunset{sunrise.ToString("HH:mm:ss")}");
+                    Logger.Info($"theme switch invoked automatically. Sunrise:{sunrise.ToString("HH:mm:ss")}, Sunset{sunset.ToString("HH:mm:ss")}");
                 }
                 else
                 {
