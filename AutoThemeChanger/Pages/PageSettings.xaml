@@ -15,16 +15,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Page Title -->
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarSettings}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1"/>
 
         <!-- Settings-->
-        <CheckBox Name="AlterTimeCheckBox" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="9,58,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="AlterTimeCheckBox_Click"/>
-        <CheckBox Name="BckgrUpdateCB" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="9,79,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="BckgrUpdateCB_Click"/>
-        <CheckBox Name="conStandByCB" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" HorizontalAlignment="Left" Margin="9,99,0,0" Grid.Column="1" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="ConStandByCB_Click"/>
+        <CheckBox Name="CheckBoxAlterTime" Content="{x:Static p:Resources.cb12HourTime}" HorizontalAlignment="Left" Margin="9,58,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxAlterTime_Click"/>
+        <CheckBox Name="CheckBoxBackgroundUpdater" Content="{x:Static p:Resources.cbBackgroundUpdate}" HorizontalAlignment="Left" Margin="9,79,0,0" Grid.Column="1" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBackgroundUpdater_Click"/>
+        <CheckBox Name="CheckBoxConStandBy" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" ToolTipService.ShowDuration="50000" HorizontalAlignment="Left" Margin="9,99,0,0" Grid.Column="1" VerticalAlignment="Top"  Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxConStandBy_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,132,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="26" Margin="10,153,0,0" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" MaxLength="4"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,194,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-        <ComboBox x:Name="LangComBox" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="10,215,0,0" Grid.Column="1" VerticalAlignment="Top" Width="120" Height="28" SelectedIndex="1" DropDownClosed="ComboBox_DropDownClosed" Style="{StaticResource FluentComboBox}">
+        <ComboBox x:Name="ComboBoxLanguageSelection" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="10,215,0,0" Grid.Column="1" VerticalAlignment="Top" Width="120" Height="28" SelectedIndex="1" DropDownClosed="ComboBoxLanguageSelection_DropDownClosed" Style="{StaticResource FluentComboBox}">
             <ComboBoxItem Content="Deutsch" Name="de"/>
             <ComboBoxItem Content="English" Name="en"/>
             <ComboBoxItem Content="Français" Name="fr"/>

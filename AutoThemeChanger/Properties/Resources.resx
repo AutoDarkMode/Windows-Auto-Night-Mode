@@ -435,4 +435,7 @@ Do you want to open the PayPal donation page now?</value>
   <data name="restart" xml:space="preserve">
     <value>Restart</value>
   </data>
+  <data name="themeApplyError" xml:space="preserve">
+    <value>Error occurred while applying the theme, we disabled theme switching</value>
+  </data>
 </root>

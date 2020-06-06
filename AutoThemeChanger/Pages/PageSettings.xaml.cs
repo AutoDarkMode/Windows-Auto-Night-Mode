@@ -23,36 +23,26 @@ namespace AutoThemeChanger.Pages
         private void UiHandler()
         {
             RestartButton.Visibility = Visibility.Hidden;
+            ComboBoxLanguageSelection.SelectedValue = Properties.Settings.Default.Language.ToString();
 
             if (!Properties.Settings.Default.Enabled)
             {
-                conStandByCB.IsEnabled = false;
+                CheckBoxConStandBy.IsEnabled = false;
             }
 
-            LangComBox.SelectedValue = Properties.Settings.Default.Language.ToString();
-
-            if (Properties.Settings.Default.AlterTime)
-            {
-                AlterTimeCheckBox.IsChecked = true;
-            }
-            if (Properties.Settings.Default.BackgroundUpdate)
-            {
-                BckgrUpdateCB.IsChecked = true;
-            }
-            if (Properties.Settings.Default.connectedStandby)
-            {
-                conStandByCB.IsChecked = true;
-            }
+            CheckBoxAlterTime.IsChecked = Properties.Settings.Default.AlterTime;
+            CheckBoxBackgroundUpdater.IsChecked = Properties.Settings.Default.BackgroundUpdate;
+            CheckBoxConStandBy.IsChecked = Properties.Settings.Default.connectedStandby;
 
             TextboxAccentColorDelay.Text = Properties.Settings.Default.AccentColorSwitchTime.ToString();
         }
 
-        private void ComboBox_DropDownClosed(object sender, System.EventArgs e)
+        private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
         {
-            SetLanguage(LangComBox.SelectedValue.ToString());
-
-            if (Properties.Settings.Default.Language != curLanguage)
+            string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString();
+            if (selectedLanguage != curLanguage)
             {
+                SetLanguage(selectedLanguage);
                 Translator.Text = Properties.Resources.lblTranslator;
                 RestartText.Text = Properties.Resources.restartNeeded;
                 RestartButton.Content = Properties.Resources.restart;
@@ -87,9 +77,9 @@ namespace AutoThemeChanger.Pages
             }
         }
 
-        private void AlterTimeCheckBox_Click(object sender, RoutedEventArgs e)
+        private void CheckBoxAlterTime_Click(object sender, RoutedEventArgs e)
         {
-            if (AlterTimeCheckBox.IsChecked.Value)
+            if (CheckBoxAlterTime.IsChecked.Value)
             {
                 Properties.Settings.Default.AlterTime = true;
             }
@@ -99,11 +89,11 @@ namespace AutoThemeChanger.Pages
             }
         }
 
-        private void BckgrUpdateCB_Click(object sender, RoutedEventArgs e)
+        private void CheckBoxBackgroundUpdater_Click(object sender, RoutedEventArgs e)
         {
             TaskSchHandler taskShedHandler = new TaskSchHandler();
 
-            if (BckgrUpdateCB.IsChecked.Value)
+            if (CheckBoxBackgroundUpdater.IsChecked.Value)
             {
                 taskShedHandler.CreateAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = true;
@@ -115,11 +105,11 @@ namespace AutoThemeChanger.Pages
             }
         }
 
-        private void ConStandByCB_Click(object sender, RoutedEventArgs e)
+        private void CheckBoxConStandBy_Click(object sender, RoutedEventArgs e)
         {
             TaskSchHandler taskShedHandler = new TaskSchHandler();
 
-            if (conStandByCB.IsChecked.Value)
+            if (CheckBoxConStandBy.IsChecked.Value)
             {
                 taskShedHandler.CreateConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = true;
@@ -138,13 +128,11 @@ namespace AutoThemeChanger.Pages
                 TextboxAccentColorDelay.SelectAll();
             }));
         }
-
         private void TextboxAccentColorDelay_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
         private void TextboxAccentColorDelay_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
@@ -152,7 +140,6 @@ namespace AutoThemeChanger.Pages
                 e.Handled = true;
             }
         }
-
         private void TextboxAccentColorDelay_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (TextboxAccentColorDelay.Text != "")

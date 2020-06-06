@@ -829,6 +829,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occurred while applying the theme, we disabled theme switching.
+        /// </summary>
+        public static string themeApplyError {
+            get {
+                return ResourceManager.GetString("themeApplyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Theme:.
         /// </summary>
         public static string ThemeDark {

@@ -13,8 +13,8 @@ namespace AutoThemeChanger.Pages
     /// </summary>
     public partial class PageTime : Page
     {
-        TaskSchHandler taskShedHandler = new TaskSchHandler();
-        RegeditHandler regEditHandler = new RegeditHandler();
+        readonly TaskSchHandler taskShedHandler = new TaskSchHandler();
+        readonly RegeditHandler regEditHandler = new RegeditHandler();
 
         public PageTime()
         {
