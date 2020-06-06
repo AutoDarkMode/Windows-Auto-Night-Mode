@@ -137,5 +137,21 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+        private int samples;
+        public int Samples
+        {
+            get { return samples; }
+            set
+            {
+                if (value < 1)
+                {
+                    samples = 1;
+                }
+                else
+                {
+                    samples = value;
+                }
+            }
+        }
     }
 }

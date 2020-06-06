@@ -23,6 +23,7 @@ namespace AutoDarkModeSvc.Modules
         private AutoDarkModeConfigBuilder ConfigBuilder { get; }
         private bool Monitor { get; set; }
         private bool Freeze { get; set; }
+        private int Counter { get; set; }
 
         public GPUMonitorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
@@ -120,15 +121,20 @@ namespace AutoDarkModeSvc.Modules
                 var gpuUsage = await GetGPUUsage();
                 if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
                 {
-                    Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
-                    Rtc.PostponeSwitch = false;
-                    Monitor = false;
-                    return ThreshLow;
+                    if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
+                    {
+                        Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
+                        Rtc.PostponeSwitch = false;
+                        Monitor = false;
+                        return ThreshLow;
+                    }
+                    Counter++;
                 }
                 else
                 {
-                    return ThreshHigh;
+                    Counter = 0;
                 }
+                return ThreshHigh;
             }
         }
 
