@@ -43,7 +43,7 @@ namespace AutoDarkModeSvc.Config
                 }
                 else
                 {
-                    using StreamWriter writer = new StreamWriter(ConfigFilePath, false);
+                    using StreamWriter writer = new StreamWriter(File.Open(ConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.Read));
                     writer.WriteLine(jsonConfig);
                     writer.Close();
                     return;
@@ -58,7 +58,7 @@ namespace AutoDarkModeSvc.Config
             {
                 Save();
             }
-            using StreamReader reader = File.OpenText(ConfigFilePath);
+            using StreamReader reader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             JsonSerializer serializer = new JsonSerializer();
             var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
             Config = deserializedConfig ?? Config;
@@ -81,7 +81,7 @@ namespace AutoDarkModeSvc.Config
             }
             try
             {
-                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
             }
             catch (IOException)
             {
