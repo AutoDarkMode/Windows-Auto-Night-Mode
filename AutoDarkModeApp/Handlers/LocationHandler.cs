@@ -13,37 +13,14 @@ namespace AutoDarkModeApp
 {
     class LocationHandler
     {
-        public int[] CalculateSunTime(bool background)
+        public int[] CalculateSunTime()
         {
             AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
             int[] sundate = new int[4];
-            int[] sun = new int[2];
-            if (!background)
-            {
-                BasicGeoposition position = GetUserPosition();
-                Properties.Settings.Default.LocationLatitude = position.Latitude;
-                Properties.Settings.Default.LocationLongitude = position.Longitude;
-                configBuilder.Config.Location.Lat = position.Latitude;
-                configBuilder.Config.Location.Lon = position.Longitude;
-                sun = SunDate.CalculateSunriseSunset(position.Latitude, position.Longitude);
-            }
-            else if (background)
-            {
-                sun = SunDate.CalculateSunriseSunset(configBuilder.Config.Location.Lat, configBuilder.Config.Location.Lon);
-            }
-
 
             //Add offset to sunrise and sunset hours using Settings
-
-            //Remove old offset first if new offset is zero to preserve temporal integrity
-            DateTime sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
-            configBuilder.Config.Sunrise = sunrise;
-            sunrise = sunrise.AddMinutes(configBuilder.Config.Location.SunriseOffsetMin);
-
-
-            DateTime sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[1] / 60, sun[1] - (sun[1] / 60) * 60, 0);
-            configBuilder.Config.Sunset = sunset;
-            sunset = sunset.AddMinutes(configBuilder.Config.Location.SunsetOffsetMin);
+            DateTime sunrise = configBuilder.LocationData.Sunrise.AddMinutes(configBuilder.Config.Location.SunriseOffsetMin);
+            DateTime sunset = configBuilder.LocationData.Sunset.AddMinutes(configBuilder.Config.Location.SunsetOffsetMin);
 
             sundate[0] = sunrise.Hour; //sunrise hour
             sundate[1] = sunrise.Minute; //sunrise minute
@@ -57,8 +34,8 @@ namespace AutoDarkModeApp
             AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
             var position = new BasicGeoposition()
             {
-                Latitude = configBuilder.Config.Location.Lat,
-                Longitude = configBuilder.Config.Location.Lon
+                Latitude = configBuilder.LocationData.Lat,
+                Longitude = configBuilder.LocationData.Lon
             };
             return position;
         }
@@ -69,8 +46,8 @@ namespace AutoDarkModeApp
 
             Geopoint geopoint = new Geopoint(new BasicGeoposition
             {
-                Latitude = configBuilder.Config.Location.Lat,
-                Longitude = configBuilder.Config.Location.Lon
+                Latitude = configBuilder.LocationData.Lat,
+                Longitude = configBuilder.LocationData.Lon
             });
 
             try

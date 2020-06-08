@@ -10,16 +10,20 @@ namespace AutoDarkModeSvc.Config
     {
         private static AutoDarkModeConfigBuilder instance;
         public AutoDarkModeConfig Config { get; private set; }
+        public AutoDarkModeLocationData LocationData { get; private set; }
 
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
+        public string LocationDataPath { get; }
         protected AutoDarkModeConfigBuilder()
         {
             if (instance == null)
             {
                 Config = new AutoDarkModeConfig();
+                LocationData = new AutoDarkModeLocationData();
                 ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
                 ConfigFilePath = Path.Combine(ConfigDir, "config.json");
+                LocationDataPath = Path.Combine(ConfigDir, "location_data.json");
             }
         }
 
@@ -34,22 +38,46 @@ namespace AutoDarkModeSvc.Config
 
         public void Save()
         {
+            SaveConfig(ConfigFilePath, Config);
+        }
+
+        public void SaveLocationData()
+        {
+            SaveConfig(LocationDataPath, LocationData);
+        }
+
+        private void SaveConfig(string path, object obj)
+        {
             Directory.CreateDirectory(ConfigDir);
-            string jsonConfig = JsonConvert.SerializeObject(Config, Formatting.Indented);
+            string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
             for (int i = 0; i < 10; i++)
             {
-                if (IsFileLocked(new FileInfo(ConfigFilePath))) {
+                if (IsFileLocked(new FileInfo(path)))
+                {
                     Thread.Sleep(1000);
                 }
                 else
                 {
-                    using StreamWriter writer = new StreamWriter(File.Open(ConfigFilePath, FileMode.Create, FileAccess.Write, FileShare.Read));
+                    using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write, FileShare.Read));
                     writer.WriteLine(jsonConfig);
                     writer.Close();
                     return;
                 }
             }
-            throw new TimeoutException("Saving the configuration file failed after 10 retries");
+            throw new TimeoutException($"Saving to {path} failed after 10 retries");
+        }
+
+        public void LoadLocationData()
+        {
+            if (!File.Exists(LocationDataPath))
+            {
+                SaveLocationData();
+            }
+
+            using StreamReader locationDataReader = new StreamReader(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            JsonSerializer serializer = new JsonSerializer();
+            var deserializedLocationData = (AutoDarkModeLocationData)serializer.Deserialize(locationDataReader, typeof(AutoDarkModeLocationData));
+            LocationData = deserializedLocationData ?? LocationData;
         }
 
         public void Load()
@@ -58,11 +86,12 @@ namespace AutoDarkModeSvc.Config
             {
                 Save();
             }
-            using StreamReader reader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+
+            using StreamReader configReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             JsonSerializer serializer = new JsonSerializer();
-            var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(reader, typeof(AutoDarkModeConfig));
+            var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(configReader, typeof(AutoDarkModeConfig));
             Config = deserializedConfig ?? Config;
-            reader.Close();
+
         }
 
 

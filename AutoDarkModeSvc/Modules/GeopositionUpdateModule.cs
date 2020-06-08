@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            DateTime nextUpdate = ConfigBuilder.Config.Location.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownTimeSpan);
+            DateTime nextUpdate = ConfigBuilder.LocationData.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownTimeSpan);
             if (DateTime.Now >= nextUpdate)
             {
                 Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));

@@ -93,13 +93,14 @@ namespace AutoDarkModeSvc
                 try
                 {
                     Builder.Load();
+                    Builder.LoadLocationData();
                     Logger.Debug("config builder instantiated and configuration loaded");
                 }
                 catch (Exception e)
                 {
                     Logger.Fatal(e, "could not read config file. shutting down application!");
                     NLog.LogManager.Shutdown();
-                    Application.Exit();
+                    System.Environment.Exit(-1);
                 }
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;

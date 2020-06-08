@@ -29,6 +29,7 @@ namespace AutoDarkModeSvc.Modules
                 try
                 {
                     ConfigBuilder.Load();
+                    ConfigBuilder.LoadLocationData();
                     Logger.Debug("updated configuration file");
                 }
                 catch (Exception ex)

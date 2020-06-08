@@ -315,6 +315,29 @@ namespace AutoDarkModeApp
                 DarkStartHoursBox.IsEnabled = true;
                 DarkStartMinutesBox.IsEnabled = true;
                 applyButton.IsEnabled = true;
+                DarkStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunset.Hour);
+                DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
+                LightStartHoursBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Hour);
+                LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
+
+                if (configBuilder.Config.Sunrise.Minute < 10)
+                {
+                    LightStartMinutesBox.Text = "0" + Convert.ToString(configBuilder.Config.Sunrise.Minute);
+                }
+                else
+                {
+                    LightStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunrise.Minute);
+                }
+                if (configBuilder.Config.Sunset.Minute < 10)
+                {
+                    DarkStartMinutesBox.Text = "0" + Convert.ToString(configBuilder.Config.Sunset.Minute);
+                }
+                else
+                {
+                    DarkStartMinutesBox.Text = Convert.ToString(configBuilder.Config.Sunset.Minute);
+                }
+
+
                 locationBlock.Visibility = Visibility.Collapsed;
                 SetOffsetVisibility(Visibility.Collapsed);
                 configBuilder.Config.Location.Enabled = false;
@@ -540,12 +563,20 @@ namespace AutoDarkModeApp
             {
                 accessStatus = await CommandClient.SendMesssageAndGetReplyAsync(Command.Location);
             }
-            configBuilder.Load();
+            try
+            {
+                configBuilder.LoadLocationData();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+
             if (accessStatus != Command.NoLocAccess)
             {
                 //locate user + get sunrise & sunset times
                 locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                int[] sundate = locationHandler.CalculateSunTime(false);
+                int[] sundate = locationHandler.CalculateSunTime();
 
                 //apply settings & change UI
                 LightStartHoursBox.Text = sundate[0].ToString();

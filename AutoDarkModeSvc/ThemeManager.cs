@@ -11,34 +11,34 @@ namespace AutoDarkModeSvc
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static void TimedSwitch(AutoDarkModeConfig config)
+        public static void TimedSwitch(AutoDarkModeConfigBuilder builder)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (rtc.ForcedTheme == Theme.Dark) 
             {
-                SwitchTheme(config, Theme.Dark);
+                SwitchTheme(builder.Config, Theme.Dark);
                 return;
             } 
             else if (rtc.ForcedTheme == Theme.Light) 
             {
-                SwitchTheme(config, Theme.Light);
+                SwitchTheme(builder.Config, Theme.Light);
                 return;
             }
 
-            DateTime sunrise = config.Sunrise;
-            DateTime sunset = config.Sunset;
-            if (config.Location.Enabled)
+            DateTime sunrise = builder.Config.Sunrise;
+            DateTime sunset = builder.Config.Sunset;
+            if (builder.Config.Location.Enabled)
             {
-                LocationHandler.ApplySunDateOffset(config, out sunrise, out sunset);
+                LocationHandler.ApplyLocationWithOffset(builder, out sunrise, out sunset);
             }
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
             {
-                SwitchTheme(config, Theme.Light, true, sunset, sunrise);
+                SwitchTheme(builder.Config, Theme.Light, true, sunset, sunrise);
             }
             else
             {
-                SwitchTheme(config, Theme.Dark, true, sunset, sunrise);
+                SwitchTheme(builder.Config, Theme.Dark, true, sunset, sunrise);
             }
         }
 

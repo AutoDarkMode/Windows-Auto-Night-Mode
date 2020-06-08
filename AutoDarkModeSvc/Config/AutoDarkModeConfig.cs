@@ -14,13 +14,11 @@ namespace AutoDarkModeSvc.Config
             GPUMonitoring = new GPUMonitoring();
             Office = new Office();
         }
-
+        public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
+        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
         private Mode appsTheme;
         private Mode systemTheme;
         private Mode egdeTheme;
-
-        public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
-        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
         public bool AutoThemeSwitchingEnabled { get; set; }
         public bool AccentColorTaskbarEnabled { get; set; }
         public bool ClassicMode { get; set; }
@@ -104,10 +102,7 @@ namespace AutoDarkModeSvc.Config
     public class Location
     {
         public TimeSpan PollingCooldownTimeSpan { get; set; } = TimeSpan.FromHours(24);
-        public DateTime LastUpdate { get; set; }
         public bool Enabled { get; set; }
-        public double Lat { get; set; }
-        public double Lon { get; set; }
         public int SunsetOffsetMin { get; set; }
         public int SunriseOffsetMin { get; set; }
     }

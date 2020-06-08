@@ -23,23 +23,13 @@ namespace AutoDarkModeSvc.Communication
         {
 
             AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.Instance();
-            try
-            {
-                Properties.Load();
-            }
-            catch (Exception ex)
-            {
-                Logger.Fatal(ex, "could not read config file");
-                return;
-            }
-
             msg.ForEach(message =>
             {
                 switch (message)
                 {
                     case Command.Switch:
                         Logger.Info("signal received: time based theme switch");
-                        ThemeManager.TimedSwitch(Properties.Config);
+                        ThemeManager.TimedSwitch(Properties);
                         SendResponse(Command.Ok);
                         break;
                     case Command.Swap:
@@ -75,7 +65,7 @@ namespace AutoDarkModeSvc.Communication
                             DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
                             if (Properties.Config.Location.Enabled)
                             {
-                                LocationHandler.ApplySunDateOffset(Properties.Config, out sunrise, out sunset);
+                                LocationHandler.ApplyLocationWithOffset(Properties, out sunrise, out sunset);
                             }
                             TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
                             SendResponse(Command.Ok);
@@ -110,10 +100,11 @@ namespace AutoDarkModeSvc.Communication
                         break;
 
                     case Command.UpdateConfig:
-                        Logger.Info("signal received: updating configuration file");
+                        Logger.Info("signal received: updating configuration files");
                         try
                         {
                             AutoDarkModeConfigBuilder.Instance().Load();
+                            AutoDarkModeConfigBuilder.Instance().LoadLocationData();
                             SendResponse(Command.Ok);
                         }
                         catch (Exception e)

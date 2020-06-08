@@ -95,10 +95,9 @@ namespace AutoDarkModeSvc
             if (mi.Checked)
             {
                 Logger.Info("ui signal received: stop forcing specific theme");
-                AutoDarkModeConfig config = AutoDarkModeConfigBuilder.Instance().Config;
                 RuntimeConfig rtc = RuntimeConfig.Instance();
                 rtc.ForcedTheme = Theme.Undefined;
-                ThemeManager.TimedSwitch(config);
+                ThemeManager.TimedSwitch(AutoDarkModeConfigBuilder.Instance());
                 mi.Checked = false;
             }
             else

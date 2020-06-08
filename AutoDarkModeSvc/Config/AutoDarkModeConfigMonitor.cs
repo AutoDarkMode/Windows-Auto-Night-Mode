@@ -7,7 +7,9 @@ namespace AutoDarkModeSvc.Config
 {
     class AutoDarkModeConfigMonitor
     {
-        private FileSystemWatcher Watcher { get;  }
+        private FileSystemWatcher ConfigWatcher { get;  }
+        private FileSystemWatcher LocationDataWatcher { get; }
+
         private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -16,16 +18,23 @@ namespace AutoDarkModeSvc.Config
         /// </summary>
         public AutoDarkModeConfigMonitor()
         {
-            Watcher = new FileSystemWatcher
+            ConfigWatcher = new FileSystemWatcher
             {
                 Path = configBuilder.ConfigDir,
                 Filter = Path.GetFileName(configBuilder.ConfigFilePath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
-            Watcher.Changed += OnChanged;
+            LocationDataWatcher = new FileSystemWatcher
+            {
+                Path = configBuilder.ConfigDir,
+                Filter = Path.GetFileName(configBuilder.LocationDataPath),
+                NotifyFilter = NotifyFilters.LastWrite
+            };
+            ConfigWatcher.Changed += OnChangedConfig;
+            LocationDataWatcher.Changed += OnChangedLocationData;
         }
 
-        private void OnChanged(object source, FileSystemEventArgs e)
+        private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
             if (!AutoDarkModeConfigBuilder.IsFileLocked(new FileInfo(configBuilder.ConfigFilePath)))
             {
@@ -41,13 +50,30 @@ namespace AutoDarkModeSvc.Config
             }
         }
 
+        private void OnChangedLocationData(object source, FileSystemEventArgs e)
+        {
+            if (!AutoDarkModeConfigBuilder.IsFileLocked(new FileInfo(configBuilder.LocationDataPath)))
+            {
+                try
+                {
+                    configBuilder.LoadLocationData();
+                    Logger.Debug("updated location data file");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Debug(ex, "location data file locked, cannot load");
+                }
+            }
+        }
+
+
         /// <summary>
         /// Starts a new Watcher that monitors changes in the configuration file and immediately updates
         /// </summary>
         public void Start()
         {
-
-            Watcher.EnableRaisingEvents = true;
+            ConfigWatcher.EnableRaisingEvents = true;
+            LocationDataWatcher.EnableRaisingEvents = true;
         }
 
         /// <summary>
@@ -55,7 +81,8 @@ namespace AutoDarkModeSvc.Config
         /// </summary>
         public void Stop()
         {
-            Watcher.EnableRaisingEvents = false;
+            ConfigWatcher.EnableRaisingEvents = false;
+            LocationDataWatcher.EnableRaisingEvents = false;
         }
 
         /// <summary>
@@ -63,9 +90,12 @@ namespace AutoDarkModeSvc.Config
         /// </summary>
         public void Dispose()
         {
-            Watcher.EnableRaisingEvents = false;
-            Watcher.Changed -= OnChanged;
-            Watcher.Dispose();
+            ConfigWatcher.EnableRaisingEvents = false;
+            ConfigWatcher.Changed -= OnChangedConfig;
+            ConfigWatcher.Dispose();
+            LocationDataWatcher.EnableRaisingEvents = false;
+            LocationDataWatcher.Changed -= OnChangedConfig;
+            LocationDataWatcher.Dispose();
         }
     }
 }
