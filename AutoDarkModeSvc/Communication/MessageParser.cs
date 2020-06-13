@@ -65,7 +65,7 @@ namespace AutoDarkModeSvc.Communication
                             DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
                             if (Properties.Config.Location.Enabled)
                             {
-                                LocationHandler.ApplyLocationWithOffset(Properties, out sunrise, out sunset);
+                                LocationHandler.GetSunTimesWithOffset(Properties, out sunrise, out sunset);
                             }
                             TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
                             SendResponse(Command.Ok);

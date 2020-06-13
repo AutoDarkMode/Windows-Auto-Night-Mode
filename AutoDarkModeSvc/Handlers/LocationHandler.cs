@@ -68,7 +68,7 @@ namespace AutoDarkModeSvc.Handlers
         public static void CreateLocationTask(AutoDarkModeConfigBuilder configBuilder)
         {
             UpdateSunTime(configBuilder);
-            ApplyLocationWithOffset(configBuilder, out DateTime Sunrise, out DateTime Sunset);
+            GetSunTimesWithOffset(configBuilder, out DateTime Sunrise, out DateTime Sunset);
             TaskSchdHandler.CreateSwitchTask(Sunrise.Hour, Sunrise.Minute, Sunset.Hour, Sunset.Minute);
         }
 
@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="config">AutoDarkMoeConfig object</param>
         /// <param name="sunrise_out"></param>
         /// <param name="sunset_out"></param>
-        public static void ApplyLocationWithOffset(AutoDarkModeConfigBuilder builder, out DateTime sunrise_out, out DateTime sunset_out)
+        public static void GetSunTimesWithOffset(AutoDarkModeConfigBuilder builder, out DateTime sunrise_out, out DateTime sunset_out)
         {
             //Add offset to sunrise and sunset hours using Settings
             DateTime sunrise = builder.LocationData.Sunrise;

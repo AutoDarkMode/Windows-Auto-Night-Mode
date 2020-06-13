@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc
             DateTime sunset = builder.Config.Sunset;
             if (builder.Config.Location.Enabled)
             {
-                LocationHandler.ApplyLocationWithOffset(builder, out sunrise, out sunset);
+                LocationHandler.GetSunTimesWithOffset(builder, out sunrise, out sunset);
             }
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
