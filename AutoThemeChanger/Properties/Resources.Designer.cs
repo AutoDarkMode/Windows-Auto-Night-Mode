@@ -793,6 +793,24 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set custom hours.
+        /// </summary>
+        public static string rbCustomHours {
+            get {
+                return ResourceManager.GetString("rbCustomHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From sunset to sunrise.
+        /// </summary>
+        public static string rbLocation {
+            get {
+                return ResourceManager.GetString("rbLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
         public static string restart {

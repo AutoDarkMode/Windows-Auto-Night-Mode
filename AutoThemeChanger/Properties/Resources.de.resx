@@ -142,10 +142,10 @@
     <value>Anwendungen:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Autor: Armin Osaj © 2019</value>
+    <value>Autor: Armin Osaj © 2020</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Aktivierungs-Zeit</value>
+    <value>Aktivierungszeit</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Dunkel</value>
@@ -193,7 +193,7 @@
     <value>Ein Fehler ist aufgetreten :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Die Anwendung benötigt Zugriff auf die Standort-Dienste</value>
+    <value>Die Anwendung benötigt Zugriff auf die Standort-Dienste von Windows</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>Keine Updates verfügbar</value>
@@ -319,7 +319,7 @@ Falls die Aktivierung Probleme verursacht: erhöhe die Verzögerungszeit in den 
     <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 Stunden Zeit</value>
+    <value>12 Stunden Zeitformat</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Schließen</value>
@@ -343,7 +343,7 @@ Wenn du diese Option aktivierst, wird Auto Dark Mode sofort nach dem Aufwecken d
 Jedoch senkt diese Option auch die Akkulaufzeit! Aktiviere sie deshalb nur, wenn es notwendig ist!</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Fehler: Deine Eingabe ist nicht zulässig.</value>
+    <value>Fehler: deine Eingabe ist nicht zulässig.</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
     <value>Wir konnten deine Einstellungen leider nicht anwenden :(
@@ -356,7 +356,7 @@ Hier sind ein paar Hilfestellungen die du ausprobieren kannst:
 Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kommentieren. Hänge am besten noch ein Screenshot dieser Fehlermeldung an. Mit einem Klick auf "Ja" gelangst du zu GitHub.</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Ein Fehler von Windows verhindert den Design-Wechsel der Taskleiste im Stromsparmodus. Bitte deaktiviere den Stromsparmodus, falls bei dir Probleme auftreten.</value>
+    <value>Ein Fehler von Windows verhindert den Wechsel der Taskleistenfarbe im Stromsparmodus. Bitte deaktiviere den Stromsparmodus, falls bei dir Probleme auftreten.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
@@ -423,5 +423,11 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   </data>
   <data name="restart" xml:space="preserve">
     <value>Neu starten</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Benutzerdefinierte Uhrzeit</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Von Sonnenuntergang bis Sonnenaufgang</value>
   </data>
 </root>

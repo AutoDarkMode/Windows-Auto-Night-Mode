@@ -7,7 +7,7 @@
         xmlns:p="clr-namespace:AutoThemeChanger.Properties"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.dbTitle}" Height="353" MinWidth="640" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon" SizeToContent="Width" fw:PointerTracker.Enabled="True">
+        Title="{x:Static p:Resources.dbTitle}" Height="353" MinWidth="660" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon" SizeToContent="Width" fw:PointerTracker.Enabled="True">
     <Grid x:Name="WallpaperGrid" Background="#40FFFFFF">
         <!-- Grid Layout -->
         <Grid.ColumnDefinitions>

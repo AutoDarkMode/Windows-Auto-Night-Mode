@@ -438,4 +438,10 @@ Do you want to open the PayPal donation page now?</value>
   <data name="themeApplyError" xml:space="preserve">
     <value>Error occurred while applying the theme, we disabled theme switching</value>
   </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Set custom hours</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>From sunset to sunrise</value>
+  </data>
 </root>

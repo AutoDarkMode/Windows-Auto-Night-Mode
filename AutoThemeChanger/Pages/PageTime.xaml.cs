@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
+using System.Globalization;
 
 namespace AutoThemeChanger.Pages
 {
@@ -13,7 +14,7 @@ namespace AutoThemeChanger.Pages
     /// </summary>
     public partial class PageTime : Page
     {
-        readonly TaskSchHandler taskShedHandler = new TaskSchHandler();
+        readonly TaskSchHandler taskSchHandler = new TaskSchHandler();
         readonly RegeditHandler regEditHandler = new RegeditHandler();
 
         public PageTime()
@@ -22,30 +23,42 @@ namespace AutoThemeChanger.Pages
             DoesTaskExists();
             if (Properties.Settings.Default.AlterTime) AlterTime(true);
         }
+
+        /// <summary>
+        /// check if the tasks already exists in task scheduler and get the data from them
+        /// </summary>
         private void DoesTaskExists()
         {
-            if (taskShedHandler.CheckExistingClass().Equals(1))
+            //user has custom hours enabled
+            if (taskSchHandler.CheckExistingClass().Equals(1))
             {
+                //ui
                 autoCheckBox.IsChecked = true;
-                int[] darkStart = taskShedHandler.GetRunTime("dark");
-                int[] lightStart = taskShedHandler.GetRunTime("light");
+                RadioButtonCustomTimes.IsChecked = true;
+                //get times
+                int[] darkStart = taskSchHandler.GetRunTime("dark");
+                int[] lightStart = taskSchHandler.GetRunTime("light");
                 darkStartBox.Text = Convert.ToString(darkStart[0]);
                 DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
                 lightStartBox.Text = Convert.ToString(lightStart[0]);
                 LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
             }
-            else if (taskShedHandler.CheckExistingClass().Equals(2))
+            //user has location sunset and sunrise enabled
+            else if (taskSchHandler.CheckExistingClass().Equals(2))
             {
                 autoCheckBox.IsChecked = true;
-                locationCheckBox.IsChecked = true;
+                RadioButtonLocationTimes.IsChecked = true;
+                ActivateLocationMode();
                 InitOffset();
             }
+            //user didn't enabled anything or tasks in scheduler are missing
             else
             {
                 AutoCheckBox_Unchecked(this, null);
             }
         }
 
+        //offset for sunrise and sunset hours
         private void PopulateOffsetFields(int offsetDark, int offsetLight)
         {
             if (offsetLight < 0)
@@ -67,12 +80,11 @@ namespace AutoThemeChanger.Pages
                 OffsetDarkBox.Text = Convert.ToString(offsetDark);
             }
         }
-
         private void InitOffset()
         {
             PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
         }
-
+        //+ and - button
         private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
@@ -88,7 +100,7 @@ namespace AutoThemeChanger.Pages
                 OffsetButton.IsEnabled = true;
             }
         }
-
+        //apply offset
         private void OffsetButton_Click(object sender, RoutedEventArgs e)
         {
             int offsetDark;
@@ -127,10 +139,11 @@ namespace AutoThemeChanger.Pages
             }
 
             OffsetButton.IsEnabled = false;
-            GetLocation();
+            ActivateLocationMode();
         }
 
 
+        //apply theme
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             int darkStart;
@@ -153,6 +166,7 @@ namespace AutoThemeChanger.Pages
             }
 
             //check values from TextBox
+            //hours with 24 hour time
             if (!Properties.Settings.Default.AlterTime)
             {
                 if (darkStart >= 24)
@@ -170,6 +184,7 @@ namespace AutoThemeChanger.Pages
                     darkStart = 17;
                 }
             }
+            //hours with 12 hour time
             else
             {
                 if (darkStart >= 12)
@@ -177,12 +192,17 @@ namespace AutoThemeChanger.Pages
                     darkStart = 11;
                     darkStartMinutes = 59;
                 }
+                if(darkStart == 0)
+                {
+                    darkStart = 1;
+                }
                 if (lightStart >= 13)
                 {
                     lightStart = 12;
                 }
             }
 
+            //minutes
             if (lightStartMinutes > 59)
             {
                 lightStartMinutes = 59;
@@ -191,8 +211,12 @@ namespace AutoThemeChanger.Pages
             {
                 darkStartMinutes = 59;
             }
+
+            //display edited hour values for the user
             darkStartBox.Text = Convert.ToString(darkStart);
             lightStartBox.Text = Convert.ToString(lightStart);
+
+            //display minute values + more beautiful display of minutes, if they are under 10
             if (lightStartMinutes < 10)
             {
                 LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
@@ -210,102 +234,79 @@ namespace AutoThemeChanger.Pages
                 DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
             }
 
+            //Apply Theme
+            if (Properties.Settings.Default.AlterTime)
+            {
+                darkStart += 12;
+            }
+            ApplyTheme(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+
+            //ui
+            applyButton.IsEnabled = false;
+        }
+
+        private void ApplyTheme(int DarkHour, int DarkMinute, int LightHour, int LightMinute)
+        {
+            //create task scheduler theme switching tasks 
             try
             {
-                if (Properties.Settings.Default.AlterTime)
-                {
-                    darkStart += 12;
-                }
-                taskShedHandler.CreateTask(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+                taskSchHandler.CreateTask(DarkHour, DarkMinute, LightHour, LightMinute);
             }
             catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateTask()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
+                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.CreateTask()", ex.Message);
                 return;
             }
+            //switch the theme now
             try
             {
                 regEditHandler.SwitchThemeBasedOnTime();
             }
             catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.SwitchThemeBasedOnTime()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
+                ErrorWhileApplyingTheme("Error ocurred in: regEditHandler.SwitchThemeBasedOnTime()", ex.Message);
                 return;
             }
+            //create windows autostart entry
             try
             {
                 regEditHandler.AddAutoStart();
             }
             catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: regEditHandler.AddAutoStart()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
+                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.AddAutoStart()", ex.Message);
                 return;
             }
+            //add background updater task
             try
             {
                 if (Properties.Settings.Default.BackgroundUpdate)
                 {
-                    taskShedHandler.CreateAppUpdaterTask();
+                    taskSchHandler.CreateAppUpdaterTask();
                 }
             }
             catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateAppUpdaterTask()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
+                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.CreateAppUpdaterTask()", ex.Message);
                 return;
             }
+            //add connected standby task
             try
             {
                 if (Properties.Settings.Default.connectedStandby)
                 {
-                    taskShedHandler.CreateConnectedStandbyTask();
+                    taskSchHandler.CreateConnectedStandbyTask();
                 }
             }
             catch (Exception ex)
             {
-                userFeedback.Text = Properties.Resources.msgErrorOcc;
-                string error = Properties.Resources.errorThemeApply + "\n\n Error ocurred in: taskShedHandler.CreateConnectedStandbyTask()" + "\n\n" + ex.Message;
-                MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-                msg.ShowDialog();
-                var result = msg.DialogResult;
-                if (result == true)
-                {
-                    System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
-                }
+                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.CreateConnectedStandbyTask()", ex.Message);
             }
 
-            applyButton.IsEnabled = false;
+            //this setting enables all the configuration possibilities of auto dark mode
+            Properties.Settings.Default.Enabled = true;
+
+            //show warning for notebook on battery with enabled battery saver
             if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
@@ -316,57 +317,34 @@ namespace AutoThemeChanger.Pages
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
         }
-
-        //textbox event handler
-        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
+        //if something went wrong while applying the settings :(
+        private void ErrorWhileApplyingTheme(string erroDescription, string exception)
         {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
-        {
-            OffsetButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            userFeedback.Text = Properties.Resources.msgErrorOcc;
+            string error = Properties.Resources.errorThemeApply + "\n\n" + erroDescription + "\n\n" + exception;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
             {
-                e.Handled = true;
-            }
-        }
-        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            var textBox = ((System.Windows.Controls.TextBox)sender);
-            textBox.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                textBox.SelectAll();
-            }));
-        }
-        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
-            {
-                var ue = e.OriginalSource as FrameworkElement;
-                e.Handled = true;
-                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
             }
         }
 
         // set starttime based on user location
-        private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
+        public async void ActivateLocationMode()
         {
-            GetLocation();
-        }
-        public async void GetLocation()
-        {
+            //ui
+            StackPanelTimePicker.Visibility = Visibility.Collapsed;
+            TextBlockDark.Visibility = Visibility.Collapsed;
+            TextBlockLight.Visibility = Visibility.Collapsed;
+            StackPanelLocationTime.Visibility = Visibility.Visible;
             SetOffsetVisibility(Visibility.Visible);
             locationBlock.Visibility = Visibility.Visible;
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
-            LocationHandler locationHandler = new LocationHandler();
+            userFeedback.Text = Properties.Resources.msgSearchLoc;
 
+            LocationHandler locationHandler = new LocationHandler();
             var accesStatus = await Geolocator.RequestAccessAsync();
             switch (accesStatus)
             {
@@ -375,26 +353,28 @@ namespace AutoThemeChanger.Pages
                     locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
                     int[] sundate = await locationHandler.CalculateSunTime(false);
 
-                    //apply settings & change UI
-                    lightStartBox.Text = sundate[0].ToString();
-                    LightStartMinutesBox.Text = sundate[1].ToString();
+                    //apply settings
+                    ApplyTheme(sundate[2], sundate[3], sundate[0], sundate[1]);
+
+                    //show time in UI
                     if (Properties.Settings.Default.AlterTime)
                     {
                         sundate[2] -= 12;
-                        darkStartBox.Text = sundate[2].ToString();
                     }
-                    else
-                    {
-                        darkStartBox.Text = sundate[2].ToString();
-                    }
-                    DarkStartMinutesBox.Text = sundate[3].ToString();
+
+                    TimeSpan TimeForUiLight = new TimeSpan(sundate[0], sundate[1], 0);
+                    TimeSpan TimeForUiDark = new TimeSpan(sundate[2], sundate[3], 0);
+                    TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + string.Format("{0:00}:{1:00}", TimeForUiLight.Hours, TimeForUiLight.Minutes); //textblock1
+                    TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + string.Format("{0:00}:{1:00}", TimeForUiDark.Hours, TimeForUiDark.Minutes); //textblock2
+
+                    // ui controls
                     lightStartBox.IsEnabled = false;
                     LightStartMinutesBox.IsEnabled = false;
                     darkStartBox.IsEnabled = false;
                     DarkStartMinutesBox.IsEnabled = false;
-                    applyButton.IsEnabled = false;
-                    ApplyButton_Click(this, null);
-                    taskShedHandler.CreateLocationTask();
+
+                    applyButton.Visibility = Visibility.Hidden;
+                    taskSchHandler.CreateLocationTask();
                     break;
 
                 case GeolocationAccessStatus.Denied:
@@ -409,42 +389,50 @@ namespace AutoThemeChanger.Pages
         }
         private async void NoLocationAccess()
         {
-            locationCheckBox.IsChecked = false;
             locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
+            userFeedback.Text = Properties.Resources.msgLocPerm;
             locationBlock.Visibility = Visibility.Visible;
+            TextBlockDarkTime.Text = null;
+            TextBlockLightTime.Text = null;
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
         }
-        private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+
+        private void DisableLocationMode()
         {
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
             darkStartBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
+            applyButton.Visibility = Visibility.Visible;
             applyButton.IsEnabled = true;
             locationBlock.Visibility = Visibility.Collapsed;
+            StackPanelLocationTime.Visibility = Visibility.Collapsed;
+            StackPanelTimePicker.Visibility = Visibility.Visible;
+            TextBlockDark.Visibility = Visibility.Visible;
+            TextBlockLight.Visibility = Visibility.Visible;
             SetOffsetVisibility(Visibility.Collapsed);
 
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-            taskShedHandler.RemoveLocationTask();
+            taskSchHandler.RemoveLocationTask();
         }
 
         //automatic theme switch checkbox
         private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            locationCheckBox.IsEnabled = true;
+            StackPanelRadioHolder.IsEnabled = true;
+            RadioButtonCustomTimes.IsChecked = true;
             applyButton.IsEnabled = true;
             darkStartBox.IsEnabled = true;
             DarkStartMinutesBox.IsEnabled = true;
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-            Properties.Settings.Default.Enabled = true;
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (e != null)
             {
-                taskShedHandler.RemoveTask();
+                taskSchHandler.RemoveTask();
                 regEditHandler.RemoveAutoStart();
             }
 
@@ -456,8 +444,9 @@ namespace AutoThemeChanger.Pages
             Properties.Settings.Default.ThemeLight = null;
             Properties.Settings.Default.ThemeDark = null;
 
-            locationCheckBox.IsEnabled = false;
-            locationCheckBox.IsChecked = false;
+            StackPanelRadioHolder.IsEnabled = false;
+            RadioButtonCustomTimes.IsChecked = true;
+            DisableLocationMode();
             applyButton.IsEnabled = false;
             darkStartBox.IsEnabled = false;
             DarkStartMinutesBox.IsEnabled = false;
@@ -466,6 +455,8 @@ namespace AutoThemeChanger.Pages
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
             Properties.Settings.Default.Enabled = false;
         }
+
+        //12 hour times
         private void AlterTime(bool enable)
         {
             if (enable)
@@ -473,7 +464,7 @@ namespace AutoThemeChanger.Pages
                 Properties.Settings.Default.AlterTime = true;
                 amTextBlock.Text = "am";
                 pmTextBlock.Text = "pm";
-                applyButton.Margin = new Thickness(205, 25, 0, 0);
+                TextBlockDark.Margin = new Thickness(113,5,0,0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
                 if (darkTime < 1)
                 {
@@ -519,6 +510,54 @@ namespace AutoThemeChanger.Pages
             OffsetDarkDot.Visibility = value;
             OffsetLightDot.Visibility = value;
             OffsetButton.Visibility = value;
+        }
+
+        private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
+        {
+            DisableLocationMode();
+        }
+
+        private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
+        {
+            ActivateLocationMode();
+        }
+
+        //textbox event handlers
+        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            applyButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
+        {
+            OffsetButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            var textBox = ((System.Windows.Controls.TextBox)sender);
+            textBox.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                textBox.SelectAll();
+            }));
+        }
+        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
+            {
+                var ue = e.OriginalSource as FrameworkElement;
+                e.Handled = true;
+                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            }
         }
     }
 }
