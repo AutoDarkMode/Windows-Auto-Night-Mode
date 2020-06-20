@@ -67,6 +67,7 @@ namespace AutoThemeChanger
                 EventTrigger eventTrigger = tdHibernation.Triggers.Add(new EventTrigger());
                 eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Power-Troubleshooter'] and (Level=4 or Level=0) and (EventID=1)]]</Select></Query></QueryList>";
                 tdHibernation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
+                
                 taskService.GetFolder(folder).RegisterTaskDefinition(hibernation, tdHibernation);
                 Console.WriteLine("created task for hibernation");
             }
@@ -85,7 +86,7 @@ namespace AutoThemeChanger
                 tdLocation.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(10);
                 tdLocation.Settings.StartWhenAvailable = true;
 
-                tdLocation.Triggers.Add(new WeeklyTrigger { StartBoundary = DateTime.Today.AddDays(7) });
+                tdLocation.Triggers.Add(new DailyTrigger { StartBoundary = DateTime.Today.AddDays(2) + TimeSpan.FromHours(12), DaysInterval = 2});
                 tdLocation.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/location"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(updater, tdLocation);
@@ -105,7 +106,7 @@ namespace AutoThemeChanger
                 tdUpdate.Settings.DisallowStartIfOnBatteries = false;
                 tdUpdate.Settings.StartWhenAvailable = true;
 
-                tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) });
+                tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) + TimeSpan.FromHours(12) });
                 tdUpdate.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/update"));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(appupdater, tdUpdate);
