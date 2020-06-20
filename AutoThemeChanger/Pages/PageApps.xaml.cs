@@ -285,5 +285,10 @@ namespace AutoThemeChanger
             Properties.Settings.Default.OfficeThemeChange = 3;
             OfficeComboBox.SelectedIndex = 3;
         }
+
+        private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Every-website-in-dark-mode-with-Dark-Reader");
+        }
     }
 }

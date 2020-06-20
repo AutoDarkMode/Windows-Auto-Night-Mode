@@ -847,7 +847,16 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error occurred while applying the theme, we disabled theme switching.
+        ///   Looks up a localized string similar to Chrome, Firefox and Edge:.
+        /// </summary>
+        public static string TextBoxAppsBrowsers {
+            get {
+                return ResourceManager.GetString("TextBoxAppsBrowsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred while applying the selected themes, we disabled theme switching.
         /// </summary>
         public static string themeApplyError {
             get {
@@ -910,7 +919,16 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 1) Click here to open Windows Theme settings..
+        ///   Looks up a localized string similar to Step.
+        /// </summary>
+        public static string ThemeTutorialStep {
+            get {
+                return ResourceManager.GetString("ThemeTutorialStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to open Windows Theme settings..
         /// </summary>
         public static string ThemeTutorialStep1 {
             get {
@@ -919,7 +937,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 2) Now set the Windows Theme under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
+        ///   Looks up a localized string similar to Now set the Windows colour under Colours to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
         /// </summary>
         public static string ThemeTutorialStep2 {
             get {
@@ -928,7 +946,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 3) Go back to theme settings and save your theme..
+        ///   Looks up a localized string similar to Go back to theme settings and save your theme..
         /// </summary>
         public static string ThemeTutorialStep3 {
             get {
@@ -937,7 +955,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 4) Repeat the process for the dark theme..
+        ///   Looks up a localized string similar to Repeat the process for the dark theme..
         /// </summary>
         public static string ThemeTutorialStep4 {
             get {
@@ -955,7 +973,8 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These options are disabled while you are using a Windows Theme. You can set up these settings individually in your Windows Theme..
+        ///   Looks up a localized string similar to These options are disabled while using a Windows Theme. 
+        ///You can set this individually up in your Windows Theme..
         /// </summary>
         public static string ToolTipDisabledDueTheme {
             get {

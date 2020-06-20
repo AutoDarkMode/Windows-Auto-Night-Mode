@@ -464,7 +464,7 @@ namespace AutoThemeChanger.Pages
                 Properties.Settings.Default.AlterTime = true;
                 amTextBlock.Text = "am";
                 pmTextBlock.Text = "pm";
-                TextBlockDark.Margin = new Thickness(113,5,0,0);
+                TextBlockDark.Margin = new Thickness(113,0,0,0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
                 if (darkTime < 1)
                 {

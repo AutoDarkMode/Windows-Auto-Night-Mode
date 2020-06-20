@@ -27,7 +27,7 @@ namespace AutoThemeChanger
         }
         private void UiHandler()
         {
-            //if automatic theme switch isn't enabled
+            //if auto dark mode wasn't configured
             if (!Properties.Settings.Default.Enabled)
             {
                 BGWinButton.IsEnabled = false;
@@ -37,6 +37,13 @@ namespace AutoThemeChanger
                 ButtonDisableTheme.IsEnabled = false;
             }
 
+            //give numbers to the steps
+            TextBlockStep1.Text = Properties.Resources.ThemeTutorialStep + " 1)";
+            TextBlockStep2.Text = Properties.Resources.ThemeTutorialStep + " 2)";
+            TextBlockStep3.Text = Properties.Resources.ThemeTutorialStep + " 3)";
+            TextBlockStep4.Text = Properties.Resources.ThemeTutorialStep + " 4)";
+
+            //if theme switcher isn't enabled
             if (!Properties.Settings.Default.ThemeSwitch)
             {
                 ComboBoxModeSelection.SelectedIndex = 0;

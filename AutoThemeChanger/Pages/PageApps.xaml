@@ -7,7 +7,7 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:p="clr-namespace:AutoThemeChanger.Properties"
       mc:Ignorable="d"
-      Title="PageApps" Height="568.932" Width="963.666" Foreground="{DynamicResource SystemBaseHighColorBrush}">
+      Title="PageApps" Height="568.932" Width="963.666" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -56,5 +56,9 @@
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
             <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
         </ComboBox>
+        
+        <!-- Dark Reader -->
+        <TextBlock Text="{x:Static p:Resources.TextBoxAppsBrowsers}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="55,348,0,0"/>
+        <Button Name="ButtonWikiBrowserExtension" Content="Download Dark Reader" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="55,369,0,0" Height="28" MinWidth="200" Width="Auto" Style="{StaticResource ButtonRevealStyle}" Click="ButtonWikiBrowserExtension_Click" />
     </Grid>
 </Page>

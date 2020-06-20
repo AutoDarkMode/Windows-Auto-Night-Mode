@@ -398,19 +398,20 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
     <value>Hintergrundbild (Empfohlen)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Schritt 1) Klicke hier, um die Windows Einstellungen zu öffnen</value>
+    <value>Klicke hier, um die Windows Design-Einstellungen zu öffnen</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Schritt 2) Setze nun unter Farben deine Windows Farbe auf Hell. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
+    <value>Setze nun unter Farben deine Windows Farbe auf Hell. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Schritt 3) Wechsle zurück zu den Design-Einstellungen und speichere das Design.</value>
+    <value>Wechsle zurück zu den Design-Einstellungen und speichere das Design.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Schritt 4) Wiederhole den Vorgang für das dunkle Design.</value>
+    <value>Wiederhole den Vorgang für das dunkle Design.</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert. Du kannst sie individuell in deinem Windows Design ändern.</value>
+    <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert. 
+Du kannst sie individuell in deinem Windows Design ändern.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Verzögerung für Taskleiste-Akzentfarbe (ms):</value>
@@ -429,5 +430,11 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>Von Sonnenuntergang bis Sonnenaufgang</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="TextBoxAppsBrowsers" xml:space="preserve">
+    <value>Chrome, Firefox und Edge:</value>
   </data>
 </root>

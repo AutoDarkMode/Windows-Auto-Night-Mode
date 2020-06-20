@@ -3,9 +3,7 @@ using System.Windows;
 using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
-using System.Drawing;
-using System.Windows.Media;
-using System.Drawing.Printing;
+using System.Windows.Navigation;
 
 namespace AutoThemeChanger
 {
@@ -40,8 +38,10 @@ namespace AutoThemeChanger
             int generatedNumber = rdmnumber.Next(1, 100);
             if (generatedNumber == 50)
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno");
-                msgBox.Owner = GetWindow(this);
+                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno")
+                {
+                    Owner = GetWindow(this)
+                };
                 msgBox.ShowDialog();
                 var result = msgBox.DialogResult;
                 if (result == true)
@@ -78,14 +78,6 @@ namespace AutoThemeChanger
             }
         }
 
-        //application close behaviour
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Save();
-            Application.Current.Shutdown();
-            Process.GetCurrentProcess().Kill();
-        }
-
         private void AddJumpList()
         {
             JumpTask darkJumpTask = new JumpTask
@@ -110,34 +102,51 @@ namespace AutoThemeChanger
             JumpList.SetJumpList(Application.Current, jumpList);
         }
 
+        //application close behaviour
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            Application.Current.Shutdown();
+            Process.GetCurrentProcess().Kill();
+        }
+
+        //navigation bar
+        private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 45, 0, 0);
+        }
+
         private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
         {
-            frameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 85, 630, 385);
+            FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0,90,0,0);
         }
 
         private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
         {
-            frameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 130, 630, 340);
+            FrameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 135, 0, 0);
         }
 
         private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
         {
-            frameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 175, 630, 295);
-        }
-
-        private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
-        {
-            frameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 40, 630, 430);
+            FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 180, 0, 0);
         }
 
         private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)
         {
-            frameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 462, 630, 8);
+            FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 490, 0, 0);
+        }
+
+        private void FrameNavbar_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.Forward | e.NavigationMode == NavigationMode.Back)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
