@@ -124,7 +124,7 @@
     <value>適用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>テーマの自動切り替えを有効にする</value>
+    <value>テーマを自動で切り替える</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>テーマに合わせる</value>
@@ -136,7 +136,7 @@
     <value>常にホワイト</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Windows 10 バージョン 1903 の機能を有効にする</value>
+    <value>Windows 10 バージョン 1903 の機能を有効化</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>ソフトウェア:</value>
@@ -425,5 +425,11 @@ PayPal の寄付ページを開きますか？</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>タスクバーの色を切り替える遅延時間 (ミリ秒):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>ナビメニュー</value>
   </data>
 </root>
