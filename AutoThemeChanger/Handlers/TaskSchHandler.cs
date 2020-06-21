@@ -11,6 +11,7 @@ namespace AutoThemeChanger
         readonly string updater = "Location times";
         readonly string appupdater = "App updater";
         readonly string connected = "Connected standby";
+        readonly string logon = "Logon";
         readonly string folder = "ADM_" + Environment.UserName;
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
@@ -130,8 +131,30 @@ namespace AutoThemeChanger
                 EventTrigger eventTrigger = tdConnected.Triggers.Add(new EventTrigger());
                 eventTrigger.Subscription = @"<QueryList><Query Id='0' Path='System'><Select Path='System'>*[System[Provider[@Name='Microsoft-Windows-Kernel-Power'] and (Level=4 or Level=0) and (EventID=507)]]</Select></Query></QueryList>";
                 tdConnected.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
+
                 taskService.GetFolder(folder).RegisterTaskDefinition(connected, tdConnected);
                 Console.WriteLine("created task for connected standby");
+            }
+        }
+
+        public void CreateLogonTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskDefinition tdLogon = taskService.NewTask();
+
+                tdLogon.RegistrationInfo.Description = "Switches theme at user logon, replaces old autostart entry. " + description;
+                tdLogon.RegistrationInfo.Author = author;
+                tdLogon.RegistrationInfo.Source = program;
+                tdLogon.Settings.DisallowStartIfOnBatteries = false;
+                tdLogon.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
+                tdLogon.Settings.StartWhenAvailable = true;
+
+                tdLogon.Triggers.Add(new LogonTrigger { UserId = Environment.UserDomainName + @"\" + Environment.UserName } );
+                tdLogon.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/switch"));
+
+                taskService.GetFolder(folder).RegisterTaskDefinition(logon, tdLogon);
+                Console.WriteLine("created Task for user logon");
             }
         }
 
@@ -190,6 +213,14 @@ namespace AutoThemeChanger
                 }
                 try
                 {
+                    taskFolder.DeleteTask(logon, false);
+                }
+                catch
+                {
+
+                }
+                try
+                {
                     taskService.RootFolder.DeleteFolder(folder, false);
                 }
                 catch
@@ -239,6 +270,22 @@ namespace AutoThemeChanger
                 try
                 {
                     taskFolder.DeleteTask(connected, false);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void RemoveLogonTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskFolder taskFolder = taskService.GetFolder(folder);
+                try
+                {
+                    taskFolder.DeleteTask(logon, false);
                 }
                 catch
                 {

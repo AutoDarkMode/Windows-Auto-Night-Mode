@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using System.Globalization;
+using AutoThemeChanger.Properties;
+using Microsoft.Win32.TaskScheduler;
 
 namespace AutoThemeChanger.Pages
 {
@@ -270,7 +272,14 @@ namespace AutoThemeChanger.Pages
             //create windows autostart entry
             try
             {
-                regEditHandler.AddAutoStart();
+                if (Settings.Default.LogonTaskInsteadOfAutostart)
+                {
+                    taskSchHandler.CreateLogonTask();
+                }
+                else
+                {
+                    regEditHandler.AddAutoStart();
+                }
             }
             catch (Exception ex)
             {
@@ -433,7 +442,14 @@ namespace AutoThemeChanger.Pages
             if (e != null)
             {
                 taskSchHandler.RemoveTask();
-                regEditHandler.RemoveAutoStart();
+                if (Settings.Default.LogonTaskInsteadOfAutostart)
+                {
+                    taskSchHandler.RemoveLogonTask();
+                } 
+                else
+                {
+                    regEditHandler.RemoveAutoStart();
+                }
             }
 
             Properties.Settings.Default.WallpaperSwitch = false;
@@ -545,7 +561,7 @@ namespace AutoThemeChanger.Pages
         private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var textBox = ((System.Windows.Controls.TextBox)sender);
-            textBox.Dispatcher.BeginInvoke(new Action(() =>
+            textBox.Dispatcher.BeginInvoke(new System.Action(() =>
             {
                 textBox.SelectAll();
             }));

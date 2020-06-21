@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoThemeChanger.Properties;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -13,7 +14,7 @@ namespace AutoThemeChanger.Pages
     /// </summary>
     public partial class PageSettings : Page
     {
-        readonly string curLanguage = Properties.Settings.Default.Language;
+        readonly string curLanguage = Settings.Default.Language;
 
         public PageSettings()
         {
@@ -23,19 +24,20 @@ namespace AutoThemeChanger.Pages
         private void UiHandler()
         {
             RestartButton.Visibility = Visibility.Hidden;
-            ComboBoxLanguageSelection.SelectedValue = Properties.Settings.Default.Language.ToString();
+            ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString();
 
-            if (!Properties.Settings.Default.Enabled)
+            if (!Settings.Default.Enabled)
             {
                 CheckBoxConStandBy.IsEnabled = false;
             }
 
-            CheckBoxAlterTime.IsChecked = Properties.Settings.Default.AlterTime;
-            CheckBoxBackgroundUpdater.IsChecked = Properties.Settings.Default.BackgroundUpdate;
-            CheckBoxConStandBy.IsChecked = Properties.Settings.Default.connectedStandby;
-            CheckBoxColourFilter.IsChecked = Properties.Settings.Default.ColourFilterKeystroke;
+            CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
+            CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
+            CheckBoxConStandBy.IsChecked = Settings.Default.connectedStandby;
+            CheckBoxLogonTask.IsChecked = Settings.Default.LogonTaskInsteadOfAutostart;
+            CheckBoxColourFilter.IsChecked = Settings.Default.ColourFilterKeystroke;
 
-            TextboxAccentColorDelay.Text = Properties.Settings.Default.AccentColorSwitchTime.ToString();
+            TextboxAccentColorDelay.Text = Settings.Default.AccentColorSwitchTime.ToString();
         }
 
         private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
@@ -122,6 +124,25 @@ namespace AutoThemeChanger.Pages
             }
         }
 
+        private void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
+        {
+            RegeditHandler regeditHandler = new RegeditHandler();
+            TaskSchHandler taskScheduler = new TaskSchHandler();
+
+            if (CheckBoxLogonTask.IsChecked.Value)
+            {
+                regeditHandler.RemoveAutoStart();
+                taskScheduler.CreateLogonTask();
+                Settings.Default.LogonTaskInsteadOfAutostart = true;
+            }
+            else
+            {
+                taskScheduler.RemoveLogonTask();
+                regeditHandler.AddAutoStart();
+                Settings.Default.LogonTaskInsteadOfAutostart = false;
+            }
+        }
+
         private void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
             RegeditHandler regeditHandler = new RegeditHandler();
@@ -129,12 +150,12 @@ namespace AutoThemeChanger.Pages
             if(CheckBoxColourFilter.IsChecked.Value)
             {
                 regeditHandler.ColourFilterSetup();
-                Properties.Settings.Default.ColourFilterKeystroke = true;
+                Settings.Default.ColourFilterKeystroke = true;
             }
             else
             {
                 regeditHandler.ColourFilterKeySender(false);
-                Properties.Settings.Default.ColourFilterKeystroke = false;
+                Settings.Default.ColourFilterKeystroke = false;
             }
         }
 

@@ -30,6 +30,11 @@ namespace AutoThemeChanger
                             regEditHandler.ThemeToLight();
                         }
                     }
+                    else if (value == "/location")
+                    {
+                        LocationHandler locationHandler = new LocationHandler();
+                        await locationHandler.SetLocationSilent();
+                    }
                     else if (value == "/dark")
                     {
                         RegeditHandler regEditHandler = new RegeditHandler();
@@ -44,11 +49,6 @@ namespace AutoThemeChanger
                     {
                         Updater updater = new Updater();
                         updater.CheckNewVersion();
-                    }
-                    else if (value == "/location")
-                    {
-                        LocationHandler locationHandler = new LocationHandler();
-                        await locationHandler.SetLocationSilent();
                     }
                     else if(value == "/removeTask")
                     {

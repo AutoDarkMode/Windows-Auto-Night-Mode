@@ -2,8 +2,6 @@
 using Microsoft.Win32;
 using System;
 using System.Threading;
-using System.Windows.Documents;
-using Windows.System;
 using WindowsInput;
 using WindowsInput.Native;
 
@@ -59,55 +57,56 @@ namespace AutoThemeChanger
 
         public void ThemeToDark()
         {
-            if (Properties.Settings.Default.ThemeSwitch)
+            if (Settings.Default.ThemeSwitch)
             {
-                ThemeHandler.ChangeTheme(Properties.Settings.Default.ThemeDark);
+                ThemeHandler.ChangeTheme(Settings.Default.ThemeDark);
             }
             else
             {
-                if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
-                if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
-                if (Properties.Settings.Default.WallpaperSwitch)
+                if (Settings.Default.AppThemeChange.Equals(0)) AppTheme(0);
+                if (Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(0);
+                if (Settings.Default.WallpaperSwitch)
                 {
-                    WallpaperHandler.SetBackground(Properties.Settings.Default.WallpaperDark);
+                    WallpaperHandler.SetBackground(Settings.Default.WallpaperDark);
                 }
 
-                if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+                if (Settings.Default.AccentColor && Settings.Default.SystemThemeChange.Equals(0))
                 {
-                    Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
+                    Thread.Sleep(Settings.Default.AccentColorSwitchTime);
                     ColorPrevalence(1);
                 }
             }
-            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
-            if (Properties.Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(4);
-            if (Properties.Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(true);
+            if (Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
+            if (Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(4);
+            if (Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(true);
         }
 
         public void ThemeToLight()
         {
-            if (Properties.Settings.Default.ThemeSwitch)
+            if (Settings.Default.ThemeSwitch)
             {
-                ThemeHandler.ChangeTheme(Properties.Settings.Default.ThemeLight);
+                ThemeHandler.ChangeTheme(Settings.Default.ThemeLight);
             }
             else
             {
-                if (Properties.Settings.Default.AccentColor && Properties.Settings.Default.SystemThemeChange.Equals(0))
+                if (Settings.Default.AccentColor && Settings.Default.SystemThemeChange.Equals(0))
                 {
                     ColorPrevalence(0);
-                    Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
+                    Thread.Sleep(Settings.Default.AccentColorSwitchTime);
                 }
-                if (Properties.Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
-                if (Properties.Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
-                if (Properties.Settings.Default.WallpaperSwitch)
+                if (Settings.Default.AppThemeChange.Equals(0)) AppTheme(1);
+                if (Settings.Default.SystemThemeChange.Equals(0)) SystemTheme(1);
+                if (Settings.Default.WallpaperSwitch)
                 {
-                    WallpaperHandler.SetBackground(Properties.Settings.Default.WallpaperLight);
+                    WallpaperHandler.SetBackground(Settings.Default.WallpaperLight);
                 }
             }
-            if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
-            if (Properties.Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(0);
-            if (Properties.Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(false);
+            if (Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
+            if (Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(0);
+            if (Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(false);
         }
 
+        //Colour filter grayscale feature
         public void ColourFilterKeySender(bool dark)
         {
             var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
@@ -153,16 +152,17 @@ namespace AutoThemeChanger
             }
         }
 
+        //set AppUseLightTheme dword
         public void AppTheme(int theme)
         {
             GetKey().SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
         }
-
+        //set SystemUsesLightTheme dword
         public void SystemTheme(int theme)
         {
             GetKey().SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
         }
-
+        //set Edge theme dword
         public void EdgeTheme(int theme)
         {
             try
@@ -174,32 +174,30 @@ namespace AutoThemeChanger
 
             }
         }
-
+        //set accent color for taskbar dword
         public void ColorPrevalence(int theme)
         {
             GetKey().SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
         }
-
+        //get value of AppsUseLightTheme
         public bool AppsUseLightTheme()
         {
             var keyValue = GetKey().GetValue("AppsUseLightTheme");
-            if ((int)keyValue == 1) return true;
-            else return false;
+            return ((int)keyValue == 1) ? true : false;
         }
-
+        //get value of SystemUsesLightTheme
         public bool SystemUsesLightTheme()
         {
             var keyValue = GetKey().GetValue("SystemUsesLightTheme");
-            if ((int)keyValue == 1) return true;
-            else return false;
+            return ((int)keyValue == 1) ? true : false;
         }
-
+        //get windows version number, like 1607 or 1903
         public string GetOSversion()
         {
             var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
             return osVersion;
         }
-
+        
         private RegistryKey GetKey()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);

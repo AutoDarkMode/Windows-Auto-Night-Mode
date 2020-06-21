@@ -298,5 +298,17 @@ namespace AutoThemeChanger.Properties {
                 this["ColourFilterKeystroke"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LogonTaskInsteadOfAutostart {
+            get {
+                return ((bool)(this["LogonTaskInsteadOfAutostart"]));
+            }
+            set {
+                this["LogonTaskInsteadOfAutostart"] = value;
+            }
+        }
     }
 }

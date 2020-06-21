@@ -454,4 +454,7 @@ You can set this individually up in your Windows Theme.</value>
   <data name="cbSettingsColourFilter" xml:space="preserve">
     <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
   </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Use Logon Task instead of Autostart entry</value>
+  </data>
 </root>
