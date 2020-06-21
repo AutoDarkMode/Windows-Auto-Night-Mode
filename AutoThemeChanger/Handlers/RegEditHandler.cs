@@ -2,7 +2,10 @@
 using Microsoft.Win32;
 using System;
 using System.Threading;
-using System.Windows.Input;
+using System.Windows.Documents;
+using Windows.System;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace AutoThemeChanger
 {
@@ -36,13 +39,13 @@ namespace AutoThemeChanger
             }
             else if (hour >= lightStart[0] || hour < darkStart[0])
             {
-                if(hour == lightStart[0])
+                if (hour == lightStart[0])
                 {
-                    if(minute < lightStart[1])
+                    if (minute < lightStart[1])
                     {
                         ThemeToDark();
                     }
-                    if(minute >= lightStart[1])
+                    if (minute >= lightStart[1])
                     {
                         ThemeToLight();
                     }
@@ -77,6 +80,7 @@ namespace AutoThemeChanger
             }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(1);
             if (Properties.Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(4);
+            if (Properties.Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(true);
         }
 
         public void ThemeToLight()
@@ -101,6 +105,52 @@ namespace AutoThemeChanger
             }
             if (Properties.Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
             if (Properties.Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(0);
+            if (Properties.Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(false);
+        }
+
+        public void ColourFilterKeySender(bool dark)
+        {
+            var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
+            if (dark && filterKey.Equals(0) || !dark && filterKey.Equals(1))
+            {
+                //simulate key presses
+                InputSimulator inputSimulator = new InputSimulator();
+                inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LWIN);
+                inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LCONTROL);
+                inputSimulator.Keyboard.KeyPress(VirtualKeyCode.VK_C);
+                inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LWIN);
+                inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
+            }
+        }
+        public void ColourFilterSetup()
+        {
+            var filterType = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
+            //on clean installs this registry key doesn't exist, so we need to create it
+            if(filterType == null)
+            {
+                Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
+                ColourFilterSetup(); //calling itself again prevents code doubling, because we need again to open the subkey
+                return;
+            }
+            var currentValue = filterType.GetValue("Value", null);
+            if (currentValue == null)
+            {
+                filterType.SetValue("Active", 0, RegistryValueKind.DWord);
+            }
+
+            //set filtertype to 0 for grayscale and activate hotkey functionality of windows
+            filterType.SetValue("FilterType", 0, RegistryValueKind.DWord); // 0 = gray
+            filterType.SetValue("HotkeyEnabled", 1, RegistryValueKind.DWord); //and we activate the hotkey as free bonus :)
+
+            //and because we are nice, we also activate the colour filter depending on the current theme
+            if (Settings.Default.AppThemeChange.Equals(0) && AppsUseLightTheme() || Settings.Default.SystemThemeChange.Equals(0) && SystemUsesLightTheme())
+            {
+                ColourFilterKeySender(false);
+            }
+            else if (Settings.Default.AppThemeChange.Equals(0) && !AppsUseLightTheme() || Settings.Default.SystemThemeChange.Equals(0) && !SystemUsesLightTheme())
+            {
+                ColourFilterKeySender(true);
+            }
         }
 
         public void AppTheme(int theme)

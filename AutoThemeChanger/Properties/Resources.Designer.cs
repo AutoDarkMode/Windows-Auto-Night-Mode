@@ -145,6 +145,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use grayscale color filter (sends Win + Ctrl + C).
+        /// </summary>
+        public static string cbSettingsColourFilter {
+            get {
+                return ResourceManager.GetString("cbSettingsColourFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This option is disabled, because you haven&apos;t installed the Windows 10 April 2019 Update on your machine..
         /// </summary>
         public static string cmb1903 {

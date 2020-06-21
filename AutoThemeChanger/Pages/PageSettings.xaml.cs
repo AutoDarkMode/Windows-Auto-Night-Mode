@@ -33,6 +33,7 @@ namespace AutoThemeChanger.Pages
             CheckBoxAlterTime.IsChecked = Properties.Settings.Default.AlterTime;
             CheckBoxBackgroundUpdater.IsChecked = Properties.Settings.Default.BackgroundUpdate;
             CheckBoxConStandBy.IsChecked = Properties.Settings.Default.connectedStandby;
+            CheckBoxColourFilter.IsChecked = Properties.Settings.Default.ColourFilterKeystroke;
 
             TextboxAccentColorDelay.Text = Properties.Settings.Default.AccentColorSwitchTime.ToString();
         }
@@ -118,6 +119,22 @@ namespace AutoThemeChanger.Pages
             {
                 taskShedHandler.RemoveConnectedStandbyTask();
                 Properties.Settings.Default.connectedStandby = false;
+            }
+        }
+
+        private void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
+        {
+            RegeditHandler regeditHandler = new RegeditHandler();
+
+            if(CheckBoxColourFilter.IsChecked.Value)
+            {
+                regeditHandler.ColourFilterSetup();
+                Properties.Settings.Default.ColourFilterKeystroke = true;
+            }
+            else
+            {
+                regeditHandler.ColourFilterKeySender(false);
+                Properties.Settings.Default.ColourFilterKeystroke = false;
             }
         }
 

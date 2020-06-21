@@ -451,4 +451,7 @@ You can set this individually up in your Windows Theme.</value>
   <data name="TextBoxAppsBrowsers" xml:space="preserve">
     <value>Chrome, Firefox and Edge:</value>
   </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
+  </data>
 </root>

@@ -87,7 +87,7 @@
 
         <!-- Third Party Software-->
         <TextBlock HorizontalAlignment="Left" Margin="10,332,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
-        <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" HorizontalAlignment="Left" Margin="10,361,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
+        <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -100,7 +100,20 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" HorizontalAlignment="Left" Margin="10,388,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
+        <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" HorizontalAlignment="Left" Margin="10,390,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="13" Margin="10,420,0,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
