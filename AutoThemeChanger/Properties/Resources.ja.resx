@@ -184,7 +184,7 @@
     <value>変更が保存されました。</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>クリックで変更を保存します</value>
+    <value>クリックで変更を保存</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>アップデートをダウンロード</value>
@@ -376,7 +376,8 @@ PayPal の寄付ページを開きますか？</value>
     <value>適用</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Windows テーマの使用中は、これらのオプションは無効です。これらの設定は、Windowsテーマから個別に設定できます。</value>
+    <value>Windows テーマの使用中は、これらのオプションは無効です。
+これらの設定は、Windowsテーマから個別に設定できます。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>アプリ</value>
@@ -412,16 +413,16 @@ PayPal の寄付ページを開きますか？</value>
     <value>デスクトップの壁紙 (おすすめ)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>ステップ1 ここから Windows のテーマの設定を開く。</value>
+    <value>ここから Windows のテーマの設定を開く。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>ステップ2 色を白にしライトテーマ用の Windows テーマを設定します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
+    <value>設定の色を白に選択しライトテーマ用の Windows の色を設定します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>ステップ3 テーマの設定に戻り、テーマを保存します。</value>
+    <value>テーマの設定に戻り、テーマを保存します。</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>ステップ4 同じようにダークテーマ用に作成します。</value>
+    <value>同じようにダークテーマ用に作成します。</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>タスクバーの色を切り替える遅延時間 (ミリ秒):</value>
@@ -430,6 +431,27 @@ PayPal の寄付ページを開きますか？</value>
     <value>情報</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>ナビメニュー</value>
+    <value>メニュー</value>
+  </data>
+    <data name="restart" xml:space="preserve">
+    <value>再起動</value>
+  </data>
+  <data name="themeApplyError" xml:space="preserve">
+    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました。</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>時刻を指定</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>日の出から日没まで</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="TextBoxAppsBrowsers" xml:space="preserve">
+    <value>Chrome, Firefox と Edge:</value>
+  </data>
+    <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>グレースケールの色のフィルターを使用 (Win + Ctrl + C)</value>
   </data>
 </root>
