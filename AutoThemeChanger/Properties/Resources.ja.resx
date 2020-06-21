@@ -451,4 +451,7 @@ PayPal の寄付ページを開きますか？</value>
   <data name="TextBoxAppsBrowsers" xml:space="preserve">
     <value>Chrome, Firefox と Edge:</value>
   </data>
+    <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>グレースケールの色のフィルターを使用 (Win + Ctrl + C)</value>
+  </data>
 </root>
