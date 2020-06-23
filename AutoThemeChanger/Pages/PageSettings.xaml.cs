@@ -25,6 +25,10 @@ namespace AutoThemeChanger.Pages
         {
             RestartButton.Visibility = Visibility.Hidden;
             ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString();
+            if(ComboBoxLanguageSelection.SelectedValue == null)
+            {
+                ComboBoxLanguageSelection.SelectedValue = "en";
+            }
 
             if (!Settings.Default.Enabled)
             {

@@ -599,6 +599,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to not found.
+        /// </summary>
+        public static string locationCityNotFound {
+            get {
+                return ResourceManager.GetString("locationCityNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Due to a Windows bug the taskbar doesn&apos;t properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues..
         /// </summary>
         public static string msgBatterySaver {

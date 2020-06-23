@@ -23,12 +23,11 @@ namespace AutoThemeChanger
                 AddJumpList(); //create jump list entries
                 Settings.Default.FirstRun = false; 
             }
-
-            ButtonNavarTime_Click(this, null); //select and display the main page
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            ButtonNavarTime_Click(this, null); //select and display the main page
             DonationScreen();
             Updater updater = new Updater();
             updater.CheckNewVersion(); //check github xaml file for a higher version number

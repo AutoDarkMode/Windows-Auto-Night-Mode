@@ -469,4 +469,7 @@ You can set this individually up in your Windows Theme.</value>
   <data name="tbDarkReaderDescription" xml:space="preserve">
     <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme</value>
   </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>not found</value>
+  </data>
 </root>

@@ -458,4 +458,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
   <data name="tbDarkReaderDescription" xml:space="preserve">
     <value>Diese Browser-Erweiterung färbt Webseiten in Chrome, Firefox und Edge passend zur Systemfarbe dunkel ein</value>
   </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>nicht gefunden</value>
+  </data>
 </root>

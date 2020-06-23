@@ -73,7 +73,7 @@ namespace AutoThemeChanger
                 // Ignored
             }
 
-            return String.Format("({0}, {1})", position.Latitude, position.Longitude);
+            return Properties.Resources.locationCityNotFound;
         }
 
         public async Task SetLocationSilent()
