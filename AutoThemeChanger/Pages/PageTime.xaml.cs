@@ -332,6 +332,7 @@ namespace AutoThemeChanger.Pages
             userFeedback.Text = Properties.Resources.msgErrorOcc;
             string error = Properties.Resources.errorThemeApply + "\n\n" + erroDescription + "\n\n" + exception;
             MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
+            msg.Owner = Window.GetWindow(this);
             msg.ShowDialog();
             var result = msg.DialogResult;
             if (result == true)

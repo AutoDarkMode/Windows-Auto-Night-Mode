@@ -47,6 +47,7 @@ namespace AutoThemeChanger
                 AppComboBox.IsEnabled = false;
                 EdgeComboBox.IsEnabled = false;
                 OfficeComboBox.IsEnabled = false;
+                CheckBoxOfficeWhiteTheme.IsEnabled = false;
             }
 
             //if a windows theme file was picked
@@ -70,15 +71,13 @@ namespace AutoThemeChanger
                 AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
             }
             else
+            //os version 1903+
             {
                 //inform user about settings
                 if(!Properties.Settings.Default.ThemeSwitch) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
 
                 //is accent color switch enabled?
-                if (Properties.Settings.Default.AccentColor)
-                {
-                    AccentColorCheckBox.IsChecked = true;
-                }
+                AccentColorCheckBox.IsChecked = Properties.Settings.Default.AccentColor;
             }
 
             //combobox
@@ -86,6 +85,9 @@ namespace AutoThemeChanger
             SystemComboBox.SelectedIndex = Properties.Settings.Default.SystemThemeChange;
             EdgeComboBox.SelectedIndex = Properties.Settings.Default.EdgeThemeChange;
             OfficeComboBox.SelectedIndex = Properties.Settings.Default.OfficeThemeChange;
+
+            //checkbox
+            CheckBoxOfficeWhiteTheme.IsChecked = Properties.Settings.Default.OfficeThemeChangeWhiteDesign;
         }
 
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
@@ -253,7 +255,8 @@ namespace AutoThemeChanger
             {
                 try
                 {
-                    regEditHandler.OfficeTheme(0);
+                    if (!Properties.Settings.Default.OfficeThemeChangeWhiteDesign) regEditHandler.OfficeTheme(0);
+                    else regEditHandler.OfficeTheme(5);
                     Properties.Settings.Default.OfficeThemeChange = 1;
                 }
                 catch
@@ -289,6 +292,19 @@ namespace AutoThemeChanger
         private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Every-website-in-dark-mode-with-Dark-Reader");
+        }
+
+        private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)
+        {
+            if(CheckBoxOfficeWhiteTheme.IsChecked ?? true){
+                Properties.Settings.Default.OfficeThemeChangeWhiteDesign = true;
+                OfficeComboBox_DropDownClosed(this, null);
+            }
+            else
+            {
+                Properties.Settings.Default.OfficeThemeChangeWhiteDesign = false;
+                OfficeComboBox_DropDownClosed(this, null);
+            }
         }
     }
 }

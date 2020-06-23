@@ -11,7 +11,6 @@ namespace AutoThemeChanger
 
         public static void SetBackground(string filePath)
         {
-
             win32.SystemParametersInfo(0x0014, 0, filePath, 1 | 2);
         }
 

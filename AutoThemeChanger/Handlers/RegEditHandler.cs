@@ -102,7 +102,8 @@ namespace AutoThemeChanger
                 }
             }
             if (Settings.Default.EdgeThemeChange.Equals(0)) EdgeTheme(0);
-            if (Settings.Default.OfficeThemeChange.Equals(0)) OfficeTheme(0);
+            if (Settings.Default.OfficeThemeChange.Equals(0) & !Settings.Default.OfficeThemeChangeWhiteDesign) OfficeTheme(0);
+            else if (Settings.Default.OfficeThemeChange.Equals(0) & Settings.Default.OfficeThemeChangeWhiteDesign) OfficeTheme(5);
             if (Settings.Default.ColourFilterKeystroke) ColourFilterKeySender(false);
         }
 

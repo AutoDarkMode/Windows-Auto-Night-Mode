@@ -29,6 +29,8 @@ namespace AutoThemeChanger.Pages
             if (!Settings.Default.Enabled)
             {
                 CheckBoxConStandBy.IsEnabled = false;
+                CheckBoxLogonTask.IsEnabled = false;
+                CheckBoxColourFilter.IsEnabled = false;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;

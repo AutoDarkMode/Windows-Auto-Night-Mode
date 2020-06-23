@@ -28,7 +28,7 @@
 
         <!-- Navbar -->
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarTitle}" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Rectangle x:Name="NavbarRectangle" Grid.Column="0" Fill="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" Margin="0, 45, 0, 0" Grid.Row="1" Width="5" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle x:Name="NavbarRectangle" Grid.Column="0" Fill="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" Margin="0, 45, 0, 0" Grid.Row="1" Width="4" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button Name="ButtonNavarTime" HorizontalAlignment="Left" Margin="0,40,0,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Width="190" Click="ButtonNavarTime_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="165">
                 <TextBlock Text="&#xE823;" FontFamily="Segoe MDL2 Assets" FontSize="17" Width="30" Height="17"/>

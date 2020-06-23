@@ -4,6 +4,9 @@ namespace AutoThemeChanger
 {
     /// <summary>
     /// Interaction logic for MsgBox.xaml
+    /// Parameters:
+    /// Icons: error, info, update, smiley
+    /// Buttons: close, yesno
     /// </summary>
     public partial class MsgBox
     {

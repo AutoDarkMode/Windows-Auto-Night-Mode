@@ -29,7 +29,7 @@
 
 
         <!-- Mode Selection -->
-        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" TextWrapping="Wrap" Text="Select mode:"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.ThemeSelection}"/>
         <ComboBox HorizontalAlignment="Left" Name="ComboBoxModeSelection" Margin="10,23,0,0" Height="28" Grid.Row="1" VerticalAlignment="Top" Width="300" Grid.Column="1" SelectionChanged="ComboBoxModeSelection_SelectionChanged" Style="{StaticResource FluentComboBox}">
             <ComboBoxItem Content="{x:Static p:Resources.ThemeSelectionWallaper}"  Name="admwallpaper" Grid.Column="1"/>
             <ComboBoxItem Content="{x:Static p:Resources.ThemeSelectionTheme}" Name="wintheme"/>
@@ -41,7 +41,7 @@
         <TextBlock Name="wallpaperIcon" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="25" Width="25" FontSize="25" Grid.Column="1"/>
         <Button x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="47,37,0,0" Grid.Row="2" VerticalAlignment="Top" MinWidth="200" Width="Auto" Click="BGWinButton_Click" Height="25" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1"/>
         <StackPanel Name="StackPanelWallpaperStatus" Grid.Column="1" Grid.Row="2" Margin="47,67,0,0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Height="Auto" Width="Auto">
-            <TextBlock Name="wallpaperCurrent" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" FontWeight="Bold" Height="16" Width="Auto"/>
+            <TextBlock Name="wallpaperCurrent" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" Foreground="Gray" Width="Auto"/>
             <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1"/>
         </StackPanel>
 

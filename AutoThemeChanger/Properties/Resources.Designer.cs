@@ -88,6 +88,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download Extension.
+        /// </summary>
+        public static string buttonDownloadExtension {
+            get {
+                return ResourceManager.GetString("buttonDownloadExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string cancel {
@@ -125,7 +134,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch after Connected Standby.
+        ///   Looks up a localized string similar to Switch after Connected Standby (not recommended).
         /// </summary>
         public static string cbConnectedStandby {
             get {
@@ -141,6 +150,15 @@ namespace AutoThemeChanger.Properties {
         public static string cbConnectedStandbyTooltip {
             get {
                 return ResourceManager.GetString("cbConnectedStandbyTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alternative white theme.
+        /// </summary>
+        public static string cbOfficeWhiteTheme {
+            get {
+                return ResourceManager.GetString("cbOfficeWhiteTheme", resourceCulture);
             }
         }
         
@@ -433,15 +451,6 @@ namespace AutoThemeChanger.Properties {
         public static string lblApps {
             get {
                 return ResourceManager.GetString("lblApps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Author: Armin Osaj © 2019.
-        /// </summary>
-        public static string lblAuthor {
-            get {
-                return ResourceManager.GetString("lblAuthor", resourceCulture);
             }
         }
         
@@ -865,11 +874,20 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chrome, Firefox and Edge:.
+        ///   Looks up a localized string similar to Recommended tools.
         /// </summary>
-        public static string TextBoxAppsBrowsers {
+        public static string tbAppsTitleRecommendedTools {
             get {
-                return ResourceManager.GetString("TextBoxAppsBrowsers", resourceCulture);
+                return ResourceManager.GetString("tbAppsTitleRecommendedTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.
+        /// </summary>
+        public static string tbDarkReaderDescription {
+            get {
+                return ResourceManager.GetString("tbDarkReaderDescription", resourceCulture);
             }
         }
         
@@ -879,6 +897,15 @@ namespace AutoThemeChanger.Properties {
         public static string themeApplyError {
             get {
                 return ResourceManager.GetString("themeApplyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred while applying the theme, we disabled theme switching.
+        /// </summary>
+        public static string ThemeApplyError1 {
+            get {
+                return ResourceManager.GetString("ThemeApplyError1", resourceCulture);
             }
         }
         
@@ -915,6 +942,15 @@ namespace AutoThemeChanger.Properties {
         public static string ThemeLight {
             get {
                 return ResourceManager.GetString("ThemeLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select mode:.
+        /// </summary>
+        public static string ThemeSelection {
+            get {
+                return ResourceManager.GetString("ThemeSelection", resourceCulture);
             }
         }
         

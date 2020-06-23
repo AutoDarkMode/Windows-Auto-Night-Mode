@@ -7,14 +7,14 @@
         xmlns:local="clr-namespace:AutoThemeChanger"
         mc:Ignorable="d"
         Title="MsgBox" Name="window" Height="147.091" Width="437.259" ResizeMode="NoResize" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Background="{x:Null}" WindowStartupLocation="CenterOwner" SizeToContent="Height">
-    <StackPanel Background="#20FFFFFF" Orientation="Vertical">
+    <StackPanel Background="#40FFFFFF" Orientation="Vertical">
         <Grid Width="420" HorizontalAlignment="Left">
             <TextBlock x:Name="Text_Textblock" HorizontalAlignment="Left" Margin="60,11,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
             <TextBlock x:Name="IconTextBlock" HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="36"/>
         </Grid>
         <Grid Height="60">
-            <Button x:Name="YesButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,107,0" VerticalAlignment="Center" Width="75" Click="Button_Click" BorderBrush="#FFDDDDDD"/>
-            <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,17,0" VerticalAlignment="Center" Width="75" Click="CloseButton_Click" BorderBrush="#FFDDDDDD"/>
+            <Button x:Name="YesButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,107,0" VerticalAlignment="Center" Width="75" Height="22" Click="Button_Click"/>
+            <Button x:Name="CloseButton" Content="Button" HorizontalAlignment="Right" Margin="0,0,17,0" VerticalAlignment="Center" Width="75" Height="22" Click="CloseButton_Click"/>
         </Grid>
     </StackPanel>
 </fw:AcrylicWindow>

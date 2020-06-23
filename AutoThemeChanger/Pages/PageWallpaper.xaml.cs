@@ -121,6 +121,7 @@ namespace AutoThemeChanger
         private void BGWinButton_Click(object sender, RoutedEventArgs e)
         {
             DesktopBGui BGui = new DesktopBGui();
+            BGui.Owner = Window.GetWindow(this);
             BGui.ShowDialog();
             if (BGui.saved == true)
             {
@@ -158,7 +159,8 @@ namespace AutoThemeChanger
             catch
             {
                 Properties.Settings.Default.ThemeSwitch = false;
-                MsgBox msg = new MsgBox("Error occurred while applying the theme, we disabled theme switching", Properties.Resources.errorOcurredTitle, "error", "close");
+                MsgBox msg = new MsgBox(Properties.Resources.ThemeApplyError1, Properties.Resources.errorOcurredTitle, "error", "close");
+                msg.Owner = Window.GetWindow(this);
                 msg.ShowDialog();
             }
         }

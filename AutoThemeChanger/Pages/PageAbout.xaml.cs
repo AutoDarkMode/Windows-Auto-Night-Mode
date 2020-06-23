@@ -120,6 +120,7 @@ namespace AutoThemeChanger.Pages
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
                 "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
             MsgBox msgBox = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close");
+            msgBox.Owner = Window.GetWindow(this);
             msgBox.ShowDialog();
         }
 
@@ -139,6 +140,7 @@ namespace AutoThemeChanger.Pages
                "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, " +
                "WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
             MsgBox msgBox = new MsgBox(messageBoxText, "TaskSheduler License Information", "info", "close");
+            msgBox.Owner = Window.GetWindow(this);
             msgBox.ShowDialog();
         }
 
@@ -173,6 +175,7 @@ namespace AutoThemeChanger.Pages
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
             MsgBox msgBox = new MsgBox(MessageBoxText, "InputSimulator License Information", "info", "close");
+            msgBox.Owner = Window.GetWindow(this);
             msgBox.ShowDialog();
         }
 

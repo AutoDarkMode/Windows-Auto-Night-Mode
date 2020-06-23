@@ -4,6 +4,7 @@ using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Navigation;
+using AutoThemeChanger.Properties;
 
 namespace AutoThemeChanger
 {
@@ -12,28 +13,30 @@ namespace AutoThemeChanger
         public MainWindow()
         {
             Console.WriteLine("--------- AppStart");
-            LanguageHelper();
+            LanguageHelper(); //set current UI language
             InitializeComponent();
 
-            if (Properties.Settings.Default.FirstRun)
+            //only run at first startup
+            if (Settings.Default.FirstRun)
             {
-                SystemTimeFormat();
-                AddJumpList();
-                Properties.Settings.Default.FirstRun = false;
+                SystemTimeFormat(); //check if system uses 12 hour clock
+                AddJumpList(); //create jump list entries
+                Settings.Default.FirstRun = false; 
             }
+
+            ButtonNavarTime_Click(this, null); //select and display the main page
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-            LanguageHelper();
-            ButtonNavarTime_Click(this, null);
             DonationScreen();
             Updater updater = new Updater();
-            updater.CheckNewVersion();
+            updater.CheckNewVersion(); //check github xaml file for a higher version number
         }
 
         private void DonationScreen()
         {
+            //generate random number between 1 and 100. If the number is 50, show donation msgbox
             Random rdmnumber = new Random();
             int generatedNumber = rdmnumber.Next(1, 100);
             if (generatedNumber == 50)
@@ -46,19 +49,20 @@ namespace AutoThemeChanger
                 var result = msgBox.DialogResult;
                 if (result == true)
                 {
-                    System.Diagnostics.Process.Start("https://www.paypal.me/arminosaj");
+                    Process.Start("https://www.paypal.me/arminosaj");
                 }
             }
-
         }
 
+        //region time and language
         private void LanguageHelper()
         {
-            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.Language.ToString()))
+            if (string.IsNullOrWhiteSpace(Settings.Default.Language.ToString()))
             {
-                Properties.Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+                Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
-            CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
+            CultureInfo.CurrentUICulture = new CultureInfo(Settings.Default.Language, true);
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Settings.Default.Language, true);
         }
 
         private void SystemTimeFormat()
@@ -69,7 +73,7 @@ namespace AutoThemeChanger
                 sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
                 if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
                 {
-                    Properties.Settings.Default.AlterTime = true;
+                    Settings.Default.AlterTime = true;
                 }
             }
             catch
@@ -78,6 +82,7 @@ namespace AutoThemeChanger
             }
         }
 
+        //jump list
         private void AddJumpList()
         {
             JumpTask darkJumpTask = new JumpTask
@@ -105,9 +110,9 @@ namespace AutoThemeChanger
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
+            Settings.Default.Save();
             Application.Current.Shutdown();
-            Process.GetCurrentProcess().Kill();
+            Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
 
         //navigation bar
@@ -141,6 +146,7 @@ namespace AutoThemeChanger
             NavbarRectangle.Margin = new Thickness(0, 490, 0, 0);
         }
 
+        //frame
         private void FrameNavbar_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
         {
             if (e.NavigationMode == NavigationMode.Forward | e.NavigationMode == NavigationMode.Back)

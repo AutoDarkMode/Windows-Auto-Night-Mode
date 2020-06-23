@@ -310,5 +310,17 @@ namespace AutoThemeChanger.Properties {
                 this["LogonTaskInsteadOfAutostart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OfficeThemeChangeWhiteDesign {
+            get {
+                return ((bool)(this["OfficeThemeChangeWhiteDesign"]));
+            }
+            set {
+                this["OfficeThemeChangeWhiteDesign"] = value;
+            }
+        }
     }
 }
