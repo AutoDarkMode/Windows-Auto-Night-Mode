@@ -141,9 +141,6 @@
   <data name="lblApps" xml:space="preserve">
     <value>ソフトウェア:</value>
   </data>
-  <data name="lblAuthor" xml:space="preserve">
-    <value>開発者: Armin Osaj © 2019</value>
-  </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>開始時間の指定</value>
   </data>
@@ -175,7 +172,7 @@
     <value>使用しているサードパーティーのソフトウェア</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>アップデート</value>
+    <value>更新</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
     <value>位置情報の使用</value>
@@ -187,7 +184,7 @@
     <value>クリックで変更を保存</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>アップデートをダウンロード</value>
+    <value>最新版をダウンロード</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
     <value>エラーが発生しました</value>
@@ -222,10 +219,10 @@
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>アップデートの確認</value>
+    <value>最新版の確認</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>プログラム実行時にアップデートを確認しています。</value>
+    <value>プログラム起動時に最新版を確認しています。</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>ようこそ</value>
@@ -313,7 +310,7 @@
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>ダークモードでのみ表示されます。
-問題が発生する場合、設定の切り替え遅延時間を増やしてください。</value>
+問題が発生する場合、設定で切り替え遅延時間を増やしてください。</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>情報</value>
@@ -331,7 +328,7 @@
     <value>はい</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>バックグラウンドでアップデートを確認</value>
+    <value>バックグラウンドで最新版を確認</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
     <value>すみません。設定を適用できませんでした。
@@ -347,11 +344,11 @@
     <value>エラー: 入力が正しくありません。</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>スタンバイ後に切り替える</value>
+    <value>スタンバイ後に切り替える (非推奨)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
-このオプションを有効にするとパソコンの起動後、 Auto Dark Mode がただちにテーマを切り替えます。 
+このオプションを有効にするとパソコンの起動後、Auto Dark Mode がただちにテーマを切り替えます。
 しかし、充電池の寿命を縮めるので、必要な場合にのみ有効化してください。</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
@@ -367,7 +364,7 @@
 PayPal の寄付ページを開きますか？</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>Auto Dark Mode を気に入りましたでしょうか？</value>
+    <value>Auto Dark Mode を気に入っていただけたでしょうか？</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>補正</value>
@@ -437,10 +434,10 @@ PayPal の寄付ページを開きますか？</value>
     <value>再起動</value>
   </data>
   <data name="themeApplyError" xml:space="preserve">
-    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました。</value>
+    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>時刻を指定</value>
+    <value>時間を指定</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>日の出から日没まで</value>
@@ -448,10 +445,28 @@ PayPal の寄付ページを開きますか？</value>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>ステップ</value>
   </data>
-  <data name="TextBoxAppsBrowsers" xml:space="preserve">
-    <value>Chrome, Firefox と Edge:</value>
-  </data>
-    <data name="cbSettingsColourFilter" xml:space="preserve">
+  <data name="cbSettingsColourFilter" xml:space="preserve">
     <value>グレースケールの色のフィルターを使用 (Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>スタートアップには登録せずログイン時のタスクとして実行</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>切り替え対象の選択:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>テーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>別のホワイトテーマ</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>拡張機能のダウンロード</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>おすすめのツール</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>このブラウザー拡張機能は Chrome, Firefox と Edge でのサイトの表示をシステムのテーマに従ったものにします。</value>
   </data>
 </root>
