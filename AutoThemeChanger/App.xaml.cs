@@ -50,6 +50,14 @@ namespace AutoThemeChanger
                         Updater updater = new Updater();
                         updater.CheckNewVersion();
                     }
+                    else if(value == "/uninstall")
+                    {
+                        TaskSchHandler task = new TaskSchHandler();
+                        RegeditHandler reg = new RegeditHandler();
+                        task.RemoveTask();
+                        reg.RemoveAutoStart();
+                        reg.ColourFilterKeySender(false);
+                    }
                     else if(value == "/removeTask")
                     {
                         TaskSchHandler taskShedHandler = new TaskSchHandler();
