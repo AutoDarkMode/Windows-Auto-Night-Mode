@@ -25,7 +25,7 @@
 
         <!-- Header -->
         <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" Source="/AutoDarkMode;component/Resources/DonationHeader.png" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"/>
-        <TextBlock Text="{x:Static p:Resources.NavbarDonation}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" FontSize="30" FontWeight="Bold" Foreground="White"/>
+        <TextBlock Text="{x:Static p:Resources.NavbarDonation}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="30,0,0,20" FontSize="30" FontWeight="Bold" Foreground="White"/>
         
         <!-- Content -->
         <TextBlock Text="{x:Static p:Resources.DonationHeaderReason}" Margin="10,20,0,0" Grid.Column="1" Grid.Row="2" FontSize="16" FontWeight="Bold"/>

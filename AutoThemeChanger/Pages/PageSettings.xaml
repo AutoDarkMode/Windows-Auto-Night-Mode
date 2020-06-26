@@ -38,10 +38,11 @@
             
             <!-- Language selection-->
             <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-            <ComboBox x:Name="ComboBoxLanguageSelection" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="120" Height="28" SelectedIndex="1" DropDownClosed="ComboBoxLanguageSelection_DropDownClosed" Style="{StaticResource FluentComboBox}">
+            <ComboBox x:Name="ComboBoxLanguageSelection" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="150" Height="28" SelectedIndex="1" DropDownClosed="ComboBoxLanguageSelection_DropDownClosed" Style="{StaticResource FluentComboBox}">
                 <ComboBoxItem Content="Deutsch" Name="de"/>
                 <ComboBoxItem Content="English" Name="en"/>
                 <ComboBoxItem Content="Français" Name="fr"/>
+                <ComboBoxItem Content="Bahasa Indonesia" Name="id"/>
                 <ComboBoxItem Content="Italiano" Name="it"/>
                 <ComboBoxItem Content="Nederlands" Name="nl"/>
                 <ComboBoxItem Content="Polski" Name="pl"/>
