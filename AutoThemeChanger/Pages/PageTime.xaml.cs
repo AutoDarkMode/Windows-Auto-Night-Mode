@@ -5,9 +5,7 @@ using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
-using System.Globalization;
 using AutoThemeChanger.Properties;
-using Microsoft.Win32.TaskScheduler;
 
 namespace AutoThemeChanger.Pages
 {
@@ -41,9 +39,23 @@ namespace AutoThemeChanger.Pages
                 int[] darkStart = taskSchHandler.GetRunTime("dark");
                 int[] lightStart = taskSchHandler.GetRunTime("light");
                 darkStartBox.Text = Convert.ToString(darkStart[0]);
-                DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
+                if(darkStart[1] < 10)
+                {
+                    DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]) + "0";
+                }
+                else
+                {
+                    DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
+                }
                 lightStartBox.Text = Convert.ToString(lightStart[0]);
-                LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
+                if(lightStart[1] < 10)
+                {
+                    LightStartMinutesBox.Text = Convert.ToString(lightStart[1]) + "0";
+                }
+                else
+                {
+                    LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
+                }
             }
             //user has location sunset and sunrise enabled
             else if (taskSchHandler.CheckExistingClass().Equals(2))
