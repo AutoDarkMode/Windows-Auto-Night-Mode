@@ -8,23 +8,29 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:Properties="clr-namespace:AutoThemeChanger.Properties" x:Class="AutoThemeChanger.Pages.PageAbout"
       mc:Ignorable="d"
-      Title="PageAbout" Height="635.464" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" Width="770">
+      Title="PageAbout" Height="560" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarAbout}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarAbout}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
 
         <!-- Info -->
-        <Image HorizontalAlignment="Left" Height="50" Margin="10,56,0,0" Grid.Column="1" VerticalAlignment="Top" Width="50" Source="/AutoDarkModeIcon.ico" MouseDown="Image_MouseDown"/>
-        <TextBlock Name="TextBoxVersionNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode 3.0 BETA 10" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="67,63,0,0" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" TextWrapping="Wrap" Text="© 2020 Armin Osaj" VerticalAlignment="Top" Height="16" Width="251"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="10,56,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="50" Source="/AutoDarkModeIcon.ico" MouseDown="Image_MouseDown"/>
+        <TextBlock Name="TextBoxVersionNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode 3.0 BETA 10" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="67,63,0,0" Grid.Column="1" Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2020 Armin Osaj / Armin2208" VerticalAlignment="Top" Height="16" Width="251"/>
 
         <!-- Social Media links-->
-        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" VerticalAlignment="Top" Width="30" Source="/AutoDarkMode;component/Resources/GitHub_Logo_Black.png"/>
-        <TextBlock x:Name="GitHubTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,140,0,0" Grid.Column="1" TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown">
+        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="30" Source="/AutoDarkMode;component/Resources/GitHub_Logo_Black.png"/>
+        <TextBlock x:Name="GitHubTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -37,8 +43,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="50" Margin="120,125,0,0" Grid.Column="1" VerticalAlignment="Top" Width="50" Source="/AutoDarkMode;component/Resources/Twitter_Logo_Blue.png"/>
-        <TextBlock x:Name="TwitterTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,140,0,0" Grid.Column="1" TextWrapping="Wrap" Focusable="True" Text="Twitter" VerticalAlignment="Top" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" PreviewKeyDown="TwitterTextBlock_PreviewKeyDown">
+        <Image HorizontalAlignment="Left" Height="50" Margin="120,125,0,0" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Width="50" Source="/AutoDarkMode;component/Resources/Twitter_Logo_Blue.png"/>
+        <TextBlock x:Name="TwitterTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Twitter" VerticalAlignment="Top" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" PreviewKeyDown="TwitterTextBlock_PreviewKeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -51,8 +57,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="30" Margin="15,178,0,0" Grid.Column="1" VerticalAlignment="Top" Width="26" Source="/AutoDarkMode;component/Resources/PayPal_Logo.png"/>
-        <TextBlock x:Name="PayPalTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,186,0,0" Grid.Column="1" TextWrapping="Wrap" Focusable="True" Text="PayPal" VerticalAlignment="Top" MouseDown="PayPalTextBlock_MouseDown" KeyDown="PayPalTextBlock_KeyDown">
+        <Image HorizontalAlignment="Left" Height="30" Margin="15,178,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="26" Source="/AutoDarkMode;component/Resources/PayPal_Logo.png"/>
+        <TextBlock x:Name="PayPalTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,186,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="PayPal" VerticalAlignment="Top" MouseDown="PayPalTextBlock_MouseDown" KeyDown="PayPalTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -65,8 +71,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="132,180,0,0" Grid.Column="1" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="28"/>
-        <TextBlock x:Name="telegramTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,186,0,0" Grid.Column="1" TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown">
+        <TextBlock HorizontalAlignment="Left" Margin="132,180,0,0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="28"/>
+        <TextBlock x:Name="telegramTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,186,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -81,13 +87,13 @@
         </TextBlock>
 
         <!-- Update -->
-        <TextBlock HorizontalAlignment="Left" Margin="10,232,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <Button x:Name="updateButton" Content="{x:Static Properties:Resources.updateButton}" HorizontalAlignment="Left" Margin="10,259,0,0" Grid.Column="1" VerticalAlignment="Top" Click="UpdateButton_Click" Height="26" Width="150" Style="{StaticResource ButtonRevealStyle}"/>
-        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="10,289,0,0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static Properties:Resources.updateInfoText}" Width="250" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,232,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
+        <Button x:Name="updateButton" Content="{x:Static Properties:Resources.updateButton}" HorizontalAlignment="Left" Margin="10,259,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Click="UpdateButton_Click" Height="26" Width="150" Style="{StaticResource ButtonRevealStyle}"/>
+        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="10,289,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static Properties:Resources.updateInfoText}" Width="250" Height="16"/>
 
         <!-- Third Party Software-->
-        <TextBlock HorizontalAlignment="Left" Margin="10,332,0,0" Grid.Column="1" TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
-        <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
+        <TextBlock HorizontalAlignment="Left" Margin="10,332,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
+        <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -100,7 +106,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" HorizontalAlignment="Left" Margin="10,390,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
+        <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Margin="10,390,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -113,7 +119,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="13" Margin="10,420,0,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
+        <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="13" Margin="10,420,0,0" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>

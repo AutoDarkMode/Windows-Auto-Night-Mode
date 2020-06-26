@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Titlebar -->
-        <Rectangle Fill="{DynamicResource SystemAltHighColorBrush}" HorizontalAlignment="Stretch" Height="30" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" Grid.Column="1" Grid.Row="0"/>
+        <!-- <Rectangle Fill="{DynamicResource SystemAltHighColorBrush}" HorizontalAlignment="Stretch" Height="30" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" Grid.Column="1" Grid.Row="0"/> -->
         <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
 
 
@@ -53,12 +53,18 @@
                 <TextBlock Text="{x:Static p:Resources.NavbarSettings}" Height="17"/>
             </StackPanel>
         </Button>
+        <Button Name="ButtonNavbarDonation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,440,0,0" Grid.Row="1" Grid.Column="0" Width="190" Height="40" Click="ButtonNavbarDonation_Click" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="165">
+                <TextBlock Text="&#xEB51;" FontFamily="Segoe MDL2 Assets" FontSize="17" Width="30" Height="17"/>
+                <TextBlock Text="{x:Static p:Resources.NavbarDonation}" Height="17"/>
+            </StackPanel>
+        </Button>
         <Button Name="ButtonNavbarAbout" HorizontalAlignment="Left" Margin="0,485,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Width="190" Click="ButtonNavbarAbout_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="165">
                 <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets" FontSize="17" Width="30" Height="17"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarAbout}" Height="17"/>
             </StackPanel>
         </Button>
-        <Frame Content="" Background="{DynamicResource SystemAltHighColorBrush}" Name="FrameNavbar" Grid.Column="1" Margin="0,0,0,0" Grid.Row="1" Height="Auto" Width="Auto" NavigationUIVisibility="Hidden" Focusable="False" Navigating="FrameNavbar_Navigating"/>
+        <Frame Content="" Background="{DynamicResource SystemAltHighColorBrush}" Name="FrameNavbar" Grid.Column="1" Margin="0,0,0,0" Grid.Row="0" Grid.RowSpan="2" Height="Auto" Width="Auto" NavigationUIVisibility="Hidden" Focusable="False" Navigating="FrameNavbar_Navigating"/>
     </Grid>
 </fw:AcrylicWindow>

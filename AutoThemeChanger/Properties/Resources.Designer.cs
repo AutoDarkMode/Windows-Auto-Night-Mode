@@ -370,13 +370,12 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello! Thanks for using Auto Dark Mode. I hope you like it so far :)
+        ///   Looks up a localized string similar to Hello! Thank you for using Auto Dark Mode! Do you like it so far?
         ///
-        ///Yes, this developer really created a popup to remind people that he accepts donations via paypal. What a shame!
+        ///This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it&apos;s completely free, ad-free, doesn&apos;t collect user data and it&apos;s open source.
+        ///I don&apos;t generate any profit with this project.
         ///
-        ///But hey, this app makes your everyday life a bit easier. Even a small donation makes me happy :D
-        ///
-        ///Do you want to open the PayPal donation page now?.
+        ///For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work..
         /// </summary>
         public static string donationDescription {
             get {
@@ -385,11 +384,29 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you like Auto Dark Mode?.
+        ///   Looks up a localized string similar to Why should you donate?.
         /// </summary>
-        public static string donationTitle {
+        public static string DonationHeaderReason {
             get {
-                return ResourceManager.GetString("donationTitle", resourceCulture);
+                return ResourceManager.GetString("DonationHeaderReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to donate?.
+        /// </summary>
+        public static string DonationHowTo {
+            get {
+                return ResourceManager.GetString("DonationHowTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can send me money via PayPal. It&apos;s completely voluntary and you shouldn&apos;t expect any compensation..
+        /// </summary>
+        public static string DonationPayPalDescription {
+            get {
+                return ResourceManager.GetString("DonationPayPalDescription", resourceCulture);
             }
         }
         
@@ -762,6 +779,15 @@ namespace AutoThemeChanger.Properties {
         public static string NavbarApps {
             get {
                 return ResourceManager.GetString("NavbarApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Donate.
+        /// </summary>
+        public static string NavbarDonation {
+            get {
+                return ResourceManager.GetString("NavbarDonation", resourceCulture);
             }
         }
         

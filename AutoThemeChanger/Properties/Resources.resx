@@ -354,18 +354,6 @@ But it also reduces the battery life! ONLY activate if necessary!</value>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
   </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>Hello! Thanks for using Auto Dark Mode. I hope you like it so far :)
-
-Yes, this developer really created a popup to remind people that he accepts donations via paypal. What a shame!
-
-But hey, this app makes your everyday life a bit easier. Even a small donation makes me happy :D
-
-Do you want to open the PayPal donation page now?</value>
-  </data>
-  <data name="donationTitle" xml:space="preserve">
-    <value>Do you like Auto Dark Mode?</value>
-  </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
   </data>
@@ -471,5 +459,25 @@ You can set this individually up in your Windows Theme.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>not found</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Why should you donate?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>How to donate?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+
+This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
+I don't generate any profit with this project.
+
+For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
   </data>
 </root>

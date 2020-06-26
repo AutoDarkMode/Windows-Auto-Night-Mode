@@ -40,16 +40,7 @@ namespace AutoThemeChanger
             int generatedNumber = rdmnumber.Next(1, 100);
             if (generatedNumber == 50)
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.donationDescription, Properties.Resources.donationTitle, "smiley", "yesno")
-                {
-                    Owner = GetWindow(this)
-                };
-                msgBox.ShowDialog();
-                var result = msgBox.DialogResult;
-                if (result == true)
-                {
-                    Process.Start("https://www.paypal.me/arminosaj");
-                }
+                ButtonNavbarDonation_Click(this, null);
             }
         }
 
@@ -137,6 +128,12 @@ namespace AutoThemeChanger
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
             NavbarRectangle.Margin = new Thickness(0, 180, 0, 0);
+        }
+
+        private void ButtonNavbarDonation_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNavbar.Navigate(new Uri(@"/Pages/PageDonation.xaml", UriKind.Relative));
+            NavbarRectangle.Margin = new Thickness(0, 445, 0, 0);
         }
 
         private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)

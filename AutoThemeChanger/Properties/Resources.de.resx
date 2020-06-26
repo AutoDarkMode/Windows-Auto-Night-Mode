@@ -461,4 +461,24 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>nicht gefunden</value>
   </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hallo! Vielen Dank, dass du Auto Dark Mode nutzt! Gefällt dir die App?
+
+Die App gestaltet deinen Alltag angenehmer, da sie deine Augen schont. Gleichzeitig ist sie komplett gratis, werbefrei, kommt ohne Datenerhebung aus und ist vollständig Open Source.
+Ich erziele keinerlei Einnahmen mit diesem Projekt.
+
+Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Selbst ein kleiner Betrag lässt mich vor Freude durch meine Wohnung springen. Spende einfach so viel, wie dir meine Arbeit wert ist.</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Wieso spenden?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Wie spenden?</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Spenden</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Akzeptiert werden spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
+  </data>
 </root>

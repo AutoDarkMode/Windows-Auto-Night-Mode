@@ -133,6 +133,9 @@
     <Compile Include="Pages\PageApps.xaml.cs">
       <DependentUpon>PageApps.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageDonation.xaml.cs">
+      <DependentUpon>PageDonation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageSettings.xaml.cs">
       <DependentUpon>PageSettings.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageApps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageDonation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -291,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Office_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DonationHeader.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
