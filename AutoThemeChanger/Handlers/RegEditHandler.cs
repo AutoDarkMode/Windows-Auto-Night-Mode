@@ -128,9 +128,7 @@ namespace AutoThemeChanger
             //on clean installs this registry key doesn't exist, so we need to create it
             if(filterType == null)
             {
-                Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
-                ColourFilterSetup(); //calling itself again prevents code doubling, because we need again to open the subkey
-                return;
+                filterType = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
             }
             var currentValue = filterType.GetValue("Value", null);
             if (currentValue == null)
@@ -224,24 +222,47 @@ namespace AutoThemeChanger
 
         public void OfficeTheme(byte themeValue)
         {
-            string themeRegKey = @"Software\Microsoft\Office\16.0\Common";
+            string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
 
             //edit first registry key
-            RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(themeRegKey, true);
+            RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
             commonKey.SetValue("UI Theme", themeValue);
 
             //search for the second key and then change it
-            RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(themeRegKey + @"\Roaming\Identities\", true);
+            RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
+
+            string msaSubkey = @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\";
+            string anonymousSubKey = msaSubkey + @"\PendingChanges";
+
             foreach (var v in identityKey.GetSubKeyNames())
             {
-                try
+                //registry key for users logged in with msa
+                if (!v.Equals("Anonymous"))
                 {
-                    RegistryKey settingsKey = identityKey.OpenSubKey(v + @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\", true);
-                    settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                    try
+                    {
+                        RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
+                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                    }
+                    catch
+                    {
+                        var createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
+                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                    }
                 }
-                catch
+                //registry key for users without msa
+                else
                 {
-
+                    try
+                    {
+                        RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
+                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                    }
+                    catch
+                    {
+                        var createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
+                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                    }
                 }
             }
         }
