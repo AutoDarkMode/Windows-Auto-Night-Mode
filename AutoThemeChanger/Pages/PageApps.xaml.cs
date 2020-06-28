@@ -109,13 +109,13 @@ namespace AutoThemeChanger
             if (AppComboBox.SelectedIndex.Equals(1))
             {
                 Properties.Settings.Default.AppThemeChange = 1;
-                regEditHandler.AppTheme(1);
+                regEditHandler.SetAppTheme(1);
             }
 
             if (AppComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.AppThemeChange = 2;
-                regEditHandler.AppTheme(0);
+                regEditHandler.SetAppTheme(0);
             }
         }
 
@@ -143,7 +143,7 @@ namespace AutoThemeChanger
                     regEditHandler.ColorPrevalence(0);
                     Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
                 }
-                regEditHandler.SystemTheme(1);
+                regEditHandler.SetSystemTheme(1);
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.IsChecked = false;
             }
@@ -151,7 +151,7 @@ namespace AutoThemeChanger
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 Properties.Settings.Default.SystemThemeChange = 2;
-                regEditHandler.SystemTheme(0);
+                regEditHandler.SetSystemTheme(0);
                 if (Properties.Settings.Default.AccentColor)
                 {
                     Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
@@ -180,7 +180,7 @@ namespace AutoThemeChanger
             {
                 try
                 {
-                    regEditHandler.EdgeTheme(0);
+                    regEditHandler.SetEdgeTheme(0);
                     Properties.Settings.Default.EdgeThemeChange = 1;
                 }
                 catch
@@ -193,7 +193,7 @@ namespace AutoThemeChanger
             {
                 try
                 {
-                    regEditHandler.EdgeTheme(1);
+                    regEditHandler.SetEdgeTheme(1);
                     Properties.Settings.Default.EdgeThemeChange = 2;
                 }
                 catch

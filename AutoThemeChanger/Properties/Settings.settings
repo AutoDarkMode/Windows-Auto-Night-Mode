@@ -63,7 +63,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AccentColorSwitchTime" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">600</Value>
+      <Value Profile="(Default)">800</Value>
     </Setting>
     <Setting Name="OfficeThemeChange" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>

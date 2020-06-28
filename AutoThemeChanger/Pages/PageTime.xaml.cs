@@ -454,7 +454,7 @@ namespace AutoThemeChanger.Pages
         {
             if (e != null)
             {
-                taskSchHandler.RemoveTask();
+                taskSchHandler.RemoveAllTasks();
                 if (Settings.Default.LogonTaskInsteadOfAutostart)
                 {
                     taskSchHandler.RemoveLogonTask();

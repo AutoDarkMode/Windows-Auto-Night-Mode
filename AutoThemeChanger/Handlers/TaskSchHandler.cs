@@ -158,66 +158,22 @@ namespace AutoThemeChanger
             }
         }
 
-        public void RemoveTask()
+        public void RemoveAllTasks()
         {
             using (TaskService taskService = new TaskService())
             {
                 TaskFolder taskFolder = taskService.GetFolder(folder);
-                try
+                foreach (var v in taskFolder.GetTasks())
                 {
-                    taskFolder.DeleteTask(light, false);
-                }
-                catch
-                {
+                    try
+                    {
+                        taskFolder.DeleteTask(v.ToString(), false);
+                        Console.WriteLine("Deleted Task: " + v.ToString());
+                    }
+                    catch
+                    {
 
-                }
-                try
-                {
-                    taskFolder.DeleteTask(dark, false);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(hibernation, false);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(updater, false);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(appupdater, false);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(connected, false);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    taskFolder.DeleteTask(logon, false);
-                }
-                catch
-                {
-
+                    }
                 }
                 try
                 {
@@ -300,7 +256,7 @@ namespace AutoThemeChanger
             {
                 try
                 {
-                    var task3 = taskService.FindTask(updater).ToString();
+                    var task3 = taskService.GetTask(folder + @"\" + updater).ToString();
                     return 2;
                 }
                 catch
@@ -309,8 +265,8 @@ namespace AutoThemeChanger
                 }
                 try
                 {
-                    var task1 = taskService.FindTask(dark).ToString();
-                    var task2 = taskService.FindTask(light).ToString();
+                    var task1 = taskService.GetTask(folder + @"\" + dark).ToString();
+                    var task2 = taskService.GetTask(folder + @"\" + light).ToString();
                     return 1;
                 }
                 catch
@@ -323,17 +279,17 @@ namespace AutoThemeChanger
         public int[] GetRunTime(string theme)
         {
             using (TaskService taskService = new TaskService())
-            {
+            {;
                 int[] runTime = new int[2];
 
                 if(theme == "dark")
                 {
-                    runTime[0] = GetRunHour(taskService.FindTask(dark));
-                    runTime[1] = GetRunMinute(taskService.FindTask(dark));
+                    runTime[0] = GetRunHour(taskService.GetTask(folder + @"\" + dark));
+                    runTime[1] = GetRunMinute(taskService.GetTask(folder + @"\" + dark));
                 }
                 else{
-                    runTime[0] = GetRunHour(taskService.FindTask(light));
-                    runTime[1] = GetRunMinute(taskService.FindTask(light));
+                    runTime[0] = GetRunHour(taskService.GetTask(folder + @"\" + light));
+                    runTime[1] = GetRunMinute(taskService.GetTask(folder + @"\" + light));
                 }
                 return runTime;
             }

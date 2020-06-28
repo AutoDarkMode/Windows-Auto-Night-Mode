@@ -54,14 +54,14 @@ namespace AutoThemeChanger
                     {
                         TaskSchHandler task = new TaskSchHandler();
                         RegeditHandler reg = new RegeditHandler();
-                        task.RemoveTask();
+                        task.RemoveAllTasks();
                         reg.RemoveAutoStart();
                         reg.ColourFilterKeySender(false);
                     }
                     else if(value == "/removeTask")
                     {
                         TaskSchHandler taskShedHandler = new TaskSchHandler();
-                        taskShedHandler.RemoveTask();
+                        taskShedHandler.RemoveAllTasks();
                     }
                     else if (value == "/removeAutostart")
                     {
