@@ -2,6 +2,8 @@
 using Microsoft.Win32;
 using System;
 using System.Threading;
+using System.Windows;
+using System.Windows.Interop;
 using WindowsInput;
 using WindowsInput.Native;
 
@@ -59,7 +61,18 @@ namespace AutoThemeChanger
         {
             if (Settings.Default.ThemeSwitch)
             {
-                ThemeHandler.ChangeTheme(Settings.Default.ThemeDark);
+                try
+                {
+                    ThemeHandler.ChangeTheme(Settings.Default.ThemeDark);
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    MsgBox msg = new MsgBox(string.Format(Resources.ThemeApplyError2, Resources.NavbarWallpaper), "Auto Dark Mode", "error", "close");
+                    msg.ShowDialog();
+                    Settings.Default.ThemeSwitch = false;
+                    Settings.Default.ThemeDark = null;
+                    ThemeToDark();
+                }
             }
             else
             {
@@ -85,7 +98,18 @@ namespace AutoThemeChanger
         {
             if (Settings.Default.ThemeSwitch)
             {
-                ThemeHandler.ChangeTheme(Settings.Default.ThemeLight);
+                try
+                {
+                    ThemeHandler.ChangeTheme(Settings.Default.ThemeLight);
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    MsgBox msg = new MsgBox(string.Format(Resources.ThemeApplyError2, Resources.NavbarWallpaper), "Auto Dark Mode", "error", "close");
+                    msg.ShowDialog();
+                    Settings.Default.ThemeSwitch = false;
+                    Settings.Default.ThemeLight = null;
+                    ThemeToLight();
+                }
             }
             else
             {
@@ -209,6 +233,7 @@ namespace AutoThemeChanger
             return registryKey;
         }
 
+        //autostart
         public void AddAutoStart()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
@@ -220,6 +245,7 @@ namespace AutoThemeChanger
             registryKey.DeleteValue("AutoDarkMode", false);
         }
 
+        //office
         public void OfficeTheme(byte themeValue)
         {
             string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";

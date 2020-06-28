@@ -421,9 +421,6 @@ You can set this individually up in your Windows Theme.</value>
   <data name="restart" xml:space="preserve">
     <value>Restart</value>
   </data>
-  <data name="themeApplyError" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
-  </data>
   <data name="rbCustomHours" xml:space="preserve">
     <value>Set custom hours</value>
   </data>
@@ -443,7 +440,7 @@ You can set this individually up in your Windows Theme.</value>
     <value>Select mode:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the theme, we disabled theme switching</value>
+    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Alternative white theme</value>
@@ -479,5 +476,8 @@ This app makes your everyday more pleasant, by helping you take care of your eye
 I don't generate any profit with this project.
 
 For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings</value>
   </data>
 </root>

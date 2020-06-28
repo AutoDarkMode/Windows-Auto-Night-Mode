@@ -929,18 +929,18 @@ namespace AutoThemeChanger.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error occurred while applying the selected themes, we disabled theme switching.
         /// </summary>
-        public static string themeApplyError {
+        public static string ThemeApplyError1 {
             get {
-                return ResourceManager.GetString("themeApplyError", resourceCulture);
+                return ResourceManager.GetString("ThemeApplyError1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error occurred while applying the theme, we disabled theme switching.
+        ///   Looks up a localized string similar to Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.
         /// </summary>
-        public static string ThemeApplyError1 {
+        public static string ThemeApplyError2 {
             get {
-                return ResourceManager.GetString("ThemeApplyError1", resourceCulture);
+                return ResourceManager.GetString("ThemeApplyError2", resourceCulture);
             }
         }
         

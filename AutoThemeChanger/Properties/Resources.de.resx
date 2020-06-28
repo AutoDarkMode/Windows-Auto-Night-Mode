@@ -481,4 +481,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="DonationPayPalDescription" xml:space="preserve">
     <value>Akzeptiert werden spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
   </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Ein Fehler ist beim Anwenden der .Theme-Datei aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren. Vielleicht wurde die Datei gelöscht oder verschoben. Um die Funktion zu reaktivieren besuche bitte die {0} Einstellungen.</value>
+  </data>
 </root>

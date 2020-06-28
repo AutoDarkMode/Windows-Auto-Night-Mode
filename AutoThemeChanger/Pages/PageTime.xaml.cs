@@ -21,7 +21,7 @@ namespace AutoThemeChanger.Pages
         {
             InitializeComponent();
             DoesTaskExists();
-            if (Properties.Settings.Default.AlterTime) AlterTime(true);
+            if (Settings.Default.AlterTime) AlterTime(true);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace AutoThemeChanger.Pages
                 darkStartBox.Text = Convert.ToString(darkStart[0]);
                 if(darkStart[1] < 10)
                 {
-                    DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]) + "0";
+                    DarkStartMinutesBox.Text = "0" + Convert.ToString(darkStart[1]);
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace AutoThemeChanger.Pages
                 lightStartBox.Text = Convert.ToString(lightStart[0]);
                 if(lightStart[1] < 10)
                 {
-                    LightStartMinutesBox.Text = Convert.ToString(lightStart[1]) + "0";
+                    LightStartMinutesBox.Text = "0" + Convert.ToString(lightStart[1]);
                 }
                 else
                 {
@@ -301,7 +301,7 @@ namespace AutoThemeChanger.Pages
             //add background updater task
             try
             {
-                if (Properties.Settings.Default.BackgroundUpdate)
+                if (Settings.Default.BackgroundUpdate)
                 {
                     taskSchHandler.CreateAppUpdaterTask();
                 }
@@ -325,7 +325,7 @@ namespace AutoThemeChanger.Pages
             }
 
             //this setting enables all the configuration possibilities of auto dark mode
-            Properties.Settings.Default.Enabled = true;
+            Settings.Default.Enabled = true;
 
             //show warning for notebook on battery with enabled battery saver
             if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
@@ -465,14 +465,6 @@ namespace AutoThemeChanger.Pages
                 }
             }
 
-            Properties.Settings.Default.WallpaperSwitch = false;
-            Properties.Settings.Default.WallpaperLight = null;
-            Properties.Settings.Default.WallpaperDark = null;
-
-            Properties.Settings.Default.ThemeSwitch = false;
-            Properties.Settings.Default.ThemeLight = null;
-            Properties.Settings.Default.ThemeDark = null;
-
             StackPanelRadioHolder.IsEnabled = false;
             RadioButtonCustomTimes.IsChecked = true;
             DisableLocationMode();
@@ -482,7 +474,7 @@ namespace AutoThemeChanger.Pages
             lightStartBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
-            Properties.Settings.Default.Enabled = false;
+            Settings.Default.Enabled = false;
         }
 
         //12 hour times
