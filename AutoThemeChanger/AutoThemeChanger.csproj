@@ -294,7 +294,7 @@
       <Version>10.0.18362.2005</Version>
     </PackageReference>
     <PackageReference Include="TaskScheduler">
-      <Version>2.8.18</Version>
+      <Version>2.8.20</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

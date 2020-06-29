@@ -480,4 +480,11 @@ For this reason you could support me with a voluntary donation. Even a small amo
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings</value>
   </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>We run into following issue: 
+{0}
+
+We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
+Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!</value>
+  </data>
 </root>

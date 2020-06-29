@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using AutoThemeChanger.Properties;
+using System.Diagnostics;
 
 namespace AutoThemeChanger.Pages
 {
@@ -265,6 +266,25 @@ namespace AutoThemeChanger.Pages
             try
             {
                 taskSchHandler.CreateTask(DarkHour, DarkMinute, LightHour, LightMinute);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MsgBox msg = new MsgBox(string.Format(Properties.Resources.ErrorApplyRestart, ex), Properties.Resources.errorOcurredTitle, "error", "close");
+                msg.Owner = Window.GetWindow(this);
+                msg.ShowDialog();
+
+                //run AutoDarkMode.exe /removeTask as admin
+                Process proc = new Process();
+                proc.StartInfo.FileName = Application.ResourceAssembly.Location;
+                proc.StartInfo.Arguments = "/removeTask";
+                proc.StartInfo.UseShellExecute = true;
+                proc.StartInfo.Verb = "runas";
+                proc.Start();
+
+                //restart app
+                Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+                return;
             }
             catch (Exception ex)
             {

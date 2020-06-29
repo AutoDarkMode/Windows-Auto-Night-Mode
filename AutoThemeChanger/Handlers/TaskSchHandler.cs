@@ -5,13 +5,13 @@ namespace AutoThemeChanger
 {
     public class TaskSchHandler
     {
-        readonly string dark = "Dark switch";
-        readonly string light = "Light switch";
-        readonly string hibernation = "Hibernation";
-        readonly string updater = "Location times";
-        readonly string appupdater = "App updater";
-        readonly string connected = "Connected standby";
-        readonly string logon = "Logon";
+        readonly string dark = "ADM DarkSwitch";
+        readonly string light = "ADM LightSwitch";
+        readonly string hibernation = "ADM Hibernation";
+        readonly string updater = "ADM Suntimes";
+        readonly string appupdater = "ADM AppUpdater";
+        readonly string connected = "ADM ConnectedStandby";
+        readonly string logon = "ADM Logon";
         readonly string folder = "ADM_" + Environment.UserName;
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
@@ -105,6 +105,7 @@ namespace AutoThemeChanger
                 tdUpdate.RegistrationInfo.Author = author;
                 tdUpdate.RegistrationInfo.Source = program;
                 tdUpdate.Settings.DisallowStartIfOnBatteries = false;
+                tdUpdate.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(15);
                 tdUpdate.Settings.StartWhenAvailable = true;
 
                 tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) + TimeSpan.FromHours(12) });

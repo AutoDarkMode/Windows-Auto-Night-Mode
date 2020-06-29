@@ -291,7 +291,7 @@ namespace AutoThemeChanger
 
         private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Every-website-in-dark-mode-with-Dark-Reader");
+            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
         }
 
         private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)

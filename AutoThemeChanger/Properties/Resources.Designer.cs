@@ -420,6 +420,19 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We run into following issue: 
+        ///{0}
+        ///
+        ///We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
+        ///Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!.
+        /// </summary>
+        public static string ErrorApplyRestart {
+            get {
+                return ResourceManager.GetString("ErrorApplyRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error: Your input is invalid.
         /// </summary>
         public static string errorNumberInput {

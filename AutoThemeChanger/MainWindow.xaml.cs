@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Navigation;
 using AutoThemeChanger.Properties;
+using Windows.Media.Capture;
 
 namespace AutoThemeChanger
 {
@@ -38,6 +39,7 @@ namespace AutoThemeChanger
             //generate random number between 1 and 100. If the number is 50, show donation msgbox
             Random rdmnumber = new Random();
             int generatedNumber = rdmnumber.Next(1, 100);
+            Console.WriteLine("generated number: " + generatedNumber);
             if (generatedNumber == 50)
             {
                 ButtonNavbarDonation_Click(this, null);

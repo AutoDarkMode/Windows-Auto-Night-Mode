@@ -484,4 +484,11 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Ein Fehler ist beim Anwenden der .Theme-Datei aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren. Vielleicht wurde die Datei gelöscht oder verschoben. Um die Funktion zu reaktivieren besuche bitte die {0} Einstellungen.</value>
   </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Folgender Fehler ist aufgetreten: 
+{0}
+
+Wir versuchen ihn nun zu beheben, indem wir einen Algorithmus als Administrator ausführen. Vielleicht gelingt es uns, das Problem zu lösen!
+Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Einstellungen leider erneut anwenden musst.</value>
+  </data>
 </root>

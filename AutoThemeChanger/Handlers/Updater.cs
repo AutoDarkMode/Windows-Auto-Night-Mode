@@ -9,7 +9,7 @@ namespace AutoThemeChanger
     class Updater
     {
         Version newVersion = null;
-        Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         string url;
         bool silent = false;
         bool updateAvailable = false;
