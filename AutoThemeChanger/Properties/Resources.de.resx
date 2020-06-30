@@ -491,4 +491,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
 Wir versuchen ihn nun zu beheben, indem wir einen Algorithmus als Administrator ausführen. Vielleicht gelingt es uns, das Problem zu lösen!
 Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Einstellungen leider erneut anwenden musst.</value>
   </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Benötigst du Hilfe bei einem Problem?</value>
+  </data>
 </root>

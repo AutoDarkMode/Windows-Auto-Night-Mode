@@ -26,6 +26,7 @@
             <RowDefinition Height="Auto" MinHeight="0"/>
             <RowDefinition Height="Auto" MinHeight="50"/>
             <RowDefinition Height="Auto" MinHeight="0"/>
+            <RowDefinition Height="*" MinHeight="0"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -81,6 +82,21 @@
 
         <!-- Info -->
         <TextBlock Grid.Row="9" Grid.Column="1"  HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="10" Grid.Column="1" x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+        <TextBlock Grid.Row="10" Grid.Column="1" x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top" Height="Auto" Width="380"/>
+        
+        <!-- Help -->
+        <TextBlock Grid.Row="11" Grid.Column="1" Name="TextBlockHelpWiki" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.tbHelp}" Height="Auto" Width="Auto" MouseDown="TextBlockHelpWiki_MouseDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </Page>

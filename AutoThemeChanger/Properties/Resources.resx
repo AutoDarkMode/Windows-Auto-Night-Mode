@@ -487,4 +487,7 @@ For this reason you could support me with a voluntary donation. Even a small amo
 We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
 Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!</value>
   </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Need help with a problem?</value>
+  </data>
 </root>

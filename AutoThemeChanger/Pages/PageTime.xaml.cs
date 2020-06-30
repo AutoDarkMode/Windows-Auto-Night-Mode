@@ -600,5 +600,10 @@ namespace AutoThemeChanger.Pages
                 ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
         }
+
+        private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+        }
     }
 }

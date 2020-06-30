@@ -940,6 +940,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Need help with a problem?.
+        /// </summary>
+        public static string tbHelp {
+            get {
+                return ResourceManager.GetString("tbHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred while applying the selected themes, we disabled theme switching.
         /// </summary>
         public static string ThemeApplyError1 {

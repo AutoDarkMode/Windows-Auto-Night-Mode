@@ -57,7 +57,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>67F1262CBA1BD9EBE7C79402C1FF2E3ABEA979A5</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>AutoThemeChanger_1_TemporaryKey.pfx</ManifestKeyFile>
@@ -82,6 +82,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestTimestampUrl>http://tsa.startssl.com/rfc3161</ManifestTimestampUrl>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -232,7 +235,6 @@
     <EmbeddedResource Include="Properties\Resources.es.resx" />
     <EmbeddedResource Include="Properties\Resources.uk.resx" />
     <EmbeddedResource Include="Properties\Resources.zh.resx" />
-    <None Include="AutoThemeChanger_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
