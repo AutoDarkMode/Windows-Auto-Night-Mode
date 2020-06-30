@@ -27,11 +27,11 @@ By enabling the automatic theme switcher in the app, a task in the Task Schedule
 - Lightweight with 100% clean uninstall. No admin-rights needed.
 
 ## Download and installing
-[Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
+#### [Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
 
 #### Annotation
 Windows SmartScreen-Filter, your webbrowser or some antivirus software may warn you from downloading or starting this app. This is due to the missing signature license, which unfortunately I cannot afford. But from the numerous github stars you can see that many people use the program without problems.  
-##### [Click here to see a VirusTotal test of AutoDarkMode_Setup.exe](https://www.virustotal.com/gui/file/fea01593ebcd7aeec3a4d7566e4c449a486c8c9fecd0b7941ebb036fb0fe2797/)
+[Click here to see a VirusTotal test of AutoDarkMode_Setup.exe](https://www.virustotal.com/gui/file/fea01593ebcd7aeec3a4d7566e4c449a486c8c9fecd0b7941ebb036fb0fe2797/)
 
 #### Installation
 Installing is pretty easy as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/verysilent_ to skip the installer window.
