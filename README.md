@@ -12,10 +12,12 @@ With enabling the automatic theme switcher in the app it creates a task in the T
 ## Features
 - Easy to use and clean user-interface.
 - Theme switch based on custom times.
-- Theme switch based on the sunrise and sunset of your location.
-- Desktop background switch.
+- Theme switch based on the sunrise and sunset of your location + time offsets.
+- Desktop wallpaper switch.
+- Windows .Theme-File switch, to also change Accent Color and Mouse Cursor.
+- office Theme Switch
 - Easy theme switch with the Jump-List from the Startmenu or Taskbar.
-- You can choose if only Apps should change their theme, or both apps and the system.
+- You can choose if only Apps should change their theme, or both apps and system.
 - Support for Accent Color on the Taskbar and other system elements.
 - Lightweight with 100% clean uninstall. No admin-rights needed.
 
