@@ -3,6 +3,8 @@
 ![App Logo](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/logo.png)  
 Automatically switches between the dark and light theme of Windows 10 at scheduled times.
 
+[Overview](#overview) | [Features](#features) | [Download](#download-and-installing) | [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) | [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) | [Telegram Group](#telegram-group)
+
 ## Overview
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
 Android, iOS and MacOS already offer the possibility of changing the system design based on the time of day. So why not Windows too?
@@ -29,7 +31,7 @@ By enabling the automatic theme switcher in the app, a task in the Task Schedule
 
 #### Annotation
 Windows SmartScreen-Filter, your webbrowser or some antivirus software may warn you from downloading or starting this app. This is due to the missing signature license, which unfortunately I cannot afford. But from the numerous github stars you can see that many people use the program without problems.  
-[Click here to see a VirusTotal test of AutoDarkMode_Setup.exe](https://www.virustotal.com/gui/file/fea01593ebcd7aeec3a4d7566e4c449a486c8c9fecd0b7941ebb036fb0fe2797/)
+##### [Click here to see a VirusTotal test of AutoDarkMode_Setup.exe](https://www.virustotal.com/gui/file/fea01593ebcd7aeec3a4d7566e4c449a486c8c9fecd0b7941ebb036fb0fe2797/)
 
 #### Installation
 Installing is pretty easy as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/verysilent_ to skip the installer window.
