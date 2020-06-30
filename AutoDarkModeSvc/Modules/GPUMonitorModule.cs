@@ -166,6 +166,7 @@ namespace AutoDarkModeSvc.Modules
             {
                 counterAccu += c.NextValue();
             });
+            counters.Clear();
             return (int)counterAccu;
         }
 

@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-    <Version>3.0.18.0</Version>
+    <Version>3.0.19.0</Version>
     <Company />
     <Product />
     <Authors>Armin Osaj</Authors>
