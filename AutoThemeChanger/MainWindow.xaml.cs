@@ -30,8 +30,15 @@ namespace AutoThemeChanger
         {
             ButtonNavarTime_Click(this, null); //select and display the main page
             DonationScreen();
-            Updater updater = new Updater();
-            updater.CheckNewVersion(); //check github xaml file for a higher version number
+            try
+            {
+                Updater updater = new Updater(false);
+                updater.CheckNewVersion(); //check github xaml file for a higher version number than installed
+            }
+            catch
+            {
+
+            }
         }
 
         private void DonationScreen()

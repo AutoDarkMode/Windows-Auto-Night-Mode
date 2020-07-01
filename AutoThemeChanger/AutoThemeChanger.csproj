@@ -110,6 +110,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Ver10Updater.xaml.cs">
+      <DependentUpon>Ver10Updater.xaml</DependentUpon>
+    </Compile>
     <Page Include="DesktopBGui.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageWallpaper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ver10Updater.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -304,6 +311,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\DonationHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UpdaterHeader.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -362,7 +362,7 @@ But it also reduces the battery life! ONLY activate if necessary!</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>These options are disabled while using a Windows Theme. 
-You can set this individually up in your Windows Theme.</value>
+You can set this up individually  in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Apps</value>
@@ -401,7 +401,7 @@ You can set this individually up in your Windows Theme.</value>
     <value>Click here to open Windows Theme settings.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now set the Windows colour under Colours to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Go back to theme settings and save your theme.</value>
@@ -478,16 +478,54 @@ I don't generate any profit with this project.
 For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings</value>
+    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>We run into following issue: 
 {0}
 
 We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
-Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!</value>
+Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+
+btw: please NEVER run Auto Dark Mode as admin!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Need help with a problem?</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Download later</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Never remind me again</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Download now</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>In the last couple of months we worked hard to provide you the best update possible. Now it's here!
+
+Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
+
+Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
+- Game Mode: disabled theme switch while you're playing a game or your GPU is busy.
+- Switching theme with keyboard shortcuts
+And more!
+
+The update is suitable for everyone, except for owners of a ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X is available</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Version X is a great and big update that you definitely should try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Multi-User support</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Optional delay for activating grayscale color filter:</value>
   </data>
 </root>

@@ -181,6 +181,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multi-User support.
+        /// </summary>
+        public static string cbSettingsMultiUserImprovements {
+            get {
+                return ResourceManager.GetString("cbSettingsMultiUserImprovements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This option is disabled, because you haven&apos;t installed the Windows 10 April 2019 Update on your machine..
         /// </summary>
         public static string cmb1903 {
@@ -424,7 +433,9 @@ namespace AutoThemeChanger.Properties {
         ///{0}
         ///
         ///We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
-        ///Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!.
+        ///Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+        ///
+        ///btw: please NEVER run Auto Dark Mode as admin!.
         /// </summary>
         public static string ErrorApplyRestart {
             get {
@@ -949,6 +960,15 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Optional delay for activating grayscale color filter:.
+        /// </summary>
+        public static string tbSettingsColourFilterDelay {
+            get {
+                return ResourceManager.GetString("tbSettingsColourFilterDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred while applying the selected themes, we disabled theme switching.
         /// </summary>
         public static string ThemeApplyError1 {
@@ -958,7 +978,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.
+        ///   Looks up a localized string similar to Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings..
         /// </summary>
         public static string ThemeApplyError2 {
             get {
@@ -1048,7 +1068,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Now set the Windows colour under Colours to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
+        ///   Looks up a localized string similar to Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
         /// </summary>
         public static string ThemeTutorialStep2 {
             get {
@@ -1085,7 +1105,7 @@ namespace AutoThemeChanger.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to These options are disabled while using a Windows Theme. 
-        ///You can set this individually up in your Windows Theme..
+        ///You can set this up individually  in your Windows Theme..
         /// </summary>
         public static string ToolTipDisabledDueTheme {
             get {
@@ -1117,6 +1137,74 @@ namespace AutoThemeChanger.Properties {
         public static string userFeedback {
             get {
                 return ResourceManager.GetString("userFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download later.
+        /// </summary>
+        public static string VersionXUpdaterButtonLater {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterButtonLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Never remind me again.
+        /// </summary>
+        public static string VersionXUpdaterButtonNever {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterButtonNever", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download now.
+        /// </summary>
+        public static string VersionXUpdaterButtonNow {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterButtonNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In the last couple of months we worked hard to provide you the best update possible. Now it&apos;s here!
+        ///
+        ///Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
+        ///
+        ///Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
+        ///- Game Mode: disabled theme switch while [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string VersionXUpdaterDescription {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto Dark Mode X is available.
+        /// </summary>
+        public static string VersionXUpdaterHeader {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version X is a great and big update that you definitely should try out! Are you sure you DON&apos;T want to download it? We will never remind you again!.
+        /// </summary>
+        public static string VersionXUpdaterNeverDescription {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterNeverDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure?.
+        /// </summary>
+        public static string VersionXUpdaterNeverTitle {
+            get {
+                return ResourceManager.GetString("VersionXUpdaterNeverTitle", resourceCulture);
             }
         }
         

@@ -8,62 +8,61 @@ namespace AutoThemeChanger
 {
     class Updater
     {
+        //https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml
+        string xmlURL = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml";
         Version newVersion = null;
         readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         string url;
-        bool silent = false;
+        bool silent;
         bool updateAvailable = false;
 
-        public bool SilentUpdater()
+        public Updater(bool pSilent)
         {
-            silent = true;
-            CheckNewVersion();
+            this.silent = pSilent;
+        }
+
+        public bool IsUpdateAvailable()
+        {
             return updateAvailable;
         }
 
-        public string GetURL()
+        public string GetUpdateURL()
         {
             return url;
         }
 
         public void CheckNewVersion()
         {
-            XmlTextReader reader;
-            try
+            XmlTextReader reader = new XmlTextReader(xmlURL);
+            reader.MoveToContent();
+            string elementName = "AutoNightMode";
+            if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "AutoNightMode"))
             {
-                string xmlURL = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml";
-                reader = new XmlTextReader(xmlURL);
-                reader.MoveToContent();
-                string elementName = "AutoNightMode";
-                if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "AutoNightMode"))
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    if (reader.NodeType == XmlNodeType.Element)
                     {
-                        if (reader.NodeType == XmlNodeType.Element) elementName = reader.Name;
-                        else
+                        elementName = reader.Name;
+                    }
+                    else
+                    {
+                        if ((reader.NodeType == XmlNodeType.Text) && (reader.HasValue))
                         {
-                            if ((reader.NodeType == XmlNodeType.Text) && (reader.HasValue))
+                            switch (elementName)
                             {
-                                switch (elementName)
-                                {
-                                    case "version":
-                                        newVersion = new Version(reader.Value);
-                                        break;
-                                    case "url":
-                                        url = reader.Value;
-                                        break;
-                                }
+                                case "version":
+                                    newVersion = new Version(reader.Value);
+                                    break;
+                                case "url":
+                                    url = reader.Value;
+                                    break;
                             }
                         }
                     }
                 }
-                reader.Close();
-                MessageBoxHandler();
             }
-            catch
-            {
-
-            }
+            reader.Close();
+            MessageBoxHandler();
         }
 
         private void MessageBoxHandler()
@@ -71,24 +70,36 @@ namespace AutoThemeChanger
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
             if (currentVersion.CompareTo(newVersion) < 0)
             {
+                updateAvailable = true;
+
                 if (!silent)
                 {
-                    string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
-                    MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
+                    if(newVersion.Major > 9)
                     {
-                        WindowStartupLocation = WindowStartupLocation.CenterScreen, Topmost = true
-                    };
-                    msgBox.ShowDialog();
-                    var result = msgBox.DialogResult;
-                    if (result == true)
-                    {
-                        System.Diagnostics.Process.Start(url);
-                        Application.Current.Shutdown();
+                        if(Properties.Settings.Default.WantsVersion10)
+                        {
+                            Ver10Updater updater = new Ver10Updater(url);
+                            updater.Topmost = true;
+                            updater.Show();
+                            updater.Activate();
+                        }
                     }
-                }
-                else
-                {
-                    updateAvailable = true;
+                    else
+                    {
+                        string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
+                        MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
+                        {
+                            WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                            Topmost = true
+                        };
+                        msgBox.ShowDialog();
+                        var result = msgBox.DialogResult;
+                        if (result == true)
+                        {
+                            System.Diagnostics.Process.Start(url);
+                            Application.Current.Shutdown();
+                        }
+                    }
                 }
             }
         }

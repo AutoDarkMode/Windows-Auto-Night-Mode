@@ -494,4 +494,37 @@ Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Eins
   <data name="tbHelp" xml:space="preserve">
     <value>Benötigst du Hilfe bei einem Problem?</value>
   </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Unterstützung für mehrere Nutzerkonten</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Später herunterladen</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Nie wieder erinnern</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Jetzt herunterladen</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>In den letzten Monaten haben wir intensiv daran gearbeitet, euch das bestmögliche Update bereitzustellen. Jetzt ist es endlich fertig!
+
+Auto Dark Mode X wurde von Grund auf neu geschrieben. Anstatt den Windows Task Scheduler zu verwenden, nutzt Auto Dark Mode jetzt einen eigenen Hintergrunddienst. Dies ermöglicht einen deutlich zuverlässigeren und flexibleren Design-Wechsel.
+
+Gleichzeitig verbraucht ein weiterer Hintergrunddienst natürlich Ressourcen, doch im Gegenzug haben wir ein paar gute Funktionen eingebaut:
+- Spielmodus: kein Design-Wechsel während deine Grafikkarte belastet wird.
+- Design-Wechsel durch Tastenkürzel.
+Und mehr!
+
+Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hintergrundprozesse auf ARM emuliert werden müssen, verbraucht dieser nur dort zu viel Akku.</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X ist verfügbar</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Version X ist ein bis ins kleinste Detail ausgearbeitetes Update, welches du definitiv ausprobieren solltest. Bist du sicher, dass du es NICHT herunterladen möchtest? Wir werden dich mit der Bestätigung dieses Dialogs nie wieder erinnern.</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Bist du sicher?</value>
+  </data>
 </root>

@@ -13,6 +13,7 @@ namespace AutoThemeChanger.Pages
     /// </summary>
     public partial class PageAbout : Page
     {
+        readonly Updater updater = new Updater(true);
         bool update = false;
         int easterEgg = 0;
 
@@ -37,13 +38,12 @@ namespace AutoThemeChanger.Pages
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            Updater updater = new Updater();
-
             if (!update)
             {
                 updateInfoText.Text = Properties.Resources.msgSearchUpd;//searching for update...
                 updateButton.IsEnabled = false;
-                if (updater.SilentUpdater())
+                updater.CheckNewVersion();
+                if (updater.IsUpdateAvailable())
                 {
                     updateInfoText.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
                     updateButton.Content = Properties.Resources.msgDownloadUpd;//Download update
@@ -57,7 +57,7 @@ namespace AutoThemeChanger.Pages
             }
             else
             {
-                System.Diagnostics.Process.Start(updater.GetURL());
+                System.Diagnostics.Process.Start(updater.GetUpdateURL());
             }
         }
 

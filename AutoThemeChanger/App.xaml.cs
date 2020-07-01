@@ -47,8 +47,15 @@ namespace AutoThemeChanger
                     }
                     else if (value == "/update")
                     {
-                        Updater updater = new Updater();
-                        updater.CheckNewVersion();
+                        try
+                        {
+                            Updater updater = new Updater(false);
+                            updater.CheckNewVersion();
+                        }
+                        catch
+                        {
+
+                        }
                     }
                     else if(value == "/uninstall")
                     {
