@@ -118,269 +118,301 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Ajustes</value>
+    <value>Settings</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Aplicar</value>
+    <value>Terapkan</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Activar el cambio de tema automático</value>
+    <value>Nyalakan penggantian tema otomatis</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Ajustar al tema</value>
+    <value>Ikuti tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Siempre oscuro</value>
+    <value>Selalu gelap</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Siempre claro</value>
+    <value>Selalu terang</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Activar características de Windows 1903</value>
+    <value>Nyalakan fitur untuk Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Aplicaciones:</value>
+    <value>Aplikasi:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Autor: Armin Osaj © 2019</value>
+    <value>Pengembang: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Tiempo de inicio personalizado</value>
+    <value>Waktu mulai kustom</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Oscuro</value>
+    <value>Gelap</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Tema oscuro</value>
+    <value>Tema gelap</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (versión antigua):</value>
+    <value>Edge (versi lama):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Claro</value>
+    <value>Terang</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Tema claro</value>
+    <value>Tema terang</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Ajustes</value>
+    <value>Setelan</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Cambiar el tema actual</value>
+    <value>Ganti tema saat ini</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>Sistem:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Software de terceros utilizado</value>
+    <value>Aplikasi pihak ketiga yang terpakai</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Actualizaciones</value>
+    <value>Pembaruan</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Usar el servicio de localización</value>
+    <value>Memakai layanan lokasi</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>¡los cambios fueron guardados!</value>
+    <value>penggantian telah tersimpan!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Haz clic en aplicar para guardar los cambios</value>
+    <value>tekan terapkan untuk menyimpan perubahan</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Descargar actualización</value>
+    <value> Unduh pembaruan</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>ha ocurrido un error :(</value>
+    <value> masalah terjadi :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Esta aplicación necesita permiso de localización</value>
+    <value>Aplikasi membutuhkan izin untuk menemukan lokasi</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>no hay nuevas actualizaciones disponibles.</value>
+    <value>tak ada pembaruan yang tersedia.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Buscando tu localización...</value>
+    <value>Mencari lokasi anda...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>buscando actualizaciones...</value>
+    <value>Mencari pembaruan...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>Peringatan! Kami tak dapat membaca tema anda</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>¡una nueva actualización está disponible!</value>
-  </data>
-  <data name="msgUpdaterText" xml:space="preserve">
-    <value>¡Gracias por usar Auto Dark Mode!
-
-Una nueva versión está disponible en GitHub con arreglos y mejoras.
-¿Quieres descargarla?
-
-Versión instalada actualmente: {0}, nueva versión: {1}</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
+    <value>update baru tersedia!</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Comprobar actualizaciones</value>
+    <value>Cek pembaruan</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>buscamos actualizaciones cada vez que se inicia el programa.</value>
+    <value>kami mengecek setiap aplikasi dijalankan</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Bienvenido</value>
+    <value>Selamat Datang</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Haz clic en la casilla para activar el cambio de tema automático</value>
+    <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Traductor: Daniel Sevillano</value>
+    <value>Translator: pc-v2</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Ciudad</value>
+    <value>Kota</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Esta opción está desactivada, porque no has instalado la Windows 10 April 2019 Update en tu dispositivo.</value>
+    <value>Opsi ini tak tersedia, lakukan pembaruan ke versi Windows terbaru</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>La aplicación necesita reiniciarse para ver los cambios</value>
+    <value>Memulai ulang aplikasi dibutuhkan untuk melihat perubahan</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Idioma:</value>
+    <value>Bahasa:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Color de acento para la barra de tareas</value>
+    <value>Aksen warna untuk bilah tugas</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Batalkan</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Actualmente:</value>
+    <value>Saat ini:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Fondo para el modo oscuro</value>
+    <value>Latar belakang untuk mode gelap</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Borrar/Desactivar</value>
+    <value>Hapus/Nonaktifkan</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Selecciona archivo</value>
+    <value>Pilih berkas</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Fondo para el tema claro</value>
+    <value>Latar belakang untuk mode terang</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fondo de escritorio</value>
+    <value>Latar Belakang Desktop</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Imágenes</value>
+    <value>Gambar</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor selecciona dos fondos</value>
+    <value>Silahkan pilih dua latar belakang</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor selecciona una imagen</value>
+    <value>Silahkan pilih gambar</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurar el fondo de escritorio</value>
+    <value>Mengatur Latar Belakang</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>usa el fondo actual</value>
+    <value>pakai latar belakang saat ini</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desactivado</value>
+    <value>Dinonaktifkan</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Activado</value>
+    <value>Diaktifkan</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>o</value>
+    <value>atau</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Simpan</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Tal vez tu imagen está corrupta o la ruta no existe.</value>
+    <value>Latar Belakang anda mungkin rusak atau alamat tidak ada</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>No pudimos generar una previsualización de la imagen, ¡lo sentimos!</value>
+    <value>Maaf! Kami tak dapat memperlihatkan gambar anda</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>No pudimos guardar tus ajustes, ¡lo sentimos!</value>
+    <value>Maaf! Kami tak dapat menyimpan setelan anda</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Ha ocurrido un error</value>
+    <value>Masalah terjadi</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Solo visible en el modo oscuro</value>
+    <value>Hanya tersedia di mode gelap.
+ Jika anda mengalami isu: Coba untuk tingkatkan jeda di setelan.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Información</value>
+    <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>Reloj de 12 horas</value>
+    <value>Sistem waktu 12 jam</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Cerrar</value>
+    <value>Tutup</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>Tidak</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Sí</value>
+    <value>Ya</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Buscar actualizaciones en segundo plano</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Lo sentimos, pero no pudimos aplicar tus ajustes.
-
-Aquí hay algunas cosas que puedes probar:
-- Desinstalar y luego reinstalar Auto Dark Mode.
-- Intentar ejecutar Auto Dark Mode como administrador.
-- Si activaste el fondo de escritorio, desactiva la característica y prueba otra vez.
-
-Si estas medidas no te ayudaron, puedes comentar el problema en GitHub adjuntando una captura de pantalla de tu error. Puedes acceder al problema pulsando el botón "Sí".</value>
+    <value>Cari update di latar belakang</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Tu entrada no es válida</value>
-  </data>
-  <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Cambiar tras conexión en espera</value>
-  </data>
-  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móviles, como los productos Microsoft Surface, están unsando un nuevo tipo de modo de espera. 
-Activar esta opción asegura que Auto Dark Mode cambie inmediatamente el tema tras encender tu ordenador. 
-¡Pero también reduce tu tiempo de batería! ¡SOLO activar si es necesario!</value>
+    <value>Kesalahan: inputmu tidak valid</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Debido a un eror de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
-  </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>¡Hola! Gracias por usar Auto Dark Mode. Espero que te esté gustando :)
-
-Sí, el desarrollador ha creado realmente una ventana emergente para recordar a las personas que acepta donaciones por paypal. ¡Qué vergüenza!
-
-Pero bueno, esta aplicación hace tu día a día un poco más fácil. Incluso una pequeña donación me hace feliz :D
-
-¿Quieres abrir la página de donaciones de PayPal ahora?</value>
+    <value>Dikarenakan bug Windows, bilah tugas tidak dapat berganti warna dengan benar di mode penghematan daya. Tolong matikan penghematan daya jika menemukan masalah</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>¿Te gusta Auto Dark Mode?</value>
-  </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>Compensar</value>
+    <value>Apakah anda menyukai Auto Dark Mode?</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Establecer</value>
+    <value>Set</value>
   </data>
-  <data name="notifyBalloonTipText" xml:space="preserve">
-    <value>La aplicación todavía se está ejecutando...</value>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Opsi ini dinonaktifkan ketika memakai Tema Windows. Anda dapat mengatur secara individu </value>
   </data>
-  <data name="notifyIconExitContentItemText" xml:space="preserve">
-    <value>Salir</value>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplikasi</value>
   </data>
-  <data name="notifyIconSwapThemeContentItemText" xml:space="preserve">
-    <value>Cambiar tema</value>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Setelan</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Waktu</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Latar belakang/Tema</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Buka Folder</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tema Gelap:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Buatlah tema anda</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Pilih tema anda</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Tema Terang:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Tema Windows (banyak fitur)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Latar Belakang (Disarankan)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Tekan ini untuk membuka setelan tema Windows</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Kemudian pilih warna Windows dalam Warna untuk tema terang. Pilih latar belakang, Kursor Mouse dan Warna Aksen</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Ulangi proses untuk tema gelap</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Jeda untuk pergantian warna bilah tugas (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Mulai Ulang</value>
+  </data>
+  <data name="themeApplyError" xml:space="preserve">
+    <value>Masalah terjadi saat menerapkan tema terpilih, kami menonaktifkan pergantian tema</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Set waktu kustom</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Dari terbit hingga terbenam</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Langkah</value>
+  </data>
+  <data name="TextBoxAppsBrowsers" xml:space="preserve">
+    <value>Chrome, Firefox danEdge:</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Pakai filter warna abu-abu (Tekan Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
   </data>
 </root>
