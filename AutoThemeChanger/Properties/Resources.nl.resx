@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -315,7 +315,7 @@ Momenteel gëinstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Alleen zichtbaar in het donkere thema.
     Als je problemen tegenkomt: verhoog alsjeblieft de schakelvertraging in instellingen.</value>
   </data>
- <data name="info" xml:space="preserve">
+  <data name="info" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
@@ -333,6 +333,19 @@ Momenteel gëinstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>In de achtergrond naar updates zoeken</value>
   </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Sorry, we konden je instellingen niet toepassen
+
+Hier zijn een paar dingen die je kunt proberen:
+- Verwijder Auto Dark Mode en installeer het vervolgens opnieuw.
+- Probeer Auto Dark Mode uit te voeren als adminstrator.
+- Als je de automatische wijziging vanaf de bureaubladachtergrond hebt geactiveerd, deactiveert de functie en probeer het opnieuw.
+
+Als dit je niet heeft geholpen, kun je een nieuwe issue aanmaken op GitHub. Het is het beste om een screenshot van dit foutbericht bij te voegen. Met een klik op "Ja" kom je bij GitHub.</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Fout: Ongeldige waarde ingevoerd</value>
+  </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Schakel na Connected Standby</value>
   </data>
@@ -342,26 +355,19 @@ Als je deze optie activeert, verandert Auto Dark Mode het themad onmiddellijk na
 
 Deze optie verlaagt echter de levensduur van de batterij! ALLEEN activeren indien nodig!</value>
   </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>Fout: Ongeldige waarde ingevoerd</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-<value>Sorry, we konden je instellingen niet toepassen
-
-Hier zijn een paar dingen die je kunt proberen:
-- Verwijder Auto Dark Mode en installeer het vervolgens opnieuw.
-- Probeer Auto Dark Mode uit te voeren als adminstrator.
-- Als je de automatische wijziging vanaf de bureaubladachtergrond hebt geactiveerd, deactiveert de functie en probeer het opnieuw.
-
-Als dit je niet heeft geholpen, kun je een nieuwe issue aanmaken op GitHub. Het is het beste om een screenshot van dit foutbericht bij te voegen. Met een klik op "Ja" kom je bij GitHub.</value>
-  </data>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Een Windows-fout verhindert de themaschakeling van de taakbalk in energiebesparende modus. Schakel de energiebesparende modus uit als je problemen ondervindt.</value>
   </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>Verschuiving</value>
+  <data name="donationDescription" xml:space="preserve">
+    <value>你好！感謝使用自動主題切換。我希望你到目前為止喜歡它 :)
+
+是的，這位開發人員確實創建了一個彈出式視窗，以提醒人們他接受PayPal捐贈。真丟臉！
+
+但是，此程式使你的日常生活更加輕鬆。即使是一小筆捐款也讓我開心 :D
+
+你要立即打開PayPal捐贈頁面嗎？</value>
   </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>Instellen</value>
+  <data name="donationTitle" xml:space="preserve">
+    <value>你喜歡自動主題切換嗎？</value>
   </data>
 </root>
