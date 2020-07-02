@@ -86,7 +86,7 @@ namespace AutoThemeChanger
                 if (Settings.Default.AccentColor && Settings.Default.SystemThemeChange.Equals(0))
                 {
                     Thread.Sleep(Settings.Default.AccentColorSwitchTime);
-                    ColorPrevalence(1);
+                    SetColorPrevalence(1);
                 }
             }
 
@@ -116,7 +116,7 @@ namespace AutoThemeChanger
             {
                 if (Settings.Default.AccentColor && Settings.Default.SystemThemeChange.Equals(0))
                 {
-                    ColorPrevalence(0);
+                    SetColorPrevalence(0);
                     Thread.Sleep(Settings.Default.AccentColorSwitchTime);
                 }
                 if (Settings.Default.AppThemeChange.Equals(0)) SetAppTheme(1);
@@ -205,10 +205,14 @@ namespace AutoThemeChanger
 
             }
         }
-        //set accent color for taskbar dword
-        public void ColorPrevalence(int theme)
+        //accent color for taskbar dword
+        public void SetColorPrevalence(int theme)
         {
             GetPersonalizeKey().SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
+        }
+        public bool GetColorPrevalence()
+        {
+            return GetPersonalizeKey().GetValue("ColorPrevalence").Equals(1) ? true : false;
         }
         //get value of AppsUseLightTheme
         public bool AppsUseLightTheme()

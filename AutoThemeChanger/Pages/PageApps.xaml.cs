@@ -140,7 +140,7 @@ namespace AutoThemeChanger
                 Properties.Settings.Default.SystemThemeChange = 1;
                 if (Properties.Settings.Default.AccentColor)
                 {
-                    regEditHandler.ColorPrevalence(0);
+                    regEditHandler.SetColorPrevalence(0);
                     Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
                 }
                 regEditHandler.SetSystemTheme(1);
@@ -155,7 +155,7 @@ namespace AutoThemeChanger
                 if (Properties.Settings.Default.AccentColor)
                 {
                     Thread.Sleep(Properties.Settings.Default.AccentColorSwitchTime);
-                    regEditHandler.ColorPrevalence(1);
+                    regEditHandler.SetColorPrevalence(1);
                 }
                 AccentColorCheckBox.IsEnabled = true;
             }
@@ -221,7 +221,7 @@ namespace AutoThemeChanger
                 {
                     Properties.Settings.Default.AccentColor = true;
                     if (SystemComboBox.SelectedIndex.Equals(0)) regEditHandler.SwitchThemeBasedOnTime();
-                    if (SystemComboBox.SelectedIndex.Equals(2)) regEditHandler.ColorPrevalence(1);
+                    if (SystemComboBox.SelectedIndex.Equals(2)) regEditHandler.SetColorPrevalence(1);
                 }
                 catch
                 {
@@ -232,7 +232,7 @@ namespace AutoThemeChanger
             else
             {
                 Properties.Settings.Default.AccentColor = false;
-                regEditHandler.ColorPrevalence(0);
+                regEditHandler.SetColorPrevalence(0);
             }
         }
 

@@ -335,7 +335,7 @@ If you run into issues: please increase the switching delay in settings. </value
 
 Here are some things you can try:
 - Uninstall and then reinstall auto dark mode.
-- Try to run Auto Dark Mode as administrator.
+- Try to disable {0} in the Auto Dark Mode settings.
 - If you enabled Desktop Wallpaper, disable the feature and try again.
 
 If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>

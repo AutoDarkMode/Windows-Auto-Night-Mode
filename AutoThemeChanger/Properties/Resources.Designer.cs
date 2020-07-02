@@ -466,7 +466,7 @@ namespace AutoThemeChanger.Properties {
         ///
         ///Here are some things you can try:
         ///- Uninstall and then reinstall auto dark mode.
-        ///- Try to run Auto Dark Mode as administrator.
+        ///- Try to disable {0} in the Auto Dark Mode settings.
         ///- If you enabled Desktop Wallpaper, disable the feature and try again.
         ///
         ///If these things didn&apos;t help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the &quot;Yes&quot; button..

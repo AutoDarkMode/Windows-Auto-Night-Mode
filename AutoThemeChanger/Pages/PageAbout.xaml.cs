@@ -158,7 +158,7 @@ namespace AutoThemeChanger.Pages
             if (easterEgg == 4) TextBoxVersionNumber.Foreground = Brushes.Blue;
             if (easterEgg == 5)
             {
-                System.Diagnostics.Process.Start("https://www.instagram.com/q__graphics/");
+                System.Diagnostics.Process.Start("https://bit.ly/qgraphics");
                 if (easterEgg == 1) TextBoxVersionNumber.Foreground = Brushes.Black;
                 easterEgg = 0;
             }

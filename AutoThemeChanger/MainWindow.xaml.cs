@@ -22,6 +22,11 @@ namespace AutoThemeChanger
             {
                 SystemTimeFormat(); //check if system uses 12 hour clock
                 AddJumpList(); //create jump list entries
+                var regEdit = new RegeditHandler();
+                if (regEdit.GetColorPrevalence())
+                {
+                    Settings.Default.AccentColor = true;
+                }
                 Settings.Default.FirstRun = false; 
             }
         }
