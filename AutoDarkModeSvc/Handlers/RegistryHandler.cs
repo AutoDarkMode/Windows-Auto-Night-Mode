@@ -15,9 +15,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme">0 for dark, 1 for light theme</param>
         public static void SetAppsTheme(int theme)
         {
-            var key = GetPersonalizeKey();
+            using var key = GetPersonalizeKey();
             key.SetValue("AppsUseLightTheme", theme, RegistryValueKind.DWord);
-            key.Dispose();
         }
 
         /// <summary>
@@ -26,9 +25,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme"><0 for dark, 1 for light theme</param>
         public static void SetSystemTheme(int theme)
         {
-            var key = GetPersonalizeKey();
+            using var key = GetPersonalizeKey();
             key.SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
-            key.Dispose();
         }
 
         public static void SetEdgeTheme(int theme)
@@ -41,17 +39,15 @@ namespace AutoDarkModeSvc.Handlers
             {
                 theme = (int)Theme.Dark;
             }
-            var edgeKey = GetEdgeKey();
+            using var edgeKey = GetEdgeKey();
             edgeKey.SetValue("Theme", theme, RegistryValueKind.DWord);
-            edgeKey.Dispose();
         }
 
         public static bool EdgeUsesLightTheme()
         {
             //reverse dark and light for edge because Microsoft
-            var key = GetEdgeKey();
+            using var key = GetEdgeKey();
             var value = key.GetValue("Theme");
-            key.Dispose();
             if ((int)value == (int)Theme.Dark)
             {
                 return true;
@@ -65,9 +61,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme">0 for disabled, 1 for enabled</param>
         public static void SetColorPrevalence(int theme)
         {
-            var key = GetPersonalizeKey();
+            using var key = GetPersonalizeKey();
             key.SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
-            key.Dispose();
         }
 
         /// <summary>
@@ -76,9 +71,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if enabled; false otherwise</returns>
         public static bool IsColorPrevalence()
         {
-            var key = GetPersonalizeKey();
+            using var key = GetPersonalizeKey();
             var enabled = key.GetValue("ColorPrevalence").Equals(1);
-            key.Dispose();
             return enabled;
         }
 
@@ -88,9 +82,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool AppsUseLightTheme()
         {
-            var key = GetPersonalizeKey();
+            using var key = GetPersonalizeKey();
             var enabled = key.GetValue("AppsUseLightTheme").Equals(1);
-            key.Dispose();
             return enabled;
         }
 
@@ -100,9 +93,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool SystemUsesLightTheme()
         {
-            var key = GetPersonalizeKey();
+            using var key = GetPersonalizeKey();
             var enabled = key.GetValue("SystemUsesLightTheme").Equals(1);
-            key.Dispose();
             return enabled;
         }
 
@@ -176,11 +168,11 @@ namespace AutoDarkModeSvc.Handlers
             string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
 
             //edit first registry key
-            RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
+            using RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
             commonKey.SetValue("UI Theme", themeValue);
 
             //search for the second key and then change it
-            RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
+            using RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
 
             string msaSubkey = @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\";
             string anonymousSubKey = msaSubkey + @"\PendingChanges";
@@ -192,12 +184,12 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     try
                     {
-                        RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
+                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
                         settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
                     }
                     catch
                     {
-                        var createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
+                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
                         createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
                     }
                 }
@@ -206,12 +198,12 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     try
                     {
-                        RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
+                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
                         settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
                     }
                     catch
                     {
-                        var createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
+                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
                         createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
                     }
                 }
