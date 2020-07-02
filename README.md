@@ -104,7 +104,7 @@ It looks similar to this one:
 ```C#
 public override void Fire()
   {
-    AutoDarkModeConfig config = ConfigBuilder.Config;
+    AdmConfig config = ConfigBuilder.Config;
     AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled);
     AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
   }
