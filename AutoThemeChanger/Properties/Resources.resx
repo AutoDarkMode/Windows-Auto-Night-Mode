@@ -127,13 +127,13 @@
     <value>Enable automatic theme switching</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Adjust to theme</value>
+    <value>System default</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Always dark</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Always white</value>
+    <value>Always light</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Enable features for Windows 1903</value>
@@ -151,7 +151,7 @@
     <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (old version):</value>
+    <value>Edge (Legacy):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Light</value>
@@ -443,7 +443,7 @@ You can set this individually up in your Windows Theme.</value>
     <value>Error occurred while applying the selected themes, we disabled theme switching</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative white theme</value>
+    <value>Alternative light theme</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Download Extension</value>
