@@ -22,7 +22,7 @@ namespace AutoDarkModeSvc.Communication
         public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
 
-            AutoDarkModeConfigBuilder Properties = AutoDarkModeConfigBuilder.Instance();
+            AdmConfigBuilder Properties = AdmConfigBuilder.Instance();
             msg.ForEach(message =>
             {
                 switch (message)
@@ -86,7 +86,7 @@ namespace AutoDarkModeSvc.Communication
 
                     case Command.Location:
                         Logger.Info("signal received: request location update");
-                        Task<bool> geoTask = Task.Run(() => LocationHandler.UpdateGeoposition(AutoDarkModeConfigBuilder.Instance()));
+                        Task<bool> geoTask = Task.Run(() => LocationHandler.UpdateGeoposition(AdmConfigBuilder.Instance()));
                         geoTask.Wait();
                         var result = geoTask.Result;
                         if (result)
@@ -103,8 +103,8 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: updating configuration files");
                         try
                         {
-                            AutoDarkModeConfigBuilder.Instance().Load();
-                            AutoDarkModeConfigBuilder.Instance().LoadLocationData();
+                            AdmConfigBuilder.Instance().Load();
+                            AdmConfigBuilder.Instance().LoadLocationData();
                             SendResponse(Command.Ok);
                         }
                         catch (Exception e)

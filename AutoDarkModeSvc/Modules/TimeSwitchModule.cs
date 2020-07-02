@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.Modules
     class TimeSwitchModule : AutoDarkModeModule
     {
         public override string TimerAffinity { get; } = TimerName.Main;
-        private AutoDarkModeConfigBuilder ConfigBuilder { get; }
+        private AdmConfigBuilder ConfigBuilder { get; }
 
         /// <summary>
         /// Instantiates a new TimeSwitchModule.
@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Modules
         /// <param name="name">unique name of the module</param>
         public TimeSwitchModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+            ConfigBuilder = AdmConfigBuilder.Instance();
         }
 
         public override void Fire()

@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.Modules
     class ConfigLoadModule : AutoDarkModeModule
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private AutoDarkModeConfigBuilder ConfigBuilder { get;  }
+        private AdmConfigBuilder ConfigBuilder { get;  }
         public override string TimerAffinity { get; } = TimerName.IO;
          
         /// <summary>
@@ -20,7 +20,7 @@ namespace AutoDarkModeSvc.Modules
         /// <param name="name">unique name of the module</param>
         public ConfigLoadModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+            ConfigBuilder = AdmConfigBuilder.Instance();
         }
         public override void Fire()
         {

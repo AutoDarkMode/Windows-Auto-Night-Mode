@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc
                 RuntimeConfig.Instance();
 
                 //Populate configuration
-                AutoDarkModeConfigBuilder Builder = AutoDarkModeConfigBuilder.Instance();
+                AdmConfigBuilder Builder = AdmConfigBuilder.Instance();
                 try
                 {
                     Builder.Load();

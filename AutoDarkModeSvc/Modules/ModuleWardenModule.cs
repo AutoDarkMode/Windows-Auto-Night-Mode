@@ -8,7 +8,7 @@ namespace AutoDarkModeSvc.Modules
 {
     class ModuleWardenModule : AutoDarkModeModule
     {
-        private AutoDarkModeConfigBuilder ConfigBuilder { get; }
+        private AdmConfigBuilder ConfigBuilder { get; }
         private RuntimeConfig Rtc { get; }
         private List<ModuleTimer> Timers { get; }
         public override string TimerAffinity { get; } = TimerName.Main;
@@ -21,7 +21,7 @@ namespace AutoDarkModeSvc.Modules
         /// <param name="name">unique name of the module</param>
         public ModuleWardenModule(string name, List<ModuleTimer> timers, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            ConfigBuilder = AutoDarkModeConfigBuilder.Instance();
+            ConfigBuilder = AdmConfigBuilder.Instance();
             Rtc = RuntimeConfig.Instance();
             Timers = timers;
             Priority = 1;
@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            AutoDarkModeConfig config = ConfigBuilder.Config;
+            AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled && !Rtc.PostponeSwitch);
             AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
             AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);

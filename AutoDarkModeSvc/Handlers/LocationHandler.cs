@@ -13,7 +13,7 @@ namespace AutoDarkModeSvc.Handlers
         /// Refreshes sunrise and sunset based on latittude and longitude found in the configuration file.
         /// </summary>
         /// <param name="configBuilder">config builder for the AutoDarkModeConfig to allow saving</param>
-        private static void UpdateSunTime(AutoDarkModeConfigBuilder configBuilder)
+        private static void UpdateSunTime(AdmConfigBuilder configBuilder)
         {
             int[] sun = SunDate.CalculateSunriseSunset(configBuilder.LocationData.Lat, configBuilder.LocationData.Lon);
             configBuilder.LocationData.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, sun[0] / 60, sun[0] - (sun[0] / 60) * 60, 0);
@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         /// <param name="configBuilder">config builder for the AutoDarkModeConfig</param>
         /// <returns></returns>
-        public static async Task<bool> UpdateGeoposition(AutoDarkModeConfigBuilder configBuilder)
+        public static async Task<bool> UpdateGeoposition(AdmConfigBuilder configBuilder)
         {
             var permission = await Geolocator.RequestAccessAsync();
             var success = false;
@@ -65,7 +65,7 @@ namespace AutoDarkModeSvc.Handlers
         /// NOT IMPLEMENTED YET!
         /// </summary>
         /// <param name="configBuilder"></param>
-        public static void CreateLocationTask(AutoDarkModeConfigBuilder configBuilder)
+        public static void CreateLocationTask(AdmConfigBuilder configBuilder)
         {
             UpdateSunTime(configBuilder);
             GetSunTimesWithOffset(configBuilder, out DateTime Sunrise, out DateTime Sunset);
@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="config">AutoDarkMoeConfig object</param>
         /// <param name="sunrise_out"></param>
         /// <param name="sunset_out"></param>
-        public static void GetSunTimesWithOffset(AutoDarkModeConfigBuilder builder, out DateTime sunrise_out, out DateTime sunset_out)
+        public static void GetSunTimesWithOffset(AdmConfigBuilder builder, out DateTime sunrise_out, out DateTime sunset_out)
         {
             //Add offset to sunrise and sunset hours using Settings
             DateTime sunrise = builder.LocationData.Sunrise;

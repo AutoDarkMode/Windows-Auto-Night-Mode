@@ -5,18 +5,18 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Config
 {
-    class AutoDarkModeConfigMonitor
+    class AdmConfigMonitor
     {
         private FileSystemWatcher ConfigWatcher { get;  }
         private FileSystemWatcher LocationDataWatcher { get; }
 
-        private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+        private readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
         /// </summary>
-        public AutoDarkModeConfigMonitor()
+        public AdmConfigMonitor()
         {
             ConfigWatcher = new FileSystemWatcher
             {
@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
-            if (!AutoDarkModeConfigBuilder.IsFileLocked(new FileInfo(configBuilder.ConfigFilePath)))
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(configBuilder.ConfigFilePath)))
             {
                 try
                 {
@@ -52,7 +52,7 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
         {
-            if (!AutoDarkModeConfigBuilder.IsFileLocked(new FileInfo(configBuilder.LocationDataPath)))
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(configBuilder.LocationDataPath)))
             {
                 try
                 {

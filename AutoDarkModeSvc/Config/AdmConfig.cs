@@ -4,9 +4,9 @@ using System.ComponentModel;
 
 namespace AutoDarkModeSvc.Config
 {
-    public class AutoDarkModeConfig
+    public class AdmConfig
     {
-        public AutoDarkModeConfig()
+        public AdmConfig()
         {
             Wallpaper = new Wallpaper();
             Location = new Location();

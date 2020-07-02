@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Config
 {
-    public class AutoDarkModeConfigBuilder
+    public class AdmConfigBuilder
     {
-        private static AutoDarkModeConfigBuilder instance;
-        public AutoDarkModeConfig Config { get; private set; }
-        public AutoDarkModeLocationData LocationData { get; private set; }
+        private static AdmConfigBuilder instance;
+        public AdmConfig Config { get; private set; }
+        public AdmLocationData LocationData { get; private set; }
 
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
         public string LocationDataPath { get; }
-        protected AutoDarkModeConfigBuilder()
+        protected AdmConfigBuilder()
         {
             if (instance == null)
             {
-                Config = new AutoDarkModeConfig();
-                LocationData = new AutoDarkModeLocationData();
+                Config = new AdmConfig();
+                LocationData = new AdmLocationData();
                 ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
                 ConfigFilePath = Path.Combine(ConfigDir, "config.json");
                 LocationDataPath = Path.Combine(ConfigDir, "location_data.json");
             }
         }
 
-        public static AutoDarkModeConfigBuilder Instance()
+        public static AdmConfigBuilder Instance()
         {
             if (instance == null)
             {
-                instance = new AutoDarkModeConfigBuilder();
+                instance = new AdmConfigBuilder();
             }
             return instance;
         }
@@ -76,7 +76,7 @@ namespace AutoDarkModeSvc.Config
 
             using StreamReader locationDataReader = new StreamReader(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             JsonSerializer serializer = new JsonSerializer();
-            var deserializedLocationData = (AutoDarkModeLocationData)serializer.Deserialize(locationDataReader, typeof(AutoDarkModeLocationData));
+            var deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
             LocationData = deserializedLocationData ?? LocationData;
         }
 
@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.Config
 
             using StreamReader configReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             JsonSerializer serializer = new JsonSerializer();
-            var deserializedConfig = (AutoDarkModeConfig)serializer.Deserialize(configReader, typeof(AutoDarkModeConfig));
+            var deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
             Config = deserializedConfig ?? Config;
 
         }

@@ -11,7 +11,7 @@ namespace AutoDarkModeSvc
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static void TimedSwitch(AutoDarkModeConfigBuilder builder)
+        public static void TimedSwitch(AdmConfigBuilder builder)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (rtc.ForcedTheme == Theme.Dark) 
@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        public static void SwitchTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
             if (config.ClassicMode)
             {
@@ -54,7 +54,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private static void ApplyTheme(AutoDarkModeConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
+        private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
@@ -105,7 +105,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private static void ApplyThemeOptions(AutoDarkModeConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
+        private static void ApplyThemeOptions(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
 
@@ -165,7 +165,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, RuntimeConfig rtc, AutoDarkModeConfig config)
+        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, RuntimeConfig rtc, AdmConfig config)
         {
             // Set system theme
             if (mode == Mode.DarkOnly)
@@ -287,7 +287,7 @@ namespace AutoDarkModeSvc
         /// <param name="config">AutoDarkModeConfig instance</param>
         /// <param name="newTheme">new theme that is requested</param>
         /// <returns></returns>
-        private static bool ThemeOptionsNeedUpdate(AutoDarkModeConfig config, Theme newTheme)
+        private static bool ThemeOptionsNeedUpdate(AdmConfig config, Theme newTheme)
         {
             RuntimeConfig rtc = RuntimeConfig.Instance();
             if (config.Wallpaper.Enabled)
