@@ -472,19 +472,17 @@ namespace AutoThemeChanger.Pages
         }
         private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            //remove all tasks + autostart
             if (e != null)
             {
                 taskSchHandler.RemoveAllTasks();
-                if (Settings.Default.LogonTaskInsteadOfAutostart)
-                {
-                    taskSchHandler.RemoveLogonTask();
-                } 
-                else
+                if (!Settings.Default.LogonTaskInsteadOfAutostart)
                 {
                     regEditHandler.RemoveAutoStart();
                 }
             }
 
+            //ui
             StackPanelRadioHolder.IsEnabled = false;
             RadioButtonCustomTimes.IsChecked = true;
             DisableLocationMode();
@@ -494,6 +492,8 @@ namespace AutoThemeChanger.Pages
             lightStartBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
+
+            //settings
             Settings.Default.Enabled = false;
         }
 

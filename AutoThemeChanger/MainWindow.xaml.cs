@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Navigation;
 using AutoThemeChanger.Properties;
-using Windows.Media.Capture;
 
 namespace AutoThemeChanger
 {
@@ -23,10 +22,23 @@ namespace AutoThemeChanger
                 SystemTimeFormat(); //check if system uses 12 hour clock
                 AddJumpList(); //create jump list entries
                 var regEdit = new RegeditHandler();
+                //is accent color for taskbar active?
                 if (regEdit.GetColorPrevalence())
                 {
                     Settings.Default.AccentColor = true;
                 }
+                //set taskfolder name with username for multiple user environments
+                try
+                {
+                    Settings.Default.TaskFolderTitle = "ADM_" + Environment.UserName;
+                    Settings.Default.TaskFolderTitleMultiUser = true;
+                }
+                catch
+                {
+                    Settings.Default.TaskFolderTitle = "Auto Dark Mode";
+                    Settings.Default.TaskFolderTitleMultiUser = true;
+                }
+                //finished first startup code
                 Settings.Default.FirstRun = false; 
             }
         }

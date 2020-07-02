@@ -12,7 +12,7 @@ namespace AutoThemeChanger
         readonly string appupdater = "ADM AppUpdater";
         readonly string connected = "ADM ConnectedStandby";
         readonly string logon = "ADM Logon";
-        readonly string folder = "ADM_" + Environment.UserName;
+        readonly string folder = Properties.Settings.Default.TaskFolderTitle;
         readonly string author = "Armin Osaj";
         readonly string program = "Windows Auto Dark Mode";
         readonly string description = "Task of the program Windows Auto Dark Mode.";

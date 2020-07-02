@@ -35,6 +35,7 @@ namespace AutoThemeChanger.Pages
                 CheckBoxConStandBy.IsEnabled = false;
                 CheckBoxLogonTask.IsEnabled = false;
                 CheckBoxColourFilter.IsEnabled = false;
+                CheckBoxMultiUserImprovements.IsEnabled = false;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
@@ -42,6 +43,7 @@ namespace AutoThemeChanger.Pages
             CheckBoxConStandBy.IsChecked = Settings.Default.connectedStandby;
             CheckBoxLogonTask.IsChecked = Settings.Default.LogonTaskInsteadOfAutostart;
             CheckBoxColourFilter.IsChecked = Settings.Default.ColourFilterKeystroke;
+            CheckBoxMultiUserImprovements.IsChecked = Settings.Default.TaskFolderTitleMultiUser;
 
             TextboxAccentColorDelay.Text = Settings.Default.AccentColorSwitchTime.ToString();
         }
@@ -68,15 +70,16 @@ namespace AutoThemeChanger.Pages
 
         private void SetLanguage(string lang)
         {
-            Properties.Settings.Default.Language = lang;
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(Properties.Settings.Default.Language);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language);
+            Settings.Default.Language = lang;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.Language);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
         }
 
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                Settings.Default.Save();
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();
             }
@@ -90,11 +93,11 @@ namespace AutoThemeChanger.Pages
         {
             if (CheckBoxAlterTime.IsChecked.Value)
             {
-                Properties.Settings.Default.AlterTime = true;
+                Settings.Default.AlterTime = true;
             }
             else
             {
-                Properties.Settings.Default.AlterTime = false;
+                Settings.Default.AlterTime = false;
             }
         }
 
@@ -188,8 +191,33 @@ namespace AutoThemeChanger.Pages
         {
             if (TextboxAccentColorDelay.Text != "")
             {
-                Properties.Settings.Default.AccentColorSwitchTime = int.Parse(TextboxAccentColorDelay.Text);
+                Settings.Default.AccentColorSwitchTime = int.Parse(TextboxAccentColorDelay.Text);
             }
+        }
+
+        private void CheckBoxMultiUserImprovements_Click(object sender, RoutedEventArgs e)
+        {
+            TaskSchHandler taskScheduler = new TaskSchHandler();
+            RegeditHandler regEditHandler = new RegeditHandler();
+
+            if (CheckBoxMultiUserImprovements.IsChecked == true)
+            {
+                taskScheduler.RemoveAllTasks();
+                Settings.Default.TaskFolderTitle = "ADM_" + Environment.UserName;
+                Settings.Default.TaskFolderTitleMultiUser = true;
+            }
+            else
+            {
+                taskScheduler.RemoveAllTasks();
+                Settings.Default.TaskFolderTitle = "Auto Dark Mode";
+                Settings.Default.TaskFolderTitleMultiUser = false;
+            }
+            if (!Settings.Default.LogonTaskInsteadOfAutostart)
+            {
+                regEditHandler.RemoveAutoStart();
+            }
+            Settings.Default.Enabled = false;
+            RestartButton_Click(this, null);
         }
     }
 }

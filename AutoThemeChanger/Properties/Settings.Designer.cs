@@ -334,5 +334,29 @@ namespace AutoThemeChanger.Properties {
                 this["WantsVersion10"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TaskFolderTitle {
+            get {
+                return ((string)(this["TaskFolderTitle"]));
+            }
+            set {
+                this["TaskFolderTitle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TaskFolderTitleMultiUser {
+            get {
+                return ((bool)(this["TaskFolderTitleMultiUser"]));
+            }
+            set {
+                this["TaskFolderTitleMultiUser"] = value;
+            }
+        }
     }
 }
