@@ -118,250 +118,259 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Instellingen</value>
+    <value>Ustawienia</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Toepassen</value>
+    <value>Zastosuj</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Schakel automatisch wisselen van thema's in</value>
+    <value>Włącz automatyczne przełączanie motywu</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Aan thema aanpassen</value>
+    <value>Dostosuj do motywu</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Altijd donker</value>
+    <value>Zawsze ciemny</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Altijd wit</value>
+    <value>Zawsze jasny</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Functionaliteit voor Windows 1903 activeren</value>
+    <value>Włącz funkcje dla Windowsa 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Aplikacje:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Auteur: Armin Osaj © 2019</value>
+    <value>Twórca: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Activeringstijd</value>
+    <value>Wybierz czas uruchamiania</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Donker</value>
+    <value>Ciemny</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Donker ontwerp</value>
+    <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (oude versie):</value>
+    <value>Edge (stara wersja):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Licht</value>
+    <value>Jasny</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Licht thema</value>
+    <value>Jasny motyw</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Instellingen</value>
+    <value>Ustawienia</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Wijzig huidig thema</value>
+    <value>Zmień obecny motyw</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Systeem:</value>
+    <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Bevat software van derden</value>
+    <value>Zawiera oprogramowanie</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Aktualizacje</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Gebruik locatieservices</value>
+    <value>Użyj usługi lokalizacji</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Wijzigingen opgeslagen!</value>
+    <value>Zapisano zmiany!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Klik op 'Toepassen' om wijzigingen op te slaan</value>
+    <value>Kliknij 'Zastosuj', aby zapisać zmiany</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Download update</value>
+    <value>Pobierz aktualizację</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>fout opgetreden:(</value>
+    <value>Wystąpił błąd :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Deze app vereist locatietoegang</value>
+    <value>Aplikacja potrzebuje dostępu do lokalizacji</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Geen updates beschikbaar.</value>
+    <value>Brak aktualizacji</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Locatie zoeken...</value>
+    <value>Szukanie lokalizacji...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Updates zoeken...</value>
+    <value>Szukanie aktualizacji...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Let op: Je huidige thema kon niet ingelezen worden.</value>
+    <value>Uwaga: Nie można wczytać obecnego motywu.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Een update is beschikbaar!</value>
+    <value>Nowa aktualizacja jest dostępna</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Bedankt voor het gebruiken van Auto Dark Mode!
+    <value>Dziękujemy za używanie Auto Dark Mode!
 
-Een nieuwere versie met verbeteringen en innovaties is beschikbaar op GitHub.
-Wil je het downloaden?
+Nowa wersja programu z poprawkami i dodatkami jest dostępna na GitHubie.
+Chcesz ją pobrać?
 
-Momenteel gëinstalleerde versie: {0}, nieuwe versie: {1}</value>
+Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Updates zoeken</value>
+    <value>Szukaj aktualizacji</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Programma controleert op updates wanneer het wordt gestart</value>
+    <value>Program szuka aktualizacji przy uruchomieniu</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Welkom</value>
+    <value>Witamy</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Activeer het selectievakje om het thema automatisch te wijzigen</value>
+    <value>Aktywuj kontrolkę na górze, aby automatycznie przełączać motyw!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Vertalers: ChillTick en Quinten Althues</value>
+    <value>Spolszczenie: Lee Bartula</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Stad</value>
+    <value>Miasto</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Deze optie is uitgeschakeld, omdat je de Windows 10 April 2019 Update niet hebt geïnstalleerd op je apparaat.</value>
+    <value>Ta opcja nie jest dostępna, ponieważ nie masz zainstalowanego Windowsa 10 April 2019 Update.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Opnieuw opstarten is vereist</value>
+    <value>Aby zastosować zmiany, uruchom ponownie aplikację</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Taal:</value>
+    <value>Język:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Accentkleur voor de taakbalk</value>
+    <value>Kolor akcentu paska zadań</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Annuleren</value>
+    <value>Anuluj</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Huidig:</value>
+    <value>Status:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Achtergrond voor donker thema</value>
+    <value>Tapeta ciemnego motywu</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Verwijderen/Uitschakelen</value>
+    <value>Wyłącz funkcję</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Bestand kiezen</value>
+    <value>Wybierz plik</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Achtergrond voor helder ontwerp</value>
+    <value>Tapeta jasnego motywu</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Achtergrondafbeelding</value>
+    <value>Zmiana tapety pulpitu</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Afbeeldingen</value>
+    <value>Pliki graficzne</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Selecteer alsjeblieft twee achtergronden</value>
+    <value>Proszę wybrać dwie tapety pulpitu!</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Selecteer alsjeblieft een afbeelding</value>
+    <value>Proszę wybrać obraz</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configureer achtergrondafbeelding</value>
+    <value>Ustaw tapetę</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>gebruik huidige achtergrond</value>
+    <value>Użyj obecnej tapety</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Uitgeschakeld</value>
+    <value>Wyłączona</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Ingeschakeld</value>
+    <value>Włączona</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>of</value>
+    <value>albo</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Opslaan</value>
+    <value>Zapisz</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>De afbeelding is mogelijk beschadigd of het pad bestaat niet.</value>
+    <value>Proszę upewnić się, że dany plik istnieje i nie jest uszkodzony.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>We konden geen voorbeeld genereren van de afbeelding, sorry!</value>
+    <value>Wystąpił błąd podczas wczytywania podglądu pliku graficznego!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>We konden je instellingen niet opslaan, sorry!</value>
+    <value>Wystąpił błąd podczas zapisywania ustawień!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Een fout is opgetreden</value>
+    <value>Wystąpił błąd</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Alleen zichtbaar in het donkere thema.
-    Als je problemen tegenkomt: verhoog alsjeblieft de schakelvertraging in instellingen.</value>
+    <value>Widoczny tylko w ciemnym motywie</value>
   </data>
- <data name="info" xml:space="preserve">
-    <value>Info</value>
+  <data name="info" xml:space="preserve">
+    <value>Informacja</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12-uurssysteem</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>Sluiten</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>Nee</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>Ja</value>
+    <value>Zegar 12-godzinny</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>In de achtergrond naar updates zoeken</value>
+    <value>Szukaj aktualizacji w tle</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Schakel na Connected Standby</value>
+    <value>Zmień po obudzeniu z "Connected Standby"</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobiele apparaten, zoals Microsoft Surface-producten, gebruiken een nieuw type stand-bymodus.
-Als je deze optie activeert, verandert Auto Dark Mode het themad onmiddellijk nadat de computer is opgestart.
-
-Deze optie verlaagt echter de levensduur van de batterij! ALLEEN activeren indien nodig!</value>
+    <value>"Urządzenia mobilne, np. Microsoft Surface używają nowego trybu uśpienia.
+Ta opcja włącza automatyczną zmianę motywu po obudzeniu komputera,
+jednak powoduje szybsze zużycie baterii."</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Fout: Ongeldige waarde ingevoerd</value>
+    <value>Błąd: Wprowadzono nieprawidłowe dane</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-<value>Sorry, we konden je instellingen niet toepassen
+    <value>"Przepraszamy, wystąpił błąd podczas zapisywania ustawień.
 
-Hier zijn een paar dingen die je kunt proberen:
-- Verwijder Auto Dark Mode en installeer het vervolgens opnieuw.
-- Probeer Auto Dark Mode uit te voeren als adminstrator.
-- Als je de automatische wijziging vanaf de bureaubladachtergrond hebt geactiveerd, deactiveert de functie en probeer het opnieuw.
+Zalecamy spróbować:
+- Ponowne zainstalowanie AutoDarkMode'a
+- Uruchomienie programu jako administrator
+- Wyłączyć i ponownie włączyć zmianę tapety
 
-Als dit je niet heeft geholpen, kun je een nieuwe issue aanmaken op GitHub. Het is het beste om een screenshot van dit foutbericht bij te voegen. Met een klik op "Ja" kom je bij GitHub.</value>
+Jeśli to nie pomoże, prosimy o przesłanie zrzutu ekranu błędu na GitHubie.
+Kliknij ""Tak"", aby otworzyć stronę GitHub.
+"</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Een Windows-fout verhindert de themaschakeling van de taakbalk in energiebesparende modus. Schakel de energiebesparende modus uit als je problemen ondervindt.</value>
+    <value>Z powodu błędu Windowsa zmiana koloru paska zadań w trybie oszczędzania baterii nie działa poprawnie. W przypadku błędów zalecamy wyłączenie tego trybu.</value>
   </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>Verschuiving</value>
+  <data name="msgClose" xml:space="preserve">
+    <value>Zamknij</value>
   </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>Instellen</value>
+  <data name="msgNo" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Witaj! Dziękujemy za używanie Auto Dark Mode!
+Mamy nadzieje, że lubisz naszą aplikację!
+
+Tak, programista tej aplikacji naprawdę wbudował okienko proszące o darowiznę, co za wstyd!
+
+Ale jeśli ta aplikacja ułatwia Ci życie codzienne, mógłbyś pomóc także nam.
+Nawet mała darowizna nas uszczęśliwi.
+
+Chcesz otworzyć stronę PayPal-a w celu przekazania darowizny?
+</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Lubisz Auto Dark Mode?</value>
   </data>
 </root>
