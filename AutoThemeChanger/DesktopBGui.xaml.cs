@@ -15,7 +15,7 @@ namespace AutoThemeChanger
         string pathOrig2;
         string pathCur1 = Properties.Settings.Default.WallpaperLight;
         string pathCur2 = Properties.Settings.Default.WallpaperDark;
-        readonly string folderPath = "Wallpaper/";
+        readonly string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Armin_Osaj\Wallpaper\";
         bool picture1 = false;
         bool picture2 = false;
         public bool saved = false;
@@ -124,7 +124,7 @@ namespace AutoThemeChanger
         {
             if (pathOrig1 != null)
             {
-                string pathTemp1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight_Temp" + Path.GetExtension(pathOrig1);
+                string pathTemp1 = folderPath + "WallpaperLight_Temp" + Path.GetExtension(pathOrig1);
                 File.Copy(pathOrig1, pathTemp1, true);
                 try
                 {
@@ -134,7 +134,7 @@ namespace AutoThemeChanger
                 {
 
                 }
-                pathCur1 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperLight" + Path.GetExtension(pathOrig1);
+                pathCur1 = folderPath + "WallpaperLight" + Path.GetExtension(pathOrig1);
                 File.Copy(pathTemp1, pathCur1, true);
                 File.Delete(pathTemp1);
             }
@@ -144,7 +144,7 @@ namespace AutoThemeChanger
         {
             if(pathOrig2 != null)
             {
-                string pathTemp2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark_Temp" + Path.GetExtension(pathOrig2);
+                string pathTemp2 = folderPath + "WallpaperDark_Temp" + Path.GetExtension(pathOrig2);
                 File.Copy(pathOrig2, pathTemp2, true);
                 try
                 {
@@ -154,7 +154,7 @@ namespace AutoThemeChanger
                 {
 
                 }
-                pathCur2 = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + "/" + folderPath + "WallpaperDark" + Path.GetExtension(pathOrig2);
+                pathCur2 = folderPath + "WallpaperDark" + Path.GetExtension(pathOrig2);
                 File.Copy(pathTemp2, pathCur2, true);
                 File.Delete(pathTemp2);
             }
