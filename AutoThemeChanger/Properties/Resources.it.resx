@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -117,255 +118,255 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>设置</value>
+    <value>Impostazioni</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>应用</value>
+    <value>Applica</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自动主题切换</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12小时格式</value>
-  </data>
-  <data name="cbAccentColor" xml:space="preserve">
-    <value>仅暗黑主题可见</value>
-  </data>
-  <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>后台获取更新</value>
-  </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>此选项不可能，需要更新到Window 10 1903及以上</value>
-  </data>
-  <data name="cmbAccentColor" xml:space="preserve">
-    <value>突出任务栏颜色</value>
+    <value>Attiva cambio di tema automatico</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>跟随系统主题</value>
+    <value>Adatta al tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>暗黑主题</value>
+    <value>Sempre scuro</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>白色主题</value>
-  </data>
-  <data name="dbCurrently" xml:space="preserve">
-    <value>当前：</value>
-  </data>
-  <data name="dbDark" xml:space="preserve">
-    <value>暗黑主题壁纸</value>
-  </data>
-  <data name="dbDel" xml:space="preserve">
-    <value>删除/禁用</value>
-  </data>
-  <data name="dbErrorText" xml:space="preserve">
-    <value>图片不存在或路径错误</value>
-  </data>
-  <data name="dbFilePicker" xml:space="preserve">
-    <value>选择文件</value>
-  </data>
-  <data name="dbLight" xml:space="preserve">
-    <value>白色主题壁纸</value>
-  </data>
-  <data name="dbMainHeader" xml:space="preserve">
-    <value>桌面背景</value>
-  </data>
-  <data name="dbPictures" xml:space="preserve">
-    <value>照片</value>
-  </data>
-  <data name="dbPreviewError" xml:space="preserve">
-    <value>生成图片预览错误</value>
-  </data>
-  <data name="dbSavedError" xml:space="preserve">
-    <value>保存错误</value>
-  </data>
-  <data name="dbSaveToolTip" xml:space="preserve">
-    <value>请选择两张图片</value>
-  </data>
-  <data name="dbSelectImage" xml:space="preserve">
-    <value>请选择图片</value>
-  </data>
-  <data name="dbTitle" xml:space="preserve">
-    <value>配置桌面背景</value>
-  </data>
-  <data name="dbUseCurrent" xml:space="preserve">
-    <value>使用当前背景</value>
+    <value>Sempre chiaro</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用Windows 1903的功能</value>
-  </data>
-  <data name="disabled" xml:space="preserve">
-    <value>禁用</value>
-  </data>
-  <data name="enabled" xml:space="preserve">
-    <value>启用</value>
-  </data>
-  <data name="errorOcurredTitle" xml:space="preserve">
-    <value>发生错误</value>
-  </data>
-  <data name="info" xml:space="preserve">
-    <value>信息</value>
+    <value>Attiva funzionalità di Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>应用：</value>
+    <value>Applicazioni:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>作者: Armin Osaj © 2019</value>
-  </data>
-  <data name="lblCity" xml:space="preserve">
-    <value>城市</value>
+    <value>Author: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>自定义开始时间</value>
+    <value>Orari di inizio</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>暗黑</value>
+    <value>Scuro</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>暗黑主题</value>
+    <value>Tema scuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge:</value>
-  </data>
-  <data name="lblLanguage" xml:space="preserve">
-    <value>语言：</value>
+    <value>Edge (vecchia versione):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>亮</value>
+    <value>Chiaro</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>亮主题</value>
+    <value>Tema chiaro</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>设置</value>
+    <value>Impostazioni</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>选择当前主题</value>
+    <value>Cambia il tema corrente</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>系统：</value>
+    <value>Sistema:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>使用的第三方软件</value>
-  </data>
-  <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: 朱赛辉</value>
+    <value>Software di terze parti usato</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>Aggiornamenti</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>使用位置服务</value>
+    <value>Usa servizio di localizzazione</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>更改已保存</value>
+    <value>I cambiamenti sono stati salvati!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>单击“应用”保存更改</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>关闭</value>
+    <value>Clicca su "Applica" per applicare i cambiamenti</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>下载更新</value>
+    <value>Scarica aggiornamento</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>发生错误 :(</value>
+    <value>errore verificatosi:(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>该应用程序需要权限定位</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>否</value>
+    <value>L'app richiede il permesso di accedere alla localizzazione</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>暂无更新</value>
+    <value>nessun aggiornamento disponibile</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>搜寻你的位置</value>
+    <value>ricerca della posizione...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>获取更新</value>
+    <value>ricerca di aggiornamenti...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告：无法获取您当前的主题。</value>
+    <value>Attenzione: impossibile individuare il tema in uso</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>有更新可用</value>
+    <value>un nuovo aggiornamento è disponibile!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感谢您使用自动暗黑模式！
+    <value>Grazie per usare Auto Dark Mode!
 
-GitHub上提供了一个新版本，其中包含修复和增强功能。是否下载？
+Una nuova versione è disponibile su Github con correzioni e miglioramenti.
+Vuoi scaricarla?
 
-当前安装版本: {0}, 最新版本: {1}</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="or" xml:space="preserve">
-    <value>或</value>
-  </data>
-  <data name="restartNeeded" xml:space="preserve">
-    <value>重启以应用更改</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>保存</value>
+Versione in uso: {0}, nuova versione: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>自动暗黑模式</value>
+    <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>检查更新</value>
+    <value>Controlla aggiornamenti</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>每次启动检查更新</value>
+    <value>Cerca aggiornamenti ad ogni avvio dell'app</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>欢迎</value>
+    <value>Benvenuto</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>选中此复选框以启用自动主题切换</value>
+    <value>Spunta la casella per attivare il cambio di tema automatico</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Traduttore: balzabalza</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Questa opzione è disattivata perché non è installato l'aggiornamento di Aprile 2019 di Windows 10 sul tuo PC.</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Riavvio dell'app richiesto per vedere i cambiamenti</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Lingua:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Colore secondario per la taskbar</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>In uso:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Sfondo del tema scuro</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Elimina/Disabilita</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Scegli il file</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Sfondo del tema chiaro</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Sfondo del desktop</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Immagini</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Per favore, scegli due sfondi</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Per favore, scelga un'immagine</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Configura sfondo del desktop</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>usa sfondo corrente</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Disabilita</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Attiva</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>o</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Forse il file è corrotto o il percorso non esiste.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Spiacente, non è stato possibile generare un'anteprima dell'immagine!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Spiacente, non è stato possibile salvare le tue impostazioni!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Si è verificato un errore</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Visibile solo in modalità scura</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Orologio in modalità 12 ore</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Sì</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Cerca aggiornamenti in background</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>抱歉，未能正确应用你的设置。
-你可以尝试下面的几种方法：
-- 卸载并重装本软件。
-- 以管理员模式启动本软件。
-- 如果你启用了桌面壁纸功能，关闭该功能并重试。
+    <value>"Spiacente, non è stato possibile applicare le tue impostazioni.
 
-如果上述方法无效，您可将错误原因与截图评论至GitHub issue。单击“是”以关闭对话框。</value>
+Ecco come potresti risolvere:
+- Disinstalla e reinstalla Auto Dark Mode.
+- Esegui Auto Dark Mode come amministratore.
+- Se hai attivato gli sfondi desktop, disattiva l'opzione e riprova.
+
+Se ciò non è sufficiente, puoi commentare su GitHub il problema, caricando uno screenshot dell'errore. Puoi inviare l'errore cliccando il pulsante ""Sì"""</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>错误：输入无效</value>
+    <value>Errore: il tuo input non è valido</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>联网待机后仍切换</value>
+    <value>Cambia dopo ConnectedStandby</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface等移动设备正在使用一种新型的待机模式。
-启用此选项可确保在唤醒计算机后自动暗模式立即切换主题。
-但这也会缩短电池寿命！ 仅在必要时激活！</value>
+    <value>"Dispositivi mobile, come i prodotti Microsoft Surface, usano una modalità standby differente.
+Attivando questa opzione Auto Dark Mode applica il tema subito dopo aver risvegliato il tuo dispositivo. 
+
+Controindicazione: consuma più batteria! Attiva SOLO se necessario!"</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>由于Windows错误，任务栏无法在节电模式下正确切换其颜色。 如果遇到问题，请关闭节电模式。</value>
+    <value>A causa di un bug di Windows la taskbar non cambia tema in modalità risparmio energetico. Disattivalo se ti imbatti in errori.</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>你好！ 感谢您使用自动暗模式。 我希望你能喜欢它 :)
-虽然开发者弹出了一个窗口，以提醒用户他通过Paypal进行捐赠，这挺不好意思的！
-但是，此应用使您的日常使用更加便捷。 即使是小额捐赠也让我开心:D
-你想打开Paypal并捐赠吗？</value>
+    <value>Ciao! Grazie per usare Auto Dark Mode. Spero tiu abbia apprezzato finora :)
+
+Sì, lo sviluppatore ha veramente creato un messaggio per ricordare alle persone che accetta donazioni via PayPal. Che vergogna!
+
+Ma hey, questa app rende la tua vita quotidiana più semplice. Anche una piccola donazione mi renderebbe felice :D
+
+Vuoi aprire la pagina PayPal per una donazione ora?</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>你喜欢自动暗黑模式吗?</value>
-  </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>偏离</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>设置</value>
+    <value>Ti piace Auto Dark Mode?</value>
   </data>
 </root>
