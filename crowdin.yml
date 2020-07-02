@@ -1,3 +1,7 @@
 files:
   - source: /AutoThemeChanger/Properties/
+    ignore:
+      - '*.cs'
+      - '*.settings'
+      - app.manifest
     translation: /AutoThemeChanger/Properties/Resources.%two_letters_code%.resx
