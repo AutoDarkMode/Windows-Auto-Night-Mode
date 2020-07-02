@@ -354,18 +354,6 @@
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
   </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>こんにちは！Auto Dark Mode をお使いいただきありがとうございます。 今のところは、気に入ってくれているといいのですが。
-
-このソフトの開発者は  PayPal 経由での寄付の募集のお知らせ機能を実装しました。残念なことだと思われるでしょう。
-
-しかし、このソフトはあなたの日々を少し楽にするものでしょう。少額の寄付でも私は嬉しいんです。(*^ ^*)
-
-PayPal の寄付ページを開きますか？</value>
-  </data>
-  <data name="donationTitle" xml:space="preserve">
-    <value>Auto Dark Mode を気に入っていただけたでしょうか？</value>
-  </data>
   <data name="lblOffset" xml:space="preserve">
     <value>補正</value>
   </data>
@@ -433,9 +421,6 @@ PayPal の寄付ページを開きますか？</value>
     <data name="restart" xml:space="preserve">
     <value>再起動</value>
   </data>
-  <data name="themeApplyError" xml:space="preserve">
-    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
-  </data>
   <data name="rbCustomHours" xml:space="preserve">
     <value>時間を指定</value>
   </data>
@@ -455,7 +440,7 @@ PayPal の寄付ページを開きますか？</value>
     <value>切り替え対象の選択:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>テーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
+    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>別のホワイトテーマ</value>
@@ -468,5 +453,79 @@ PayPal の寄付ページを開きますか？</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
     <value>このブラウザー拡張機能は Chrome, Firefox と Edge でのサイトの表示をシステムのテーマに従ったものにします。</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>見つかりません</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>なぜ寄付するといいの？</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>寄付するには？</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>PayPal 経由で送金できます。これは完全に任意であり、あなたへの利益を期待しないでください。</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>寄付</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>こんにちは。Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
+
+このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて、完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
+私はこのプロジェクトから利益を生み出していません。
+
+こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>.theme ファイルの適用中にエラーが発生しました。あなたが作成したテーマが削除されたり移動されているかもしれません。テーマの切り替えを無効化しました。再び有効にするには、Auto Dark Mode の設定 {0} を行ってください。</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>以下の問題があります: 
+{0}
+
+管理者としてアルゴリズムを実行することでこの問題の解決を試行します。助けになる可能性があります。
+その後、Auto Dark Mode が再起動するので、お手数ですが設定を再び適用してください。
+
+注: Auto Dark Mode は管理者権限で実行しないでください！</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>問題解決にお手伝いが必要ですか？</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>後でダウンロード</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>再び表示しない</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>今すぐダウンロード</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>ここ数か月、私たちはできる限り最良の最新版を提供できるよう取り組んできました。それがこれです！
+
+Auto Dark Mode X は最初から完全に書き直され、Windows タスクスケジューラ―を使うのではなく、実際のバックグラウンドのタスクとなりました。このことで信頼性が向上し、より柔軟にテーマを切り替えることができます。
+
+バックグラウンドではより多くのリソースを消費しますが、あなたの生産性を向上させるための機能が追加されます。例:
+- ゲームモード: ゲームで遊んでいたり、GPU の負荷が高い間はテーマを無効化
+- キーボードショートカットによるテーマの切り替え
+そのほかにも！
+
+最新版は ARM の端末を除くすべてに適しています。バッテリー消費に問題があるでしょう。バックグラウンドのプロセスをエミュレートするする必要があるからです。 (ここが課題です！).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X があります</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>バージョン X はぜひ試していただきたい大型のアップデートです！本当にダウンロードしないのでしょうか？再び通知することはありません！</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>複数ユーザーの対応</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>グレースケールの色のフィルターを適用するための追加の遅延:</value>
   </data>
 </root>
