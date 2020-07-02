@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,414 +118,414 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>設定</value>
+    <value>Settings</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>適用</value>
+    <value>Apply</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>テーマを自動で切り替える</value>
+    <value>Enable automatic theme switching</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>テーマに合わせる</value>
+    <value>Adjust to theme</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>常にダーク</value>
+    <value>Always dark</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>常にホワイト</value>
+    <value>Always white</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Windows 10 バージョン 1903 の機能を有効化</value>
+    <value>Enable features for Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>ソフトウェア:</value>
+    <value>Apps:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>開始時間の指定</value>
+    <value>Custom start time</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>ダーク</value>
+    <value>Dark</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>ダークテーマ</value>
+    <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (古いバージョン用):</value>
+    <value>Edge (old version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>ライト</value>
+    <value>Light</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>ライトテーマ</value>
+    <value>Light theme</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>設定</value>
+    <value>Settings</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>現在のテーマを切り替え</value>
+    <value>Switch current theme</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>システム:</value>
+    <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>使用しているサードパーティーのソフトウェア</value>
+    <value>Used third party software</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>Updates</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>位置情報の使用</value>
+    <value>Use Location Service</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>変更が保存されました。</value>
+    <value>changes were saved!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>クリックで変更を保存</value>
+    <value>Click on apply to save changes</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>最新版をダウンロード</value>
+    <value>Download update</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>エラーが発生しました</value>
+    <value>error occurred :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>位置情報の使用には許可が必要です</value>
+    <value>The App needs permission to location</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>最新版はありません。</value>
+    <value>no new updates are available.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>位置情報を検知中...</value>
+    <value>Searching your location...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>アップデートの確認...</value>
+    <value>searching for update...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告: システムの現在のテーマを読み込めませんでした。</value>
+    <value>Warning: We couldn't read your current theme.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>最新版があります。</value>
+    <value>a new update is available!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Auto Dark Mode をご利用いただきありがとうございます。
+    <value>Thank you for using Auto Dark Mode!
 
-最新版が GitHub にあります。修正と機能が強化されています。
-ダウンロードしますか？
+A new version is available on GitHub with fixes and enhancements.
+Do you want to download it?
 
-お使いのバージョン: {0}, 最新版: {1}</value>
+Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>最新版の確認</value>
+    <value>Check for updates</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>プログラム起動時に最新版を確認しています。</value>
+    <value>we check at every program start for updates.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>ようこそ</value>
+    <value>Welcome</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>チェックボックスを有効にすると、自動のテーマ切替を有効にします</value>
+    <value>Activate the checkbox to enable automatic theme switching</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻訳者: maboroshin</value>
+    <value>Translator: Armin Osaj</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>都市</value>
+    <value>City</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
+    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>変更の反映にはプログラムの再起動が必要です。</value>
+    <value>App restart required to see the changes</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>言語:</value>
+    <value>Language:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>タスクバーのアクセントカラー</value>
+    <value>Accent Color for Taskbar</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>キャンセル</value>
+    <value>Cancel</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>現在:</value>
+    <value>Currently:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>ダークテーマ用の壁紙</value>
+    <value>Wallpaper for dark theme</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>削除/無効</value>
+    <value>Delete/Disable</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>ファイルを選ぶ</value>
+    <value>Pick file</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>ライトテーマ用の壁紙</value>
+    <value>Wallpaper for light theme</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>デスクトップの背景</value>
+    <value>Desktop Background</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>画像</value>
+    <value>Pictures</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>壁紙を2つ選択してください</value>
+    <value>Please select two wallpaper</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>画像を選択してください</value>
+    <value>Please select an image</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>デスクトップの背景の設定</value>
+    <value>Configure Desktop Background</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>現在の背景を使う</value>
+    <value>use current background</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>無効</value>
+    <value>Disabled</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>有効</value>
+    <value>Enabled</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>または</value>
+    <value>or</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>保存</value>
+    <value>Save</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>ファイルが破損しているか、パスが存在しません</value>
+    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>画像のプレビューを生成できません。</value>
+    <value>We couldn't generate a preview of your image, sorry!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>設定が保存できませんでした。</value>
+    <value>We couldn't save your settings, sorry!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>エラーが発生しました。</value>
+    <value>An error has occured</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>ダークモードでのみ表示されます。
-問題が発生する場合、設定で切り替え遅延時間を増やしてください。</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings. </value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>情報</value>
+    <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>AM/PMで表示</value>
+    <value>12 hour clock</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>閉じる</value>
+    <value>Close</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>いいえ</value>
+    <value>No</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>はい</value>
+    <value>Yes</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>バックグラウンドで最新版を確認</value>
+    <value>Search for updates in background</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>すみません。設定を適用できませんでした。
+    <value>Sorry, but we couldn't apply your settings.
 
-以下を試してみてください:
-- このソフトをアンインストールし、もう一度インストールしてみる。
-- Auto Dark Mode の設定から一度無効にしてみてください。
-- デスクトップの壁紙が有効にされているなら、その機能を無効にしてから試してみる。
+Here are some things you can try:
+- Uninstall and then reinstall auto dark mode.
+- Try to disable {0} in the Auto Dark Mode settings.
+- If you enabled Desktop Wallpaper, disable the feature and try again.
 
-それでも解決しない場合、GitHub 上の issue (問題)  でそのエラーのスクリーンショットを添えてコメントすることもできます。「はい」で GitHub を開きます。</value>
+If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>エラー: 入力が正しくありません。</value>
+    <value>Error: Your input is invalid</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>スタンバイ後に切り替える (非推奨)</value>
+    <value>Switch after Connected Standby (not recommended)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
-このオプションを有効にするとパソコンの起動後、Auto Dark Mode がただちにテーマを切り替えます。
-しかし、充電池の寿命を縮めるので、必要な場合にのみ有効化してください。</value>
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+But it also reduces the battery life! ONLY activate if necessary!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
+    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>補正</value>
+    <value>Offset</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>適用</value>
+    <value>Set</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Windows テーマの使用中は、これらのオプションは無効です。
-これらの設定は、Windowsテーマから個別に設定できます。</value>
+    <value>These options are disabled while using a Windows Theme. 
+You can set this up individually  in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>アプリ</value>
+    <value>Apps</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>設定</value>
+    <value>Settings</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>時間</value>
+    <value>Time</value>
   </data>
   <data name="NavbarWallpaper" xml:space="preserve">
-    <value>壁紙/テーマ</value>
+    <value>Wallpaper/Theme</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>フォルダを開く</value>
+    <value>Open Folder</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>ダークテーマ:</value>
+    <value>Dark Theme:</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>自分のテーマを作成</value>
+    <value>Create your themes</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>テーマの選択</value>
+    <value>Pick your themes</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>ライトテーマ:</value>
+    <value>Light Theme:</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows テーマ (高機能)</value>
+    <value>Windows Theme (more features)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>デスクトップの壁紙 (おすすめ)</value>
+    <value>Desktop Wallpaper (recommended)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>ここから Windows のテーマの設定を開く。</value>
+    <value>Click here to open Windows Theme settings.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>設定の色を白に選択しライトテーマ用の Windows の色を設定します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
+    <value>Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>テーマの設定に戻り、テーマを保存します。</value>
+    <value>Go back to theme settings and save your theme.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>同じようにダークテーマ用に作成します。</value>
+    <value>Repeat the process for the dark theme.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>タスクバーの色を切り替える遅延時間 (ミリ秒):</value>
+    <value>Delay for switching taskbar colors (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>情報</value>
+    <value>About</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>メニュー</value>
+    <value>Menu</value>
   </data>
-    <data name="restart" xml:space="preserve">
-    <value>再起動</value>
+  <data name="restart" xml:space="preserve">
+    <value>Restart</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>時間を指定</value>
+    <value>Set custom hours</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>日の出から日没まで</value>
+    <value>From sunset to sunrise</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>ステップ</value>
+    <value>Step</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>グレースケールの色のフィルターを使用 (Win + Ctrl + C)</value>
+    <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>スタートアップには登録せずログイン時のタスクとして実行</value>
+    <value>Use Logon Task instead of Autostart entry</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>切り替え対象の選択:</value>
+    <value>Select mode:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
+    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>別のホワイトテーマ</value>
+    <value>Alternative white theme</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>拡張機能のダウンロード</value>
+    <value>Download Extension</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>おすすめのツール</value>
+    <value>Recommended tools</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>このブラウザー拡張機能は Chrome, Firefox と Edge でのサイトの表示をシステムのテーマに従ったものにします。</value>
+    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>見つかりません</value>
+    <value>not found</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>なぜ寄付するといいの？</value>
+    <value>Why should you donate?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>寄付するには？</value>
+    <value>How to donate?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>PayPal 経由で送金できます。これは完全に任意であり、あなたへの利益を期待しないでください。</value>
+    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>寄付</value>
+    <value>Donate</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>こんにちは。Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
+    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
 
-このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて、完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
-私はこのプロジェクトから利益を生み出していません。
+This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
+I don't generate any profit with this project.
 
-こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
+For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>.theme ファイルの適用中にエラーが発生しました。あなたが作成したテーマが削除されたり移動されているかもしれません。テーマの切り替えを無効化しました。再び有効にするには、Auto Dark Mode の設定 {0} を行ってください。</value>
+    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>以下の問題があります: 
+    <value>We run into following issue: 
 {0}
 
-管理者としてアルゴリズムを実行することでこの問題の解決を試行します。助けになる可能性があります。
-その後、Auto Dark Mode が再起動するので、お手数ですが設定を再び適用してください。
+We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
+Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
 
-注: Auto Dark Mode は管理者権限で実行しないでください！</value>
+btw: please NEVER run Auto Dark Mode as admin!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>問題解決にお手伝いが必要ですか？</value>
+    <value>Need help with a problem?</value>
   </data>
   <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>後でダウンロード</value>
+    <value>Download later</value>
   </data>
   <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>再び表示しない</value>
+    <value>Never remind me again</value>
   </data>
   <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>今すぐダウンロード</value>
+    <value>Download now</value>
   </data>
   <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>ここ数か月、私たちはできる限り最良の最新版を提供できるよう取り組んできました。それがこれです！
+    <value>In the last couple of months we worked hard to provide you the best update possible. Now it's here!
 
-Auto Dark Mode X は最初から完全に書き直され、Windows タスクスケジューラ―を使うのではなく、実際のバックグラウンドのタスクとなりました。このことで信頼性が向上し、より柔軟にテーマを切り替えることができます。
+Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
 
-バックグラウンドではより多くのリソースを消費しますが、あなたの生産性を向上させるための機能が追加されます。例:
-- ゲームモード: ゲームで遊んでいたり、GPU の負荷が高い間はテーマを無効化
-- キーボードショートカットによるテーマの切り替え
-そのほかにも！
+Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
+- Game Mode: disabled theme switch while you're playing a game or your GPU is busy.
+- Switching theme with keyboard shortcuts
+And more!
 
-最新版は ARM の端末を除くすべてに適しています。バッテリー消費に問題があるでしょう。バックグラウンドのプロセスをエミュレートするする必要があるからです。 (ここが課題です！).</value>
+The update is suitable for everyone, except for owners of a ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
   </data>
   <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X があります</value>
+    <value>Auto Dark Mode X is available</value>
   </data>
   <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>バージョン X はぜひ試していただきたい大型のアップデートです！本当にダウンロードしないのでしょうか？再び通知することはありません！</value>
+    <value>Version X is a great and big update that you definitely should try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
   </data>
   <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>確認</value>
+    <value>Are you sure?</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>複数ユーザーの対応</value>
+    <value>Multi-User support</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>グレースケールの色のフィルターを適用するための追加の遅延:</value>
+    <value>Optional delay for activating grayscale color filter:</value>
   </data>
 </root>
