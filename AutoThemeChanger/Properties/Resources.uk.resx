@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,215 +118,413 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Про програму</value>
+    <value>Einstellungen</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Застосувати</value>
+    <value>Anwenden</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Увімкнути автоматичне перемикання тем</value>
+    <value>Automatischen Design-Wechsel aktivieren</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Як в поточній темі</value>
+    <value>An das Design anpassen</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Завжди темна</value>
+    <value>Immer dunkel</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Завжди світла</value>
+    <value>Immer hell</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Увімкнути функції для Windows 1903</value>
+    <value>Funktionen für Windows 1903 aktivieren</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Програми:</value>
-  </data>
-  <data name="lblAuthor" xml:space="preserve">
-    <value>Автор: Armin Osaj © 2019</value>
+    <value>Anwendungen:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Оберіть свій час початку</value>
+    <value>Aktivierungszeit</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Темна</value>
+    <value>Dunkel</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Темна тема</value>
+    <value>Dunkles Design</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (стара версія):</value>
+    <value>Edge (alte Version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Світла</value>
+    <value>Hell</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Світла тема</value>
+    <value>Helles Design</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>Einstellungen</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Перемкнути поточну тему</value>
+    <value>Aktuelles Design wechseln</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Система:</value>
+    <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Використане програмне забезпечення третіх сторін</value>
+    <value>Enthält Drittanbieter-Software</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Оновлення</value>
+    <value>Updates</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Використовувати службу місцезнаходження</value>
+    <value>Standort-Dienste verwenden</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>зміни були збережені!</value>
+    <value>Änderungen gespeichert</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Натисніть на Застосувати, аби зберегти налаштування</value>
+    <value>Klicke auf 'Anwenden' um die Änderungen zu speichern</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Завантажити оновлення</value>
+    <value>Update herunterladen</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>сталася помилка :(</value>
+    <value>Ein Fehler ist aufgetreten :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Програма потребує дозволу для визначення місцезнаходження</value>
+    <value>Die Anwendung benötigt Zugriff auf die Standort-Dienste von Windows</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>немає нових оновлень.</value>
+    <value>Keine Updates verfügbar</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Пошук місцезнаходження...</value>
+    <value>Standort suchen...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Пошук оновлень...</value>
+    <value>Updates suchen...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Попередження: Ми не змогли визначити поточну тему.</value>
+    <value>Achtung: Das aktuelle Design kann nicht eingelesen werden.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Доступне нове оновлення!</value>
+    <value>Ein Update ist verfügbar</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Дякуємо за використання Auto Dark Mode!
+    <value>Danke für das Benutzen von Auto Dark Mode!
 
-Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
-Ви хочете її завантажити?
+Eine neue Version mit Verbesserungen und Neuerungen ist auf GitHub verfügbar.
+Möchtest du sie herunterladen?
 
-Зараз встановлена версія: {0}, нова версія: {1}</value>
+Aktuell installierte Version: {0}, Neue Version: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Перевірити оновлення</value>
+    <value>Updates suchen</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>ми перевіряємо наявність оновлень при кожному запуску.</value>
+    <value>Programm sucht beim Start nach Updates.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Ласкаво просимо</value>
+    <value>Willkommen</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Активувати прапорець для автоматичного перемикання тем</value>
+    <value>Aktiviere das Kontrollfeld, um automatisch das Theme zu wechseln!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Mykhailo Lytvynenko</value>
+    <value>Übersetzer: Armin Osaj</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Місто</value>
+    <value>Stadt</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Ця функція недоступна, оскільки не було встановлено травневе оновлення Windows 10 May 2019 Update на комп'ютер...</value>
+    <value>Du benötigst das Windows 10 April 2019 Update, um diese Einstellung ändern zu können.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Необхідний перезапуск програми, аби побачити зміни</value>
+    <value>Ein Neustart wird benötigt</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Мова:</value>
+    <value>Sprache:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Колір для панелі задач</value>
+    <value>Akzentfarbe für die Taskleiste</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Скасувати</value>
+    <value>Abbrechen</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Зараз:</value>
+    <value>Aktuell:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Шпалери для темної теми</value>
+    <value>Hintergrund für dunkles Design</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Видалити/Вимкнути</value>
+    <value>Löschen/Deaktivieren</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Обрати файл</value>
+    <value>aus Datei</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Шпалери для світлої теми</value>
+    <value>Hintergrund für helles Design</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Фон робочого стола</value>
+    <value>Hintergrundbild</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Картинки</value>
+    <value>Bilder</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Обрати дві шпалери</value>
+    <value>Bitte wähle zwei Hintergrundbilder aus</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Обрати картинку</value>
+    <value>Bitte wähle ein Bild aus</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Налаштувати фон робочого стола</value>
+    <value>Konfiguriere Hintergrundbild</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>використовувати поточний фон</value>
+    <value>aktueller Hintergrund</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Вимкнено</value>
+    <value>Deaktiviert</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Увімкнено</value>
+    <value>Aktiviert</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>або</value>
+    <value>oder</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Зберегти</value>
+    <value>Speichern</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Можливо, файл із зображенням пошкоджено або шляху до нього не існує.</value>
+    <value>Möglicherweise ist die Bilddatei fehlerhaft oder der Pfad existiert nicht.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Передперегляд картинки не було сформовано, просимо вибачення!</value>
+    <value>Wir konnten keine Vorschau der Bilddatei erstellen, tut uns leid!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Налаштування не були збережені, просимо вибачення!</value>
+    <value>Wir konnten deine Einstellungen nicht speichern, tut uns leid!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Сталася помилка</value>
+    <value>Ein Fehler ist aufgetreten</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Видимий лише в темному режимі</value>
+    <value>Nur im dunklen Design sichtbar.
+Falls die Aktivierung Probleme verursacht: erhöhe die Verzögerungszeit in den Einstellungen.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Інформація</value>
+    <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12 Stunden Zeitformat</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Im Hintergrund nach Updates suchen</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Design-Wechsel nach Connected Standby (nicht empfohlen)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobile Geräte, wie Microsoft Surface-Prdukte, nutzen eine neue Art des Energiesparmodus.
+Wenn du diese Option aktivierst, wird Auto Dark Mode sofort nach dem Aufwecken deines Computers das Design wechseln.
+
+Jedoch senkt diese Option auch die Akkulaufzeit! Aktiviere sie deshalb nur, wenn es notwendig ist!</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Fehler: deine Eingabe ist nicht zulässig.</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Wir konnten deine Einstellungen leider nicht anwenden :(
+
+Hier sind ein paar Hilfestellungen die du ausprobieren kannst:
+- Deinstalliere Auto Dark Mode, danach installiere es neu.
+- Probiere Auto Dark Mode als Administrator auszuführen.
+- Falls du den automatischen Wechsel vom Desktop Hintergrundbild aktiviert hast, deaktiviere die Funktion und probiere es erneut.
+
+Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kommentieren. Hänge am besten noch ein Screenshot dieser Fehlermeldung an. Mit einem Klick auf "Ja" gelangst du zu GitHub.</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Ein Fehler von Windows verhindert den Wechsel der Taskleistenfarbe im Stromsparmodus. Bitte deaktiviere den Stromsparmodus, falls bei dir Probleme auftreten.</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Festlegen</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Uhrzeit</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Hintergrund/Design</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Ordner öffnen</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Dunkles Design:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Erstelle deine Designs</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Wähle deine Designs</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Helles Design:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows Design (mehr Funktionen)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Hintergrundbild (Empfohlen)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Klicke hier, um die Windows Design-Einstellungen zu öffnen</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Setze nun unter Farben deine Windows Farbe auf Hell. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Wechsle zurück zu den Design-Einstellungen und speichere das Design.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Wiederhole den Vorgang für das dunkle Design.</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert. 
+Du kannst sie individuell in deinem Windows Design ändern.</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Verzögerung für Taskleiste-Akzentfarbe (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Menü</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Neu starten</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Benutzerdefinierte Uhrzeit</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Von Sonnenuntergang bis Sonnenaufgang</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="TextBoxAppsBrowsers" xml:space="preserve">
+    <value>Chrome, Firefox und Edge:</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Graustufen Farbfilter nutzen (sendet Win + Strg + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Login-Task statt Autostart-Eintrag</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Modus wählen:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Ein Fehler ist beim festlegen des Designs aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Alternatives weißes Design</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Erweiterung herunterladen</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Empfohlene Tools</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Diese Browser-Erweiterung färbt Webseiten in Chrome, Firefox und Edge passend zur Systemfarbe dunkel ein</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>nicht gefunden</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Вітаю! Дякую за використання Auto Dark Mode. Я сподіваюсь, що зараз тобі все подобається :)
+    <value>Hallo! Vielen Dank, dass du Auto Dark Mode nutzt! Gefällt dir die App?
 
-Так, розробник дійсно створив спливаюче повідомлення, аби нагадати, що він приймає пожертви через PayPal. Яка ганьба!
+Die App gestaltet deinen Alltag angenehmer, da sie deine Augen schont. Gleichzeitig ist sie komplett gratis, werbefrei, kommt ohne Datenerhebung aus und ist vollständig Open Source.
+Ich erziele keinerlei Einnahmen mit diesem Projekt.
 
-Але постривай, цей застосунок робить твоє повсякденне життя трохи легшим. Навть невелика пожертва робить мене щасливим :D
-
-Хочеш зараз відкрити сторінку пожертвування PayPal?</value>
+Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Selbst ein kleiner Betrag lässt mich vor Freude durch meine Wohnung springen. Spende einfach so viel, wie dir meine Arbeit wert ist.</value>
   </data>
-  <data name="donationTitle" xml:space="preserve">
-    <value>Подобається Auto Dark Mode?</value>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Wieso spenden?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Wie spenden?</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Spenden</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Akzeptiert werden spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Ein Fehler ist beim Anwenden der .Theme-Datei aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren. Vielleicht wurde die Datei gelöscht oder verschoben. Um die Funktion zu reaktivieren besuche bitte die {0} Einstellungen.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Folgender Fehler ist aufgetreten: 
+{0}
+
+Wir versuchen ihn nun zu beheben, indem wir einen Algorithmus als Administrator ausführen. Vielleicht gelingt es uns, das Problem zu lösen!
+Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Einstellungen leider erneut anwenden musst.</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Benötigst du Hilfe bei einem Problem?</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Unterstützung für mehrere Nutzerkonten</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Später herunterladen</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Nie wieder erinnern</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Jetzt herunterladen</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>In den letzten Monaten haben wir intensiv daran gearbeitet, euch das bestmögliche Update bereitzustellen. Jetzt ist es endlich fertig!
+
+Auto Dark Mode X wurde von Grund auf neu geschrieben. Anstatt den Windows Task Scheduler zu verwenden, nutzt Auto Dark Mode jetzt einen eigenen Hintergrunddienst. Dies ermöglicht einen deutlich zuverlässigeren und flexibleren Design-Wechsel.
+
+Gleichzeitig verbraucht ein weiterer Hintergrunddienst natürlich Ressourcen, doch im Gegenzug haben wir ein paar gute Funktionen eingebaut:
+- Spielmodus: kein Design-Wechsel während deine Grafikkarte belastet wird.
+- Design-Wechsel durch Tastenkürzel.
+Und mehr!
+
+Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hintergrundprozesse auf ARM emuliert werden müssen, verbraucht dieser nur dort zu viel Akku.</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X ist verfügbar</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Version X ist ein bis ins kleinste Detail ausgearbeitetes Update, welches du definitiv ausprobieren solltest. Bist du sicher, dass du es NICHT herunterladen möchtest? Wir werden dich mit der Bestätigung dieses Dialogs nie wieder erinnern.</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Bist du sicher?</value>
   </data>
 </root>
