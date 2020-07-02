@@ -118,254 +118,259 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>設定</value>
+    <value>Ustawienia</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>適用</value>
+    <value>Zastosuj</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>テーマを自動で切り替える</value>
+    <value>Włącz automatyczne przełączanie motywu</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>テーマに合わせる</value>
+    <value>Dostosuj do motywu</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>常にダーク</value>
+    <value>Zawsze ciemny</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>常にホワイト</value>
+    <value>Zawsze jasny</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Windows 10 バージョン 1903 の機能を有効化</value>
+    <value>Włącz funkcje dla Windowsa 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>ソフトウェア:</value>
+    <value>Aplikacje:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>作者：Armin Osaj © 2019</value>
+    <value>Twórca: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>開始時間の指定</value>
+    <value>Wybierz czas uruchamiania</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>ダーク</value>
+    <value>Ciemny</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>ダークテーマ</value>
+    <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (古いバージョン用):</value>
+    <value>Edge (stara wersja):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>ライト</value>
+    <value>Jasny</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>ライトテーマ</value>
+    <value>Jasny motyw</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>設定</value>
+    <value>Ustawienia</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>現在のテーマを切り替え</value>
+    <value>Zmień obecny motyw</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>システム:</value>
+    <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>使用しているサードパーティーのソフトウェア</value>
+    <value>Zawiera oprogramowanie</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>Aktualizacje</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>位置情報の使用</value>
+    <value>Użyj usługi lokalizacji</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>変更が保存されました。</value>
+    <value>Zapisano zmiany!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>クリックで変更を保存</value>
+    <value>Kliknij 'Zastosuj', aby zapisać zmiany</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>最新版をダウンロード</value>
+    <value>Pobierz aktualizację</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>エラーが発生しました</value>
+    <value>Wystąpił błąd :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>位置情報の使用には許可が必要です</value>
+    <value>Aplikacja potrzebuje dostępu do lokalizacji</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>最新版はありません。</value>
+    <value>Brak aktualizacji</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>位置情報を検知中...</value>
+    <value>Szukanie lokalizacji...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>アップデートの確認...</value>
+    <value>Szukanie aktualizacji...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告: システムの現在のテーマを読み込めませんでした。</value>
+    <value>Uwaga: Nie można wczytać obecnego motywu.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>最新版があります。</value>
+    <value>Nowa aktualizacja jest dostępna</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Auto Dark Mode をご利用いただきありがとうございます。
+    <value>Dziękujemy za używanie Auto Dark Mode!
 
-最新版が GitHub にあります。修正と機能が強化されています。
-ダウンロードしますか？
+Nowa wersja programu z poprawkami i dodatkami jest dostępna na GitHubie.
+Chcesz ją pobrać?
 
-お使いのバージョン: {0}, 最新版: {1}</value>
+Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>最新版の確認</value>
+    <value>Szukaj aktualizacji</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>プログラム起動時に最新版を確認しています。</value>
+    <value>Program szuka aktualizacji przy uruchomieniu</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>ようこそ</value>
+    <value>Witamy</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>チェックボックスを有効にすると、自動のテーマ切替を有効にします</value>
+    <value>Aktywuj kontrolkę na górze, aby automatycznie przełączać motyw!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻訳者: maboroshin</value>
+    <value>Spolszczenie: Lee Bartula</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>都市</value>
+    <value>Miasto</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
+    <value>Ta opcja nie jest dostępna, ponieważ nie masz zainstalowanego Windowsa 10 April 2019 Update.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>変更の反映にはプログラムの再起動が必要です。</value>
+    <value>Aby zastosować zmiany, uruchom ponownie aplikację</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>言語:</value>
+    <value>Język:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>タスクバーのアクセントカラー</value>
+    <value>Kolor akcentu paska zadań</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>キャンセル</value>
+    <value>Anuluj</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>現在:</value>
+    <value>Status:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>ダークテーマ用の壁紙</value>
+    <value>Tapeta ciemnego motywu</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>削除/無効</value>
+    <value>Wyłącz funkcję</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>ファイルを選ぶ</value>
+    <value>Wybierz plik</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>ライトテーマ用の壁紙</value>
+    <value>Tapeta jasnego motywu</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>デスクトップの背景</value>
+    <value>Zmiana tapety pulpitu</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>画像</value>
+    <value>Pliki graficzne</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>壁紙を2つ選択してください</value>
+    <value>Proszę wybrać dwie tapety pulpitu!</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>画像を選択してください</value>
+    <value>Proszę wybrać obraz</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>デスクトップの背景の設定</value>
+    <value>Ustaw tapetę</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>現在の背景を使う</value>
+    <value>Użyj obecnej tapety</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>無効</value>
+    <value>Wyłączona</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>有効</value>
+    <value>Włączona</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>または</value>
+    <value>albo</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>保存</value>
+    <value>Zapisz</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>ファイルが破損しているか、パスが存在しません</value>
+    <value>Proszę upewnić się, że dany plik istnieje i nie jest uszkodzony.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>画像のプレビューを生成できません。</value>
+    <value>Wystąpił błąd podczas wczytywania podglądu pliku graficznego!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>設定が保存できませんでした。</value>
+    <value>Wystąpił błąd podczas zapisywania ustawień!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>エラーが発生しました。</value>
+    <value>Wystąpił błąd</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>ダークモードでのみ表示されます。
-問題が発生する場合、設定で切り替え遅延時間を増やしてください。</value>
+    <value>Widoczny tylko w ciemnym motywie</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>情報</value>
+    <value>Informacja</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>AM/PMで表示</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>閉じる</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>いいえ</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>はい</value>
+    <value>Zegar 12-godzinny</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>バックグラウンドで最新版を確認</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>すみません。設定を適用できませんでした。
-
-以下を試してみてください:
-- このソフトをアンインストールし、もう一度インストールしてみる。
-- Auto Dark Mode の設定から一度無効にしてみてください。
-- デスクトップの壁紙が有効にされているなら、その機能を無効にしてから試してみる。
-
-それでも解決しない場合、GitHub 上の issue (問題)  でそのエラーのスクリーンショットを添えてコメントすることもできます。「はい」で GitHub を開きます。</value>
-  </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>エラー: 入力が正しくありません。</value>
+    <value>Szukaj aktualizacji w tle</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>スタンバイ後に切り替える (非推奨)</value>
+    <value>Zmień po obudzeniu z "Connected Standby"</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
-このオプションを有効にするとパソコンの起動後、Auto Dark Mode がただちにテーマを切り替えます。
-しかし、充電池の寿命を縮めるので、必要な場合にのみ有効化してください。</value>
+    <value>"Urządzenia mobilne, np. Microsoft Surface używają nowego trybu uśpienia.
+Ta opcja włącza automatyczną zmianę motywu po obudzeniu komputera,
+jednak powoduje szybsze zużycie baterii."</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Błąd: Wprowadzono nieprawidłowe dane</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>"Przepraszamy, wystąpił błąd podczas zapisywania ustawień.
+
+Zalecamy spróbować:
+- Ponowne zainstalowanie AutoDarkMode'a
+- Uruchomienie programu jako administrator
+- Wyłączyć i ponownie włączyć zmianę tapety
+
+Jeśli to nie pomoże, prosimy o przesłanie zrzutu ekranu błędu na GitHubie.
+Kliknij ""Tak"", aby otworzyć stronę GitHub.
+"</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
+    <value>Z powodu błędu Windowsa zmiana koloru paska zadań w trybie oszczędzania baterii nie działa poprawnie. W przypadku błędów zalecamy wyłączenie tego trybu.</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Tak</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>こんにちは。Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
+    <value>Witaj! Dziękujemy za używanie Auto Dark Mode!
+Mamy nadzieje, że lubisz naszą aplikację!
 
-このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて、完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
-私はこのプロジェクトから利益を生み出していません。
+Tak, programista tej aplikacji naprawdę wbudował okienko proszące o darowiznę, co za wstyd!
 
-こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
+Ale jeśli ta aplikacja ułatwia Ci życie codzienne, mógłbyś pomóc także nam.
+Nawet mała darowizna nas uszczęśliwi.
+
+Chcesz otworzyć stronę PayPal-a w celu przekazania darowizny?
+</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>你喜歡自動主題切換嗎？</value>
+    <value>Lubisz Auto Dark Mode?</value>
   </data>
 </root>
