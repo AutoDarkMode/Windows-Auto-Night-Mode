@@ -118,227 +118,215 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>О программе</value>
+    <value>Про програму</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Применить</value>
+    <value>Застосувати</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Автоматическая смена темы</value>
+    <value>Увімкнути автоматичне перемикання тем</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Зависит от текущей</value>
+    <value>Як в поточній темі</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Всегда темная</value>
+    <value>Завжди темна</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Всегда белая</value>
+    <value>Завжди світла</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Включить фичи для Windows 1903</value>
+    <value>Увімкнути функції для Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Приложения:</value>
+    <value>Програми:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
     <value>Автор: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Время смены темы</value>
+    <value>Оберіть свій час початку</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Темная</value>
+    <value>Темна</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Темная тема</value>
+    <value>Темна тема</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Старая версия):</value>
+    <value>Edge (стара версія):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Светлая</value>
+    <value>Світла</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Светлая тема</value>
+    <value>Світла тема</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Налаштування</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Сменить текущую тему</value>
+    <value>Перемкнути поточну тему</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>Система:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Использовать стороннее ПО</value>
+    <value>Використане програмне забезпечення третіх сторін</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Обновления</value>
+    <value>Оновлення</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>В зависимости от локации</value>
+    <value>Використовувати службу місцезнаходження</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Изменения сохранены!</value>
+    <value>зміни були збережені!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Нажмите "Применить" что-бы сохранить изменения</value>
+    <value>Натисніть на Застосувати, аби зберегти налаштування</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Скачать обновление</value>
+    <value>Завантажити оновлення</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Ошибка :(</value>
+    <value>сталася помилка :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Необходимо разрешение на использование локации</value>
+    <value>Програма потребує дозволу для визначення місцезнаходження</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Нет новых обновлений.</value>
+    <value>немає нових оновлень.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Определяем локацию...</value>
+    <value>Пошук місцезнаходження...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Поиск обновлений...</value>
+    <value>Пошук оновлень...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Внимание: мы не можем определить текушую тему.</value>
+    <value>Попередження: Ми не змогли визначити поточну тему.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Доступно новое обновление!</value>
+    <value>Доступне нове оновлення!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Спасибо за использование Auto Dark Mode!
+    <value>Дякуємо за використання Auto Dark Mode!
 
-Новая версия доступна на GitHub с исправлениями и новвоведениями.
-Хотите скачать её?
+Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
+Ви хочете її завантажити?
 
-Сейчас установлена версия: {0}, новая: {1}</value>
+Зараз встановлена версія: {0}, нова версія: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Проверить обновления</value>
+    <value>Перевірити оновлення</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Мы автоматически проверяем обновления при запуске программы.</value>
+    <value>ми перевіряємо наявність оновлень при кожному запуску.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Добро пожаловать</value>
+    <value>Ласкаво просимо</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Поставьте галочку что-бы включить автоматическую смену темы</value>
+    <value>Активувати прапорець для автоматичного перемикання тем</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Переводчик: Rikipm</value>
+    <value>Mykhailo Lytvynenko</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Город</value>
+    <value>Місто</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Недоступно, потому-что вы не установили Windows 10 April 2019 Update.</value>
+    <value>Ця функція недоступна, оскільки не було встановлено травневе оновлення Windows 10 May 2019 Update на комп'ютер...</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Перезагрузите приложение что-бы изменения вступили в силу</value>
+    <value>Необхідний перезапуск програми, аби побачити зміни</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Язык:</value>
+    <value>Мова:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Менять цвет панели задач</value>
+    <value>Колір для панелі задач</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Отмена</value>
+    <value>Скасувати</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Сейчас:</value>
+    <value>Зараз:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Обои для темной темы</value>
+    <value>Шпалери для темної теми</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Удалить/Отключить</value>
+    <value>Видалити/Вимкнути</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Выбрать файл</value>
+    <value>Обрати файл</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Обои для светлой темы</value>
+    <value>Шпалери для світлої теми</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Обои</value>
+    <value>Фон робочого стола</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
     <value>Картинки</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Выберите обе картинки</value>
+    <value>Обрати дві шпалери</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Выберите изображение</value>
+    <value>Обрати картинку</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Настроить рабочий стол</value>
+    <value>Налаштувати фон робочого стола</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>использовать текущие</value>
+    <value>використовувати поточний фон</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Отключено</value>
+    <value>Вимкнено</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Включено</value>
+    <value>Увімкнено</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>или</value>
+    <value>або</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Зберегти</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Возможно изображение испорчено или не существует.</value>
+    <value>Можливо, файл із зображенням пошкоджено або шляху до нього не існує.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Невозможно сгенерировать превью изображения!</value>
+    <value>Передперегляд картинки не було сформовано, просимо вибачення!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Невозможно сохранить настройки!</value>
+    <value>Налаштування не були збережені, просимо вибачення!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Произошла ошибка</value>
+    <value>Сталася помилка</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Видно только в темной теме</value>
+    <value>Видимий лише в темному режимі</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Инфо</value>
-  </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12-часовое время</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>Нет</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>Да</value>
+    <value>Інформація</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Привет! Спасибо что используете Auto Dark Mode. Надеюсь эта программа вам нравится :)
+    <value>Вітаю! Дякую за використання Auto Dark Mode. Я сподіваюсь, що зараз тобі все подобається :)
 
-Да, разработчик действительно создал это окно что-бы напомнить пользователям что он собирает донаты через PayPal. Какой позор!
+Так, розробник дійсно створив спливаюче повідомлення, аби нагадати, що він приймає пожертви через PayPal. Яка ганьба!
 
-Но серьезно, это приложение каждый день делает вашу жизнь чуточку легче. Даже небольшое пожертвование может сделать меня счастливым.
+Але постривай, цей застосунок робить твоє повсякденне життя трохи легшим. Навть невелика пожертва робить мене щасливим :D
 
-Вы хотите открыть страницу для пожертвований PayPal прямо сейчас?</value>
+Хочеш зараз відкрити сторінку пожертвування PayPal?</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>Вам нравится Auto Dark Mode?</value>
+    <value>Подобається Auto Dark Mode?</value>
   </data>
 </root>
