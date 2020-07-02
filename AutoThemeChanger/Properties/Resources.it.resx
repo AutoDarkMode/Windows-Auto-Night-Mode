@@ -118,269 +118,414 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Ajustes</value>
+    <value>Settings</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Aplicar</value>
+    <value>Apply</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Activar el cambio de tema automático</value>
+    <value>Enable automatic theme switching</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Ajustar al tema</value>
+    <value>Adjust to theme</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Siempre oscuro</value>
+    <value>Always dark</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Siempre claro</value>
+    <value>Always white</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Activar características de Windows 1903</value>
+    <value>Enable features for Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Aplicaciones:</value>
-  </data>
-  <data name="lblAuthor" xml:space="preserve">
-    <value>Autor: Armin Osaj © 2019</value>
+    <value>Apps:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Tiempo de inicio personalizado</value>
+    <value>Custom start time</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Oscuro</value>
+    <value>Dark</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Tema oscuro</value>
+    <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (versión antigua):</value>
+    <value>Edge (old version):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Claro</value>
+    <value>Light</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Tema claro</value>
+    <value>Light theme</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Ajustes</value>
+    <value>Settings</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Cambiar el tema actual</value>
+    <value>Switch current theme</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Software de terceros utilizado</value>
+    <value>Used third party software</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Actualizaciones</value>
+    <value>Updates</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Usar el servicio de localización</value>
+    <value>Use Location Service</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>¡los cambios fueron guardados!</value>
+    <value>changes were saved!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Haz clic en aplicar para guardar los cambios</value>
+    <value>Click on apply to save changes</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Descargar actualización</value>
+    <value>Download update</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>ha ocurrido un error :(</value>
+    <value>error occurred :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Esta aplicación necesita permiso de localización</value>
+    <value>The App needs permission to location</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>no hay nuevas actualizaciones disponibles.</value>
+    <value>no new updates are available.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Buscando tu localización...</value>
+    <value>Searching your location...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>buscando actualizaciones...</value>
+    <value>searching for update...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Warning: We couldn't read your current theme.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>¡una nueva actualización está disponible!</value>
+    <value>a new update is available!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>¡Gracias por usar Auto Dark Mode!
+    <value>Thank you for using Auto Dark Mode!
 
-Una nueva versión está disponible en GitHub con arreglos y mejoras.
-¿Quieres descargarla?
+A new version is available on GitHub with fixes and enhancements.
+Do you want to download it?
 
-Versión instalada actualmente: {0}, nueva versión: {1}</value>
+Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Comprobar actualizaciones</value>
+    <value>Check for updates</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>buscamos actualizaciones cada vez que se inicia el programa.</value>
+    <value>we check at every program start for updates.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Bienvenido</value>
+    <value>Welcome</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Haz clic en la casilla para activar el cambio de tema automático</value>
+    <value>Activate the checkbox to enable automatic theme switching</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Traductor: Daniel Sevillano</value>
+    <value>Translator: Armin Osaj</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Ciudad</value>
+    <value>City</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Esta opción está desactivada, porque no has instalado la Windows 10 April 2019 Update en tu dispositivo.</value>
+    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>La aplicación necesita reiniciarse para ver los cambios</value>
+    <value>App restart required to see the changes</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Idioma:</value>
+    <value>Language:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Color de acento para la barra de tareas</value>
+    <value>Accent Color for Taskbar</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Cancel</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Actualmente:</value>
+    <value>Currently:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Fondo para el modo oscuro</value>
+    <value>Wallpaper for dark theme</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Borrar/Desactivar</value>
+    <value>Delete/Disable</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Selecciona archivo</value>
+    <value>Pick file</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Fondo para el tema claro</value>
+    <value>Wallpaper for light theme</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fondo de escritorio</value>
+    <value>Desktop Background</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Imágenes</value>
+    <value>Pictures</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor selecciona dos fondos</value>
+    <value>Please select two wallpaper</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor selecciona una imagen</value>
+    <value>Please select an image</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurar el fondo de escritorio</value>
+    <value>Configure Desktop Background</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>usa el fondo actual</value>
+    <value>use current background</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desactivado</value>
+    <value>Disabled</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Activado</value>
+    <value>Enabled</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>o</value>
+    <value>or</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Save</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Tal vez tu imagen está corrupta o la ruta no existe.</value>
+    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>No pudimos generar una previsualización de la imagen, ¡lo sentimos!</value>
+    <value>We couldn't generate a preview of your image, sorry!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>No pudimos guardar tus ajustes, ¡lo sentimos!</value>
+    <value>We couldn't save your settings, sorry!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Ha ocurrido un error</value>
+    <value>An error has occured</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Solo visible en el modo oscuro</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings. </value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Información</value>
+    <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>Reloj de 12 horas</value>
+    <value>12 hour clock</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Cerrar</value>
+    <value>Close</value>
   </data>
   <data name="msgNo" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Sí</value>
+    <value>Yes</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Buscar actualizaciones en segundo plano</value>
+    <value>Search for updates in background</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>Lo sentimos, pero no pudimos aplicar tus ajustes.
+    <value>Sorry, but we couldn't apply your settings.
 
-Aquí hay algunas cosas que puedes probar:
-- Desinstalar y luego reinstalar Auto Dark Mode.
-- Intentar ejecutar Auto Dark Mode como administrador.
-- Si activaste el fondo de escritorio, desactiva la característica y prueba otra vez.
+Here are some things you can try:
+- Uninstall and then reinstall auto dark mode.
+- Try to disable {0} in the Auto Dark Mode settings.
+- If you enabled Desktop Wallpaper, disable the feature and try again.
 
-Si estas medidas no te ayudaron, puedes comentar el problema en GitHub adjuntando una captura de pantalla de tu error. Puedes acceder al problema pulsando el botón "Sí".</value>
+If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Tu entrada no es válida</value>
+    <value>Error: Your input is invalid</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Cambiar tras conexión en espera</value>
+    <value>Switch after Connected Standby (not recommended)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móviles, como los productos Microsoft Surface, están unsando un nuevo tipo de modo de espera. 
-Activar esta opción asegura que Auto Dark Mode cambie inmediatamente el tema tras encender tu ordenador. 
-¡Pero también reduce tu tiempo de batería! ¡SOLO activar si es necesario!</value>
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+But it also reduces the battery life! ONLY activate if necessary!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Debido a un eror de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
-  </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>¡Hola! Gracias por usar Auto Dark Mode. Espero que te esté gustando :)
-
-Sí, el desarrollador ha creado realmente una ventana emergente para recordar a las personas que acepta donaciones por paypal. ¡Qué vergüenza!
-
-Pero bueno, esta aplicación hace tu día a día un poco más fácil. Incluso una pequeña donación me hace feliz :D
-
-¿Quieres abrir la página de donaciones de PayPal ahora?</value>
-  </data>
-  <data name="donationTitle" xml:space="preserve">
-    <value>¿Te gusta Auto Dark Mode?</value>
+    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Compensar</value>
+    <value>Offset</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Establecer</value>
+    <value>Set</value>
   </data>
-  <data name="notifyBalloonTipText" xml:space="preserve">
-    <value>La aplicación todavía se está ejecutando...</value>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>These options are disabled while using a Windows Theme. 
+You can set this up individually  in your Windows Theme.</value>
   </data>
-  <data name="notifyIconExitContentItemText" xml:space="preserve">
-    <value>Salir</value>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Apps</value>
   </data>
-  <data name="notifyIconSwapThemeContentItemText" xml:space="preserve">
-    <value>Cambiar tema</value>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Wallpaper/Theme</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Open Folder</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Dark Theme:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Create your themes</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Pick your themes</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Light Theme:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows Theme (more features)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Desktop Wallpaper (recommended)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Click here to open Windows Theme settings.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Go back to theme settings and save your theme.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Repeat the process for the dark theme.</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Delay for switching taskbar colors (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Set custom hours</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>From sunset to sunrise</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Use Logon Task instead of Autostart entry</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Select mode:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Alternative white theme</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Download Extension</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Recommended tools</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>not found</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Why should you donate?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>How to donate?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+
+This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
+I don't generate any profit with this project.
+
+For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>We run into following issue: 
+{0}
+
+We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
+Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+
+btw: please NEVER run Auto Dark Mode as admin!</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Need help with a problem?</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Download later</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Never remind me again</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Download now</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>In the last couple of months we worked hard to provide you the best update possible. Now it's here!
+
+Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
+
+Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
+- Game Mode: disabled theme switch while you're playing a game or your GPU is busy.
+- Switching theme with keyboard shortcuts
+And more!
+
+The update is suitable for everyone, except for owners of a ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X is available</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Version X is a great and big update that you definitely should try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Multi-User support</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Optional delay for activating grayscale color filter:</value>
   </data>
 </root>
