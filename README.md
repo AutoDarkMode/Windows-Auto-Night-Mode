@@ -61,7 +61,8 @@ In case you want to contribute and add a new module, here's how:
 
 ### Understanding how a module works
 
-AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. The first step therefore usually consists of creating an `Enabled` property or config class for your module in `Config/AutoDarkModeConfig.cs`.
+AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. The first step therefore usually consists of creating an `Enabled` property or config class for your module in `Config/AdmConfig.cs`.
+Only read operations are allowed to this config file. If you need write access, you will need to add a new configuration class and file and save it separately.
 In order to then create a module let's take a look at what a module class looks like:
 ```C#
 namespace AutoDarkModeSvc.Modules
