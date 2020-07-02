@@ -118,254 +118,259 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Ajustes</value>
+    <value>Ustawienia</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Aplicar</value>
+    <value>Zastosuj</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Activar el cambio de tema automático</value>
+    <value>Włącz automatyczne przełączanie motywu</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Ajustar al tema</value>
+    <value>Dostosuj do motywu</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Siempre oscuro</value>
+    <value>Zawsze ciemny</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Siempre claro</value>
+    <value>Zawsze jasny</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Activar características de Windows 1903</value>
+    <value>Włącz funkcje dla Windowsa 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Aplicaciones:</value>
+    <value>Aplikacje:</value>
   </data>
   <data name="lblAuthor" xml:space="preserve">
-    <value>Autor: Armin Osaj © 2019</value>
+    <value>Twórca: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Tiempo de inicio personalizado</value>
+    <value>Wybierz czas uruchamiania</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Oscuro</value>
+    <value>Ciemny</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Tema oscuro</value>
+    <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (versión antigua):</value>
+    <value>Edge (stara wersja):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Claro</value>
+    <value>Jasny</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Tema claro</value>
+    <value>Jasny motyw</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Ajustes</value>
+    <value>Ustawienia</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Cambiar el tema actual</value>
+    <value>Zmień obecny motyw</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Software de terceros utilizado</value>
+    <value>Zawiera oprogramowanie</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Actualizaciones</value>
+    <value>Aktualizacje</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Usar el servicio de localización</value>
+    <value>Użyj usługi lokalizacji</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>¡los cambios fueron guardados!</value>
+    <value>Zapisano zmiany!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Haz clic en aplicar para guardar los cambios</value>
+    <value>Kliknij 'Zastosuj', aby zapisać zmiany</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Descargar actualización</value>
+    <value>Pobierz aktualizację</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>ha ocurrido un error :(</value>
+    <value>Wystąpił błąd :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Esta aplicación necesita permiso de localización</value>
+    <value>Aplikacja potrzebuje dostępu do lokalizacji</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>no hay nuevas actualizaciones disponibles.</value>
+    <value>Brak aktualizacji</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Buscando tu localización...</value>
+    <value>Szukanie lokalizacji...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>buscando actualizaciones...</value>
+    <value>Szukanie aktualizacji...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>Uwaga: Nie można wczytać obecnego motywu.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>¡una nueva actualización está disponible!</value>
+    <value>Nowa aktualizacja jest dostępna</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>¡Gracias por usar Auto Dark Mode!
+    <value>Dziękujemy za używanie Auto Dark Mode!
 
-Una nueva versión está disponible en GitHub con arreglos y mejoras.
-¿Quieres descargarla?
+Nowa wersja programu z poprawkami i dodatkami jest dostępna na GitHubie.
+Chcesz ją pobrać?
 
-Versión instalada actualmente: {0}, nueva versión: {1}</value>
+Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Comprobar actualizaciones</value>
+    <value>Szukaj aktualizacji</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>buscamos actualizaciones cada vez que se inicia el programa.</value>
+    <value>Program szuka aktualizacji przy uruchomieniu</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Bienvenido</value>
+    <value>Witamy</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Haz clic en la casilla para activar el cambio de tema automático</value>
+    <value>Aktywuj kontrolkę na górze, aby automatycznie przełączać motyw!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Traductor: Daniel Sevillano</value>
+    <value>Spolszczenie: Lee Bartula</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Ciudad</value>
+    <value>Miasto</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Esta opción está desactivada, porque no has instalado la Windows 10 April 2019 Update en tu dispositivo.</value>
+    <value>Ta opcja nie jest dostępna, ponieważ nie masz zainstalowanego Windowsa 10 April 2019 Update.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>La aplicación necesita reiniciarse para ver los cambios</value>
+    <value>Aby zastosować zmiany, uruchom ponownie aplikację</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Idioma:</value>
+    <value>Język:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Color de acento para la barra de tareas</value>
+    <value>Kolor akcentu paska zadań</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Anuluj</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Actualmente:</value>
+    <value>Status:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Fondo para el modo oscuro</value>
+    <value>Tapeta ciemnego motywu</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Borrar/Desactivar</value>
+    <value>Wyłącz funkcję</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Selecciona archivo</value>
+    <value>Wybierz plik</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Fondo para el tema claro</value>
+    <value>Tapeta jasnego motywu</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fondo de escritorio</value>
+    <value>Zmiana tapety pulpitu</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Imágenes</value>
+    <value>Pliki graficzne</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor selecciona dos fondos</value>
+    <value>Proszę wybrać dwie tapety pulpitu!</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor selecciona una imagen</value>
+    <value>Proszę wybrać obraz</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurar el fondo de escritorio</value>
+    <value>Ustaw tapetę</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>usa el fondo actual</value>
+    <value>Użyj obecnej tapety</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desactivado</value>
+    <value>Wyłączona</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Activado</value>
+    <value>Włączona</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>o</value>
+    <value>albo</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Zapisz</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Tal vez tu imagen está corrupta o la ruta no existe.</value>
+    <value>Proszę upewnić się, że dany plik istnieje i nie jest uszkodzony.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>No pudimos generar una previsualización de la imagen, ¡lo sentimos!</value>
+    <value>Wystąpił błąd podczas wczytywania podglądu pliku graficznego!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>No pudimos guardar tus ajustes, ¡lo sentimos!</value>
+    <value>Wystąpił błąd podczas zapisywania ustawień!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Ha ocurrido un error</value>
+    <value>Wystąpił błąd</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Solo visible en el modo oscuro</value>
+    <value>Widoczny tylko w ciemnym motywie</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Información</value>
+    <value>Informacja</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>Reloj de 12 horas</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>Cerrar</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>Sí</value>
+    <value>Zegar 12-godzinny</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Buscar actualizaciones en segundo plano</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Lo sentimos, pero no pudimos aplicar tus ajustes.
-
-Aquí hay algunas cosas que puedes probar:
-- Desinstalar y luego reinstalar Auto Dark Mode.
-- Intentar ejecutar Auto Dark Mode como administrador.
-- Si activaste el fondo de escritorio, desactiva la característica y prueba otra vez.
-
-Si estas medidas no te ayudaron, puedes comentar el problema en GitHub adjuntando una captura de pantalla de tu error. Puedes acceder al problema pulsando el botón "Sí".</value>
-  </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Tu entrada no es válida</value>
+    <value>Szukaj aktualizacji w tle</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Cambiar tras conexión en espera</value>
+    <value>Zmień po obudzeniu z "Connected Standby"</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móviles, como los productos Microsoft Surface, están unsando un nuevo tipo de modo de espera. 
-Activar esta opción asegura que Auto Dark Mode cambie inmediatamente el tema tras encender tu ordenador. 
-¡Pero también reduce tu tiempo de batería! ¡SOLO activar si es necesario!</value>
+    <value>"Urządzenia mobilne, np. Microsoft Surface używają nowego trybu uśpienia.
+Ta opcja włącza automatyczną zmianę motywu po obudzeniu komputera,
+jednak powoduje szybsze zużycie baterii."</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Błąd: Wprowadzono nieprawidłowe dane</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>"Przepraszamy, wystąpił błąd podczas zapisywania ustawień.
+
+Zalecamy spróbować:
+- Ponowne zainstalowanie AutoDarkMode'a
+- Uruchomienie programu jako administrator
+- Wyłączyć i ponownie włączyć zmianę tapety
+
+Jeśli to nie pomoże, prosimy o przesłanie zrzutu ekranu błędu na GitHubie.
+Kliknij ""Tak"", aby otworzyć stronę GitHub.
+"</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Debido a un eror de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
+    <value>Z powodu błędu Windowsa zmiana koloru paska zadań w trybie oszczędzania baterii nie działa poprawnie. W przypadku błędów zalecamy wyłączenie tego trybu.</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Tak</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>¡Hola! Gracias por usar Auto Dark Mode. Espero que te esté gustando :)
+    <value>Witaj! Dziękujemy za używanie Auto Dark Mode!
+Mamy nadzieje, że lubisz naszą aplikację!
 
-Sí, el desarrollador ha creado realmente una ventana emergente para recordar a las personas que acepta donaciones por paypal. ¡Qué vergüenza!
+Tak, programista tej aplikacji naprawdę wbudował okienko proszące o darowiznę, co za wstyd!
 
-Pero bueno, esta aplicación hace tu día a día un poco más fácil. Incluso una pequeña donación me hace feliz :D
+Ale jeśli ta aplikacja ułatwia Ci życie codzienne, mógłbyś pomóc także nam.
+Nawet mała darowizna nas uszczęśliwi.
 
-¿Quieres abrir la página de donaciones de PayPal ahora?</value>
+Chcesz otworzyć stronę PayPal-a w celu przekazania darowizny?
+</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
-    <value>¿Te gusta Auto Dark Mode?</value>
+    <value>Lubisz Auto Dark Mode?</value>
   </data>
 </root>
