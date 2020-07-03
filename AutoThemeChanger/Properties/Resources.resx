@@ -178,10 +178,10 @@
     <value>Use Location Service</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>changes were saved!</value>
+    <value>Your changes have been saved!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Click on apply to save changes</value>
+    <value>Click Apply to save changes.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Download update</value>
@@ -190,22 +190,22 @@
     <value>error occurred :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>The App needs permission to location</value>
+    <value>This app needs access to your location</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>no new updates are available.</value>
+    <value>No new updates are available.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Searching your location...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>searching for update...</value>
+    <value>Looking for updates...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Warning: We couldn't read your current theme.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>a new update is available!</value>
+    <value>A new update is available!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Thank you for using Auto Dark Mode!
@@ -222,7 +222,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Check for updates</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>we check at every program start for updates.</value>
+    <value>We check for updates at every program start.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Welcome</value>
@@ -240,7 +240,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>App restart required to see the changes</value>
+    <value>App restart required to see changes</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Language:</value>
@@ -273,7 +273,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Pictures</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpaper</value>
+    <value>Please select two wallpapers</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>Please select an image</value>
@@ -349,10 +349,10 @@ If these things didn't help, you can comment the GitHub issue with posting a scr
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
 Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
-But it also reduces the battery life! ONLY activate if necessary!</value>
+But it also reduces the battery life, so ONLY activate if necessary!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug the taskbar doesn't properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
@@ -362,7 +362,7 @@ But it also reduces the battery life! ONLY activate if necessary!</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>These options are disabled while using a Windows Theme. 
-You can set this up individually  in your Windows Theme.</value>
+You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Apps</value>
@@ -407,7 +407,7 @@ You can set this up individually  in your Windows Theme.</value>
     <value>Go back to theme settings and save your theme.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Repeat the process for the dark theme.</value>
+    <value>Repeat this process for the dark theme.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Delay for switching taskbar colors (ms):</value>
@@ -452,10 +452,10 @@ You can set this up individually  in your Windows Theme.</value>
     <value>Recommended tools</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme</value>
+    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>not found</value>
+    <value>Not found</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
     <value>Why should you donate?</value>
@@ -481,13 +481,13 @@ For this reason you could support me with a voluntary donation. Even a small amo
     <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We run into following issue: 
+    <value>We ran into the following issue: 
 {0}
 
-We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
-Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+We will now try to solve this problem by running an algorithm as administrator. Maybe this will help. 
+Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
 
-btw: please NEVER run Auto Dark Mode as admin!</value>
+Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Need help with a problem?</value>
@@ -502,22 +502,22 @@ btw: please NEVER run Auto Dark Mode as admin!</value>
     <value>Download now</value>
   </data>
   <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>In the last couple of months we worked hard to provide you the best update possible. Now it's here!
+    <value>In the last couple of months we've been working hard to provide you the best update possible. Now it's here!
 
 Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
 
 Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
-- Game Mode: disabled theme switch while you're playing a game or your GPU is busy.
-- Switching theme with keyboard shortcuts
+- Game Mode: disable theme switching while you're playing a game or your GPU is busy.
+- Theme switching using keyboard shortcuts
 And more!
 
-The update is suitable for everyone, except for owners of a ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
+The update is suitable for everyone, except for owners of an ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
   </data>
   <data name="VersionXUpdaterHeader" xml:space="preserve">
     <value>Auto Dark Mode X is available</value>
   </data>
   <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Version X is a great and big update that you definitely should try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
+    <value>Version X is a great, big update that you should definitely try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
   </data>
   <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
     <value>Are you sure?</value>
