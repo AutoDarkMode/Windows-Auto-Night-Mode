@@ -15,7 +15,7 @@ namespace AutoDarkModeApp
     {
         public int[] CalculateSunTime()
         {
-            AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+            AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
             int[] sundate = new int[4];
 
             //Add offset to sunrise and sunset hours using Settings
@@ -31,7 +31,7 @@ namespace AutoDarkModeApp
 
         private BasicGeoposition GetUserPosition()
         {
-            AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+            AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
             var position = new BasicGeoposition()
             {
                 Latitude = configBuilder.LocationData.Lat,
@@ -42,7 +42,7 @@ namespace AutoDarkModeApp
 
         public async Task<string> GetCityName()
         {
-            AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+            AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
 
             Geopoint geopoint = new Geopoint(new BasicGeoposition
             {

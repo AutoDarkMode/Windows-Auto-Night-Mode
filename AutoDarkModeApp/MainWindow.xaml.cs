@@ -23,7 +23,7 @@ namespace AutoDarkModeApp
     public partial class MainWindow
     {
         private readonly RegeditHandler regEditHandler = new RegeditHandler();
-        private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+        private readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
         private ICommandClient CommandClient { get; }
         private bool isClosed = false;
         private bool initComplete = false;

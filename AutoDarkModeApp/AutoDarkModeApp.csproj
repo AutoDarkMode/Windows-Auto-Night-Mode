@@ -50,7 +50,6 @@
     <Compile Include="..\AutoDarkModeSvc\Config\AdmConfig.cs" Link="Config\AdmConfig.cs" />
     <Compile Include="..\AutoDarkModeSvc\Config\AdmConfigBuilder.cs" Link="Config\AdmConfigBuilder.cs" />
     <Compile Include="..\AutoDarkModeSvc\Config\AdmLocationData.cs" Link="Config\AdmLocationData.cs" />
-    <Compile Include="..\AutoDarkModeSvc\Config\RuntimeConfig.cs" Link="Config\RuntimeConfig.cs" />
     <Compile Include="..\AutoDarkModeSvc\Extensions.cs" Link="Extensions.cs" />
     <Compile Include="..\AutoDarkModeSvc\Handlers\TaskSchdHandler.cs" Link="Handlers\TaskSchdHandler.cs" />
   </ItemGroup>

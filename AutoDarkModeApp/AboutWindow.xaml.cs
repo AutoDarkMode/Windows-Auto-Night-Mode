@@ -18,7 +18,7 @@ namespace AutoDarkModeApp
     /// </summary>
     public partial class AboutWindow
     {
-        private readonly AutoDarkModeConfigBuilder configBuilder = AutoDarkModeConfigBuilder.Instance();
+        private readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
 
         Updater updater = new Updater();
         bool update = false;
