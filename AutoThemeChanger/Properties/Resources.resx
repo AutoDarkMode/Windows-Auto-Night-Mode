@@ -401,7 +401,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Click here to open Windows Theme settings.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>For the light theme, make sure the Choose your color option is set to Light. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Go back to theme settings and save your theme.</value>
