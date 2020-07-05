@@ -62,6 +62,7 @@ namespace AutoThemeChanger.Pages
             }
             else
             {
+                SetLanguage(selectedLanguage);
                 RestartText.Text = null;
                 RestartButton.Visibility = Visibility.Hidden;
                 Translator.Text = Properties.Resources.lblTranslator;

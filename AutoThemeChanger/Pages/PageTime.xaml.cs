@@ -137,20 +137,20 @@ namespace AutoThemeChanger.Pages
 
             if (OffsetLightModeButton.Content.ToString() == "+")
             {
-                Properties.Settings.Default.LightOffset = offsetLight;
+                Settings.Default.LightOffset = offsetLight;
             }
             else
             {
-                Properties.Settings.Default.LightOffset = -offsetLight;
+                Settings.Default.LightOffset = -offsetLight;
             }
 
             if (OffsetDarkModeButton.Content.ToString() == "+")
             {
-                Properties.Settings.Default.DarkOffset = offsetDark;
+                Settings.Default.DarkOffset = offsetDark;
             }
             else
             {
-                Properties.Settings.Default.DarkOffset = -offsetDark;
+                Settings.Default.DarkOffset = -offsetDark;
             }
 
             OffsetButton.IsEnabled = false;
