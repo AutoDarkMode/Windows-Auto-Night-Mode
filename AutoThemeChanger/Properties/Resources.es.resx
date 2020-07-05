@@ -145,7 +145,7 @@
     <value>Autor: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Tiempo de inicio personalizado</value>
+    <value>Horario personalizado</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Oscuro</value>
@@ -312,7 +312,8 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Ha ocurrido un error</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Solo visible en el modo oscuro</value>
+    <value>Solo visible en el modo oscuro.
+Si te topas con errores: por favor, aumenta la demora del cambio en los ajustes.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Información</value>
@@ -346,7 +347,7 @@ Si estas medidas no te ayudaron, puedes comentar el problema en GitHub adjuntand
     <value>Error: Tu entrada no es válida</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Cambiar tras conexión en espera</value>
+    <value>Cambiar tras conexión en espera (no recomendado)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Dispositivos móviles, como los productos Microsoft Surface, están unsando un nuevo tipo de modo de espera. 
@@ -357,19 +358,18 @@ Activar esta opción asegura que Auto Dark Mode cambie inmediatamente el tema tr
     <value>Debido a un eror de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>¡Hola! Gracias por usar Auto Dark Mode. Espero que te esté gustando :)
+    <value>¡Hola! ¡Gracias por usar Auto Dark Mode! ¿Te está gustando?
 
-Sí, el desarrollador ha creado realmente una ventana emergente para recordar a las personas que acepta donaciones por paypal. ¡Qué vergüenza!
+Esta aplicación hace tu día a día más agradable, ayudándote a cuidar tus ojos. Al mismo tiempo es completamente gratuita, no tiene anuncios, no recopila información de los usuarios y es de código abierto.
+No obtengo ningún beneficio económico con este proyecto.
 
-Pero bueno, esta aplicación hace tu día a día un poco más fácil. Incluso una pequeña donación me hace feliz :D
-
-¿Quieres abrir la página de donaciones de PayPal ahora?</value>
+Por este motivo puedes apoyarme con una donación voluntaria. Incluso una pequeña cantidad me hace  saltar de felicidad por mi apartamento. Tan solo dona tanto como valores mi trabajo.</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
     <value>¿Te gusta Auto Dark Mode?</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Compensar</value>
+    <value>Ajustar</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Establecer</value>
@@ -382,5 +382,165 @@ Pero bueno, esta aplicación hace tu día a día un poco más fácil. Incluso un
   </data>
   <data name="notifyIconSwapThemeContentItemText" xml:space="preserve">
     <value>Cambiar tema</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Descargar extensión</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Tema claro alternativo</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Usar la escala de grises (Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Aplicar al iniciar sesión en lugar de Windows</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Soporte para varios usuarios</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>¿Por qué debería donar?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>¿Cómo puedo donar?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Puedes donarme dinero mediante PayPal. Es completamente voluntario y no deberías esperar ninguna ventaja.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Nos hemos topado con el siguiente error: 
+{0}. 
+
+Ahora intentaremos solucionar este problema ejecutando un algoritmo como administrador. Tal vez esto ayude. 
+Auto Dark Mode se reiniciará después de eso y tendrás que volver a aplicar todos tus ajustes. ¡Perdona!
+
+Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador por favor!</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>no encontrada</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplicaciones</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Donar</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Horario</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Menú</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Fondo de pantalla/Tema</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Abrir carpeta</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Establecer un horario personalizado</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Del anochecer al amanecer</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Demora para cambiar los colores de la barra de tareas (ms):</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Herramientas recomendadas</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Esta extensión hace que las páginas web respeten el tema del sistema en Chrome, Firefox y Edge</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>¿Necesitas ayuda con un problema?</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Demora opcional para activar la escala de grises:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Ha ocurrido un error al aplicar el tema, hemos desactivado el cambio de tema</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Ha ocurrido un error al aplicar un archivo .theme. Tal vez tu tema ha sido borrado o movido.Por ese motivo hemos desactivado el cambio de tema por ahora. Para volver a activarlo, por favor abre Auto Dark Mode y configura {0} Ajustes</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tema oscuro:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Crea tus temas</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Selecciona tus temas</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Tema claro:</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Seleccionar modo:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Tema de Windows (más opciones)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Fondo de pantalla (recomendado)</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Paso</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Haz click aquí para abrir los ajustes de temas de Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Ahora selecciona claro como color de Windows para el tema claro. Selecciona tu fondo de pantalla, cursor de ratón y color de acento favoritos.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Vuelve a los ajustes del tema y guárdalo.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Repite el proceso para el modo oscuro.</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Estas opciones están desactivadas al usar un tema de Windows.
+Puedes establecerlas individualmente en tu tema de Windows.</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Descargar más tarde</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>No me lo vuelvas a recordar</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Descargar ahora</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>En los últimos meses hemos trabajado duro para entregarte la mejor actualización posible. ¡Ahora está aquí!
+
+Auto Dark Mode X ha sido completamente reescrita desde cero. Ahora cuenta con una tarea en segundo plano, en lugar de depender del Administrador de tareas de Windows. ¡Esto significa una experiencia de cambio de tema de mayor confianza y más felixible!
+
+Sí, esto consume más recursos en segundo plano, pero a cambio te ofrecemos más opciones para mejorar tu productividad. Por ejemplo:
+- Modo juego: se desactiva el cambio de tema mientras estás jugando a un juego tu GPU está ocupada.
+- Cambiar de tema con atajos del teclado
+¡Y más!
+
+Esta actualización es adecuada para todos, excepto para los que tengan un dispositivo ARM. Estos tendrán problemas con la duración de la batería, porque el proceso en segundo plano tiene que ser emulado (¡solo en este caso!).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X está disponible</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>¡La versión X es una gran actualización que definitivamente deberías probar! ¿Estás seguro de que NO quieres descargarla? ¡Nunca te lo volveremos a recordar!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>¿Estás seguro?</value>
   </data>
 </root>

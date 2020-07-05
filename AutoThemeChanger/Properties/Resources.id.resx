@@ -415,4 +415,98 @@
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
   </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Unduh ekstensi</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Tema terang alternatif</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Dukungan multi-pengguna</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode! Apa anda menyukainya? 
+
+Aplikasi ini membuat hari anda lebih menyenangkan, dengan membantu merawat mata anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source.
+Saya tidak mengambil keuntungan apa pun dari proyek ini.
+
+Karena itu anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat saya senang!</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Mengapa menyumbang?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Bagaimana cara menyumbang?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Anda dapat mengirim uang ke saya menggunakan Paypal. 
+Ini sepenuhnya secara sukarela dan anda tak berhak kompensasi apapun.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Kami mengalami beberapa masalah:
+{0}.
+
+Kami akan mencoba memperbaiki masalah ini dengan menjalankan melalui administrator. Mungkin ini dapat membantu.
+Auto Dark Mode akan memulai ulang setelah itu dan anda harus menerapkan ulang setelan anda.
+
+pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>tidak terdeteksi</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Donasi</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Alat yang direkomendasikan</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Ekstensi ini membuat website dalam Chrome, Firefox dan Edge mengikuti tema sistem</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Butuh bantuan?</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Jeda opsional untuk mengaktifkan filter abu abu:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Terjadi masalah saat mengaplikasikan tema, kami menonaktifkan pergantian tema</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Terjadi masalah saat mengaplikasikan .theme-file. Mungkin saja tema yang anda buat terbuang atau berpindah. Inilah kenapa kami menonaktifkan pengalihan tema untuk sekarang. Untuk mengaktifkan kembali, 
+tolong buka Auto Dark Mode dan mengkonfigurasi {0} Setelan</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Pilih mode:</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Unduh nanti</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Jangan ingatkan kembali</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Unduh sekarang</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>Dalam beberapa bulan terakhir kami bekerja keras untuk memberikan anda pembaruan terbaik, dan sekarang sudah tersedia!
+
+Auto Dark Mode X telah diketik ulang dari awal. Sekarang memakai tugas latar-belakang daripada mengandalkan Pen-jadwal Tugas Windows. Ini berarti anda mendapat pengalaman baru yang lebih andal dan fleksibel!
+
+Ya, ini memakai banyak sumber daya di latar belakang, namun sebagai imbalannya kami menawarkan lebih banyak fitur baru untuk meningkatkan produktivitas anda.
+Sebagai contoh:
+- Mode Permainan: mematikan pergantian tema saat anda memainkan game atau saat menggunakan aplikasi GPU intensif.
+- Berpindah tema dengan pintasan keyboard dan lebih banyak!
+
+Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini akan membuat masalah kepada penggunaan baterai, karena proses latar belakang harus diemulasi.</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X sekarang tersedia!</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Versi X adalah upgrade besar dan bagus yang pasti harus anda coba! Apakah anda yakin untuk TIDAK mengunduhnya? Kami tak akan mengingatkan kembali!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Apa anda yakin?</value>
+  </data>
 </root>

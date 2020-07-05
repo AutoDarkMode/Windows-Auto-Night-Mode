@@ -126,9 +126,6 @@
   <data name="autoCheckBox" xml:space="preserve">
     <value>Enable automatic theme switching</value>
   </data>
-  <data name="cmbAdjTheme" xml:space="preserve">
-    <value>System default</value>
-  </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Always dark</value>
   </data>
@@ -401,7 +398,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Click here to open Windows Theme settings.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Go back to theme settings and save your theme.</value>
@@ -527,5 +524,8 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>Optional delay for activating grayscale color filter:</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Adapt to system</value>
   </data>
 </root>

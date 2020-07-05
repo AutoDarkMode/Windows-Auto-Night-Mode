@@ -21,12 +21,14 @@ namespace AutoThemeChanger
             {
                 SystemTimeFormat(); //check if system uses 12 hour clock
                 AddJumpList(); //create jump list entries
+
                 var regEdit = new RegeditHandler();
                 //is accent color for taskbar active?
                 if (regEdit.GetColorPrevalence())
                 {
                     Settings.Default.AccentColor = true;
                 }
+
                 //set taskfolder name with username for multiple user environments
                 try
                 {
@@ -38,6 +40,7 @@ namespace AutoThemeChanger
                     Settings.Default.TaskFolderTitle = "Auto Dark Mode";
                     Settings.Default.TaskFolderTitleMultiUser = true;
                 }
+
                 //finished first startup code
                 Settings.Default.FirstRun = false; 
             }
@@ -45,6 +48,7 @@ namespace AutoThemeChanger
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            LanguageHelper();
             ButtonNavarTime_Click(this, null); //select and display the main page
             DonationScreen();
             try
@@ -77,8 +81,11 @@ namespace AutoThemeChanger
             {
                 Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
             }
-            CultureInfo.CurrentUICulture = new CultureInfo(Settings.Default.Language, true);
-            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Settings.Default.Language, true);
+            var langCode = new CultureInfo(Settings.Default.Language);
+            CultureInfo.CurrentUICulture = langCode;
+            CultureInfo.CurrentCulture = langCode;
+            CultureInfo.DefaultThreadCurrentUICulture = langCode;
+            CultureInfo.DefaultThreadCurrentCulture = langCode;
         }
 
         private void SystemTimeFormat()

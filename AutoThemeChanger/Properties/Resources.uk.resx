@@ -312,21 +312,189 @@
     <value>Сталася помилка</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Видимий лише в темному режимі</value>
+    <value>Видимий лише в темному режимі.
+Якщо у вас виникли проблеми: збільште затримку перемикання в налаштуваннях.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Інформація</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Вітаю! Дякую за використання Auto Dark Mode. Я сподіваюсь, що зараз тобі все подобається :)
+    <value>Вітаю! Дякую за використання Auto Dark Mode! Як вам це подобається?
 
-Так, розробник дійсно створив спливаюче повідомлення, аби нагадати, що він приймає пожертви через PayPal. Яка ганьба!
+Ця програма робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час вона абсолютно безкоштовна, без реклами, не збирає даних про користувачів та з відкритим кодом.
+Я не отримую прибутку від цього проєкту.
 
-Але постривай, цей застосунок робить твоє повсякденне життя трохи легшим. Навть невелика пожертва робить мене щасливим :D
-
-Хочеш зараз відкрити сторінку пожертвування PayPal?</value>
+З цієї причини ви могли б підтримати мене добровільною пожертвою. Навіть від невеликої суми я стрибатиму по квартирі. Просто пожертвуйте стільки, на скільки цінуєте мою роботу.</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
     <value>Подобається Auto Dark Mode?</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Завантажити розширення</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Альтернативна світла тема</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Використовувати колірний фільтр сірого (надсилає Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Використовувати задачу входу замість запису автозапуску</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Підтримка багатьох користувачів</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Чому пожертвувати?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Як пожертвувати?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Ви можете надіслати мені гроші через PayPal. Це повністю добровільно, і не слід очікувати жодної компенсації.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Було зустрінуто таку проблему:
+{0}.
+
+Зараз ми спробуємо вирішити її, запустивши алгоритм як адміністратор. Можливо, це допоможе.
+Після цього Auto Dark Mode перезапуститься, і вам потрібно буде знову застосувати свої налаштування, вибачте!
+
+До речі, будь ласка, НІКОЛИ не запускайте Auto Dark Mode в режимі адміністратора!</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>не знайдено</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Про програму</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Застосунки</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Пожертвувати</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Час</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Фон/Тема</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Відкрити папку</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Встановити користувацькі години</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Від світанку до смеркання</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Перезапустити</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Затримка перемикання кольору панелі задач (мс):</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Рекомендовані засоби</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>За допомогою цього розширення веб-сайти в Chrome, Firefox та Edge відповідають системній темі</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Потрібна допомога у вирішенні проблеми?</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Необов’язкова затримка для активації колірного фільтра сірого:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Під час застосування теми сталася помилка, ми вимкнули перемикання тем</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем  було вимкнено. Щоб знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Темна тема:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Створіть свої теми</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Оберіть теми</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Світла тема:</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Оберіть режим:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Теми Windows (більше можливостей)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Фон робочого столу (рекомендовано)</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Крок</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Натисніть тут, щоб відкрити налаштування теми Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Тепер встановіть світлий колір Windows у розділі Кольори для світлої теми. Виберіть улюблений фон, курсор миші та основний колір.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Поверніться до налаштувань теми та збережіть свою тему.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Повторіть процес для темної теми.</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Ці параметри вимкнено під час використання теми Windows.
+Ви можете налаштувати це окремо у вашій темі Windows.</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Завантажити пізніше</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Ніколи не нагадувати</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Завантажити зараз</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>Останні кілька місяців ми наполегливо працювали, щоб надати вам найкраще оновлення. Тепер воно тут!
+
+Auto Dark Mode X було повністю переписано з нуля. Тепер він має реальну фонову задачу замість того, щоб покладатися на планувальник задач Windows. Це означає, що ви отримаєте надійніше та гнучкіше перемикання тем!
+
+Так, це споживає більше ресурсів у фоновому режимі, але натомість вам пропонується більше функцій для підвищення продуктивности. Наприклад:
+- Режим гри: вимкнено перемикання тем, коли ви граєте в гру або ваш GPU зайнятий.
+- Перемикання теми за допомогою комбінацій клавіш
+І більше!
+
+Оновлення підходить для всіх, крім власників пристрою на ARM. У них виникнуть проблеми з тривалістю роботи акумулятора, тому що фоновий процес має бути емульованим (лише там!).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X доступний</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Версія X — це значне та велике оновлення, яке ви обов'язково повинні спробувати! Ви впевнені, що не хочете завантажити його? Ви більше не отримаєте нагадування!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Ви впевнені?</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Перемикання після підключеного режиму очікування (не рекомендовано)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Мобільні пристрої, такі як продукти Microsoft Surface, використовують новий вид режиму очікування.
+Ввімкнення цієї опції гарантує, що Auto Dark Mode негайно перемикає тему після пробудження комп'ютера.
+Але це також скорочує ресурс акумулятора, тому активуйте ЛИШЕ за необхідности!</value>
   </data>
 </root>

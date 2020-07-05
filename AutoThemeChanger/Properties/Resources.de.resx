@@ -135,9 +135,6 @@
   <data name="cmbAlwWhite" xml:space="preserve">
     <value>Immer hell</value>
   </data>
-  <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Funktionen für Windows 1903 aktivieren</value>
-  </data>
   <data name="lblApps" xml:space="preserve">
     <value>Anwendungen:</value>
   </data>
@@ -210,7 +207,7 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Danke für das Benutzen von Auto Dark Mode!
 
-Eine neue Version mit Verbesserungen und Neuerungen ist auf GitHub verfügbar.
+Eine neue Version mit einigen Verbesserungen und Neuerungen ist auf GitHub verfügbar.
 Möchtest du sie herunterladen?
 
 Aktuell installierte Version: {0}, Neue Version: {1}</value>
@@ -347,7 +344,7 @@ Jedoch senkt diese Option auch die Akkulaufzeit! Aktiviere sie deshalb nur, wenn
 
 Hier sind ein paar Hilfestellungen die du ausprobieren kannst:
 - Deinstalliere Auto Dark Mode, danach installiere es neu.
-- Probiere Auto Dark Mode als Administrator auszuführen.
+- Deaktiviere {0} in den Einstellungen.
 - Falls du den automatischen Wechsel vom Desktop Hintergrundbild aktiviert hast, deaktiviere die Funktion und probiere es erneut.
 
 Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kommentieren. Hänge am besten noch ein Screenshot dieser Fehlermeldung an. Mit einem Klick auf "Ja" gelangst du zu GitHub.</value>
@@ -398,7 +395,7 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
     <value>Klicke hier, um die Windows Design-Einstellungen zu öffnen</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Setze nun unter Farben deine Windows Farbe auf Hell. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
+    <value>Setze nun unter 'Farben' deine Windows Farbe auf 'Hell'. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Wechsle zurück zu den Design-Einstellungen und speichere das Design.</value>
@@ -447,7 +444,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Ein Fehler ist beim festlegen des Designs aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternatives weißes Design</value>
+    <value>Alternatives helles Design</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Erweiterung herunterladen</value>
@@ -489,7 +486,9 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
 {0}
 
 Wir versuchen ihn nun zu beheben, indem wir einen Algorithmus als Administrator ausführen. Vielleicht gelingt es uns, das Problem zu lösen!
-Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Einstellungen leider erneut anwenden musst.</value>
+Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Einstellungen leider erneut anwenden musst.
+
+Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Benötigst du Hilfe bei einem Problem?</value>

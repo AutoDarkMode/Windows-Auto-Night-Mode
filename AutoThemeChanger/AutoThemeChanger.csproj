@@ -239,7 +239,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
-    <EmbeddedResource Include="Properties\Resources.es.resx" />
+    <EmbeddedResource Include="Properties\Resources.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.uk.resx" />
     <EmbeddedResource Include="Properties\Resources.zh.resx" />
     <None Include="Properties\app.manifest" />
@@ -290,9 +292,6 @@
     <Resource Include="Resources\Settings_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AutoDarkModeIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="FluentWPF">
       <Version>0.9.0</Version>
     </PackageReference>
@@ -314,6 +313,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UpdaterHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoDarkModeIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

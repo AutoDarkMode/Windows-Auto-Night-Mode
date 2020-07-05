@@ -164,25 +164,28 @@ namespace AutoThemeChanger
             using (TaskService taskService = new TaskService())
             {
                 TaskFolder taskFolder = taskService.GetFolder(folder);
-                foreach (var v in taskFolder.GetTasks())
+                if (taskFolder != null)
                 {
+                    foreach (var v in taskFolder.GetTasks())
+                    {
+                        try
+                        {
+                            taskFolder.DeleteTask(v.ToString(), false);
+                            Console.WriteLine("Deleted Task: " + v.ToString());
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                     try
                     {
-                        taskFolder.DeleteTask(v.ToString(), false);
-                        Console.WriteLine("Deleted Task: " + v.ToString());
+                        taskService.RootFolder.DeleteFolder(folder, false);
                     }
                     catch
                     {
 
                     }
-                }
-                try
-                {
-                    taskService.RootFolder.DeleteFolder(folder, false);
-                }
-                catch
-                {
-
                 }
             }
         }

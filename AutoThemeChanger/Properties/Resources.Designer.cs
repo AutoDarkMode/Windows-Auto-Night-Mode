@@ -145,7 +145,7 @@ namespace AutoThemeChanger.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
         ///Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
-        ///But it also reduces the battery life! ONLY activate if necessary!.
+        ///But it also reduces the battery life, so ONLY activate if necessary!.
         /// </summary>
         public static string cbConnectedStandbyTooltip {
             get {
@@ -154,7 +154,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alternative white theme.
+        ///   Looks up a localized string similar to Alternative light theme.
         /// </summary>
         public static string cbOfficeWhiteTheme {
             get {
@@ -208,7 +208,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adjust to theme.
+        ///   Looks up a localized string similar to Adapt to system.
         /// </summary>
         public static string cmbAdjTheme {
             get {
@@ -226,7 +226,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Always white.
+        ///   Looks up a localized string similar to Always light.
         /// </summary>
         public static string cmbAlwWhite {
             get {
@@ -325,7 +325,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select two wallpaper.
+        ///   Looks up a localized string similar to Please select two wallpapers.
         /// </summary>
         public static string dbSaveToolTip {
             get {
@@ -429,13 +429,13 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We run into following issue: 
+        ///   Looks up a localized string similar to We ran into the following issue: 
         ///{0}
         ///
-        ///We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
-        ///Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+        ///We will now try to solve this problem by running an algorithm as administrator. Maybe this will help. 
+        ///Auto Dark Mode will restart afterwards and you&apos;ll need to re-apply your settings, sorry!
         ///
-        ///btw: please NEVER run Auto Dark Mode as admin!.
+        ///Sidenote: NEVER run Auto Dark Mode as administrator manually!.
         /// </summary>
         public static string ErrorApplyRestart {
             get {
@@ -532,7 +532,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edge (old version):.
+        ///   Looks up a localized string similar to Edge (Legacy):.
         /// </summary>
         public static string lblEdge {
             get {
@@ -640,7 +640,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to not found.
+        ///   Looks up a localized string similar to Not found.
         /// </summary>
         public static string locationCityNotFound {
             get {
@@ -649,7 +649,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Due to a Windows bug the taskbar doesn&apos;t properly switch its colour in battery saver mode. Please turn off battery saver if you run into issues..
+        ///   Looks up a localized string similar to Due to a Windows bug, the taskbar doesn&apos;t properly switch its color in battery saver mode. Please turn off battery saver if you run into issues..
         /// </summary>
         public static string msgBatterySaver {
             get {
@@ -658,7 +658,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to changes were saved!.
+        ///   Looks up a localized string similar to Your changes have been saved!.
         /// </summary>
         public static string msgChangesSaved {
             get {
@@ -667,7 +667,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click on apply to save changes.
+        ///   Looks up a localized string similar to Click Apply to save changes..
         /// </summary>
         public static string msgClickApply {
             get {
@@ -703,7 +703,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The App needs permission to location.
+        ///   Looks up a localized string similar to This app needs access to your location.
         /// </summary>
         public static string msgLocPerm {
             get {
@@ -721,7 +721,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to no new updates are available..
+        ///   Looks up a localized string similar to No new updates are available..
         /// </summary>
         public static string msgNoUpd {
             get {
@@ -739,7 +739,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to searching for update....
+        ///   Looks up a localized string similar to Looking for updates....
         /// </summary>
         public static string msgSearchUpd {
             get {
@@ -757,7 +757,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to a new update is available!.
+        ///   Looks up a localized string similar to A new update is available!.
         /// </summary>
         public static string msgUpdateAvail {
             get {
@@ -906,7 +906,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App restart required to see the changes.
+        ///   Looks up a localized string similar to App restart required to see changes.
         /// </summary>
         public static string restartNeeded {
             get {
@@ -942,7 +942,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.
+        ///   Looks up a localized string similar to This browser extension makes websites in Chrome, Firefox and Edge respect the system theme..
         /// </summary>
         public static string tbDarkReaderDescription {
             get {
@@ -1068,7 +1068,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Now set the Windows color under Colors to white for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
+        ///   Looks up a localized string similar to Now navigate to &apos;Colors&apos; and change the system color to &apos;Light&apos; for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
         /// </summary>
         public static string ThemeTutorialStep2 {
             get {
@@ -1086,7 +1086,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Repeat the process for the dark theme..
+        ///   Looks up a localized string similar to Repeat this process for the dark theme..
         /// </summary>
         public static string ThemeTutorialStep4 {
             get {
@@ -1105,7 +1105,7 @@ namespace AutoThemeChanger.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to These options are disabled while using a Windows Theme. 
-        ///You can set this up individually  in your Windows Theme..
+        ///You can set them up individually in your Windows Theme..
         /// </summary>
         public static string ToolTipDisabledDueTheme {
             get {
@@ -1123,7 +1123,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to we check at every program start for updates..
+        ///   Looks up a localized string similar to We check for updates at every program start..
         /// </summary>
         public static string updateInfoText {
             get {
@@ -1168,12 +1168,12 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In the last couple of months we worked hard to provide you the best update possible. Now it&apos;s here!
+        ///   Looks up a localized string similar to In the last couple of months we&apos;ve been working hard to provide you the best update possible. Now it&apos;s here!
         ///
         ///Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
         ///
         ///Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
-        ///- Game Mode: disabled theme switch while [rest of string was truncated]&quot;;.
+        ///- Game Mode: disable theme swit [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VersionXUpdaterDescription {
             get {
@@ -1191,7 +1191,7 @@ namespace AutoThemeChanger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version X is a great and big update that you definitely should try out! Are you sure you DON&apos;T want to download it? We will never remind you again!.
+        ///   Looks up a localized string similar to Version X is a great, big update that you should definitely try out! Are you sure you DON&apos;T want to download it? We will never remind you again!.
         /// </summary>
         public static string VersionXUpdaterNeverDescription {
             get {
