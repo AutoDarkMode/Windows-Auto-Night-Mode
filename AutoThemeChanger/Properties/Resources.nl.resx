@@ -205,7 +205,7 @@
     <value>Let op: Uw huidige thema kon niet worden gelezen.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>er is een update beschikbaar!</value>
+    <value>Een update is beschikbaar!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Dankuwel voor het gebruiken van Auto Dark Mode!
@@ -222,7 +222,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Op updates controleren</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>we zoeken updates elke keer dat het programma start.</value>
+    <value>Programma controleert op updates wanneer het wordt gestart.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Welkom</value>
@@ -252,7 +252,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Annuleren</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Momenteel:</value>
+    <value>Huidig:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
     <value>Achtergrond voor donker thema</value>
@@ -297,7 +297,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Opslaan</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Misschien is het afbeeldingsbestand beschadigd of bestaat het pad niet.</value>
+    <value>De afbeelding is mogelijk beschadigd of het pad bestaat niet.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
     <value>Er kon geen voorbeeld van uw afbeelding worden vertoond, sorry!</value>
@@ -341,7 +341,7 @@ Dit zijn enkele dingen die u kunt proberen:
 Als dit niet helpt kunt u een GitHub-issue aanmaken met een schermafbeelding van het probleem. U kunt toegang krijgen tot de issue met de "Ja"-knop.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Fout: Dit is geen geldige waarde</value>
+    <value>Fout: Ongeldige waarde ingevoerd</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Na Connected Standby schakelen (niet aanbevolen)</value>
@@ -455,7 +455,7 @@ U kunt dit individueel instellen in uw Windows-thema.</value>
     <value>Deze browserextensie laat websites in Chrome, Firefox en Edge het systeemthema respecteren</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>niet gevonden</value>
+    <value>Niet gevonden</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
     <value>Waarom doneren?</value>
