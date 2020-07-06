@@ -85,6 +85,7 @@ namespace AutoDarkModeSvc
 
         public void Exit(object sender, EventArgs e)
         {
+            Cleanup();
             NotifyIcon.Dispose();
             Application.Exit();
         }
