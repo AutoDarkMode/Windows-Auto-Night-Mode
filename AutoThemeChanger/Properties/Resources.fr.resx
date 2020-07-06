@@ -322,12 +322,12 @@ Si vous rencontrez des problèmes: veuillez augmenter le délai de changement da
     <value>Système horaire sur 12 heures</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous l'aimez jusqu'à présent ?
+    <value>Salut! Merci d'utiliser Auto Dark Mode ! Est-ce que vous l'aimez bien ?
 
 Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est entièrement gratuite, sans publicité, ne collecte pas de données utilisateur et elle est open source.
 Je ne génère aucun profit avec ce projet.
 
-Pour cette raison, vous pourriez me soutenir par un don volontaire. Même une petite somme me rend heureux de sauter dans mon appartement. Donnez simplement autant que vous appréciez mon travail.</value>
+Pour cette raison, vous pourriez me soutenir par un don volontaire. Même une petite somme me rend heureux de sauter dans mon appartement. Juste donnez autant que vous appréciez mon travail.</value>
   </data>
   <data name="donationTitle" xml:space="preserve">
     <value>Vous aimez Auto Dark Mode ?</value>
@@ -342,7 +342,7 @@ Pour cette raison, vous pourriez me soutenir par un don volontaire. Même une pe
     <value>Utiliser un filtre de couleur en nuances de gris (envoie Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Utiliser la Tâche de Connexion au lieu de l'entrée de Démarrage Automatique</value>
+    <value>Utiliser la Tâche de Connexion au lieu de l'entrée d'Auto-démarrage</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Prise en charge multi-utilisateurs</value>
@@ -351,7 +351,7 @@ Pour cette raison, vous pourriez me soutenir par un don volontaire. Même une pe
     <value>Pourquoi faire un don ?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>Comment faire un don ?</value>
+    <value>Comment?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
     <value>Vous pouvez m'envoyer de l'argent via PayPal. Il est tout à fait volontaire et vous ne devriez pas attendre aucune compensation.</value>
@@ -375,7 +375,7 @@ D'ailleurs, veuillez ne JAMAIS exécuter Auto Dark Mode en tant qu'administrateu
     <value>Applications</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>Faire un don</value>
+    <value>Donner</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
     <value>Parmètres</value>
@@ -393,7 +393,7 @@ D'ailleurs, veuillez ne JAMAIS exécuter Auto Dark Mode en tant qu'administrateu
     <value>Ouvrir le dossier</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Définir des heures personnalisées</value>
+    <value>Définir des horaires personnalisés</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>Du coucher au lever du soleil</value>

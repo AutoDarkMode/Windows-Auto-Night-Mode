@@ -36,6 +36,7 @@ namespace AutoThemeChanger.Pages
                 CheckBoxLogonTask.IsEnabled = false;
                 CheckBoxColourFilter.IsEnabled = false;
                 CheckBoxMultiUserImprovements.IsEnabled = false;
+                CheckBoxBackgroundUpdater.IsEnabled = false;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;

@@ -89,7 +89,7 @@
         <!-- Update -->
         <TextBlock HorizontalAlignment="Left" Margin="10,232,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
         <Button x:Name="updateButton" Content="{x:Static Properties:Resources.updateButton}" HorizontalAlignment="Left" Margin="10,259,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Click="UpdateButton_Click" Height="26" Width="150" Style="{StaticResource ButtonRevealStyle}"/>
-        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="10,289,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static Properties:Resources.updateInfoText}" Width="250" Height="16"/>
+        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="10,289,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static Properties:Resources.updateInfoText}" Width="400" Height="16"/>
 
         <!-- Third Party Software-->
         <TextBlock HorizontalAlignment="Left" Margin="10,332,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>

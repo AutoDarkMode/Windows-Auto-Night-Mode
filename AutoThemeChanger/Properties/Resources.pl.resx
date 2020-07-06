@@ -391,7 +391,7 @@ Podaruj tyle, na ile cenisz moją pracę.</value>
     <value>Dlaczego?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>Jak przekazać darowiznę?</value>
+    <value>Jak?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
     <value>Możesz mi wysłać pieniądze PayPalem. Jest to całkowicie dobrowolne, dlatego niestety nie otrzymasz niczego w zamian.</value>

@@ -361,7 +361,7 @@ Se ciò non è sufficiente, puoi commentare su GitHub il problema, caricando uno
   <data name="donationDescription" xml:space="preserve">
     <value>Ciao! Grazie per usare Auto Dark Mode! Sei soddisfatto finora?
 
-Questa app facilità la tua vita di tutti i giorni, prendendosi cura dei tuoi occhi. Al tempo stesso è totalmente gratis, non raccoglie pubblicità o dati personali e è open source. Nessun profitto viene generato da quest'app.
+Questa app facilita la tua vita di tutti i giorni, prendendosi cura dei tuoi occhi. Al tempo stesso è totalmente gratis, non raccoglie pubblicità o dati personali e è open source. Nessun profitto viene generato da quest'app.
 
 Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anche piccola: tanto mi basta per farmi saltare di gioia. Dona tanto quanto meriti il mio lavoro.</value>
   </data>
@@ -417,7 +417,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Impostazioni</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Tempo</value>
+    <value>Programma</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>

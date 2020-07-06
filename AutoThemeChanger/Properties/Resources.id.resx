@@ -187,10 +187,10 @@
     <value>tekan terapkan untuk menyimpan perubahan</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value> Unduh pembaruan</value>
+    <value>Unduh pembaruan</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value> masalah terjadi :(</value>
+    <value>masalah terjadi :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Aplikasi membutuhkan izin untuk menemukan lokasi</value>
@@ -510,7 +510,7 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
     <value>Apa anda yakin?</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>(+)  Beralih setelah masuk mode siaga (tidak direkomendasikan)</value>
+    <value>Beralih setelah masuk mode siaga (tidak direkomendasikan)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Perangkat seluler, seperti produk Microsoft Surface menggunakan mode siaga terbaru. Menyalakan opsi ini membuat Auto Dark Mode mengganti tema setelah komputer kembali diakses. Tetapi mode tersebut dapat menguras batere

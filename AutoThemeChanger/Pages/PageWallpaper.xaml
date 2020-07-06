@@ -31,7 +31,7 @@
 
         <!-- Mode Selection -->
         <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.ThemeSelection}"/>
-        <ComboBox HorizontalAlignment="Left" Name="ComboBoxModeSelection" Margin="10,23,0,0" Height="28" Grid.Row="2" VerticalAlignment="Top" Width="300" Grid.Column="1" SelectionChanged="ComboBoxModeSelection_SelectionChanged" Style="{StaticResource FluentComboBox}">
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxModeSelection" Margin="10,23,0,0" Height="28" Grid.Row="2" VerticalAlignment="Top" Width="300" Grid.Column="1" SelectionChanged="ComboBoxModeSelection_SelectionChanged" Style="{StaticResource ComboBoxRevealStyle}">
             <ComboBoxItem Content="{x:Static p:Resources.ThemeSelectionWallaper}"  Name="admwallpaper"/>
             <ComboBoxItem Content="{x:Static p:Resources.ThemeSelectionTheme}" Name="wintheme"/>
         </ComboBox>
@@ -84,10 +84,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,15,0,0" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Name="TbTheme1" Text="{x:Static p:Resources.ThemeHeaderPick}" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,41,0,0" Grid.Row="5" Grid.Column="1" Name="TbTheme2" TextWrapping="Wrap" Text="{x:Static p:Resources.ThemeLight}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,62,0,0" Grid.Row="5" Grid.Column="1" Name="IconLight" TextWrapping="Wrap" Text="&#xE706;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Name="ComboBoxLightTheme" Margin="45,61,0,0" Grid.Row="5" Grid.Column="1" Text="Test" VerticalAlignment="Top" Width="198" Height="28" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource FluentComboBox}"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxLightTheme" Margin="45,61,0,0" Grid.Row="5" Grid.Column="1" Text="Test" VerticalAlignment="Top" Width="198" Height="28" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource ComboBoxRevealStyle}"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,101,0,0" Grid.Row="5" Grid.Column="1" Name="TbTheme3" TextWrapping="Wrap" Text="{x:Static p:Resources.ThemeDark}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,122,0,0" Grid.Row="5" Grid.Column="1" Name="IconDark" TextWrapping="Wrap" Text="&#xE708;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Name="ComboBoxDarkTheme" Margin="45,121,0,0" Grid.Row="5" Grid.Column="1" Text="Test2" VerticalAlignment="Top" Width="197" Height="28" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource FluentComboBox}"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxDarkTheme" Margin="45,121,0,0" Grid.Row="5" Grid.Column="1" Text="Test2" VerticalAlignment="Top" Width="197" Height="28" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" Style="{StaticResource ComboBoxRevealStyle}"/>
         <!-- Save Theme / Open Folder -->
         <StackPanel Name="StackPanelThemeButtons" Grid.Row="5" Grid.Column="1" Margin="10, 170,0,0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto" Height="Auto">
             <Button Content="{x:Static p:Resources.save}" Name="ButtonSaveTheme" IsEnabled="False" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" MinWidth="130" Width="Auto" Height="25" Click="ButtonSaveTheme_Click" Style="{StaticResource ButtonAccentRevealStyle}"/>
