@@ -47,7 +47,6 @@ Download Auto Dark Mode from [Chocolatey](https://chocolatey.org/packages/auto-d
 ```powershell
 choco install auto-dark-mode
 ```
-<<<<<<< HEAD
 
 ## Telegram group
 [Join our official Telegram group to get early access to new beta versions](https://t.me/autodarkmode)
@@ -123,11 +122,3 @@ Our final call then looks like this:
 `AutoManageModule(typeof(MyModule).Name, typeof(MyModule), true, config.MyModuleProperty.Enabled);`
 
 And that's it. Your module will now be managed automatically. Next steps would be providing a user interface element that controls your module.
-=======
-
-## Telegram group
-[Join our official Telegram group to get early access to new beta versions](https://t.me/autodarkmode)
-
-## More information
-You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
->>>>>>> master
