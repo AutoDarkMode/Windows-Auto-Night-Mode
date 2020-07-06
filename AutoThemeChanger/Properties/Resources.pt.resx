@@ -338,7 +338,7 @@ Se você tiver problemas: aumente o atraso da troca nas configurações.</value>
 
 Aqui estão algumas coisas que você pode tentar:
 - Desinstalar e, então, reinstalar o Auto Dark Mode;
-- Tentar abrir o Auto Dark Mode como administrador.
+- Try to disable {0} in the Auto Dark Mode settings.
 - Se você habilitou o papel de parede na área de trabalho, desative e tente novamente.
 
 Se essas dicas não ajudaram, você pode comentar o problema no GitHub, postando uma captura de tela do erro. Você pode acessar o problema clicando no botão "Sim"

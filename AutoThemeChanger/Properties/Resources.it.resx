@@ -337,14 +337,14 @@ Controindicazione: consuma più batteria! Attiva SOLO se necessario!</value>
     <value>Errore: il tuo input non è valido</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>"Spiacente, non è stato possibile applicare le tue impostazioni.
+    <value>Spiacente, non è stato possibile applicare le tue impostazioni.
 
 Ecco come potresti risolvere:
 - Disinstalla e reinstalla Auto Dark Mode.
-- Esegui Auto Dark Mode come amministratore.
+- Try to disable {0} in the Auto Dark Mode settings.
 - Se hai attivato gli sfondi desktop, disattiva l'opzione e riprova.
 
-Se ciò non è sufficiente, puoi commentare su GitHub il problema, caricando uno screenshot dell'errore. Puoi inviare l'errore cliccando il pulsante ""Sì"""</value>
+Se ciò non è sufficiente, puoi commentare su GitHub il problema, caricando uno screenshot dell'errore. Puoi inviare l'errore cliccando il pulsante ""Sì""</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>A causa di un bug di Windows la taskbar non cambia tema in modalità risparmio energetico. Disattivalo se ti imbatti in errori.</value>

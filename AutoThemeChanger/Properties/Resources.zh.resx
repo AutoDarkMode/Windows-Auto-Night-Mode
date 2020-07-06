@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -334,7 +335,7 @@ GitHub上提供了一个新版本，其中包含修复和增强功能。是否�
     <value>抱歉，未能正确应用你的设置。
 你可以尝试下面的几种方法：
 - 卸载并重装本软件。
-- 以管理员模式启动本软件。
+-Try to disable {0} in the Auto Dark Mode settings.
 - 如果你启用了桌面壁纸功能，关闭该功能并重试。
 
 如果上述方法无效，您可将错误原因与截图评论至GitHub issue。单击“是”以关闭对话框。</value>
@@ -368,4 +369,4 @@ GitHub上提供了一个新版本，其中包含修复和增强功能。是否�
   <data name="offsetButton" xml:space="preserve">
     <value>设置</value>
   </data>
-</root> 
+</root>

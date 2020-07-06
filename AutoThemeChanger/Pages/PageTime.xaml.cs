@@ -362,7 +362,7 @@ namespace AutoThemeChanger.Pages
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
         {
             userFeedback.Text = Properties.Resources.msgErrorOcc;
-            string error = Properties.Resources.errorThemeApply + "\n\n" + erroDescription + "\n\n" + exception;
+            string error = string.Format(Properties.Resources.errorThemeApply, Properties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
             MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
             msg.Owner = Window.GetWindow(this);
             msg.ShowDialog();

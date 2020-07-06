@@ -338,7 +338,7 @@ Si te topas con errores: por favor, aumenta la demora del cambio en los ajustes.
 
 Aquí hay algunas cosas que puedes probar:
 - Desinstalar y luego reinstalar Auto Dark Mode.
-- Intentar ejecutar Auto Dark Mode como administrador.
+- Try to disable {0} in the Auto Dark Mode settings.
 - Si activaste el fondo de escritorio, desactiva la característica y prueba otra vez.
 
 Si estas medidas no te ayudaron, puedes comentar el problema en GitHub adjuntando una captura de pantalla de tu error. Puedes acceder al problema pulsando el botón "Sí".</value>
