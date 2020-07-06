@@ -1,10 +1,7 @@
-﻿using AutoDarkMode;
-using AutoDarkModeApp;
-using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Communication

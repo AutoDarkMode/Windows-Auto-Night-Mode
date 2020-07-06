@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
-using AutoDarkMode;
 using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;

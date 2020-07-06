@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading.Tasks;
-using AutoDarkMode;
-using AutoDarkModeApp;
-using AutoDarkModeSvc.Config;
-using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Communication
 {
