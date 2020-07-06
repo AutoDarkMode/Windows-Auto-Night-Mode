@@ -481,51 +481,51 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
     <value>Fout bij het toepassen van een .theme-bestand. Misschien is uw thema verwijderd of verplaatst. Hierom is momenteel het wisselen van thema uitgeschakeld. Open Auto Dark Mode en configureer {0} Instellingen.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We run into following issue: 
+    <value>Het volgende probleem trad op: 
 {0}
 
-We will now try to solve this problem by running a algorithm as admin. Maybe this will help. 
-Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+Er wordt geprobeerd dit probleem op te lossen door een algoritme uit te voeren als administrator. Dit kan helpen. 
+Auto Dark Mode zal daarna opnieuw opstarten. U zult alles opnieuw moeten instellen, sorry!
 
-btw: please NEVER run Auto Dark Mode as admin!</value>
+N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Need help with a problem?</value>
+    <value>Hulp nodig bij een probleem?</value>
   </data>
   <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>Download later</value>
+    <value>Later installeren</value>
   </data>
   <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Never remind me again</value>
+    <value>Nooit meer weergeven</value>
   </data>
   <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>Download now</value>
+    <value>Nu installeren</value>
   </data>
   <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>In the last couple of months we worked hard to provide you the best update possible. Now it's here!
+    <value>In de afgelopen paar maanden hebben we hard gewerkt om u de best mogelijke update te bieden. Nu is hij er!
 
-Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
+Auto Dark Mode X is volledig herschreven. Het heeft nu een echte achtergrondtaak in plaats van te vertrouwen op Windows Taakplanner. Voor u betekent dit een betrouwbaardere en flexibelere themawisselervaring!
 
-Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
-- Game Mode: disabled theme switch while you're playing a game or your GPU is busy.
-- Switching theme with keyboard shortcuts
-And more!
+Ja, dit verbruikt meer achtergrondbronnen, maar in ruil daarvoor bieden we u meer functies om uw productiviteit te verbeteren. Bijvoorbeeld:
+- Spelmodus: schakel themawisseling uit tijdens het spelen van een spel of als uw GPU het druk heeft.
+- Themawisseling met behulp van sneltoetsen
+en meer!
 
-The update is suitable for everyone, except for owners of a ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
+De update is geschikt voor alle apparaten, behalve die met een ARM-processor. Die zullen problemen hebben met de accu, omdat het achtergrondproces geëmuleerd moet worden (alleen hier!).</value>
   </data>
   <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X is available</value>
+    <value>Auto Dark Mode X is beschikbaar</value>
   </data>
   <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Version X is a great and big update that you definitely should try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
+    <value>Versie X is een geweldige, grote update die u zeker moet uitproberen! Weet u zeker dat u het niet wilt downloaden? We zullen u nooit meer herinneren!</value>
   </data>
   <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>Are you sure?</value>
+    <value>Weet u het zeker?</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Multi-User support</value>
+    <value>Ondersteuning voor meerdere gebruikers</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Optional delay for activating grayscale color filter:</value>
+    <value>Optionele vertraging grijswaardenfilter:</value>
   </data>
 </root>
