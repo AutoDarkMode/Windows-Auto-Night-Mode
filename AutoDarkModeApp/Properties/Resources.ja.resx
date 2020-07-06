@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>テーマを自動で切り替える</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>常にダーク</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>常にライト</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Windows 10 バージョン 1903 の機能を有効化</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>ソフトウェア:</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>開始時間の指定</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>ダークテーマ</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (旧バージョン用):</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>ライトテーマ</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>現在のテーマを切り替え</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>システム:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>使用しているサードパーティーのソフトウェア</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>位置情報の使用</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>変更が保存されました。</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>適用をクリックし変更を保存します。</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>最新版をダウンロード</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>エラーが発生しました</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>位置情報の使用許可が必要です</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>最新版はありません。</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>位置情報を検知中...</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>最新版の確認中...</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>警告: システムの現在のテーマを読み込めませんでした。</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>最新版があります！</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Auto Dark Mode をご利用いただきありがとうございます。
+
+最新版が GitHub にあります。修正と機能が強化されています。
+ダウンロードしますか？
+
+お使いのバージョン: {0}, 最新版: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>最新版の確認</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>プログラム起動時に最新版を確認しています。</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>ようこそ</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>チェックボックスを有効にすると、自動のテーマ切替を有効にします</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>翻訳者: maboroshin</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>都市</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>変更の反映にはプログラムの再起動が必要です。</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>言語:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>タスクバーのアクセントカラー</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>現在:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>ダークテーマ用の壁紙</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>削除/無効</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>ファイルを選ぶ</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>ライトテーマ用の壁紙</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>デスクトップの背景</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>壁紙を2つ選択してください</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>画像を選択してください</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>デスクトップの背景の設定</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>現在の背景を使う</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>または</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>ファイルが破損しているか、パスが存在しません</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>画像のプレビューを生成できません。</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>設定が保存できませんでした。</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>エラーが発生しました。</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>ダークモードでのみ表示されます。
+問題が発生する場合、設定で切り替え遅延時間を増やしてください。</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>AM/PMで表示</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>バックグラウンドで最新版を確認</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>すみません。設定を適用できませんでした。
+
+以下を試してみてください:
+- このソフトをアンインストールし、もう一度インストールしてみる。
+- Auto Dark Mode の設定から一度無効にしてみてください。
+- デスクトップの壁紙が有効にされているなら、その機能を無効にしてから試してみる。
+
+それでも解決しない場合、GitHub 上の issue (問題)  でそのエラーのスクリーンショットを添えてコメントすることもできます。「はい」で GitHub を開きます。</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>エラー: 入力が正しくありません。</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>スタンバイ後に切り替える (非推奨)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
+このオプションを有効にするとパソコンの起動後、Auto Dark Mode がただちにテーマを切り替えます。
+しかし、充電池を浪費するので、必要な場合にのみ有効化してください。</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>補正</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Windows テーマの使用中は、これらのオプションは無効です。
+これらの設定は、Windowsテーマから個別に設定できます。</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>アプリ</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>壁紙/テーマ</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>フォルダを開く</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>ダークテーマ:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>自分のテーマを作成</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>テーマの選択</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>ライトテーマ:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows テーマ (高機能)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>デスクトップの壁紙 (おすすめ)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>ここから Windows のテーマの設定を開く。</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>設定の「色」を開き、「白」を選択しライトテーマを適用します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>テーマの設定に戻り、テーマを保存します。</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>同様に「黒」を選択しダークテーマ用に作成します。</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>タスクバーの色を切り替える遅延時間 (ミリ秒):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>メニュー</value>
+  </data>
+    <data name="restart" xml:space="preserve">
+    <value>再起動</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>時間を指定</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>日の出から日没まで</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>グレースケールの色のフィルターを使用 (Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>スタートアップには登録せずログイン時のタスクとして実行</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>切り替え対象の選択:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>別のライトテーマ</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>拡張機能のダウンロード</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>おすすめのツール</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>このブラウザー拡張機能は Chrome, Firefox と Edge でのサイトの表示をシステムのテーマに従ったものにします。</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>見つかりません</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>なぜ寄付するといいの？</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>寄付するには？</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>PayPal 経由で送金できます。寄付は自発的なもので、あなたへの見返りを期待しないでください。</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>寄付</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
+
+このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
+私はこのプロジェクトから利益を生み出していません。
+
+こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>.theme ファイルの適用中にエラーが発生しました。あなたが作成したテーマが削除されたり移動されているかもしれません。テーマの切り替えを無効化しました。再び有効にするには、Auto Dark Mode の設定 {0} を行ってください。</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>以下の問題があります: 
+{0}
+
+管理者としてアルゴリズムを実行することでこの問題の解決を試行します。助けになる可能性があります。
+その後、Auto Dark Mode が再起動するので、お手数ですが設定を再び適用してください。
+
+注: Auto Dark Mode は管理者権限で実行しないでください！</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>問題解決にヘルプが必要ですか？(英語)</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>後でダウンロード</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>再び表示しない</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>今すぐダウンロード</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>ここ数か月、私たちはできる限り最良の最新版を提供できるよう取り組んできました。それがこれです！
+
+Auto Dark Mode X は最初から完全に書き直され、Windows タスクスケジューラ―を使うのではなく、実際のバックグラウンドのタスクとなりました。このことで信頼性が向上し、より柔軟にテーマを切り替えることができます。
+
+バックグラウンドではより多くのリソースを消費しますが、あなたの生産性を向上させるための機能が追加されます。例:
+- ゲームモード: ゲームで遊んでいたり、GPU の負荷が高い間はテーマを無効化
+- キーボードショートカットによるテーマの切り替え
+そのほかにも！
+
+最新版は ARM の端末を除くすべてに適しています。バッテリー消費に問題があるでしょう。バックグラウンドのプロセスをエミュレートするする必要があるからです。 (ここが課題です！).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X があります</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>バージョン X は、ぜひお試しいただきたい大型アップデートです！本当にダウンロードしませんか？再び通知することはありません！</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>複数ユーザーへの対応</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>グレースケールの色のフィルターを適用するための追加の遅延:</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>システムの設定に従う</value>
+  </data>
+</root>
