@@ -1,5 +1,4 @@
-﻿using AutoDarkMode;
-using System;
+﻿using System;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading.Tasks;
