@@ -378,7 +378,7 @@ D'ailleurs, veuillez ne JAMAIS exécuter Auto Dark Mode en tant qu'administrateu
     <value>Donner</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Parmètres</value>
+    <value>Paramètres</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Temps</value>
@@ -499,5 +499,8 @@ La mise à jour convient à tout le monde, sauf aux propriétaires d'un appareil
     <value>Les appareils mobiles, comme les produits Microsoft Surface, utilisent un nouveau type de mode veille.
 L'activation de cette option garantit que Auto Dark Mode change immédiatement de thème après le réveil de votre ordinateur.
 Mais cela réduit également la durée de vie de la batterie, donc activez UNIQUEMENT si nécessaire !</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Recherche des mises à jour en arrière-plan</value>
   </data>
 </root>
