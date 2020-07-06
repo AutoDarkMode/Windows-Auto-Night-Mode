@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "AutoDarkModeApp": {
-      "commandName": "Project",
-      "commandLineArgs": "/debug"
-    }
-  }
-}

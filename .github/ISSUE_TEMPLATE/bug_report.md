@@ -21,8 +21,9 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment:**
- - OS Version: [e.g. Windows 1803]
- - Night-Mode Version [e.g. 1.0]
+ - OS Version: [e.g. Windows 1903]
+ - Auto Dark Mode version number [e.g. 2.3]
+ - Do you use Windows .theme switcher?
  - Has user admin rights?
  - which antivirus software you use?
  - what language is your Windows set to?
