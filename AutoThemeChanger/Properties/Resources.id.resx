@@ -509,4 +509,11 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
     <value>Apa anda yakin?</value>
   </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>(+)  Beralih setelah masuk mode siaga (tidak direkomendasikan)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Perangkat seluler, seperti produk Microsoft Surface menggunakan mode siaga terbaru. Menyalakan opsi ini membuat Auto Dark Mode mengganti tema setelah komputer kembali diakses. Tetapi mode tersebut dapat menguras batere
+(aktifkan jika DIPERLUKAN).</value>
+  </data>
 </root>
