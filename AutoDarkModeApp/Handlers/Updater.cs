@@ -66,6 +66,17 @@ namespace AutoDarkModeApp
             MessageBoxHandler();
         }
 
+        public void ParseResponse(string response)
+        {
+            string[] messages = response.Split(",");
+            if (messages[0] == Command.New)
+            {
+                url = messages[1];
+                newVersion = new Version(messages[2]);
+                MessageBoxHandler();
+            }
+        }
+
         private void MessageBoxHandler()
         {
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
