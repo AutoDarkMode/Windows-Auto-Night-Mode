@@ -1,9 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using AutoDarkModeSvc.Config;
 using Microsoft.Win32;
 
 namespace AutoDarkModeApp
@@ -11,24 +13,28 @@ namespace AutoDarkModeApp
     public partial class DesktopBGui
     {
         WallpaperHandler deskBGHandler = new WallpaperHandler();
+        AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         string pathOrig1;
         string pathOrig2;
-        string pathCur1 = Properties.Settings.Default.WallpaperLight;
-        string pathCur2 = Properties.Settings.Default.WallpaperDark;
-        readonly string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Armin_Osaj\Wallpaper\";
+        string pathCur1;
+        string pathCur2;
+        readonly string folderPath;
         bool picture1 = false;
         bool picture2 = false;
         public bool saved = false;
 
         public DesktopBGui()
         {
+            folderPath = Path.Combine(builder.ConfigDir, "AutoDarkMode");
+            pathCur1 = builder.Config.Wallpaper.LightThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.LightThemeWallpapers.ToList()[0] : "";
+            pathCur2 = builder.Config.Wallpaper.DarkThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.DarkThemeWallpapers.ToList()[0] : "";
             InitializeComponent();
             StartVoid();
         }
 
         private void StartVoid()
         {
-            if (Properties.Settings.Default.WallpaperSwitch == true)
+            if (builder.Config.Wallpaper.Enabled)
             {
                 try
                 {
@@ -37,7 +43,7 @@ namespace AutoDarkModeApp
                 }
                 catch
                 {
-                    Properties.Settings.Default.WallpaperSwitch = false;
+                    builder.Config.Wallpaper.Enabled = false;
                     StartVoid();
                 }
             }
@@ -188,9 +194,9 @@ namespace AutoDarkModeApp
             {
                 CopyFileLight();
                 CopyFileDark();
-                Properties.Settings.Default.WallpaperLight = pathCur1;
-                Properties.Settings.Default.WallpaperDark = pathCur2;
-                Properties.Settings.Default.WallpaperSwitch = true;
+                builder.Config.Wallpaper.LightThemeWallpapers.Add(pathCur1);
+                builder.Config.Wallpaper.DarkThemeWallpapers.Add(pathCur2);
+                builder.Config.Wallpaper.Enabled = true;
                 saved = true;
                 Close();
             }
@@ -207,9 +213,9 @@ namespace AutoDarkModeApp
         private void DeleButton_Click(object sender, RoutedEventArgs e)
         {
             Directory.Delete(folderPath, true);
-            Properties.Settings.Default.WallpaperLight = "";
-            Properties.Settings.Default.WallpaperDark = "";
-            Properties.Settings.Default.WallpaperSwitch = false;
+            builder.Config.Wallpaper.LightThemeWallpapers.Clear();
+            builder.Config.Wallpaper.DarkThemeWallpapers.Clear();
+            builder.Config.Wallpaper.Enabled = false;
             Close();
         }
     }

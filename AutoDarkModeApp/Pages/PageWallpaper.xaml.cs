@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoDarkModeSvc.Config;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,20 +16,28 @@ namespace AutoDarkModeApp
     /// </summary>
     public partial class PageWallpaper : Page
     {
-        readonly RegeditHandler regEditHandler = new RegeditHandler();
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         bool theme1 = false;
         bool theme2 = false;
         readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
 
         public PageWallpaper()
         {
+            try
+            {
+                builder.Load();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
             InitializeComponent();
             UiHandler();
         }
         private void UiHandler()
         {
             //if auto dark mode wasn't configured
-            if (!Properties.Settings.Default.Enabled)
+            if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 BGWinButton.IsEnabled = false;
                 ComboBoxLightTheme.IsEnabled = false;
@@ -44,7 +53,7 @@ namespace AutoDarkModeApp
             TextBlockStep4.Text = Properties.Resources.ThemeTutorialStep + " 4)";
 
             //if theme switcher isn't enabled
-            if (!Properties.Settings.Default.ThemeSwitch)
+            if (builder.Config.ClassicMode)
             {
                 ComboBoxModeSelection.SelectedIndex = 0;
                 ShowDeskBGStatus();
@@ -52,13 +61,13 @@ namespace AutoDarkModeApp
             else
             {
                 ComboBoxModeSelection.SelectedIndex = 1;
-                if (Properties.Settings.Default.Enabled && Properties.Settings.Default.ThemeSwitch && Properties.Settings.Default.ThemeDark != null && Properties.Settings.Default.ThemeLight != null)
+                if (builder.Config.AutoThemeSwitchingEnabled && !builder.Config.ClassicMode && builder.Config.LightThemePath != null && builder.Config.DarkThemePath != null)
                 {
                     var themeNames = GetThemeFiles();
                     ComboBoxDarkTheme.ItemsSource = themeNames;
                     ComboBoxLightTheme.ItemsSource = themeNames;
-                    ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(Properties.Settings.Default.ThemeLight);
-                    ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(Properties.Settings.Default.ThemeDark);
+                    ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.LightThemePath);
+                    ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.DarkThemePath);
                     theme1 = true;
                     theme2 = true;
                     ButtonSaveTheme.IsEnabled = true;
@@ -108,7 +117,7 @@ namespace AutoDarkModeApp
         //show if wallpaper switch is enabled
         private void ShowDeskBGStatus()
         {
-            if (Properties.Settings.Default.WallpaperSwitch)
+            if (builder.Config.Wallpaper.Enabled)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }
@@ -126,7 +135,14 @@ namespace AutoDarkModeApp
             if (BGui.saved == true)
             {
                 ButtonDisableTheme_Click(this, e);
-                regEditHandler.SwitchThemeBasedOnTime();
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
             ShowDeskBGStatus();
         }
@@ -135,18 +151,16 @@ namespace AutoDarkModeApp
         private void ButtonSaveTheme_Click(object sender, RoutedEventArgs e)
         {
             //disable auto dark mode wallpaper switch
-            Properties.Settings.Default.WallpaperSwitch = false;
-            Properties.Settings.Default.WallpaperDark = "";
-            Properties.Settings.Default.WallpaperLight = "";
-            Properties.Settings.Default.ThemeSwitch = true;
+            builder.Config.Wallpaper.Enabled = false;
+            builder.Config.ClassicMode = false;
 
             //get selected light theme file from combobox
             string selectedLightTheme = (string)ComboBoxLightTheme.SelectedItem;
-            Properties.Settings.Default.ThemeLight = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
+            builder.Config.LightThemePath = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
 
             //get selected dark theme file from combobox
             string selectedDarkTheme = (string)ComboBoxDarkTheme.SelectedItem;
-            Properties.Settings.Default.ThemeDark = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
+            builder.Config.DarkThemePath = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
 
             //ui changes
             ButtonSaveTheme.IsEnabled = false;
@@ -154,24 +168,18 @@ namespace AutoDarkModeApp
             //apply theme
             try
             {
-                regEditHandler.SwitchThemeBasedOnTime();
+                builder.Save();
             }
-            catch
+            catch (Exception ex)
             {
-                Properties.Settings.Default.ThemeSwitch = false;
-                MsgBox msg = new MsgBox(Properties.Resources.ThemeApplyError1, Properties.Resources.errorOcurredTitle, "error", "close");
-                msg.Owner = Window.GetWindow(this);
-                msg.ShowDialog();
+                ShowErrorMessage(ex);
             }
         }
 
         //disable theme file switch
         private void ButtonDisableTheme_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.ThemeSwitch = false;
-            Properties.Settings.Default.ThemeLight = null;
-            Properties.Settings.Default.ThemeDark = null;
-
+            builder.Config.ClassicMode = true;
             ButtonSaveTheme.IsEnabled = false;
             theme1 = false;
             theme2 = false;
@@ -257,6 +265,27 @@ namespace AutoDarkModeApp
         private void ButtonOpenThemePath_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) ButtonOpenThemePath_Click(this, null);
+        }
+
+        private void ShowErrorMessage(Exception ex)
+        {
+            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+            return;
         }
     }
 }

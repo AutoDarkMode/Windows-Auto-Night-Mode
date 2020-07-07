@@ -7,6 +7,9 @@ using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using AutoDarkModeApp.Properties;
 using System.Diagnostics;
+using AutoDarkModeSvc.Config;
+using System.Globalization;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -15,62 +18,32 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageTime : Page
     {
-        readonly TaskSchHandler taskSchHandler = new TaskSchHandler();
-        readonly RegeditHandler regEditHandler = new RegeditHandler();
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private bool init = true;
 
         public PageTime()
         {
+            try
+            {
+                builder.Load();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
             InitializeComponent();
-            DoesTaskExists();
-            if (Settings.Default.AlterTime) AlterTime(true);
-        }
-
-        /// <summary>
-        /// check if the tasks already exists in task scheduler and get the data from them
-        /// </summary>
-        private void DoesTaskExists()
-        {
-            //user has custom hours enabled
-            if (taskSchHandler.CheckExistingClass().Equals(1))
+            if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                //ui
                 autoCheckBox.IsChecked = true;
-                RadioButtonCustomTimes.IsChecked = true;
-                //get times
-                int[] darkStart = taskSchHandler.GetRunTime("dark");
-                int[] lightStart = taskSchHandler.GetRunTime("light");
-                darkStartBox.Text = Convert.ToString(darkStart[0]);
-                if(darkStart[1] < 10)
-                {
-                    DarkStartMinutesBox.Text = "0" + Convert.ToString(darkStart[1]);
-                }
-                else
-                {
-                    DarkStartMinutesBox.Text = Convert.ToString(darkStart[1]);
-                }
-                lightStartBox.Text = Convert.ToString(lightStart[0]);
-                if(lightStart[1] < 10)
-                {
-                    LightStartMinutesBox.Text = "0" + Convert.ToString(lightStart[1]);
-                }
-                else
-                {
-                    LightStartMinutesBox.Text = Convert.ToString(lightStart[1]);
-                }
             }
-            //user has location sunset and sunrise enabled
-            else if (taskSchHandler.CheckExistingClass().Equals(2))
+            if (builder.Config.Location.Enabled)
             {
-                autoCheckBox.IsChecked = true;
-                RadioButtonLocationTimes.IsChecked = true;
                 ActivateLocationMode();
-                InitOffset();
+                RadioButtonLocationTimes.IsChecked = true;
             }
-            //user didn't enabled anything or tasks in scheduler are missing
-            else
-            {
-                AutoCheckBox_Unchecked(this, null);
-            }
+            InitOffset();
+            if (Settings.Default.AlterTime) AlterTime(true);
+            init = false;
         }
 
         //offset for sunrise and sunset hours
@@ -97,7 +70,7 @@ namespace AutoDarkModeApp.Pages
         }
         private void InitOffset()
         {
-            PopulateOffsetFields(Properties.Settings.Default.DarkOffset, Properties.Settings.Default.LightOffset);
+            PopulateOffsetFields(builder.Config.Location.SunsetOffsetMin, builder.Config.Location.SunriseOffsetMin);
         }
         //+ and - button
         private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
@@ -137,24 +110,31 @@ namespace AutoDarkModeApp.Pages
 
             if (OffsetLightModeButton.Content.ToString() == "+")
             {
-                Settings.Default.LightOffset = offsetLight;
+                builder.Config.Location.SunriseOffsetMin = offsetLight;
             }
             else
             {
-                Settings.Default.LightOffset = -offsetLight;
+                builder.Config.Location.SunriseOffsetMin = -offsetLight;
             }
 
             if (OffsetDarkModeButton.Content.ToString() == "+")
             {
-                Settings.Default.DarkOffset = offsetDark;
+                builder.Config.Location.SunsetOffsetMin = offsetDark;
             }
             else
             {
-                Settings.Default.DarkOffset = -offsetDark;
+                builder.Config.Location.SunsetOffsetMin = -offsetDark;
             }
-
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            UpdateSuntimes();
             OffsetButton.IsEnabled = false;
-            ActivateLocationMode();
         }
 
 
@@ -182,7 +162,7 @@ namespace AutoDarkModeApp.Pages
 
             //check values from TextBox
             //hours with 24 hour time
-            if (!Properties.Settings.Default.AlterTime)
+            if (!Settings.Default.AlterTime)
             {
                 if (darkStart >= 24)
                 {
@@ -254,98 +234,18 @@ namespace AutoDarkModeApp.Pages
             {
                 darkStart += 12;
             }
-            //ApplyTheme(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            ApplyTheme();
 
             //ui
             applyButton.IsEnabled = false;
         }
 
-        private void ApplyTheme(int DarkHour, int DarkMinute, int LightHour, int LightMinute)
+        private void ApplyTheme()
         {
-            //create task scheduler theme switching tasks 
-            try
-            {
-                taskSchHandler.CreateTask(DarkHour, DarkMinute, LightHour, LightMinute);
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MsgBox msg = new MsgBox(string.Format(Properties.Resources.ErrorApplyRestart, ex), Properties.Resources.errorOcurredTitle, "error", "close");
-                msg.Owner = Window.GetWindow(this);
-                msg.ShowDialog();
-
-                //run AutoDarkMode.exe /removeTask as admin
-                Process proc = new Process();
-                proc.StartInfo.FileName = Application.ResourceAssembly.Location;
-                proc.StartInfo.Arguments = "/removeTask";
-                proc.StartInfo.UseShellExecute = true;
-                proc.StartInfo.Verb = "runas";
-                proc.Start();
-
-                //restart app
-                Process.Start(Application.ResourceAssembly.Location);
-                Application.Current.Shutdown();
-                return;
-            }
-            catch (Exception ex)
-            {
-                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.CreateTask()", ex.Message);
-                return;
-            }
-            //switch the theme now
-            try
-            {
-                regEditHandler.SwitchThemeBasedOnTime();
-            }
-            catch (Exception ex)
-            {
-                ErrorWhileApplyingTheme("Error ocurred in: regEditHandler.SwitchThemeBasedOnTime()", ex.Message);
-                return;
-            }
-            //create windows autostart entry
-            try
-            {
-                if (Settings.Default.LogonTaskInsteadOfAutostart)
-                {
-                    taskSchHandler.CreateLogonTask();
-                }
-                else
-                {
-                    regEditHandler.AddAutoStart();
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.AddAutoStart()", ex.Message);
-                return;
-            }
-            //add background updater task
-            try
-            {
-                if (Settings.Default.BackgroundUpdate)
-                {
-                    taskSchHandler.CreateAppUpdaterTask();
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.CreateAppUpdaterTask()", ex.Message);
-                return;
-            }
-            //add connected standby task
-            try
-            {
-                if (Properties.Settings.Default.connectedStandby)
-                {
-                    taskSchHandler.CreateConnectedStandbyTask();
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorWhileApplyingTheme("Error ocurred in: taskShedHandler.CreateConnectedStandbyTask()", ex.Message);
-            }
-
             //this setting enables all the configuration possibilities of auto dark mode
-            Settings.Default.Enabled = true;
+            builder.Config.AutoThemeSwitchingEnabled = true;
 
             //show warning for notebook on battery with enabled battery saver
             if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
@@ -357,6 +257,22 @@ namespace AutoDarkModeApp.Pages
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
+
+            if (builder.Config.Location.Enabled)
+            {
+                ActivateLocationMode();
+            }
+            else
+            {
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+            }        
         }
         //if something went wrong while applying the settings :(
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
@@ -386,6 +302,43 @@ namespace AutoDarkModeApp.Pages
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             userFeedback.Text = Properties.Resources.msgSearchLoc;
 
+            if (!init)
+            {
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+            }
+
+            int timeout = 10;
+            bool loaded = false;
+            for (int i = 0; i < timeout; i++)
+            {
+                if (builder.LocationData.LastUpdate == DateTime.MinValue)
+                {
+                    try
+                    {
+                        builder.LoadLocationData();
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex);
+                        loaded = true;
+                        break;
+                    }
+                    await Task.Delay(1000);
+                }
+                else
+                {
+                    loaded = true;
+                    break;
+                }                
+            }
+
             LocationHandler locationHandler = new LocationHandler();
             var accesStatus = await Geolocator.RequestAccessAsync();
             switch (accesStatus)
@@ -393,40 +346,33 @@ namespace AutoDarkModeApp.Pages
                 case GeolocationAccessStatus.Allowed:
                     //locate user + get sunrise & sunset times
                     locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    int[] sundate = await locationHandler.CalculateSunTime(false);
-
-                    //apply settings
-                    ApplyTheme(sundate[2], sundate[3], sundate[0], sundate[1]);
-
-                    //show time in UI
-                    if (Properties.Settings.Default.AlterTime)
-                    {
-                        sundate[2] -= 12;
-                    }
-
-                    TimeSpan TimeForUiLight = new TimeSpan(sundate[0], sundate[1], 0);
-                    TimeSpan TimeForUiDark = new TimeSpan(sundate[2], sundate[3], 0);
-                    TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + string.Format("{0:00}:{1:00}", TimeForUiLight.Hours, TimeForUiLight.Minutes); //textblock1
-                    TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + string.Format("{0:00}:{1:00}", TimeForUiDark.Hours, TimeForUiDark.Minutes); //textblock2
-
-                    // ui controls
-                    lightStartBox.IsEnabled = false;
-                    LightStartMinutesBox.IsEnabled = false;
-                    darkStartBox.IsEnabled = false;
-                    DarkStartMinutesBox.IsEnabled = false;
-
-                    applyButton.Visibility = Visibility.Hidden;
-                    taskSchHandler.CreateLocationTask();
                     break;
 
                 case GeolocationAccessStatus.Denied:
                     NoLocationAccess();
+                    loaded = false;
                     break;
 
                 case GeolocationAccessStatus.Unspecified:
                     NoLocationAccess();
+                    loaded = false;
                     break;
             }
+
+            if (!loaded)
+            {
+                ShowErrorMessage(new TimeoutException("waiting for location data timed out"));
+            }
+
+            UpdateSuntimes();
+
+            // ui controls
+            lightStartBox.IsEnabled = false;
+            LightStartMinutesBox.IsEnabled = false;
+            darkStartBox.IsEnabled = false;
+            DarkStartMinutesBox.IsEnabled = false;
+            userFeedback.Text = Properties.Resources.msgChangesSaved;
+
             return;
         }
         private async void NoLocationAccess()
@@ -454,8 +400,8 @@ namespace AutoDarkModeApp.Pages
             TextBlockLight.Visibility = Visibility.Visible;
             SetOffsetVisibility(Visibility.Collapsed);
 
+            builder.Config.Location.Enabled = false;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-            taskSchHandler.RemoveLocationTask();
         }
 
         //automatic theme switch checkbox
@@ -475,10 +421,14 @@ namespace AutoDarkModeApp.Pages
             //remove all tasks + autostart
             if (e != null)
             {
-                taskSchHandler.RemoveAllTasks();
-                if (!Settings.Default.LogonTaskInsteadOfAutostart)
+                builder.Config.AutoThemeSwitchingEnabled = false;
+                try
                 {
-                    regEditHandler.RemoveAutoStart();
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
                 }
             }
 
@@ -492,9 +442,6 @@ namespace AutoDarkModeApp.Pages
             lightStartBox.IsEnabled = false;
             LightStartMinutesBox.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
-
-            //settings
-            Settings.Default.Enabled = false;
         }
 
         //12 hour times
@@ -556,11 +503,13 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
         {
             DisableLocationMode();
+            ApplyTheme();
         }
 
         private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
-            ActivateLocationMode();
+            builder.Config.Location.Enabled = true;
+            ApplyTheme();
         }
 
         //textbox event handlers
@@ -604,6 +553,42 @@ namespace AutoDarkModeApp.Pages
         private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+        }
+
+        private void UpdateSuntimes()
+        {
+            LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+            if (Settings.Default.AlterTime)
+            {
+                TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("hh:mm", CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("hh:mm", CultureInfo.InvariantCulture); //textblock2
+            }
+            else
+            {
+                TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
+            }
+        }
+
+        private void ShowErrorMessage(Exception ex)
+        {
+            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+            return;
         }
     }
 }

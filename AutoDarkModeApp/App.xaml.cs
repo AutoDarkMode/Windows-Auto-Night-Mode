@@ -33,7 +33,7 @@ namespace AutoDarkModeApp
                     else if (value == "/location")
                     {
                         LocationHandler locationHandler = new LocationHandler();
-                        await locationHandler.SetLocationSilent();
+                        //await locationHandler.SetLocationSilent();
                     }
                     else if (value == "/dark")
                     {
