@@ -41,20 +41,29 @@ namespace AutoDarkModeSvc.Communication
             {
                 string msg = a.Socket.ReceiveFrameString();
                 Logger.Debug("received message: {0}", msg);
-                MessageParser.Parse(new List<string>() { msg }, (message) =>
+                try
                 {
-                    try
+                    MessageParser.Parse(new List<string>() { msg }, (message) =>
                     {
-                        var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
-                        if (!sent)
+                        try
                         {
-                            Logger.Error("could not send response: timeout");
+                            var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
+                            if (!sent)
+                            {
+                                Logger.Error("could not send response: timeout");
+                            }
                         }
-                    } catch (Exception e)
-                    {
-                        Logger.Error(e, "could not send response:");
-                    }
-                }, Service);
+                        catch (Exception e)
+                        {
+                            Logger.Error(e, "could not send response:");
+                        }
+                    }, Service);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "message parser exception:");
+                }
+               
             };
             PollTask = Task.Run(() =>
             {
