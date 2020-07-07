@@ -1,4 +1,4 @@
-﻿using AutoThemeChanger.Properties;
+﻿using AutoDarkModeApp.Properties;
 using Microsoft.Win32;
 using System;
 using System.Threading;
@@ -7,7 +7,7 @@ using System.Windows.Interop;
 using WindowsInput;
 using WindowsInput.Native;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     class RegeditHandler
     {

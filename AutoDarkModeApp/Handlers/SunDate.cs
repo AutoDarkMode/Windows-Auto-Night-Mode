@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     // Source: https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/messenger/time/SunDate.java
     // Licensed under: GNU General Public License v2.0

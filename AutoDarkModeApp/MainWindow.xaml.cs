@@ -4,9 +4,9 @@ using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Navigation;
-using AutoThemeChanger.Properties;
+using AutoDarkModeApp.Properties;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {

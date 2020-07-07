@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 // Originally created by Kuchienkz. Email: wahyu.darkflame@gmail.com
 // Licensed under: GNU General Public License v3.0
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     public static class ThemeHandler
     {

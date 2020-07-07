@@ -1,4 +1,4 @@
-﻿using AutoThemeChanger.Properties;
+﻿using AutoDarkModeApp.Properties;
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AutoThemeChanger.Pages
+namespace AutoDarkModeApp.Pages
 {
     /// <summary>
     /// Interaction logic for PageSettings.xaml

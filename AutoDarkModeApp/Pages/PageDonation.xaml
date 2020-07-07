@@ -1,11 +1,11 @@
-﻿<Page x:Class="AutoThemeChanger.Pages.PageDonation"
+﻿<Page x:Class="AutoDarkModeApp.Pages.PageDonation"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-      xmlns:p="clr-namespace:AutoThemeChanger.Properties"
-      xmlns:local="clr-namespace:AutoThemeChanger.Pages"
+      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       mc:Ignorable="d"
       Title="PageDonation" Height="560" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
 

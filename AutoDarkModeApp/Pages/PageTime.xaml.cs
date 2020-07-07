@@ -5,10 +5,10 @@ using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.System.Power;
-using AutoThemeChanger.Properties;
+using AutoDarkModeApp.Properties;
 using System.Diagnostics;
 
-namespace AutoThemeChanger.Pages
+namespace AutoDarkModeApp.Pages
 {
     /// <summary>
     /// Interaction logic for PageTime.xaml

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     /// <summary>
     /// Interaction logic for MsgBox.xaml

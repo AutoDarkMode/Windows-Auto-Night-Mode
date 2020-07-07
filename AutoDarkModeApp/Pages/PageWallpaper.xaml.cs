@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     /// <summary>
     /// Interaction logic for PageWallpaper.xaml

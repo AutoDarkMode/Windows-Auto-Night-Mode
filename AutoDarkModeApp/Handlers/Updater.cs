@@ -4,7 +4,7 @@ using System.Xml;
 using System.Windows;
 using System.Globalization;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     class Updater
     {

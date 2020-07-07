@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     class WallpaperHandler
     {

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace AutoThemeChanger.Pages
+namespace AutoDarkModeApp.Pages
 {
     /// <summary>
     /// Interaction logic for PageDonation.xaml

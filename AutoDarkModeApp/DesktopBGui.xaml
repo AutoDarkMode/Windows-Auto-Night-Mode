@@ -1,10 +1,10 @@
-﻿<fw:AcrylicWindow x:Name="BGuiWindow" x:Class="AutoThemeChanger.DesktopBGui" 
+﻿<fw:AcrylicWindow x:Name="BGuiWindow" x:Class="AutoDarkModeApp.DesktopBGui" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AutoThemeChanger"
-        xmlns:p="clr-namespace:AutoThemeChanger.Properties"
+        xmlns:local="clr-namespace:AutoDarkModeApp"
+        xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.dbTitle}" Height="360" MinWidth="660" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon" SizeToContent="Width" fw:PointerTracker.Enabled="True">

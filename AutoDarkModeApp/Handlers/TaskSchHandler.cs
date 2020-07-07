@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Win32.TaskScheduler;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     public class TaskSchHandler
     {

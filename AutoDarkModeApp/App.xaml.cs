@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     public partial class App : Application
     {

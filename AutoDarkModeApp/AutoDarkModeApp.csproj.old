@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AutoThemeChanger</RootNamespace>
+    <RootNamespace>AutoDarkModeApp</RootNamespace>
     <AssemblyName>AutoDarkMode</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -60,7 +60,7 @@
     <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AutoThemeChanger_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>AutoDarkModeApp_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
@@ -72,7 +72,7 @@
     <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>AutoThemeChanger.App</StartupObject>
+    <StartupObject>AutoDarkModeApp.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>

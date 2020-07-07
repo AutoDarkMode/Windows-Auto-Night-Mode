@@ -4,7 +4,7 @@ using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using System.Runtime.InteropServices;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     class LocationHandler
     {

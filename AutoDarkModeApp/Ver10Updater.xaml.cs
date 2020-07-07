@@ -1,9 +1,9 @@
-﻿using AutoThemeChanger.Properties;
+﻿using AutoDarkModeApp.Properties;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
-namespace AutoThemeChanger
+namespace AutoDarkModeApp
 {
     /// <summary>
     /// Interaction logic for Ver10Updater.xaml

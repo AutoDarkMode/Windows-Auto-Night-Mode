@@ -6,7 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace AutoThemeChanger.Pages
+namespace AutoDarkModeApp.Pages
 {
     /// <summary>
     /// Interaction logic for PageAbout.xaml

@@ -1,11 +1,11 @@
-﻿<fw:AcrylicWindow x:Class="AutoThemeChanger.MainWindow"
+﻿<fw:AcrylicWindow x:Class="AutoDarkModeApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AutoThemeChanger"
+        xmlns:local="clr-namespace:AutoDarkModeApp"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-        xmlns:p="clr-namespace:AutoThemeChanger.Properties"
+        xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.Title}" Height="560" Width="640" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
 
