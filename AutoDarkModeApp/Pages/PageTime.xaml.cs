@@ -254,7 +254,7 @@ namespace AutoDarkModeApp.Pages
             {
                 darkStart += 12;
             }
-            ApplyTheme(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
+            //ApplyTheme(darkStart, darkStartMinutes, lightStart, lightStartMinutes);
 
             //ui
             applyButton.IsEnabled = false;
