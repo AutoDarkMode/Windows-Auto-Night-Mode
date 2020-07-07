@@ -178,15 +178,18 @@ namespace AutoDarkModeSvc
                 if (config.AccentColorTaskbarEnabled)
                 {
                     RegistryHandler.SetColorPrevalence(1);
+                    rtc.CurrentColorPrevalence = true;
                 }
                 else
                 {
                     RegistryHandler.SetColorPrevalence(0);
+                    rtc.CurrentColorPrevalence = false;
                 }
             }
             else if (config.SystemTheme == Mode.LightOnly)
             {
                 RegistryHandler.SetColorPrevalence(0);
+                rtc.CurrentColorPrevalence = false;
                 await Task.Delay(taskdelay);
                 RegistryHandler.SetSystemTheme((int)Theme.Light);
                 rtc.CurrentSystemTheme = Theme.Light;
@@ -198,6 +201,7 @@ namespace AutoDarkModeSvc
                     if (newTheme == Theme.Light)
                     {
                         RegistryHandler.SetColorPrevalence(0);
+                        rtc.CurrentColorPrevalence = false;
                         await Task.Delay(taskdelay);
                     }
                 }
@@ -208,6 +212,8 @@ namespace AutoDarkModeSvc
                     {
                         await Task.Delay(taskdelay);
                         RegistryHandler.SetColorPrevalence(1);
+                        rtc.CurrentColorPrevalence = true;
+
                     }
                 }
                 rtc.CurrentSystemTheme = newTheme;
@@ -323,8 +329,25 @@ namespace AutoDarkModeSvc
                 }
             }
 
+            if (config.SystemTheme != Mode.LightOnly)
+            {
+                if (config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence && newTheme == Theme.Light)
+                {
+                    return true;
+                } 
+                else if (config.AccentColorTaskbarEnabled && !rtc.CurrentColorPrevalence)
+                {
+                    return true;
+                }
+                else if (!config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence)
+                {
+                    return true;
+                }
+            }
+
             if (ComponentNeedsUpdate(config.SystemTheme, rtc.CurrentSystemTheme, newTheme))
             {
+
                 return true;
             }
 

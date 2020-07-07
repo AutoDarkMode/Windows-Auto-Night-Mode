@@ -155,7 +155,6 @@ namespace AutoDarkModeApp
             {
                 builder.Config.SystemTheme = Mode.LightOnly;
                 AccentColorCheckBox.IsEnabled = false;
-                AccentColorCheckBox.IsChecked = false;
             }
 
             if (SystemComboBox.SelectedIndex.Equals(2))
