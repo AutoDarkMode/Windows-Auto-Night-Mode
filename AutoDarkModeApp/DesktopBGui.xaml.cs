@@ -25,7 +25,7 @@ namespace AutoDarkModeApp
 
         public DesktopBGui()
         {
-            folderPath = Path.Combine(builder.ConfigDir, "AutoDarkMode");
+            folderPath = Path.Combine(builder.ConfigDir, "Wallpapers");
             pathCur1 = builder.Config.Wallpaper.LightThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.LightThemeWallpapers.ToList()[0] : "";
             pathCur2 = builder.Config.Wallpaper.DarkThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.DarkThemeWallpapers.ToList()[0] : "";
             InitializeComponent();
