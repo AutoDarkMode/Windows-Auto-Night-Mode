@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeSvc;
 using AutoDarkModeSvc.Config;
+using AutoDarkModeApp.Communication;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -19,6 +20,7 @@ namespace AutoDarkModeApp.Pages
     {
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
 
         public PageSettings()
         {
@@ -129,20 +131,29 @@ namespace AutoDarkModeApp.Pages
         }
 
 
-        private void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
+        private async void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
             RegeditHandler regeditHandler = new RegeditHandler();
 
             if(CheckBoxColourFilter.IsChecked.Value)
             {
                 regeditHandler.ColourFilterSetup();
-                Settings.Default.ColourFilterKeystroke = true;
+                builder.Config.ColorFilterEnabled = true;
             }
             else
             {
                 regeditHandler.ColourFilterKeySender(false);
-                Settings.Default.ColourFilterKeystroke = false;
+                builder.Config.ColorFilterEnabled = false;
             }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            await messagingClient.SendMessageAsync(Command.Switch);
         }
 
         private void TextboxAccentColorDelay_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)

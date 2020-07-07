@@ -46,6 +46,7 @@ namespace AutoDarkModeSvc.Config
         public Theme CurrentEdgeTheme { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
         public Theme CurrentOfficeTheme { get; set; }
+        public bool ColorFilterEnabled { get; set; }
         public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }

@@ -87,6 +87,7 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("switching to dark theme");
                 }
+                SetColorFilter(config.ColorFilterEnabled, newTheme);
                 SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.DarkThemePath);
             }
@@ -100,6 +101,7 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("switching to light theme");
                 }
+                SetColorFilter(config.ColorFilterEnabled, newTheme);
                 SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.LightThemePath);
             }
@@ -120,12 +122,12 @@ namespace AutoDarkModeSvc
             var oldwal = rtc.CurrentWallpaperTheme;
             var oldoff = rtc.CurrentOfficeTheme;
 
+            SetColorFilter(config.ColorFilterEnabled, newTheme);
             SetAppsTheme(config.AppsTheme, newTheme, rtc);
             SetEdgeTheme(config.EdgeTheme, newTheme, rtc);
 
             SetWallpaper(newTheme, rtc, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
             SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
-
             //run async to delay at specific parts due to color prevalence not switching icons correctly
             int taskdelay = config.Tunable.AccentColorSwitchDelay;
             Task.Run(async () =>
@@ -260,6 +262,29 @@ namespace AutoDarkModeSvc
             }
         }
 
+        private static void SetColorFilter(bool enabled, Theme newTheme)
+        {
+            if (enabled)
+            {
+                try
+                {
+                    RegistryHandler.ColorFilterSetup();
+                    if (newTheme == Theme.Dark)
+                    {
+                        RegistryHandler.ColorFilterKeySender(true);
+                    }
+                    else
+                    {
+                        RegistryHandler.ColorFilterKeySender(false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "could not enable color filter:");
+                }
+            }
+        }
+
         private static void SetWallpaper(Theme newTheme, RuntimeConfig rtc, System.Collections.Generic.ICollection<string> darkThemeWallpapers,
             System.Collections.Generic.ICollection<string> lightThemeWallpapers, bool enabled)
         {
@@ -313,7 +338,12 @@ namespace AutoDarkModeSvc
                 return true;
             }
 
-            if (ComponentNeedsUpdate(config.Office.Mode, rtc.CurrentOfficeTheme, newTheme))
+            if (config.Office.Enabled && ComponentNeedsUpdate(config.Office.Mode, rtc.CurrentOfficeTheme, newTheme))
+            {
+                return true;
+            }
+
+            if (config.ColorFilterEnabled && ColorFilterNeedsUpdate(config.ColorFilterEnabled, newTheme))
             {
                 return true;
             }
@@ -328,6 +358,14 @@ namespace AutoDarkModeSvc
                 || (componentMode == Mode.Switch && currentComponentTheme != newTheme)
               )
             {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool ColorFilterNeedsUpdate(bool currentColorFilterEnabled, Theme newTheme)
+        {
+            if (!currentColorFilterEnabled && newTheme == Theme.Dark) {
                 return true;
             }
             return false;

@@ -2,6 +2,8 @@
 using System;
 using System.Threading;
 using AutoDarkModeApp;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -208,6 +210,42 @@ namespace AutoDarkModeSvc.Handlers
                     }
                 }
             }
+        }
+
+        //Colour filter grayscale feature
+        public static void ColorFilterKeySender(bool dark)
+        {
+            var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
+            if (dark && filterKey.Equals(0) || !dark && filterKey.Equals(1))
+            {
+                //simulate key presses
+                InputSimulator inputSimulator = new InputSimulator();
+                inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LWIN);
+                inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LCONTROL);
+                inputSimulator.Keyboard.KeyPress(VirtualKeyCode.VK_C);
+                inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LWIN);
+                inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
+            }
+        }
+        public static void ColorFilterSetup()
+        {
+            var filterType = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
+            //on clean installs this registry key doesn't exist, so we need to create it
+            if (filterType == null)
+            {
+                filterType.Dispose();
+                filterType = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
+            }
+            var currentValue = filterType.GetValue("Active", null);
+            if (currentValue == null)
+            {
+                filterType.SetValue("Active", 0, RegistryValueKind.DWord);
+            }
+
+            //set filtertype to 0 for grayscale and activate hotkey functionality of windows
+            filterType.SetValue("FilterType", 0, RegistryValueKind.DWord); // 0 = gray
+            filterType.SetValue("HotkeyEnabled", 1, RegistryValueKind.DWord); //and we activate the hotkey as free bonus :)
+            filterType.Dispose();
         }
     }
 }
