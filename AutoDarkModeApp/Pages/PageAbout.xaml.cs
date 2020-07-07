@@ -120,9 +120,9 @@ namespace AutoDarkModeApp.Pages
                 "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
                 "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msgBox = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close");
-            msgBox.Owner = Window.GetWindow(this);
-            msgBox.ShowDialog();
+            MsgBox msg = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            msg.ShowDialog();
         }
 
         private void FluentWPFLicense_KeyDown(object sender, KeyEventArgs e)
@@ -140,9 +140,9 @@ namespace AutoDarkModeApp.Pages
                "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, " +
                "WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msgBox = new MsgBox(messageBoxText, "TaskSheduler License Information", "info", "close");
-            msgBox.Owner = Window.GetWindow(this);
-            msgBox.ShowDialog();
+            MsgBox msg = new MsgBox(messageBoxText, "TaskSheduler License Information", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            msg.ShowDialog();
         }
 
         private void TaskSchedulerLicense_KeyDown(object sender, KeyEventArgs e)
@@ -175,9 +175,9 @@ namespace AutoDarkModeApp.Pages
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msgBox = new MsgBox(MessageBoxText, "InputSimulator License Information", "info", "close");
-            msgBox.Owner = Window.GetWindow(this);
-            msgBox.ShowDialog();
+            MsgBox msg = new MsgBox(MessageBoxText, "InputSimulator License Information", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            msg.ShowDialog();
         }
 
         private void InputSimulatorLicense_KeyDown(object sender, KeyEventArgs e)
@@ -192,6 +192,36 @@ namespace AutoDarkModeApp.Pages
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+        private void JsonNetLicense_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string MessageBoxText = "Copyright (c) 2014 Newtonsoft \n\n" +
+                "This program is free software: you can redistribute it and / or modify it under the terms of the GNU Affero General Public License " +
+                "as published by the Free Software Foundation, either version 3 of the License, see http://www.gnu.org/licenses/agpl-3.0.html. \n\n" +
+                "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY " +
+                "or FITNESS FOR A PARTICULAR PURPOSE.See the GNU Affero General Public License for more details.";
+            MsgBox msg = new MsgBox(MessageBoxText, "Newtonsoft Json.NET License Information", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            msg.ShowDialog();
+        }
+
+        private void JsonNetLicense_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) JsonNetLicense_MouseDown(this, null);
+        }
+
+        private void NetMQLicense_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string MessageBoxText = "Copyright (C) 2007 Free Software Foundation, Inc.";
+            MsgBox msg = new MsgBox(MessageBoxText, "", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            msg.ShowDialog();
+        }
+
+        private void NetMQLicense_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) NetMQLicense_MouseDown(this, null);
         }
     }
 }

@@ -33,7 +33,7 @@
 
         <!-- Donation Button -->
         <TextBlock Text="{x:Static p:Resources.DonationHowTo}" Margin="10,20,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="16" FontWeight="Bold"/>
-        <Image Width="20" Margin="10,70,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" Source="/AutoDarkMode;component/Resources/PayPal_Logo.png" />
+        <Image Width="20" Margin="10,70,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" Source="/AutoDarkModeApp;component/Resources/PayPal_Logo.png" />
         <StackPanel Orientation="Vertical" Margin="45,50,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top">
             <TextBlock Text="PayPal" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBlock Text="{x:Static p:Resources.DonationPayPalDescription}" TextWrapping="Wrap" Width="320" Foreground="Gray" Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>

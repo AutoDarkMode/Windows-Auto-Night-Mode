@@ -25,8 +25,8 @@
 
         <!-- Info -->
         <Image HorizontalAlignment="Left" Height="50" Margin="10,56,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="50" Source="/AutoDarkModeIcon.ico" MouseDown="Image_MouseDown"/>
-        <TextBlock Name="TextBoxVersionNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode 3.0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="67,63,0,0" Grid.Column="1" Grid.Row="1" />
-        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2020 Armin Osaj / Armin2208" VerticalAlignment="Top" Height="16" Width="251"/>
+        <TextBlock Name="TextBoxVersionNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Auto Dark Mode X Beta 1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="67,63,0,0" Grid.Column="1" Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2020 Armin Osaj &amp; Samuel Schiegg" VerticalAlignment="Top" Height="16"/>
 
         <!-- Social Media links-->
         <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="30" Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png"/>
@@ -132,5 +132,32 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
+        <TextBlock Name="JsonNetLicense" Text="Newtonsoft Json.NET" FontSize="13" Margin="10,450,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="JsonNetLicense_MouseDown" KeyDown="JsonNetLicense_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock Name="NetMQLicense" Text="NetMQ" FontSize="13" Margin="10,480,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NetMQLicense_MouseDown" KeyDown="NetMQLicense_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
     </Grid>
 </Page>
