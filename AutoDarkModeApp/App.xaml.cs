@@ -5,7 +5,7 @@ namespace AutoDarkModeApp
 {
     public partial class App : Application
     {
-        private async void Application_Startup(object sender, StartupEventArgs e)
+        private void Application_Startup(object sender, StartupEventArgs e)
         {
             //handle command line arguments
             if (e.Args.Length > 0)
