@@ -219,6 +219,10 @@ namespace AutoDarkModeApp
             {
                 builder.Config.AccentColorTaskbarEnabled = true;
             }
+            else
+            {
+                builder.Config.AccentColorTaskbarEnabled = false;
+            }
             try
             {
                 builder.Save();
