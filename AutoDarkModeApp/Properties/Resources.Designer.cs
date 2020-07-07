@@ -494,7 +494,18 @@ namespace AutoDarkModeApp.Properties {
                 return ResourceManager.GetString("lblApps", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Apps:.
+        /// </summary>
+        public static string lblReset
+        {
+            get
+            {
+                return ResourceManager.GetString("lblReset", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>

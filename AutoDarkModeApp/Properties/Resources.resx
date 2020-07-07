@@ -528,4 +528,7 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>Adapt to system</value>
   </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>

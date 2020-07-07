@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -57,7 +58,15 @@ namespace AutoDarkModeSvc.Communication
             };
             PollTask = Task.Run(() =>
             {
-                Poller.Run();
+                try
+                {
+                    Poller.Run();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "ZMQ Poller died");
+                    System.Environment.Exit(-1);
+                }
             });
             Logger.Info("started server (polling)");
         }

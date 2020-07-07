@@ -29,6 +29,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Load();
+                builder.LoadLocationData();
             }
             catch (Exception ex)
             {

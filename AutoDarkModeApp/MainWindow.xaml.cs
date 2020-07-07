@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Navigation;
 using AutoDarkModeApp.Properties;
+using NetMQ;
 
 namespace AutoDarkModeApp
 {
@@ -111,19 +112,26 @@ namespace AutoDarkModeApp
             JumpTask darkJumpTask = new JumpTask
             {
                 Title = Properties.Resources.lblDarkTheme,//Dark theme
-                Arguments = "/dark",
+                Arguments = Command.Dark,
                 CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
             };
             JumpTask lightJumpTask = new JumpTask
             {
                 Title = Properties.Resources.lblLightTheme,//Light theme
-                Arguments = "/light",
+                Arguments = Command.Light,
+                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
+            };
+            JumpTask resetJumpTask = new JumpTask
+            {
+                Title = Properties.Resources.lblReset,//Light theme
+                Arguments = Command.NoForce,
                 CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
             };
 
             JumpList jumpList = new JumpList();
             jumpList.JumpItems.Add(darkJumpTask);
             jumpList.JumpItems.Add(lightJumpTask);
+            jumpList.JumpItems.Add(resetJumpTask);
             jumpList.ShowFrequentCategory = false;
             jumpList.ShowRecentCategory = false;
 
@@ -133,6 +141,7 @@ namespace AutoDarkModeApp
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
+            NetMQConfig.Cleanup();
             Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service

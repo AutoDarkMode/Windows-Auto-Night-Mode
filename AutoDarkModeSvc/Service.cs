@@ -8,18 +8,21 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
+using System.ComponentModel;
 
 namespace AutoDarkModeSvc
 {
-    class Service : ApplicationContext
+    class Service : Form
     {
+        private bool allowshowdisplay = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         NotifyIcon NotifyIcon { get; }
         List<ModuleTimer> Timers { get; set; }
         ICommandServer CommandServer { get; }
         AdmConfigMonitor ConfigMonitor { get; }
-        private readonly ToolStripMenuItem forceDarkMenuItem = new ToolStripMenuItem("Force Dark Mode");
-        private readonly ToolStripMenuItem forceLightMenuItem = new ToolStripMenuItem("Force Light Mode");
+        public readonly ToolStripMenuItem forceDarkMenuItem = new ToolStripMenuItem("Force Dark Mode");
+        public readonly ToolStripMenuItem forceLightMenuItem = new ToolStripMenuItem("Force Light Mode");
+        private delegate void SafeCallDelegate(string text);
 
         public Service(int timerMillis)
         {
@@ -50,6 +53,11 @@ namespace AutoDarkModeSvc
             MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers, true));
 
             Timers.ForEach(t => t.Start());
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            base.SetVisibleCore(allowshowdisplay ? value : allowshowdisplay);
         }
 
         private void InitTray()
@@ -89,7 +97,7 @@ namespace AutoDarkModeSvc
             Application.Exit();
         }
 
-        private void ForceMode(object sender, EventArgs e)
+        public void ForceMode(object sender, EventArgs e)
         {
             ToolStripMenuItem mi = sender as ToolStripMenuItem;
             if (mi.Checked)
@@ -98,7 +106,7 @@ namespace AutoDarkModeSvc
                 RuntimeConfig rtc = RuntimeConfig.Instance();
                 rtc.ForcedTheme = Theme.Undefined;
                 ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
-                mi.Checked = false;
+                mi.Checked = true;
             }
             else
             {
@@ -171,6 +179,20 @@ namespace AutoDarkModeSvc
                     Logger.Debug(ex, "mutex abandoned before wait");
                 }
             }
+        }
+    }
+}
+public static class ISynchronizeInvokeExtensions
+{
+    public static void InvokeEx<T>(this T @this, Action<T> action) where T : ISynchronizeInvoke
+    {
+        if (@this.InvokeRequired)
+        {
+            @this.Invoke(action, new object[] { @this });
+        }
+        else
+        {
+            action(@this);
         }
     }
 }

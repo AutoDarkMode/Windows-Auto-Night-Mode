@@ -46,11 +46,12 @@ namespace AutoDarkModeApp
 
             ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
             StartService();
-            int maxTries = 3;
+            int maxTries = 2;
             int tries = 0;
             bool heartBeatOK = false;
             while (tries < maxTries && !heartBeatOK)
             {
+                tries++;
                 heartBeatOK = commandClient.SendMessage(Command.Alive);
             }
             if (maxTries == tries && !heartBeatOK)
@@ -115,8 +116,7 @@ namespace AutoDarkModeApp
                         bool result = commandClient.SendMessage(Command.Location);
                         Console.Out.WriteLine(result);
                     }
-
-                    if (isClassicMode) commandClient.SendMessage(Command.Shutdown);
+                    Mutex.Dispose();
                     NetMQConfig.Cleanup();
                     Shutdown();
                 }

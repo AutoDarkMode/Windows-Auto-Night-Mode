@@ -129,6 +129,17 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: request for running status");
                         SendResponse(Command.Ok);
                         break;
+                    case Command.Light:
+                        Logger.Info("signal received: force light passthrough");
+                        service.ForceMode(service.forceLightMenuItem, null);
+                        break;
+                    case Command.Dark:
+                        Logger.Info("signal received: force dark passthrough");
+                        service.ForceMode(service.forceDarkMenuItem, null);
+                        break;
+                    case Command.NoForce:
+                        Logger.Info("signal received: resetting forced modes");
+                        break;
                     default:
                         Logger.Debug("unknown message received");
                         SendResponse(Command.Err);

@@ -13,6 +13,7 @@ namespace AutoDarkModeApp
         public const string Swap = "/swap";
         public const string Light = "/light";
         public const string Dark = "/dark";
+        public const string NoForce = "/noForce";
         public const string Update = "/update";
         public const string Location = "/location";
         public const string CreateTask = "/createTask";
