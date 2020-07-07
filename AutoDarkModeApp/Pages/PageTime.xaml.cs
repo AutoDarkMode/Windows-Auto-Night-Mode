@@ -10,6 +10,8 @@ using System.Diagnostics;
 using AutoDarkModeSvc.Config;
 using System.Globalization;
 using System.Threading.Tasks;
+using AutoDarkModeApp.Communication;
+using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -19,7 +21,8 @@ namespace AutoDarkModeApp.Pages
     public partial class PageTime : Page
     {
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private bool init = true;
+        private readonly bool init = true;
+        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
 
         public PageTime()
         {
@@ -125,16 +128,9 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Config.Location.SunsetOffsetMin = -offsetDark;
             }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
             UpdateSuntimes();
             OffsetButton.IsEnabled = false;
+            ApplyTheme();
         }
 
 
@@ -234,15 +230,15 @@ namespace AutoDarkModeApp.Pages
             {
                 darkStart += 12;
             }
-            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
-            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
+            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
             ApplyTheme();
 
             //ui
             applyButton.IsEnabled = false;
         }
 
-        private void ApplyTheme()
+        private async void ApplyTheme()
         {
             //this setting enables all the configuration possibilities of auto dark mode
             builder.Config.AutoThemeSwitchingEnabled = true;
@@ -272,7 +268,20 @@ namespace AutoDarkModeApp.Pages
                 {
                     ShowErrorMessage(ex);
                 }
-            }        
+            }
+            try
+            {
+                string result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Switch);
+                if (result == Command.Err)
+                {
+                    throw new SwitchThemeException();
+                }
+            } 
+            catch (Exception ex)
+            {
+                ErrorWhileApplyingTheme($"ZMQ message is {Command.Err}", ex.ToString());
+            }
+
         }
         //if something went wrong while applying the settings :(
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
@@ -314,7 +323,7 @@ namespace AutoDarkModeApp.Pages
                 }
             }
 
-            int timeout = 10;
+            int timeout = 2;
             bool loaded = false;
             for (int i = 0; i < timeout; i++)
             {
@@ -322,6 +331,12 @@ namespace AutoDarkModeApp.Pages
                 {
                     try
                     {
+                        var result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Location);
+                        if (result == Command.NoLocAccess)
+                        {
+                            NoLocationAccess();
+                            break;
+                        }
                         builder.LoadLocationData();
                     }
                     catch (Exception ex)
@@ -503,7 +518,6 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
         {
             DisableLocationMode();
-            ApplyTheme();
         }
 
         private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)

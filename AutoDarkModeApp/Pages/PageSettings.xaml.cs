@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeSvc;
+using AutoDarkModeSvc.Config;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -17,9 +18,18 @@ namespace AutoDarkModeApp.Pages
     public partial class PageSettings : Page
     {
         readonly string curLanguage = Settings.Default.Language;
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         public PageSettings()
         {
+            try
+            {
+                builder.Load();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
             InitializeComponent();
             UiHandler();
         }
@@ -32,23 +42,16 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxLanguageSelection.SelectedValue = "en";
             }
 
-            if (!Settings.Default.Enabled)
+            if (!builder.Config.AutoThemeSwitchingEnabled)
             {
-                CheckBoxConStandBy.IsEnabled = false;
-                CheckBoxLogonTask.IsEnabled = false;
                 CheckBoxColourFilter.IsEnabled = false;
-                CheckBoxMultiUserImprovements.IsEnabled = false;
                 CheckBoxBackgroundUpdater.IsEnabled = false;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
-            CheckBoxConStandBy.IsChecked = Settings.Default.connectedStandby;
-            CheckBoxLogonTask.IsChecked = Settings.Default.LogonTaskInsteadOfAutostart;
-            CheckBoxColourFilter.IsChecked = Settings.Default.ColourFilterKeystroke;
-            CheckBoxMultiUserImprovements.IsChecked = Settings.Default.TaskFolderTitleMultiUser;
 
-            TextboxAccentColorDelay.Text = Settings.Default.AccentColorSwitchTime.ToString();
+            TextboxAccentColorDelay.Text = builder.Config.Tunable.AccentColorSwitchDelay.ToString();
         }
 
         private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
@@ -125,40 +128,6 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void CheckBoxConStandBy_Click(object sender, RoutedEventArgs e)
-        {
-            TaskSchHandler taskShedHandler = new TaskSchHandler();
-
-            if (CheckBoxConStandBy.IsChecked.Value)
-            {
-                taskShedHandler.CreateConnectedStandbyTask();
-                Properties.Settings.Default.connectedStandby = true;
-            }
-            else
-            {
-                taskShedHandler.RemoveConnectedStandbyTask();
-                Properties.Settings.Default.connectedStandby = false;
-            }
-        }
-
-        private void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
-        {
-            RegeditHandler regeditHandler = new RegeditHandler();
-            TaskSchHandler taskScheduler = new TaskSchHandler();
-
-            if (CheckBoxLogonTask.IsChecked.Value)
-            {
-                regeditHandler.RemoveAutoStart();
-                taskScheduler.CreateLogonTask();
-                Settings.Default.LogonTaskInsteadOfAutostart = true;
-            }
-            else
-            {
-                taskScheduler.RemoveLogonTask();
-                regeditHandler.AddAutoStart();
-                Settings.Default.LogonTaskInsteadOfAutostart = false;
-            }
-        }
 
         private void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
@@ -199,33 +168,16 @@ namespace AutoDarkModeApp.Pages
         {
             if (TextboxAccentColorDelay.Text != "")
             {
-                Settings.Default.AccentColorSwitchTime = int.Parse(TextboxAccentColorDelay.Text);
+                builder.Config.Tunable.AccentColorSwitchDelay = int.Parse(TextboxAccentColorDelay.Text);
+                try
+                {
+                    builder.Save();
+                }
+                catch(Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
-        }
-
-        private void CheckBoxMultiUserImprovements_Click(object sender, RoutedEventArgs e)
-        {
-            TaskSchHandler taskScheduler = new TaskSchHandler();
-            RegeditHandler regEditHandler = new RegeditHandler();
-
-            if (CheckBoxMultiUserImprovements.IsChecked == true)
-            {
-                taskScheduler.RemoveAllTasks();
-                Settings.Default.TaskFolderTitle = "ADM_" + Environment.UserName;
-                Settings.Default.TaskFolderTitleMultiUser = true;
-            }
-            else
-            {
-                taskScheduler.RemoveAllTasks();
-                Settings.Default.TaskFolderTitle = "Auto Dark Mode";
-                Settings.Default.TaskFolderTitleMultiUser = false;
-            }
-            if (!Settings.Default.LogonTaskInsteadOfAutostart)
-            {
-                regEditHandler.RemoveAutoStart();
-            }
-            Settings.Default.Enabled = false;
-            RestartButton_Click(this, null);
         }
 
         private void StartProcessByProcessInfo(string message)
@@ -235,6 +187,27 @@ namespace AutoDarkModeApp.Pages
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+        private void ShowErrorMessage(Exception ex)
+        {
+            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+            return;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeApp.Communication;
+using AutoDarkModeApp.Handlers;
+using AutoDarkModeSvc.Config;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +22,7 @@ namespace AutoDarkModeApp
         bool theme1 = false;
         bool theme2 = false;
         readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
+        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
 
         public PageWallpaper()
         {
@@ -29,7 +32,7 @@ namespace AutoDarkModeApp
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ShowErrorMessage("couldn't init config file", ex);
             }
             InitializeComponent();
             UiHandler();
@@ -141,10 +144,11 @@ namespace AutoDarkModeApp
                 }
                 catch (Exception ex)
                 {
-                    ShowErrorMessage(ex);
+                    ShowErrorMessage("couldn't set adm background", ex);
                 }
             }
             ShowDeskBGStatus();
+            RequestThemeSwitch();
         }
 
         //save theme selection
@@ -172,8 +176,9 @@ namespace AutoDarkModeApp
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ShowErrorMessage("couldn't save themes", ex);
             }
+            RequestThemeSwitch();
         }
 
         //disable theme file switch
@@ -183,10 +188,16 @@ namespace AutoDarkModeApp
             ButtonSaveTheme.IsEnabled = false;
             theme1 = false;
             theme2 = false;
-
-            ComboBoxDarkTheme.SelectedIndex = -1;
-            ComboBoxLightTheme.SelectedIndex = -1;
             ComboBoxModeSelection.SelectedIndex = 0;
+            try
+            {
+                builder.Config.ClassicMode = true;
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage("couldn't disable classic mode", ex);
+            }
         }
 
         //get a list of all files the theme folder contains. If there is no theme-folder, create one.
@@ -275,9 +286,26 @@ namespace AutoDarkModeApp
             if (e.Key == Key.Enter) ButtonOpenThemePath_Click(this, null);
         }
 
-        private void ShowErrorMessage(Exception ex)
+        private async void RequestThemeSwitch()
         {
-            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            string result = Command.Err;
+            try
+            {
+                result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Switch);
+                if (result != Command.Ok)
+                {
+                    throw new SwitchThemeException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"ZeroMQ returned err {result}", ex);
+            }
+        }
+
+        private void ShowErrorMessage(String message, Exception ex)
+        {
+            string error = Properties.Resources.errorThemeApply + $"\n\n{message}: " + ex.Source + "\n\n" + ex.Message;
             MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)

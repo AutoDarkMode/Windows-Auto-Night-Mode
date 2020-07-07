@@ -7,6 +7,7 @@ using System.Windows.Media.Imaging;
 using AutoDarkModeSvc;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
+using AutoDarkModeApp.Communication;
 
 namespace AutoDarkModeApp
 {
@@ -16,6 +17,7 @@ namespace AutoDarkModeApp
     public partial class PageApps : Page
     {
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
         bool is1903 = false;
 
         public PageApps()
@@ -138,6 +140,7 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
+            RequestThemeSwitch();
         }
 
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
@@ -169,6 +172,7 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
+            RequestThemeSwitch();
         }
 
         private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
@@ -200,6 +204,7 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
+            RequestThemeSwitch();
         }
         private void DisableEdgeSwitch()
         {
@@ -222,6 +227,7 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
+            RequestThemeSwitch();
         }
 
         private void OfficeComboBox_DropDownClosed(object sender, EventArgs e)
@@ -254,6 +260,7 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
+            RequestThemeSwitch();
         }
         private void DisableOfficeSwitch()
         {
@@ -308,6 +315,22 @@ namespace AutoDarkModeApp
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+        private async void RequestThemeSwitch()
+        {
+            try
+            {
+                string result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Switch);
+                if (result == Command.Err)
+                {
+                    throw new SwitchThemeException();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
         }
     }
 }

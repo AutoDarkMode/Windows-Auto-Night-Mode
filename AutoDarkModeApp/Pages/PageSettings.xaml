@@ -27,9 +27,6 @@
         <StackPanel Orientation="Vertical" Margin="10,60,0,0" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
             <CheckBox Name="CheckBoxAlterTime" Content="{x:Static p:Resources.cb12HourTime}" Margin="0,0,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxAlterTime_Click"/>
             <CheckBox Name="CheckBoxBackgroundUpdater" Content="{x:Static p:Resources.cbBackgroundUpdate}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBackgroundUpdater_Click"/>
-            <CheckBox Name="CheckBoxConStandBy" Content="{x:Static p:Resources.cbConnectedStandby}" ToolTip="{x:Static p:Resources.cbConnectedStandbyTooltip}" ToolTipService.InitialShowDelay="0" ToolTipService.ShowDuration="50000" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxConStandBy_Click"/>
-            <CheckBox Name="CheckBoxLogonTask" Content="{x:Static p:Resources.cbSettingsLogonTask}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxLogonTask_Click"/>
-            <CheckBox Name="CheckBoxMultiUserImprovements" Content="{x:Static p:Resources.cbSettingsMultiUserImprovements}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxMultiUserImprovements_Click"/>
             <CheckBox Name="CheckBoxColourFilter" Content="{x:Static p:Resources.cbSettingsColourFilter}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxColourFilter_Click"/>
 
 
