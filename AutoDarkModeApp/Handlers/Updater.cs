@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Xml;
 using System.Windows;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace AutoDarkModeApp
 {
@@ -96,12 +97,21 @@ namespace AutoDarkModeApp
                         var result = msgBox.DialogResult;
                         if (result == true)
                         {
-                            System.Diagnostics.Process.Start(url);
+                            StartProcessByProcessInfo(url);
                             Application.Current.Shutdown();
                         }
                     }
                 }
             }
+        }
+
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

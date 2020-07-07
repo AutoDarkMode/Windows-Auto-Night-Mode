@@ -264,7 +264,7 @@ namespace AutoDarkModeApp
 
         private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
+            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
         }
 
         private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)
@@ -299,6 +299,15 @@ namespace AutoDarkModeApp
                 });
             }
             return;
+        }
+
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

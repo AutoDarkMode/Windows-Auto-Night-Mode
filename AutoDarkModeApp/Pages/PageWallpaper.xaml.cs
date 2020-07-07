@@ -254,12 +254,20 @@ namespace AutoDarkModeApp
         {
             try
             {
-                Process.Start(ThemeFolderPath);
+                Process.Start(new ProcessStartInfo(ThemeFolderPath)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
             }
             catch
             {
                 Directory.CreateDirectory(ThemeFolderPath);
-                Process.Start(ThemeFolderPath);
+                Process.Start(new ProcessStartInfo(ThemeFolderPath)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
             }
         }
         private void ButtonOpenThemePath_KeyDown(object sender, KeyEventArgs e)

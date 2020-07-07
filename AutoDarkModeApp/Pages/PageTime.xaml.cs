@@ -285,7 +285,7 @@ namespace AutoDarkModeApp.Pages
             var result = msg.DialogResult;
             if (result == true)
             {
-                System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
             }
         }
 
@@ -552,7 +552,7 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
 
         private void UpdateSuntimes()
@@ -589,6 +589,15 @@ namespace AutoDarkModeApp.Pages
                 });
             }
             return;
+        }
+
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

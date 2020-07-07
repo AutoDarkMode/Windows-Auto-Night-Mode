@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AutoDarkModeApp.Pages
@@ -15,7 +16,16 @@ namespace AutoDarkModeApp.Pages
 
         private void ButtonPayPal_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
+           StartProcessByProcessInfo("https://paypal.me/arminosaj");
+        }
+
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

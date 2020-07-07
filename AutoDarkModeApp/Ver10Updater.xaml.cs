@@ -38,7 +38,11 @@ namespace AutoDarkModeApp
 
         private void ButtonUpdateNow_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(updateURL);
+            Process.Start(new ProcessStartInfo(updateURL)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
             Close();
         }
     }

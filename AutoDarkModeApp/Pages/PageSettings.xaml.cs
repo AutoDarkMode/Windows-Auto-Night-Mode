@@ -1,11 +1,13 @@
 ﻿using AutoDarkModeApp.Properties;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AutoDarkModeSvc;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -82,7 +84,11 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 Settings.Default.Save();
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                Process.Start(new ProcessStartInfo(Extensions.ExecutionPath)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
                 Application.Current.Shutdown();
             }
             catch
@@ -220,6 +226,15 @@ namespace AutoDarkModeApp.Pages
             }
             Settings.Default.Enabled = false;
             RestartButton_Click(this, null);
+        }
+
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

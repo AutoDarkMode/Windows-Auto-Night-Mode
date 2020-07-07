@@ -1,5 +1,6 @@
 ﻿using SourceChord.FluentWPF;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -57,29 +58,29 @@ namespace AutoDarkModeApp.Pages
             }
             else
             {
-                System.Diagnostics.Process.Start(updater.GetUpdateURL());
+                StartProcessByProcessInfo(updater.GetUpdateURL());
             }
         }
 
         private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode");
+            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode");
         }
 
         private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://twitter.com/Armin2208");
+            StartProcessByProcessInfo("https://twitter.com/Armin2208");
 
         }
 
         private void PayPalTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://paypal.me/arminosaj");
+            StartProcessByProcessInfo("https://paypal.me/arminosaj");
         }
 
         private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://t.me/autodarkmode");
+            StartProcessByProcessInfo("https://t.me/autodarkmode");
         }
 
         private void GitHubTextBlock_KeyDown(object sender, KeyEventArgs e)
@@ -158,7 +159,7 @@ namespace AutoDarkModeApp.Pages
             if (easterEgg == 4) TextBoxVersionNumber.Foreground = Brushes.Blue;
             if (easterEgg == 5)
             {
-                System.Diagnostics.Process.Start("https://bit.ly/qgraphics");
+                StartProcessByProcessInfo("https://bit.ly/qgraphics");
                 if (easterEgg == 1) TextBoxVersionNumber.Foreground = Brushes.Black;
                 easterEgg = 0;
             }
@@ -182,6 +183,15 @@ namespace AutoDarkModeApp.Pages
         private void InputSimulatorLicense_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) InputSimulatorLicense_MouseDown(this, null);
+        }
+
+        private void StartProcessByProcessInfo(string message)
+        {
+            Process.Start(new ProcessStartInfo(message)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }
