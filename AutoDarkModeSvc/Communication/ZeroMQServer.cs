@@ -52,7 +52,7 @@ namespace AutoDarkModeSvc.Communication
                         }
                     } catch (Exception e)
                     {
-                        Logger.Error(e, "could not send response");
+                        Logger.Error(e, "could not send response:");
                     }
                 }, Service);
             };

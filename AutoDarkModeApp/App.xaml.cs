@@ -14,6 +14,7 @@ namespace AutoDarkModeApp
     public partial class App : Application
     {
         private readonly AdmConfigBuilder autoDarkModeConfigBuilder = AdmConfigBuilder.Instance();
+        private readonly ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
         public static Mutex Mutex { get; private set; } = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
         private bool debug = false;
 
@@ -44,7 +45,6 @@ namespace AutoDarkModeApp
                 args.Remove("/debug");
             }
 
-            ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
             StartService();
             int maxTries = 2;
             int tries = 0;
@@ -66,8 +66,9 @@ namespace AutoDarkModeApp
             //handle command line arguments
             if (args.Count > 0)
             {
+                Thread.Sleep(1000);
                 Mutex.Dispose();
-                Mutex = new Mutex(false, "7f326fe1-181c-414f-b7f1-0df4baa578a7");
+                Mutex = new Mutex(true, "7f326fe1-181c-414f-b7f1-0df4baa578a7");
                 Mutex.WaitOne(TimeSpan.FromMilliseconds(100));
                 foreach (var value in args)
                 {
@@ -84,6 +85,10 @@ namespace AutoDarkModeApp
                         commandClient.SendMessage(value);
                     }
                     else if (value == "/light")
+                    {
+                        commandClient.SendMessage(value);
+                    }
+                    else if (value == "/noForce")
                     {
                         commandClient.SendMessage(value);
                     }
@@ -116,8 +121,8 @@ namespace AutoDarkModeApp
                         bool result = commandClient.SendMessage(Command.Location);
                         Console.Out.WriteLine(result);
                     }
-                    Mutex.Dispose();
                     NetMQConfig.Cleanup();
+                    Mutex.Dispose();
                     Shutdown();
                 }
             }
@@ -132,8 +137,9 @@ namespace AutoDarkModeApp
         {
             if (!debug)
             {
+                
                 using Mutex serviceRunning = new Mutex(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
-                if (serviceRunning.WaitOne(TimeSpan.FromMilliseconds(10), false))
+                if (serviceRunning.WaitOne(TimeSpan.FromMilliseconds(100), false))
                 {
                     using Process svc = new Process();
                     svc.StartInfo.UseShellExecute = false;

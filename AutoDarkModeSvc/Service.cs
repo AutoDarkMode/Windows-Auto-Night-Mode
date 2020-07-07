@@ -73,12 +73,33 @@ namespace AutoDarkModeSvc
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
             NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
+            NotifyIcon.ContextMenuStrip.Opened += UpdateCheckboxes;
             NotifyIcon.ContextMenuStrip.Items.Add(openConfigDirItem);
             NotifyIcon.ContextMenuStrip.Items.Add("-");
             NotifyIcon.ContextMenuStrip.Items.Add(exitMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceDarkMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceLightMenuItem);
             NotifyIcon.Visible = true;
+        }
+
+        private void UpdateCheckboxes(object sender, EventArgs e)
+        {
+            RuntimeConfig rtc = RuntimeConfig.Instance();
+            if (rtc.ForcedTheme == Theme.Light)
+            {
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = true;
+            }
+            else if (rtc.ForcedTheme == Theme.Dark)
+            {
+                forceDarkMenuItem.Checked = true;
+                forceLightMenuItem.Checked = false;
+            }
+            else
+            {
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = false;
+            }
         }
 
         public void Cleanup()
@@ -92,7 +113,6 @@ namespace AutoDarkModeSvc
 
         public void Exit(object sender, EventArgs e)
         {
-            Cleanup();
             NotifyIcon.Dispose();
             Application.Exit();
         }
@@ -106,7 +126,7 @@ namespace AutoDarkModeSvc
                 RuntimeConfig rtc = RuntimeConfig.Instance();
                 rtc.ForcedTheme = Theme.Undefined;
                 ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
-                mi.Checked = true;
+                mi.Checked = false;
             }
             else
             {
@@ -179,20 +199,6 @@ namespace AutoDarkModeSvc
                     Logger.Debug(ex, "mutex abandoned before wait");
                 }
             }
-        }
-    }
-}
-public static class ISynchronizeInvokeExtensions
-{
-    public static void InvokeEx<T>(this T @this, Action<T> action) where T : ISynchronizeInvoke
-    {
-        if (@this.InvokeRequired)
-        {
-            @this.Invoke(action, new object[] { @this });
-        }
-        else
-        {
-            action(@this);
         }
     }
 }

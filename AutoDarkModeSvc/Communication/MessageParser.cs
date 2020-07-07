@@ -20,6 +20,7 @@ namespace AutoDarkModeSvc.Communication
         {
 
             AdmConfigBuilder Properties = AdmConfigBuilder.Instance();
+            RuntimeConfig rtc = RuntimeConfig.Instance();
             msg.ForEach(message =>
             {
                 switch (message)
@@ -130,15 +131,22 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(Command.Ok);
                         break;
                     case Command.Light:
-                        Logger.Info("signal received: force light passthrough");
-                        service.ForceMode(service.forceLightMenuItem, null);
+                        Logger.Info("signal received: force light theme");
+                        rtc.ForcedTheme = Theme.Light;
+                        ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
+                        SendResponse(Command.Ok);
                         break;
                     case Command.Dark:
-                        Logger.Info("signal received: force dark passthrough");
-                        service.ForceMode(service.forceDarkMenuItem, null);
+                        Logger.Info("signal received: force dark theme");
+                        rtc.ForcedTheme = Theme.Dark;
+                        ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
+                        SendResponse(Command.Ok);
                         break;
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
+                        rtc.ForcedTheme = Theme.Undefined;
+                        ThemeManager.TimedSwitch(Properties);
+                        SendResponse(Command.Ok);
                         break;
                     default:
                         Logger.Debug("unknown message received");
