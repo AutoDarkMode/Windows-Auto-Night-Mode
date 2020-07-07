@@ -53,3 +53,72 @@ choco install auto-dark-mode
 
 ## More information
 You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
+
+
+# For developers: adding new modules
+
+In case you want to contribute and add a new module, here's how:
+
+### Understanding how a module works
+
+AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. The first step therefore usually consists of creating an `Enabled` property or config class for your module in `Config/AdmConfig.cs`.
+Only read operations are allowed to this config file. If you need write access, you will need to add a new configuration class and file and save it separately.
+In order to then create a module let's take a look at what a module class looks like:
+```C#
+namespace AutoDarkModeSvc.Modules
+{
+  class MyModule : AutoDarkModeModule
+  {
+     public override string TimerAffinity { get; } = TimerName.Main; 
+     private AdmConfigBuilder ConfigBuilder { get; }
+     public MyModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) 
+     {
+       ConfigBuilder = AdmConfigBuilder.Instance();
+       //do constructor stuff here
+     }
+     public override void Fire()
+     {
+         Task.Run(() =>
+         {
+             // call your logic here
+         });
+     }   
+     // implement as usual
+    }
+}
+```
+A module needs to have a constructor that calls its base constructor with exactly one string parameter (name) and one bool parameter (should the module be fired when it was enabled in the config file). 
+
+Each module has access to the configuration builder in case it needs to retrieve values from the global configuration. You can call it by invoking the `ConfigBuilder` singleton instance.
+
+A module must inherit from the `AutoDarkModeModule` base class. The base class ensures that modules are comparable and implements the `IAutoDarkModeModule` interface. This ensures that all modules can be controlled by only using the interface.
+You will then need to override 
+- `Fire()`, which is called by the timer and
+- `TimerAffinity`, which is the unique name of a timer this module should run on. 
+
+There are preconfigured timer names in `Timers/TimerName.cs` that tick at different intervals. An example on how to add new timers will come at a later point in time.
+
+### Adding a module to the module warden
+Each module is automatically controlled by the module warden, which is a module itself that runs by default. It manages enabling and disabling modules on any timer based on the current configuration file state. You can add your modules to the software by changing the `Fire()` method in `Modules/ModuleWardenModule.cs`
+
+It looks similar to this one:
+```C#
+public override void Fire()
+  {
+    AdmConfig config = ConfigBuilder.Config;
+    AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled);
+    AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
+  }
+```
+
+To add a module, call AutoManageModule with type signature `AutoManageModule#(String, Type, Bool, Bool)` and takes the following parameters:
+- Name: Derived from the className so you can use `typeof(MyModule).Name`
+- Type: The module's class used for object instantiation, this is always `typeof(MyModule)`
+- FireOnRegistration: The module event should be triggered as soon as it is registered to a timer, boolean `true/false`
+- Enabled: A boolean value that indicates whether the module should be running currently. Point it to your `Enabled` Property that you created in the configuration file or use an existing one if it fits your needs
+
+Our final call then looks like this:
+
+`AutoManageModule(typeof(MyModule).Name, typeof(MyModule), true, config.MyModuleProperty.Enabled);`
+
+And that's it. Your module will now be managed automatically. Next steps would be providing a user interface element that controls your module.

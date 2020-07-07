@@ -1,0 +1,159 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AutoDarkModeApp</RootNamespace>
+    <AssemblyName>AutoDarkModeApp</AssemblyName>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>Auto-Night Mode</ProductName>
+    <PublisherName>Armin Osaj</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.9.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AutoDarkModeApp_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutoDarkModeApp.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestTimestampUrl>http://tsa.startssl.com/rfc3161</ManifestTimestampUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\AutoDarkModeSvc\Config\AdmConfig.cs">
+      <Link>Config\AdmConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\AutoDarkModeSvc\Config\AdmConfigBuilder.cs">
+      <Link>Config\AdmConfigBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\AutoDarkModeSvc\Config\AdmLocationData.cs">
+      <Link>Config\AdmLocationData.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Edge_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GitHub_Logo_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Twitter_Logo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PayPal_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Photo_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GitHub_Logo_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Edge_Logo_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Settings_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentWPF" Version="0.10.0" />
+    <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.18362.2005</Version>
+    </PackageReference>
+    <PackageReference Include="NetMQ" Version="4.0.0.207" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
+    <PackageReference Include="TaskScheduler">
+      <Version>2.8.20</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Office_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DonationHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UpdaterHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoDarkModeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="AboutWindow.xaml.cs" />
+    <EmbeddedResource Remove="Properties\Resources.zhtw.resx" />
+    <Page Remove="AboutWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+</Project>
