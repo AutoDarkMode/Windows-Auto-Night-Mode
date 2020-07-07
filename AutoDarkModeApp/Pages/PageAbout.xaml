@@ -29,7 +29,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2020 Armin Osaj / Armin2208" VerticalAlignment="Top" Height="16" Width="251"/>
 
         <!-- Social Media links-->
-        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="30" Source="/AutoDarkMode;component/Resources/GitHub_Logo_Black.png"/>
+        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="30" Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png"/>
         <TextBlock x:Name="GitHubTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -43,7 +43,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="50" Margin="120,125,0,0" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Width="50" Source="/AutoDarkMode;component/Resources/Twitter_Logo_Blue.png"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="120,125,0,0" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Width="50" Source="/AutoDarkModeApp;component/Resources/Twitter_Logo_Blue.png"/>
         <TextBlock x:Name="TwitterTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Twitter" VerticalAlignment="Top" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" PreviewKeyDown="TwitterTextBlock_PreviewKeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -57,7 +57,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="30" Margin="15,178,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="26" Source="/AutoDarkMode;component/Resources/PayPal_Logo.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="15,178,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="26" Source="/AutoDarkModeApp;component/Resources/PayPal_Logo.png"/>
         <TextBlock x:Name="PayPalTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,186,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="PayPal" VerticalAlignment="Top" MouseDown="PayPalTextBlock_MouseDown" KeyDown="PayPalTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">

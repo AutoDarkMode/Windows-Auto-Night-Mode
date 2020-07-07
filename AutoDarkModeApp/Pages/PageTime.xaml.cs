@@ -240,9 +240,6 @@ namespace AutoDarkModeApp.Pages
 
         private async void ApplyTheme()
         {
-            //this setting enables all the configuration possibilities of auto dark mode
-            builder.Config.AutoThemeSwitchingEnabled = true;
-
             //show warning for notebook on battery with enabled battery saver
             if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
@@ -420,7 +417,7 @@ namespace AutoDarkModeApp.Pages
         }
 
         //automatic theme switch checkbox
-        private void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
+        private async void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             StackPanelRadioHolder.IsEnabled = true;
             RadioButtonCustomTimes.IsChecked = true;
@@ -430,16 +427,48 @@ namespace AutoDarkModeApp.Pages
             lightStartBox.IsEnabled = true;
             LightStartMinutesBox.IsEnabled = true;
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
-        }
-        private void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //remove all tasks + autostart
-            if (e != null)
+            //this setting enables all the configuration possibilities of auto dark mode
+            builder.Config.AutoThemeSwitchingEnabled = true;
+            if (!init)
             {
-                builder.Config.AutoThemeSwitchingEnabled = false;
                 try
                 {
                     builder.Save();
+                    var result = await messagingClient.SendMesssageAndGetReplyAsync(Command.AddAutostart);
+                    if (result != Command.Ok)
+                    {
+                        throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
+                    }
+                }
+                catch (AddAutoStartException aex)
+                {
+                    ShowErrorMessage(aex);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+            }
+
+        }
+        private async void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //remove all tasks + autostart
+            if (e != null && !init)
+            {
+                builder.Config.AutoThemeSwitchingEnabled = true;
+                try
+                {
+                    builder.Save();
+                    var result = await messagingClient.SendMesssageAndGetReplyAsync(Command.RemoveAutostart);
+                    if (result != Command.Ok)
+                    {
+                        throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
+                    }
+                }
+                catch (AddAutoStartException aex)
+                {
+                    ShowErrorMessage(aex);
                 }
                 catch (Exception ex)
                 {
