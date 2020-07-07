@@ -457,7 +457,7 @@ namespace AutoDarkModeApp.Pages
             //remove all tasks + autostart
             if (e != null && !init)
             {
-                builder.Config.AutoThemeSwitchingEnabled = true;
+                builder.Config.AutoThemeSwitchingEnabled = false;
                 try
                 {
                     builder.Save();
