@@ -300,7 +300,7 @@
       <Version>1.0.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.18362.2005</Version>
+      <Version>10.0.19041.1</Version>
     </PackageReference>
     <PackageReference Include="TaskScheduler">
       <Version>2.8.20</Version>
