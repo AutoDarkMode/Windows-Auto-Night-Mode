@@ -24,15 +24,6 @@ namespace AutoDarkModeApp
             {
                 Shutdown();
             }
-            bool isClassicMode;
-            try
-            {
-                isClassicMode = autoDarkModeConfigBuilder.Config.ClassicMode;
-            }
-            catch (Exception)
-            {
-                isClassicMode = false;
-            }
 
             List<string> args = new List<string>();
             if (e.Args.Length > 0)
@@ -46,7 +37,7 @@ namespace AutoDarkModeApp
             }
 
             StartService();
-            int maxTries = 2;
+            int maxTries = 5;
             int tries = 0;
             bool heartBeatOK = false;
             while (tries < maxTries && !heartBeatOK)
