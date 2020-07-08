@@ -45,6 +45,22 @@ namespace AutoDarkModeApp.Pages
                 ActivateLocationMode();
                 RadioButtonLocationTimes.IsChecked = true;
             }
+            else
+            {
+                applyButton.IsEnabled = false;
+                if (Properties.Settings.Default.AlterTime)
+                {
+                    darkStartBox.Text = builder.Config.Sunset.ToString("hh", CultureInfo.InvariantCulture);
+                    lightStartBox.Text = builder.Config.Sunrise.ToString("hh", CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    darkStartBox.Text = builder.Config.Sunset.ToString("HH", CultureInfo.InvariantCulture);
+                    lightStartBox.Text = builder.Config.Sunrise.ToString("HH", CultureInfo.InvariantCulture);
+                }
+                DarkStartMinutesBox.Text = builder.Config.Sunset.ToString("mm", CultureInfo.InvariantCulture);
+                LightStartMinutesBox.Text = builder.Config.Sunrise.ToString("mm", CultureInfo.InvariantCulture);
+            }
             InitOffset();
             if (Settings.Default.AlterTime) AlterTime(true);
             init = false;
