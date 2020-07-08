@@ -366,7 +366,7 @@ namespace AutoDarkModeSvc
                 return true;
             }
 
-            if (config.ColorFilterEnabled && ColorFilterNeedsUpdate(config.ColorFilterEnabled, newTheme))
+            if (config.ColorFilterEnabled && ColorFilterNeedsUpdate(config.ColorFilterEnabled, rtc.ColorFilterEnabled, newTheme))
             {
                 return true;
             }
@@ -386,9 +386,17 @@ namespace AutoDarkModeSvc
             return false;
         }
 
-        private static bool ColorFilterNeedsUpdate(bool currentColorFilterEnabled, Theme newTheme)
+        private static bool ColorFilterNeedsUpdate(bool colorFilterEnabled, bool currentColorFilterEnabled, Theme newTheme)
         {
+            if (!colorFilterEnabled && currentColorFilterEnabled)
+            {
+                return true;
+            }
             if (!currentColorFilterEnabled && newTheme == Theme.Dark) {
+                return true;
+            } 
+            else if (currentColorFilterEnabled && newTheme == Theme.Light)
+            {
                 return true;
             }
             return false;
