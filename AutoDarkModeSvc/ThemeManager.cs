@@ -136,7 +136,7 @@ namespace AutoDarkModeSvc
 
                 if (automatic)
                 {
-                    Logger.Info($"theme switch invoked automatically. Sunrise:{sunrise.ToString("HH:mm:ss")}, Sunset{sunset.ToString("HH:mm:ss")}");
+                    Logger.Info($"theme switch invoked automatically. Sunrise:{sunrise.ToString("HH:mm:ss")}, Sunset:{sunset.ToString("HH:mm:ss")}");
                 }
                 else
                 {
@@ -196,7 +196,7 @@ namespace AutoDarkModeSvc
             }
             else
             {
-                if (newTheme == Theme.Light && rtc.CurrentColorPrevalence == true)
+                if (newTheme == Theme.Light)
                 {
                     RegistryHandler.SetColorPrevalence(0);
                     rtc.CurrentColorPrevalence = false;
@@ -328,14 +328,18 @@ namespace AutoDarkModeSvc
 
             if (config.SystemTheme != Mode.LightOnly)
             {
+                // if accent color is enabled in config, accent color is enabled in windows 
+                // and the target theme is light we need to update
                 if (config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence && newTheme == Theme.Light)
                 {
                     return true;
                 } 
+                // if accent color is enabled in config, but it's not currently active, update
                 else if (config.AccentColorTaskbarEnabled && !rtc.CurrentColorPrevalence)
                 {
                     return true;
                 }
+                // if accent color is disabled in config but still active, we need to disable it
                 else if (!config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence)
                 {
                     return true;
@@ -344,7 +348,6 @@ namespace AutoDarkModeSvc
 
             if (ComponentNeedsUpdate(config.SystemTheme, rtc.CurrentSystemTheme, newTheme))
             {
-
                 return true;
             }
 
