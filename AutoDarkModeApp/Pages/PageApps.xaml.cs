@@ -288,6 +288,14 @@ namespace AutoDarkModeApp
                 builder.Config.Office.LightTheme = 0;
                 OfficeComboBox_DropDownClosed(this, null);
             }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
         }
 
         private void ShowErrorMessage(Exception ex)
