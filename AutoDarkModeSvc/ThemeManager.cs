@@ -180,7 +180,7 @@ namespace AutoDarkModeSvc
                     RegistryHandler.SetColorPrevalence(1);
                     rtc.CurrentColorPrevalence = true;
                 }
-                else
+                else if (!config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence == true)
                 {
                     RegistryHandler.SetColorPrevalence(0);
                     rtc.CurrentColorPrevalence = false;
@@ -196,14 +196,11 @@ namespace AutoDarkModeSvc
             }
             else
             {
-                if (config.AccentColorTaskbarEnabled)
+                if (newTheme == Theme.Light && rtc.CurrentColorPrevalence == true)
                 {
-                    if (newTheme == Theme.Light)
-                    {
-                        RegistryHandler.SetColorPrevalence(0);
-                        rtc.CurrentColorPrevalence = false;
-                        await Task.Delay(taskdelay);
-                    }
+                    RegistryHandler.SetColorPrevalence(0);
+                    rtc.CurrentColorPrevalence = false;
+                    await Task.Delay(taskdelay);
                 }
                 RegistryHandler.SetSystemTheme((int)newTheme);
                 if (config.AccentColorTaskbarEnabled)
