@@ -53,9 +53,12 @@ namespace AutoDarkModeApp.Pages
                 CheckBoxEnergySaverMitigation.IsEnabled = false;
             }
 
-            if (builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
+            if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
-                SetBatterySliderVisiblity(Visibility.Visible);
+                SetBatterySliderVisiblity(Visibility.Hidden);
+            }
+            else
+            {
                 CheckBoxEnergySaverMitigation.IsChecked = true;
             }
 

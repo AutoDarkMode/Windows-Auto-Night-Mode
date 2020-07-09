@@ -526,4 +526,16 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
     <value>Bist du sicher?</value>
   </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Dunkles Design aktivieren wenn Gerät im Batteriemodus läuft</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Versuche den Stormsparmodus für den Designwechsel zu deaktivieren</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Funktioniert nur, wenn der Energiesparmodus nicht manuell aktiviert wurde!</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Stromsparmodus aktivieren bei folgdendem Akkustand</value>
+  </data>
 </root>
