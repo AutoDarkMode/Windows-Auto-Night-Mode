@@ -34,6 +34,7 @@ namespace AutoDarkModeSvc.Modules
             AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
             AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);
             AutoManageModule(typeof(GPUMonitorModule).Name, typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
+            AutoManageModule(typeof(EventModule).Name, typeof(EventModule), true, config.Events.Enabled);
         }
 
         /// <summary>

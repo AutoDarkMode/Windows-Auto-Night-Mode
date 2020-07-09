@@ -13,18 +13,20 @@ namespace AutoDarkModeSvc.Config
             Tunable = new Tunable();
             GPUMonitoring = new GPUMonitoring();
             Office = new Office();
+            Events = new Events();
         }
-        public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
-        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
         private Mode appsTheme;
         private Mode systemTheme;
         private Mode egdeTheme;
-        public bool ColorFilterEnabled { get; set; } = false;
+
         public bool AutoThemeSwitchingEnabled { get; set; }
-        public bool AccentColorTaskbarEnabled { get; set; }
         public bool ClassicMode { get; set; }
+        public bool ColorFilterEnabled { get; set; } = false;
+        public bool AccentColorTaskbarEnabled { get; set; }
         public string DarkThemePath { get; set; }
         public string LightThemePath { get; set; }
+        public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
+        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
         public Mode AppsTheme
         {
             get { return appsTheme; }
@@ -78,6 +80,13 @@ namespace AutoDarkModeSvc.Config
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
+        public Events Events { get; set; }
+    }
+
+    public class Events
+    {
+        public bool Enabled { get; set; }
+        public bool DarkThemeOnBattery { get; set; }
     }
 
     public class Office

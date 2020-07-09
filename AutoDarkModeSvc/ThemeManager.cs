@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
 using System.Threading;
 using System.IO;
+using Windows.System.Power;
 
 namespace AutoDarkModeSvc
 {
@@ -34,7 +35,15 @@ namespace AutoDarkModeSvc
             //the time bewteen sunrise and sunset, aka "day"
             if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
             {
-                SwitchTheme(builder.Config, Theme.Light, true, sunset, sunrise);
+                // ensure that the theme doesn't switch to light mode if the battery is discharging
+                if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.Discharging)
+                {
+                    SwitchTheme(builder.Config, Theme.Light, true, sunset, sunrise);
+                }
+                else if (!builder.Config.Events.DarkThemeOnBattery)
+                {
+                    SwitchTheme(builder.Config, Theme.Light, true, sunset, sunrise);
+                }
             }
             else
             {
