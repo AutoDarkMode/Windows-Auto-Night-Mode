@@ -22,7 +22,7 @@ namespace AutoDarkModeApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AutoDarkModeApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AutoDarkModeApp.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AutoDarkModeApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string About {
+        public static string About {
             get {
                 return ResourceManager.GetString("About", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
-        internal static string applyButton {
+        public static string applyButton {
             get {
                 return ResourceManager.GetString("applyButton", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enable automatic theme switching.
         /// </summary>
-        internal static string autoCheckBox {
+        public static string autoCheckBox {
             get {
                 return ResourceManager.GetString("autoCheckBox", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Download Extension.
         /// </summary>
-        internal static string buttonDownloadExtension {
+        public static string buttonDownloadExtension {
             get {
                 return ResourceManager.GetString("buttonDownloadExtension", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string cancel {
+        public static string cancel {
             get {
                 return ResourceManager.GetString("cancel", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 12 hour clock.
         /// </summary>
-        internal static string cb12HourTime {
+        public static string cb12HourTime {
             get {
                 return ResourceManager.GetString("cb12HourTime", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace AutoDarkModeApp.Properties {
         ///   Looks up a localized string similar to Only visible in dark mode.
         ///If you run into issues: please increase the switching delay in settings. .
         /// </summary>
-        internal static string cbAccentColor {
+        public static string cbAccentColor {
             get {
                 return ResourceManager.GetString("cbAccentColor", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Search for updates in background.
         /// </summary>
-        internal static string cbBackgroundUpdate {
+        public static string cbBackgroundUpdate {
             get {
                 return ResourceManager.GetString("cbBackgroundUpdate", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Switch after Connected Standby (not recommended).
         /// </summary>
-        internal static string cbConnectedStandby {
+        public static string cbConnectedStandby {
             get {
                 return ResourceManager.GetString("cbConnectedStandby", resourceCulture);
             }
@@ -147,7 +147,7 @@ namespace AutoDarkModeApp.Properties {
         ///Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
         ///But it also reduces the battery life, so ONLY activate if necessary!.
         /// </summary>
-        internal static string cbConnectedStandbyTooltip {
+        public static string cbConnectedStandbyTooltip {
             get {
                 return ResourceManager.GetString("cbConnectedStandbyTooltip", resourceCulture);
             }
@@ -156,16 +156,25 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Alternative light theme.
         /// </summary>
-        internal static string cbOfficeWhiteTheme {
+        public static string cbOfficeWhiteTheme {
             get {
                 return ResourceManager.GetString("cbOfficeWhiteTheme", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable dark mode when device is unplugged.
+        /// </summary>
+        public static string cbSettingsBatteryDarkMode {
+            get {
+                return ResourceManager.GetString("cbSettingsBatteryDarkMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use grayscale color filter (sends Win + Ctrl + C).
         /// </summary>
-        internal static string cbSettingsColourFilter {
+        public static string cbSettingsColourFilter {
             get {
                 return ResourceManager.GetString("cbSettingsColourFilter", resourceCulture);
             }
@@ -174,7 +183,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Use Logon Task instead of Autostart entry.
         /// </summary>
-        internal static string cbSettingsLogonTask {
+        public static string cbSettingsLogonTask {
             get {
                 return ResourceManager.GetString("cbSettingsLogonTask", resourceCulture);
             }
@@ -183,7 +192,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Multi-User support.
         /// </summary>
-        internal static string cbSettingsMultiUserImprovements {
+        public static string cbSettingsMultiUserImprovements {
             get {
                 return ResourceManager.GetString("cbSettingsMultiUserImprovements", resourceCulture);
             }
@@ -192,7 +201,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This option is disabled, because you haven&apos;t installed the Windows 10 April 2019 Update on your machine..
         /// </summary>
-        internal static string cmb1903 {
+        public static string cmb1903 {
             get {
                 return ResourceManager.GetString("cmb1903", resourceCulture);
             }
@@ -201,7 +210,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Accent Color for Taskbar.
         /// </summary>
-        internal static string cmbAccentColor {
+        public static string cmbAccentColor {
             get {
                 return ResourceManager.GetString("cmbAccentColor", resourceCulture);
             }
@@ -210,7 +219,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Adapt to system.
         /// </summary>
-        internal static string cmbAdjTheme {
+        public static string cmbAdjTheme {
             get {
                 return ResourceManager.GetString("cmbAdjTheme", resourceCulture);
             }
@@ -219,7 +228,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Always dark.
         /// </summary>
-        internal static string cmbAlwDark {
+        public static string cmbAlwDark {
             get {
                 return ResourceManager.GetString("cmbAlwDark", resourceCulture);
             }
@@ -228,7 +237,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Always light.
         /// </summary>
-        internal static string cmbAlwWhite {
+        public static string cmbAlwWhite {
             get {
                 return ResourceManager.GetString("cmbAlwWhite", resourceCulture);
             }
@@ -237,7 +246,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Currently:.
         /// </summary>
-        internal static string dbCurrently {
+        public static string dbCurrently {
             get {
                 return ResourceManager.GetString("dbCurrently", resourceCulture);
             }
@@ -246,7 +255,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wallpaper for dark theme.
         /// </summary>
-        internal static string dbDark {
+        public static string dbDark {
             get {
                 return ResourceManager.GetString("dbDark", resourceCulture);
             }
@@ -255,7 +264,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Delete/Disable.
         /// </summary>
-        internal static string dbDel {
+        public static string dbDel {
             get {
                 return ResourceManager.GetString("dbDel", resourceCulture);
             }
@@ -264,7 +273,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Maybe your picture file is corrupted or the path doesn&apos;t exist..
         /// </summary>
-        internal static string dbErrorText {
+        public static string dbErrorText {
             get {
                 return ResourceManager.GetString("dbErrorText", resourceCulture);
             }
@@ -273,7 +282,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Pick file.
         /// </summary>
-        internal static string dbFilePicker {
+        public static string dbFilePicker {
             get {
                 return ResourceManager.GetString("dbFilePicker", resourceCulture);
             }
@@ -282,7 +291,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wallpaper for light theme.
         /// </summary>
-        internal static string dbLight {
+        public static string dbLight {
             get {
                 return ResourceManager.GetString("dbLight", resourceCulture);
             }
@@ -291,7 +300,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Desktop Background.
         /// </summary>
-        internal static string dbMainHeader {
+        public static string dbMainHeader {
             get {
                 return ResourceManager.GetString("dbMainHeader", resourceCulture);
             }
@@ -300,7 +309,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Pictures.
         /// </summary>
-        internal static string dbPictures {
+        public static string dbPictures {
             get {
                 return ResourceManager.GetString("dbPictures", resourceCulture);
             }
@@ -309,7 +318,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to We couldn&apos;t generate a preview of your image, sorry!.
         /// </summary>
-        internal static string dbPreviewError {
+        public static string dbPreviewError {
             get {
                 return ResourceManager.GetString("dbPreviewError", resourceCulture);
             }
@@ -318,7 +327,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to We couldn&apos;t save your settings, sorry!.
         /// </summary>
-        internal static string dbSavedError {
+        public static string dbSavedError {
             get {
                 return ResourceManager.GetString("dbSavedError", resourceCulture);
             }
@@ -327,7 +336,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please select two wallpapers.
         /// </summary>
-        internal static string dbSaveToolTip {
+        public static string dbSaveToolTip {
             get {
                 return ResourceManager.GetString("dbSaveToolTip", resourceCulture);
             }
@@ -336,7 +345,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please select an image.
         /// </summary>
-        internal static string dbSelectImage {
+        public static string dbSelectImage {
             get {
                 return ResourceManager.GetString("dbSelectImage", resourceCulture);
             }
@@ -345,7 +354,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configure Desktop Background.
         /// </summary>
-        internal static string dbTitle {
+        public static string dbTitle {
             get {
                 return ResourceManager.GetString("dbTitle", resourceCulture);
             }
@@ -354,7 +363,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to use current background.
         /// </summary>
-        internal static string dbUseCurrent {
+        public static string dbUseCurrent {
             get {
                 return ResourceManager.GetString("dbUseCurrent", resourceCulture);
             }
@@ -363,7 +372,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enable features for Windows 1903.
         /// </summary>
-        internal static string debugModeCheckBox {
+        public static string debugModeCheckBox {
             get {
                 return ResourceManager.GetString("debugModeCheckBox", resourceCulture);
             }
@@ -372,7 +381,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Disabled.
         /// </summary>
-        internal static string disabled {
+        public static string disabled {
             get {
                 return ResourceManager.GetString("disabled", resourceCulture);
             }
@@ -386,7 +395,7 @@ namespace AutoDarkModeApp.Properties {
         ///
         ///For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work..
         /// </summary>
-        internal static string donationDescription {
+        public static string donationDescription {
             get {
                 return ResourceManager.GetString("donationDescription", resourceCulture);
             }
@@ -395,7 +404,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Why should you donate?.
         /// </summary>
-        internal static string DonationHeaderReason {
+        public static string DonationHeaderReason {
             get {
                 return ResourceManager.GetString("DonationHeaderReason", resourceCulture);
             }
@@ -404,7 +413,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to How to donate?.
         /// </summary>
-        internal static string DonationHowTo {
+        public static string DonationHowTo {
             get {
                 return ResourceManager.GetString("DonationHowTo", resourceCulture);
             }
@@ -413,7 +422,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You can send me money via PayPal. It&apos;s completely voluntary and you shouldn&apos;t expect any compensation..
         /// </summary>
-        internal static string DonationPayPalDescription {
+        public static string DonationPayPalDescription {
             get {
                 return ResourceManager.GetString("DonationPayPalDescription", resourceCulture);
             }
@@ -422,7 +431,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enabled.
         /// </summary>
-        internal static string enabled {
+        public static string enabled {
             get {
                 return ResourceManager.GetString("enabled", resourceCulture);
             }
@@ -437,7 +446,7 @@ namespace AutoDarkModeApp.Properties {
         ///
         ///Sidenote: NEVER run Auto Dark Mode as administrator manually!.
         /// </summary>
-        internal static string ErrorApplyRestart {
+        public static string ErrorApplyRestart {
             get {
                 return ResourceManager.GetString("ErrorApplyRestart", resourceCulture);
             }
@@ -446,7 +455,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error: Your input is invalid.
         /// </summary>
-        internal static string errorNumberInput {
+        public static string errorNumberInput {
             get {
                 return ResourceManager.GetString("errorNumberInput", resourceCulture);
             }
@@ -455,7 +464,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to An error has occured.
         /// </summary>
-        internal static string errorOcurredTitle {
+        public static string errorOcurredTitle {
             get {
                 return ResourceManager.GetString("errorOcurredTitle", resourceCulture);
             }
@@ -471,7 +480,7 @@ namespace AutoDarkModeApp.Properties {
         ///
         ///If these things didn&apos;t help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the &quot;Yes&quot; button..
         /// </summary>
-        internal static string errorThemeApply {
+        public static string errorThemeApply {
             get {
                 return ResourceManager.GetString("errorThemeApply", resourceCulture);
             }
@@ -480,7 +489,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Info.
         /// </summary>
-        internal static string info {
+        public static string info {
             get {
                 return ResourceManager.GetString("info", resourceCulture);
             }
@@ -489,7 +498,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Apps:.
         /// </summary>
-        internal static string lblApps {
+        public static string lblApps {
             get {
                 return ResourceManager.GetString("lblApps", resourceCulture);
             }
@@ -498,7 +507,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
-        internal static string lblCity {
+        public static string lblCity {
             get {
                 return ResourceManager.GetString("lblCity", resourceCulture);
             }
@@ -507,7 +516,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Custom start time.
         /// </summary>
-        internal static string lblCustomStart {
+        public static string lblCustomStart {
             get {
                 return ResourceManager.GetString("lblCustomStart", resourceCulture);
             }
@@ -516,7 +525,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
-        internal static string lblDark {
+        public static string lblDark {
             get {
                 return ResourceManager.GetString("lblDark", resourceCulture);
             }
@@ -525,7 +534,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Dark theme.
         /// </summary>
-        internal static string lblDarkTheme {
+        public static string lblDarkTheme {
             get {
                 return ResourceManager.GetString("lblDarkTheme", resourceCulture);
             }
@@ -534,7 +543,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Edge (Legacy):.
         /// </summary>
-        internal static string lblEdge {
+        public static string lblEdge {
             get {
                 return ResourceManager.GetString("lblEdge", resourceCulture);
             }
@@ -543,7 +552,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Language:.
         /// </summary>
-        internal static string lblLanguage {
+        public static string lblLanguage {
             get {
                 return ResourceManager.GetString("lblLanguage", resourceCulture);
             }
@@ -552,7 +561,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Light.
         /// </summary>
-        internal static string lblLight {
+        public static string lblLight {
             get {
                 return ResourceManager.GetString("lblLight", resourceCulture);
             }
@@ -561,7 +570,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Light theme.
         /// </summary>
-        internal static string lblLightTheme {
+        public static string lblLightTheme {
             get {
                 return ResourceManager.GetString("lblLightTheme", resourceCulture);
             }
@@ -570,7 +579,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Offset.
         /// </summary>
-        internal static string lblOffset {
+        public static string lblOffset {
             get {
                 return ResourceManager.GetString("lblOffset", resourceCulture);
             }
@@ -579,7 +588,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
-        internal static string lblReset {
+        public static string lblReset {
             get {
                 return ResourceManager.GetString("lblReset", resourceCulture);
             }
@@ -588,7 +597,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string lblSettings {
+        public static string lblSettings {
             get {
                 return ResourceManager.GetString("lblSettings", resourceCulture);
             }
@@ -597,7 +606,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Switch current theme.
         /// </summary>
-        internal static string lblSwitchTheme {
+        public static string lblSwitchTheme {
             get {
                 return ResourceManager.GetString("lblSwitchTheme", resourceCulture);
             }
@@ -606,7 +615,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to System:.
         /// </summary>
-        internal static string lblSystem {
+        public static string lblSystem {
             get {
                 return ResourceManager.GetString("lblSystem", resourceCulture);
             }
@@ -615,7 +624,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Used third party software.
         /// </summary>
-        internal static string lblThirdParty {
+        public static string lblThirdParty {
             get {
                 return ResourceManager.GetString("lblThirdParty", resourceCulture);
             }
@@ -624,7 +633,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Translator: Armin Osaj.
         /// </summary>
-        internal static string lblTranslator {
+        public static string lblTranslator {
             get {
                 return ResourceManager.GetString("lblTranslator", resourceCulture);
             }
@@ -633,7 +642,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Updates.
         /// </summary>
-        internal static string lblUpdates {
+        public static string lblUpdates {
             get {
                 return ResourceManager.GetString("lblUpdates", resourceCulture);
             }
@@ -642,7 +651,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Use Location Service.
         /// </summary>
-        internal static string locationCheckBox {
+        public static string locationCheckBox {
             get {
                 return ResourceManager.GetString("locationCheckBox", resourceCulture);
             }
@@ -651,7 +660,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Not found.
         /// </summary>
-        internal static string locationCityNotFound {
+        public static string locationCityNotFound {
             get {
                 return ResourceManager.GetString("locationCityNotFound", resourceCulture);
             }
@@ -660,7 +669,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Due to a Windows bug, the taskbar doesn&apos;t properly switch its color in battery saver mode. Please turn off battery saver if you run into issues..
         /// </summary>
-        internal static string msgBatterySaver {
+        public static string msgBatterySaver {
             get {
                 return ResourceManager.GetString("msgBatterySaver", resourceCulture);
             }
@@ -669,7 +678,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your changes have been saved!.
         /// </summary>
-        internal static string msgChangesSaved {
+        public static string msgChangesSaved {
             get {
                 return ResourceManager.GetString("msgChangesSaved", resourceCulture);
             }
@@ -678,7 +687,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Click Apply to save changes..
         /// </summary>
-        internal static string msgClickApply {
+        public static string msgClickApply {
             get {
                 return ResourceManager.GetString("msgClickApply", resourceCulture);
             }
@@ -687,7 +696,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string msgClose {
+        public static string msgClose {
             get {
                 return ResourceManager.GetString("msgClose", resourceCulture);
             }
@@ -696,7 +705,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Download update.
         /// </summary>
-        internal static string msgDownloadUpd {
+        public static string msgDownloadUpd {
             get {
                 return ResourceManager.GetString("msgDownloadUpd", resourceCulture);
             }
@@ -705,7 +714,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to error occurred :(.
         /// </summary>
-        internal static string msgErrorOcc {
+        public static string msgErrorOcc {
             get {
                 return ResourceManager.GetString("msgErrorOcc", resourceCulture);
             }
@@ -714,7 +723,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This app needs access to your location.
         /// </summary>
-        internal static string msgLocPerm {
+        public static string msgLocPerm {
             get {
                 return ResourceManager.GetString("msgLocPerm", resourceCulture);
             }
@@ -723,7 +732,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
-        internal static string msgNo {
+        public static string msgNo {
             get {
                 return ResourceManager.GetString("msgNo", resourceCulture);
             }
@@ -732,7 +741,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No new updates are available..
         /// </summary>
-        internal static string msgNoUpd {
+        public static string msgNoUpd {
             get {
                 return ResourceManager.GetString("msgNoUpd", resourceCulture);
             }
@@ -741,7 +750,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Searching your location....
         /// </summary>
-        internal static string msgSearchLoc {
+        public static string msgSearchLoc {
             get {
                 return ResourceManager.GetString("msgSearchLoc", resourceCulture);
             }
@@ -750,7 +759,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Looking for updates....
         /// </summary>
-        internal static string msgSearchUpd {
+        public static string msgSearchUpd {
             get {
                 return ResourceManager.GetString("msgSearchUpd", resourceCulture);
             }
@@ -759,7 +768,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Warning: We couldn&apos;t read your current theme..
         /// </summary>
-        internal static string msgThemeError {
+        public static string msgThemeError {
             get {
                 return ResourceManager.GetString("msgThemeError", resourceCulture);
             }
@@ -768,7 +777,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A new update is available!.
         /// </summary>
-        internal static string msgUpdateAvail {
+        public static string msgUpdateAvail {
             get {
                 return ResourceManager.GetString("msgUpdateAvail", resourceCulture);
             }
@@ -782,7 +791,7 @@ namespace AutoDarkModeApp.Properties {
         ///
         ///Currently installed version: {0}, new version: {1}.
         /// </summary>
-        internal static string msgUpdaterText {
+        public static string msgUpdaterText {
             get {
                 return ResourceManager.GetString("msgUpdaterText", resourceCulture);
             }
@@ -791,7 +800,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
-        internal static string MsgYes {
+        public static string MsgYes {
             get {
                 return ResourceManager.GetString("MsgYes", resourceCulture);
             }
@@ -800,7 +809,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
-        internal static string NavbarAbout {
+        public static string NavbarAbout {
             get {
                 return ResourceManager.GetString("NavbarAbout", resourceCulture);
             }
@@ -809,7 +818,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Apps.
         /// </summary>
-        internal static string NavbarApps {
+        public static string NavbarApps {
             get {
                 return ResourceManager.GetString("NavbarApps", resourceCulture);
             }
@@ -818,7 +827,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Donate.
         /// </summary>
-        internal static string NavbarDonation {
+        public static string NavbarDonation {
             get {
                 return ResourceManager.GetString("NavbarDonation", resourceCulture);
             }
@@ -827,7 +836,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string NavbarSettings {
+        public static string NavbarSettings {
             get {
                 return ResourceManager.GetString("NavbarSettings", resourceCulture);
             }
@@ -836,7 +845,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Time.
         /// </summary>
-        internal static string NavbarTime {
+        public static string NavbarTime {
             get {
                 return ResourceManager.GetString("NavbarTime", resourceCulture);
             }
@@ -845,7 +854,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Menu.
         /// </summary>
-        internal static string NavbarTitle {
+        public static string NavbarTitle {
             get {
                 return ResourceManager.GetString("NavbarTitle", resourceCulture);
             }
@@ -854,7 +863,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wallpaper/Theme.
         /// </summary>
-        internal static string NavbarWallpaper {
+        public static string NavbarWallpaper {
             get {
                 return ResourceManager.GetString("NavbarWallpaper", resourceCulture);
             }
@@ -863,7 +872,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set.
         /// </summary>
-        internal static string offsetButton {
+        public static string offsetButton {
             get {
                 return ResourceManager.GetString("offsetButton", resourceCulture);
             }
@@ -872,7 +881,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Open Folder.
         /// </summary>
-        internal static string OpenPath {
+        public static string OpenPath {
             get {
                 return ResourceManager.GetString("OpenPath", resourceCulture);
             }
@@ -881,7 +890,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to or.
         /// </summary>
-        internal static string or {
+        public static string or {
             get {
                 return ResourceManager.GetString("or", resourceCulture);
             }
@@ -890,7 +899,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set custom hours.
         /// </summary>
-        internal static string rbCustomHours {
+        public static string rbCustomHours {
             get {
                 return ResourceManager.GetString("rbCustomHours", resourceCulture);
             }
@@ -899,7 +908,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to From sunset to sunrise.
         /// </summary>
-        internal static string rbLocation {
+        public static string rbLocation {
             get {
                 return ResourceManager.GetString("rbLocation", resourceCulture);
             }
@@ -908,7 +917,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
-        internal static string restart {
+        public static string restart {
             get {
                 return ResourceManager.GetString("restart", resourceCulture);
             }
@@ -917,7 +926,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to App restart required to see changes.
         /// </summary>
-        internal static string restartNeeded {
+        public static string restartNeeded {
             get {
                 return ResourceManager.GetString("restartNeeded", resourceCulture);
             }
@@ -926,7 +935,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
-        internal static string save {
+        public static string save {
             get {
                 return ResourceManager.GetString("save", resourceCulture);
             }
@@ -935,7 +944,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Delay for switching taskbar colors (ms):.
         /// </summary>
-        internal static string SettingsAccentColorTimeout {
+        public static string SettingsAccentColorTimeout {
             get {
                 return ResourceManager.GetString("SettingsAccentColorTimeout", resourceCulture);
             }
@@ -944,7 +953,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Recommended tools.
         /// </summary>
-        internal static string tbAppsTitleRecommendedTools {
+        public static string tbAppsTitleRecommendedTools {
             get {
                 return ResourceManager.GetString("tbAppsTitleRecommendedTools", resourceCulture);
             }
@@ -953,7 +962,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This browser extension makes websites in Chrome, Firefox and Edge respect the system theme..
         /// </summary>
-        internal static string tbDarkReaderDescription {
+        public static string tbDarkReaderDescription {
             get {
                 return ResourceManager.GetString("tbDarkReaderDescription", resourceCulture);
             }
@@ -962,7 +971,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Need help with a problem?.
         /// </summary>
-        internal static string tbHelp {
+        public static string tbHelp {
             get {
                 return ResourceManager.GetString("tbHelp", resourceCulture);
             }
@@ -971,7 +980,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Optional delay for activating grayscale color filter:.
         /// </summary>
-        internal static string tbSettingsColourFilterDelay {
+        public static string tbSettingsColourFilterDelay {
             get {
                 return ResourceManager.GetString("tbSettingsColourFilterDelay", resourceCulture);
             }
@@ -980,7 +989,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error occurred while applying the selected themes, we disabled theme switching.
         /// </summary>
-        internal static string ThemeApplyError1 {
+        public static string ThemeApplyError1 {
             get {
                 return ResourceManager.GetString("ThemeApplyError1", resourceCulture);
             }
@@ -989,7 +998,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings..
         /// </summary>
-        internal static string ThemeApplyError2 {
+        public static string ThemeApplyError2 {
             get {
                 return ResourceManager.GetString("ThemeApplyError2", resourceCulture);
             }
@@ -998,7 +1007,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Dark Theme:.
         /// </summary>
-        internal static string ThemeDark {
+        public static string ThemeDark {
             get {
                 return ResourceManager.GetString("ThemeDark", resourceCulture);
             }
@@ -1007,7 +1016,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Create your themes.
         /// </summary>
-        internal static string ThemeHeaderCreate {
+        public static string ThemeHeaderCreate {
             get {
                 return ResourceManager.GetString("ThemeHeaderCreate", resourceCulture);
             }
@@ -1016,7 +1025,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Pick your themes.
         /// </summary>
-        internal static string ThemeHeaderPick {
+        public static string ThemeHeaderPick {
             get {
                 return ResourceManager.GetString("ThemeHeaderPick", resourceCulture);
             }
@@ -1025,7 +1034,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Light Theme:.
         /// </summary>
-        internal static string ThemeLight {
+        public static string ThemeLight {
             get {
                 return ResourceManager.GetString("ThemeLight", resourceCulture);
             }
@@ -1034,7 +1043,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Select mode:.
         /// </summary>
-        internal static string ThemeSelection {
+        public static string ThemeSelection {
             get {
                 return ResourceManager.GetString("ThemeSelection", resourceCulture);
             }
@@ -1043,7 +1052,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Windows Theme (more features).
         /// </summary>
-        internal static string ThemeSelectionTheme {
+        public static string ThemeSelectionTheme {
             get {
                 return ResourceManager.GetString("ThemeSelectionTheme", resourceCulture);
             }
@@ -1052,7 +1061,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Desktop Wallpaper (recommended).
         /// </summary>
-        internal static string ThemeSelectionWallaper {
+        public static string ThemeSelectionWallaper {
             get {
                 return ResourceManager.GetString("ThemeSelectionWallaper", resourceCulture);
             }
@@ -1061,7 +1070,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Step.
         /// </summary>
-        internal static string ThemeTutorialStep {
+        public static string ThemeTutorialStep {
             get {
                 return ResourceManager.GetString("ThemeTutorialStep", resourceCulture);
             }
@@ -1070,7 +1079,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Click here to open Windows Theme settings..
         /// </summary>
-        internal static string ThemeTutorialStep1 {
+        public static string ThemeTutorialStep1 {
             get {
                 return ResourceManager.GetString("ThemeTutorialStep1", resourceCulture);
             }
@@ -1079,7 +1088,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Now navigate to &apos;Colors&apos; and change the system color to &apos;Light&apos; for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color..
         /// </summary>
-        internal static string ThemeTutorialStep2 {
+        public static string ThemeTutorialStep2 {
             get {
                 return ResourceManager.GetString("ThemeTutorialStep2", resourceCulture);
             }
@@ -1088,7 +1097,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Go back to theme settings and save your theme..
         /// </summary>
-        internal static string ThemeTutorialStep3 {
+        public static string ThemeTutorialStep3 {
             get {
                 return ResourceManager.GetString("ThemeTutorialStep3", resourceCulture);
             }
@@ -1097,7 +1106,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Repeat this process for the dark theme..
         /// </summary>
-        internal static string ThemeTutorialStep4 {
+        public static string ThemeTutorialStep4 {
             get {
                 return ResourceManager.GetString("ThemeTutorialStep4", resourceCulture);
             }
@@ -1106,7 +1115,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Auto Dark Mode.
         /// </summary>
-        internal static string Title {
+        public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
             }
@@ -1116,7 +1125,7 @@ namespace AutoDarkModeApp.Properties {
         ///   Looks up a localized string similar to These options are disabled while using a Windows Theme. 
         ///You can set them up individually in your Windows Theme..
         /// </summary>
-        internal static string ToolTipDisabledDueTheme {
+        public static string ToolTipDisabledDueTheme {
             get {
                 return ResourceManager.GetString("ToolTipDisabledDueTheme", resourceCulture);
             }
@@ -1125,7 +1134,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Check for updates.
         /// </summary>
-        internal static string updateButton {
+        public static string updateButton {
             get {
                 return ResourceManager.GetString("updateButton", resourceCulture);
             }
@@ -1134,7 +1143,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to We check for updates at every program start..
         /// </summary>
-        internal static string updateInfoText {
+        public static string updateInfoText {
             get {
                 return ResourceManager.GetString("updateInfoText", resourceCulture);
             }
@@ -1143,7 +1152,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
-        internal static string userFeedback {
+        public static string userFeedback {
             get {
                 return ResourceManager.GetString("userFeedback", resourceCulture);
             }
@@ -1152,7 +1161,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Download later.
         /// </summary>
-        internal static string VersionXUpdaterButtonLater {
+        public static string VersionXUpdaterButtonLater {
             get {
                 return ResourceManager.GetString("VersionXUpdaterButtonLater", resourceCulture);
             }
@@ -1161,7 +1170,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Never remind me again.
         /// </summary>
-        internal static string VersionXUpdaterButtonNever {
+        public static string VersionXUpdaterButtonNever {
             get {
                 return ResourceManager.GetString("VersionXUpdaterButtonNever", resourceCulture);
             }
@@ -1170,7 +1179,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Download now.
         /// </summary>
-        internal static string VersionXUpdaterButtonNow {
+        public static string VersionXUpdaterButtonNow {
             get {
                 return ResourceManager.GetString("VersionXUpdaterButtonNow", resourceCulture);
             }
@@ -1184,7 +1193,7 @@ namespace AutoDarkModeApp.Properties {
         ///Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
         ///- Game Mode: disable theme swit [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string VersionXUpdaterDescription {
+        public static string VersionXUpdaterDescription {
             get {
                 return ResourceManager.GetString("VersionXUpdaterDescription", resourceCulture);
             }
@@ -1193,7 +1202,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Auto Dark Mode X is available.
         /// </summary>
-        internal static string VersionXUpdaterHeader {
+        public static string VersionXUpdaterHeader {
             get {
                 return ResourceManager.GetString("VersionXUpdaterHeader", resourceCulture);
             }
@@ -1202,7 +1211,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Version X is a great, big update that you should definitely try out! Are you sure you DON&apos;T want to download it? We will never remind you again!.
         /// </summary>
-        internal static string VersionXUpdaterNeverDescription {
+        public static string VersionXUpdaterNeverDescription {
             get {
                 return ResourceManager.GetString("VersionXUpdaterNeverDescription", resourceCulture);
             }
@@ -1211,7 +1220,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
-        internal static string VersionXUpdaterNeverTitle {
+        public static string VersionXUpdaterNeverTitle {
             get {
                 return ResourceManager.GetString("VersionXUpdaterNeverTitle", resourceCulture);
             }
@@ -1220,7 +1229,7 @@ namespace AutoDarkModeApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Activate the checkbox to enable automatic theme switching.
         /// </summary>
-        internal static string welcomeText {
+        public static string welcomeText {
             get {
                 return ResourceManager.GetString("welcomeText", resourceCulture);
             }

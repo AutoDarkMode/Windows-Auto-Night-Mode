@@ -30,7 +30,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ShowErrorMessage(ex, "PageSettings");
             }
             InitializeComponent();
             UiHandler();
@@ -130,19 +130,36 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
+        private void CheckBoxBatteryDarkMode_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxBatteryDarkMode.IsChecked.Value)
+            {
+                builder.Config.Events.Enabled = true;
+                builder.Config.Events.DarkThemeOnBattery = true;
+            }
+            else
+            {
+                builder.Config.Events.Enabled = true;
+                builder.Config.Events.DarkThemeOnBattery = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxBatteryDarkMode_Click");
+            }
+        }
 
         private async void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
-            RegeditHandler regeditHandler = new RegeditHandler();
-
             if(CheckBoxColourFilter.IsChecked.Value)
             {
-                regeditHandler.ColourFilterSetup();
                 builder.Config.ColorFilterEnabled = true;
             }
             else
             {
-                regeditHandler.ColourFilterKeySender(false);
                 builder.Config.ColorFilterEnabled = false;
             }
             try
@@ -151,7 +168,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
             }
             await messagingClient.SendMessageAsync(Command.Switch);
         }
@@ -186,7 +203,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 catch(Exception ex)
                 {
-                    ShowErrorMessage(ex);
+                    ShowErrorMessage(ex, "TextboxAccentColorDelay_TextChanged");
                 }
             }
         }
@@ -200,9 +217,9 @@ namespace AutoDarkModeApp.Pages
             });
         }
 
-        private void ShowErrorMessage(Exception ex)
+        private void ShowErrorMessage(Exception ex, string location)
         {
-            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
             MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
