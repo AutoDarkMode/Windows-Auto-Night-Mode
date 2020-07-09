@@ -119,7 +119,27 @@ namespace AutoDarkModeSvc.Config
 
     public class Tunable
     {
+        private int batterySliderDefaultValue = 25;
         public int AccentColorSwitchDelay { get; set; } = 500;
+        public int BatterySliderDefaultValue
+        {
+            get { return batterySliderDefaultValue; }
+            set
+            {
+                if (value < 0)
+                {
+                    batterySliderDefaultValue = 0;
+                }
+                else if (value > 100)
+                {
+                    batterySliderDefaultValue = 100;
+                }
+                else
+                {
+                    batterySliderDefaultValue = value;
+                }
+            }
+        }
     }
 
     public class GPUMonitoring

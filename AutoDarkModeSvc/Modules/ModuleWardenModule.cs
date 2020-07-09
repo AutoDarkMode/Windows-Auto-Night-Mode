@@ -30,8 +30,8 @@ namespace AutoDarkModeSvc.Modules
         public override void Fire()
         {
             AdmConfig config = ConfigBuilder.Config;
-            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), false, config.AutoThemeSwitchingEnabled && !Rtc.PostponeSwitch);
             AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
+            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !Rtc.PostponeSwitch);
             AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);
             AutoManageModule(typeof(GPUMonitorModule).Name, typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(EventModule).Name, typeof(EventModule), true, config.Events.Enabled);

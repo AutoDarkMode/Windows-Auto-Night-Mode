@@ -534,4 +534,7 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
     <value>Enable dark mode when device is unplugged</value>
   </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Default value for energy saver slider</value>
+  </data>
 </root>

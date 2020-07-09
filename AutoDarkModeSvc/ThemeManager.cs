@@ -53,6 +53,7 @@ namespace AutoDarkModeSvc
 
         public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
+            PowerHandler.DisableEnergySaver();
             if (config.ClassicMode)
             {
                 ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
@@ -61,6 +62,8 @@ namespace AutoDarkModeSvc
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
+            PowerHandler.RestoreEnergySaver(config);
+
         }
 
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)

@@ -951,6 +951,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default value for energy saver slider.
+        /// </summary>
+        public static string SettingsBatterySlider {
+            get {
+                return ResourceManager.GetString("SettingsBatterySlider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recommended tools.
         /// </summary>
         public static string tbAppsTitleRecommendedTools {

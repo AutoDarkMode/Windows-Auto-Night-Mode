@@ -54,6 +54,7 @@ namespace AutoDarkModeApp.Pages
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
             TextboxAccentColorDelay.Text = builder.Config.Tunable.AccentColorSwitchDelay.ToString();
+            BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
         }
 
         private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
@@ -236,6 +237,23 @@ namespace AutoDarkModeApp.Pages
                 });
             }
             return;
+        }
+
+        private void BatterySlider_Save(object sender, EventArgs e)
+        {
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "BatterySlider_Save");
+            }
+        }
+
+        private void BatterySlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+
         }
     }
 }

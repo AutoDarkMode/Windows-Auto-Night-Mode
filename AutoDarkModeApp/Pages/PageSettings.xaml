@@ -33,8 +33,11 @@
 
             <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="26" Margin="0,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" ContextMenu="{x:Null}" MaxLength="4"/>
-            
-            
+            <TextBlock HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsBatterySlider}" VerticalAlignment="Top"/>
+            <Slider Name="BatterySlider" HorizontalAlignment="Left" Width="270" Margin="0,5,0,0" Thumb.DragCompleted="BatterySlider_Save" KeyUp="BatterySlider_Save" Value="25" Minimum="0" Maximum="100" IsSnapToTickEnabled="True"/>
+            <TextBlock HorizontalAlignment="Center" Margin="-0,0,0,0" TextWrapping="Wrap" Text="{Binding ElementName=BatterySlider,Path=Value}" VerticalAlignment="Top"/>
+
+
             <!-- Language selection-->
             <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
             <ComboBox x:Name="ComboBoxLanguageSelection" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="150" Height="28" SelectedIndex="1" DropDownClosed="ComboBoxLanguageSelection_DropDownClosed" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
