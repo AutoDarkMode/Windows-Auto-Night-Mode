@@ -123,7 +123,7 @@ namespace AutoDarkModeSvc
             {
                 return;
             }
-            PowerHandler.DisableEnergySaver();
+            PowerHandler.DisableEnergySaver(config);
             var oldsys = rtc.CurrentSystemTheme;
             var oldapp = rtc.CurrentAppsTheme;
             var oldedg = rtc.CurrentEdgeTheme;

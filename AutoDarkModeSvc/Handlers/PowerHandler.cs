@@ -11,8 +11,13 @@ namespace AutoDarkModeSvc.Handlers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static bool allowRestore = false;
-        public static void DisableEnergySaver()
+        public static void DisableEnergySaver(AdmConfig config)
         {
+            if (!config.Tunable.DisableEnergySaverOnThemeSwitch) 
+            {
+                return;
+            }
+
             if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
                 ChangeBatterySlider(0);
@@ -22,6 +27,11 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void RestoreEnergySaver(AdmConfig config)
         {
+            if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
+            {
+                return;
+            }
+
             if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && allowRestore)
             {
                 ChangeBatterySlider(config.Tunable.BatterySliderDefaultValue);
