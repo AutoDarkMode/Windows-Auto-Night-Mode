@@ -31,8 +31,15 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void DeregisterThemeEvent()
         {
-            PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
-            ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+            try
+            {
+                PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
+                ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+            }
+            catch (InvalidOperationException ex)
+            {
+                Logger.Error(ex, "while deregistering SystemEvents_PowerModeChanged ");
+            }
         }
 
         public static void RegisterResumeEvent()
@@ -51,8 +58,14 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void DeregisterResumeEvent()
         {
-            
-            SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+            try
+            {
+                SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+            }
+            catch (InvalidOperationException ex)
+            {
+                Logger.Error(ex, "while deregistering SystemEvents_PowerModeChanged ");
+            }
         }
     }
 }
