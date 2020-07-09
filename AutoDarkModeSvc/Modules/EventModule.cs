@@ -58,5 +58,17 @@ namespace AutoDarkModeSvc.Modules
                 }
             }
         }
+
+        public override void Cleanup()
+        {
+            if (ResumeEventEnabled)
+            {
+                PowerEventHandler.DeregisterResumeEvent();
+            }
+            if (DarkThemeOnBatteryEnabled)
+            {
+                PowerEventHandler.DeregisterThemeEvent();
+            }
+        }
     }
 }
