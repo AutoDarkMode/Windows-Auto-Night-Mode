@@ -51,7 +51,5 @@ namespace AutoDarkModeSvc.Config
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
         public bool PostponeSwitch { get; set; }
-        public bool DarkThemeOnBattery { get; set; }
-        public bool ResumeEvent { get; set; }
     }
 }

@@ -12,49 +12,49 @@ namespace AutoDarkModeSvc.Modules
         public override string TimerAffinity { get; } = TimerName.Main;
         private readonly AdmConfigBuilder builder;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly RuntimeConfig rtc;
+        private bool DarkThemeOnBatteryEnabled;
+        private bool ResumeEventEnabled;
         public EventModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             builder = AdmConfigBuilder.Instance();
-            rtc = RuntimeConfig.Instance();
         }
         public override void Fire()
         {
             if (builder.Config.Events.DarkThemeOnBattery) {
-                if (!rtc.DarkThemeOnBattery)
+                if (!DarkThemeOnBatteryEnabled)
                 {
                     PowerEventHandler.RegisterThemeEvent();
                     Logger.Info("enabling event handler for dark mode on battery state discharging");
-                    rtc.DarkThemeOnBattery = true;
+                    DarkThemeOnBatteryEnabled = true;
                 }
             }
             else
             {
-                if (rtc.DarkThemeOnBattery)
+                if (DarkThemeOnBatteryEnabled)
                 {
                     PowerEventHandler.DeregisterThemeEvent();
                     Logger.Info("disabling event handler for dark mode on battery state discharging");
-                    rtc.DarkThemeOnBattery = false;
+                    DarkThemeOnBatteryEnabled = false;
                 }
             }
 
             if (builder.Config.Tunable.SystemResumeTrigger)
             {
-                if (!rtc.ResumeEvent)
+                if (!ResumeEventEnabled)
                 {
                     PowerEventHandler.RegisterResumeEvent();
                     Logger.Info("enabling theme refresh at system resume");
-                    rtc.ResumeEvent = true;
+                    ResumeEventEnabled = true;
                 }
 
             }
             else
             {
-                if (rtc.ResumeEvent)
+                if (ResumeEventEnabled)
                 {
                     PowerEventHandler.DeregisterResumeEvent();
                     Logger.Info("disabling theme refresh at system resume");
-                    rtc.ResumeEvent = false;
+                    ResumeEventEnabled = false;
                 }
             }
         }
