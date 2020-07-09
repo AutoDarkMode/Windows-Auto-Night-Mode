@@ -17,15 +17,21 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void PowerManager_BatteryStatusChanged(object sender, object e)
         {
+            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             if (PowerManager.BatteryStatus == BatteryStatus.Discharging) {
                 Logger.Info("battery discharging, enabling dark mode");
-                ThemeManager.SwitchTheme(AdmConfigBuilder.Instance().Config, Theme.Dark, false);
+                ThemeManager.SwitchTheme(builder.Config, Theme.Dark, false);
+            }
+            else
+            {
+                ThemeManager.TimedSwitch(builder);
             }
         }
 
         public static void DeregisterThemeEvent()
         {
             PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
+            ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
         }
     }
 }

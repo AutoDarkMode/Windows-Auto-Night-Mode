@@ -52,7 +52,7 @@ namespace AutoDarkModeApp.Pages
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
-
+            CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
             TextboxAccentColorDelay.Text = builder.Config.Tunable.AccentColorSwitchDelay.ToString();
         }
 
