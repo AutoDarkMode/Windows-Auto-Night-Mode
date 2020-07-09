@@ -29,13 +29,14 @@
             <CheckBox Name="CheckBoxBackgroundUpdater" Content="{x:Static p:Resources.cbBackgroundUpdate}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBackgroundUpdater_Click"/>
             <CheckBox Name="CheckBoxColourFilter" Content="{x:Static p:Resources.cbSettingsColourFilter}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxColourFilter_Click"/>
             <CheckBox Name="CheckBoxBatteryDarkMode" Content="{x:Static p:Resources.cbSettingsBatteryDarkMode}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBatteryDarkMode_Click"/>
+            <CheckBox Name="CheckBoxEnergySaverMitigation" Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}" Margin="0,10,0,0" ToolTipService.InitialShowDelay="150" ToolTipService.HasDropShadow="True" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxEnergySaverMitigation_Click"/>
 
 
             <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="26" Margin="0,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" ContextMenu="{x:Null}" MaxLength="4"/>
-            <TextBlock HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsBatterySlider}" VerticalAlignment="Top"/>
-            <Slider Name="BatterySlider" HorizontalAlignment="Left" Width="270" Margin="0,5,0,0" Thumb.DragCompleted="BatterySlider_Save" KeyUp="BatterySlider_Save" Value="25" Minimum="0" Maximum="100" IsSnapToTickEnabled="True"/>
-            <TextBlock HorizontalAlignment="Center" Margin="-0,0,0,0" TextWrapping="Wrap" Text="{Binding ElementName=BatterySlider,Path=Value}" VerticalAlignment="Top"/>
+            <TextBlock Name="BatterySliderLabel" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsBatterySlider}" VerticalAlignment="Top"/>
+            <Slider Name="BatterySlider" Visibility="Hidden" HorizontalAlignment="Left" Width="270" Margin="0,5,0,0" Thumb.DragCompleted="BatterySlider_Save" KeyUp="BatterySlider_Save" Value="25" Minimum="0" Maximum="100" IsSnapToTickEnabled="True"/>
+            <TextBlock Name="BatterySliderText" HorizontalAlignment="Center" Visibility="Hidden" Margin="-0,0,0,0" TextWrapping="Wrap" Text="{Binding ElementName=BatterySlider,Path=Value}" VerticalAlignment="Top"/>
 
 
             <!-- Language selection-->

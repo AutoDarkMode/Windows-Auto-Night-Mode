@@ -38,6 +38,7 @@ namespace AutoDarkModeApp.Pages
         private void UiHandler()
         {
             RestartButton.Visibility = Visibility.Hidden;
+            CheckBoxEnergySaverMitigation.ToolTip = Properties.Resources.cbSettingsEnergySaverMitigationInfo;
             ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString();
             if(ComboBoxLanguageSelection.SelectedValue == null)
             {
@@ -48,6 +49,14 @@ namespace AutoDarkModeApp.Pages
             {
                 CheckBoxColourFilter.IsEnabled = false;
                 CheckBoxBackgroundUpdater.IsEnabled = false;
+                CheckBoxBatteryDarkMode.IsEnabled = false;
+                CheckBoxEnergySaverMitigation.IsEnabled = false;
+            }
+
+            if (builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
+            {
+                SetBatterySliderVisiblity(Visibility.Visible);
+                CheckBoxEnergySaverMitigation.IsChecked = true;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
@@ -250,6 +259,35 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "BatterySlider_Save");
             }
+        }
+
+        private void CheckBoxEnergySaverMitigation_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxEnergySaverMitigation.IsChecked.Value)
+            {
+                builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = true;
+                SetBatterySliderVisiblity(Visibility.Visible);
+            }
+            else
+            {
+                builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = false;
+                SetBatterySliderVisiblity(Visibility.Hidden);
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxEnergySaverMitigation_Click");
+            }
+        }
+
+        private void SetBatterySliderVisiblity(Visibility visibility)
+        {
+            BatterySlider.Visibility = visibility;
+            BatterySliderLabel.Visibility = visibility;
+            BatterySliderText.Visibility = visibility;
         }
     }
 }

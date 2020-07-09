@@ -181,6 +181,24 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Energy saver mitigation for theme switch.
+        /// </summary>
+        public static string cbSettingsEnergySaverMitigation {
+            get {
+                return ResourceManager.GetString("cbSettingsEnergySaverMitigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This only works if you haven&apos;t manually enabled battery saver!.
+        /// </summary>
+        public static string cbSettingsEnergySaverMitigationInfo {
+            get {
+                return ResourceManager.GetString("cbSettingsEnergySaverMitigationInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use Logon Task instead of Autostart entry.
         /// </summary>
         public static string cbSettingsLogonTask {

@@ -537,4 +537,10 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Default value for energy saver slider</value>
   </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Energy saver mitigation for theme switch</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>This only works if you haven't manually enabled battery saver!</value>
+  </data>
 </root>
