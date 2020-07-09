@@ -140,6 +140,7 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+        public bool SystemResumeTrigger { get; set; } = true;
     }
 
     public class GPUMonitoring
