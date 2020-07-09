@@ -241,6 +241,7 @@ namespace AutoDarkModeApp.Pages
 
         private void BatterySlider_Save(object sender, EventArgs e)
         {
+            builder.Config.Tunable.BatterySliderDefaultValue = (int)BatterySlider.Value;
             try
             {
                 builder.Save();
@@ -249,11 +250,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "BatterySlider_Save");
             }
-        }
-
-        private void BatterySlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
-        {
-
         }
     }
 }

@@ -53,7 +53,6 @@ namespace AutoDarkModeSvc
 
         public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
-            PowerHandler.DisableEnergySaver();
             if (config.ClassicMode)
             {
                 ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
@@ -62,8 +61,6 @@ namespace AutoDarkModeSvc
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
-            PowerHandler.RestoreEnergySaver(config);
-
         }
 
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
@@ -115,8 +112,7 @@ namespace AutoDarkModeSvc
                 }
                 SetColorFilter(config.ColorFilterEnabled, newTheme);
                 SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
-                ThemeHandler.Apply(config.LightThemePath);
-            }
+                ThemeHandler.Apply(config.LightThemePath);            }
         }
 
         private static void ApplyThemeOptions(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
@@ -127,7 +123,7 @@ namespace AutoDarkModeSvc
             {
                 return;
             }
-
+            PowerHandler.DisableEnergySaver();
             var oldsys = rtc.CurrentSystemTheme;
             var oldapp = rtc.CurrentAppsTheme;
             var oldedg = rtc.CurrentEdgeTheme;
@@ -154,6 +150,7 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info($"theme switch invoked manually");
                 }
+                PowerHandler.RestoreEnergySaver(config);
                 Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled})");
                 Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}, o:{oldoff})");
                 Logger.Info($"is (s:{rtc.CurrentSystemTheme}, a:{rtc.CurrentAppsTheme}, e:{rtc.CurrentEdgeTheme}, w:{rtc.CurrentWallpaperTheme}, o:{rtc.CurrentOfficeTheme})");
