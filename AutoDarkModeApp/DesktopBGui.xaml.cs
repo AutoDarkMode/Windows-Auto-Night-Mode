@@ -194,6 +194,8 @@ namespace AutoDarkModeApp
             {
                 CopyFileLight();
                 CopyFileDark();
+                builder.Config.Wallpaper.LightThemeWallpapers.Clear();
+                builder.Config.Wallpaper.DarkThemeWallpapers.Clear();
                 builder.Config.Wallpaper.LightThemeWallpapers.Add(pathCur1);
                 builder.Config.Wallpaper.DarkThemeWallpapers.Add(pathCur2);
                 builder.Config.Wallpaper.Enabled = true;
