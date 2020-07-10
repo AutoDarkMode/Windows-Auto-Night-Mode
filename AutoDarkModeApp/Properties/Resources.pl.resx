@@ -172,7 +172,7 @@
     <value>System:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Zawiera oprogramowanie</value>
+    <value>Zawiera oprogramowanie osób trzecich</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>Aktualizacje</value>
@@ -231,7 +231,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Witamy</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Aktywuj kontrolkę na górze, aby automatycznie przełączać motyw!</value>
+    <value>Aktywuj kontrolkę na górze, aby włączyć automatyczną zmianę motywu!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Spolszczenie: Jan Bartula</value>
@@ -249,7 +249,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Język:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Kolor akcentu paska zadań</value>
+    <value>Kolor paska zadań</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Anuluj</value>
@@ -288,10 +288,10 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Użyj obecnej tapety</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Wyłączona</value>
+    <value>Wyłączono</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Włączona</value>
+    <value>Włączono</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>albo</value>
@@ -325,7 +325,7 @@ W przypadku błędów: Podwyższ opóźnienie zmiany w ustawieniach.</value>
     <value>Szukaj aktualizacji w tle</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Zmień po obudzeniu z "Connected Standby" (niezalecane)</value>
+    <value>Zmień po obudzeniu z InstantGo (niezalecane)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Urządzenia mobilne, np. Microsoft Surface używają nowego trybu uśpienia.
@@ -339,9 +339,9 @@ jednak powoduje szybsze zużycie baterii.</value>
     <value>Przepraszamy, wystąpił błąd podczas zapisywania ustawień.
 
 Zalecamy spróbować:
-- Ponowne zainstalowanie AutoDarkMode'a
-- Try to disable {0} in Settings.
-- Wyłączyć i ponownie włączyć zmianę tapety
+- Zainstaluj ponownie Auto Dark Mode
+- Spróbuj wyłączyć "{0}" w ustawieniach.
+- Wyłącz i włącz ponownie zmianę tapety
 
 Jeśli to nie pomoże, prosimy o przesłanie zrzutu ekranu błędu na GitHubie.
 Kliknij ""Tak"", aby otworzyć stronę GitHub.</value>
@@ -379,10 +379,10 @@ Podaruj tyle, na ile cenisz moją pracę.</value>
     <value>Alternatywny biały motyw</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Użyj szary filtr kolorów (wciska Win + Ctrl + C)</value>
+    <value>Użyj szarego filtru kolorów (Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Użyj harmonogramu zamiast autouruchamiania</value>
+    <value>Użyj harmonogramu Windowsa zamiast autouruchamiania</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Wsparcie wielu użytkowników</value>
@@ -499,8 +499,8 @@ Aby zreaktywować ją, otwórz Auto Dark Mode i skonfiguruj: {0}.</value>
     <value>Powtórz ten proces z ciemnym motywem.</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Te opcje są niedostępne, iż korzystasz z kompozycji Windowsa.
-Możesz je ustawić indywidualnie w danej kompozycji.</value>
+    <value>Te opcje są niedostępne, ponieważ korzystasz z kompozycji Windowsa.
+Możesz je dopasować indywidualnie w danej kompozycji.</value>
   </data>
   <data name="VersionXUpdaterButtonLater" xml:space="preserve">
     <value>Pobierz później</value>
