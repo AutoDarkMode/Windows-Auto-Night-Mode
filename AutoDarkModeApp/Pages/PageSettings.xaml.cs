@@ -55,7 +55,7 @@ namespace AutoDarkModeApp.Pages
 
             if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
-                SetBatterySliderVisiblity(Visibility.Hidden);
+                SetBatterySliderVisiblity(Visibility.Collapsed);
             }
             else
             {
@@ -274,7 +274,7 @@ namespace AutoDarkModeApp.Pages
             else
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = false;
-                SetBatterySliderVisiblity(Visibility.Hidden);
+                SetBatterySliderVisiblity(Visibility.Collapsed);
             }
             try
             {
