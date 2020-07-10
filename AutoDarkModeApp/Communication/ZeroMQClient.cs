@@ -4,6 +4,7 @@ using NetMQ.Sockets;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp.Communication
 {
@@ -22,11 +23,11 @@ namespace AutoDarkModeApp.Communication
                 client.Connect("tcp://127.0.0.1:" + Port);
                 client.SendFrame(message);
                 var response = GetResponse(client, message);
-                if (response.Contains(Command.Err))
+                if (response.Contains(Response.Err))
                 {
                     return false;
                 }
-                else if (response.Contains(Command.Ok))
+                else if (response.Contains(Response.Ok))
                 {
                     return true;
                 }
@@ -47,7 +48,7 @@ namespace AutoDarkModeApp.Communication
             {
                 return response;   
             }
-            return Command.Err;
+            return Response.Err;
         }
 
         public string SendMessageAndGetReply(string message)
@@ -63,7 +64,7 @@ namespace AutoDarkModeApp.Communication
             return Task.Run(() => SendMessage(message));
         }
 
-        public Task<string> SendMesssageAndGetReplyAsync(string message)
+        public Task<string> SendMessageAndGetReplyAsync(string message)
         {
             return Task.Run(() => SendMessageAndGetReply(message));
         }

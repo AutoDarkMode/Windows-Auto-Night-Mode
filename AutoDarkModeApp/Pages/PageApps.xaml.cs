@@ -8,6 +8,7 @@ using AutoDarkModeSvc;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Communication;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp
 {
@@ -332,8 +333,8 @@ namespace AutoDarkModeApp
         {
             try
             {
-                string result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Switch);
-                if (result == Command.Err)
+                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
+                if (result == Response.Err)
                 {
                     throw new SwitchThemeException();
                 }

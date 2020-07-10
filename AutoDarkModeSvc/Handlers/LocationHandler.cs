@@ -61,18 +61,6 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         /// <summary>
-        /// Creates a task scheduler entry invoking the thin server for time based switching.
-        /// NOT IMPLEMENTED YET!
-        /// </summary>
-        /// <param name="configBuilder"></param>
-        public static void CreateLocationTask(AdmConfigBuilder configBuilder)
-        {
-            UpdateSunTime(configBuilder);
-            GetSunTimesWithOffset(configBuilder, out DateTime Sunrise, out DateTime Sunset);
-            TaskSchdHandler.CreateSwitchTask(Sunrise.Hour, Sunrise.Minute, Sunset.Hour, Sunset.Minute);
-        }
-
-        /// <summary>
         /// Calculate sundates based on a user configurable offset found in AutoDarkModeConfig. 
         /// Call this method to generate the final sunrise and sunset times if location based switching is enabled
         /// </summary>

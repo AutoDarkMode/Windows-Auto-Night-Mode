@@ -52,18 +52,18 @@ namespace AutoDarkModeSvc.Handlers
                 if (newVersion != null && url != null && currentVersion.CompareTo(newVersion) < 0)
                 {
                     Logger.Info($"new version ({newVersion.ToString()} available");
-                    return $"{Command.New},{newVersion},{url}";
+                    return $"{Response.New},{newVersion},{url}";
                 }
                 else
                 {
-                    return Command.Ok;
+                    return Response.Ok;
                 }
             }
             catch (Exception e)
             {
                 Logger.Warn(e, "update check failed");
             }
-            return Command.Err;
+            return Response.Err;
         }
     }
 }

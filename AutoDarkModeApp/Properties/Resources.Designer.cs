@@ -199,7 +199,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Logon Task instead of Autostart entry.
+        ///   Looks up a localized string similar to Use logon task instead of startup entry.
         /// </summary>
         public static string cbSettingsLogonTask {
             get {

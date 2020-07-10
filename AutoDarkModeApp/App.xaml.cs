@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows;
 using System.Threading;
 using AutoDarkModeSvc;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp
 {
@@ -87,7 +88,7 @@ namespace AutoDarkModeApp
                     {
                         var result = commandClient.SendMessageAndGetReply(value);
 
-                        if (result != Command.Err)
+                        if (result != Response.Err)
                         {
                             Updater updater = new Updater(true);
                             updater.ParseResponse(result);

@@ -28,13 +28,14 @@ namespace AutoDarkModeSvc.Communication
         public const string Shutdown = "/exit";
         public const string TestError = "/testError";
         public const string Alive = "/alive";
+    }
 
-        //return types
+    class Response
+    {
         public const string Available = "Available";
         public const string New = "New";
         public const string NoLocAccess = "NoLocAccess";
         public const string Err = "Err";
         public const string Ok = "Ok";
-        public const string Response = "Response";
     }
 }

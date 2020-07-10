@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp
 {
@@ -288,11 +289,11 @@ namespace AutoDarkModeApp
 
         private async void RequestThemeSwitch()
         {
-            string result = Command.Err;
+            string result = Response.Err;
             try
             {
-                result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Switch);
-                if (result != Command.Ok)
+                result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
+                if (result != Response.Ok)
                 {
                     throw new SwitchThemeException();
                 }

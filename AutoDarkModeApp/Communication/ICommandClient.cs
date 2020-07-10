@@ -37,6 +37,6 @@ namespace AutoDarkModeApp.Communication
         /// </summary>
         /// <param name="message"></param>
         /// <returns>the message relayed by the server</returns>
-        public Task<string> SendMesssageAndGetReplyAsync(string message);
+        public Task<string> SendMessageAndGetReplyAsync(string message);
     }
 }

@@ -62,6 +62,7 @@
     <OutputPath>..\bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Communication\Command.cs" />
     <Compile Include="..\AutoDarkModeSvc\Config\AdmConfig.cs">
       <Link>Config\AdmConfig.cs</Link>
     </Compile>

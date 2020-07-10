@@ -431,7 +431,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use Logon Task instead of Autostart entry</value>
+    <value>Use logon task instead of startup entry</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>Select mode:</value>

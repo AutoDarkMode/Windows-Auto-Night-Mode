@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Communication
         public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
 
-            AdmConfigBuilder Properties = AdmConfigBuilder.Instance();
+            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             RuntimeConfig rtc = RuntimeConfig.Instance();
             msg.ForEach(message =>
             {
@@ -27,59 +27,67 @@ namespace AutoDarkModeSvc.Communication
                 {
                     case Command.Switch:
                         Logger.Info("signal received: time based theme switch");
-                        ThemeManager.TimedSwitch(Properties);
-                        SendResponse(Command.Ok);
+                        ThemeManager.TimedSwitch(builder);
+                        SendResponse(Response.Ok);
                         break;
+
                     case Command.Swap:
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
                         {
 
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
+                            ThemeManager.SwitchTheme(builder.Config, Theme.Dark);
                         }
                         else
                         {
-                            ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
+                            ThemeManager.SwitchTheme(builder.Config, Theme.Light);
                         }
-                        SendResponse(Command.Ok);
+                        SendResponse(Response.Ok);
                         break;
+
                     case Command.AddAutostart:
                         Logger.Info("signal received: adding service to autostart");
-                        RegistryHandler.AddAutoStart();
-                        SendResponse(Command.Ok);
+                        bool regOk;
+                        bool taskOk;
+                        if (builder.Config.Tunable.UseLogonTask)
+                        {
+                            regOk = RegistryHandler.RemoveAutoStart();
+                            taskOk = TaskSchdHandler.CreateLogonTask();
+                        }
+                        else
+                        {
+                            taskOk = TaskSchdHandler.RemoveLogonTask();
+                            regOk = RegistryHandler.AddAutoStart();
+                        }
+                        if (regOk && taskOk)
+                        {
+                            SendResponse(Response.Ok);
+                        }
+                        else
+                        {
+                            SendResponse(Response.Err);
+                        }
                         break;
 
                     case Command.RemoveAutostart:
                         Logger.Info("signal received: removing service from autostart");
-                        RegistryHandler.RemoveAutoStart();
-                        SendResponse(Command.Ok);
-                        break;
-
-                    case Command.CreateTask:
-                        Logger.Info("signal received: creating win scheduler based time switch task");
-                        try
+                        bool ok;
+                        if (builder.Config.Tunable.UseLogonTask)
                         {
-                            DateTime sunrise = Convert.ToDateTime(Properties.Config.Sunrise);
-                            DateTime sunset = Convert.ToDateTime(Properties.Config.Sunset);
-                            if (Properties.Config.Location.Enabled)
-                            {
-                                LocationHandler.GetSunTimesWithOffset(Properties, out sunrise, out sunset);
-                            }
-                            TaskSchdHandler.CreateSwitchTask(sunrise.Hour, sunrise.Minute, sunset.Hour, sunset.Minute);
-                            SendResponse(Command.Ok);
+                            ok = TaskSchdHandler.RemoveLogonTask();
                         }
-                        catch (FormatException e)
+                        else
                         {
-                            Logger.Error(e, "could not create win scheduler tasks");
-                            SendResponse(Command.Err);
-                            Console.WriteLine(e);
+                            ok = RegistryHandler.RemoveAutoStart();
                         }
-                        break;
-                    case Command.RemoveTask:
-
-                        Logger.Info("signal received: removing win tasks");
-                        TaskSchdHandler.RemoveTasks();
-                        SendResponse(Command.Ok);
+                        if (ok)
+                        {
+                            SendResponse(Response.Ok);
+                        }
+                        else
+                        {
+                            SendResponse(Response.Err);
+                        }
                         break;
 
                     case Command.Location:
@@ -89,11 +97,11 @@ namespace AutoDarkModeSvc.Communication
                         var result = geoTask.Result;
                         if (result)
                         {
-                            SendResponse(Command.Ok);
+                            SendResponse(Response.Ok);
                         }
                         else
                         {
-                            SendResponse(Command.NoLocAccess);
+                            SendResponse(Response.NoLocAccess);
                         }
                         break;
 
@@ -103,12 +111,12 @@ namespace AutoDarkModeSvc.Communication
                         {
                             AdmConfigBuilder.Instance().Load();
                             AdmConfigBuilder.Instance().LoadLocationData();
-                            SendResponse(Command.Ok);
+                            SendResponse(Response.Ok);
                         }
                         catch (Exception e)
                         {
                             Logger.Error(e, "could not read config file");
-                            SendResponse(Command.Err);
+                            SendResponse(Response.Err);
                         }
                         break;
 
@@ -119,38 +127,44 @@ namespace AutoDarkModeSvc.Communication
 
                     case Command.Shutdown:
                         Logger.Info("signal received, exiting");
-                        SendResponse(Command.Ok);
+                        SendResponse(Response.Ok);
                         service.Exit(null, null);
                         break;
+
                     case Command.TestError:
                         Logger.Info("signal received: test error");
-                        SendResponse(Command.Err);
+                        SendResponse(Response.Err);
                         break;
+
                     case Command.Alive:
                         Logger.Info("signal received: request for running status");
-                        SendResponse(Command.Ok);
+                        SendResponse(Response.Ok);
                         break;
+
                     case Command.Light:
                         Logger.Info("signal received: force light theme");
                         rtc.ForcedTheme = Theme.Light;
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Light);
-                        SendResponse(Command.Ok);
+                        ThemeManager.SwitchTheme(builder.Config, Theme.Light);
+                        SendResponse(Response.Ok);
                         break;
+
                     case Command.Dark:
                         Logger.Info("signal received: force dark theme");
                         rtc.ForcedTheme = Theme.Dark;
-                        ThemeManager.SwitchTheme(Properties.Config, Theme.Dark);
-                        SendResponse(Command.Ok);
+                        ThemeManager.SwitchTheme(builder.Config, Theme.Dark);
+                        SendResponse(Response.Ok);
                         break;
+
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
                         rtc.ForcedTheme = Theme.Undefined;
-                        ThemeManager.TimedSwitch(Properties);
-                        SendResponse(Command.Ok);
+                        ThemeManager.TimedSwitch(builder);
+                        SendResponse(Response.Ok);
                         break;
+
                     default:
                         Logger.Debug("unknown message received");
-                        SendResponse(Command.Err);
+                        SendResponse(Response.Err);
                         break;
                 }
             });

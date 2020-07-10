@@ -10,6 +10,7 @@ using System.Diagnostics;
 using AutoDarkModeSvc.Config;
 using System.Globalization;
 using System.Threading.Tasks;
+using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Handlers;
 
@@ -285,15 +286,15 @@ namespace AutoDarkModeApp.Pages
             }
             try
             {
-                string result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Switch);
-                if (result == Command.Err)
+                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
+                if (result == Response.Err)
                 {
                     throw new SwitchThemeException();
                 }
             } 
             catch (Exception ex)
             {
-                ErrorWhileApplyingTheme($"ZMQ message is {Command.Err}", ex.ToString());
+                ErrorWhileApplyingTheme($"ZMQ message is {Response.Err}", ex.ToString());
             }
 
         }
@@ -345,8 +346,8 @@ namespace AutoDarkModeApp.Pages
                 {
                     try
                     {
-                        var result = await messagingClient.SendMesssageAndGetReplyAsync(Command.Location);
-                        if (result == Command.NoLocAccess)
+                        var result = await messagingClient.SendMessageAndGetReplyAsync(Command.Location);
+                        if (result == Response.NoLocAccess)
                         {
                             NoLocationAccess();
                             break;
@@ -451,8 +452,8 @@ namespace AutoDarkModeApp.Pages
                 try
                 {
                     builder.Save();
-                    var result = await messagingClient.SendMesssageAndGetReplyAsync(Command.AddAutostart);
-                    if (result != Command.Ok)
+                    var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
+                    if (result != Response.Ok)
                     {
                         throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
                     }
@@ -477,8 +478,8 @@ namespace AutoDarkModeApp.Pages
                 try
                 {
                     builder.Save();
-                    var result = await messagingClient.SendMesssageAndGetReplyAsync(Command.RemoveAutostart);
-                    if (result != Command.Ok)
+                    var result = await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart);
+                    if (result != Response.Ok)
                     {
                         throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
                     }

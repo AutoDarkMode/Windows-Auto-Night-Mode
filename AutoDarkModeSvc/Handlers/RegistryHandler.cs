@@ -130,16 +130,19 @@ namespace AutoDarkModeSvc.Handlers
         /// <summary>
         /// Adds the application to Windows autostart
         /// </summary>
-        public static void AddAutoStart()
+        public static bool AddAutoStart()
         {
             try
             {
                 RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
                 registryKey.Dispose();
-            } catch (Exception ex)
+                return true;
+            } 
+            catch (Exception ex)
             {
                 Logger.Error(ex, "could not add AutoDarkModeSvc to autostart");
+                return false;
             }
 
         }
@@ -147,19 +150,19 @@ namespace AutoDarkModeSvc.Handlers
         /// <summary>
         /// Removes the application from Windows autostart
         /// </summary>
-        public static void RemoveAutoStart()
+        public static bool RemoveAutoStart()
         {
             try
             {
-                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.DeleteValue("AutoDarkMode", false);
-                registryKey.Dispose();
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not remove AutoDarkModeSvc from autostart");
             }
-
+            return false;
         }
         /// <summary>
         /// Changes the office theme

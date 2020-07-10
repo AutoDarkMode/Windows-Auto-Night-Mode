@@ -4,6 +4,7 @@ using System.Xml;
 using System.Windows;
 using System.Globalization;
 using System.Diagnostics;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp
 {
@@ -69,7 +70,7 @@ namespace AutoDarkModeApp
         public void ParseResponse(string response)
         {
             string[] messages = response.Split(",");
-            if (messages[0] == Command.New)
+            if (messages[0] == Response.New)
             {
                 url = messages[1];
                 newVersion = new Version(messages[2]);

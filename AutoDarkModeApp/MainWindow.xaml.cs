@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Windows.Navigation;
 using AutoDarkModeApp.Properties;
 using NetMQ;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp
 {

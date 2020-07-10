@@ -9,7 +9,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeSvc;
 using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Communication;
+using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -63,6 +65,7 @@ namespace AutoDarkModeApp.Pages
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
+            CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
             TextboxAccentColorDelay.Text = builder.Config.Tunable.AccentColorSwitchDelay.ToString();
@@ -291,6 +294,34 @@ namespace AutoDarkModeApp.Pages
             BatterySlider.Visibility = visibility;
             BatterySliderLabel.Visibility = visibility;
             BatterySliderText.Visibility = visibility;
+        }
+
+        private async void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (CheckBoxLogonTask.IsChecked.Value)
+                {
+                    builder.Config.Tunable.UseLogonTask = true;
+                }
+                else
+                {
+                    builder.Config.Tunable.UseLogonTask = false;
+                }
+                builder.Save();
+                if (builder.Config.AutoThemeSwitchingEnabled)
+                {
+                    var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
+                    if (result != Response.Ok)
+                    {
+                        throw new AddAutoStartException($"error creating auto start task, ZMQ returned {result}", "AutoDarkModeSvc.MessageParser.AddAutostart");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxLogonTask_Click");
+            }
         }
     }
 }
