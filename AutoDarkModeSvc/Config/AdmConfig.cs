@@ -20,7 +20,7 @@ namespace AutoDarkModeSvc.Config
         private Mode egdeTheme;
 
         public bool AutoThemeSwitchingEnabled { get; set; }
-        public bool ClassicMode { get; set; }
+        public bool ClassicMode { get; set; } = true;
         public bool ColorFilterEnabled { get; set; } = false;
         public bool AccentColorTaskbarEnabled { get; set; }
         public string DarkThemePath { get; set; }
