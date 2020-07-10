@@ -140,7 +140,7 @@ namespace AutoDarkModeApp
                 {
 
                 }
-                pathCur1 = Path.Combine(folderPath, "WallpaperLight" + Path.GetExtension(pathOrig1));
+                pathCur1 = Path.Combine(folderPath, $"WallpaperLight_{Guid.NewGuid()}{Path.GetExtension(pathOrig1)}");
                 File.Copy(pathTemp1, pathCur1, true);
                 File.Delete(pathTemp1);
             }
@@ -160,7 +160,7 @@ namespace AutoDarkModeApp
                 {
 
                 }
-                pathCur2 = Path.Combine(folderPath, "WallpaperDark" + Path.GetExtension(pathOrig2));
+                pathCur2 = Path.Combine(folderPath, $"WallpaperDark_{Guid.NewGuid()}{Path.GetExtension(pathOrig2)}");
                 File.Copy(pathTemp2, pathCur2, true);
                 File.Delete(pathTemp2);
             }

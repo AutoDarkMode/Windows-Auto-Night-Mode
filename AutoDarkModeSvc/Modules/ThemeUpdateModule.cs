@@ -43,5 +43,10 @@ namespace AutoDarkModeSvc.Modules
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
+
+        public override void Cleanup()
+        {
+            RuntimeConfigInstance.CurrentWindowsThemeName = "";
+        }
     }
 }

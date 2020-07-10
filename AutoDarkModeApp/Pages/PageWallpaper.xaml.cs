@@ -139,14 +139,14 @@ namespace AutoDarkModeApp
             if (BGui.saved == true)
             {
                 ButtonDisableTheme_Click(this, e);
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage("couldn't set adm background", ex);
-                }
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage("error saving config in BGWinButton_Click: ", ex);
             }
             ShowDeskBGStatus();
             RequestThemeSwitch();

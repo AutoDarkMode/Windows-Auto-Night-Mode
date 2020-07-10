@@ -12,9 +12,8 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         /// <param name="wallpaperCollection">List with wallpapers</param>
         /// <return>true if wallpaper switch succeeded</return>
-        public static bool SetBackground(ICollection<string> wallpaperCollection)
+        public static bool SetBackground(List<string> wallpapers)
         {
-            List<string> wallpapers = wallpaperCollection.ToList();
             if (wallpapers.Count > 0)
             {
                 string filePath = wallpapers.ElementAt(0);

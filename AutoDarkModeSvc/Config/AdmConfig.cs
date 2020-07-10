@@ -105,8 +105,8 @@ namespace AutoDarkModeSvc.Config
             DarkThemeWallpapers = new List<string>();
         }
         public bool Enabled { get; set; }
-        public ICollection<string> LightThemeWallpapers { get; set; }
-        public ICollection<string> DarkThemeWallpapers { get; set; }
+        public List<string> LightThemeWallpapers { get; set; }
+        public List<string> DarkThemeWallpapers { get; set; }
     }
 
     public class Location

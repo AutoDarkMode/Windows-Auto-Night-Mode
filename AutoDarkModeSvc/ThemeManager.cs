@@ -5,6 +5,7 @@ using AutoDarkModeSvc.Config;
 using System.Threading;
 using System.IO;
 using Windows.System.Power;
+using System.Collections.Generic;
 
 namespace AutoDarkModeSvc
 {
@@ -297,8 +298,8 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private static void SetWallpaper(Theme newTheme, RuntimeConfig rtc, System.Collections.Generic.ICollection<string> darkThemeWallpapers,
-            System.Collections.Generic.ICollection<string> lightThemeWallpapers, bool enabled)
+        private static void SetWallpaper(Theme newTheme, RuntimeConfig rtc, List<string> darkThemeWallpapers,
+            List<string> lightThemeWallpapers, bool enabled)
         {
             if (enabled)
             {
@@ -308,12 +309,17 @@ namespace AutoDarkModeSvc
                     if (success)
                     {
                         rtc.CurrentWallpaperTheme = newTheme;
+                        rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
                     }
                 }
                 else
                 {
-                    WallpaperHandler.SetBackground(lightThemeWallpapers);
-                    rtc.CurrentWallpaperTheme = newTheme;
+                    var success = WallpaperHandler.SetBackground(lightThemeWallpapers);
+                    if (success)
+                    {
+                        rtc.CurrentWallpaperTheme = newTheme;
+                        rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
+                    }
                 }
             }
         }
@@ -369,6 +375,12 @@ namespace AutoDarkModeSvc
             {
                 return true;
             }
+            
+            if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, rtc.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers, 
+                config.Wallpaper.DarkThemeWallpapers, rtc.CurrentWallpaperTheme, newTheme))
+            {
+                return true;
+            }
 
             if (config.Office.Enabled && ComponentNeedsUpdate(config.Office.Mode, rtc.CurrentOfficeTheme, newTheme))
             {
@@ -391,6 +403,27 @@ namespace AutoDarkModeSvc
               )
             {
                 return true;
+            }
+            return false;
+        }
+
+        private static bool WallpaperNeedsUpdate(bool enabled, string currentWallpaperPath, List<string> lightThemeWallpapers, 
+            List<string> darkThemeWallpapers, Theme currentComponentTheme, Theme newTheme)
+        {
+            if (enabled)
+            {
+                if (currentComponentTheme != newTheme)
+                {
+                    return true;
+                } 
+                else if (newTheme == Theme.Dark && !darkThemeWallpapers.Contains(currentWallpaperPath))
+                {
+                    return true;
+                } 
+                else if (newTheme == Theme.Light && !lightThemeWallpapers.Contains(currentWallpaperPath))
+                {
+                    return true;
+                }
             }
             return false;
         }

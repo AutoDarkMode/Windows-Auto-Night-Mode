@@ -51,5 +51,6 @@ namespace AutoDarkModeSvc.Config
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
         public bool PostponeSwitch { get; set; }
+        public string CurrentWallpaperPath { get; set; }
     }
 }
