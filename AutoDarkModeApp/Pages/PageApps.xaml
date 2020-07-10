@@ -24,52 +24,39 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarApps}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
 
         <!-- Apps -->
-        <TextBlock HorizontalAlignment="Left" Margin="50,58,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblApps}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1" Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Left" Margin="50,58,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAppsTitle}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1" Grid.Row="1" />
         <TextBlock Text="&#xE71D;" HorizontalAlignment="Left" Margin="11,80,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25" Grid.Column="1" Grid.Row="1" />
         <ComboBox HorizontalAlignment="Left" Margin="49,79,0,0" VerticalAlignment="Top" Width="200" Name ="AppComboBox" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Grid.Column="1" Grid.Row="1"  DropDownClosed="AppComboBox_DropDownClosed" Height="28" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+            <ComboBoxItem IsSelected="True" x:Name="SystemInterface" Content="{x:Static p:Resources.lblSystem}" />
+            <ComboBoxItem IsSelected="False" x:Name="SystemApps" Content="{x:Static p:Resources.lblApps}" />
+            <ComboBoxItem IsSelected="False" x:Name="MicrosoftOffice" Content="Microsoft Office" />
+            <ComboBoxItem IsSelected="False" x:Name="Edge" Content="{x:Static p:Resources.lblEdge}" />
         </ComboBox>
 
-        <!-- System -->
-        <TextBlock HorizontalAlignment="Left" Margin="50,125,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblSystem}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1" Grid.Row="1" />
-        <TextBlock Text="&#xE977;" HorizontalAlignment="Left" Margin="11,147,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="25" Height="25" Width="25" Grid.Column="1" Grid.Row="1" />
-        <ComboBox HorizontalAlignment="Left" Margin="49,146,0,0" VerticalAlignment="Top" Width="200" Name="SystemComboBox" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Grid.Column="1" Grid.Row="1"  DropDownClosed="SystemComboBox_DropDownClosed" Height="28" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-        </ComboBox>
-        <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="49,179,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Click="AccentColorCheckBox_Click" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="50,118,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <CheckBox x:Name="AppEnableTheming" Content="{x:Static p:Resources.lblEnableTheming}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto" Click="AppCheckbox_Clicked"/>
+            <RadioButton HorizontalAlignment="Left" x:Name="AdaptiveRadio" Margin="0,15,0,0" Content="{x:Static p:Resources.lblAdaptive}" Foreground="{DynamicResource SystemBaseHighColorBrush}"  VerticalAlignment="Top" Height="16" Width="Auto" IsChecked="True" Click="AppRadio_Clicked"/>
+            <TextBlock HorizontalAlignment="Left" Margin="19,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblAdaptiveExplanation}" VerticalAlignment="Top" Height="16" Width="Auto" Foreground="Gray"/>
+            <RadioButton HorizontalAlignment="Left" x:Name="LightRadio" Margin="0,15,0,0" Content="{x:Static p:Resources.lblLight}" Foreground="{DynamicResource SystemBaseHighColorBrush}" VerticalAlignment="Top" Height="16" Width="Auto" Click="AppRadio_Clicked"/>
+            <TextBlock HorizontalAlignment="Left" Margin="19,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLightExplanation}" VerticalAlignment="Top" Height="16" Width="Auto" Foreground="Gray"/>
+            <RadioButton HorizontalAlignment="Left" x:Name="DarkRadio" Margin="0,15,0,0" Content="{x:Static p:Resources.lblDark}" Foreground="{DynamicResource SystemBaseHighColorBrush}" VerticalAlignment="Top" Height="16" Width="Auto" Click="AppRadio_Clicked"/>
+            <TextBlock HorizontalAlignment="Left" Margin="19,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDarkExplanation}" VerticalAlignment="Top" Height="16" Width="Auto" Foreground="Gray"/>
+        </StackPanel>
 
-        <!-- Edge -->
-        <TextBlock HorizontalAlignment="Left" Margin="51,212,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto" Grid.Column="1" Grid.Row="1" />
-        <Image HorizontalAlignment="Left" Height="31" Margin="10,232,0,0" VerticalAlignment="Top" Width="25" Source="/Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon" Grid.Column="1" Grid.Row="1" />
-        <ComboBox HorizontalAlignment="Left" Margin="51,233,0,0" VerticalAlignment="Top" Width="200" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed" Height="28" Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
-        </ComboBox>
+        <TextBlock Text="{x:Static p:Resources.lblExtraOptions}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Margin="11,285,0,0" FontSize="14" FontWeight="Bold"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="11,320,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto" Click="AccentColorCheckBox_Click"/>
+            <CheckBox x:Name="CheckBoxOfficeWhiteTheme" Content="{x:Static p:Resources.cbOfficeWhiteTheme}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" ToolTip="{x:Static p:Resources.ToolTipDisabledDueOfficeDisabled}" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto" Click="CheckBoxOfficeWhiteTheme_Click"/>
+        </StackPanel>
 
-        <!-- Office-->
-        <TextBlock HorizontalAlignment="Left" Margin="51,280,0,0" TextWrapping="Wrap" Text="Microsoft Office:" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
-        <Image HorizontalAlignment="Left" Height="31" Margin="11,300,0,0" VerticalAlignment="Top" Width="25" Source="/Resources/Office_Logo.png" Grid.Column="1" Grid.Row="1" />
-        <ComboBox x:Name="OfficeComboBox" HorizontalAlignment="Left" Margin="51,301,0,0" VerticalAlignment="Top" Width="200" DropDownClosed="OfficeComboBox_DropDownClosed" Height="28" Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
-        </ComboBox>
-        <CheckBox Content="{x:Static p:Resources.cbOfficeWhiteTheme}" x:Name="CheckBoxOfficeWhiteTheme" Grid.Column="1" Grid.Row="1"  Margin="51,334,0,0" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxOfficeWhiteTheme_Click"/>
 
         <!-- Dark Reader -->
-        <TextBlock Text="{x:Static p:Resources.tbAppsTitleRecommendedTools}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Margin="11,380,0,0" FontSize="14" FontWeight="Bold"/>
-        <TextBlock Text="&#xEA86;" Grid.Column="1" Grid.Row="1"  Margin="11,420,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="25" FontFamily="Segoe MDL2 Assets"/>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="51,405,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <TextBlock Text="Dark Reader" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Margin="0,0,0,0"/>
-            <TextBlock Text="{x:Static p:Resources.tbDarkReaderDescription}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,2,0,0" TextWrapping="Wrap" Width="300" Grid.Column="1" Grid.Row="1"  Foreground="Gray"/>
-            <Button Name="ButtonWikiBrowserExtension" Content="{x:Static p:Resources.buttonDownloadExtension}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Margin="0,6,0,0" Height="28" MinWidth="200" Width="Auto" Style="{StaticResource ButtonRevealStyle}" Click="ButtonWikiBrowserExtension_Click" />
+        <TextBlock Text="{x:Static p:Resources.tbAppsTitleRecommendedTools}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Margin="11,385,0,0" FontSize="14" FontWeight="Bold"/>
+        <TextBlock Text="&#xEA86;" Grid.Column="1" Grid.Row="1"  Margin="11,425,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="25" FontFamily="Segoe MDL2 Assets"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="51,420,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock Text="Dark Reader" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
+            <TextBlock Text="{x:Static p:Resources.tbDarkReaderDescription}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,2,0,0" TextWrapping="Wrap" Width="300" Foreground="Gray"/>
+            <Button Name="ButtonWikiBrowserExtension" Content="{x:Static p:Resources.buttonDownloadExtension}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,6,0,0" Height="28" MinWidth="200" Width="Auto" Click="ButtonWikiBrowserExtension_Click" />
         </StackPanel>
     </Grid>
 </Page>

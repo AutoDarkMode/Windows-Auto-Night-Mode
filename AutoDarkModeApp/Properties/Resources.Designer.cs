@@ -19,7 +19,7 @@ namespace AutoDarkModeApp.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -154,7 +154,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alternative light theme.
+        ///   Looks up a localized string similar to Alternative light theme for Microsoft Office.
         /// </summary>
         public static string cbOfficeWhiteTheme {
             get {
@@ -514,11 +514,38 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apps:.
+        ///   Looks up a localized string similar to Adaptive.
+        /// </summary>
+        public static string lblAdaptive {
+            get {
+                return ResourceManager.GetString("lblAdaptive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App follows the current system theme.
+        /// </summary>
+        public static string lblAdaptiveExplanation {
+            get {
+                return ResourceManager.GetString("lblAdaptiveExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System Apps.
         /// </summary>
         public static string lblApps {
             get {
                 return ResourceManager.GetString("lblApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apps:.
+        /// </summary>
+        public static string lblAppsTitle {
+            get {
+                return ResourceManager.GetString("lblAppsTitle", resourceCulture);
             }
         }
         
@@ -550,6 +577,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App always uses the dark theme.
+        /// </summary>
+        public static string lblDarkExplanation {
+            get {
+                return ResourceManager.GetString("lblDarkExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark theme.
         /// </summary>
         public static string lblDarkTheme {
@@ -559,11 +595,29 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edge (Legacy):.
+        ///   Looks up a localized string similar to Edge (Legacy).
         /// </summary>
         public static string lblEdge {
             get {
                 return ResourceManager.GetString("lblEdge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable theming for this app.
+        /// </summary>
+        public static string lblEnableTheming {
+            get {
+                return ResourceManager.GetString("lblEnableTheming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extra options.
+        /// </summary>
+        public static string lblExtraOptions {
+            get {
+                return ResourceManager.GetString("lblExtraOptions", resourceCulture);
             }
         }
         
@@ -582,6 +636,15 @@ namespace AutoDarkModeApp.Properties {
         public static string lblLight {
             get {
                 return ResourceManager.GetString("lblLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App always uses the light theme.
+        /// </summary>
+        public static string lblLightExplanation {
+            get {
+                return ResourceManager.GetString("lblLightExplanation", resourceCulture);
             }
         }
         
@@ -631,7 +694,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to System:.
+        ///   Looks up a localized string similar to System Interface.
         /// </summary>
         public static string lblSystem {
             get {
@@ -1145,6 +1208,16 @@ namespace AutoDarkModeApp.Properties {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option is disabled while theming for Microsoft Office is disabled. 
+        ///You can set up theming for this app above..
+        /// </summary>
+        public static string ToolTipDisabledDueOfficeDisabled {
+            get {
+                return ResourceManager.GetString("ToolTipDisabledDueOfficeDisabled", resourceCulture);
             }
         }
         

@@ -26,23 +26,6 @@ namespace AutoDarkModeApp
             builder.Load();
             InitializeComponent();
             UiHandler();
-
-            //follow windows theme
-            ThemeChange(this, null);
-            SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
-        }
-
-        //react to windows theme change
-        private void ThemeChange(object sender, EventArgs e)
-        {
-            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
-            {
-                EdgyIcon.Source = new BitmapImage(new Uri(@"/Resources/Microsoft_Edge_Logo_White.png", UriKind.Relative));
-            }
-            else
-            {
-                EdgyIcon.Source = new BitmapImage(new Uri(@"/Resources/Microsoft_Edge_Logo.png", UriKind.Relative));
-            }
         }
 
         private void UiHandler()
@@ -59,10 +42,7 @@ namespace AutoDarkModeApp
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 AccentColorCheckBox.IsEnabled = false;
-                SystemComboBox.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
-                EdgeComboBox.IsEnabled = false;
-                OfficeComboBox.IsEnabled = false;
                 CheckBoxOfficeWhiteTheme.IsEnabled = false;
             }
 
@@ -71,8 +51,6 @@ namespace AutoDarkModeApp
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
-                SystemComboBox.IsEnabled = false;
-                SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 AppComboBox.IsEnabled = false;
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
@@ -81,8 +59,6 @@ namespace AutoDarkModeApp
             if (int.Parse(RegistryHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             if (!is1903)
             {
-                SystemComboBox.IsEnabled = false;
-                SystemComboBox.ToolTip = Properties.Resources.cmb1903;
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
             }
@@ -96,47 +72,115 @@ namespace AutoDarkModeApp
                 AccentColorCheckBox.IsChecked = builder.Config.AccentColorTaskbarEnabled;
             }
 
-            //combobox
-            AppComboBox.SelectedIndex = (int)builder.Config.AppsTheme;
-            SystemComboBox.SelectedIndex = (int)builder.Config.SystemTheme;
-            EdgeComboBox.SelectedIndex = (int)builder.Config.EdgeTheme;
-            if (builder.Config.Office.Enabled)
-            {
-                OfficeComboBox.SelectedIndex = (int)builder.Config.Office.Mode;
-            }
-            else
-            {
-                OfficeComboBox.SelectedIndex = 3;
-            }
-
-
+            AppComboBox_DropDownClosed(this, null);
             //checkbox
             if (builder.Config.Office.LightTheme == 5)
             {
                 CheckBoxOfficeWhiteTheme.IsChecked = true;
             }
+
+            AppCheckbox_Clicked(this, null);
         }
 
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            if (AppComboBox.SelectedIndex.Equals(0))
+            Mode mode;
+            EnableAppRadio();
+            if (AppComboBox.SelectedItem.Equals(SystemInterface))
             {
-                builder.Config.AppsTheme = Mode.Switch;
+                mode = builder.Config.SystemTheme;
+                AppEnableTheming.IsEnabled = false;
+                AppEnableTheming.IsChecked = true;
+            }
+            else if (AppComboBox.SelectedItem.Equals(SystemApps))
+            {
+                mode = builder.Config.AppsTheme;
+                AppEnableTheming.IsEnabled = false;
+                AppEnableTheming.IsChecked = true;
+            }
+            else if (AppComboBox.SelectedItem.Equals(MicrosoftOffice))
+            {
+                mode = builder.Config.Office.Mode;
+                AppEnableTheming.IsEnabled = true;
+                AppEnableTheming.IsChecked = builder.Config.Office.Enabled;
+                if (!builder.Config.Office.Enabled) DisableAppRadio();
+            }
+            else if (AppComboBox.SelectedItem.Equals(Edge))
+            {
+                mode = builder.Config.EdgeTheme;
+                AppEnableTheming.IsEnabled = false;
+                AppEnableTheming.IsChecked = true;
+            }
+            else
+            {
+                ShowErrorMessage(new Exception("Unknown Apps dropdown element found"));
+                mode = Mode.Switch;
+                DisableAppRadio();
             }
 
-            if (AppComboBox.SelectedIndex.Equals(1))
+            switch (mode)
             {
-                builder.Config.AppsTheme = Mode.LightOnly;
+                case Mode.Switch:
+                    AdaptiveRadio.IsChecked = true;
+                    break;
+                case Mode.DarkOnly:
+                    DarkRadio.IsChecked = true;
+                    break;
+                case Mode.LightOnly:
+                    LightRadio.IsChecked = true;
+                    break;
+                default:
+                    ShowErrorMessage(new Exception("Unknown theme mode found in settings: " + mode));
+                    break;
+            }
+        }
+        
+        private void AppRadio_Clicked(object sender, EventArgs e)
+        {
+            Mode mode;
+            if (AdaptiveRadio.IsChecked ?? true)
+            {
+                mode = Mode.Switch;
+            }
+            else if (DarkRadio.IsChecked ?? true)
+            {
+                mode = Mode.DarkOnly;
+            }
+            else if (LightRadio.IsChecked ?? true)
+            {
+                mode = Mode.LightOnly;
+            }
+            else
+            {
+                ShowErrorMessage(new Exception("No theme option was selected after clicking"));
+                return;
             }
 
-            if (AppComboBox.SelectedIndex.Equals(2))
+            if (AppComboBox.SelectedItem.Equals(SystemInterface))
             {
-                builder.Config.AppsTheme = Mode.DarkOnly;
+                builder.Config.SystemTheme = mode;
             }
+            else if (AppComboBox.SelectedItem.Equals(SystemApps))
+            {
+                builder.Config.AppsTheme = mode;
+            }
+            else if (AppComboBox.SelectedItem.Equals(MicrosoftOffice))
+            {
+                builder.Config.Office.Mode = mode;
+            }
+            else if (AppComboBox.SelectedItem.Equals(Edge))
+            {
+                builder.Config.EdgeTheme = mode;
+            }
+            else
+            {
+                ShowErrorMessage(new Exception("Unknown Apps dropdown element found"));
+            }
+
             try
             {
                 builder.Save();
-            } 
+            }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex);
@@ -144,85 +188,48 @@ namespace AutoDarkModeApp
             RequestThemeSwitch();
         }
 
-        private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
+        private void AppCheckbox_Clicked(object sender, EventArgs e)
         {
-            if (SystemComboBox.SelectedIndex.Equals(0))
+            if ((bool) AppEnableTheming.IsChecked)
             {
-                builder.Config.SystemTheme = Mode.Switch;
-                AccentColorCheckBox.IsEnabled = true;
+                if (AppComboBox.SelectedItem.Equals(MicrosoftOffice)) builder.Config.Office.Enabled = true;
+                EnableAppRadio();
+            }
+            else
+            {
+                if (AppComboBox.SelectedItem.Equals(MicrosoftOffice)) builder.Config.Office.Enabled = false;
+                DisableAppRadio();
             }
 
-            if (SystemComboBox.SelectedIndex.Equals(1))
+            if (builder.Config.Office.Enabled)
             {
-                builder.Config.SystemTheme = Mode.LightOnly;
-                AccentColorCheckBox.IsEnabled = false;
+                CheckBoxOfficeWhiteTheme.IsEnabled = true;
+                CheckBoxOfficeWhiteTheme.ToolTip = null;
             }
-
-            if (SystemComboBox.SelectedIndex.Equals(2))
+            else
             {
-                builder.Config.SystemTheme = Mode.DarkOnly;
-                Properties.Settings.Default.SystemThemeChange = 2;
-                AccentColorCheckBox.IsEnabled = true;
+                CheckBoxOfficeWhiteTheme.IsEnabled = false;
+                CheckBoxOfficeWhiteTheme.ToolTip = Properties.Resources.ToolTipDisabledDueOfficeDisabled;
             }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
         }
 
-        private void EdgeComboBox_DropDownClosed(object sender, EventArgs e)
+        private void DisableAppRadio()
         {
-            if (EdgeComboBox.SelectedIndex.Equals(0))
-            {
-                builder.Config.EdgeTheme = Mode.Switch;
-            }
-
-            if (EdgeComboBox.SelectedIndex.Equals(1))
-            {
-                builder.Config.EdgeTheme = Mode.LightOnly;
-            }
-
-            if (EdgeComboBox.SelectedIndex.Equals(2))
-            {
-                builder.Config.EdgeTheme = Mode.DarkOnly;
-            }
-
-            if (EdgeComboBox.SelectedIndex.Equals(3))
-            {
-                builder.Config.EdgeTheme = Mode.Switch;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
+            AdaptiveRadio.IsEnabled = false;
+            DarkRadio.IsEnabled = false;
+            LightRadio.IsEnabled = false;
         }
-        private void DisableEdgeSwitch()
+
+        private void EnableAppRadio()
         {
-            //does nothing for now
-            Properties.Settings.Default.EdgeThemeChange = 3;
-            EdgeComboBox.SelectedIndex = 3;
+            AdaptiveRadio.IsEnabled = true;
+            DarkRadio.IsEnabled = true;
+            LightRadio.IsEnabled = true;
         }
 
         private void AccentColorCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            if (((CheckBox)sender).IsChecked ?? false)
-            {
-                builder.Config.AccentColorTaskbarEnabled = true;
-            }
-            else
-            {
-                builder.Config.AccentColorTaskbarEnabled = false;
-            }
+            builder.Config.AccentColorTaskbarEnabled = ((CheckBox)sender).IsChecked ?? false;
             try
             {
                 builder.Save();
@@ -232,45 +239,6 @@ namespace AutoDarkModeApp
                 ShowErrorMessage(ex);
             }
             RequestThemeSwitch();
-        }
-
-        private void OfficeComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            builder.Config.Office.Enabled = true;
-            if (OfficeComboBox.SelectedIndex.Equals(0))
-            {
-                builder.Config.Office.Mode = Mode.Switch;
-            }
-
-            if (OfficeComboBox.SelectedIndex.Equals(1))
-            {
-                builder.Config.Office.Mode = Mode.LightOnly;
-            }
-
-            if (OfficeComboBox.SelectedIndex.Equals(2))
-            {
-                builder.Config.Office.Mode = Mode.DarkOnly;
-            }
-
-            if (OfficeComboBox.SelectedIndex.Equals(3))
-            {
-                builder.Config.Office.Enabled = false;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
-        }
-        private void DisableOfficeSwitch()
-        {
-            //does nothing for now
-            Properties.Settings.Default.OfficeThemeChange = 3;
-            OfficeComboBox.SelectedIndex = 3;
         }
 
         private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
@@ -280,15 +248,7 @@ namespace AutoDarkModeApp
 
         private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckBoxOfficeWhiteTheme.IsChecked ?? true){
-                builder.Config.Office.LightTheme = 5;
-                OfficeComboBox_DropDownClosed(this, null);
-            }
-            else
-            {
-                builder.Config.Office.LightTheme = 0;
-                OfficeComboBox_DropDownClosed(this, null);
-            }
+            builder.Config.Office.LightTheme = (byte)(CheckBoxOfficeWhiteTheme.IsChecked ?? true ? 5 : 0);
             try
             {
                 builder.Save();

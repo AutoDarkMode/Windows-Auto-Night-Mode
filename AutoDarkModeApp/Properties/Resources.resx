@@ -136,6 +136,9 @@
     <value>Enable features for Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
+    <value>System Apps</value>
+  </data>
+  <data name="lblAppsTitle" xml:space="preserve">
     <value>Apps:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
@@ -148,10 +151,7 @@
     <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy):</value>
-  </data>
-  <data name="lblLight" xml:space="preserve">
-    <value>Light</value>
+    <value>Edge (Legacy)</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>Light theme</value>
@@ -163,7 +163,28 @@
     <value>Switch current theme</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System:</value>
+    <value>System Interface</value>
+  </data>
+  <data name="lblEnableTheming" xml:space="preserve">
+    <value>Enable theming for this app</value>
+  </data>
+  <data name="lblExtraOptions" xml:space="preserve">
+    <value>Extra options</value>
+  </data>
+  <data name="lblAdaptive" xml:space="preserve">
+    <value>Adaptive</value>
+  </data>
+  <data name="lblAdaptiveExplanation" xml:space="preserve">
+    <value>App follows the current system theme</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="lblLightExplanation" xml:space="preserve">
+    <value>App always uses the light theme</value>
+  </data>
+  <data name="lblDarkExplanation" xml:space="preserve">
+    <value>App always uses the dark theme</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Used third party software</value>
@@ -361,6 +382,10 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>These options are disabled while using a Windows Theme. 
 You can set them up individually in your Windows Theme.</value>
   </data>
+  <data name="ToolTipDisabledDueOfficeDisabled" xml:space="preserve">
+    <value>This option is disabled while theming for Microsoft Office is disabled. 
+You can set up theming for this app above.</value>
+  </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Apps</value>
   </data>
@@ -440,7 +465,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Error occurred while applying the selected themes, we disabled theme switching</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative light theme</value>
+    <value>Alternative light theme for Microsoft Office</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Download Extension</value>
