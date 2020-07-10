@@ -5,9 +5,9 @@
 Icons/
 Setup/
 Translation/
-AutoDarkModeApp/
-AutoDarkModeSvc/
 Cert/
+AutoDarkModeInstaller/
+compile.bat
 
 # User-specific files
 *.suo
@@ -52,6 +52,9 @@ dlldata.c
 project.lock.json
 project.fragment.lock.json
 artifacts/
+
+# Wix
+ProductComponents.wxs
 
 *_i.c
 *_p.c
@@ -269,3 +272,6 @@ __pycache__/
 *.pyc
 /desktop.ini
 /MigrationBackup/61f0cc4e/AutoThemeChanger
+
+# wpf package
+!nuget/FluentWPF.0.10.0.nupkg

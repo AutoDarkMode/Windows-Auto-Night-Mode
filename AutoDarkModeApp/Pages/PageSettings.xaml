@@ -1,0 +1,67 @@
+﻿<Page x:Class="AutoDarkModeApp.Pages.PageSettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      mc:Ignorable="d"
+      Title="PageSettings" Height="560" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Page Title -->
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarSettings}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
+
+        <!-- Settings-->
+        <StackPanel Orientation="Vertical" Margin="10,60,0,0" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
+            <CheckBox Name="CheckBoxAlterTime" Content="{x:Static p:Resources.cb12HourTime}" Margin="0,0,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxAlterTime_Click"/>
+            <CheckBox Name="CheckBoxBackgroundUpdater" Content="{x:Static p:Resources.cbBackgroundUpdate}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBackgroundUpdater_Click"/>
+            <CheckBox Name="CheckBoxLogonTask" Content="{x:Static p:Resources.cbSettingsLogonTask}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxLogonTask_Click"/>
+            <CheckBox Name="CheckBoxColourFilter" Content="{x:Static p:Resources.cbSettingsColourFilter}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxColourFilter_Click"/>
+            <CheckBox Name="CheckBoxBatteryDarkMode" Content="{x:Static p:Resources.cbSettingsBatteryDarkMode}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBatteryDarkMode_Click"/>
+            <CheckBox Name="CheckBoxEnergySaverMitigation" Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}" Margin="0,10,0,0" ToolTipService.InitialShowDelay="150" ToolTipService.HasDropShadow="True" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxEnergySaverMitigation_Click"/>
+
+
+            <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="26" Margin="0,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" ContextMenu="{x:Null}" MaxLength="4"/>
+            <TextBlock Name="BatterySliderLabel" Visibility="Visible" HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsBatterySlider}" VerticalAlignment="Top"/>
+            <Slider Name="BatterySlider" Visibility="Visible" HorizontalAlignment="Left" Width="270" Margin="0,5,0,0" Thumb.DragCompleted="BatterySlider_Save" KeyUp="BatterySlider_Save" Value="25" Minimum="0" Maximum="100" IsSnapToTickEnabled="True"/>
+            <TextBlock Name="BatterySliderText" HorizontalAlignment="Left" Visibility="Visible" Margin="128.5,0,0,0" TextWrapping="Wrap" Text="{Binding ElementName=BatterySlider,Path=Value}" VerticalAlignment="Top"/>
+
+            <!-- Language selection-->
+            <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
+            <ComboBox x:Name="ComboBoxLanguageSelection" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="150" Height="28" SelectedIndex="1" DropDownClosed="ComboBoxLanguageSelection_DropDownClosed" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
+                <ComboBoxItem Content="Czech" Name="cs"/>
+                <ComboBoxItem Content="Deutsch" Name="de"/>
+                <ComboBoxItem Content="English" Name="en"/>
+                <ComboBoxItem Content="Français" Name="fr"/>
+                <ComboBoxItem Content="Bahasa Indonesia" Name="id"/>
+                <ComboBoxItem Content="Italiano" Name="it"/>
+                <ComboBoxItem Content="Nederlands" Name="nl"/>
+                <ComboBoxItem Content="Polski" Name="pl"/>
+                <ComboBoxItem Content="Português" Name="pt"/>
+                <ComboBoxItem Content="Русский" Name="ru"/>
+                <ComboBoxItem Content="Espanol" Name="es"/>
+                <ComboBoxItem Content="Українська" Name="uk"/>
+                <ComboBoxItem Content="日本語" Name="ja"/>
+                <ComboBoxItem Content="简体中文" Name="zh"/>
+                <!-- <ComboBoxItem Content="繁體中文" Name="zhtw"/> -->
+            </ComboBox>
+            <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
+            <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
+            <Button Name="RestartButton" Content="Restart App" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="RestartButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
+
+        </StackPanel>
+    </Grid>
+</Page>
