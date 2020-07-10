@@ -65,7 +65,7 @@ namespace AutoDarkModeApp.Pages
                 CheckBoxEnergySaverMitigation.IsChecked = true;
             }
 
-            if (PowerManager.BatteryStatus != BatteryStatus.NotPresent)
+            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
             {
                 CheckBoxBatteryDarkMode.IsEnabled = false;
                 CheckBoxEnergySaverMitigation.IsEnabled = false;
