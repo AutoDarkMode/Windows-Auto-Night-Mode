@@ -12,6 +12,7 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Handlers;
+using Windows.System.Power;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -62,6 +63,12 @@ namespace AutoDarkModeApp.Pages
             else
             {
                 CheckBoxEnergySaverMitigation.IsChecked = true;
+            }
+
+            if (PowerManager.EnergySaverStatus == EnergySaverStatus.Disabled)
+            {
+                CheckBoxBatteryDarkMode.IsEnabled = false;
+                CheckBoxEnergySaverMitigation.IsEnabled = false;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
