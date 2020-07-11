@@ -202,9 +202,9 @@ namespace AutoDarkModeApp
                 saved = true;
                 Close();
             }
-            catch
+            catch (Exception ex)
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "error", "close")
+                MsgBox msgBox = new MsgBox(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle + Environment.NewLine + ex, "error", "close")
                 {
                     Owner = GetWindow(this)
                 };
