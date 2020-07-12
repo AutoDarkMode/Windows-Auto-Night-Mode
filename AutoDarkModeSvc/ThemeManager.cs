@@ -15,13 +15,13 @@ namespace AutoDarkModeSvc
 
         public static void TimedSwitch(AdmConfigBuilder builder)
         {
-            GlobalState rtc = GlobalState.Instance();
-            if (rtc.ForcedTheme == Theme.Dark) 
+            GlobalState state = GlobalState.Instance();
+            if (state.ForcedTheme == Theme.Dark) 
             {
                 SwitchTheme(builder.Config, Theme.Dark);
                 return;
             } 
-            else if (rtc.ForcedTheme == Theme.Light) 
+            else if (state.ForcedTheme == Theme.Light) 
             {
                 SwitchTheme(builder.Config, Theme.Light);
                 return;
@@ -118,30 +118,30 @@ namespace AutoDarkModeSvc
 
         private static void ApplyThemeOptions(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
-            GlobalState rtc = GlobalState.Instance();
+            GlobalState state = GlobalState.Instance();
 
             if (!ThemeOptionsNeedUpdate(config, newTheme))
             {
                 return;
             }
             PowerHandler.DisableEnergySaver(config);
-            var oldsys = rtc.CurrentSystemTheme;
-            var oldapp = rtc.CurrentAppsTheme;
-            var oldedg = rtc.CurrentEdgeTheme;
-            var oldwal = rtc.CurrentWallpaperTheme;
-            var oldoff = rtc.CurrentOfficeTheme;
+            var oldsys = state.CurrentSystemTheme;
+            var oldapp = state.CurrentAppsTheme;
+            var oldedg = state.CurrentEdgeTheme;
+            var oldwal = state.CurrentWallpaperTheme;
+            var oldoff = state.CurrentOfficeTheme;
 
             SetColorFilter(config.ColorFilterEnabled, newTheme);
-            SetAppsTheme(config.AppsTheme, newTheme, rtc);
-            SetEdgeTheme(config.EdgeTheme, newTheme, rtc);
+            SetAppsTheme(config.AppsTheme, newTheme, state);
+            SetEdgeTheme(config.EdgeTheme, newTheme, state);
 
-            SetWallpaper(newTheme, rtc, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
-            SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
+            SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
+            SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
             //run async to delay at specific parts due to color prevalence not switching icons correctly
             int taskdelay = config.Tunable.AccentColorSwitchDelay;
             Task.Run(async () =>
             {
-                await SetSystemTheme(config.SystemTheme, newTheme, taskdelay, rtc, config);
+                await SetSystemTheme(config.SystemTheme, newTheme, taskdelay, state, config);
 
                 if (automatic)
                 {
@@ -154,7 +154,7 @@ namespace AutoDarkModeSvc
                 PowerHandler.RestoreEnergySaver(config);
                 Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled})");
                 Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}, o:{oldoff})");
-                Logger.Info($"is (s:{rtc.CurrentSystemTheme}, a:{rtc.CurrentAppsTheme}, e:{rtc.CurrentEdgeTheme}, w:{rtc.CurrentWallpaperTheme}, o:{rtc.CurrentOfficeTheme})");
+                Logger.Info($"is (s:{state.CurrentSystemTheme}, a:{state.CurrentAppsTheme}, e:{state.CurrentEdgeTheme}, w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme})");
             });
         }
 
@@ -332,10 +332,10 @@ namespace AutoDarkModeSvc
         /// <returns></returns>
         private static bool ThemeOptionsNeedUpdate(AdmConfig config, Theme newTheme)
         {
-            GlobalState rtc = GlobalState.Instance();
+            GlobalState state = GlobalState.Instance();
             if (config.Wallpaper.Enabled)
             {
-                if (rtc.CurrentWallpaperTheme == Theme.Undefined || rtc.CurrentWallpaperTheme != newTheme)
+                if (state.CurrentWallpaperTheme == Theme.Undefined || state.CurrentWallpaperTheme != newTheme)
                 {
                     return true;
                 }
@@ -345,49 +345,49 @@ namespace AutoDarkModeSvc
             {
                 // if accent color is enabled in config, accent color is enabled in windows 
                 // and the target theme is light we need to update
-                if (config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence && newTheme == Theme.Light)
+                if (config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence && newTheme == Theme.Light)
                 {
                     return true;
                 } 
                 // if accent color is enabled in config, but it's not currently active, update
-                else if (config.AccentColorTaskbarEnabled && !rtc.CurrentColorPrevalence)
+                else if (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence)
                 {
                     return true;
                 }
                 // if accent color is disabled in config but still active, we need to disable it
-                else if (!config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence)
+                else if (!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence)
                 {
                     return true;
                 }
             }
 
-            if (ComponentNeedsUpdate(config.SystemTheme, rtc.CurrentSystemTheme, newTheme))
+            if (ComponentNeedsUpdate(config.SystemTheme, state.CurrentSystemTheme, newTheme))
             {
                 return true;
             }
 
-            if (ComponentNeedsUpdate(config.AppsTheme, rtc.CurrentAppsTheme, newTheme))
+            if (ComponentNeedsUpdate(config.AppsTheme, state.CurrentAppsTheme, newTheme))
             {
                 return true;
             }
 
-            if (ComponentNeedsUpdate(config.EdgeTheme, rtc.CurrentEdgeTheme, newTheme))
+            if (ComponentNeedsUpdate(config.EdgeTheme, state.CurrentEdgeTheme, newTheme))
             {
                 return true;
             }
             
-            if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, rtc.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers, 
-                config.Wallpaper.DarkThemeWallpapers, rtc.CurrentWallpaperTheme, newTheme))
+            if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, state.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers, 
+                config.Wallpaper.DarkThemeWallpapers, state.CurrentWallpaperTheme, newTheme))
             {
                 return true;
             }
 
-            if (config.Office.Enabled && ComponentNeedsUpdate(config.Office.Mode, rtc.CurrentOfficeTheme, newTheme))
+            if (config.Office.Enabled && ComponentNeedsUpdate(config.Office.Mode, state.CurrentOfficeTheme, newTheme))
             {
                 return true;
             }
 
-            if (config.ColorFilterEnabled && ColorFilterNeedsUpdate(config.ColorFilterEnabled, rtc.ColorFilterEnabled, newTheme))
+            if (config.ColorFilterEnabled && ColorFilterNeedsUpdate(config.ColorFilterEnabled, state.ColorFilterEnabled, newTheme))
             {
                 return true;
             }
