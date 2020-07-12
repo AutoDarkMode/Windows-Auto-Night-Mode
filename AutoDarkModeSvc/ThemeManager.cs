@@ -66,7 +66,7 @@ namespace AutoDarkModeSvc
 
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
-            GlobalState rtc = GlobalState.Instance();
+            GlobalState state = GlobalState.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
             {
                 Logger.Error("dark or light theme path empty");
@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc
                 return;
             }
 
-            if (Path.GetFileNameWithoutExtension(config.DarkThemePath) != rtc.CurrentWindowsThemeName && newTheme == Theme.Dark)
+            if (Path.GetFileNameWithoutExtension(config.DarkThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
                 if (automatic)
                 {
@@ -98,10 +98,10 @@ namespace AutoDarkModeSvc
                     Logger.Info("switching to dark theme");
                 }
                 SetColorFilter(config.ColorFilterEnabled, newTheme);
-                SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
+                SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.DarkThemePath);
             }
-            else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != rtc.CurrentWindowsThemeName && newTheme == Theme.Light)
+            else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Light)
             {
                 if (automatic)
                 {
@@ -112,7 +112,7 @@ namespace AutoDarkModeSvc
                     Logger.Info("switching to light theme");
                 }
                 SetColorFilter(config.ColorFilterEnabled, newTheme);
-                SetOfficeTheme(config.Office.Mode, newTheme, rtc, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
+                SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.LightThemePath);            }
         }
 

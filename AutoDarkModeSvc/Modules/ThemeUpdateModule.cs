@@ -12,7 +12,7 @@ namespace AutoDarkModeSvc.Modules
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public override string TimerAffinity { get; } = TimerName.StateUpdate;
-        private GlobalState RuntimeConfigInstance { get; }
+        private GlobalState State { get; }
 
         /// <summary>
         /// Instantiates a new TimeSwitchModule.
@@ -21,7 +21,7 @@ namespace AutoDarkModeSvc.Modules
         /// <param name="name">unique name of the module</param>
         public ThemeUpdateModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            RuntimeConfigInstance = GlobalState.Instance();
+            State = GlobalState.Instance();
         }
 
         public override void Fire()
@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Modules
             {
                 try
                 {
-                    RuntimeConfigInstance.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
+                    State.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
                 }
                 catch (Exception ex)
                 {
@@ -46,7 +46,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Cleanup()
         {
-            RuntimeConfigInstance.CurrentWindowsThemeName = "";
+            State.CurrentWindowsThemeName = "";
         }
     }
 }

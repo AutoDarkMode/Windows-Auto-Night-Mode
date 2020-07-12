@@ -9,7 +9,7 @@ namespace AutoDarkModeSvc.Modules
     class ModuleWardenModule : AutoDarkModeModule
     {
         private AdmConfigBuilder ConfigBuilder { get; }
-        private GlobalState Rtc { get; }
+        private GlobalState State { get; }
         private List<ModuleTimer> Timers { get; }
         public override string TimerAffinity { get; } = TimerName.Main;
 
@@ -22,7 +22,7 @@ namespace AutoDarkModeSvc.Modules
         public ModuleWardenModule(string name, List<ModuleTimer> timers, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Rtc = GlobalState.Instance();
+            State = GlobalState.Instance();
             Timers = timers;
             Priority = 1;
         }
@@ -31,7 +31,7 @@ namespace AutoDarkModeSvc.Modules
         {
             AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
-            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !Rtc.PostponeSwitch);
+            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !State.PostponeSwitch);
             AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);
             AutoManageModule(typeof(GPUMonitorModule).Name, typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(EventModule).Name, typeof(EventModule), true, config.Events.Enabled);

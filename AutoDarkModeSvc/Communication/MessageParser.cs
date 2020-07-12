@@ -20,7 +20,7 @@ namespace AutoDarkModeSvc.Communication
         {
 
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-            GlobalState rtc = GlobalState.Instance();
+            GlobalState state = GlobalState.Instance();
             msg.ForEach(message =>
             {
                 switch (message)
@@ -143,21 +143,21 @@ namespace AutoDarkModeSvc.Communication
 
                     case Command.Light:
                         Logger.Info("signal received: force light theme");
-                        rtc.ForcedTheme = Theme.Light;
+                        state.ForcedTheme = Theme.Light;
                         ThemeManager.SwitchTheme(builder.Config, Theme.Light);
                         SendResponse(Response.Ok);
                         break;
 
                     case Command.Dark:
                         Logger.Info("signal received: force dark theme");
-                        rtc.ForcedTheme = Theme.Dark;
+                        state.ForcedTheme = Theme.Dark;
                         ThemeManager.SwitchTheme(builder.Config, Theme.Dark);
                         SendResponse(Response.Ok);
                         break;
 
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
-                        rtc.ForcedTheme = Theme.Undefined;
+                        state.ForcedTheme = Theme.Undefined;
                         ThemeManager.TimedSwitch(builder);
                         SendResponse(Response.Ok);
                         break;
