@@ -253,7 +253,7 @@
     <value>使用的第三方软件</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: 朱赛辉</value>
+    <value>翻译者: zheolls</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>更新</value>
@@ -335,7 +335,7 @@ GitHub上提供了一个新版本，其中包含修复和增强功能。是否�
     <value>抱歉，未能正确应用你的设置。
 你可以尝试下面的几种方法：
 - 卸载并重装本软件。
--Try to disable {0} in the Auto Dark Mode settings.
+- 尝试在设置中禁用 {0}.
 - 如果你启用了桌面壁纸功能，关闭该功能并重试。
 
 如果上述方法无效，您可将错误原因与截图评论至GitHub issue。单击“是”以关闭对话框。</value>
@@ -368,5 +368,183 @@ GitHub上提供了一个新版本，其中包含修复和增强功能。是否�
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>使用Windows主题时，将禁用这些选项。
+您可以在Windows主题中单独设置它们。</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>壁纸/主题</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>暗黑主题：</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>创建你的主题</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>选择你的主题</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>白色主题</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows主题（更多）</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>桌面壁纸（推荐）</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>打开壁纸设置</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>切换至“颜色”，选择默认应用模式为亮。选择您喜欢的壁纸，鼠标光标和色调。</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>返回主题设置并保存主题。</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>对暗黑主题重复此过程</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>切换任务栏颜色的延迟（毫秒）：</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>菜单</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>重启</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>自定义时间</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>日出至日落</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>步骤</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>使用灰度滤镜（Win + Ctrl + C）</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>使用登录任务代替启动项</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>选择模式：</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>应用所选主题时发生错误，已禁用主题切换</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>可替代白色主题</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>下载插件</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>推荐工具</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>此浏览器扩展使Chrome，Firefox和Edge中的网站跟随系统主题。</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>未找到</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>为什么要捐赠？</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>怎样捐赠？</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>您可以通过PayPal向我汇款。这完全是自愿的.</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>捐赠</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>应用.theme-file时发生错误。也许您创建的主题已被删除或移动。我们将停用主题切换。要重新启用它，请打开自动暗黑模式并配置{0}设置。</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>我们遇到了以下问题：
+{0}
+
+现在，我们将尝试通过以管理员身份运行程序来解决此问题。也许这会有所帮助。
+之后，自动暗黑模式将重新启动，您需要重新应用设置，对不起！
+
+注：请勿以管理员身份手动运行自动暗黑模式！</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>需要帮助吗？</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>稍后下载</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>不要再提醒</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>现在下载</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>在过去的几个月中，我们一直在努力为您提供最佳的更新。现在，
+
+Auto Dark Mode X已完全从头开始重写。现在，它具有真正的后台任务，而不是依赖Windows Task Scheduler。这意味着您将获得更可靠，更灵活的主题切换体验！
+
+是的，这会在后台消耗更多资源，但是作为回报，我们为您提供了更多功能，以提高您的生产效率。例如：
+-游戏模式：在玩游戏或GPU繁忙时禁用主题切换。
+-使用键盘快捷键切换主题
+和更多！
+
+该更新适用于所有Win32设备。对于ARM设备，该更新将导致设备续航出现问题，因为必须模拟后台进程（待解决）。</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X 可用</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>X版本是一个很棒的重大更新，您绝对应该尝试一下！您确定不想下载吗？我们将永远不会再提醒您！</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>您确定吗？</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>多用户支持</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>可选：延迟激活灰度滤镜</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>适配系统</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>未充电时启用暗黑模式</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>节能滑动条的默认值</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>主题切换的节能选项</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>该功能仅当尚未手动启用省电功能时可用！</value>
   </data>
 </root>
