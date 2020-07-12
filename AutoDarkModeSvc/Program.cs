@@ -86,7 +86,7 @@ namespace AutoDarkModeSvc
                 }
 
                 //Instantiate Runtime config
-                RuntimeConfig.Instance();
+                GlobalState.Instance();
 
                 //Populate configuration
                 AdmConfigBuilder Builder = AdmConfigBuilder.Instance();

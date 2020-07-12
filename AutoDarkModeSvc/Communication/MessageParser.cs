@@ -20,7 +20,7 @@ namespace AutoDarkModeSvc.Communication
         {
 
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-            RuntimeConfig rtc = RuntimeConfig.Instance();
+            GlobalState rtc = GlobalState.Instance();
             msg.ForEach(message =>
             {
                 switch (message)

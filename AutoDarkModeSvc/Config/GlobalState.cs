@@ -5,20 +5,20 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Config
 {
-    class RuntimeConfig
+    class GlobalState
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        private static RuntimeConfig rtc;
-        public static RuntimeConfig Instance()
+        private static GlobalState rtc;
+        public static GlobalState Instance()
         {
             if (rtc == null)
             {
-                rtc = new RuntimeConfig();
+                rtc = new GlobalState();
             }
             return rtc;
         }
-        protected RuntimeConfig()
+        protected GlobalState()
         {
             CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
             CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;

@@ -9,7 +9,7 @@ namespace AutoDarkModeSvc.Modules
     class ModuleWardenModule : AutoDarkModeModule
     {
         private AdmConfigBuilder ConfigBuilder { get; }
-        private RuntimeConfig Rtc { get; }
+        private GlobalState Rtc { get; }
         private List<ModuleTimer> Timers { get; }
         public override string TimerAffinity { get; } = TimerName.Main;
 
@@ -22,7 +22,7 @@ namespace AutoDarkModeSvc.Modules
         public ModuleWardenModule(string name, List<ModuleTimer> timers, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Rtc = RuntimeConfig.Instance();
+            Rtc = GlobalState.Instance();
             Timers = timers;
             Priority = 1;
         }

@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Modules
         private static readonly string Frozen = "frozen";
             
         public override string TimerAffinity { get; } = TimerName.Main;
-        private RuntimeConfig Rtc { get; }
+        private GlobalState Rtc { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
         private bool Monitor { get; set; }
         private bool Freeze { get; set; }
@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.Modules
 
         public GPUMonitorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            Rtc = RuntimeConfig.Instance();
+            Rtc = GlobalState.Instance();
             ConfigBuilder = AdmConfigBuilder.Instance();
             Monitor = false;
             Freeze = false;

@@ -15,7 +15,7 @@ namespace AutoDarkModeSvc
 
         public static void TimedSwitch(AdmConfigBuilder builder)
         {
-            RuntimeConfig rtc = RuntimeConfig.Instance();
+            GlobalState rtc = GlobalState.Instance();
             if (rtc.ForcedTheme == Theme.Dark) 
             {
                 SwitchTheme(builder.Config, Theme.Dark);
@@ -66,7 +66,7 @@ namespace AutoDarkModeSvc
 
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
-            RuntimeConfig rtc = RuntimeConfig.Instance();
+            GlobalState rtc = GlobalState.Instance();
             if (config.DarkThemePath == null || config.LightThemePath == null)
             {
                 Logger.Error("dark or light theme path empty");
@@ -118,7 +118,7 @@ namespace AutoDarkModeSvc
 
         private static void ApplyThemeOptions(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
-            RuntimeConfig rtc = RuntimeConfig.Instance();
+            GlobalState rtc = GlobalState.Instance();
 
             if (!ThemeOptionsNeedUpdate(config, newTheme))
             {
@@ -158,7 +158,7 @@ namespace AutoDarkModeSvc
             });
         }
 
-        private static void SetAppsTheme(Mode mode, Theme newTheme, RuntimeConfig rtc)
+        private static void SetAppsTheme(Mode mode, Theme newTheme, GlobalState rtc)
         {
             if (mode == Mode.DarkOnly)
             {
@@ -177,7 +177,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, RuntimeConfig rtc, AdmConfig config)
+        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, GlobalState rtc, AdmConfig config)
         {
             // Set system theme
             if (mode == Mode.DarkOnly)
@@ -227,7 +227,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private static void SetEdgeTheme(Mode mode, Theme newTheme, RuntimeConfig rtc)
+        private static void SetEdgeTheme(Mode mode, Theme newTheme, GlobalState rtc)
         {
             if (mode == Mode.DarkOnly)
             {
@@ -246,7 +246,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private static void SetOfficeTheme(Mode mode, Theme newTheme, RuntimeConfig rtc, byte lightTheme, byte darkTheme, bool enabled)
+        private static void SetOfficeTheme(Mode mode, Theme newTheme, GlobalState rtc, byte lightTheme, byte darkTheme, bool enabled)
         {
             if (enabled)
             {
@@ -298,7 +298,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private static void SetWallpaper(Theme newTheme, RuntimeConfig rtc, List<string> darkThemeWallpapers,
+        private static void SetWallpaper(Theme newTheme, GlobalState rtc, List<string> darkThemeWallpapers,
             List<string> lightThemeWallpapers, bool enabled)
         {
             if (enabled)
@@ -332,7 +332,7 @@ namespace AutoDarkModeSvc
         /// <returns></returns>
         private static bool ThemeOptionsNeedUpdate(AdmConfig config, Theme newTheme)
         {
-            RuntimeConfig rtc = RuntimeConfig.Instance();
+            GlobalState rtc = GlobalState.Instance();
             if (config.Wallpaper.Enabled)
             {
                 if (rtc.CurrentWallpaperTheme == Theme.Undefined || rtc.CurrentWallpaperTheme != newTheme)
