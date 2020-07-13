@@ -7,9 +7,14 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="560" Width="640" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
+        Title="{x:Static p:Resources.Title}" Height="{Binding Path=WindowY}" Width="{Binding Path=WindowX}" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
+    <fw:AcrylicWindow.Resources>
+        <ResourceDictionary>
+            <ScaleTransform x:Key="windowScaleTransform" ScaleX="{Binding Path=ScaleString}" ScaleY="{Binding Path=ScaleString}" />
+        </ResourceDictionary>
+    </fw:AcrylicWindow.Resources>
 
-    <Grid x:Name="mainWin" Background="#40FFFFFF">
+    <Grid x:Name="mainWin" LayoutTransform="{StaticResource windowScaleTransform}" Background="#40FFFFFF">
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

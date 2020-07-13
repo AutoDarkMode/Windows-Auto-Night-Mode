@@ -7,13 +7,31 @@ using System.Windows.Navigation;
 using AutoDarkModeApp.Properties;
 using NetMQ;
 using AutoDarkModeSvc.Communication;
+using System.Windows.Media;
 
 namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
+        private ScaleTransform Transform { get; set;  }
+        private int BasewindowX { get; } = 640;
+        private int BaseWindowY { get; } = 560;
+        public string WindowX { get; }
+        public string WindowY { get; }
+        public string ScaleString { get; }
+
         public MainWindow()
         {
+            DataContext = this;
+            Transform = new ScaleTransform()
+            {
+                ScaleX = Settings.Default.UIScale,
+                ScaleY = Settings.Default.UIScale
+            };
+
+            WindowX = ((int)(Settings.Default.UIScale * BasewindowX)).ToString();
+            WindowY = ((int)(Settings.Default.UIScale * BaseWindowY)).ToString();
+            ScaleString = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
             Console.WriteLine("--------- AppStart");
             LanguageHelper(); //set current UI language
             InitializeComponent();
