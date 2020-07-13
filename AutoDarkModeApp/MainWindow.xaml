@@ -10,7 +10,7 @@
         Title="{x:Static p:Resources.Title}" Height="{Binding Path=WindowY}" Width="{Binding Path=WindowX}" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
     <fw:AcrylicWindow.Resources>
         <ResourceDictionary>
-            <ScaleTransform x:Key="windowScaleTransform" ScaleX="{Binding Path=ScaleString}" ScaleY="{Binding Path=ScaleString}" />
+            <ScaleTransform x:Key="windowScaleTransform" ScaleX="{Binding Path=ScaleStringX}" ScaleY="{Binding Path=ScaleStringY}" />
         </ResourceDictionary>
     </fw:AcrylicWindow.Resources>
 
