@@ -78,10 +78,17 @@ namespace AutoDarkModeSvc
                 // Apply config           
                 LogManager.Configuration = config;
 
-
-                if (!mutex.WaitOne(TimeSpan.FromSeconds(2), false))
+                try
                 {
-                    Logger.Debug("app instance already open");
+                    if (!mutex.WaitOne(TimeSpan.FromSeconds(2), false))
+                    {
+                        Logger.Debug("app instance already open");
+                        return;
+                    }
+                } 
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "failed getting mutex, " + ex.Message);
                     return;
                 }
 
