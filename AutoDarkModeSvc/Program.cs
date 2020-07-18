@@ -104,28 +104,31 @@ namespace AutoDarkModeSvc
                 }
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
-                if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.DarkThemePath == null)
+                if (!Builder.Config.ClassicMode)
                 {
-                    Builder.Config.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) 
-                        + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
-                    configUpdateNeeded = true;
-                }
-                if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.LightThemePath == null)
-                {
-                    Builder.Config.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-                       + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
-                    configUpdateNeeded = true;
-                }
-                if (configUpdateNeeded)
-                {
-                    Logger.Warn("one or more theme paths not set at program start, reinstantiation needed");
-                    try
+                    if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.DarkThemePath == null)
                     {
-                        Builder.Save();
+                        Builder.Config.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                            + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
+                        configUpdateNeeded = true;
                     }
-                    catch (Exception ex)
+                    if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.LightThemePath == null)
                     {
-                        Logger.Error(ex, "couldn't save configuration file");
+                        Builder.Config.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                           + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
+                        configUpdateNeeded = true;
+                    }
+                    if (configUpdateNeeded)
+                    {
+                        Logger.Warn("one or more theme paths not set at program start, reinstantiation needed");
+                        try
+                        {
+                            Builder.Save();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "couldn't save configuration file");
+                        }
                     }
                 }
 
