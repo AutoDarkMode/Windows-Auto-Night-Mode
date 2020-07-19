@@ -14,14 +14,13 @@ namespace AutoDarkModeSvc.Modules
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         //private static readonly string NoSwitch = "no_switch_pending";
         private static readonly string ThreshLow = "threshold_low";
-        private static readonly string ThreshBelow = "theshold_below";
+        //private static readonly string ThreshBelow = "theshold_below";
         private static readonly string ThreshHigh = "threshold_high";
         //private static readonly string Frozen = "frozen";
 
         public override string TimerAffinity { get; } = TimerName.Main;
         private GlobalState State { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
-        private bool Monitor { get; set; }
         private int Counter { get; set; }
         private bool PostponeLight { get; set; }
         private bool PostponeDark { get; set; }
@@ -30,7 +29,6 @@ namespace AutoDarkModeSvc.Modules
         {
             State = GlobalState.Instance();
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Monitor = false;
             PostponeDark = false;
             PostponeLight = false;
         }
@@ -74,6 +72,7 @@ namespace AutoDarkModeSvc.Modules
                             Logger.Info($"ending GPU usage monitoring");
                             PostponeDark = false;
                             PostponeLight = false;
+                            State.PostponeSwitch = false;
                         }
                     }
                 }
@@ -105,6 +104,7 @@ namespace AutoDarkModeSvc.Modules
                             Logger.Info($"ending GPU usage monitoring");
                             PostponeDark = false;
                             PostponeLight = false;
+                            State.PostponeSwitch = false;
                         }
                     }
                 }
@@ -113,45 +113,24 @@ namespace AutoDarkModeSvc.Modules
 
         private async Task<string> CheckForPostpone(DateTime time)
         {
-            if (Monitor)
+            var gpuUsage = await GetGPUUsage();
+            if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
             {
-                var gpuUsage = await GetGPUUsage();
-                if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
+                Counter++;
+                if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
                 {
-                    Counter++;
-                    if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
-                    {
-                        Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
-                        State.PostponeSwitch = false;
-                        Monitor = false;
-                        return ThreshLow;
-                    }
-                    Logger.Debug($"lower threshold sample {Counter} ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
+                    Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
+                    State.PostponeSwitch = false;
+                    return ThreshLow;
                 }
-                else
-                {
-                    Logger.Debug($"lower threshold sample reset ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
-                    Counter = 0;
-                }
-                return ThreshHigh;
+                Logger.Debug($"lower threshold sample {Counter} ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
             }
             else
             {
-                var gpuUsage = await GetGPUUsage();
-                if (gpuUsage > ConfigBuilder.Config.GPUMonitoring.Threshold)
-                {
-                    Logger.Info($"postponing theme switch ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
-                    Monitor = true;
-                    return ThreshHigh;
-                }
-                else
-                {
-                    Logger.Info($"ending GPU usage monitoring, no postpone. threshold: ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
-                    State.PostponeSwitch = false;
-                    Monitor = false;
-                    return ThreshBelow;
-                }
+                Logger.Debug($"lower threshold sample reset ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
+                Counter = 0;
             }
+            return ThreshHigh;
         }
 
         private async Task<int> GetGPUUsage()
