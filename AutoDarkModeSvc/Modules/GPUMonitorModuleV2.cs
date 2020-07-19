@@ -147,6 +147,7 @@ namespace AutoDarkModeSvc.Modules
                 else
                 {
                     Logger.Info($"ending GPU usage monitoring, no postpone. threshold: ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
+                    State.PostponeSwitch = false;
                     Monitor = false;
                     return ThreshBelow;
                 }
