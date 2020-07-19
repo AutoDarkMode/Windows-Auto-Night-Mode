@@ -50,7 +50,7 @@ namespace AutoDarkModeSvc
                 StateUpdateTimer
             };
 
-            MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers, true));
+            MainTimer.RegisterModule(new WardenModule("ModuleWarden", Timers, true));
 
             Timers.ForEach(t => t.Start());
         }

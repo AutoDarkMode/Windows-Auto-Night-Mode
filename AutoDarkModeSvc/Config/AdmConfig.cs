@@ -155,9 +155,9 @@ namespace AutoDarkModeSvc.Config
             get { return monitorTimeSpanMin; }
             set
             {
-                if (value <= 3)
+                if (value <= 1)
                 {
-                    monitorTimeSpanMin = 3;
+                    monitorTimeSpanMin = 1;
                 }
                 else
                 {

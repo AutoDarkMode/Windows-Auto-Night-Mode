@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Config
 {
@@ -41,6 +42,7 @@ namespace AutoDarkModeSvc.Config
             PostponeSwitch = false;
         }
 
+        private WardenModule Warden { get; set; }
         public Theme CurrentAppsTheme { get; set; }
         public Theme CurrentSystemTheme { get; set; }
         public Theme CurrentEdgeTheme { get; set; }
@@ -50,7 +52,28 @@ namespace AutoDarkModeSvc.Config
         public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
-        public bool PostponeSwitch { get; set; }
+        private bool _postponeSwitch;
+        // triggers update if and only if there is a change in value
+        public bool PostponeSwitch
+        {
+            get { return _postponeSwitch; }
+            set
+            {
+                if (value != _postponeSwitch)
+                {
+                    _postponeSwitch = value;
+                    if (Warden != null)
+                    {
+                        Warden.Fire();
+                    }
+                }
+            }
+        }
         public string CurrentWallpaperPath { get; set; }
+
+        public void SetWarden(WardenModule warden)
+        {
+            Warden = warden;
+        }
     }
 }
