@@ -117,6 +117,8 @@ namespace AutoDarkModeSvc
                     LogManager.Configuration = config;
                 }
 
+                Logger.Debug("config file loaded");
+
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
                 if (!Builder.Config.ClassicMode)
@@ -150,7 +152,7 @@ namespace AutoDarkModeSvc
                 int timerMillis = 0;
                 if (args.Length != 0)
                 {
-                    Int32.TryParse(args[0], out timerMillis);
+                    int.TryParse(args[0], out timerMillis);
                 }
                 timerMillis = (timerMillis == 0) ? TimerFrequency.Short : timerMillis;
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
