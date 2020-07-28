@@ -177,53 +177,70 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, GlobalState rtc, AdmConfig config)
+        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, GlobalState state, AdmConfig config)
         {
             // Set system theme
             if (mode == Mode.DarkOnly)
             {
-                RegistryHandler.SetSystemTheme((int)Theme.Dark);
-                rtc.CurrentSystemTheme = Theme.Dark;
+                if (state.CurrentSystemTheme != Theme.Dark)
+                {
+                    RegistryHandler.SetSystemTheme((int)Theme.Dark);
+                }
+                else
+                {
+                    taskdelay = 0;
+                }
+                state.CurrentSystemTheme = Theme.Dark;
                 await Task.Delay(taskdelay);
                 if (config.AccentColorTaskbarEnabled)
                 {
                     RegistryHandler.SetColorPrevalence(1);
-                    rtc.CurrentColorPrevalence = true;
+                    state.CurrentColorPrevalence = true;
                 }
-                else if (!config.AccentColorTaskbarEnabled && rtc.CurrentColorPrevalence == true)
+                else if (!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence == true)
                 {
                     RegistryHandler.SetColorPrevalence(0);
-                    rtc.CurrentColorPrevalence = false;
+                    state.CurrentColorPrevalence = false;
                 }
             }
             else if (config.SystemTheme == Mode.LightOnly)
             {
                 RegistryHandler.SetColorPrevalence(0);
-                rtc.CurrentColorPrevalence = false;
+                state.CurrentColorPrevalence = false;
                 await Task.Delay(taskdelay);
                 RegistryHandler.SetSystemTheme((int)Theme.Light);
-                rtc.CurrentSystemTheme = Theme.Light;
+                state.CurrentSystemTheme = Theme.Light;
             }
             else
             {
                 if (newTheme == Theme.Light)
                 {
                     RegistryHandler.SetColorPrevalence(0);
-                    rtc.CurrentColorPrevalence = false;
+                    state.CurrentColorPrevalence = false;
                     await Task.Delay(taskdelay);
-                }
-                RegistryHandler.SetSystemTheme((int)newTheme);
-                if (config.AccentColorTaskbarEnabled)
+                    RegistryHandler.SetSystemTheme((int)newTheme);
+                } 
+                else if (newTheme == Theme.Dark)
                 {
-                    if (newTheme == Theme.Dark)
+                    if (state.CurrentSystemTheme == Theme.Dark)
+                    {
+                        taskdelay = 0;
+                    }
+                    RegistryHandler.SetSystemTheme((int)newTheme);
+                    if (config.AccentColorTaskbarEnabled)
                     {
                         await Task.Delay(taskdelay);
                         RegistryHandler.SetColorPrevalence(1);
-                        rtc.CurrentColorPrevalence = true;
-
+                        state.CurrentColorPrevalence = true;
+                    }
+                    else
+                    {
+                        await Task.Delay(taskdelay);
+                        RegistryHandler.SetColorPrevalence(0);
+                        state.CurrentColorPrevalence = false;
                     }
                 }
-                rtc.CurrentSystemTheme = newTheme;
+                state.CurrentSystemTheme = newTheme;
             }
         }
 
@@ -341,16 +358,26 @@ namespace AutoDarkModeSvc
                 }
             }
 
-            if (config.SystemTheme != Mode.LightOnly)
+            if (config.SystemTheme == Mode.Switch)
             {
-                // if accent color is enabled in config, accent color is enabled in windows 
-                // and the target theme is light we need to update
-                if (state.CurrentColorPrevalence && newTheme == Theme.Light)
+                if (config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence && newTheme == Theme.Light)
                 {
                     return true;
-                } 
+                }
+                else if ((!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence) 
+                    || (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence && newTheme == Theme.Dark))
+                {
+                    return true;
+                }
             }
-
+            else if (config.SystemTheme == Mode.DarkOnly)
+            {
+                if ((!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence) || (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence))
+                {
+                    return true;
+                }
+            }
+        
             if (ComponentNeedsUpdate(config.SystemTheme, state.CurrentSystemTheme, newTheme))
             {
                 return true;
