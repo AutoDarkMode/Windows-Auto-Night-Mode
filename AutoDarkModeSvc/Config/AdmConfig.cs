@@ -143,6 +143,7 @@ namespace AutoDarkModeSvc.Config
         public bool SystemResumeTrigger { get; set; } = true;
         public bool DisableEnergySaverOnThemeSwitch { get; set; }
         public bool UseLogonTask { get; set; }
+        public bool Debug { get; set; }
     }
 
     public class GPUMonitoring

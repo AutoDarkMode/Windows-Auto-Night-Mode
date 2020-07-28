@@ -345,20 +345,10 @@ namespace AutoDarkModeSvc
             {
                 // if accent color is enabled in config, accent color is enabled in windows 
                 // and the target theme is light we need to update
-                if (config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence && newTheme == Theme.Light)
+                if (state.CurrentColorPrevalence && newTheme == Theme.Light)
                 {
                     return true;
                 } 
-                // if accent color is enabled in config, but it's not currently active, update
-                else if (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence)
-                {
-                    return true;
-                }
-                // if accent color is disabled in config but still active, we need to disable it
-                else if (!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence)
-                {
-                    return true;
-                }
             }
 
             if (ComponentNeedsUpdate(config.SystemTheme, state.CurrentSystemTheme, newTheme))

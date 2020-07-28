@@ -13,7 +13,7 @@ namespace AutoDarkModeSvc
 {
     static class Program
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new Mutex(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
         private static Service Service { get; set; }
 
@@ -28,14 +28,6 @@ namespace AutoDarkModeSvc
                 //Set up Logger
                 var config = new NLog.Config.LoggingConfiguration();
                 var configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
-                try
-                {
-                    Directory.CreateDirectory(configDir);
-                }
-                catch (Exception e)
-                {
-                    Logger.Debug(e, "could not create config directory");
-                }
 
                 // Targets where to log to: File and Console
                 var logfile = new NLog.Targets.FileTarget("logfile")
@@ -73,10 +65,18 @@ namespace AutoDarkModeSvc
                 else
                 {
                     config.AddRule(LogLevel.Info, LogLevel.Fatal, logfile);
-                }  
-
+                }
                 // Apply config           
                 LogManager.Configuration = config;
+
+                try
+                {
+                    Directory.CreateDirectory(configDir);
+                }
+                catch (Exception e)
+                {
+                    Logger.Fatal(e, "could not create config directory");
+                }
 
                 try
                 {
@@ -106,9 +106,17 @@ namespace AutoDarkModeSvc
                 catch (Exception e)
                 {
                     Logger.Fatal(e, "could not read config file. shutting down application!");
-                    NLog.LogManager.Shutdown();
-                    System.Environment.Exit(-1);
+                    LogManager.Shutdown();
+                    Environment.Exit(-1);
                 }
+
+                if (Builder.Config.Tunable.Debug && !argsList.Contains("/debug")) {
+                    config = new NLog.Config.LoggingConfiguration();
+                    config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
+                    config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                    LogManager.Configuration = config;
+                }
+
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
                 if (!Builder.Config.ClassicMode)
