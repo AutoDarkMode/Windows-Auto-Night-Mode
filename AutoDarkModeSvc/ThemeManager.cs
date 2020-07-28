@@ -145,7 +145,7 @@ namespace AutoDarkModeSvc
 
                 if (automatic)
                 {
-                    Logger.Info($"theme switch invoked automatically. Sunrise:{sunrise.ToString("HH:mm:ss")}, Sunset:{sunset.ToString("HH:mm:ss")}");
+                    Logger.Info($"theme switch invoked automatically. Sunrise: {sunrise.ToString("HH:mm:ss")}, Sunset: {sunset.ToString("HH:mm:ss")}");
                 }
                 else
                 {
