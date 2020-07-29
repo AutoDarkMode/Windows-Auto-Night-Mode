@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoDarkModeSvc.Modules;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,6 +13,7 @@ namespace AutoDarkModeSvc.Config
 
         private readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private IAutoDarkModeModule warden;
 
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
@@ -41,6 +43,10 @@ namespace AutoDarkModeSvc.Config
                 try
                 {
                     configBuilder.Load();
+                    if (warden != null)
+                    {
+                        warden.Fire();
+                    }
                     Logger.Debug("updated configuration file");
                 }
                 catch (Exception ex)
@@ -96,6 +102,16 @@ namespace AutoDarkModeSvc.Config
             LocationDataWatcher.EnableRaisingEvents = false;
             LocationDataWatcher.Changed -= OnChangedConfig;
             LocationDataWatcher.Dispose();
+        }
+
+        public void RegisterWarden(IAutoDarkModeModule warden)
+        {
+            this.warden = warden;
+        }
+
+        public void DeregisterWarden()
+        {
+            warden = null;
         }
     }
 }
