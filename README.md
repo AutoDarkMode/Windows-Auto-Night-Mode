@@ -47,6 +47,18 @@ Download Auto Dark Mode from [Chocolatey](https://chocolatey.org/packages/auto-d
 ```powershell
 choco install auto-dark-mode
 ```
+#### Via Scoop
+Download Auto Dark Mode from [Scoop](https://scoop.sh) (unofficial entry).
+- Via portable
+```powershell
+scoop bucket add dorado https://github.com/chawyehsu/dorado
+scoop install autodarkmode
+```
+- Via non-portable
+```powershell
+scoop bucket add nonportable
+scoop install auto-dark-mode-np
+```
 
 ## Telegram group
 [Join our official Telegram group to get early access to new beta versions](https://t.me/autodarkmode)
