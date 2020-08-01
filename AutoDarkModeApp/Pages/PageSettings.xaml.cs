@@ -89,7 +89,7 @@ namespace AutoDarkModeApp.Pages
                 RestartText.Text = Properties.Resources.restartNeeded;
                 RestartButton.Content = Properties.Resources.restart;
                 RestartButton.Visibility = Visibility.Visible;
-
+                Settings.Default.LanguageChanged = true;
             }
             else
             {
@@ -97,6 +97,7 @@ namespace AutoDarkModeApp.Pages
                 RestartText.Text = null;
                 RestartButton.Visibility = Visibility.Hidden;
                 Translator.Text = Properties.Resources.lblTranslator;
+                Settings.Default.LanguageChanged = false;
             }
         }
 
