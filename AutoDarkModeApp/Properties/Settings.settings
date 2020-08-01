@@ -86,6 +86,9 @@
     <Setting Name="TaskFolderTitleMultiUser" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="LanguageChanged" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="UIScale" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
