@@ -3,7 +3,7 @@
 ![App Logo](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/logo.png)  
 Automatically switches between the dark and light theme of Windows 10 at scheduled times.
 
-[Overview](#overview) | [Features](#features) | [Download](#download-and-installing) | [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) | [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) | [Telegram Group](#telegram-group)
+[Overview](#overview) • [Features](#features) • [Download](#download-and-installing) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](#telegram-group)
 
 ## Overview
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
