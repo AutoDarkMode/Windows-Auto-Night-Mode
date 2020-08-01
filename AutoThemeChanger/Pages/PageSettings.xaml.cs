@@ -59,6 +59,7 @@ namespace AutoThemeChanger.Pages
                 RestartText.Text = Properties.Resources.restartNeeded;
                 RestartButton.Content = Properties.Resources.restart;
                 RestartButton.Visibility = Visibility.Visible;
+                Settings.Default.LanguageChanged = true;
 
             }
             else
@@ -67,6 +68,7 @@ namespace AutoThemeChanger.Pages
                 RestartText.Text = null;
                 RestartButton.Visibility = Visibility.Hidden;
                 Translator.Text = Properties.Resources.lblTranslator;
+                Settings.Default.LanguageChanged = false;
             }
         }
 
@@ -110,12 +112,12 @@ namespace AutoThemeChanger.Pages
             if (CheckBoxBackgroundUpdater.IsChecked.Value)
             {
                 taskShedHandler.CreateAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = true;
+                Settings.Default.BackgroundUpdate = true;
             }
             else
             {
                 taskShedHandler.RemoveAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = false;
+                Settings.Default.BackgroundUpdate = false;
             }
         }
 

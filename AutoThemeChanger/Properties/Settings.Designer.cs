@@ -358,5 +358,17 @@ namespace AutoThemeChanger.Properties {
                 this["TaskFolderTitleMultiUser"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LanguageChanged {
+            get {
+                return ((bool)(this["LanguageChanged"]));
+            }
+            set {
+                this["LanguageChanged"] = value;
+            }
+        }
     }
 }

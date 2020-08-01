@@ -44,6 +44,12 @@ namespace AutoThemeChanger
                 //finished first startup code
                 Settings.Default.FirstRun = false; 
             }
+
+            if (Settings.Default.LanguageChanged)
+            {
+                AddJumpList();
+                Settings.Default.LanguageChanged = false;
+            }
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
