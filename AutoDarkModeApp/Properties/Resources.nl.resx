@@ -231,7 +231,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Vink het selectievakje aan om automatische themawisseling in te schakelen</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Vertaler: ChillTick en Quinten Althues</value>
+    <value>Vertalers: ChillTick en Quinten Althues</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Stad</value>
