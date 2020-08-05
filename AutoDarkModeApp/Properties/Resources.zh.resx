@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>自动主题切换</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>深色主题</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>浅色主题</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>启用为Windows 1903设计的功能</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>应用程序：</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>自定义开始时间</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>深色主题</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge（旧版）：</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>浅色</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>浅色主题</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>切换当前主题</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>系统界面：</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>本程序所使用的第三方软件</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>使用定位服务</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>更改已保存！</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>单击“应用”保存更改。</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>下载更新</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>发生错误 :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>此应用程序需要使用您的位置信息</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>暂无更新</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>正在定位……</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>正在获取更新……</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>警告：无法读取您当前的主题。</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>有新版可更新！</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>感谢您使用自动深色模式！
+
+新版本修复了部分漏洞并增强了一些功能。您想要下载更新吗？
+
+当前安装版本: {0}, 最新版本: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>自动深色模式</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>每次启动检查更新</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>选中此复选框以启用自动主题切换</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>翻译者: zheolls，没有字的回音</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>您未安装Windows 10 2019年四月更新，故此选项不可用。</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>本程序需要重启才能应用更改</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>语言：</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>任务栏显示主题色</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>当前：</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>深色主题壁纸</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>删除/禁用</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>浅色主题壁纸</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>桌面背景</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>请选择两张壁纸</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>请选择图片</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>配置桌面背景</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>使用当前背景</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>禁用</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>或</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>您选择的图片可能已损坏，或者路径不存在。</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>抱歉！无法生成图片预览。</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>抱歉！无法保存设置。</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>发生错误</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>仅在深色主题下可见。
+如果您遇到了问题，请在设置中增加切换的延迟。</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12小时制</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>后台获取更新</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>抱歉，未能正确应用你的设置。
+
+你可以尝试以下几种方法：
+- 卸载并重装本软件。
+- 尝试在自动深色模式的设置中禁用 {0}.
+- 如果你启用了桌面壁纸功能，关闭该功能并重试。
+
+如果上述方法无效，您可将错误原因与截图评论至GitHub issue。点击“是”跳转到issue页面。</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>错误：您的输入无效</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Connected Standby状态下仍然切换主题（不推荐）</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Microsoft Surface等移动设备正在使用一种新型的待机模式。
+启用此选项可确保在唤醒计算机后自动暗模式立即切换主题。
+但这也会缩短电池寿命！ 仅在必要时激活！</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>由于Windows的一个bug，任务栏无法在节电模式下正确切换颜色。 如果遇到问题，请关闭节电模式。</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>浮动（offset）</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>使用Windows主题时，这些选项会被禁用。
+您可以在Windows主题中单独设置它们。</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>壁纸/主题</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>深色主题：</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>创建你的主题</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>选择你的主题</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>浅色主题：</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows主题（更多功能）</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>桌面壁纸（推荐）</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>点击此处打开壁纸设置。</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>然后切换至“颜色”选项卡，选择默认系统颜色为浅色。选择您喜欢的壁纸，鼠标光标和色调。</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>返回主题设置并保存主题。</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>对深色主题重复上述步骤。</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>延迟切换任务栏颜色的时间（毫秒）：</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>菜单</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>重启</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>自定义时间</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>日出至日落</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>步骤</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>使用灰度滤镜（Win + Ctrl + C）</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>使用登录任务代替启动项</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>选择模式：</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>应用所选主题时发生错误，已禁用主题切换</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>可替代白色主题</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>下载扩展</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>推荐工具</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>此浏览器扩展使Chrome，Firefox和Edge中的网站也会跟随系统主题设定。</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>未找到相应的城市</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>为什么要捐赠？</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>如何捐赠？</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>您可以通过PayPal无偿自愿地向我汇款。</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>捐赠</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>你好！ 感谢您使用自动深色模式。至今为止，您喜欢这个应用吗？
+这个应用通过保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
+我并不靠这个项目盈利。
+
+如上述理由，您可以通过捐赠支持我。甚至一笔小钱都能让我开心得一蹦三尺高。只需捐赠您认为的、此项目相应价值的数额即可。</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>应用.theme-file时发生错误，也许您创建的主题已被删除或移动到其它位置。我们将暂时停用主题切换。要重新启用它，请打开自动深色模式并配置{0}设置。</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>我们遇到了以下问题：
+{0}
+
+现在，我们将尝试通过以管理员身份运行程序来解决此问题。这种方法可能会解决问题。
+之后，自动暗黑模式将重新启动，您需要重新应用设置，抱歉！
+
+注：请勿以管理员身份手动运行自动暗黑模式！</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>需要帮助吗？</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>稍后下载</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>不要再提醒</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>现在下载</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>在过去的几个月中，我们一直在努力为您提供最佳的更新。现在，它来了！
+
+Auto Dark Mode X已完全从头开始重写。现在，它不再依赖Windows计划任务，而是能够真正地在后台运行。这意味着您将获得更可靠，更灵活的主题切换体验！
+
+虽然会在后台消耗更多资源，但是也提供了更多功能，提高生产力。例如：
+-游戏模式：在玩游戏或GPU满载时禁用主题切换。
+-使用快捷键切换主题
+以及更多功能！
+
+该更新适用于除ARM设备外的所有设备。因为此更新必须模拟后台进程（仅此一个问题！），所以会导致ARM设备续航出现问题。</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X 可更新</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>X版本是绝对值得一试的超棒大更新！您确定不想下载吗？我们将永远不会再提醒您！</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>您确定吗？</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>多用户支持</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>延迟激活灰度滤镜（可选）：</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>适配系统</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>未充电时启用深色模式</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>节能滑动条的默认值</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>主题切换的节能选项</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>该功能仅当尚未手动启用省电功能时可用！</value>
+  </data>
+</root>

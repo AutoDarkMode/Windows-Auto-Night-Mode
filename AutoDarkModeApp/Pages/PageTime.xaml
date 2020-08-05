@@ -1,0 +1,102 @@
+﻿<Page x:Class="AutoDarkModeApp.Pages.PageTime"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      mc:Ignorable="d"
+      Title="PageTime" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" Height="560" Width="450" VerticalAlignment="Top" HorizontalAlignment="Left">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto" MinHeight="55"/>
+            <RowDefinition Height="Auto" MinHeight="50"/>
+            <RowDefinition Height="Auto" MinHeight="60"/>
+            <RowDefinition Height="Auto" MinHeight="35"/>
+            <RowDefinition Height="Auto" MinHeight="0"/>
+            <RowDefinition Height="Auto" MinHeight="0"/>
+            <RowDefinition Height="Auto" MinHeight="0"/>
+            <RowDefinition Height="Auto" MinHeight="0"/>
+            <RowDefinition Height="Auto" MinHeight="50"/>
+            <RowDefinition Height="Auto" MinHeight="0"/>
+            <RowDefinition Height="*" MinHeight="0"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Page Title -->
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Text="{x:Static p:Resources.NavbarTime}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" TextWrapping="Wrap"/>
+
+        <!-- Start/Enable -->
+        <CheckBox Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked" Height="Auto" Width="Auto"/>
+
+        <!-- Mode Selection -->
+        <StackPanel Name="StackPanelRadioHolder"  Grid.Row="3" Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto" Height="Auto">
+            <RadioButton Name="RadioButtonCustomTimes"  Content="{x:Static p:Resources.rbCustomHours}" IsChecked="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonCustomTimes_Click"/>
+            <RadioButton Name="RadioButtonLocationTimes" Content="{x:Static p:Resources.rbLocation}" IsChecked="False" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonLocationTimes_Click"/>
+        </StackPanel>
+        
+        <!-- Time selection -->
+        <TextBlock Name="TextBlockCustomStartTimeHeader" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto"/>
+        <TextBlock Name="TextBlockLight" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <TextBlock Name="TextBlockDark" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="97,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <StackPanel Name="StackPanelTimePicker" Orientation="Horizontal" Margin="10,20,0,0" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Width="Auto">
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="0,0,0,0" x:Name="lightStartBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" />
+            <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="2,0,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="LightStartMinutesBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="2,0,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Name="amTextBlock" HorizontalAlignment="Left" Margin="4,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="darkStartBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="15,0,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="2,0,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="DarkStartMinutesBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="2,0,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Name="pmTextBlock" HorizontalAlignment="Left" Margin="4,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+            <!-- Apply Button -->
+            <Button Grid.Row="5" Grid.Column="1" x:Name="applyButton" Content="{x:Static p:Resources.applyButton}" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Top" Width="75" Click="ApplyButton_Click" IsEnabled="False" Height="25" Style="{StaticResource ButtonAccentRevealStyle}" BorderBrush="Black"/>
+        </StackPanel>
+
+        <!-- Location -->
+        <!--<CheckBox Grid.Row="5" Grid.Column="1" x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Height="15" Width="Auto"/> -->
+        <StackPanel Name="StackPanelLocationTime" Visibility="Collapsed" Grid.Row="6" Grid.Column="1" Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="Auto">
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="locationBlock" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+            <TextBlock Name="TextBlockLightTime" Margin="20,0,0,0" />
+            <TextBlock Name="TextBlockDarkTime" Margin="20,0,0,0"  />
+        </StackPanel>
+
+        <!-- Offset -->
+        <TextBlock Grid.Row="7" Grid.Column="1" x:Name="OffsetLbl" Visibility="Collapsed" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblOffset}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="25" Width="Auto"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" x:Name="OffsetLightLbl" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="12,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" x:Name="OffsetDarkLbl" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="103,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" x:Name="OffsetLightModeButton" Visibility="Collapsed" Content="+" HorizontalAlignment="Left" Margin="12,20,0,0" VerticalAlignment="Top" Width="30" Click="OffsetModeButton_Click" IsEnabled="True" Height="25"/>
+        <TextBox Grid.Row="8" Grid.Column="1" x:Name="OffsetLightBox" VerticalContentAlignment="Center" Visibility="Collapsed" HorizontalAlignment="Left" Height="25" Margin="50,20,0,0" TextWrapping="Wrap" Text="0" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput_Offset" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" RenderTransformOrigin="0.627,2.026"/>
+        <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" x:Name="OffsetDarkModeButton" Visibility="Collapsed" Content="+" HorizontalAlignment="Left" Margin="103,20,0,0" VerticalAlignment="Top" Width="30" Click="OffsetModeButton_Click" IsEnabled="True" Height="25"/>
+        <TextBox Grid.Row="8" Grid.Column="1" x:Name="OffsetDarkBox" VerticalContentAlignment="Center" Visibility="Collapsed" HorizontalAlignment="Left" Height="25" Margin="141,20,0,0.0" TextWrapping="Wrap" Text="0" Width="30" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput_Offset" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" x:Name="OffsetLightDot" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="44,20,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="20" Width="4"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" x:Name="OffsetDarkDot" Visibility="Collapsed" Grid.ColumnSpan="5" HorizontalAlignment="Left" Margin="135,20,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="20" Width="4"/>
+        <!-- Offset Set Button -->
+        <Button Grid.Row="8" Grid.Column="1" x:Name="OffsetButton" Visibility="Collapsed" Content="{x:Static p:Resources.offsetButton}" HorizontalAlignment="Left" Margin="184,20,0,0" VerticalAlignment="Top" Width="75" Click="OffsetButton_Click" IsEnabled="False" Height="25" Style="{StaticResource ButtonAccentRevealStyle}" BorderBrush="Black"/>
+
+        <!-- Info -->
+        <TextBlock Grid.Row="9" Grid.Column="1"  HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto"/>
+        <TextBlock Grid.Row="10" Grid.Column="1" x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top" Height="Auto" Width="380"/>
+        
+        <!-- Help -->
+        <TextBlock Grid.Row="11" Grid.Column="1" Name="TextBlockHelpWiki" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.tbHelp}" Height="Auto" Width="Auto" MouseDown="TextBlockHelpWiki_MouseDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
+</Page>

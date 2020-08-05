@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Terapkan</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Nyalakan penggantian tema otomatis</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Ikuti tema</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Selalu gelap</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Selalu terang</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Nyalakan fitur untuk Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Aplikasi:</value>
+  </data>
+  <data name="lblAuthor" xml:space="preserve">
+    <value>Pengembang: Armin Osaj © 2019</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Waktu mulai kustom</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Gelap</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Tema gelap</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (versi lama):</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Terang</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Tema terang</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Setelan</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Ganti tema saat ini</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>Sistem:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Aplikasi pihak ketiga yang terpakai</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Pembaruan</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>Memakai layanan lokasi</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>penggantian telah tersimpan!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>tekan terapkan untuk menyimpan perubahan</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Unduh pembaruan</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>masalah terjadi :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>Aplikasi membutuhkan izin untuk menemukan lokasi</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>tak ada pembaruan yang tersedia.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Mencari lokasi anda...</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>Mencari pembaruan...</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Peringatan! Kami tak dapat membaca tema anda</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>update baru tersedia!</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Cek pembaruan</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>kami mengecek setiap aplikasi dijalankan</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Selamat Datang</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Translator: pc-v2</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Kota</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Opsi ini tak tersedia, lakukan pembaruan ke versi Windows terbaru</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Memulai ulang aplikasi dibutuhkan untuk melihat perubahan</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Bahasa:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Aksen warna untuk bilah tugas</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Batalkan</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Saat ini:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Latar belakang untuk mode gelap</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Hapus/Nonaktifkan</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Pilih berkas</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Latar belakang untuk mode terang</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Latar Belakang Desktop</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Silahkan pilih dua latar belakang</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Silahkan pilih gambar</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Mengatur Latar Belakang</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>pakai latar belakang saat ini</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Dinonaktifkan</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Diaktifkan</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>atau</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Latar Belakang anda mungkin rusak atau alamat tidak ada</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Maaf! Kami tak dapat memperlihatkan gambar anda</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Maaf! Kami tak dapat menyimpan setelan anda</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Masalah terjadi</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Hanya tersedia di mode gelap.
+ Jika anda mengalami isu: Coba untuk tingkatkan jeda di setelan.</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Sistem waktu 12 jam</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Cari update di latar belakang</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Kesalahan: inputmu tidak valid</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Dikarenakan bug Windows, bilah tugas tidak dapat berganti warna dengan benar di mode penghematan daya. Tolong matikan penghematan daya jika menemukan masalah</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Apakah anda menyukai Auto Dark Mode?</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Opsi ini dinonaktifkan ketika memakai Tema Windows. Anda dapat mengatur secara individu </value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Setelan</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Waktu</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Latar belakang/Tema</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Buka Folder</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tema Gelap:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Buatlah tema anda</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Pilih tema anda</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Tema Terang:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Tema Windows (banyak fitur)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Latar Belakang (Disarankan)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Tekan ini untuk membuka setelan tema Windows</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Kemudian pilih warna Windows dalam Warna untuk tema terang. Pilih latar belakang, Kursor Mouse dan Warna Aksen</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Ulangi proses untuk tema gelap</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Jeda untuk pergantian warna bilah tugas (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Mulai Ulang</value>
+  </data>
+  <data name="themeApplyError" xml:space="preserve">
+    <value>Masalah terjadi saat menerapkan tema terpilih, kami menonaktifkan pergantian tema</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Set waktu kustom</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Dari terbit hingga terbenam</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Langkah</value>
+  </data>
+  <data name="TextBoxAppsBrowsers" xml:space="preserve">
+    <value>Chrome, Firefox danEdge:</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Pakai filter warna abu-abu (Tekan Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Unduh ekstensi</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Tema terang alternatif</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Dukungan multi-pengguna</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode! Apa anda menyukainya? 
+
+Aplikasi ini membuat hari anda lebih menyenangkan, dengan membantu merawat mata anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source.
+Saya tidak mengambil keuntungan apa pun dari proyek ini.
+
+Karena itu anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat saya senang!</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Mengapa menyumbang?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Bagaimana cara menyumbang?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Anda dapat mengirim uang ke saya menggunakan Paypal. 
+Ini sepenuhnya secara sukarela dan anda tak berhak kompensasi apapun.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Kami mengalami beberapa masalah:
+{0}.
+
+Kami akan mencoba memperbaiki masalah ini dengan menjalankan melalui administrator. Mungkin ini dapat membantu.
+Auto Dark Mode akan memulai ulang setelah itu dan anda harus menerapkan ulang setelan anda.
+
+pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>tidak terdeteksi</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Donasi</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Alat yang direkomendasikan</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Ekstensi ini membuat website dalam Chrome, Firefox dan Edge mengikuti tema sistem</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Butuh bantuan?</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Jeda opsional untuk mengaktifkan filter abu abu:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Terjadi masalah saat mengaplikasikan tema, kami menonaktifkan pergantian tema</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Terjadi masalah saat mengaplikasikan .theme-file. Mungkin saja tema yang anda buat terbuang atau berpindah. Inilah kenapa kami menonaktifkan pengalihan tema untuk sekarang. Untuk mengaktifkan kembali, 
+tolong buka Auto Dark Mode dan mengkonfigurasi {0} Setelan</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Pilih mode:</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Unduh nanti</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Jangan ingatkan kembali</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Unduh sekarang</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>Dalam beberapa bulan terakhir kami bekerja keras untuk memberikan anda pembaruan terbaik, dan sekarang sudah tersedia!
+
+Auto Dark Mode X telah diketik ulang dari awal. Sekarang memakai tugas latar-belakang daripada mengandalkan Pen-jadwal Tugas Windows. Ini berarti anda mendapat pengalaman baru yang lebih andal dan fleksibel!
+
+Ya, ini memakai banyak sumber daya di latar belakang, namun sebagai imbalannya kami menawarkan lebih banyak fitur baru untuk meningkatkan produktivitas anda.
+Sebagai contoh:
+- Mode Permainan: mematikan pergantian tema saat anda memainkan game atau saat menggunakan aplikasi GPU intensif.
+- Berpindah tema dengan pintasan keyboard dan lebih banyak!
+
+Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini akan membuat masalah kepada penggunaan baterai, karena proses latar belakang harus diemulasi.</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X sekarang tersedia!</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Versi X adalah upgrade besar dan bagus yang pasti harus anda coba! Apakah anda yakin untuk TIDAK mengunduhnya? Kami tak akan mengingatkan kembali!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Apa anda yakin?</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Beralih setelah masuk mode siaga (tidak direkomendasikan)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Perangkat seluler, seperti produk Microsoft Surface menggunakan mode siaga terbaru. Menyalakan opsi ini membuat Auto Dark Mode mengganti tema setelah komputer kembali diakses. Tetapi mode tersebut dapat menguras batere
+(aktifkan jika DIPERLUKAN).</value>
+  </data>
+</root>
