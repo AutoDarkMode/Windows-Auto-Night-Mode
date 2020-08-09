@@ -1,9 +1,3 @@
----
-name: Bug report
-about: Create a report to help us improve
-
----
-
 **Describe the bug**
 <!--A clear and concise description of what the bug is.--> 
 
@@ -33,4 +27,5 @@ Steps to reproduce the behavior:
 <!--Add any other context about the problem here.-->
 
 **Logs**
-<!-- For version X: Please provide the service.log file or parts of it that you deem relevant for your issue-->
+<!-- For version X: Please provide the service.log file or parts of it that you deem relevant for your issue -->
+<!-- for version X: Please provide the config.json file located in %Appdata%\AutoDarkMode or by pressing "Open Config Folder via the ADM Notification Area symbol -->
