@@ -160,106 +160,127 @@ namespace AutoDarkModeSvc
 
         private static void SetAppsTheme(Mode mode, Theme newTheme, GlobalState rtc)
         {
-            if (mode == Mode.DarkOnly)
+            try
             {
-                RegistryHandler.SetAppsTheme((int)Theme.Dark);
-                rtc.CurrentAppsTheme = Theme.Dark;
+                if (mode == Mode.DarkOnly)
+                {
+                    RegistryHandler.SetAppsTheme((int)Theme.Dark);
+                    rtc.CurrentAppsTheme = Theme.Dark;
+                }
+                else if (mode == Mode.LightOnly)
+                {
+                    RegistryHandler.SetAppsTheme((int)Theme.Light);
+                    rtc.CurrentAppsTheme = Theme.Light;
+                }
+                else
+                {
+                    RegistryHandler.SetAppsTheme((int)newTheme);
+                    rtc.CurrentAppsTheme = newTheme;
+                }
             }
-            else if (mode == Mode.LightOnly)
+            catch (Exception ex)
             {
-                RegistryHandler.SetAppsTheme((int)Theme.Light);
-                rtc.CurrentAppsTheme = Theme.Light;
-            }
-            else
-            {
-                RegistryHandler.SetAppsTheme((int)newTheme);
-                rtc.CurrentAppsTheme = newTheme;
+                Logger.Error(ex, "coult not set apps theme");
             }
         }
 
         private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, GlobalState state, AdmConfig config)
         {
-            // Set system theme
-            if (mode == Mode.DarkOnly)
+            try
             {
-                if (state.CurrentSystemTheme != Theme.Dark)
+                // Set system theme
+                if (mode == Mode.DarkOnly)
                 {
-                    RegistryHandler.SetSystemTheme((int)Theme.Dark);
-                }
-                else
-                {
-                    taskdelay = 0;
-                }
-                state.CurrentSystemTheme = Theme.Dark;
-                await Task.Delay(taskdelay);
-                if (config.AccentColorTaskbarEnabled)
-                {
-                    RegistryHandler.SetColorPrevalence(1);
-                    state.CurrentColorPrevalence = true;
-                }
-                else if (!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence == true)
-                {
-                    RegistryHandler.SetColorPrevalence(0);
-                    state.CurrentColorPrevalence = false;
-                }
-            }
-            else if (config.SystemTheme == Mode.LightOnly)
-            {
-                RegistryHandler.SetColorPrevalence(0);
-                state.CurrentColorPrevalence = false;
-                await Task.Delay(taskdelay);
-                RegistryHandler.SetSystemTheme((int)Theme.Light);
-                state.CurrentSystemTheme = Theme.Light;
-            }
-            else
-            {
-                if (newTheme == Theme.Light)
-                {
-                    RegistryHandler.SetColorPrevalence(0);
-                    state.CurrentColorPrevalence = false;
-                    await Task.Delay(taskdelay);
-                    RegistryHandler.SetSystemTheme((int)newTheme);
-                } 
-                else if (newTheme == Theme.Dark)
-                {
-                    if (state.CurrentSystemTheme == Theme.Dark)
+                    if (state.CurrentSystemTheme != Theme.Dark)
                     {
-                        taskdelay = 0;
-                    }
-                    RegistryHandler.SetSystemTheme((int)newTheme);
-                    if (config.AccentColorTaskbarEnabled)
-                    {
-                        await Task.Delay(taskdelay);
-                        RegistryHandler.SetColorPrevalence(1);
-                        state.CurrentColorPrevalence = true;
+                        RegistryHandler.SetSystemTheme((int)Theme.Dark);
                     }
                     else
                     {
-                        await Task.Delay(taskdelay);
+                        taskdelay = 0;
+                    }
+                    state.CurrentSystemTheme = Theme.Dark;
+                    await Task.Delay(taskdelay);
+                    if (config.AccentColorTaskbarEnabled)
+                    {
+                        RegistryHandler.SetColorPrevalence(1);
+                        state.CurrentColorPrevalence = true;
+                    }
+                    else if (!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence == true)
+                    {
                         RegistryHandler.SetColorPrevalence(0);
                         state.CurrentColorPrevalence = false;
                     }
                 }
-                state.CurrentSystemTheme = newTheme;
+                else if (config.SystemTheme == Mode.LightOnly)
+                {
+                    RegistryHandler.SetColorPrevalence(0);
+                    state.CurrentColorPrevalence = false;
+                    await Task.Delay(taskdelay);
+                    RegistryHandler.SetSystemTheme((int)Theme.Light);
+                    state.CurrentSystemTheme = Theme.Light;
+                }
+                else
+                {
+                    if (newTheme == Theme.Light)
+                    {
+                        RegistryHandler.SetColorPrevalence(0);
+                        state.CurrentColorPrevalence = false;
+                        await Task.Delay(taskdelay);
+                        RegistryHandler.SetSystemTheme((int)newTheme);
+                    }
+                    else if (newTheme == Theme.Dark)
+                    {
+                        if (state.CurrentSystemTheme == Theme.Dark)
+                        {
+                            taskdelay = 0;
+                        }
+                        RegistryHandler.SetSystemTheme((int)newTheme);
+                        if (config.AccentColorTaskbarEnabled)
+                        {
+                            await Task.Delay(taskdelay);
+                            RegistryHandler.SetColorPrevalence(1);
+                            state.CurrentColorPrevalence = true;
+                        }
+                        else
+                        {
+                            await Task.Delay(taskdelay);
+                            RegistryHandler.SetColorPrevalence(0);
+                            state.CurrentColorPrevalence = false;
+                        }
+                    }
+                    state.CurrentSystemTheme = newTheme;
+                }
             }
+            catch (Exception ex) 
+            {
+                Logger.Error(ex, "could not set system theme");
+            }           
         }
 
         private static void SetEdgeTheme(Mode mode, Theme newTheme, GlobalState rtc)
         {
-            if (mode == Mode.DarkOnly)
+            try
             {
-                RegistryHandler.SetEdgeTheme((int)Theme.Dark);
-                rtc.CurrentEdgeTheme = Theme.Dark;
+                if (mode == Mode.DarkOnly)
+                {
+                    RegistryHandler.SetEdgeTheme((int)Theme.Dark);
+                    rtc.CurrentEdgeTheme = Theme.Dark;
+                }
+                else if (mode == Mode.LightOnly)
+                {
+                    RegistryHandler.SetEdgeTheme((int)Theme.Light);
+                    rtc.CurrentEdgeTheme = Theme.Light;
+                }
+                else
+                {
+                    RegistryHandler.SetEdgeTheme((int)newTheme);
+                    rtc.CurrentEdgeTheme = newTheme;
+                }
             }
-            else if (mode == Mode.LightOnly)
+            catch (Exception ex)
             {
-                RegistryHandler.SetEdgeTheme((int)Theme.Light);
-                rtc.CurrentEdgeTheme = Theme.Light;
-            }
-            else
-            {
-                RegistryHandler.SetEdgeTheme((int)newTheme);
-                rtc.CurrentEdgeTheme = newTheme;
+                Logger.Error(ex, "could not set edge theme");
             }
         }
 
@@ -320,23 +341,30 @@ namespace AutoDarkModeSvc
         {
             if (enabled)
             {
-                if (newTheme == Theme.Dark)
+                try
                 {
-                    var success = WallpaperHandler.SetBackground(darkThemeWallpapers);
-                    if (success)
+                    if (newTheme == Theme.Dark)
                     {
-                        rtc.CurrentWallpaperTheme = newTheme;
-                        rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
+                        var success = WallpaperHandler.SetBackground(darkThemeWallpapers);
+                        if (success)
+                        {
+                            rtc.CurrentWallpaperTheme = newTheme;
+                            rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
+                        }
+                    }
+                    else
+                    {
+                        var success = WallpaperHandler.SetBackground(lightThemeWallpapers);
+                        if (success)
+                        {
+                            rtc.CurrentWallpaperTheme = newTheme;
+                            rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    var success = WallpaperHandler.SetBackground(lightThemeWallpapers);
-                    if (success)
-                    {
-                        rtc.CurrentWallpaperTheme = newTheme;
-                        rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
-                    }
+                    Logger.Error(ex, "could not set wallpaper");
                 }
             }
         }
