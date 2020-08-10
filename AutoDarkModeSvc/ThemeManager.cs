@@ -113,7 +113,8 @@ namespace AutoDarkModeSvc
                 }
                 SetColorFilter(config.ColorFilterEnabled, newTheme);
                 SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
-                ThemeHandler.Apply(config.LightThemePath);            }
+                ThemeHandler.Apply(config.LightThemePath);            
+            }
         }
 
         private static void ApplyThemeOptions(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
@@ -130,6 +131,7 @@ namespace AutoDarkModeSvc
             var oldedg = state.CurrentEdgeTheme;
             var oldwal = state.CurrentWallpaperTheme;
             var oldoff = state.CurrentOfficeTheme;
+            var oldcol = state.ColorFilterEnabled;
 
             SetColorFilter(config.ColorFilterEnabled, newTheme);
             SetAppsTheme(config.AppsTheme, newTheme, state);
@@ -152,9 +154,9 @@ namespace AutoDarkModeSvc
                     Logger.Info($"theme switch invoked manually");
                 }
                 PowerHandler.RestoreEnergySaver(config);
-                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled})");
-                Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}, o:{oldoff})");
-                Logger.Info($"is (s:{state.CurrentSystemTheme}, a:{state.CurrentAppsTheme}, e:{state.CurrentEdgeTheme}, w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme})");
+                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}, c:{config.ColorFilterEnabled})");
+                Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}, o:{oldoff}, c:{oldcol})");
+                Logger.Info($"is (s:{state.CurrentSystemTheme}, a:{state.CurrentAppsTheme}, e:{state.CurrentEdgeTheme}, w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme}, c:{state.ColorFilterEnabled})");
             });
         }
 
