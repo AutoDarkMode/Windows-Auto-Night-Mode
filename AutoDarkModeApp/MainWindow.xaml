@@ -7,7 +7,7 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="{Binding Path=WindowY}" Width="{Binding Path=WindowX}" ResizeMode="NoResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
+        Title="{x:Static p:Resources.Title}" MinHeight="{Binding Path=WindowY}" MinWidth="{Binding Path=WindowX}" Height="{Binding Path=WindowY}" Width="{Binding Path=WindowX}" ResizeMode="CanResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
     <fw:AcrylicWindow.Resources>
         <ResourceDictionary>
             <ScaleTransform x:Key="windowScaleTransform" ScaleX="{Binding Path=ScaleStringX}" ScaleY="{Binding Path=ScaleStringY}" />
@@ -58,13 +58,13 @@
                 <TextBlock Text="{x:Static p:Resources.NavbarSettings}" Height="17"/>
             </StackPanel>
         </Button>
-        <Button Name="ButtonNavbarDonation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,440,0,0" Grid.Row="1" Grid.Column="0" Width="190" Height="40" Click="ButtonNavbarDonation_Click" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+        <Button Name="ButtonNavbarDonation" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,440,0,45" Grid.Row="1" Grid.Column="0" Width="190" Height="40" Click="ButtonNavbarDonation_Click" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="165">
                 <TextBlock Text="&#xEB51;" FontFamily="Segoe MDL2 Assets" FontSize="17" Width="30" Height="17"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarDonation}" Height="17"/>
             </StackPanel>
         </Button>
-        <Button Name="ButtonNavbarAbout" HorizontalAlignment="Left" Margin="0,485,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Width="190" Click="ButtonNavbarAbout_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
+        <Button Name="ButtonNavbarAbout" HorizontalAlignment="Left" Margin="0,485,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Width="190" Click="ButtonNavbarAbout_Click" Height="40" Foreground="{DynamicResource SystemBaseHighColorBrush}" Background="#00000000" BorderBrush="#66000000" Style="{StaticResource ButtonRevealStyle}">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="165">
                 <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets" FontSize="17" Width="30" Height="17"/>
                 <TextBlock Text="{x:Static p:Resources.NavbarAbout}" Height="17"/>
