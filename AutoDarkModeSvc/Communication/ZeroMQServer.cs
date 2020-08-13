@@ -61,9 +61,8 @@ namespace AutoDarkModeSvc.Communication
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "message parser exception:");
-                }
-               
+                    Logger.Error(ex, $"message parser exception in {ex.Source}");
+                }               
             };
             PollTask = Task.Run(() =>
             {

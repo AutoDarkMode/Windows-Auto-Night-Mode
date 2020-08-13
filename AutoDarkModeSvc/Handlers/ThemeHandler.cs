@@ -84,7 +84,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     PowerHandler.DisableEnergySaver(AdmConfigBuilder.Instance().Config);
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
-                    RuntimeConfig.Instance().CurrentWindowsThemeName = GetCurrentThemeName();
+                    GlobalState.Instance().CurrentWindowsThemeName = GetCurrentThemeName();
                     PowerHandler.RestoreEnergySaver(AdmConfigBuilder.Instance().Config);
                     Logger.Info($"applied theme \"{themeFilePath}\" successfully");
                 }

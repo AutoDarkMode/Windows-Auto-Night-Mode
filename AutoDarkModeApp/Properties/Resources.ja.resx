@@ -528,4 +528,19 @@ Auto Dark Mode X は最初から完全に書き直され、Windows タスクス�
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>システムの設定に従う</value>
   </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>初期化</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>端末の電源プラグを抜いたらダークモードを有効化</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>バッテリー節約機能のスライダーの初期値</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>テーマ切り替え用のバッテリー節約機能の緩和</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>これは手動でバッテリー節約機能を有効にしていない場合に動作します！</value>
+  </data>
 </root>

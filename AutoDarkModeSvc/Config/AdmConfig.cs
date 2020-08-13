@@ -17,10 +17,10 @@ namespace AutoDarkModeSvc.Config
         }
         private Mode appsTheme;
         private Mode systemTheme;
-        private Mode egdeTheme;
+        private Mode edgeTheme;
 
         public bool AutoThemeSwitchingEnabled { get; set; }
-        public bool ClassicMode { get; set; }
+        public bool ClassicMode { get; set; } = true;
         public bool ColorFilterEnabled { get; set; } = false;
         public bool AccentColorTaskbarEnabled { get; set; }
         public string DarkThemePath { get; set; }
@@ -61,17 +61,17 @@ namespace AutoDarkModeSvc.Config
         }
         public Mode EdgeTheme
         {
-            get { return egdeTheme; }
+            get { return edgeTheme; }
             set
             {
                 if (value >= 0 && (int)value <= 3)
                 {
-                    egdeTheme = value;
+                    edgeTheme = value;
                 }
                 else
                 {
                     // DEFAULT
-                    egdeTheme = Mode.Switch;
+                    edgeTheme = Mode.Switch;
                 }
             }
         }
@@ -105,8 +105,8 @@ namespace AutoDarkModeSvc.Config
             DarkThemeWallpapers = new List<string>();
         }
         public bool Enabled { get; set; }
-        public ICollection<string> LightThemeWallpapers { get; set; }
-        public ICollection<string> DarkThemeWallpapers { get; set; }
+        public List<string> LightThemeWallpapers { get; set; }
+        public List<string> DarkThemeWallpapers { get; set; }
     }
 
     public class Location
@@ -143,6 +143,7 @@ namespace AutoDarkModeSvc.Config
         public bool SystemResumeTrigger { get; set; } = true;
         public bool DisableEnergySaverOnThemeSwitch { get; set; }
         public bool UseLogonTask { get; set; }
+        public bool Debug { get; set; }
     }
 
     public class GPUMonitoring
@@ -155,9 +156,9 @@ namespace AutoDarkModeSvc.Config
             get { return monitorTimeSpanMin; }
             set
             {
-                if (value <= 3)
+                if (value <= 1)
                 {
-                    monitorTimeSpanMin = 3;
+                    monitorTimeSpanMin = 1;
                 }
                 else
                 {

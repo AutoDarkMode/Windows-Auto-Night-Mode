@@ -26,7 +26,8 @@ namespace AutoDarkModeSvc.Handlers
                 tdLogon.RegistrationInfo.Author = author;
                 tdLogon.RegistrationInfo.Source = program;
                 tdLogon.Settings.DisallowStartIfOnBatteries = false;
-                tdLogon.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(5);
+                tdLogon.Settings.ExecutionTimeLimit = TimeSpan.Zero;
+                tdLogon.Settings.AllowHardTerminate = false;
                 tdLogon.Settings.StartWhenAvailable = true;
 
                 tdLogon.Triggers.Add(new LogonTrigger { UserId = Environment.UserDomainName + @"\" + Environment.UserName });

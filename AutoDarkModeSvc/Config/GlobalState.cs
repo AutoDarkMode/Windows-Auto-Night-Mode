@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Config
 {
-    class RuntimeConfig
+    class GlobalState
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        private static RuntimeConfig rtc;
-        public static RuntimeConfig Instance()
+        private static GlobalState rtc;
+        public static GlobalState Instance()
         {
             if (rtc == null)
             {
-                rtc = new RuntimeConfig();
+                rtc = new GlobalState();
             }
             return rtc;
         }
-        protected RuntimeConfig()
+        protected GlobalState()
         {
             CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
             CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
@@ -41,6 +42,7 @@ namespace AutoDarkModeSvc.Config
             PostponeSwitch = false;
         }
 
+        private WardenModule Warden { get; set; }
         public Theme CurrentAppsTheme { get; set; }
         public Theme CurrentSystemTheme { get; set; }
         public Theme CurrentEdgeTheme { get; set; }
@@ -50,6 +52,28 @@ namespace AutoDarkModeSvc.Config
         public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
-        public bool PostponeSwitch { get; set; }
+        private bool _postponeSwitch;
+        // triggers update if and only if there is a change in value
+        public bool PostponeSwitch
+        {
+            get { return _postponeSwitch; }
+            set
+            {
+                if (value != _postponeSwitch)
+                {
+                    _postponeSwitch = value;
+                    if (Warden != null)
+                    {
+                        Warden.Fire();
+                    }
+                }
+            }
+        }
+        public string CurrentWallpaperPath { get; set; }
+
+        public void SetWarden(WardenModule warden)
+        {
+            Warden = warden;
+        }
     }
 }

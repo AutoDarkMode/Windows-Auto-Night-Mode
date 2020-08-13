@@ -3,7 +3,7 @@
 ![App Logo](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/logo.png)  
 Automatically switches between the dark and light theme of Windows 10 at scheduled times.
 
-[Overview](#overview) | [Features](#features) | [Download](#download-and-installing) | [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) | [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) | [Telegram Group](#telegram-group)
+[Overview](#overview) • [Features](#features) • [Download](#download-and-installing) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](#telegram-group)
 
 ## Overview
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
@@ -46,6 +46,19 @@ winget install "Auto Dark Mode"
 Download Auto Dark Mode from [Chocolatey](https://chocolatey.org/packages/auto-dark-mode) (unofficial entry).
 ```powershell
 choco install auto-dark-mode
+```
+
+#### Via Scoop
+Download Auto Dark Mode from [Scoop](https://scoop.sh) (unofficial entry).
+- Via portable
+```powershell
+scoop bucket add dorado https://github.com/chawyehsu/dorado
+scoop install autodarkmode
+```
+- Via non-portable
+```powershell
+scoop bucket add nonportable
+scoop install auto-dark-mode-np
 ```
 
 ## Telegram group

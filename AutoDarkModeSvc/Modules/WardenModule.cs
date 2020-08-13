@@ -6,10 +6,10 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class ModuleWardenModule : AutoDarkModeModule
+    class WardenModule : AutoDarkModeModule
     {
         private AdmConfigBuilder ConfigBuilder { get; }
-        private RuntimeConfig Rtc { get; }
+        private GlobalState State { get; }
         private List<ModuleTimer> Timers { get; }
         public override string TimerAffinity { get; } = TimerName.Main;
 
@@ -19,10 +19,11 @@ namespace AutoDarkModeSvc.Modules
         /// This module registers and deregisters modules automatically based on the AutoDarkModeConfiguration
         /// </summary>
         /// <param name="name">unique name of the module</param>
-        public ModuleWardenModule(string name, List<ModuleTimer> timers, bool fireOnRegistration) : base(name, fireOnRegistration)
+        public WardenModule(string name, List<ModuleTimer> timers, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Rtc = RuntimeConfig.Instance();
+            State = GlobalState.Instance();
+            State.SetWarden(this);
             Timers = timers;
             Priority = 1;
         }
@@ -31,9 +32,9 @@ namespace AutoDarkModeSvc.Modules
         {
             AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
-            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !Rtc.PostponeSwitch);
+            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !State.PostponeSwitch);
             AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);
-            AutoManageModule(typeof(GPUMonitorModule).Name, typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
+            AutoManageModule(typeof(GPUMonitorModuleV2).Name, typeof(GPUMonitorModuleV2), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(EventModule).Name, typeof(EventModule), true, config.Events.Enabled);
         }
 

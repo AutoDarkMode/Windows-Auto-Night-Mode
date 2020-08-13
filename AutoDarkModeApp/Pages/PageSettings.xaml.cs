@@ -12,6 +12,7 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Handlers;
+using Windows.System.Power;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -64,6 +65,12 @@ namespace AutoDarkModeApp.Pages
                 CheckBoxEnergySaverMitigation.IsChecked = true;
             }
 
+            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
+            {
+                CheckBoxBatteryDarkMode.IsEnabled = false;
+                CheckBoxEnergySaverMitigation.IsEnabled = false;
+            }
+
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
@@ -82,7 +89,7 @@ namespace AutoDarkModeApp.Pages
                 RestartText.Text = Properties.Resources.restartNeeded;
                 RestartButton.Content = Properties.Resources.restart;
                 RestartButton.Visibility = Visibility.Visible;
-
+                Settings.Default.LanguageChanged = true;
             }
             else
             {
@@ -90,6 +97,7 @@ namespace AutoDarkModeApp.Pages
                 RestartText.Text = null;
                 RestartButton.Visibility = Visibility.Hidden;
                 Translator.Text = Properties.Resources.lblTranslator;
+                Settings.Default.LanguageChanged = false;
             }
         }
 

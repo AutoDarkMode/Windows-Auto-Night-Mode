@@ -50,7 +50,9 @@ namespace AutoDarkModeSvc
                 StateUpdateTimer
             };
 
-            MainTimer.RegisterModule(new ModuleWardenModule("ModuleWarden", Timers, true));
+            var warden = new WardenModule("ModuleWarden", Timers, true);
+            ConfigMonitor.RegisterWarden(warden);
+            MainTimer.RegisterModule(warden);
 
             Timers.ForEach(t => t.Start());
         }
@@ -84,7 +86,7 @@ namespace AutoDarkModeSvc
 
         private void UpdateCheckboxes(object sender, EventArgs e)
         {
-            RuntimeConfig rtc = RuntimeConfig.Instance();
+            GlobalState rtc = GlobalState.Instance();
             if (rtc.ForcedTheme == Theme.Light)
             {
                 forceDarkMenuItem.Checked = false;
@@ -123,7 +125,7 @@ namespace AutoDarkModeSvc
             if (mi.Checked)
             {
                 Logger.Info("ui signal received: stop forcing specific theme");
-                RuntimeConfig rtc = RuntimeConfig.Instance();
+                GlobalState rtc = GlobalState.Instance();
                 rtc.ForcedTheme = Theme.Undefined;
                 ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
                 mi.Checked = false;
@@ -138,7 +140,7 @@ namespace AutoDarkModeSvc
                     }
                 }
                 AdmConfig config = AdmConfigBuilder.Instance().Config;
-                RuntimeConfig rtc = RuntimeConfig.Instance();
+                GlobalState rtc = GlobalState.Instance();
                 if (mi.Name == "forceLight")
                 {
                     Logger.Info("ui signal received: forcing light theme");

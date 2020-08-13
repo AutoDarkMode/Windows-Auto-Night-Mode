@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Modules
         private static readonly string Frozen = "frozen";
             
         public override string TimerAffinity { get; } = TimerName.Main;
-        private RuntimeConfig Rtc { get; }
+        private GlobalState State { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
         private bool Monitor { get; set; }
         private bool Freeze { get; set; }
@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.Modules
 
         public GPUMonitorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
-            Rtc = RuntimeConfig.Instance();
+            State = GlobalState.Instance();
             ConfigBuilder = AdmConfigBuilder.Instance();
             Monitor = false;
             Freeze = false;
@@ -100,13 +100,13 @@ namespace AutoDarkModeSvc.Modules
                 }
             }
 
-            if (!Rtc.PostponeSwitch)
+            if (!State.PostponeSwitch)
             {
                 var gpuUsage = await GetGPUUsage();
                 if (gpuUsage > ConfigBuilder.Config.GPUMonitoring.Threshold)
                 {
                     Logger.Info($"postponing theme switch ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
-                    Rtc.PostponeSwitch = true;
+                    State.PostponeSwitch = true;
                     return ThreshHigh;
                 }
                 else
@@ -124,7 +124,7 @@ namespace AutoDarkModeSvc.Modules
                     if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
                     {
                         Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
-                        Rtc.PostponeSwitch = false;
+                        State.PostponeSwitch = false;
                         Monitor = false;
                         return ThreshLow;
                     }
@@ -185,7 +185,7 @@ namespace AutoDarkModeSvc.Modules
         public override void Cleanup()
         {
             Logger.Debug($"cleanup performed for module {Name}");
-            Rtc.PostponeSwitch = false;
+            State.PostponeSwitch = false;
         }
     }
 }
