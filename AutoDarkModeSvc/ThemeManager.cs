@@ -182,7 +182,7 @@ namespace AutoDarkModeSvc
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "coult not set apps theme");
+                Logger.Error(ex, "could not set apps theme");
             }
         }
 
