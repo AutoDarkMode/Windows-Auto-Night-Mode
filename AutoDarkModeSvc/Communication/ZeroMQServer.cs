@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.IO.MemoryMappedFiles;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -16,6 +17,7 @@ namespace AutoDarkModeSvc.Communication
         private ResponseSocket Server { set; get; }
         private NetMQPoller Poller { get; set; }
         private Task PollTask { get; set; }
+        private readonly MemoryMappedFile _portshare;
         
         /// <summary>
         /// Instantiate a ZeroMQ server for socket based messaging
@@ -28,6 +30,13 @@ namespace AutoDarkModeSvc.Communication
             Service = service;
         }
 
+        public ZeroMQServer(Service service)
+        {
+            Port = "0";
+            _portshare = MemoryMappedFile.CreateNew("adm-backend-port", sizeof(int));
+            Service = service;
+        }
+
         private bool AcceptConnections { get; set; }
 
         /// <summary>
@@ -35,7 +44,28 @@ namespace AutoDarkModeSvc.Communication
         /// </summary>
         public void Start()
         {
-            Server = new ResponseSocket("tcp://127.0.0.1:" + Port);
+            if (Port.Length != 0)
+            {
+                Server = new ResponseSocket();
+                int randomPort = Server.BindRandomPort("tcp://127.0.0.1");
+                using MemoryMappedViewAccessor viewAccessor = _portshare.CreateViewAccessor();
+                byte[] bytes = BitConverter.GetBytes(randomPort);
+                try
+                {
+                    viewAccessor.WriteArray(0, bytes, 0, bytes.Length);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("could not bind socket to port: {0}", ex.Message);
+                }
+                Logger.Info("socket bound to port: {0}", randomPort);
+            }
+            else
+            {
+                Server = new ResponseSocket("tcp://127.0.0.1:" + Port);
+                Logger.Info("socket bound to port: {0}", Port);
+            }
+            
             Poller = new NetMQPoller { Server };
             Server.ReceiveReady += (s, a) =>
             {
@@ -73,7 +103,7 @@ namespace AutoDarkModeSvc.Communication
                 catch (Exception ex)
                 {
                     Logger.Error(ex, "ZMQ Poller died");
-                    System.Environment.Exit(-1);
+                    Environment.Exit(-1);
                 }
             });
             Logger.Info("started server (polling)");
@@ -95,6 +125,7 @@ namespace AutoDarkModeSvc.Communication
                 Logger.Fatal(ex, "could not dispose Poller");
             }
             Server.Dispose();
+            _portshare.Dispose();
             NetMQConfig.Cleanup();
         }
     }
