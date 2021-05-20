@@ -42,26 +42,16 @@
         </ComboBox>
         <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="49,179,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Click="AccentColorCheckBox_Click" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
 
-        <!-- Edge -->
-        <TextBlock HorizontalAlignment="Left" Margin="51,212,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblEdge}" VerticalAlignment="Top" Height="Auto" Width="Auto" Grid.Column="1" Grid.Row="1" />
-        <Image HorizontalAlignment="Left" Height="31" Margin="10,232,0,0" VerticalAlignment="Top" Width="25" Source="/Resources/Microsoft_Edge_Logo.png" Name="EdgyIcon" Grid.Column="1" Grid.Row="1" />
-        <ComboBox HorizontalAlignment="Left" Margin="51,233,0,0" VerticalAlignment="Top" Width="200" Name="EdgeComboBox" DropDownClosed="EdgeComboBox_DropDownClosed" Height="28" Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
-            <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-            <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
-        </ComboBox>
-
         <!-- Office-->
-        <TextBlock HorizontalAlignment="Left" Margin="51,280,0,0" TextWrapping="Wrap" Text="Microsoft Office:" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
-        <Image HorizontalAlignment="Left" Height="31" Margin="11,300,0,0" VerticalAlignment="Top" Width="25" Source="/Resources/Office_Logo.png" Grid.Column="1" Grid.Row="1" />
-        <ComboBox x:Name="OfficeComboBox" HorizontalAlignment="Left" Margin="51,301,0,0" VerticalAlignment="Top" Width="200" DropDownClosed="OfficeComboBox_DropDownClosed" Height="28" Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
+        <TextBlock HorizontalAlignment="Left" Margin="51,212,0,0" TextWrapping="Wrap" Text="Microsoft Office:" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
+        <Image HorizontalAlignment="Left" Height="31" Margin="10,232,0,0" VerticalAlignment="Top" Width="25" Source="/Resources/Office_Logo.png" Grid.Column="1" Grid.Row="1" />
+        <ComboBox x:Name="OfficeComboBox" HorizontalAlignment="Left" Margin="51,233,0,0" VerticalAlignment="Top" Width="200" DropDownClosed="OfficeComboBox_DropDownClosed" Height="28" Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
             <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
         </ComboBox>
-        <CheckBox Content="{x:Static p:Resources.cbOfficeWhiteTheme}" x:Name="CheckBoxOfficeWhiteTheme" Grid.Column="1" Grid.Row="1"  Margin="51,334,0,0" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxOfficeWhiteTheme_Click"/>
+        <CheckBox Content="{x:Static p:Resources.cbOfficeWhiteTheme}" x:Name="CheckBoxOfficeWhiteTheme" Grid.Column="1" Grid.Row="1"  Margin="49,266,0,0" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxOfficeWhiteTheme_Click"/>
 
         <!-- Dark Reader -->
         <TextBlock Text="{x:Static p:Resources.tbAppsTitleRecommendedTools}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Margin="11,380,0,0" FontSize="14" FontWeight="Bold"/>

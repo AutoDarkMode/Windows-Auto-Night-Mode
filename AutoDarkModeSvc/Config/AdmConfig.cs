@@ -17,7 +17,6 @@ namespace AutoDarkModeSvc.Config
         }
         private Mode appsTheme;
         private Mode systemTheme;
-        private Mode edgeTheme;
 
         public bool AutoThemeSwitchingEnabled { get; set; }
         public bool ClassicMode { get; set; } = true;
@@ -56,22 +55,6 @@ namespace AutoDarkModeSvc.Config
                 {
                     // DEFAULT
                     systemTheme = 0;
-                }
-            }
-        }
-        public Mode EdgeTheme
-        {
-            get { return edgeTheme; }
-            set
-            {
-                if (value >= 0 && (int)value <= 3)
-                {
-                    edgeTheme = value;
-                }
-                else
-                {
-                    // DEFAULT
-                    edgeTheme = Mode.Switch;
                 }
             }
         }

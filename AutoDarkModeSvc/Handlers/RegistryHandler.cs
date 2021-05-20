@@ -31,32 +31,6 @@ namespace AutoDarkModeSvc.Handlers
             key.SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
         }
 
-        public static void SetEdgeTheme(int theme)
-        {
-            if (theme == (int)Theme.Dark)
-            {
-                theme = (int)Theme.Light;
-            }
-            else
-            {
-                theme = (int)Theme.Dark;
-            }
-            using var edgeKey = GetEdgeKey();
-            edgeKey.SetValue("Theme", theme, RegistryValueKind.DWord);
-        }
-
-        public static bool EdgeUsesLightTheme()
-        {
-            //reverse dark and light for edge because Microsoft
-            using var key = GetEdgeKey();
-            var value = key.GetValue("Theme");
-            if ((int)value == (int)Theme.Dark)
-            {
-                return true;
-            }
-            return false;
-        }
-
         /// <summary>
         /// Sets the taskbar color prevalence
         /// </summary>
@@ -119,13 +93,6 @@ namespace AutoDarkModeSvc.Handlers
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);
             return registryKey;
         }
-
-        private static RegistryKey GetEdgeKey()
-        {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main", true);
-            return registryKey;
-        }
-
 
         /// <summary>
         /// Adds the application to Windows autostart
