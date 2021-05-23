@@ -7,7 +7,7 @@ Automatically switches between the dark and light theme of Windows 10 at schedul
 
 ## Overview
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
-Android, iOS and MacOS already offer the possibility of changing the system design based on the time of day. So why not Windows too?
+Android, GNOME Shell, iOS and MacOS already offer the possibility of changing the system design based on the time of day. So why not Windows too?
 
 Auto Dark Mode helps you to be more productive. When it is light outside, we enable you to have a bright and clearly readable OS. After the sun starts to set, your operating system switches to a matching theme to take care of your eyes. This app saves you from the annoying way to switch the design manually in the Windows settings.
 

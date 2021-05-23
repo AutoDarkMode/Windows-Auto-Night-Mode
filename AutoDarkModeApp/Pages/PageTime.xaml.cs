@@ -183,10 +183,6 @@ namespace AutoDarkModeApp.Pages
                     darkStart = 23;
                     darkStartMinutes = 59;
                 }
-                if (lightStart >= darkStart)
-                {
-                    lightStart = darkStart - 3;
-                }
                 if (lightStart < 0)
                 {
                     lightStart = 6;

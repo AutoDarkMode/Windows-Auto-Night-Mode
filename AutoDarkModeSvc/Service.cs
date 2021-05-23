@@ -31,7 +31,8 @@ namespace AutoDarkModeSvc
             forceLightMenuItem.Name = "forceLight";
             InitTray();
 
-            CommandServer = new ZeroMQServer(Command.DefaultPort, this);
+            CommandServer = new ZeroMQServer(this);
+            //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
 
             ConfigMonitor = new AdmConfigMonitor();

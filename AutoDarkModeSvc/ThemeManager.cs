@@ -128,14 +128,12 @@ namespace AutoDarkModeSvc
             PowerHandler.DisableEnergySaver(config);
             var oldsys = state.CurrentSystemTheme;
             var oldapp = state.CurrentAppsTheme;
-            var oldedg = state.CurrentEdgeTheme;
             var oldwal = state.CurrentWallpaperTheme;
             var oldoff = state.CurrentOfficeTheme;
             var oldcol = state.ColorFilterEnabled;
 
             SetColorFilter(config.ColorFilterEnabled, newTheme);
             SetAppsTheme(config.AppsTheme, newTheme, state);
-            SetEdgeTheme(config.EdgeTheme, newTheme, state);
 
             SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
             SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
@@ -154,9 +152,9 @@ namespace AutoDarkModeSvc
                     Logger.Info($"theme switch invoked manually");
                 }
                 PowerHandler.RestoreEnergySaver(config);
-                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, e:{config.EdgeTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}, c:{config.ColorFilterEnabled})");
-                Logger.Info($"was (s:{oldsys}, a:{oldapp}, e:{oldedg}, w:{oldwal}, o:{oldoff}, c:{oldcol})");
-                Logger.Info($"is (s:{state.CurrentSystemTheme}, a:{state.CurrentAppsTheme}, e:{state.CurrentEdgeTheme}, w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme}, c:{state.ColorFilterEnabled})");
+                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}, c:{config.ColorFilterEnabled})");
+                Logger.Info($"was (s:{oldsys}, a:{oldapp}, w:{oldwal}, o:{oldoff}, c:{oldcol})");
+                Logger.Info($"is (s:{state.CurrentSystemTheme}, a:{state.CurrentAppsTheme}, w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme}, c:{state.ColorFilterEnabled})");
             });
         }
 
@@ -258,32 +256,6 @@ namespace AutoDarkModeSvc
             {
                 Logger.Error(ex, "could not set system theme");
             }           
-        }
-
-        private static void SetEdgeTheme(Mode mode, Theme newTheme, GlobalState rtc)
-        {
-            try
-            {
-                if (mode == Mode.DarkOnly)
-                {
-                    RegistryHandler.SetEdgeTheme((int)Theme.Dark);
-                    rtc.CurrentEdgeTheme = Theme.Dark;
-                }
-                else if (mode == Mode.LightOnly)
-                {
-                    RegistryHandler.SetEdgeTheme((int)Theme.Light);
-                    rtc.CurrentEdgeTheme = Theme.Light;
-                }
-                else
-                {
-                    RegistryHandler.SetEdgeTheme((int)newTheme);
-                    rtc.CurrentEdgeTheme = newTheme;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not set edge theme");
-            }
         }
 
         private static void SetOfficeTheme(Mode mode, Theme newTheme, GlobalState rtc, byte lightTheme, byte darkTheme, bool enabled)
@@ -414,11 +386,6 @@ namespace AutoDarkModeSvc
             }
 
             if (ComponentNeedsUpdate(config.AppsTheme, state.CurrentAppsTheme, newTheme))
-            {
-                return true;
-            }
-
-            if (ComponentNeedsUpdate(config.EdgeTheme, state.CurrentEdgeTheme, newTheme))
             {
                 return true;
             }
