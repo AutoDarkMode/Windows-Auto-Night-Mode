@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using AutoDarkModeSvc.Config;
-using AutoDarkModeApp;
 using SunriseCalculator;
 
 namespace AutoDarkModeSvc.Handlers
