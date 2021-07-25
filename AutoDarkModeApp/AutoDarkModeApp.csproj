@@ -138,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="AboutWindow.xaml.cs" />
-    <EmbeddedResource Remove="Properties\Resources.zhtw.resx" />
     <Page Remove="AboutWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
