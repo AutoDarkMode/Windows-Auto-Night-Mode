@@ -132,7 +132,7 @@
     <value>總是淺色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>為 Windows 1903 組建啟用功能</value>
+    <value>啟用 Windows 1903 功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>應用程式：</value>
@@ -236,7 +236,7 @@
     <value>由於您尚未安裝 Windows 10 2019 年四月更新，此選項已停用。</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>需要重新啟動程式才能套用變更</value>
+    <value>需要重新啟動程式以套用變更</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>語言：</value>
@@ -275,10 +275,10 @@
     <value>請選擇一張圖片</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>設置桌面背景</value>
+    <value>設定桌面背景</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>使用目前背景</value>
+    <value>使用目前的桌面背景</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>停用</value>
@@ -293,13 +293,13 @@
     <value>儲存</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>可能你的圖片已損毀或路徑不存在。</value>
+    <value>您的圖片可能已經損毀或路徑不存在。</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>抱歉，無法產生預覽圖！</value>
+    <value>很抱歉，無法產生預覽圖！</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>抱歉，無法儲存您的設定！</value>
+    <value>很抱歉，無法儲存您的設定！</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>發生錯誤</value>
@@ -329,7 +329,7 @@
   <data name="errorThemeApply" xml:space="preserve">
     <value>抱歉，但我們無法儲存您的設定！
 
-你可以嘗試以下操作：
+您可以嘗試以下操作：
 - 解除安裝後重新安裝此程式。
 - 嘗試在 Auto Dark Mode 設定中關閉 {0}。
 - 如果您啟用了桌布，請停用該功能，然後重試。
