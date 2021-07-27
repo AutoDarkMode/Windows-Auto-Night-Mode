@@ -633,6 +633,8 @@ namespace AutoDarkModeApp.Pages
                 TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
                 TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
             }
+
+            AlertSettingsIcon.Visibility = (SunsetWithOffset < SunriseWithOffset) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ShowErrorMessage(Exception ex)
