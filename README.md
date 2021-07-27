@@ -19,7 +19,7 @@ By enabling the automatic theme switcher in the app, a task in the Task Schedule
 - Theme switch based on custom times or the suntimes of your location + time offset.
 - Desktop wallpaper switch.
 - Windows .Theme-File switch, to also change Accent Color and Mouse Cursor.
-- Office theme switch
+- Office theme switch.
 - You can choose if only Apps should change their theme, or both apps and system.
 - Support for accent color on the Taskbar and other system elements.
 - Ability to automatically enable the grayscale color filter of Windows 10.
@@ -30,8 +30,9 @@ By enabling the automatic theme switcher in the app, a task in the Task Schedule
 #### [Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
 
 #### Annotation
-Windows SmartScreen-Filter, your webbrowser or some antivirus software may warn you from downloading or starting this app. This is due to the missing signature license, which unfortunately I cannot afford. But from the numerous github stars you can see that many people use the program without problems.  
-[Click here to see a VirusTotal test of AutoDarkMode_Setup.exe](https://www.virustotal.com/gui/file/fea01593ebcd7aeec3a4d7566e4c449a486c8c9fecd0b7941ebb036fb0fe2797/)
+Windows SmartScreen-Filter, your webbrowser or some antivirus software may warn you from downloading or starting this app. This is due to the missing signature license, which unfortunately I cannot afford. But from the numerous github stars you can see that many people use the program without problems.
+
+[Click here to see a VirusTotal test of AutoDarkMode_Setup.exe](https://www.virustotal.com/gui/file/eb58ad3ef3529ce1327abb7e2417f138b7aa0e5126ae65ee499986c09249282b/)
 
 #### Installation
 Installing is pretty easy as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/verysilent_ to skip the installer window.
@@ -75,8 +76,8 @@ In case you want to contribute and add a new module, here's how:
 ### Understanding how a module works
 
 AutoDarkMode uses a modular timer based system. Each module is registered or deregistered to a specific timer when it is enabled or disabled. The first step therefore usually consists of creating an `Enabled` property or config class for your module in `Config/AdmConfig.cs`.
-Only read operations are allowed to this config file. If you need write access, you will need to add a new configuration class and file and save it separately.
-In order to then create a module let's take a look at what a module class looks like:
+
+Only read operations are allowed to this config file. If you need write access, you will need to add a new configuration class and file and save it separately. In order to then create a module let's take a look at what a module class looks like:
 ```C#
 namespace AutoDarkModeSvc.Modules
 {
@@ -105,7 +106,9 @@ A module needs to have a constructor that calls its base constructor with exactl
 Each module has access to the configuration builder in case it needs to retrieve values from the global configuration. You can call it by invoking the `ConfigBuilder` singleton instance.
 
 A module must inherit from the `AutoDarkModeModule` base class. The base class ensures that modules are comparable and implements the `IAutoDarkModeModule` interface. This ensures that all modules can be controlled by only using the interface.
-You will then need to override 
+
+You will then need to override:
+
 - `Fire()`, which is called by the timer and
 - `TimerAffinity`, which is the unique name of a timer this module should run on. 
 
