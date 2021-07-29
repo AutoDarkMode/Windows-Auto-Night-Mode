@@ -126,7 +126,7 @@
     <value>Povolit automatické přepínání motivů</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Přizpůsobit se k motivu</value>
+    <value>Přizpůsobit motivu</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Vždy tmavý</value>
@@ -135,7 +135,7 @@
     <value>Vždy světlý</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Zapnout vlastnosti pro Windows 1903</value>
+    <value>Zapnout možnosti pro Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>Aplikace:</value>
@@ -168,7 +168,7 @@
     <value>Systém:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Používané softwary třetích stran</value>
+    <value>Použitý software třetích stran</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>Aktualizace</value>
@@ -177,75 +177,75 @@
     <value>Použít službu zjišťování polohy</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>změny byly uložené!</value>
+    <value>Změny byly uloženy!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Klikněte na potvrdit pro uložení změn</value>
+    <value>Kliknutím na potvrdit uložíte změny</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Nainstalovat aktualizaci</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>došlo k chybě :(</value>
+    <value>Nastala chyba</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Aplikace potřebuje přístup k vaší poloze</value>
+    <value>Aplikace vyžaduje přístup k Vaší poloze</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>žádné nové aktualizace k dispozici.</value>
+    <value>Máte nejnovější verzi aplikace.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Hledání vaší polohy...</value>
+    <value>Hledání Vaší polohy...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>hledání aktualizace...</value>
+    <value>Hledání aktualizace...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Varování: Nemohli jsme přečíst váš současný motiv.</value>
+    <value>Varování: Nemohli jsme zjistit současný motiv.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>nová aktualizace je k dispozici!</value>
+    <value>Nalezena nová aktualizace!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Děkujeme, že používáte Auto Dark Mode!
 
-Nová verze je k dispozici na GitHub s úpravami a vylepšeními.
+Na Github je k mání nová verze s mnoha vylepšeními.
 Chcete ji nainstalovat?
 
-Současně nainstalována verze: {0}, nová verze: {1}</value>
+Nainstalovaná verze: {0}, nová verze: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Najít aktualizace</value>
+    <value>Zjistit aktualizace</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>hledáme aktualizace při každém spuštění programu.</value>
+    <value>Hledáme aktualizace při každém spuštění programu.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Vítejte</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Aktivujte zaškrtávací políčko pro povolení přepínání automatických motivů</value>
+    <value>Pro automatickou změnu motivů zaškrtněte aktivační políčko</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Překladatelé: Farmans a zoe</value>
+    <value>Překladatelé: Farmansn a zoe, korekce Dr.CRYO</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Město</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Tato možnost je vypnutá, protože jste nenainstalovali Windows 10 duben 2019 aktualizaci na vašem stroji.</value>
+    <value>Tato možnost je nedostupná, protože jste zatím neaktualizovali Windows na verzi z dubna 2019 (1903).</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Je vyžadován restart aplikace pro zobrazení změn</value>
+    <value>K zobrazení změn je třeba restartovat aplikaci</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Jazyk:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Zvýraznění barev pro hlavní panel</value>
+    <value>Zvýraznění barev hlavního panelu</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Zrušit</value>
@@ -254,7 +254,7 @@ Současně nainstalována verze: {0}, nová verze: {1}</value>
     <value>Současně:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Tapeta pro tmavý motiv</value>
+    <value>Tapeta tmavého motivu</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Vymazat/Vypnout</value>
@@ -263,7 +263,7 @@ Současně nainstalována verze: {0}, nová verze: {1}</value>
     <value>Vybrat soubor</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Tapeta pro světlý motiv</value>
+    <value>Tapeta světlého motivu</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Pozadí plochy</value>
@@ -278,7 +278,7 @@ Současně nainstalována verze: {0}, nová verze: {1}</value>
     <value>Zvolte prosím obrázek</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Konfigurace pozadí plochy</value>
+    <value>Nastavení pozadí plochy</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
     <value>použijte současné pozadí</value>
@@ -296,25 +296,25 @@ Současně nainstalována verze: {0}, nová verze: {1}</value>
     <value>Uložit</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Možná je váš soubor s obrázkem narušený nebo cesta k němu neexistuje.</value>
+    <value>Váš obrázek je nečitelný, nebo jste zadali neplatnou cestu.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Nemohli jsme načíst náhled vašeho obrázku, omlouváme se!</value>
+    <value>Nepodařilo se načíst náhled obrázku.</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Nemohli jsme uložit vaše nastavení, omlouváme se!</value>
+    <value>Nastavení se nepodařilo uložit.</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Došlo k chybě</value>
+    <value>Nastala chyba</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Viditelné v tmavém motivu. Jestli narazíte na problémy: prosím zvyšte přepínací zpoždění v nastavení. </value>
+    <value>Viditelné v tmavém motivu. Při problémech prosím zvyšte zpoždění přepínání v nastavení. </value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informace</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12-ti hodinové hodiny</value>
+    <value>12hodinové časy</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Zavřít</value>
@@ -326,41 +326,41 @@ Současně nainstalována verze: {0}, nová verze: {1}</value>
     <value>Ano</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Vyhledávat aktualizace v pozadí</value>
+    <value>Vyhledávat aktualizace na pozadí</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>Omlouváme se, ale nemohli jsme  použít vaše nastavení.
+    <value>Toto nastavení se nepodařilo použít..
 
 Zde je pár věcí, které můžete zkusit:
-- Vymažte a nainstalujte auto dark mode znovu.
-- Zkuste vypnout {0} v Auto Dark Mode nastavení.
-- Jestli jste zapnuli Tapetu na ploše, vypněte tuto funkci a zkuste to znovu.
+- Odeberte a znovu nainstalujte Auto Dark Mode.
+- Zkuste vypnout {0} v nastavení Auto Dark Mode.
+- Jestli jste zapnuli tapetu na ploše, tuto funkci vypněte a zkuste to znovu.
 
-Jestli tyto věci nepomohly, můžete napsat komentář o GitHub problému tím, že pošlete snímek vaší chyby. Můžete mít přístup k problému tím, že klikněte na tlačítko „Ano”.</value>
+Pokud ani výše uvedené kroky nepomohly, můžete nám kliknutím na tlačítko Ano poslat skrze Github snímek Vaší chyby společně s popisem, co k chybě vedlo.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Chyba: váš vstup je neplatný</value>
+    <value>Chyba: Vstup je neplatný</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Přepnout po připojeném pohotovostním režimu (není doporučené)</value>
+    <value>Přepnout po Připojeném pohotovostním režimu (nedoporučuje se)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobilní zařízení, například Microsoft Surface produkty používají takzvaný pohotovostní režim. 
-Při povolení této možnosti se okamžitě ujistí, že Auto Dark Mode změní motiv po vzbuzení vašeho počítače. 
-Ale také to snižuje životnost baterie! Aktivujte POUZE, pokud bude potřeba!</value>
+    <value>Mobilní zařízení, například produkty Microsoft Surface, používají moderní pohotovostní režim. 
+Povolením této možnosti zajistíte, že Auto Dark Mode přepne motiv ihned po probuzení počítače.
+Funkci povolte pouze v případě, že ji skutečně potřebujete, neboť snižuje výdrž baterie.</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Kvůli Windows chybě hlavní panel nemění pořádně jeho barvu v režimu spořící baterii. Vypněte prosím režim spořící baterii, jestli narazíte na problémy.</value>
+    <value>Kvůli chybě Windows nemění hlavní panel barvu tak, jak by měl, pokud je zapnutý spořič baterie. V případě problémů vypněte spořič baterie.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Vyvážit</value>
+    <value>Časový posun</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Nastavit</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Tyhle možnosti jsou vypnuté, zatímco je používán Windows motiv.
-Můžete toto nastavit individuálně ve vašem Windows motivu.</value>
+    <value>Při používání motivu Windows jsou tyto možnosti vypnuté.
+Můžete je však nastavit přímo v motivu Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Aplikace</value>
@@ -381,34 +381,34 @@ Můžete toto nastavit individuálně ve vašem Windows motivu.</value>
     <value>Tmavý motiv:</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Vytvořte si své motivy</value>
+    <value>Vytvořte si vlastní motivy</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Vyberte si své motivy</value>
+    <value>Zvolte vlastní motivy</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
     <value>Světlý motiv:</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows motiv (více vlastností)</value>
+    <value>Windows motiv (více možností)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
     <value>Tapeta na ploše (doporučené)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Klikněte zde pro otevření nastavení pro Windows motivy.</value>
+    <value>Klikutím sem přejděte do nastavení motivu Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Nyní nastavte Windows barvu pod barvami k bílé pro světlý motiv. Zvolte si vaší oblíbenou tapetu, kurzor myši a zvýraznění barvy.</value>
+    <value>Nyní přejděte na Barvy a změňte systémový režim na "Světlý". Nastavte si oblíbené pozadí, ukazatel myši či barvu zvýraznění.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Jděte zpět do nastavení motivů a uložte si svůj motiv.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Opakujte proces pro černý motiv.</value>
+    <value>Zopakujte postup pro tmavý motiv.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Zpoždění pro měnění barev hlavního panelu (ms):</value>
+    <value>Zpoždění změny barvy hlavního panelu (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
     <value>O programu</value>
@@ -420,28 +420,28 @@ Můžete toto nastavit individuálně ve vašem Windows motivu.</value>
     <value>Restart</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Nastavit vlastní hodiny</value>
+    <value>Nastavit vlastní časy</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Od východu slunce do západu slunce</value>
+    <value>Od východu do západu slunce</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Krok</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Použít filtr barev ve stupnici šedé (Win + Ctrl + C)</value>
+    <value>Použít černobílý filtr (Win+Ctrl+C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Použít Přihlašovací úlohu místo Automatického spuštění vstupu.</value>
+    <value>Použít úlohu po přihlášení namísto programu po spuštění.</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>Zvolit režim:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Došlo k chybě při nastavování vybraných motivů, vypnuli jsme přepínání motivů</value>
+    <value>Došlo k chybě při nastavování vybraných motivů; vypnuli jsme přepínání motivů.</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Náhradní bílý motiv</value>
+    <value>Náhradní světlý motiv</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Nainstalovat rozšíření</value>
@@ -450,42 +450,42 @@ Můžete toto nastavit individuálně ve vašem Windows motivu.</value>
     <value>Doporučené nástroje</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Tohle rozšíření prohlížeče udělá to, že budou webové stránky v Chrome, Firefox a Edge respektovat motiv systému</value>
+    <value>Toto rozšíření prohlížeče vynutí režim webových stránelk dle systémového motivu.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>nenalezeno</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Proč byste chtěl přispět??</value>
+    <value>Proč byste měli přispět?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>Jak přispět?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Můžete mi odeslat peníze skrz PayPal. Je to naprosto dobrovolné a neměli byste očekávat žádné odškodnění.</value>
+    <value>Peníze mi můžete poslat skrze PayPal. Váš příspěvek je zcela dobrovolný a nezakládá se Vám za něj žádného odškodnění.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Přispět</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Ahoj! Děkuji, že používáte Auto Dark Mode! Líbí se vám zatím?
+    <value>Ahoj a děkuji, že používáte Auto Dark Mode.
 
-Tato aplikace dělá váš každodenní život příjemnější tím, že se vám pomáhá starat o vaše oči. Zároveň je tato aplikace úplně zdarma, bez reklam, nesbírá uživatelská data a je otevřená pro zdroj.
-Nevydělávám žádný zisk s tímto projektem.
+Auto Dark Mode se snaží zpříjemnit každodenní používání počítače tím, že se stará o Váš zrak. Přitom je zcela zdarma, bez reklam, open-source, ani nesbírá žádná data.
+Aplikace je nezisková.
 
-Pro tento důvod byste mě mohli podpořit s dobrovolným příspěvkem. Dokonce i při malé částce budu skákat radostí skrz můj byt. Přispějte tolik, kolik si vážíte mé práce.</value>
+Jestli se Vám moje aplikace líbí, zvažte, zda byste mne nechtěli podpořit. I malý peněžní příspěvek mi udělá neskonalou radost; u větších budu přímo skákat radostí po bytě.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Nastala chyba, když se potvrzoval .theme-file. Možná váš vytvořený motiv byl odstraněn nebo přesunut. To je důvod, proč jsme zatím deaktivovali přepínání motivů. Abyste to znovu zapnuli, prosím otevřete Auto Dark Mode a nakonfigurujte {0} nastavení.</value>
+    <value>Nastala chyba při zavádění .theme-file. Je možné, že Váš vlastní motiv už není dostupný. Proto jsme zatím omezili přepínání motivů. K opětovnému povolení přepínání motivů prosím otevřete Auto Dark Mode a upravte {0} nastavení.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Našli jsme následující problém: 
+    <value>Narazili jsme na následující problém: 
 {0}
 
-Pokusíme se nyní vyřešit tento problém pomocí toho, že rozjedeme algoritmus jako admin. Možná toto pomůže. 
-Auto Dark Mode se restartuje po tom a potřebujete znovu potvrdit vaše nastavení, omlouváme se!
+Zkusíme jej vyřešit spuštěním algoritmu s administrátorskými právy. To leckdy pomůže.
+Auto Dark Mode se poté restartuje. Bude však nezbytné vše znovu nastavit - mrzí nás to.
 
-mimochodem: NIKDY prosím nepoužívejte Auto Dark Mode jako admin!</value>
+Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Potřebujete pomoc s problémem?</value>
@@ -494,36 +494,35 @@ mimochodem: NIKDY prosím nepoužívejte Auto Dark Mode jako admin!</value>
     <value>Stáhnout později</value>
   </data>
   <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Už nikdy nepřipomínat</value>
+    <value>Už nepřipomínat</value>
   </data>
   <data name="VersionXUpdaterButtonNow" xml:space="preserve">
     <value>Stáhnout nyní</value>
   </data>
   <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>Posledních pár měsíců jsme pracovali těžce, abychom vám poskytli nejlepší možnou aktualizaci. A nyní to je zde!
+    <value>Posledních pár měsíců jsme tvrdě dřeli na nejlepší možné aktualizaci, kterou Vám můžeme nabídnout. A konečně je tady!
 
-Auto Dark Mode X byl znovu kompletně přepsán ze samotného začátku. Nyní představuje skutečného správce pozadí místo spoléhajícího Windows Task Schedulera. To znamená, že dostanete spolehlivější a flexibilnější zážitek při přepínání motivů!
+Auto Dark Mode X byl znovu od zákaldu přepsán. Staví na skutečném procesu na pozadí namísto spolehání se na naplánované úlohy, což umožňuje o mnoho pružnější a spolehlivější změnu motivů než kdykoli předtím!
 
-Ano, toto spotřebuje více zdrojů v pozadí, ale na oplátku vám nabízíme více funkcí na zlepšení vaší produktivity. Například:
-- Herní režim: vypnut přepínač motivů při hraní hry nebo když je váš GPU zaměstnaný.
-- Přepínání motivů se zkratkami na klávesnici a více!
+Je to sice o něco náročnější na výpočetní prostředky, na druhou stranu je možné využívat pokročilé fukce, jako například:
+- Herní režim: Přepínač motivů se vypne při hraní hry nebo když je vytížená GPU.
+- Přepínání motivů zkratkami na klávesnici a více!
 
-Aktualizace je vhodná pro všechny, kromě majitelů ARM zařízení. Tito lidé budou mít problémy s životností baterie, protože postup v pozadí musí být napodoben (jenom tam!).</value>
+Aktualizace je vhodná pro všechny, až na majitele ARM zařízení, kteří mohou mít kvůli nezbytné emulaci procesů na pozadí problémy s výdrží baterie.</value>
   </data>
   <data name="VersionXUpdaterHeader" xml:space="preserve">
     <value>Auto Dark Mode X je k dispozici</value>
   </data>
   <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Verze X je skvělá a velká aktualizace, kterou určitě musíte vyzkoušet! Jste si jistí, že ji NECHCETE nainstalovat? Nikdy vám to nenabídneme znovu!</value>
+    <value>Verze X je skvělá a velká aktualizace, kterou určitě musíte vyzkoušet! Jste si jistí, že ji nechcete nainstalovat? Už Vám ji nebudeme dále nabízet.</value>
   </data>
   <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
     <value>Jste si jistí?</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Multi-Uživatelská podpora</value>
+    <value>Podpora více uživatelů</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Doplňkové zpoždění pro aktivování stupnice šedé barevný filtr:</value>
+    <value>Dodatečné zpoždění černobílého filtru:</value>
   </data>
-
 </root>
