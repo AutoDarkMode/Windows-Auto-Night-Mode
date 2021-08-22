@@ -3,7 +3,7 @@ We (the Auto Dark Mode Team) don't collect any data about our users. This app do
 log files are only stored on the personal computer.
 
 Some features of this App use third party services which may collect data:
-By using Auto Dark Mode, you thus also agree to these service's privacy policies.
+By using Auto Dark Mode, you thus also agree to these services' privacy policies.
 
 ### Device Location using the Windows Geolocation API & Microsoft Bing API
 On our side the collected data is only processed locally for sunrise/sunset calculation and does not leave the machine, nor is it used for analytics.
