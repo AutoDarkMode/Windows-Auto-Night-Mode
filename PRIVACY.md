@@ -1,0 +1,30 @@
+# Auto Dark Mode Privacy Statement
+We (the Auto Dark Mode Team) don't collect any data about our users. We didn't implement any telemetry, all settings are saved offline and even
+log files are only stored on the personal computer.
+
+Some features of this App use third party services which may collect data:
+
+### Device Location using the Windows Geolocation API & Microsoft Bing API
+On our site the collected data is only processed locally for sunrise/sunset calculation and does not leave the machine, nor is it used for analytics.
+
+Microsoft Windows could collect some location data from your machine, for example we use the Microsoft Bing API "MapLocationFinder" to get your current
+city name.
+
+Because of this, the Microsoft data protection regulation applies: 
+
+https://privacy.microsoft.com/en-us/privacystatement
+
+### App Updater using the GitHub Server
+Again on our site we don't collect any data from our users. Everything is processed on the machine and will never transfer to the internet.
+
+To check for App Updates, we connect once to the GitHub-Server to receive a xml with information about the newest version. Also the updater
+can download the installer from the GitHub Server.
+
+GitHub could collect some personal data while communicating with the GitHub Servers. Because of this, the GitHub data protection regulation applies:
+
+https://docs.github.com/en/github/site-policy/github-privacy-statement
+
+### Changes to our Privacy Statement
+Auto Dark Mode may change our Privacy Statement from time to time.
+
+_Last updated: 22.08.2021_
