@@ -11,7 +11,6 @@ namespace AutoDarkModeSvc.Config
         private static AdmConfigBuilder instance;
         public AdmConfig Config { get; private set; }
         public AdmLocationData LocationData { get; private set; }
-
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
         public string LocationDataPath { get; }
@@ -76,7 +75,7 @@ namespace AutoDarkModeSvc.Config
 
             using StreamReader locationDataReader = new StreamReader(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             JsonSerializer serializer = new JsonSerializer();
-            var deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
+            AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
             LocationData = deserializedLocationData ?? LocationData;
         }
 
@@ -89,9 +88,8 @@ namespace AutoDarkModeSvc.Config
 
             using StreamReader configReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             JsonSerializer serializer = new JsonSerializer();
-            var deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
+            AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
             Config = deserializedConfig ?? Config;
-
         }
 
 
@@ -110,7 +108,7 @@ namespace AutoDarkModeSvc.Config
             }
             try
             {
-                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
             }
             catch (IOException)
             {
