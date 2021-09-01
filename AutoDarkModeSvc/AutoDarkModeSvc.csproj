@@ -58,4 +58,9 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SwitchComponents\Base\" />
+    <Folder Include="SwitchComponents\Addons\" />
+  </ItemGroup>
+
 </Project>
