@@ -1,4 +1,4 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeConfig;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers
 {
-    class PowerHandler
+    static class PowerHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static bool allowRestore = false;

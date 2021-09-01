@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Config
+namespace AutoDarkModeConfig
 {
     public class AdmConfigBuilder
     {

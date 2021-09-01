@@ -9,6 +9,7 @@ using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 using System.ComponentModel;
+using AutoDarkModeConfig;
 
 namespace AutoDarkModeSvc
 {

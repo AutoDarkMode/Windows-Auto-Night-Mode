@@ -1,5 +1,5 @@
 ﻿using System;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Timers;
 using System.Diagnostics.CodeAnalysis;

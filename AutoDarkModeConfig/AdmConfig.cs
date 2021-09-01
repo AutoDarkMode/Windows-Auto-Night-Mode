@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using AutoDarkModeConfig;
+using AutoDarkModeConfig.ComponentSettings;
+using AutoDarkModeConfig.ComponentSettings.Base;
 
-namespace AutoDarkModeSvc.Config
+namespace AutoDarkModeConfig
 {
     public class AdmConfig
     {
@@ -14,7 +17,16 @@ namespace AutoDarkModeSvc.Config
             GPUMonitoring = new GPUMonitoring();
             Office = new Office();
             Events = new Events();
+
+            //New Component Settings;
+            AppSwitch = new BaseSettings<AppSwitchSettings>();
+            SystemSwitch = new BaseSettings<SystemSwitchSettings>();
         }
+
+
+        public BaseSettings<AppSwitchSettings> AppSwitch { get; set; }
+        public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
+
         private Mode appsTheme;
         private Mode systemTheme;
 

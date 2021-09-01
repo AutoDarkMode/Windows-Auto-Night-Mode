@@ -1,4 +1,4 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeConfig;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -7,13 +7,19 @@ using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers
 {
-    class PowerEventHandler
+    static class PowerEventHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static bool darkThemeOnBatteryEnabled;
+        private static bool resumeEventEnabled;
 
         public static void RegisterThemeEvent()
         {
-            PowerManager.BatteryStatusChanged += PowerManager_BatteryStatusChanged;
+            if (!darkThemeOnBatteryEnabled)
+            {
+                Logger.Info("enabling event handler for dark mode on battery state discharging");
+                PowerManager.BatteryStatusChanged += PowerManager_BatteryStatusChanged;
+            }
         }
 
         private static void PowerManager_BatteryStatusChanged(object sender, object e)
@@ -33,8 +39,13 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
-                ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+                if (darkThemeOnBatteryEnabled)
+                {
+                    Logger.Info("disabling event handler for dark mode on battery state discharging");
+                    PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
+                    darkThemeOnBatteryEnabled = false;
+                    ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+                }
             }
             catch (InvalidOperationException ex)
             {
@@ -44,7 +55,11 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void RegisterResumeEvent()
         {
-            SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+            if (!resumeEventEnabled)
+            {
+                Logger.Info("enabling theme refresh at system resume");
+                SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+            }
         }
 
         private static void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
@@ -60,7 +75,12 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+                if (resumeEventEnabled)
+                {
+                    Logger.Info("disabling theme refresh at system resume");
+                    SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+                    resumeEventEnabled = false;
+                }
             }
             catch (InvalidOperationException ex)
             {

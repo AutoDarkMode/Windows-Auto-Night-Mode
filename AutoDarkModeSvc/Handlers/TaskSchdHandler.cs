@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.TaskScheduler;
+﻿using AutoDarkModeConfig;
+using Microsoft.Win32.TaskScheduler;
 using System;
 
 namespace AutoDarkModeSvc.Handlers

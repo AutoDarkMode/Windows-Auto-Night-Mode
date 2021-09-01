@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc
+namespace AutoDarkModeConfig
 {
     public enum Mode
     {

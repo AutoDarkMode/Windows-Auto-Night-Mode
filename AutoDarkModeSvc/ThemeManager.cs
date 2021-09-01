@@ -2,7 +2,7 @@
 using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
-using System.Threading;
+using AutoDarkModeConfig;
 using System.IO;
 using Windows.System.Power;
 using System.Collections.Generic;
@@ -15,6 +15,8 @@ namespace AutoDarkModeSvc
 
         public static void TimedSwitch(AdmConfigBuilder builder)
         {
+            ComponentManager cm = ComponentManager.Instance();
+            cm.UpdateSettings();
             GlobalState state = GlobalState.Instance();
             if (state.ForcedTheme == Theme.Dark) 
             {

@@ -1,4 +1,5 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,6 @@ namespace AutoDarkModeSvc.Modules
             AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !State.PostponeSwitch);
             AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);
             AutoManageModule(typeof(GPUMonitorModuleV2).Name, typeof(GPUMonitorModuleV2), true, config.GPUMonitoring.Enabled);
-            AutoManageModule(typeof(EventModule).Name, typeof(EventModule), true, config.Events.Enabled);
         }
 
         /// <summary>

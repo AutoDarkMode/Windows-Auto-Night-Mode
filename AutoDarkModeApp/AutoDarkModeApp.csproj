@@ -63,15 +63,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Communication\Command.cs" />
-    <Compile Include="..\AutoDarkModeSvc\Config\AdmConfig.cs">
-      <Link>Config\AdmConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\AutoDarkModeSvc\Config\AdmConfigBuilder.cs">
-      <Link>Config\AdmConfigBuilder.cs</Link>
-    </Compile>
-    <Compile Include="..\AutoDarkModeSvc\Config\AdmLocationData.cs">
-      <Link>Config\AdmLocationData.cs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">

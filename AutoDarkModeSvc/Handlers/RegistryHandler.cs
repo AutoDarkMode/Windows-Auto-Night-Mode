@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AutoDarkModeConfig;
+using Microsoft.Win32;
 using System;
 using System.Threading;
 using WindowsInput;

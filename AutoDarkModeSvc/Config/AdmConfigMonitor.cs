@@ -1,4 +1,6 @@
-﻿using AutoDarkModeSvc.Modules;
+﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,8 +12,8 @@ namespace AutoDarkModeSvc.Config
     {
         private FileSystemWatcher ConfigWatcher { get;  }
         private FileSystemWatcher LocationDataWatcher { get; }
-
-        private readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
+        private readonly ComponentManager componentManager = ComponentManager.Instance();
+        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IAutoDarkModeModule warden;
 
@@ -22,14 +24,14 @@ namespace AutoDarkModeSvc.Config
         {
             ConfigWatcher = new FileSystemWatcher
             {
-                Path = configBuilder.ConfigDir,
-                Filter = Path.GetFileName(configBuilder.ConfigFilePath),
+                Path = builder.ConfigDir,
+                Filter = Path.GetFileName(builder.ConfigFilePath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
             LocationDataWatcher = new FileSystemWatcher
             {
-                Path = configBuilder.ConfigDir,
-                Filter = Path.GetFileName(configBuilder.LocationDataPath),
+                Path = builder.ConfigDir,
+                Filter = Path.GetFileName(builder.LocationDataPath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
             ConfigWatcher.Changed += OnChangedConfig;
@@ -38,11 +40,13 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(configBuilder.ConfigFilePath)))
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.ConfigFilePath)))
             {
                 try
                 {
-                    configBuilder.Load();
+                    builder.Load();
+                    componentManager.UpdateSettings();
+                    UpdateEventStates();
                     if (warden != null)
                     {
                         warden.Fire();
@@ -58,17 +62,38 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
         {
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(configBuilder.LocationDataPath)))
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.LocationDataPath)))
             {
                 try
                 {
-                    configBuilder.LoadLocationData();
+                    builder.LoadLocationData();
                     Logger.Debug("updated location data file");
                 }
                 catch (Exception ex)
                 {
                     Logger.Debug(ex, "location data file locked, cannot load");
                 }
+            }
+        }
+
+        private void UpdateEventStates()
+        {
+            if (builder.Config.Events.DarkThemeOnBattery)
+            {
+                PowerEventHandler.RegisterThemeEvent();
+            }
+            else
+            {
+                PowerEventHandler.DeregisterThemeEvent();
+            }
+
+            if (builder.Config.Tunable.SystemResumeTrigger)
+            {
+                PowerEventHandler.RegisterResumeEvent();
+            }
+            else
+            {
+                PowerEventHandler.DeregisterResumeEvent();
             }
         }
 
