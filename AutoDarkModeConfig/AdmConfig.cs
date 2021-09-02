@@ -18,18 +18,16 @@ namespace AutoDarkModeConfig
             Events = new Events();
 
             //New Component Settings;
-            AppsSwitch = new BaseSettings<AppsSwitchSettings>();
+            AppsSwitch = new BaseSettingsEnabled<AppsSwitchSettings>();
             SystemSwitch = new BaseSettings<SystemSwitchSettings>();
+            ColorFilterSwitch = new BaseSettings<object>();
         }
-
-
-        public BaseSettings<AppsSwitchSettings> AppsSwitch { get; set; }
-        public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
-        public bool WindowsThemeMode { get; set; }
-
         public bool AutoThemeSwitchingEnabled { get; set; }
-        public bool ColorFilterEnabled { get; set; } = false;
-        public bool AccentColorTaskbarEnabled { get; set; }
+
+        public bool WindowsThemeMode { get; set; }
+        public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
+        public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
+        public BaseSettings<object> ColorFilterSwitch { get; set; }
         public string DarkThemePath { get; set; }
         public string LightThemePath { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
@@ -79,7 +77,6 @@ namespace AutoDarkModeConfig
     public class Tunable
     {
         private int batterySliderDefaultValue = 25;
-        public int AccentColorSwitchDelay { get; set; } = 500;
         public int BatterySliderDefaultValue
         {
             get { return batterySliderDefaultValue; }

@@ -186,7 +186,7 @@ namespace AutoDarkModeSvc.Handlers
         public static void ColorFilterKeySender(bool dark)
         {
             var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-            if (dark && filterKey.Equals(0) || !dark && filterKey.Equals(1))
+            if ((dark && filterKey.Equals(0)) || (!dark && filterKey.Equals(1)))
             {
                 //simulate key presses
                 InputSimulator inputSimulator = new InputSimulator();
@@ -196,6 +196,11 @@ namespace AutoDarkModeSvc.Handlers
                 inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LWIN);
                 inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
             }
+        }
+        public static bool IsColorFilterActive()
+        {
+            var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
+            return filterKey.Equals(1);
         }
         public static void ColorFilterSetup()
         {

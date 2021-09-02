@@ -12,7 +12,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     {
         private Theme currentComponentTheme = Theme.Undefined;
         private bool currentTaskbarColorActive;
-        SystemSwitch() : base()
+        public SystemSwitch() : base()
         {
             try
             {
@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
-        protected override bool ThemeHandlerCompatibility { get; } = false;
+        public override bool ThemeHandlerCompatibility { get; } = false;
 
         protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
@@ -85,7 +85,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         async void SwitchSystemTheme(Theme newTheme)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-            int taskdelay = Settings.Component.TaskDelay;
+            int taskdelay = Settings.Component.TaskbarSwitchDelay;
             try
             {
                 // Set system theme
@@ -156,7 +156,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not set system theme");
             }
-            Logger.Info($"update info - previous: {oldTheme} current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+            Logger.Info($"update info - previous: {oldTheme} current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}" +
+                $", accent: {(Settings.Component.TaskbarColorOnDark ? "yes" : "no")}");
         }
     }
 }

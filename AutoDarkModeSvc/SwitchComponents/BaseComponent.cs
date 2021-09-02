@@ -9,6 +9,7 @@ namespace AutoDarkModeSvc.SwitchComponents
     {
         protected NLog.Logger Logger { get; private set; }
         protected ISwitchComponentSettings<T> Settings { get; set; }
+        protected bool Initialized { get; set; }
         public BaseComponent()
         {
             Logger = NLog.LogManager.GetLogger(GetType().ToString());
@@ -27,12 +28,25 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public void Switch(Theme newTheme)
         {
-            if (ComponentNeedsUpdate(newTheme) && ThemeHandlerCompatibility)
+            if (Enabled())
             {
-                HandleSwitch(newTheme);
+                if (!Initialized)
+                {
+                    EnableHook();
+                }
+                if (ComponentNeedsUpdate(newTheme))
+                {
+                    HandleSwitch(newTheme);
+                }
+            }
+            else
+            {
+                if (Initialized)
+                {
+                    DisableHook();
+                }
             }
         }
-        public void Init() { }
         public void UpdateSettingsState(object newSettings)
         {
             if (newSettings is ISwitchComponentSettings<T> temp)
@@ -44,10 +58,18 @@ namespace AutoDarkModeSvc.SwitchComponents
                 Logger.Error($"could not convert generic settings object to ${typeof(T)}, no settings update performed.");
             }
         }
+        public virtual void EnableHook()
+        {
+            Initialized = true;
+        }
+        protected virtual void DisableHook()
+        {
+            Initialized = false;
+        }
         /// <summary>
         /// True when the component should be compatible with the ThemeHandler switching mode
         /// </summary>
-        protected abstract bool ThemeHandlerCompatibility { get; }
+        public abstract bool ThemeHandlerCompatibility { get; }
         /// <summary>
         /// Entrypoint, called when a component needs to be updated
         /// </summary>

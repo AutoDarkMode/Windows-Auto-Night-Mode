@@ -27,7 +27,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 }
             }
         }
-        public int TaskDelay { get; set; }
+        public int TaskbarSwitchDelay { get; set; } = 500;
         public bool TaskbarColorOnDark { get; set; }
     }
 }

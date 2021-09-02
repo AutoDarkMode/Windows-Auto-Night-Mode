@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace AutoDarkModeConfig
 {
     public enum Mode
-    {
+    {   
         Switch = 0,
         LightOnly = 1,
         DarkOnly = 2

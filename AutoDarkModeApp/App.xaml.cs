@@ -13,7 +13,6 @@ namespace AutoDarkModeApp
 {
     public partial class App : Application
     {
-        private readonly AdmConfigBuilder autoDarkModeConfigBuilder = AdmConfigBuilder.Instance();
         private readonly ICommandClient commandClient = new ZeroMQClient(Command.DefaultPort);
         public static Mutex Mutex { get; private set; } = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
         private bool debug = false;

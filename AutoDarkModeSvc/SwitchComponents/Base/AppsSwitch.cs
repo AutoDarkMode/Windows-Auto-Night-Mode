@@ -23,7 +23,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
-        protected override bool ThemeHandlerCompatibility { get; } = false;
+        public override bool ThemeHandlerCompatibility { get; } = false;
 
         protected override bool ComponentNeedsUpdate(Theme newTheme)
         {

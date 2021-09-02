@@ -9,7 +9,7 @@ namespace AutoDarkModeConfig.ComponentSettings
     {
         public int PriorityToLight { get; set; }
         public int PriorityToDark { get; set; }
-        public bool Enabled { get; set; }
+        public virtual bool Enabled { get; set; }
         public T Component { get; set; }
         public BaseSettings()
         {

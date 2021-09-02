@@ -22,7 +22,6 @@ namespace AutoDarkModeSvc.Config
         }
         protected GlobalState()
         {
-            CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
             CurrentWallpaperTheme = Theme.Undefined;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
             CurrentOfficeTheme = Theme.Undefined;
@@ -33,8 +32,6 @@ namespace AutoDarkModeSvc.Config
         private WardenModule Warden { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
         public Theme CurrentOfficeTheme { get; set; }
-        public bool ColorFilterEnabled { get; set; }
-        public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
         private bool _postponeSwitch;

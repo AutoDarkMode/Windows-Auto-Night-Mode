@@ -16,7 +16,7 @@ namespace AutoDarkModeApp
     /// </summary>
     public partial class PageApps : Page
     {
-        private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
         bool is1903 = false;
 
@@ -87,10 +87,10 @@ namespace AutoDarkModeApp
             //os version 1903+
             {
                 //inform user about settings
-                if(!builder.Config.WindowsThemeMode) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+                if (!builder.Config.WindowsThemeMode) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
 
                 //is accent color switch enabled?
-                AccentColorCheckBox.IsChecked = builder.Config.AccentColorTaskbarEnabled;
+                AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnDark;
             }
 
             //combobox
@@ -115,24 +115,28 @@ namespace AutoDarkModeApp
 
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            builder.Config.AppsSwitch.Enabled = true;
             if (AppComboBox.SelectedIndex.Equals(0))
             {
                 builder.Config.AppsSwitch.Component.Mode = Mode.Switch;
             }
-
-            if (AppComboBox.SelectedIndex.Equals(1))
+            else if (AppComboBox.SelectedIndex.Equals(1))
             {
                 builder.Config.AppsSwitch.Component.Mode = Mode.LightOnly;
             }
-
-            if (AppComboBox.SelectedIndex.Equals(2))
+            else if (AppComboBox.SelectedIndex.Equals(2))
             {
                 builder.Config.AppsSwitch.Component.Mode = Mode.DarkOnly;
             }
+            else if (AppComboBox.SelectedIndex.Equals(3))
+            {
+                builder.Config.AppsSwitch.Enabled = false;
+            }
+
             try
             {
                 builder.Save();
-            } 
+            }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex);
@@ -142,23 +146,25 @@ namespace AutoDarkModeApp
 
         private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            builder.Config.SystemSwitch.Enabled = true;
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
                 builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
                 AccentColorCheckBox.IsEnabled = true;
             }
-
-            if (SystemComboBox.SelectedIndex.Equals(1))
+            else if (SystemComboBox.SelectedIndex.Equals(1))
             {
                 builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
                 AccentColorCheckBox.IsEnabled = false;
             }
-
-            if (SystemComboBox.SelectedIndex.Equals(2))
+            else if (SystemComboBox.SelectedIndex.Equals(2))
             {
                 builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
-                Properties.Settings.Default.SystemThemeChange = 2;
                 AccentColorCheckBox.IsEnabled = true;
+            }
+            else if (SystemComboBox.SelectedIndex.Equals(3))
+            {
+                builder.Config.SystemSwitch.Enabled = false;
             }
             try
             {
@@ -175,11 +181,11 @@ namespace AutoDarkModeApp
         {
             if (((CheckBox)sender).IsChecked ?? false)
             {
-                builder.Config.AccentColorTaskbarEnabled = true;
+                builder.Config.SystemSwitch.Component.TaskbarColorOnDark = true;
             }
             else
             {
-                builder.Config.AccentColorTaskbarEnabled = false;
+                builder.Config.SystemSwitch.Component.TaskbarColorOnDark = false;
             }
             try
             {
@@ -199,18 +205,15 @@ namespace AutoDarkModeApp
             {
                 builder.Config.Office.Mode = Mode.Switch;
             }
-
-            if (OfficeComboBox.SelectedIndex.Equals(1))
+            else if (OfficeComboBox.SelectedIndex.Equals(1))
             {
                 builder.Config.Office.Mode = Mode.LightOnly;
             }
-
-            if (OfficeComboBox.SelectedIndex.Equals(2))
+            else if (OfficeComboBox.SelectedIndex.Equals(2))
             {
                 builder.Config.Office.Mode = Mode.DarkOnly;
             }
-
-            if (OfficeComboBox.SelectedIndex.Equals(3))
+            else if (OfficeComboBox.SelectedIndex.Equals(3))
             {
                 builder.Config.Office.Enabled = false;
             }
@@ -238,7 +241,8 @@ namespace AutoDarkModeApp
 
         private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckBoxOfficeWhiteTheme.IsChecked ?? true){
+            if (CheckBoxOfficeWhiteTheme.IsChecked ?? true)
+            {
                 builder.Config.Office.LightTheme = 5;
                 OfficeComboBox_DropDownClosed(this, null);
             }

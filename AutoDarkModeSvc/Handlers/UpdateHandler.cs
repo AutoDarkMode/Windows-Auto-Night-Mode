@@ -51,7 +51,7 @@ namespace AutoDarkModeSvc.Handlers
                 reader.Close();
                 if (newVersion != null && url != null && currentVersion.CompareTo(newVersion) < 0)
                 {
-                    Logger.Info($"new version ({newVersion.ToString()} available");
+                    Logger.Info($"new version ({newVersion} available");
                     return $"{Response.New},{newVersion},{url}";
                 }
                 else

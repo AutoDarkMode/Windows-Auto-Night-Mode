@@ -12,8 +12,8 @@ namespace AutoDarkModeApp
 {
     public partial class DesktopBGui
     {
-        WallpaperHandler deskBGHandler = new WallpaperHandler();
-        AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        readonly WallpaperHandler deskBGHandler = new WallpaperHandler();
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         string pathOrig1;
         string pathOrig2;
         string pathCur1;

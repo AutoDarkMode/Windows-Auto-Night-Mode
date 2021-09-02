@@ -22,14 +22,14 @@ namespace AutoDarkModeSvc
 
         public static void TimedSwitch(AdmConfigBuilder builder)
         {
-           
+
             GlobalState state = GlobalState.Instance();
-            if (state.ForcedTheme == Theme.Dark) 
+            if (state.ForcedTheme == Theme.Dark)
             {
                 SwitchTheme(builder.Config, Theme.Dark);
                 return;
-            } 
-            else if (state.ForcedTheme == Theme.Light) 
+            }
+            else if (state.ForcedTheme == Theme.Light)
             {
                 SwitchTheme(builder.Config, Theme.Light);
                 return;
@@ -62,13 +62,34 @@ namespace AutoDarkModeSvc
 
         public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
+            if (!automatic)
+            {
+                Logger.Info($"theme switch invoked manually");
+            }
             if (config.WindowsThemeMode)
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
+            else
+            {
+                PowerHandler.DisableEnergySaver(config);
+                ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
+            }
             RunComponents(newTheme);
-        }
+            if (!config.WindowsThemeMode)
+            {
+                PowerHandler.RestoreEnergySaver(config);
+            }
 
+        }
+        /// <summary>
+        /// Applies the theme using the KAWAII Theme switcher logic for windows theme files
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="newTheme"></param>
+        /// <param name="automatic"></param>
+        /// <param name="sunset"></param>
+        /// <param name="sunrise"></param>
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
             GlobalState state = GlobalState.Instance();
@@ -77,7 +98,8 @@ namespace AutoDarkModeSvc
                 Logger.Error("dark or light theme path empty");
                 return;
             }
-            if (!File.Exists(config.DarkThemePath)) {
+            if (!File.Exists(config.DarkThemePath))
+            {
                 Logger.Error($"invalid dark theme path: {config.DarkThemePath}");
                 return;
             }
@@ -94,27 +116,11 @@ namespace AutoDarkModeSvc
 
             if (Path.GetFileNameWithoutExtension(config.DarkThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
-                if (automatic)
-                {
-                    Logger.Info($"automatic dark theme switch pending, sunset: {sunset.ToString("HH:mm:ss")}");
-                }
-                else
-                {
-                    Logger.Info("switching to dark theme");
-                }
                 ThemeHandler.Apply(config.DarkThemePath);
             }
             else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Light)
             {
-                if (automatic)
-                {
-                    Logger.Info($"automatic light theme switch pending, sunrise: {sunrise.ToString("HH:mm:ss")}");
-                }
-                else
-                {
-                    Logger.Info("switching to light theme");
-                }
-                ThemeHandler.Apply(config.LightThemePath);            
+                ThemeHandler.Apply(config.LightThemePath);
             }
         }
 
@@ -129,53 +135,15 @@ namespace AutoDarkModeSvc
             PowerHandler.DisableEnergySaver(config);
             var oldwal = state.CurrentWallpaperTheme;
             var oldoff = state.CurrentOfficeTheme;
-            var oldcol = state.ColorFilterEnabled;
-
-            SetColorFilter(config.ColorFilterEnabled, newTheme);
 
             SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
             //run async to delay at specific parts due to color prevalence not switching icons correctly
-            int taskdelay = config.Tunable.AccentColorSwitchDelay;
-            Task.Run(async () =>
-            {
-                if (automatic)
-                {
-                    Logger.Info($"theme switch invoked automatically. Sunrise: {sunrise.ToString("HH:mm:ss")}, Sunset: {sunset.ToString("HH:mm:ss")}");
-                }
-                else
-                {
-                    Logger.Info($"theme switch invoked manually");
-                }
-                PowerHandler.RestoreEnergySaver(config);
-                Logger.Info($"theme: {newTheme} with modes, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}, c:{config.ColorFilterEnabled})");
-                Logger.Info($"was (w:{oldwal}, o:{oldoff}, c:{oldcol})");
-                Logger.Info($"is (w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme}, c:{state.ColorFilterEnabled})");
-            });
+            PowerHandler.RestoreEnergySaver(config);
+            Logger.Info($"theme: {newTheme} with modes, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled})");
+            Logger.Info($"was (w:{oldwal}, o:{oldoff})");
+            Logger.Info($"is (w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme})");
         }
 
-
-        private static void SetColorFilter(bool enabled, Theme newTheme)
-        {
-            if (enabled)
-            {
-                try
-                {
-                    RegistryHandler.ColorFilterSetup();
-                    if (newTheme == Theme.Dark)
-                    {
-                        RegistryHandler.ColorFilterKeySender(true);
-                    }
-                    else
-                    {
-                        RegistryHandler.ColorFilterKeySender(false);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "could not enable color filter:");
-                }
-            }
-        }
 
         private static void SetWallpaper(Theme newTheme, GlobalState rtc, List<string> darkThemeWallpapers,
             List<string> lightThemeWallpapers, bool enabled)
@@ -226,8 +194,8 @@ namespace AutoDarkModeSvc
                     return true;
                 }
             }
-            
-            if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, state.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers, 
+
+            if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, state.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers,
                 config.Wallpaper.DarkThemeWallpapers, state.CurrentWallpaperTheme, newTheme))
             {
                 return true;
@@ -237,12 +205,6 @@ namespace AutoDarkModeSvc
             {
                 return true;
             }
-
-            if (config.ColorFilterEnabled && ColorFilterNeedsUpdate(config.ColorFilterEnabled, state.ColorFilterEnabled, newTheme))
-            {
-                return true;
-            }
-
             return false;
         }
 
@@ -258,7 +220,7 @@ namespace AutoDarkModeSvc
             return false;
         }
 
-        private static bool WallpaperNeedsUpdate(bool enabled, string currentWallpaperPath, List<string> lightThemeWallpapers, 
+        private static bool WallpaperNeedsUpdate(bool enabled, string currentWallpaperPath, List<string> lightThemeWallpapers,
             List<string> darkThemeWallpapers, Theme currentComponentTheme, Theme newTheme)
         {
             if (enabled)
@@ -266,31 +228,15 @@ namespace AutoDarkModeSvc
                 if (currentComponentTheme != newTheme)
                 {
                     return true;
-                } 
+                }
                 else if (newTheme == Theme.Dark && !darkThemeWallpapers.Contains(currentWallpaperPath))
                 {
                     return true;
-                } 
+                }
                 else if (newTheme == Theme.Light && !lightThemeWallpapers.Contains(currentWallpaperPath))
                 {
                     return true;
                 }
-            }
-            return false;
-        }
-
-        private static bool ColorFilterNeedsUpdate(bool colorFilterEnabled, bool currentColorFilterEnabled, Theme newTheme)
-        {
-            if (!colorFilterEnabled && currentColorFilterEnabled)
-            {
-                return true;
-            }
-            if (!currentColorFilterEnabled && newTheme == Theme.Dark) {
-                return true;
-            } 
-            else if (currentColorFilterEnabled && newTheme == Theme.Light)
-            {
-                return true;
             }
             return false;
         }

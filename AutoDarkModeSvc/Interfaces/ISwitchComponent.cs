@@ -32,6 +32,12 @@ namespace AutoDarkModeSvc.Interfaces
         /// <summary>
         /// Initializes the module if necessary
         /// </summary>
-        public void Init();
+        public void EnableHook();
+        /// <summary>
+        /// Determines if the module can be run with the windows theme switcher
+        /// </summary>
+        /// <returns></returns>
+        public bool ThemeHandlerCompatibility { get; }
+
     }
 }

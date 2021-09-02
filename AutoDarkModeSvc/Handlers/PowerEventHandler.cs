@@ -19,6 +19,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Info("enabling event handler for dark mode on battery state discharging");
                 PowerManager.BatteryStatusChanged += PowerManager_BatteryStatusChanged;
+                darkThemeOnBatteryEnabled = true;
             }
         }
 
@@ -59,6 +60,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Info("enabling theme refresh at system resume");
                 SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+                resumeEventEnabled = true;
             }
         }
 

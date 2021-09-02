@@ -299,10 +299,12 @@ namespace AutoDarkModeApp.Pages
         {
             userFeedback.Text = Properties.Resources.msgErrorOcc;
             string error = string.Format(Properties.Resources.errorThemeApply, Properties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-            msg.Owner = Window.GetWindow(this);
-            msg.ShowDialog();
-            var result = msg.DialogResult;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            _ = msg.ShowDialog();
+            bool? result = msg.DialogResult;
             if (result == true)
             {
                 StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
