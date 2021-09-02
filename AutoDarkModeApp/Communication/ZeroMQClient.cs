@@ -68,7 +68,7 @@ namespace AutoDarkModeApp.Communication
             {
                 return response;   
             }
-            return Response.Err;
+            return Response.Timeout;
         }
 
         public string SendMessageAndGetReply(string message)

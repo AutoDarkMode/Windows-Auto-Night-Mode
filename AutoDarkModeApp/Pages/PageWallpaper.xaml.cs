@@ -295,7 +295,7 @@ namespace AutoDarkModeApp
                 result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
                 if (result != Response.Ok)
                 {
-                    throw new SwitchThemeException();
+                    throw new SwitchThemeException(result, "PageWallpaper");
                 }
             }
             catch (Exception ex)

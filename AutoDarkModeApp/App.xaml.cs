@@ -86,7 +86,7 @@ namespace AutoDarkModeApp
                     {
                         var result = commandClient.SendMessageAndGetReply(value);
 
-                        if (result != Response.Err)
+                        if (result != Response.Err && result != Response.Timeout)
                         {
                             Updater updater = new Updater(true);
                             updater.ParseResponse(result);

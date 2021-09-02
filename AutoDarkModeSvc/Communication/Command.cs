@@ -37,5 +37,6 @@ namespace AutoDarkModeSvc.Communication
         public const string NoLocAccess = "NoLocAccess";
         public const string Err = "Err";
         public const string Ok = "Ok";
+        public const string Timeout = "Timeout";
     }
 }

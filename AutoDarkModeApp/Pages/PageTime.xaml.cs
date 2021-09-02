@@ -283,14 +283,14 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-                if (result == Response.Err)
+                if (result != Response.Ok)
                 {
-                    throw new SwitchThemeException();
+                    throw new SwitchThemeException(result, "PageTime");
                 }
             } 
             catch (Exception ex)
             {
-                ErrorWhileApplyingTheme($"ZMQ message is {Response.Err}", ex.ToString());
+                ErrorWhileApplyingTheme($"Error while applying theme: ", ex.ToString());
             }
 
         }
