@@ -9,6 +9,6 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
     {
         public Mode Mode { get; set; }
         public int TaskDelay { get; set; }
-        public bool ToggleTaskbarColor { get; set; }
+        public bool TaskbarColorOnDark { get; set; }
     }
 }

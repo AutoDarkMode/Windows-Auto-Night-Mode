@@ -13,10 +13,16 @@ namespace AutoDarkModeSvc
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static void TimedSwitch(AdmConfigBuilder builder)
+        private static void RunComponents(Theme newTheme)
         {
             ComponentManager cm = ComponentManager.Instance();
             cm.UpdateSettings();
+            cm.Run(newTheme);
+        }
+
+        public static void TimedSwitch(AdmConfigBuilder builder)
+        {
+           
             GlobalState state = GlobalState.Instance();
             if (state.ForcedTheme == Theme.Dark) 
             {
@@ -56,14 +62,11 @@ namespace AutoDarkModeSvc
 
         public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
-            if (config.ClassicMode)
-            {
-                ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
-            }
-            else
+            if (config.WindowsThemeMode)
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
+            RunComponents(newTheme);
         }
 
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
@@ -99,8 +102,6 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("switching to dark theme");
                 }
-                SetColorFilter(config.ColorFilterEnabled, newTheme);
-                SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.DarkThemePath);
             }
             else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Light)
@@ -183,109 +184,6 @@ namespace AutoDarkModeSvc
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not set apps theme");
-            }
-        }
-
-        private async static Task SetSystemTheme(Mode mode, Theme newTheme, int taskdelay, GlobalState state, AdmConfig config)
-        {
-            try
-            {
-                // Set system theme
-                if (mode == Mode.DarkOnly)
-                {
-                    if (state.CurrentSystemTheme != Theme.Dark)
-                    {
-                        RegistryHandler.SetSystemTheme((int)Theme.Dark);
-                    }
-                    else
-                    {
-                        taskdelay = 0;
-                    }
-                    state.CurrentSystemTheme = Theme.Dark;
-                    await Task.Delay(taskdelay);
-                    if (config.AccentColorTaskbarEnabled)
-                    {
-                        RegistryHandler.SetColorPrevalence(1);
-                        state.CurrentColorPrevalence = true;
-                    }
-                    else if (!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence == true)
-                    {
-                        RegistryHandler.SetColorPrevalence(0);
-                        state.CurrentColorPrevalence = false;
-                    }
-                }
-                else if (config.SystemTheme == Mode.LightOnly)
-                {
-                    RegistryHandler.SetColorPrevalence(0);
-                    state.CurrentColorPrevalence = false;
-                    await Task.Delay(taskdelay);
-                    RegistryHandler.SetSystemTheme((int)Theme.Light);
-                    state.CurrentSystemTheme = Theme.Light;
-                }
-                else
-                {
-                    if (newTheme == Theme.Light)
-                    {
-                        RegistryHandler.SetColorPrevalence(0);
-                        state.CurrentColorPrevalence = false;
-                        await Task.Delay(taskdelay);
-                        RegistryHandler.SetSystemTheme((int)newTheme);
-                    }
-                    else if (newTheme == Theme.Dark)
-                    {
-                        if (state.CurrentSystemTheme == Theme.Dark)
-                        {
-                            taskdelay = 0;
-                        }
-                        RegistryHandler.SetSystemTheme((int)newTheme);
-                        if (config.AccentColorTaskbarEnabled)
-                        {
-                            await Task.Delay(taskdelay);
-                            RegistryHandler.SetColorPrevalence(1);
-                            state.CurrentColorPrevalence = true;
-                        }
-                        else
-                        {
-                            await Task.Delay(taskdelay);
-                            RegistryHandler.SetColorPrevalence(0);
-                            state.CurrentColorPrevalence = false;
-                        }
-                    }
-                    state.CurrentSystemTheme = newTheme;
-                }
-            }
-            catch (Exception ex) 
-            {
-                Logger.Error(ex, "could not set system theme");
-            }           
-        }
-
-        private static void SetOfficeTheme(Mode mode, Theme newTheme, GlobalState rtc, byte lightTheme, byte darkTheme, bool enabled)
-        {
-            if (enabled)
-            {
-                if (mode == Mode.DarkOnly)
-                {
-                    RegistryHandler.OfficeTheme(darkTheme);
-                    rtc.CurrentOfficeTheme = Theme.Dark;
-                }
-                else if (mode == Mode.LightOnly)
-                {
-                    RegistryHandler.OfficeTheme(lightTheme);
-                    rtc.CurrentOfficeTheme = Theme.Light;
-                }
-                else
-                {
-                    if (newTheme == Theme.Dark)
-                    {
-                        RegistryHandler.OfficeTheme(darkTheme);
-                    }
-                    else
-                    {
-                        RegistryHandler.OfficeTheme(lightTheme);
-                    }
-                    rtc.CurrentOfficeTheme = newTheme;
-                }
             }
         }
 

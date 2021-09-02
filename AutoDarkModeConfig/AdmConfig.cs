@@ -26,6 +26,7 @@ namespace AutoDarkModeConfig
 
         public BaseSettings<AppSwitchSettings> AppSwitch { get; set; }
         public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
+        public bool WindowsThemeMode { get; set; }
 
         private Mode appsTheme;
         private Mode systemTheme;

@@ -35,6 +35,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void HandleSwitch(Theme newTheme)
         {
+            string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             try
             {
                 if (Settings.Component.Mode == Mode.DarkOnly)
@@ -57,6 +58,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not set apps theme");
             }
+            Logger.Info($"update info - previous: {oldTheme} current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }
     }
 }
