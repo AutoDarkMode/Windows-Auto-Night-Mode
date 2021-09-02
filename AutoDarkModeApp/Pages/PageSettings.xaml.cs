@@ -7,8 +7,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AutoDarkModeSvc;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Handlers;
@@ -158,12 +157,10 @@ namespace AutoDarkModeApp.Pages
         {
             if (CheckBoxBatteryDarkMode.IsChecked.Value)
             {
-                builder.Config.Events.Enabled = true;
                 builder.Config.Events.DarkThemeOnBattery = true;
             }
             else
             {
-                builder.Config.Events.Enabled = true;
                 builder.Config.Events.DarkThemeOnBattery = false;
             }
             try

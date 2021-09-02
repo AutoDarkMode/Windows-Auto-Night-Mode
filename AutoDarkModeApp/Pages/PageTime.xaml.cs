@@ -7,7 +7,7 @@ using Windows.Devices.Geolocation;
 using Windows.System.Power;
 using AutoDarkModeApp.Properties;
 using System.Diagnostics;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;

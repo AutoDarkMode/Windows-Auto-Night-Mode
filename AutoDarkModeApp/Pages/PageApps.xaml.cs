@@ -1,14 +1,13 @@
-﻿using AutoDarkModeSvc.Config;
-using System;
+﻿using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using AutoDarkModeSvc;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Communication;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeConfig;
 
 namespace AutoDarkModeApp
 {
@@ -65,7 +64,7 @@ namespace AutoDarkModeApp
             }
 
             //if a windows theme file was picked
-            if (!builder.Config.ClassicMode)
+            if (builder.Config.WindowsThemeMode)
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
@@ -88,15 +87,15 @@ namespace AutoDarkModeApp
             //os version 1903+
             {
                 //inform user about settings
-                if(builder.Config.ClassicMode) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+                if(!builder.Config.WindowsThemeMode) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
 
                 //is accent color switch enabled?
                 AccentColorCheckBox.IsChecked = builder.Config.AccentColorTaskbarEnabled;
             }
 
             //combobox
-            AppComboBox.SelectedIndex = (int)builder.Config.AppsTheme;
-            SystemComboBox.SelectedIndex = (int)builder.Config.SystemTheme;
+            AppComboBox.SelectedIndex = (int)builder.Config.AppsSwitch.Component.Mode;
+            SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode; ;
             if (builder.Config.Office.Enabled)
             {
                 OfficeComboBox.SelectedIndex = (int)builder.Config.Office.Mode;
@@ -118,17 +117,17 @@ namespace AutoDarkModeApp
         {
             if (AppComboBox.SelectedIndex.Equals(0))
             {
-                builder.Config.AppsTheme = Mode.Switch;
+                builder.Config.AppsSwitch.Component.Mode = Mode.Switch;
             }
 
             if (AppComboBox.SelectedIndex.Equals(1))
             {
-                builder.Config.AppsTheme = Mode.LightOnly;
+                builder.Config.AppsSwitch.Component.Mode = Mode.LightOnly;
             }
 
             if (AppComboBox.SelectedIndex.Equals(2))
             {
-                builder.Config.AppsTheme = Mode.DarkOnly;
+                builder.Config.AppsSwitch.Component.Mode = Mode.DarkOnly;
             }
             try
             {
@@ -145,19 +144,19 @@ namespace AutoDarkModeApp
         {
             if (SystemComboBox.SelectedIndex.Equals(0))
             {
-                builder.Config.SystemTheme = Mode.Switch;
+                builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
                 AccentColorCheckBox.IsEnabled = true;
             }
 
             if (SystemComboBox.SelectedIndex.Equals(1))
             {
-                builder.Config.SystemTheme = Mode.LightOnly;
+                builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
                 AccentColorCheckBox.IsEnabled = false;
             }
 
             if (SystemComboBox.SelectedIndex.Equals(2))
             {
-                builder.Config.SystemTheme = Mode.DarkOnly;
+                builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
                 Properties.Settings.Default.SystemThemeChange = 2;
                 AccentColorCheckBox.IsEnabled = true;
             }

@@ -127,14 +127,11 @@ namespace AutoDarkModeSvc
                 return;
             }
             PowerHandler.DisableEnergySaver(config);
-            var oldsys = state.CurrentSystemTheme;
-            var oldapp = state.CurrentAppsTheme;
             var oldwal = state.CurrentWallpaperTheme;
             var oldoff = state.CurrentOfficeTheme;
             var oldcol = state.ColorFilterEnabled;
 
             SetColorFilter(config.ColorFilterEnabled, newTheme);
-            SetAppsTheme(config.AppsTheme, newTheme, state);
 
             SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
             //run async to delay at specific parts due to color prevalence not switching icons correctly
@@ -150,37 +147,12 @@ namespace AutoDarkModeSvc
                     Logger.Info($"theme switch invoked manually");
                 }
                 PowerHandler.RestoreEnergySaver(config);
-                Logger.Info($"theme: {newTheme} with modes (s:{config.SystemTheme}, a:{config.AppsTheme}, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}, c:{config.ColorFilterEnabled})");
-                Logger.Info($"was (s:{oldsys}, a:{oldapp}, w:{oldwal}, o:{oldoff}, c:{oldcol})");
-                Logger.Info($"is (s:{state.CurrentSystemTheme}, a:{state.CurrentAppsTheme}, w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme}, c:{state.ColorFilterEnabled})");
+                Logger.Info($"theme: {newTheme} with modes, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled}, c:{config.ColorFilterEnabled})");
+                Logger.Info($"was (w:{oldwal}, o:{oldoff}, c:{oldcol})");
+                Logger.Info($"is (w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme}, c:{state.ColorFilterEnabled})");
             });
         }
 
-        private static void SetAppsTheme(Mode mode, Theme newTheme, GlobalState rtc)
-        {
-            try
-            {
-                if (mode == Mode.DarkOnly)
-                {
-                    RegistryHandler.SetAppsTheme((int)Theme.Dark);
-                    rtc.CurrentAppsTheme = Theme.Dark;
-                }
-                else if (mode == Mode.LightOnly)
-                {
-                    RegistryHandler.SetAppsTheme((int)Theme.Light);
-                    rtc.CurrentAppsTheme = Theme.Light;
-                }
-                else
-                {
-                    RegistryHandler.SetAppsTheme((int)newTheme);
-                    rtc.CurrentAppsTheme = newTheme;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not set apps theme");
-            }
-        }
 
         private static void SetColorFilter(bool enabled, Theme newTheme)
         {
@@ -253,11 +225,6 @@ namespace AutoDarkModeSvc
                 {
                     return true;
                 }
-            }
-
-            if (ComponentNeedsUpdate(config.AppsTheme, state.CurrentAppsTheme, newTheme))
-            {
-                return true;
             }
             
             if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, state.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers, 

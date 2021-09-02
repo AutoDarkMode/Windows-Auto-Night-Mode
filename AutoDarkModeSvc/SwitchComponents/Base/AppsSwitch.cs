@@ -9,10 +9,19 @@ using System.Text;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
-    class AppSwitch : BaseComponent<AppSwitchSettings>
+    class AppsSwitch : BaseComponent<AppsSwitchSettings>
     {
-        private Theme currentComponentTheme = Theme.Undefined;
-        public AppSwitch() : base() { }
+        private Theme currentComponentTheme;
+        public AppsSwitch() : base() {
+            try
+            {
+                currentComponentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "couldn't initialize apps theme state");
+            }
+        }
 
         protected override bool ThemeHandlerCompatibility { get; } = false;
 

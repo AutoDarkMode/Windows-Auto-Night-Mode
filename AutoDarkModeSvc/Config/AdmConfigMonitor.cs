@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.Config
                 PowerEventHandler.DeregisterThemeEvent();
             }
 
-            if (builder.Config.Tunable.SystemResumeTrigger)
+            if (builder.Config.Events.SystemResumeTrigger)
             {
                 PowerEventHandler.RegisterResumeEvent();
             }

@@ -22,8 +22,6 @@ namespace AutoDarkModeSvc.Config
         }
         protected GlobalState()
         {
-            CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
-            CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
             CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
             CurrentWallpaperTheme = Theme.Undefined;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
@@ -33,8 +31,6 @@ namespace AutoDarkModeSvc.Config
         }
 
         private WardenModule Warden { get; set; }
-        public Theme CurrentAppsTheme { get; set; }
-        public Theme CurrentSystemTheme { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
         public Theme CurrentOfficeTheme { get; set; }
         public bool ColorFilterEnabled { get; set; }

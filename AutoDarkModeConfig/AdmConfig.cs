@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using AutoDarkModeConfig;
 using AutoDarkModeConfig.ComponentSettings;
 using AutoDarkModeConfig.ComponentSettings.Base;
@@ -19,58 +18,22 @@ namespace AutoDarkModeConfig
             Events = new Events();
 
             //New Component Settings;
-            AppSwitch = new BaseSettings<AppSwitchSettings>();
+            AppsSwitch = new BaseSettings<AppsSwitchSettings>();
             SystemSwitch = new BaseSettings<SystemSwitchSettings>();
         }
 
 
-        public BaseSettings<AppSwitchSettings> AppSwitch { get; set; }
+        public BaseSettings<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
         public bool WindowsThemeMode { get; set; }
 
-        private Mode appsTheme;
-        private Mode systemTheme;
-
         public bool AutoThemeSwitchingEnabled { get; set; }
-        public bool ClassicMode { get; set; } = true;
         public bool ColorFilterEnabled { get; set; } = false;
         public bool AccentColorTaskbarEnabled { get; set; }
         public string DarkThemePath { get; set; }
         public string LightThemePath { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
         public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
-        public Mode AppsTheme
-        {
-            get { return appsTheme; }
-            set
-            {
-                if (value >= 0 && (int)value <= 2)
-                {
-                    appsTheme = value;
-                }
-                else
-                {
-                    // DEFAULT
-                    appsTheme = Mode.Switch;
-                }
-            }
-        }
-        public Mode SystemTheme
-        {
-            get { return systemTheme; }
-            set
-            {
-                if (value >= 0 && (int)value <= 2)
-                {
-                    systemTheme = value;
-                }
-                else
-                {
-                    // DEFAULT
-                    systemTheme = 0;
-                }
-            }
-        }
         public Office Office { get; set; }
         public Wallpaper Wallpaper { get; set; }
         public Location Location { get; set; }
@@ -81,8 +44,8 @@ namespace AutoDarkModeConfig
 
     public class Events
     {
-        public bool Enabled { get; set; }
         public bool DarkThemeOnBattery { get; set; }
+        public bool SystemResumeTrigger { get; set; } = true;
     }
 
     public class Office
@@ -136,7 +99,6 @@ namespace AutoDarkModeConfig
                 }
             }
         }
-        public bool SystemResumeTrigger { get; set; } = true;
         public bool DisableEnergySaverOnThemeSwitch { get; set; }
         public bool UseLogonTask { get; set; }
         public bool Debug { get; set; }

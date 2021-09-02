@@ -5,9 +5,9 @@ using System.Text;
 
 namespace AutoDarkModeConfig.ComponentSettings.Base
 {
-    public class SystemSwitchSettings
+    public class AppsSwitchSettings
     {
-        public Mode mode;
+        Mode mode;
         public Mode Mode
         {
             get { return mode; }
@@ -20,11 +20,9 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 else
                 {
                     // DEFAULT
-                    mode = 0;
+                    mode = Mode.Switch;
                 }
             }
         }
-        public int TaskDelay { get; set; }
-        public bool TaskbarColorOnDark { get; set; }
     }
 }

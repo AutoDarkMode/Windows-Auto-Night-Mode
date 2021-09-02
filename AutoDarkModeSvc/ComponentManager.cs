@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc
         private AdmConfigBuilder Builder { get; }
 
         // Components
-        private ISwitchComponent AppSwitch;
+        private ISwitchComponent AppsSwitch;
         private ISwitchComponent ColorFilterSwitch;
         private ISwitchComponent OfficeSwitch;
         private ISwitchComponent SystemSwitch;
@@ -38,7 +38,7 @@ namespace AutoDarkModeSvc
             Builder = AdmConfigBuilder.Instance();
             Components = new List<ISwitchComponent>
             {
-                AppSwitch
+                AppsSwitch
                 //ColorfilterSwitch
                 //OfficeSwitch
                 //SystemSwitch
@@ -62,7 +62,7 @@ namespace AutoDarkModeSvc
         }
         public void UpdateSettings()
         {
-            AppSwitch.UpdateSettingsState(Builder.Config.AppSwitch);
+            AppsSwitch.UpdateSettingsState(Builder.Config.AppsSwitch);
             //ColorFilterSwitch.UpdateSettingsState(Builder.Config.ColorFilterSwitch);
             //OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
             //SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
@@ -72,7 +72,7 @@ namespace AutoDarkModeSvc
 
         private void InitializeComponents()
         {
-            AppSwitch = new AppSwitch();
+            AppsSwitch = new AppsSwitch();
             //ColorFilterSwitch = new ColorFilterSwitch();
             //OfficeSwitch = new OfficeSwitch();
             //SystemSwitch = new SystemSwitch();

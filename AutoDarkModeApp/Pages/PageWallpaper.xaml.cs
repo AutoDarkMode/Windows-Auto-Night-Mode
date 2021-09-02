@@ -1,6 +1,6 @@
 ﻿using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Handlers;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,7 +57,7 @@ namespace AutoDarkModeApp
             TextBlockStep4.Text = Properties.Resources.ThemeTutorialStep + " 4)";
 
             //if theme switcher isn't enabled
-            if (builder.Config.ClassicMode)
+            if (!builder.Config.WindowsThemeMode)
             {
                 ComboBoxModeSelection.SelectedIndex = 0;
                 ShowDeskBGStatus();
@@ -65,7 +65,7 @@ namespace AutoDarkModeApp
             else
             {
                 ComboBoxModeSelection.SelectedIndex = 1;
-                if (builder.Config.AutoThemeSwitchingEnabled && !builder.Config.ClassicMode && builder.Config.LightThemePath != null && builder.Config.DarkThemePath != null)
+                if (builder.Config.AutoThemeSwitchingEnabled && builder.Config.WindowsThemeMode && builder.Config.LightThemePath != null && builder.Config.DarkThemePath != null)
                 {
                     var themeNames = GetThemeFiles();
                     ComboBoxDarkTheme.ItemsSource = themeNames;
@@ -157,7 +157,7 @@ namespace AutoDarkModeApp
         {
             //disable auto dark mode wallpaper switch
             builder.Config.Wallpaper.Enabled = false;
-            builder.Config.ClassicMode = false;
+            builder.Config.WindowsThemeMode = true;
 
             //get selected light theme file from combobox
             string selectedLightTheme = (string)ComboBoxLightTheme.SelectedItem;
@@ -185,14 +185,14 @@ namespace AutoDarkModeApp
         //disable theme file switch
         private void ButtonDisableTheme_Click(object sender, RoutedEventArgs e)
         {
-            builder.Config.ClassicMode = true;
+            builder.Config.WindowsThemeMode = false;
             ButtonSaveTheme.IsEnabled = false;
             theme1 = false;
             theme2 = false;
             ComboBoxModeSelection.SelectedIndex = 0;
             try
             {
-                builder.Config.ClassicMode = true;
+                builder.Config.WindowsThemeMode = false;
                 builder.Save();
             }
             catch (Exception ex)

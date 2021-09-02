@@ -122,7 +122,7 @@ namespace AutoDarkModeSvc
 
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
-                if (!Builder.Config.ClassicMode)
+                if (Builder.Config.WindowsThemeMode)
                 {
                     if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.DarkThemePath == null)
                     {
