@@ -1,4 +1,6 @@
 ﻿using AutoDarkModeConfig.Interfaces;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +9,8 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
 {
     public class SystemSwitchSettings
     {
-        public Mode mode;
+        private Mode mode;
+        [JsonConverter(typeof(StringEnumConverter))]
         public Mode Mode
         {
             get { return mode; }
