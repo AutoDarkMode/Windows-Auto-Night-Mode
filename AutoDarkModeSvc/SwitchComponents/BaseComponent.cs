@@ -39,12 +39,9 @@ namespace AutoDarkModeSvc.SwitchComponents
                     HandleSwitch(newTheme);
                 }
             }
-            else
+            else if (Initialized)
             {
-                if (Initialized)
-                {
-                    DisableHook();
-                }
+                DisableHook();
             }
         }
         public void UpdateSettingsState(object newSettings)
