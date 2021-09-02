@@ -114,8 +114,6 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Info("switching to light theme");
                 }
-                SetColorFilter(config.ColorFilterEnabled, newTheme);
-                SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
                 ThemeHandler.Apply(config.LightThemePath);            
             }
         }
@@ -139,13 +137,10 @@ namespace AutoDarkModeSvc
             SetAppsTheme(config.AppsTheme, newTheme, state);
 
             SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
-            SetOfficeTheme(config.Office.Mode, newTheme, state, config.Office.LightTheme, config.Office.DarkTheme, config.Office.Enabled);
             //run async to delay at specific parts due to color prevalence not switching icons correctly
             int taskdelay = config.Tunable.AccentColorSwitchDelay;
             Task.Run(async () =>
             {
-                await SetSystemTheme(config.SystemTheme, newTheme, taskdelay, state, config);
-
                 if (automatic)
                 {
                     Logger.Info($"theme switch invoked automatically. Sunrise: {sunrise.ToString("HH:mm:ss")}, Sunset: {sunset.ToString("HH:mm:ss")}");
@@ -258,31 +253,6 @@ namespace AutoDarkModeSvc
                 {
                     return true;
                 }
-            }
-
-            if (config.SystemTheme == Mode.Switch)
-            {
-                if (config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence && newTheme == Theme.Light)
-                {
-                    return true;
-                }
-                else if ((!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence) 
-                    || (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence && newTheme == Theme.Dark))
-                {
-                    return true;
-                }
-            }
-            else if (config.SystemTheme == Mode.DarkOnly)
-            {
-                if ((!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence) || (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence))
-                {
-                    return true;
-                }
-            }
-        
-            if (ComponentNeedsUpdate(config.SystemTheme, state.CurrentSystemTheme, newTheme))
-            {
-                return true;
             }
 
             if (ComponentNeedsUpdate(config.AppsTheme, state.CurrentAppsTheme, newTheme))
