@@ -25,6 +25,7 @@ namespace AutoDarkModeSvc.Modules
         private int Counter { get; set; }
         private bool PostponeLight { get; set; }
         private bool PostponeDark { get; set; }
+        private bool Alerted { get; set; }
 
         public GPUMonitorModuleV2(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
@@ -114,7 +115,7 @@ namespace AutoDarkModeSvc.Modules
 
         private async Task<string> CheckForPostpone(DateTime time)
         {
-            var gpuUsage = await GetGPUUsage();
+            int gpuUsage = await GetGPUUsage();
             if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
             {
                 Counter++;
@@ -122,12 +123,18 @@ namespace AutoDarkModeSvc.Modules
                 {
                     Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
                     State.PostponeSwitch = false;
+                    Alerted = false;
                     return ThreshLow;
                 }
                 Logger.Debug($"lower threshold sample {Counter} ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
             }
             else
             {
+                if (!Alerted)
+                {
+                    Logger.Info($"postponing theme switch ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
+                    Alerted = true;
+                }
                 Logger.Debug($"lower threshold sample reset ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
                 Counter = 0;
             }
