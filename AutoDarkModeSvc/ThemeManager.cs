@@ -66,7 +66,7 @@ namespace AutoDarkModeSvc
             {
                 Logger.Info($"theme switch invoked manually");
             }
-            if (config.WindowsThemeMode)
+            if (config.WindowsThemeMode.Enabled)
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
@@ -76,7 +76,7 @@ namespace AutoDarkModeSvc
                 ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
             }
             RunComponents(newTheme);
-            if (!config.WindowsThemeMode)
+            if (!config.WindowsThemeMode.Enabled)
             {
                 PowerHandler.RestoreEnergySaver(config);
             }
@@ -93,34 +93,34 @@ namespace AutoDarkModeSvc
         private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
         {
             GlobalState state = GlobalState.Instance();
-            if (config.DarkThemePath == null || config.LightThemePath == null)
+            if (config.WindowsThemeMode.DarkThemePath == null || config.WindowsThemeMode.LightThemePath == null)
             {
                 Logger.Error("dark or light theme path empty");
                 return;
             }
-            if (!File.Exists(config.DarkThemePath))
+            if (!File.Exists(config.WindowsThemeMode.DarkThemePath))
             {
-                Logger.Error($"invalid dark theme path: {config.DarkThemePath}");
+                Logger.Error($"invalid dark theme path: {config.WindowsThemeMode.DarkThemePath}");
                 return;
             }
-            if (!File.Exists(config.LightThemePath))
+            if (!File.Exists(config.WindowsThemeMode.LightThemePath))
             {
-                Logger.Error($"invalid light theme path : {config.LightThemePath}");
+                Logger.Error($"invalid light theme path : {config.WindowsThemeMode.LightThemePath}");
                 return;
             }
-            if (!config.DarkThemePath.EndsWith(".theme") || !config.DarkThemePath.EndsWith(".theme"))
+            if (!config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !config.WindowsThemeMode.DarkThemePath.EndsWith(".theme"))
             {
                 Logger.Error("both theme paths must have a .theme extension");
                 return;
             }
 
-            if (Path.GetFileNameWithoutExtension(config.DarkThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Dark)
+            if (Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
-                ThemeHandler.Apply(config.DarkThemePath);
+                ThemeHandler.Apply(config.WindowsThemeMode.DarkThemePath);
             }
-            else if (Path.GetFileNameWithoutExtension(config.LightThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Light)
+            else if (Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Light)
             {
-                ThemeHandler.Apply(config.LightThemePath);
+                ThemeHandler.Apply(config.WindowsThemeMode.LightThemePath);
             }
         }
 

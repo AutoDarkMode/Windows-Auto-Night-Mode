@@ -57,7 +57,7 @@ namespace AutoDarkModeApp
             TextBlockStep4.Text = Properties.Resources.ThemeTutorialStep + " 4)";
 
             //if theme switcher isn't enabled
-            if (!builder.Config.WindowsThemeMode)
+            if (!builder.Config.WindowsThemeMode.Enabled)
             {
                 ComboBoxModeSelection.SelectedIndex = 0;
                 ShowDeskBGStatus();
@@ -65,13 +65,13 @@ namespace AutoDarkModeApp
             else
             {
                 ComboBoxModeSelection.SelectedIndex = 1;
-                if (builder.Config.AutoThemeSwitchingEnabled && builder.Config.WindowsThemeMode && builder.Config.LightThemePath != null && builder.Config.DarkThemePath != null)
+                if (builder.Config.AutoThemeSwitchingEnabled && builder.Config.WindowsThemeMode.Enabled && builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
                 {
                     var themeNames = GetThemeFiles();
                     ComboBoxDarkTheme.ItemsSource = themeNames;
                     ComboBoxLightTheme.ItemsSource = themeNames;
-                    ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.LightThemePath);
-                    ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.DarkThemePath);
+                    ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.LightThemePath);
+                    ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.DarkThemePath);
                     theme1 = true;
                     theme2 = true;
                     ButtonSaveTheme.IsEnabled = true;
@@ -157,15 +157,15 @@ namespace AutoDarkModeApp
         {
             //disable auto dark mode wallpaper switch
             builder.Config.Wallpaper.Enabled = false;
-            builder.Config.WindowsThemeMode = true;
+            builder.Config.WindowsThemeMode.Enabled = true;
 
             //get selected light theme file from combobox
             string selectedLightTheme = (string)ComboBoxLightTheme.SelectedItem;
-            builder.Config.LightThemePath = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
+            builder.Config.WindowsThemeMode.LightThemePath = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
 
             //get selected dark theme file from combobox
             string selectedDarkTheme = (string)ComboBoxDarkTheme.SelectedItem;
-            builder.Config.DarkThemePath = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
+            builder.Config.WindowsThemeMode.DarkThemePath = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
 
             //ui changes
             ButtonSaveTheme.IsEnabled = false;
@@ -185,14 +185,14 @@ namespace AutoDarkModeApp
         //disable theme file switch
         private void ButtonDisableTheme_Click(object sender, RoutedEventArgs e)
         {
-            builder.Config.WindowsThemeMode = false;
+            builder.Config.WindowsThemeMode.Enabled = false;
             ButtonSaveTheme.IsEnabled = false;
             theme1 = false;
             theme2 = false;
             ComboBoxModeSelection.SelectedIndex = 0;
             try
             {
-                builder.Config.WindowsThemeMode = false;
+                builder.Config.WindowsThemeMode.Enabled = false;
                 builder.Save();
             }
             catch (Exception ex)

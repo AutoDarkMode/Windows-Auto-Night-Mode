@@ -122,17 +122,17 @@ namespace AutoDarkModeSvc
 
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
-                if (Builder.Config.WindowsThemeMode)
+                if (Builder.Config.WindowsThemeMode.Enabled)
                 {
-                    if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.DarkThemePath == null)
+                    if (!File.Exists(Builder.Config.WindowsThemeMode.DarkThemePath) || Builder.Config.WindowsThemeMode.DarkThemePath == null)
                     {
-                        Builder.Config.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                        Builder.Config.WindowsThemeMode.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
                             + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
                         configUpdateNeeded = true;
                     }
-                    if (!File.Exists(Builder.Config.DarkThemePath) || Builder.Config.LightThemePath == null)
+                    if (!File.Exists(Builder.Config.WindowsThemeMode.DarkThemePath) || Builder.Config.WindowsThemeMode.LightThemePath == null)
                     {
-                        Builder.Config.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                        Builder.Config.WindowsThemeMode.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
                            + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
                         configUpdateNeeded = true;
                     }

@@ -64,7 +64,7 @@ namespace AutoDarkModeApp
             }
 
             //if a windows theme file was picked
-            if (builder.Config.WindowsThemeMode)
+            if (builder.Config.WindowsThemeMode.Enabled)
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
@@ -87,7 +87,7 @@ namespace AutoDarkModeApp
             //os version 1903+
             {
                 //inform user about settings
-                if (!builder.Config.WindowsThemeMode) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+                if (!builder.Config.WindowsThemeMode.Enabled) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
 
                 //is accent color switch enabled?
                 AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnDark;

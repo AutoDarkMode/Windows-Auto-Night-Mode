@@ -60,7 +60,7 @@ namespace AutoDarkModeSvc
             }
             Components.ForEach(c =>
             {
-                if (!Builder.Config.WindowsThemeMode || (Builder.Config.WindowsThemeMode && c.ThemeHandlerCompatibility))
+                if (!Builder.Config.WindowsThemeMode.Enabled || (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility))
                 {
                     c.Switch(newTheme);
                 }

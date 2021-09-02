@@ -16,6 +16,7 @@ namespace AutoDarkModeConfig
             GPUMonitoring = new GPUMonitoring();
             Office = new Office();
             Events = new Events();
+            WindowsThemeMode = new WindowsThemeMode();
 
             //New Component Settings;
             AppsSwitch = new BaseSettingsEnabled<AppsSwitchSettings>();
@@ -24,12 +25,10 @@ namespace AutoDarkModeConfig
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
 
-        public bool WindowsThemeMode { get; set; }
+        public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
-        public string DarkThemePath { get; set; }
-        public string LightThemePath { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
         public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
         public Office Office { get; set; }
@@ -38,6 +37,13 @@ namespace AutoDarkModeConfig
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
+    }
+
+    public class WindowsThemeMode
+    {
+        public bool Enabled { get; set; }
+        public string DarkThemePath { get; set; }
+        public string LightThemePath { get; set; }
     }
 
     public class Events
