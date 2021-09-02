@@ -39,13 +39,6 @@ namespace AutoDarkModeApp
                 SystemTimeFormat(); //check if system uses 12 hour clock
                 AddJumpList(); //create jump list entries
 
-                var regEdit = new RegeditHandler();
-                //is accent color for taskbar active?
-                if (regEdit.GetColorPrevalence())
-                {
-                    Settings.Default.AccentColor = true;
-                }
-
                 //set taskfolder name with username for multiple user environments
                 try
                 {

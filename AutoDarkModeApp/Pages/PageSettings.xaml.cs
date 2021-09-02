@@ -139,16 +139,15 @@ namespace AutoDarkModeApp.Pages
 
         private void CheckBoxBackgroundUpdater_Click(object sender, RoutedEventArgs e)
         {
-            TaskSchHandler taskShedHandler = new TaskSchHandler();
 
             if (CheckBoxBackgroundUpdater.IsChecked.Value)
             {
-                taskShedHandler.CreateAppUpdaterTask();
+                TaskSchdHandler.CreateAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = true;
             }
             else
             {
-                taskShedHandler.RemoveAppUpdaterTask();
+                TaskSchdHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
             }
         }

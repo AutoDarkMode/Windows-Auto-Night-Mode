@@ -12,7 +12,7 @@ namespace AutoDarkModeApp
     {
         //https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml
         string xmlURL = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml";
-        Version newVersion = null;
+        private Version newVersion = null;
         readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         string url;
         bool silent;

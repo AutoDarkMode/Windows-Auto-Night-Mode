@@ -98,8 +98,7 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/removeAutostart")
                     {
-                        RegeditHandler regEditHandler = new RegeditHandler();
-                        regEditHandler.RemoveAutoStart();
+                        commandClient.SendMessage(Command.RemoveAutostart);
                     }
                     else if (value == "/shutdownService")
                     {

@@ -21,7 +21,7 @@ namespace AutoDarkModeApp.Pages
         public PageAbout()
         {
             InitializeComponent();
-            TextBoxVersionNumber.Text = "Auto Dark Mode X Beta 4.91";
+            TextBoxVersionNumber.Text = "Auto Dark Mode X Beta 5";
             SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
             SystemTheme_ThemeChanged(this, null);
         }
