@@ -86,7 +86,7 @@ namespace AutoDarkModeConfig
         private static string GetExecutionPath()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            var executableName = Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(assemblyLocation) + ".exe";
+            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath + executableName);
         }
