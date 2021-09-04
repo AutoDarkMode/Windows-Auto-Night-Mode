@@ -166,37 +166,43 @@ namespace AutoDarkModeApp
         private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
+            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
             NavbarRectangle.Margin = new Thickness(0, 45, 0, 0);
         }
 
         private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
+            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
             NavbarRectangle.Margin = new Thickness(0,90,0,0);
         }
 
         private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
+            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
             NavbarRectangle.Margin = new Thickness(0, 135, 0, 0);
         }
 
         private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
+            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
             NavbarRectangle.Margin = new Thickness(0, 180, 0, 0);
         }
 
         private void ButtonNavbarDonation_Click(object sender, RoutedEventArgs e)
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageDonation.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 445, 0, 0);
+            NavbarRectangle.VerticalAlignment = VerticalAlignment.Bottom;
+            NavbarRectangle.Margin = new Thickness(0, 0, 0, 50);
         }
 
         private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)
         {
             FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 490, 0, 0);
+            NavbarRectangle.VerticalAlignment = VerticalAlignment.Bottom;
+            NavbarRectangle.Margin = new Thickness(0, 0, 0, 5);
         }
 
         //frame
