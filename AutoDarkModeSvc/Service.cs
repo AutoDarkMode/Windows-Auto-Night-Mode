@@ -54,6 +54,7 @@ namespace AutoDarkModeSvc
 
             var warden = new WardenModule("ModuleWarden", Timers, true);
             ConfigMonitor.RegisterWarden(warden);
+            ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
             Timers.ForEach(t => t.Start());

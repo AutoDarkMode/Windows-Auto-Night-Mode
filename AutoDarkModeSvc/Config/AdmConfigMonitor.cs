@@ -76,7 +76,7 @@ namespace AutoDarkModeSvc.Config
             }
         }
 
-        private void UpdateEventStates()
+        public void UpdateEventStates()
         {
             if (builder.Config.Events.DarkThemeOnBattery)
             {
