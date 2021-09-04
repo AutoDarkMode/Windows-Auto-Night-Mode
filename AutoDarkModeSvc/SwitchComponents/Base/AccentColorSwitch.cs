@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
-    class TaskbarAccentColorSwitch
+    class AccentColorSwitch
     {
     }
 }

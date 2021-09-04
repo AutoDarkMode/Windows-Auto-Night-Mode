@@ -79,10 +79,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void HandleSwitch(Theme newTheme)
         {
-            Task.Run(() => SwitchSystemTheme(newTheme));
+            Task.Run(async() => { await SwitchSystemTheme(newTheme);}).Wait();
         }
 
-        async void SwitchSystemTheme(Theme newTheme)
+        private async Task SwitchSystemTheme(Theme newTheme)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             int taskdelay = Settings.Component.TaskbarSwitchDelay;
