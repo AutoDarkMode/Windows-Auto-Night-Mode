@@ -66,20 +66,18 @@ namespace AutoDarkModeSvc
             {
                 Logger.Info($"theme switch invoked manually");
             }
+            PowerHandler.DisableEnergySaver(config);
             if (config.WindowsThemeMode.Enabled)
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
             else
             {
-                PowerHandler.DisableEnergySaver(config);
                 ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
             }
             RunComponents(newTheme);
-            if (!config.WindowsThemeMode.Enabled)
-            {
-                PowerHandler.RestoreEnergySaver(config);
-            }
+            PowerHandler.RestoreEnergySaver(config);
+
 
         }
         /// <summary>
