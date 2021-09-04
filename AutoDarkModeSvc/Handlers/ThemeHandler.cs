@@ -99,6 +99,14 @@ namespace AutoDarkModeSvc.Handlers
             };
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+            try
+            {
+                thread.Join();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "theme handler thread was interrupted");
+            }
         }
         [PermissionSet(SecurityAction.LinkDemand)]
         public static string GetCurrentVisualStyleName()
