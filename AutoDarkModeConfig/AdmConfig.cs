@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using AutoDarkModeConfig;
 using AutoDarkModeConfig.ComponentSettings;
 using AutoDarkModeConfig.ComponentSettings.Base;
@@ -76,8 +77,11 @@ namespace AutoDarkModeConfig
     {
         public TimeSpan PollingCooldownTimeSpan { get; set; } = TimeSpan.FromHours(24);
         public bool Enabled { get; set; }
+        public bool UseGeolocatorService { get; set; } = true;
         public int SunsetOffsetMin { get; set; }
         public int SunriseOffsetMin { get; set; }
+        public double CustomLat { get; set; }
+        public double CustomLon { get; set; }
     }
 
     public class Tunable

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -233,6 +233,9 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="lblCity" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
   <data name="cmb1903" xml:space="preserve">
     <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
   </data>
@@ -344,8 +347,8 @@ If these things didn't help, you can comment the GitHub issue with posting a scr
     <value>Switch after Connected Standby (not recommended)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
 But it also reduces the battery life, so ONLY activate if necessary!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
@@ -358,7 +361,7 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>Set</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme. 
+    <value>These options are disabled while using a Windows Theme.
 You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
@@ -478,10 +481,10 @@ For this reason you could support me with a voluntary donation. Even a small amo
     <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue: 
+    <value>We ran into the following issue:
 {0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help. 
+We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
 Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
 
 Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
