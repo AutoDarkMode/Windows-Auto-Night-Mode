@@ -74,6 +74,7 @@ namespace AutoDarkModeApp.Pages
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
+            CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             TextboxAccentColorDelay.Text = builder.Config.SystemSwitch.Component.TaskbarSwitchDelay.ToString();
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
         }

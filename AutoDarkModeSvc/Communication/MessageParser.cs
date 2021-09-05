@@ -3,6 +3,7 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Communication
@@ -28,6 +29,18 @@ namespace AutoDarkModeSvc.Communication
                 {
                     case Command.Switch:
                         Logger.Info("signal received: time based theme switch");
+                        int retries = 3;
+                        for (int i = 0; i < retries; i++)
+                        {
+                            if (builder.Loading)
+                            {
+                                Thread.Sleep(100);
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
                         ThemeManager.TimedSwitch(builder);
                         SendResponse(Response.Ok);
                         break;

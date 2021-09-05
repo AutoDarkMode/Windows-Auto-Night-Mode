@@ -61,7 +61,7 @@ namespace AutoDarkModeApp.Communication
             string response;
             lock (this)
             {
-                hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, 3), out response);
+                hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, 5), out response);
             }
 
             if (hasResponse)

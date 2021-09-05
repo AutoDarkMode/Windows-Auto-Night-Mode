@@ -14,6 +14,7 @@ namespace AutoDarkModeConfig
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
         public string LocationDataPath { get; }
+        public bool Loading { get; private set; }
         protected AdmConfigBuilder()
         {
             if (instance == null)
@@ -68,6 +69,7 @@ namespace AutoDarkModeConfig
 
         public void LoadLocationData()
         {
+            Loading = true;
             if (!File.Exists(LocationDataPath))
             {
                 SaveLocationData();
@@ -77,10 +79,12 @@ namespace AutoDarkModeConfig
             JsonSerializer serializer = new JsonSerializer();
             AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
             LocationData = deserializedLocationData ?? LocationData;
+            Loading = true;
         }
 
         public void Load()
         {
+            Loading = true;
             if (!File.Exists(ConfigFilePath))
             {
                 Save();
@@ -90,6 +94,7 @@ namespace AutoDarkModeConfig
             JsonSerializer serializer = new JsonSerializer();
             AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
             Config = deserializedConfig ?? Config;
+            Loading = true;
         }
 
 
