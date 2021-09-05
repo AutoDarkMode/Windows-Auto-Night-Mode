@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Originally created by Kuchienkz.
+ * Email: wahyu.darkflame@gmail.com
+ * 
+ * Other Contributors (modified by):
+ * Armin2208
+ * Spiritreader
+*/
+
+using System;
 using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
