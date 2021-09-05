@@ -7,8 +7,6 @@ namespace AutoDarkModeConfig.ComponentSettings
 {
     public class BaseSettings<T> : ISwitchComponentSettings<T>
     {
-        public int PriorityToLight { get; set; }
-        public int PriorityToDark { get; set; }
         public virtual bool Enabled { get; set; }
         public T Component { get; set; }
         public BaseSettings()

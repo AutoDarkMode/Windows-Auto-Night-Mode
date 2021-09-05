@@ -24,11 +24,11 @@ namespace AutoDarkModeSvc.Interfaces
         /// Checks if the component needs to be updated, i.e Switch() needs to be called
         /// </summary>
         /// <returns></returns>
-        public int PriorityToDark();
+        public int PriorityToDark { get; }
         /// <summary>
         /// Priority for switching to light mode
         /// </summary>
-        public int PriorityToLight();
+        public int PriorityToLight { get; }
         /// <summary>
         /// Initializes the module if necessary
         /// </summary>
