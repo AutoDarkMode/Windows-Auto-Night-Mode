@@ -27,24 +27,32 @@ namespace AutoDarkModeSvc
         private Theme lastSorting = Theme.Undefined;
 
         // Components
-        private ISwitchComponent AppsSwitch;
-        private ISwitchComponent ColorFilterSwitch;
-        private ISwitchComponent OfficeSwitch;
-        private ISwitchComponent SystemSwitch;
+        private ISwitchComponent AppsSwitch = new AppsSwitch();
+        private ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
+        private ISwitchComponent OfficeSwitch = new OfficeSwitch();
+        private ISwitchComponent SystemSwitch = new SystemSwitch();
         //private ISwitchComponent TaskbarAccentColorSwitch;
-        //private ISwitchComponent WallpaperSwitch;
+        private ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
+        public void UpdateSettings()
+        {
+            AppsSwitch.UpdateSettingsState(Builder.Config.AppsSwitch);
+            ColorFilterSwitch.UpdateSettingsState(Builder.Config.ColorFilterSwitch);
+            OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
+            SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
+            WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
+            //TaskbarAccentcolorSwitch.UpdateSettingsState(Builder.Config.TaskbarAccentColorSwitch);
+        }
         ComponentManager()
         {
-            InitializeComponents();
             Builder = AdmConfigBuilder.Instance();
             Components = new List<ISwitchComponent>
             {
                 AppsSwitch,
                 ColorFilterSwitch,
                 OfficeSwitch,
-                SystemSwitch
+                SystemSwitch,
                 //TaskbarAccentColorSwitch
-                //WallpaperSwitch
+                WallpaperSwitch
             };
             UpdateSettings();
         }
@@ -60,30 +68,11 @@ namespace AutoDarkModeSvc
             }
             Components.ForEach(c =>
             {
-                if (!Builder.Config.WindowsThemeMode.Enabled || (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility))
+                if (c.ThemeHandlerCompatibility)
                 {
                     c.Switch(newTheme);
                 }
             });
-        }
-        public void UpdateSettings()
-        {
-            AppsSwitch.UpdateSettingsState(Builder.Config.AppsSwitch);
-            ColorFilterSwitch.UpdateSettingsState(Builder.Config.ColorFilterSwitch);
-            OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
-            SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
-            //WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
-            //TaskbarAccentcolorSwitch.UpdateSettingsState(Builder.Config.TaskbarAccentColorSwitch);
-        }
-
-        private void InitializeComponents()
-        {
-            AppsSwitch = new AppsSwitch();
-            ColorFilterSwitch = new ColorFilterSwitch();
-            OfficeSwitch = new OfficeSwitch();
-            SystemSwitch = new SystemSwitch();
-            //TaskbarAccentColorSwitch = new TaskbarAccentColorSwitch();
-            //WallpaperSwitch = new WallpaperSwitch();
         }
     }
 }

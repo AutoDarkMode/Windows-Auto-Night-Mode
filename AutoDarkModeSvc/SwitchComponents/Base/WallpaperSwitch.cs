@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override void EnableHook()
         {
-            WallpaperHandler.GetWallpapers();
+            base.EnableHook();
         }
 
         
