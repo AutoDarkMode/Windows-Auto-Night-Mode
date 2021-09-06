@@ -104,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentWPF" Version="0.10.0" />
-    <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="NetMQ" Version="4.0.0.207" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
