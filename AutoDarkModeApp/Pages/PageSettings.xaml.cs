@@ -113,9 +113,9 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 Settings.Default.Save();
-                Process.Start(new ProcessStartInfo(Extensions.ExecutionPath)
+                Process.Start(new ProcessStartInfo(Extensions.ExecutionPathApp)
                 {
-                    UseShellExecute = true,
+                    UseShellExecute = false,
                     Verb = "open"
                 });
                 Application.Current.Shutdown();

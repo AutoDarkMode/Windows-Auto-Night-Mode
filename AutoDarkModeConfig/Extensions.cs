@@ -22,6 +22,7 @@ namespace AutoDarkModeConfig
     {
         public static readonly string ExecutionPath = GetExecutionPath();
         public static readonly string ExecutionDir = GetExecutionDir();
+        public static readonly string ExecutionPathApp = GetExecutionPathApp();
 
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
         {
@@ -87,6 +88,14 @@ namespace AutoDarkModeConfig
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath + executableName);
+        }
+
+        private static string GetExecutionPathApp()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeApp.exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath + executableName);
         }

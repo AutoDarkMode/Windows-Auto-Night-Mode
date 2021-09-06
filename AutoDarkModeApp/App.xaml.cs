@@ -126,7 +126,7 @@ namespace AutoDarkModeApp
         {
             if (!debug)
             {
-                
+
                 using Mutex serviceRunning = new Mutex(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
                 if (serviceRunning.WaitOne(TimeSpan.FromMilliseconds(100), false))
                 {
