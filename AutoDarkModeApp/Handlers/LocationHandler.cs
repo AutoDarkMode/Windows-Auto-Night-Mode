@@ -40,7 +40,7 @@ namespace AutoDarkModeApp
         {
             AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
 
-            Geopoint geopoint = new Geopoint(new BasicGeoposition
+            Geopoint geopoint = new(new BasicGeoposition
             {
                 Latitude = configBuilder.LocationData.Lat,
                 Longitude = configBuilder.LocationData.Lon

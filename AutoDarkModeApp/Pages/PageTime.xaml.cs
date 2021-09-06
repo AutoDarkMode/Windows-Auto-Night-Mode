@@ -389,7 +389,7 @@ namespace AutoDarkModeApp.Pages
                 }
             }
 
-            LocationHandler locationHandler = new LocationHandler();
+            LocationHandler locationHandler = new();
             var accesStatus = await Geolocator.RequestAccessAsync();
             switch (accesStatus)
             {

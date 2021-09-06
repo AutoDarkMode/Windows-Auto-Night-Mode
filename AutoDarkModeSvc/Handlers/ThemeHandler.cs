@@ -71,12 +71,10 @@ namespace AutoDarkModeSvc.Handlers
             [return: MarshalAs(UnmanagedType.Bool)]
             public static extern bool IsThemeActive();
         }
-        [PermissionSet(SecurityAction.LinkDemand)]
         public static string GetCurrentThemeName()
         {
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
-        [PermissionSet(SecurityAction.LinkDemand)]
         public static void Apply(string themeFilePath)
         {
             Thread thread = new Thread(() =>
@@ -108,7 +106,6 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Error(ex, "theme handler thread was interrupted");
             }
         }
-        [PermissionSet(SecurityAction.LinkDemand)]
         public static string GetCurrentVisualStyleName()
         {
             return Path.GetFileName(new ThemeManagerClass().CurrentTheme.VisualStyle);
