@@ -24,14 +24,12 @@ namespace AutoDarkModeSvc.Config
         {
             CurrentWallpaperTheme = Theme.Undefined;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
-            CurrentOfficeTheme = Theme.Undefined;
             ForcedTheme = Theme.Undefined;
             PostponeSwitch = false;
         }
 
         private WardenModule Warden { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
-        public Theme CurrentOfficeTheme { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
         private bool _postponeSwitch;

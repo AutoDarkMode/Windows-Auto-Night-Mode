@@ -14,7 +14,6 @@ namespace AutoDarkModeConfig
             Location = new Location();
             Tunable = new Tunable();
             GPUMonitoring = new GPUMonitoring();
-            Office = new Office();
             Events = new Events();
             WindowsThemeMode = new WindowsThemeMode();
 
@@ -22,6 +21,7 @@ namespace AutoDarkModeConfig
             AppsSwitch = new BaseSettingsEnabled<AppsSwitchSettings>();
             SystemSwitch = new BaseSettings<SystemSwitchSettings>();
             ColorFilterSwitch = new BaseSettings<object>();
+            OfficeSwitch = new BaseSettings<OfficeSwitchSettings>();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
 
@@ -29,9 +29,9 @@ namespace AutoDarkModeConfig
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
+        public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
         public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
-        public Office Office { get; set; }
         public Wallpaper Wallpaper { get; set; }
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
@@ -50,14 +50,6 @@ namespace AutoDarkModeConfig
     {
         public bool DarkThemeOnBattery { get; set; }
         public bool SystemResumeTrigger { get; set; } = true;
-    }
-
-    public class Office
-    {
-        public bool Enabled { get; set; } = false;
-        public Mode Mode { get; set; } = Mode.Switch;
-        public byte LightTheme { get; set; } = 0;
-        public byte DarkTheme { get; set; } = 4;
     }
 
     public class Wallpaper

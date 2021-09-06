@@ -134,14 +134,12 @@ namespace AutoDarkModeSvc
             }
             PowerHandler.DisableEnergySaver(config);
             var oldwal = state.CurrentWallpaperTheme;
-            var oldoff = state.CurrentOfficeTheme;
 
             SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
             //run async to delay at specific parts due to color prevalence not switching icons correctly
             PowerHandler.RestoreEnergySaver(config);
-            Logger.Info($"theme: {newTheme} with modes, w:{config.Wallpaper.Enabled}, o:{config.Office.Enabled})");
-            Logger.Info($"was (w:{oldwal}, o:{oldoff})");
-            Logger.Info($"is (w:{state.CurrentWallpaperTheme}, o:{state.CurrentOfficeTheme})");
+            Logger.Info($"was (w:{oldwal}");
+            Logger.Info($"is (w:{state.CurrentWallpaperTheme})");
         }
 
 
@@ -197,11 +195,6 @@ namespace AutoDarkModeSvc
 
             if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, state.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers,
                 config.Wallpaper.DarkThemeWallpapers, state.CurrentWallpaperTheme, newTheme))
-            {
-                return true;
-            }
-
-            if (config.Office.Enabled && ComponentNeedsUpdate(config.Office.Mode, state.CurrentOfficeTheme, newTheme))
             {
                 return true;
             }

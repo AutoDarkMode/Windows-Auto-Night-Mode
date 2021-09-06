@@ -96,9 +96,9 @@ namespace AutoDarkModeApp
             //combobox
             AppComboBox.SelectedIndex = (int)builder.Config.AppsSwitch.Component.Mode;
             SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode; ;
-            if (builder.Config.Office.Enabled)
+            if (builder.Config.OfficeSwitch.Enabled)
             {
-                OfficeComboBox.SelectedIndex = (int)builder.Config.Office.Mode;
+                OfficeComboBox.SelectedIndex = (int)builder.Config.OfficeSwitch.Component.Mode;
             }
             else
             {
@@ -107,7 +107,7 @@ namespace AutoDarkModeApp
 
 
             //checkbox
-            if (builder.Config.Office.LightTheme == 5)
+            if (builder.Config.OfficeSwitch.Component.LightTheme == 5)
             {
                 CheckBoxOfficeWhiteTheme.IsChecked = true;
             }
@@ -200,22 +200,22 @@ namespace AutoDarkModeApp
 
         private void OfficeComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            builder.Config.Office.Enabled = true;
+            builder.Config.OfficeSwitch.Enabled = true;
             if (OfficeComboBox.SelectedIndex.Equals(0))
             {
-                builder.Config.Office.Mode = Mode.Switch;
+                builder.Config.OfficeSwitch.Component.Mode = Mode.Switch;
             }
             else if (OfficeComboBox.SelectedIndex.Equals(1))
             {
-                builder.Config.Office.Mode = Mode.LightOnly;
+                builder.Config.OfficeSwitch.Component.Mode = Mode.LightOnly;
             }
             else if (OfficeComboBox.SelectedIndex.Equals(2))
             {
-                builder.Config.Office.Mode = Mode.DarkOnly;
+                builder.Config.OfficeSwitch.Component.Mode = Mode.DarkOnly;
             }
             else if (OfficeComboBox.SelectedIndex.Equals(3))
             {
-                builder.Config.Office.Enabled = false;
+                builder.Config.OfficeSwitch.Enabled = false;
             }
             try
             {
@@ -243,12 +243,12 @@ namespace AutoDarkModeApp
         {
             if (CheckBoxOfficeWhiteTheme.IsChecked ?? true)
             {
-                builder.Config.Office.LightTheme = 5;
+                builder.Config.OfficeSwitch.Component.LightTheme = 5;
                 OfficeComboBox_DropDownClosed(this, null);
             }
             else
             {
-                builder.Config.Office.LightTheme = 0;
+                builder.Config.OfficeSwitch.Component.LightTheme = 0;
                 OfficeComboBox_DropDownClosed(this, null);
             }
             try

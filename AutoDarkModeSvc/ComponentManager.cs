@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc
         // Components
         private ISwitchComponent AppsSwitch;
         private ISwitchComponent ColorFilterSwitch;
-        //private ISwitchComponent OfficeSwitch;
+        private ISwitchComponent OfficeSwitch;
         private ISwitchComponent SystemSwitch;
         //private ISwitchComponent TaskbarAccentColorSwitch;
         //private ISwitchComponent WallpaperSwitch;
@@ -41,7 +41,7 @@ namespace AutoDarkModeSvc
             {
                 AppsSwitch,
                 ColorFilterSwitch,
-                //OfficeSwitch
+                OfficeSwitch,
                 SystemSwitch
                 //TaskbarAccentColorSwitch
                 //WallpaperSwitch
@@ -70,7 +70,7 @@ namespace AutoDarkModeSvc
         {
             AppsSwitch.UpdateSettingsState(Builder.Config.AppsSwitch);
             ColorFilterSwitch.UpdateSettingsState(Builder.Config.ColorFilterSwitch);
-            //OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
+            OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
             SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
             //WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
             //TaskbarAccentcolorSwitch.UpdateSettingsState(Builder.Config.TaskbarAccentColorSwitch);
@@ -80,7 +80,7 @@ namespace AutoDarkModeSvc
         {
             AppsSwitch = new AppsSwitch();
             ColorFilterSwitch = new ColorFilterSwitch();
-            //OfficeSwitch = new OfficeSwitch();
+            OfficeSwitch = new OfficeSwitch();
             SystemSwitch = new SystemSwitch();
             //TaskbarAccentColorSwitch = new TaskbarAccentColorSwitch();
             //WallpaperSwitch = new WallpaperSwitch();

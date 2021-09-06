@@ -131,56 +131,6 @@ namespace AutoDarkModeSvc.Handlers
             }
             return false;
         }
-        /// <summary>
-        /// Changes the office theme
-        /// </summary>
-        /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white</param>
-        public static void OfficeTheme(byte themeValue)
-        {
-            string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
-
-            //edit first registry key
-            using RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
-            commonKey.SetValue("UI Theme", themeValue);
-
-            //search for the second key and then change it
-            using RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
-
-            string msaSubkey = @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\";
-            string anonymousSubKey = msaSubkey + @"\PendingChanges";
-
-            foreach (var v in identityKey.GetSubKeyNames())
-            {
-                //registry key for users logged in with msa
-                if (!v.Equals("Anonymous"))
-                {
-                    try
-                    {
-                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
-                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                    catch
-                    {
-                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
-                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                }
-                //registry key for users without msa
-                else
-                {
-                    try
-                    {
-                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
-                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                    catch
-                    {
-                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
-                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                }
-            }
-        }
 
         //Colour filter grayscale feature
         public static void ColorFilterKeySender(bool dark)
