@@ -11,7 +11,6 @@ namespace AutoDarkModeConfig
     {
         public AdmConfig()
         {
-            Wallpaper = new Wallpaper();
             Location = new Location();
             Tunable = new Tunable();
             GPUMonitoring = new GPUMonitoring();
@@ -23,6 +22,7 @@ namespace AutoDarkModeConfig
             SystemSwitch = new BaseSettings<SystemSwitchSettings>();
             ColorFilterSwitch = new BaseSettings<object>();
             OfficeSwitch = new BaseSettings<OfficeSwitchSettings>();
+            WallpaperSwitch = new BaseSettings<WallpaperSwitchSettings>();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
 
@@ -31,9 +31,9 @@ namespace AutoDarkModeConfig
         public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
+        public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
         public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
-        public Wallpaper Wallpaper { get; set; }
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
@@ -51,18 +51,6 @@ namespace AutoDarkModeConfig
     {
         public bool DarkThemeOnBattery { get; set; }
         public bool SystemResumeTrigger { get; set; } = true;
-    }
-
-    public class Wallpaper
-    {
-        public Wallpaper()
-        {
-            LightThemeWallpapers = new List<string>();
-            DarkThemeWallpapers = new List<string>();
-        }
-        public bool Enabled { get; set; }
-        public List<string> LightThemeWallpapers { get; set; }
-        public List<string> DarkThemeWallpapers { get; set; }
     }
 
     public class Location

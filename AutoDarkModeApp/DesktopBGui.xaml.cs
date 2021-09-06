@@ -26,15 +26,16 @@ namespace AutoDarkModeApp
         public DesktopBGui()
         {
             folderPath = Path.Combine(builder.ConfigDir, "Wallpapers");
-            pathCur1 = builder.Config.Wallpaper.LightThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.LightThemeWallpapers.ToList()[0] : "";
-            pathCur2 = builder.Config.Wallpaper.DarkThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.DarkThemeWallpapers.ToList()[0] : "";
+            // TODO: needs adaption for new wallpaper handler
+            pathCur1 = "";
+            pathCur2 = "";
             InitializeComponent();
             StartVoid();
         }
 
         private void StartVoid()
         {
-            if (builder.Config.Wallpaper.Enabled)
+            if (builder.Config.WallpaperSwitch.Enabled)
             {
                 try
                 {
@@ -43,7 +44,7 @@ namespace AutoDarkModeApp
                 }
                 catch
                 {
-                    builder.Config.Wallpaper.Enabled = false;
+                    builder.Config.WallpaperSwitch.Enabled = false;
                     StartVoid();
                 }
             }
@@ -194,11 +195,12 @@ namespace AutoDarkModeApp
             {
                 CopyFileLight();
                 CopyFileDark();
-                builder.Config.Wallpaper.LightThemeWallpapers.Clear();
+                /* TODO: needs adaption for new wallpaper handler
+                 * builder.Config.Wallpaper.LightThemeWallpapers.Clear();
                 builder.Config.Wallpaper.DarkThemeWallpapers.Clear();
                 builder.Config.Wallpaper.LightThemeWallpapers.Add(pathCur1);
                 builder.Config.Wallpaper.DarkThemeWallpapers.Add(pathCur2);
-                builder.Config.Wallpaper.Enabled = true;
+                builder.Config.Wallpaper.Enabled = true;*/
                 saved = true;
                 Close();
             }
@@ -215,9 +217,12 @@ namespace AutoDarkModeApp
         private void DeleButton_Click(object sender, RoutedEventArgs e)
         {
             Directory.Delete(folderPath, true);
+            //TODO: needs adaption for new wallpaper handler
+            /*
             builder.Config.Wallpaper.LightThemeWallpapers.Clear();
             builder.Config.Wallpaper.DarkThemeWallpapers.Clear();
             builder.Config.Wallpaper.Enabled = false;
+            */
             Close();
         }
     }

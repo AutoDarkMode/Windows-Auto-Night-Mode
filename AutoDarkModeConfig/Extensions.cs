@@ -18,6 +18,20 @@ namespace AutoDarkModeConfig
         Light = 1
     };
 
+    /// <summary>
+    /// This enumeration indicates the wallpaper position for all monitors. (This includes when slideshows are running.)
+    /// The wallpaper position specifies how the image that is assigned to a monitor should be displayed.
+    /// </summary>
+    public enum WallpaperPosition
+    {
+        Center = 0,
+        Tile = 1,
+        Stretch = 2,
+        Fit = 3,
+        Fill = 4,
+        Span = 5,
+    }
+
     public static class Extensions
     {
         public static readonly string ExecutionPath = GetExecutionPath();

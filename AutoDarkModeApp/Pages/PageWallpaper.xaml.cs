@@ -121,7 +121,7 @@ namespace AutoDarkModeApp
         //show if wallpaper switch is enabled
         private void ShowDeskBGStatus()
         {
-            if (builder.Config.Wallpaper.Enabled)
+            if (builder.Config.WallpaperSwitch.Enabled)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }
@@ -156,7 +156,8 @@ namespace AutoDarkModeApp
         private void ButtonSaveTheme_Click(object sender, RoutedEventArgs e)
         {
             //disable auto dark mode wallpaper switch
-            builder.Config.Wallpaper.Enabled = false;
+            //TODO: needs adaption for new wallpaper handler
+            //builder.Config.Wallpaper.Enabled = false;
             builder.Config.WindowsThemeMode.Enabled = true;
 
             //get selected light theme file from combobox

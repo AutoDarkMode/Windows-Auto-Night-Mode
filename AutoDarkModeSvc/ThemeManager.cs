@@ -80,10 +80,6 @@ namespace AutoDarkModeSvc
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
-            else
-            {
-                ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
-            }
             RunComponents(newTheme);
             PowerHandler.RestoreEnergySaver(config);
 
@@ -129,114 +125,6 @@ namespace AutoDarkModeSvc
             {
                 ThemeHandler.Apply(config.WindowsThemeMode.LightThemePath);
             }
-        }
-
-        private static void ApplyThemeOptions(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
-        {
-            GlobalState state = GlobalState.Instance();
-
-            if (!ThemeOptionsNeedUpdate(config, newTheme))
-            {
-                return;
-            }
-            var oldwal = state.CurrentWallpaperTheme;
-
-            SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
-            //run async to delay at specific parts due to color prevalence not switching icons correctly
-            Logger.Info($"was (w:{oldwal}");
-            Logger.Info($"is (w:{state.CurrentWallpaperTheme})");
-        }
-
-
-        private static void SetWallpaper(Theme newTheme, GlobalState rtc, List<string> darkThemeWallpapers,
-            List<string> lightThemeWallpapers, bool enabled)
-        {
-            if (enabled)
-            {
-                try
-                {
-                    if (newTheme == Theme.Dark)
-                    {
-                        var success = WallpaperHandler.SetBackground(darkThemeWallpapers);
-                        if (success)
-                        {
-                            rtc.CurrentWallpaperTheme = newTheme;
-                            rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
-                        }
-                    }
-                    else
-                    {
-                        var success = WallpaperHandler.SetBackground(lightThemeWallpapers);
-                        if (success)
-                        {
-                            rtc.CurrentWallpaperTheme = newTheme;
-                            rtc.CurrentWallpaperPath = WallpaperHandler.GetBackground();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "could not set wallpaper");
-                }
-            }
-        }
-
-        /// <summary>
-        /// checks if any theme needs an update because the runtimeconfig differs from the actual configured state
-        /// </summary>
-        /// <param name="config">AutoDarkModeConfig instance</param>
-        /// <param name="newTheme">new theme that is requested</param>
-        /// <returns></returns>
-        private static bool ThemeOptionsNeedUpdate(AdmConfig config, Theme newTheme)
-        {
-            GlobalState state = GlobalState.Instance();
-            if (config.Wallpaper.Enabled)
-            {
-                if (state.CurrentWallpaperTheme == Theme.Undefined || state.CurrentWallpaperTheme != newTheme)
-                {
-                    return true;
-                }
-            }
-
-            if (WallpaperNeedsUpdate(config.Wallpaper.Enabled, state.CurrentWallpaperPath, config.Wallpaper.LightThemeWallpapers,
-                config.Wallpaper.DarkThemeWallpapers, state.CurrentWallpaperTheme, newTheme))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private static bool ComponentNeedsUpdate(Mode componentMode, Theme currentComponentTheme, Theme newTheme)
-        {
-            if ((componentMode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
-                || (componentMode == Mode.LightOnly && currentComponentTheme != Theme.Light)
-                || (componentMode == Mode.Switch && currentComponentTheme != newTheme)
-              )
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private static bool WallpaperNeedsUpdate(bool enabled, string currentWallpaperPath, List<string> lightThemeWallpapers,
-            List<string> darkThemeWallpapers, Theme currentComponentTheme, Theme newTheme)
-        {
-            if (enabled)
-            {
-                if (currentComponentTheme != newTheme)
-                {
-                    return true;
-                }
-                else if (newTheme == Theme.Dark && !darkThemeWallpapers.Contains(currentWallpaperPath))
-                {
-                    return true;
-                }
-                else if (newTheme == Theme.Light && !lightThemeWallpapers.Contains(currentWallpaperPath))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }
