@@ -49,31 +49,40 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void HandleSwitch(Theme newTheme)
         {
-            if (Settings.Component.Mode == Mode.DarkOnly)
+            string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+            try
             {
-                OfficeTheme(Settings.Component.DarkTheme);
-                currentComponentTheme = Theme.Dark;
-
-            }
-            else if (Settings.Component.Mode == Mode.LightOnly)
-            {
-                OfficeTheme(Settings.Component.LightTheme);
-                currentComponentTheme = Theme.Light;
-                ChoosenLightTheme = Settings.Component.LightTheme;
-            }
-            else
-            {
-                if (newTheme == Theme.Dark)
+                if (Settings.Component.Mode == Mode.DarkOnly)
                 {
                     OfficeTheme(Settings.Component.DarkTheme);
+                    currentComponentTheme = Theme.Dark;
+
+                }
+                else if (Settings.Component.Mode == Mode.LightOnly)
+                {
+                    OfficeTheme(Settings.Component.LightTheme);
+                    currentComponentTheme = Theme.Light;
+                    ChoosenLightTheme = Settings.Component.LightTheme;
                 }
                 else
                 {
-                    OfficeTheme(Settings.Component.LightTheme);
+                    if (newTheme == Theme.Dark)
+                    {
+                        OfficeTheme(Settings.Component.DarkTheme);
+                    }
+                    else
+                    {
+                        OfficeTheme(Settings.Component.LightTheme);
+                    }
+                    currentComponentTheme = newTheme;
+                    ChoosenLightTheme = Settings.Component.LightTheme;
                 }
-                currentComponentTheme = newTheme;
-                ChoosenLightTheme = Settings.Component.LightTheme;
             }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not set office theme");
+            }
+            Logger.Info($"update info - previous: {oldTheme}, current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }
 
         /// <summary>

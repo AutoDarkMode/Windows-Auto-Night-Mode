@@ -76,7 +76,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not enable color filter:");
             }
-            Logger.Info($"update info - previous: {oldTheme} current: {currentColorFilterActive}, enabled: {Settings.Enabled}");
+            Logger.Info($"update info - previous: {oldTheme}, current: {currentColorFilterActive}, enabled: {Settings.Enabled}");
 
         }
     }
