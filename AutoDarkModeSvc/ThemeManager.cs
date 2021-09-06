@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Originally created by Kuchienkz.
+ * Email: wahyu.darkflame@gmail.com
+ * 
+ * Other Contributors (modified by):
+ * Armin2208
+ * Spiritreader
+*/
+
+using System;
 using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
@@ -66,20 +75,18 @@ namespace AutoDarkModeSvc
             {
                 Logger.Info($"theme switch invoked manually");
             }
+            PowerHandler.DisableEnergySaver(config);
             if (config.WindowsThemeMode.Enabled)
             {
                 ApplyTheme(config, newTheme, automatic, sunset, sunrise);
             }
             else
             {
-                PowerHandler.DisableEnergySaver(config);
                 ApplyThemeOptions(config, newTheme, automatic, sunset, sunrise);
             }
             RunComponents(newTheme);
-            if (!config.WindowsThemeMode.Enabled)
-            {
-                PowerHandler.RestoreEnergySaver(config);
-            }
+            PowerHandler.RestoreEnergySaver(config);
+
 
         }
         /// <summary>
@@ -132,12 +139,10 @@ namespace AutoDarkModeSvc
             {
                 return;
             }
-            PowerHandler.DisableEnergySaver(config);
             var oldwal = state.CurrentWallpaperTheme;
 
             SetWallpaper(newTheme, state, config.Wallpaper.DarkThemeWallpapers, config.Wallpaper.LightThemeWallpapers, config.Wallpaper.Enabled);
             //run async to delay at specific parts due to color prevalence not switching icons correctly
-            PowerHandler.RestoreEnergySaver(config);
             Logger.Info($"was (w:{oldwal}");
             Logger.Info($"is (w:{state.CurrentWallpaperTheme})");
         }

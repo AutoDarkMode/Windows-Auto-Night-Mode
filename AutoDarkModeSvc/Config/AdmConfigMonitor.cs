@@ -5,12 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Config
 {
     class AdmConfigMonitor
     {
-        private FileSystemWatcher ConfigWatcher { get;  }
+        private FileSystemWatcher ConfigWatcher { get; }
         private FileSystemWatcher LocationDataWatcher { get; }
         private readonly ComponentManager componentManager = ComponentManager.Instance();
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
@@ -44,9 +45,28 @@ namespace AutoDarkModeSvc.Config
             {
                 try
                 {
+                    bool geolocatorToggled = builder.Config.Location.UseGeolocatorService;
+                    double prevLat = builder.Config.Location.CustomLat;
+                    double prevLon = builder.Config.Location.CustomLon;
                     builder.Load();
+                    bool latChanged = builder.Config.Location.CustomLat != prevLat;
+                    bool lonChanged = builder.Config.Location.CustomLon != prevLon;
+                    geolocatorToggled = geolocatorToggled != builder.Config.Location.UseGeolocatorService;
                     componentManager.UpdateSettings();
                     UpdateEventStates();
+
+                    // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
+                    if (geolocatorToggled || (!geolocatorToggled && !builder.Config.Location.UseGeolocatorService && (latChanged || lonChanged)))
+                    {
+                        try
+                        {
+                            Task.Run(() => LocationHandler.UpdateGeoposition(builder));
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "Error saving location data");
+                        }
+                    }
                     if (warden != null)
                     {
                         warden.Fire();

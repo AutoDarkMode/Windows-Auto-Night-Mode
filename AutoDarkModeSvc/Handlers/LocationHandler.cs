@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Handlers
             _ = sunCalc.GetRiseAndSet(out DateTime sunriseUTC, out DateTime sunsetUTC);
             configBuilder.LocationData.Sunrise = TimeZoneInfo.ConvertTimeFromUtc(sunriseUTC, TimeZoneInfo.Local);
             configBuilder.LocationData.Sunset = TimeZoneInfo.ConvertTimeFromUtc(sunsetUTC, TimeZoneInfo.Local);
-            Logger.Info($"new sunrise ({configBuilder.LocationData.Sunrise:HH:mm}) and new sunset ({configBuilder.LocationData.Sunset.ToString("HH:mm")})");
+            Logger.Info($"new sunrise ({configBuilder.LocationData.Sunrise:HH:mm}) and new sunset ({configBuilder.LocationData.Sunset:HH:mm})");
         }
 
         /// <summary>
@@ -29,8 +29,34 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns></returns>
         public static async Task<bool> UpdateGeoposition(AdmConfigBuilder configBuilder)
         {
+            bool success = false;
+            if (configBuilder.Config.Location.UseGeolocatorService)
+            {
+                success = await UpdateWithGeolocator(configBuilder);
+            }
+            else
+            {
+                configBuilder.LocationData.Lat = configBuilder.Config.Location.CustomLat;
+                configBuilder.LocationData.Lon = configBuilder.Config.Location.CustomLon;
+                configBuilder.LocationData.LastUpdate = DateTime.Now;
+            }
+            UpdateSunTime(configBuilder);
+            try
+            {
+                configBuilder.SaveLocationData();
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e, "could not update configuration file while retrieving location");
+            }
+
+            return success;
+        }
+
+        private static async Task<bool> UpdateWithGeolocator(AdmConfigBuilder configBuilder)
+        {
+            bool success = false;
             var permission = await Geolocator.RequestAccessAsync();
-            var success = false;
 
             void SetLatAndLon(BasicGeoposition position)
             {
@@ -66,23 +92,12 @@ namespace AutoDarkModeSvc.Handlers
 
                     break;
             }
-
-            UpdateSunTime(configBuilder);
-
-            try
-            {
-                configBuilder.SaveLocationData();
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e, "could not update configuration file while retrieving location");
-            }
-
             return success;
+
         }
 
         /// <summary>
-        /// Calculate sundates based on a user configurable offset found in AutoDarkModeConfig. 
+        /// Calculate sundates based on a user configurable offset found in AutoDarkModeConfig.
         /// Call this method to generate the final sunrise and sunset times if location based switching is enabled
         /// </summary>
         /// <param name="config">AutoDarkMoeConfig object</param>

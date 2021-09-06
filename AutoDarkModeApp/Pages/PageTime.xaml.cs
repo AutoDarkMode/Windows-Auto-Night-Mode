@@ -197,7 +197,7 @@ namespace AutoDarkModeApp.Pages
                     darkStart = 11;
                     darkStartMinutes = 59;
                 }
-                if(darkStart == 0)
+                if (darkStart == 0)
                 {
                     darkStart = 1;
                 }
@@ -287,7 +287,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     throw new SwitchThemeException(result, "PageTime");
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 ErrorWhileApplyingTheme($"Error while applying theme: ", ex.ToString());
@@ -336,6 +336,28 @@ namespace AutoDarkModeApp.Pages
                 }
             }
 
+            if (builder.Config.Location.UseGeolocatorService)
+            {
+                await UseGeolocatorService();
+            }
+            else
+            {
+                locationBlock.Text = $"{Properties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
+            }
+
+            UpdateSuntimes();
+
+            // ui controls
+            lightStartBox.IsEnabled = false;
+            LightStartMinutesBox.IsEnabled = false;
+            darkStartBox.IsEnabled = false;
+            DarkStartMinutesBox.IsEnabled = false;
+            userFeedback.Text = Properties.Resources.msgChangesSaved;
+
+            return;
+        }
+        private async Task UseGeolocatorService()
+        {
             int timeout = 2;
             bool loaded = false;
             for (int i = 0; i < timeout; i++)
@@ -364,7 +386,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     loaded = true;
                     break;
-                }                
+                }
             }
 
             LocationHandler locationHandler = new LocationHandler();
@@ -399,18 +421,8 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(new TimeoutException("waiting for location data timed out"));
             }
-
-            UpdateSuntimes();
-
-            // ui controls
-            lightStartBox.IsEnabled = false;
-            LightStartMinutesBox.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
-            DarkStartMinutesBox.IsEnabled = false;
-            userFeedback.Text = Properties.Resources.msgChangesSaved;
-
-            return;
         }
+
         private async void NoLocationAccess()
         {
             locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
@@ -520,7 +532,7 @@ namespace AutoDarkModeApp.Pages
                 Properties.Settings.Default.AlterTime = true;
                 amTextBlock.Text = "am";
                 pmTextBlock.Text = "pm";
-                TextBlockDark.Margin = new Thickness(113,0,0,0);
+                TextBlockDark.Margin = new Thickness(113, 0, 0, 0);
                 int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
                 if (darkTime < 1)
                 {

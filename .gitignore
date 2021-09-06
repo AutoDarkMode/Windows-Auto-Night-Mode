@@ -8,6 +8,10 @@ Translation/
 Cert/
 AutoDarkModeInstaller/
 compile.bat
+overrides.json
+
+#VSCode
+.vscode/
 
 # User-specific files
 *.suo

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class GeopositionUpdateModule : AutoDarkModeModule
+    internal class GeopositionUpdateModule : AutoDarkModeModule
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private AdmConfigBuilder ConfigBuilder { get; }
@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.Modules
             DateTime nextUpdate = ConfigBuilder.LocationData.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownTimeSpan);
             if (DateTime.Now >= nextUpdate)
             {
-                Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
+                _ = Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
             }
             else
             {
