@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             base.DisableHook();
         }
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        public override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (!currentColorFilterActive && newTheme == Theme.Dark)
             {

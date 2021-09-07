@@ -56,6 +56,32 @@ namespace AutoDarkModeSvc
             };
             UpdateSettings();
         }
+
+        public bool Check(Theme newTheme)
+        {
+            bool shouldUpdate = false;
+            foreach (ISwitchComponent c in Components)
+            {
+                if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility)
+                {
+                    if (c.ComponentNeedsUpdate(newTheme))
+                    {
+                        shouldUpdate = true;
+                        break;
+                    }
+                }
+                else if (!Builder.Config.WindowsThemeMode.Enabled)
+                {
+                    c.Switch(newTheme);
+                    if (c.ComponentNeedsUpdate(newTheme))
+                    {
+                        shouldUpdate = true;
+                        break;
+                    }
+                }
+            }
+            return shouldUpdate;
+        }
         public void Run(Theme newTheme)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
@@ -68,7 +94,11 @@ namespace AutoDarkModeSvc
             }
             Components.ForEach(c =>
             {
-                if (c.ThemeHandlerCompatibility)
+                if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility)
+                {
+                    c.Switch(newTheme);
+                }
+                else if (!Builder.Config.WindowsThemeMode.Enabled)
                 {
                     c.Switch(newTheme);
                 }

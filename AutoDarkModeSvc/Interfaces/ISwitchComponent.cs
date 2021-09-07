@@ -15,6 +15,13 @@ namespace AutoDarkModeSvc.Interfaces
         /// </summary>
         /// <param name="newTheme">the new theme that should be set</param>
         public void Switch(Theme newTheme);
+
+        /// <summary>
+        /// Checks if the component needs to be updated according to its internal state
+        /// </summary>
+        /// <param name="newTheme">The requested new theme</param>
+        /// <returns>true if the component needs to be updated; false otherwise</returns>
+        public bool ComponentNeedsUpdate(Theme newTheme);
         /// <summary>
         /// Refreshes the local copy of the component settings. Should be called before invoking Switch() to make sure the config is up to date
         /// </summary>

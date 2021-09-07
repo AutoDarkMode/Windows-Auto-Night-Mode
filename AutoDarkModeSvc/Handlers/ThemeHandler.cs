@@ -1,18 +1,20 @@
 ﻿using System;
 using System.IO;
-using System.Globalization;
-using System.Security;
-using System.Security.Permissions;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
-using AutoDarkModeConfig;
 using AutoDarkModeSvc.Config;
 
-// Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
-// Originally created by Kuchienkz. Email: wahyu.darkflame@gmail.com
-// Licensed under: GNU General Public License v3.0
+/*
+ * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
+ * Originally created by Kuchienkz.
+ * Email: wahyu.darkflame@gmail.com
+ * Licensed under: GNU General Public License v3.0
+ * 
+ * Other Contributors (modified by):
+ * Armin2208
+ * Spiritreader
+*/
 
 namespace AutoDarkModeSvc.Handlers
 {

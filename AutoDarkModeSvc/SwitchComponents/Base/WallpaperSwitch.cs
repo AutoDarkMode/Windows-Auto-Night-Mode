@@ -9,10 +9,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     {
-        public override bool ThemeHandlerCompatibility => false;
+        public override bool ThemeHandlerCompatibility => true;
         private Theme currentComponentTheme = Theme.Undefined;
 
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        public override bool ComponentNeedsUpdate(Theme newTheme)
         {
             return false;
         }
@@ -44,6 +44,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override void EnableHook()
         {
+            WallpaperHandler.GetWallpapers();
             base.EnableHook();
         }
 

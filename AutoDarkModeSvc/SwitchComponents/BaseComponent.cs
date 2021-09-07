@@ -70,6 +70,6 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// Determines whether the component needs to be triggered to update to the correct system state
         /// </summary>
         /// <returns>true if the component needs to be executed; false otherwise</returns>
-        protected abstract bool ComponentNeedsUpdate(Theme newTheme);
+        public abstract bool ComponentNeedsUpdate(Theme newTheme);
     }
 }

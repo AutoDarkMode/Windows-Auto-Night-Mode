@@ -1,13 +1,4 @@
-﻿/*
- * Originally created by Kuchienkz.
- * Email: wahyu.darkflame@gmail.com
- * 
- * Other Contributors (modified by):
- * Armin2208
- * Spiritreader
-*/
-
-using System;
+﻿using System;
 using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Config;
@@ -21,13 +12,7 @@ namespace AutoDarkModeSvc
     static class ThemeManager
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
-        private static void RunComponents(Theme newTheme)
-        {
-            ComponentManager cm = ComponentManager.Instance();
-            cm.UpdateSettings();
-            cm.Run(newTheme);
-        }
+        private static readonly ComponentManager cm = ComponentManager.Instance();
 
         public static void TimedSwitch(AdmConfigBuilder builder)
         {
@@ -75,14 +60,30 @@ namespace AutoDarkModeSvc
             {
                 Logger.Info($"theme switch invoked manually");
             }
-            PowerHandler.DisableEnergySaver(config);
+
+            bool themeModeSwitched = false;
             if (config.WindowsThemeMode.Enabled)
             {
-                ApplyTheme(config, newTheme, automatic, sunset, sunrise);
+                themeModeSwitched = ApplyTheme(config, newTheme);
             }
-            RunComponents(newTheme);
-            PowerHandler.RestoreEnergySaver(config);
 
+            cm.UpdateSettings();
+            bool componentsNeedUpdate = cm.Check(newTheme);
+            if (componentsNeedUpdate)
+            {
+                //if a theme switch did not occur, run mitigations
+                if (!themeModeSwitched)
+                {
+                    PowerHandler.DisableEnergySaver(config);
+                }
+                cm.Run(newTheme);
+            }
+
+            // disable mitigation after all components and theme switch have been executed
+            if (componentsNeedUpdate || themeModeSwitched)
+            {
+                PowerHandler.RestoreEnergySaver(config);
+            }
 
         }
         /// <summary>
@@ -93,38 +94,44 @@ namespace AutoDarkModeSvc
         /// <param name="automatic"></param>
         /// <param name="sunset"></param>
         /// <param name="sunrise"></param>
-        private static void ApplyTheme(AdmConfig config, Theme newTheme, bool automatic, DateTime sunset, DateTime sunrise)
+        /// <returns>true if an update was performed; false otherwise</returns>
+        private static bool ApplyTheme(AdmConfig config, Theme newTheme)
         {
             GlobalState state = GlobalState.Instance();
             if (config.WindowsThemeMode.DarkThemePath == null || config.WindowsThemeMode.LightThemePath == null)
             {
                 Logger.Error("dark or light theme path empty");
-                return;
+                return false;
             }
             if (!File.Exists(config.WindowsThemeMode.DarkThemePath))
             {
                 Logger.Error($"invalid dark theme path: {config.WindowsThemeMode.DarkThemePath}");
-                return;
+                return false;
             }
             if (!File.Exists(config.WindowsThemeMode.LightThemePath))
             {
                 Logger.Error($"invalid light theme path : {config.WindowsThemeMode.LightThemePath}");
-                return;
+                return false;
             }
             if (!config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !config.WindowsThemeMode.DarkThemePath.EndsWith(".theme"))
             {
                 Logger.Error("both theme paths must have a .theme extension");
-                return;
+                return false;
             }
 
             if (Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
+                PowerHandler.DisableEnergySaver(config);
                 ThemeHandler.Apply(config.WindowsThemeMode.DarkThemePath);
+                return true;
             }
             else if (Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Light)
             {
+                PowerHandler.DisableEnergySaver(config);
                 ThemeHandler.Apply(config.WindowsThemeMode.LightThemePath);
+                return true;
             }
+            return false;
         }
     }
 }
