@@ -62,7 +62,7 @@ namespace AutoDarkModeSvc
             bool shouldUpdate = false;
             foreach (ISwitchComponent c in Components)
             {
-                if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility)
+                if (c.Enabled() && c.ThemeHandlerCompatibility && Builder.Config.WindowsThemeMode.Enabled)
                 {
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
@@ -70,7 +70,7 @@ namespace AutoDarkModeSvc
                         break;
                     }
                 }
-                else if (!Builder.Config.WindowsThemeMode.Enabled)
+                else if (c.Enabled() && !Builder.Config.WindowsThemeMode.Enabled)
                 {
                     c.Switch(newTheme);
                     if (c.ComponentNeedsUpdate(newTheme))
