@@ -62,7 +62,7 @@ namespace AutoDarkModeConfig
                 }
                 else
                 {
-                    using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write, FileShare.Read));
+                    using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite));
                     writer.WriteLine(yamlConfig);
                     writer.Close();
                     return;
