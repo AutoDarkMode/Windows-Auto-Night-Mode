@@ -382,5 +382,17 @@ namespace AutoDarkModeApp.Properties {
                 this["UIScale"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DetectBlueLightFilter {
+            get {
+                return ((bool)(this["DetectBlueLightFilter"]));
+            }
+            set {
+                this["DetectBlueLightFilter"] = value;
+            }
+        }
     }
 }

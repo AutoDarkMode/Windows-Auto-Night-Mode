@@ -74,6 +74,23 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         /// <summary>
+        /// Checks if the nightlight is enabled
+        /// </summary>
+        /// <returns>true if enabled; false otherwise</returns>
+        public static bool IsNightLightEnabled()
+        {
+            const string BlueLightReductionStateKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate";
+            using (var key = Registry.CurrentUser.OpenSubKey(BlueLightReductionStateKey))
+            {
+                var data = key?.GetValue("Data");
+                if (data is null)
+                    return false;
+                var byteData = (byte[])data;
+                return byteData.Length > 24 && byteData[23] == 0x10 && byteData[24] == 0x00;
+            }
+        }
+
+        /// <summary>
         /// Retrieves the operating system version
         /// </summary>
         /// <returns>operating system version string</returns>
