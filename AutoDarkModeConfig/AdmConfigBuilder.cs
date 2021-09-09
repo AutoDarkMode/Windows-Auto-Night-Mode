@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
+
 
 namespace AutoDarkModeConfig
 {
@@ -22,8 +24,8 @@ namespace AutoDarkModeConfig
                 Config = new AdmConfig();
                 LocationData = new AdmLocationData();
                 ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
-                ConfigFilePath = Path.Combine(ConfigDir, "config.json");
-                LocationDataPath = Path.Combine(ConfigDir, "location_data.json");
+                ConfigFilePath = Path.Combine(ConfigDir, "config.yaml");
+                LocationDataPath = Path.Combine(ConfigDir, "location_data.yaml");
             }
         }
 
@@ -49,7 +51,9 @@ namespace AutoDarkModeConfig
         private void SaveConfig(string path, object obj)
         {
             Directory.CreateDirectory(ConfigDir);
-            string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
+            //string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
+            var yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            string yamlConfig = yamlSerializer.Serialize(obj);
             for (int i = 0; i < 10; i++)
             {
                 if (IsFileLocked(new FileInfo(path)))
@@ -59,7 +63,7 @@ namespace AutoDarkModeConfig
                 else
                 {
                     using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write, FileShare.Read));
-                    writer.WriteLine(jsonConfig);
+                    writer.WriteLine(yamlConfig);
                     writer.Close();
                     return;
                 }
@@ -76,9 +80,11 @@ namespace AutoDarkModeConfig
             }
 
             using StreamReader locationDataReader = new StreamReader(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
-            JsonSerializer serializer = new JsonSerializer();
-            AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
-            LocationData = deserializedLocationData ?? LocationData;
+            //JsonSerializer serializer = new JsonSerializer();
+            //AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
+            var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            AdmLocationData deserializedLocationDataYaml = yamlDeserializer.Deserialize<AdmLocationData>(locationDataReader);
+            LocationData = deserializedLocationDataYaml ?? LocationData;
             Loading = true;
         }
 
@@ -91,9 +97,11 @@ namespace AutoDarkModeConfig
             }
 
             using StreamReader configReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
-            JsonSerializer serializer = new JsonSerializer();
-            AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
-            Config = deserializedConfig ?? Config;
+            //JsonSerializer serializer = new JsonSerializer();
+            ///AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
+            var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            AdmConfig deserializedConfigYaml = yamlDeserializer.Deserialize<AdmConfig>(configReader);
+            Config = deserializedConfigYaml ?? Config;
             Loading = true;
         }
 

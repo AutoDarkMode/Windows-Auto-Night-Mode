@@ -201,10 +201,10 @@ namespace AutoDarkModeApp.Pages
             });
         }
 
-        private void JsonNetLicense_MouseDown(object sender, MouseButtonEventArgs e)
+        private void YamlDotNetLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string MessageBoxText = "The MIT License (MIT) \n\n" +
-                "Copyright (c) 2007 James Newton-King \n\n" +
+                "Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014 Antoine Aubry and contributors \n\n" +
                 "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), " +
                 "to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/ or " +
                 "sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n\n" +
@@ -212,16 +212,16 @@ namespace AutoDarkModeApp.Pages
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(MessageBoxText, "Newtonsoft Json.NET License Information", "info", "close")
+            MsgBox msg = new MsgBox(MessageBoxText, "YamlDotNet License Information", "info", "close")
             {
                 Owner = Window.GetWindow(this)
             };
             msg.ShowDialog();
         }
 
-        private void JsonNetLicense_KeyDown(object sender, KeyEventArgs e)
+        private void YamlDotNetLicense_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter) JsonNetLicense_MouseDown(this, null);
+            if (e.Key == Key.Enter) YamlDotNetLicense_MouseDown(this, null);
         }
 
         private void NetMQLicense_MouseDown(object sender, MouseButtonEventArgs e)

@@ -132,7 +132,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Name="JsonNetLicense" Text="Newtonsoft Json.NET" FontSize="13" Margin="10,450,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="JsonNetLicense_MouseDown" KeyDown="JsonNetLicense_KeyDown">
+        <TextBlock Name="YamlDotNetLicense" Text="YamlDotNet" FontSize="13" Margin="10,450,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="YamlDotNetLicense_MouseDown" KeyDown="YamlDotNetLicense_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>

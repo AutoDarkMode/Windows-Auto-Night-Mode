@@ -1,16 +1,9 @@
-﻿using AutoDarkModeConfig.Interfaces;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AutoDarkModeConfig.ComponentSettings.Base
+﻿namespace AutoDarkModeConfig.ComponentSettings.Base
 {
     public class OfficeSwitchSettings
     {
         private Mode mode;
-        [JsonConverter(typeof(StringEnumConverter))]
+        //[JsonConverter(typeof(StringEnumConverter))]
         public Mode Mode
         {
             get { return mode; }
