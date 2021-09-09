@@ -94,8 +94,24 @@ namespace AutoDarkModeApp
             }
 
             //combobox
-            AppComboBox.SelectedIndex = (int)builder.Config.AppsSwitch.Component.Mode;
-            SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode; ;
+            if (builder.Config.AppsSwitch.Enabled)
+            {
+                AppComboBox.SelectedIndex = (int)builder.Config.AppsSwitch.Component.Mode;
+            }
+            else
+            {
+                AppComboBox.SelectedIndex = 3;
+            }
+
+            if (builder.Config.SystemSwitch.Enabled)
+            {
+                SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode; ;
+            }
+            else
+            {
+                SystemComboBox.SelectedIndex = 3;
+            }
+
             if (builder.Config.OfficeSwitch.Enabled)
             {
                 OfficeComboBox.SelectedIndex = (int)builder.Config.OfficeSwitch.Component.Mode;
