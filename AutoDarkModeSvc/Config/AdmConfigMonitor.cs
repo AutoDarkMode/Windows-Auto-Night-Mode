@@ -17,6 +17,8 @@ namespace AutoDarkModeSvc.Config
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IAutoDarkModeModule warden;
+        private DateTime lastTimeConfigChanged;
+        private DateTime lastTimeLocationConfigChanged;
 
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
@@ -41,6 +43,11 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
+            if (DateTime.Now.Subtract(lastTimeConfigChanged).TotalMilliseconds < 20)
+            {
+                return;
+            }
+            lastTimeConfigChanged = DateTime.Now;
             if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.ConfigFilePath)))
             {
                 try
@@ -82,6 +89,11 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
         {
+            if (DateTime.Now.Subtract(lastTimeLocationConfigChanged).TotalMilliseconds < 20)
+            {
+                return;
+            }
+            lastTimeLocationConfigChanged = DateTime.Now;
             if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.LocationDataPath)))
             {
                 try
