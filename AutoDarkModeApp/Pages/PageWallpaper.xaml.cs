@@ -40,15 +40,6 @@ namespace AutoDarkModeApp
         }
         private void UiHandler()
         {
-            //if auto dark mode wasn't configured
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                BGWinButton.IsEnabled = false;
-                ComboBoxLightTheme.IsEnabled = false;
-                ComboBoxDarkTheme.IsEnabled = false;
-                ButtonSaveTheme.IsEnabled = false;
-                ButtonDisableTheme.IsEnabled = false;
-            }
 
             //give numbers to the steps
             TextBlockStep1.Text = Properties.Resources.ThemeTutorialStep + " 1)";
@@ -65,7 +56,7 @@ namespace AutoDarkModeApp
             else
             {
                 ComboBoxModeSelection.SelectedIndex = 1;
-                if (builder.Config.AutoThemeSwitchingEnabled && builder.Config.WindowsThemeMode.Enabled && builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
+                if (builder.Config.WindowsThemeMode.Enabled && builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
                 {
                     var themeNames = GetThemeFiles();
                     ComboBoxDarkTheme.ItemsSource = themeNames;

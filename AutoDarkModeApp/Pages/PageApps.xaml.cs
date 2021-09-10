@@ -53,15 +53,6 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
-            //if automatic theme switch isn't enabled
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                AccentColorCheckBox.IsEnabled = false;
-                SystemComboBox.IsEnabled = false;
-                AppComboBox.IsEnabled = false;
-                OfficeComboBox.IsEnabled = false;
-                CheckBoxOfficeWhiteTheme.IsEnabled = false;
-            }
 
             //if a windows theme file was picked
             if (builder.Config.WindowsThemeMode.Enabled)

@@ -39,7 +39,12 @@ namespace AutoDarkModeApp.Pages
             InitializeComponent();
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
+                SetUIButtonsEnabled(true);
                 autoCheckBox.IsChecked = true;
+            }
+            else
+            {
+                SetUIButtonsEnabled(false);
             }
             if (builder.Config.Location.Enabled)
             {
@@ -348,10 +353,6 @@ namespace AutoDarkModeApp.Pages
             UpdateSuntimes();
 
             // ui controls
-            lightStartBox.IsEnabled = false;
-            LightStartMinutesBox.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
-            DarkStartMinutesBox.IsEnabled = false;
             userFeedback.Text = Properties.Resources.msgChangesSaved;
 
             return;
@@ -435,12 +436,7 @@ namespace AutoDarkModeApp.Pages
 
         private void DisableLocationMode()
         {
-            lightStartBox.IsEnabled = true;
-            LightStartMinutesBox.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
-            DarkStartMinutesBox.IsEnabled = true;
             applyButton.Visibility = Visibility.Visible;
-            applyButton.IsEnabled = true;
             locationBlock.Visibility = Visibility.Collapsed;
             StackPanelLocationTime.Visibility = Visibility.Collapsed;
             StackPanelTimePicker.Visibility = Visibility.Visible;
@@ -456,12 +452,11 @@ namespace AutoDarkModeApp.Pages
         private async void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             StackPanelRadioHolder.IsEnabled = true;
-            RadioButtonCustomTimes.IsChecked = true;
-            applyButton.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
-            DarkStartMinutesBox.IsEnabled = true;
-            lightStartBox.IsEnabled = true;
-            LightStartMinutesBox.IsEnabled = true;
+            RadioButtonCustomTimes.IsChecked = !builder.Config.Location.Enabled;
+            RadioButtonLocationTimes.IsChecked = builder.Config.Location.Enabled;
+            RadioButtonCustomTimes.IsEnabled = true;
+            RadioButtonLocationTimes.IsEnabled = true;
+            SetUIButtonsEnabled(true);
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             //this setting enables all the configuration possibilities of auto dark mode
             builder.Config.AutoThemeSwitchingEnabled = true;
@@ -513,14 +508,12 @@ namespace AutoDarkModeApp.Pages
             }
 
             //ui
+            RadioButtonCustomTimes.IsEnabled = true;
+            RadioButtonLocationTimes.IsEnabled = true;
             StackPanelRadioHolder.IsEnabled = false;
-            RadioButtonCustomTimes.IsChecked = true;
-            DisableLocationMode();
-            applyButton.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
-            DarkStartMinutesBox.IsEnabled = false;
-            lightStartBox.IsEnabled = false;
-            LightStartMinutesBox.IsEnabled = false;
+            SetUIButtonsEnabled(false);
+
+
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
 
@@ -578,6 +571,27 @@ namespace AutoDarkModeApp.Pages
             OffsetDarkDot.Visibility = value;
             OffsetLightDot.Visibility = value;
             OffsetButton.Visibility = value;
+        }
+
+        private void SetUIButtonsEnabled(bool value)
+        {
+            // custom times
+            applyButton.IsEnabled = value;
+            darkStartBox.IsEnabled = value;
+            DarkStartMinutesBox.IsEnabled = value;
+            lightStartBox.IsEnabled = value;
+            LightStartMinutesBox.IsEnabled = value;
+
+            // offset buttons
+            OffsetButton.IsEnabled = value;
+            OffsetLightBox.IsEnabled = value;
+            OffsetDarkBox.IsEnabled = value;
+            OffsetLightModeButton.IsEnabled = value;
+            OffsetDarkModeButton.IsEnabled = value;
+
+            // radio buttons
+            RadioButtonCustomTimes.IsEnabled = value;
+            RadioButtonLocationTimes.IsEnabled = value;
         }
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)

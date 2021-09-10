@@ -47,14 +47,6 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxLanguageSelection.SelectedValue = "en";
             }
 
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                CheckBoxColourFilter.IsEnabled = false;
-                CheckBoxBackgroundUpdater.IsEnabled = false;
-                CheckBoxBatteryDarkMode.IsEnabled = false;
-                CheckBoxEnergySaverMitigation.IsEnabled = false;
-            }
-
             if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
                 SetBatterySliderVisiblity(Visibility.Collapsed);
