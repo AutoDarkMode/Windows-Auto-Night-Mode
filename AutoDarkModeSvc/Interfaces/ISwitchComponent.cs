@@ -9,11 +9,14 @@ namespace AutoDarkModeSvc.Interfaces
         /// Returns if the module is enabled
         /// </summary>
         /// <returns>true if module is enabled; false otherwise</returns>
-        public bool Enabled();
+        public bool Enabled { get; }
         /// <summary>
-        /// Switches to the desired theme
+        /// Calling this method will trigger a theme switch if the component is enabled and initialized.<br></br>
+        /// The Init hook is called if the component has not been initialized yet.<br></br>
+        /// If the component is disabled, and still initialized, the deinit hook will be called.<br></br>
+        /// If the component is disabled and properly deinitialized, nothing will happen.
         /// </summary>
-        /// <param name="newTheme">the new theme that should be set</param>
+        /// <param name="newTheme"></param>
         public void Switch(Theme newTheme);
 
         /// <summary>
@@ -41,10 +44,19 @@ namespace AutoDarkModeSvc.Interfaces
         /// </summary>
         public void EnableHook();
         /// <summary>
+        /// Deinitializes the module and restores the original state
+        /// </summary>
+        /// <returns></returns>
+        public void DisableHook();
+        /// <summary>
         /// Determines if the module can be run with the windows theme switcher
         /// </summary>
         /// <returns></returns>
         public bool ThemeHandlerCompatibility { get; }
+        /// <summary>
+        /// Check if the component has been properly initialized. Can be used to trigger hooks on disable/enable
+        /// </summary>
+        public bool Initialized { get; }
 
     }
 }

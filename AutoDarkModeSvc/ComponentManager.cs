@@ -62,7 +62,8 @@ namespace AutoDarkModeSvc
             bool shouldUpdate = false;
             foreach (ISwitchComponent c in Components)
             {
-                if (c.Enabled() && c.ThemeHandlerCompatibility && Builder.Config.WindowsThemeMode.Enabled)
+                // require update if theme mode is enabled, the module is enabled and compatible with theme mode
+                if (c.Enabled && c.ThemeHandlerCompatibility && Builder.Config.WindowsThemeMode.Enabled)
                 {
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
@@ -70,14 +71,20 @@ namespace AutoDarkModeSvc
                         break;
                     }
                 }
-                else if (c.Enabled() && !Builder.Config.WindowsThemeMode.Enabled)
+                // require update if module is enabled and theme mode is disabled (previously known as classic mode)
+                else if (c.Enabled && !Builder.Config.WindowsThemeMode.Enabled)
                 {
-                    c.Switch(newTheme);
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
                         shouldUpdate = true;
                         break;
                     }
+                }
+                // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
+                else if (!c.Enabled && c.Initialized)
+                {
+                    shouldUpdate = true;
+                    break;
                 }
             }
             return shouldUpdate;

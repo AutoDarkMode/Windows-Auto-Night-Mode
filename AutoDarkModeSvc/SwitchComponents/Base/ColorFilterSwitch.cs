@@ -33,7 +33,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             base.EnableHook();
         }
-        protected override void DisableHook()
+        public override void DisableHook()
         {
             if (!Settings.Enabled && currentColorFilterActive)
             {

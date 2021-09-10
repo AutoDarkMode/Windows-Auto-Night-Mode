@@ -9,20 +9,20 @@ namespace AutoDarkModeSvc.SwitchComponents
     {
         protected NLog.Logger Logger { get; private set; }
         protected ISwitchComponentSettings<T> Settings { get; set; }
-        protected bool Initialized { get; set; }
+        public bool Initialized { get; private set; }
         public BaseComponent()
         {
             Logger = NLog.LogManager.GetLogger(GetType().ToString());
         }
         public virtual int PriorityToLight { get; set; }
         public virtual int PriorityToDark { get; set; }
-        public bool Enabled()
+        public bool Enabled
         {
-            return Settings.Enabled;
+            get { return Settings.Enabled; }
         }
         public void Switch(Theme newTheme)
         {
-            if (Enabled())
+            if (Enabled)
             {
                 if (!Initialized)
                 {
@@ -53,7 +53,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         {
             Initialized = true;
         }
-        protected virtual void DisableHook()
+        public virtual void DisableHook()
         {
             Initialized = false;
         }

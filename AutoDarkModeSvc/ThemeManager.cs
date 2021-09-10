@@ -76,12 +76,21 @@ namespace AutoDarkModeSvc
                 {
                     PowerHandler.DisableEnergySaver(config);
                 }
+                //run the components
                 cm.Run(newTheme);
             }
 
             // disable mitigation after all components and theme switch have been executed
             if (componentsNeedUpdate || themeModeSwitched)
             {
+                if (newTheme == Theme.Light && automatic)
+                {
+                    Logger.Info($"automatic light theme switch performed, sunrise: {sunrise.ToString("HH:mm:ss")}");
+                }
+                else if (newTheme == Theme.Dark && automatic)
+                {
+                    Logger.Info($"automatic dark theme switch performed, sunset: {sunset.ToString("HH:mm:ss")}");
+                }
                 PowerHandler.RestoreEnergySaver(config);
             }
 
