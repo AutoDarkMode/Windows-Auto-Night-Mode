@@ -23,6 +23,7 @@ namespace AutoDarkModeSvc.Config
         {
             CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
             CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
+            BlueLightSwitchingEnabled = RegistryHandler.IsNightLightEnabled();
             CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
             CurrentWallpaperTheme = Theme.Undefined;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
@@ -37,6 +38,7 @@ namespace AutoDarkModeSvc.Config
         public Theme CurrentWallpaperTheme { get; set; }
         public Theme CurrentOfficeTheme { get; set; }
         public bool ColorFilterEnabled { get; set; }
+        public bool BlueLightSwitchingEnabled { get; set; }
         public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }

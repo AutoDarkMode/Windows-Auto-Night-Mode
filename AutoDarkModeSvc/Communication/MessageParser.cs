@@ -27,7 +27,10 @@ namespace AutoDarkModeSvc.Communication
                 {
                     case Command.Switch:
                         Logger.Info("signal received: time based theme switch");
-                        ThemeManager.TimedSwitch(builder);
+                        if(builder.BlueLightSwitchingEnabled)
+                            ThemeManager.BlueLightSwitch(builder);
+                        else
+                            ThemeManager.TimedSwitch(builder);
                         SendResponse(Response.Ok);
                         break;
 
@@ -158,7 +161,10 @@ namespace AutoDarkModeSvc.Communication
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
                         state.ForcedTheme = Theme.Undefined;
-                        ThemeManager.TimedSwitch(builder);
+                        if(builder.BlueLightSwitchingEnabled)
+                            ThemeManager.BlueLightSwitch(builder);
+                        else
+                            ThemeManager.TimedSwitch(builder);
                         SendResponse(Response.Ok);
                         break;
 

@@ -25,7 +25,10 @@ namespace AutoDarkModeSvc.Handlers
             }
             else
             {
-                ThemeManager.TimedSwitch(builder);
+                if(builder.BlueLightSwitchingEnabled)
+                    ThemeManager.BlueLightSwitch(builder);
+                else
+                    ThemeManager.TimedSwitch(builder);
             }
         }
 
@@ -34,7 +37,11 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
-                ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+                if(builder.BlueLightSwitchingEnabled)
+                    ThemeManager.BlueLightSwitch(builder);
+                else
+                    ThemeManager.TimedSwitch(builder);
             }
             catch (InvalidOperationException ex)
             {
@@ -52,7 +59,11 @@ namespace AutoDarkModeSvc.Handlers
             if (e.Mode == PowerModes.Resume)
             {
                 Logger.Info("system resuming from suspended state, refreshing theme");
-                ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+                if(builder.BlueLightSwitchingEnabled)
+                    ThemeManager.BlueLightSwitch(builder);
+                else
+                    ThemeManager.TimedSwitch(builder);
             }
         }
 
