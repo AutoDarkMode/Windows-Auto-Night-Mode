@@ -226,6 +226,21 @@ namespace AutoDarkModeApp
             var keyValue = GetPersonalizeKey().GetValue("SystemUsesLightTheme");
             return ((int)keyValue == 1) ? true : false;
         }
+
+        //get if the nightlight is enabled
+        public bool IsNightLightEnabled()
+        {
+            const string BlueLightReductionStateKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate";
+            using (var key = Registry.CurrentUser.OpenSubKey(BlueLightReductionStateKey))
+            {
+                var data = key?.GetValue("Data");
+                if (data is null)
+                    return false;
+                var byteData = (byte[])data;
+                return byteData.Length > 24 && byteData[23] == 0x10 && byteData[24] == 0x00;
+            }
+        }
+
         //get windows version number, like 1607 or 1903
         public string GetOSversion()
         {

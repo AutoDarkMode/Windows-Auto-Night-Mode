@@ -8,8 +8,7 @@ namespace AutoDarkModeSvc
     {
         Switch = 0,
         LightOnly = 1,
-        DarkOnly = 2,
-        BlueLight = 3
+        DarkOnly = 2
     };
     public enum Theme
     {
