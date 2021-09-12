@@ -84,7 +84,7 @@ namespace AutoDarkModeSvc.Communication
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, $"message parser exception in {ex.Source}");
+                    Logger.Error(ex, $"exception while processing command {msg}");
                     var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), Response.Err);
                     if (!sent)
                     {

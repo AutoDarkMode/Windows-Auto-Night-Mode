@@ -15,6 +15,7 @@ namespace AutoDarkModeSvc.Config
         private FileSystemWatcher LocationDataWatcher { get; }
         private readonly ComponentManager componentManager = ComponentManager.Instance();
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private readonly GlobalState state = GlobalState.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IAutoDarkModeModule warden;
         private DateTime lastTimeConfigChanged;
@@ -45,6 +46,12 @@ namespace AutoDarkModeSvc.Config
         {
             if (DateTime.Now.Subtract(lastTimeConfigChanged).TotalMilliseconds < 20)
             {
+                return;
+            }
+            if (state.SkipConfigFileReload)
+            {
+                state.SkipConfigFileReload = false;
+                Logger.Debug("skipping config file reload, update source internal");
                 return;
             }
             lastTimeConfigChanged = DateTime.Now;

@@ -119,7 +119,7 @@ namespace AutoDarkModeSvc
             }
             if (!File.Exists(config.WindowsThemeMode.LightThemePath))
             {
-                Logger.Error($"invalid light theme path : {config.WindowsThemeMode.LightThemePath}");
+                Logger.Error($"invalid light theme path: {config.WindowsThemeMode.LightThemePath}");
                 return false;
             }
             if (!config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !config.WindowsThemeMode.DarkThemePath.EndsWith(".theme"))

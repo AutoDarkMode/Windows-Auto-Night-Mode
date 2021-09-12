@@ -49,6 +49,11 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+        /// <summary>
+        /// Setting this value to true will skip the next config reload event when it has been saved
+        /// The setting will return to false after the first save
+        /// </summary>
+        public bool SkipConfigFileReload { get; set; }
         public string CurrentWallpaperPath { get; set; }
 
         public void SetWarden(WardenModule warden)

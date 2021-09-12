@@ -4,6 +4,7 @@ using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AutoDarkModeSvc
@@ -89,6 +90,7 @@ namespace AutoDarkModeSvc
             }
             return shouldUpdate;
         }
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public void Run(Theme newTheme)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)

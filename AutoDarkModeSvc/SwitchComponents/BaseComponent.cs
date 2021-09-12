@@ -26,7 +26,14 @@ namespace AutoDarkModeSvc.SwitchComponents
             {
                 if (!Initialized)
                 {
-                    EnableHook();
+                    try
+                    {
+                        EnableHook();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, $"error while running enable hook");
+                    }
                 }
                 if (ComponentNeedsUpdate(newTheme))
                 {
@@ -35,7 +42,14 @@ namespace AutoDarkModeSvc.SwitchComponents
             }
             else if (Initialized)
             {
-                DisableHook();
+                try
+                {
+                    DisableHook();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"error while running disable hook");
+                }
             }
         }
         public void UpdateSettingsState(object newSettings)

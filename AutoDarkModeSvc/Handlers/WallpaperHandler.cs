@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using System.Linq;
 using AutoDarkModeConfig.ComponentSettings.Base;
 using AutoDarkModeConfig;
+using System.IO;
+using AutoDarkModeSvc.Config;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -11,35 +13,89 @@ namespace AutoDarkModeSvc.Handlers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public static bool SetWallpapers(List<MonitorSettings> monitorSettings, bool oneForAll)
+        public static void SetWallpapers(List<MonitorSettings> monitorSettings, WallpaperPosition position, Theme newTheme)
         {
-            IDesktopWallpaper handler = (IDesktopWallpaper)(new DesktopWallpaperClass());
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            handler.SetPosition(position);
             for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
             {
                 string monitorId = handler.GetMonitorDevicePathAt(i);
                 MonitorSettings monitorSetting = monitorSettings.Find(s => s.Id == monitorId);
-                if (oneForAll)
+                if (monitorSetting != null)
                 {
-
+                    if (newTheme == Theme.Dark)
+                    {
+                        if (!File.Exists(monitorSetting.DarkThemeWallpaper))
+                        {
+                            Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitorId}");
+                        }
+                        handler.SetWallpaper(monitorId, monitorSetting.DarkThemeWallpaper);
+                    }
+                    else
+                    {
+                        if (!File.Exists(monitorSetting.LightThemeWallpaper))
+                        {
+                            Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitorId}");
+                        }
+                        handler.SetWallpaper(monitorId, monitorSetting.LightThemeWallpaper);
+                    }
                 }
                 else
                 {
-
+                    Logger.Warn($"no wallpaper config found for monitor {monitorId}, adding missing monitors");
+                    DetectMonitors();
                 }
             }
-            return false;
         }
 
-        public static bool GetWallpapers()
+        public static List<Tuple<string, string>> GetWallpapers()
         {
-            IDesktopWallpaper handler = (IDesktopWallpaper)(new DesktopWallpaperClass());
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            List<Tuple<string, string>> wallpapers = new();
             for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
             {
-                string monitorId = handler.GetMonitorDevicePathAt(i);
-                string wallpaperPath = handler.GetWallpaper(monitorId);
-
+                string id = handler.GetMonitorDevicePathAt(i);
+                string wallpaper = handler.GetWallpaper(id);
+                wallpapers.Add(new Tuple<string, string>(id, wallpaper));
             }
-            return false;
+            return wallpapers;
+        }
+        /// <summary>
+        /// Adds missing monitors to the configuration file
+        /// If a monitor configuration is not found,
+        /// it will automatically create a configuration with the respective monitor's current wallpaper
+        /// </summary>
+        public static void DetectMonitors()
+        {
+            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            List<string> monitorIds = new();
+            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
+            {
+                monitorIds.Add(handler.GetMonitorDevicePathAt(i));
+            }
+            bool needsUpdate = false;
+            foreach (string monitorId in monitorIds)
+            {
+                MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitorId);
+                if (settings == null)
+                {
+                    Logger.Info($"missing monitor found, adding new default config for: {monitorId}");
+                    builder.Config.WallpaperSwitch.Component.Monitors.Add(new MonitorSettings()
+                    {
+                        DarkThemeWallpaper = handler.GetWallpaper(monitorId),
+                        LightThemeWallpaper = handler.GetWallpaper(monitorId),
+                        Id = monitorId
+                    });
+                    needsUpdate = true;
+                }
+            }
+            if (needsUpdate)
+            {
+                GlobalState state = GlobalState.Instance();
+                state.SkipConfigFileReload = true;
+                builder.Save();
+            }
         }
 
 

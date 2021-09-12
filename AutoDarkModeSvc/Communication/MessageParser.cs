@@ -176,6 +176,12 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(Response.Ok);
                         break;
 
+                    case Command.DetectMonitors:
+                        Logger.Info("signal received: detecting new monitors");
+                        WallpaperHandler.DetectMonitors();
+                        SendResponse(Response.Ok);
+                        break;
+
                     default:
                         Logger.Debug("unknown message received");
                         SendResponse(Response.Err);

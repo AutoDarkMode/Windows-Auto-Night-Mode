@@ -28,6 +28,7 @@ namespace AutoDarkModeSvc.Communication
         public const string Shutdown = "/exit";
         public const string TestError = "/testError";
         public const string Alive = "/alive";
+        public const string DetectMonitors = "/detectMonitors";
     }
 
     class Response
