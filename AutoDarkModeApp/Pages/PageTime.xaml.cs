@@ -37,9 +37,19 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex);
             }
             InitializeComponent();
-            if (builder.Config.AutoThemeSwitchingEnabled)
+            //eventually set these based on StackPanelRadioHolder
+            if (builder.Config.TimeSwitchingEnabled)
             {
+                DisableLocationMode();
+                builder.Config.BlueLightSwitchingEnabled = false;
                 autoCheckBox.IsChecked = true;
+            }
+            if (builder.Config.BlueLightSwitchingEnabled)
+            {
+                DisableLocationMode();
+                builder.Config.TimeSwitchingEnabled = false;
+                autoCheckBox.IsChecked = true;
+                RadioButtonBluelight.IsChecked = true;
             }
             if (builder.Config.Location.Enabled)
             {
@@ -479,6 +489,8 @@ namespace AutoDarkModeApp.Pages
             if (e != null && !init)
             {
                 builder.Config.AutoThemeSwitchingEnabled = false;
+                builder.Config.TimeSwitchingEnabled = false;
+                builder.Config.BlueLightSwitchingEnabled = false;
                 try
                 {
                     builder.Save();
@@ -575,6 +587,11 @@ namespace AutoDarkModeApp.Pages
         {
             builder.Config.Location.Enabled = true;
             ApplyTheme();
+        }
+
+        private void RadioButtonBluelight_Click(object sender, RoutedEventArgs e)
+        {
+            DisableLocationMode();
         }
 
         //textbox event handlers

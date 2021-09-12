@@ -16,18 +16,18 @@ namespace AutoDarkModeSvc
         public static void BlueLightSwitch(AdmConfigBuilder builder)
         {
             GlobalState state = GlobalState.Instance();
-            if (state.ForcedTheme == Theme.Dark) 
+            if (state.ForcedTheme == Theme.Dark)
             {
                 SwitchTheme(builder.Config, Theme.Dark);
                 return;
-            } 
-            else if (state.ForcedTheme == Theme.Light) 
+            }
+            else if (state.ForcedTheme == Theme.Light)
             {
                 SwitchTheme(builder.Config, Theme.Light);
                 return;
             }
 
-            if (builder.Config.BlueLightSwitchingEnabled)
+            if (!state.CurrentBluelight && builder.Config.SystemTheme == Mode.Bluelight)
             {
                 // ensure that the theme doesn't switch to light mode if the battery is discharging
                 if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.Discharging)
@@ -39,7 +39,7 @@ namespace AutoDarkModeSvc
                     SwitchTheme(builder.Config, Theme.Light, true);
                 }
             }
-            else
+            else if (state.CurrentBluelight && builder.Config.SystemTheme == Mode.Bluelight)
             {
                 SwitchTheme(builder.Config, Theme.Dark, true);
             }
@@ -48,12 +48,12 @@ namespace AutoDarkModeSvc
         public static void TimedSwitch(AdmConfigBuilder builder)
         {
             GlobalState state = GlobalState.Instance();
-            if (state.ForcedTheme == Theme.Dark) 
+            if (state.ForcedTheme == Theme.Dark)
             {
                 SwitchTheme(builder.Config, Theme.Dark);
                 return;
-            } 
-            else if (state.ForcedTheme == Theme.Light) 
+            }
+            else if (state.ForcedTheme == Theme.Light)
             {
                 SwitchTheme(builder.Config, Theme.Light);
                 return;
@@ -404,6 +404,13 @@ namespace AutoDarkModeSvc
                     return true;
                 }
             }
+            else if (config.SystemTheme == Mode.Bluelight)
+            {
+                if ((!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence) || config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence))
+                {
+                    return true;
+                }
+            }
             else if (config.SystemTheme == Mode.DarkOnly)
             {
                 if ((!config.AccentColorTaskbarEnabled && state.CurrentColorPrevalence) || (config.AccentColorTaskbarEnabled && !state.CurrentColorPrevalence))
@@ -445,8 +452,9 @@ namespace AutoDarkModeSvc
         {
             if ((componentMode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
                 || (componentMode == Mode.LightOnly && currentComponentTheme != Theme.Light)
-                || (componentMode == Mode.Switch && currentComponentTheme != newTheme)
-              )
+                || ((componentMode == Mode.Switch || componentMode == Mode.Bluelight) &&
+                    currentComponentTheme != newTheme)
+            )
             {
                 return true;
             }

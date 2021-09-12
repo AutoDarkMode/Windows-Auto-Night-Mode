@@ -25,7 +25,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             else
             {
-                if(builder.BlueLightSwitchingEnabled)
+                if(builder.Config.BlueLightSwitchingEnabled)
                     ThemeManager.BlueLightSwitch(builder);
                 else
                     ThemeManager.TimedSwitch(builder);
@@ -38,7 +38,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
                 AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-                if(builder.BlueLightSwitchingEnabled)
+                if(builder.Config.BlueLightSwitchingEnabled)
                     ThemeManager.BlueLightSwitch(builder);
                 else
                     ThemeManager.TimedSwitch(builder);
@@ -60,7 +60,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Info("system resuming from suspended state, refreshing theme");
                 AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-                if(builder.BlueLightSwitchingEnabled)
+                if(builder.Config.BlueLightSwitchingEnabled)
                     ThemeManager.BlueLightSwitch(builder);
                 else
                     ThemeManager.TimedSwitch(builder);

@@ -132,6 +132,9 @@
   <data name="cmbAlwWhite" xml:space="preserve">
     <value>Always light</value>
   </data>
+  <data name="cmbAlwBluelight" xml:space="preserve">
+    <value>Follow night light</value>
+  </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Enable features for Windows 1903</value>
   </data>
@@ -423,6 +426,9 @@ You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>From sunset to sunrise</value>
+  </data>
+  <data name="rbBluelight" xml:space="preserve">
+    <value>Detect blue light filter</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Step</value>

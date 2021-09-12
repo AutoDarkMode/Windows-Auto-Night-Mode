@@ -40,6 +40,7 @@
         <StackPanel Name="StackPanelRadioHolder"  Grid.Row="3" Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto" Height="Auto">
             <RadioButton Name="RadioButtonCustomTimes"  Content="{x:Static p:Resources.rbCustomHours}" IsChecked="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonCustomTimes_Click"/>
             <RadioButton Name="RadioButtonLocationTimes" Content="{x:Static p:Resources.rbLocation}" IsChecked="False" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonLocationTimes_Click"/>
+            <RadioButton Name="RadioButtonBluelight" Content="{x:Static p:Resources.rbBluelight}" IsChecked="False" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonBluelight_Click"/>
         </StackPanel>
         
         <!-- Time selection -->

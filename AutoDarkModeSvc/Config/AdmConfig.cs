@@ -18,10 +18,11 @@ namespace AutoDarkModeSvc.Config
         private Mode appsTheme;
         private Mode systemTheme;
 
-        public bool AutoThemeSwitchingEnabled { get; set; }
+        public bool AutoThemeSwitchingEnabled { get; set; } = true;
         public bool ClassicMode { get; set; } = true;
         public bool ColorFilterEnabled { get; set; } = false;
-        public bool BlueLightSwitchingEnabled { get; set; }
+        public bool BlueLightSwitchingEnabled { get; set; } = false;
+        public bool TimeSwitchingEnabled { get; set; } = false;
         public bool AccentColorTaskbarEnabled { get; set; }
         public string DarkThemePath { get; set; }
         public string LightThemePath { get; set; }
@@ -32,7 +33,7 @@ namespace AutoDarkModeSvc.Config
             get { return appsTheme; }
             set
             {
-                if (value >= 0 && (int)value <= 2)
+                if (value >= 0 && (int)value <= 3)
                 {
                     appsTheme = value;
                 }
@@ -48,14 +49,14 @@ namespace AutoDarkModeSvc.Config
             get { return systemTheme; }
             set
             {
-                if (value >= 0 && (int)value <= 2)
+                if (value >= 0 && (int)value <= 3)
                 {
                     systemTheme = value;
                 }
                 else
                 {
                     // DEFAULT
-                    systemTheme = 0;
+                    systemTheme = Mode.Switch;
                 }
             }
         }

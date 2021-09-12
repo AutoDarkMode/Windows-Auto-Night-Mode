@@ -244,6 +244,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Follow night light.
+        /// </summary>
+        public static string cmbAlwBluelight {
+            get {
+                return ResourceManager.GetString("cmbAlwBluelight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always dark.
         /// </summary>
         public static string cmbAlwDark {
@@ -911,6 +920,15 @@ namespace AutoDarkModeApp.Properties {
         public static string or {
             get {
                 return ResourceManager.GetString("or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detect blue light filter.
+        /// </summary>
+        public static string rbBluelight {
+            get {
+                return ResourceManager.GetString("rbBluelight", resourceCulture);
             }
         }
         

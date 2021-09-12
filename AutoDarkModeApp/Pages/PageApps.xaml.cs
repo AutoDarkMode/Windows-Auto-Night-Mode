@@ -103,7 +103,7 @@ namespace AutoDarkModeApp
             }
             else
             {
-                OfficeComboBox.SelectedIndex = 3;
+                OfficeComboBox.SelectedIndex = 4;
             }
 
 
@@ -129,6 +129,11 @@ namespace AutoDarkModeApp
             if (AppComboBox.SelectedIndex.Equals(2))
             {
                 builder.Config.AppsTheme = Mode.DarkOnly;
+            }
+
+            if (AppComboBox.SelectedIndex.Equals(3))
+            {
+                builder.Config.AppsTheme = Mode.Bluelight;
             }
             try
             {
@@ -160,6 +165,12 @@ namespace AutoDarkModeApp
                 builder.Config.SystemTheme = Mode.DarkOnly;
                 Properties.Settings.Default.SystemThemeChange = 2;
                 AccentColorCheckBox.IsEnabled = true;
+            }
+
+            if (SystemComboBox.SelectedIndex.Equals(3))
+            {
+                builder.Config.SystemTheme = Mode.Bluelight;
+                AccentColorCheckBox.IsEnabled = false;
             }
             try
             {
@@ -213,6 +224,11 @@ namespace AutoDarkModeApp
 
             if (OfficeComboBox.SelectedIndex.Equals(3))
             {
+                builder.Config.Office.Mode = Mode.Bluelight;
+            }
+
+            if (OfficeComboBox.SelectedIndex.Equals(4))
+            {
                 builder.Config.Office.Enabled = false;
             }
             try
@@ -228,8 +244,8 @@ namespace AutoDarkModeApp
         private void DisableOfficeSwitch()
         {
             //does nothing for now
-            Properties.Settings.Default.OfficeThemeChange = 3;
-            OfficeComboBox.SelectedIndex = 3;
+            Properties.Settings.Default.OfficeThemeChange = 4;
+            OfficeComboBox.SelectedIndex = 4;
         }
 
         private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)

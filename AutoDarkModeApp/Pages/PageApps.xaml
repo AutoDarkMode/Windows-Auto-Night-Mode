@@ -30,6 +30,7 @@
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwBluelight}"/>
         </ComboBox>
 
         <!-- System -->
@@ -39,6 +40,7 @@
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwBluelight}"/>
         </ComboBox>
         <CheckBox x:Name="AccentColorCheckBox" Content="{x:Static p:Resources.cmbAccentColor}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="49,179,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"  Click="AccentColorCheckBox_Click" ToolTipService.ShowOnDisabled="true" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" Height="Auto" Width="Auto"/>
 
@@ -49,6 +51,7 @@
             <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
             <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+            <ComboBoxItem Content="{x:Static p:Resources.cmbAlwBluelight}"/>
             <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
         </ComboBox>
         <CheckBox Content="{x:Static p:Resources.cbOfficeWhiteTheme}" x:Name="CheckBoxOfficeWhiteTheme" Grid.Column="1" Grid.Row="1"  Margin="49,266,0,0" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxOfficeWhiteTheme_Click"/>

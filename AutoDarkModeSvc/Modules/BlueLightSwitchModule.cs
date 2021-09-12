@@ -3,6 +3,7 @@ using AutoDarkModeSvc.Config;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Timers;
 using System.Diagnostics.CodeAnalysis;
+using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -25,6 +26,7 @@ namespace AutoDarkModeSvc.Modules
         {
             Task.Run(() =>
             {
+                GlobalState.Instance().CurrentBluelight = RegistryHandler.GetBluelightEnabled();
                 ThemeManager.BlueLightSwitch(ConfigBuilder);
             });
         }
