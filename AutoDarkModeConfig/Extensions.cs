@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -96,6 +97,21 @@ namespace AutoDarkModeConfig
             }
 
             return false;
+        }
+
+        public static string CommitHash()
+        {
+            try
+            {
+                System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                string productVersion = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+                string commitHash = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion.Substring(productVersion.LastIndexOf("-") + 1);
+                return commitHash;
+            }
+            catch
+            {
+                return "";
+            }
         }
 
         /// <summary>

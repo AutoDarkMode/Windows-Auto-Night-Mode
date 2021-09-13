@@ -9,6 +9,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace AutoDarkModeSvc
 {
@@ -93,6 +94,15 @@ namespace AutoDarkModeSvc
 
             try
             {
+                string commitHash = Extensions.CommitHash();
+                if (commitHash != "")
+                {
+                    Logger.Info($"commit hash: {commitHash}");
+                }
+                else
+                {
+                    Logger.Error("could not retrieve commit hash");
+                }
                 //Instantiate Runtime config
                 GlobalState.Instance();
 

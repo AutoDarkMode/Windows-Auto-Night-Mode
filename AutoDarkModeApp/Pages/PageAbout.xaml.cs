@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using AutoDarkModeConfig;
+using AdmExtensions = AutoDarkModeConfig.Extensions;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -21,7 +23,16 @@ namespace AutoDarkModeApp.Pages
         public PageAbout()
         {
             InitializeComponent();
-            TextBoxVersionNumber.Text = "Beta 5 - Backend";
+            TextBoxVersionNumber.Text = "Beta 5";
+            string commitHash = AdmExtensions.CommitHash();
+            if (commitHash != "")
+            {
+                TextBoxVersionNumber.Text += $" - Backend-{commitHash}";
+            }
+            else
+            {
+                TextBoxVersionNumber.Text += " - Backend";
+            }
             SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
             SystemTheme_ThemeChanged(this, null);
         }
