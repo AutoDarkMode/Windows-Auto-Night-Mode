@@ -82,10 +82,10 @@ namespace AutoDarkModeSvc.Config
                 // if the theme mode is toggled to off, we need to reinitialize all components
                 if (themeModeToggled && !builder.Config.WindowsThemeMode.Enabled)
                 {
-                    ComponentManager cm = ComponentManager.Instance();
-                    cm.InvokeDisableHooks();
-                }
+                    componentManager.InvokeDisableHooks();
+                }      
 
+                // fire warden ro register/unregister enabled/disabled modules
                 if (warden != null)
                 {
                     warden.Fire();

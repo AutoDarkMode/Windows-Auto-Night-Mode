@@ -37,7 +37,10 @@ namespace AutoDarkModeSvc.SwitchComponents
                         Logger.Error(ex, $"error while running enable hook");
                     }
                 }
-                HandleSwitch(newTheme);
+                if (ComponentNeedsUpdate(newTheme))
+                {
+                    HandleSwitch(newTheme);
+                }
             }
             else if (Initialized)
             {
@@ -52,7 +55,7 @@ namespace AutoDarkModeSvc.SwitchComponents
             }
         }
 
-        public void UpdateSettingsState(object newSettings)
+        public virtual void UpdateSettingsState(object newSettings)
         {
             if (newSettings is ISwitchComponentSettings<T> temp)
             {

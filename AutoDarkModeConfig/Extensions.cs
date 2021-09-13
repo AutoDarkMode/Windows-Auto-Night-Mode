@@ -99,7 +99,7 @@ namespace AutoDarkModeConfig
         }
 
         /// <summary>
-        /// checks whether a time is within a grace period (within x minutes before a DateTime)
+        /// checks whether a time is within a grace period (within x minutes around a DateTime)
         /// </summary>
         /// <param name="time">time to be checked</param>
         /// <param name="grace">the grace period</param>

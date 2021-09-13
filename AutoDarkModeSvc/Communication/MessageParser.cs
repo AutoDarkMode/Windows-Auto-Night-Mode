@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.Communication
                 switch (message)
                 {
                     case Command.Switch:
-                        Logger.Info("signal received: force theme switch");
+                        Logger.Info("signal received: invoke theme switch");
                         int retries = 3;
                         for (int i = 0; i < retries; i++)
                         {
@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc.Communication
                                 break;
                             }
                         }
-                        cm.ForceAll();
+                        //cm.ForceAll();
                         ThemeManager.TimedSwitch(builder, false);
                         SendResponse(Response.Ok);
                         break;

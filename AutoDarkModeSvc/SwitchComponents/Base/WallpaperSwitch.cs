@@ -57,9 +57,27 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             Logger.Info($"update info - previous: {oldTheme}, current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }
 
+        /// <summary>
+        /// This module needs its componentstate fetched from the win32 api to correctly function after a settings update
+        /// </summary>
+        /// <param name="newSettings"></param>
+        public override void UpdateSettingsState(object newSettings)
+        {
+            base.UpdateSettingsState(newSettings);
+            // rerun enable hook for wallpaper switch when cfg is updated
+            // necessary to hot-reload wallpapers
+            UpdateCurrentComponentState();
+        }
+
         public override void EnableHook()
         {
             WallpaperHandler.DetectMonitors();
+            UpdateCurrentComponentState();
+            base.EnableHook();
+        }
+
+        private void UpdateCurrentComponentState()
+        {
             List<Tuple<string, string>> wallpapers = WallpaperHandler.GetWallpapers();
             List<Theme> wallpaperStates = new();
             // collect the wallpaper states of all wallpapers in the system
@@ -92,7 +110,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             if (wallpaperStates.TrueForAll(c => c == Theme.Dark))
             {
                 currentComponentTheme = Theme.Dark;
-            } 
+            }
             else if (wallpaperStates.TrueForAll(c => c == Theme.Light))
             {
                 currentComponentTheme = Theme.Light;
@@ -101,7 +119,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 currentComponentTheme = Theme.Undefined;
             }
-            base.EnableHook();
         }
 
 
