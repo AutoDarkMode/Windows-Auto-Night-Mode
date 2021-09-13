@@ -71,38 +71,6 @@ namespace AutoDarkModeConfig
             throw new TimeoutException($"Saving to {path} failed after 10 retries");
         }
 
-        private string ReadWithRetry(string path)
-        {
-            string data = null;
-            for (int i = 0; i < 3; i++)
-            {
-                if (IsFileLocked(new FileInfo(path)))
-                {
-                    Thread.Sleep(100);
-                    continue;
-                }
-                using FileStream stream = File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
-                using StreamReader configReader = new StreamReader(stream);
-                data = configReader.ReadToEnd();
-                var yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
-                string yamlConfig = yamlSerializer.Serialize(Config);
-                if (yamlConfig.Equals(data))
-                {
-                    Thread.Sleep(100);
-                    continue;
-                }
-                else
-                {
-                    return data;
-                }
-            }
-            if (data == null)
-            {
-                throw new Exception($"cannot access file {path}");
-            }
-            return data;
-        }
-
         public void LoadLocationData()
         {
             Loading = true;
