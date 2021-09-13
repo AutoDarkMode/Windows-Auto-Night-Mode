@@ -16,12 +16,14 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public virtual int PriorityToLight { get; }
         public virtual int PriorityToDark { get; }
+        public bool ForceSwitch { get; set; }
         public bool Enabled
         {
             get { return Settings.Enabled; }
         }
         public void Switch(Theme newTheme)
         {
+            ForceSwitch = false;
             if (Enabled)
             {
                 if (!Initialized)
@@ -35,10 +37,7 @@ namespace AutoDarkModeSvc.SwitchComponents
                         Logger.Error(ex, $"error while running enable hook");
                     }
                 }
-                if (ComponentNeedsUpdate(newTheme))
-                {
-                    HandleSwitch(newTheme);
-                }
+                HandleSwitch(newTheme);
             }
             else if (Initialized)
             {
@@ -52,6 +51,7 @@ namespace AutoDarkModeSvc.SwitchComponents
                 }
             }
         }
+
         public void UpdateSettingsState(object newSettings)
         {
             if (newSettings is ISwitchComponentSettings<T> temp)
@@ -75,6 +75,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// True when the component should be compatible with the ThemeHandler switching mode
         /// </summary>
         public abstract bool ThemeHandlerCompatibility { get; }
+
         /// <summary>
         /// Entrypoint, called when a component needs to be updated
         /// </summary>

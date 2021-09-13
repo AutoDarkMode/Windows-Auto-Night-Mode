@@ -98,6 +98,19 @@ namespace AutoDarkModeConfig
             return false;
         }
 
+        /// <summary>
+        /// checks whether a time is within a grace period (within x minutes before a DateTime)
+        /// </summary>
+        /// <param name="time">time to be checked</param>
+        /// <param name="grace">the grace period</param>
+        /// <returns>true if it's within the span; false otherwise</returns>
+        public static bool SuntimeIsWithinSpan(DateTime time, int grace)
+        {
+            return NowIsBetweenTimes(
+                time.AddMinutes(-Math.Abs(grace)).TimeOfDay,
+                time.AddMinutes(Math.Abs(grace)).TimeOfDay);
+        }
+
         private static string GetExecutionPath()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;

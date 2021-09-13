@@ -23,12 +23,13 @@ namespace AutoDarkModeSvc.Communication
 
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             GlobalState state = GlobalState.Instance();
+            ComponentManager cm = ComponentManager.Instance();
             msg.ForEach(message =>
             {
                 switch (message)
                 {
                     case Command.Switch:
-                        Logger.Info("signal received: time based theme switch");
+                        Logger.Info("signal received: force theme switch");
                         int retries = 3;
                         for (int i = 0; i < retries; i++)
                         {
@@ -41,7 +42,8 @@ namespace AutoDarkModeSvc.Communication
                                 break;
                             }
                         }
-                        ThemeManager.TimedSwitch(builder);
+                        cm.ForceAll();
+                        ThemeManager.TimedSwitch(builder, false);
                         SendResponse(Response.Ok);
                         break;
 

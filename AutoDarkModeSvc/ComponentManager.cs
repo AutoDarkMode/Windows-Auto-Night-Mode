@@ -63,6 +63,14 @@ namespace AutoDarkModeSvc
             Components.ForEach(c => c.DisableHook());
         }
 
+        /// <summary>
+        /// Sets the one time force flag for all modules
+        /// </summary>
+        public void ForceAll()
+        {
+            Components.ForEach(c =>  c.ForceSwitch = true);
+        }
+
         public bool Check(Theme newTheme)
         {
             bool shouldUpdate = false;
@@ -88,6 +96,12 @@ namespace AutoDarkModeSvc
                 }
                 // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
                 else if (!c.Enabled && c.Initialized)
+                {
+                    shouldUpdate = true;
+                    break;
+                }
+                // if the force flag is set to true, we also need to update
+                else if (c.ForceSwitch)
                 {
                     shouldUpdate = true;
                     break;

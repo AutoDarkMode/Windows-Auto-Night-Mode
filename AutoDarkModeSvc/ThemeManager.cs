@@ -14,7 +14,7 @@ namespace AutoDarkModeSvc
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly ComponentManager cm = ComponentManager.Instance();
 
-        public static void TimedSwitch(AdmConfigBuilder builder)
+        public static void TimedSwitch(AdmConfigBuilder builder, bool automatic = true)
         {
 
             GlobalState state = GlobalState.Instance();
@@ -41,16 +41,16 @@ namespace AutoDarkModeSvc
                 // ensure that the theme doesn't switch to light mode if the battery is discharging
                 if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.Discharging)
                 {
-                    SwitchTheme(builder.Config, Theme.Light, true, sunset, sunrise);
+                    SwitchTheme(builder.Config, Theme.Light, automatic, sunset, sunrise);
                 }
                 else if (!builder.Config.Events.DarkThemeOnBattery)
                 {
-                    SwitchTheme(builder.Config, Theme.Light, true, sunset, sunrise);
+                    SwitchTheme(builder.Config, Theme.Light, automatic, sunset, sunrise);
                 }
             }
             else
             {
-                SwitchTheme(builder.Config, Theme.Dark, true, sunset, sunrise);
+                SwitchTheme(builder.Config, Theme.Dark, automatic, sunset, sunrise);
             }
         }
 

@@ -56,17 +56,17 @@ namespace AutoDarkModeApp
             else
             {
                 ComboBoxModeSelection.SelectedIndex = 1;
-                if (builder.Config.WindowsThemeMode.Enabled && builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
-                {
-                    var themeNames = GetThemeFiles();
-                    ComboBoxDarkTheme.ItemsSource = themeNames;
-                    ComboBoxLightTheme.ItemsSource = themeNames;
-                    ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.LightThemePath);
-                    ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.DarkThemePath);
-                    theme1 = true;
-                    theme2 = true;
-                    ButtonSaveTheme.IsEnabled = true;
-                }
+            }
+            if (builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
+            {
+                var themeNames = GetThemeFiles();
+                ComboBoxDarkTheme.ItemsSource = themeNames;
+                ComboBoxLightTheme.ItemsSource = themeNames;
+                ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.LightThemePath);
+                ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.DarkThemePath);
+                theme1 = true;
+                theme2 = true;
+                ButtonSaveTheme.IsEnabled = true;
             }
         }
 
@@ -129,7 +129,9 @@ namespace AutoDarkModeApp
             BGui.ShowDialog();
             if (BGui.saved == true)
             {
-                ButtonDisableTheme_Click(this, e);
+                builder.Config.WindowsThemeMode.Enabled = false;
+                ButtonSaveTheme.IsEnabled = false;
+                ComboBoxModeSelection.SelectedIndex = 0;
             }
             try
             {

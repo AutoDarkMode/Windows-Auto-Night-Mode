@@ -57,6 +57,11 @@ namespace AutoDarkModeSvc.Interfaces
         /// Check if the component has been properly initialized. Can be used to trigger hooks on disable/enable
         /// </summary>
         public bool Initialized { get; }
+        /// <summary>
+        /// If this flag is set, a theme switch will be forced.
+        /// This will deactivate itself after performing this operation once
+        /// </summary>
+        public bool ForceSwitch { get; set; }
 
     }
 }
