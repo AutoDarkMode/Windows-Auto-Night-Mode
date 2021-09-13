@@ -10,6 +10,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     {
         public override bool ThemeHandlerCompatibility => false;
+        public override int PriorityToLight => 25;
+        public override int PriorityToDark => 25;
         private Theme currentComponentTheme = Theme.Undefined;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)

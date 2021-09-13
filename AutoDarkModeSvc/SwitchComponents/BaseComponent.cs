@@ -14,8 +14,8 @@ namespace AutoDarkModeSvc.SwitchComponents
         {
             Logger = NLog.LogManager.GetLogger(GetType().ToString());
         }
-        public virtual int PriorityToLight { get; set; }
-        public virtual int PriorityToDark { get; set; }
+        public virtual int PriorityToLight { get; }
+        public virtual int PriorityToDark { get; }
         public bool Enabled
         {
             get { return Settings.Enabled; }
