@@ -23,27 +23,17 @@ namespace AutoDarkModeApp
         public DesktopBGui()
         {
             InitializeComponent();
-            StartVoid();
+            Loaded += StartVoid;
         }
 
-        private void StartVoid()
+        private void StartVoid(object sender, RoutedEventArgs e)
         {
             List<string> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors.ConvertAll(s => s.Id.Substring(s.Id.IndexOf("#"), s.Id.IndexOf("&")));
             MonitorSelectionComboBox.ItemsSource = monitorIds;
             MonitorSelectionComboBox.SelectedItem = monitorIds.FirstOrDefault();
             if (builder.Config.WallpaperSwitch.Enabled)
             {
-                try
-                {
-                    MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id.Contains((string)MonitorSelectionComboBox.SelectedItem));
-                    ShowPreview(settings.LightThemeWallpaper, 1);
-                    ShowPreview(settings.DarkThemeWallpaper, 2);
-                }
-                catch
-                {
-                    builder.Config.WallpaperSwitch.Enabled = false;
-                    StartVoid();
-                }
+                //do nothing??
             }
             else
             {
@@ -123,7 +113,7 @@ namespace AutoDarkModeApp
             }
             catch
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "error", "close")
+                MsgBox msgBox = new MsgBox(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "Wallpaper Preview Error", "close")
                 {
                     Owner = GetWindow(this)
                 };

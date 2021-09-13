@@ -27,9 +27,12 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         if (!File.Exists(monitorSetting.DarkThemeWallpaper))
                         {
-                            Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitorId}");
+                            Logger.Warn($"target {Enum.GetName(typeof(Theme), newTheme)} wallpaper does not exist (skipping) path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitorId}");
                         }
-                        handler.SetWallpaper(monitorId, monitorSetting.DarkThemeWallpaper);
+                        else
+                        {
+                            handler.SetWallpaper(monitorId, monitorSetting.DarkThemeWallpaper);
+                        }
                     }
                     else
                     {
