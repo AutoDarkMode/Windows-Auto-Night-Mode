@@ -13,6 +13,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override int PriorityToLight => 25;
         public override int PriorityToDark => 25;
         private Theme currentComponentTheme = Theme.Undefined;
+        private WallpaperPosition currentWallpaperPosition;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
         {
@@ -28,12 +29,17 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 return true;
             }
+            else if (currentWallpaperPosition != Settings.Component.Position)
+            {
+                return true;
+            }
             return false;
         }
 
         protected override void HandleSwitch(Theme newTheme)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+            string oldPos = Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition);
             try
             {
                 WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
@@ -54,7 +60,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not set wallpapers");
             }
-            Logger.Info($"update info - previous: {oldTheme}, current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+            Logger.Info($"update info - previous: {oldTheme}/{oldPos}, " +
+                $"current: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}");
         }
 
         /// <summary>
@@ -119,6 +127,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 currentComponentTheme = Theme.Undefined;
             }
+            currentWallpaperPosition = WallpaperHandler.GetPosition();
         }
 
 

@@ -326,6 +326,7 @@ namespace AutoDarkModeApp
             try
             {
                 builder.Save();
+                RequestThemeSwitch();
             }
             catch (Exception ex)
             {

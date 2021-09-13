@@ -60,6 +60,12 @@ namespace AutoDarkModeSvc.Handlers
             }
             return wallpapers;
         }
+
+        public static WallpaperPosition GetPosition()
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            return handler.GetPosition();
+        }
         /// <summary>
         /// Adds missing monitors to the configuration file
         /// If a monitor configuration is not found,
