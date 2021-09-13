@@ -101,6 +101,7 @@ namespace AutoDarkModeApp
         }
         private void SetWallpaperVisibility(Visibility value)
         {
+            WallpaperPositionComboBox.Visibility = value;
             wallpaperHeading.Visibility = value;
             wallpaperIcon.Visibility = value;
             wallpaperCurrent.Visibility = value;
@@ -317,6 +318,19 @@ namespace AutoDarkModeApp
                 });
             }
             return;
+        }
+
+        private void WallpaperPosition_DropDownClosed(object sender, EventArgs e)
+        {
+            builder.Config.WallpaperSwitch.Component.Position = (WallpaperPosition)WallpaperPositionComboBox.SelectedIndex;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage("couldn't save themes", ex);
+            }
         }
     }
 }

@@ -41,6 +41,15 @@
         <TextBlock Name="wallpaperHeading" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static p:Resources.dbMainHeader}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto" Grid.Column="1"/>
         <TextBlock Name="wallpaperIcon" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Text="&#xEB9F;" Height="25" Width="25" FontSize="25" Grid.Column="1"/>
         <Button x:Name="BGWinButton" Content="{x:Static p:Resources.dbTitle}" HorizontalAlignment="Left" Margin="47,37,0,0" Grid.Row="3" VerticalAlignment="Top" MinWidth="200" Width="Auto" Click="BGWinButton_Click" Height="25" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1"/>
+        <ComboBox Name="WallpaperPositionComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="261,38,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120" Style="{StaticResource ComboBoxRevealStyle}" DropDownClosed="WallpaperPosition_DropDownClosed">
+            <ComboBoxItem Content="Center"/>
+            <ComboBoxItem Content="Tile"/>
+            <ComboBoxItem Content="Stretch"/>
+            <ComboBoxItem Content="Fit"/>
+            <ComboBoxItem IsSelected="True" Content="Fill"/>
+            <ComboBoxItem Content="Span"/>
+
+        </ComboBox>
         <StackPanel Name="StackPanelWallpaperStatus" Grid.Column="1" Grid.Row="3" Margin="47,67,0,0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Height="Auto" Width="Auto">
             <TextBlock Name="wallpaperCurrent" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" Foreground="Gray" Width="Auto"/>
             <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1"/>
