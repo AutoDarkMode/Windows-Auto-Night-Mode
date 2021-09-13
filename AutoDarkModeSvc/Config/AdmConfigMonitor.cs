@@ -66,8 +66,6 @@ namespace AutoDarkModeSvc.Config
                 componentManager.UpdateSettings();
                 UpdateEventStates();
 
-                Logger.Info($"thememode: {builder.Config.WindowsThemeMode.Enabled}");
-
                 // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
                 if (geolocatorToggled || (!geolocatorToggled && !builder.Config.Location.UseGeolocatorService && (latChanged || lonChanged)))
                 {
