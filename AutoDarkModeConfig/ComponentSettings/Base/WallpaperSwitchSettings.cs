@@ -27,7 +27,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 }
             }
         }
-        public WallpaperPosition Position { get; set; } = WallpaperPosition.Fill;
+        public WallpaperPosition Position { get; set; } = WallpaperPosition.Fit;
         public List<MonitorSettings> Monitors { get; set; }
     }
 
