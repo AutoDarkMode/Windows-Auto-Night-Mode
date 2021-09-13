@@ -58,6 +58,11 @@ namespace AutoDarkModeSvc
             UpdateSettings();
         }
 
+        public void InvokeDisableHooks()
+        {
+            Components.ForEach(c => c.DisableHook());
+        }
+
         public bool Check(Theme newTheme)
         {
             bool shouldUpdate = false;

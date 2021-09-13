@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Config
@@ -44,10 +45,6 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
-            if (DateTime.Now.Subtract(lastTimeConfigChanged).TotalMilliseconds < 20)
-            {
-                return;
-            }
             if (state.SkipConfigFileReload)
             {
                 state.SkipConfigFileReload = false;
@@ -55,42 +52,51 @@ namespace AutoDarkModeSvc.Config
                 return;
             }
             lastTimeConfigChanged = DateTime.Now;
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.ConfigFilePath)))
+            try
             {
-                try
-                {
-                    bool geolocatorToggled = builder.Config.Location.UseGeolocatorService;
-                    double prevLat = builder.Config.Location.CustomLat;
-                    double prevLon = builder.Config.Location.CustomLon;
-                    builder.Load();
-                    bool latChanged = builder.Config.Location.CustomLat != prevLat;
-                    bool lonChanged = builder.Config.Location.CustomLon != prevLon;
-                    geolocatorToggled = geolocatorToggled != builder.Config.Location.UseGeolocatorService;
-                    componentManager.UpdateSettings();
-                    UpdateEventStates();
+                bool themeModeToggled = builder.Config.WindowsThemeMode.Enabled;
+                bool geolocatorToggled = builder.Config.Location.UseGeolocatorService;
+                double prevLat = builder.Config.Location.CustomLat;
+                double prevLon = builder.Config.Location.CustomLon;
+                builder.Load();
+                bool latChanged = builder.Config.Location.CustomLat != prevLat;
+                bool lonChanged = builder.Config.Location.CustomLon != prevLon;
+                geolocatorToggled = geolocatorToggled != builder.Config.Location.UseGeolocatorService;
+                themeModeToggled = builder.Config.WindowsThemeMode.Enabled != themeModeToggled;
+                componentManager.UpdateSettings();
+                UpdateEventStates();
 
-                    // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
-                    if (geolocatorToggled || (!geolocatorToggled && !builder.Config.Location.UseGeolocatorService && (latChanged || lonChanged)))
-                    {
-                        try
-                        {
-                            Task.Run(() => LocationHandler.UpdateGeoposition(builder));
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Error(ex, "Error saving location data");
-                        }
-                    }
-                    if (warden != null)
-                    {
-                        warden.Fire();
-                    }
-                    Logger.Debug("updated configuration file");
-                }
-                catch (Exception ex)
+                Logger.Info($"thememode: {builder.Config.WindowsThemeMode.Enabled}");
+
+                // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
+                if (geolocatorToggled || (!geolocatorToggled && !builder.Config.Location.UseGeolocatorService && (latChanged || lonChanged)))
                 {
-                    Logger.Debug(ex, "config file locked, cannot load");
+                    try
+                    {
+                        Task.Run(() => LocationHandler.UpdateGeoposition(builder));
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "Error saving location data");
+                    }
                 }
+
+                // if the theme mode is toggled to off, we need to reinitialize all components
+                if (themeModeToggled && !builder.Config.WindowsThemeMode.Enabled)
+                {
+                    ComponentManager cm = ComponentManager.Instance();
+                    cm.InvokeDisableHooks();
+                }
+
+                if (warden != null)
+                {
+                    warden.Fire();
+                }
+                Logger.Debug("updated configuration file");
+            }
+            catch (Exception ex)
+            {
+                Logger.Debug(ex, "config file locked:");
             }
         }
 

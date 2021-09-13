@@ -62,13 +62,45 @@ namespace AutoDarkModeConfig
                 }
                 else
                 {
-                    using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite));
+                    using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write));
                     writer.WriteLine(yamlConfig);
                     writer.Close();
                     return;
                 }
             }
             throw new TimeoutException($"Saving to {path} failed after 10 retries");
+        }
+
+        private string ReadWithRetry(string path)
+        {
+            string data = null;
+            for (int i = 0; i < 3; i++)
+            {
+                if (IsFileLocked(new FileInfo(path)))
+                {
+                    Thread.Sleep(100);
+                    continue;
+                }
+                using FileStream stream = File.Open(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+                using StreamReader configReader = new StreamReader(stream);
+                data = configReader.ReadToEnd();
+                var yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+                string yamlConfig = yamlSerializer.Serialize(Config);
+                if (yamlConfig.Equals(data))
+                {
+                    Thread.Sleep(100);
+                    continue;
+                }
+                else
+                {
+                    return data;
+                }
+            }
+            if (data == null)
+            {
+                throw new Exception($"cannot access file {path}");
+            }
+            return data;
         }
 
         public void LoadLocationData()
@@ -79,13 +111,13 @@ namespace AutoDarkModeConfig
                 SaveLocationData();
             }
 
-            using StreamReader locationDataReader = new StreamReader(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            using StreamReader locationDataReader = new(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             //JsonSerializer serializer = new JsonSerializer();
             //AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
             var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             AdmLocationData deserializedLocationDataYaml = yamlDeserializer.Deserialize<AdmLocationData>(locationDataReader);
             LocationData = deserializedLocationDataYaml ?? LocationData;
-            Loading = true;
+            Loading = false;
         }
 
         public void Load()
@@ -95,14 +127,14 @@ namespace AutoDarkModeConfig
             {
                 Save();
             }
-
-            using StreamReader configReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            //var data = ReadWithRetry(ConfigFilePath);
+            using StreamReader dataReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             //JsonSerializer serializer = new JsonSerializer();
             ///AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
             var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
-            AdmConfig deserializedConfigYaml = yamlDeserializer.Deserialize<AdmConfig>(configReader);
+            AdmConfig deserializedConfigYaml = yamlDeserializer.Deserialize<AdmConfig>(dataReader);
             Config = deserializedConfigYaml ?? Config;
-            Loading = true;
+            Loading = false;
         }
 
 
@@ -121,7 +153,7 @@ namespace AutoDarkModeConfig
             }
             try
             {
-                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             }
             catch (IOException)
             {
