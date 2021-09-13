@@ -26,7 +26,7 @@
         <!-- Info -->
         <Image HorizontalAlignment="Left" Height="50" Margin="10,56,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="50" Source="/AutoDarkModeIcon.ico" MouseDown="Image_MouseDown"/>
         <TextBlock Name="TextBoxVersionNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="67,63,0,0" Grid.Column="1" Grid.Row="1" />
-        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2020 Armin Osaj &amp; Samuel Schiegg" VerticalAlignment="Top" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2021 Armin Osaj &amp; Samuel Schiegg" VerticalAlignment="Top" Height="16"/>
 
         <!-- Social Media links-->
         <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="30" Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png"/>
