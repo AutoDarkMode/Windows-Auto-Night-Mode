@@ -86,6 +86,10 @@ namespace AutoDarkModeSvc.Handlers
             bool needsUpdate = false;
             foreach (string monitorId in monitorIds)
             {
+                if (monitorId.Length == 0)
+                {
+                    continue;
+                }
                 MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitorId);
                 if (settings == null)
                 {
