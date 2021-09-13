@@ -22,7 +22,6 @@ namespace AutoDarkModeApp
 
         public DesktopBGui()
         {
-            // TODO: needs adaption for new wallpaper handler
             InitializeComponent();
             StartVoid();
         }

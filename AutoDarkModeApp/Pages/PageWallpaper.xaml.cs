@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeSvc.Communication;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp
 {
@@ -113,7 +114,7 @@ namespace AutoDarkModeApp
         //show if wallpaper switch is enabled
         private void ShowDeskBGStatus()
         {
-            if (builder.Config.WallpaperSwitch.Enabled)
+            if (builder.Config.WallpaperSwitch.Enabled && !builder.Config.WindowsThemeMode.Enabled)
             {
                 DeskBGStatus.Text = Properties.Resources.enabled;
             }
@@ -123,8 +124,9 @@ namespace AutoDarkModeApp
             }
         }
         //open wallpaper configuration
-        private void BGWinButton_Click(object sender, RoutedEventArgs e)
+        private async void BGWinButton_Click(object sender, RoutedEventArgs e)
         {
+            await DetectMonitors();
             DesktopBGui BGui = new DesktopBGui();
             BGui.Owner = Window.GetWindow(this);
             BGui.ShowDialog();
@@ -291,6 +293,31 @@ namespace AutoDarkModeApp
                 if (result != Response.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"ZeroMQ returned err {result}", ex);
+            }
+        }
+
+        private async Task DetectMonitors()
+        {
+            string result = Response.Err;
+            try
+            {
+                result = await messagingClient.SendMessageAndGetReplyAsync(Command.DetectMonitors);
+                if (result != Response.Ok)
+                {
+                    throw new SwitchThemeException(result, "PageWallpaper");
+                }
+                try
+                {
+                    builder.Load();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage("couldn't load config file", ex);
                 }
             }
             catch (Exception ex)
