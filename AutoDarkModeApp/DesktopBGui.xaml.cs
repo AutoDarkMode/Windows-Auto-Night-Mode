@@ -28,7 +28,7 @@ namespace AutoDarkModeApp
 
         private void StartVoid(object sender, RoutedEventArgs e)
         {
-            List<string> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors.ConvertAll(s => s.Id.Substring(s.Id.IndexOf("#"), s.Id.IndexOf("&")));
+            List<MonitorSettings> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors;
             MonitorSelectionComboBox.ItemsSource = monitorIds;
             MonitorSelectionComboBox.SelectedItem = monitorIds.FirstOrDefault();
             if (builder.Config.WallpaperSwitch.Enabled)
@@ -44,7 +44,7 @@ namespace AutoDarkModeApp
 
         private void FilePicker1_Click(object sender, RoutedEventArgs e)
         {
-            MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id.Contains((string)MonitorSelectionComboBox.SelectedItem));
+            MonitorSettings settings = (MonitorSettings)MonitorSelectionComboBox.SelectedItem;
             OpenFileDialog dlg = new OpenFileDialog
             {
                 Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
@@ -162,15 +162,14 @@ namespace AutoDarkModeApp
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id.Contains((string)MonitorSelectionComboBox.SelectedItem));
+            MonitorSettings settings = (MonitorSettings)MonitorSelectionComboBox.SelectedItem;
             ShowPreview(settings.LightThemeWallpaper, 1);
             ShowPreview(settings.DarkThemeWallpaper, 2);
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
-            List<string> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors.ConvertAll(s => s.Id.Substring(s.Id.IndexOf("#"), s.Id.IndexOf("&")));
-            ((ComboBox)sender).ItemsSource = monitorIds;
+            ((ComboBox)sender).ItemsSource = builder.Config.WallpaperSwitch.Component.Monitors;
         }
     }
 }

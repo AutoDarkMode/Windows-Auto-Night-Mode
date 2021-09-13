@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace AutoDarkModeConfig.ComponentSettings.Base
@@ -36,5 +37,17 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         public string Id { get; set; }
         public string LightThemeWallpaper { get; set; }
         public string DarkThemeWallpaper { get; set; }
+        public override string ToString()
+        {
+            try
+            {
+                return Id.Substring(Id.IndexOf("#"), Id.IndexOf("&"));
+            }
+            catch
+            {
+                return Id;
+            }
+        }
     }
+
 }
