@@ -71,7 +71,7 @@ namespace AutoDarkModeSvc.Config
                 {
                     try
                     {
-                        Task.Run(() => LocationHandler.UpdateGeoposition(builder));
+                        Task.Run(async() => await LocationHandler.UpdateGeoposition(builder)).Wait();
                     }
                     catch (Exception ex)
                     {

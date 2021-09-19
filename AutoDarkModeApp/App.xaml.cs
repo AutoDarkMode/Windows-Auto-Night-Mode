@@ -94,7 +94,7 @@ namespace AutoDarkModeApp
                     }
                     else if (value == "/location")
                     {
-                        commandClient.SendMessage(Command.Location);
+                        commandClient.SendMessage(Command.LocationAccess);
                     }
                     else if (value == "/removeAutostart")
                     {
@@ -107,7 +107,7 @@ namespace AutoDarkModeApp
                     else if (value == "/pipeclienttest")
                     {
                         //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);
-                        bool result = commandClient.SendMessage(Command.Location);
+                        bool result = commandClient.SendMessage(Command.LocationAccess);
                         Console.Out.WriteLine(result);
                     }
                     NetMQConfig.Cleanup();

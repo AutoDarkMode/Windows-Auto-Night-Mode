@@ -359,28 +359,30 @@ namespace AutoDarkModeApp.Pages
         }
         private async Task UseGeolocatorService()
         {
-            int timeout = 2;
+            int timeout = 5;
             bool loaded = false;
+
+            try
+            {
+                var result = await messagingClient.SendMessageAndGetReplyAsync(Command.LocationAccess);
+                if (result == Response.NoLocAccess)
+                {
+                    NoLocationAccess();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+                return;
+            }
+
             for (int i = 0; i < timeout; i++)
             {
+                // wait for location data to be populated
                 if (builder.LocationData.LastUpdate == DateTime.MinValue)
                 {
-                    try
-                    {
-                        var result = await messagingClient.SendMessageAndGetReplyAsync(Command.Location);
-                        if (result == Response.NoLocAccess)
-                        {
-                            NoLocationAccess();
-                            break;
-                        }
-                        builder.LoadLocationData();
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-                        loaded = true;
-                        break;
-                    }
+                    builder.LoadLocationData();
                     await Task.Delay(1000);
                 }
                 else
@@ -420,7 +422,7 @@ namespace AutoDarkModeApp.Pages
 
             if (!loaded)
             {
-                ShowErrorMessage(new TimeoutException("waiting for location data timed out"));
+                ShowErrorMessage(new TimeoutException("waiting for location access permission timed out"));
             }
         }
 
@@ -597,6 +599,7 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
         {
             DisableLocationMode();
+            applyButton.IsEnabled = true;
         }
 
         private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)

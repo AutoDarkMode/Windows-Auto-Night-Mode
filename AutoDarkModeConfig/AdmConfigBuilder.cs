@@ -58,7 +58,7 @@ namespace AutoDarkModeConfig
             {
                 if (IsFileLocked(new FileInfo(path)))
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                 }
                 else
                 {
@@ -71,6 +71,25 @@ namespace AutoDarkModeConfig
             throw new TimeoutException($"Saving to {path} failed after 10 retries");
         }
 
+        private string LoadFile(string path)
+        {
+            Loading = true;
+            Exception readException = new TimeoutException($"Reading from {path} failed after 10 retries");
+            for (int i = 0; i < 3; i++)
+            {
+                try
+                {
+                    using StreamReader dataReader = new(File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+                    return dataReader.ReadToEnd();
+                }
+                catch (Exception ex) {
+                    readException = ex;
+                    Thread.Sleep(500);
+                }
+            }
+            throw readException;
+        }
+
         public void LoadLocationData()
         {
             Loading = true;
@@ -79,11 +98,11 @@ namespace AutoDarkModeConfig
                 SaveLocationData();
             }
 
-            using StreamReader locationDataReader = new(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            //using StreamReader locationDataReader = new(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             //JsonSerializer serializer = new JsonSerializer();
             //AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
             var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
-            AdmLocationData deserializedLocationDataYaml = yamlDeserializer.Deserialize<AdmLocationData>(locationDataReader);
+            AdmLocationData deserializedLocationDataYaml = yamlDeserializer.Deserialize<AdmLocationData>(LoadFile(LocationDataPath));
             LocationData = deserializedLocationDataYaml ?? LocationData;
             Loading = false;
         }
@@ -96,11 +115,11 @@ namespace AutoDarkModeConfig
                 Save();
             }
             //var data = ReadWithRetry(ConfigFilePath);
-            using StreamReader dataReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            //using StreamReader dataReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
             //JsonSerializer serializer = new JsonSerializer();
             ///AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
             var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
-            AdmConfig deserializedConfigYaml = yamlDeserializer.Deserialize<AdmConfig>(dataReader);
+            AdmConfig deserializedConfigYaml = yamlDeserializer.Deserialize<AdmConfig>(LoadFile(ConfigFilePath));
             Config = deserializedConfigYaml ?? Config;
             Loading = false;
         }

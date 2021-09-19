@@ -15,7 +15,7 @@ namespace AutoDarkModeSvc.Communication
         public const string Dark = "/dark";
         public const string NoForce = "/noForce";
         public const string Update = "/update";
-        public const string Location = "/location";
+        public const string LocationAccess = "/locationAccess";
         public const string CreateTask = "/createTask";
         public const string RemoveTask = "/removeTask";
         public const string AddAutostart = "/addAutostart";

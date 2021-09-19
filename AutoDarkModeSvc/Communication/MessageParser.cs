@@ -106,9 +106,9 @@ namespace AutoDarkModeSvc.Communication
                         }
                         break;
 
-                    case Command.Location:
-                        Logger.Info("signal received: request location update");
-                        Task<bool> geoTask = Task.Run(() => LocationHandler.UpdateGeoposition(AdmConfigBuilder.Instance()));
+                    case Command.LocationAccess:
+                        Logger.Info("signal received: checking location access permissions");
+                        Task<bool> geoTask = Task.Run(async () => await LocationHandler.HasPermission());
                         geoTask.Wait();
                         var result = geoTask.Result;
                         if (result)

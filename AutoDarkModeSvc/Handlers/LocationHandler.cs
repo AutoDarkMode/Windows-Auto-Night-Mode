@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using AutoDarkModeConfig;
 using SunriseCalculator;
+using System.Runtime.CompilerServices;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -94,6 +95,11 @@ namespace AutoDarkModeSvc.Handlers
             }
             return success;
 
+        }
+
+        public async static Task<bool> HasPermission()
+        {
+            return await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed;
         }
 
         /// <summary>
