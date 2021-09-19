@@ -74,7 +74,7 @@ namespace AutoDarkModeConfig
         private string LoadFile(string path)
         {
             Loading = true;
-            Exception readException = new TimeoutException($"Reading from {path} failed after 10 retries");
+            Exception readException = new TimeoutException($"Reading from {path} failed after 3 retries");
             for (int i = 0; i < 3; i++)
             {
                 try
