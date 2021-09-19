@@ -29,6 +29,7 @@ namespace AutoDarkModeSvc.Communication
         public const string TestError = "/testError";
         public const string Alive = "/alive";
         public const string DetectMonitors = "/detectMonitors";
+        public const string CleanMonitors = "/cleanMonitors";
     }
 
     class Response

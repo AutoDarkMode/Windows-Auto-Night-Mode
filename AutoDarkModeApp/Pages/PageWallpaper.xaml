@@ -54,6 +54,10 @@
             <TextBlock Name="wallpaperCurrent" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static p:Resources.dbCurrently}" VerticalAlignment="Top" Foreground="Gray" Width="Auto"/>
             <TextBlock x:Name="DeskBGStatus" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static p:Resources.disabled}" VerticalAlignment="Top" Height="16" Width="Auto" Grid.Column="1"/>
         </StackPanel>
+        <TextBlock Name="controlHeading" HorizontalAlignment="Left" Margin="10,90,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Advanced Settings" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto" Grid.Column="1"/>
+
+        <Button x:Name="CleanMonitorButton" Content="Remove Disconnected Monitors" HorizontalAlignment="Left" Margin="47,120,0,0" Grid.Row="3" VerticalAlignment="Top" MinWidth="200" Width="Auto" Click="CleanButton_Click" Height="25" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1"/>
+
 
 
         <!-- Windows Theme-->

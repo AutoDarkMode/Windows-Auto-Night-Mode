@@ -184,6 +184,12 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(Response.Ok);
                         break;
 
+                    case Command.CleanMonitors:
+                        Logger.Info("signal received: removing disconnected monitors");
+                        WallpaperHandler.CleanUpMonitors();
+                        SendResponse(Response.Ok);
+                        break;
+
                     default:
                         Logger.Debug("unknown message received");
                         SendResponse(Response.Err);

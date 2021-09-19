@@ -111,6 +111,39 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
+        public static void CleanUpMonitors()
+        {
+            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            List<string> monitorIds = new();
+            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
+            {
+                monitorIds.Add(handler.GetMonitorDevicePathAt(i));
+            }
+            List<MonitorSettings> connectedSettings = new();
+            foreach (string monitorId in monitorIds)
+            {
+                if (monitorId.Length == 0)
+                {
+                    continue;
+                }
+                MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitorId);
+                if (settings != null)
+                {
+                    connectedSettings.Add(settings);
+                }
+            }
+            int diff = builder.Config.WallpaperSwitch.Component.Monitors.Count - connectedSettings.Count;
+            if (diff != 0)
+            {
+                Logger.Info($"removing {diff} disconnected monitors");
+                GlobalState state = GlobalState.Instance();
+                state.SkipConfigFileReload = true;
+                builder.Config.WallpaperSwitch.Component.Monitors = connectedSettings;
+                builder.Save();
+            }
+        }
+
 
         [StructLayout(LayoutKind.Sequential)]
         public struct Rect

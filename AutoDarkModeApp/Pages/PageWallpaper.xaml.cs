@@ -102,6 +102,8 @@ namespace AutoDarkModeApp
         }
         private void SetWallpaperVisibility(Visibility value)
         {
+            CleanMonitorButton.Visibility = value;
+            controlHeading.Visibility = value;
             WallpaperPositionComboBox.Visibility = value;
             wallpaperHeading.Visibility = value;
             wallpaperIcon.Visibility = value;
@@ -326,6 +328,32 @@ namespace AutoDarkModeApp
             }
         }
 
+        private async Task CleanMonitors()
+        {
+            string result = Response.Err;
+            try
+            {
+                result = await messagingClient.SendMessageAndGetReplyAsync(Command.CleanMonitors);
+                if (result != Response.Ok)
+                {
+                    throw new SwitchThemeException($"couldn't clean up monitor list, {result}", "PageWallpaper");
+                }
+                try
+                {
+                    builder.Load();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage("couldn't load config file", ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"ZeroMQ returned err {result}", ex);
+            }
+
+        }
+
         private void ShowErrorMessage(String message, Exception ex)
         {
             string error = Properties.Resources.errorThemeApply + $"\n\n{message}: " + ex.Source + "\n\n" + ex.Message;
@@ -359,6 +387,11 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage("couldn't save themes", ex);
             }
+        }
+
+        private async void CleanButton_Click(object sender, RoutedEventArgs e)
+        {
+            await CleanMonitors();
         }
     }
 }
