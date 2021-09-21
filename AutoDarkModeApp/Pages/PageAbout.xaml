@@ -8,7 +8,7 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:Properties="clr-namespace:AutoDarkModeApp.Properties" x:Class="AutoDarkModeApp.Pages.PageAbout"
       mc:Ignorable="d"
-      Title="PageAbout" Height="590" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+      Title="PageAbout" Height="650" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -43,36 +43,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="50" Margin="120,125,0,0" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Width="50" Source="/AutoDarkModeApp;component/Resources/Twitter_Logo_Blue.png"/>
-        <TextBlock x:Name="TwitterTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Twitter" VerticalAlignment="Top" MouseLeftButtonDown="TwitterTextBlock_MouseLeftButtonDown" PreviewKeyDown="TwitterTextBlock_PreviewKeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <Image HorizontalAlignment="Left" Height="30" Margin="15,178,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="26" Source="/AutoDarkModeApp;component/Resources/PayPal_Logo.png"/>
-        <TextBlock x:Name="PayPalTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,186,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="PayPal" VerticalAlignment="Top" MouseDown="PayPalTextBlock_MouseDown" KeyDown="PayPalTextBlock_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="132,180,0,0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="28"/>
-        <TextBlock x:Name="telegramTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,186,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown">
+        <TextBlock HorizontalAlignment="Left" Margin="132,131,0,0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="28"/>
+        <TextBlock x:Name="telegramTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -171,6 +143,31 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-
+        <TextBlock Name="ModernWPFLicense" Text="ModernWPF" FontSize="13" Margin="10,540,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="ModernWPFLicense_MouseDown" KeyDown="ModernWPFLicense_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock Name="NLogLicense" Text="NLog" FontSize="13" Margin="10,570,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NLogLicense_MouseDown" KeyDown="NLogLicense_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </Page>

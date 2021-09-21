@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoDarkModeApp"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
         xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.Title}" MinHeight="{Binding Path=WindowY}" MinWidth="{Binding Path=WindowX}" Height="{Binding Path=WindowY}" Width="{Binding Path=WindowX}" ResizeMode="CanResize" Closed="Window_Closed" ContentRendered="Window_ContentRendered" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" fw:ExtendViewIntoTitleBar="True" fw:PointerTracker.Enabled="True" Background="{x:Null}">
