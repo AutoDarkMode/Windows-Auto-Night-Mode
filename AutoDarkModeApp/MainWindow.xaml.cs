@@ -25,12 +25,16 @@ namespace AutoDarkModeApp
         public MainWindow()
         {
             DataContext = this;
+
             WindowX = ((int)(Settings.Default.UIScale * BasewindowX)).ToString();
             WindowY = ((int)((Settings.Default.UIScale) * BaseWindowY)).ToString();
             ScaleStringX = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
             ScaleStringY = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
+
             Console.WriteLine("--------- AppStart");
+
             LanguageHelper(); //set current UI language
+
             InitializeComponent();
 
             //only run at first startup
@@ -48,7 +52,7 @@ namespace AutoDarkModeApp
                 catch
                 {
                     Settings.Default.TaskFolderTitle = "Auto Dark Mode";
-                    Settings.Default.TaskFolderTitleMultiUser = true;
+                    Settings.Default.TaskFolderTitleMultiUser = false;
                 }
 
                 //finished first startup code
@@ -65,8 +69,7 @@ namespace AutoDarkModeApp
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             LanguageHelper();
-            ButtonNavarTime_Click(this, null); //select and display the main page
-            DonationScreen();
+
             try
             {
                 Updater updater = new Updater(false);
@@ -75,18 +78,6 @@ namespace AutoDarkModeApp
             catch
             {
 
-            }
-        }
-
-        private void DonationScreen()
-        {
-            //generate random number between 1 and 100. If the number is 50, show donation msgbox
-            Random rdmnumber = new Random();
-            int generatedNumber = rdmnumber.Next(1, 100);
-            Console.WriteLine("generated number: " + generatedNumber);
-            if (generatedNumber == 50)
-            {
-                ButtonNavbarDonation_Click(this, null);
             }
         }
 
@@ -126,21 +117,24 @@ namespace AutoDarkModeApp
         {
             JumpTask darkJumpTask = new JumpTask
             {
-                Title = Properties.Resources.lblDarkTheme,//Dark theme
+                //Dark theme
+                Title = Properties.Resources.lblDarkTheme,
                 Arguments = Command.Dark,
-                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
+                CustomCategory = Properties.Resources.lblSwitchTheme
             };
             JumpTask lightJumpTask = new JumpTask
             {
-                Title = Properties.Resources.lblLightTheme,//Light theme
+                //Light theme
+                Title = Properties.Resources.lblLightTheme,
                 Arguments = Command.Light,
-                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
+                CustomCategory = Properties.Resources.lblSwitchTheme
             };
             JumpTask resetJumpTask = new JumpTask
             {
-                Title = Properties.Resources.lblReset,//Light theme
+                //Reset
+                Title = Properties.Resources.lblReset,
                 Arguments = Command.NoForce,
-                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
+                CustomCategory = Properties.Resources.lblSwitchTheme
             };
 
             JumpList jumpList = new JumpList();
@@ -162,51 +156,49 @@ namespace AutoDarkModeApp
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
 
-        //navigation bar
-        private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Navbar / NavigationView
+        /// </summary>
+        
+        //change displayed page based on selection
+        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
-            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
-            NavbarRectangle.Margin = new Thickness(0, 45, 0, 0);
+            if (args.SelectedItemContainer != null)
+            {
+                var navItemTag = args.SelectedItemContainer.Tag.ToString();
+
+                switch (navItemTag)
+                {
+                    case "time":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
+                        break;
+                    case "apps":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
+                        break;
+                    case "wallpaper":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
+                        break;
+                    case "settings":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
+                        break;
+                    case "donation":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageDonation.xaml", UriKind.Relative));
+                        break;
+                    case "about":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
+                        break;
+                }
+            }
         }
 
-        private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
+        //startup page
+        private void NavBar_Loaded(object sender, RoutedEventArgs e)
         {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
-            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
-            NavbarRectangle.Margin = new Thickness(0,90,0,0);
+            NavBar.SelectedItem = NavBar.MenuItems[1];
         }
 
-        private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
-            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
-            NavbarRectangle.Margin = new Thickness(0, 135, 0, 0);
-        }
-
-        private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
-            NavbarRectangle.VerticalAlignment = VerticalAlignment.Top;
-            NavbarRectangle.Margin = new Thickness(0, 180, 0, 0);
-        }
-
-        private void ButtonNavbarDonation_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageDonation.xaml", UriKind.Relative));
-            NavbarRectangle.VerticalAlignment = VerticalAlignment.Bottom;
-            NavbarRectangle.Margin = new Thickness(0, 0, 0, 50);
-        }
-
-        private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
-            NavbarRectangle.VerticalAlignment = VerticalAlignment.Bottom;
-            NavbarRectangle.Margin = new Thickness(0, 0, 0, 5);
-        }
-
-        //frame
-        private void FrameNavbar_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        //Block back and forward on the frame
+        private void FrameNavbar_Navigating(object sender, NavigatingCancelEventArgs e)
         {
             if (e.NavigationMode == NavigationMode.Forward | e.NavigationMode == NavigationMode.Back)
             {
