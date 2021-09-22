@@ -13,23 +13,10 @@ namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
-        private ScaleTransform Transform { get; set;  }
-        private int BasewindowX { get; } = 640;
-        private int BaseWindowY { get; } = 560;
-        public string WindowX { get; }
-        public string WindowY { get; }
-        public string ScaleStringX { get; }
-        public string ScaleStringY { get; }
-
 
         public MainWindow()
         {
             DataContext = this;
-
-            WindowX = ((int)(Settings.Default.UIScale * BasewindowX)).ToString();
-            WindowY = ((int)((Settings.Default.UIScale) * BaseWindowY)).ToString();
-            ScaleStringX = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
-            ScaleStringY = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
 
             Console.WriteLine("--------- AppStart");
 

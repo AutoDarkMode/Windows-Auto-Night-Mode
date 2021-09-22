@@ -13,8 +13,8 @@
         Title="{x:Static p:Resources.Title}" 
         MinHeight="700"
         MinWidth="820" 
-        Height="{Binding Path=WindowY}" 
-        Width="{Binding Path=WindowX}" 
+        Height="700" 
+        Width="820" 
         ResizeMode="CanResize" 
         Closed="Window_Closed" 
         ContentRendered="Window_ContentRendered" 
@@ -24,14 +24,7 @@
         Background="{x:Null}"
         ui:ThemeManager.IsThemeAware="True">
 
-    <!-- Custom Windows Scaling -->
-    <fw:AcrylicWindow.Resources>
-        <ResourceDictionary>
-            <ScaleTransform x:Key="windowScaleTransform" ScaleX="{Binding Path=ScaleStringX}" ScaleY="{Binding Path=ScaleStringY}" />
-        </ResourceDictionary>
-    </fw:AcrylicWindow.Resources>
-
-    <Grid x:Name="mainWin" LayoutTransform="{StaticResource windowScaleTransform}">
+    <Grid x:Name="mainWin">
 
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
