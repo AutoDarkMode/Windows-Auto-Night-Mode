@@ -21,17 +21,21 @@ namespace AutoDarkModeSvc
         List<ModuleTimer> Timers { get; set; }
         ICommandServer CommandServer { get; }
         AdmConfigMonitor ConfigMonitor { get; }
+        AdmConfigBuilder ConfigBuilder { get; }
         public readonly ToolStripMenuItem forceDarkMenuItem = new ToolStripMenuItem("Force Dark Mode");
         public readonly ToolStripMenuItem forceLightMenuItem = new ToolStripMenuItem("Force Light Mode");
         private delegate void SafeCallDelegate(string text);
 
         public Service(int timerMillis)
         {
-            NotifyIcon = new NotifyIcon();
+            ConfigBuilder = AdmConfigBuilder.Instance();
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
-            InitTray();
-
+            if (ConfigBuilder.Config.Tunable.ShowTrayIcon)
+            {
+                NotifyIcon = new NotifyIcon();
+                InitTray();
+            }
             CommandServer = new ZeroMQServer(this);
             //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
@@ -130,7 +134,7 @@ namespace AutoDarkModeSvc
                 Logger.Info("ui signal received: stop forcing specific theme");
                 GlobalState rtc = GlobalState.Instance();
                 rtc.ForcedTheme = Theme.Undefined;
-                ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+                ThemeManager.TimedSwitch(ConfigBuilder);
                 mi.Checked = false;
             }
             else
@@ -142,7 +146,7 @@ namespace AutoDarkModeSvc
                         (item as ToolStripMenuItem).Checked = false;
                     }
                 }
-                AdmConfig config = AdmConfigBuilder.Instance().Config;
+                AdmConfig config = ConfigBuilder.Config;
                 GlobalState rtc = GlobalState.Instance();
                 if (mi.Name == "forceLight")
                 {
@@ -162,7 +166,7 @@ namespace AutoDarkModeSvc
 
         private void SwitchThemeNow(object sender, EventArgs e)
         {
-            AdmConfig config = AdmConfigBuilder.Instance().Config;
+            AdmConfig config = ConfigBuilder.Config;
             Logger.Info("ui signal received: switching theme");
             if (RegistryHandler.AppsUseLightTheme())
             {
@@ -178,7 +182,7 @@ namespace AutoDarkModeSvc
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
-                Arguments = AdmConfigBuilder.Instance().ConfigDir,
+                Arguments = ConfigBuilder.ConfigDir,
                 FileName = "explorer.exe"
             };
 

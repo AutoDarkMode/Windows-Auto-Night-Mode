@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeSvc", "AutoDark
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeApp", "AutoDarkModeApp\AutoDarkModeApp.csproj", "{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDarkModeConfig", "AutoDarkModeConfig\AutoDarkModeConfig.csproj", "{044D739A-2A81-4B51-9D4A-30057A1935E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeConfig", "AutoDarkModeConfig\AutoDarkModeConfig.csproj", "{044D739A-2A81-4B51-9D4A-30057A1935E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDarkModeUpdater", "AutoDarkModeUpdater\AutoDarkModeUpdater.csproj", "{30549D53-15FB-4920-8DE8-3D424BE0217A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,26 @@ Global
 		{044D739A-2A81-4B51-9D4A-30057A1935E2}.Release|x64.Build.0 = Release|Any CPU
 		{044D739A-2A81-4B51-9D4A-30057A1935E2}.Release|x86.ActiveCfg = Release|Any CPU
 		{044D739A-2A81-4B51-9D4A-30057A1935E2}.Release|x86.Build.0 = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|x64.Build.0 = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Debug|x86.Build.0 = Debug|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|ARM.Build.0 = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|ARM64.Build.0 = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|x64.ActiveCfg = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|x64.Build.0 = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|x86.ActiveCfg = Release|Any CPU
+		{30549D53-15FB-4920-8DE8-3D424BE0217A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
