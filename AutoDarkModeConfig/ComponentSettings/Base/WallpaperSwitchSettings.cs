@@ -39,12 +39,14 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
     {
 
         private string id;
-        public string Id 
-        { 
-            get { return id; } 
-            set 
-            { 
-                id = value;
+        public string Id { get; set; }
+        private string MonitorString { get; set; } = null;
+        public string LightThemeWallpaper { get; set; }
+        public string DarkThemeWallpaper { get; set; }
+        public override string ToString()
+        {
+            if (MonitorString == null)
+            {
                 try
                 {
                     DisplayMonitor monitor = Task.Run(async () => await GetMonitorInfoAsync()).Result;
@@ -61,13 +63,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 {
                     MonitorString = Id;
                 }
-            } 
-        }
-        private string MonitorString { get; set; }
-        public string LightThemeWallpaper { get; set; }
-        public string DarkThemeWallpaper { get; set; }
-        public override string ToString()
-        {
+            }
             return MonitorString;
         }
         private async Task<DisplayMonitor> GetMonitorInfoAsync()

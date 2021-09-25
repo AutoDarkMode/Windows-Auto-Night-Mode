@@ -23,6 +23,7 @@ namespace AutoDarkModeApp.Pages
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
+        bool initialized = false;
 
         public PageSettings()
         {
@@ -36,6 +37,7 @@ namespace AutoDarkModeApp.Pages
             }
             InitializeComponent();
             UiHandler();
+            initialized = true;
         }
         private void UiHandler()
         {
@@ -207,6 +209,10 @@ namespace AutoDarkModeApp.Pages
         }
         private void TextboxAccentColorDelay_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!initialized)
+            {
+                return;
+            }
             if (TextboxAccentColorDelay.Text != "")
             {
                 builder.Config.SystemSwitch.Component.TaskbarSwitchDelay = int.Parse(TextboxAccentColorDelay.Text);
