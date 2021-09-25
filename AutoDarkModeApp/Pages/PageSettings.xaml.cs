@@ -22,7 +22,7 @@ namespace AutoDarkModeApp.Pages
     {
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
+        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
 
         public PageSettings()
         {

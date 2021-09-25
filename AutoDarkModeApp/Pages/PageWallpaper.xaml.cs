@@ -24,7 +24,7 @@ namespace AutoDarkModeApp
         bool theme1 = false;
         bool theme2 = false;
         readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
-        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
+        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
 
         public PageWallpaper()
         {

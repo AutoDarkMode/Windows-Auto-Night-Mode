@@ -5,6 +5,10 @@
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Command.cs" />
   </ItemGroup>

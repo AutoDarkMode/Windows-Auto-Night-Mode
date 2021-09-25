@@ -17,7 +17,7 @@ namespace AutoDarkModeApp
     public partial class PageApps : Page
     {
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
+        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         bool is1903 = false;
 
         public PageApps()
