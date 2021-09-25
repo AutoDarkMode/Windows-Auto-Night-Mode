@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Command.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetMQ" Version="4.0.1.6" />
+    <PackageReference Include="Sharprompt" Version="2.3.4" />
+  </ItemGroup>
+
+</Project>

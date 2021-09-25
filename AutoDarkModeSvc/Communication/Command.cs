@@ -1,38 +1,49 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace AutoDarkModeSvc.Communication
 {
-    class Command
+    static class Address
     {
         public const string DefaultPipeName = "WindowsAutoDarkMode";
         public const string DefaultPipeResponse = "_response";
         public const string DefaultPipeCommand = "_command";
         public const string DefaultPort = "54345";
-
+    }
+    static class Command
+    {
+        [Includable]
         public const string Switch = "/switch";
         public const string Swap = "/swap";
+        [Includable]
         public const string Light = "/light";
+        [Includable]
         public const string Dark = "/dark";
+        [Includable]
         public const string NoForce = "/noForce";
+        [Includable]
         public const string Update = "/update";
         public const string LocationAccess = "/locationAccess";
-        public const string CreateTask = "/createTask";
-        public const string RemoveTask = "/removeTask";
+        [Includable]
         public const string AddAutostart = "/addAutostart";
+        [Includable]
         public const string RemoveAutostart = "/removeAutoStart";
-        public const string AddLocationTask = "/addLocationTask";
-        public const string RemoveLocationTask = "/removeLocationTask";
-        public const string PipeClientTest = "/pipeclienttest";
-        public const string UpdateConfig = "/updateConfig";
-        public const string SystemThemeDark = "/systemThemeDark";
+        [Includable]
         public const string Shutdown = "/exit";
         public const string TestError = "/testError";
         public const string Alive = "/alive";
+        [Includable]
         public const string DetectMonitors = "/detectMonitors";
+        [Includable]
         public const string CleanMonitors = "/cleanMonitors";
     }
 
-    class Response
+    [AttributeUsage(AttributeTargets.Field)]
+    internal class IncludableAttribute : Attribute
+    {
+    }
+
+    static class Response
     {
         public const string Available = "Available";
         public const string New = "New";

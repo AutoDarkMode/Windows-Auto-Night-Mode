@@ -121,21 +121,6 @@ namespace AutoDarkModeSvc.Communication
                         }
                         break;
 
-                    case Command.UpdateConfig:
-                        Logger.Info("signal received: updating configuration files");
-                        try
-                        {
-                            AdmConfigBuilder.Instance().Load();
-                            AdmConfigBuilder.Instance().LoadLocationData();
-                            SendResponse(Response.Ok);
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Error(e, "could not read config file");
-                            SendResponse(Response.Err);
-                        }
-                        break;
-
                     case Command.Update:
                         Logger.Info("signal received: checking for update");
                         SendResponse(UpdateHandler.CheckNewVersion());
