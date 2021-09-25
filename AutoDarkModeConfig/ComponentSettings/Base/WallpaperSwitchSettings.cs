@@ -52,11 +52,12 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                     DisplayMonitor monitor = Task.Run(async () => await GetMonitorInfoAsync()).Result;
                     if (monitor != null)
                     {
-                        MonitorString = $"{monitor.DisplayName} Id: {monitor.DisplayAdapterTargetId}";
+                        MonitorString = $"{monitor.DisplayName} - {monitor.DisplayAdapterTargetId}";
                     }
                     else
                     {
-                        MonitorString = Id.Substring(Id.IndexOf("#"), Id.IndexOf("&"));
+                        string[] split = Id.Split('#', '&');
+                        MonitorString = $"{split[1]} - {split[5].Substring(3)}";
                     }
                 }
                 catch
