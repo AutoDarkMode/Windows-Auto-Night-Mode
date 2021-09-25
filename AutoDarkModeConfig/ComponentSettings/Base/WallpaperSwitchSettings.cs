@@ -69,7 +69,6 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         private async Task<DisplayMonitor> GetMonitorInfoAsync()
         {
             var deviceInfos = await DeviceInformation.FindAllAsync(DisplayMonitor.GetDeviceSelector());
-            List<DisplayMonitor> monitors = new();
             foreach (var deviceInfo in deviceInfos)
             {
                 if (deviceInfo.Id == Id)
