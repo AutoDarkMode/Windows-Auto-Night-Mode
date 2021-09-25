@@ -1,4 +1,4 @@
-﻿using AutoDarkModeApp.Communication;
+﻿using AutoDarkModeShell;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeConfig;
 using System;

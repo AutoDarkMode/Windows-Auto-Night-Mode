@@ -1,4 +1,4 @@
-﻿using AutoDarkModeApp.Communication;
+﻿using AutoDarkModeShell;
 using AutoDarkModeConfig;
 using NetMQ;
 using System;

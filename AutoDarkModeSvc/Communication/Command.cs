@@ -3,14 +3,14 @@ using System.IO;
 
 namespace AutoDarkModeSvc.Communication
 {
-    static class Address
+    public static class Address
     {
         public const string DefaultPipeName = "WindowsAutoDarkMode";
         public const string DefaultPipeResponse = "_response";
         public const string DefaultPipeCommand = "_command";
         public const string DefaultPort = "54345";
     }
-    static class Command
+    public static class Command
     {
         [Includable]
         public const string Switch = "/switch";
@@ -43,7 +43,7 @@ namespace AutoDarkModeSvc.Communication
     {
     }
 
-    static class Response
+    public static class Response
     {
         public const string Available = "Available";
         public const string New = "New";

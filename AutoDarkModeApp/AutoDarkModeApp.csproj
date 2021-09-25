@@ -64,9 +64,6 @@
     <OutputPath>..\bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Communication\Command.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
@@ -106,7 +103,6 @@
     <PackageReference Include="FluentWPF" Version="0.10.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
-    <PackageReference Include="NetMQ" Version="4.0.0.207" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="4.7.0" />
     <PackageReference Include="TaskScheduler">
@@ -152,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeConfig.csproj" />
+    <ProjectReference Include="..\AutoDarkModeShell\AutoDarkModeShell.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

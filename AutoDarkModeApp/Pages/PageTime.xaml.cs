@@ -11,7 +11,7 @@ using AutoDarkModeConfig;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeApp.Communication;
+using AutoDarkModeShell;
 using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp.Pages

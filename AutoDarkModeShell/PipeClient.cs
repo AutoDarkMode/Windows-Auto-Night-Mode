@@ -4,9 +4,9 @@ using System.IO.Pipes;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
 
-namespace AutoDarkModeApp.Communication
+namespace AutoDarkModeShell
 {
-    class PipeClient : ICommandClient
+    public class PipeClient : ICommandClient
     {
         private string PipeName { get; set; }
         public PipeClient(string pipename)

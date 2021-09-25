@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeApp.Communication;
+using AutoDarkModeShell;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 

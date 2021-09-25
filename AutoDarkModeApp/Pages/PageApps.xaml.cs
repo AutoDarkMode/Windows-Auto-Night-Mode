@@ -5,9 +5,9 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
-using AutoDarkModeApp.Communication;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeConfig;
+using AutoDarkModeShell;
 
 namespace AutoDarkModeApp
 {
@@ -22,7 +22,6 @@ namespace AutoDarkModeApp
 
         public PageApps()
         {
-            builder.Load();
             InitializeComponent();
             UiHandler();
 

@@ -9,7 +9,7 @@ using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeShell
 {
-    class ZeroMQClient : ICommandClient
+    public class ZeroMQClient : ICommandClient
     {
         private string Port { get;  }
         public ZeroMQClient(string port)
