@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using Windows.Devices.Display;
+using Windows.Devices.Enumeration;
 
 namespace AutoDarkModeConfig.ComponentSettings.Base
 {
@@ -34,19 +37,52 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
 
     public class MonitorSettings
     {
-        public string Id { get; set; }
+
+        private string id;
+        public string Id 
+        { 
+            get { return id; } 
+            set 
+            { 
+                id = value;
+                try
+                {
+                    DisplayMonitor monitor = Task.Run(async () => await GetMonitorInfoAsync()).Result;
+                    if (monitor != null)
+                    {
+                        MonitorString = $"{monitor.DisplayName} Id: {monitor.DisplayAdapterTargetId}";
+                    }
+                    else
+                    {
+                        MonitorString = Id.Substring(Id.IndexOf("#"), Id.IndexOf("&"));
+                    }
+                }
+                catch
+                {
+                    MonitorString = Id;
+                }
+            } 
+        }
+        private string MonitorString { get; set; }
         public string LightThemeWallpaper { get; set; }
         public string DarkThemeWallpaper { get; set; }
         public override string ToString()
         {
-            try
+            return MonitorString;
+        }
+        private async Task<DisplayMonitor> GetMonitorInfoAsync()
+        {
+            var deviceInfos = await DeviceInformation.FindAllAsync(DisplayMonitor.GetDeviceSelector());
+            List<DisplayMonitor> monitors = new();
+            foreach (var deviceInfo in deviceInfos)
             {
-                return Id.Substring(Id.IndexOf("#"), Id.IndexOf("&"));
+                if (deviceInfo.Id == Id)
+                {
+                    var monitor = await DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
+                    return monitor;
+                }
             }
-            catch
-            {
-                return Id;
-            }
+            return null;
         }
     }
 

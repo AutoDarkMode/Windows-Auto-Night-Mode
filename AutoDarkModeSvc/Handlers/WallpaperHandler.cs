@@ -6,6 +6,9 @@ using AutoDarkModeConfig.ComponentSettings.Base;
 using AutoDarkModeConfig;
 using System.IO;
 using AutoDarkModeSvc.Config;
+using System.Threading.Tasks;
+using Windows.Devices.Enumeration;
+using Windows.Devices.Display;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -69,6 +72,20 @@ namespace AutoDarkModeSvc.Handlers
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             return handler.GetPosition();
         }
+
+
+        private static async Task<List<DisplayMonitor>> GetMonitorInfosAsync()
+        {
+            var deviceInfos = await DeviceInformation.FindAllAsync(DisplayMonitor.GetDeviceSelector());
+            List<DisplayMonitor> monitors = new();
+            foreach (var deviceInfo in deviceInfos)
+            {
+                DisplayMonitor monitor = await  DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
+                monitors.Add(monitor);
+            }
+            return monitors;
+        }
+
         /// <summary>
         /// Adds missing monitors to the configuration file
         /// If a monitor configuration is not found,
@@ -76,6 +93,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         public static void DetectMonitors()
         {
+            var monitors = Task.Run(async() => await GetMonitorInfosAsync()).Result;
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             List<string> monitorIds = new();
