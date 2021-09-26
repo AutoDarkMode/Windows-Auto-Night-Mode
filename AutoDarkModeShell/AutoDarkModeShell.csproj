@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Sharprompt" Version="2.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
   </ItemGroup>
 

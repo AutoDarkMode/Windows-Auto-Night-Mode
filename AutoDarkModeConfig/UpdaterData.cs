@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeConfig
 {
-    public class LastUpdate
+    public class UpdaterData
     {
         public DateTime LastCheck { get; set; }
     }

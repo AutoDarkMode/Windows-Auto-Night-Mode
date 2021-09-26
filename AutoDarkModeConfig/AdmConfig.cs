@@ -16,6 +16,7 @@ namespace AutoDarkModeConfig
             GPUMonitoring = new GPUMonitoring();
             Events = new Events();
             WindowsThemeMode = new WindowsThemeMode();
+            Updater = new();
 
             //New Component Settings;
             AppsSwitch = new BaseSettingsEnabled<AppsSwitchSettings>();
@@ -25,7 +26,7 @@ namespace AutoDarkModeConfig
             WallpaperSwitch = new BaseSettings<WallpaperSwitchSettings>();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
-        public bool AutoUpdate { get; set; }
+        public Updater Updater { get; set; }
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettingsEnabled<SystemSwitchSettings> SystemSwitch { get; set; }
@@ -38,6 +39,15 @@ namespace AutoDarkModeConfig
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
+    }
+
+    public class Updater
+    {
+        public bool AutoInstall { get; set; }
+        public bool Enabled { get; set; }
+        public bool Silent { get; set; }
+        public int DaysBetweenUpdateCheck { get; set; } = 7;
+
     }
 
     public class WindowsThemeMode
@@ -66,8 +76,6 @@ namespace AutoDarkModeConfig
 
     public class Tunable
     {
-        public int DaysBetweenUpdateCheck { get; set; } = 7;
-
         private int batterySliderDefaultValue = 25;
         public int BatterySliderDefaultValue
         {

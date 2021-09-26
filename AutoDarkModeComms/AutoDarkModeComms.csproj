@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <PackageReference Include="NetMQ" Version="4.0.1.6" />
-    <PackageReference Include="Sharprompt" Version="2.3.4" />
   </ItemGroup>
 
 </Project>

@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme"><0 for dark, 1 for light theme</param>
         public static void SetSystemTheme(int theme)
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             key.SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
         }
 
@@ -37,7 +37,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme">0 for disabled, 1 for enabled</param>
         public static void SetColorPrevalence(int theme)
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             key.SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
         }
 
@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if enabled; false otherwise</returns>
         public static bool IsColorPrevalence()
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             var enabled = key.GetValue("ColorPrevalence").Equals(1);
             return enabled;
         }
@@ -58,7 +58,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool AppsUseLightTheme()
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             var enabled = key.GetValue("AppsUseLightTheme").Equals(1);
             return enabled;
         }
@@ -69,7 +69,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool SystemUsesLightTheme()
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             var enabled = key.GetValue("SystemUsesLightTheme").Equals(1);
             return enabled;
         }
@@ -101,9 +101,8 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
-                registryKey.Dispose();
                 return true;
             } 
             catch (Exception ex)

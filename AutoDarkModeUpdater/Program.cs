@@ -88,15 +88,15 @@ namespace AutoDarkModeUpdater
             {
                 if (args[0].Contains("--notify"))
                 {
-                    restoreShell = args[1].Equals(true.ToString());
-                    restoreApp = args[2].Equals(true.ToString());
+                    restoreShell = args[1].Equals(true.ToString(), StringComparison.Ordinal);
+                    restoreApp = args[2].Equals(true.ToString(), StringComparison.Ordinal);
                 }
             }
 
             // move old files out
             // collect all files that are not within the update data directory or the updater itself
             IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir, "*.*", SearchOption.AllDirectories)
-                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater));
+                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !InnoSetupFiles(f));
 
             //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
             if (!oldFilePaths.Contains(Extensions.ExecutionPath))
@@ -196,6 +196,19 @@ namespace AutoDarkModeUpdater
                 Environment.Exit(-2);
             }
             Logger.Info("rollback successful, no update has been performed, restarting auto dark mode");
+        }
+
+        private static bool InnoSetupFiles(string path)
+        {
+            if (path.Contains("unins000.exe"))
+            {
+                return true;
+            }
+            if (path.Contains("unins000.dat"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

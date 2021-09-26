@@ -9,6 +9,8 @@ using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using Windows.UI.Core;
 using Windows.UI.Notifications;
 
 namespace AutoDarkModeSvc.Handlers
@@ -16,9 +18,9 @@ namespace AutoDarkModeSvc.Handlers
     static class UpdateHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static ApiResponse upstreamResponse = new();
-        private static UpdateInfo upstreamVersion = new();
-
+        public static ApiResponse UpstreamResponse { get; private set; } = new();
+        public static UpdateInfo UpstreamVersion { get; private set; } = new();
+        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         /// <summary>
         /// Checks if a new version is available
@@ -33,8 +35,8 @@ namespace AutoDarkModeSvc.Handlers
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 string data = webClient.DownloadString(updateUrl);
-                upstreamVersion = UpdateInfo.Deserialize(data);
-                Version newVersion = new(upstreamVersion.Tag);
+                UpstreamVersion = UpdateInfo.Deserialize(data);
+                Version newVersion = new(UpstreamVersion.Tag);
 
                 Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 if (currentVersion.CompareTo(newVersion) < 0)
@@ -43,7 +45,7 @@ namespace AutoDarkModeSvc.Handlers
                     response.StatusCode = StatusCode.New;
                     response.Message = currentVersion.ToString();
                     response.Details = data;
-                    upstreamResponse = response;
+                    UpstreamResponse = response;
                     return response.ToString();
                 }
                 else
@@ -58,23 +60,24 @@ namespace AutoDarkModeSvc.Handlers
             return StatusCode.Err;
         }
 
-        public static ApiResponse CanSelfUpdate()
+        /// <summary>
+        /// Checks if auto update is allowed <br/>
+        /// If the service has been installed in all users mode, this is always disabled <br/>
+        /// If aute auto install functionality has been disabled in the config file, also disallow
+        /// </summary>
+        /// <returns>An ApiResponse with UnsupportedOperation if auto install is unavailable. <br/>
+        /// If auto install is available, the latest update check response will be returned instead</returns>
+        public static ApiResponse CanAutoInstall()
         {
-            if (Extensions.InstallModeUsers())
+            if (!builder.Config.Updater.AutoInstall)
             {
-                if (!upstreamVersion.AutoUpdateAvailable)
+                return new ApiResponse
                 {
-                    Logger.Info("auto update blocked by upstream, please update manually");
-                    return new ApiResponse
-                    {
-                        StatusCode = StatusCode.No,
-                        Message = "auto update blocked by upstream"
-                    };
-                }
-
-                return upstreamResponse;
+                    StatusCode = StatusCode.Disabled,
+                    Message = "auto install disabled in config"
+                };
             }
-            else
+            else if (!Extensions.InstallModeUsers())
             {
                 Logger.Warn("installed in for all users mode, auto updates are disabled");
                 return new ApiResponse
@@ -83,19 +86,26 @@ namespace AutoDarkModeSvc.Handlers
                     Message = "installed for all users, auto updates are disabled"
                 };
             }
+            return UpstreamResponse;
         }
 
         public static void Update()
         {
-            if (upstreamResponse.StatusCode != StatusCode.New)
+            if (UpstreamResponse.StatusCode != StatusCode.New)
             {
                 Logger.Info("updater called, but no newer cached upstream version available");
                 return;
             }
 
+            if (!UpstreamVersion.AutoUpdateAvailable)
+            {
+                Logger.Info("auto update blocked by upstream, please update manually");
+                return;
+            }
+
             (bool, bool, bool) result = PrepareUpdate();
             bool success = result.Item1;
-            bool notifyShell= result.Item2;
+            bool notifyShell = result.Item2;
             bool notifyApp = result.Item3;
 
             if (!success)
@@ -107,7 +117,7 @@ namespace AutoDarkModeSvc.Handlers
 
             if (notifyShell || notifyApp)
             {
-                List<string> arguments = new(); 
+                List<string> arguments = new();
                 arguments.Add("--notify");
                 arguments.Add(notifyShell.ToString());
                 arguments.Add(notifyApp.ToString());
@@ -172,7 +182,7 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                byte[] buffer = webClient.DownloadData(upstreamVersion.GetUpdateHashUrl());
+                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl());
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 if (!Directory.Exists(Extensions.UpdateDataDir))
@@ -185,7 +195,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
-                webClient.DownloadFile(upstreamVersion.GetUpdateUrl(), downloadPath);
+                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(), downloadPath);
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -216,7 +226,7 @@ namespace AutoDarkModeSvc.Handlers
                 // unzip download data if hash is valid and update the updater
                 Directory.CreateDirectory(unpackDirectory);
                 ZipFile.ExtractToDirectory(downloadPath, unpackDirectory, true);
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "updating failed while extracting update data:");
@@ -301,6 +311,17 @@ namespace AutoDarkModeSvc.Handlers
             _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode Update failed"));
             _ = text[1].AppendChild(xml.CreateTextNode("An error occurred while updating."));
             _ = text[2].AppendChild(xml.CreateTextNode("Please see service.log and updater.log for more infos"));
+            var toast = new ToastNotification(xml);
+            ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+        }
+
+        public static void NotifyUpdateAvailable()
+        {
+            Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
+            Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
+            _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode Update"));
+            _ = text[1].AppendChild(xml.CreateTextNode($"Version {UpstreamVersion.Tag} is available"));
+            _ = text[2].AppendChild(xml.CreateTextNode($"You have Version {Assembly.GetExecutingAssembly().GetName().Version}"));
             var toast = new ToastNotification(xml);
             ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
         }

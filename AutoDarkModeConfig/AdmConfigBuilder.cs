@@ -13,12 +13,12 @@ namespace AutoDarkModeConfig
         private static AdmConfigBuilder instance;
         public AdmConfig Config { get; private set; }
         public AdmLocationData LocationData { get; private set; }
-        public LastUpdate LastUpdateData { get; private set; }
+        public UpdaterData UpdaterData { get; private set; }
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
         public string LocationDataPath { get; }
 
-        public string LastUpdatePath { get; }
+        public string UpdaterDataPath { get; }
         public bool Loading { get; private set; }
         protected AdmConfigBuilder()
         {
@@ -26,10 +26,11 @@ namespace AutoDarkModeConfig
             {
                 Config = new AdmConfig();
                 LocationData = new AdmLocationData();
+                UpdaterData = new UpdaterData();
                 ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
                 ConfigFilePath = Path.Combine(ConfigDir, "config.yaml");
                 LocationDataPath = Path.Combine(ConfigDir, "location_data.yaml");
-                LastUpdatePath = Path.Combine(ConfigDir, "update.yaml");
+                UpdaterDataPath = Path.Combine(ConfigDir, "update.yaml");
             }
         }
 
@@ -52,9 +53,9 @@ namespace AutoDarkModeConfig
             SaveConfig(LocationDataPath, LocationData);
         }
 
-        public void SaveLastUpdateData()
+        public void SaveUpdaterData()
         {
-            SaveConfig(LastUpdatePath, LastUpdateData);
+            SaveConfig(UpdaterDataPath, UpdaterData);
         }
 
         private void SaveConfig(string path, object obj)
@@ -110,8 +111,8 @@ namespace AutoDarkModeConfig
         public void LastUpdateLoad()
         {
             Loading = true;
-            LastUpdate deser = Deserialize<LastUpdate>(LastUpdatePath, LastUpdateData);
-            LastUpdateData = deser ?? LastUpdateData;
+            UpdaterData deser = Deserialize<UpdaterData>(UpdaterDataPath, UpdaterData);
+            UpdaterData = deser ?? UpdaterData;
             Loading = true;
         }
 

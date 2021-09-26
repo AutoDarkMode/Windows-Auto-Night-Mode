@@ -129,10 +129,11 @@ namespace AutoDarkModeSvc.Communication
                     case Command.Update:
                         Logger.Info("signal received: update adm");
                         //_ = UpdateHandler.CheckNewVersion();
-                        ApiResponse response = UpdateHandler.CanSelfUpdate();
+                        ApiResponse response = UpdateHandler.CanAutoInstall();
                         if (response.StatusCode == StatusCode.New)
                         {
                             SendResponse(response.ToString());
+                            // this is run sync, as such it will block the ZMQ thread!
                             UpdateHandler.Update();
                         }
                         else

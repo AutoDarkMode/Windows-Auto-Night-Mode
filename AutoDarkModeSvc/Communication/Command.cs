@@ -57,6 +57,7 @@ namespace AutoDarkModeSvc.Communication
         public const string Timeout = "Timeout";
         public const string UnsupportedOperation = "UnsupportedOperation";
         public const string No = "No";
+        public const string Disabled = "Disabled";
     }
 
     public class ApiResponse
