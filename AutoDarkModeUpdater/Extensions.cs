@@ -12,6 +12,8 @@ namespace AutoDarkModeUpdater
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string UpdateDataDir = GetUpdateDataDir();
         public static readonly string ExecutionPath = GetExecutionPath();
+        public static readonly string ExecutionPathApp = GetExecutionPathApp();
+        public static readonly string ExecutionPathShell = GetExecutionPathShell();
         public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
         public const string UpdaterDirName = "Updater";
 
@@ -20,6 +22,24 @@ namespace AutoDarkModeUpdater
             var assemblyLocation = System.AppContext.BaseDirectory;
             assemblyLocation = Directory.GetParent(assemblyLocation).FullName;
             var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath + executableName);
+        }
+
+        private static string GetExecutionPathApp()
+        {
+            var assemblyLocation = System.AppContext.BaseDirectory;
+            assemblyLocation = Directory.GetParent(assemblyLocation).FullName;
+            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeApp.exe";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath + executableName);
+        }
+
+        private static string GetExecutionPathShell()
+        {
+            var assemblyLocation = System.AppContext.BaseDirectory;
+            assemblyLocation = Directory.GetParent(assemblyLocation).FullName;
+            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeShell.exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath + executableName);
         }

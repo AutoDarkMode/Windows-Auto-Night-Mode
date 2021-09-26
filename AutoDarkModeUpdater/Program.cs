@@ -13,11 +13,12 @@ namespace AutoDarkModeUpdater
     class Program
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
         static void Main(string[] args)
         {
-            var configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+            string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
             // Targets where to log to: File and Console
-            var logfile = new NLog.Targets.FileTarget("logfile")
+            NLog.Targets.FileTarget logfile = new("logfile")
             {
                 FileName = Path.Combine(configDir, "updater.log"),
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
@@ -25,7 +26,7 @@ namespace AutoDarkModeUpdater
                 "cleanNamesOfAnonymousDelegates=true:" +
                 "cleanNamesOfAsyncContinuations=true}: ${message}: ${exception:separator=|}"
             };
-            var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
+            NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
             {
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
@@ -33,7 +34,7 @@ namespace AutoDarkModeUpdater
                 "cleanNamesOfAsyncContinuations=true}: ${message}: ${exception:separator=|}"
             };
 
-            var logConfig = new NLog.Config.LoggingConfiguration();
+            NLog.Config.LoggingConfiguration logConfig = new();
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
@@ -57,28 +58,31 @@ namespace AutoDarkModeUpdater
             }
 
             string admDir = Extensions.ExecutionDir;
-            bool notifyAboutUpdate = false;
-            if (args.Length > 0)
+            bool restoreShell = false;
+            bool restoreApp = false;
+            if (args.Length > 3)
             {
-                if (args[0].Contains("notify"))
+                if (args[0].Contains("--notify"))
                 {
-                    notifyAboutUpdate = true;
+                    restoreShell = args[1].Equals(true.ToString());
+                    restoreApp = args[2].Equals(true.ToString());
                 }
-            }
-            if (notifyAboutUpdate)
-            {
-                //TODO: restart frontend stuff that has closed
             }
 
             // move old files out
-            string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
+            // collect all files that are not within the update data directory or the updater itself
             IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir, "*.*", SearchOption.AllDirectories)
-                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater)); ;
+                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater));
+
+            //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
             if (!oldFilePaths.Contains(Extensions.ExecutionPath))
             {
-                Logger.Fatal($"wrong directory /service executable not found {Extensions.ExecutionPath}");
+                Logger.Error($"updated aborted, wrong directory /service executable not found {Extensions.ExecutionPath}");
                 Environment.Exit(-1);
             }
+
+            // convert to file info list and move all files into a demporary directory that is a sub directory of the update data dir
+            // this is done so the dir can be removed easily once the update is complete
             IEnumerable<FileInfo> oldFiles = oldFilePaths.Select(f => new FileInfo(f));
             try
             {
@@ -94,7 +98,9 @@ namespace AutoDarkModeUpdater
             }
             catch (Exception ex)
             {
-                Logger.Fatal(ex, "could not move all files to holding dir, fatal, please reinstall Auto Dark Mode");
+                Logger.Error(ex, "could not move all files to holding dir, attempting rollback");
+                RollbackDir(holdingDir, Extensions.ExecutionDir);
+                Relaunch(restoreShell, restoreApp);
                 Environment.Exit(-1);
             }
 
@@ -112,7 +118,9 @@ namespace AutoDarkModeUpdater
             }
             catch (Exception ex)
             {
-                Logger.Fatal(ex, "could not move all files, fatal, please reinstall Auto Dark Mode");
+                Logger.Error(ex, "could not move all files, attempting rollback");
+                RollbackDir(holdingDir, Extensions.ExecutionDir);
+                Relaunch(restoreShell, restoreApp);
                 Environment.Exit(-1);
             }
 
@@ -126,7 +134,39 @@ namespace AutoDarkModeUpdater
             }
 
             Logger.Info("update complete, starting service");
+
+        }
+
+        private static void Relaunch(bool restoreShell, bool restoreApp)
+        {
             Process.Start(Extensions.ExecutionPath);
+            if (restoreShell)
+            {
+                Process.Start(Extensions.ExecutionPathApp);
+            }
+            if (restoreApp)
+            {
+                Process.Start(Extensions.ExecutionPathShell);
+
+            }
+        }
+
+        private static void RollbackDir(string source, string target)
+        {
+            IEnumerable<FileInfo> holdingFiles = Directory.GetFiles(source, "*.*", SearchOption.AllDirectories).Select(f => new FileInfo(f));
+            try
+            {
+                foreach (var file in holdingFiles)
+                {
+                    file.MoveTo(Path.Combine(target, file.Name), true);
+                    Logger.Info($"rolled back file {file.Name} to default dir {target}");
+                }
+            }
+            catch (Exception ex) {
+                Logger.Fatal(ex, "rollback failed this is non-recoverable, please reinstall auto dark mode:");
+                Environment.Exit(-2);
+            }
+            Logger.Info("rollback successful, no update has been performed, restarting auto dark mode");
         }
     }
 }

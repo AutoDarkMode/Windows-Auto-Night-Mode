@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -92,9 +93,10 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
 
-            (bool, bool) result = PrepareUpdate();
+            (bool, bool, bool) result = PrepareUpdate();
             bool success = result.Item1;
-            bool notify = result.Item2;
+            bool notifyShell= result.Item2;
+            bool notifyApp = result.Item3;
 
             if (!success)
             {
@@ -103,9 +105,13 @@ namespace AutoDarkModeSvc.Handlers
 
             Logger.Info("update preparation complete");
 
-            if (notify)
+            if (notifyShell || notifyApp)
             {
-                Process.Start(Extensions.ExecutionPathUpdater, "--notify");
+                List<string> arguments = new(); 
+                arguments.Add("--notify");
+                arguments.Add(notifyShell.ToString());
+                arguments.Add(notifyApp.ToString());
+                Process.Start(Extensions.ExecutionPathUpdater, arguments);
             }
             else
             {
@@ -117,10 +123,12 @@ namespace AutoDarkModeSvc.Handlers
         /// Prepares the update process by upgrading the updater
         /// </summary>
         /// <returns>A bool tuple where the first item holds the value whether the update has been successfully prepared. <br></br>
-        /// The second item is to determine whether a notification should be displayed</returns>
-        private static (bool, bool) PrepareUpdate()
+        /// The second item is to determine whether the shell needs to be restarted <br/>
+        /// The third item is to determine whether the app needs to be restarted</returns>
+        private static (bool, bool, bool) PrepareUpdate()
         {
-            bool notifyAboutUpdate = false;
+            bool shellRestart = false;
+            bool appRestart = false;
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
             try
             {
@@ -133,16 +141,16 @@ namespace AutoDarkModeSvc.Handlers
                     if (pShell.Length != 0)
                     {
                         pShell[0].Kill();
-                        notifyAboutUpdate = true;
+                        shellRestart = true;
                     }
                     if (pApp.Length != 0)
                     {
                         pApp[0].Kill();
-                        notifyAboutUpdate = true;
+                        appRestart = true;
                     }
 
                     // show toast if UI components were open to inform the user that the program is being updated
-                    if (notifyAboutUpdate)
+                    if (shellRestart || appRestart)
                     {
                         Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
                         Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
@@ -156,7 +164,7 @@ namespace AutoDarkModeSvc.Handlers
                 catch (Exception ex)
                 {
                     Logger.Warn(ex, "other auto dark mode components still running, skipping update");
-                    return (false, false);
+                    return (false, false, false);
                 }
 
 
@@ -199,7 +207,7 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Error(ex, "updating failed:");
-                return (false, false);
+                return (false, false, false);
             }
 
             string unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
@@ -212,25 +220,25 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Error(ex, "updating failed while extracting update data:");
-                return (false, false);
+                return (false, false, false);
             }
 
             try
             {
                 if (UpdateUpdater(unpackDirectory))
                 {
-                    return (true, notifyAboutUpdate);
+                    return (true, shellRestart, appRestart);
                 }
                 else
                 {
                     Logger.Error("updating failed, rollback successful");
-                    return (false, false);
+                    return (false, false, false);
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "updater failed, rollback failed, the updater is now missing and needs to be restored on next update attempt:");
-                return (false, false);
+                return (false, false, false);
             }
         }
 
