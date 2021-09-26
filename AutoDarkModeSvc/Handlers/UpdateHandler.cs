@@ -144,41 +144,6 @@ namespace AutoDarkModeSvc.Handlers
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
             try
             {
-                Process[] pShell = Process.GetProcessesByName("AutoDarkModeShell");
-                Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
-
-                // kill auto dark mode app and shell if they were running to avoid file move/delete issues
-                try
-                {
-                    if (pShell.Length != 0)
-                    {
-                        pShell[0].Kill();
-                        shellRestart = true;
-                    }
-                    if (pApp.Length != 0)
-                    {
-                        pApp[0].Kill();
-                        appRestart = true;
-                    }
-
-                    // show toast if UI components were open to inform the user that the program is being updated
-                    if (shellRestart || appRestart)
-                    {
-                        Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
-                        Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
-
-                        _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode is updating"));
-                        _ = text[1].AppendChild(xml.CreateTextNode("Please wait until the update is complete"));
-                        var toast = new ToastNotification(xml);
-                        ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "other auto dark mode components still running, skipping update");
-                    return (false, false, false);
-                }
-
 
                 //download zip file file
                 Logger.Info("downloading new version");
@@ -232,6 +197,41 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Error(ex, "updating failed while extracting update data:");
+                return (false, false, false);
+            }
+
+            // kill auto dark mode app and shell if they were running to avoid file move/delete issues
+            try
+            {
+                Process[] pShell = Process.GetProcessesByName("AutoDarkModeShell");
+                Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
+
+                if (pShell.Length != 0)
+                {
+                    pShell[0].Kill();
+                    shellRestart = true;
+                }
+                if (pApp.Length != 0)
+                {
+                    pApp[0].Kill();
+                    appRestart = true;
+                }
+
+                // show toast if UI components were open to inform the user that the program is being updated
+                if (shellRestart || appRestart)
+                {
+                    Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
+                    Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
+
+                    _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode is updating"));
+                    _ = text[1].AppendChild(xml.CreateTextNode("Please wait until the update is complete"));
+                    ToastNotification toast = new ToastNotification(xml);
+                    ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "other auto dark mode components still running, skipping update");
                 return (false, false, false);
             }
 
