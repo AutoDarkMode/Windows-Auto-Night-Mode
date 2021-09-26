@@ -4,6 +4,7 @@ namespace AutoDarkModeConfig
 {
     public class UpdateInfo
     {
+        public const string baseUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/";
         public string Tag { get; set; }
         public string FileName { get; set; }
         public bool AutoUpdateAvailable { get; set; }
@@ -15,19 +16,27 @@ namespace AutoDarkModeConfig
             return deserialized;
         }
 
-        public string GetUpdateUrl()
+        public string GetUpdateUrl(string url = baseUrl)
         {
-            return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{Tag}/{FileName}.zip";
+            if (url != baseUrl)
+            {
+                return url;
+            }
+            return $"{url}{Tag}/{FileName}.zip";
         }
 
-        public string GetUpdateInfoPage()
+        public string GetUpdateInfoPage(string url = baseUrl)
         {
-            return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{Tag}";
+            return $"{url}{Tag}";
         }
 
-        public string GetUpdateHashUrl()
+        public string GetUpdateHashUrl(string url = baseUrl)
         {
-            return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{Tag}/{FileName}.sha256";
+            if (url != baseUrl)
+            {
+                return url;
+            }
+            return $"{url}{Tag}/{FileName}.sha256";
         }
     }
 }

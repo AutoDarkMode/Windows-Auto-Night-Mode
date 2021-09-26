@@ -48,16 +48,20 @@ namespace AutoDarkModeSvc.Modules
                     builder.UpdaterData.LastCheck = DateTime.Now;
                     _ = UpdateHandler.CheckNewVersion();
                     ApiResponse versionCheck = UpdateHandler.UpstreamResponse;
+
                     if (versionCheck.StatusCode == StatusCode.New)
                     {
                         ApiResponse autoUpdate = UpdateHandler.CanAutoInstall();
                         if (autoUpdate.StatusCode == StatusCode.New)
                         {
-                            if (!builder.Config.Updater.Silent)
+                            if (!builder.Config.Updater.Silent || !builder.Config.Updater.AutoInstall)
                             {
                                 UpdateHandler.NotifyUpdateAvailable();
                             }
-                            UpdateHandler.Update();
+                            if (builder.Config.Updater.AutoInstall)
+                            {
+                                UpdateHandler.Update();
+                            }
                         }
                         else if (autoUpdate.StatusCode == StatusCode.UnsupportedOperation || autoUpdate.StatusCode == StatusCode.Disabled)
                         {

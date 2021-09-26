@@ -32,7 +32,7 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 string updateUrl = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.yaml";
-                using WebClient webClient = new();
+                using RedirectWebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 string data = webClient.DownloadString(updateUrl);
                 UpstreamVersion = UpdateInfo.Deserialize(data);
@@ -69,15 +69,7 @@ namespace AutoDarkModeSvc.Handlers
         /// If auto install is available, the latest update check response will be returned instead</returns>
         public static ApiResponse CanAutoInstall()
         {
-            if (!builder.Config.Updater.AutoInstall)
-            {
-                return new ApiResponse
-                {
-                    StatusCode = StatusCode.Disabled,
-                    Message = "auto install disabled in config"
-                };
-            }
-            else if (!Extensions.InstallModeUsers())
+            if (!Extensions.InstallModeUsers())
             {
                 Logger.Warn("installed in for all users mode, auto updates are disabled");
                 return new ApiResponse
@@ -139,6 +131,16 @@ namespace AutoDarkModeSvc.Handlers
         {
             bool shellRestart = false;
             bool appRestart = false;
+            string baseUrl = UpdateInfo.baseUrl;
+            string baseUrlHash = UpdateInfo.baseUrl;
+            if (builder.Config.Updater.DownloadZipBaseUrlOverride.Length != 0)
+            {
+                baseUrl = builder.Config.Updater.DownloadZipBaseUrlOverride;
+            }
+            if (builder.Config.Updater.DownloadHashBaseUrlOverride.Length != 0)
+            {
+                baseUrlHash = builder.Config.Updater.DownloadHashBaseUrlOverride;
+            }
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
             try
             {
@@ -182,7 +184,7 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl());
+                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 if (!Directory.Exists(Extensions.UpdateDataDir))
@@ -195,7 +197,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
-                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(), downloadPath);
+                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(baseUrl), downloadPath);
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -324,6 +326,23 @@ namespace AutoDarkModeSvc.Handlers
             _ = text[2].AppendChild(xml.CreateTextNode($"You have Version {Assembly.GetExecutingAssembly().GetName().Version}"));
             var toast = new ToastNotification(xml);
             ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+        }
+    }
+
+    class RedirectWebClient : WebClient
+    {
+        Uri _responseUri;
+
+        public Uri ResponseUri
+        {
+            get { return _responseUri; }
+        }
+
+        protected override WebResponse GetWebResponse(WebRequest request)
+        {
+            WebResponse response = base.GetWebResponse(request);
+            _responseUri = response.ResponseUri;
+            return response;
         }
     }
 }

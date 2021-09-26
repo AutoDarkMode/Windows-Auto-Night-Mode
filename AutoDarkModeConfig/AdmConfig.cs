@@ -47,6 +47,8 @@ namespace AutoDarkModeConfig
         public bool Enabled { get; set; }
         public bool Silent { get; set; }
         public int DaysBetweenUpdateCheck { get; set; } = 7;
+        public string DownloadZipBaseUrlOverride { get; set; }
+        public string DownloadHashBaseUrlOverride { get; set; }
 
     }
 
