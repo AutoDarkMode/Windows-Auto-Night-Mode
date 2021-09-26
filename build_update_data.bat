@@ -3,7 +3,7 @@ call publish.bat
 REM tar -cvzf AutoDarkModeInstaller/Setup/ADM.zip -C bin/Publish *
 chdir /d bin
 chdir /d Publish
-7z a ../../AutoDarkModeInstaller/Setup/ADM.zip *
+7z a -mm=Deflate -mx7 ../../AutoDarkModeInstaller/Setup/ADM.zip *
 chdir /d ..
 chdir /d ..
 
