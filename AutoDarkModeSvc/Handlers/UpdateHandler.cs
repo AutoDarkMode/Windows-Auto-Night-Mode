@@ -187,15 +187,15 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
 
-            Logger.Info("update preparation complete. shutting down");
+            Logger.Info("update preparation complete");
 
             if (notify)
             {
-                Process.Start(Extensions.ExecutionPathUpdater, "--notify");
+                //Process.Start(Extensions.ExecutionPathUpdater, "--notify");
             }
             else
             {
-                Process.Start(Extensions.ExecutionPathUpdater);
+                //Process.Start(Extensions.ExecutionPathUpdater);
             }
         }
 

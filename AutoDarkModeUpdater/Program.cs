@@ -23,14 +23,14 @@ namespace AutoDarkModeUpdater
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
+                "cleanNamesOfAsyncContinuations=true}: ${message}: ${exception:separator=|}"
             };
             var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
             {
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
+                "cleanNamesOfAsyncContinuations=true}: ${message}: ${exception:separator=|}"
             };
 
             var logConfig = new NLog.Config.LoggingConfiguration();
@@ -43,7 +43,12 @@ namespace AutoDarkModeUpdater
             try
             {
                 ICommandClient client = new ZeroMQClient(Address.DefaultPort);
-                client.SendMessageAndGetReply(Command.Shutdown);
+                string result = client.SendMessageAndGetReply(Command.Shutdown);
+                ApiResponse response = ApiResponse.FromString(result);
+                if (response.StatusCode != StatusCode.Ok && response.StatusCode != StatusCode.Timeout)
+                {
+                    throw new Exception("error shutting down service, aborting update");
+                }
             }
             catch (Exception ex)
             {
@@ -72,7 +77,8 @@ namespace AutoDarkModeUpdater
 
             // move old files out
             string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
-            IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir).Where(f => !f.Contains(Extensions.UpdateDataDir));
+            IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir, "*.*", SearchOption.AllDirectories)
+                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater)); ;
             if (!oldFilePaths.Contains(Extensions.ExecutionPath))
             {
                 Logger.Fatal($"wrong directory /service executable not found {Extensions.ExecutionPath}");
@@ -100,7 +106,7 @@ namespace AutoDarkModeUpdater
 
             // move new files from unpack directory to assembly path
             string unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
-            IEnumerable<FileInfo> files = Directory.GetFiles(unpackDirectory).Select(f => new FileInfo(f));
+            IEnumerable<FileInfo> files = Directory.GetFiles(unpackDirectory, "*.*", SearchOption.AllDirectories).Select(f => new FileInfo(f));
             try
             {
                 foreach (var file in files)
