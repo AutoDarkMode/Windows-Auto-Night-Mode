@@ -31,7 +31,7 @@ namespace AutoDarkModeUpdater
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message}: ${exception:separator=|}"
+                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
             };
 
             NLog.Config.LoggingConfiguration logConfig = new();
@@ -98,7 +98,7 @@ namespace AutoDarkModeUpdater
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "could not move all files to holding dir, attempting rollback");
+                Logger.Error(ex, "could not move all files to holding dir, attempting rollback:");
                 RollbackDir(holdingDir, Extensions.ExecutionDir);
                 Relaunch(restoreShell, restoreApp);
                 Environment.Exit(-1);
@@ -118,7 +118,7 @@ namespace AutoDarkModeUpdater
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "could not move all files, attempting rollback");
+                Logger.Error(ex, "could not move all files, attempting rollback:");
                 RollbackDir(holdingDir, Extensions.ExecutionDir);
                 Relaunch(restoreShell, restoreApp);
                 Environment.Exit(-1);
@@ -130,11 +130,11 @@ namespace AutoDarkModeUpdater
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, "could not delete holding dir, please investigate manually");
+                Logger.Warn(ex, "could not delete holding dir, please investigate manually:");
             }
 
             Logger.Info("update complete, starting service");
-
+            Relaunch(restoreShell, restoreApp);
         }
 
         private static void Relaunch(bool restoreShell, bool restoreApp)
