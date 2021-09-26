@@ -20,7 +20,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

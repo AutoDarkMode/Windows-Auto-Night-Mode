@@ -13,9 +13,12 @@ namespace AutoDarkModeConfig
         private static AdmConfigBuilder instance;
         public AdmConfig Config { get; private set; }
         public AdmLocationData LocationData { get; private set; }
+        public LastUpdate LastUpdateData { get; private set; }
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
         public string LocationDataPath { get; }
+
+        public string LastUpdatePath { get; }
         public bool Loading { get; private set; }
         protected AdmConfigBuilder()
         {
@@ -26,6 +29,7 @@ namespace AutoDarkModeConfig
                 ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
                 ConfigFilePath = Path.Combine(ConfigDir, "config.yaml");
                 LocationDataPath = Path.Combine(ConfigDir, "location_data.yaml");
+                LastUpdatePath = Path.Combine(ConfigDir, "update.yaml");
             }
         }
 
@@ -46,6 +50,11 @@ namespace AutoDarkModeConfig
         public void SaveLocationData()
         {
             SaveConfig(LocationDataPath, LocationData);
+        }
+
+        public void SaveLastUpdateData()
+        {
+            SaveConfig(LastUpdatePath, LastUpdateData);
         }
 
         private void SaveConfig(string path, object obj)
@@ -93,35 +102,36 @@ namespace AutoDarkModeConfig
         public void LoadLocationData()
         {
             Loading = true;
-            if (!File.Exists(LocationDataPath))
-            {
-                SaveLocationData();
-            }
-
-            //using StreamReader locationDataReader = new(File.Open(LocationDataPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
-            //JsonSerializer serializer = new JsonSerializer();
-            //AdmLocationData deserializedLocationData = (AdmLocationData)serializer.Deserialize(locationDataReader, typeof(AdmLocationData));
-            var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
-            AdmLocationData deserializedLocationDataYaml = yamlDeserializer.Deserialize<AdmLocationData>(LoadFile(LocationDataPath));
-            LocationData = deserializedLocationDataYaml ?? LocationData;
+            AdmLocationData deser = Deserialize<AdmLocationData>(LocationDataPath, LocationData);
+            LocationData = deser ?? LocationData;
             Loading = false;
+        }
+
+        public void LastUpdateLoad()
+        {
+            Loading = true;
+            LastUpdate deser = Deserialize<LastUpdate>(LastUpdatePath, LastUpdateData);
+            LastUpdateData = deser ?? LastUpdateData;
+            Loading = true;
         }
 
         public void Load()
         {
             Loading = true;
-            if (!File.Exists(ConfigFilePath))
-            {
-                Save();
-            }
-            //var data = ReadWithRetry(ConfigFilePath);
-            //using StreamReader dataReader = new StreamReader(File.Open(ConfigFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
-            //JsonSerializer serializer = new JsonSerializer();
-            ///AdmConfig deserializedConfig = (AdmConfig)serializer.Deserialize(configReader, typeof(AdmConfig));
-            var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
-            AdmConfig deserializedConfigYaml = yamlDeserializer.Deserialize<AdmConfig>(LoadFile(ConfigFilePath));
-            Config = deserializedConfigYaml ?? Config;
+            AdmConfig deser = Deserialize<AdmConfig>(ConfigFilePath, Config);
+            Config = deser ?? Config;
             Loading = false;
+        }
+
+        private T Deserialize<T>(string FilePath, object current)
+        {
+            if (!File.Exists(FilePath))
+            {
+                SaveConfig(FilePath, current);
+            }
+            var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            T deserializedConfigYaml = yamlDeserializer.Deserialize<T>(LoadFile(FilePath));
+            return deserializedConfigYaml;
         }
 
 

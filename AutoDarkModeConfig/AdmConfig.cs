@@ -66,6 +66,8 @@ namespace AutoDarkModeConfig
 
     public class Tunable
     {
+        public int DaysBetweenUpdateCheck { get; set; } = 7;
+
         private int batterySliderDefaultValue = 25;
         public int BatterySliderDefaultValue
         {
