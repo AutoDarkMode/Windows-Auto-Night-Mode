@@ -34,14 +34,14 @@ namespace AutoDarkModeComms
             }
         }
 
-        public bool SendMessage(string message)
+        public bool SendMessage(string message, int timeoutSeconds)
         {
 
             using (var client = new RequestSocket())
             {
                 client.Connect("tcp://127.0.0.1:" + GetBackendPort());
                 client.SendFrame(message);
-                var response = GetResponse(client);
+                var response = GetResponse(client, timeoutSeconds);
                 if (response.Contains(StatusCode.Err))
                 {
                     return false;
@@ -54,13 +54,13 @@ namespace AutoDarkModeComms
             return false;
         }
 
-        private string GetResponse(RequestSocket client)
+        private string GetResponse(RequestSocket client, int timeoutSeconds)
         {
             bool hasResponse = false;
             string response;
             lock (this)
             {
-                hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, 5), out response);
+                hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, timeoutSeconds), out response);
             }
 
             if (hasResponse)
@@ -70,22 +70,22 @@ namespace AutoDarkModeComms
             return StatusCode.Timeout;
         }
 
-        public string SendMessageAndGetReply(string message)
+        public string SendMessageAndGetReply(string message, int timeoutSeconds)
         {
             using var client = new RequestSocket();
             client.Connect("tcp://127.0.0.1:" + GetBackendPort());
             client.SendFrame(message);
-            return GetResponse(client);
+            return GetResponse(client, timeoutSeconds);
         }
 
-        public Task<bool> SendMessageAsync(string message)
+        public Task<bool> SendMessageAsync(string message, int timeoutSeconds)
         {
-            return Task.Run(() => SendMessage(message));
+            return Task.Run(() => SendMessage(message, timeoutSeconds));
         }
 
-        public Task<string> SendMessageAndGetReplyAsync(string message)
+        public Task<string> SendMessageAndGetReplyAsync(string message, int timeoutSeconds)
         {
-            return Task.Run(() => SendMessageAndGetReply(message));
+            return Task.Run(() => SendMessageAndGetReply(message, timeoutSeconds));
         }
     }
 }

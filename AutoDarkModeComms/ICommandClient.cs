@@ -12,7 +12,7 @@ namespace AutoDarkModeComms
         /// </summary>
         /// <param name="message"></param>
         /// <returns>true if successful; false otherwise</returns>
-        public bool SendMessage(string message);
+        public bool SendMessage(string message, int timeoutSeconds = 5);
 
         /// <summary>
         /// Sends a message via the command interface,
@@ -20,7 +20,7 @@ namespace AutoDarkModeComms
         /// </summary>
         /// <param name="message"></param>
         /// <returns>the message relayed by the server</returns>
-        public string SendMessageAndGetReply(string message);
+        public string SendMessageAndGetReply(string message, int timeoutSeconds = 5);
 
         /// <summary>
         /// Sends a message asynchronously via the command interface. 
@@ -28,7 +28,7 @@ namespace AutoDarkModeComms
         /// </summary>
         /// <param name="message"></param>
         /// <returns>true if successful; false otherwise</returns>
-        public Task<bool> SendMessageAsync(string message);
+        public Task<bool> SendMessageAsync(string message, int timeoutSeconds = 5);
 
         /// <summary>
         /// Sends a message asynchronously via the command interface,
@@ -37,6 +37,6 @@ namespace AutoDarkModeComms
         /// </summary>
         /// <param name="message"></param>
         /// <returns>the message relayed by the server</returns>
-        public Task<string> SendMessageAndGetReplyAsync(string message);
+        public Task<string> SendMessageAndGetReplyAsync(string message, int timeoutSeconds = 5);
     }
 }
