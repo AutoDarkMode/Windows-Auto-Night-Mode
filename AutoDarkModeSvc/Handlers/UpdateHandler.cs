@@ -133,13 +133,13 @@ namespace AutoDarkModeSvc.Handlers
             bool appRestart = false;
             string baseUrl = UpdateInfo.baseUrl;
             string baseUrlHash = UpdateInfo.baseUrl;
-            if (builder.Config.Updater.DownloadZipBaseUrlOverride.Length != 0)
+            if (builder.Config.Updater.UpdateZipCustomUrl.Length != 0)
             {
-                baseUrl = builder.Config.Updater.DownloadZipBaseUrlOverride;
+                baseUrl = builder.Config.Updater.UpdateZipCustomUrl;
             }
-            if (builder.Config.Updater.DownloadHashBaseUrlOverride.Length != 0)
+            if (builder.Config.Updater.UpdateHashCustomUrl.Length != 0)
             {
-                baseUrlHash = builder.Config.Updater.DownloadHashBaseUrlOverride;
+                baseUrlHash = builder.Config.Updater.UpdateHashCustomUrl;
             }
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
             try
