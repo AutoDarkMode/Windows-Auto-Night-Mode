@@ -5,66 +5,35 @@ using System.Windows;
 using System.Globalization;
 using System.Diagnostics;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeComms;
 
 namespace AutoDarkModeApp
 {
     class Updater
     {
-        //https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml
-        string xmlURL = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.xml";
-        private Version newVersion = null;
-        readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        string url;
         bool silent;
-        bool updateAvailable = false;
+        ApiResponse response = new();
+        private readonly ICommandClient commandClient;
 
         public Updater(bool pSilent)
         {
+            commandClient = new ZeroMQClient(Address.DefaultPort);
             this.silent = pSilent;
         }
 
-        public bool IsUpdateAvailable()
+        public bool CheckNewVersion()
         {
-            return updateAvailable;
+            response = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.CheckForUpdate));
+            return UpdateAvailable();
         }
 
-        public string GetUpdateURL()
+        public bool UpdateAvailable()
         {
-            return url;
-        }
-
-        public void CheckNewVersion()
-        {
-            XmlTextReader reader = new XmlTextReader(xmlURL);
-            reader.MoveToContent();
-            string elementName = "AutoNightMode";
-            if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "AutoNightMode"))
+            if (response.StatusCode == StatusCode.New)
             {
-                while (reader.Read())
-                {
-                    if (reader.NodeType == XmlNodeType.Element)
-                    {
-                        elementName = reader.Name;
-                    }
-                    else
-                    {
-                        if ((reader.NodeType == XmlNodeType.Text) && (reader.HasValue))
-                        {
-                            switch (elementName)
-                            {
-                                case "version":
-                                    newVersion = new Version(reader.Value);
-                                    break;
-                                case "url":
-                                    url = reader.Value;
-                                    break;
-                            }
-                        }
-                    }
-                }
+                return true;
             }
-            reader.Close();
-            MessageBoxHandler();
+            return false;
         }
 
         public void ParseResponse(string response)
@@ -72,49 +41,54 @@ namespace AutoDarkModeApp
             string[] messages = response.Split(";");
             if (messages[0] == StatusCode.New)
             {
-                url = messages[1];
-                newVersion = new Version(messages[2]);
                 MessageBoxHandler();
             }
         }
 
-        private void MessageBoxHandler()
+        public void MessageBoxHandler()
         {
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
-            if (currentVersion.CompareTo(newVersion) < 0)
+            if (UpdateAvailable())
             {
-                updateAvailable = true;
-
                 if (!silent)
                 {
-                    if(newVersion.Major > 9)
+                    string text = String.Format(Properties.Resources.msgUpdaterText, response.Details, response.Message);
+                    MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
                     {
-                        if(Properties.Settings.Default.WantsVersion10)
-                        {
-                            Ver10Updater updater = new Ver10Updater(url);
-                            updater.Topmost = true;
-                            updater.Show();
-                            updater.Activate();
-                        }
-                    }
-                    else
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        Topmost = true
+                    };
+                    msgBox.ShowDialog();
+                    var result = msgBox.DialogResult;
+                    if (result == true)
                     {
-                        string text = String.Format(Properties.Resources.msgUpdaterText, currentVersion, newVersion);
-                        MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
+                        ApiResponse response = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.Update));
+                        if (response.StatusCode != StatusCode.New)
                         {
-                            WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                            Topmost = true
-                        };
-                        msgBox.ShowDialog();
-                        var result = msgBox.DialogResult;
-                        if (result == true)
-                        {
-                            StartProcessByProcessInfo(url);
-                            Application.Current.Shutdown();
+                            Exception ex = new($"could not prepare updater, {response.StatusCode} with message. {response.Message} and details {response.Details}");
+                            ShowErrorMessage(ex, "Updater");
                         }
                     }
                 }
             }
+        }
+
+        private void ShowErrorMessage(Exception ex, string location)
+        {
+            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
+            msg.ShowDialog();
+            var result = msg.DialogResult;
+            if (result == true)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+            return;
         }
 
         private void StartProcessByProcessInfo(string message)

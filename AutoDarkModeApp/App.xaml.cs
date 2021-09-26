@@ -82,16 +82,6 @@ namespace AutoDarkModeApp
                     {
                         commandClient.SendMessage(value);
                     }
-                    else if (value == "/update")
-                    {
-                        var result = commandClient.SendMessageAndGetReply(value);
-
-                        if (result != StatusCode.Err && result != StatusCode.Timeout)
-                        {
-                            Updater updater = new Updater(true);
-                            updater.ParseResponse(result);
-                        }
-                    }
                     else if (value == "/location")
                     {
                         commandClient.SendMessage(Command.LocationAccess);

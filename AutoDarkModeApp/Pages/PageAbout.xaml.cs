@@ -1,4 +1,6 @@
-﻿using SourceChord.FluentWPF;
+﻿using AutoDarkModeComms;
+using AutoDarkModeSvc.Communication;
+using SourceChord.FluentWPF;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -15,7 +17,7 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageAbout : Page
     {
-        readonly Updater updater = new Updater(true);
+        readonly Updater updater = new Updater(false);
         bool update = false;
         int easterEgg = 0;
 
@@ -55,7 +57,7 @@ namespace AutoDarkModeApp.Pages
                 updateInfoText.Text = Properties.Resources.msgSearchUpd;//searching for update...
                 updateButton.IsEnabled = false;
                 updater.CheckNewVersion();
-                if (updater.IsUpdateAvailable())
+                if (updater.UpdateAvailable())
                 {
                     updateInfoText.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
                     updateButton.Content = Properties.Resources.msgDownloadUpd;//Download update
@@ -69,7 +71,7 @@ namespace AutoDarkModeApp.Pages
             }
             else
             {
-                StartProcessByProcessInfo(updater.GetUpdateURL());
+                updater.MessageBoxHandler();
             }
         }
 

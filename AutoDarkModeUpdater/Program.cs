@@ -67,12 +67,7 @@ namespace AutoDarkModeUpdater
             }
             if (notifyAboutUpdate)
             {
-                var xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
-                var text = xml.GetElementsByTagName("text");
-                text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode is updating"));
-                text[1].AppendChild(xml.CreateTextNode("Please wait until the update is complete"));
-                var toast = new ToastNotification(xml);
-                ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+                //TODO: restart frontend stuff that has closed
             }
 
             // move old files out

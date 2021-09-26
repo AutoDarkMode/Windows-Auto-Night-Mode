@@ -8,13 +8,16 @@ using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using Windows.UI.Notifications;
 
 namespace AutoDarkModeSvc.Handlers
 {
     static class UpdateHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static ApiResponse upstreamVersion = new();
+        private static ApiResponse upstreamResponse = new();
+        private static UpdateInfo upstreamVersion = new();
+
 
         /// <summary>
         /// Checks if a new version is available
@@ -29,8 +32,8 @@ namespace AutoDarkModeSvc.Handlers
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 string data = webClient.DownloadString(updateUrl);
-                UpdateInfo info = UpdateInfo.Deserialize(data);
-                Version newVersion = new(info.Tag);
+                upstreamVersion = UpdateInfo.Deserialize(data);
+                Version newVersion = new(upstreamVersion.Tag);
 
                 Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 if (currentVersion.CompareTo(newVersion) < 0)
@@ -38,8 +41,8 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info($"new version {newVersion} available");
                     response.StatusCode = StatusCode.New;
                     response.Message = newVersion.ToString();
-                    response.Details = data;
-                    upstreamVersion = response;
+                    response.Details = currentVersion.ToString();
+                    upstreamResponse = response;
                     return response.ToString();
                 }
                 else
@@ -81,7 +84,7 @@ namespace AutoDarkModeSvc.Handlers
                         Message = "updater broken"
                     };
                 }
-                return upstreamVersion;
+                return upstreamResponse;
             }
             else
             {
@@ -98,7 +101,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         /// <returns>A bool tuple where the first item holds the value whether the update has been successfully prepared. <br></br>
         /// The second item is to determine whether a notification should be displayed</returns>
-        public static (bool, bool) PrepareUpdate()
+        private static (bool, bool) PrepareUpdate()
         {
             bool notifyAboutUpdate = false;
             try
@@ -117,6 +120,16 @@ namespace AutoDarkModeSvc.Handlers
                         pApp[0].Kill();
                         notifyAboutUpdate = true;
                     }
+
+                    if (notifyAboutUpdate)
+                    {
+                        var xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
+                        var text = xml.GetElementsByTagName("text");
+                        text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode is updating"));
+                        text[1].AppendChild(xml.CreateTextNode("Please wait until the update is complete"));
+                        var toast = new ToastNotification(xml);
+                        ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -125,10 +138,9 @@ namespace AutoDarkModeSvc.Handlers
                 }
 
                 Logger.Info("downloading new version");
-                UpdateInfo info = UpdateInfo.Deserialize(upstreamVersion.Details);
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                byte[] buffer = webClient.DownloadData(GetUpdateHashUrl(info.Tag, "zip_hash.sha256"));
+                byte[] buffer = webClient.DownloadData(GetUpdateHashUrl(upstreamVersion.Tag, "zip_hash.sha256"));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 //download file
@@ -143,7 +155,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
                 string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
-                webClient.DownloadFile(GetUpdateUrl(info.Tag, info.FileName), downloadPath);
+                webClient.DownloadFile(GetUpdateUrl(upstreamVersion.Tag, upstreamVersion.FileName), downloadPath);
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();

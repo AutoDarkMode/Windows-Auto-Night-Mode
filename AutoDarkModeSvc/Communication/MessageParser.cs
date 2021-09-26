@@ -128,7 +128,7 @@ namespace AutoDarkModeSvc.Communication
 
                     case Command.Update:
                         Logger.Info("signal received: update adm");
-                        _ = UpdateHandler.CheckNewVersion();
+                        //_ = UpdateHandler.CheckNewVersion();
                         ApiResponse response = UpdateHandler.CanUpdate();
                         if (response.StatusCode == StatusCode.New)
                         {
