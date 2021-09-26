@@ -1,4 +1,4 @@
-﻿using AutoDarkModeShell;
+﻿using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeConfig;
 using System;
@@ -288,11 +288,11 @@ namespace AutoDarkModeApp
 
         private async void RequestThemeSwitch()
         {
-            string result = Response.Err;
+            string result = StatusCode.Err;
             try
             {
                 result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-                if (result != Response.Ok)
+                if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");
                 }
@@ -305,11 +305,11 @@ namespace AutoDarkModeApp
 
         private async Task DetectMonitors()
         {
-            string result = Response.Err;
+            string result = StatusCode.Err;
             try
             {
                 result = await messagingClient.SendMessageAndGetReplyAsync(Command.DetectMonitors);
-                if (result != Response.Ok)
+                if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");
                 }
@@ -330,11 +330,11 @@ namespace AutoDarkModeApp
 
         private async Task CleanMonitors()
         {
-            string result = Response.Err;
+            string result = StatusCode.Err;
             try
             {
                 result = await messagingClient.SendMessageAndGetReplyAsync(Command.CleanMonitors);
-                if (result != Response.Ok)
+                if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException($"couldn't clean up monitor list, {result}", "PageWallpaper");
                 }

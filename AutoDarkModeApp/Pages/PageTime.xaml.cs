@@ -11,7 +11,7 @@ using AutoDarkModeConfig;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeShell;
+using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp.Pages
@@ -288,7 +288,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-                if (result != Response.Ok)
+                if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageTime");
                 }
@@ -365,7 +365,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 var result = await messagingClient.SendMessageAndGetReplyAsync(Command.LocationAccess);
-                if (result == Response.NoLocAccess)
+                if (result == StatusCode.NoLocAccess)
                 {
                     NoLocationAccess();
                     return;
@@ -468,7 +468,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     builder.Save();
                     var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
-                    if (result != Response.Ok)
+                    if (result != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
                     }
@@ -494,7 +494,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     builder.Save();
                     var result = await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart);
-                    if (result != Response.Ok)
+                    if (result != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
                     }

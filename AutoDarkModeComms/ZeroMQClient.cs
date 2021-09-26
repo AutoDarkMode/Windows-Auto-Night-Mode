@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.IO.MemoryMappedFiles;
 using AutoDarkModeSvc.Communication;
 
-namespace AutoDarkModeShell
+namespace AutoDarkModeComms
 {
     public class ZeroMQClient : ICommandClient
     {
@@ -42,11 +42,11 @@ namespace AutoDarkModeShell
                 client.Connect("tcp://127.0.0.1:" + GetBackendPort());
                 client.SendFrame(message);
                 var response = GetResponse(client, message);
-                if (response.Contains(Response.Err))
+                if (response.Contains(StatusCode.Err))
                 {
                     return false;
                 }
-                else if (response.Contains(Response.Ok))
+                else if (response.Contains(StatusCode.Ok))
                 {
                     return true;
                 }
@@ -67,7 +67,7 @@ namespace AutoDarkModeShell
             {
                 return response;   
             }
-            return Response.Timeout;
+            return StatusCode.Timeout;
         }
 
         public string SendMessageAndGetReply(string message)

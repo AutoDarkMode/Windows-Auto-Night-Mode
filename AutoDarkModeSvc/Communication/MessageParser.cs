@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.Communication
                         }
                         //cm.ForceAll();
                         ThemeManager.TimedSwitch(builder, false);
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.Swap:
@@ -58,7 +58,7 @@ namespace AutoDarkModeSvc.Communication
                         {
                             ThemeManager.SwitchTheme(builder.Config, Theme.Light);
                         }
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.AddAutostart:
@@ -77,11 +77,11 @@ namespace AutoDarkModeSvc.Communication
                         }
                         if (regOk && taskOk)
                         {
-                            SendResponse(Response.Ok);
+                            SendResponse(StatusCode.Ok);
                         }
                         else
                         {
-                            SendResponse(Response.Err);
+                            SendResponse(StatusCode.Err);
                         }
                         break;
 
@@ -98,11 +98,11 @@ namespace AutoDarkModeSvc.Communication
                         }
                         if (ok)
                         {
-                            SendResponse(Response.Ok);
+                            SendResponse(StatusCode.Ok);
                         }
                         else
                         {
-                            SendResponse(Response.Err);
+                            SendResponse(StatusCode.Err);
                         }
                         break;
 
@@ -113,71 +113,86 @@ namespace AutoDarkModeSvc.Communication
                         var result = geoTask.Result;
                         if (result)
                         {
-                            SendResponse(Response.Ok);
+                            SendResponse(StatusCode.Ok);
                         }
                         else
                         {
-                            SendResponse(Response.NoLocAccess);
+                            SendResponse(StatusCode.NoLocAccess);
                         }
                         break;
 
-                    case Command.Update:
+                    case Command.CheckForUpdate:
                         Logger.Info("signal received: checking for update");
                         SendResponse(UpdateHandler.CheckNewVersion());
                         break;
 
+                    case Command.Update:
+                        Logger.Info("signal received: update adm");
+                        _ = UpdateHandler.CheckNewVersion();
+                        ApiResponse response = UpdateHandler.CanUpdate();
+                        if (response.StatusCode == StatusCode.New)
+                        {
+                            SendResponse(response.ToString());
+                            UpdateHandler.Update();
+                        }
+                        else
+                        {
+                            SendResponse(response.ToString());
+                        }
+                        break;
+
                     case Command.Shutdown:
                         Logger.Info("signal received, exiting");
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         service.Exit(null, null);
                         break;
 
                     case Command.TestError:
                         Logger.Info("signal received: test error");
-                        SendResponse(Response.Err);
+                        SendResponse(StatusCode.Err);
                         break;
 
                     case Command.Alive:
                         Logger.Info("signal received: request for running status");
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.Light:
                         Logger.Info("signal received: force light theme");
                         state.ForcedTheme = Theme.Light;
                         ThemeManager.SwitchTheme(builder.Config, Theme.Light);
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.Dark:
                         Logger.Info("signal received: force dark theme");
                         state.ForcedTheme = Theme.Dark;
                         ThemeManager.SwitchTheme(builder.Config, Theme.Dark);
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
                         state.ForcedTheme = Theme.Undefined;
                         ThemeManager.TimedSwitch(builder);
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.DetectMonitors:
                         Logger.Info("signal received: detecting new monitors");
                         WallpaperHandler.DetectMonitors();
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     case Command.CleanMonitors:
                         Logger.Info("signal received: removing disconnected monitors");
                         WallpaperHandler.CleanUpMonitors();
-                        SendResponse(Response.Ok);
+                        SendResponse(StatusCode.Ok);
                         break;
 
                     default:
                         Logger.Debug("unknown message received");
-                        SendResponse(Response.Err);
+                        SendResponse(StatusCode.Err);
                         break;
                 }
             });

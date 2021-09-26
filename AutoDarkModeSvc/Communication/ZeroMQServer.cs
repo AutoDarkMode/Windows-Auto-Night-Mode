@@ -85,7 +85,7 @@ namespace AutoDarkModeSvc.Communication
                 catch (Exception ex)
                 {
                     Logger.Error(ex, $"exception while processing command {msg}");
-                    var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), Response.Err);
+                    var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), StatusCode.Err);
                     if (!sent)
                     {
                         Logger.Error("could not send response: timeout");

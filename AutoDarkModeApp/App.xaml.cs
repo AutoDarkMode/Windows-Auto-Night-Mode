@@ -1,4 +1,4 @@
-﻿using AutoDarkModeShell;
+﻿using AutoDarkModeComms;
 using AutoDarkModeConfig;
 using NetMQ;
 using System;
@@ -86,7 +86,7 @@ namespace AutoDarkModeApp
                     {
                         var result = commandClient.SendMessageAndGetReply(value);
 
-                        if (result != Response.Err && result != Response.Timeout)
+                        if (result != StatusCode.Err && result != StatusCode.Timeout)
                         {
                             Updater updater = new Updater(true);
                             updater.ParseResponse(result);

@@ -7,7 +7,7 @@ using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeConfig;
-using AutoDarkModeShell;
+using AutoDarkModeComms;
 
 namespace AutoDarkModeApp
 {
@@ -302,7 +302,7 @@ namespace AutoDarkModeApp
             try
             {
                 string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-                if (result != Response.Ok)
+                if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageApps");
                 }

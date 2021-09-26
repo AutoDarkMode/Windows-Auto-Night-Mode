@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -22,6 +23,8 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string NoForce = "/noForce";
         [Includable]
+        public const string CheckForUpdate = "/checkForUpdate";
+        [Includable]
         public const string Update = "/update";
         public const string LocationAccess = "/locationAccess";
         [Includable]
@@ -39,11 +42,11 @@ namespace AutoDarkModeSvc.Communication
     }
 
     [AttributeUsage(AttributeTargets.Field)]
-    internal class IncludableAttribute : Attribute
+    public class IncludableAttribute : Attribute
     {
     }
 
-    public static class Response
+    public static class StatusCode
     {
         public const string Available = "Available";
         public const string New = "New";
@@ -51,5 +54,40 @@ namespace AutoDarkModeSvc.Communication
         public const string Err = "Err";
         public const string Ok = "Ok";
         public const string Timeout = "Timeout";
+        public const string UnsupportedOperation = "UnsupportedOperation";
+    }
+
+    public class ApiResponse
+    {
+        public string StatusCode { get; set; }
+        public string Message { get; set; }
+        public string Details { get; set; }
+
+        public override string ToString()
+        {
+            return $"{StatusCode};{Message};{Details}";
+        }
+
+        public static ApiResponse FromString(string response)
+        {
+            try
+            {
+                string[] responseSplit = response.Split(";");
+                return new ApiResponse
+                {
+                    StatusCode = responseSplit.ElementAtOrDefault(0),
+                    Message = responseSplit.ElementAtOrDefault(1),
+                    Details = responseSplit.ElementAtOrDefault(2),
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse
+                {
+                    StatusCode = Communication.StatusCode.Err,
+                    Message = ex.Message
+                };
+            }
+        }
     }
 }

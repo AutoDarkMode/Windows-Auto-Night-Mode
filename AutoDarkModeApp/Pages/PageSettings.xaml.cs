@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeShell;
+using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 
@@ -315,7 +315,7 @@ namespace AutoDarkModeApp.Pages
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
                     var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
-                    if (result != Response.Ok)
+                    if (result != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"error creating auto start task, ZMQ returned {result}", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }

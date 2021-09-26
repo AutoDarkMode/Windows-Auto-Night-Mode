@@ -37,8 +37,6 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
 
     public class MonitorSettings
     {
-
-        private string id;
         public string Id { get; set; }
         private string MonitorString { get; set; } = null;
         public string LightThemeWallpaper { get; set; }

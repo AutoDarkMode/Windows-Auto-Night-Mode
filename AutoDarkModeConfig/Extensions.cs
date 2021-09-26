@@ -35,9 +35,13 @@ namespace AutoDarkModeConfig
 
     public static class Extensions
     {
+        public const string UpdaterDirName = "Updater";
         public static readonly string ExecutionPath = GetExecutionPath();
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string ExecutionPathApp = GetExecutionPathApp();
+        public static readonly string ExecutionPathUpdater = GetExecutionPathUpdater();
+        public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
+        public static readonly string UpdateDataDir = GetUpdateDataDir();
 
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
         {
@@ -143,11 +147,46 @@ namespace AutoDarkModeConfig
             return Path.Combine(executablePath + executableName);
         }
 
+        private static string GetExecutionPathUpdater()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var executableName = "AutoDarkModeUpdater.exe";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath, UpdaterDirName, executableName);
+        }
+
         private static string GetExecutionDir()
         {
             var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return executablePath;
+        }
+
+
+        private static string GetExecutionDirUpdater()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath, UpdaterDirName);
+        }
+
+        private static string GetUpdateDataDir()
+        {
+            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var dataPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "UpdateData");
+            return dataPath;
+        }
+
+        public static bool CanAutoUpdate()
+        {
+            if (GetExecutionDir().Contains("C:\\Program Files"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     }

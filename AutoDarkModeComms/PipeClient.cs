@@ -4,7 +4,7 @@ using System.IO.Pipes;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
 
-namespace AutoDarkModeShell
+namespace AutoDarkModeComms
 {
     public class PipeClient : ICommandClient
     {
@@ -48,7 +48,7 @@ namespace AutoDarkModeShell
                 string temp;
                 while ((temp = sr.ReadLine()) != null)
                 {
-                    if (temp.Contains(Response.Err))
+                    if (temp.Contains(StatusCode.Err))
                     {
                         ok = false;
                     }

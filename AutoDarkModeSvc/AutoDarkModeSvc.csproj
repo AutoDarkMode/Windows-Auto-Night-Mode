@@ -17,6 +17,7 @@
     <PackageIcon>adm_new.ico</PackageIcon>
     <PackageIconUrl />
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -31,7 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
-    <PackageReference Include="NetMQ" Version="4.0.0.207" />
+    <PackageReference Include="NetMQ" Version="4.0.1.6" />
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Schema" Version="4.6.8" />
     <PackageReference Include="TaskScheduler" Version="2.9.1" />

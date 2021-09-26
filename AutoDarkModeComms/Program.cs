@@ -12,7 +12,6 @@ namespace AutoDarkModeComms
         public const string QuitShell = "QuitShell";
         static void Main(string[] args)
         {
-            Console.WriteLine("Auto Dark Mode Shell version 1.0");
             ICommandClient client = new ZeroMQClient(Address.DefaultPort);
             if (args.Length > 0)
             {
