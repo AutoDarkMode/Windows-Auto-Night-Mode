@@ -21,6 +21,7 @@ namespace AutoDarkModeSvc.Handlers
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private static Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 
         /// <summary>
         /// Checks if a new version is available
@@ -38,7 +39,6 @@ namespace AutoDarkModeSvc.Handlers
                 UpstreamVersion = UpdateInfo.Deserialize(data);
                 Version newVersion = new(UpstreamVersion.Tag);
 
-                Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 if (currentVersion.CompareTo(newVersion) < 0)
                 {
                     Logger.Info($"new version {newVersion} available");
@@ -77,6 +77,19 @@ namespace AutoDarkModeSvc.Handlers
                     StatusCode = StatusCode.UnsupportedOperation,
                     Message = "installed for all users, auto updates are disabled"
                 };
+            }
+
+            if (UpstreamResponse.StatusCode == StatusCode.New)
+            {
+                Version newVersion = new(UpstreamVersion.Tag);
+                if (newVersion.Major != currentVersion.Major)
+                {
+                    return new ApiResponse
+                    {
+                        StatusCode = StatusCode.UnsupportedOperation,
+                        Message = "major version upgrade pending, manual update required"
+                    };
+                }
             }
             return UpstreamResponse;
         }
