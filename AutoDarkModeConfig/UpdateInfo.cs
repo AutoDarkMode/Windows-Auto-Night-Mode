@@ -18,7 +18,7 @@ namespace AutoDarkModeConfig
         public string GetUpdateUrl()
         {
             //return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{Tag}/{FileName}.zip";
-            return "https://cloud.walzen.org/s/M3y8BTc9xM6gYac/download/AdmUpdateTest.zip";
+            return "https://cloud.walzen.org/s/SKpoHfYfRW9tQ2W/download/AdmUpdateTest.zip";
         }
 
         public string GetUpdateInfoPage()
@@ -29,7 +29,7 @@ namespace AutoDarkModeConfig
         public string GetUpdateHashUrl()
         {
             //return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{Tag}/{FileName}.sha256";
-            return "https://cloud.walzen.org/s/S6f2C5Ra5DMgSNZ/download/AdmUpdateTest.sha256";
+            return "https://cloud.walzen.org/s/d5n8xxka27w9K5B/download/AdmUpdateTest.sha256";
         }
     }
 }

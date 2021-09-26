@@ -60,7 +60,7 @@ namespace AutoDarkModeUpdater
             string admDir = Extensions.ExecutionDir;
             bool restoreShell = false;
             bool restoreApp = false;
-            if (args.Length > 3)
+            if (args.Length > 2)
             {
                 if (args[0].Contains("--notify"))
                 {
