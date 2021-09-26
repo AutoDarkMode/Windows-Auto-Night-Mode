@@ -19,7 +19,7 @@ namespace AutoDarkModeConfig
 
             //New Component Settings;
             AppsSwitch = new BaseSettingsEnabled<AppsSwitchSettings>();
-            SystemSwitch = new BaseSettings<SystemSwitchSettings>();
+            SystemSwitch = new BaseSettingsEnabled<SystemSwitchSettings>();
             ColorFilterSwitch = new BaseSettings<object>();
             OfficeSwitch = new BaseSettings<OfficeSwitchSettings>();
             WallpaperSwitch = new BaseSettings<WallpaperSwitchSettings>();
@@ -28,7 +28,7 @@ namespace AutoDarkModeConfig
         public bool AutoUpdate { get; set; }
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
-        public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }
+        public BaseSettingsEnabled<SystemSwitchSettings> SystemSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }

@@ -14,6 +14,8 @@ namespace AutoDarkModeUpdater
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
+        private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+
         static void Main(string[] args)
         {
             string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
@@ -39,11 +41,35 @@ namespace AutoDarkModeUpdater
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
 
-            Logger.Info("Auto Dark Mode Updater v1.1");
+            Logger.Info("Auto Dark Mode Updater v1.11");
+
+            bool restoreShell = false;
+            bool restoreApp = false;
 
             try
             {
-                ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+                Process[] pShell = Process.GetProcessesByName("AutoDarkModeShell");
+                Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
+                if (pShell.Length != 0)
+                {
+                    pShell[0].Kill();
+                    restoreShell = true;
+                }
+                if (pApp.Length != 0)
+                {
+                    pApp[0].Kill();
+                    restoreApp = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "other auto dark mode components still running, skipping update");
+                Relaunch(restoreShell, restoreApp, true);
+                Environment.Exit(-2);
+            }
+
+            try
+            {
                 string result = client.SendMessageAndGetReply(Command.Shutdown);
                 ApiResponse response = ApiResponse.FromString(result);
                 if (response.StatusCode != StatusCode.Ok && response.StatusCode != StatusCode.Timeout)
@@ -58,8 +84,6 @@ namespace AutoDarkModeUpdater
             }
 
             string admDir = Extensions.ExecutionDir;
-            bool restoreShell = false;
-            bool restoreApp = false;
             if (args.Length > 2)
             {
                 if (args[0].Contains("--notify"))
@@ -77,7 +101,8 @@ namespace AutoDarkModeUpdater
             //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
             if (!oldFilePaths.Contains(Extensions.ExecutionPath))
             {
-                Logger.Error($"updated aborted, wrong directory /service executable not found {Extensions.ExecutionPath}");
+                Logger.Error($"updated aborted, wrong directory / service executable not found {Extensions.ExecutionPath}");
+                Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
 
@@ -100,7 +125,7 @@ namespace AutoDarkModeUpdater
             {
                 Logger.Error(ex, "could not move all files to holding dir, attempting rollback:");
                 RollbackDir(holdingDir, Extensions.ExecutionDir);
-                Relaunch(restoreShell, restoreApp);
+                Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
 
@@ -120,7 +145,7 @@ namespace AutoDarkModeUpdater
             {
                 Logger.Error(ex, "could not move all files, attempting rollback:");
                 RollbackDir(holdingDir, Extensions.ExecutionDir);
-                Relaunch(restoreShell, restoreApp);
+                Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
 
@@ -134,10 +159,10 @@ namespace AutoDarkModeUpdater
             }
 
             Logger.Info("update complete, starting service");
-            Relaunch(restoreShell, restoreApp);
+            Relaunch(restoreShell, restoreApp, false);
         }
 
-        private static void Relaunch(bool restoreShell, bool restoreApp)
+        private static void Relaunch(bool restoreShell, bool restoreApp, bool failed)
         {
             Process.Start(Extensions.ExecutionPath);
             if (restoreApp)
@@ -147,7 +172,11 @@ namespace AutoDarkModeUpdater
             if (restoreShell)
             {
                 Process.Start(Extensions.ExecutionPathShell);
+            }
 
+            if (failed)
+            {
+                client.SendMessage(Command.UpdateFailed);
             }
         }
 

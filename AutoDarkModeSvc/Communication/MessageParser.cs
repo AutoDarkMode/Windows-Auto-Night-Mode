@@ -190,6 +190,12 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(StatusCode.Ok);
                         break;
 
+                    case Command.UpdateFailed:
+                        Logger.Info("signal received: notify about failed update");
+                        UpdateHandler.NotifyFailedUpdate();
+                        SendResponse(StatusCode.Ok);
+                        break;
+
                     default:
                         Logger.Debug("unknown message received");
                         SendResponse(StatusCode.Err);

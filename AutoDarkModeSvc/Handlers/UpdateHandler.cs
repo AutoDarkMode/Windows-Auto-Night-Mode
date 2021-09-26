@@ -291,5 +291,18 @@ namespace AutoDarkModeSvc.Handlers
             Logger.Info("updater patched successfully");
             return true;
         }
+
+
+        public static void NotifyFailedUpdate()
+        {
+            Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
+            Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
+
+            _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode Update failed"));
+            _ = text[1].AppendChild(xml.CreateTextNode("An error occurred while updating."));
+            _ = text[2].AppendChild(xml.CreateTextNode("Please see service.log and updater.log for more infos"));
+            var toast = new ToastNotification(xml);
+            ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+        }
     }
 }

@@ -39,6 +39,7 @@ namespace AutoDarkModeSvc.Communication
         public const string DetectMonitors = "/detectMonitors";
         [Includable]
         public const string CleanMonitors = "/cleanMonitors";
+        public const string UpdateFailed = "/updateFailed";
     }
 
     [AttributeUsage(AttributeTargets.Field)]
