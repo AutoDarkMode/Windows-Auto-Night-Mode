@@ -36,15 +36,8 @@ namespace AutoDarkModeApp
             }
 
             StartService();
-            int maxTries = 5;
-            int tries = 0;
-            bool heartBeatOK = false;
-            while (tries < maxTries && !heartBeatOK)
-            {
-                tries++;
-                heartBeatOK = commandClient.SendMessage(Command.Alive);
-            }
-            if (maxTries == tries && !heartBeatOK)
+            bool heartBeatOK = commandClient.SendMessage(Command.Alive, 15);
+            if (!heartBeatOK)
             {
                 string error = "could not get a heartbeat from the backend. Check if AutoDarkModeSvc.exe is running and try again";
                 MsgBox msg = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
