@@ -41,7 +41,7 @@ namespace AutoDarkModeUpdater
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
 
-            Logger.Info("Auto Dark Mode Updater v1.11");
+            Logger.Info("Auto Dark Mode Updater v1.2");
 
             bool restoreShell = false;
             bool restoreApp = false;
@@ -118,7 +118,7 @@ namespace AutoDarkModeUpdater
                 foreach (var file in oldFiles)
                 {
                     file.MoveTo(Path.Combine(holdingDir, file.Name), true);
-                    Logger.Info($"moved file {file.Name} to holding dir");
+                    //Logger.Info($"moved file {file.Name} to holding dir");
                 }
             }
             catch (Exception ex)
@@ -138,7 +138,7 @@ namespace AutoDarkModeUpdater
                 foreach (var file in files)
                 {
                     file.MoveTo(Path.Combine(admDir, file.Name), true);
-                    Logger.Info($"updated file {file.Name}");
+                    //Logger.Info($"updated file {file.Name}");
                 }
             }
             catch (Exception ex)
