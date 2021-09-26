@@ -209,6 +209,10 @@ namespace AutoDarkModeUpdater
             {
                 return true;
             }
+            if (path.Contains("AutoDarkMode.VisualElementsManifest.xml"))
+            {
+                return true;
+            }
             return false;
         }
     }
