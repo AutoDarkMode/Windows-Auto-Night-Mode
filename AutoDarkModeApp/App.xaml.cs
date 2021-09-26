@@ -39,7 +39,7 @@ namespace AutoDarkModeApp
             bool heartBeatOK = commandClient.SendMessage(Command.Alive, 15);
             if (!heartBeatOK)
             {
-                string error = "could not get a heartbeat from the backend. Check if AutoDarkModeSvc.exe is running and try again";
+                string error = "Backend not responding. Check if AutoDarkModeSvc.exe is running and try again";
                 MsgBox msg = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
                 {
                 };
