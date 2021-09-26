@@ -177,7 +177,7 @@ namespace AutoDarkModeConfig
             return dataPath;
         }
 
-        public static bool CanAutoUpdate()
+        public static bool InstallModeUsers()
         {
             if (GetExecutionDir().Contains("C:\\Program Files"))
             {

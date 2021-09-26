@@ -40,8 +40,8 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Info($"new version {newVersion} available");
                     response.StatusCode = StatusCode.New;
-                    response.Message = newVersion.ToString();
-                    response.Details = currentVersion.ToString();
+                    response.Message = currentVersion.ToString();
+                    response.Details = data;
                     upstreamResponse = response;
                     return response.ToString();
                 }
@@ -57,24 +57,20 @@ namespace AutoDarkModeSvc.Handlers
             return StatusCode.Err;
         }
 
-        private static string GetUpdateUrl(string tag, string fileName)
+        public static ApiResponse CanAutoUpdate()
         {
-            //return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{tag}/{fileName}";
-            return "https://cloud.walzen.org/s/x9KJ2z5yzjiNBqi/download/AdmUpdateTest.zip";
-        }
-
-        private static string GetUpdateHashUrl(string tag, string fileName)
-        {
-            //return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{tag}/{fileName}";
-            return "https://cloud.walzen.org/s/ACTsB7Yn9Bsy4FA/download/zip_hash.sha256";
-        }
-
-
-        public static ApiResponse CanUpdate()
-        {
-
-            if (Extensions.CanAutoUpdate())
+            if (Extensions.InstallModeUsers())
             {
+                if (!upstreamVersion.AutoUpdateAvailable)
+                {
+                    Logger.Info("auto update blocked by upstream, please update manually");
+                    return new ApiResponse
+                    {
+                        StatusCode = StatusCode.No,
+                        Message = "auto update blocked by upstream"
+                    };
+                }
+
                 if (!Directory.Exists(Extensions.ExecutionDirUpdater))
                 {
                     Logger.Error("updater missing, please re-install AutoDarkMode to re-instate update functionality");
@@ -88,10 +84,11 @@ namespace AutoDarkModeSvc.Handlers
             }
             else
             {
+                Logger.Warn("installed in for all users mode, auto updates are disabled");
                 return new ApiResponse
                 {
                     StatusCode = StatusCode.UnsupportedOperation,
-                    Message = "installed for all users, cannot auto update"
+                    Message = "installed for all users, auto updates are disabled"
                 };
             }
         }
@@ -140,7 +137,7 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                byte[] buffer = webClient.DownloadData(GetUpdateHashUrl(upstreamVersion.Tag, "zip_hash.sha256"));
+                byte[] buffer = webClient.DownloadData(upstreamVersion.GetUpdateHashUrl());
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 //download file
@@ -155,7 +152,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
                 string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
-                webClient.DownloadFile(GetUpdateUrl(upstreamVersion.Tag, upstreamVersion.FileName), downloadPath);
+                webClient.DownloadFile(upstreamVersion.GetUpdateUrl(), downloadPath);
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -190,6 +187,12 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void Update()
         {
+            if (upstreamResponse.StatusCode != StatusCode.New)
+            {
+                Logger.Info("updater called, but no newer cached upstream version available");
+                return;
+            }
+
             (bool, bool) result = PrepareUpdate();
             bool success = result.Item1;
             bool notify = result.Item2;

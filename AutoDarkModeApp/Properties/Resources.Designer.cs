@@ -814,7 +814,7 @@ namespace AutoDarkModeApp.Properties {
         ///   Looks up a localized string similar to Thank you for using Auto Dark Mode!
         ///
         ///A new version is available on GitHub with fixes and enhancements.
-        ///Do you want to download it?
+        ///Do you want to install it?
         ///
         ///Currently installed version: {0}, new version: {1}.
         /// </summary>

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Diagnostics;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeComms;
+using AutoDarkModeConfig;
 
 namespace AutoDarkModeApp
 {
@@ -45,29 +46,44 @@ namespace AutoDarkModeApp
             }
         }
 
-        public void MessageBoxHandler()
+        public void Update()
+        {
+            UpdateInfo info = UpdateInfo.Deserialize(response.Details);
+            ApiResponse updatePrepResponse = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.Update));
+            if (updatePrepResponse.StatusCode == StatusCode.No || updatePrepResponse.StatusCode == StatusCode.UnsupportedOperation)
+            {
+                StartProcessByProcessInfo(info.GetUpdateInfoPage());
+            }
+            else if (updatePrepResponse.StatusCode != StatusCode.New)
+            {
+                Exception ex = new($"update preparation error: {updatePrepResponse.StatusCode} with message: {updatePrepResponse.Message}");
+                ShowErrorMessage(ex, "Updater");
+            }
+        }
+
+        public void MessageBoxHandler(Window owner = null)
         {
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
             if (UpdateAvailable())
             {
                 if (!silent)
                 {
-                    string text = String.Format(Properties.Resources.msgUpdaterText, response.Details, response.Message);
+                    UpdateInfo info = UpdateInfo.Deserialize(response.Details);
+                    string text = string.Format(Properties.Resources.msgUpdaterText, response.Message, info.Tag);
                     MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
                     {
                         WindowStartupLocation = WindowStartupLocation.CenterScreen,
                         Topmost = true
                     };
+                    if (owner != null)
+                    {
+                        msgBox.Owner = owner;
+                    }
                     msgBox.ShowDialog();
-                    var result = msgBox.DialogResult;
+                    bool? result = msgBox.DialogResult;
                     if (result == true)
                     {
-                        ApiResponse response = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.Update));
-                        if (response.StatusCode != StatusCode.New)
-                        {
-                            Exception ex = new($"could not prepare updater, {response.StatusCode} with message. {response.Message} and details {response.Details}");
-                            ShowErrorMessage(ex, "Updater");
-                        }
+                        Update();
                     }
                 }
             }

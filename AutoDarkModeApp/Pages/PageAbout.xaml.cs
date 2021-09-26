@@ -60,7 +60,15 @@ namespace AutoDarkModeApp.Pages
                 if (updater.UpdateAvailable())
                 {
                     updateInfoText.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
-                    updateButton.Content = Properties.Resources.msgDownloadUpd;//Download update
+                    if (AdmExtensions.InstallModeUsers())
+                    {
+                        updateButton.Content = "Install Update";
+
+                    }
+                    else
+                    {
+                        updateButton.Content = Properties.Resources.msgDownloadUpd;//Download update
+                    }
                     update = true;
                     updateButton.IsEnabled = true;
                 }
@@ -71,7 +79,14 @@ namespace AutoDarkModeApp.Pages
             }
             else
             {
-                updater.MessageBoxHandler();
+                if (AdmExtensions.InstallModeUsers())
+                {
+                    updater.MessageBoxHandler();
+                } 
+                else
+                {
+                   updater.Update();
+                }
             }
         }
 

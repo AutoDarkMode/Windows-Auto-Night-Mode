@@ -61,6 +61,10 @@ namespace AutoDarkModeApp
             {
                 Updater updater = new Updater(false);
                 updater.CheckNewVersion(); //check github xaml file for a higher version number than installed
+                if (updater.UpdateAvailable())
+                {
+                    updater.MessageBoxHandler(this);
+                }
             }
             catch
             {
