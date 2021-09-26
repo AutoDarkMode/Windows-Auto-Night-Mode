@@ -177,6 +177,18 @@ namespace AutoDarkModeUpdater
 
             if (failed)
             {
+                int maxTries = 5;
+                int tries = 0;
+                bool heartBeatOK = false;
+                while (tries < maxTries && !heartBeatOK)
+                {
+                    tries++;
+                    heartBeatOK = client.SendMessage(Command.Alive);
+                }
+                if (maxTries == tries && !heartBeatOK)
+                {
+                    Logger.Warn("could not send failed upate message due to service not starting in time");
+                }
                 client.SendMessage(Command.UpdateFailed);
             }
         }
