@@ -24,7 +24,7 @@ namespace AutoDarkModeApp
                 Shutdown();
             }
 
-            List<string> args = new List<string>();
+            List<string> args = new();
             if (e.Args.Length > 0)
             {
                 args = new List<string>(e.Args);
@@ -47,7 +47,7 @@ namespace AutoDarkModeApp
             if (maxTries == tries && !heartBeatOK)
             {
                 string error = "could not get a heartbeat from the backend. Check if AutoDarkModeSvc.exe is running and try again";
-                MsgBox msg = new MsgBox(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                MsgBox msg = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
                 {
                 };
                 msg.ShowDialog();
@@ -60,7 +60,7 @@ namespace AutoDarkModeApp
                 Mutex.Dispose();
                 Mutex = new Mutex(true, "7f326fe1-181c-414f-b7f1-0df4baa578a7");
                 Mutex.WaitOne(TimeSpan.FromMilliseconds(100));
-                foreach (var value in args)
+                foreach (string value in args)
                 {
                     if (value == "/switch")
                     {
@@ -107,7 +107,7 @@ namespace AutoDarkModeApp
             }
             else
             {
-                MainWindow mainWin = new MainWindow();
+                MainWindow mainWin = new();
                 mainWin.Show();
             }
         }
@@ -117,10 +117,10 @@ namespace AutoDarkModeApp
             if (!debug)
             {
 
-                using Mutex serviceRunning = new Mutex(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
+                using Mutex serviceRunning = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
                 if (serviceRunning.WaitOne(TimeSpan.FromMilliseconds(100), false))
                 {
-                    using Process svc = new Process();
+                    using Process svc = new();
                     svc.StartInfo.UseShellExecute = false;
                     svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe");
                     svc.StartInfo.CreateNoWindow = true;

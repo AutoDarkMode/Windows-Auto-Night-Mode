@@ -53,6 +53,7 @@ namespace AutoDarkModeSvc.Handlers
             void ApplyTheme([In, MarshalAs(UnmanagedType.BStr)] string bstrThemePath);
         }
         [ComImport, Guid("A2C56C2A-E63A-433E-9953-92E94F0122EA"), CoClass(typeof(ThemeManagerClass))]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public interface ThemeManager : IThemeManager { }
         [ComImport, Guid("C04B329E-5823-4415-9C93-BA44688947B0"), ClassInterface(ClassInterfaceType.None), TypeLibType(TypeLibTypeFlags.FCanCreate)]
         public class ThemeManagerClass : IThemeManager, ThemeManager
@@ -79,7 +80,7 @@ namespace AutoDarkModeSvc.Handlers
         }
         public static void Apply(string themeFilePath)
         {
-            Thread thread = new Thread(() =>
+            Thread thread = new(() =>
             {
                 try
                 {

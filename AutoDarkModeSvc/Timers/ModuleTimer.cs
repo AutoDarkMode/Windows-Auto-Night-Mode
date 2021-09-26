@@ -35,7 +35,7 @@ namespace AutoDarkModeSvc.Timers
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             // copying allows dynamic updates of the Module list since it can only be changed once every OnTimedEvent
-            List<IAutoDarkModeModule> ready = new List<IAutoDarkModeModule>(Modules);
+            List<IAutoDarkModeModule> ready = new(Modules);
             Logger.Debug($"{Name}timer signal received");
             ready.ForEach(t =>
             {

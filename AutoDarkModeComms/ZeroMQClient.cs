@@ -41,7 +41,7 @@ namespace AutoDarkModeComms
             {
                 client.Connect("tcp://127.0.0.1:" + GetBackendPort());
                 client.SendFrame(message);
-                var response = GetResponse(client, message);
+                var response = GetResponse(client);
                 if (response.Contains(StatusCode.Err))
                 {
                     return false;
@@ -54,7 +54,7 @@ namespace AutoDarkModeComms
             return false;
         }
 
-        private string GetResponse(RequestSocket client, string message)
+        private string GetResponse(RequestSocket client)
         {
             bool hasResponse = false;
             string response;
@@ -75,7 +75,7 @@ namespace AutoDarkModeComms
             using var client = new RequestSocket();
             client.Connect("tcp://127.0.0.1:" + GetBackendPort());
             client.SendFrame(message);
-            return GetResponse(client, message);
+            return GetResponse(client);
         }
 
         public Task<bool> SendMessageAsync(string message)

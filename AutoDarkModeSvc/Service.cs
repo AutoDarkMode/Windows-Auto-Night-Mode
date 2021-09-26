@@ -15,15 +15,15 @@ namespace AutoDarkModeSvc
 {
     class Service : Form
     {
-        private bool allowshowdisplay = false;
+        private readonly bool allowshowdisplay = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        NotifyIcon NotifyIcon { get; }
-        List<ModuleTimer> Timers { get; set; }
-        ICommandServer CommandServer { get; }
-        AdmConfigMonitor ConfigMonitor { get; }
-        AdmConfigBuilder ConfigBuilder { get; }
-        public readonly ToolStripMenuItem forceDarkMenuItem = new ToolStripMenuItem("Force Dark Mode");
-        public readonly ToolStripMenuItem forceLightMenuItem = new ToolStripMenuItem("Force Light Mode");
+        private NotifyIcon NotifyIcon { get; }
+        private List<ModuleTimer> Timers { get; set; }
+        private ICommandServer CommandServer { get; }
+        private AdmConfigMonitor ConfigMonitor { get; }
+        private AdmConfigBuilder ConfigBuilder { get; }
+        public readonly ToolStripMenuItem forceDarkMenuItem = new("Force Dark Mode");
+        public readonly ToolStripMenuItem forceLightMenuItem = new("Force Light Mode");
         private delegate void SafeCallDelegate(string text);
 
         public Service(int timerMillis)
@@ -43,15 +43,15 @@ namespace AutoDarkModeSvc
             ConfigMonitor = new AdmConfigMonitor();
             ConfigMonitor.Start();
 
-            ModuleTimer MainTimer = new ModuleTimer(timerMillis, TimerName.Main);
-            //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io");
-            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, TimerName.Geopos);
-            ModuleTimer StateUpdateTimer = new ModuleTimer(TimerFrequency.StateUpdate, TimerName.StateUpdate);
+            ModuleTimer MainTimer = new(timerMillis, TimerName.Main);
+            ModuleTimer IOTimer = new(TimerFrequency.IO, TimerName.IO);
+            ModuleTimer GeoposTimer = new(TimerFrequency.Location, TimerName.Geopos);
+            ModuleTimer StateUpdateTimer = new(TimerFrequency.StateUpdate, TimerName.StateUpdate);
 
             Timers = new List<ModuleTimer>()
             {
                 MainTimer, 
-                //IOTimer, 
+                IOTimer, 
                 GeoposTimer,
                 StateUpdateTimer
             };
@@ -71,8 +71,8 @@ namespace AutoDarkModeSvc
 
         private void InitTray()
         {
-            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Close");
-            ToolStripMenuItem openConfigDirItem = new ToolStripMenuItem("Open Config Directory");
+            ToolStripMenuItem exitMenuItem = new("Close");
+            ToolStripMenuItem openConfigDirItem = new("Open Config Directory");
             exitMenuItem.Click += new EventHandler(Exit);
             openConfigDirItem.Click += new EventHandler(OpenConfigDir);
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
@@ -180,7 +180,7 @@ namespace AutoDarkModeSvc
 
         private void OpenConfigDir(object sender, EventArgs e)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo
+            ProcessStartInfo startInfo = new()
             {
                 Arguments = ConfigBuilder.ConfigDir,
                 FileName = "explorer.exe"
@@ -193,7 +193,7 @@ namespace AutoDarkModeSvc
         {
             if (e.Button == MouseButtons.Left)
             {
-                using Mutex appMutex = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
+                using Mutex appMutex = new(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
                 try
                 {
                     if (e.Button == MouseButtons.Left && appMutex.WaitOne(TimeSpan.FromSeconds(2), false))

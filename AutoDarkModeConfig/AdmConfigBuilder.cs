@@ -52,7 +52,7 @@ namespace AutoDarkModeConfig
         {
             Directory.CreateDirectory(ConfigDir);
             //string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            var yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            ISerializer yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             string yamlConfig = yamlSerializer.Serialize(obj);
             for (int i = 0; i < 10; i++)
             {
@@ -62,7 +62,7 @@ namespace AutoDarkModeConfig
                 }
                 else
                 {
-                    using StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create, FileAccess.Write));
+                    using StreamWriter writer = new(File.Open(path, FileMode.Create, FileAccess.Write));
                     writer.WriteLine(yamlConfig);
                     writer.Close();
                     return;

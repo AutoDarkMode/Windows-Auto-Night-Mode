@@ -25,7 +25,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>version string with download url</returns>
         public static string CheckNewVersion()
         {
-            ApiResponse response = new ApiResponse();
+            ApiResponse response = new();
             try
             {
                 string updateUrl = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.yaml";
@@ -57,7 +57,7 @@ namespace AutoDarkModeSvc.Handlers
             return StatusCode.Err;
         }
 
-        public static ApiResponse CanAutoUpdate()
+        public static ApiResponse CanSelfUpdate()
         {
             if (Extensions.InstallModeUsers())
             {

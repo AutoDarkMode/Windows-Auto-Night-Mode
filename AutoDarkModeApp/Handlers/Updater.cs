@@ -12,14 +12,14 @@ namespace AutoDarkModeApp
 {
     class Updater
     {
-        bool silent;
+        readonly bool silent;
         ApiResponse response = new();
         private readonly ICommandClient commandClient;
 
         public Updater(bool pSilent)
         {
             commandClient = new ZeroMQClient(Address.DefaultPort);
-            this.silent = pSilent;
+            silent = pSilent;
         }
 
         public bool CheckNewVersion()
@@ -70,7 +70,7 @@ namespace AutoDarkModeApp
                 {
                     UpdateInfo info = UpdateInfo.Deserialize(response.Details);
                     string text = string.Format(Properties.Resources.msgUpdaterText, response.Message, info.Tag);
-                    MsgBox msgBox = new MsgBox(text, "Auto Dark Mode Updater", "update", "yesno")
+                    MsgBox msgBox = new(text, "Auto Dark Mode Updater", "update", "yesno")
                     {
                         WindowStartupLocation = WindowStartupLocation.CenterScreen,
                         Topmost = true
@@ -89,10 +89,10 @@ namespace AutoDarkModeApp
             }
         }
 
-        private void ShowErrorMessage(Exception ex, string location)
+        private static void ShowErrorMessage(Exception ex, string location)
         {
             string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
             msg.ShowDialog();
             var result = msg.DialogResult;
             if (result == true)
@@ -107,7 +107,7 @@ namespace AutoDarkModeApp
             return;
         }
 
-        private void StartProcessByProcessInfo(string message)
+        private static void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
             {

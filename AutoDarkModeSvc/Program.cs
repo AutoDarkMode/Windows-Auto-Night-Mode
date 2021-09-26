@@ -16,14 +16,14 @@ namespace AutoDarkModeSvc
     static class Program
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private static readonly Mutex mutex = new Mutex(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
+        private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
         private static Service Service { get; set; }
 
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Set up Logger
             var config = new NLog.Config.LoggingConfiguration();
@@ -164,7 +164,7 @@ namespace AutoDarkModeSvc
                 int timerMillis = 0;
                 if (args.Length != 0)
                 {
-                    int.TryParse(args[0], out timerMillis);
+                    _ = int.TryParse(args[0], out timerMillis);
                 }
 
                 timerMillis = (timerMillis == 0) ? TimerFrequency.Short : timerMillis;

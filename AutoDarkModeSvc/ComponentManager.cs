@@ -11,8 +11,6 @@ namespace AutoDarkModeSvc
 {
     class ComponentManager
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
         private static ComponentManager instance;
         public static ComponentManager Instance()
         {
@@ -115,10 +113,12 @@ namespace AutoDarkModeSvc
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
             {
                 Components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
+                lastSorting = Theme.Dark;
             }
             else if (newTheme == Theme.Light && lastSorting != Theme.Light)
             {
                 Components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
+                lastSorting = Theme.Light;
             }
             Components.ForEach(c =>
             {

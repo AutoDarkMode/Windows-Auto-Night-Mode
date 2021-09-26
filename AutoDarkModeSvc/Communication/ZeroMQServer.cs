@@ -37,8 +37,6 @@ namespace AutoDarkModeSvc.Communication
             Service = service;
         }
 
-        private bool AcceptConnections { get; set; }
-
         /// <summary>
         /// Start the ZeroMQ server
         /// </summary>

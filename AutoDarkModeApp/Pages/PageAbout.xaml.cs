@@ -17,9 +17,9 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageAbout : Page
     {
-        readonly Updater updater = new Updater(false);
-        bool update = false;
-        int easterEgg = 0;
+        readonly Updater updater = new(false);
+        bool update;
+        int easterEgg;
 
         public PageAbout()
         {
@@ -148,7 +148,7 @@ namespace AutoDarkModeApp.Pages
                 "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
                 "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(messageBoxText, "FluentWPF License Information", "info", "close")
+            MsgBox msg = new(messageBoxText, "FluentWPF License Information", "info", "close")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -170,7 +170,7 @@ namespace AutoDarkModeApp.Pages
                "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, " +
                "WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(messageBoxText, "TaskSheduler License Information", "info", "close")
+            MsgBox msg = new(messageBoxText, "TaskSheduler License Information", "info", "close")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -207,7 +207,7 @@ namespace AutoDarkModeApp.Pages
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(MessageBoxText, "InputSimulator License Information", "info", "close")
+            MsgBox msg = new(MessageBoxText, "InputSimulator License Information", "info", "close")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -219,7 +219,7 @@ namespace AutoDarkModeApp.Pages
             if (e.Key == Key.Enter) InputSimulatorLicense_MouseDown(this, null);
         }
 
-        private void StartProcessByProcessInfo(string message)
+        private static void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
             {
@@ -239,7 +239,7 @@ namespace AutoDarkModeApp.Pages
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(MessageBoxText, "YamlDotNet License Information", "info", "close")
+            MsgBox msg = new(MessageBoxText, "YamlDotNet License Information", "info", "close")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -254,8 +254,10 @@ namespace AutoDarkModeApp.Pages
         private void NetMQLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string MessageBoxText = "Copyright (C) 2007 Free Software Foundation, Inc.";
-            MsgBox msg = new MsgBox(MessageBoxText, "", "info", "close");
-            msg.Owner = Window.GetWindow(this);
+            MsgBox msg = new(MessageBoxText, "", "info", "close")
+            {
+                Owner = Window.GetWindow(this)
+            };
             msg.ShowDialog();
         }
 
@@ -275,9 +277,9 @@ namespace AutoDarkModeApp.Pages
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(MessageBoxText, "SunriseCalc License Information", "info", "close");
+            MsgBox msg = new(MessageBoxText, "SunriseCalc License Information", "info", "close");
             msg.Owner = Window.GetWindow(this);
-            msg.ShowDialog();
+            _ = msg.ShowDialog();
         }
 
         private void SunriseCalcLicense_KeyDown(object sender, KeyEventArgs e)
@@ -296,9 +298,9 @@ namespace AutoDarkModeApp.Pages
                 "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
                 "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " +
                 "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-            MsgBox msg = new MsgBox(MessageBoxText, "ModernWPF License Information", "info", "close");
+            MsgBox msg = new(MessageBoxText, "ModernWPF License Information", "info", "close");
             msg.Owner = Window.GetWindow(this);
-            msg.ShowDialog();
+            _ = msg.ShowDialog();
         }
 
         private void ModernWPFLicense_KeyDown(object sender, KeyEventArgs e)
@@ -327,9 +329,11 @@ namespace AutoDarkModeApp.Pages
                 "INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN" +
                 "CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE)" +
                 "ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.";
-            MsgBox msg = new MsgBox(MessageBoxText, "NLog License Information", "info", "close");
-            msg.Owner = Window.GetWindow(this);
-            msg.ShowDialog();
+            MsgBox msg = new(MessageBoxText, "NLog License Information", "info", "close")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            _ = msg.ShowDialog();
         }
 
         private void NLogLicense_KeyDown(object sender, KeyEventArgs e)

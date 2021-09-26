@@ -59,7 +59,7 @@ namespace AutoDarkModeApp
 
             try
             {
-                Updater updater = new Updater(false);
+                Updater updater = new(false);
                 updater.CheckNewVersion(); //check github xaml file for a higher version number than installed
                 if (updater.UpdateAvailable())
                 {
@@ -73,7 +73,7 @@ namespace AutoDarkModeApp
         }
 
         //region time and language
-        private void LanguageHelper()
+        private static void LanguageHelper()
         {
             if (string.IsNullOrWhiteSpace(Settings.Default.Language.ToString()))
             {
@@ -86,7 +86,7 @@ namespace AutoDarkModeApp
             CultureInfo.DefaultThreadCurrentCulture = langCode;
         }
 
-        private void SystemTimeFormat()
+        private static void SystemTimeFormat()
         {
             try
             {
@@ -104,23 +104,23 @@ namespace AutoDarkModeApp
         }
 
         //jump list
-        private void AddJumpList()
+        private static void AddJumpList()
         {
-            JumpTask darkJumpTask = new JumpTask
+            JumpTask darkJumpTask = new()
             {
                 //Dark theme
                 Title = Properties.Resources.lblDarkTheme,
                 Arguments = Command.Dark,
                 CustomCategory = Properties.Resources.lblSwitchTheme
             };
-            JumpTask lightJumpTask = new JumpTask
+            JumpTask lightJumpTask = new()
             {
                 //Light theme
                 Title = Properties.Resources.lblLightTheme,
                 Arguments = Command.Light,
                 CustomCategory = Properties.Resources.lblSwitchTheme
             };
-            JumpTask resetJumpTask = new JumpTask
+            JumpTask resetJumpTask = new()
             {
                 //Reset
                 Title = Properties.Resources.lblReset,
@@ -128,7 +128,7 @@ namespace AutoDarkModeApp
                 CustomCategory = Properties.Resources.lblSwitchTheme
             };
 
-            JumpList jumpList = new JumpList();
+            JumpList jumpList = new();
             jumpList.JumpItems.Add(darkJumpTask);
             jumpList.JumpItems.Add(lightJumpTask);
             jumpList.JumpItems.Add(resetJumpTask);

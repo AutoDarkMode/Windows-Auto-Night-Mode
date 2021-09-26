@@ -14,38 +14,34 @@ namespace AutoDarkModeApp.Handlers
         static readonly string appupdater = "ADM AppUpdater";
         public static void CreateAppUpdaterTask()
         {
-            using (TaskService taskService = new TaskService())
-            {
-                TaskDefinition tdUpdate = taskService.NewTask();
+            using TaskService taskService = new();
+            TaskDefinition tdUpdate = taskService.NewTask();
 
-                tdUpdate.RegistrationInfo.Description = "Checks the GitHub-Server for new app version in the background. " + description;
-                tdUpdate.RegistrationInfo.Author = author;
-                tdUpdate.RegistrationInfo.Source = program;
-                tdUpdate.Settings.DisallowStartIfOnBatteries = false;
-                tdUpdate.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(15);
-                tdUpdate.Settings.StartWhenAvailable = true;
+            tdUpdate.RegistrationInfo.Description = "Checks the GitHub-Server for new app version in the background. " + description;
+            tdUpdate.RegistrationInfo.Author = author;
+            tdUpdate.RegistrationInfo.Source = program;
+            tdUpdate.Settings.DisallowStartIfOnBatteries = false;
+            tdUpdate.Settings.ExecutionTimeLimit = TimeSpan.FromMinutes(15);
+            tdUpdate.Settings.StartWhenAvailable = true;
 
-                tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) + TimeSpan.FromHours(12) });
-                tdUpdate.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/update"));
+            tdUpdate.Triggers.Add(new MonthlyTrigger { StartBoundary = DateTime.Today.AddMonths(1) + TimeSpan.FromHours(12) });
+            tdUpdate.Actions.Add(new ExecAction(System.Reflection.Assembly.GetExecutingAssembly().Location, "/update"));
 
-                taskService.GetFolder(folder).RegisterTaskDefinition(appupdater, tdUpdate);
-                Console.WriteLine("created task for app updates");
-            }
+            taskService.GetFolder(folder).RegisterTaskDefinition(appupdater, tdUpdate);
+            Console.WriteLine("created task for app updates");
         }
 
         public static void RemoveAppUpdaterTask()
         {
-            using (TaskService taskService = new TaskService())
+            using TaskService taskService = new();
+            TaskFolder taskFolder = taskService.GetFolder(folder);
+            try
             {
-                TaskFolder taskFolder = taskService.GetFolder(folder);
-                try
-                {
-                    taskFolder.DeleteTask(appupdater, false);
-                }
-                catch
-                {
+                taskFolder.DeleteTask(appupdater, false);
+            }
+            catch
+            {
 
-                }
             }
         }
 

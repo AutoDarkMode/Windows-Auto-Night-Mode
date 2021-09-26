@@ -25,7 +25,7 @@ namespace AutoDarkModeConfig
             WallpaperSwitch = new BaseSettings<WallpaperSwitchSettings>();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
-
+        public bool AutoUpdate { get; set; }
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettings<SystemSwitchSettings> SystemSwitch { get; set; }

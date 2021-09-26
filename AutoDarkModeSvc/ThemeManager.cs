@@ -85,11 +85,11 @@ namespace AutoDarkModeSvc
             {
                 if (newTheme == Theme.Light && automatic)
                 {
-                    Logger.Info($"automatic light theme switch performed, sunrise: {sunrise.ToString("HH:mm:ss")}");
+                    Logger.Info($"automatic light theme switch performed, sunrise: {sunrise:HH:mm:ss}");
                 }
                 else if (newTheme == Theme.Dark && automatic)
                 {
-                    Logger.Info($"automatic dark theme switch performed, sunset: {sunset.ToString("HH:mm:ss")}");
+                    Logger.Info($"automatic dark theme switch performed, sunset: {sunset:HH:mm:ss}");
                 }
                 PowerHandler.RestoreEnergySaver(config);
             }

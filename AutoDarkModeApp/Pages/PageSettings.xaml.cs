@@ -23,7 +23,7 @@ namespace AutoDarkModeApp.Pages
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
-        bool initialized = false;
+        readonly bool initialized = false;
 
         public PageSettings()
         {
@@ -95,7 +95,7 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void SetLanguage(string lang)
+        private static void SetLanguage(string lang)
         {
             Settings.Default.Language = lang;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.Language);
@@ -197,7 +197,7 @@ namespace AutoDarkModeApp.Pages
         }
         private void TextboxAccentColorDelay_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
         private void TextboxAccentColorDelay_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -227,19 +227,10 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void StartProcessByProcessInfo(string message)
-        {
-            Process.Start(new ProcessStartInfo(message)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            });
-        }
-
         private void ShowErrorMessage(Exception ex, string location)
         {
             string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };

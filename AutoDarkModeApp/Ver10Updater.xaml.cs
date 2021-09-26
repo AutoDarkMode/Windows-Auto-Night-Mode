@@ -10,7 +10,7 @@ namespace AutoDarkModeApp
     /// </summary>
     public partial class Ver10Updater : Window
     {
-        string updateURL;
+        readonly string updateURL;
 
         public Ver10Updater(string pURL)
         {
@@ -20,10 +20,12 @@ namespace AutoDarkModeApp
 
         private void ButtonNeverUpdate_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MsgBox msg = new MsgBox(Properties.Resources.VersionXUpdaterNeverDescription, Properties.Resources.VersionXUpdaterNeverTitle, "info", "yesno");
-            msg.Owner = GetWindow(this);
-            msg.ShowDialog();
-            var result = msg.DialogResult;
+            MsgBox msg = new(Properties.Resources.VersionXUpdaterNeverDescription, Properties.Resources.VersionXUpdaterNeverTitle, "info", "yesno")
+            {
+                Owner = GetWindow(this)
+            };
+            _ = msg.ShowDialog();
+            bool? result = msg.DialogResult;
             if (result == true)
             {
                 Settings.Default.WantsVersion10 = false;

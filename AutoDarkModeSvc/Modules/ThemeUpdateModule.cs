@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            Thread thread = new Thread(() =>
+            Thread thread = new(() =>
             {
                 try
                 {
