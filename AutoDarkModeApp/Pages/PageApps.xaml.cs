@@ -301,7 +301,7 @@ namespace AutoDarkModeApp
         {
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
+                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageApps");
