@@ -19,7 +19,7 @@ namespace AutoDarkModeComms
         /// </summary>
         /// <param name="message">Message string to be sent via the pipe</param>
         /// <returns>true if no error occurred; false otherwise</returns>
-        public bool SendMessage(string message)
+        public bool SendMessage(string message, int timeoutSeconds)
         {
             //this is needed. If ReceiveResponse is called in PipeMessenger for some reason the application will deadlock.
             PipeMessenger(message);
@@ -61,17 +61,17 @@ namespace AutoDarkModeComms
             return ok;
         }
 
-        public string SendMessageAndGetReply(string message)
+        public string SendMessageAndGetReply(string message, int timeoutSeconds)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> SendMessageAsync(string message)
+        public Task<bool> SendMessageAsync(string message, int timeoutSeconds)
         {
             throw new NotImplementedException();
         }
 
-        public Task<string> SendMessageAndGetReplyAsync(string message)
+        public Task<string> SendMessageAndGetReplyAsync(string message, int timeoutSeconds)
         {
             throw new NotImplementedException();
         }
