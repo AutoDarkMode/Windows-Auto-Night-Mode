@@ -179,14 +179,7 @@ namespace AutoDarkModeConfig
 
         public static bool InstallModeUsers()
         {
-            if (GetExecutionDir().Contains("C:\\Program Files"))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return !GetExecutionDir().Contains("C:\\Program Files");
         }
 
     }
