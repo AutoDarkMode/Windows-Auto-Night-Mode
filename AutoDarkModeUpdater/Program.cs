@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using AutoDarkModeComms;
+using AutoDarkModeSvc.Communication;
 using NLog;
 using Windows.UI.Notifications;
 
@@ -36,6 +38,18 @@ namespace AutoDarkModeUpdater
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
 
+            Logger.Info("Auto Dark Mode Updater v1.0");
+
+            try
+            {
+                ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+                client.SendMessageAndGetReply(Command.Shutdown);
+            }
+            catch (Exception ex)
+            {
+                Logger.Fatal(ex, "could not shut down service, aborting upgrade");
+                Environment.Exit(-1);
+            }
 
             string admDir = Extensions.ExecutionDir;
             bool notifyAboutUpdate = false;
@@ -103,7 +117,7 @@ namespace AutoDarkModeUpdater
 
             try
             {
-                Directory.Delete(holdingDir, true);
+                Directory.Delete(Extensions.UpdateDataDir, true);
             }
             catch (Exception ex)
             {

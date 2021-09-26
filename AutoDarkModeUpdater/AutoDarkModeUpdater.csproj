@@ -22,4 +22,8 @@
     <PackageReference Include="NLog" Version="4.6.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -57,13 +57,13 @@ namespace AutoDarkModeSvc.Handlers
         private static string GetUpdateUrl(string tag, string fileName)
         {
             //return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{tag}/{fileName}";
-            return "https://cloud.walzen.org/s/s5Jdw3C2FzjXMzq/download/AdmUpdateTest.zip";
+            return "https://cloud.walzen.org/s/x9KJ2z5yzjiNBqi/download/AdmUpdateTest.zip";
         }
 
         private static string GetUpdateHashUrl(string tag, string fileName)
         {
             //return $"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{tag}/{fileName}";
-            return "https://cloud.walzen.org/s/gcRt7yteSpTRkcK/download/zip_hash.sha256";
+            return "https://cloud.walzen.org/s/ACTsB7Yn9Bsy4FA/download/zip_hash.sha256";
         }
 
 
