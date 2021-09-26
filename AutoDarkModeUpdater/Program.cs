@@ -24,7 +24,7 @@ namespace AutoDarkModeUpdater
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message}: ${exception:separator=|}"
+                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
             };
             NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
             {
@@ -39,7 +39,7 @@ namespace AutoDarkModeUpdater
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
 
-            Logger.Info("Auto Dark Mode Updater v1.0");
+            Logger.Info("Auto Dark Mode Updater v1.1");
 
             try
             {
@@ -140,11 +140,11 @@ namespace AutoDarkModeUpdater
         private static void Relaunch(bool restoreShell, bool restoreApp)
         {
             Process.Start(Extensions.ExecutionPath);
-            if (restoreShell)
+            if (restoreApp)
             {
                 Process.Start(Extensions.ExecutionPathApp);
             }
-            if (restoreApp)
+            if (restoreShell)
             {
                 Process.Start(Extensions.ExecutionPathShell);
 
