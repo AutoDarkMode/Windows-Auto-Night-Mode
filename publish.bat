@@ -9,6 +9,8 @@ call dotnet publish AutoDarkModeShell\AutoDarkModeShell.csproj /p:PublishProfile
 call dotnet publish AutoDarkModeUpdater\AutoDarkModeUpdater.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeUpdater\Properties\PublishProfiles\FolderProfile.pubxml
 
 tar -cvzf AutoDarkModeInstaller/Setup/ADM.zip bin/Publish
+pwsh -executionpolicy remotesigned -File generate_hash.ps1
 chdir /d AutoDarkModeInstaller
 chdir /d Setup
 move ADM.zip AutoDarkModeX_Archive_%date:~-4,4%%date:~-7,2%%date:~-10,2%_%timetext%.zip
+move ADM.sha256 AutoDarkModeX_Archive_%date:~-4,4%%date:~-7,2%%date:~-10,2%_%timetext%.sha256
