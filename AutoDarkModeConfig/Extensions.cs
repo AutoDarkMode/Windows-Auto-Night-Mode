@@ -179,7 +179,9 @@ namespace AutoDarkModeConfig
 
         public static bool InstallModeUsers()
         {
-            return !GetExecutionDir().Contains("C:\\Program Files");
+            string pFilesx86 = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
+            string pFilesx64 = Environment.GetEnvironmentVariable("ProgramFiles");
+            return !(ExecutionDir.Contains(pFilesx64) || ExecutionDir.Contains(pFilesx86));
         }
 
     }
