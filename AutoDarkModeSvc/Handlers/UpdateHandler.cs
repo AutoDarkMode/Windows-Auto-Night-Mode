@@ -258,7 +258,7 @@ namespace AutoDarkModeSvc.Handlers
                     _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode is updating"));
                     _ = text[1].AppendChild(xml.CreateTextNode("Please wait until the update is complete"));
                     ToastNotification toast = new ToastNotification(xml);
-                    ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+                    ToastNotificationManager.CreateToastNotifier("Auto Dark Mode").Show(toast);
                 }
             }
             catch (Exception ex)
