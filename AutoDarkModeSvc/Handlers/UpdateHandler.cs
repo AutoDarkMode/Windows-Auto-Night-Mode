@@ -146,11 +146,11 @@ namespace AutoDarkModeSvc.Handlers
             bool appRestart = false;
             string baseUrl = UpdateInfo.baseUrl;
             string baseUrlHash = UpdateInfo.baseUrl;
-            if (builder.Config.Updater.UpdateZipCustomUrl.Length != 0)
+            if (builder.Config.Updater.UpdateZipCustomUrl != null)
             {
                 baseUrl = builder.Config.Updater.UpdateZipCustomUrl;
             }
-            if (builder.Config.Updater.UpdateHashCustomUrl.Length != 0)
+            if (builder.Config.Updater.UpdateHashCustomUrl != null)
             {
                 baseUrlHash = builder.Config.Updater.UpdateHashCustomUrl;
             }
