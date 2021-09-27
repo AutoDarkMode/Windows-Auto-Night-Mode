@@ -8,10 +8,11 @@ namespace AutoDarkModeConfig
         public string Tag { get; set; }
         public string FileName { get; set; }
         public bool AutoUpdateAvailable { get; set; }
+        public string Message { get; set; }
 
         public static UpdateInfo Deserialize(string data)
         {
-            var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             UpdateInfo deserialized = yamlDeserializer.Deserialize<UpdateInfo>(data);
             return deserialized;
         }

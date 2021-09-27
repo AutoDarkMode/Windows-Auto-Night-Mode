@@ -169,7 +169,7 @@ namespace AutoDarkModeConfig
             {
                 SaveConfig(FilePath, current);
             }
-            var yamlDeserializer = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            var yamlDeserializer = new DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             T deserializedConfigYaml = yamlDeserializer.Deserialize<T>(LoadFile(FilePath));
             return deserializedConfigYaml;
         }
