@@ -49,6 +49,15 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+
+        private bool configIsUpdating;
+        public bool ConfigIsUpdating 
+        { 
+            get { return configIsUpdating; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { configIsUpdating = value; }
+        }
         /// <summary>
         /// Setting this value to true will skip the next config reload event when it has been saved
         /// The setting will return to false after the first save

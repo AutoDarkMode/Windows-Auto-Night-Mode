@@ -11,6 +11,9 @@ namespace AutoDarkModeSvc.Communication
     static class MessageParser
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private static readonly GlobalState state = GlobalState.Instance();
+        private static readonly ComponentManager cm = ComponentManager.Instance();
 
         /// <summary>
         /// Parses a command message and invokes a callback function delegate for status reporting
@@ -20,28 +23,13 @@ namespace AutoDarkModeSvc.Communication
         /// <param name="service">Service class for invoking application exit</param>
         public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
-
-            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-            GlobalState state = GlobalState.Instance();
-            ComponentManager cm = ComponentManager.Instance();
+            WaitForConfigUpdateCompletion();
             msg.ForEach(message =>
             {
                 switch (message)
                 {
                     case Command.Switch:
                         Logger.Info("signal received: invoke theme switch");
-                        int retries = 3;
-                        for (int i = 0; i < retries; i++)
-                        {
-                            if (builder.Loading)
-                            {
-                                Thread.Sleep(100);
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
                         //cm.ForceAll();
                         ThemeManager.TimedSwitch(builder, false);
                         SendResponse(StatusCode.Ok);
@@ -207,6 +195,28 @@ namespace AutoDarkModeSvc.Communication
                         break;
                 }
             });
+        }
+
+        private static void WaitForConfigUpdateCompletion()
+        {
+            bool notified = false;
+            int retries = 5;
+            for (int i = 0; i < retries; i++)
+            {
+                if (state.ConfigIsUpdating)
+                {
+                    if (notified)
+                    {
+                        Logger.Debug("waiting for config update to finish");
+                        notified = true;
+                    }
+                    Thread.Sleep(100);
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
 }

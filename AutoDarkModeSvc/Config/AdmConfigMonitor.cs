@@ -54,6 +54,7 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
+            state.ConfigIsUpdating = true;
             if (state.SkipConfigFileReload)
             {
                 state.SkipConfigFileReload = false;
@@ -80,6 +81,7 @@ namespace AutoDarkModeSvc.Config
             {
                 Logger.Debug(ex, "config file locked:");
             }
+            state.ConfigIsUpdating = false;
         }
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
