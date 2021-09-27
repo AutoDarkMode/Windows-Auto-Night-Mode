@@ -1,5 +1,7 @@
 ﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Config.ConfigUpdateEvents;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
@@ -41,6 +43,13 @@ namespace AutoDarkModeSvc.Config
             };
             ConfigWatcher.Changed += OnChangedConfig;
             LocationDataWatcher.Changed += OnChangedLocationData;
+
+            IConfigUpdateEvent<AdmConfig> geolocatorEvent = new GeolocatorEvent();
+            IConfigUpdateEvent<AdmConfig> themeModeEvent = new ThemeModeEvent(componentManager);
+
+            //change event trackers
+            builder.ConfigUpdatedHandler += geolocatorEvent.OnConfigUpdate;
+            builder.ConfigUpdatedHandler += themeModeEvent.OnConfigUpdate;
         }
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
@@ -54,36 +63,11 @@ namespace AutoDarkModeSvc.Config
             lastTimeConfigChanged = DateTime.Now;
             try
             {
-                bool themeModeToggled = builder.Config.WindowsThemeMode.Enabled;
-                bool geolocatorToggled = builder.Config.Location.UseGeolocatorService;
-                double prevLat = builder.Config.Location.CustomLat;
-                double prevLon = builder.Config.Location.CustomLon;
+                AdmConfig oldConfig = builder.Config;
                 builder.Load();
-                bool latChanged = builder.Config.Location.CustomLat != prevLat;
-                bool lonChanged = builder.Config.Location.CustomLon != prevLon;
-                geolocatorToggled = geolocatorToggled != builder.Config.Location.UseGeolocatorService;
-                themeModeToggled = builder.Config.WindowsThemeMode.Enabled != themeModeToggled;
                 componentManager.UpdateSettings();
                 UpdateEventStates();
-
-                // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
-                if (geolocatorToggled || (!geolocatorToggled && !builder.Config.Location.UseGeolocatorService && (latChanged || lonChanged)))
-                {
-                    try
-                    {
-                        Task.Run(async() => await LocationHandler.UpdateGeoposition(builder)).Wait();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, "Error saving location data");
-                    }
-                }
-
-                // if the theme mode is toggled to off, we need to reinitialize all components
-                if (themeModeToggled && !builder.Config.WindowsThemeMode.Enabled)
-                {
-                    componentManager.InvokeDisableHooks();
-                }      
+                builder.OnConfigUpdated(oldConfig);
 
                 // fire warden ro register/unregister enabled/disabled modules
                 if (warden != null)

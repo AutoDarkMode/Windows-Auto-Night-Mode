@@ -17,9 +17,37 @@ namespace AutoDarkModeConfig
         public string ConfigDir { get; }
         public string ConfigFilePath { get; }
         public string LocationDataPath { get; }
-
         public string UpdaterDataPath { get; }
         public bool Loading { get; private set; }
+        private EventHandler<AdmConfig> configUpdatedHandler;
+        public event EventHandler<AdmConfig> ConfigUpdatedHandler
+        {
+
+            add
+            {
+                configUpdatedHandler -= value;
+                configUpdatedHandler += value;
+            }
+            remove
+            {
+                configUpdatedHandler -= value;
+            }
+        }
+        private EventHandler<AdmLocationData> locationDataUpdatedHandler;
+        public event EventHandler<AdmLocationData> LocationDataUpdatedHandler
+        {
+
+            add
+            {
+                locationDataUpdatedHandler -= value;
+                locationDataUpdatedHandler += value;
+            }
+            remove
+            {
+                locationDataUpdatedHandler -= value;
+            }
+        }
+
         protected AdmConfigBuilder()
         {
             if (instance == null)
@@ -108,6 +136,11 @@ namespace AutoDarkModeConfig
             Loading = false;
         }
 
+        public void OnLocationDataUpdated(AdmLocationData old)
+        {
+            locationDataUpdatedHandler?.Invoke(old, LocationData);
+        }
+
         public void LastUpdateLoad()
         {
             Loading = true;
@@ -120,8 +153,14 @@ namespace AutoDarkModeConfig
         {
             Loading = true;
             AdmConfig deser = Deserialize<AdmConfig>(ConfigFilePath, Config);
+            AdmConfig old = Config;
             Config = deser ?? Config;
             Loading = false;
+        }
+
+        public void OnConfigUpdated(AdmConfig old)
+        {
+            configUpdatedHandler?.Invoke(old, Config);
         }
 
         private T Deserialize<T>(string FilePath, object current)

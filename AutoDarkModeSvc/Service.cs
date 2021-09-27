@@ -56,7 +56,7 @@ namespace AutoDarkModeSvc
                 StateUpdateTimer
             };
 
-            var warden = new WardenModule("ModuleWarden", Timers, true);
+            WardenModule warden = new WardenModule("ModuleWarden", Timers, true);
             ConfigMonitor.RegisterWarden(warden);
             ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);

@@ -62,16 +62,18 @@ namespace AutoDarkModeSvc.Communication
                         break;
 
                     case Command.AddAutostart:
-                        Logger.Info("signal received: adding service to autostart");
+                        Logger.Info("signal received: add service to autostart");
                         bool regOk;
                         bool taskOk;
                         if (builder.Config.Tunable.UseLogonTask)
                         {
+                            Logger.Debug("logon task mode selected");
                             regOk = RegistryHandler.RemoveAutoStart();
                             taskOk = TaskSchdHandler.CreateLogonTask();
                         }
                         else
                         {
+                            Logger.Debug("autostart mode selected");
                             taskOk = TaskSchdHandler.RemoveLogonTask();
                             regOk = RegistryHandler.AddAutoStart();
                         }
@@ -86,14 +88,16 @@ namespace AutoDarkModeSvc.Communication
                         break;
 
                     case Command.RemoveAutostart:
-                        Logger.Info("signal received: removing service from autostart");
+                        Logger.Info("signal received: remove service from autostart");
                         bool ok;
                         if (builder.Config.Tunable.UseLogonTask)
                         {
+                            Logger.Debug("logon task mode selected");
                             ok = TaskSchdHandler.RemoveLogonTask();
                         }
                         else
                         {
+                            Logger.Debug("autostart mode selected");
                             ok = RegistryHandler.RemoveAutoStart();
                         }
                         if (ok)
