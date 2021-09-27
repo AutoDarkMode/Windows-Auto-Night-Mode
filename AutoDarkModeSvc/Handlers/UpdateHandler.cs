@@ -21,7 +21,7 @@ namespace AutoDarkModeSvc.Handlers
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private static Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 
         /// <summary>
         /// Checks if a new version is available

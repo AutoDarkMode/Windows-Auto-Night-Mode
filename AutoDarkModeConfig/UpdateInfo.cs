@@ -25,10 +25,6 @@ namespace AutoDarkModeConfig
 
         public string GetUpdateUrl(string url, bool custom = false)
         {
-            if (!url.EndsWith("/"))
-            {
-                url = url += "/";
-            }
             if (custom)
             {
                 return url;
@@ -48,10 +44,6 @@ namespace AutoDarkModeConfig
 
         public string GetUpdateHashUrl(string url, bool custom = false)
         {
-            if (!url.EndsWith("/"))
-            {
-                url = url += "/";
-            }
             if (custom)
             {
                 return url;
