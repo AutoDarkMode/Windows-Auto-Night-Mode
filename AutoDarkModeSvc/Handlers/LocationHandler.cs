@@ -40,6 +40,7 @@ namespace AutoDarkModeSvc.Handlers
                 configBuilder.LocationData.Lat = configBuilder.Config.Location.CustomLat;
                 configBuilder.LocationData.Lon = configBuilder.Config.Location.CustomLon;
                 configBuilder.LocationData.LastUpdate = DateTime.Now;
+                configBuilder.LocationData.DataSourceIsGeolocator = false;
             }
             UpdateSunTime(configBuilder);
             try
@@ -64,6 +65,7 @@ namespace AutoDarkModeSvc.Handlers
                 configBuilder.LocationData.Lon = position.Longitude;
                 configBuilder.LocationData.Lat = position.Latitude;
                 configBuilder.LocationData.LastUpdate = DateTime.Now;
+                configBuilder.LocationData.DataSourceIsGeolocator = true;
 
                 Logger.Info($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
                 success = true;

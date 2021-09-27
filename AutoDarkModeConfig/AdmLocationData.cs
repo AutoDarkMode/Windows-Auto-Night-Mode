@@ -11,5 +11,6 @@ namespace AutoDarkModeConfig
         public double Lat { get; set; }
         public double Lon { get; set; }
         public DateTime LastUpdate { get; set; }
+        public bool DataSourceIsGeolocator { get; set; }
     }
 }
