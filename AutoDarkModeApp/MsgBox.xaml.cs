@@ -53,6 +53,11 @@ namespace AutoDarkModeApp
                 CloseButton.Content = Properties.Resources.msgNo;
                 YesButton.Content = Properties.Resources.MsgYes;
             }
+            else if (pButton.Equals("none"))
+            {
+                CloseButton.Visibility = Visibility.Hidden;
+                YesButton.Visibility = Visibility.Hidden;
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

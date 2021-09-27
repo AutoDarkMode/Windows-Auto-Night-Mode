@@ -168,16 +168,16 @@ namespace AutoDarkModeUpdater
             Process.Start(Extensions.ExecutionPath);
             if (restoreApp)
             {
-                Process.Start(Extensions.ExecutionPathApp);
+                _ = Process.Start(Extensions.ExecutionPathApp);
             }
             if (restoreShell)
             {
-                Process.Start(Extensions.ExecutionPathShell);
+                _ = Process.Start(Extensions.ExecutionPathShell);
             }
 
             if (failed)
             {
-                if (!client.SendMessage(Command.UpdateFailed, 20))
+                if (client.SendMessageWithRetries(Command.Alive, retries: 5) == StatusCode.Timeout)
                 {
                     Logger.Warn("could not send failed upate message due to service not starting in time");
                 }

@@ -54,14 +54,27 @@ namespace AutoDarkModeComms
             return false;
         }
 
+        public string SendMessageWithRetries(string message, int timeoutSeconds, int retries)
+        {
+            for (int i = 0; i < retries; i++)
+            {
+                using RequestSocket client = new RequestSocket();
+                client.Connect("tcp://127.0.0.1:" + GetBackendPort());
+                client.SendFrame(message);
+                string response = GetResponse(client, timeoutSeconds);
+                if (response != StatusCode.Timeout)
+                {
+                    return response;
+                }
+            }
+            return StatusCode.Timeout;
+        }
+
         private string GetResponse(RequestSocket client, int timeoutSeconds)
         {
             bool hasResponse = false;
             string response;
-            lock (this)
-            {
-                hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, timeoutSeconds), out response);
-            }
+            hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, timeoutSeconds), out response);
 
             if (hasResponse)
             {

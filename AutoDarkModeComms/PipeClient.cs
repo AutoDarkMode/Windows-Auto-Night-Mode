@@ -75,5 +75,10 @@ namespace AutoDarkModeComms
         {
             throw new NotImplementedException();
         }
+
+        public string SendMessageWithRetries(string message, int timeoutSeconds = 3, int retries = 3)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

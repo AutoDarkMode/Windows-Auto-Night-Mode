@@ -35,16 +35,31 @@ namespace AutoDarkModeApp
                 args.Remove("/debug");
             }
 
-            StartService();
-            bool heartBeatOK = commandClient.SendMessage(Command.Alive, 15);
-            if (!heartBeatOK)
+            string message = "Service not running yet, starting service";
+            MsgBox msg = new(message, "Launching Service", "info", "none")
+            {
+                Owner = null
+            };
+            bool serviceStartIssued = StartService();
+            if (serviceStartIssued)
+            {
+                msg.Show();
+            }
+            string heartBeatOK = commandClient.SendMessageWithRetries(Command.Alive, retries: 5);
+            if (heartBeatOK == StatusCode.Timeout)
             {
                 string error = "Backend not responding. Check if AutoDarkModeSvc.exe is running and try again";
-                MsgBox msg = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
                 {
                 };
-                msg.ShowDialog();
+                msgErr.ShowDialog();
                 return;
+            }
+            if (serviceStartIssued)
+            {
+                Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+                msg.Close();
+                Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             }
             //handle command line arguments
             if (args.Count > 0)
@@ -105,7 +120,7 @@ namespace AutoDarkModeApp
             }
         }
 
-        private void StartService()
+        private bool StartService()
         {
             if (!debug)
             {
@@ -119,8 +134,10 @@ namespace AutoDarkModeApp
                     svc.StartInfo.CreateNoWindow = true;
                     svc.Start();
                     serviceRunning.ReleaseMutex();
+                    return true;
                 }
             }
+            return false;
         }
     }
 }
