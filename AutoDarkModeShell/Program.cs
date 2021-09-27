@@ -12,12 +12,11 @@ namespace AutoDarkModeComms
         public const string QuitShell = "QuitShell";
         static void Main(string[] args)
         {
-            Console.WriteLine("Auto Dark Mode Shell version 1.0");
+            Console.WriteLine("Auto Dark Mode Shell version 1.1");
             ICommandClient client = new ZeroMQClient(Address.DefaultPort);
             if (args.Length > 0)
             {
-                List<string> argsList = new();
-                Console.WriteLine($"Result: {client.SendMessageAndGetReply(argsList[0])}");
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0])}");
                 Console.WriteLine("Please check service.log for more details");
                 Environment.Exit(0);
             }
