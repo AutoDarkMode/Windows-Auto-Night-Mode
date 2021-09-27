@@ -14,32 +14,32 @@ namespace AutoDarkModeSvc.Communication
     public static class Command
     {
         [Includable]
-        public const string Switch = "/switch";
-        public const string Swap = "/swap";
+        public const string Switch = "--switch";
+        public const string Swap = "--swap";
         [Includable]
-        public const string Light = "/light";
+        public const string Light = "--light";
         [Includable]
-        public const string Dark = "/dark";
+        public const string Dark = "--dark";
         [Includable]
-        public const string NoForce = "/noForce";
+        public const string NoForce = "--no-force";
         [Includable]
-        public const string CheckForUpdate = "/checkForUpdate";
+        public const string CheckForUpdate = "--check-for-update";
         [Includable]
-        public const string Update = "/update";
-        public const string LocationAccess = "/locationAccess";
+        public const string Update = "--update";
+        public const string LocationAccess = "--location-access";
         [Includable]
-        public const string AddAutostart = "/addAutostart";
+        public const string AddAutostart = "--add-autostart";
         [Includable]
-        public const string RemoveAutostart = "/removeAutoStart";
+        public const string RemoveAutostart = "--remove-autoStart";
         [Includable]
-        public const string Shutdown = "/exit";
-        public const string TestError = "/testError";
-        public const string Alive = "/alive";
+        public const string Shutdown = "--exit";
+        public const string TestError = "--test-error";
+        public const string Alive = "--alive";
         [Includable]
-        public const string DetectMonitors = "/detectMonitors";
+        public const string DetectMonitors = "--detect-monitors";
         [Includable]
-        public const string CleanMonitors = "/cleanMonitors";
-        public const string UpdateFailed = "/updateFailed";
+        public const string CleanMonitors = "--clean-monitors";
+        public const string UpdateFailed = "--update-failed";
     }
 
     [AttributeUsage(AttributeTargets.Field)]

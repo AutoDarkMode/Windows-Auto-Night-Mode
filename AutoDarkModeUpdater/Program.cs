@@ -78,7 +78,13 @@ namespace AutoDarkModeUpdater
                 ApiResponse response = ApiResponse.FromString(result);
                 if (response.StatusCode != StatusCode.Ok && response.StatusCode != StatusCode.Timeout)
                 {
-                    throw new Exception("error shutting down service, aborting update");
+                    Logger.Warn("could not cleanly shut down service, trying to end the process");
+                    Process[] pService = Process.GetProcessesByName("AutoDarkModeSvc");
+                    if (pService.Length != 0)
+                    {
+                        Logger.Info("stopping app");
+                        pService[0].Kill();
+                    }
                 }
             }
             catch (Exception ex)
