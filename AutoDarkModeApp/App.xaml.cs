@@ -61,63 +61,8 @@ namespace AutoDarkModeApp
                 msg.Close();
                 Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             }
-            //handle command line arguments
-            if (args.Count > 0)
-            {
-                Thread.Sleep(1000);
-                Mutex.Dispose();
-                Mutex = new Mutex(true, "7f326fe1-181c-414f-b7f1-0df4baa578a7");
-                Mutex.WaitOne(TimeSpan.FromMilliseconds(100));
-                foreach (string value in args)
-                {
-                    if (value == "/switch")
-                    {
-                        commandClient.SendMessage(value);
-                    }
-                    else if (value == "/swap")
-                    {
-                        commandClient.SendMessage(value);
-                    }
-                    else if (value == "/dark")
-                    {
-                        commandClient.SendMessage(value);
-                    }
-                    else if (value == "/light")
-                    {
-                        commandClient.SendMessage(value);
-                    }
-                    else if (value == "/noForce")
-                    {
-                        commandClient.SendMessage(value);
-                    }
-                    else if (value == "/location")
-                    {
-                        commandClient.SendMessage(Command.LocationAccess);
-                    }
-                    else if (value == "/removeAutostart")
-                    {
-                        commandClient.SendMessage(Command.RemoveAutostart);
-                    }
-                    else if (value == "/shutdownService")
-                    {
-                        commandClient.SendMessage(Command.Shutdown);
-                    }
-                    else if (value == "/pipeclienttest")
-                    {
-                        //ICommandClient pc = new PipeClient(Tools.DefaultPipeName);
-                        bool result = commandClient.SendMessage(Command.LocationAccess);
-                        Console.Out.WriteLine(result);
-                    }
-                    NetMQConfig.Cleanup();
-                    Mutex.Dispose();
-                    Shutdown();
-                }
-            }
-            else
-            {
-                MainWindow mainWin = new();
-                mainWin.Show();
-            }
+            MainWindow mainWin = new();
+            mainWin.Show();
         }
 
         private bool StartService()
