@@ -68,14 +68,20 @@ namespace AutoDarkModeSvc.Communication
 
         public override string ToString()
         {
-            return $"{StatusCode};{Message};{Details}";
+            return StatusCode.Length > 0
+                ? Message.Length > 0
+                ? Details.Length > 0
+                ? $"{StatusCode}\n{Message}\n{Details}"
+                : $"{StatusCode}\n{Message}"
+                : $"{StatusCode}"
+                : "";
         }
 
         public static ApiResponse FromString(string response)
         {
             try
             {
-                string[] responseSplit = response.Split(";");
+                string[] responseSplit = response.Split("\n");
                 return new ApiResponse
                 {
                     StatusCode = responseSplit.ElementAtOrDefault(0),

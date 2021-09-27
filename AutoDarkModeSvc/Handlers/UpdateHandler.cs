@@ -43,7 +43,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Info($"new version {newVersion} available");
                     response.StatusCode = StatusCode.New;
-                    response.Message = currentVersion.ToString();
+                    response.Message = $"Version: {currentVersion}";
                     response.Details = data;
                     UpstreamResponse = response;
                     return response.ToString();

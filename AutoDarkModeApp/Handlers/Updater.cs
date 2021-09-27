@@ -37,15 +37,6 @@ namespace AutoDarkModeApp
             return false;
         }
 
-        public void ParseResponse(string response)
-        {
-            string[] messages = response.Split(";");
-            if (messages[0] == StatusCode.New)
-            {
-                MessageBoxHandler();
-            }
-        }
-
         public void Update()
         {
             UpdateInfo info = UpdateInfo.Deserialize(response.Details);
