@@ -37,6 +37,7 @@ namespace AutoDarkModeApp
             return false;
         }
 
+
         public void Update()
         {
             UpdateInfo info = UpdateInfo.Deserialize(response.Details);

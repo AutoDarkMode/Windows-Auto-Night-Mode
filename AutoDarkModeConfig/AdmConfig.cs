@@ -47,9 +47,9 @@ namespace AutoDarkModeConfig
         public bool Enabled { get; set; }
         public bool Silent { get; set; }
         public int DaysBetweenUpdateCheck { get; set; } = 7;
+        public string UpdateBaseUrl { get; set; } = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/";
         public string UpdateZipCustomUrl { get; set; }
         public string UpdateHashCustomUrl { get; set; }
-
     }
 
     public class WindowsThemeMode

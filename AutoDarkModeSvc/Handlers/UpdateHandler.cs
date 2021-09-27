@@ -144,14 +144,19 @@ namespace AutoDarkModeSvc.Handlers
         {
             bool shellRestart = false;
             bool appRestart = false;
-            string baseUrl = UpdateInfo.baseUrl;
-            string baseUrlHash = UpdateInfo.baseUrl;
+
+            bool customZipUrl = false;
+            bool customHashUrl = false;
+            string baseZipUrl = builder.Config.Updater.UpdateBaseUrl;
+            string baseUrlHash = builder.Config.Updater.UpdateBaseUrl;
             if (builder.Config.Updater.UpdateZipCustomUrl != null)
             {
-                baseUrl = builder.Config.Updater.UpdateZipCustomUrl;
+                customZipUrl = true;
+                baseZipUrl = builder.Config.Updater.UpdateZipCustomUrl;
             }
             if (builder.Config.Updater.UpdateHashCustomUrl != null)
             {
+                customHashUrl = true;
                 baseUrlHash = builder.Config.Updater.UpdateHashCustomUrl;
             }
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
@@ -162,7 +167,7 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash));
+                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, customHashUrl));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 if (!Directory.Exists(Extensions.UpdateDataDir))
@@ -175,7 +180,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
-                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(baseUrl), downloadPath);
+                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(baseZipUrl, customZipUrl), downloadPath);
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -327,18 +332,18 @@ namespace AutoDarkModeSvc.Handlers
             _ = text[1].AppendChild(xml.CreateTextNode("An error occurred while updating."));
             _ = text[2].AppendChild(xml.CreateTextNode("Please see service.log and updater.log for more infos"));
             var toast = new ToastNotification(xml);
-            ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+            ToastNotificationManager.CreateToastNotifier("Auto Dark Mode").Show(toast);
         }
 
         public static void NotifyUpdateAvailable()
         {
             Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
             Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
-            _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode Update"));
-            _ = text[1].AppendChild(xml.CreateTextNode($"Version {UpstreamVersion.Tag} is available"));
-            _ = text[2].AppendChild(xml.CreateTextNode($"You have Version {Assembly.GetExecutingAssembly().GetName().Version}"));
+            _ = text[0].AppendChild(xml.CreateTextNode($"Update {UpstreamVersion.Tag} available"));
+            _ = text[1].AppendChild(xml.CreateTextNode($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}"));
+            _ = text[2].AppendChild(xml.CreateTextNode($"Message: {UpstreamVersion.Message}"));
             var toast = new ToastNotification(xml);
-            ToastNotificationManager.CreateToastNotifier("AutoDarkModeSvc").Show(toast);
+            ToastNotificationManager.CreateToastNotifier("Auto Dark Mode").Show(toast);
         }
     }
 
