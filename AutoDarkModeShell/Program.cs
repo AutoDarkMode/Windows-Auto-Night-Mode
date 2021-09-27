@@ -24,13 +24,14 @@ namespace AutoDarkModeComms
             var flags = BindingFlags.Static | BindingFlags.Public;
             List<string> fields = typeof(Command).GetFields(flags)
                 .Where(p => p.IsDefined(typeof(IncludableAttribute)))
-                .Select(f => f.Name)
+                .Select(f => $"{f.Name} ({(string)typeof(Command).GetField(f.Name).GetValue(null)})")
                 .ToList();
             fields.Add(QuitShell);
             string selection = "";
             do
             {
                 selection = Prompt.Select("Select a command", fields);
+                selection = selection.Split("(")[0].Trim();
                 if (selection != QuitShell)
                 {
                     selection = (string)typeof(Command).GetField(selection).GetValue(null);
