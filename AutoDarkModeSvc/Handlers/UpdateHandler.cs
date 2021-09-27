@@ -32,6 +32,24 @@ namespace AutoDarkModeSvc.Handlers
             ApiResponse response = new();
             try
             {
+                if (builder.Config.Updater.ZipCustomUrl != null && builder.Config.Updater.HashCustomUrl != null)
+                {
+                    UpdateInfo info = new()
+                    {
+                        FileName = "",
+                        Message = "Update with custom URLs",
+                        Tag = "420.69",
+                        AutoUpdateAvailable = true
+                    };
+                    Logger.Info($"new custom version available");
+                    response.StatusCode = StatusCode.New;
+                    response.Message = $"Version: {currentVersion}";
+                    response.Details = info.Serialize();
+                    UpstreamResponse = response;
+                    UpstreamVersion = info;
+                    return response.ToString();
+                }
+
                 string updateUrl = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.yaml";
                 using RedirectWebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
@@ -145,19 +163,15 @@ namespace AutoDarkModeSvc.Handlers
             bool shellRestart = false;
             bool appRestart = false;
 
-            bool customZipUrl = false;
-            bool customHashUrl = false;
-            string baseZipUrl = builder.Config.Updater.UpdateBaseUrl;
-            string baseUrlHash = builder.Config.Updater.UpdateBaseUrl;
-            if (builder.Config.Updater.UpdateZipCustomUrl != null)
+            
+            string baseZipUrl = builder.Config.Updater.BaseUrlTemplate;
+            string baseUrlHash = builder.Config.Updater.BaseUrlTemplate;
+            bool useCustomUrls = false;
+            if (builder.Config.Updater.ZipCustomUrl != null && builder.Config.Updater.HashCustomUrl != null)
             {
-                customZipUrl = true;
-                baseZipUrl = builder.Config.Updater.UpdateZipCustomUrl;
-            }
-            if (builder.Config.Updater.UpdateHashCustomUrl != null)
-            {
-                customHashUrl = true;
-                baseUrlHash = builder.Config.Updater.UpdateHashCustomUrl;
+                baseZipUrl = builder.Config.Updater.ZipCustomUrl;
+                baseUrlHash = builder.Config.Updater.HashCustomUrl;
+                useCustomUrls = true;
             }
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
             try
@@ -167,7 +181,7 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, customHashUrl));
+                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 if (!Directory.Exists(Extensions.UpdateDataDir))
@@ -180,7 +194,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
-                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(baseZipUrl, customZipUrl), downloadPath);
+                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls), downloadPath);
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();

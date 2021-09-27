@@ -1,4 +1,5 @@
-﻿using YamlDotNet.Serialization.NamingConventions;
+﻿using System.Globalization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace AutoDarkModeConfig
 {
@@ -16,13 +17,27 @@ namespace AutoDarkModeConfig
             return deserialized;
         }
 
+        public string Serialize()
+        {
+            YamlDotNet.Serialization.ISerializer yamlSerializer = new YamlDotNet.Serialization.SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            return yamlSerializer.Serialize(this);
+        }
+
         public string GetUpdateUrl(string url, bool custom = false)
         {
             if (!url.EndsWith("/"))
             {
                 url = url += "/";
             }
-            return custom ? url : $"{url}{Tag}/{FileName}.zip";
+            if (custom)
+            {
+                return url;
+            }
+            else
+            {
+                string fileUrl = string.Format(CultureInfo.InvariantCulture, url, Tag, $"{FileName}.zip");
+                return fileUrl;
+            }
         }
 
         public string GetUpdateInfoPage()
@@ -37,7 +52,15 @@ namespace AutoDarkModeConfig
             {
                 url = url += "/";
             }
-            return custom ? url : $"{url}{Tag}/{FileName}.sha256";
+            if (custom)
+            {
+                return url;
+            }
+            else
+            {
+                string hashUrl = string.Format(CultureInfo.InvariantCulture, url, Tag, $"{FileName}.sha256");
+                return hashUrl;
+            }
         }
     }
 }
