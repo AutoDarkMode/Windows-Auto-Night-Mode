@@ -48,7 +48,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 try
                 {
                     DisplayMonitor monitor = Task.Run(async () => await GetMonitorInfoAsync()).Result;
-                    if (monitor != null)
+                    if (monitor != null && monitor.DisplayName.Length > 0)
                     {
                         MonitorString = $"{monitor.DisplayName} - {monitor.DisplayAdapterTargetId}";
                     }

@@ -14,7 +14,7 @@ namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
             bool latChanged = newConfig.Location.CustomLat != oldConfig.Location.CustomLat;
             bool lonChanged = newConfig.Location.CustomLon != oldConfig.Location.CustomLon;
             // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
-            if (geolocatorToggled || (!geolocatorToggled && newConfig.Location.UseGeolocatorService && (latChanged || lonChanged)))
+            if (geolocatorToggled || (!geolocatorToggled && !newConfig.Location.UseGeolocatorService && (latChanged || lonChanged)))
             {
                 try
                 {

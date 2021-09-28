@@ -12,7 +12,7 @@ namespace AutoDarkModeUpdater
 {
     class Program
     {
-        private const string Version = "1.21";
+        private const string Version = "1.23";
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
         private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
@@ -53,11 +53,13 @@ namespace AutoDarkModeUpdater
                 Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
                 if (pShell.Length != 0)
                 {
+                    Logger.Info("stopping shell");
                     pShell[0].Kill();
                     restoreShell = true;
                 }
                 if (pApp.Length != 0)
                 {
+                    Logger.Info("stopping app");
                     pApp[0].Kill();
                     restoreApp = true;
                 }
@@ -71,11 +73,18 @@ namespace AutoDarkModeUpdater
 
             try
             {
+                Logger.Info("shutting down service");
                 string result = client.SendMessageAndGetReply(Command.Shutdown);
                 ApiResponse response = ApiResponse.FromString(result);
                 if (response.StatusCode != StatusCode.Ok && response.StatusCode != StatusCode.Timeout)
                 {
-                    throw new Exception("error shutting down service, aborting update");
+                    Logger.Warn("could not cleanly shut down service, ending process");
+                    Process[] pService = Process.GetProcessesByName("AutoDarkModeSvc");
+                    if (pService.Length != 0)
+                    {
+                        Logger.Info("stopping app");
+                        pService[0].Kill();
+                    }
                 }
             }
             catch (Exception ex)
@@ -107,6 +116,8 @@ namespace AutoDarkModeUpdater
                 Environment.Exit(-1);
             }
 
+
+            Logger.Info("backing up old files");
             // convert to file info list and move all files into a demporary directory that is a sub directory of the update data dir
             // this is done so the dir can be removed easily once the update is complete
             IEnumerable<FileInfo> oldFiles = oldFilePaths.Select(f => new FileInfo(f));
@@ -131,6 +142,7 @@ namespace AutoDarkModeUpdater
             }
 
 
+            Logger.Info("patching auto dark mode");
             // move new files from unpack directory to assembly path
             string unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
             IEnumerable<FileInfo> files = Directory.GetFiles(unpackDirectory, "*.*", SearchOption.AllDirectories).Select(f => new FileInfo(f));
