@@ -103,7 +103,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         /// <returns>An ApiResponse with UnsupportedOperation if auto install is unavailable. <br/>
         /// If auto install is available, the latest update check response will be returned instead</returns>
-        public static ApiResponse CanAutoInstall()
+        public static ApiResponse CanUseUpdater()
         {
             if (!Extensions.InstallModeUsers())
             {
@@ -122,7 +122,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     return new ApiResponse
                     {
-                        StatusCode = StatusCode.UnsupportedOperation,
+                        StatusCode = StatusCode.Disabled,
                         Message = "major version upgrade pending, manual update required"
                     };
                 }

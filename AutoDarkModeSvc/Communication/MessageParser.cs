@@ -121,9 +121,14 @@ namespace AutoDarkModeSvc.Communication
                     case Command.CheckForUpdateNotify:
                         Logger.Info("signal received: checking for update and requesting notification");
                         ApiResponse updateCheckData = UpdateHandler.CheckNewVersion();
+                        updateCheckData = UpdateHandler.CanUseUpdater();
                         if (updateCheckData.StatusCode == StatusCode.New)
                         {
                             ToastHandler.InvokeUpdateToast();
+                        }
+                        else if (updateCheckData.StatusCode == StatusCode.UnsupportedOperation || updateCheckData.StatusCode == StatusCode.Disabled)
+                        {
+                            ToastHandler.InvokeUpdateToast(canUseUpdater: false);
                         }
                         SendResponse(updateCheckData.ToString());
                         break;
@@ -132,7 +137,7 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: update adm");
                         if (!UpdateHandler.Updating)
                         {
-                            ApiResponse response = UpdateHandler.CanAutoInstall();
+                            ApiResponse response = UpdateHandler.CanUseUpdater();
                             if (response.StatusCode == StatusCode.New)
                             {
                                 SendResponse(response.ToString());

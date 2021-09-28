@@ -53,11 +53,14 @@ namespace AutoDarkModeSvc.Modules
                     _ = UpdateHandler.CheckNewVersion();
                     ApiResponse versionCheck = UpdateHandler.UpstreamResponse;
 
+                    // check if a new version is available upstream
                     if (versionCheck.StatusCode == StatusCode.New)
                     {
-                        ApiResponse autoUpdate = UpdateHandler.CanAutoInstall();
-                        if (autoUpdate.StatusCode == StatusCode.New)
+                        ApiResponse canUseUpdater = UpdateHandler.CanUseUpdater();
+                        // will pass through the update message if auto updater can be used
+                        if (canUseUpdater.StatusCode == StatusCode.New)
                         {
+                            // if mode is not silent, or auto install is disabled, show the notification to prompt the user
                             if (!builder.Config.Updater.Silent || !builder.Config.Updater.AutoInstall)
                             {
                                 ToastHandler.InvokeUpdateToast();
@@ -67,9 +70,10 @@ namespace AutoDarkModeSvc.Modules
                                 Task.Run(() => UpdateHandler.Update()).Wait();
                             }
                         }
-                        else if (autoUpdate.StatusCode == StatusCode.UnsupportedOperation || autoUpdate.StatusCode == StatusCode.Disabled)
+                        // display notification without update options if unavailable
+                        else if (canUseUpdater.StatusCode == StatusCode.UnsupportedOperation || canUseUpdater.StatusCode == StatusCode.Disabled)
                         {
-                            ToastHandler.InvokeUpdateToast();
+                            ToastHandler.InvokeUpdateToast(canUseUpdater: false);
                         }
                     }
                     try
