@@ -1,12 +1,11 @@
-﻿using System;
+﻿using AutoDarkModeComms;
+using AutoDarkModeSvc.Communication;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using AutoDarkModeComms;
-using AutoDarkModeSvc.Communication;
-using NLog;
-using Windows.UI.Notifications;
 
 namespace AutoDarkModeUpdater
 {
@@ -106,7 +105,7 @@ namespace AutoDarkModeUpdater
             // move old files out
             // collect all files that are not within the update data directory or the updater itself
             IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir, "*.*", SearchOption.AllDirectories)
-                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnoreFiles(f));
+                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnorePaths(f));
 
             //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
             if (!oldFilePaths.Contains(Extensions.ExecutionPath))
@@ -221,7 +220,7 @@ namespace AutoDarkModeUpdater
             Logger.Info("rollback successful, no update has been performed, restarting auto dark mode");
         }
 
-        private static bool IgnoreFiles(string path)
+        private static bool IgnorePaths(string path)
         {
             if (path.Contains("unins000.exe"))
             {
@@ -232,14 +231,6 @@ namespace AutoDarkModeUpdater
                 return true;
             }
             if (path.Contains("AutoDarkMode.VisualElementsManifest.xml"))
-            {
-                return true;
-            }
-            if (path.Contains("apache-2.0.txt"))
-            {
-                return true;
-            }
-            if (path.Contains("lgpl.txt"))
             {
                 return true;
             }

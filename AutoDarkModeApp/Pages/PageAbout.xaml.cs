@@ -283,7 +283,7 @@ namespace AutoDarkModeApp.Pages
         private void NetMQLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string text = "Copyright (C) 2007 Free Software Foundation, Inc \n\n";
-            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "lgpl.txt"));
+            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "Licenses" , "lgpl.txt"));
             MsgBox msg = new(text, "", "info", "close")
             {
                 Owner = Window.GetWindow(this)
@@ -320,7 +320,7 @@ namespace AutoDarkModeApp.Pages
         private void SunriseSunsetLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string text = "Copyright(c) 2017 Mursaat \n\n";
-            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "apache-2.0.txt"));
+            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "Licenses", "apache-2.0.txt"));
             MsgBox msg = new(text, "SunriseSunset License Information", "info", "close");
             msg.Owner = Window.GetWindow(this);
             _ = msg.ShowDialog();
