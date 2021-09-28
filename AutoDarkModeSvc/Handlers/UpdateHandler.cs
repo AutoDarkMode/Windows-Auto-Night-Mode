@@ -217,7 +217,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
-                var callback = new DownloadProgressChangedEventHandler(DownloadProgressCallback);
+                DownloadProgressChangedEventHandler callback = new DownloadProgressChangedEventHandler(DownloadProgress);
                 webClient.DownloadProgressChanged += callback;
                 Task.Run(async() => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
                 webClient.DownloadProgressChanged -= callback;
@@ -391,7 +391,7 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        private static void DownloadProgressCallback(object sender, DownloadProgressChangedEventArgs e)
+        private static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
         {
             if (e.ProgressPercentage > Progress && e.ProgressPercentage % 10 == 0)
             {
