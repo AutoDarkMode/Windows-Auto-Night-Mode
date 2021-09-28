@@ -148,6 +148,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="NewFolder\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
@@ -163,15 +164,9 @@
   </ItemGroup>
 
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
-    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="apache-2.0.txt" DestinationFolder="$(OutDir)" />
   </Target>
   <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
-    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(PublishDir)" />
-  </Target>
-  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
-    <Copy SourceFiles="Licenses\lgpl.txt" DestinationFolder="$(OutDir)" />
-  </Target>
-  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
-    <Copy SourceFiles="Licenses\lgpl.txt" DestinationFolder="$(PublishDir)" />
+    <Copy SourceFiles="apache-2.0.txt" DestinationFolder="$(PublishDir)" />
   </Target>
 </Project>

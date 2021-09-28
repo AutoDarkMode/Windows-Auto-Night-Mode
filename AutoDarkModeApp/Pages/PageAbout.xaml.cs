@@ -3,6 +3,7 @@ using AutoDarkModeSvc.Communication;
 using SourceChord.FluentWPF;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -281,8 +282,9 @@ namespace AutoDarkModeApp.Pages
 
         private void NetMQLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            string MessageBoxText = "Copyright (C) 2007 Free Software Foundation, Inc.";
-            MsgBox msg = new(MessageBoxText, "", "info", "close")
+            string text = "Copyright (C) 2007 Free Software Foundation, Inc \n\n";
+            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "lgpl.txt"));
+            MsgBox msg = new(text, "", "info", "close")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -317,16 +319,9 @@ namespace AutoDarkModeApp.Pages
 
         private void SunriseSunsetLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            string MessageBoxText = "Apache License Version 2.0, January 2004\n\n" +
-                "Copyright (c) 2017 Mursaat \n\n" +
-                "Licensed under the Apache License, Version 2.0 (the \"License\"); " +
-                "you may not use this file except in compliance with the License. " +
-                "You may obtain a copy of the License at \n\n" +
-                "http://www.apache.org/licenses/LICENSE-2.0 \n\n" +
-                "Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS," +
-                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and " +
-                "limitations under the License.";
-            MsgBox msg = new(MessageBoxText, "SunriseSunset License Information", "info", "close");
+            string text = "Copyright(c) 2017 Mursaat \n\n";
+            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "apache-2.0.txt"));
+            MsgBox msg = new(text, "SunriseSunset License Information", "info", "close");
             msg.Owner = Window.GetWindow(this);
             _ = msg.ShowDialog();
         }
