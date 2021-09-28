@@ -118,6 +118,16 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(UpdateHandler.CheckNewVersion().ToString());
                         break;
 
+                    case Command.CheckForUpdateNotify:
+                        Logger.Info("signal received: checking for update and requesting notification");
+                        ApiResponse updateCheckData = UpdateHandler.CheckNewVersion();
+                        if (updateCheckData.StatusCode == StatusCode.New)
+                        {
+                            ToastHandler.InvokeUpdateToast();
+                        }
+                        SendResponse(updateCheckData.ToString());
+                        break;
+
                     case Command.Update:
                         Logger.Info("signal received: update adm");
                         if (!UpdateHandler.Updating)
@@ -127,7 +137,7 @@ namespace AutoDarkModeSvc.Communication
                             {
                                 SendResponse(response.ToString());
                                 // this is run sync, as such it will block the ZMQ thread!
-                                Task.Run(() => UpdateHandler.Update());
+                                _ = Task.Run(() => UpdateHandler.Update());
                             }
                             else
                             {
@@ -207,7 +217,6 @@ namespace AutoDarkModeSvc.Communication
                         ToastHandler.InvokeUpdateInProgressToast();
                         SendResponse(StatusCode.Ok);
                         break;
-
 
                     default:
                         Logger.Debug("unknown message received");

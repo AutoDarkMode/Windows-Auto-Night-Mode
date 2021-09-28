@@ -131,7 +131,7 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static void Update()
+        public static void Update(bool overrideSilent = false)
         {
             if (UpstreamResponse.StatusCode != StatusCode.New)
             {
@@ -145,7 +145,7 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
             Updating = true;
-            (bool, bool, bool) result = PrepareUpdate();
+            (bool, bool, bool) result = PrepareUpdate(overrideSilent);
             bool success = result.Item1;
             bool notifyShell = result.Item2;
             bool notifyApp = result.Item3;
@@ -188,7 +188,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>A bool tuple where the first item holds the value whether the update has been successfully prepared. <br></br>
         /// The second item is to determine whether the shell needs to be restarted <br/>
         /// The third item is to determine whether the app needs to be restarted</returns>
-        private static (bool, bool, bool) PrepareUpdate()
+        private static (bool, bool, bool) PrepareUpdate(bool overrideSilent)
         {
             bool shellRestart = false;
             bool appRestart = false;
@@ -207,7 +207,7 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 // show toast if UI components were open to inform the user that the program is being updated
-                if (!builder.Config.Updater.Silent)
+                if (!builder.Config.Updater.Silent || overrideSilent)
                 {
                     ToastHandler.InvokeUpdateInProgressToast();
                 }

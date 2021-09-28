@@ -25,6 +25,8 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string CheckForUpdate = "--check-for-update";
         [Includable]
+        public const string CheckForUpdateNotify = "--check-for-update-notify";
+        [Includable]
         public const string Update = "--update";
         public const string LocationAccess = "--location-access";
         [Includable]

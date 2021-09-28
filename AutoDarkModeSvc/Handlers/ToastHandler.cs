@@ -139,7 +139,7 @@ namespace AutoDarkModeSvc.Handlers
                     if (argument[0] == "action" && argument[1] == "update")
                     {
                         Logger.Info("updating app, caller toast");
-                        Task.Run(() => UpdateHandler.Update()).Wait();
+                        Task.Run(() => UpdateHandler.Update(overrideSilent: true)).Wait();
                     }
                     else if (argument[0] == "action" && argument[1] == "postpone")
                     {
