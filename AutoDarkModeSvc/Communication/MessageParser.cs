@@ -198,9 +198,16 @@ namespace AutoDarkModeSvc.Communication
 
                     case Command.UpdateFailed:
                         Logger.Info("signal received: notify about failed update");
-                        UpdateHandler.NotifyFailedUpdate();
+                        ToastHandler.InvokeFailedUpdateToast();
                         SendResponse(StatusCode.Ok);
                         break;
+
+                    case Command.TestNotifications:
+                        Logger.Info("signal received: test notifications");
+                        ToastHandler.InvokeUpdateInProgressToast();
+                        SendResponse(StatusCode.Ok);
+                        break;
+
 
                     default:
                         Logger.Debug("unknown message received");

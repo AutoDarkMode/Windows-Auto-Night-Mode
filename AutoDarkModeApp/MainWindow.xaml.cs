@@ -23,7 +23,7 @@ namespace AutoDarkModeApp
             LanguageHelper(); //set current UI language
 
             InitializeComponent();
-
+            
             //only run at first startup
             if (Settings.Default.FirstRun)
             {

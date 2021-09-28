@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.0" />
     <PackageReference Include="NetMQ" Version="4.0.1.6" />
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Schema" Version="4.6.8" />

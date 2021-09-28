@@ -8,7 +8,6 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
-using System.ComponentModel;
 using AutoDarkModeConfig;
 
 namespace AutoDarkModeSvc
@@ -50,8 +49,8 @@ namespace AutoDarkModeSvc
 
             Timers = new List<ModuleTimer>()
             {
-                MainTimer, 
-                IOTimer, 
+                MainTimer,
+                IOTimer,
                 GeoposTimer,
                 StateUpdateTimer
             };
@@ -113,6 +112,7 @@ namespace AutoDarkModeSvc
 
         public void Cleanup()
         {
+            Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
             CommandServer.Stop();
             ConfigMonitor.Dispose();
             Timers.ForEach(t => t.Stop());

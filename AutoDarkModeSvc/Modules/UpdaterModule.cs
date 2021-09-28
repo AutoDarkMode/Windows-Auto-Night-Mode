@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -30,10 +31,13 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
+            /*
             _ = Task.Run(() =>
             {
                 Updater();
             });
+            */
+            Updater();
         }
 
         private void Updater()
@@ -56,16 +60,16 @@ namespace AutoDarkModeSvc.Modules
                         {
                             if (!builder.Config.Updater.Silent || !builder.Config.Updater.AutoInstall)
                             {
-                                UpdateHandler.NotifyUpdateAvailable();
+                                ToastHandler.InvokeUpdateToast();
                             }
                             if (builder.Config.Updater.AutoInstall)
                             {
-                                UpdateHandler.Update();
+                                Task.Run(() => UpdateHandler.Update()).Wait();
                             }
                         }
                         else if (autoUpdate.StatusCode == StatusCode.UnsupportedOperation || autoUpdate.StatusCode == StatusCode.Disabled)
                         {
-                            UpdateHandler.NotifyUpdateAvailable();
+                            ToastHandler.InvokeUpdateToast();
                         }
                     }
                     try
