@@ -39,12 +39,24 @@ namespace AutoDarkModeApp.Pages
 
             InitializeComponent();
 
-            //timepicker defaults
-            TimePickerDark.SelectedDateTime = new DateTime(2000, 08, 22, 19, 0, 0);
-            TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, 7, 0, 0);
-            TimePickerDark.Culture = CultureInfo.CurrentCulture;
-            TimePickerLight.Culture = CultureInfo.CurrentCulture;
+            //timepicker
+            //enable 12 hour clock:
+            if (Properties.Settings.Default.AlterTime)
+            {
+                TimePickerDark.Culture = CultureInfo.CreateSpecificCulture("en");
+                TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("en");
+            }
+            //enable 24 hour clock:
+            else
+            {
+                TimePickerDark.Culture = CultureInfo.CreateSpecificCulture("de");
+                TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("de");
+            }
+            //read datetime from config file
+            TimePickerDark.SelectedDateTime = builder.Config.Sunset;
+            TimePickerLight.SelectedDateTime = builder.Config.Sunrise;
 
+            //tick correct radio button and prepare UI
             //is auto theme switch enabled?
             //disabled
             if (!builder.Config.AutoThemeSwitchingEnabled)
@@ -57,33 +69,11 @@ namespace AutoDarkModeApp.Pages
             {
                 SetUIButtonsEnabled(true);
 
-                //is custom time input enabled?
+                //is custom timepicker input enabled?
                 if (!builder.Config.Location.Enabled)
                 {
                     RadioButtonCustomTimes.IsChecked = true;
                     applyButton.IsEnabled = false;
-
-                    //read datetime from config file
-                    TimePickerDark.SelectedDateTime = builder.Config.Sunset;
-                    TimePickerLight.SelectedDateTime = builder.Config.Sunrise;
-
-                    //read hours from config file
-                    //if 12 hour clock is enabled:
-                    if (Properties.Settings.Default.AlterTime)
-                    {
-                        AlterTime(true);
-                        darkStartBox.Text = builder.Config.Sunset.ToString("hh", CultureInfo.InvariantCulture);
-                        lightStartBox.Text = builder.Config.Sunrise.ToString("hh", CultureInfo.InvariantCulture);
-                    }
-                    //if 24 hour clock is enabled:
-                    else
-                    {
-                        darkStartBox.Text = builder.Config.Sunset.ToString("HH", CultureInfo.InvariantCulture);
-                        lightStartBox.Text = builder.Config.Sunrise.ToString("HH", CultureInfo.InvariantCulture);
-                    }
-
-                    DarkStartMinutesBox.Text = builder.Config.Sunset.ToString("mm", CultureInfo.InvariantCulture);
-                    LightStartMinutesBox.Text = builder.Config.Sunrise.ToString("mm", CultureInfo.InvariantCulture);
                 }
 
                 //is location mode enabled?
@@ -207,11 +197,6 @@ namespace AutoDarkModeApp.Pages
             //get values from TextBox
             try
             {
-                //darkStart = int.Parse(darkStartBox.Text);
-                //darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
-                //lightStart = int.Parse(lightStartBox.Text);
-                //lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
-
                 darkStart = TimePickerDark.SelectedDateTime.Value.Hour;
                 darkStartMinutes = TimePickerDark.SelectedDateTime.Value.Minute;
                 lightStart = TimePickerLight.SelectedDateTime.Value.Hour;
@@ -224,70 +209,13 @@ namespace AutoDarkModeApp.Pages
                 return;
             }
 
-            //check values from TextBox
-            //hours with 24 hour time
-            if (!Settings.Default.AlterTime)
-            {
-                if (darkStart >= 24)
-                {
-                    darkStart = 23;
-                    darkStartMinutes = 59;
-                }
-                if (lightStart < 0)
-                {
-                    lightStart = 6;
-                    darkStart = 17;
-                }
-            }
-            //hours with 12 hour time
-            else
-            {
-                if (darkStart >= 12)
-                {
-                    darkStart = 11;
-                    darkStartMinutes = 59;
-                }
-                if (darkStart == 0)
-                {
-                    darkStart = 1;
-                }
-                if (lightStart >= 13)
-                {
-                    lightStart = 12;
-                }
-            }
+            //check values from timepicker
 
-            //minutes
-            if (lightStartMinutes > 59)
-            {
-                lightStartMinutes = 59;
-            }
-            if (darkStartMinutes > 59)
-            {
-                darkStartMinutes = 59;
-            }
+            //currently nothing to check
 
             //display edited hour values for the user
-            darkStartBox.Text = Convert.ToString(darkStart);
-            lightStartBox.Text = Convert.ToString(lightStart);
-
-            //display minute values + more beautiful display of minutes, if they are under 10
-            if (lightStartMinutes < 10)
-            {
-                LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
-            }
-            else
-            {
-                LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
-            }
-            if (darkStartMinutes < 10)
-            {
-                DarkStartMinutesBox.Text = "0" + Convert.ToString(darkStartMinutes);
-            }
-            else
-            {
-                DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
-            }
+            TimePickerDark.SelectedDateTime = new DateTime(2000, 08, 22, darkStart, darkStartMinutes, 0);
+            TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
 
             //Apply Theme
             if (Properties.Settings.Default.AlterTime)
@@ -515,7 +443,7 @@ namespace AutoDarkModeApp.Pages
                 }
         }
         }
-        private async void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private async void DisableAutoStart(object sender, RoutedEventArgs e)
         {
             //remove autostart
             try
@@ -536,47 +464,6 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        //12 hour times
-        private void AlterTime(bool enable)
-        {
-            if (enable)
-            {
-                Properties.Settings.Default.AlterTime = true;
-                amTextBlock.Text = "am";
-                pmTextBlock.Text = "pm";
-                int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
-                if (darkTime < 1)
-                {
-                    darkTime = 7;
-                }
-                darkStartBox.Text = Convert.ToString(darkTime);
-
-                int lightTime = Convert.ToInt32(lightStartBox.Text);
-                if (lightTime > 12)
-                {
-                    lightTime = 7;
-                }
-                lightStartBox.Text = Convert.ToString(lightTime);
-            }
-            else
-            {
-                Properties.Settings.Default.AlterTime = false;
-                amTextBlock.Text = "";
-                pmTextBlock.Text = "";
-                applyButton.Margin = new Thickness(184, 25, 0, 0);
-                int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
-                if (darkTime > 24)
-                {
-                    darkTime = 19;
-                }
-                if (darkTime == 24)
-                {
-                    darkTime = 23;
-                }
-                darkStartBox.Text = Convert.ToString(darkTime);
-            }
-
-        }
         private void SetOffsetVisibility(Visibility value)
         {
             OffsetLbl.Visibility = value;
@@ -708,12 +595,6 @@ namespace AutoDarkModeApp.Pages
         }
 
         //textblock event handler
-        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
         private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
         {
             OffsetButton.IsEnabled = true;

@@ -80,7 +80,15 @@ namespace AutoDarkModeApp
         {
             if (string.IsNullOrWhiteSpace(Settings.Default.Language.ToString()))
             {
-                Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+                try
+                {
+                    Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+                }
+                catch
+                {
+                    Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
+                }
+                
             }
             var langCode = new CultureInfo(Settings.Default.Language);
             CultureInfo.CurrentUICulture = langCode;
