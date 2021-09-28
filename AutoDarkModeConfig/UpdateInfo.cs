@@ -5,6 +5,7 @@ namespace AutoDarkModeConfig
 {
     public class UpdateInfo
     {
+        public const string changelogUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/";
         public string Tag { get; set; }
         public string FileName { get; set; }
         public bool AutoUpdateAvailable { get; set; }
@@ -38,7 +39,7 @@ namespace AutoDarkModeConfig
 
         public string GetUpdateInfoPage()
         {
-            string url = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/";
+            string url = changelogUrl;
             return $"{url}{Tag}";
         }
 

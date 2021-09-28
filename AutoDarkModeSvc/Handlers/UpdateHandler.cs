@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,8 +12,6 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Core;
-using Windows.UI.Notifications;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -119,7 +118,7 @@ namespace AutoDarkModeSvc.Handlers
             if (UpstreamResponse.StatusCode == StatusCode.New)
             {
                 Version newVersion = new(UpstreamVersion.Tag);
-                if (newVersion.Major != currentVersion.Major && newVersion.Major != 420) 
+                if (newVersion.Major != currentVersion.Major && newVersion.Major != 420)
                 {
                     return new ApiResponse
                     {
@@ -153,11 +152,20 @@ namespace AutoDarkModeSvc.Handlers
 
             if (!success)
             {
+                ToastHandler.InvokeFailedUpdateToast();
                 Updating = false;
                 return;
             }
+            try
+            {
+                ToastNotificationManagerCompat.History.Clear();
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not clear progress toast:");
+            }
 
-            Logger.Info("update preparation complete");
+            Logger.Info("updater patch complete");
 
             Updating = false;
             if (notifyShell || notifyApp)
@@ -198,6 +206,11 @@ namespace AutoDarkModeSvc.Handlers
             string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
             try
             {
+                // show toast if UI components were open to inform the user that the program is being updated
+                if (!builder.Config.Updater.Silent)
+                {
+                    ToastHandler.InvokeUpdateInProgressToast();
+                }
 
                 //download zip file file
                 Logger.Info("downloading new version");
@@ -217,10 +230,13 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
+
+
                 DownloadProgressChangedEventHandler callback = new DownloadProgressChangedEventHandler(DownloadProgress);
                 webClient.DownloadProgressChanged += callback;
-                Task.Run(async() => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
+                Task.Run(async () => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
                 webClient.DownloadProgressChanged -= callback;
+
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -273,18 +289,6 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     pApp[0].Kill();
                     appRestart = true;
-                }
-
-                // show toast if UI components were open to inform the user that the program is being updated
-                if (shellRestart || appRestart)
-                {
-                    Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
-                    Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
-
-                    _ = text[0].AppendChild(xml.CreateTextNode("Auto Dark Mode is updating"));
-                    _ = text[1].AppendChild(xml.CreateTextNode("Please wait until the update is complete"));
-                    ToastNotification toast = new ToastNotification(xml);
-                    ToastNotificationManager.CreateToastNotifier("Auto Dark Mode").Show(toast);
                 }
             }
             catch (Exception ex)
@@ -362,41 +366,26 @@ namespace AutoDarkModeSvc.Handlers
             return true;
         }
 
-
-        public static void NotifyFailedUpdate()
-        {
-            Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
-            Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
-
-            _ = text[0].AppendChild(xml.CreateTextNode("Update failed"));
-            _ = text[1].AppendChild(xml.CreateTextNode("An error occurred while updating."));
-            _ = text[2].AppendChild(xml.CreateTextNode("Please see service.log and updater.log for more infos"));
-            var toast = new ToastNotification(xml);
-            ToastNotificationManager.CreateToastNotifier("Auto Dark Mode").Show(toast);
-        }
-
-        public static void NotifyUpdateAvailable()
-        {
-            Windows.Data.Xml.Dom.XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText04);
-            Windows.Data.Xml.Dom.XmlNodeList text = xml.GetElementsByTagName("text");
-            _ = text[0].AppendChild(xml.CreateTextNode($"Update {UpstreamVersion.Tag} available"));
-            _ = text[1].AppendChild(xml.CreateTextNode($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}"));
-            _ = text[2].AppendChild(xml.CreateTextNode($"Message: {UpstreamVersion.Message}"));
-            var toast = new ToastNotification(xml);
-            ToastNotificationManager.CreateToastNotifier("Auto Dark Mode").Show(toast);
-
-            if (!builder.Config.Updater.AutoInstall)
-            {
-
-            }
-        }
-
         private static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
         {
-            if (e.ProgressPercentage > Progress && e.ProgressPercentage % 10 == 0)
+            if (e.ProgressPercentage > Progress)
             {
-                Progress = e.ProgressPercentage;
-                Logger.Info($"downloaded {e.BytesReceived / 1000000} of {e.TotalBytesToReceive / 1000000} MB. {e.ProgressPercentage} % complete");
+                if (e.ProgressPercentage % 10 == 0)
+                {
+                    string mbReceived = (e.BytesReceived / 1000000).ToString();
+                    string mbTotal = (e.TotalBytesToReceive / 1000000).ToString();
+                    string progressString = (e.ProgressPercentage / 100).ToString();
+                    Progress = e.ProgressPercentage;
+                    Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {e.ProgressPercentage} % complete");
+                    try
+                    {
+                        ToastHandler.UpdateProgressToast(progressString, $"{mbReceived} / {mbTotal} MB");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Warn(ex, "toast updater died, please tell the devs to put the updater into the ActionQueue:");
+                    }
+                }
             }
         }
     }

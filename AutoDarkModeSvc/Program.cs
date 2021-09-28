@@ -6,10 +6,9 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using System.Diagnostics;
+using System.Collections.Concurrent;
 
 namespace AutoDarkModeSvc
 {
@@ -18,6 +17,9 @@ namespace AutoDarkModeSvc
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
         private static Service Service { get; set; }
+
+        public static BlockingCollection<Action> ActionQueue = new();
+        private static Thread queueThread;
 
         /// <summary>
         ///  The main entry point for the application.
@@ -167,6 +169,32 @@ namespace AutoDarkModeSvc
                     _ = int.TryParse(args[0], out timerMillis);
                 }
 
+                queueThread = new Thread(() =>
+                {
+                    while (ActionQueue.TryTake(out Action a, -1))
+                    {
+                        try
+                        {
+                            Logger.Debug($"action queue invoking ${a.Method.Name}");
+                            a.Invoke();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "error running method on queue thread:");
+                        }
+                    }
+                });
+                queueThread.Start();
+
+                ActionQueue.Add(() =>
+                {
+                   // Listen to toast notification activation
+                   Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.OnActivated += toastArgs =>
+                   {
+                       ToastHandler.HandleToastAction(toastArgs);
+                   };
+                });
+
                 timerMillis = (timerMillis == 0) ? TimerFrequency.Short : timerMillis;
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.EnableVisualStyles();
@@ -185,6 +213,7 @@ namespace AutoDarkModeSvc
                 {
                     Service.Cleanup();
                 }
+                ActionQueue.CompleteAdding();
                 mutex.Dispose();
             }
         }
