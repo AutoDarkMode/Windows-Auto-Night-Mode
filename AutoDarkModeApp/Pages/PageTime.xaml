@@ -23,7 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="Auto" MinHeight="10"/>
-            <RowDefinition Height="Auto" MinHeight="60"/>
+            <RowDefinition Height="Auto" MinHeight="20"/>
             <RowDefinition Height="Auto" MinHeight="60"/>
             <RowDefinition Height="Auto" MinHeight="50"/>
             <RowDefinition Height="Auto" MinHeight="0"/>
@@ -37,7 +37,13 @@
         </Grid.RowDefinitions>
 
         <!-- Page Title -->
-        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Text="{x:Static p:Resources.NavbarTime}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" TextWrapping="Wrap"/>
+        <TextBlock 
+            Grid.Row="1" Grid.Column="1" 
+            HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Margin="10,4,0,0" 
+            Text="{x:Static p:Resources.NavbarTime}" 
+            FontSize="25" FontWeight="Bold" 
+            TextWrapping="Wrap"/>
 
         <!-- Mode Selection -->
         <StackPanel Name="StackPanelRadioHolder"  
@@ -99,8 +105,7 @@
                                  SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged"/>
             
             <!-- Apply Button -->
-            <Button Grid.Row="5" Grid.Column="1" 
-                    x:Name="applyButton" 
+            <Button x:Name="applyButton" 
                     Content="{x:Static p:Resources.applyButton}" 
                     HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Bottom" 
                     Width="90" 
@@ -114,8 +119,18 @@
 
         <!-- Location -->
         <!--<CheckBox Grid.Row="5" Grid.Column="1" x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Height="15" Width="Auto"/> -->
-        <StackPanel Name="StackPanelLocationTime" Visibility="Collapsed" Grid.Row="6" Grid.Column="1" Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="Auto">
-            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="locationBlock" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
+        <StackPanel Name="StackPanelLocationTime" 
+                    Grid.Row="6" Grid.Column="1" 
+                    Margin="10,0,0,0" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Height="40" Width="Auto">
+            <TextBlock x:Name="locationBlock"
+                Grid.Row="5" Grid.Column="1" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                       Margin="0,0,0,0" 
+                       TextWrapping="Wrap"
+                       Height="Auto" Width="Auto"/>
             <TextBlock Name="TextBlockLightTime" Margin="20,0,0,0" />
             <TextBlock Name="TextBlockDarkTime" Margin="20,0,0,0"  />
         </StackPanel>
@@ -165,12 +180,37 @@
 
         </StackPanel>
 
+        <StackPanel x:Name="StackPanelCoordinates"
+                    Grid.Row="9" Grid.Column="1"
+                    Orientation="Horizontal">
+
+            <ui:NumberBox x:Name="NumberBoxLat"
+                Width="150" Height="Auto" 
+                Margin="0,0,0,0" 
+                Header="Latitude"
+                          />
+
+            <ui:NumberBox x:Name="NumberBoxLon"
+                Width="150" Height="Auto"
+                Margin="25,0,0,0" 
+                Header="Longitude"
+                          />
+
+            <Button x:Name="ButtonApplyCoordinates"
+                    Content="Apply Coordinates"
+                    VerticalAlignment="Bottom"
+                    Margin="25,0,0,0" 
+                    Click="ButtonApplyCoordinates_Click"
+                />
+
+        </StackPanel>
+
         <!-- Info -->
-        <TextBlock Grid.Row="9" Grid.Column="1"  HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto"/>
-        <TextBlock Grid.Row="10" Grid.Column="1" x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top" Height="Auto" Width="380"/>
+        <TextBlock Grid.Row="10" Grid.Column="1"  HorizontalAlignment="Left" Margin="10,25,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.info}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto"/>
+        <TextBlock Grid.Row="11" Grid.Column="1" x:Name="userFeedback" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="{x:Static p:Resources.userFeedback}" VerticalAlignment="Top" Height="Auto" Width="380"/>
         
         <!-- Help -->
-        <TextBlock Grid.Row="11" Grid.Column="1" Name="TextBlockHelpWiki" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.tbHelp}" Height="Auto" Width="Auto" MouseDown="TextBlockHelpWiki_MouseDown">
+        <TextBlock Grid.Row="12" Grid.Column="1" Name="TextBlockHelpWiki" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.tbHelp}" Height="Auto" Width="Auto" MouseDown="TextBlockHelpWiki_MouseDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>

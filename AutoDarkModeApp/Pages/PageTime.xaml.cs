@@ -62,6 +62,10 @@ namespace AutoDarkModeApp.Pages
             NumberBoxOffsetLight.Value = Convert.ToDouble(builder.Config.Location.SunriseOffsetMin);
             NumberboxOffsetDark.Value = Convert.ToDouble(builder.Config.Location.SunsetOffsetMin);
 
+            //read coordinates from config file
+            NumberBoxLat.Value = builder.Config.Location.CustomLat;
+            NumberBoxLon.Value = builder.Config.Location.CustomLon;
+
             //tick correct radio button and prepare UI
             //is auto theme switch enabled?
             //disabled
@@ -95,7 +99,7 @@ namespace AutoDarkModeApp.Pages
                     else
                     {
                         RadioButtonCoordinateTimes.IsChecked = true;
-                        TogglePanelVisibility(false, true, false, true);
+                        TogglePanelVisibility(false, true, true, true);
                     }
                 }
             }
@@ -174,6 +178,14 @@ namespace AutoDarkModeApp.Pages
             {
                 StackpanelOffset.Visibility = Visibility.Collapsed;
                 OffsetLbl.Visibility = Visibility.Collapsed;
+            }
+            if (coordinates)
+            {
+                StackPanelCoordinates.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                StackPanelCoordinates.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -488,10 +500,32 @@ namespace AutoDarkModeApp.Pages
         }
 
         /// <summary>
+        /// Geographic Coordinates
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonApplyCoordinates_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                builder.Config.Location.CustomLat = NumberBoxLat.Value;
+                builder.Config.Location.CustomLon = NumberBoxLon.Value;
+            }
+            catch
+            {
+
+            }
+
+            builder.Save();
+            ActivateLocationMode();
+            TogglePanelVisibility(false, true, true, true);
+        }
+
+        /// <summary>
         /// Error message box
         /// </summary>
         /// <param name="ex"></param>
-        
+
         private void ShowErrorMessage(Exception ex)
         {
             string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
@@ -551,6 +585,7 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
         {
             EnableTimeBasedSwitch();
+            TogglePanelVisibility(false, true, false, true);
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
             builder.Save();
