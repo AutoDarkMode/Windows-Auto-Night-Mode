@@ -57,6 +57,8 @@ namespace AutoDarkModeApp
         {
             LanguageHelper();
 
+            //TODO: REENABLE UPDATER OR FIND BETTER SOLUTION
+            /*
             try
             {
                 Updater updater = new(false);
@@ -70,6 +72,7 @@ namespace AutoDarkModeApp
             {
 
             }
+            */
         }
 
         //region time and language
