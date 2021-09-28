@@ -180,6 +180,7 @@ namespace AutoDarkModeSvc.Handlers
                 //download zip file file
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
+                webClient.Proxy = WebRequest.DefaultWebProxy;
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
