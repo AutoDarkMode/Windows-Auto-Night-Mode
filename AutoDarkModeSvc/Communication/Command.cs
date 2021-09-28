@@ -113,7 +113,7 @@ namespace AutoDarkModeSvc.Communication
 
     public class ApiResponse
     {
-        private const string separator = "\nData=";
+        private const string separator = "\nAdmApiDataRow=";
         public string StatusCode { get; set; }
         public string Message { get; set; }
         public string Details { get; set; }
