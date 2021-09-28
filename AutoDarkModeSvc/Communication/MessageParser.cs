@@ -82,7 +82,7 @@ namespace AutoDarkModeSvc.Communication
                         {
                             SendResponse(new ApiResponse()
                             {
-                                StatusCode = StatusCode.Err
+                                StatusCode = StatusCode.Err,
                                 Message = $"RegOk: {regOk}, TaskOk: {taskOk}"
                             }.ToString());
                         }
@@ -103,11 +103,17 @@ namespace AutoDarkModeSvc.Communication
                         }
                         if (ok)
                         {
-                            SendResponse(StatusCode.Ok);
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Ok
+                            }.ToString());
                         }
                         else
                         {
-                            SendResponse(StatusCode.Err);
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Err
+                            }.ToString());
                         }
                         break;
 
@@ -118,11 +124,18 @@ namespace AutoDarkModeSvc.Communication
                         var result = geoTask.Result;
                         if (result)
                         {
-                            SendResponse(StatusCode.Ok);
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Ok
+                            }.ToString());
                         }
                         else
                         {
-                            SendResponse(StatusCode.NoLocAccess);
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.NoLocAccess,
+                                Message = "location service needs to be enabled"
+                            }.ToString());
                         }
                         break;
 
@@ -177,25 +190,37 @@ namespace AutoDarkModeSvc.Communication
 
                     case Command.Shutdown:
                         Logger.Info("signal received, exiting");
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         service.Exit(null, null);
                         break;
 
                     case Command.TestError:
                         Logger.Info("signal received: test error");
-                        SendResponse(StatusCode.Err);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Err
+                        }.ToString());
                         break;
 
                     case Command.Alive:
                         Logger.Info("signal received: request for running status");
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.Light:
                         Logger.Info("signal received: force light theme");
                         state.ForcedTheme = Theme.Light;
                         ThemeManager.SwitchTheme(builder.Config, Theme.Light);
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.Dark:
@@ -209,19 +234,28 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: resetting forced modes");
                         state.ForcedTheme = Theme.Undefined;
                         ThemeManager.TimedSwitch(builder);
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.DetectMonitors:
                         Logger.Info("signal received: detecting new monitors");
                         WallpaperHandler.DetectMonitors();
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.CleanMonitors:
                         Logger.Info("signal received: removing disconnected monitors");
                         WallpaperHandler.CleanUpMonitors();
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.UpdateFailed:
@@ -233,12 +267,19 @@ namespace AutoDarkModeSvc.Communication
                     case Command.TestNotifications:
                         Logger.Info("signal received: test notifications");
                         ToastHandler.InvokeUpdateInProgressToast();
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     default:
                         Logger.Debug("unknown message received");
-                        SendResponse(StatusCode.Err);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Err,
+                            Message = "requested command does not exist"
+                        }.ToString());
                         break;
                 }
             });

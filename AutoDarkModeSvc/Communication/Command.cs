@@ -113,6 +113,7 @@ namespace AutoDarkModeSvc.Communication
 
     public class ApiResponse
     {
+        private const string separator = "\nData=";
         public string StatusCode { get; set; }
         public string Message { get; set; }
         public string Details { get; set; }
@@ -122,8 +123,8 @@ namespace AutoDarkModeSvc.Communication
             return StatusCode != null && StatusCode.Length > 0
                 ? Message != null && Message.Length > 0
                 ? Details != null && Details.Length > 0
-                ? $"{StatusCode}\n{Message}\n{Details}"
-                : $"{StatusCode}\n{Message}"
+                ? $"{StatusCode}{separator}{Message}{separator}{Details}"
+                : $"{StatusCode}{separator}{Message}"
                 : $"{StatusCode}"
                 : "";
         }
@@ -132,7 +133,7 @@ namespace AutoDarkModeSvc.Communication
         {
             try
             {
-                string[] responseSplit = response.Split("\n");
+                string[] responseSplit = response.Split(separator);
                 return new ApiResponse
                 {
                     StatusCode = responseSplit.ElementAtOrDefault(0),
