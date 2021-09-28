@@ -94,11 +94,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 MonitorSettings settings = Settings.Component.Monitors.Find(m => m.Id == wallpaperInfo.Item1);
                 if (settings != null)
                 {
-                    if (wallpaperInfo.Item2 == settings.DarkThemeWallpaper)
+                    if (wallpaperInfo.Item2.ToLower().Equals(settings.DarkThemeWallpaper.ToLower()))
                     {
                         wallpaperStates.Add(Theme.Dark);
                     }
-                    else if (wallpaperInfo.Item2 == settings.LightThemeWallpaper)
+                    else if (wallpaperInfo.Item2.ToLower().Equals(settings.LightThemeWallpaper.ToLower()))
                     {
                         wallpaperStates.Add(Theme.Light);
                     }

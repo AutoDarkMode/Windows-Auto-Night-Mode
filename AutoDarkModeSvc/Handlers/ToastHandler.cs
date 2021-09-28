@@ -15,11 +15,15 @@ namespace AutoDarkModeSvc.Handlers
         {
             Program.ActionQueue.Add(() =>
             {
+                string configPath = AdmConfigBuilder.Instance().ConfigDir;
                 new ToastContentBuilder()
                     .AddText($"Update failed")
                     .AddText($"An error occurred while updating.")
                     .AddText($"Please see service.log and updater.log for more infos")
-                    .SetProtocolActivation(new Uri(""))
+                     .AddButton(new ToastButton()
+                     .SetContent("Open log directory")
+                     .SetProtocolActivation(new Uri(configPath)))
+                    .SetProtocolActivation(new Uri(configPath))
                     .Show(toast =>
                     {
                         toast.Tag = "adm_failed_update";
@@ -89,7 +93,7 @@ namespace AutoDarkModeSvc.Handlers
             ToastNotificationManagerCompat.CreateToastNotifier().Update(data, tag, group);
         }
 
-        public static void InvokeUpdateToast()
+        public static void InvokeUpdateToast(bool canUseUpdater = true)
         {
             if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
             {
@@ -98,24 +102,44 @@ namespace AutoDarkModeSvc.Handlers
 
             Program.ActionQueue.Add(() =>
             {
-                new ToastContentBuilder()
-                    .AddText($"Update {UpdateHandler.UpstreamVersion.Tag} available")
-                    .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
-                    .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
-                    .AddButton(new ToastButton()
-                    .SetContent("Update")
-                    .AddArgument("action", "update"))
-                    .SetBackgroundActivation()
-                    .AddButton(new ToastButton()
-                    .SetContent("Postpone")
-                    .AddArgument("action", "postpone"))
-                    //.SetBackgroundActivation()
-                    //.SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
-                    .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
-                    .Show(toast =>
-                    {
-                        toast.Tag = "adm_update";
-                    });
+
+                if (canUseUpdater)
+                {
+                    new ToastContentBuilder()
+                   .AddText($"Update {UpdateHandler.UpstreamVersion.Tag} available")
+                   .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
+                   .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
+                   .AddButton(new ToastButton()
+                   .SetContent("Update")
+                   .AddArgument("action", "update"))
+                   .SetBackgroundActivation()
+                   .AddButton(new ToastButton()
+                   .SetContent("Postpone")
+                   .AddArgument("action", "postpone"))
+                   //.SetBackgroundActivation()
+                   //.SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
+                   .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
+                   .Show(toast =>
+                   {
+                       toast.Tag = "adm_update";
+                   });
+                }
+                else
+                {
+                    new ToastContentBuilder()
+                   .AddText($"Update {UpdateHandler.UpstreamVersion.Tag} available")
+                   .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
+                   .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
+                   .AddButton(new ToastButton()
+                     .SetContent("Go to download page")
+                     .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl)))
+                   .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
+                   .Show(toast =>
+                   {
+                       toast.Tag = "adm_update";
+                   });
+                }
+
             });
         }
 
@@ -139,7 +163,7 @@ namespace AutoDarkModeSvc.Handlers
                     if (argument[0] == "action" && argument[1] == "update")
                     {
                         Logger.Info("updating app, caller toast");
-                        Task.Run(() => UpdateHandler.Update()).Wait();
+                        Task.Run(() => UpdateHandler.Update(overrideSilent: true)).Wait();
                     }
                     else if (argument[0] == "action" && argument[1] == "postpone")
                     {

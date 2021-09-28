@@ -36,7 +36,11 @@ namespace AutoDarkModeSvc.Handlers
         /// <summary>
         /// Checks if a new version is available
         /// </summary>
-        /// <returns>version string with download url</returns>
+        /// <returns>ApiResponse with StatusCode.New if an update is available, <br/>
+        /// StatusCode.Ok if no update is available <br/>
+        /// StatusCode.Err if an error has occurred. <br/>
+        /// Message carries the current version string <br/>
+        /// Details carries a yaml serialized UpdateInfo object</returns>
         public static ApiResponse CheckNewVersion()
         {
             ApiResponse response = new();
@@ -103,7 +107,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         /// <returns>An ApiResponse with UnsupportedOperation if auto install is unavailable. <br/>
         /// If auto install is available, the latest update check response will be returned instead</returns>
-        public static ApiResponse CanAutoInstall()
+        public static ApiResponse CanUseUpdater()
         {
             if (!Extensions.InstallModeUsers())
             {
@@ -122,7 +126,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     return new ApiResponse
                     {
-                        StatusCode = StatusCode.UnsupportedOperation,
+                        StatusCode = StatusCode.Disabled,
                         Message = "major version upgrade pending, manual update required"
                     };
                 }
@@ -131,7 +135,7 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static void Update()
+        public static void Update(bool overrideSilent = false)
         {
             if (UpstreamResponse.StatusCode != StatusCode.New)
             {
@@ -145,7 +149,7 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
             Updating = true;
-            (bool, bool, bool) result = PrepareUpdate();
+            (bool, bool, bool) result = PrepareUpdate(overrideSilent);
             bool success = result.Item1;
             bool notifyShell = result.Item2;
             bool notifyApp = result.Item3;
@@ -188,7 +192,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>A bool tuple where the first item holds the value whether the update has been successfully prepared. <br></br>
         /// The second item is to determine whether the shell needs to be restarted <br/>
         /// The third item is to determine whether the app needs to be restarted</returns>
-        private static (bool, bool, bool) PrepareUpdate()
+        private static (bool, bool, bool) PrepareUpdate(bool overrideSilent)
         {
             bool shellRestart = false;
             bool appRestart = false;
@@ -207,7 +211,7 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 // show toast if UI components were open to inform the user that the program is being updated
-                if (!builder.Config.Updater.Silent)
+                if (!builder.Config.Updater.Silent || overrideSilent)
                 {
                     ToastHandler.InvokeUpdateInProgressToast();
                 }

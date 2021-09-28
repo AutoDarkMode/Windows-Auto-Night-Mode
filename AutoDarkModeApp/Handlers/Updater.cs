@@ -24,7 +24,7 @@ namespace AutoDarkModeApp
 
         public bool CheckNewVersion()
         {
-            response = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.CheckForUpdate));
+            response = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.CheckForUpdateNotify));
             return UpdateAvailable();
         }
 
@@ -37,25 +37,22 @@ namespace AutoDarkModeApp
             return false;
         }
 
+        public bool CanUseUpdater()
+        {
+            return response.StatusCode != StatusCode.Disabled;
+        }
 
         public void Update()
         {
             UpdateInfo info = UpdateInfo.Deserialize(response.Details);
             ApiResponse updatePrepResponse = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.Update));
-            if (updatePrepResponse.StatusCode == StatusCode.No || updatePrepResponse.StatusCode == StatusCode.UnsupportedOperation)
+            if (updatePrepResponse.StatusCode == StatusCode.New)
             {
                 StartProcessByProcessInfo(info.GetUpdateInfoPage());
             }
-            else if (updatePrepResponse.StatusCode != StatusCode.New)
-            {
-                Exception ex = new($"update preparation error: {updatePrepResponse.StatusCode} with message: {updatePrepResponse.Message}");
-                ShowErrorMessage(ex, "Updater");
-            }
-            else if (updatePrepResponse.StatusCode == StatusCode.InProgress) { 
-
-            }
         }
 
+        /*
         public void MessageBoxHandler(Window owner = null)
         {
             CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
@@ -83,6 +80,7 @@ namespace AutoDarkModeApp
                 }
             }
         }
+        */
 
         private static void ShowErrorMessage(Exception ex, string location)
         {
