@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +23,22 @@ namespace AutoDarkModeSvc.Handlers
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        public static bool Updating
+        {
+            get; [MethodImpl(MethodImplOptions.Synchronized)]
+            set;
+        }
+        public static int Progress
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Checks if a new version is available
         /// </summary>
         /// <returns>version string with download url</returns>
-        public static string CheckNewVersion()
+        public static ApiResponse CheckNewVersion()
         {
             ApiResponse response = new();
             try
@@ -47,7 +58,7 @@ namespace AutoDarkModeSvc.Handlers
                     response.Details = info.Serialize();
                     UpstreamResponse = response;
                     UpstreamVersion = info;
-                    return response.ToString();
+                    return response;
                 }
 
                 string updateUrl = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.yaml";
@@ -64,18 +75,26 @@ namespace AutoDarkModeSvc.Handlers
                     response.Message = $"Version: {currentVersion}";
                     response.Details = data;
                     UpstreamResponse = response;
-                    return response.ToString();
+                    return response;
                 }
                 else
                 {
-                    return StatusCode.Ok;
+                    return new ApiResponse()
+                    {
+                        StatusCode = StatusCode.Ok,
+                        Message = "No updates available"
+                    };
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "update check failed");
+                return new ApiResponse()
+                {
+                    StatusCode = StatusCode.Err,
+                    Message = ex.Message
+                };
             }
-            return StatusCode.Err;
         }
 
         /// <summary>
@@ -100,7 +119,7 @@ namespace AutoDarkModeSvc.Handlers
             if (UpstreamResponse.StatusCode == StatusCode.New)
             {
                 Version newVersion = new(UpstreamVersion.Tag);
-                if (newVersion.Major != currentVersion.Major)
+                if (newVersion.Major != currentVersion.Major && newVersion.Major != 420) 
                 {
                     return new ApiResponse
                     {
@@ -112,6 +131,7 @@ namespace AutoDarkModeSvc.Handlers
             return UpstreamResponse;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void Update()
         {
             if (UpstreamResponse.StatusCode != StatusCode.New)
@@ -125,7 +145,7 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Info("auto update blocked by upstream, please update manually");
                 return;
             }
-
+            Updating = true;
             (bool, bool, bool) result = PrepareUpdate();
             bool success = result.Item1;
             bool notifyShell = result.Item2;
@@ -133,11 +153,13 @@ namespace AutoDarkModeSvc.Handlers
 
             if (!success)
             {
+                Updating = false;
                 return;
             }
 
             Logger.Info("update preparation complete");
 
+            Updating = false;
             if (notifyShell || notifyApp)
             {
                 List<string> arguments = new();
@@ -162,8 +184,8 @@ namespace AutoDarkModeSvc.Handlers
         {
             bool shellRestart = false;
             bool appRestart = false;
+            Progress = 0;
 
-            
             string baseZipUrl = builder.Config.Updater.BaseUrlTemplate;
             string baseUrlHash = builder.Config.Updater.BaseUrlTemplate;
             bool useCustomUrls = false;
@@ -180,7 +202,7 @@ namespace AutoDarkModeSvc.Handlers
                 //download zip file file
                 Logger.Info("downloading new version");
                 using WebClient webClient = new();
-                webClient.Proxy = WebRequest.DefaultWebProxy;
+                webClient.Proxy = null;
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
@@ -195,7 +217,10 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.Delete(Extensions.UpdateDataDir, true);
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
-                webClient.DownloadFile(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls), downloadPath);
+                var callback = new DownloadProgressChangedEventHandler(DownloadProgressCallback);
+                webClient.DownloadProgressChanged += callback;
+                Task.Run(async() => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
+                webClient.DownloadProgressChanged -= callback;
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -363,6 +388,15 @@ namespace AutoDarkModeSvc.Handlers
             if (!builder.Config.Updater.AutoInstall)
             {
 
+            }
+        }
+
+        private static void DownloadProgressCallback(object sender, DownloadProgressChangedEventArgs e)
+        {
+            if (e.ProgressPercentage > Progress && e.ProgressPercentage % 10 == 0)
+            {
+                Progress = e.ProgressPercentage;
+                Logger.Info($"downloaded {e.BytesReceived / 1000000} of {e.TotalBytesToReceive / 1000000} MB. {e.ProgressPercentage} % complete");
             }
         }
     }

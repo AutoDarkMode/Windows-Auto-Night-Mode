@@ -51,6 +51,9 @@ namespace AutoDarkModeApp
                 Exception ex = new($"update preparation error: {updatePrepResponse.StatusCode} with message: {updatePrepResponse.Message}");
                 ShowErrorMessage(ex, "Updater");
             }
+            else if (updatePrepResponse.StatusCode == StatusCode.InProgress) { 
+
+            }
         }
 
         public void MessageBoxHandler(Window owner = null)

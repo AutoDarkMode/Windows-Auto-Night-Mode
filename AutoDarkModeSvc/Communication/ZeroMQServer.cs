@@ -18,7 +18,7 @@ namespace AutoDarkModeSvc.Communication
         private NetMQPoller Poller { get; set; }
         private Task PollTask { get; set; }
         private readonly MemoryMappedFile _portshare;
-        
+
         /// <summary>
         /// Instantiate a ZeroMQ server for socket based messaging
         /// </summary>
@@ -63,7 +63,7 @@ namespace AutoDarkModeSvc.Communication
                 Server = new ResponseSocket("tcp://127.0.0.1:" + Port);
                 Logger.Info("socket bound to port: {0}", Port);
             }
-            
+
             Poller = new NetMQPoller { Server };
             Server.ReceiveReady += (s, a) =>
             {
@@ -83,12 +83,16 @@ namespace AutoDarkModeSvc.Communication
                 catch (Exception ex)
                 {
                     Logger.Error(ex, $"exception while processing command {msg}");
-                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), StatusCode.Err);
+                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
+                    {
+                        StatusCode = StatusCode.Err,
+                        Message = ex.Message
+                    }.ToString());
                     if (!sent)
                     {
                         Logger.Error("could not send response: timeout");
                     }
-                }               
+                }
             };
             PollTask = Task.Run(() =>
             {
@@ -116,7 +120,8 @@ namespace AutoDarkModeSvc.Communication
             try
             {
                 Poller.Dispose();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Logger.Fatal(ex, "could not dispose Poller");
             }

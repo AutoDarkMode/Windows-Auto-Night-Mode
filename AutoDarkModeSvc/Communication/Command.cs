@@ -58,6 +58,7 @@ namespace AutoDarkModeSvc.Communication
         public const string UnsupportedOperation = "UnsupportedOperation";
         public const string No = "No";
         public const string Disabled = "Disabled";
+        public const string InProgress = "InProgress";
     }
 
     public class ApiResponse
@@ -68,9 +69,9 @@ namespace AutoDarkModeSvc.Communication
 
         public override string ToString()
         {
-            return StatusCode.Length > 0
-                ? Message.Length > 0
-                ? Details.Length > 0
+            return StatusCode != null && StatusCode.Length > 0
+                ? Message != null && Message.Length > 0
+                ? Details != null && Details.Length > 0
                 ? $"{StatusCode}\n{Message}\n{Details}"
                 : $"{StatusCode}\n{Message}"
                 : $"{StatusCode}"

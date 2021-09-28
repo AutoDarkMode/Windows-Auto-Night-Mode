@@ -177,23 +177,30 @@ namespace AutoDarkModeUpdater
 
         private static void Relaunch(bool restoreShell, bool restoreApp, bool failed)
         {
-            Process.Start(Extensions.ExecutionPath);
-            if (restoreApp)
+            try
             {
-                _ = Process.Start(Extensions.ExecutionPathApp);
-            }
-            if (restoreShell)
-            {
-                _ = Process.Start(Extensions.ExecutionPathShell);
-            }
-
-            if (failed)
-            {
-                if (client.SendMessageWithRetries(Command.Alive, retries: 5) == StatusCode.Timeout)
+                Process.Start(Extensions.ExecutionPath);
+                if (restoreApp)
                 {
-                    Logger.Warn("could not send failed upate message due to service not starting in time");
+                    _ = Process.Start(Extensions.ExecutionPathApp);
                 }
+                if (restoreShell)
+                {
+                    _ = Process.Start(Extensions.ExecutionPathShell);
+                }
+
+                if (failed)
+                {
+                    if (client.SendMessageWithRetries(Command.UpdateFailed, retries: 5) == StatusCode.Timeout)
+                    {
+                        Logger.Warn("could not send failed upate message due to service not starting in time");
+                    }
+                }
+            } catch (Exception ex)
+            {
+                Logger.Error(ex, "error while restarting auto dark mode");
             }
+           
         }
 
         private static void RollbackDir(string source, string target)
