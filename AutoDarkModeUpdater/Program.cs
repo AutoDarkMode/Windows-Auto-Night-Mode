@@ -12,7 +12,7 @@ namespace AutoDarkModeUpdater
 {
     class Program
     {
-        private const string Version = "1.22";
+        private const string Version = "1.23";
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
         private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
@@ -78,7 +78,7 @@ namespace AutoDarkModeUpdater
                 ApiResponse response = ApiResponse.FromString(result);
                 if (response.StatusCode != StatusCode.Ok && response.StatusCode != StatusCode.Timeout)
                 {
-                    Logger.Warn("could not cleanly shut down service, trying to end the process");
+                    Logger.Warn("could not cleanly shut down service, ending process");
                     Process[] pService = Process.GetProcessesByName("AutoDarkModeSvc");
                     if (pService.Length != 0)
                     {
