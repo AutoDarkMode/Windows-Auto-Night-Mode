@@ -604,65 +604,6 @@ namespace AutoDarkModeApp.Pages
             OffsetDarkModeButton.IsEnabled = value;
         }
 
-        private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
-        {
-            AutoCheckBox_Checked(this, null);
-            DisableLocationMode();
-            applyButton.IsEnabled = true;
-        }
-
-        private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
-        {
-            AutoCheckBox_Checked(this, null);
-            builder.Config.Location.Enabled = true;
-            builder.Config.Location.UseGeolocatorService = true;
-            builder.Save();
-            ApplyTheme();
-        }
-
-        //textbox event handlers
-        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
-        {
-            OffsetButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            var textBox = ((System.Windows.Controls.TextBox)sender);
-            textBox.Dispatcher.BeginInvoke(new System.Action(() =>
-            {
-                textBox.SelectAll();
-            }));
-        }
-        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
-            {
-                var ue = e.OriginalSource as FrameworkElement;
-                e.Handled = true;
-                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-            }
-        }
-
-        private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
-        }
-
         private void UpdateSuntimes()
         {
             LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
@@ -682,6 +623,7 @@ namespace AutoDarkModeApp.Pages
         /// Error message box
         /// </summary>
         /// <param name="ex"></param>
+        
         private void ShowErrorMessage(Exception ex)
         {
             string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
@@ -726,6 +668,22 @@ namespace AutoDarkModeApp.Pages
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
 
+        private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
+        {
+            AutoCheckBox_Checked(this, null);
+            DisableLocationMode();
+            applyButton.IsEnabled = true;
+        }
+
+        private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
+        {
+            AutoCheckBox_Checked(this, null);
+            builder.Config.Location.Enabled = true;
+            builder.Config.Location.UseGeolocatorService = true;
+            builder.Save();
+            ApplyTheme();
+        }
+
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
         {
             AutoCheckBox_Checked(this, null);
@@ -734,10 +692,57 @@ namespace AutoDarkModeApp.Pages
             builder.Save();
         }
 
+        /// <summary>
+        /// Just UI stuff
+        /// Events of controls
+        /// </summary>
 
         private void TimePicker_SelectedDateTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
             applyButton.IsEnabled = true;
+        }
+
+        private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+        }
+
+        //textblock event handler
+        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            applyButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
+        {
+            OffsetButton.IsEnabled = true;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            var textBox = ((System.Windows.Controls.TextBox)sender);
+            textBox.Dispatcher.BeginInvoke(new System.Action(() =>
+            {
+                textBox.SelectAll();
+            }));
+        }
+        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
+            {
+                var ue = e.OriginalSource as FrameworkElement;
+                e.Handled = true;
+                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            }
         }
     }
 }
