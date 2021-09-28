@@ -317,7 +317,7 @@ namespace AutoDarkModeApp.Pages
 
         private void SunriseSunsetLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            string MessageBoxText = "The MIT License (MIT) \n\n" +
+            string MessageBoxText = "Apache License Version 2.0, January 2004\n\n" +
                 "Copyright (c) 2017 Mursaat \n\n" +
                 "Licensed under the Apache License, Version 2.0 (the \"License\"); " +
                 "you may not use this file except in compliance with the License. " +
