@@ -5,13 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       mc:Ignorable="d"
-      Title="PageTime" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" Height="Auto" Width="Auto" VerticalAlignment="Top" HorizontalAlignment="Left">
+      
+      Title="PageTime" 
+      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+      fw:PointerTracker.Enabled="True" 
+      Height="Auto" Width="Auto" 
+      VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -34,20 +40,55 @@
         <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Text="{x:Static p:Resources.NavbarTime}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" TextWrapping="Wrap"/>
 
         <!-- Start/Enable -->
-        <CheckBox Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked" Height="Auto" Width="Auto"/>
+        <!-- <CheckBox Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.autoCheckBox}" Foreground="{DynamicResource SystemBaseHighColorBrush}" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Name="autoCheckBox" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Unchecked" Height="Auto" Width="Auto"/> -->
 
         <!-- Mode Selection -->
-        <StackPanel Name="StackPanelRadioHolder"  Grid.Row="3" Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto" Height="Auto">
-            <RadioButton Name="RadioButtonCustomTimes"  Content="{x:Static p:Resources.rbCustomHours}" IsChecked="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonCustomTimes_Click"/>
-            <RadioButton Name="RadioButtonLocationTimes" Content="{x:Static p:Resources.rbLocation}" IsChecked="False" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="RadioButtonLocationTimes_Click"/>
+        <StackPanel Name="StackPanelRadioHolder"  
+                    Grid.Row="3" Grid.Column="1" 
+                    Margin="0,0,0,0"
+                    Orientation="Vertical"
+                    VerticalAlignment="Top" HorizontalAlignment="Left" 
+                    Width="Auto" Height="Auto">
+            
+            <RadioButton Name="RadioButtonDisabled" 
+                         Content="Disabled"
+                         IsChecked="True"
+                         Margin="0,0,0,0"
+                         Click="RadioButtonDisabled_Click"/>
+            
+            <RadioButton Name="RadioButtonCustomTimes"  
+                         Content="{x:Static p:Resources.rbCustomHours}" 
+                         Margin="0,10,0,0" 
+                         Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+                         Click="RadioButtonCustomTimes_Click"/>
+            
+            <RadioButton Name="RadioButtonLocationTimes" 
+                         Content="{x:Static p:Resources.rbLocation}" 
+                         Margin="0,10,0,0" 
+                         Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+                         Click="RadioButtonLocationTimes_Click"/>
+
+            <RadioButton Name="RadioButtonCoordinateTimes"
+                         Content="From sunset to sunrise (geographic coordinates)"
+                         Margin="0,10,0,0"
+                         Click="RadioButtonCoordinateTimes_Click"/>
         </StackPanel>
         
         <!-- Time selection -->
         <TextBlock Name="TextBlockCustomStartTimeHeader" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblCustomStart}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="Auto" Width="Auto"/>
-        <TextBlock Name="TextBlockLight" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblLight}" VerticalAlignment="Top" Height="16" Width="Auto"/>
-        <TextBlock Name="TextBlockDark" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="97,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.lblDark}" VerticalAlignment="Top" Height="16" Width="Auto"/>
+        
         <StackPanel Name="StackPanelTimePicker" Orientation="Horizontal" Margin="10,20,0,0" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Width="Auto">
-            <TextBox Grid.Row="5" Grid.Column="1" Margin="0,0,0,0" x:Name="lightStartBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="20" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" />
+            <ui:SimpleTimePicker x:Name="TimePickerLight"
+                                 Margin="0,0,0,0"
+                                 Header="{x:Static p:Resources.lblLight}"
+                                 SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged"/>
+            
+            <ui:SimpleTimePicker x:Name="TimePickerDark" 
+                                 Margin="10,0,0,0"
+                                 Header="{x:Static p:Resources.lblDark}"
+                                 SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged"/>
+            
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="20,0,0,0" x:Name="lightStartBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="20" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}" />
             <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="2,0,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19" Width="4"/>
             <TextBox Grid.Row="5" Grid.Column="1" x:Name="LightStartMinutesBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="25" Margin="2,0,0,0" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Width="20" GotKeyboardFocus="TexttBox_SelectAll_GotKeyboardFocus" PreviewTextInput="TextBox_BlockChars_TextInput" CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted" TextChanged="TextBox_TabNext_TextChanged" MinLines="1" MaxLength="2" ContextMenu="{x:Null}"/>
             <TextBlock Grid.Row="5" Grid.Column="1" Name="amTextBlock" HorizontalAlignment="Left" Margin="4,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="Auto" Width="Auto"/>
