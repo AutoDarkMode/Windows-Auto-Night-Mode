@@ -32,7 +32,10 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: invoke theme switch");
                         //cm.ForceAll();
                         ThemeManager.TimedSwitch(builder, false);
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.Swap:
@@ -46,7 +49,10 @@ namespace AutoDarkModeSvc.Communication
                         {
                             ThemeManager.SwitchTheme(builder.Config, Theme.Light);
                         }
-                        SendResponse(StatusCode.Ok);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
                         break;
 
                     case Command.AddAutostart:
@@ -67,11 +73,18 @@ namespace AutoDarkModeSvc.Communication
                         }
                         if (regOk && taskOk)
                         {
-                            SendResponse(StatusCode.Ok);
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Ok
+                            }.ToString());
                         }
                         else
                         {
-                            SendResponse(StatusCode.Err);
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Err
+                                Message = $"RegOk: {regOk}, TaskOk: {taskOk}"
+                            }.ToString());
                         }
                         break;
 

@@ -36,7 +36,11 @@ namespace AutoDarkModeSvc.Handlers
         /// <summary>
         /// Checks if a new version is available
         /// </summary>
-        /// <returns>version string with download url</returns>
+        /// <returns>ApiResponse with StatusCode.New if an update is available, <br/>
+        /// StatusCode.Ok if no update is available <br/>
+        /// StatusCode.Err if an error has occurred. <br/>
+        /// Message carries the current version string <br/>
+        /// Details carries a yaml serialized UpdateInfo object</returns>
         public static ApiResponse CheckNewVersion()
         {
             ApiResponse response = new();

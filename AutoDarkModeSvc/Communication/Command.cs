@@ -13,21 +13,66 @@ namespace AutoDarkModeSvc.Communication
     }
     public static class Command
     {
+        /// <summary>
+        /// Invokes a theme switch based on time. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// </summary>
         [Includable]
         public const string Switch = "--switch";
+        /// <summary>
+        /// Basically useless currently, needs rework
+        /// </summary>
         public const string Swap = "--swap";
+        /// <summary>
+        /// Forces light theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// </summary>
         [Includable]
         public const string Light = "--light";
+        /// <summary>
+        /// Forces dark theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// </summary>
         [Includable]
         public const string Dark = "--dark";
+        /// <summary>
+        /// Resets the GlobalState force theme flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// </summary>
         [Includable]
         public const string NoForce = "--no-force";
+        /// <summary>
+        /// Checks for updates silently
+        /// ApiResponse with StatusCode.New if an update is available, <br/>
+        /// StatusCode.Ok if no update is available <br/>
+        /// StatusCode.Err if an error has occurred. <br/>
+        /// Message carries the current version string <br/>
+        /// Details carries a yaml serialized UpdateInfo object</summary>
         [Includable]
         public const string CheckForUpdate = "--check-for-update";
+
+        /// <summary>
+        /// Checks for updates loudly (shows toast message)
+        /// ApiResponse object as string with StatusCode.New if an update is available, <br/>
+        /// StatusCode.Ok if no update is available <br/>
+        /// StatusCode.Err if an error has occurred. <br/>
+        /// StatusCode.UnsupportedOperation if ADM has been installed in all users mode <br/>
+        /// StatusCode.Disabled if a manual update is required
+        /// Message carries the current version string <br/>
+        /// Details carries a yaml serialized UpdateInfo object</summary>
         [Includable]
         public const string CheckForUpdateNotify = "--check-for-update-notify";
+        /// <summary>
+        /// Invokes an update. this requires that CheckForUpdate has been run beforehand
+        /// Returns an ApiResponse object as string with StatusCode.New if an update can be performed, <br/>
+        /// StatusCode.UnsupportedOperation if ADM has been installed in all users mode <br/>
+        /// StatusCode.Disabled if a manual update is required
+        /// Returns any other status code if the update was not possible.
+        /// </summary>
         [Includable]
         public const string Update = "--update";
+        /// <summary>
+        /// Checks if locationAccess is available <br/>
+        /// Returns an ApiResponse object as string with
+        /// StatusCode.Ok if everything is well
+        /// Statuscode.Err if an error has occurred, and a message if it is a regkey or task scheduler issue
+        /// </summary>
         public const string LocationAccess = "--location-access";
         [Includable]
         public const string AddAutostart = "--add-autostart";
