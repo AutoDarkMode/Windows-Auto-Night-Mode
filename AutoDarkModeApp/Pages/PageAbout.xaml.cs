@@ -310,6 +310,27 @@ namespace AutoDarkModeApp.Pages
             _ = msg.ShowDialog();
         }
 
+        private void SunriseSunsetLicense_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) SunriseSunsetLicense_MouseDown(this, null);
+        }
+
+        private void SunriseSunsetLicense_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string MessageBoxText = "The MIT License (MIT) \n\n" +
+                "Copyright (c) 2017 Mursaat \n\n" +
+                "Licensed under the Apache License, Version 2.0 (the \"License\"); " +
+                "you may not use this file except in compliance with the License. " +
+                "You may obtain a copy of the License at \n\n" +
+                "http://www.apache.org/licenses/LICENSE-2.0 \n\n" +
+                "Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS," +
+                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and " +
+                "limitations under the License.";
+            MsgBox msg = new(MessageBoxText, "SunriseSunset License Information", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            _ = msg.ShowDialog();
+        }
+
         private void SunriseCalcLicense_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) SunriseCalcLicense_MouseDown(this, null);
