@@ -92,6 +92,7 @@ namespace AutoDarkModeApp.Pages
                     //windows location service
                     if (builder.Config.Location.UseGeolocatorService)
                     {
+                        TogglePanelVisibility(false, true, true, false);
                         ActivateLocationMode();
                         RadioButtonLocationTimes.IsChecked = true;
                     }
@@ -234,7 +235,7 @@ namespace AutoDarkModeApp.Pages
         private async void ApplyTheme()
         {
             //show warning for notebook on battery with enabled battery saver
-            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
                 userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
                 applyButton.IsEnabled = true;
@@ -244,21 +245,6 @@ namespace AutoDarkModeApp.Pages
                 userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
             }
 
-            if (builder.Config.Location.Enabled)
-            {
-                ActivateLocationMode();
-            }
-            else
-            {
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex);
-                }
-            }
             try
             {
                 string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
@@ -300,29 +286,8 @@ namespace AutoDarkModeApp.Pages
             //ui
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             userFeedback.Text = Properties.Resources.msgSearchLoc;
-
-            //wait until the service updated the config files
-            int maxTries = 3;
-            for (int i = 0; i < maxTries; i++) {
-                ApiResponse result =  ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
-                if (result.StatusCode == StatusCode.Ok)
-                {
-                    break;
-                }
-                await Task.Delay(500);
-            }
-
-            if (builder.Config.Location.UseGeolocatorService)
-            {
-                TogglePanelVisibility(false, true, true, false);
-                await UseGeolocatorService();
-            }
-            else
-            {
-                builder.LoadLocationData();
-                locationBlock.Text = $"{Properties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
-            }
-
+            
+            await LoadGeolocationData();
             UpdateSuntimes();
 
             // ui controls
@@ -331,72 +296,50 @@ namespace AutoDarkModeApp.Pages
             return;
         }
 
-        private async Task UseGeolocatorService()
+        private async Task LoadGeolocationData()
         {
-            int timeout = 5;
-            bool loaded = false;
+            int maxTries = 3;
+            for (int i = 0; i < maxTries; i++)
+            {
+                ApiResponse result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
+                if (result.StatusCode == StatusCode.Ok)
+                {
+                    break;
+                }
+                await Task.Delay(500);
+            }
 
             try
             {
-                var result = await messagingClient.SendMessageAndGetReplyAsync(Command.LocationAccess);
-                if (result == StatusCode.NoLocAccess)
+                builder.LoadLocationData();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+
+            try
+            {
+                ApiResponse result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.LocationAccess));
+                LocationHandler handler = new();
+                if (result.StatusCode == StatusCode.NoLocAccess && builder.Config.Location.UseGeolocatorService)
                 {
                     NoLocationAccess();
                     return;
+                }
+                else if (builder.Config.Location.UseGeolocatorService && (Geolocator.DefaultGeoposition.HasValue || result.StatusCode == StatusCode.Ok))
+                {
+                    locationBlock.Text = Properties.Resources.lblCity + ": " + await handler.GetCityName();
+                }
+                else if (!builder.Config.Location.UseGeolocatorService)
+                {
+                    locationBlock.Text = $"{Properties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
                 }
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex);
                 return;
-            }
-
-            for (int i = 0; i < timeout; i++)
-            {
-                // wait for location data to be populated
-                if (builder.LocationData.LastUpdate == DateTime.MinValue)
-                {
-                    builder.LoadLocationData();
-                    await Task.Delay(1000);
-                }
-                else
-                {
-                    loaded = true;
-                    break;
-                }
-            }
-
-            LocationHandler locationHandler = new();
-            var accesStatus = await Geolocator.RequestAccessAsync();
-            switch (accesStatus)
-            {
-                case GeolocationAccessStatus.Allowed:
-                    //locate user + get sunrise & sunset times
-                    locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    break;
-
-                case GeolocationAccessStatus.Denied:
-                    if (Geolocator.DefaultGeoposition.HasValue)
-                    {
-                        //locate user + get sunrise & sunset times
-                        locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    }
-                    else
-                    {
-                        NoLocationAccess();
-                        loaded = false;
-                    }
-                    break;
-
-                case GeolocationAccessStatus.Unspecified:
-                    NoLocationAccess();
-                    loaded = false;
-                    break;
-            }
-
-            if (!loaded)
-            {
-                ShowErrorMessage(new TimeoutException("waiting for location access permission timed out"));
             }
         }
 
@@ -527,9 +470,11 @@ namespace AutoDarkModeApp.Pages
                 userFeedback.Text = Properties.Resources.errorNumberInput;
                 return;
             }
-
-            builder.Save();
+            builder.Config.Location.Enabled = true;
+            builder.Config.Location.UseGeolocatorService = false;
             ActivateLocationMode();
+            EnableTimeBasedSwitch();
+            builder.Save();
             ApplyTheme();
             TogglePanelVisibility(false, true, true, true);
         }
@@ -584,33 +529,32 @@ namespace AutoDarkModeApp.Pages
             EnableTimeBasedSwitch();
             DisableLocationMode();
             applyButton.IsEnabled = true;
+            builder.Save();
+            ApplyTheme();
+
         }
 
         private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
-            EnableTimeBasedSwitch();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
             builder.Save();
+            TogglePanelVisibility(false, true, true, false);
+            ActivateLocationMode();
             ApplyTheme();
         }
 
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
         {
             EnableTimeBasedSwitch();
-
             if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
             {
                 TogglePanelVisibility(false, true, true, true);
             }
             else
             {
-                TogglePanelVisibility(false, true, false, true);
+                TogglePanelVisibility(false, false, false, true);
             }
-
-            builder.Config.Location.Enabled = true;
-            builder.Config.Location.UseGeolocatorService = false;
-            builder.Save();
         }
 
         /// <summary>
