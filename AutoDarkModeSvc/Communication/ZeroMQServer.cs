@@ -83,15 +83,23 @@ namespace AutoDarkModeSvc.Communication
                 catch (Exception ex)
                 {
                     Logger.Error(ex, $"exception while processing command {msg}");
-                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
+                    try
                     {
-                        StatusCode = StatusCode.Err,
-                        Message = ex.Message
-                    }.ToString());
-                    if (!sent)
+                        bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Err,
+                            Message = ex.Message
+                        }.ToString());
+                        if (!sent)
+                        {
+                            Logger.Error("could not send response: timeout");
+                        }
+                    } 
+                    catch (Exception exErr)
                     {
-                        Logger.Error("could not send response: timeout");
+                        Logger.Error(exErr, "could not send error response:");
                     }
+                  
                 }
             };
             PollTask = Task.Run(() =>
