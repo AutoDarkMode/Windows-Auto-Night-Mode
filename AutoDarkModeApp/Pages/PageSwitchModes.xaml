@@ -74,6 +74,8 @@
                     Minimum="0"
                     Maximum="100"
                     SpinButtonPlacementMode="Inline"
+                    SmallChange="5"
+                    LargeChange="5"
                     ValueChanged="NumberBoxGPUThreshold_ValueChanged"     
                     />
 
