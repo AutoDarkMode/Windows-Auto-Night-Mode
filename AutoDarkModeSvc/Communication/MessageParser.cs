@@ -28,6 +28,7 @@ namespace AutoDarkModeSvc.Communication
             {
                 switch (message)
                 {
+                    #region Switch
                     case Command.Switch:
                         Logger.Info("signal received: invoke theme switch");
                         //cm.ForceAll();
@@ -37,7 +38,9 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region Swap
                     case Command.Swap:
                         Logger.Info("signal received: swap themes");
                         if (RegistryHandler.AppsUseLightTheme())
@@ -54,7 +57,9 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region AddAutoStart
                     case Command.AddAutostart:
                         Logger.Info("signal received: add service to autostart");
                         bool regOk;
@@ -87,7 +92,9 @@ namespace AutoDarkModeSvc.Communication
                             }.ToString());
                         }
                         break;
+                    #endregion
 
+                    #region RemoveAutostart
                     case Command.RemoveAutostart:
                         Logger.Info("signal received: remove service from autostart");
                         bool ok;
@@ -116,7 +123,9 @@ namespace AutoDarkModeSvc.Communication
                             }.ToString());
                         }
                         break;
+                    #endregion
 
+                    #region LocationAccess
                     case Command.LocationAccess:
                         Logger.Info("signal received: checking location access permissions");
                         Task<bool> geoTask = Task.Run(async () => await LocationHandler.HasPermission());
@@ -138,7 +147,9 @@ namespace AutoDarkModeSvc.Communication
                             }.ToString());
                         }
                         break;
+                    #endregion
 
+                    #region GeoloatorIsUpdating
                     case Command.GeolocatorIsUpdating:
                         Logger.Info("signal received: check if geolocator is busy");
                         if (state.GeolocatorIsUpdating)
@@ -154,12 +165,16 @@ namespace AutoDarkModeSvc.Communication
                         }.ToString());
 
                         break;
+                    #endregion
 
+                    #region CheckForUpdates
                     case Command.CheckForUpdate:
                         Logger.Info("signal received: checking for update");
                         SendResponse(UpdateHandler.CheckNewVersion().ToString());
                         break;
+                    #endregion
 
+                    #region CheckForUpdateNotify
                     case Command.CheckForUpdateNotify:
                         Logger.Info("signal received: checking for update and requesting notification");
                         ApiResponse updateCheckData = UpdateHandler.CheckNewVersion();
@@ -174,7 +189,9 @@ namespace AutoDarkModeSvc.Communication
                         }
                         SendResponse(updateCheckData.ToString());
                         break;
+                    #endregion
 
+                    #region Update
                     case Command.Update:
                         Logger.Info("signal received: update adm");
                         if (!UpdateHandler.Updating)
@@ -203,7 +220,9 @@ namespace AutoDarkModeSvc.Communication
                         //_ = UpdateHandler.CheckNewVersion();
 
                         break;
+                    #endregion
 
+                    #region Shutdown
                     case Command.Shutdown:
                         Logger.Info("signal received, exiting");
                         SendResponse(new ApiResponse()
@@ -212,7 +231,9 @@ namespace AutoDarkModeSvc.Communication
                         }.ToString());
                         service.Exit(null, null);
                         break;
+                    #endregion
 
+                    #region TestError
                     case Command.TestError:
                         Logger.Info("signal received: test error");
                         SendResponse(new ApiResponse()
@@ -220,7 +241,9 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Err
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region Alive
                     case Command.Alive:
                         Logger.Info("signal received: request for running status");
                         SendResponse(new ApiResponse()
@@ -228,7 +251,9 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region Light
                     case Command.Light:
                         Logger.Info("signal received: force light theme");
                         state.ForcedTheme = Theme.Light;
@@ -238,14 +263,18 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region Dark
                     case Command.Dark:
                         Logger.Info("signal received: force dark theme");
                         state.ForcedTheme = Theme.Dark;
                         ThemeManager.SwitchTheme(builder.Config, Theme.Dark);
                         SendResponse(StatusCode.Ok);
                         break;
+                    #endregion
 
+                    #region NoForce
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
                         state.ForcedTheme = Theme.Undefined;
@@ -255,7 +284,9 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region DetectMonitors
                     case Command.DetectMonitors:
                         Logger.Info("signal received: detecting new monitors");
                         WallpaperHandler.DetectMonitors();
@@ -264,7 +295,9 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region CleanMonitors
                     case Command.CleanMonitors:
                         Logger.Info("signal received: removing disconnected monitors");
                         WallpaperHandler.CleanUpMonitors();
@@ -273,13 +306,17 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
+                    #region UpdateFailed
                     case Command.UpdateFailed:
                         Logger.Info("signal received: notify about failed update");
                         ToastHandler.InvokeFailedUpdateToast();
                         SendResponse(StatusCode.Ok);
                         break;
+                    #endregion
 
+                    #region TestNotifications
                     case Command.TestNotifications:
                         Logger.Info("signal received: test notifications");
                         ToastHandler.InvokeUpdateInProgressToast();
@@ -288,6 +325,7 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
+                    #endregion
 
                     default:
                         Logger.Debug("unknown message received");
