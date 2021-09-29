@@ -58,7 +58,7 @@ namespace AutoDarkModeComms
 
             if (hasResponse)
             {
-                return response;   
+                return response;
             }
             return StatusCode.Timeout;
         }
