@@ -139,6 +139,22 @@ namespace AutoDarkModeSvc.Communication
                         }
                         break;
 
+                    case Command.GeolocatorIsUpdating:
+                        Logger.Info("signal received: check if geolocator is busy");
+                        if (state.GeolocatorIsUpdating)
+                        {
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.InProgress
+                            }.ToString());
+                        }
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
+
+                        break;
+
                     case Command.CheckForUpdate:
                         Logger.Info("signal received: checking for update");
                         SendResponse(UpdateHandler.CheckNewVersion().ToString());

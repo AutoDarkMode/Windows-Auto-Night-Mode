@@ -4,6 +4,7 @@ using Windows.Devices.Geolocation;
 using AutoDarkModeConfig;
 using SunriseCalculator;
 using System.Runtime.CompilerServices;
+using AutoDarkModeSvc.Config;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -44,6 +45,8 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns></returns>
         public static async Task<bool> UpdateGeoposition(AdmConfigBuilder configBuilder)
         {
+            GlobalState state = GlobalState.Instance();
+            state.GeolocatorIsUpdating = true;
             bool success = false;
             if (configBuilder.Config.Location.UseGeolocatorService)
             {
@@ -65,7 +68,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Error(e, "could not update configuration file while retrieving location");
             }
-
+            state.GeolocatorIsUpdating = false;
             return success;
         }
 

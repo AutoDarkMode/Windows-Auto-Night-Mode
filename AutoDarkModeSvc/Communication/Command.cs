@@ -18,25 +18,30 @@ namespace AutoDarkModeSvc.Communication
         /// </summary>
         [Includable]
         public const string Switch = "--switch";
+
         /// <summary>
         /// Basically useless currently, needs rework
         /// </summary>
         public const string Swap = "--swap";
+
         /// <summary>
         /// Forces light theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
         public const string Light = "--light";
+
         /// <summary>
         /// Forces dark theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
         public const string Dark = "--dark";
+
         /// <summary>
         /// Resets the GlobalState force theme flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
         public const string NoForce = "--no-force";
+
         /// <summary>
         /// Checks for updates silently
         /// ApiResponse with StatusCode.New if an update is available, <br/>
@@ -58,6 +63,7 @@ namespace AutoDarkModeSvc.Communication
         /// Details carries a yaml serialized UpdateInfo object</summary>
         [Includable]
         public const string CheckForUpdateNotify = "--check-for-update-notify";
+
         /// <summary>
         /// Invokes an update. this requires that CheckForUpdate has been run beforehand
         /// Returns an ApiResponse object as string with StatusCode.New if an update can be performed, <br/>
@@ -67,6 +73,7 @@ namespace AutoDarkModeSvc.Communication
         /// </summary>
         [Includable]
         public const string Update = "--update";
+
         /// <summary>
         /// Checks if locationAccess is available <br/>
         /// Returns an ApiResponse object as string with
@@ -74,20 +81,38 @@ namespace AutoDarkModeSvc.Communication
         /// Statuscode.Err if an error has occurred, and a message if it is a regkey or task scheduler issue
         /// </summary>
         public const string LocationAccess = "--location-access";
+
+        /// <summary>
+        /// Checks if locationAccess is available <br/>
+        /// Returns an ApiResponse object as string with
+        /// StatusCode.Ok if the locator is not updating
+        /// Statuscode.InProgress if the geolocator is currently updating
+        /// </summary>
+        [Includable]
+        public const string GeolocatorIsUpdating = "--geolocator-is-updating";
+
         [Includable]
         public const string AddAutostart = "--add-autostart";
+
         [Includable]
         public const string RemoveAutostart = "--remove-autoStart";
+
         [Includable]
         public const string Shutdown = "--exit";
+
         public const string TestError = "--test-error";
+
         public const string Alive = "--alive";
+
         [Includable]
         public const string DetectMonitors = "--detect-monitors";
+
         [Includable]
         public const string CleanMonitors = "--clean-monitors";
+
         [Includable]
         public const string UpdateFailed = "--update-failed";
+
         [Includable]
         public const string TestNotifications = "--test-notifications";
     }

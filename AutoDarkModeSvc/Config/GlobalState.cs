@@ -58,6 +58,17 @@ namespace AutoDarkModeSvc.Config
             [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
             set { configIsUpdating = value; }
         }
+
+        private bool geolocatorIsUpdating;
+        public bool GeolocatorIsUpdating
+        {
+            get { return geolocatorIsUpdating; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { geolocatorIsUpdating = value; }
+        }
+
+
         /// <summary>
         /// Setting this value to true will skip the next config reload event when it has been saved
         /// The setting will return to false after the first save
