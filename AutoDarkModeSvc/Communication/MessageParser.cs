@@ -159,11 +159,13 @@ namespace AutoDarkModeSvc.Communication
                                 StatusCode = StatusCode.InProgress
                             }.ToString());
                         }
-                        SendResponse(new ApiResponse()
+                        else
                         {
-                            StatusCode = StatusCode.Ok
-                        }.ToString());
-
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Ok
+                            }.ToString());
+                        }
                         break;
                     #endregion
 
