@@ -185,7 +185,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
             }
-            await messagingClient.SendMessageAsync(Command.Switch);
+            _ = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
         }
 
         private void TextboxAccentColorDelay_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)

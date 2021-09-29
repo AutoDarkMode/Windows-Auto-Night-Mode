@@ -14,18 +14,6 @@ namespace AutoDarkModeComms
             PipeName = pipename;
         }
 
-        /// <summary>
-        /// Sends a message through the pipe
-        /// </summary>
-        /// <param name="message">Message string to be sent via the pipe</param>
-        /// <returns>true if no error occurred; false otherwise</returns>
-        public bool SendMessage(string message, int timeoutSeconds)
-        {
-            //this is needed. If ReceiveResponse is called in PipeMessenger for some reason the application will deadlock.
-            PipeMessenger(message);
-            return ReceiveReponse();
-        }
-
         private void PipeMessenger(string message)
         {
             using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Address.DefaultPipeCommand, PipeDirection.Out);

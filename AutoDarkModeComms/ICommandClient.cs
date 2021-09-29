@@ -8,14 +8,6 @@ namespace AutoDarkModeComms
     public interface ICommandClient
     {
         /// <summary>
-        /// Sends a message via the command infrastructure
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="timeoutSeconds">The seconds to wait before the response is considered timed out</param>
-        /// <returns>true if successful; false otherwise</returns>
-        public bool SendMessage(string message, int timeoutSeconds = 5);
-
-        /// <summary>
         /// Sends a message via the command interface,
         /// returning the message sent by the server.
         /// </summary>
@@ -23,15 +15,6 @@ namespace AutoDarkModeComms
         /// <param name="timeoutSeconds">The seconds to wait before the response is considered timed out</param>
         /// <returns>the message relayed by the server</returns>
         public string SendMessageAndGetReply(string message, int timeoutSeconds = 5);
-
-        /// <summary>
-        /// Sends a message asynchronously via the command interface. 
-        /// This is mainly for sending messages in the UI to prevent blocking
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="timeoutSeconds">The seconds to wait before the response is considered timed out</param>
-        /// <returns>true if successful; false otherwise</returns>
-        public Task<bool> SendMessageAsync(string message, int timeoutSeconds = 5);
 
         /// <summary>
         /// Sends a message asynchronously via the command interface,

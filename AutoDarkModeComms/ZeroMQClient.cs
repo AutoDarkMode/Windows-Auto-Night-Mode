@@ -34,26 +34,6 @@ namespace AutoDarkModeComms
             }
         }
 
-        public bool SendMessage(string message, int timeoutSeconds)
-        {
-
-            using (var client = new RequestSocket())
-            {
-                client.Connect("tcp://127.0.0.1:" + GetBackendPort());
-                client.SendFrame(message);
-                var response = GetResponse(client, timeoutSeconds);
-                if (response.Contains(StatusCode.Err))
-                {
-                    return false;
-                }
-                else if (response.Contains(StatusCode.Ok))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public string SendMessageWithRetries(string message, int timeoutSeconds, int retries)
         {
             for (int i = 0; i < retries; i++)
@@ -89,11 +69,6 @@ namespace AutoDarkModeComms
             client.Connect("tcp://127.0.0.1:" + GetBackendPort());
             client.SendFrame(message);
             return GetResponse(client, timeoutSeconds);
-        }
-
-        public Task<bool> SendMessageAsync(string message, int timeoutSeconds)
-        {
-            return Task.Run(() => SendMessage(message, timeoutSeconds));
         }
 
         public Task<string> SendMessageAndGetReplyAsync(string message, int timeoutSeconds)
