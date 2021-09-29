@@ -90,11 +90,10 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 else
                 {
-                    return new ApiResponse()
-                    {
-                        StatusCode = StatusCode.Ok,
-                        Message = "No updates available"
-                    };
+                    response.StatusCode = StatusCode.Ok;
+                    response.Message = "No updates available";
+                    UpstreamResponse = response;
+                    return response;
                 }
             }
             catch (Exception ex)
