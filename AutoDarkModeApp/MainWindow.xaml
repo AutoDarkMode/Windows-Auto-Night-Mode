@@ -12,9 +12,9 @@
     
         Title="{x:Static p:Resources.Title}" 
         MinHeight="700"
-        MinWidth="820" 
+        MinWidth="850" 
         Height="700" 
-        Width="820" 
+        Width="850" 
         ResizeMode="CanResize" 
         Closed="Window_Closed" 
         ContentRendered="Window_ContentRendered" 
