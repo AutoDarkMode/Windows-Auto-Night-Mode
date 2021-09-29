@@ -100,6 +100,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         RadioButtonCoordinateTimes.IsChecked = true;
                         TogglePanelVisibility(false, true, true, true);
+                        ActivateLocationMode();
                     }
                 }
             }
@@ -300,16 +301,17 @@ namespace AutoDarkModeApp.Pages
         public async void ActivateLocationMode()
         {
             //ui
-            TogglePanelVisibility(false, true, true, false);
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             userFeedback.Text = Properties.Resources.msgSearchLoc;
 
             if (builder.Config.Location.UseGeolocatorService)
             {
+                TogglePanelVisibility(false, true, true, false);
                 await UseGeolocatorService();
             }
             else
             {
+                builder.LoadLocationData();
                 locationBlock.Text = $"{Properties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
             }
 
@@ -320,6 +322,7 @@ namespace AutoDarkModeApp.Pages
 
             return;
         }
+
         private async Task UseGeolocatorService()
         {
             int timeout = 5;
@@ -518,6 +521,7 @@ namespace AutoDarkModeApp.Pages
 
             builder.Save();
             ActivateLocationMode();
+            ApplyTheme();
             TogglePanelVisibility(false, true, true, true);
         }
 
@@ -585,7 +589,16 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
         {
             EnableTimeBasedSwitch();
-            TogglePanelVisibility(false, true, false, true);
+
+            if(builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
+            {
+                TogglePanelVisibility(false, true, true, true);
+            }
+            else
+            {
+                TogglePanelVisibility(false, true, false, true);
+            }
+
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
             builder.Save();
