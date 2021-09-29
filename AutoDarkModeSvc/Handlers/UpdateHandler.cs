@@ -4,6 +4,7 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -12,6 +13,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -23,6 +25,7 @@ namespace AutoDarkModeSvc.Handlers
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        private static readonly NumberFormatInfo nfi = new NumberFormatInfo();
         public static bool Updating
         {
             get; [MethodImpl(MethodImplOptions.Synchronized)]
@@ -380,7 +383,8 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     string mbReceived = (e.BytesReceived / 1000000).ToString();
                     string mbTotal = (e.TotalBytesToReceive / 1000000).ToString();
-                    string progressString = (e.ProgressPercentage / 100).ToString();
+                    nfi.NumberDecimalSeparator = ".";
+                    string progressString = (e.ProgressPercentage / 100d).ToString(nfi);
                     Progress = e.ProgressPercentage;
                     Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {e.ProgressPercentage} % complete");
                     try
