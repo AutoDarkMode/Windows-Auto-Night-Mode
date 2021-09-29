@@ -20,7 +20,8 @@ namespace AutoDarkModeSvc.Handlers
     static class UpdateHandler
     {
         private const string updateUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
-        private static readonly Version minUpdaterVersion = new("1.23");
+        private static readonly Version minUpdaterVersion = new("1.0");
+        private static readonly Version maxUpdaterVersion = new("1.99");
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
@@ -138,7 +139,8 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 try
                 {
-                   if (new Version(UpstreamVersion.MinUpdaterVersion).CompareTo(minUpdaterVersion) > 0)
+                    Version updaterVersion = new Version(UpstreamVersion.UpdaterVersion);
+                    if (updaterVersion.CompareTo(minUpdaterVersion) < 0 || updaterVersion.CompareTo(maxUpdaterVersion) > 0)
                     {
                         return new ApiResponse
                         {
@@ -146,7 +148,7 @@ namespace AutoDarkModeSvc.Handlers
                             Message = "incompatible updater detected, manual update required"
                         };
                     }
-                } 
+                }
                 catch (Exception ex)
                 {
                     Logger.Error(ex, "error parsing updater version strings:");

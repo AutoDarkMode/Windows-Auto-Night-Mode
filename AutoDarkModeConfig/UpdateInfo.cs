@@ -9,7 +9,7 @@ namespace AutoDarkModeConfig
         public string Tag { get; set; }
         public string FileName { get; set; }
         public bool AutoUpdateAvailable { get; set; }
-        public string MinUpdaterVersion { get; set; }
+        public string UpdaterVersion { get; set; }
         public string Message { get; set; }
 
         public static UpdateInfo Deserialize(string data)
