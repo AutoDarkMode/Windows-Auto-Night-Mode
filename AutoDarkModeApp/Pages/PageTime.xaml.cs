@@ -218,14 +218,11 @@ namespace AutoDarkModeApp.Pages
             //currently nothing to check
 
             //display edited hour values for the user
-            TimePickerDark.SelectedDateTime = new DateTime(2000, 08, 22, darkStart, darkStartMinutes, 0);
-            TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
+            //disabled because we don't edit anything
+            //TimePickerDark.SelectedDateTime = new DateTime(2000, 08, 22, darkStart, darkStartMinutes, 0);
+            //TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
 
             //Apply Theme
-            if (Properties.Settings.Default.AlterTime)
-            {
-                darkStart += 12;
-            }
             builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
             builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
             ApplyTheme();
@@ -303,6 +300,13 @@ namespace AutoDarkModeApp.Pages
             //ui
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             userFeedback.Text = Properties.Resources.msgSearchLoc;
+
+            //wait until the service updated the config files
+            string result = await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating);
+            while (result == StatusCode.InProgress)
+            {
+
+            }
 
             if (builder.Config.Location.UseGeolocatorService)
             {
@@ -516,7 +520,8 @@ namespace AutoDarkModeApp.Pages
             }
             catch
             {
-
+                userFeedback.Text = Properties.Resources.errorNumberInput;
+                return;
             }
 
             builder.Save();
