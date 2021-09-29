@@ -13,7 +13,7 @@ namespace AutoDarkModeSvc.Communication
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
-        private static readonly ComponentManager cm = ComponentManager.Instance();
+        //private static readonly ComponentManager cm = ComponentManager.Instance();
 
         /// <summary>
         /// Parses a command message and invokes a callback function delegate for status reporting
