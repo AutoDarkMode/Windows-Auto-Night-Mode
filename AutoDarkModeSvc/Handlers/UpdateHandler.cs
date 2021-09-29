@@ -19,7 +19,8 @@ namespace AutoDarkModeSvc.Handlers
 {
     static class UpdateHandler
     {
-        private const string updateUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
+        private const string defaultVersionQueryUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
+        private const string defaultTemplateUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{0}/{1}";
         private static readonly Version minUpdaterVersion = new("1.0");
         private static readonly Version maxUpdaterVersion = new("1.99");
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -74,7 +75,7 @@ namespace AutoDarkModeSvc.Handlers
 
                 using RedirectWebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                string data = webClient.DownloadString(updateUrl);
+                string data = webClient.DownloadString(GetUpdateUrl());
                 UpstreamVersion = UpdateInfo.Deserialize(data);
                 Version newVersion = new(UpstreamVersion.Tag);
 
@@ -422,22 +423,51 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
+        private static string GetUpdateUrl()
+        {
+            List<string> blacklistUrls = new()
+            {
+            };
+            string current = builder.Config.Updater.VersionQueryUrl;
+            if (current == null)
+            {
+                return defaultVersionQueryUrl;
+            }
+            bool blacklisted = blacklistUrls.Contains(current);
+            if (blacklisted)
+            {
+                Logger.Warn($"outdated version query url provided, using recomended url {defaultTemplateUrl}");
+                try
+                {
+                    builder.Config.Updater.VersionQueryUrl = null;
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error saving config file while updating version query url:");
+                }
+                return defaultVersionQueryUrl;
+            }
+            else
+            {
+                return current;
+            }
+        }
+
         private static string GetTemplateUrl()
         {
             List<string> blacklistUrls = new()
             {
             };
-            string requested = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{0}/{1}";
             string current = builder.Config.Updater.BaseUrlTemplate;
             if (current == null)
             {
-                return requested;
+                return defaultTemplateUrl;
             }
             bool blacklisted = blacklistUrls.Contains(current);
             if (blacklisted)
             {
-                Logger.Warn($"outdated update base url template provided, using recomended url {requested}");
-                builder.Config.Updater.BaseUrlTemplate = current;
+                Logger.Warn($"outdated update base url template provided, using recomended url {defaultTemplateUrl}");
                 try
                 {
                     builder.Config.Updater.BaseUrlTemplate = null;
@@ -447,13 +477,12 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Error(ex, "error saving config file while updating base url template:");
                 }
-                return requested;
+                return defaultTemplateUrl;
             }
             else
             {
                 return current;
             }
-
         }
     }
 
