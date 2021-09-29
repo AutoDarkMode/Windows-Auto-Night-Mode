@@ -25,6 +25,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -64,21 +65,21 @@
             <RadioButton 
                 Name="RadioButtonCustomTimes"  
                 Content="{x:Static p:Resources.rbCustomHours}" 
-                Margin="0,10,0,0" 
+                Margin="0,5,0,0" 
                 Click="RadioButtonCustomTimes_Click"
                 />
 
             <RadioButton 
                 Name="RadioButtonLocationTimes" 
                 Content="{x:Static p:Resources.rbLocation}" 
-                Margin="0,10,0,0" 
+                Margin="0,5,0,0" 
                 Click="RadioButtonLocationTimes_Click"
                 />
 
             <RadioButton 
                 Name="RadioButtonCoordinateTimes"
                 Content="From sunset to sunrise (geographic coordinates)"
-                Margin="0,10,0,0"
+                Margin="0,5,0,0"
                 Click="RadioButtonCoordinateTimes_Click"
                 />
         </StackPanel>
@@ -86,14 +87,14 @@
         <!-- Time selection -->
         <Grid
             Name="GridTimePicker"
-            Grid.Row="4" Grid.Column="1"
+            Grid.Row="5" Grid.Column="1"
             Margin="0,0,0,0"
             Height="Auto" Width="Auto">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
@@ -148,11 +149,11 @@
         <!--<CheckBox Grid.Row="5" Grid.Column="1" x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Height="15" Width="Auto"/> -->
         <Grid
             Name="GridLocationTimeInfo"
-            Grid.Row="5" Grid.Column="1"
+            Grid.Row="6" Grid.Column="1"
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -171,8 +172,7 @@
                     Grid.Row="3"
                     Margin="0,0,0,0" 
                     Orientation="Horizontal" 
-                    HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Height="40" Width="Auto">
+                    HorizontalAlignment="Left" VerticalAlignment="Top">
 
                 <TextBlock 
                     x:Name="locationBlock"
@@ -197,11 +197,11 @@
         <!-- Geographic Coordinates  -->
         <Grid
             Name="GridCoordinates"
-            Grid.Row="6" Grid.Column="1"
+            Grid.Row="7" Grid.Column="1"
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -249,11 +249,11 @@
         <!-- Offset -->
         <Grid
             Name="GridOffset"
-            Grid.Row="7" Grid.Column="1"
+            Grid.Row="8" Grid.Column="1"
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -325,15 +325,15 @@
 
         <!-- Info -->
         <TextBlock 
-            Grid.Row="8" Grid.Column="1"  
-            Margin="0,30,0,0"
+            Grid.Row="9" Grid.Column="1"  
+            Margin="0,20,0,0"
             Text="{x:Static p:Resources.info}"  
             FontFamily="Segoe UI Semibold"
             FontSize="20" 
             Height="Auto" Width="Auto"
             />
         <TextBlock 
-            Grid.Row="9" Grid.Column="1" 
+            Grid.Row="10" Grid.Column="1" 
             x:Name="userFeedback" 
             Margin="0,10,0,0" 
             Text="{x:Static p:Resources.userFeedback}" 
@@ -343,7 +343,7 @@
         <!-- Help -->
         <TextBlock 
             Name="TextBlockHelpWiki" 
-            Grid.Row="10" Grid.Column="1"
+            Grid.Row="11" Grid.Column="1"
             Margin="0,25,0,0" 
             Text="{x:Static p:Resources.tbHelp}"
             FontSize="14"
