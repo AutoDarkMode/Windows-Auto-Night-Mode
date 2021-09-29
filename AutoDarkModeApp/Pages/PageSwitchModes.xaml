@@ -1,0 +1,114 @@
+﻿<Page x:Class="AutoDarkModeApp.Pages.PageSwitchModes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      mc:Ignorable="d" 
+      
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageSwitchModes"
+      Height="Auto" Width="Auto">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Page Title -->
+        <TextBlock
+            Grid.Row="1" Grid.Column="1"
+            Margin="0,0,0,0"
+            Text="Switch Modes"
+            FontFamily="Segoe UI Semilight"
+            FontSize="30"
+            />
+
+        <ui:SimpleStackPanel
+            Grid.Row="3" Grid.Column="1"
+            Margin="0,0,0,0"
+            Orientation="Vertical">
+
+            <TextBlock
+                Name="TextBlockConditions"
+                Margin="0,10,0,10"
+                Text="Conditions"
+                FontFamily="Segoe UI"
+                FontSize="19"
+                />
+
+            <CheckBox
+                Name="CheckBoxGPUMonitoring"
+                Content="Don't switch while playing video games"
+                Margin="0,0,0,0"
+                Click="CheckBoxGPUMonitoring_Click"
+                />
+
+            <ui:SimpleStackPanel
+                Name="StackPanelGPUMonitoring"
+                HorizontalAlignment="Left"
+                Orientation="Vertical">
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                    Text="Minimum GPU usage to delay switching"
+                    FontSize="14"
+                    />
+
+                <ui:NumberBox
+                    Name="NumberBoxGPUThreshold"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Left"
+                    MinWidth="160"
+                    Minimum="0"
+                    Maximum="100"
+                    SpinButtonPlacementMode="Inline"
+                    ValueChanged="NumberBoxGPUThreshold_ValueChanged"     
+                    />
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                    Text="GPU usage detection speed"
+                    FontSize="14"
+                    />
+
+                <ComboBox
+                    Name="ComboBoxGPUSamples"
+                    Margin="0,5,0,0"
+                    MinWidth="160"
+                    SelectionChanged="ComboBoxGPUSamples_SelectionChanged">
+                    
+                    <ComboBoxItem Tag="1" Content="Fast (1 sample)"/>
+                    <ComboBoxItem Tag="2" Content="Medium (2 samples)"/>
+                    <ComboBoxItem Tag="3" Content="Slow (3 samples)"/>
+                </ComboBox>
+                </ui:SimpleStackPanel>
+
+            <TextBlock
+                Name="TextBlockBatteryPowered"
+                Margin="0,40,0,10"
+                Text="Battery powered devices"
+                FontFamily="Segoe UI"
+                FontSize="19"
+                />
+
+            <CheckBox 
+                Name="CheckBoxBatteryDarkMode" 
+                Content="{x:Static p:Resources.cbSettingsBatteryDarkMode}" 
+                Margin="0,0,0,0" 
+                Click="CheckBoxBatteryDarkMode_Click"
+                />
+        </ui:SimpleStackPanel>
+    </Grid>
+</Page>

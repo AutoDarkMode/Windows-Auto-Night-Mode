@@ -29,7 +29,6 @@
             <CheckBox Name="CheckBoxBackgroundUpdater" Content="{x:Static p:Resources.cbBackgroundUpdate}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBackgroundUpdater_Click"/>
             <CheckBox Name="CheckBoxLogonTask" Content="{x:Static p:Resources.cbSettingsLogonTask}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxLogonTask_Click"/>
             <CheckBox Name="CheckBoxColourFilter" Content="{x:Static p:Resources.cbSettingsColourFilter}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxColourFilter_Click"/>
-            <CheckBox Name="CheckBoxBatteryDarkMode" Content="{x:Static p:Resources.cbSettingsBatteryDarkMode}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBatteryDarkMode_Click"/>
             <CheckBox Name="CheckBoxEnergySaverMitigation" Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}" Margin="0,10,0,0" ToolTipService.InitialShowDelay="150" ToolTipService.HasDropShadow="True" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxEnergySaverMitigation_Click"/>
 
             <!-- Battery Saver Slider -->

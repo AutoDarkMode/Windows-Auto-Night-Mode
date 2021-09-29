@@ -174,6 +174,9 @@ namespace AutoDarkModeApp
                     case "time":
                         FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
                         break;
+                    case "modes":
+                        FrameNavbar.Navigate(new Uri(@"/Pages/PageSwitchModes.xaml", UriKind.Relative));
+                        break;
                     case "apps":
                         FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
                         break;

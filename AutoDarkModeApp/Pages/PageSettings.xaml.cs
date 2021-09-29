@@ -60,14 +60,12 @@ namespace AutoDarkModeApp.Pages
 
             if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
             {
-                CheckBoxBatteryDarkMode.IsEnabled = false;
                 CheckBoxEnergySaverMitigation.IsEnabled = false;
             }
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
-            CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             TextboxAccentColorDelay.Text = builder.Config.SystemSwitch.Component.TaskbarSwitchDelay.ToString();
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
@@ -144,26 +142,6 @@ namespace AutoDarkModeApp.Pages
             {
                 TaskSchdHandler.RemoveAppUpdaterTask();
                 Properties.Settings.Default.BackgroundUpdate = false;
-            }
-        }
-
-        private void CheckBoxBatteryDarkMode_Click(object sender, RoutedEventArgs e)
-        {
-            if (CheckBoxBatteryDarkMode.IsChecked.Value)
-            {
-                builder.Config.Events.DarkThemeOnBattery = true;
-            }
-            else
-            {
-                builder.Config.Events.DarkThemeOnBattery = false;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex, "CheckBoxBatteryDarkMode_Click");
             }
         }
 
