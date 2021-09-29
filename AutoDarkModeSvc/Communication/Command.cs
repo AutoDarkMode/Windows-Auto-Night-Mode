@@ -83,10 +83,10 @@ namespace AutoDarkModeSvc.Communication
         public const string LocationAccess = "--location-access";
 
         /// <summary>
-        /// Checks if locationAccess is available <br/>
+        /// Checks if the geolocator is currently updating <br/>
         /// Returns an ApiResponse object as string with
         /// StatusCode.Ok if the locator is not updating
-        /// Statuscode.InProgress if the geolocator is currently updating
+        /// StatusCode.InProgress if the geolocator is currently updating
         /// </summary>
         [Includable]
         public const string GeolocatorIsUpdating = "--geolocator-is-updating";
