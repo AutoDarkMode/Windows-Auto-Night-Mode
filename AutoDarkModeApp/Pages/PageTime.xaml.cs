@@ -302,10 +302,14 @@ namespace AutoDarkModeApp.Pages
             userFeedback.Text = Properties.Resources.msgSearchLoc;
 
             //wait until the service updated the config files
-            string result = await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating);
-            while (result == StatusCode.InProgress)
-            {
-
+            int maxTries = 3;
+            for (int i = 0; i < maxTries; i++) {
+                ApiResponse result =  ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
+                if (result.StatusCode == StatusCode.Ok)
+                {
+                    break;
+                }
+                await Task.Delay(500);
             }
 
             if (builder.Config.Location.UseGeolocatorService)
