@@ -468,9 +468,9 @@ namespace AutoDarkModeApp.Pages
             }
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
-            ActivateLocationMode();
             EnableTimeBasedSwitch();
             builder.Save();
+            ActivateLocationMode();
             ApplyTheme();
             TogglePanelVisibility(false, true, true, true);
         }
