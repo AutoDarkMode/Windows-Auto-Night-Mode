@@ -17,6 +17,7 @@ namespace AutoDarkModeSvc.Handlers
 {
     static class UpdateHandler
     {
+        private const string updateUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
@@ -51,7 +52,7 @@ namespace AutoDarkModeSvc.Handlers
                     UpdateInfo info = new()
                     {
                         FileName = "",
-                        Message = "Update with custom URLs",
+                        Message = "Update with custom URLs. Use at your own risk!",
                         Tag = "420.69",
                         AutoUpdateAvailable = true
                     };
@@ -61,10 +62,11 @@ namespace AutoDarkModeSvc.Handlers
                     response.Details = info.Serialize();
                     UpstreamResponse = response;
                     UpstreamVersion = info;
+                    Logger.Warn("custom update urls are set, update at your own risk!");
+                    Logger.Warn("do not proceed this except if you know what you are doing!");
                     return response;
                 }
 
-                string updateUrl = "https://raw.githubusercontent.com/Armin2208/Windows-Auto-Night-Mode/master/version.yaml";
                 using RedirectWebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 string data = webClient.DownloadString(updateUrl);
@@ -198,8 +200,8 @@ namespace AutoDarkModeSvc.Handlers
             bool appRestart = false;
             Progress = 0;
 
-            string baseZipUrl = builder.Config.Updater.BaseUrlTemplate;
-            string baseUrlHash = builder.Config.Updater.BaseUrlTemplate;
+            string baseZipUrl = GetTemplateUrl();
+            string baseUrlHash = GetTemplateUrl();
             bool useCustomUrls = false;
             if (builder.Config.Updater.ZipCustomUrl != null && builder.Config.Updater.HashCustomUrl != null)
             {
@@ -387,10 +389,44 @@ namespace AutoDarkModeSvc.Handlers
                     }
                     catch (Exception ex)
                     {
-                        Logger.Warn(ex, "toast updater died, please tell the devs to put the updater into the ActionQueue:");
+                        Logger.Warn(ex, "toast updater died, please tell the devs to add the toast updater to the ActionQueue:");
                     }
                 }
             }
+        }
+
+        private static string GetTemplateUrl()
+        {
+            List<string> blacklistUrls = new()
+            {
+            };
+            string requested = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{0}/{1}";
+            string current = builder.Config.Updater.BaseUrlTemplate;
+            if (current == null)
+            {
+                return requested;
+            }
+            bool blacklisted = blacklistUrls.Contains(current);
+            if (blacklisted)
+            {
+                Logger.Warn($"outdated update base url template provided, using recomended url {requested}");
+                builder.Config.Updater.BaseUrlTemplate = current;
+                try
+                {
+                    builder.Config.Updater.BaseUrlTemplate = null;
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error saving config file while updating base url template:");
+                }
+                return requested;
+            }
+            else
+            {
+                return current;
+            }
+
         }
     }
 
