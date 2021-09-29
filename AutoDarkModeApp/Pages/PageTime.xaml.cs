@@ -653,5 +653,13 @@ namespace AutoDarkModeApp.Pages
                 OffsetButton.IsEnabled = true;
             }
         }
+
+        private void NumberBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (OffsetButton != null & !init)
+            {
+                OffsetButton.IsEnabled = true;
+            }
+        }
     }
 }

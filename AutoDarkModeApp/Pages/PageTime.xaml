@@ -151,7 +151,8 @@
                 Header="{x:Static p:Resources.lblLight}"
                 SpinButtonPlacementMode="Inline"
                 ContextMenuOpening="NumberBox_ContextMenuOpening"
-                ValueChanged="NumberBox_ValueChanged"/>
+                ValueChanged="NumberBox_ValueChanged"
+                PreviewTextInput="NumberBox_PreviewTextInput"/>
             
             <ui:NumberBox x:Name="NumberboxOffsetDark" 
                           Width="150" Height="Auto" 
@@ -161,7 +162,8 @@
                           Header="{x:Static p:Resources.lblDark}"
                           SpinButtonPlacementMode="Inline"
                           ContextMenuOpening="NumberBox_ContextMenuOpening"
-                          ValueChanged="NumberBox_ValueChanged"/>
+                          ValueChanged="NumberBox_ValueChanged"
+                          PreviewTextInput="NumberBox_PreviewTextInput"/>
 
             <!--        PreviewTextInput="TextBox_BlockChars_TextInput_Offset" 
                         CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted"
