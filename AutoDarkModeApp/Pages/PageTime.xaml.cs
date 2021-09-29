@@ -542,10 +542,10 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
         {
-            EnableTimeBasedSwitch();
             if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
             {
                 TogglePanelVisibility(false, false, true, true);
+                ButtonApplyCoordinates_Click(this, null);
             }
             else
             {
