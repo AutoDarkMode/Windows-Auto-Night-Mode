@@ -410,7 +410,7 @@ namespace AutoDarkModeApp.Pages
             userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
         }
 
-        
+
         private void EnableTimeBasedSwitch()
         {
             // check the right radio button
@@ -590,7 +590,7 @@ namespace AutoDarkModeApp.Pages
         {
             EnableTimeBasedSwitch();
 
-            if(builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
+            if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
             {
                 TogglePanelVisibility(false, true, true, true);
             }
@@ -648,13 +648,9 @@ namespace AutoDarkModeApp.Pages
 
         private void NumberBox_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
         {
-            try
+            if (OffsetButton != null & !init)
             {
                 OffsetButton.IsEnabled = true;
-            }
-            catch
-            {
-
             }
         }
     }
