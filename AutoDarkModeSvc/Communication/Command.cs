@@ -95,7 +95,7 @@ namespace AutoDarkModeSvc.Communication
         public const string AddAutostart = "--add-autostart";
 
         [Includable]
-        public const string RemoveAutostart = "--remove-autoStart";
+        public const string RemoveAutostart = "--remove-autostart";
 
         [Includable]
         public const string Shutdown = "--exit";
