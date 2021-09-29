@@ -145,7 +145,14 @@ namespace AutoDarkModeApp.Pages
             OffsetButton.IsEnabled = false;
             UpdateSuntimes();
             ApplyTheme();
-            builder.Save();
+            try
+            {
+                builder.Save();
+            } 
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "OffsetButton_Click");
+            }
         }
 
 
@@ -222,6 +229,15 @@ namespace AutoDarkModeApp.Pages
             //Apply Theme
             builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
             builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
             ApplyTheme();
 
             //ui
@@ -253,7 +269,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ErrorWhileApplyingTheme($"Error while applying theme: ", ex.ToString());
             }
-
         }
         //if something went wrong while applying the settings :(
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
@@ -275,7 +290,6 @@ namespace AutoDarkModeApp.Pages
         /// <summary>
         /// Location based times & Windows Position Service
         /// </summary>
-
         // set starttime based on user location
         public async void ActivateLocationMode()
         {
@@ -382,7 +396,14 @@ namespace AutoDarkModeApp.Pages
                 //disable auto theme switching in svc
                 builder.Config.AutoThemeSwitchingEnabled = false;
                 builder.Config.Location.Enabled = false;
-                builder.Save();
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "DisableTimeBasedSwitch");
+                }
             }
 
             StackPanelTimePicker.IsEnabled = false;
@@ -469,21 +490,23 @@ namespace AutoDarkModeApp.Pages
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
             EnableTimeBasedSwitch();
-            builder.Save();
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
             ActivateLocationMode();
             ApplyTheme();
             TogglePanelVisibility(false, true, true, true);
         }
 
-        /// <summary>
-        /// Error message box
-        /// </summary>
-        /// <param name="ex"></param>
-
-        private void ShowErrorMessage(Exception ex)
+        private void ShowErrorMessage(Exception ex, string location = "PageTime")
         {
-            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -500,6 +523,7 @@ namespace AutoDarkModeApp.Pages
             }
             return;
         }
+
         private void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
@@ -525,19 +549,34 @@ namespace AutoDarkModeApp.Pages
             EnableTimeBasedSwitch();
             DisableLocationMode();
             applyButton.IsEnabled = true;
-            builder.Save();
-            ApplyTheme();
-
+            try
+            {
+                builder.Save();
+                ApplyTheme();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
+            }
         }
 
         private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
+            EnableTimeBasedSwitch();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
-            builder.Save();
-            TogglePanelVisibility(false, true, true, false);
-            ActivateLocationMode();
-            ApplyTheme();
+            try
+            {
+                builder.Save();
+                TogglePanelVisibility(false, true, true, false);
+                ActivateLocationMode();
+                ApplyTheme();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
+            }
+
         }
 
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
