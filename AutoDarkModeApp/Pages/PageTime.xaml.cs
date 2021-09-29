@@ -553,7 +553,6 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Save();
                 ApplyTheme();
-
             }
             catch (Exception ex)
             {
@@ -563,6 +562,7 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
+            EnableTimeBasedSwitch();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
             try
