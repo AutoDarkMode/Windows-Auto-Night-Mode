@@ -23,7 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -132,7 +132,7 @@
                 <Button 
                     x:Name="applyButton" 
                     Content="{x:Static p:Resources.applyButton}" 
-                    HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" 
                     Width="90" 
                     Click="ApplyButton_Click" 
                     IsEnabled="False" 
@@ -146,7 +146,6 @@
 
         <!-- Location -->
         <!--<CheckBox Grid.Row="5" Grid.Column="1" x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Height="15" Width="Auto"/> -->
-
         <Grid
             Name="GridLocationTimeInfo"
             Grid.Row="5" Grid.Column="1"
@@ -155,14 +154,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock 
             Name="TextBlockLocationHeader"
             Grid.Row="1"
-            Margin="0,20,0,10"
+            Margin="0,0,0,0"
             Text="Location data"
             FontFamily="Segoe UI Semibold"
             FontSize="20"  
@@ -195,17 +194,68 @@
             </StackPanel>
         </Grid>
 
-        <!-- Offset -->
-
+        <!-- Geographic Coordinates  -->
         <Grid
-            Name="GridOffset"
+            Name="GridCoordinates"
             Grid.Row="6" Grid.Column="1"
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Name="TextBlockCoordinatesHeader"
+                Grid.Row="1"
+                Text="Geographic coordinates"
+                FontFamily="Segoe UI Semibold"
+                FontSize="20"
+                />
+
+            <StackPanel 
+                x:Name="StackPanelCoordinates"
+                Grid.Row="3"
+                Orientation="Horizontal" 
+                Margin="0,0,0,0">
+
+                <ui:NumberBox 
+                    x:Name="NumberBoxLat"
+                    Width="150" Height="Auto" 
+                    Margin="0,0,0,0" 
+                    Header="Latitude"
+                    />
+
+                <ui:NumberBox 
+                    x:Name="NumberBoxLon"
+                    Width="150" Height="Auto"
+                    Margin="25,0,0,0" 
+                    Header="Longitude"
+                    />
+
+                <Button 
+                    x:Name="ButtonApplyCoordinates"
+                    Content="Apply Coordinates"
+                    VerticalAlignment="Bottom"
+                    Margin="25,0,0,0" 
+                    Click="ButtonApplyCoordinates_Click"
+                    />
+
+            </StackPanel>
+        </Grid>
+
+        <!-- Offset -->
+        <Grid
+            Name="GridOffset"
+            Grid.Row="7" Grid.Column="1"
+            Margin="0,0,0,0">
+
+            <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
@@ -270,58 +320,6 @@
                     BorderBrush="Black"
                     />
 
-            </StackPanel>
-        </Grid>
-
-        <!-- Geographic Coordinates  -->
-        <Grid
-            Name="GridCoordinates"
-            Grid.Row="7" Grid.Column="1"
-            Margin="0,0,0,0">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Name="TextBlockCoordinatesHeader"
-                Grid.Row="1"
-                Text="Geographic coordinates"
-                FontFamily="Segoe UI Semibold"
-                FontSize="20"
-                />
-
-            <StackPanel 
-                x:Name="StackPanelCoordinates"
-                Grid.Row="3"
-                Orientation="Horizontal" 
-                Margin="0,25,0,0">
-
-                <ui:NumberBox 
-                    x:Name="NumberBoxLat"
-                    Width="150" Height="Auto" 
-                    Margin="0,0,0,0" 
-                    Header="Latitude"
-                    />
-
-                <ui:NumberBox 
-                    x:Name="NumberBoxLon"
-                    Width="150" Height="Auto"
-                    Margin="25,0,0,0" 
-                    Header="Longitude"
-                    />
-
-                <Button 
-                    x:Name="ButtonApplyCoordinates"
-                    Content="Apply Coordinates"
-                    VerticalAlignment="Bottom"
-                    Margin="25,0,0,0" 
-                    Click="ButtonApplyCoordinates_Click"
-                    />
-                
             </StackPanel>
         </Grid>
 

@@ -153,41 +153,37 @@ namespace AutoDarkModeApp.Pages
         {
             if (timepicker)
             {
-                StackPanelTimePicker.Visibility = Visibility.Visible;
-                TextBlockCustomStartTimeHeader.Visibility = Visibility.Visible;
+                GridTimePicker.Visibility = Visibility.Visible;
             }
             else
             {
-                StackPanelTimePicker.Visibility = Visibility.Collapsed;
-                TextBlockCustomStartTimeHeader.Visibility = Visibility.Collapsed;
+                GridTimePicker.Visibility = Visibility.Collapsed;
             }
 
             if (location)
             {
-                StackPanelLocationTime.Visibility = Visibility.Visible;
+                GridLocationTimeInfo.Visibility = Visibility.Visible;
             }
             else
             {
-                StackPanelLocationTime.Visibility = Visibility.Collapsed;
+                GridLocationTimeInfo.Visibility = Visibility.Collapsed;
             }
 
             if (offset)
             {
-                StackpanelOffset.Visibility = Visibility.Visible;
-                OffsetLbl.Visibility = Visibility.Visible;
+                GridOffset.Visibility = Visibility.Visible;
             }
             else
             {
-                StackpanelOffset.Visibility = Visibility.Collapsed;
-                OffsetLbl.Visibility = Visibility.Collapsed;
+                GridOffset.Visibility = Visibility.Collapsed;
             }
             if (coordinates)
             {
-                StackPanelCoordinates.Visibility = Visibility.Visible;
+                GridCoordinates.Visibility = Visibility.Visible;
             }
             else
             {
-                StackPanelCoordinates.Visibility = Visibility.Collapsed;
+                GridCoordinates.Visibility = Visibility.Collapsed;
             }
         }
 
