@@ -45,7 +45,7 @@ namespace AutoDarkModeConfig
     public class Updater
     {
         public bool AutoInstall { get; set; }
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } = true;
         public bool Silent { get; set; }
         public int DaysBetweenUpdateCheck { get; set; } = 7;
         public string VersionQueryUrl { get; set; }
