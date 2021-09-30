@@ -112,7 +112,6 @@ namespace AutoDarkModeSvc
 
         public void Cleanup()
         {
-            Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
             CommandServer.Stop();
             ConfigMonitor.Dispose();
             Timers.ForEach(t => t.Stop());

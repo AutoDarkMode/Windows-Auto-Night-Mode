@@ -309,11 +309,13 @@ namespace AutoDarkModeSvc.Handlers
                 return (false, false, false);
             }
 
+            Process[] pShell = Array.Empty<Process>();
+            Process[] pApp = Array.Empty<Process>();
             // kill auto dark mode app and shell if they were running to avoid file move/delete issues
             try
             {
-                Process[] pShell = Process.GetProcessesByName("AutoDarkModeShell");
-                Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
+                pShell = Process.GetProcessesByName("AutoDarkModeShell");
+                pApp = Process.GetProcessesByName("AutoDarkModeApp");
 
                 if (pShell.Length != 0)
                 {
@@ -330,6 +332,17 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Warn(ex, "other auto dark mode components still running, skipping update");
                 return (false, false, false);
+            }
+            finally
+            {
+                foreach (Process p in pShell)
+                {
+                    p.Dispose();
+                }
+                foreach (Process p in pApp)
+                {
+                    p.Dispose();
+                }
             }
 
             try

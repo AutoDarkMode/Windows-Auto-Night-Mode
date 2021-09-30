@@ -214,7 +214,24 @@ namespace AutoDarkModeSvc
                 {
                     Service.Cleanup();
                 }
+                try
+                {
+                    System.Diagnostics.Process[] pApp = System.Diagnostics.Process.GetProcessesByName("AutoDarkModeApp");
+                    if (pApp.Length != 0)
+                    {
+                        pApp[0].Kill();
+                    }
+                    foreach (System.Diagnostics.Process p in pApp)
+                    {
+                        p.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "couldn't close app before shutting down service");
+                }
                 ActionQueue.CompleteAdding();
+                Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
                 mutex.Dispose();
             }
         }
