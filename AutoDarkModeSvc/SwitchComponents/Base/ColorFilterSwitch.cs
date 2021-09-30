@@ -9,17 +9,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     class ColorFilterSwitch : BaseComponent<object>
     {
         private bool currentColorFilterActive;
-        public ColorFilterSwitch() : base()
-        {
-            try
-            {
-                currentColorFilterActive = RegistryHandler.IsColorFilterActive();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "couldn't initialize color filter state");
-            }
-        }
+        public ColorFilterSwitch() : base() { }
         public override bool ThemeHandlerCompatibility { get; } = true;
         public override void EnableHook()
         {
@@ -31,6 +21,16 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "failed to initialize color filter");
             }
+
+            try
+            {
+                currentColorFilterActive = RegistryHandler.IsColorFilterActive();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "couldn't initialize color filter state");
+            }
+
             base.EnableHook();
         }
         public override void DisableHook()

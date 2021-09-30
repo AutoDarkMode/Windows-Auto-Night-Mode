@@ -149,7 +149,14 @@ namespace AutoDarkModeSvc.Handlers
         public static bool IsColorFilterActive()
         {
             var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-            return filterKey.Equals(1);
+            if (filterKey != null)
+            {
+                return filterKey.Equals(1);
+            }
+            else
+            {
+                return false;
+            }
         }
         public static void ColorFilterSetup()
         {
