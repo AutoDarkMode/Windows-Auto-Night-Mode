@@ -35,6 +35,8 @@ namespace AutoDarkModeApp
                 args.Remove("/debug");
             }
 
+            MainWindow mainWin = new();
+
             string message = "Service not running yet, starting service";
             MsgBox msg = new(message, "Launching Service", "info", "none")
             {
@@ -61,7 +63,6 @@ namespace AutoDarkModeApp
                 msg.Close();
                 Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             }
-            MainWindow mainWin = new();
             mainWin.Show();
         }
 
