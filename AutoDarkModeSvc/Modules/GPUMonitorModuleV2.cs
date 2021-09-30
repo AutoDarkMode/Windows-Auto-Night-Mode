@@ -149,7 +149,7 @@ namespace AutoDarkModeSvc.Modules
             var counterAccu = 0f;
             foreach (string counterName in counterNames)
             {
-                if (counterName.EndsWith("engtype_3D"))
+                if (counterName.EndsWith("engtype_3D") || counterName.Contains("Graphics") || counterName.Contains("Copy"))
                 {
                     foreach (PerformanceCounter counter in pcc.GetCounters(counterName))
                     {
