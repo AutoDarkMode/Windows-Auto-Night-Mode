@@ -192,7 +192,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             try
             {
-                ToastNotificationManagerCompat.History.Clear();
+                ToastHandler.RemoveUpdaterToast();
             }
             catch (Exception ex)
             {

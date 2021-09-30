@@ -143,6 +143,11 @@ namespace AutoDarkModeSvc.Handlers
             });
         }
 
+        public static void RemoveUpdaterToast()
+        {
+            ToastNotificationManagerCompat.History.Remove("adm_update_in_progress");
+        }
+
         public static void HandleToastAction(ToastNotificationActivatedEventArgsCompat toastArgs)
         {
             try
