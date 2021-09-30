@@ -118,7 +118,7 @@ namespace AutoDarkModeSvc.Handlers
                    .AddArgument("action", "postpone"))
                    //.SetBackgroundActivation()
                    //.SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
-                   .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
+                   .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl))
                    .Show(toast =>
                    {
                        toast.Tag = "adm_update";
@@ -132,8 +132,8 @@ namespace AutoDarkModeSvc.Handlers
                    .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
                    .AddButton(new ToastButton()
                      .SetContent("Go to download page")
-                     .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl)))
-                   .SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
+                     .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl)))
+                   .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl))
                    .Show(toast =>
                    {
                        toast.Tag = "adm_update";

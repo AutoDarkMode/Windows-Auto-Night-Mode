@@ -5,13 +5,12 @@ namespace AutoDarkModeConfig
 {
     public class UpdateInfo
     {
-        public const string changelogUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/";
         public string Tag { get; set; }
         public string FileName { get; set; }
         public bool AutoUpdateAvailable { get; set; }
         public string UpdaterVersion { get; set; }
         public string Message { get; set; }
-
+        public string ChangelogUrl { get; set; }
         public static UpdateInfo Deserialize(string data)
         {
             var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
@@ -40,8 +39,7 @@ namespace AutoDarkModeConfig
 
         public string GetUpdateInfoPage()
         {
-            string url = changelogUrl;
-            return $"{url}{Tag}";
+            return ChangelogUrl;
         }
 
         public string GetUpdateHashUrl(string url, bool custom = false)
