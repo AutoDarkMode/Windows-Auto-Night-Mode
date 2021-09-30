@@ -6,7 +6,8 @@ namespace AutoDarkModeConfig
     public class UpdateInfo
     {
         public string Tag { get; set; }
-        public string FileName { get; set; }
+        public string PathFile { get; set; }
+        public string PathChecksum { get; set; }
         public bool AutoUpdateAvailable { get; set; }
         public string UpdaterVersion { get; set; }
         public string Message { get; set; }
@@ -32,7 +33,7 @@ namespace AutoDarkModeConfig
             }
             else
             {
-                string fileUrl = string.Format(CultureInfo.InvariantCulture, url, Tag, $"{FileName}.zip");
+                string fileUrl = $"{url}{PathFile}";
                 return fileUrl;
             }
         }
@@ -50,7 +51,7 @@ namespace AutoDarkModeConfig
             }
             else
             {
-                string hashUrl = string.Format(CultureInfo.InvariantCulture, url, Tag, $"{FileName}.sha256");
+                string hashUrl = $"{url}{PathChecksum}";
                 return hashUrl;
             }
         }

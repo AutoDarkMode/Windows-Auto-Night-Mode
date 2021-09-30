@@ -49,7 +49,7 @@ namespace AutoDarkModeConfig
         public bool Silent { get; set; }
         public int DaysBetweenUpdateCheck { get; set; } = 7;
         public string VersionQueryUrl { get; set; }
-        public string BaseUrlTemplate { get; set; }
+        public string DownloadBaseUrl { get; set; }
         public string ZipCustomUrl { get; set; }
         public string HashCustomUrl { get; set; }
     }

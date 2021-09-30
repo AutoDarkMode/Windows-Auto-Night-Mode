@@ -20,9 +20,9 @@ namespace AutoDarkModeSvc.Handlers
     static class UpdateHandler
     {
         private const string defaultVersionQueryUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
-        private const string defaultTemplateUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/{0}/{1}";
-        private static readonly Version minUpdaterVersion = new("1.0");
-        private static readonly Version maxUpdaterVersion = new("1.99");
+        private const string defaultDownloadBaseUrl = "https://github.com";
+        private static readonly Version minUpdaterVersion = new("2.0");
+        private static readonly Version maxUpdaterVersion = new("2.99");
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
@@ -57,7 +57,8 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     UpdateInfo info = new()
                     {
-                        FileName = "",
+                        PathChecksum = "",
+                        PathFile = "",
                         Message = "Update with custom URLs. Use at your own risk!",
                         Tag = "420.69",
                         AutoUpdateAvailable = true
@@ -226,8 +227,8 @@ namespace AutoDarkModeSvc.Handlers
             bool appRestart = false;
             Progress = 0;
 
-            string baseZipUrl = GetTemplateUrl();
-            string baseUrlHash = GetTemplateUrl();
+            string baseZipUrl = GetBaseUrl();
+            string baseUrlHash = GetBaseUrl();
             bool useCustomUrls = false;
             if (builder.Config.Updater.ZipCustomUrl != null && builder.Config.Updater.HashCustomUrl != null)
             {
@@ -249,6 +250,7 @@ namespace AutoDarkModeSvc.Handlers
                 using WebClient webClient = new();
                 webClient.Proxy = null;
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+                webClient.Headers.Add("Cache-Control", "no-cache");
                 byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
@@ -435,7 +437,7 @@ namespace AutoDarkModeSvc.Handlers
             bool blacklisted = blacklistUrls.Contains(current);
             if (blacklisted)
             {
-                Logger.Warn($"outdated version query url provided, using recomended url {defaultTemplateUrl}");
+                Logger.Warn($"outdated version query url provided, using recomended url {defaultDownloadBaseUrl}");
                 try
                 {
                     builder.Config.Updater.VersionQueryUrl = null;
@@ -453,30 +455,30 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        private static string GetTemplateUrl()
+        private static string GetBaseUrl()
         {
             List<string> blacklistUrls = new()
             {
             };
-            string current = builder.Config.Updater.BaseUrlTemplate;
+            string current = builder.Config.Updater.DownloadBaseUrl;
             if (current == null)
             {
-                return defaultTemplateUrl;
+                return defaultDownloadBaseUrl;
             }
             bool blacklisted = blacklistUrls.Contains(current);
             if (blacklisted)
             {
-                Logger.Warn($"outdated update base url template provided, using recomended url {defaultTemplateUrl}");
+                Logger.Warn($"outdated update base url provided, using recomended url {defaultDownloadBaseUrl}");
                 try
                 {
-                    builder.Config.Updater.BaseUrlTemplate = null;
+                    builder.Config.Updater.DownloadBaseUrl = null;
                     builder.Save();
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "error saving config file while updating base url template:");
+                    Logger.Error(ex, "error saving config file while updating base url:");
                 }
-                return defaultTemplateUrl;
+                return defaultDownloadBaseUrl;
             }
             else
             {

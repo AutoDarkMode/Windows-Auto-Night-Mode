@@ -11,7 +11,7 @@ namespace AutoDarkModeUpdater
 {
     class Program
     {
-        private const string Version = "1.23";
+        private const string Version = "2.0";
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
         private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
