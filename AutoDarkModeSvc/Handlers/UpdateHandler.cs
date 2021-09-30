@@ -76,6 +76,7 @@ namespace AutoDarkModeSvc.Handlers
 
                 using RedirectWebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+                webClient.Headers.Add("Cache-Control", "no-cache");
                 string data = webClient.DownloadString(GetUpdateUrl());
                 UpstreamVersion = UpdateInfo.Deserialize(data);
                 Version newVersion = new(UpstreamVersion.Tag);
