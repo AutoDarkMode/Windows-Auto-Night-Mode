@@ -338,7 +338,7 @@ Here are some things you can try:
 - Check if the service is running
 - Close the service, delete the config.yaml file and re-configue
 
-If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
+If these things didn't help, you can create an issue on GitHub. You can access the issue by clicking the "Yes" button.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Error: Your input is invalid</value>

@@ -496,7 +496,7 @@ namespace AutoDarkModeApp.Properties {
         ///- Check if the service is running
         ///- Close the service, delete the config.yaml file and re-configue
         ///
-        ///If these things didn&apos;t help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the &quot;Yes&quot; button..
+        ///If these things didn&apos;t help, you can create an issue on GitHub. You can access the issue by clicking the &quot;Yes&quot; button..
         /// </summary>
         public static string errorThemeApply {
             get {
