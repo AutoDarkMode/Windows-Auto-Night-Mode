@@ -9,12 +9,41 @@ using AutoDarkModeSvc.Config;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Display;
+using Windows.UI;
 
 namespace AutoDarkModeSvc.Handlers
 {
     static class WallpaperHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        public static void SetSolidColor(SolidColors colors, Theme newTheme)
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            if (newTheme == Theme.Dark)
+            {
+                handler.SetBackgroundColor(ToUint(colors.Dark));
+                handler.Enable(false);
+
+            }
+            else if (newTheme == Theme.Light)
+            {
+                handler.SetBackgroundColor(ToUint(colors.Light));
+                handler.Enable(false);
+            }
+        }
+
+        public static Color GetSolidColor()
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            return ToColor(handler.GetBackgroundColor());
+        }
+
+        public static bool SetEnabled(bool state)
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            return handler.Enable(state);
+        }
 
         public static void SetWallpapers(List<MonitorSettings> monitorSettings, WallpaperPosition position, Theme newTheme)
         {
@@ -80,7 +109,7 @@ namespace AutoDarkModeSvc.Handlers
             List<DisplayMonitor> monitors = new();
             foreach (var deviceInfo in deviceInfos)
             {
-                DisplayMonitor monitor = await  DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
+                DisplayMonitor monitor = await DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
                 monitors.Add(monitor);
             }
             return monitors;
@@ -93,7 +122,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         public static void DetectMonitors()
         {
-            var monitors = Task.Run(async() => await GetMonitorInfosAsync()).Result;
+            var monitors = Task.Run(async () => await GetMonitorInfosAsync()).Result;
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             List<string> monitorIds = new();
@@ -244,7 +273,7 @@ namespace AutoDarkModeSvc.Handlers
 
             DesktopSlideshowDirection GetStatus();
 
-            bool Enable();
+            bool Enable([MarshalAs(UnmanagedType.Bool)] bool enable);
         }
 
         /// <summary>
@@ -253,6 +282,59 @@ namespace AutoDarkModeSvc.Handlers
         [ComImport, Guid("C2CF3110-460E-4fc1-B9D0-8A1C0C9CC4BD")]
         public class DesktopWallpaperClass
         {
+        }
+
+        /// <summary>
+        /// Sets the first background in a wallpaper collection
+        /// </summary>
+        /// <param name="wallpaperCollection">List with wallpapers</param>
+        /// <return>true if wallpaper switch succeeded</return>
+        public static bool SetGlobalWallpaper(GlobalWallpaper globalWallpaper, Theme newTheme)
+        {
+            if (newTheme == Theme.Dark)
+            {
+                win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
+                string currentWallpaper = GetGlobalWallpaper();
+                return currentWallpaper == globalWallpaper.Dark;
+
+            }
+            else if (newTheme == Theme.Light)
+            {
+                win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
+                string currentWallpaper = GetGlobalWallpaper();
+                return currentWallpaper == globalWallpaper.Light;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the currenvt wallpaper
+        /// </summary>
+        /// <returns>string with a path to the current wallpapers</returns>
+        public static string GetGlobalWallpaper()
+        {
+            string currentWallpaper = new string('\0', 260);
+            win32.SystemParametersInfo(0x0073, currentWallpaper.Length, currentWallpaper, 0);
+            return currentWallpaper.Substring(0, currentWallpaper.IndexOf('\0'));
+        }
+
+        internal sealed class win32
+        {
+            [DllImport("user32.dll", CharSet = CharSet.Auto)]
+            internal static extern int SystemParametersInfo(int uAction, int uParam, String lpvParam, int fuWinIni);
+        }
+
+        private static uint ToUint(Color c)
+        {
+            return (uint)(((c.A << 24) | (c.R << 16) | (c.G << 8) | c.B) & 0xffffffffL);
+        }
+
+        private static Color ToColor(this uint value)
+        {
+            return Color.FromArgb((byte)((value >> 24) & 0xFF),
+                       (byte)((value >> 16) & 0xFF),
+                       (byte)((value >> 8) & 0xFF),
+                       (byte)(value & 0xFF));
         }
     }
 }

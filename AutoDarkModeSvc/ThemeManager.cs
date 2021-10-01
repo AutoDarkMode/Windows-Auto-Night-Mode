@@ -67,7 +67,8 @@ namespace AutoDarkModeSvc
                 themeModeSwitched = ApplyTheme(config, newTheme);
             }
 
-            cm.UpdateSettings();
+            // TODO: find out I put this here?
+            //cm.UpdateSettings();
             bool componentsNeedUpdate = cm.Check(newTheme);
             if (componentsNeedUpdate)
             {

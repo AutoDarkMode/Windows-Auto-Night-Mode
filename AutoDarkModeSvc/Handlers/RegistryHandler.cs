@@ -104,7 +104,7 @@ namespace AutoDarkModeSvc.Handlers
                 using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
                 return true;
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not add AutoDarkModeSvc to autostart");
@@ -129,6 +129,20 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Error(ex, "could not remove AutoDarkModeSvc from autostart");
             }
             return false;
+        }
+
+        public static string GetCurrentWallpaperSource()
+        {
+            try
+            {
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Internet Explorer\Desktop\General");
+                return (string)registryKey.GetValue("WallpaperSource");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error getting wallpaper source path");
+            }
+            return "";
         }
 
         //Colour filter grayscale feature
@@ -164,7 +178,7 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 filterType = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "error instantiating color filtering key:");
