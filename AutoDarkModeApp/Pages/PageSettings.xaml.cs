@@ -12,6 +12,7 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
+using System.IO;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -453,6 +454,51 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
             }
+        }
+
+        /// <summary>
+        /// Config folder links
+        /// </summary>
+        private void HyperlinkOpenConfigFile_Click(object sender, RoutedEventArgs e)
+        {
+            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "config.yaml");
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(filepath)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+
+        private void HyperlinkOpenConfigFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "config.yaml");
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(filepath)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+
+        private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(filepath)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+
+        private void HyperlinkOpenAppDataFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var folderpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+            Process.Start("explorer.exe", folderpath);
         }
     }
 }

@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
       mc:Ignorable="d"
       
       Title="PageSettings" 
@@ -22,6 +23,8 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -112,6 +115,7 @@
 
             <!-- Language selection-->
             <TextBlock
+                Grid.Column="1" Grid.Row="4" 
                 Margin="0,30,0,0"
                 FontFamily="Segoe UI"
                 FontSize="20"
@@ -120,7 +124,6 @@
             <TextBlock 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Margin="0,15,0,0" 
-                Grid.Column="1" Grid.Row="1"  
                 FontSize="14"
                 Text="{x:Static p:Resources.lblLanguage}" 
                 />
@@ -128,8 +131,7 @@
                 x:Name="ComboBoxLanguageSelection" 
                 SelectedValuePath="Name" 
                 HorizontalAlignment="Left" 
-                Margin="0,5,0,0" 
-                Grid.Column="1" Grid.Row="1"  
+                Margin="0,5,0,0"  
                 VerticalAlignment="Top" 
                 MinWidth="200" 
                 SelectedIndex="1" 
@@ -156,8 +158,7 @@
             <TextBlock 
                 Name = "Translator" 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="0,5,0,0" 
-                Grid.Column="1" Grid.Row="1"  
+                Margin="0,5,0,0"  
                 TextWrapping="Wrap" 
                 Text="{x:Static p:Resources.lblTranslator}" 
                 FontSize="14"
@@ -179,21 +180,21 @@
                 Click="ButtonRestart_Click"
                 />
 
-            <!-- Updates -->
-            <TextBlock
+            <!-- Updater -->
+            <StackPanel
+                x:Name="StackPanelUpdater"
                 Margin="0,30,0,0"
+                Orientation="Vertical">
+
+                <TextBlock
+                Margin="0,0,0,0"
                 FontFamily="Segeo UI"
                 FontSize="20"
                 Text="Updates"
                 />
 
-            <StackPanel
-                x:Name="StackPanelUpdater"
-                Margin="0,15,0,0"
-                Orientation="Vertical">
-
                 <TextBlock
-                    Margin="0,0,0,0"
+                    Margin="0,15,0,0"
                     VerticalAlignment="Top" HorizontalAlignment="Left"
                     FontSize="14"
                     Text="We search for new versions of Auto Dark Mode in the background. As soon as an update is available, we notify you via a toast notification"
@@ -270,6 +271,40 @@
                     x:Name="RadioButtonBetaUpdateChannel"
                     Content="Beta"
                     Click="RadioButtonBetaUpdateChannel_Click"
+                    />
+            </StackPanel>
+
+            <StackPanel
+                Name="StackPanelConfigFolder"
+                Margin="0,30,0,0"
+                Orientation="Vertical">
+
+                <TextBlock
+                    Margin="0,0,0,0"
+                    Text="Config"
+                    FontFamily="Segeo UI"
+                    FontSize="20"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenConfigFile"
+                    Margin="0,15,0,0"
+                    Content="Open config file"
+                    PreviewMouseDown="HyperlinkOpenConfigFile_PreviewMouseDown"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenLogFile"
+                    Margin="0,5,0,0"
+                    Content="Open log file"
+                    PreviewMouseDown="HyperlinkOpenLogFile_PreviewMouseDown"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenAppDataFolder"
+                    Margin="0,5,0,0"
+                    Content="Open config folder"
+                    PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
                     />
             </StackPanel>
         </StackPanel>
