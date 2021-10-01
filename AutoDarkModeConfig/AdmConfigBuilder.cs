@@ -141,7 +141,7 @@ namespace AutoDarkModeConfig
             locationDataUpdatedHandler?.Invoke(old, LocationData);
         }
 
-        public void LastUpdateLoad()
+        public void LoadUpdaterData()
         {
             Loading = true;
             UpdaterData deser = Deserialize<UpdaterData>(UpdaterDataPath, UpdaterData);

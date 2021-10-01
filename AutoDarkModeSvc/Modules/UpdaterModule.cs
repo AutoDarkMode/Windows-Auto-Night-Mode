@@ -20,7 +20,7 @@ namespace AutoDarkModeSvc.Modules
         {
             try
             {
-                builder.LastUpdateLoad();
+                builder.LoadUpdaterData();
             }
             catch (Exception ex)
             {

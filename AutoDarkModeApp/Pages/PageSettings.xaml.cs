@@ -33,6 +33,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Load();
+                builder.LoadUpdaterData();
             }
             catch (Exception ex)
             {
