@@ -23,7 +23,7 @@ namespace AutoDarkModeSvc
 
         private readonly List<ISwitchComponent> Components;
         private AdmConfigBuilder Builder { get; }
-        private Theme lastSorting = Theme.Undefined;
+        private Theme lastSorting = Theme.Unknown;
 
         // Components
         private readonly ISwitchComponent AppsSwitch = new AppsSwitch();
@@ -69,9 +69,9 @@ namespace AutoDarkModeSvc
             Components.ForEach(c =>  c.ForceSwitch = true);
         }
 
-        public bool Check(Theme newTheme)
+        public List<ISwitchComponent> GetComponentsToUpdate(Theme newTheme)
         {
-            bool shouldUpdate = false;
+            List<ISwitchComponent> shouldUpdate = new();
             foreach (ISwitchComponent c in Components)
             {
                 // require update if theme mode is enabled, the module is enabled and compatible with theme mode
@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc
                 {
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
-                        shouldUpdate = true;
+                        shouldUpdate.Add(c);
                         break;
                     }
                 }
@@ -88,39 +88,39 @@ namespace AutoDarkModeSvc
                 {
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
-                        shouldUpdate = true;
+                        shouldUpdate.Add(c);
                         break;
                     }
                 }
                 // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
                 else if (!c.Enabled && c.Initialized)
                 {
-                    shouldUpdate = true;
+                    shouldUpdate.Add(c);
                     break;
                 }
                 // if the force flag is set to true, we also need to update
                 else if (c.ForceSwitch)
                 {
-                    shouldUpdate = true;
+                    shouldUpdate.Add(c);
                     break;
                 }
             }
             return shouldUpdate;
         }
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void Run(Theme newTheme)
+        public void Run(List<ISwitchComponent> components, Theme newTheme)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
             {
-                Components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
+                components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
                 lastSorting = Theme.Dark;
             }
             else if (newTheme == Theme.Light && lastSorting != Theme.Light)
             {
-                Components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
+                components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
                 lastSorting = Theme.Light;
             }
-            Components.ForEach(c =>
+            components.ForEach(c =>
             {
                 if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility)
                 {

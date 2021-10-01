@@ -16,7 +16,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public OfficeSwitch() : base()
         {
-            currentComponentTheme = Theme.Undefined;
+            currentComponentTheme = Theme.Unknown;
             ChoosenLightTheme = 0;
         }
 
@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
         {
-            if(currentComponentTheme == Theme.Undefined)
+            if(currentComponentTheme == Theme.Unknown)
             {
                 return true;
             }

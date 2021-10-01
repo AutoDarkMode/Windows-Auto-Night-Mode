@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Windows.Devices.Display;
 using Windows.Devices.Enumeration;
+using Windows.UI;
 
 namespace AutoDarkModeConfig.ComponentSettings.Base
 {
@@ -12,6 +12,8 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         public WallpaperSwitchSettings()
         {
             Monitors = new();
+            SolidColors = new();
+            GlobalWallpaper = new();
         }
         private Mode mode;
         //[JsonConverter(typeof(StringEnumConverter))]
@@ -31,14 +33,39 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 }
             }
         }
+        public WallpaperType TypeLight { get; set; } = WallpaperType.Individual;
+        public WallpaperType TypeDark { get; set; } = WallpaperType.Individual;
         public WallpaperPosition Position { get; set; } = WallpaperPosition.Fill;
+        public GlobalWallpaper GlobalWallpaper { get; set; }
+        public SolidColors SolidColors { get; set; }
         public List<MonitorSettings> Monitors { get; set; }
+    }
+
+    public enum WallpaperType
+    {
+        Unknown = -1,
+        Individual = 0,
+        Global = 1,
+        All = 2,
+        SolidColor = 3
+    }
+
+    public class GlobalWallpaper
+    {
+        public string Light { get; set; }
+        public string Dark { get; set; }
+    }
+
+    public class SolidColors
+    {
+        public Color Light { get; set; } =  Color.FromArgb(0, 255, 255, 255);
+        public Color Dark { get; set; } = Color.FromArgb(0, 0, 0, 0);
     }
 
     public class MonitorSettings
     {
         public string Id { get; set; }
-        private string MonitorString { get; set; } = null;
+        private string MonitorString { get; set; }
         public string LightThemeWallpaper { get; set; }
         public string DarkThemeWallpaper { get; set; }
         public override string ToString()

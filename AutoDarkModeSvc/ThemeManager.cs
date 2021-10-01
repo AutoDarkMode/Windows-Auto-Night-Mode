@@ -6,6 +6,7 @@ using AutoDarkModeConfig;
 using System.IO;
 using Windows.System.Power;
 using System.Collections.Generic;
+using AutoDarkModeSvc.Interfaces;
 
 namespace AutoDarkModeSvc
 {
@@ -67,21 +68,22 @@ namespace AutoDarkModeSvc
                 themeModeSwitched = ApplyTheme(config, newTheme);
             }
 
-            cm.UpdateSettings();
-            bool componentsNeedUpdate = cm.Check(newTheme);
-            if (componentsNeedUpdate)
+            // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
+            //cm.UpdateSettings();
+
+            List<ISwitchComponent> componentsToUpdate = cm.GetComponentsToUpdate(newTheme);
+            if (componentsToUpdate.Count > 0)
             {
                 //if a theme switch did not occur, run mitigations
                 if (!themeModeSwitched)
                 {
                     PowerHandler.DisableEnergySaver(config);
                 }
-                //run the components
-                cm.Run(newTheme);
+                cm.Run(componentsToUpdate, newTheme);
             }
 
             // disable mitigation after all components and theme switch have been executed
-            if (componentsNeedUpdate || themeModeSwitched)
+            if (componentsToUpdate.Count > 0 || themeModeSwitched)
             {
                 if (newTheme == Theme.Light && automatic)
                 {
