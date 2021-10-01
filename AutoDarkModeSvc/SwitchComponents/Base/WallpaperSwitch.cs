@@ -225,14 +225,18 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 colorLightBefore = Settings.Component.SolidColors.Light;
                 colorDarkBefore = Settings.Component.SolidColors.Dark;
             }
-            
-            base.UpdateSettingsState(newSettings);
 
-            if (Settings.Component.GlobalWallpaper.Dark == null || !globalDarkBefore.Equals(Settings.Component.GlobalWallpaper.Dark))
+
+
+            base.UpdateSettingsState(newSettings);
+            string globalLightAfter = Settings.Component.GlobalWallpaper.Light == null ? "" : Settings.Component.GlobalWallpaper.Light;
+            string globalDarkAfter = Settings.Component.GlobalWallpaper.Dark == null ? "" : Settings.Component.GlobalWallpaper.Dark;
+
+            if (!globalDarkBefore.Equals(globalDarkAfter))
             {
                 currentGlobalTheme = Theme.Undefined;
             }
-            if (Settings.Component.GlobalWallpaper.Light == null || !globalLightBefore.Equals(Settings.Component.GlobalWallpaper.Light))
+            if (!globalLightBefore.Equals(globalLightAfter))
             {
                 currentGlobalTheme = Theme.Undefined;
             }
