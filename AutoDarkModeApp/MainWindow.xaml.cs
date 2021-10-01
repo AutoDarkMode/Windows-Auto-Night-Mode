@@ -193,6 +193,7 @@ namespace AutoDarkModeApp
                         FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
                         break;
                 }
+                ScrollViewerNavbar.ScrollToTop();
             }
         }
 

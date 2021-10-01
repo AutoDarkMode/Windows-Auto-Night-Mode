@@ -114,7 +114,8 @@
             </ui:NavigationView.FooterMenuItems>
 
             <!-- Content of Navbar, mainly the Frame which contains the Pages -->
-            <ScrollViewer>
+            <ScrollViewer
+                x:Name="ScrollViewerNavbar">
                 <ui:Frame 
                        Content="Something went wrong :(" 
                        Background="{DynamicResource SystemAltHighColorBrush}" 
