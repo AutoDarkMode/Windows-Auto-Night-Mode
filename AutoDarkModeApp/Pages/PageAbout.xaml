@@ -103,6 +103,11 @@
                 Margin="0,5,0,0"
                 FontSize="14"
                 />
+            <TextBlock
+                Name="TextBlockNetCoreVersion"
+                Margin="0,5,0,0"
+                FontSize="14"
+                />
         </StackPanel>
 
         <!-- Social Media links-->

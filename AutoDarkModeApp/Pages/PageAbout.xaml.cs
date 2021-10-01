@@ -80,6 +80,15 @@ namespace AutoDarkModeApp.Pages
             {
                 TextBlockShellVersion.Text += "not found";
             }
+            TextBlockNetCoreVersion.Text = ".Net: ";
+            try
+            {
+                TextBlockNetCoreVersion.Text += System.Environment.Version;
+            }
+            catch
+            {
+                TextBlockNetCoreVersion.Text += "not found";
+            }
         }
 
         private void SystemTheme_ThemeChanged(object sender, EventArgs e)
