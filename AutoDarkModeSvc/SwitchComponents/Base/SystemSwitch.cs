@@ -114,10 +114,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 }
                 else if (Settings.Component.Mode == Mode.LightOnly)
                 {
-                    RegistryHandler.SetColorPrevalence(0);
+                    if (Settings.Component.TaskbarColorOnDark)
+                    {
+                        RegistryHandler.SetColorPrevalence(0);
+                        await Task.Delay(taskdelay);
+                    }
+
                     currentTaskbarColorActive = false;
-                    await Task.Delay(taskdelay);
                     RegistryHandler.SetSystemTheme((int)Theme.Light);
+
                     currentComponentTheme = Theme.Light;
                 }
                 else

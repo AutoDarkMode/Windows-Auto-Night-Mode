@@ -149,7 +149,14 @@ namespace AutoDarkModeSvc.Handlers
         public static bool IsColorFilterActive()
         {
             var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-            return filterKey.Equals(1);
+            if (filterKey != null)
+            {
+                return filterKey.Equals(1);
+            }
+            else
+            {
+                return false;
+            }
         }
         public static void ColorFilterSetup()
         {
@@ -157,16 +164,15 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 filterType = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
-
             } 
-            catch
+            catch (Exception ex)
             {
-                Logger.Warn("color filter key does not exist");
+                Logger.Error(ex, "error instantiating color filtering key:");
             }
             //on clean installs this registry key doesn't exist, so we need to create it
             if (filterType == null)
             {
-                filterType.Dispose();
+                Logger.Warn("color filter key does not exist, creating");
                 filterType = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
             }
             var currentValue = filterType.GetValue("Active", null);
