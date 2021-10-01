@@ -12,14 +12,12 @@ namespace AutoDarkModeApp
 {
     class Updater
     {
-        readonly bool silent;
         ApiResponse response = new();
         private readonly ICommandClient commandClient;
 
-        public Updater(bool pSilent)
+        public Updater()
         {
             commandClient = new ZeroMQClient(Address.DefaultPort);
-            silent = pSilent;
         }
 
         public bool CheckNewVersion()

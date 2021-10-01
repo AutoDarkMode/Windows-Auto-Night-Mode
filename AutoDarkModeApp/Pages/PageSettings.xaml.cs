@@ -23,7 +23,9 @@ namespace AutoDarkModeApp.Pages
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
-        readonly bool initialized = false;
+        private readonly bool init = true;
+        readonly Updater updater = new();
+        private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
 
         public PageSettings()
         {
@@ -37,7 +39,7 @@ namespace AutoDarkModeApp.Pages
             }
             InitializeComponent();
             UiHandler();
-            initialized = true;
+            init = false;
         }
         private void UiHandler()
         {
@@ -65,9 +67,40 @@ namespace AutoDarkModeApp.Pages
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
-            CheckBoxBackgroundUpdater.IsChecked = builder.Config.Updater.Enabled;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
+
+            //updater ui
+            TextBlockUpdateInfo.Text = "Last checked: " + builder.UpdaterData.LastCheck.ToString();
+            CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
+            switch (builder.Config.Updater.DaysBetweenUpdateCheck)
+            {
+                case 3:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck3Days;
+                    break;
+                case 7:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck7Days;
+                    break;
+                case 14:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck14Days;
+                    break;
+            }
+            CheckBoxAutoInstall.IsChecked = builder.Config.Updater.AutoInstall;
+            CheckBoxUpdateSilent.IsChecked = builder.Config.Updater.Silent;
+            if (!CheckBoxAutoInstall.IsChecked.Value) CheckBoxUpdateSilent.IsEnabled = false;
+            if(String.IsNullOrEmpty(builder.Config.Updater.VersionQueryUrl))
+            {
+                RadioButtonStableUpdateChannel.IsChecked = true;
+            }
+            else if (builder.Config.Updater.VersionQueryUrl.Equals(BetaVersionQueryURL))
+            {
+                RadioButtonBetaUpdateChannel.IsChecked = true;
+            }
+            else
+            {
+                RadioButtonBetaUpdateChannel.IsEnabled = false;
+                RadioButtonStableUpdateChannel.IsEnabled = false;
+            }
         }
 
         private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
@@ -126,21 +159,6 @@ namespace AutoDarkModeApp.Pages
             else
             {
                 Settings.Default.AlterTime = false;
-            }
-        }
-
-        private void CheckBoxBackgroundUpdater_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (CheckBoxBackgroundUpdater.IsChecked.Value)
-            {
-                TaskSchdHandler.CreateAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = true;
-            }
-            else
-            {
-                TaskSchdHandler.RemoveAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = false;
             }
         }
 
@@ -253,6 +271,145 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "CheckBoxLogonTask_Click");
+            }
+        }
+
+        private void ButtonSearchUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonSearchUpdate.IsEnabled = false;
+            TextBlockUpdateInfo.Text = Properties.Resources.msgSearchUpd;//searching for update...
+            updater.CheckNewVersion();
+            if (updater.UpdateAvailable())
+            {
+                TextBlockUpdateInfo.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
+            }
+            else
+            {
+                TextBlockUpdateInfo.Text = Properties.Resources.msgNoUpd;//no new updates are available.
+                ButtonSearchUpdate.IsEnabled = true;
+            }
+        }
+
+        private void CheckBoxEnableUpdater_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.Enabled = true;
+            }
+            else
+            {
+                builder.Config.Updater.Enabled = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxEnableUpdater_Click");
+            }
+        }
+
+        private void ComboBoxDaysBetweenUpdateCheck_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!init)
+            {
+                switch((sender as ComboBox).SelectedIndex)
+                {
+                    case 0:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 3;
+                        break;
+                    case 1:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 7;
+                        break;
+                    case 2:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 14;
+                        break;
+                }
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "ComboBoxDaysBetweenUpdateCheck_SelectionChanged");
+                }
+            }
+        }
+
+        private void CheckBoxAutoInstall_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.AutoInstall = true;
+                CheckBoxUpdateSilent.IsEnabled = true;
+            }
+            else
+            {
+                builder.Config.Updater.AutoInstall = false;
+                CheckBoxUpdateSilent.IsEnabled = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxAutoInstall_Click");
+            }
+        }
+
+        private void CheckBoxUpdateSilent_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.Silent = true;
+            }
+            else
+            {
+                builder.Config.Updater.Silent = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxUpdateSilent_Click");
+            }
+        }
+
+        private void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as RadioButton).IsChecked.Value)
+            {
+                builder.Config.Updater.VersionQueryUrl = null;
+                ButtonSearchUpdate.IsEnabled = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonStableUpdateChannel_Click");
+            }
+        }
+
+        private void RadioButtonBetaUpdateChannel_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as RadioButton).IsChecked.Value)
+            {
+                builder.Config.Updater.VersionQueryUrl = BetaVersionQueryURL;
+                ButtonSearchUpdate.IsEnabled = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
             }
         }
     }

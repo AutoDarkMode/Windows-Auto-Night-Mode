@@ -18,7 +18,7 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageAbout : Page
     {
-        readonly Updater updater = new(false);
+        readonly Updater updater = new();
         bool update;
         int easterEgg;
 
