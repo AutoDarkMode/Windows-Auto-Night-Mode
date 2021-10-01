@@ -14,7 +14,7 @@ namespace AutoDarkModeConfig
     public enum Theme
     {
         Ignore = -2,
-        Undefined = -1,
+        Unknown = -1,
         Dark = 0,
         Light = 1
     };

@@ -132,7 +132,7 @@ namespace AutoDarkModeSvc
             {
                 Logger.Info("ui signal received: stop forcing specific theme");
                 GlobalState rtc = GlobalState.Instance();
-                rtc.ForcedTheme = Theme.Undefined;
+                rtc.ForcedTheme = Theme.Unknown;
                 ThemeManager.TimedSwitch(ConfigBuilder);
                 mi.Checked = false;
             }

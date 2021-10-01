@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     class SystemSwitch : BaseComponent<SystemSwitchSettings>
     {
-        private Theme currentComponentTheme = Theme.Undefined;
+        private Theme currentComponentTheme = Theme.Unknown;
         private bool currentTaskbarColorActive;
         public SystemSwitch() : base()
         {

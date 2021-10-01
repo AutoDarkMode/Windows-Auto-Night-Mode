@@ -13,9 +13,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override bool ThemeHandlerCompatibility => false;
         public override int PriorityToLight => 25;
         public override int PriorityToDark => 25;
-        private Theme currentIndividualTheme = Theme.Undefined;
-        private Theme currentGlobalTheme = Theme.Undefined;
-        private Theme currentSolidColorTheme = Theme.Undefined;
+        private Theme currentIndividualTheme = Theme.Unknown;
+        private Theme currentGlobalTheme = Theme.Unknown;
+        private Theme currentSolidColorTheme = Theme.Unknown;
         private WallpaperPosition currentWallpaperPosition;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
@@ -71,32 +71,30 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void HandleSwitch(Theme newTheme)
         {
-            string oldTheme = Enum.GetName(typeof(Theme), Theme.Undefined);
+            string oldIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
+            string oldGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
+            string oldSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
 
             string oldPos = Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition);
             try
             {
                 if (Settings.Component.Mode == Mode.DarkOnly)
                 {
-                    Theme before = HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
-                    oldTheme = Enum.GetName(typeof(Theme), before);
+                    HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
                 }
                 else if (Settings.Component.Mode == Mode.LightOnly)
                 {
-                    Theme before = HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
-                    oldTheme = Enum.GetName(typeof(Theme), before);
+                    HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
                 }
                 else
                 {
                     if (newTheme == Theme.Dark)
                     {
-                        Theme before = HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
-                        oldTheme = Enum.GetName(typeof(Theme), before);
+                        HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
                     }
                     else if (newTheme == Theme.Light)
                     {
-                        Theme before = HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
-                        oldTheme = Enum.GetName(typeof(Theme), before);
+                        HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
                     }
                 }
             }
@@ -107,28 +105,33 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
             if (newTheme == Theme.Dark)
             {
-                LogHandleSwitch(Settings.Component.TypeDark, oldTheme, oldPos);
+                LogHandleSwitch(Settings.Component.TypeDark, oldGlobal, oldIndividual, oldSolid, oldPos);
             }
             else if (newTheme == Theme.Light)
             {
-                LogHandleSwitch(Settings.Component.TypeLight, oldTheme, oldPos);
+                LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos);
             }
         }
 
-        private void LogHandleSwitch(WallpaperType type, string oldTheme, string oldPos)
+        private void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid, string oldPos)
         {
             if (type == WallpaperType.All)
             {
-                string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme == currentIndividualTheme ? currentGlobalTheme : Theme.Undefined);
-                Logger.Info($"update info - previous: {oldTheme}/{oldPos}, " +
-                            $"current: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
+                string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
+                Logger.Info($"update info - previous global: {oldGlobal}/{oldPos}, " +
+                            $"curren global: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
+                            $"type: {Enum.GetName(typeof(WallpaperType), type)}");
+                Logger.Info($"update info - previous individual: {oldIndividual}/{oldPos}, " +
+                            $"current individual: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
                             $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
             else if (type == WallpaperType.Individual)
             {
                 string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
-                Logger.Info($"update info - previous: {oldTheme}/{oldPos}, " +
+                Logger.Info($"update info - previous: {oldIndividual}/{oldPos}, " +
                             $"current: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
                             $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
@@ -136,7 +139,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             else if (type == WallpaperType.Global)
             {
                 string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
-                Logger.Info($"update info - previous: {oldTheme}/{oldPos}, " +
+                Logger.Info($"update info - previous: {oldGlobal}/{oldPos}, " +
                             $"current: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
                             $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
@@ -144,37 +147,37 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             else if (type == WallpaperType.SolidColor)
             {
                 string currentSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
-                Logger.Info($"update info - previous: {oldTheme}/{oldPos}, " +
+                Logger.Info($"update info - previous: {oldSolid}/{oldPos}, " +
                             $"current: {currentSolid}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
                             $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
         }
 
-        private Theme HandleSwitchByType(WallpaperType type, Theme newTheme)
+        /// <summary>
+        /// Handles the switch for each of the available wallpaper type modes.
+        /// </summary>
+        /// <param name="type">The wallpaper type that is selected</param>
+        /// <param name="newTheme">The new theme that is targeted to be set</param>
+        private void HandleSwitchByType(WallpaperType type, Theme newTheme)
         {
             if (type == WallpaperType.Individual)
             {
-                Theme before = currentIndividualTheme;
                 WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
                 currentIndividualTheme = newTheme;
-                currentGlobalTheme = Theme.Undefined;
-                currentSolidColorTheme = Theme.Undefined;
-                return before;
+                currentGlobalTheme = Theme.Unknown;
+                currentSolidColorTheme = Theme.Unknown;
             }
             else if (type == WallpaperType.Global)
             {
-                Theme before = currentGlobalTheme;
                 WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
                 currentGlobalTheme = newTheme;
-                currentIndividualTheme = Theme.Undefined;
-                currentSolidColorTheme = Theme.Undefined;
+                currentIndividualTheme = Theme.Unknown;
+                currentSolidColorTheme = Theme.Unknown;
 
-                return before;
             }
             else if (type == WallpaperType.All)
             {
-                Theme before = currentGlobalTheme == currentIndividualTheme ? currentGlobalTheme : Theme.Undefined;
                 bool globalSwitched = false;
                 if (currentGlobalTheme != newTheme)
                 {
@@ -187,19 +190,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 }
                 currentGlobalTheme = newTheme;
                 currentIndividualTheme = newTheme;
-                currentSolidColorTheme = Theme.Undefined;
-                return before;
+                currentSolidColorTheme = Theme.Unknown;
             }
             else if (type == WallpaperType.SolidColor)
             {
-                Theme before = currentSolidColorTheme;
                 WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
                 currentSolidColorTheme = newTheme;
-                currentGlobalTheme = Theme.Undefined;
-                currentIndividualTheme = Theme.Undefined;
-                return before;
+                currentGlobalTheme = Theme.Unknown;
+                currentIndividualTheme = Theme.Unknown;
             }
-            return Theme.Undefined;
         }
 
         /// <summary>
@@ -208,75 +207,90 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         /// <param name="newSettings"></param>
         public override void UpdateSettingsState(object newSettings)
         {
-            string globalLightBefore = "";
-            string globalDarkBefore = "";
-            Color colorLightBefore = Color.FromArgb(0, 0, 0, 0);
-            Color colorDarkBefore = Color.FromArgb(0, 0, 0, 0);
-            if (Settings != null)
-            {
-                if (Settings.Component.GlobalWallpaper.Dark != null)
-                {
-                    globalDarkBefore = Settings.Component.GlobalWallpaper.Dark;
-                }
-                if (Settings.Component.GlobalWallpaper.Light != null)
-                {
-                    globalLightBefore = Settings.Component.GlobalWallpaper.Light;
-                }
-                colorLightBefore = Settings.Component.SolidColors.Light;
-                colorDarkBefore = Settings.Component.SolidColors.Dark;
-            }
 
-
-
+            bool isInit = Settings == null;
             base.UpdateSettingsState(newSettings);
-            string globalLightAfter = Settings.Component.GlobalWallpaper.Light == null ? "" : Settings.Component.GlobalWallpaper.Light;
-            string globalDarkAfter = Settings.Component.GlobalWallpaper.Dark == null ? "" : Settings.Component.GlobalWallpaper.Dark;
 
+            if (!isInit)
+            {
+                UpdateCurrentComponentState();
+            }
+        }
+
+        private void StateUpdateOnTypeToggle(WallpaperType current)
+        {
+            if (current == WallpaperType.All)
+            {
+                currentGlobalTheme = Theme.Unknown;
+                currentIndividualTheme = GetIndividualWallpapersState();
+                currentWallpaperPosition = WallpaperHandler.GetPosition();
+            }
+            else if (current == WallpaperType.Individual)
+            {
+                currentIndividualTheme = GetIndividualWallpapersState();
+                currentWallpaperPosition = WallpaperHandler.GetPosition();
+            }
+            else if (current == WallpaperType.Global)
+            {
+                currentGlobalTheme = Theme.Unknown;
+                currentWallpaperPosition = WallpaperHandler.GetPosition();
+            }
+            else if (current == WallpaperType.SolidColor)
+            {
+                currentSolidColorTheme = Theme.Unknown;
+            }
+        }
+
+        private void UpdateCurrentComponentState(bool isInitializing = false)
+        {
+            Logger.Debug("current component state update");
+            if (Settings == null || SettingsBefore == null || (!Initialized && !isInitializing))
+            {
+                return;
+            }
+            string globalLightBefore = SettingsBefore.Component.GlobalWallpaper.Light ?? "";
+            string globalDarkBefore = SettingsBefore.Component.GlobalWallpaper.Dark ?? "";
+            string globalLightAfter = Settings.Component.GlobalWallpaper.Light ?? "";
+            string globalDarkAfter = Settings.Component.GlobalWallpaper.Dark ?? "";
+
+            // check if the global wallpaper section has been modified.
+            // Since we don't have target theme information here, if one value changes, we want a theme refresh
             if (!globalDarkBefore.Equals(globalDarkAfter))
             {
-                currentGlobalTheme = Theme.Undefined;
+                currentGlobalTheme = Theme.Unknown;
             }
             if (!globalLightBefore.Equals(globalLightAfter))
             {
-                currentGlobalTheme = Theme.Undefined;
+                currentGlobalTheme = Theme.Unknown;
             }
 
-            if (!colorLightBefore.Equals(Settings.Component.SolidColors.Light))
+            // Same behavior with solid color
+            if (!SettingsBefore.Component.SolidColors.Light.Equals(Settings.Component.SolidColors.Light))
             {
-                currentSolidColorTheme = Theme.Undefined;
+                currentSolidColorTheme = Theme.Unknown;
             }
 
-            if (!colorDarkBefore.Equals(Settings.Component.SolidColors.Dark))
+            if (!SettingsBefore.Component.SolidColors.Dark.Equals(Settings.Component.SolidColors.Dark))
             {
-                currentSolidColorTheme = Theme.Undefined;
+                currentSolidColorTheme = Theme.Unknown;
             }
 
+            // additinoally, if the user has changed the type dark before, an update is also required
+            if (SettingsBefore.Component.TypeDark != Settings.Component.TypeDark)
+            {
+                StateUpdateOnTypeToggle(Settings.Component.TypeDark);
+            }
 
-            // rerun enable hook for wallpaper switch when cfg is updated
-            // necessary to hot-reload wallpapers
-            UpdateCurrentComponentState();
+            if (SettingsBefore.Component.TypeLight != Settings.Component.TypeLight)
+            {
+                StateUpdateOnTypeToggle(Settings.Component.TypeLight);
+            }
         }
 
         public override void EnableHook()
         {
             WallpaperHandler.DetectMonitors();
-            UpdateCurrentComponentState();
             base.EnableHook();
-        }
-
-        private void UpdateCurrentComponentState()
-        {
-            bool all = Settings.Component.TypeDark == WallpaperType.All || Settings.Component.TypeLight == WallpaperType.All;
-            bool individual = Settings.Component.TypeDark == WallpaperType.Individual || Settings.Component.TypeLight == WallpaperType.Individual;
-            //bool global = Settings.Component.TypeDark == WallpaperType.Global || Settings.Component.TypeLight == WallpaperType.Global;
-            //bool solid = Settings.Component.TypeDark == WallpaperType.SolidColor || Settings.Component.TypeLight == WallpaperType.SolidColor;
-
-            //bool indivUpdated = false;
-            if (individual || all)
-            {
-                currentIndividualTheme = GetIndividualWallpapersState();
-                currentWallpaperPosition = WallpaperHandler.GetPosition();
-            }
         }
 
         private Theme GetIndividualWallpapersState()
@@ -299,13 +313,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     }
                     else
                     {
-                        wallpaperStates.Add(Theme.Undefined);
+                        wallpaperStates.Add(Theme.Unknown);
                         break;
                     }
                 }
                 else
                 {
-                    wallpaperStates.Add(Theme.Undefined);
+                    wallpaperStates.Add(Theme.Unknown);
                     break;
                 }
             }
@@ -320,7 +334,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else
             {
-                return Theme.Undefined;
+                return Theme.Unknown;
             }
         }
 

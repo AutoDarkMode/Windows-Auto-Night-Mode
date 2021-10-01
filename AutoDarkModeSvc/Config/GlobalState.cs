@@ -22,9 +22,9 @@ namespace AutoDarkModeSvc.Config
         }
         protected GlobalState()
         {
-            CurrentWallpaperTheme = Theme.Undefined;
+            CurrentWallpaperTheme = Theme.Unknown;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
-            ForcedTheme = Theme.Undefined;
+            ForcedTheme = Theme.Unknown;
             PostponeSwitch = false;
         }
 

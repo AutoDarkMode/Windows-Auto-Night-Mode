@@ -9,6 +9,7 @@ namespace AutoDarkModeSvc.SwitchComponents
     {
         protected NLog.Logger Logger { get; private set; }
         protected ISwitchComponentSettings<T> Settings { get; set; }
+        protected ISwitchComponentSettings<T> SettingsBefore { get; set; }
         public bool Initialized { get; private set; }
         public BaseComponent()
         {
@@ -23,6 +24,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public void Switch(Theme newTheme)
         {
+            Logger.Debug($"switch invoked for {GetType().Name}");
             ForceSwitch = false;
             if (Enabled)
             {
@@ -59,6 +61,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         {
             if (newSettings is ISwitchComponentSettings<T> temp)
             {
+                SettingsBefore = Settings;
                 Settings = temp;
             }
             else

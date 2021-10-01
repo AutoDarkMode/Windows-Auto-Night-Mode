@@ -279,7 +279,7 @@ namespace AutoDarkModeSvc.Communication
                     #region NoForce
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
-                        state.ForcedTheme = Theme.Undefined;
+                        state.ForcedTheme = Theme.Unknown;
                         ThemeManager.TimedSwitch(builder);
                         SendResponse(new ApiResponse()
                         {

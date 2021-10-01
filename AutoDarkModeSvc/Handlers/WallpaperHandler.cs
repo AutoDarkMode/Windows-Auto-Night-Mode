@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Display;
 using Windows.UI;
+using System.Threading;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -23,12 +24,14 @@ namespace AutoDarkModeSvc.Handlers
             if (newTheme == Theme.Dark)
             {
                 handler.SetBackgroundColor(ToUint(colors.Dark));
+                //Thread.Sleep(500);
                 handler.Enable(false);
 
             }
             else if (newTheme == Theme.Light)
             {
                 handler.SetBackgroundColor(ToUint(colors.Light));
+                //Thread.Sleep(500);
                 handler.Enable(false);
             }
         }
