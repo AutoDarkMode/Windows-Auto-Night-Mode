@@ -18,34 +18,27 @@ namespace AutoDarkModeApp
         {
             DataContext = this;
 
-            Console.WriteLine("--------- AppStart");
+            Trace.WriteLine("--------- AppStart");
 
-            LanguageHelper(); //set current UI language
+            //set current UI language
+            LanguageHelper();
 
             InitializeComponent();
             
             //only run at first startup
             if (Settings.Default.FirstRun)
             {
-                SystemTimeFormat(); //check if system uses 12 hour clock
-                AddJumpList(); //create jump list entries
+                //check if system uses 12 hour clock
+                SystemTimeFormat();
 
-                //set taskfolder name with username for multiple user environments
-                try
-                {
-                    Settings.Default.TaskFolderTitle = "ADM_" + Environment.UserName;
-                    Settings.Default.TaskFolderTitleMultiUser = true;
-                }
-                catch
-                {
-                    Settings.Default.TaskFolderTitle = "Auto Dark Mode";
-                    Settings.Default.TaskFolderTitleMultiUser = false;
-                }
+                //create jump list entries
+                AddJumpList();
 
                 //finished first startup code
                 Settings.Default.FirstRun = false; 
             }
 
+            //run if user changed language in previous session
             if (Settings.Default.LanguageChanged)
             {
                 AddJumpList();
