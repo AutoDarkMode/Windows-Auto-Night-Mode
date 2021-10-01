@@ -10,14 +10,14 @@
         Title="MsgBox" Name="window" MaxHeight="647.091" Width="550" ResizeMode="NoResize" fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" Background="{x:Null}" WindowStartupLocation="CenterOwner" SizeToContent="Height">
 
 
-    <Grid Height="Auto">
+    <Grid Height="Auto"  Background="#40FFFFFF" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" Height="Auto">
-            <StackPanel Background="#40FFFFFF" Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
                 <Grid Width="500" HorizontalAlignment="Left">
                     <TextBlock x:Name="Text_Textblock" HorizontalAlignment="Left" Margin="60,11,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
                     <TextBlock x:Name="IconTextBlock" HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" Text="&#xE708;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="36"/>

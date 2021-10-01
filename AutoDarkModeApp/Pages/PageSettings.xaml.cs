@@ -287,6 +287,16 @@ namespace AutoDarkModeApp.Pages
         {
             if((sender as CheckBox).IsChecked.Value)
             {
+                MsgBox confirm = new("Disabling the icon isn't recommended. Do you really want to continue?", "Hide Tray Icon", "info", "yesno")
+                {
+                    Owner = Window.GetWindow(this)
+                };
+                bool result = confirm.ShowDialog() ?? false;
+                if (!result)
+                {
+                    (sender as CheckBox).IsChecked = false;
+                    return;
+                }
                 builder.Config.Tunable.ShowTrayIcon = false;
             }
             else
