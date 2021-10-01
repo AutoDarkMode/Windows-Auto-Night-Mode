@@ -1,9 +1,11 @@
 ﻿using AutoDarkModeComms;
+using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
 using SourceChord.FluentWPF;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,25 +20,66 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageAbout : Page
     {
-        readonly Updater updater = new();
-        bool update;
-        int easterEgg;
+        private int easterEgg;
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         public PageAbout()
         {
             InitializeComponent();
-            TextBoxVersionNumber.Text = "Beta 5";
-            string commitHash = AdmExtensions.CommitHash();
-            if (commitHash != "")
-            {
-                TextBoxVersionNumber.Text += $" - Backend-{commitHash}";
-            }
-            else
-            {
-                TextBoxVersionNumber.Text += " - Backend";
-            }
+
+            UpdateVersionNumbers();
+
             SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
             SystemTheme_ThemeChanged(this, null);
+        }
+
+        private void UpdateVersionNumbers()
+        {
+            var currentDirectory = Environment.CurrentDirectory;
+            TextBlockCommitHash.Text = "Commit: " + AdmExtensions.CommitHash();
+
+            TextBlockAppVersion.Text = "App: ";
+            try
+            {
+                TextBlockAppVersion.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+            catch
+            {
+                TextBlockAppVersion.Text += "not found";
+            }
+
+            TextBlockSvcVersion.Text = "Service: ";
+            try
+            {
+                var SvcVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeSvc.exe");
+                TextBlockSvcVersion.Text += SvcVersionInfo.FileVersion;
+            }
+            catch
+            {
+                TextBlockSvcVersion.Text += "not found";
+            }
+
+            TextBlockUpdaterVersion.Text = "Updater: ";
+            try
+            {
+                var UpdaterVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeUpdater.exe");
+                TextBlockUpdaterVersion.Text += UpdaterVersionInfo.FileVersion;
+            }
+            catch
+            {
+                TextBlockUpdaterVersion.Text += "not found";
+            }
+
+            TextBlockShellVersion.Text = "Shell: ";
+            try
+            {
+                var ShellVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe");
+                TextBlockShellVersion.Text += ShellVersionInfo.FileVersion;
+            }
+            catch
+            {
+                TextBlockShellVersion.Text += "not found";
+            }
         }
 
         private void SystemTheme_ThemeChanged(object sender, EventArgs e)
@@ -51,6 +94,7 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
+        /*
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (!update)
@@ -83,6 +127,7 @@ namespace AutoDarkModeApp.Pages
                 updater.Update();
             }
         }
+        */
 
         private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

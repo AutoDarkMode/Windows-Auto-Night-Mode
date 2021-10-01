@@ -6,31 +6,114 @@
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:Properties="clr-namespace:AutoDarkModeApp.Properties" x:Class="AutoDarkModeApp.Pages.PageAbout"
       mc:Ignorable="d"
-      Title="PageAbout" Height="700" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+    
+      Title="PageAbout"
+      d:MinWidth="450">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         
-        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarAbout}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock 
+            HorizontalAlignment="Left"  VerticalAlignment="Top"
+            Margin="0,0,0,0"
+            Grid.Column="1" Grid.Row="1" 
+            Text="{x:Static p:Resources.NavbarAbout}" 
+            FontSize="30"
+            FontFamily="Segoe UI Semilight"/>
 
-        <!-- Info -->
-        <Image HorizontalAlignment="Left" Height="50" Margin="10,56,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="50" Source="/AutoDarkModeIcon.ico" MouseDown="Image_MouseDown"/>
-        <TextBlock Name="TextBoxVersionNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="67,63,0,0" Grid.Column="1" Grid.Row="1" />
-        <TextBlock HorizontalAlignment="Left" Margin="67,88,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="© 2021 Armin Osaj &amp; Samuel Schiegg" VerticalAlignment="Top" Height="16"/>
+        <!-- ADM Logo -->
+        <Image 
+            HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Height="80" Width="80" 
+            Margin="0,10,0,0" 
+            Grid.Column="1" Grid.Row="3"  
+            Source="/AutoDarkModeIcon.ico"
+            MouseDown="Image_MouseDown"
+            />
+        <TextBlock 
+            Name="TextBoxVersionNumber" 
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Grid.Column="1" Grid.Row="3"
+            Text="Auto Dark Mode X" 
+            FontWeight="Bold" 
+            FontSize="20" 
+            Margin="90,32,0,0" 
+            />
+        <TextBlock 
+            HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Grid.Column="1" Grid.Row="3"  
+            Margin="90,60,0,0" 
+            Text="© 2021 Armin Osaj &amp; Samuel Schiegg" 
+            />
+        
+        <!-- Version Numbers -->
+        <StackPanel
+            Name="StackPanelVersionNumbers"
+            Grid.Row="4" Grid.Column="1"
+            Margin="0,35,0,0"
+            Orientation="Vertical">
+
+            <TextBlock 
+                Margin="0,0,0,0"
+                Text="Version" 
+                FontFamily="Segoe UI"
+                FontSize="20"/>
+
+            <TextBlock
+                Name="TextBlockCommitHash"
+                Margin="0,15,0,0"
+                FontSize="14"
+                />
+            <TextBlock
+                Name="TextBlockSvcVersion"
+                Margin="0,5,0,0"
+                FontSize="14"
+                FontWeight="SemiBold"
+                />
+            <TextBlock
+                Name="TextBlockUpdaterVersion"
+                Margin="0,5,0,0"
+                FontSize="14"
+                />
+            <TextBlock
+                Name="TextBlockAppVersion"
+                Margin="0,5,0,0"
+                FontSize="14"
+                />
+            <TextBlock
+                Name="TextBlockShellVersion"
+                Margin="0,5,0,0"
+                FontSize="14"
+                />
+        </StackPanel>
 
         <!-- Social Media links-->
-        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="13,131,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="30" Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png"/>
-        <TextBlock x:Name="GitHubTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="51,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown">
+        <TextBlock 
+                Grid.Row="5" Grid.Column="1"
+                Margin="0,30,0,0"
+                Text="Follow us" 
+                FontFamily="Segoe UI"
+                FontSize="20"/>
+        
+        <Image x:Name="gitHubImage" HorizontalAlignment="Left" Height="30" Margin="0,75,0,0" Grid.Column="1" Grid.Row="5"  VerticalAlignment="Top" Width="30" Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png"/>
+        <TextBlock x:Name="GitHubTextBlock" FontSize="14" HorizontalAlignment="Left" Margin="40,80,0,0" Grid.Column="1" Grid.Row="5"  TextWrapping="Wrap" Focusable="True" Text="GitHub" VerticalAlignment="Top" MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown" KeyDown="GitHubTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -43,8 +126,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="132,131,0,0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="28"/>
-        <TextBlock x:Name="telegramTextBlock" FontSize="13" HorizontalAlignment="Left" Margin="170,140,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown">
+        <TextBlock HorizontalAlignment="Left" Margin="120,77,0,0" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="&#xE8BD;" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" FontSize="28"/>
+        <TextBlock x:Name="telegramTextBlock" FontSize="14" HorizontalAlignment="Left" Margin="160,80,0,0" Grid.Column="1" Grid.Row="5"  TextWrapping="Wrap" Focusable="True" Text="Telegram" VerticalAlignment="Top" MouseDown="TelegramTextBlock_MouseDown" KeyDown="TelegramTextBlock_KeyDown">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -57,143 +140,151 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-
-        <!-- Update -->
-        <TextBlock HorizontalAlignment="Left" Margin="10,232,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblUpdates}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="250" Height="19"/>
-        <Button x:Name="updateButton" Content="{x:Static Properties:Resources.updateButton}" HorizontalAlignment="Left" Margin="10,259,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Click="UpdateButton_Click" Height="26" Width="150" Style="{StaticResource ButtonRevealStyle}"/>
-        <TextBlock x:Name="updateInfoText" HorizontalAlignment="Left" Margin="10,289,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Text="{x:Static Properties:Resources.updateInfoText}" Width="400" Height="16"/>
 
         <!-- Third Party Software-->
-        <TextBlock HorizontalAlignment="Left" Margin="10,332,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static Properties:Resources.lblThirdParty}" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="19"/>
-        <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Margin="10,390,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="13" Margin="10,420,0,0" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="YamlDotNetLicense" Text="YamlDotNet" FontSize="13" Margin="10,450,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="YamlDotNetLicense_MouseDown" KeyDown="YamlDotNetLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="NetMQLicense" Text="NetMQ" FontSize="13" Margin="10,480,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NetMQLicense_MouseDown" KeyDown="NetMQLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="SunriseCalcLicense" Text="SunriseCalculator" FontSize="13" Margin="10,510,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseCalcLicense_MouseDown" KeyDown="SunriseCalcLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="ModernWPFLicense" Text="ModernWPF" FontSize="13" Margin="10,540,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="ModernWPFLicense_MouseDown" KeyDown="ModernWPFLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="NLogLicense" Text="NLog" FontSize="13" Margin="10,570,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NLogLicense_MouseDown" KeyDown="NLogLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="SharpromptLicense" Text="Sharprompt" FontSize="13" Margin="10,600,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SharpromptLicense_MouseDown" KeyDown="SharpromptLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBlock Name="SunriseSunset" Text="SunriseSunset" FontSize="13" Margin="10,630,0,0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseSunsetLicense_MouseDown" KeyDown="SunriseSunsetLicense_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+        <StackPanel
+            Name="StackPanelThirdPartySoftware"
+            Grid.Row="6" Grid.Column="1"
+            Margin="0,30,0,0"
+            Orientation="Vertical">
+
+            <TextBlock 
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="0,0,0,0"
+                TextWrapping="Wrap" 
+                Text="{x:Static Properties:Resources.lblThirdParty}" 
+                FontFamily="Segoe UI"
+                FontSize="20"/>
+            <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="YamlDotNetLicense" Text="YamlDotNet" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="YamlDotNetLicense_MouseDown" KeyDown="YamlDotNetLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="NetMQLicense" Text="NetMQ" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NetMQLicense_MouseDown" KeyDown="NetMQLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="SunriseCalcLicense" Text="SunriseCalculator" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseCalcLicense_MouseDown" KeyDown="SunriseCalcLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="ModernWPFLicense" Text="ModernWPF" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="ModernWPFLicense_MouseDown" KeyDown="ModernWPFLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="NLogLicense" Text="NLog" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NLogLicense_MouseDown" KeyDown="NLogLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="SharpromptLicense" Text="Sharprompt" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SharpromptLicense_MouseDown" KeyDown="SharpromptLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Name="SunriseSunset" Text="SunriseSunset" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseSunsetLicense_MouseDown" KeyDown="SunriseSunsetLicense_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
