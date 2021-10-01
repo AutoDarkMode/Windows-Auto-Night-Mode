@@ -226,6 +226,9 @@
                     Width="150" Height="Auto" 
                     Margin="0,0,0,0" 
                     Header="Latitude"
+                    PlaceholderText="0.000"
+                    SmallChange="0"
+                    LargeChange="0"
                     />
 
                 <ui:NumberBox 
@@ -233,6 +236,9 @@
                     Width="150" Height="Auto"
                     Margin="25,0,0,0" 
                     Header="Longitude"
+                    PlaceholderText="0.000"
+                    SmallChange="0"
+                    LargeChange="0"
                     />
 
                 <Button 

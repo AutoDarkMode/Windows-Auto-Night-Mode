@@ -639,6 +639,7 @@ namespace AutoDarkModeApp.Pages
             if (OffsetButton != null & !init)
             {
                 OffsetButton.IsEnabled = true;
+                userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             }
         }
 
@@ -647,6 +648,7 @@ namespace AutoDarkModeApp.Pages
             if (OffsetButton != null & !init)
             {
                 OffsetButton.IsEnabled = true;
+                userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             }
         }
     }
