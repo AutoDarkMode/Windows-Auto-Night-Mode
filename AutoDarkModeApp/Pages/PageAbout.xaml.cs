@@ -62,7 +62,7 @@ namespace AutoDarkModeApp.Pages
             TextBlockUpdaterVersion.Text = "Updater: ";
             try
             {
-                var UpdaterVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeUpdater.exe");
+                var UpdaterVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\Updater\AutoDarkModeUpdater.exe");
                 TextBlockUpdaterVersion.Text += UpdaterVersionInfo.FileVersion;
             }
             catch
