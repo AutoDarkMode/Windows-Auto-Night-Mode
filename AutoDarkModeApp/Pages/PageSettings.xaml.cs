@@ -43,35 +43,49 @@ namespace AutoDarkModeApp.Pages
         }
         private void UiHandler()
         {
-            RestartButton.Visibility = Visibility.Hidden;
-            CheckBoxEnergySaverMitigation.ToolTip = Properties.Resources.cbSettingsEnergySaverMitigationInfo;
+            //disable elements which aren't compatible with this device
+            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
+            {
+                CheckBoxEnergySaverMitigation.IsEnabled = false;
+            }
+
+            //language ui
+            ButtonRestart.Visibility = Visibility.Collapsed;
+            TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
             ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString();
-            if(ComboBoxLanguageSelection.SelectedValue == null)
+            if (ComboBoxLanguageSelection.SelectedValue == null)
             {
                 ComboBoxLanguageSelection.SelectedValue = "en";
             }
 
+
+            CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
+            CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
+            CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
+            CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
+
+
+            //battery slider / energy saver mitigation
+            BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
+            CheckBoxEnergySaverMitigation.ToolTip = Properties.Resources.cbSettingsEnergySaverMitigationInfo;
             if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
-                SetBatterySliderVisiblity(Visibility.Collapsed);
+                StackPanelBatterySlider.Visibility = Visibility.Collapsed;
             }
             else
             {
                 CheckBoxEnergySaverMitigation.IsChecked = true;
             }
 
-            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
-            {
-                CheckBoxEnergySaverMitigation.IsEnabled = false;
-            }
-
-            CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
-            CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
-            CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
-            BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
-
             //updater ui
-            TextBlockUpdateInfo.Text = "Last checked: " + builder.UpdaterData.LastCheck.ToString();
+            if (builder.UpdaterData.LastCheck.Year.ToString().Equals("1"))
+            {
+                TextBlockUpdateInfo.Text = "Last checked: " + "never";
+            }
+            else
+            {
+                TextBlockUpdateInfo.Text = "Last checked: " + builder.UpdaterData.LastCheck.ToString();
+            }
             CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
             switch (builder.Config.Updater.DaysBetweenUpdateCheck)
             {
@@ -110,16 +124,17 @@ namespace AutoDarkModeApp.Pages
             {
                 SetLanguage(selectedLanguage);
                 Translator.Text = Properties.Resources.lblTranslator;
-                RestartText.Text = Properties.Resources.restartNeeded;
-                RestartButton.Content = Properties.Resources.restart;
-                RestartButton.Visibility = Visibility.Visible;
+                TextBlockLanguageRestart.Text = Properties.Resources.restartNeeded;
+                TextBlockLanguageRestart.Visibility = Visibility.Visible;
+                ButtonRestart.Content = Properties.Resources.restart;
+                ButtonRestart.Visibility = Visibility.Visible;
                 Settings.Default.LanguageChanged = true;
             }
             else
             {
                 SetLanguage(selectedLanguage);
-                RestartText.Text = null;
-                RestartButton.Visibility = Visibility.Hidden;
+                TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
+                ButtonRestart.Visibility = Visibility.Collapsed;
                 Translator.Text = Properties.Resources.lblTranslator;
                 Settings.Default.LanguageChanged = false;
             }
@@ -132,7 +147,7 @@ namespace AutoDarkModeApp.Pages
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
         }
 
-        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonRestart_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -222,12 +237,12 @@ namespace AutoDarkModeApp.Pages
             if (CheckBoxEnergySaverMitigation.IsChecked.Value)
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = true;
-                SetBatterySliderVisiblity(Visibility.Visible);
+                StackPanelBatterySlider.Visibility =  Visibility.Visible;
             }
             else
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = false;
-                SetBatterySliderVisiblity(Visibility.Collapsed);
+                StackPanelBatterySlider.Visibility = Visibility.Collapsed;
             }
             try
             {
@@ -237,13 +252,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxEnergySaverMitigation_Click");
             }
-        }
-
-        private void SetBatterySliderVisiblity(Visibility visibility)
-        {
-            BatterySlider.Visibility = visibility;
-            BatterySliderLabel.Visibility = visibility;
-            BatterySliderText.Visibility = visibility;
         }
 
         private async void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
@@ -259,6 +267,7 @@ namespace AutoDarkModeApp.Pages
                     builder.Config.Tunable.UseLogonTask = false;
                 }
                 builder.Save();
+
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
                     var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
@@ -274,6 +283,29 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
+        private void CheckBoxHideTrayIcon_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Tunable.ShowTrayIcon = false;
+            }
+            else
+            {
+                builder.Config.Tunable.ShowTrayIcon = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxHideTrayIcon_Click");
+            }
+        }
+
+        /// <summary>
+        /// Updater
+        /// </summary>
         private void ButtonSearchUpdate_Click(object sender, RoutedEventArgs e)
         {
             ButtonSearchUpdate.IsEnabled = false;

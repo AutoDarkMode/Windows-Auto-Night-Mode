@@ -54,6 +54,12 @@
                 Margin="0,10,0,0" 
                 Click="CheckBoxLogonTask_Click"
                 />
+            <CheckBox
+                Name="CheckBoxHideTrayIcon"
+                Content="Hide tray icon (needs system restart)"
+                Margin="0,10,0,0"
+                Click="CheckBoxHideTrayIcon_Click"
+                />
             <CheckBox 
                 Name="CheckBoxColourFilter" 
                 Content="{x:Static p:Resources.cbSettingsColourFilter}" 
@@ -70,36 +76,50 @@
                 />
 
             <!-- Battery Saver Slider -->
-            <TextBlock 
-                Name="BatterySliderLabel" 
-                Visibility="Visible" 
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="0,15,0,0" 
-                TextWrapping="Wrap" 
-                Text="{x:Static p:Resources.SettingsBatterySlider}"
-                />
-            <Slider 
-                Name="BatterySlider" 
-                Visibility="Visible"
-                HorizontalAlignment="Left" 
-                Width="270" Margin="0,5,0,0" 
-                Thumb.DragCompleted="BatterySlider_Save" KeyUp="BatterySlider_Save" 
-                Value="25" Minimum="0" Maximum="100" 
-                IsSnapToTickEnabled="True"
-                />
-            <TextBlock 
-                Name="BatterySliderText" 
-                HorizontalAlignment="Left" 
-                Visibility="Visible" 
-                Margin="128.5,0,0,0" 
-                TextWrapping="Wrap" 
-                Text="{Binding ElementName=BatterySlider,Path=Value}" 
-                VerticalAlignment="Top"/>
+            <StackPanel
+                Name="StackPanelBatterySlider"
+                Orientation="Vertical"
+                Margin="0,10,0,0">
+
+                <TextBlock 
+                    Name="BatterySliderLabel" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap"
+                    FontSize="14"
+                    Text="{x:Static p:Resources.SettingsBatterySlider}"
+                    />
+                <Slider 
+                    Name="BatterySlider" 
+                    HorizontalAlignment="Left" 
+                    Width="270" 
+                    Margin="0,5,0,0" 
+                    Thumb.DragCompleted="BatterySlider_Save" 
+                    KeyUp="BatterySlider_Save" 
+                    Value="25" Minimum="0" Maximum="100" 
+                    IsSnapToTickEnabled="True"
+                    />
+                <TextBlock 
+                    Name="BatterySliderText" 
+                    HorizontalAlignment="Left" 
+                    Visibility="Visible" 
+                    Margin="128.5,0,0,0" 
+                    TextWrapping="Wrap" 
+                    FontSize="14"
+                    Text="{Binding ElementName=BatterySlider,Path=Value}" 
+                    VerticalAlignment="Top"/>
+            </StackPanel>
 
             <!-- Language selection-->
+            <TextBlock
+                Margin="0,30,0,0"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="Language"
+                />
             <TextBlock 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="0,30,0,0" 
+                Margin="0,15,0,0" 
                 Grid.Column="1" Grid.Row="1"  
                 FontSize="14"
                 Text="{x:Static p:Resources.lblLanguage}" 
@@ -143,26 +163,25 @@
                 FontSize="14"
                 Foreground="Gray"/>
             <TextBlock 
-                Name="RestartText" 
+                Name="TextBlockLanguageRestart" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
-                Margin="0,15,0,0"
-                Grid.Column="1" Grid.Row="1"  
-                TextWrapping="Wrap" Text="" 
+                Margin="0,15,0,0" 
+                TextWrapping="Wrap"
                 FontSize="14"
-                Foreground="Red"/>
+                Foreground="Red"
+                Text="{x:Static p:Resources.restartNeeded}"/>
             <Button 
-                Name="RestartButton" 
-                Content="Restart App" 
-                Grid.Column="1" Grid.Row="1"  
+                Name="ButtonRestart" 
+                Content="Restart App"
                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="0,10,0,0" 
+                Margin="0,5,0,0" 
                 MinWidth="130" 
-                Click="RestartButton_Click"
+                Click="ButtonRestart_Click"
                 />
 
             <!-- Updates -->
             <TextBlock
-                Margin="0,25,0,0"
+                Margin="0,30,0,0"
                 FontFamily="Segeo UI"
                 FontSize="20"
                 Text="Updates"
@@ -170,7 +189,7 @@
 
             <StackPanel
                 x:Name="StackPanelUpdater"
-                Margin="0,20,0,0"
+                Margin="0,15,0,0"
                 Orientation="Vertical">
 
                 <TextBlock
