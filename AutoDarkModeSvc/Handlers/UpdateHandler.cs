@@ -53,6 +53,14 @@ namespace AutoDarkModeSvc.Handlers
             ApiResponse response = new();
             try
             {
+                try
+                {
+                    builder.SaveUpdaterData();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "could not update last update check time:");
+                }
                 if (builder.Config.Updater.ZipCustomUrl != null && builder.Config.Updater.HashCustomUrl != null)
                 {
                     UpdateInfo info = new()

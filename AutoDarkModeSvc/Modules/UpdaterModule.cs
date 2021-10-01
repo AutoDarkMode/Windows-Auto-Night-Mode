@@ -76,14 +76,6 @@ namespace AutoDarkModeSvc.Modules
                             ToastHandler.InvokeUpdateToast(canUseUpdater: false);
                         }
                     }
-                    try
-                    {
-                        builder.SaveUpdaterData();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, "could not save update time:");
-                    }
                 }
                 else
                 {
