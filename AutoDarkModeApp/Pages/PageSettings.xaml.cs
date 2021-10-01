@@ -67,7 +67,6 @@ namespace AutoDarkModeApp.Pages
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxBackgroundUpdater.IsChecked = builder.Config.Updater.Enabled;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
-            TextboxAccentColorDelay.Text = builder.Config.SystemSwitch.Component.TaskbarSwitchDelay.ToString();
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
         }
 
@@ -164,45 +163,6 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
             }
             _ = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-        }
-
-        private void TextboxAccentColorDelay_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextboxAccentColorDelay.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                TextboxAccentColorDelay.SelectAll();
-            }));
-        }
-        private void TextboxAccentColorDelay_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextboxAccentColorDelay_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TextboxAccentColorDelay_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!initialized)
-            {
-                return;
-            }
-            if (TextboxAccentColorDelay.Text != "")
-            {
-                builder.Config.SystemSwitch.Component.TaskbarSwitchDelay = int.Parse(TextboxAccentColorDelay.Text);
-                try
-                {
-                    builder.Save();
-                }
-                catch(Exception ex)
-                {
-                    ShowErrorMessage(ex, "TextboxAccentColorDelay_TextChanged");
-                }
-            }
         }
 
         private void ShowErrorMessage(Exception ex, string location)

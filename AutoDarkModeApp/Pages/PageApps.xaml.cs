@@ -30,15 +30,15 @@ namespace AutoDarkModeApp
             SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
         }
 
-        //react to windows theme change
-        // still required??? @Armin2208
         private void ThemeChange(object sender, EventArgs e)
         {
             if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
             {
+
             }
             else
             {
+
             }
         }
 
@@ -81,6 +81,11 @@ namespace AutoDarkModeApp
 
                 //is accent color switch enabled?
                 AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnDark;
+                if (!AccentColorCheckBox.IsChecked.Value)
+                {
+                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                }
             }
 
             //combobox
@@ -117,6 +122,9 @@ namespace AutoDarkModeApp
             {
                 CheckBoxOfficeWhiteTheme.IsChecked = true;
             }
+
+            //numbox
+            NumberBoxColorDelay.Value = Convert.ToInt32(builder.Config.SystemSwitch.Component.TaskbarSwitchDelay);
         }
 
         private void AppComboBox_DropDownClosed(object sender, EventArgs e)
@@ -188,10 +196,14 @@ namespace AutoDarkModeApp
             if (((CheckBox)sender).IsChecked ?? false)
             {
                 builder.Config.SystemSwitch.Component.TaskbarColorOnDark = true;
+                TextBlockColorDelay.Visibility = Visibility.Visible;
+                NumberBoxColorDelay.Visibility = Visibility.Visible;
             }
             else
             {
                 builder.Config.SystemSwitch.Component.TaskbarColorOnDark = false;
+                TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                NumberBoxColorDelay.Visibility = Visibility.Collapsed;
             }
             try
             {
@@ -312,5 +324,20 @@ namespace AutoDarkModeApp
                 ShowErrorMessage(ex);
             }
         }
+
+        private void NumberBoxColorDelay_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            builder.Config.SystemSwitch.Component.TaskbarSwitchDelay = Convert.ToInt32(NumberBoxColorDelay.Value);
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
     }
 }
+
+
