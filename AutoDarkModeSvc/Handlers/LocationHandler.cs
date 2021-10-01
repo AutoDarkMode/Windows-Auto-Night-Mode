@@ -68,6 +68,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Error(e, "could not update configuration file while retrieving location");
             }
+            //await Task.Delay(2500);
             state.GeolocatorIsUpdating = false;
             return success;
         }

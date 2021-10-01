@@ -308,7 +308,7 @@ namespace AutoDarkModeApp.Pages
 
         private async Task LoadGeolocationData()
         {
-            int maxTries = 3;
+            int maxTries = 5;
             for (int i = 0; i < maxTries; i++)
             {
                 ApiResponse result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
@@ -316,7 +316,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     break;
                 }
-                await Task.Delay(500);
+                await Task.Delay(1000);
             }
 
             try
