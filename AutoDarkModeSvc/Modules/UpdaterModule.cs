@@ -49,7 +49,6 @@ namespace AutoDarkModeSvc.Modules
                 if (DateTime.Now >= nextUpdate || firstRun)
                 {
                     firstRun = false;
-                    builder.UpdaterData.LastCheck = DateTime.Now;
                     _ = UpdateHandler.CheckNewVersion();
                     ApiResponse versionCheck = UpdateHandler.UpstreamResponse;
 

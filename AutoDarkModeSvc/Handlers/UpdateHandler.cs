@@ -55,6 +55,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 try
                 {
+                    builder.UpdaterData.LastCheck = DateTime.Now;
                     builder.SaveUpdaterData();
                 }
                 catch (Exception ex)
