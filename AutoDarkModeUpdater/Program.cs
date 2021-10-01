@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace AutoDarkModeUpdater
 {
     class Program
     {
-        private const string Version = "2.0";
+        private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
         private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
@@ -41,7 +42,7 @@ namespace AutoDarkModeUpdater
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
 
-            Logger.Info($"Auto Dark Mode Updater {Version}");
+            Logger.Info($"Auto Dark Mode Updater {Version.Major}.{Version.Minor}");
 
             bool restoreShell = false;
             bool restoreApp = false;
