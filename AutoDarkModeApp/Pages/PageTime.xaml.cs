@@ -511,8 +511,8 @@ namespace AutoDarkModeApp.Pages
                 Owner = Window.GetWindow(this)
             };
             msg.ShowDialog();
-            var result = msg.DialogResult;
-            if (result == true)
+            bool result = msg.DialogResult ?? false;
+            if (result)
             {
                 string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)

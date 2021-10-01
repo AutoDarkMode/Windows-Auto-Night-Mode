@@ -334,11 +334,11 @@ If you run into issues: please increase the switching delay in settings. </value
     <value>Sorry, but we couldn't apply your settings.
 
 Here are some things you can try:
-- Uninstall and then reinstall auto dark mode.
-- Try to disable {0} in the Auto Dark Mode settings.
-- If you enabled Desktop Wallpaper, disable the feature and try again.
+- Restart the Auto Dark Mode service
+- Check if the service is running
+- Close the service, delete the config.yaml file and re-configue
 
-If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
+If these things didn't help, you can create an issue on GitHub. You can access the issue by clicking the "Yes" button.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Error: Your input is invalid</value>
