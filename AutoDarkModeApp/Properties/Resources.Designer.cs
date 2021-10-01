@@ -492,9 +492,9 @@ namespace AutoDarkModeApp.Properties {
         ///   Looks up a localized string similar to Sorry, but we couldn&apos;t apply your settings.
         ///
         ///Here are some things you can try:
-        ///- Uninstall and then reinstall auto dark mode.
-        ///- Try to disable {0} in the Auto Dark Mode settings.
-        ///- If you enabled Desktop Wallpaper, disable the feature and try again.
+        ///- Restart the Auto Dark Mode service
+        ///- Check if the service is running
+        ///- Close the service, delete the config.yaml file and re-configue
         ///
         ///If these things didn&apos;t help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the &quot;Yes&quot; button..
         /// </summary>
