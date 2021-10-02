@@ -140,6 +140,7 @@
                     Height="30" 
                     Style="{StaticResource ButtonAccentRevealStyle}" 
                     BorderBrush="Black"
+                    Visibility="Collapsed"
                     />
             </StackPanel>
         </Grid>

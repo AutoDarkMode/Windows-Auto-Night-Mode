@@ -222,7 +222,7 @@ namespace AutoDarkModeApp.Pages
             //currently nothing to check
 
             //display edited hour values for the user
-            //disabled because we don't edit anything
+            //disabled because we don't check and edit anything
             //TimePickerDark.SelectedDateTime = new DateTime(2000, 08, 22, darkStart, darkStartMinutes, 0);
             //TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
 
@@ -241,7 +241,7 @@ namespace AutoDarkModeApp.Pages
             ApplyTheme();
 
             //ui
-            applyButton.IsEnabled = false;
+            //applyButton.IsEnabled = false;
         }
 
         private async void ApplyTheme()
@@ -600,7 +600,11 @@ namespace AutoDarkModeApp.Pages
 
         private void TimePicker_SelectedDateTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-            applyButton.IsEnabled = true;
+            if (!init)
+            {
+                //applyButton.IsEnabled = true;
+                ApplyButton_Click(this, null);
+            }
         }
 
         private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
