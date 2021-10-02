@@ -38,7 +38,7 @@ namespace AutoDarkModeApp
 
             MainWindow mainWin = new();
 
-            string message = "Service not running yet, starting service...";
+            string message = "Service not running yet, please wait...";
             MsgBox msg = new(message, "Launching Service", "info", "none")
             {
                 Owner = null
