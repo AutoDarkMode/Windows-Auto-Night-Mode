@@ -21,7 +21,6 @@
         fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" 
         fw:ExtendViewIntoTitleBar="True" 
         fw:PointerTracker.Enabled="True" 
-        Background="{x:Null}"
         ui:ThemeManager.IsThemeAware="True">
 
     <Grid x:Name="mainWin">
