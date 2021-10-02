@@ -17,7 +17,7 @@
         Width="850" 
         ResizeMode="CanResize" 
         Closed="Window_Closed" 
-        ContentRendered="Window_ContentRendered" 
+        ContentRendered="Window_ContentRendered"
         fw:AcrylicWindow.AcrylicWindowStyle="NoIcon" 
         fw:ExtendViewIntoTitleBar="True" 
         fw:PointerTracker.Enabled="True" 

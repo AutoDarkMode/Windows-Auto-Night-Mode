@@ -167,25 +167,25 @@ namespace AutoDarkModeApp
                 switch (navItemTag)
                 {
                     case "time":
-                        FrameNavbar.Navigate(typeof(PageTime));
+                        FrameNavbar.Navigate(typeof(PageTime), null, new EntranceNavigationTransitionInfo());
                         break;
                     case "modes":
-                        FrameNavbar.Navigate(typeof(PageSwitchModes));
+                        FrameNavbar.Navigate(typeof(PageSwitchModes), null, new EntranceNavigationTransitionInfo());
                         break;
                     case "apps":
-                        FrameNavbar.Navigate(typeof(PageApps));
+                        FrameNavbar.Navigate(typeof(PageApps), null, new EntranceNavigationTransitionInfo());
                         break;
                     case "wallpaper":
-                        FrameNavbar.Navigate(typeof(PageWallpaper));
+                        FrameNavbar.Navigate(typeof(PageWallpaper), null, new EntranceNavigationTransitionInfo());
                         break;
                     case "settings":
-                        FrameNavbar.Navigate(typeof(PageSettings));
+                        FrameNavbar.Navigate(typeof(PageSettings), null, new EntranceNavigationTransitionInfo());
                         break;
                     case "donation":
-                        FrameNavbar.Navigate(typeof(PageDonation));
+                        FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
                         break;
                     case "about":
-                        FrameNavbar.Navigate(typeof(PageAbout));
+                        FrameNavbar.Navigate(typeof(PageAbout), null, new EntranceNavigationTransitionInfo());
                         break;
                 }
                 ScrollViewerNavbar.ScrollToTop();
