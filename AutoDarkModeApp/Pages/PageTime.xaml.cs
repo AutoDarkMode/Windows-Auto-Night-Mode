@@ -498,6 +498,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex);
             }
+            ButtonApplyCoordinates.IsEnabled = false;
             ActivateLocationMode();
             ApplyTheme();
             TogglePanelVisibility(false, true, true, true);
@@ -636,18 +637,44 @@ namespace AutoDarkModeApp.Pages
 
         private void NumberBox_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
         {
-            if (OffsetButton != null & !init)
+            if (!init)
             {
-                OffsetButton.IsEnabled = true;
+                if(sender.Tag.Equals("offset"))
+                {
+                    if (OffsetButton != null)
+                    {
+                        OffsetButton.IsEnabled = true;
+                    }
+                }
+                else if (sender.Tag.Equals("coordinates"))
+                {
+                    if(ButtonApplyCoordinates != null)
+                    {
+                        ButtonApplyCoordinates.IsEnabled = true;
+                    }
+                }
                 userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             }
         }
 
         private void NumberBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (OffsetButton != null & !init)
+            if (!init)
             {
-                OffsetButton.IsEnabled = true;
+                if((sender as ModernWpf.Controls.NumberBox).Tag.Equals("offset"))
+                {
+                    if (OffsetButton != null)
+                    {
+                        OffsetButton.IsEnabled = true;
+                    }
+                }
+                else if ((sender as ModernWpf.Controls.NumberBox).Tag.Equals("coordinates"))
+                {
+                    if (ButtonApplyCoordinates != null)
+                    {
+                        ButtonApplyCoordinates.IsEnabled = true;
+                    }
+                }
                 userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             }
         }

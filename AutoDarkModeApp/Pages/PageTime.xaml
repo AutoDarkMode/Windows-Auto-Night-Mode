@@ -229,6 +229,8 @@
                     PlaceholderText="0.000"
                     SmallChange="0"
                     LargeChange="0"
+                    Tag="coordinates"
+                    ValueChanged="NumberBox_ValueChanged"
                     />
 
                 <ui:NumberBox 
@@ -239,6 +241,9 @@
                     PlaceholderText="0.000"
                     SmallChange="0"
                     LargeChange="0"
+                    Tag="coordinates"
+                    ValueChanged="NumberBox_ValueChanged"
+                    PreviewTextInput="NumberBox_PreviewTextInput"
                     />
 
                 <Button 
@@ -247,6 +252,7 @@
                     VerticalAlignment="Bottom"
                     Margin="25,0,0,0" 
                     Click="ButtonApplyCoordinates_Click"
+                    PreviewTextInput="NumberBox_PreviewTextInput"
                     />
 
             </StackPanel>
@@ -288,6 +294,7 @@
                     Value="0"
                     Maximum="999"
                     Header="{x:Static p:Resources.lblLight}"
+                    Tag="offset"
                     SpinButtonPlacementMode="Inline"
                     ContextMenuOpening="NumberBox_ContextMenuOpening"
                     ValueChanged="NumberBox_ValueChanged"
@@ -301,6 +308,7 @@
                     Value="0"
                     Maximum="999"
                     Header="{x:Static p:Resources.lblDark}"
+                    Tag="offset"
                     SpinButtonPlacementMode="Inline"
                     ContextMenuOpening="NumberBox_ContextMenuOpening"
                     ValueChanged="NumberBox_ValueChanged"
