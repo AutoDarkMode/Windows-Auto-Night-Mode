@@ -119,26 +119,29 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
+        private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString();
-            if (selectedLanguage != curLanguage)
+            if (!init)
             {
-                SetLanguage(selectedLanguage);
-                Translator.Text = Properties.Resources.lblTranslator;
-                TextBlockLanguageRestart.Text = Properties.Resources.restartNeeded;
-                TextBlockLanguageRestart.Visibility = Visibility.Visible;
-                ButtonRestart.Content = Properties.Resources.restart;
-                ButtonRestart.Visibility = Visibility.Visible;
-                Settings.Default.LanguageChanged = true;
-            }
-            else
-            {
-                SetLanguage(selectedLanguage);
-                TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
-                ButtonRestart.Visibility = Visibility.Collapsed;
-                Translator.Text = Properties.Resources.lblTranslator;
-                Settings.Default.LanguageChanged = false;
+                string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString();
+                if (selectedLanguage != curLanguage)
+                {
+                    SetLanguage(selectedLanguage);
+                    Translator.Text = Properties.Resources.lblTranslator;
+                    TextBlockLanguageRestart.Text = Properties.Resources.restartNeeded;
+                    TextBlockLanguageRestart.Visibility = Visibility.Visible;
+                    ButtonRestart.Content = Properties.Resources.restart;
+                    ButtonRestart.Visibility = Visibility.Visible;
+                    Settings.Default.LanguageChanged = true;
+                }
+                else
+                {
+                    SetLanguage(selectedLanguage);
+                    TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
+                    ButtonRestart.Visibility = Visibility.Collapsed;
+                    Translator.Text = Properties.Resources.lblTranslator;
+                    Settings.Default.LanguageChanged = false;
+                }
             }
         }
 
@@ -462,7 +465,7 @@ namespace AutoDarkModeApp.Pages
         /// <summary>
         /// Config folder links
         /// </summary>
-        private void HyperlinkOpenConfigFile_Click(object sender, RoutedEventArgs e)
+        private void HyperlinkOpenConfigFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "config.yaml");
             new Process
@@ -474,16 +477,12 @@ namespace AutoDarkModeApp.Pages
             }.Start();
         }
 
-        private void HyperlinkOpenConfigFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void HyperlinkOpenConfigFile_KeyDown(object sender, KeyEventArgs e)
         {
-            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "config.yaml");
-            new Process
+            if (e.Key == Key.Enter |  e.Key == Key.Space)
             {
-                StartInfo = new ProcessStartInfo(filepath)
-                {
-                    UseShellExecute = true
-                }
-            }.Start();
+                HyperlinkOpenConfigFile_PreviewMouseDown(this, null);
+            }
         }
 
         private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -498,10 +497,26 @@ namespace AutoDarkModeApp.Pages
             }.Start();
         }
 
+        private void HyperlinkOpenLogFile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                HyperlinkOpenLogFile_PreviewMouseDown(this, null);
+            }
+        }
+
         private void HyperlinkOpenAppDataFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var folderpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
             Process.Start("explorer.exe", folderpath);
+        }
+
+        private void HyperlinkOpenAppDataFolder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                HyperlinkOpenAppDataFolder_PreviewMouseDown(this, null);
+            }
         }
     }
 }

@@ -143,17 +143,6 @@ namespace AutoDarkModeApp.Pages
             StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode");
         }
 
-        private void TwitterTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            StartProcessByProcessInfo("https://twitter.com/Armin2208");
-
-        }
-
-        private void PayPalTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            StartProcessByProcessInfo("https://paypal.me/arminosaj");
-        }
-
         private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             StartProcessByProcessInfo("https://t.me/autodarkmode");
@@ -165,19 +154,9 @@ namespace AutoDarkModeApp.Pages
 
         }
 
-        private void PayPalTextBlock_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter) PayPalTextBlock_MouseDown(this, null);
-        }
-
         private void TelegramTextBlock_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) TelegramTextBlock_MouseDown(this, null);
-        }
-
-        private void TwitterTextBlock_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter) TwitterTextBlock_MouseLeftButtonDown(this, null);
         }
 
         private void FluentWPFLicense_MouseDown(object sender, MouseButtonEventArgs e)

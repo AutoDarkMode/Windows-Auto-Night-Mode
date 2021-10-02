@@ -135,7 +135,7 @@
                 VerticalAlignment="Top" 
                 MinWidth="200" 
                 SelectedIndex="1" 
-                DropDownClosed="ComboBoxLanguageSelection_DropDownClosed">
+                SelectionChanged="ComboBoxLanguageSelection_SelectionChanged">
                 
                 <ComboBoxItem Content="Czech" Name="cs"/>
                 <ComboBoxItem Content="Deutsch" Name="de"/>
@@ -291,6 +291,7 @@
                     Margin="0,15,0,0"
                     Content="Open config file"
                     PreviewMouseDown="HyperlinkOpenConfigFile_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenConfigFile_KeyDown"
                     />
 
                 <ui:HyperlinkButton
@@ -298,6 +299,7 @@
                     Margin="0,5,0,0"
                     Content="Open log file"
                     PreviewMouseDown="HyperlinkOpenLogFile_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenLogFile_KeyDown"
                     />
 
                 <ui:HyperlinkButton
@@ -305,6 +307,7 @@
                     Margin="0,5,0,0"
                     Content="Open config folder"
                     PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenAppDataFolder_KeyDown"
                     />
             </StackPanel>
         </StackPanel>
