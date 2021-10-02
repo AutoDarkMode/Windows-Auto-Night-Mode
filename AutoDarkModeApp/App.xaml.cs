@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows;
 using System.Threading;
 using AutoDarkModeSvc.Communication;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp
 {
@@ -17,7 +18,7 @@ namespace AutoDarkModeApp
         public static Mutex Mutex { get; private set; } = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
         private bool debug = false;
 
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private async void Application_Startup(object sender, StartupEventArgs e)
         {
             if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
             {
@@ -37,7 +38,7 @@ namespace AutoDarkModeApp
 
             MainWindow mainWin = new();
 
-            string message = "Service not running yet, starting service";
+            string message = "Service not running yet, please wait...";
             MsgBox msg = new(message, "Launching Service", "info", "none")
             {
                 Owner = null
@@ -47,6 +48,19 @@ namespace AutoDarkModeApp
             {
                 msg.Show();
             }
+
+            await Task.Run(() => WaitForServiceStart());
+            if (serviceStartIssued)
+            {
+                Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+                msg.Close();
+                Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            }
+            mainWin.Show();
+        }
+
+        private void WaitForServiceStart()
+        {
             string heartBeatOK = commandClient.SendMessageWithRetries(Command.Alive, retries: 5);
             if (heartBeatOK == StatusCode.Timeout)
             {
@@ -57,13 +71,6 @@ namespace AutoDarkModeApp
                 msgErr.ShowDialog();
                 return;
             }
-            if (serviceStartIssued)
-            {
-                Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
-                msg.Close();
-                Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
-            }
-            mainWin.Show();
         }
 
         private bool StartService()
