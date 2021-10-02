@@ -1,4 +1,7 @@
-﻿using ModernWpf.Media.Animation;
+﻿using AutoDarkModeComms;
+using AutoDarkModeConfig;
+using AutoDarkModeSvc.Communication;
+using ModernWpf.Media.Animation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +24,10 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageWallpaperPicker : ModernWpf.Controls.Page
     {
+        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
+        private readonly bool init = true;
+
         public PageWallpaperPicker()
         {
             InitializeComponent();

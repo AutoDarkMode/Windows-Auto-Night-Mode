@@ -398,7 +398,7 @@ namespace AutoDarkModeApp
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PageWallpaperPicker), null, new DrillInNavigationTransitionInfo());
+            Frame.Navigate(typeof(PageThemePicker), null, new DrillInNavigationTransitionInfo());
         }
     }
 }
