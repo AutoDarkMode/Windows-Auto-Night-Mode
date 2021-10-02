@@ -48,6 +48,8 @@ namespace AutoDarkModeApp
                 SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 AppComboBox.IsEnabled = false;
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                NumberBoxColorDelay.IsEnabled = false;
+                NumberBoxColorDelay.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
 
             //if the OS version is older than 1903
