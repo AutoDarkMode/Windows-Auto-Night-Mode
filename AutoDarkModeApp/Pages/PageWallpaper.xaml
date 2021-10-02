@@ -63,7 +63,8 @@
 
         <Button x:Name="CleanMonitorButton" Content="Remove Disconnected Monitors" HorizontalAlignment="Left" Margin="47,120,0,0" Grid.Row="3" VerticalAlignment="Top" MinWidth="200" Width="Auto" Click="CleanButton_Click" Height="25" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1"/>
 
-        <Button x:Name="TestButton" Content="Pick a Windows Theme test" Grid.Row="3" Grid.Column="1" Margin="0,180,0,50" Click="TestButton_Click"/>
+        <Button x:Name="TestButton" Content="Pick a Windows Theme" Grid.Row="3" Grid.Column="1" Margin="0,180,0,50" Click="TestButton_Click"/>
+        <Button x:Name="TestButton2" Content="Pick a Wallpaper" Grid.Row="3" Grid.Column="1" Margin="0,210,0,0" Click="TestButton2_Click"/>
 
 
 

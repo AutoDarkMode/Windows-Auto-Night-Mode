@@ -400,5 +400,10 @@ namespace AutoDarkModeApp
         {
             Frame.Navigate(typeof(PageThemePicker), null, new DrillInNavigationTransitionInfo());
         }
+
+        private void TestButton2_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PageWallpaperPicker), null, new DrillInNavigationTransitionInfo());
+        }
     }
 }
