@@ -7,7 +7,9 @@ using System.Windows.Navigation;
 using AutoDarkModeApp.Properties;
 using NetMQ;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeApp.Pages;
 using System.Windows.Media;
+using ModernWpf.Media.Animation;
 
 namespace AutoDarkModeApp
 {
@@ -165,25 +167,25 @@ namespace AutoDarkModeApp
                 switch (navItemTag)
                 {
                     case "time":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageTime));
                         break;
                     case "modes":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageSwitchModes.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageSwitchModes));
                         break;
                     case "apps":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageApps));
                         break;
                     case "wallpaper":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageWallpaper));
                         break;
                     case "settings":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageSettings));
                         break;
                     case "donation":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageDonation.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageDonation));
                         break;
                     case "about":
-                        FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
+                        FrameNavbar.Navigate(typeof(PageAbout));
                         break;
                 }
                 ScrollViewerNavbar.ScrollToTop();

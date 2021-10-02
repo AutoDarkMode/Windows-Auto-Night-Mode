@@ -1,13 +1,18 @@
-﻿<Page x:Class="AutoDarkModeApp.PageWallpaper"
+﻿<ui:Page x:Class="AutoDarkModeApp.PageWallpaper"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoDarkModeApp"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       mc:Ignorable="d"
-      Title="PageWallpaper" Height="560" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+      
+      Title="PageWallpaper" 
+      d:MinWidth="450"
+      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+      VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -58,6 +63,8 @@
 
         <Button x:Name="CleanMonitorButton" Content="Remove Disconnected Monitors" HorizontalAlignment="Left" Margin="47,120,0,0" Grid.Row="3" VerticalAlignment="Top" MinWidth="200" Width="Auto" Click="CleanButton_Click" Height="25" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1"/>
 
+        <Button x:Name="TestButton" Content="Click here to test" Grid.Row="3" Grid.Column="1" Margin="0,180,0,50" Click="TestButton_Click"/>
+
 
 
         <!-- Windows Theme-->
@@ -97,10 +104,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,15,0,0" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Name="TbTheme1" Text="{x:Static p:Resources.ThemeHeaderPick}" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,41,0,0" Grid.Row="5" Grid.Column="1" Name="TbTheme2" TextWrapping="Wrap" Text="{x:Static p:Resources.ThemeLight}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,62,0,0" Grid.Row="5" Grid.Column="1" Name="IconLight" TextWrapping="Wrap" Text="&#xE706;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Name="ComboBoxLightTheme" Margin="45,61,0,0" Grid.Row="5" Grid.Column="1" Text="Test" VerticalAlignment="Top" Width="198" Height="30" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="1"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxLightTheme" Margin="45,61,0,0" Grid.Row="5" Grid.Column="1" Text="Test" VerticalAlignment="Top" MinWidth="200" MaxWidth="300" Height="30" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,101,0,0" Grid.Row="5" Grid.Column="1" Name="TbTheme3" TextWrapping="Wrap" Text="{x:Static p:Resources.ThemeDark}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,122,0,0" Grid.Row="5" Grid.Column="1" Name="IconDark" TextWrapping="Wrap" Text="&#xE708;" FontSize="25" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Name="ComboBoxDarkTheme" Margin="45,121,0,0" Grid.Row="5" Grid.Column="1" Text="Test2" VerticalAlignment="Top" Width="197" Height="30" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="1"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxDarkTheme" Margin="45,121,0,0" Grid.Row="5" Grid.Column="1" Text="Test2" VerticalAlignment="Top" MinWidth="200" MaxWidth="300" Height="30" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="1"/>
         <!-- Save Theme / Open Folder -->
         <StackPanel Name="StackPanelThemeButtons" Grid.Row="5" Grid.Column="1" Margin="10, 170,0,0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto" Height="Auto">
             <Button Content="{x:Static p:Resources.save}" Name="ButtonSaveTheme" IsEnabled="False" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" MinWidth="130" Width="Auto" Height="25" Click="ButtonSaveTheme_Click" Style="{StaticResource ButtonAccentRevealStyle}"/>
@@ -120,4 +127,4 @@
             </TextBlock.Style>
         </TextBlock>
     </Grid>
-</Page>
+</ui:Page>

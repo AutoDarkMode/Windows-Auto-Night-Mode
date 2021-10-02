@@ -33,7 +33,13 @@
         </Grid.RowDefinitions>
 
         <!-- Title Bar -->
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="10,0,0,0" 
+            TextWrapping="Wrap" 
+            Text="{x:Static p:Resources.Title}" 
+            VerticalAlignment="Center" 
+            Grid.Column="0" Grid.Row="0"/>
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -116,7 +122,7 @@
             <!-- Content of Navbar, mainly the Frame which contains the Pages -->
             <ScrollViewer
                 x:Name="ScrollViewerNavbar">
-                <ui:Frame 
+                <ui:Frame
                        Content="Something went wrong :(" 
                        Background="{DynamicResource SystemAltHighColorBrush}" 
                        Name="FrameNavbar" 

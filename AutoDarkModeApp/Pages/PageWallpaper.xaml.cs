@@ -12,13 +12,15 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeSvc.Communication;
 using System.Threading.Tasks;
+using ModernWpf.Media.Animation;
+using AutoDarkModeApp.Pages;
 
 namespace AutoDarkModeApp
 {
     /// <summary>
     /// Interaction logic for PageWallpaper.xaml
     /// </summary>
-    public partial class PageWallpaper : Page
+    public partial class PageWallpaper : ModernWpf.Controls.Page
     {
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         bool theme1 = false;
@@ -392,6 +394,11 @@ namespace AutoDarkModeApp
         private async void CleanButton_Click(object sender, RoutedEventArgs e)
         {
             await CleanMonitors();
+        }
+
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PageWallpaperPicker), null, new DrillInNavigationTransitionInfo());
         }
     }
 }
