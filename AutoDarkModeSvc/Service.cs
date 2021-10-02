@@ -9,6 +9,7 @@ using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 using AutoDarkModeConfig;
+using System.IO;
 
 namespace AutoDarkModeSvc
 {
@@ -198,7 +199,10 @@ namespace AutoDarkModeSvc
                     if (e.Button == MouseButtons.Left && appMutex.WaitOne(TimeSpan.FromSeconds(2), false))
                     {
                         Console.WriteLine("Start App");
-                        Process.Start(@"AutoDarkModeApp.exe");
+                        using Process app = new();
+                        app.StartInfo.UseShellExecute = false;
+                        app.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeApp.exe");
+                        app.Start();
                         appMutex.ReleaseMutex();
                     }
                 }
