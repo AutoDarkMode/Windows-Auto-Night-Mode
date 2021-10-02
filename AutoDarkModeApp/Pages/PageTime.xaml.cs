@@ -612,6 +612,14 @@ namespace AutoDarkModeApp.Pages
             StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
 
+        private void TextBlockHelpWiki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                TextBlockHelpWiki_MouseDown(this, null);
+            }
+        }
+
         //numbox event handler
         private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
         {
@@ -680,6 +688,19 @@ namespace AutoDarkModeApp.Pages
                     }
                 }
                 userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+            }
+        }
+
+        private void TextBlockOpenLatLongWebsite_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            StartProcessByProcessInfo("https://www.latlong.net/");
+        }
+
+        private void TextBlockOpenLatLongWebsite_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                TextBlockOpenLatLongWebsite_MouseDown(this, null);
             }
         }
     }
