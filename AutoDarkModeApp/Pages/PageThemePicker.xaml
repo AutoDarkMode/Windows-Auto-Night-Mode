@@ -183,7 +183,7 @@
             <!-- Light Theme Combobox -->
             <TextBlock 
                 Grid.Column="0" Grid.Row="0"
-                Margin="0,25,0,0" 
+                Margin="0,20,0,0" 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 FontFamily="Segoe MDL2 Assets" 
                 FontSize="30" 
