@@ -80,7 +80,6 @@ namespace AutoDarkModeSvc
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
                         shouldUpdate.Add(c);
-                        break;
                     }
                 }
                 // require update if module is enabled and theme mode is disabled (previously known as classic mode)
@@ -89,20 +88,17 @@ namespace AutoDarkModeSvc
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
                         shouldUpdate.Add(c);
-                        break;
                     }
                 }
                 // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
                 else if (!c.Enabled && c.Initialized)
                 {
                     shouldUpdate.Add(c);
-                    break;
                 }
                 // if the force flag is set to true, we also need to update
                 else if (c.ForceSwitch)
                 {
                     shouldUpdate.Add(c);
-                    break;
                 }
             }
             return shouldUpdate;

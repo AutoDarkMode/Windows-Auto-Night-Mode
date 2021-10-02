@@ -136,20 +136,24 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     }
                     else if (newTheme == Theme.Dark)
                     {
-                        if (currentComponentTheme == Theme.Dark)
+                        Logger.Info(currentComponentTheme);
+                        if (currentComponentTheme != Theme.Dark)
                         {
-                            taskdelay = 0;
-                        }
-                        RegistryHandler.SetSystemTheme((int)newTheme);
-                        if (Settings.Component.TaskbarColorOnDark)
-                        {
-                            await Task.Delay(taskdelay);
-                            RegistryHandler.SetColorPrevalence(1);
-                            currentTaskbarColorActive = true;
+                            RegistryHandler.SetSystemTheme((int)Theme.Dark);
                         }
                         else
                         {
-                            await Task.Delay(taskdelay);
+                            taskdelay = 0;
+                        }
+                        currentComponentTheme = Theme.Dark;
+                        await Task.Delay(taskdelay);
+                        if (Settings.Component.TaskbarColorOnDark)
+                        {
+                            RegistryHandler.SetColorPrevalence(1);
+                            currentTaskbarColorActive = true;
+                        }
+                        else if (!Settings.Component.TaskbarColorOnDark && currentTaskbarColorActive)
+                        {
                             RegistryHandler.SetColorPrevalence(0);
                             currentTaskbarColorActive = false;
                         }
