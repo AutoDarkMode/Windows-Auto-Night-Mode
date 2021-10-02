@@ -391,6 +391,8 @@ namespace AutoDarkModeApp.Pages
             else
             {
                 builder.Config.Updater.AutoInstall = false;
+                builder.Config.Updater.Silent = false;
+                CheckBoxUpdateSilent.IsChecked = false;
                 CheckBoxUpdateSilent.IsEnabled = false;
             }
             try
