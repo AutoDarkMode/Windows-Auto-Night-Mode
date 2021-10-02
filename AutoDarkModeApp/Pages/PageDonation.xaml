@@ -3,41 +3,104 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       mc:Ignorable="d"
-      Title="PageDonation" Height="560" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+      
+      Title="PageDonation"
+      Foreground="{DynamicResource SystemBaseHighColorBrush}"
+      VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*" MaxWidth="800"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="130"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" Source="/AutoDarkModeApp;component/Resources/DonationHeader.png" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"/>
-        <TextBlock Text="{x:Static p:Resources.NavbarDonation}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="30,0,0,20" FontSize="30" FontWeight="Bold" Foreground="White"/>
+        <Image 
+            HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+            Source="/AutoDarkModeApp;component/Resources/DonationHeader.png" 
+            Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2"
+            />
+        <TextBlock 
+            Text="{x:Static p:Resources.NavbarDonation}" 
+            HorizontalAlignment="Left" VerticalAlignment="Center" 
+            Grid.Column="1" Grid.Row="0"
+            Margin="20,0,0,0"
+            FontFamily="Segoe UI"
+            FontSize="30"
+            Foreground="White"
+            />
         
         <!-- Content -->
-        <TextBlock Text="{x:Static p:Resources.DonationHeaderReason}" Margin="10,20,0,0" Grid.Column="1" Grid.Row="2" FontSize="16" FontWeight="Bold"/>
-        <TextBlock Text="{x:Static p:Resources.donationDescription}" TextWrapping="Wrap" Width="380" Margin="10,50,0,0" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock 
+            Text="{x:Static p:Resources.DonationHeaderReason}" 
+            Margin="0,30,0,0" 
+            Grid.Column="1" Grid.Row="2" 
+            FontFamily="Segoe UI"
+            FontSize="20" 
+            />
+        <TextBlock 
+            Text="{x:Static p:Resources.donationDescription}" 
+            TextWrapping="Wrap" 
+            Width="400" 
+            Margin="0,75,0,0" 
+            Grid.Column="1" Grid.Row="2" 
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            FontSize="14"
+            />
 
         <!-- Donation Button -->
-        <TextBlock Text="{x:Static p:Resources.DonationHowTo}" Margin="10,20,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="16" FontWeight="Bold"/>
-        <Image Width="20" Margin="10,70,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" Source="/AutoDarkModeApp;component/Resources/PayPal_Logo.png" />
-        <StackPanel Orientation="Vertical" Margin="45,50,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <TextBlock Text="PayPal" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Text="{x:Static p:Resources.DonationPayPalDescription}" TextWrapping="Wrap" Width="320" Foreground="Gray" Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button x:Name="ButtonPayPal" Content="{x:Static p:Resources.NavbarDonation}" Margin="0,5,0,0" MinWidth="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonPayPal_Click" Style="{StaticResource ButtonAccentRevealStyle}"/>
+        <TextBlock 
+            Text="{x:Static p:Resources.DonationHowTo}" 
+            Margin="0,30,0,0" 
+            Grid.Column="1" Grid.Row="3" 
+            HorizontalAlignment="Left" VerticalAlignment="Top" 
+            FontFamily="Segeo UI"
+            FontSize="20" 
+            />
+        <Image 
+            Width="25" 
+            Margin="0,85,0,0" 
+            Grid.Column="1" Grid.Row="3" 
+            VerticalAlignment="Top" HorizontalAlignment="Left" 
+            Source="/AutoDarkModeApp;component/Resources/PayPal_Logo.png" 
+            />
+        <StackPanel 
+            Orientation="Vertical" 
+            Margin="40,70,0,0" 
+            Grid.Column="1" Grid.Row="3" 
+            HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock 
+                Text="PayPal" 
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                FontSize="14"/>
+            <TextBlock 
+                Text="{x:Static p:Resources.DonationPayPalDescription}" 
+                TextWrapping="Wrap" 
+                Width="320" 
+                Foreground="Gray" 
+                FontSize="14"
+                Margin="0,5,0,0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                />
+            <Button x:Name="ButtonPayPal" 
+                    Content="{x:Static p:Resources.NavbarDonation}" 
+                    Margin="0,5,0,0" 
+                    MinWidth="150"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Click="ButtonPayPal_Click" 
+                    />
         </StackPanel>
     </Grid>
 </Page>
