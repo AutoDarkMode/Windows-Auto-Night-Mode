@@ -549,7 +549,7 @@ namespace AutoDarkModeApp.Pages
         {
             EnableTimeBasedSwitch();
             DisableLocationMode();
-            applyButton.IsEnabled = true;
+            //applyButton.IsEnabled = true;
             try
             {
                 builder.Save();

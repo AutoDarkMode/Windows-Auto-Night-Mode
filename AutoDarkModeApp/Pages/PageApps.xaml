@@ -66,7 +66,7 @@
                     MinWidth="200" 
                     Name ="AppComboBox" 
                     ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" 
-                    DropDownClosed="AppComboBox_DropDownClosed" 
+                    SelectionChanged="AppComboBox_SelectionChanged"
                     MinHeight="30" >
 
                     <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
@@ -100,7 +100,7 @@
                     MinWidth="200" 
                     Name="SystemComboBox" 
                     ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" 
-                    DropDownClosed="SystemComboBox_DropDownClosed" 
+                    SelectionChanged="SystemComboBox_SelectionChanged"
                     MinHeight="30">
 
                     <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
@@ -159,7 +159,7 @@
                     x:Name="OfficeComboBox" 
                     Margin="40,25,0,0" 
                     MinWidth="200" MinHeight="30"
-                    DropDownClosed="OfficeComboBox_DropDownClosed">
+                    SelectionChanged="OfficeComboBox_SelectionChanged">
 
                     <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
                     <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
