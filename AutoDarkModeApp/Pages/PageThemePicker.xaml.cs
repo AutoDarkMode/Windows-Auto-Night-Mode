@@ -177,7 +177,7 @@ namespace AutoDarkModeApp.Pages
             string result = StatusCode.Err;
             try
             {
-                result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
+                result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");
