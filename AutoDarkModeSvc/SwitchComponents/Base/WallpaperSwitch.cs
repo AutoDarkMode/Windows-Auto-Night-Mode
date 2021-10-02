@@ -243,7 +243,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         private void UpdateCurrentComponentState(bool isInitializing = false)
         {
-            Logger.Debug("current component state update");
             if (Settings == null || SettingsBefore == null || (!Initialized && !isInitializing))
             {
                 return;
