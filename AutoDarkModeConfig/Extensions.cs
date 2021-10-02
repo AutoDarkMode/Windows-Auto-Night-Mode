@@ -133,7 +133,7 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionPath()
         {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyLocation = AppContext.BaseDirectory;
             var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath + executableName);
@@ -141,7 +141,7 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionPathApp()
         {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyLocation = AppContext.BaseDirectory;
             var executableName = Path.DirectorySeparatorChar + "AutoDarkModeApp.exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath + executableName);
@@ -149,7 +149,7 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionPathUpdater()
         {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyLocation = AppContext.BaseDirectory;
             var executableName = "AutoDarkModeUpdater.exe";
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath, UpdaterDirName, executableName);
@@ -157,7 +157,7 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionDir()
         {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyLocation = AppContext.BaseDirectory;
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return executablePath;
         }
@@ -165,14 +165,14 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionDirUpdater()
         {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyLocation = AppContext.BaseDirectory;
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath, UpdaterDirName);
         }
 
         private static string GetUpdateDataDir()
         {
-            var assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var assemblyLocation = AppContext.BaseDirectory;
             var dataPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "UpdateData");
             return dataPath;
         }
