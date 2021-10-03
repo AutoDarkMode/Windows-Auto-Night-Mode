@@ -342,7 +342,9 @@ namespace AutoDarkModeSvc.Handlers
 
         private static uint ToUint(Color c)
         {
-            return (uint)(((c.A << 24) | (c.R << 16) | (c.G << 8) | c.B) & 0xffffffffL);
+            //return (uint)(((c.A << 24) | (c.R << 16) | (c.G << 8) | c.B) & 0xffffffffL);
+            //return (uint)(0xFFFF * c.R + 0xFF * c.G + c.B);
+            return (uint)((c.R << 0) | (c.G << 8) | (c.B << 16));
         }
 
         private static Color ToColor(this uint value)

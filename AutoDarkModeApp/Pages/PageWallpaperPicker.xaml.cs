@@ -322,6 +322,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "PageWallpaperPicker");
             }
+            Dispatcher.BeginInvoke(new NoArgDelegate(RequestThemeSwitch), null);
         }
 
         private WallpaperType WallpaperTypeTextToType(ComboBoxItem item)
