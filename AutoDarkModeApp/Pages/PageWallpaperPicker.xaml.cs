@@ -73,7 +73,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ToggleSwitchWallpaper_Toggled(object sender, RoutedEventArgs e)
         {
-            if((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
+            if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
             {
                 builder.Config.WallpaperSwitch.Enabled = true;
             }
@@ -84,10 +84,10 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
-            } 
+            }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                ShowErrorMessage(ex, "PageWallpaperPicker");
             }
         }
 
@@ -126,7 +126,7 @@ namespace AutoDarkModeApp.Pages
                 ImagePreview.Visibility = Visibility.Visible;
                 TextBlockImagePath.Visibility = Visibility.Visible;
             }
-            catch  (Exception ex)
+            catch (Exception ex)
             {
                 ShowErrorMessage(ex, "ShowPreview");
             }
@@ -134,7 +134,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ComboBoxModeSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if((sender as ComboBox).SelectedItem == ComboBoxModeSelectionLightTheme)
+            if ((sender as ComboBox).SelectedItem == ComboBoxModeSelectionLightTheme)
             {
                 selectedLight = true;
 
@@ -142,6 +142,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     case WallpaperType.Global:
                         ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
+
                         break;
 
                     case WallpaperType.Individual:
@@ -172,17 +173,19 @@ namespace AutoDarkModeApp.Pages
                         break;
                 }
             }
+
+            ComboBoxBackgroundSelection_SelectionChanged(ComboBoxModeSelection, EventArgs.Empty);
         }
 
-        private void ComboBoxBackgroundSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBoxBackgroundSelection_SelectionChanged(object sender, EventArgs e)
         {
-            if((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionGlobal)
+            if (sender is ComboBox && (sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionGlobal)
             {
                 ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
 
                 if (selectedLight)
                 {
-                    if(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light != null)
+                    if (builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light != null)
                     {
                         ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light);
                     }
@@ -205,20 +208,61 @@ namespace AutoDarkModeApp.Pages
                     }
                 }
             }
+            ComboBoxMonitorSelection_SelectionChanged(this, null);
 
-            if((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionIndividual)
+
+            if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionIndividual)
             {
                 ComboBoxMonitorSelection_SelectionChanged(this, null);
                 ComboBoxMonitorSelection.Visibility = Visibility.Visible;
             }
 
-            if((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
+            if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
             {
                 ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
             }
+
+            // only save if sender is own combobox
+            if (sender.Equals(ComboBoxModeSelection) || init)
+            {
+                return;
+            }
+            if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
+            {
+                builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperTypeTextToType(ComboBoxBackgroundSelection.SelectedItem as ComboBoxItem);
+            }
+            else if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionDarkTheme)
+            {
+                builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperTypeTextToType(ComboBoxBackgroundSelection.SelectedItem as ComboBoxItem);
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "PageWallpaperPicker");
+            }
         }
 
-        private void ComboBoxMonitorSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private WallpaperType WallpaperTypeTextToType(ComboBoxItem item)
+        {
+            if (item == ComboBoxBackgroundSelectionGlobal)
+            {
+                return WallpaperType.Global;
+            }
+            else if (item == ComboBoxBackgroundSelectionIndividual)
+            {
+                return WallpaperType.Individual;
+            }
+            else if (item == ComboBoxBackgroundSelectionSolidColor)
+            {
+                return WallpaperType.SolidColor;
+            }
+            return WallpaperType.Unknown;
+        }
+
+        private void ComboBoxMonitorSelection_SelectionChanged(object sender, EventArgs e)
         {
             MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
             if (selectedLight)
@@ -248,7 +292,7 @@ namespace AutoDarkModeApp.Pages
 
         private void SetWallpaper(string FileName)
         {
-            if(ComboBoxBackgroundSelection.SelectedItem == ComboBoxBackgroundSelectionGlobal)
+            if (ComboBoxBackgroundSelection.SelectedItem == ComboBoxBackgroundSelectionGlobal)
             {
                 if (selectedLight)
                 {
@@ -262,7 +306,7 @@ namespace AutoDarkModeApp.Pages
                 }
             }
 
-            if(ComboBoxBackgroundSelection.SelectedItem == ComboBoxBackgroundSelectionIndividual)
+            if (ComboBoxBackgroundSelection.SelectedItem == ComboBoxBackgroundSelectionIndividual)
             {
                 MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
                 if (selectedLight)
