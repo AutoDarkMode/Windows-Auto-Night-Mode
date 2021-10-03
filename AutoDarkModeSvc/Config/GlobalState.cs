@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoDarkModeConfig;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 
@@ -21,23 +22,14 @@ namespace AutoDarkModeSvc.Config
         }
         protected GlobalState()
         {
-            CurrentAppsTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
-            CurrentSystemTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
-            CurrentColorPrevalence = RegistryHandler.IsColorPrevalence();
-            CurrentWallpaperTheme = Theme.Undefined;
+            CurrentWallpaperTheme = Theme.Unknown;
             CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
-            CurrentOfficeTheme = Theme.Undefined;
-            ForcedTheme = Theme.Undefined;
+            ForcedTheme = Theme.Unknown;
             PostponeSwitch = false;
         }
 
         private WardenModule Warden { get; set; }
-        public Theme CurrentAppsTheme { get; set; }
-        public Theme CurrentSystemTheme { get; set; }
         public Theme CurrentWallpaperTheme { get; set; }
-        public Theme CurrentOfficeTheme { get; set; }
-        public bool ColorFilterEnabled { get; set; }
-        public bool CurrentColorPrevalence { get; set; }
         public Theme ForcedTheme { get; set; }
         public string CurrentWindowsThemeName { get; set; }
         private bool _postponeSwitch;
@@ -57,6 +49,31 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+
+        private bool configIsUpdating;
+        public bool ConfigIsUpdating 
+        { 
+            get { return configIsUpdating; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { configIsUpdating = value; }
+        }
+
+        private bool geolocatorIsUpdating;
+        public bool GeolocatorIsUpdating
+        {
+            get { return geolocatorIsUpdating; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { geolocatorIsUpdating = value; }
+        }
+
+
+        /// <summary>
+        /// Setting this value to true will skip the next config reload event when it has been saved
+        /// The setting will return to false after the first save
+        /// </summary>
+        public bool SkipConfigFileReload { get; set; }
         public string CurrentWallpaperPath { get; set; }
 
         public void SetWarden(WardenModule warden)

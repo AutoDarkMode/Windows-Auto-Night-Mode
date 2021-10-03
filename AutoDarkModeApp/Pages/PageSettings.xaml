@@ -6,44 +6,137 @@
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
       mc:Ignorable="d"
-      Title="PageSettings" Height="560" Width="450" Foreground="{DynamicResource SystemBaseHighColorBrush}" fw:PointerTracker.Enabled="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+      
+      Title="PageSettings" 
+      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+      VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <!-- Page Title -->
-        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.NavbarSettings}" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
+        <TextBlock 
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="0,0,0,0" 
+            Text="{x:Static p:Resources.NavbarSettings}" 
+            FontFamily="Segoe UI Semilight"
+            FontSize="30" 
+            Grid.Column="1" Grid.Row="1" />
 
         <!-- Settings-->
-        <StackPanel Orientation="Vertical" Margin="10,60,0,0" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
-            <CheckBox Name="CheckBoxAlterTime" Content="{x:Static p:Resources.cb12HourTime}" Margin="0,0,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxAlterTime_Click"/>
-            <CheckBox Name="CheckBoxBackgroundUpdater" Content="{x:Static p:Resources.cbBackgroundUpdate}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBackgroundUpdater_Click"/>
-            <CheckBox Name="CheckBoxLogonTask" Content="{x:Static p:Resources.cbSettingsLogonTask}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxLogonTask_Click"/>
-            <CheckBox Name="CheckBoxColourFilter" Content="{x:Static p:Resources.cbSettingsColourFilter}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxColourFilter_Click"/>
-            <CheckBox Name="CheckBoxBatteryDarkMode" Content="{x:Static p:Resources.cbSettingsBatteryDarkMode}" Margin="0,10,0,0" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxBatteryDarkMode_Click"/>
-            <CheckBox Name="CheckBoxEnergySaverMitigation" Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}" Margin="0,10,0,0" ToolTipService.InitialShowDelay="150" ToolTipService.HasDropShadow="True" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="CheckBoxEnergySaverMitigation_Click"/>
+        <StackPanel 
+            Orientation="Vertical" 
+            Margin="0,10,0,0" 
+            Grid.Column="1" Grid.Row="3"  
+            HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Width="Auto" Height="Auto">
+
+            <CheckBox 
+                Name="CheckBoxAlterTime" 
+                Content="{x:Static p:Resources.cb12HourTime}" 
+                Margin="0,0,0,0" 
+                Click="CheckBoxAlterTime_Click"/>
+            <CheckBox 
+                Name="CheckBoxLogonTask" 
+                Content="{x:Static p:Resources.cbSettingsLogonTask}" 
+                Margin="0,10,0,0" 
+                Click="CheckBoxLogonTask_Click"
+                />
+            <CheckBox
+                Name="CheckBoxHideTrayIcon"
+                Content="Hide tray icon (needs system restart)"
+                Margin="0,10,0,0"
+                Click="CheckBoxHideTrayIcon_Click"
+                />
+            <CheckBox 
+                Name="CheckBoxColourFilter" 
+                Content="{x:Static p:Resources.cbSettingsColourFilter}" 
+                Margin="0,10,0,0" 
+                Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+                Click="CheckBoxColourFilter_Click"/>
+            <CheckBox 
+                Name="CheckBoxEnergySaverMitigation" 
+                Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}" 
+                Margin="0,10,0,0" 
+                ToolTipService.InitialShowDelay="150" ToolTipService.HasDropShadow="True" 
+                Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+                Click="CheckBoxEnergySaverMitigation_Click"
+                />
 
             <!-- Battery Saver Slider -->
-            <TextBlock Name="BatterySliderLabel" Visibility="Visible" HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsBatterySlider}" VerticalAlignment="Top"/>
-            <Slider Name="BatterySlider" Visibility="Visible" HorizontalAlignment="Left" Width="270" Margin="0,5,0,0" Thumb.DragCompleted="BatterySlider_Save" KeyUp="BatterySlider_Save" Value="25" Minimum="0" Maximum="100" IsSnapToTickEnabled="True"/>
-            <TextBlock Name="BatterySliderText" HorizontalAlignment="Left" Visibility="Visible" Margin="128.5,0,0,0" TextWrapping="Wrap" Text="{Binding ElementName=BatterySlider,Path=Value}" VerticalAlignment="Top"/>
+            <StackPanel
+                Name="StackPanelBatterySlider"
+                Orientation="Vertical"
+                Margin="0,10,0,0">
 
-            <!-- Accent Color Delay -->
-            <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.SettingsAccentColorTimeout}" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" x:Name="TextboxAccentColorDelay" VerticalContentAlignment="Center" Height="26" Margin="0,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40" GotKeyboardFocus="TextboxAccentColorDelay_GotKeyboardFocus" PreviewTextInput="TextboxAccentColorDelay_PreviewTextInput" CommandManager.PreviewExecuted="TextboxAccentColorDelay_PreviewExecuted" TextChanged="TextboxAccentColorDelay_TextChanged" ContextMenu="{x:Null}" MaxLength="4"/>
+                <TextBlock 
+                    Name="BatterySliderLabel" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="0,0,0,0" 
+                    TextWrapping="Wrap"
+                    FontSize="14"
+                    Text="{x:Static p:Resources.SettingsBatterySlider}"
+                    />
+                <Slider 
+                    Name="BatterySlider" 
+                    HorizontalAlignment="Left" 
+                    Width="270" 
+                    Margin="0,5,0,0" 
+                    Thumb.DragCompleted="BatterySlider_Save" 
+                    KeyUp="BatterySlider_Save" 
+                    Value="25" Minimum="0" Maximum="100" 
+                    IsSnapToTickEnabled="True"
+                    />
+                <TextBlock 
+                    Name="BatterySliderText" 
+                    HorizontalAlignment="Left" 
+                    Visibility="Visible" 
+                    Margin="128.5,0,0,0" 
+                    TextWrapping="Wrap" 
+                    FontSize="14"
+                    Text="{Binding ElementName=BatterySlider,Path=Value}" 
+                    VerticalAlignment="Top"/>
+            </StackPanel>
 
             <!-- Language selection-->
-            <TextBlock HorizontalAlignment="Left" Margin="0,30,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static p:Resources.lblLanguage}" VerticalAlignment="Top"/>
-            <ComboBox x:Name="ComboBoxLanguageSelection" SelectedValuePath="Name" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" Width="150" Height="28" SelectedIndex="1" DropDownClosed="ComboBoxLanguageSelection_DropDownClosed" Style="{StaticResource ComboBoxRevealStyle}" BorderThickness="1">
+            <TextBlock
+                Grid.Column="1" Grid.Row="4" 
+                Margin="0,30,0,0"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="Language"
+                />
+            <TextBlock 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="0,15,0,0" 
+                FontSize="14"
+                Text="{x:Static p:Resources.lblLanguage}" 
+                />
+            <ComboBox 
+                x:Name="ComboBoxLanguageSelection" 
+                SelectedValuePath="Name" 
+                HorizontalAlignment="Left" 
+                Margin="0,5,0,0"  
+                VerticalAlignment="Top" 
+                MinWidth="200" 
+                SelectedIndex="1" 
+                SelectionChanged="ComboBoxLanguageSelection_SelectionChanged">
+                
                 <ComboBoxItem Content="Czech" Name="cs"/>
                 <ComboBoxItem Content="Deutsch" Name="de"/>
                 <ComboBoxItem Content="English" Name="en"/>
@@ -62,10 +155,161 @@
                 <ComboBoxItem Content="简体中文（中国）" Name="zh"/>
                 <ComboBoxItem Content="繁體中文" Name="zh_tw"/>
             </ComboBox>
-            <TextBlock Name = "Translator" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{x:Static p:Resources.lblTranslator}" VerticalAlignment="Top"/>
-            <TextBlock Name="RestartText" HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="  " VerticalAlignment="Top" Foreground="Red"/>
-            <Button Name="RestartButton" Content="Restart App" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="RestartButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
+            <TextBlock 
+                Name = "Translator" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="0,5,0,0"  
+                TextWrapping="Wrap" 
+                Text="{x:Static p:Resources.lblTranslator}" 
+                FontSize="14"
+                Foreground="Gray"/>
+            <TextBlock 
+                Name="TextBlockLanguageRestart" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="0,15,0,0" 
+                TextWrapping="Wrap"
+                FontSize="14"
+                Foreground="Red"
+                Text="{x:Static p:Resources.restartNeeded}"/>
+            <Button 
+                Name="ButtonRestart" 
+                Content="Restart App"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="0,5,0,0" 
+                MinWidth="130" 
+                Click="ButtonRestart_Click"
+                />
 
+            <!-- Updater -->
+            <StackPanel
+                x:Name="StackPanelUpdater"
+                Margin="0,30,0,0"
+                Orientation="Vertical">
+
+                <TextBlock
+                Margin="0,0,0,0"
+                FontFamily="Segeo UI"
+                FontSize="20"
+                Text="Updates"
+                />
+
+                <TextBlock
+                    Margin="0,15,0,0"
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    FontSize="14"
+                    Text="We search for new versions of Auto Dark Mode in the background. As soon as an update is available, we notify you via a toast notification"
+                    TextWrapping="Wrap"
+                    MaxWidth="420"
+                />
+
+                <Button
+                    x:Name="ButtonSearchUpdate"
+                    Margin="0,20,0,0"
+                    Content="{x:Static p:Resources.updateButton}"
+                    MinWidth="150"
+                    Click="ButtonSearchUpdate_Click"
+                    />
+
+                <TextBlock
+                    x:Name="TextBlockUpdateInfo"
+                    Margin="0,5,0,0"
+                    Text="Last checked: 01.10.2021"
+                    FontSize="14"
+                    Foreground="Gray"
+                    />
+
+                <CheckBox
+                    x:Name="CheckBoxEnableUpdater"
+                    Margin="0,20,0,0"
+                    Content="{x:Static p:Resources.cbBackgroundUpdate}"
+                    Click="CheckBoxEnableUpdater_Click"
+                    />
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                    Text="How often should we search new versions?"
+                    FontSize="14"
+                    />
+
+                <ComboBox
+                    x:Name="ComboBoxDaysBetweenUpdateCheck"
+                    Margin="0,5,0,0"
+                    MinWidth="150"
+                    SelectionChanged="ComboBoxDaysBetweenUpdateCheck_SelectionChanged">
+
+                    <ComboBoxItem Content="3 days"  Name="ComboBoxDaysBetweenUpdateCheck3Days"/>
+                    <ComboBoxItem Content="7 days" Name="ComboBoxDaysBetweenUpdateCheck7Days"/>
+                    <ComboBoxItem Content="14 days" Name="ComboBoxDaysBetweenUpdateCheck14Days"/>
+                </ComboBox>
+                <CheckBox
+                    x:Name="CheckBoxAutoInstall"
+                    Margin="0,20,0,0"
+                    Content="Automatically download and install new versions"
+                    Click="CheckBoxAutoInstall_Click"
+                    />
+
+                <CheckBox
+                    x:Name="CheckBoxUpdateSilent"
+                    Margin="0,5,0,0"
+                    Content="Don't show any notifications"
+                    Click="CheckBoxUpdateSilent_Click"
+                    />
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                    Text="Select update channel"
+                    FontSize="14"
+                    />
+
+                <RadioButton
+                    x:Name="RadioButtonStableUpdateChannel"
+                    Margin="0,5,0,0"
+                    Content="Stable"
+                    Click="RadioButtonStableUpdateChannel_Click"
+                    />
+                <RadioButton
+                    x:Name="RadioButtonBetaUpdateChannel"
+                    Content="Beta"
+                    Click="RadioButtonBetaUpdateChannel_Click"
+                    />
+            </StackPanel>
+
+            <StackPanel
+                Name="StackPanelConfigFolder"
+                Margin="0,30,0,0"
+                Orientation="Vertical">
+
+                <TextBlock
+                    Margin="0,0,0,0"
+                    Text="Config"
+                    FontFamily="Segeo UI"
+                    FontSize="20"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenConfigFile"
+                    Margin="0,15,0,0"
+                    Content="Open config file"
+                    PreviewMouseDown="HyperlinkOpenConfigFile_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenConfigFile_KeyDown"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenLogFile"
+                    Margin="0,5,0,0"
+                    Content="Open log file"
+                    PreviewMouseDown="HyperlinkOpenLogFile_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenLogFile_KeyDown"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenAppDataFolder"
+                    Margin="0,5,0,0"
+                    Content="Open config folder"
+                    PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenAppDataFolder_KeyDown"
+                    />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

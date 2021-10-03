@@ -18,7 +18,7 @@ namespace AutoDarkModeSvc.Communication
         private NetMQPoller Poller { get; set; }
         private Task PollTask { get; set; }
         private readonly MemoryMappedFile _portshare;
-        
+
         /// <summary>
         /// Instantiate a ZeroMQ server for socket based messaging
         /// </summary>
@@ -36,8 +36,6 @@ namespace AutoDarkModeSvc.Communication
             _portshare = MemoryMappedFile.CreateNew("adm-backend-port", sizeof(int));
             Service = service;
         }
-
-        private bool AcceptConnections { get; set; }
 
         /// <summary>
         /// Start the ZeroMQ server
@@ -65,7 +63,7 @@ namespace AutoDarkModeSvc.Communication
                 Server = new ResponseSocket("tcp://127.0.0.1:" + Port);
                 Logger.Info("socket bound to port: {0}", Port);
             }
-            
+
             Poller = new NetMQPoller { Server };
             Server.ReceiveReady += (s, a) =>
             {
@@ -75,24 +73,34 @@ namespace AutoDarkModeSvc.Communication
                 {
                     MessageParser.Parse(new List<string>() { msg }, (message) =>
                     {
-                        try
+                        bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
+                        if (!sent)
                         {
-                            var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
-                            if (!sent)
-                            {
-                                Logger.Error("could not send response: timeout");
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Error(e, "could not send response:");
+                            Logger.Error("could not send response: timeout");
                         }
                     }, Service);
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, $"message parser exception in {ex.Source}");
-                }               
+                    Logger.Error(ex, $"exception while processing command {msg}");
+                    try
+                    {
+                        bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Err,
+                            Message = ex.Message
+                        }.ToString());
+                        if (!sent)
+                        {
+                            Logger.Error("could not send response: timeout");
+                        }
+                    } 
+                    catch (Exception exErr)
+                    {
+                        Logger.Error(exErr, "could not send error response:");
+                    }
+                  
+                }
             };
             PollTask = Task.Run(() =>
             {
@@ -120,7 +128,8 @@ namespace AutoDarkModeSvc.Communication
             try
             {
                 Poller.Dispose();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Logger.Fatal(ex, "could not dispose Poller");
             }

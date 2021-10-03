@@ -12,7 +12,7 @@ namespace AutoDarkModeApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,66 +20,6 @@ namespace AutoDarkModeApp.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int AppThemeChange {
-            get {
-                return ((int)(this["AppThemeChange"]));
-            }
-            set {
-                this["AppThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int SystemThemeChange {
-            get {
-                return ((int)(this["SystemThemeChange"]));
-            }
-            set {
-                this["SystemThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int EdgeThemeChange {
-            get {
-                return ((int)(this["EdgeThemeChange"]));
-            }
-            set {
-                this["EdgeThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double LocationLatitude {
-            get {
-                return ((double)(this["LocationLatitude"]));
-            }
-            set {
-                this["LocationLatitude"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double LocationLongitude {
-            get {
-                return ((double)(this["LocationLongitude"]));
-            }
-            set {
-                this["LocationLongitude"] = value;
             }
         }
         
@@ -97,90 +37,6 @@ namespace AutoDarkModeApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AccentColor {
-            get {
-                return ((bool)(this["AccentColor"]));
-            }
-            set {
-                this["AccentColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WallpaperLight {
-            get {
-                return ((string)(this["WallpaperLight"]));
-            }
-            set {
-                this["WallpaperLight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string WallpaperDark {
-            get {
-                return ((string)(this["WallpaperDark"]));
-            }
-            set {
-                this["WallpaperDark"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool WallpaperSwitch {
-            get {
-                return ((bool)(this["WallpaperSwitch"]));
-            }
-            set {
-                this["WallpaperSwitch"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AlterTime {
-            get {
-                return ((bool)(this["AlterTime"]));
-            }
-            set {
-                this["AlterTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool BackgroundUpdate {
-            get {
-                return ((bool)(this["BackgroundUpdate"]));
-            }
-            set {
-                this["BackgroundUpdate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool connectedStandby {
-            get {
-                return ((bool)(this["connectedStandby"]));
-            }
-            set {
-                this["connectedStandby"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool FirstRun {
             get {
@@ -188,174 +44,6 @@ namespace AutoDarkModeApp.Properties {
             }
             set {
                 this["FirstRun"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LightOffset {
-            get {
-                return ((int)(this["LightOffset"]));
-            }
-            set {
-                this["LightOffset"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DarkOffset {
-            get {
-                return ((int)(this["DarkOffset"]));
-            }
-            set {
-                this["DarkOffset"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Enabled {
-            get {
-                return ((bool)(this["Enabled"]));
-            }
-            set {
-                this["Enabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ThemeLight {
-            get {
-                return ((string)(this["ThemeLight"]));
-            }
-            set {
-                this["ThemeLight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ThemeDark {
-            get {
-                return ((string)(this["ThemeDark"]));
-            }
-            set {
-                this["ThemeDark"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ThemeSwitch {
-            get {
-                return ((bool)(this["ThemeSwitch"]));
-            }
-            set {
-                this["ThemeSwitch"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("800")]
-        public int AccentColorSwitchTime {
-            get {
-                return ((int)(this["AccentColorSwitchTime"]));
-            }
-            set {
-                this["AccentColorSwitchTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int OfficeThemeChange {
-            get {
-                return ((int)(this["OfficeThemeChange"]));
-            }
-            set {
-                this["OfficeThemeChange"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ColourFilterKeystroke {
-            get {
-                return ((bool)(this["ColourFilterKeystroke"]));
-            }
-            set {
-                this["ColourFilterKeystroke"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool LogonTaskInsteadOfAutostart {
-            get {
-                return ((bool)(this["LogonTaskInsteadOfAutostart"]));
-            }
-            set {
-                this["LogonTaskInsteadOfAutostart"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool OfficeThemeChangeWhiteDesign {
-            get {
-                return ((bool)(this["OfficeThemeChangeWhiteDesign"]));
-            }
-            set {
-                this["OfficeThemeChangeWhiteDesign"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool WantsVersion10 {
-            get {
-                return ((bool)(this["WantsVersion10"]));
-            }
-            set {
-                this["WantsVersion10"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TaskFolderTitle {
-            get {
-                return ((string)(this["TaskFolderTitle"]));
-            }
-            set {
-                this["TaskFolderTitle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool TaskFolderTitleMultiUser {
-            get {
-                return ((bool)(this["TaskFolderTitleMultiUser"]));
-            }
-            set {
-                this["TaskFolderTitleMultiUser"] = value;
             }
         }
         
@@ -373,13 +61,73 @@ namespace AutoDarkModeApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public double UIScale {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AlterTime {
             get {
-                return ((double)(this["UIScale"]));
+                return ((bool)(this["AlterTime"]));
             }
             set {
-                this["UIScale"] = value;
+                this["AlterTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Top {
+            get {
+                return ((double)(this["Top"]));
+            }
+            set {
+                this["Top"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Left {
+            get {
+                return ((double)(this["Left"]));
+            }
+            set {
+                this["Left"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Width {
+            get {
+                return ((double)(this["Width"]));
+            }
+            set {
+                this["Width"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Maximized {
+            get {
+                return ((bool)(this["Maximized"]));
+            }
+            set {
+                this["Maximized"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double Height {
+            get {
+                return ((double)(this["Height"]));
+            }
+            set {
+                this["Height"] = value;
             }
         }
     }

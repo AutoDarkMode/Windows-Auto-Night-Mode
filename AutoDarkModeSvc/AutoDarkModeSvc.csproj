@@ -1,13 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>10.0.0.1</Version>
+    <Version>10.0.0.25</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
-    <StartupObject />
+    <StartupObject>AutoDarkModeSvc.Program</StartupObject>
     <PackageId>AutoDarkModeService</PackageId>
     <Company>AutoDarkMode</Company>
     <Authors>AutoDarkModeService</Authors>
@@ -15,6 +16,8 @@
     <Configurations>Debug;Release</Configurations>
     <PackageIcon>adm_new.ico</PackageIcon>
     <PackageIconUrl />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -24,16 +27,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
-    <PackageReference Include="NetMQ" Version="4.0.0.207" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.0" />
+    <PackageReference Include="NetMQ" Version="4.0.1.6" />
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Schema" Version="4.6.8" />
-    <PackageReference Include="TaskScheduler" Version="2.8.17" />
+    <PackageReference Include="TaskScheduler" Version="2.9.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,8 +62,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SwitchComponents\Base\" />
     <Folder Include="SwitchComponents\Addons\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeConfig.csproj" />
+  </ItemGroup>
 </Project>

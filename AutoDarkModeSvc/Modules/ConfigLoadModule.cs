@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules

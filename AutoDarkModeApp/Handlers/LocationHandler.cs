@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using System.Runtime.InteropServices;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 
 namespace AutoDarkModeApp
 {
@@ -40,7 +40,7 @@ namespace AutoDarkModeApp
         {
             AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
 
-            Geopoint geopoint = new Geopoint(new BasicGeoposition
+            Geopoint geopoint = new(new BasicGeoposition
             {
                 Latitude = configBuilder.LocationData.Lat,
                 Longitude = configBuilder.LocationData.Lon

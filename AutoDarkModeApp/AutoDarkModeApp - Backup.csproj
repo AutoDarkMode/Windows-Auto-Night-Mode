@@ -1,0 +1,171 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AutoDarkModeApp</RootNamespace>
+    <AssemblyName>AutoDarkModeApp</AssemblyName>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>Auto-Night Mode</ProductName>
+    <PublisherName>Armin Osaj</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.9.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AutoDarkModeApp_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutoDarkModeApp.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestTimestampUrl>http://tsa.startssl.com/rfc3161</ManifestTimestampUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <NoWarn>1701;1702;CA1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release\</OutputPath>
+    <WarningLevel>0</WarningLevel>
+    <NoWarn>1701;1702;CA1416</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Edge_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GitHub_Logo_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Twitter_Logo_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PayPal_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Photo_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GitHub_Logo_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Edge_Logo_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Settings_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentWPF" Version="0.10.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.4" />
+    <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.4" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
+    <PackageReference Include="TaskScheduler">
+      <Version>2.9.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Office_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DonationHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UpdaterHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoDarkModeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="AboutWindow.xaml.cs" />
+    <Page Remove="AboutWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
+    <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeConfig.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>AutoDarkModeApp.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(OutDir)" />
+  </Target>
+  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(PublishDir)" />
+  </Target>
+</Project>

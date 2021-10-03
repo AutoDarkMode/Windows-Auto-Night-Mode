@@ -1,14 +1,13 @@
-﻿using AutoDarkModeSvc.Config;
-using System;
+﻿using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using AutoDarkModeSvc;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
-using AutoDarkModeApp.Communication;
 using AutoDarkModeSvc.Communication;
+using AutoDarkModeConfig;
+using AutoDarkModeComms;
 
 namespace AutoDarkModeApp
 {
@@ -17,31 +16,16 @@ namespace AutoDarkModeApp
     /// </summary>
     public partial class PageApps : Page
     {
-        private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
-        bool is1903 = false;
+        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
+        private bool is1903 = false;
+        private readonly bool init = true;
 
         public PageApps()
         {
-            builder.Load();
             InitializeComponent();
             UiHandler();
-
-            //follow windows theme
-            ThemeChange(this, null);
-            SourceChord.FluentWPF.SystemTheme.ThemeChanged += ThemeChange;
-        }
-
-        //react to windows theme change
-        // still required??? @Armin2208
-        private void ThemeChange(object sender, EventArgs e)
-        {
-            if (SourceChord.FluentWPF.SystemTheme.AppTheme.Equals(SourceChord.FluentWPF.ApplicationTheme.Dark))
-            {
-            }
-            else
-            {
-            }
+            init = false;
         }
 
         private void UiHandler()
@@ -54,18 +38,9 @@ namespace AutoDarkModeApp
             {
                 ShowErrorMessage(ex);
             }
-            //if automatic theme switch isn't enabled
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                AccentColorCheckBox.IsEnabled = false;
-                SystemComboBox.IsEnabled = false;
-                AppComboBox.IsEnabled = false;
-                OfficeComboBox.IsEnabled = false;
-                CheckBoxOfficeWhiteTheme.IsEnabled = false;
-            }
 
             //if a windows theme file was picked
-            if (!builder.Config.ClassicMode)
+            if (builder.Config.WindowsThemeMode.Enabled)
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
@@ -73,6 +48,8 @@ namespace AutoDarkModeApp
                 SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 AppComboBox.IsEnabled = false;
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                NumberBoxColorDelay.IsEnabled = false;
+                NumberBoxColorDelay.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
 
             //if the OS version is older than 1903
@@ -88,18 +65,42 @@ namespace AutoDarkModeApp
             //os version 1903+
             {
                 //inform user about settings
-                if(builder.Config.ClassicMode) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+                if (!builder.Config.WindowsThemeMode.Enabled) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+
+                //numbox
+                NumberBoxColorDelay.Value = Convert.ToInt32(builder.Config.SystemSwitch.Component.TaskbarSwitchDelay);
 
                 //is accent color switch enabled?
-                AccentColorCheckBox.IsChecked = builder.Config.AccentColorTaskbarEnabled;
+                AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnDark;
+                if (!AccentColorCheckBox.IsChecked.Value)
+                {
+                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                }
             }
 
             //combobox
-            AppComboBox.SelectedIndex = (int)builder.Config.AppsTheme;
-            SystemComboBox.SelectedIndex = (int)builder.Config.SystemTheme;
-            if (builder.Config.Office.Enabled)
+            if (builder.Config.AppsSwitch.Enabled)
             {
-                OfficeComboBox.SelectedIndex = (int)builder.Config.Office.Mode;
+                AppComboBox.SelectedIndex = (int)builder.Config.AppsSwitch.Component.Mode;
+            }
+            else
+            {
+                AppComboBox.SelectedIndex = 3;
+            }
+
+            if (builder.Config.SystemSwitch.Enabled)
+            {
+                SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode;
+            }
+            else
+            {
+                SystemComboBox.SelectedIndex = 3;
+            }
+
+            if (builder.Config.OfficeSwitch.Enabled)
+            {
+                OfficeComboBox.SelectedIndex = (int)builder.Config.OfficeSwitch.Component.Mode;
             }
             else
             {
@@ -108,153 +109,9 @@ namespace AutoDarkModeApp
 
 
             //checkbox
-            if (builder.Config.Office.LightTheme == 5)
+            if (builder.Config.OfficeSwitch.Component.LightTheme == 5)
             {
                 CheckBoxOfficeWhiteTheme.IsChecked = true;
-            }
-        }
-
-        private void AppComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            if (AppComboBox.SelectedIndex.Equals(0))
-            {
-                builder.Config.AppsTheme = Mode.Switch;
-            }
-
-            if (AppComboBox.SelectedIndex.Equals(1))
-            {
-                builder.Config.AppsTheme = Mode.LightOnly;
-            }
-
-            if (AppComboBox.SelectedIndex.Equals(2))
-            {
-                builder.Config.AppsTheme = Mode.DarkOnly;
-            }
-            try
-            {
-                builder.Save();
-            } 
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
-        }
-
-        private void SystemComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            if (SystemComboBox.SelectedIndex.Equals(0))
-            {
-                builder.Config.SystemTheme = Mode.Switch;
-                AccentColorCheckBox.IsEnabled = true;
-            }
-
-            if (SystemComboBox.SelectedIndex.Equals(1))
-            {
-                builder.Config.SystemTheme = Mode.LightOnly;
-                AccentColorCheckBox.IsEnabled = false;
-            }
-
-            if (SystemComboBox.SelectedIndex.Equals(2))
-            {
-                builder.Config.SystemTheme = Mode.DarkOnly;
-                Properties.Settings.Default.SystemThemeChange = 2;
-                AccentColorCheckBox.IsEnabled = true;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
-        }
-
-        private void AccentColorCheckBox_Click(object sender, RoutedEventArgs e)
-        {
-            if (((CheckBox)sender).IsChecked ?? false)
-            {
-                builder.Config.AccentColorTaskbarEnabled = true;
-            }
-            else
-            {
-                builder.Config.AccentColorTaskbarEnabled = false;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
-        }
-
-        private void OfficeComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            builder.Config.Office.Enabled = true;
-            if (OfficeComboBox.SelectedIndex.Equals(0))
-            {
-                builder.Config.Office.Mode = Mode.Switch;
-            }
-
-            if (OfficeComboBox.SelectedIndex.Equals(1))
-            {
-                builder.Config.Office.Mode = Mode.LightOnly;
-            }
-
-            if (OfficeComboBox.SelectedIndex.Equals(2))
-            {
-                builder.Config.Office.Mode = Mode.DarkOnly;
-            }
-
-            if (OfficeComboBox.SelectedIndex.Equals(3))
-            {
-                builder.Config.Office.Enabled = false;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-            RequestThemeSwitch();
-        }
-        private void DisableOfficeSwitch()
-        {
-            //does nothing for now
-            Properties.Settings.Default.OfficeThemeChange = 3;
-            OfficeComboBox.SelectedIndex = 3;
-        }
-
-        private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
-        {
-            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
-        }
-
-        private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)
-        {
-            if(CheckBoxOfficeWhiteTheme.IsChecked ?? true){
-                builder.Config.Office.LightTheme = 5;
-                OfficeComboBox_DropDownClosed(this, null);
-            }
-            else
-            {
-                builder.Config.Office.LightTheme = 0;
-                OfficeComboBox_DropDownClosed(this, null);
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
             }
         }
 
@@ -279,6 +136,194 @@ namespace AutoDarkModeApp
             return;
         }
 
+        private async void RequestThemeSwitch()
+        {
+            try
+            {
+                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                if (result != StatusCode.Ok)
+                {
+                    throw new SwitchThemeException(result, "PageApps");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+        }
+
+        private void AppComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!init)
+            {
+                builder.Config.AppsSwitch.Enabled = true;
+
+                if (AppComboBox.SelectedIndex.Equals(0))
+                {
+                    builder.Config.AppsSwitch.Component.Mode = Mode.Switch;
+                }
+                else if (AppComboBox.SelectedIndex.Equals(1))
+                {
+                    builder.Config.AppsSwitch.Component.Mode = Mode.LightOnly;
+                }
+                else if (AppComboBox.SelectedIndex.Equals(2))
+                {
+                    builder.Config.AppsSwitch.Component.Mode = Mode.DarkOnly;
+                }
+                else if (AppComboBox.SelectedIndex.Equals(3))
+                {
+                    builder.Config.AppsSwitch.Enabled = false;
+                }
+
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                RequestThemeSwitch();
+            }
+        }
+
+        private void SystemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!init)
+            {
+                builder.Config.SystemSwitch.Enabled = true;
+                if (SystemComboBox.SelectedIndex.Equals(0))
+                {
+                    builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
+                    AccentColorCheckBox.IsEnabled = true;
+                }
+                else if (SystemComboBox.SelectedIndex.Equals(1))
+                {
+                    builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
+                    AccentColorCheckBox.IsEnabled = false;
+                }
+                else if (SystemComboBox.SelectedIndex.Equals(2))
+                {
+                    builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
+                    AccentColorCheckBox.IsEnabled = true;
+                }
+                else if (SystemComboBox.SelectedIndex.Equals(3))
+                {
+                    builder.Config.SystemSwitch.Enabled = false;
+                }
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                RequestThemeSwitch();
+            }
+        }
+
+        private void AccentColorCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (((CheckBox)sender).IsChecked ?? false)
+            {
+                builder.Config.SystemSwitch.Component.TaskbarColorOnDark = true;
+                TextBlockColorDelay.Visibility = Visibility.Visible;
+                NumberBoxColorDelay.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                builder.Config.SystemSwitch.Component.TaskbarColorOnDark = false;
+                TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void NumberBoxColorDelay_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            if (!init)
+            {
+                builder.Config.SystemSwitch.Component.TaskbarSwitchDelay = Convert.ToInt32(NumberBoxColorDelay.Value);
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+            }
+        }
+
+        private void OfficeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!init)
+            {
+                builder.Config.OfficeSwitch.Enabled = true;
+                if (OfficeComboBox.SelectedIndex.Equals(0))
+                {
+                    builder.Config.OfficeSwitch.Component.Mode = Mode.Switch;
+                }
+                else if (OfficeComboBox.SelectedIndex.Equals(1))
+                {
+                    builder.Config.OfficeSwitch.Component.Mode = Mode.LightOnly;
+                }
+                else if (OfficeComboBox.SelectedIndex.Equals(2))
+                {
+                    builder.Config.OfficeSwitch.Component.Mode = Mode.DarkOnly;
+                }
+                else if (OfficeComboBox.SelectedIndex.Equals(3))
+                {
+                    builder.Config.OfficeSwitch.Enabled = false;
+                }
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
+                RequestThemeSwitch();
+            }
+
+        }
+
+        private void CheckBoxOfficeWhiteTheme_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxOfficeWhiteTheme.IsChecked ?? true)
+            {
+                builder.Config.OfficeSwitch.Component.LightTheme = 5;
+            }
+            else
+            {
+                builder.Config.OfficeSwitch.Component.LightTheme = 0;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
+        {
+            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
+        }
+
         private void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
@@ -286,22 +331,6 @@ namespace AutoDarkModeApp
                 UseShellExecute = true,
                 Verb = "open"
             });
-        }
-
-        private async void RequestThemeSwitch()
-        {
-            try
-            {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-                if (result == Response.Err)
-                {
-                    throw new SwitchThemeException();
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
         }
     }
 }

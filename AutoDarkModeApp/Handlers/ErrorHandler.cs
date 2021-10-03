@@ -2,48 +2,47 @@
 
 namespace AutoDarkModeApp.Handlers
 {
-        public class SwitchThemeException : Exception
+    public class SwitchThemeException : Exception
+    {
+        private readonly static string customMessage = "Theme switching is unsuccessful";
+        public SwitchThemeException() : base(customMessage)
         {
-            public override string Message => "Theme switching is unsuccessful.";
-
-            public SwitchThemeException()
-            {
-                this.Source = "SwitchThemeException";
-            }
-
-            public SwitchThemeException(string message, string source) : base(message)
-            {
-                this.Source = source;
-            }
+            this.Source = "SwitchThemeException";
         }
 
-        public class AddAutoStartException : Exception
+        public SwitchThemeException(string message, string source) : base($"{customMessage}: {message}")
         {
-            public override string Message => "Auto start task could not been set.";
+            this.Source = source;
+        }
+    }
 
-            public AddAutoStartException()
-            {
-                this.Source = "AutoStartException";
-            }
+    public class AddAutoStartException : Exception
+    {
+        public override string Message => "Auto start task could not been set.";
 
-            public AddAutoStartException(string message, string source) : base(message)
-            {
-                this.Source = source;
-            }
+        public AddAutoStartException()
+        {
+            this.Source = "AutoStartException";
         }
 
-        public class RemoveAutoStartException : Exception
+        public AddAutoStartException(string message, string source) : base(message)
         {
-            public override string Message => "Auto start task could not been removed.";
-
-            public RemoveAutoStartException()
-            {
-                this.Source = "RemoveAutoStartException";
-            }
-
-            public RemoveAutoStartException(string message, string source) : base(message)
-            {
-                this.Source = source;
-            }
+            this.Source = source;
         }
+    }
+
+    public class RemoveAutoStartException : Exception
+    {
+        public override string Message => "Auto start task could not been removed.";
+
+        public RemoveAutoStartException()
+        {
+            this.Source = "RemoveAutoStartException";
+        }
+
+        public RemoveAutoStartException(string message, string source) : base(message)
+        {
+            this.Source = source;
+        }
+    }
 }

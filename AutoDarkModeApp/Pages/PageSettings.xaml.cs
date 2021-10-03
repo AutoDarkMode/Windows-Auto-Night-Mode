@@ -7,12 +7,12 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AutoDarkModeSvc;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeApp.Communication;
+using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
+using System.IO;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -23,13 +23,17 @@ namespace AutoDarkModeApp.Pages
     {
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
+        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
+        private readonly bool init = true;
+        readonly Updater updater = new();
+        private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
 
         public PageSettings()
         {
             try
             {
                 builder.Load();
+                builder.LoadUpdaterData();
             }
             catch (Exception ex)
             {
@@ -37,85 +41,125 @@ namespace AutoDarkModeApp.Pages
             }
             InitializeComponent();
             UiHandler();
+            init = false;
         }
         private void UiHandler()
         {
-            RestartButton.Visibility = Visibility.Hidden;
-            CheckBoxEnergySaverMitigation.ToolTip = Properties.Resources.cbSettingsEnergySaverMitigationInfo;
+            //disable elements which aren't compatible with this device
+            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
+            {
+                CheckBoxEnergySaverMitigation.IsEnabled = false;
+            }
+
+            //language ui
+            ButtonRestart.Visibility = Visibility.Collapsed;
+            TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
             ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString();
-            if(ComboBoxLanguageSelection.SelectedValue == null)
+            if (ComboBoxLanguageSelection.SelectedValue == null)
             {
                 ComboBoxLanguageSelection.SelectedValue = "en";
             }
 
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                CheckBoxColourFilter.IsEnabled = false;
-                CheckBoxBackgroundUpdater.IsEnabled = false;
-                CheckBoxBatteryDarkMode.IsEnabled = false;
-                CheckBoxEnergySaverMitigation.IsEnabled = false;
-            }
 
+            CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
+            CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
+            CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
+            CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
+
+
+            //battery slider / energy saver mitigation
+            BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
+            CheckBoxEnergySaverMitigation.ToolTip = Properties.Resources.cbSettingsEnergySaverMitigationInfo;
             if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
-                SetBatterySliderVisiblity(Visibility.Collapsed);
+                StackPanelBatterySlider.Visibility = Visibility.Collapsed;
             }
             else
             {
                 CheckBoxEnergySaverMitigation.IsChecked = true;
             }
 
-            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
+            //updater ui
+            if (builder.UpdaterData.LastCheck.Year.ToString().Equals("1"))
             {
-                CheckBoxBatteryDarkMode.IsEnabled = false;
-                CheckBoxEnergySaverMitigation.IsEnabled = false;
-            }
-
-            CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
-            CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
-            CheckBoxBackgroundUpdater.IsChecked = Settings.Default.BackgroundUpdate;
-            CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
-            TextboxAccentColorDelay.Text = builder.Config.Tunable.AccentColorSwitchDelay.ToString();
-            BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
-        }
-
-        private void ComboBoxLanguageSelection_DropDownClosed(object sender, System.EventArgs e)
-        {
-            string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString();
-            if (selectedLanguage != curLanguage)
-            {
-                SetLanguage(selectedLanguage);
-                Translator.Text = Properties.Resources.lblTranslator;
-                RestartText.Text = Properties.Resources.restartNeeded;
-                RestartButton.Content = Properties.Resources.restart;
-                RestartButton.Visibility = Visibility.Visible;
-                Settings.Default.LanguageChanged = true;
+                TextBlockUpdateInfo.Text = "Last checked: " + "never";
             }
             else
             {
-                SetLanguage(selectedLanguage);
-                RestartText.Text = null;
-                RestartButton.Visibility = Visibility.Hidden;
-                Translator.Text = Properties.Resources.lblTranslator;
-                Settings.Default.LanguageChanged = false;
+                TextBlockUpdateInfo.Text = "Last checked: " + builder.UpdaterData.LastCheck.ToString();
+            }
+            CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
+            switch (builder.Config.Updater.DaysBetweenUpdateCheck)
+            {
+                case 3:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck3Days;
+                    break;
+                case 7:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck7Days;
+                    break;
+                case 14:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck14Days;
+                    break;
+            }
+            CheckBoxAutoInstall.IsChecked = builder.Config.Updater.AutoInstall;
+            CheckBoxUpdateSilent.IsChecked = builder.Config.Updater.Silent;
+            if (!CheckBoxAutoInstall.IsChecked.Value) CheckBoxUpdateSilent.IsEnabled = false;
+            if(String.IsNullOrEmpty(builder.Config.Updater.VersionQueryUrl))
+            {
+                RadioButtonStableUpdateChannel.IsChecked = true;
+            }
+            else if (builder.Config.Updater.VersionQueryUrl.Equals(BetaVersionQueryURL))
+            {
+                RadioButtonBetaUpdateChannel.IsChecked = true;
+            }
+            else
+            {
+                RadioButtonBetaUpdateChannel.IsEnabled = false;
+                RadioButtonStableUpdateChannel.IsEnabled = false;
             }
         }
 
-        private void SetLanguage(string lang)
+        private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!init)
+            {
+                string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString();
+                if (selectedLanguage != curLanguage)
+                {
+                    SetLanguage(selectedLanguage);
+                    Translator.Text = Properties.Resources.lblTranslator;
+                    TextBlockLanguageRestart.Text = Properties.Resources.restartNeeded;
+                    TextBlockLanguageRestart.Visibility = Visibility.Visible;
+                    ButtonRestart.Content = Properties.Resources.restart;
+                    ButtonRestart.Visibility = Visibility.Visible;
+                    Settings.Default.LanguageChanged = true;
+                }
+                else
+                {
+                    SetLanguage(selectedLanguage);
+                    TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
+                    ButtonRestart.Visibility = Visibility.Collapsed;
+                    Translator.Text = Properties.Resources.lblTranslator;
+                    Settings.Default.LanguageChanged = false;
+                }
+            }
+        }
+
+        private static void SetLanguage(string lang)
         {
             Settings.Default.Language = lang;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.Language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
         }
 
-        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonRestart_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Settings.Default.Save();
-                Process.Start(new ProcessStartInfo(Extensions.ExecutionPath)
+                Process.Start(new ProcessStartInfo(Extensions.ExecutionPathApp)
                 {
-                    UseShellExecute = true,
+                    UseShellExecute = false,
                     Verb = "open"
                 });
                 Application.Current.Shutdown();
@@ -138,53 +182,15 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void CheckBoxBackgroundUpdater_Click(object sender, RoutedEventArgs e)
-        {
-            TaskSchHandler taskShedHandler = new TaskSchHandler();
-
-            if (CheckBoxBackgroundUpdater.IsChecked.Value)
-            {
-                taskShedHandler.CreateAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = true;
-            }
-            else
-            {
-                taskShedHandler.RemoveAppUpdaterTask();
-                Properties.Settings.Default.BackgroundUpdate = false;
-            }
-        }
-
-        private void CheckBoxBatteryDarkMode_Click(object sender, RoutedEventArgs e)
-        {
-            if (CheckBoxBatteryDarkMode.IsChecked.Value)
-            {
-                builder.Config.Events.Enabled = true;
-                builder.Config.Events.DarkThemeOnBattery = true;
-            }
-            else
-            {
-                builder.Config.Events.Enabled = true;
-                builder.Config.Events.DarkThemeOnBattery = false;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex, "CheckBoxBatteryDarkMode_Click");
-            }
-        }
-
         private async void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
             if(CheckBoxColourFilter.IsChecked.Value)
             {
-                builder.Config.ColorFilterEnabled = true;
+                builder.Config.ColorFilterSwitch.Enabled = true;
             }
             else
             {
-                builder.Config.ColorFilterEnabled = false;
+                builder.Config.ColorFilterSwitch.Enabled = false;
             }
             try
             {
@@ -194,57 +200,13 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
             }
-            await messagingClient.SendMessageAsync(Command.Switch);
-        }
-
-        private void TextboxAccentColorDelay_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            TextboxAccentColorDelay.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                TextboxAccentColorDelay.SelectAll();
-            }));
-        }
-        private void TextboxAccentColorDelay_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextboxAccentColorDelay_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TextboxAccentColorDelay_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (TextboxAccentColorDelay.Text != "")
-            {
-                builder.Config.Tunable.AccentColorSwitchDelay = int.Parse(TextboxAccentColorDelay.Text);
-                try
-                {
-                    builder.Save();
-                }
-                catch(Exception ex)
-                {
-                    ShowErrorMessage(ex, "TextboxAccentColorDelay_TextChanged");
-                }
-            }
-        }
-
-        private void StartProcessByProcessInfo(string message)
-        {
-            Process.Start(new ProcessStartInfo(message)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            });
+            _ = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
         }
 
         private void ShowErrorMessage(Exception ex, string location)
         {
             string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -280,12 +242,12 @@ namespace AutoDarkModeApp.Pages
             if (CheckBoxEnergySaverMitigation.IsChecked.Value)
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = true;
-                SetBatterySliderVisiblity(Visibility.Visible);
+                StackPanelBatterySlider.Visibility =  Visibility.Visible;
             }
             else
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = false;
-                SetBatterySliderVisiblity(Visibility.Collapsed);
+                StackPanelBatterySlider.Visibility = Visibility.Collapsed;
             }
             try
             {
@@ -295,13 +257,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxEnergySaverMitigation_Click");
             }
-        }
-
-        private void SetBatterySliderVisiblity(Visibility visibility)
-        {
-            BatterySlider.Visibility = visibility;
-            BatterySliderLabel.Visibility = visibility;
-            BatterySliderText.Visibility = visibility;
         }
 
         private async void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
@@ -317,10 +272,11 @@ namespace AutoDarkModeApp.Pages
                     builder.Config.Tunable.UseLogonTask = false;
                 }
                 builder.Save();
+
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
                     var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
-                    if (result != Response.Ok)
+                    if (result != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"error creating auto start task, ZMQ returned {result}", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }
@@ -329,6 +285,237 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "CheckBoxLogonTask_Click");
+            }
+        }
+
+        private void CheckBoxHideTrayIcon_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked.Value)
+            {
+                MsgBox confirm = new("Disabling the icon isn't recommended. Do you really want to continue?", "Hide Tray Icon", "info", "yesno")
+                {
+                    Owner = Window.GetWindow(this)
+                };
+                bool result = confirm.ShowDialog() ?? false;
+                if (!result)
+                {
+                    (sender as CheckBox).IsChecked = false;
+                    return;
+                }
+                builder.Config.Tunable.ShowTrayIcon = false;
+            }
+            else
+            {
+                builder.Config.Tunable.ShowTrayIcon = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxHideTrayIcon_Click");
+            }
+        }
+
+        /// <summary>
+        /// Updater
+        /// </summary>
+        private void ButtonSearchUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonSearchUpdate.IsEnabled = false;
+            TextBlockUpdateInfo.Text = Properties.Resources.msgSearchUpd;//searching for update...
+            updater.CheckNewVersion();
+            if (updater.UpdateAvailable())
+            {
+                TextBlockUpdateInfo.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
+            }
+            else
+            {
+                TextBlockUpdateInfo.Text = Properties.Resources.msgNoUpd;//no new updates are available.
+                ButtonSearchUpdate.IsEnabled = true;
+            }
+        }
+
+        private void CheckBoxEnableUpdater_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.Enabled = true;
+            }
+            else
+            {
+                builder.Config.Updater.Enabled = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxEnableUpdater_Click");
+            }
+        }
+
+        private void ComboBoxDaysBetweenUpdateCheck_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!init)
+            {
+                switch((sender as ComboBox).SelectedIndex)
+                {
+                    case 0:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 3;
+                        break;
+                    case 1:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 7;
+                        break;
+                    case 2:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 14;
+                        break;
+                }
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "ComboBoxDaysBetweenUpdateCheck_SelectionChanged");
+                }
+            }
+        }
+
+        private void CheckBoxAutoInstall_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.AutoInstall = true;
+                CheckBoxUpdateSilent.IsEnabled = true;
+            }
+            else
+            {
+                builder.Config.Updater.AutoInstall = false;
+                builder.Config.Updater.Silent = false;
+                CheckBoxUpdateSilent.IsChecked = false;
+                CheckBoxUpdateSilent.IsEnabled = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxAutoInstall_Click");
+            }
+        }
+
+        private void CheckBoxUpdateSilent_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.Silent = true;
+            }
+            else
+            {
+                builder.Config.Updater.Silent = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxUpdateSilent_Click");
+            }
+        }
+
+        private void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as RadioButton).IsChecked.Value)
+            {
+                builder.Config.Updater.VersionQueryUrl = null;
+                ButtonSearchUpdate.IsEnabled = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonStableUpdateChannel_Click");
+            }
+        }
+
+        private void RadioButtonBetaUpdateChannel_Click(object sender, RoutedEventArgs e)
+        {
+            if((sender as RadioButton).IsChecked.Value)
+            {
+                builder.Config.Updater.VersionQueryUrl = BetaVersionQueryURL;
+                ButtonSearchUpdate.IsEnabled = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
+            }
+        }
+
+        /// <summary>
+        /// Config folder links
+        /// </summary>
+        private void HyperlinkOpenConfigFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "config.yaml");
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(filepath)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+
+        private void HyperlinkOpenConfigFile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter |  e.Key == Key.Space)
+            {
+                HyperlinkOpenConfigFile_PreviewMouseDown(this, null);
+            }
+        }
+
+        private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(filepath)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+
+        private void HyperlinkOpenLogFile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                HyperlinkOpenLogFile_PreviewMouseDown(this, null);
+            }
+        }
+
+        private void HyperlinkOpenAppDataFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var folderpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+            Process.Start("explorer.exe", folderpath);
+        }
+
+        private void HyperlinkOpenAppDataFolder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                HyperlinkOpenAppDataFolder_PreviewMouseDown(this, null);
             }
         }
     }

@@ -8,29 +8,34 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
-using System.ComponentModel;
+using AutoDarkModeConfig;
+using System.IO;
 
 namespace AutoDarkModeSvc
 {
     class Service : Form
     {
-        private bool allowshowdisplay = false;
+        private readonly bool allowshowdisplay = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        NotifyIcon NotifyIcon { get; }
-        List<ModuleTimer> Timers { get; set; }
-        ICommandServer CommandServer { get; }
-        AdmConfigMonitor ConfigMonitor { get; }
-        public readonly ToolStripMenuItem forceDarkMenuItem = new ToolStripMenuItem("Force Dark Mode");
-        public readonly ToolStripMenuItem forceLightMenuItem = new ToolStripMenuItem("Force Light Mode");
+        private NotifyIcon NotifyIcon { get; }
+        private List<ModuleTimer> Timers { get; set; }
+        private ICommandServer CommandServer { get; }
+        private AdmConfigMonitor ConfigMonitor { get; }
+        private AdmConfigBuilder ConfigBuilder { get; }
+        public readonly ToolStripMenuItem forceDarkMenuItem = new("Force Dark Mode");
+        public readonly ToolStripMenuItem forceLightMenuItem = new("Force Light Mode");
         private delegate void SafeCallDelegate(string text);
 
         public Service(int timerMillis)
         {
-            NotifyIcon = new NotifyIcon();
+            ConfigBuilder = AdmConfigBuilder.Instance();
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
-            InitTray();
-
+            if (ConfigBuilder.Config.Tunable.ShowTrayIcon)
+            {
+                NotifyIcon = new NotifyIcon();
+                InitTray();
+            }
             CommandServer = new ZeroMQServer(this);
             //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
@@ -38,21 +43,22 @@ namespace AutoDarkModeSvc
             ConfigMonitor = new AdmConfigMonitor();
             ConfigMonitor.Start();
 
-            ModuleTimer MainTimer = new ModuleTimer(timerMillis, TimerName.Main);
-            //ModuleTimer IOTimer = new ModuleTimer(TimerFrequency.IO, "io");
-            ModuleTimer GeoposTimer = new ModuleTimer(TimerFrequency.Location, TimerName.Geopos);
-            ModuleTimer StateUpdateTimer = new ModuleTimer(TimerFrequency.StateUpdate, TimerName.StateUpdate);
+            ModuleTimer MainTimer = new(timerMillis, TimerName.Main);
+            ModuleTimer IOTimer = new(TimerFrequency.IO, TimerName.IO);
+            ModuleTimer GeoposTimer = new(TimerFrequency.Location, TimerName.Geopos);
+            ModuleTimer StateUpdateTimer = new(TimerFrequency.StateUpdate, TimerName.StateUpdate);
 
             Timers = new List<ModuleTimer>()
             {
-                MainTimer, 
-                //IOTimer, 
+                MainTimer,
+                IOTimer,
                 GeoposTimer,
                 StateUpdateTimer
             };
 
-            var warden = new WardenModule("ModuleWarden", Timers, true);
+            WardenModule warden = new WardenModule("ModuleWarden", Timers, true);
             ConfigMonitor.RegisterWarden(warden);
+            ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
             Timers.ForEach(t => t.Start());
@@ -65,8 +71,8 @@ namespace AutoDarkModeSvc
 
         private void InitTray()
         {
-            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Close");
-            ToolStripMenuItem openConfigDirItem = new ToolStripMenuItem("Open Config Directory");
+            ToolStripMenuItem exitMenuItem = new("Close");
+            ToolStripMenuItem openConfigDirItem = new("Open Config Directory");
             exitMenuItem.Click += new EventHandler(Exit);
             openConfigDirItem.Click += new EventHandler(OpenConfigDir);
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
@@ -127,8 +133,8 @@ namespace AutoDarkModeSvc
             {
                 Logger.Info("ui signal received: stop forcing specific theme");
                 GlobalState rtc = GlobalState.Instance();
-                rtc.ForcedTheme = Theme.Undefined;
-                ThemeManager.TimedSwitch(AdmConfigBuilder.Instance());
+                rtc.ForcedTheme = Theme.Unknown;
+                ThemeManager.TimedSwitch(ConfigBuilder);
                 mi.Checked = false;
             }
             else
@@ -140,7 +146,7 @@ namespace AutoDarkModeSvc
                         (item as ToolStripMenuItem).Checked = false;
                     }
                 }
-                AdmConfig config = AdmConfigBuilder.Instance().Config;
+                AdmConfig config = ConfigBuilder.Config;
                 GlobalState rtc = GlobalState.Instance();
                 if (mi.Name == "forceLight")
                 {
@@ -160,7 +166,7 @@ namespace AutoDarkModeSvc
 
         private void SwitchThemeNow(object sender, EventArgs e)
         {
-            AdmConfig config = AdmConfigBuilder.Instance().Config;
+            AdmConfig config = ConfigBuilder.Config;
             Logger.Info("ui signal received: switching theme");
             if (RegistryHandler.AppsUseLightTheme())
             {
@@ -174,9 +180,9 @@ namespace AutoDarkModeSvc
 
         private void OpenConfigDir(object sender, EventArgs e)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo
+            ProcessStartInfo startInfo = new()
             {
-                Arguments = AdmConfigBuilder.Instance().ConfigDir,
+                Arguments = ConfigBuilder.ConfigDir,
                 FileName = "explorer.exe"
             };
 
@@ -187,13 +193,16 @@ namespace AutoDarkModeSvc
         {
             if (e.Button == MouseButtons.Left)
             {
-                using Mutex appMutex = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
+                using Mutex appMutex = new(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
                 try
                 {
                     if (e.Button == MouseButtons.Left && appMutex.WaitOne(TimeSpan.FromSeconds(2), false))
                     {
                         Console.WriteLine("Start App");
-                        Process.Start(@"AutoDarkModeApp.exe");
+                        using Process app = new();
+                        app.StartInfo.UseShellExecute = false;
+                        app.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeApp.exe");
+                        app.Start();
                         appMutex.ReleaseMutex();
                     }
                 }

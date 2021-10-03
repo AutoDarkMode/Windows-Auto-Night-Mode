@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <OutputType>WinExe</OutputType>
     <RootNamespace>AutoDarkModeApp</RootNamespace>
     <AssemblyName>AutoDarkModeApp</AssemblyName>
@@ -27,6 +28,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
@@ -57,22 +59,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\bin\Debug\</OutputPath>
+    <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\bin\Release\</OutputPath>
+    <WarningLevel>0</WarningLevel>
+    <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Communication\Command.cs" />
-    <Compile Include="..\AutoDarkModeSvc\Config\AdmConfig.cs">
-      <Link>Config\AdmConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\AutoDarkModeSvc\Config\AdmConfigBuilder.cs">
-      <Link>Config\AdmConfigBuilder.cs</Link>
-    </Compile>
-    <Compile Include="..\AutoDarkModeSvc\Config\AdmLocationData.cs">
-      <Link>Config\AdmLocationData.cs</Link>
-    </Compile>
-  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
       <Visible>False</Visible>
@@ -111,18 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentWPF" Version="0.10.0" />
-    <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.18362.2005</Version>
-    </PackageReference>
-    <PackageReference Include="NetMQ" Version="4.0.0.207" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.4" />
+    <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.4" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="4.7.0" />
-    <PackageReference Include="TaskScheduler">
-      <Version>2.8.20</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Office_Logo.png" />
@@ -162,10 +148,23 @@
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
+    <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeConfig.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CustomToolNamespace>AutoDarkModeApp.Properties</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(OutDir)\Licenses" />
+    <Copy SourceFiles="Licenses\lgpl.txt" DestinationFolder="$(OutDir)\Licenses" />
+  </Target>
+  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(PublishDir)\Licenses" />
+    <Copy SourceFiles="Licenses\lgpl.txt" DestinationFolder="$(PublishDir)\Licenses" />
+  </Target>
 </Project>

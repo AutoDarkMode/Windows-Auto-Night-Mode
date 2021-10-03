@@ -143,8 +143,8 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
-        ///Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+        ///   Looks up a localized string similar to Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
+        ///Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
         ///But it also reduces the battery life, so ONLY activate if necessary!.
         /// </summary>
         public static string cbConnectedStandbyTooltip {
@@ -456,10 +456,10 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We ran into the following issue: 
+        ///   Looks up a localized string similar to We ran into the following issue:
         ///{0}
         ///
-        ///We will now try to solve this problem by running an algorithm as administrator. Maybe this will help. 
+        ///We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
         ///Auto Dark Mode will restart afterwards and you&apos;ll need to re-apply your settings, sorry!
         ///
         ///Sidenote: NEVER run Auto Dark Mode as administrator manually!.
@@ -492,11 +492,11 @@ namespace AutoDarkModeApp.Properties {
         ///   Looks up a localized string similar to Sorry, but we couldn&apos;t apply your settings.
         ///
         ///Here are some things you can try:
-        ///- Uninstall and then reinstall auto dark mode.
-        ///- Try to disable {0} in the Auto Dark Mode settings.
-        ///- If you enabled Desktop Wallpaper, disable the feature and try again.
+        ///- Restart the Auto Dark Mode service
+        ///- Check if the service is running
+        ///- Close the service, delete the config.yaml file and re-configue
         ///
-        ///If these things didn&apos;t help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the &quot;Yes&quot; button..
+        ///If these things didn&apos;t help, you can create an issue on GitHub. You can access the issue by clicking the &quot;Yes&quot; button..
         /// </summary>
         public static string errorThemeApply {
             get {
@@ -600,6 +600,15 @@ namespace AutoDarkModeApp.Properties {
         public static string lblOffset {
             get {
                 return ResourceManager.GetString("lblOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string lblPosition {
+            get {
+                return ResourceManager.GetString("lblPosition", resourceCulture);
             }
         }
         
@@ -805,7 +814,7 @@ namespace AutoDarkModeApp.Properties {
         ///   Looks up a localized string similar to Thank you for using Auto Dark Mode!
         ///
         ///A new version is available on GitHub with fixes and enhancements.
-        ///Do you want to download it?
+        ///Do you want to install it?
         ///
         ///Currently installed version: {0}, new version: {1}.
         /// </summary>
@@ -852,11 +861,29 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personalization.
+        /// </summary>
+        public static string NavbarPersonalization {
+            get {
+                return ResourceManager.GetString("NavbarPersonalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string NavbarSettings {
             get {
                 return ResourceManager.GetString("NavbarSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Modes.
+        /// </summary>
+        public static string NavbarSwitchModes {
+            get {
+                return ResourceManager.GetString("NavbarSwitchModes", resourceCulture);
             }
         }
         
@@ -1149,7 +1176,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These options are disabled while using a Windows Theme. 
+        ///   Looks up a localized string similar to These options are disabled while using a Windows Theme.
         ///You can set them up individually in your Windows Theme..
         /// </summary>
         public static string ToolTipDisabledDueTheme {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AutoDarkModeConfig;
+using Microsoft.Win32;
 using System;
 using System.Threading;
 using WindowsInput;
@@ -26,7 +27,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme"><0 for dark, 1 for light theme</param>
         public static void SetSystemTheme(int theme)
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             key.SetValue("SystemUsesLightTheme", theme, RegistryValueKind.DWord);
         }
 
@@ -36,7 +37,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="theme">0 for disabled, 1 for enabled</param>
         public static void SetColorPrevalence(int theme)
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             key.SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
         }
 
@@ -46,7 +47,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if enabled; false otherwise</returns>
         public static bool IsColorPrevalence()
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             var enabled = key.GetValue("ColorPrevalence").Equals(1);
             return enabled;
         }
@@ -57,7 +58,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool AppsUseLightTheme()
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             var enabled = key.GetValue("AppsUseLightTheme").Equals(1);
             return enabled;
         }
@@ -68,7 +69,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if light; false if dark</returns>
         public static bool SystemUsesLightTheme()
         {
-            using var key = GetPersonalizeKey();
+            using RegistryKey key = GetPersonalizeKey();
             var enabled = key.GetValue("SystemUsesLightTheme").Equals(1);
             return enabled;
         }
@@ -100,11 +101,10 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
-                registryKey.Dispose();
                 return true;
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not add AutoDarkModeSvc to autostart");
@@ -130,62 +130,26 @@ namespace AutoDarkModeSvc.Handlers
             }
             return false;
         }
-        /// <summary>
-        /// Changes the office theme
-        /// </summary>
-        /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white</param>
-        public static void OfficeTheme(byte themeValue)
+
+        public static string GetCurrentWallpaperSource()
         {
-            string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
-
-            //edit first registry key
-            using RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
-            commonKey.SetValue("UI Theme", themeValue);
-
-            //search for the second key and then change it
-            using RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
-
-            string msaSubkey = @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\";
-            string anonymousSubKey = msaSubkey + @"\PendingChanges";
-
-            foreach (var v in identityKey.GetSubKeyNames())
+            try
             {
-                //registry key for users logged in with msa
-                if (!v.Equals("Anonymous"))
-                {
-                    try
-                    {
-                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
-                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                    catch
-                    {
-                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
-                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                }
-                //registry key for users without msa
-                else
-                {
-                    try
-                    {
-                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
-                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                    catch
-                    {
-                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
-                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                }
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Internet Explorer\Desktop\General");
+                return (string)registryKey.GetValue("WallpaperSource");
             }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error getting wallpaper source path");
+            }
+            return "";
         }
 
         //Colour filter grayscale feature
         public static void ColorFilterKeySender(bool dark)
         {
             var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-            if (dark && filterKey.Equals(0) || !dark && filterKey.Equals(1))
+            if ((dark && filterKey.Equals(0)) || (!dark && filterKey.Equals(1)))
             {
                 //simulate key presses
                 InputSimulator inputSimulator = new InputSimulator();
@@ -196,13 +160,33 @@ namespace AutoDarkModeSvc.Handlers
                 inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
             }
         }
+        public static bool IsColorFilterActive()
+        {
+            var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
+            if (filterKey != null)
+            {
+                return filterKey.Equals(1);
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static void ColorFilterSetup()
         {
-            var filterType = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
+            RegistryKey filterType = null;
+            try
+            {
+                filterType = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error instantiating color filtering key:");
+            }
             //on clean installs this registry key doesn't exist, so we need to create it
             if (filterType == null)
             {
-                filterType.Dispose();
+                Logger.Warn("color filter key does not exist, creating");
                 filterType = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
             }
             var currentValue = filterType.GetValue("Active", null);

@@ -1,0 +1,282 @@
+﻿<ui:Page x:Class="AutoDarkModeApp.Pages.PageThemePicker"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      mc:Ignorable="d"
+      
+      d:DesignHeight="650" d:DesignWidth="500"
+      Title="PageThemePicker">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="1" Grid.Column="1"
+            Name="TextBlockBackButton"
+            Margin="0,13,0,0"
+            FontFamily="Segoe MDL2 Assets"
+            FontSize="20"
+            Text="&#xe830;"
+            MouseDown="TextBlockBackButton_MouseDown"
+            Cursor="Hand"
+            />
+        
+        <TextBlock
+            Grid.Row="1" Grid.Column="1"
+            Margin="35,0,0,0"
+            FontFamily="Segoe UI Semilight"
+            FontSize="30"
+            Text="Theme"
+            />
+
+        <ui:ToggleSwitch
+            Name="ToggleSwitchThemeMode"
+            Grid.Row="3" Grid.Column="1"
+            Margin="0,10,0,0"
+            Header="Enable Windows Theme switch"
+            Toggled="ToggleSwitchThemeMode_Toggled"
+            />
+
+        <!-- Tutorial: How to create theme -->
+        <TextBlock
+            Grid.Row="4" Grid.Column="1"
+            Margin="0,20,0,20"
+            FontFamily="Segoe UI"
+            FontSize="20"
+            Text="{x:Static p:Resources.ThemeHeaderCreate}"
+            />
+        
+        <Grid
+            Grid.Row="5" Grid.Column="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition MaxWidth="350"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Step 1 -->
+            <TextBlock 
+                Name="TextBlockStep1"
+                Grid.Column="0" Grid.Row="0"
+                Text="{x:Static p:Resources.ThemeTutorialStep}" 
+                Foreground="Gray"
+                FontSize="14"
+                />
+
+            <TextBlock 
+                Name="TextBlockOpenImmersiveControlPanel"
+                Grid.Column="1" Grid.Row="0"
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                TextWrapping="Wrap" 
+                Text="{x:Static p:Resources.ThemeTutorialStep1}" 
+                FontSize="14"
+                Focusable="True" 
+                MouseDown="TextBlockOpenImmersiveControlPanel_MouseDown"
+                KeyDown="TextBlockOpenImmersiveControlPanel_KeyDown">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            
+            <!-- Step 2 -->
+            <TextBlock 
+                Name="TextBlockStep2"
+                Grid.Column="0" Grid.Row="1"
+                Margin="0,10,0,0"
+                Text="{x:Static p:Resources.ThemeTutorialStep}" 
+                Foreground="Gray"
+                FontSize="14"
+                />
+            <TextBlock 
+                Grid.Row="1" Grid.Column="1" 
+                Margin="0,10,0,0"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextWrapping="Wrap" 
+                Text="{x:Static p:Resources.ThemeTutorialStep2}" 
+                FontSize="14"
+                />
+            
+            <!-- Step 3 -->
+            <TextBlock 
+                Name="TextBlockStep3" 
+                Grid.Column="0" Grid.Row="2"
+                Margin="0,10,0,0"
+                Text="{x:Static p:Resources.ThemeTutorialStep}" 
+                Foreground="Gray"
+                FontSize="14"
+                />
+            <TextBlock 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Grid.Column="1" Grid.Row="2" 
+                Margin="0,10,0,0"
+                TextWrapping="Wrap" 
+                Text="{x:Static p:Resources.ThemeTutorialStep3}"
+                FontSize="14"
+                />
+            
+            <!-- Step 4 -->
+            <TextBlock 
+                Name="TextBlockStep4" 
+                Grid.Column="0" Grid.Row="4"
+                Margin="0,10,0,0"
+                Text="{x:Static p:Resources.ThemeTutorialStep}" 
+                Foreground="Gray"
+                FontSize="14"
+                />
+            <TextBlock 
+                Grid.Column="1" Grid.Row="3"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextWrapping="Wrap" 
+                Text="{x:Static p:Resources.ThemeTutorialStep4}" 
+                FontSize="14"
+                />
+        </Grid>
+
+        <!-- Combobox pick theme -->
+        <TextBlock
+            Grid.Row="6" Grid.Column="1"
+            Margin="0,30,0,20"
+            FontFamily="Segoe UI"
+            FontSize="20"
+            Text="{x:Static p:Resources.ThemeHeaderPick}"
+            />
+
+        <Grid
+            Grid.Row="7" Grid.Column="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Light Theme Combobox -->
+            <TextBlock 
+                Grid.Column="0" Grid.Row="0"
+                Margin="0,20,0,0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                FontFamily="Segoe MDL2 Assets" 
+                FontSize="30" 
+                Text="&#xE706;" 
+                />
+            <TextBlock 
+                Grid.Row="0" Grid.Column="1" 
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                FontSize="14"
+                Text="{x:Static p:Resources.ThemeLight}"
+                />
+            <ComboBox 
+                Grid.Row="0" Grid.Column="1" 
+                Name="ComboBoxLightTheme"
+                Margin="20,25,0,0" 
+                MinWidth="220" MaxWidth="300"
+                DropDownOpened="ComboBox_DropDownOpened"
+                SelectionChanged="ComboBox_SelectionChanged"
+                />
+            
+            <!-- Dark Theme Combobox -->
+            <TextBlock 
+                Grid.Row="1" Grid.Column="0" 
+                Margin="0,30,0,0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                FontFamily="Segoe MDL2 Assets" 
+                FontSize="30" 
+                Text="&#xE708;" 
+                />
+            <TextBlock 
+                Grid.Row="1" Grid.Column="1" 
+                Margin="20,10,0,0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                FontSize="14"
+                Text="{x:Static p:Resources.ThemeDark}" 
+                />
+            <ComboBox
+                Name="ComboBoxDarkTheme" 
+                Grid.Row="1" Grid.Column="1" 
+                Margin="20,35,0,0" 
+                MinWidth="220" MaxWidth="300"
+                DropDownOpened="ComboBox_DropDownOpened"
+                SelectionChanged="ComboBox_SelectionChanged"
+                />
+        </Grid>
+        
+        <!-- Info Text -->
+        <TextBlock
+            Name="TextBlockUserFeedback"
+            Grid.Column="1" Grid.Row="8"
+            Margin="0,20,0,0"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            TextWrapping="Wrap"
+            FontSize="14"
+            Text="{x:Static p:Resources.msgChangesSaved}"
+            />
+
+        <!-- Buttons -->
+        <TextBlock 
+            Name="TextBlockOpenThemeFolder" 
+            Grid.Column="1" Grid.Row="9" 
+            Margin="0,30,0,0" 
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            TextWrapping="Wrap" 
+            FontSize="14" 
+            Text="{x:Static p:Resources.OpenPath}" 
+            Focusable="True"
+            MouseDown="TextBlockOpenThemeFolder_MouseDown"
+            KeyDown="TextBlockOpenThemeFolder_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
+</ui:Page>

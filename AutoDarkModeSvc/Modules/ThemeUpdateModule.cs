@@ -1,4 +1,5 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 using System;
@@ -26,7 +27,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            Thread thread = new Thread(() =>
+            Thread thread = new(() =>
             {
                 try
                 {

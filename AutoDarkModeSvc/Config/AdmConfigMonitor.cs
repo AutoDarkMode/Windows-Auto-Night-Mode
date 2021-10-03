@@ -1,19 +1,28 @@
-﻿using AutoDarkModeSvc.Modules;
+﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Config.ConfigUpdateEvents;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Interfaces;
+using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Config
 {
     class AdmConfigMonitor
     {
-        private FileSystemWatcher ConfigWatcher { get;  }
+        private FileSystemWatcher ConfigWatcher { get; }
         private FileSystemWatcher LocationDataWatcher { get; }
-
-        private readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
+        private readonly ComponentManager componentManager = ComponentManager.Instance();
+        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private readonly GlobalState state = GlobalState.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IAutoDarkModeModule warden;
+        private DateTime lastTimeConfigChanged;
+        private DateTime lastTimeLocationConfigChanged;
 
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
@@ -22,53 +31,98 @@ namespace AutoDarkModeSvc.Config
         {
             ConfigWatcher = new FileSystemWatcher
             {
-                Path = configBuilder.ConfigDir,
-                Filter = Path.GetFileName(configBuilder.ConfigFilePath),
+                Path = builder.ConfigDir,
+                Filter = Path.GetFileName(builder.ConfigFilePath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
             LocationDataWatcher = new FileSystemWatcher
             {
-                Path = configBuilder.ConfigDir,
-                Filter = Path.GetFileName(configBuilder.LocationDataPath),
+                Path = builder.ConfigDir,
+                Filter = Path.GetFileName(builder.LocationDataPath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
             ConfigWatcher.Changed += OnChangedConfig;
             LocationDataWatcher.Changed += OnChangedLocationData;
+
+            IConfigUpdateEvent<AdmConfig> geolocatorEvent = new GeolocatorEvent();
+            IConfigUpdateEvent<AdmConfig> themeModeEvent = new ThemeModeEvent(componentManager);
+
+            //change event trackers
+            builder.ConfigUpdatedHandler += geolocatorEvent.OnConfigUpdate;
+            builder.ConfigUpdatedHandler += themeModeEvent.OnConfigUpdate;
         }
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(configBuilder.ConfigFilePath)))
+            state.ConfigIsUpdating = true;
+            if (state.SkipConfigFileReload)
             {
-                try
-                {
-                    configBuilder.Load();
-                    if (warden != null)
-                    {
-                        warden.Fire();
-                    }
-                    Logger.Debug("updated configuration file");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Debug(ex, "config file locked, cannot load");
-                }
+                state.SkipConfigFileReload = false;
+                Logger.Debug("skipping config file reload, update source internal");
+                return;
             }
+            lastTimeConfigChanged = DateTime.Now;
+            try
+            {
+                AdmConfig oldConfig = builder.Config;
+                builder.Load();
+                componentManager.UpdateSettings();
+                UpdateEventStates();
+                builder.OnConfigUpdated(oldConfig);
+
+                // fire warden ro register/unregister enabled/disabled modules
+                if (warden != null)
+                {
+                    warden.Fire();
+                }
+                Logger.Debug("updated configuration file");
+            }
+            catch (Exception ex)
+            {
+                Logger.Debug(ex, "config file load failed:");
+            }
+            state.ConfigIsUpdating = false;
         }
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
         {
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(configBuilder.LocationDataPath)))
+            if (DateTime.Now.Subtract(lastTimeLocationConfigChanged).TotalMilliseconds < 20)
+            {
+                return;
+            }
+            lastTimeLocationConfigChanged = DateTime.Now;
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.LocationDataPath)))
             {
                 try
                 {
-                    configBuilder.LoadLocationData();
+                    builder.LoadLocationData();
                     Logger.Debug("updated location data file");
                 }
                 catch (Exception ex)
                 {
                     Logger.Debug(ex, "location data file locked, cannot load");
                 }
+            }
+        }
+
+        public void UpdateEventStates()
+        {
+            if (builder.Config.Events.DarkThemeOnBattery)
+            {
+                PowerEventHandler.RegisterThemeEvent();
+            }
+            else
+            {
+                PowerEventHandler.DeregisterThemeEvent();
+            }
+
+            if (builder.Config.Events.SystemResumeTrigger)
+            {
+                PowerEventHandler.RegisterResumeEvent();
+            }
+            else
+            {
+                PowerEventHandler.DeregisterResumeEvent();
             }
         }
 

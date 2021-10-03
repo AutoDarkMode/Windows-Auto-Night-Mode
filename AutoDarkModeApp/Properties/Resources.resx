@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
     <value>Settings</value>
@@ -208,7 +208,7 @@
     <value>Thank you for using Auto Dark Mode!
 
 A new version is available on GitHub with fixes and enhancements.
-Do you want to download it?
+Do you want to install it?
 
 Currently installed version: {0}, new version: {1}</value>
   </data>
@@ -232,6 +232,9 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>City</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Position</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
     <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
@@ -331,11 +334,11 @@ If you run into issues: please increase the switching delay in settings. </value
     <value>Sorry, but we couldn't apply your settings.
 
 Here are some things you can try:
-- Uninstall and then reinstall auto dark mode.
-- Try to disable {0} in the Auto Dark Mode settings.
-- If you enabled Desktop Wallpaper, disable the feature and try again.
+- Restart the Auto Dark Mode service
+- Check if the service is running
+- Close the service, delete the config.yaml file and re-configue
 
-If these things didn't help, you can comment the GitHub issue with posting a screenshot of your error. You can access the issue by clicking the "Yes" button.</value>
+If these things didn't help, you can create an issue on GitHub. You can access the issue by clicking the "Yes" button.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Error: Your input is invalid</value>
@@ -344,8 +347,8 @@ If these things didn't help, you can comment the GitHub issue with posting a scr
     <value>Switch after Connected Standby (not recommended)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode. 
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer. 
+    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
+Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
 But it also reduces the battery life, so ONLY activate if necessary!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
@@ -358,7 +361,7 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>Set</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme. 
+    <value>These options are disabled while using a Windows Theme.
 You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
@@ -478,10 +481,10 @@ For this reason you could support me with a voluntary donation. Even a small amo
     <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue: 
+    <value>We ran into the following issue:
 {0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help. 
+We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
 Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
 
 Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
@@ -542,5 +545,11 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>This only works if you haven't manually enabled battery saver!</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Switch Modes</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Personalization</value>
   </data>
 </root>

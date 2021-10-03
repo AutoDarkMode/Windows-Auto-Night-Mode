@@ -5,51 +5,38 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 using Microsoft.Win32;
+using System.Collections.Generic;
+using AutoDarkModeConfig.ComponentSettings.Base;
 
 namespace AutoDarkModeApp
 {
     public partial class DesktopBGui
     {
-        WallpaperHandler deskBGHandler = new WallpaperHandler();
-        AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        string pathOrig1;
-        string pathOrig2;
-        string pathCur1;
-        string pathCur2;
-        readonly string folderPath;
+        readonly WallpaperHandler deskBGHandler = new WallpaperHandler();
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         bool picture1 = false;
         bool picture2 = false;
         public bool saved = false;
 
         public DesktopBGui()
         {
-            folderPath = Path.Combine(builder.ConfigDir, "Wallpapers");
-            pathCur1 = builder.Config.Wallpaper.LightThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.LightThemeWallpapers.ToList()[0] : "";
-            pathCur2 = builder.Config.Wallpaper.DarkThemeWallpapers.Count > 0 ? builder.Config.Wallpaper.DarkThemeWallpapers.ToList()[0] : "";
             InitializeComponent();
-            StartVoid();
+            Loaded += StartVoid;
         }
 
-        private void StartVoid()
+        private void StartVoid(object sender, RoutedEventArgs e)
         {
-            if (builder.Config.Wallpaper.Enabled)
+            List<MonitorSettings> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors;
+            MonitorSelectionComboBox.ItemsSource = monitorIds;
+            MonitorSelectionComboBox.SelectedItem = monitorIds.FirstOrDefault();
+            if (builder.Config.WallpaperSwitch.Enabled)
             {
-                try
-                {
-                    ShowPreview(pathCur1, 1);
-                    ShowPreview(pathCur2, 2);
-                }
-                catch
-                {
-                    builder.Config.Wallpaper.Enabled = false;
-                    StartVoid();
-                }
+                //do nothing??
             }
             else
             {
-                CreateFolder();
                 SaveButton1.IsEnabled = false;
                 SaveButton1.ToolTip = Properties.Resources.dbSaveToolTip;
             }
@@ -57,6 +44,7 @@ namespace AutoDarkModeApp
 
         private void FilePicker1_Click(object sender, RoutedEventArgs e)
         {
+            MonitorSettings settings = (MonitorSettings)MonitorSelectionComboBox.SelectedItem;
             OpenFileDialog dlg = new OpenFileDialog
             {
                 Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
@@ -67,29 +55,36 @@ namespace AutoDarkModeApp
             {
                 if (((Button)sender).CommandParameter.ToString().Equals("FilePicker1"))
                 {
-                    pathOrig1 = dlg.FileName;
-                    ShowPreview(pathOrig1, 1);
+                    settings.LightThemeWallpaper = dlg.FileName;
+                    ShowPreview(settings.LightThemeWallpaper, 1);
                 }
                 if (((Button)sender).CommandParameter.ToString().Equals("FilePicker2"))
                 {
-                    pathOrig2 = dlg.FileName;
-                    ShowPreview(pathOrig2, 2);
+                    settings.DarkThemeWallpaper = dlg.FileName;
+                    ShowPreview(settings.DarkThemeWallpaper, 2);
                 }
             }
         }
 
         private void GetCurrentBG1_Click(object sender, RoutedEventArgs e)
         {
+            MsgBox msgBox = new MsgBox("I'm currently broken :)", "Nope!", "Info", "close")
+            {
+                Owner = GetWindow(this)
+            };
+            msgBox.Show();
+            return;
+            /*MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id.Contains((string)MonitorSelectionComboBox.SelectedItem));
             if (((Button)sender).CommandParameter.ToString().Equals("GetCurrentBG1"))
             {
-                pathOrig1 = deskBGHandler.GetBackground();
-                ShowPreview(pathOrig1, 1);
+                //settings.LightThemeWallpaper = deskBGHandler.GetBackground();
+                ShowPreview(settings.LightThemeWallpaper, 1);
             }
             if (((Button)sender).CommandParameter.ToString().Equals("GetCurrentBG2"))
             {
-                pathOrig2 = deskBGHandler.GetBackground();
-                ShowPreview(pathOrig2, 2);
-            }
+                //settings.DarkThemeWallpaper = deskBGHandler.GetBackground();
+                ShowPreview(settings.DarkThemeWallpaper, 2);
+            }*/
         }
 
         private void ShowPreview(string picture, int thumb)
@@ -118,59 +113,11 @@ namespace AutoDarkModeApp
             }
             catch
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "error", "close")
+                MsgBox msgBox = new MsgBox(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "Wallpaper Preview Error", "close")
                 {
                     Owner = GetWindow(this)
                 };
                 msgBox.ShowDialog();
-            }
-        }
-
-        private void CopyFileLight()
-        {
-            if (pathOrig1 != null)
-            {
-                string pathTemp1 = Path.Combine(folderPath, "WallpaperLight_Temp" + Path.GetExtension(pathOrig1));
-                File.Copy(pathOrig1, pathTemp1, true);
-                try
-                {
-                    File.Delete(pathCur1);
-                }
-                catch
-                {
-
-                }
-                pathCur1 = Path.Combine(folderPath, $"WallpaperLight_{Guid.NewGuid()}{Path.GetExtension(pathOrig1)}");
-                File.Copy(pathTemp1, pathCur1, true);
-                File.Delete(pathTemp1);
-            }
-        }
-
-        private void CopyFileDark()
-        {
-            if(pathOrig2 != null)
-            {
-                string pathTemp2 = Path.Combine(folderPath, "WallpaperDark_Temp" + Path.GetExtension(pathOrig2));
-                File.Copy(pathOrig2, pathTemp2, true);
-                try
-                {
-                    File.Delete(pathCur2);
-                }
-                catch
-                {
-
-                }
-                pathCur2 = Path.Combine(folderPath, $"WallpaperDark_{Guid.NewGuid()}{Path.GetExtension(pathOrig2)}");
-                File.Copy(pathTemp2, pathCur2, true);
-                File.Delete(pathTemp2);
-            }
-        }
-
-        private void CreateFolder()
-        {
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
             }
         }
 
@@ -192,13 +139,7 @@ namespace AutoDarkModeApp
         {
             try
             {
-                CopyFileLight();
-                CopyFileDark();
-                builder.Config.Wallpaper.LightThemeWallpapers.Clear();
-                builder.Config.Wallpaper.DarkThemeWallpapers.Clear();
-                builder.Config.Wallpaper.LightThemeWallpapers.Add(pathCur1);
-                builder.Config.Wallpaper.DarkThemeWallpapers.Add(pathCur2);
-                builder.Config.Wallpaper.Enabled = true;
+                builder.Config.WallpaperSwitch.Enabled = true;
                 saved = true;
                 Close();
             }
@@ -214,11 +155,21 @@ namespace AutoDarkModeApp
 
         private void DeleButton_Click(object sender, RoutedEventArgs e)
         {
-            Directory.Delete(folderPath, true);
-            builder.Config.Wallpaper.LightThemeWallpapers.Clear();
-            builder.Config.Wallpaper.DarkThemeWallpapers.Clear();
-            builder.Config.Wallpaper.Enabled = false;
+            builder.Config.WallpaperSwitch.Enabled = false;
+            builder.Save();
             Close();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MonitorSettings settings = (MonitorSettings)MonitorSelectionComboBox.SelectedItem;
+            ShowPreview(settings.LightThemeWallpaper, 1);
+            ShowPreview(settings.DarkThemeWallpaper, 2);
+        }
+
+        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            ((ComboBox)sender).ItemsSource = builder.Config.WallpaperSwitch.Component.Monitors;
         }
     }
 }
