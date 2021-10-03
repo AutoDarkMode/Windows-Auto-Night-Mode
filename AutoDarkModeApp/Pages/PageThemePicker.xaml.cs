@@ -304,5 +304,10 @@ namespace AutoDarkModeApp.Pages
                 TextBlockOpenThemeFolder_MouseDown(this, null);
             }
         }
+
+        private void TextBlockBackButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Navigate(typeof(PageWallpaper), null, new DrillInNavigationTransitionInfo());
+        }
     }
 }

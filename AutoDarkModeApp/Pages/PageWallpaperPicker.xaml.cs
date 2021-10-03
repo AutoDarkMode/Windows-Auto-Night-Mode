@@ -274,5 +274,10 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "RequestThemeSwitch at PageWallpaperPicker");
             }
         }
+
+        private void TextBlockBackButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Navigate(typeof(PageWallpaper), null, new DrillInNavigationTransitionInfo());
+        }
     }
 }

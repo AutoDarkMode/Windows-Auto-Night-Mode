@@ -34,6 +34,17 @@
 
         <TextBlock
             Grid.Row="1" Grid.Column="1"
+            Name="TextBlockBackButton"
+            Margin="0,15,0,0"
+            FontFamily="Segoe MDL2 Assets"
+            FontSize="20"
+            Text="&#xe830;"
+            MouseDown="TextBlockBackButton_MouseDown"
+            />
+        
+        <TextBlock
+            Grid.Row="1" Grid.Column="1"
+            Margin="35,0,0,0"
             FontFamily="Segoe UI Semilight"
             FontSize="30"
             Text="Theme"
