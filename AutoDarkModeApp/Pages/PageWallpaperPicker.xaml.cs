@@ -34,6 +34,7 @@ namespace AutoDarkModeApp.Pages
         private bool init = true;
         private bool SelectedLight { get; set; } = true;
         private delegate void ShowPreviewDelegate(string picture);
+        private delegate void PageLoadAsyncDelegate();
 
         public PageWallpaperPicker()
         {
@@ -51,6 +52,11 @@ namespace AutoDarkModeApp.Pages
 
         //ui handler at start
         private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new PageLoadAsyncDelegate(PageLoadAsync), null);
+        }
+
+        private void PageLoadAsync()
         {
             //is feature enabled?
             if (builder.Config.WallpaperSwitch.Enabled)
@@ -196,12 +202,14 @@ namespace AutoDarkModeApp.Pages
                 SolidColorPicker.Visibility = Visibility.Collapsed;
                 ComboBoxMonitorSelection_SelectionChanged(this, null);
                 ComboBoxMonitorSelection.Visibility = Visibility.Visible;
+                CleanMonitorButton.Visibility = Visibility.Visible;
             }
             else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
             {
                 ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
                 GridWallpaper.Visibility = Visibility.Collapsed;
                 SolidColorPicker.Visibility = Visibility.Visible;
+                CleanMonitorButton.Visibility = Visibility.Visible;
                 if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
                 {
                     HexColorTextBox.Text = builder.Config.WallpaperSwitch.Component.SolidColors.Light;

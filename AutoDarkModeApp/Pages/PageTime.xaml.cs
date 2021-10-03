@@ -24,6 +24,7 @@ namespace AutoDarkModeApp.Pages
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private readonly bool init = true;
+        private delegate void DispatcherDelegate();
 
         public PageTime()
         {
@@ -144,7 +145,7 @@ namespace AutoDarkModeApp.Pages
 
             OffsetButton.IsEnabled = false;
             UpdateSuntimes();
-            ApplyTheme();
+            Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             try
             {
                 builder.Save();
@@ -238,7 +239,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex);
             }
-            ApplyTheme();
+            Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
 
             //ui
             //applyButton.IsEnabled = false;
@@ -500,7 +501,7 @@ namespace AutoDarkModeApp.Pages
             }
             ButtonApplyCoordinates.IsEnabled = false;
             ActivateLocationMode();
-            ApplyTheme();
+            Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             TogglePanelVisibility(false, true, true, true);
         }
 
@@ -553,7 +554,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
-                ApplyTheme();
+                Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             }
             catch (Exception ex)
             {
@@ -571,7 +572,7 @@ namespace AutoDarkModeApp.Pages
                 builder.Save();
                 TogglePanelVisibility(false, true, true, false);
                 ActivateLocationMode();
-                ApplyTheme();
+                Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             }
             catch (Exception ex)
             {

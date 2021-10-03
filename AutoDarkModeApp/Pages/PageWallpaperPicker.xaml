@@ -105,6 +105,7 @@
             ui:ControlHelper.Header="Monitor"
             SelectionChanged="ComboBoxMonitorSelection_SelectionChanged"
             />
+        
         <Button Name="CleanMonitorButton" Content="Remove Disconnected" 
                 Margin="-70,42,0,0" 
                 Grid.Row="6" 
