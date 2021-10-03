@@ -449,6 +449,40 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "buttoncolorset");
             }
         }
+
+        private async void CleanButton_Click(object sender, RoutedEventArgs e)
+        {
+            await CleanMonitors();
+        }
+
+        private async Task CleanMonitors()
+        {
+            try
+            {
+                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.CleanMonitors);
+                if (result != StatusCode.Ok)
+                {
+                    throw new SwitchThemeException($"couldn't clean up monitor list, {result}", "PageWallpaper");
+                }
+                try
+                {
+                    builder.Load();
+                    //generate a list with all installed Monitors, select the first one
+                    List<MonitorSettings> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors;
+                    ComboBoxMonitorSelection.ItemsSource = monitorIds;
+                    ComboBoxMonitorSelection.SelectedItem = monitorIds.FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "cleanmonitors");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "cleanmonitors");
+            }
+
+        }
     }
 
     class NoSaveEvent : EventArgs

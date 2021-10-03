@@ -15,6 +15,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
@@ -36,7 +37,7 @@
         <TextBlock
             Grid.Row="1" Grid.Column="1"
             Name="TextBlockBackButton"
-            Margin="0,15,0,0"
+            Margin="0,13,0,0"
             FontFamily="Segoe MDL2 Assets"
             FontSize="20"
             Text="&#xe830;"
@@ -104,6 +105,13 @@
             ui:ControlHelper.Header="Monitor"
             SelectionChanged="ComboBoxMonitorSelection_SelectionChanged"
             />
+        <Button x:Name="CleanMonitorButton" Content="Remove Unused" 
+                HorizontalAlignment="Left" 
+                Margin="0,40,0,0" 
+                Grid.Row="6" 
+                Grid.Column="2"
+                VerticalAlignment="Top" 
+                Click="CleanButton_Click"/>
 
         <Grid
             Name="GridWallpaper"
