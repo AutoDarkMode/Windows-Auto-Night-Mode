@@ -34,7 +34,7 @@ namespace AutoDarkModeApp.Pages
         private bool init = true;
         private bool SelectedLight { get; set; } = true;
         private delegate void ShowPreviewDelegate(string picture);
-        private delegate void PageLoadAsyncDelegate();
+        private delegate void NoArgDelegate();
 
         public PageWallpaperPicker()
         {
@@ -77,7 +77,7 @@ namespace AutoDarkModeApp.Pages
         //ui handler at start
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Dispatcher.BeginInvoke(new PageLoadAsyncDelegate(PageLoadAsync), null);
+            Dispatcher.BeginInvoke(new NoArgDelegate(PageLoadAsync), null);
         }
 
         private async void PageLoadAsync()
@@ -401,7 +401,7 @@ namespace AutoDarkModeApp.Pages
             }
 
             builder.Save();
-            RequestThemeSwitch();
+            Dispatcher.BeginInvoke(new NoArgDelegate(RequestThemeSwitch), null);
         }
 
         private async void RequestThemeSwitch()

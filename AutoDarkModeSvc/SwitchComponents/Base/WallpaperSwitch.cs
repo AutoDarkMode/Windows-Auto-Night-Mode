@@ -222,18 +222,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             if (current == WallpaperType.All)
             {
                 currentGlobalTheme = Theme.Unknown;
-                currentIndividualTheme = GetIndividualWallpapersState();
-                currentWallpaperPosition = WallpaperHandler.GetPosition();
-            }
-            else if (current == WallpaperType.Individual)
-            {
-                currentIndividualTheme = GetIndividualWallpapersState();
-                currentWallpaperPosition = WallpaperHandler.GetPosition();
             }
             else if (current == WallpaperType.Global)
             {
                 currentGlobalTheme = Theme.Unknown;
-                currentWallpaperPosition = WallpaperHandler.GetPosition();
             }
             else if (current == WallpaperType.SolidColor)
             {
@@ -284,6 +276,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 StateUpdateOnTypeToggle(Settings.Component.TypeLight);
             }
+
+            currentIndividualTheme = GetIndividualWallpapersState();
+            currentWallpaperPosition = WallpaperHandler.GetPosition();
         }
 
         public override void EnableHook()
