@@ -476,6 +476,7 @@ namespace AutoDarkModeApp.Pages
                         builder.Config.WallpaperSwitch.Component.SolidColors.Dark = HexColorTextBox.Text;
                     }
                     builder.Save();
+                    RequestThemeSwitch();
                 }
                 else
                 {
