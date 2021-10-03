@@ -39,7 +39,115 @@
             FontSize="30"
             FontFamily="Segoe UI Semilight"/>
 
-        <Button x:Name="TestButton" Content="Pick a Windows Theme" Grid.Row="3" Grid.Column="1" Margin="0,180,0,50" Click="TestButton_Click"/>
-        <Button x:Name="TestButton2" Content="Pick a Wallpaper" Grid.Row="3" Grid.Column="1" Margin="0,210,0,0" Click="TestButton2_Click"/>
+
+        <!-- content wallpaper pick-->
+        <Grid Grid.Column="1" Grid.Row="3" Name="WallpaperPickerGrid" Cursor="Hand" MouseDown="NavigateWallpaperPicker">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- title wallpaper pick-->
+            <Grid Grid.Column="1" Grid.Row="0" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ui:FontIcon Grid.Column="0" Margin="0, 2, 0, 0"  FontFamily="Segoe MDL2 Assets" Glyph="&#xe8b9;"/>
+
+                <TextBlock
+                Margin="10, 0, 0, 0"
+                Grid.Column="1"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="Pick a wallpaper"
+                />
+            </Grid>
+
+            <TextBlock
+                    Name="TextBlockThemePickerDescription"
+                    Grid.Row="1" 
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    FontSize="14"
+                    Text="Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color."
+                    TextWrapping="Wrap"
+                    MaxWidth="420"
+                />
+
+            <ui:HyperlinkButton
+                    Grid.Row="2" 
+                    Name="HyperlinkWallpaper"
+                    Margin="0,0,0,0"
+                    Content="Pick a wallpaper"
+                    PreviewMouseDown="NavigateWallpaperPicker"
+                    PreviewKeyDown="NavigateWallpaperPicker"
+                    />
+
+            <TextBlock
+                    Name="WallpaperDisabledMessage"
+                    Grid.Row="3" 
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    FontSize="14"
+                    Text="This feature is disabled while theme mode is enabled."
+                    Foreground="#D44440"
+                    FontFamily="Segoe UI"
+                    TextWrapping="Wrap"
+                    MaxWidth="420"
+                />
+
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="4" MouseDown="NavigateThemePicker" Cursor="Hand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- title theme pick-->
+            <Grid Grid.Column="1" Grid.Row="0" Margin="0, 40,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ui:FontIcon Grid.Column="0" Margin="0, 2, 0, 0"  FontFamily="Segoe MDL2 Assets" Glyph="&#xe790;"/>
+
+                <TextBlock
+                Margin="10, 0, 0, 0"
+                Grid.Column="1"
+                FontFamily="Segoe UI"
+                FontSize="20"
+
+                Text="Pick a theme"
+                />
+            </Grid>
+
+
+            <TextBlock
+                    Grid.Row="1" 
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    FontSize="14"
+                    Text="Offers more fetures, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an account and individual sounds."
+                    TextWrapping="Wrap"
+                    MaxWidth="420"
+                />
+
+            <ui:HyperlinkButton
+                    Grid.Row="2" 
+                    Name="HyperlinkThemeMode"
+                    Margin="0,0,0,0"
+                    Content="Pick a theme"
+                    PreviewMouseDown="NavigateThemePicker"
+                    PreviewKeyDown="NavigateThemePicker"
+                    />
+
+        </Grid>
+
     </Grid>
 </ui:Page>

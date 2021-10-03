@@ -41,6 +41,7 @@
             FontFamily="Segoe MDL2 Assets"
             FontSize="20"
             Text="&#xe830;"
+            Cursor="Hand"
             MouseDown="TextBlockBackButton_MouseDown"
             />
 
