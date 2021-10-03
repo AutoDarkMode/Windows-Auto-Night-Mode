@@ -21,10 +21,9 @@ namespace AutoDarkModeSvc.Handlers
         public static void SetSolidColor(SolidColors colors, Theme newTheme)
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-            ColorConverter converter = new();
             if (newTheme == Theme.Dark)
             {
-                Color dark = converter.ConvertFromString(colors.Dark) as Color? ?? Color.Black;
+                Color dark = HexToColor(colors.Dark);
                 handler.SetBackgroundColor(ToUint(dark));
                 //Thread.Sleep(500);
                 handler.Enable(false);
@@ -32,7 +31,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             else if (newTheme == Theme.Light)
             {
-                Color light = converter.ConvertFromString(colors.Light) as Color? ?? Color.White;
+                Color light = HexToColor(colors.Light);
                 handler.SetBackgroundColor(ToUint(light));
                 //Thread.Sleep(500);
                 handler.Enable(false);
@@ -43,6 +42,17 @@ namespace AutoDarkModeSvc.Handlers
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             return ToColor(handler.GetBackgroundColor());
+        }
+
+        private static Color HexToColor(string hexString)
+        {
+            if (hexString.IndexOf('#') != -1)
+                hexString = hexString.Replace("#", "");
+
+            int r = int.Parse(hexString.Substring(0, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+            int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+            int b = int.Parse(hexString.Substring(4, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+            return Color.FromArgb(0, (byte)r, (byte)g, (byte)b);
         }
 
         public static bool SetEnabled(bool state)
