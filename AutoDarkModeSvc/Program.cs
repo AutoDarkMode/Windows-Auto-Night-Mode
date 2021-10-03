@@ -113,14 +113,30 @@ namespace AutoDarkModeSvc
                 try
                 {
                     Builder.Load();
-                    Builder.LoadLocationData();
                     Logger.Debug("config builder instantiated and configuration loaded");
                 }
                 catch (Exception e)
                 {
-                    Logger.Fatal(e, "could not read config file. shutting down application!");
-                    LogManager.Shutdown();
-                    Environment.Exit(-1);
+                    Logger.Error(e, "could not read config file, resetting config file:");
+                    try
+                    {
+                        Builder.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "could not create empty config file, resetting config file:");
+                        LogManager.Shutdown();
+                        Environment.Exit(-1);
+                    }
+                }
+
+                try
+                {
+                    Builder.LoadLocationData();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "could not load location data:");
                 }
 
                 if (Builder.Config.Tunable.Debug && !argsList.Contains("/debug"))

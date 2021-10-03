@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc.Config
             }
             catch (Exception ex)
             {
-                Logger.Debug(ex, "config file locked:");
+                Logger.Debug(ex, "config file load failed:");
             }
             state.ConfigIsUpdating = false;
         }

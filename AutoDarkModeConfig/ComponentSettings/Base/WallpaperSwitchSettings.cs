@@ -58,8 +58,8 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
 
     public class SolidColors
     {
-        public Color Light { get; set; } =  Color.FromArgb(0, 255, 255, 255);
-        public Color Dark { get; set; } = Color.FromArgb(0, 0, 0, 0);
+        public string Light { get; set; } = "#FFFFFF";
+        public string Dark { get; set; } = "#000000";
     }
 
     public class MonitorSettings

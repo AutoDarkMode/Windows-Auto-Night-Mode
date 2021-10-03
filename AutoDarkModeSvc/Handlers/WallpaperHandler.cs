@@ -9,8 +9,8 @@ using AutoDarkModeSvc.Config;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Display;
-using Windows.UI;
 using System.Threading;
+using System.Drawing;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -21,16 +21,19 @@ namespace AutoDarkModeSvc.Handlers
         public static void SetSolidColor(SolidColors colors, Theme newTheme)
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            ColorConverter converter = new();
             if (newTheme == Theme.Dark)
             {
-                handler.SetBackgroundColor(ToUint(colors.Dark));
+                Color dark = converter.ConvertFromString(colors.Dark) as Color? ?? Color.Black;
+                handler.SetBackgroundColor(ToUint(dark));
                 //Thread.Sleep(500);
                 handler.Enable(false);
 
             }
             else if (newTheme == Theme.Light)
             {
-                handler.SetBackgroundColor(ToUint(colors.Light));
+                Color light = converter.ConvertFromString(colors.Light) as Color? ?? Color.White;
+                handler.SetBackgroundColor(ToUint(light));
                 //Thread.Sleep(500);
                 handler.Enable(false);
             }

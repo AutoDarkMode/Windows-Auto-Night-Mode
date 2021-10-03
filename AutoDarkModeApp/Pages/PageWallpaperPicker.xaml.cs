@@ -8,8 +8,10 @@ using ModernWpf.Media.Animation;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,7 +32,7 @@ namespace AutoDarkModeApp.Pages
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private bool init = true;
-        private bool selectedLight = true;
+        private bool SelectedLight { get; set; } = true;
         private delegate void ShowPreviewDelegate(string picture);
 
         public PageWallpaperPicker()
@@ -114,6 +116,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowPreview(string picture)
         {
+            ImagePreview.Visibility = Visibility.Collapsed;
             try
             {
                 BitmapImage bitmap = new BitmapImage();
@@ -136,104 +139,142 @@ namespace AutoDarkModeApp.Pages
         {
             if ((sender as ComboBox).SelectedItem == ComboBoxModeSelectionLightTheme)
             {
-                selectedLight = true;
+                SelectedLight = true;
 
                 switch (builder.Config.WallpaperSwitch.Component.TypeLight)
                 {
                     case WallpaperType.Global:
-                        ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
-
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
+                        GridWallpaper.Visibility = Visibility.Visible;
+                        SolidColorPicker.Visibility = Visibility.Collapsed;
                         break;
 
                     case WallpaperType.Individual:
-                        ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionIndividual;
+                        GridWallpaper.Visibility = Visibility.Visible;
+                        SolidColorPicker.Visibility = Visibility.Collapsed;
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionIndividual;
                         break;
 
                     case WallpaperType.SolidColor:
-                        ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
+                        GridWallpaper.Visibility = Visibility.Collapsed;
+                        SolidColorPicker.Visibility = Visibility.Visible;
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
                         break;
                 }
             }
             else
             {
-                selectedLight = false;
+                SelectedLight = false;
 
                 switch (builder.Config.WallpaperSwitch.Component.TypeDark)
                 {
                     case WallpaperType.Global:
-                        ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
                         break;
 
                     case WallpaperType.Individual:
-                        ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionIndividual;
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionIndividual;
                         break;
 
                     case WallpaperType.SolidColor:
-                        ComboBoxBackgroundSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
                         break;
                 }
             }
-
-            ComboBoxBackgroundSelection_SelectionChanged(ComboBoxModeSelection, EventArgs.Empty);
+            ComboBoxWallpaperTypeSelection_SelectionChanged(ComboBoxWallpaperTypeSelection, new NoSaveEvent(true));
         }
 
-        private void ComboBoxBackgroundSelection_SelectionChanged(object sender, EventArgs e)
+        private void ComboBoxWallpaperTypeSelection_SelectionChanged(object sender, EventArgs e)
         {
             if (sender is ComboBox && (sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionGlobal)
             {
-                ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
-
-                if (selectedLight)
-                {
-                    if (builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light != null)
-                    {
-                        ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light);
-                    }
-                    else
-                    {
-                        ImagePreview.Visibility = Visibility.Collapsed;
-                        TextBlockImagePath.Visibility = Visibility.Collapsed;
-                    }
-                }
-                else
-                {
-                    if (builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark != null)
-                    {
-                        ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark);
-                    }
-                    else
-                    {
-                        ImagePreview.Visibility = Visibility.Collapsed;
-                        TextBlockImagePath.Visibility = Visibility.Collapsed;
-                    }
-                }
+                HandleSelectionGlobal();
             }
-            ComboBoxMonitorSelection_SelectionChanged(this, null);
-
-
-            if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionIndividual)
+            else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionIndividual)
             {
+                GridWallpaper.Visibility = Visibility.Visible;
+                SolidColorPicker.Visibility = Visibility.Collapsed;
                 ComboBoxMonitorSelection_SelectionChanged(this, null);
                 ComboBoxMonitorSelection.Visibility = Visibility.Visible;
             }
-
-            if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
+            else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
             {
                 ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
-            }
+                GridWallpaper.Visibility = Visibility.Collapsed;
+                SolidColorPicker.Visibility = Visibility.Visible;
+                if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
+                {
+                    HexColorTextBox.Text = builder.Config.WallpaperSwitch.Component.SolidColors.Light;
+                    try
+                    {
+                        ColorPreview.Fill = new SolidColorBrush(HexToColor(HexColorTextBox.Text));
+                    }
+                    catch { }
+                }
+                else
+                {
+                    HexColorTextBox.Text = builder.Config.WallpaperSwitch.Component.SolidColors.Dark;
+                    try
+                    {
+                        ColorPreview.Fill = new SolidColorBrush(HexToColor(HexColorTextBox.Text));
+                    }
+                    catch { }
+                }
 
+            }
+            if (e is NoSaveEvent nse)
+            {
+                SaveWallpaperTypeSelection(nse.NoSave);
+            }
+            SaveWallpaperTypeSelection(false);
+        }
+
+        private void HandleSelectionGlobal()
+        {
+            ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
+            SolidColorPicker.Visibility = Visibility.Collapsed;
+            GridWallpaper.Visibility = Visibility.Visible;
+
+            if (SelectedLight)
+            {
+                if (builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light != null)
+                {
+                    ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light);
+                }
+                else
+                {
+                    ImagePreview.Visibility = Visibility.Collapsed;
+                    TextBlockImagePath.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                if (builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark != null)
+                {
+                    ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark);
+                }
+                else
+                {
+                    ImagePreview.Visibility = Visibility.Collapsed;
+                    TextBlockImagePath.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void SaveWallpaperTypeSelection(bool noSave)
+        {
             // only save if sender is own combobox
-            if (sender.Equals(ComboBoxModeSelection) || init)
+            if (noSave || init)
             {
                 return;
             }
             if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
             {
-                builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperTypeTextToType(ComboBoxBackgroundSelection.SelectedItem as ComboBoxItem);
+                builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperTypeTextToType(ComboBoxWallpaperTypeSelection.SelectedItem as ComboBoxItem);
             }
             else if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionDarkTheme)
             {
-                builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperTypeTextToType(ComboBoxBackgroundSelection.SelectedItem as ComboBoxItem);
+                builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperTypeTextToType(ComboBoxWallpaperTypeSelection.SelectedItem as ComboBoxItem);
             }
             try
             {
@@ -265,7 +306,7 @@ namespace AutoDarkModeApp.Pages
         private void ComboBoxMonitorSelection_SelectionChanged(object sender, EventArgs e)
         {
             MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
-            if (selectedLight)
+            if (SelectedLight)
             {
                 Dispatcher.BeginInvoke(new ShowPreviewDelegate(ShowPreview), monitorSettings.LightThemeWallpaper);
             }
@@ -292,9 +333,9 @@ namespace AutoDarkModeApp.Pages
 
         private void SetWallpaper(string FileName)
         {
-            if (ComboBoxBackgroundSelection.SelectedItem == ComboBoxBackgroundSelectionGlobal)
+            if (ComboBoxWallpaperTypeSelection.SelectedItem == ComboBoxBackgroundSelectionGlobal)
             {
-                if (selectedLight)
+                if (SelectedLight)
                 {
                     builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light = FileName;
                     builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Global;
@@ -306,10 +347,10 @@ namespace AutoDarkModeApp.Pages
                 }
             }
 
-            if (ComboBoxBackgroundSelection.SelectedItem == ComboBoxBackgroundSelectionIndividual)
+            if (ComboBoxWallpaperTypeSelection.SelectedItem == ComboBoxBackgroundSelectionIndividual)
             {
                 MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
-                if (selectedLight)
+                if (SelectedLight)
                 {
                     monitorSettings.LightThemeWallpaper = FileName;
                     builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;
@@ -345,5 +386,77 @@ namespace AutoDarkModeApp.Pages
         {
             Frame.Navigate(typeof(PageWallpaper), null, new DrillInNavigationTransitionInfo());
         }
+
+        private void HexColorTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string prefix = "#";
+            if (!HexColorTextBox.Text.StartsWith(prefix))
+            {
+                HexColorTextBox.Text = prefix + HexColorTextBox.Text;
+                HexColorTextBox.SelectionStart = HexColorTextBox.Text.Length;
+            }
+            try
+            {
+                ColorPreview.Fill = new SolidColorBrush(HexToColor(HexColorTextBox.Text));
+            }
+            catch { }
+        }
+
+        public static Color HexToColor(string hexString)
+        {
+            if (hexString.IndexOf('#') != -1)
+                hexString = hexString.Replace("#", "");
+
+            int r = int.Parse(hexString.Substring(0, 2), NumberStyles.AllowHexSpecifier);
+            int g = int.Parse(hexString.Substring(2, 2), NumberStyles.AllowHexSpecifier);
+            int b = int.Parse(hexString.Substring(4, 2), NumberStyles.AllowHexSpecifier);
+            return Color.FromRgb((byte)r, (byte)g, (byte)b);
+        }
+
+        protected static bool CheckValidFormatHtmlColor(string inputColor)
+        {
+            //regex from http://stackoverflow.com/a/1636354/2343
+            if (Regex.Match(inputColor, "^#(?:[0-9a-fA-F]{3}){1,2}$").Success)
+                return true;
+
+            var result = System.Drawing.Color.FromName(inputColor);
+            return result.IsKnownColor;
+        }
+
+        private void ButtonColorSet_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (CheckValidFormatHtmlColor(HexColorTextBox.Text))
+                {
+                    if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
+                    {
+                        builder.Config.WallpaperSwitch.Component.SolidColors.Light = HexColorTextBox.Text;
+                    }
+                    else
+                    {
+                        builder.Config.WallpaperSwitch.Component.SolidColors.Dark = HexColorTextBox.Text;
+                    }
+                    builder.Save();
+                }
+                else
+                {
+                    ShowErrorMessage(new FormatException("invalid hex string"), "buttoncolorset");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "buttoncolorset");
+            }
+        }
+    }
+
+    class NoSaveEvent : EventArgs
+    {
+        public NoSaveEvent(bool noSave)
+        {
+            NoSave = noSave;
+        }
+        public bool NoSave { get; private set; }
     }
 }

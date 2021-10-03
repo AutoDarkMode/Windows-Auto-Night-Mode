@@ -29,6 +29,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock
@@ -83,11 +85,11 @@
             />
 
         <ComboBox
-            Name="ComboBoxBackgroundSelection"
+            Name="ComboBoxWallpaperTypeSelection"
             Grid.Row="5" Grid.Column="1"
             Margin="0,45,0,0"
             MinWidth="250"
-            SelectionChanged="ComboBoxBackgroundSelection_SelectionChanged">
+            SelectionChanged="ComboBoxWallpaperTypeSelection_SelectionChanged">
 
             <ComboBoxItem Content="Picture" Name="ComboBoxBackgroundSelectionGlobal"/>
             <ComboBoxItem Content="Picture (multiple monitors)" Name="ComboBoxBackgroundSelectionIndividual"/>
@@ -104,11 +106,12 @@
             />
 
         <Grid
-            Name="GridWallpaperLightTheme"
+            Name="GridWallpaper"
             Grid.Row="7" Grid.Column="1"
             Margin="0,30,0,0">
 
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -132,6 +135,7 @@
                 Click="ButtonFilePicker_Click"
                 />
 
+
             <Image
                 Name="ImagePreview"
                 Grid.Row="2"
@@ -141,6 +145,7 @@
                 HorizontalAlignment="Left"
                 />
 
+
             <TextBlock
                 Name="TextBlockImagePath"
                 Grid.Row="3"
@@ -149,5 +154,60 @@
                 TextWrapping="Wrap"
                 />
         </Grid>
+
+        <Grid Grid.Row="8" Grid.Column="1" Margin="0,20,0,0" Name="SolidColorPicker" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Margin="0,0,0,0"
+                Grid.Row="0"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="Color"
+                />
+
+            <Rectangle HorizontalAlignment="Left" 
+                           Name="ColorPreview"
+                           Grid.Column="0" 
+                           Grid.Row="1"
+                           Margin="0,0,0,6"
+                           Width="50"
+                           Height="50"
+                           Stroke="Gray" StrokeDashArray="1 2"
+                           />
+            <TextBox
+                    Text="#"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    ui:ControlHelper.Header="Hex Code"
+                    Width="100"
+                    TextChanged="HexColorTextBox_TextChanged"
+                    Name="HexColorTextBox"
+                    Margin="0,10,0,20"
+                    FontSize="14"
+                    TextWrapping="Wrap"
+                />
+
+            <Button
+                Name="ButtonColorSet"
+                Grid.Row="1"
+                Grid.Column="2"
+                Height="33"
+                Margin="20,12,0,0"
+                Width="80"
+                Content="{x:Static p:Resources.offsetButton}"
+                Click="ButtonColorSet_Click"
+                />
+        </Grid>
+
     </Grid>
 </ui:Page>
