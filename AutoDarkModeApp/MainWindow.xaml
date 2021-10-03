@@ -93,7 +93,7 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Tag="wallpaper" Content="{x:Static p:Resources.NavbarWallpaper}" Height="50">
+                <ui:NavigationViewItem Tag="wallpaper" Content="{x:Static p:Resources.NavbarPersonalization}" Height="50">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE771;"/>
                     </ui:NavigationViewItem.Icon>

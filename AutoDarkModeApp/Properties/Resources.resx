@@ -549,4 +549,7 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Switch Modes</value>
   </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
 </root>

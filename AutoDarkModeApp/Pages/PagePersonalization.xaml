@@ -1,0 +1,45 @@
+﻿<ui:Page x:Class="AutoDarkModeApp.Pages.PagePersonalization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoDarkModeApp"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      mc:Ignorable="d"
+      
+      Title="PagePersonalization" 
+      d:MinWidth="450"
+      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
+      VerticalAlignment="Top" HorizontalAlignment="Left">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            HorizontalAlignment="Left"  VerticalAlignment="Top"
+            Margin="0,0,0,0"
+            Grid.Column="1" Grid.Row="1" 
+            Text="{x:Static p:Resources.NavbarPersonalization}" 
+            FontSize="30"
+            FontFamily="Segoe UI Semilight"/>
+
+        <Button x:Name="TestButton" Content="Pick a Windows Theme" Grid.Row="3" Grid.Column="1" Margin="0,180,0,50" Click="TestButton_Click"/>
+        <Button x:Name="TestButton2" Content="Pick a Wallpaper" Grid.Row="3" Grid.Column="1" Margin="0,210,0,0" Click="TestButton2_Click"/>
+    </Grid>
+</ui:Page>
