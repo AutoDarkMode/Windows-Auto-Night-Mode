@@ -59,14 +59,14 @@ namespace AutoDarkModeSvc.Handlers
                 configBuilder.LocationData.LastUpdate = DateTime.Now;
                 configBuilder.LocationData.DataSourceIsGeolocator = false;
             }
-            UpdateSunTime(configBuilder);
             try
             {
+                UpdateSunTime(configBuilder);
                 configBuilder.SaveLocationData();
             }
             catch (Exception e)
             {
-                Logger.Error(e, "could not update configuration file while retrieving location");
+                Logger.Error(e, $"could not update geoposition, source: {e.Source}, error:");
             }
             //await Task.Delay(2500);
             state.GeolocatorIsUpdating = false;
