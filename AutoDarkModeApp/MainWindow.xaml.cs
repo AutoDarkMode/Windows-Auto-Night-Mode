@@ -153,6 +153,33 @@ namespace AutoDarkModeApp
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
 
+        private void Window_Closing(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                /*
+                // Use the RestoreBounds as the current values will be 0, 0 and the size of the screen
+                Settings.Default.Top = RestoreBounds.Top;
+                Settings.Default.Left = RestoreBounds.Left;
+                Settings.Default.Height = RestoreBounds.Height;
+                Settings.Default.Width = RestoreBounds.Width;
+                Settings.Default.Maximized = true;
+                */
+            }
+            else
+            {
+                /*
+                Settings.Default.Top = this.Top;
+                Settings.Default.Left = this.Left;
+                Settings.Default.Height = this.Height;
+                Settings.Default.Width = this.Width;
+                Settings.Default.Maximized = false;
+                */
+            }
+
+            Settings.Default.Save();
+        }
+
         /// <summary>
         /// Navbar / NavigationView
         /// </summary>

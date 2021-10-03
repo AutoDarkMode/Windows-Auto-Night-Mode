@@ -31,6 +31,7 @@ namespace AutoDarkModeApp.Pages
         private readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private bool init = true;
         private bool selectedLight = true;
+        private delegate void ShowPreviewDelegate(string picture);
 
         public PageWallpaperPicker()
         {
@@ -80,6 +81,14 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Config.WallpaperSwitch.Enabled = false;
             }
+            try
+            {
+                builder.Save();
+            } 
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
         }
 
         private void ShowErrorMessage(Exception ex, string location)
@@ -114,6 +123,8 @@ namespace AutoDarkModeApp.Pages
                 bitmap.EndInit();
                 ImagePreview.Source = bitmap;
                 TextBlockImagePath.Text = picture;
+                ImagePreview.Visibility = Visibility.Visible;
+                TextBlockImagePath.Visibility = Visibility.Visible;
             }
             catch  (Exception ex)
             {
@@ -175,6 +186,11 @@ namespace AutoDarkModeApp.Pages
                     {
                         ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light);
                     }
+                    else
+                    {
+                        ImagePreview.Visibility = Visibility.Collapsed;
+                        TextBlockImagePath.Visibility = Visibility.Collapsed;
+                    }
                 }
                 else
                 {
@@ -182,11 +198,17 @@ namespace AutoDarkModeApp.Pages
                     {
                         ShowPreview(builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark);
                     }
+                    else
+                    {
+                        ImagePreview.Visibility = Visibility.Collapsed;
+                        TextBlockImagePath.Visibility = Visibility.Collapsed;
+                    }
                 }
             }
 
             if((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionIndividual)
             {
+                ComboBoxMonitorSelection_SelectionChanged(this, null);
                 ComboBoxMonitorSelection.Visibility = Visibility.Visible;
             }
 
@@ -201,11 +223,11 @@ namespace AutoDarkModeApp.Pages
             MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
             if (selectedLight)
             {
-                ShowPreview(monitorSettings.LightThemeWallpaper);
+                Dispatcher.BeginInvoke(new ShowPreviewDelegate(ShowPreview), monitorSettings.LightThemeWallpaper);
             }
             else
             {
-                ShowPreview(monitorSettings.DarkThemeWallpaper);
+                Dispatcher.BeginInvoke(new ShowPreviewDelegate(ShowPreview), monitorSettings.DarkThemeWallpaper);
             }
         }
 
