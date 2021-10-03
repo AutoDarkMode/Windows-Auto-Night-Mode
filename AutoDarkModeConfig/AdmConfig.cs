@@ -33,7 +33,7 @@ namespace AutoDarkModeConfig
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
-        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, 0, 0);
+        public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 20, 0, 0);
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
@@ -126,7 +126,7 @@ namespace AutoDarkModeConfig
                 }
             }
         }
-        private int samples;
+        private int samples = 1;
         public int Samples
         {
             get { return samples; }

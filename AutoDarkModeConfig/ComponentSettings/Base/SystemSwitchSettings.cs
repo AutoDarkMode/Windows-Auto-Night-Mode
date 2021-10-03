@@ -20,7 +20,7 @@
                 }
             }
         }
-        public int TaskbarSwitchDelay { get; set; } = 500;
+        public int TaskbarSwitchDelay { get; set; } = 1200;
         public bool TaskbarColorOnDark { get; set; }
     }
 }
