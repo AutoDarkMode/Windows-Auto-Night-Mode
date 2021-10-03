@@ -50,13 +50,37 @@ namespace AutoDarkModeApp.Pages
             InitializeComponent();
         }
 
+        private async Task DetectMonitors()
+        {
+            try
+            {
+                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.DetectMonitors);
+                if (result != StatusCode.Ok)
+                {
+                    throw new SwitchThemeException(result, "PageWallpaper");
+                }
+                try
+                {
+                    builder.Load();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "constructor");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "constructor");
+            }
+        }
+
         //ui handler at start
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Dispatcher.BeginInvoke(new PageLoadAsyncDelegate(PageLoadAsync), null);
         }
 
-        private void PageLoadAsync()
+        private async void PageLoadAsync()
         {
             //is feature enabled?
             if (builder.Config.WallpaperSwitch.Enabled)
@@ -66,6 +90,11 @@ namespace AutoDarkModeApp.Pages
             else
             {
 
+            }
+
+            if (builder.Config.WallpaperSwitch.Component.Monitors.Count == 0)
+            {
+                await DetectMonitors();
             }
 
             //generate a list with all installed Monitors, select the first one

@@ -110,7 +110,7 @@
             </Grid.RowDefinitions>
 
             <!-- title theme pick-->
-            <Grid Grid.Column="1" Grid.Row="0" Margin="0, 40,0,10">
+            <Grid Grid.Column="1" Grid.Row="0" Margin="0,40,0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
