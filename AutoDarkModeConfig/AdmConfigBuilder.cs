@@ -86,6 +86,12 @@ namespace AutoDarkModeConfig
             SaveConfig(UpdaterDataPath, UpdaterData);
         }
 
+        public void BackupConfig()
+        {
+            string backupPath = Path.Combine(ConfigDir, "config_backup.yaml");
+            File.Copy(ConfigFilePath, backupPath, true);
+        }
+
         private void SaveConfig(string path, object obj)
         {
             Directory.CreateDirectory(ConfigDir);

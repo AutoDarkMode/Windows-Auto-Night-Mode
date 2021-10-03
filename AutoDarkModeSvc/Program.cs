@@ -120,6 +120,14 @@ namespace AutoDarkModeSvc
                     Logger.Error(e, "could not read config file, resetting config file:");
                     try
                     {
+                        Builder.BackupConfig();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Warn(ex, "could not create config file backup, overwriting");
+                    }
+                    try
+                    {
                         Builder.Save();
                     }
                     catch (Exception ex)
