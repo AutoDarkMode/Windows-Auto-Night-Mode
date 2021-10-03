@@ -209,7 +209,7 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
                 GridWallpaper.Visibility = Visibility.Collapsed;
                 SolidColorPicker.Visibility = Visibility.Visible;
-                CleanMonitorButton.Visibility = Visibility.Visible;
+                CleanMonitorButton.Visibility = Visibility.Collapsed;
                 if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
                 {
                     HexColorTextBox.Text = builder.Config.WallpaperSwitch.Component.SolidColors.Light;
@@ -242,6 +242,7 @@ namespace AutoDarkModeApp.Pages
             ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
             SolidColorPicker.Visibility = Visibility.Collapsed;
             GridWallpaper.Visibility = Visibility.Visible;
+            CleanMonitorButton.Visibility = Visibility.Collapsed;
 
             if (SelectedLight)
             {
