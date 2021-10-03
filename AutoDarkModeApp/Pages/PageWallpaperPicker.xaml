@@ -8,14 +8,14 @@
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       mc:Ignorable="d" 
          
-      d:DesignWidth="450"
+      d:DesignWidth="470"
       Title="PageWallpaperPicker"
       Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
@@ -105,12 +105,10 @@
             ui:ControlHelper.Header="Monitor"
             SelectionChanged="ComboBoxMonitorSelection_SelectionChanged"
             />
-        <Button x:Name="CleanMonitorButton" Content="Remove Unused" 
-                HorizontalAlignment="Left" 
-                Margin="0,40,0,0" 
+        <Button Name="CleanMonitorButton" Content="Remove Disconnected" 
+                Margin="-70,42,0,0" 
                 Grid.Row="6" 
                 Grid.Column="2"
-                VerticalAlignment="Top" 
                 Click="CleanButton_Click"/>
 
         <Grid

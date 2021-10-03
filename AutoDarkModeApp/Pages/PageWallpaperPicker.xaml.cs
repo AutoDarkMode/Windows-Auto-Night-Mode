@@ -306,11 +306,11 @@ namespace AutoDarkModeApp.Pages
         private void ComboBoxMonitorSelection_SelectionChanged(object sender, EventArgs e)
         {
             MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
-            if (SelectedLight)
+            if (monitorSettings != null && SelectedLight)
             {
                 Dispatcher.BeginInvoke(new ShowPreviewDelegate(ShowPreview), monitorSettings.LightThemeWallpaper);
             }
-            else
+            else if (monitorSettings != null)
             {
                 Dispatcher.BeginInvoke(new ShowPreviewDelegate(ShowPreview), monitorSettings.DarkThemeWallpaper);
             }
