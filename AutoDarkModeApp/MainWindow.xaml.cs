@@ -48,26 +48,21 @@ namespace AutoDarkModeApp
             }
         }
 
+        private void Window_OnSourceInitialized(object sender, EventArgs e)
+        {
+            Top = Settings.Default.Top;
+            Left = Settings.Default.Left;
+            Height = Settings.Default.Height;
+            Width = Settings.Default.Width;
+            if (Settings.Default.Maximized)
+            {
+                WindowState = WindowState.Maximized;
+            }
+        }
+
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             LanguageHelper();
-
-            //TODO: REENABLE UPDATER OR FIND BETTER SOLUTION
-            /*
-            try
-            {
-                Updater updater = new(false);
-                updater.CheckNewVersion(); //check github xaml file for a higher version number than installed
-                if (updater.UpdateAvailable())
-                {
-                    updater.MessageBoxHandler(this);
-                }
-            }
-            catch
-            {
-
-            }
-            */
         }
 
         //region time and language
@@ -153,28 +148,26 @@ namespace AutoDarkModeApp
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
 
+
+
         private void Window_Closing(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Maximized)
             {
-                /*
                 // Use the RestoreBounds as the current values will be 0, 0 and the size of the screen
                 Settings.Default.Top = RestoreBounds.Top;
                 Settings.Default.Left = RestoreBounds.Left;
                 Settings.Default.Height = RestoreBounds.Height;
                 Settings.Default.Width = RestoreBounds.Width;
                 Settings.Default.Maximized = true;
-                */
             }
             else
             {
-                /*
-                Settings.Default.Top = this.Top;
-                Settings.Default.Left = this.Left;
-                Settings.Default.Height = this.Height;
-                Settings.Default.Width = this.Width;
+                Settings.Default.Top = Top;
+                Settings.Default.Left = Left;
+                Settings.Default.Height = Height;
+                Settings.Default.Width = Width;
                 Settings.Default.Maximized = false;
-                */
             }
 
             Settings.Default.Save();
