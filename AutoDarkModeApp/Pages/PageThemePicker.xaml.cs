@@ -307,7 +307,7 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockBackButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Frame.Navigate(typeof(PageWallpaper), null, new DrillInNavigationTransitionInfo());
+            Frame.Navigate(typeof(PagePersonalization), null, new DrillInNavigationTransitionInfo());
         }
     }
 }
