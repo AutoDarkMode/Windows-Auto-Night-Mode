@@ -42,6 +42,15 @@ namespace AutoDarkModeConfig
 
     }
 
+    public class Addons
+    {
+        public Addons()
+        {
+
+        }
+        //put your custom settings here!
+    }
+
     public class Updater
     {
         public bool AutoInstall { get; set; }

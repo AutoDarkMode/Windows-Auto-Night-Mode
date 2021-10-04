@@ -41,7 +41,14 @@ namespace AutoDarkModeSvc.SwitchComponents
                 }
                 if (ComponentNeedsUpdate(newTheme))
                 {
-                    HandleSwitch(newTheme);
+                    try
+                    {
+                        HandleSwitch(newTheme);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, $"uncaught exception in component, source: {ex.Source}, message: ");
+                    }
                 }
             }
             else if (Initialized)
