@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeComms;
 using AutoDarkModeSvc.Communication;
+using Microsoft.Win32;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Principal;
 
 namespace AutoDarkModeUpdater
 {
@@ -171,8 +173,30 @@ namespace AutoDarkModeUpdater
                 Logger.Warn(ex, "could not delete holding dir, please investigate manually:");
             }
 
+            Logger.Info("updating setup version string");
+            try
+            {
+                using RegistryKey innoInstallerKey = Registry.Users.OpenSubKey($"\\{SID}\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{470BC918-3740-4A97-9797-8570A7961130}}_is1");
+                FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe"));
+                innoInstallerKey.SetValue("DisplayVersion", versionInfo.FileVersion);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not update installer version string:");
+            }
+
             Logger.Info("update complete, starting service");
             Relaunch(restoreShell, restoreApp, false);
+        }
+
+        private static SecurityIdentifier SID
+        {
+            get
+            {
+                WindowsIdentity identity = null;
+                identity = WindowsIdentity.GetCurrent();
+                return identity.User;
+            }
         }
 
         private static void Relaunch(bool restoreShell, bool restoreApp, bool failed)
