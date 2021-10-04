@@ -89,7 +89,7 @@ namespace AutoDarkModeApp.Pages
             }
             else
             {
-
+                ChangeUiEnabledStatus(false);
             }
 
             if (builder.Config.WallpaperSwitch.Component.Monitors.Count == 0)
@@ -113,10 +113,12 @@ namespace AutoDarkModeApp.Pages
             if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
             {
                 builder.Config.WallpaperSwitch.Enabled = true;
+                ChangeUiEnabledStatus(true);
             }
             else
             {
                 builder.Config.WallpaperSwitch.Enabled = false;
+                ChangeUiEnabledStatus(false);
             }
             try
             {
@@ -126,6 +128,15 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "PageWallpaperPicker");
             }
+        }
+
+        private void ChangeUiEnabledStatus(bool isEnabled)
+        {
+            ComboBoxModeSelection.IsEnabled = isEnabled;
+            ComboBoxWallpaperTypeSelection.IsEnabled = isEnabled;
+            ComboBoxMonitorSelection.IsEnabled = isEnabled;
+            ButtonFilePicker.IsEnabled = isEnabled;
+            CleanMonitorButton.IsEnabled = isEnabled;
         }
 
         private void ShowErrorMessage(Exception ex, string location)
