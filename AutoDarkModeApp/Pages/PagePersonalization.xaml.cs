@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using AutoDarkModeConfig;
 using ModernWpf.Media.Animation;
 
@@ -65,9 +66,25 @@ namespace AutoDarkModeApp.Pages
             Frame.Navigate(typeof(PageThemePicker), null, new DrillInNavigationTransitionInfo());
         }
 
+        private void HyperlinkThemeMode_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter || e.Key == Key.Space)
+            {
+                NavigateThemePicker(this, null);
+            }
+        }
+
         private void NavigateWallpaperPicker(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(PageWallpaperPicker), null, new DrillInNavigationTransitionInfo());
+        }
+
+        private void HyperlinkWallpaper_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter || e.Key == Key.Space)
+            {
+                NavigateWallpaperPicker(this, null);
+            }
         }
 
         private void ShowErrorMessage(String message, Exception ex)

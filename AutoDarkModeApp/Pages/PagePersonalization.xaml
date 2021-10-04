@@ -84,7 +84,7 @@
                     Margin="0,0,0,0"
                     Content="Pick a wallpaper"
                     PreviewMouseDown="NavigateWallpaperPicker"
-                    PreviewKeyDown="NavigateWallpaperPicker"
+                    PreviewKeyDown="HyperlinkWallpaper_PreviewKeyDown"
                     />
 
             <TextBlock
@@ -145,7 +145,7 @@
                     Margin="0,0,0,0"
                     Content="Pick a theme"
                     PreviewMouseDown="NavigateThemePicker"
-                    PreviewKeyDown="NavigateThemePicker"
+                    PreviewKeyDown="HyperlinkThemeMode_PreviewKeyDown"
                     />
 
             <TextBlock

@@ -538,7 +538,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CleanMonitorButton_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter && e.Key == Key.Space)
+            if(e.Key == Key.Enter || e.Key == Key.Space)
             {
                 CleanMonitorButton_PreviewMouseDown(this, null);
             }
