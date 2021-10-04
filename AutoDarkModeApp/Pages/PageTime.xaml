@@ -154,7 +154,7 @@
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -202,7 +202,7 @@
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -289,7 +289,7 @@
             Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
@@ -364,7 +364,7 @@
         <!-- Info -->
         <TextBlock 
             Grid.Row="9" Grid.Column="1"  
-            Margin="0,20,0,0"
+            Margin="0,30,0,0"
             Text="{x:Static p:Resources.info}"  
             FontFamily="Segoe UI Semibold"
             FontSize="20" 

@@ -41,7 +41,12 @@
 
 
         <!-- content wallpaper pick-->
-        <Grid Grid.Column="1" Grid.Row="3" Name="WallpaperPickerGrid" Cursor="Hand" MouseDown="NavigateWallpaperPicker">
+        <Grid 
+            Name="WallpaperPickerGrid" 
+            Grid.Column="1" Grid.Row="3" 
+            Margin="0,10,0,0"
+            Cursor="Hand" 
+            MouseDown="NavigateWallpaperPicker">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
