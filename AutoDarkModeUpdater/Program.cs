@@ -44,7 +44,8 @@ namespace AutoDarkModeUpdater
             logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = logConfig;
 
-            Logger.Info($"Auto Dark Mode Updater {Version.Major}.{Version.Minor}");
+            Logger.Info($"Auto Dark Mode Updater {Version.Major}.{Version.Minor}.{Version.Build}");
+
 
             bool restoreShell = false;
             bool restoreApp = false;
@@ -164,6 +165,18 @@ namespace AutoDarkModeUpdater
                 Environment.Exit(-1);
             }
 
+            Logger.Info("updating setup version string");
+            try
+            {
+                using RegistryKey innoInstallerKey = Registry.Users.OpenSubKey($"{SID}\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{470BC918-3740-4A97-9797-8570A7961130}}_is1", true);
+                FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe"));
+                innoInstallerKey.SetValue("DisplayVersion", versionInfo.FileVersion);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not update installer version string:");
+            }
+
             try
             {
                 Directory.Delete(Extensions.UpdateDataDir, true);
@@ -171,18 +184,6 @@ namespace AutoDarkModeUpdater
             catch (Exception ex)
             {
                 Logger.Warn(ex, "could not delete holding dir, please investigate manually:");
-            }
-
-            Logger.Info("updating setup version string");
-            try
-            {
-                using RegistryKey innoInstallerKey = Registry.Users.OpenSubKey($"\\{SID}\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{470BC918-3740-4A97-9797-8570A7961130}}_is1");
-                FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe"));
-                innoInstallerKey.SetValue("DisplayVersion", versionInfo.FileVersion);
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn(ex, "could not update installer version string:");
             }
 
             Logger.Info("update complete, starting service");
