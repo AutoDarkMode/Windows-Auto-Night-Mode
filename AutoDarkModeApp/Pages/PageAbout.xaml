@@ -161,7 +161,7 @@
                 Text="{x:Static Properties:Resources.lblThirdParty}" 
                 FontFamily="Segoe UI"
                 FontSize="20"/>
-            <TextBlock Name="TaskSchedulerLicense" FontSize="13" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
+            <TextBlock Name="TaskSchedulerLicense" FontSize="14" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="0,15,0,0" TextWrapping="Wrap" Text="TaskScheduler" VerticalAlignment="Top" Focusable="True" MouseDown="TaskSchedulerLicense_MouseDown" KeyDown="TaskSchedulerLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -174,7 +174,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="FluentWPFLicense" FontSize="13" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
+            <TextBlock Name="FluentWPFLicense" FontSize="14" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="FluentWPF" VerticalAlignment="Top" Focusable="True" MouseDown="FluentWPFLicense_MouseDown" KeyDown="FluentWPFLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -187,7 +187,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
+            <TextBlock Name="InputSimulatorLicense" Text="InputSimulator" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="InputSimulatorLicense_MouseDown" KeyDown="InputSimulatorLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -200,7 +200,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="YamlDotNetLicense" Text="YamlDotNet" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="YamlDotNetLicense_MouseDown" KeyDown="YamlDotNetLicense_KeyDown">
+            <TextBlock Name="YamlDotNetLicense" Text="YamlDotNet" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="YamlDotNetLicense_MouseDown" KeyDown="YamlDotNetLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -213,7 +213,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="NetMQLicense" Text="NetMQ" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NetMQLicense_MouseDown" KeyDown="NetMQLicense_KeyDown">
+            <TextBlock Name="NetMQLicense" Text="NetMQ" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NetMQLicense_MouseDown" KeyDown="NetMQLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -226,7 +226,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="SunriseCalcLicense" Text="SunriseCalculator" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseCalcLicense_MouseDown" KeyDown="SunriseCalcLicense_KeyDown">
+            <TextBlock Name="SunriseCalcLicense" Text="SunriseCalculator" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseCalcLicense_MouseDown" KeyDown="SunriseCalcLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -239,7 +239,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="ModernWPFLicense" Text="ModernWPF" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="ModernWPFLicense_MouseDown" KeyDown="ModernWPFLicense_KeyDown">
+            <TextBlock Name="ModernWPFLicense" Text="ModernWPF" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="ModernWPFLicense_MouseDown" KeyDown="ModernWPFLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -252,7 +252,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="NLogLicense" Text="NLog" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NLogLicense_MouseDown" KeyDown="NLogLicense_KeyDown">
+            <TextBlock Name="NLogLicense" Text="NLog" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="NLogLicense_MouseDown" KeyDown="NLogLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -265,7 +265,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="SharpromptLicense" Text="Sharprompt" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SharpromptLicense_MouseDown" KeyDown="SharpromptLicense_KeyDown">
+            <TextBlock Name="SharpromptLicense" Text="Sharprompt" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SharpromptLicense_MouseDown" KeyDown="SharpromptLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>
@@ -278,7 +278,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <TextBlock Name="SunriseSunset" Text="SunriseSunset" FontSize="13" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseSunsetLicense_MouseDown" KeyDown="SunriseSunsetLicense_KeyDown">
+            <TextBlock Name="SunriseSunset" Text="SunriseSunset" FontSize="14" Margin="0,10,0,0" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="True" MouseDown="SunriseSunsetLicense_MouseDown" KeyDown="SunriseSunsetLicense_KeyDown">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}"/>

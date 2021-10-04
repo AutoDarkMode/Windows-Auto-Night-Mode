@@ -25,21 +25,39 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage("error loading config", ex);
             }
             InitializeComponent();
-            SetThemePickerEnabled(builder.Config.WindowsThemeMode.Enabled);
-        }
 
-        private void SetThemePickerEnabled(bool enabled)
-        {
-            if (enabled)
+            if (builder.Config.WindowsThemeMode.Enabled & !builder.Config.WallpaperSwitch.Enabled)
             {
-                WallpaperDisabledMessage.Visibility = Visibility.Visible;
-                WallpaperPickerGrid.IsEnabled = false;
+                SetThemePickerEnabled();
             }
-            else
+
+            if (builder.Config.WallpaperSwitch.Enabled & !builder.Config.WindowsThemeMode.Enabled)
+            {
+                SetWallpaperPickerEnabled();
+            }
+            if (!builder.Config.WallpaperSwitch.Enabled & !builder.Config.WindowsThemeMode.Enabled)
             {
                 WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
-                WallpaperPickerGrid.IsEnabled = true;
+                ThemeDisabledMessage.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void SetThemePickerEnabled()
+        {
+            WallpaperDisabledMessage.Visibility = Visibility.Visible;
+            WallpaperPickerGrid.IsEnabled = false;
+
+            ThemeDisabledMessage.Visibility = Visibility.Collapsed;
+            ThemePickerGrid.IsEnabled = true;
+        }
+
+        private void SetWallpaperPickerEnabled ()
+        {
+            WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
+            WallpaperPickerGrid.IsEnabled = true;
+
+            ThemeDisabledMessage.Visibility = Visibility.Visible;
+            ThemePickerGrid.IsEnabled = false;
         }
 
         private void NavigateThemePicker(object sender, RoutedEventArgs e)

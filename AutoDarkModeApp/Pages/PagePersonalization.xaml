@@ -102,8 +102,9 @@
 
         </Grid>
 
-        <Grid Grid.Column="1" Grid.Row="4" MouseDown="NavigateThemePicker" Cursor="Hand">
+        <Grid Grid.Column="1" Grid.Row="4" Name="ThemePickerGrid" MouseDown="NavigateThemePicker" Cursor="Hand">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -146,6 +147,19 @@
                     PreviewMouseDown="NavigateThemePicker"
                     PreviewKeyDown="NavigateThemePicker"
                     />
+
+            <TextBlock
+                Name="ThemeDisabledMessage"
+                Grid.Row="3" 
+                Margin="0,0,0,0"
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                FontSize="14"
+                Text="This feature is disabled while theme mode is enabled."
+                Foreground="#D44440"
+                FontFamily="Segoe UI"
+                TextWrapping="Wrap"
+                MaxWidth="420"
+                />
 
         </Grid>
 

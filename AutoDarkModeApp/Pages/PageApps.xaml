@@ -145,7 +145,7 @@
 
                 <TextBlock 
                     Margin="40,0,0,0" 
-                    Text="Microsoft Office:" 
+                    Text="Microsoft Office 2013 - 2019:" 
                     FontSize="14"
                     />
                 <Image 
@@ -171,7 +171,8 @@
                     Content="{x:Static p:Resources.cbOfficeWhiteTheme}" 
                     x:Name="CheckBoxOfficeWhiteTheme" 
                     Margin="40,60,0,0" 
-                    Click="CheckBoxOfficeWhiteTheme_Click"/>
+                    Click="CheckBoxOfficeWhiteTheme_Click"
+                    />
             </Grid>
         </StackPanel>
 
