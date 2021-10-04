@@ -19,9 +19,9 @@ By enabling the automatic theme switcher in the app, a task in the Task Schedule
 - Theme switch based on custom times, geographic coordinates or the suntimes of your location + time offset.
 - Desktop wallpaper switch.
 - Windows .Theme-File switch, to also change Accent Color and Mouse Cursor.
-- Automatic Updates
-- Don't switch while playing a game to avoid stuttering
-- Office theme switch
+- Automatic Updates.
+- Don't switch while playing a game to avoid stuttering.
+- Office theme switch.
 - You can choose if only Apps should change their theme, or both apps and system.
 - Support for accent color on the Taskbar and other system elements.
 - Ability to automatically enable the grayscale color filter of Windows 10.
