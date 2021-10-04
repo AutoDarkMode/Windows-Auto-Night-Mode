@@ -16,7 +16,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -107,11 +106,15 @@
             SelectionChanged="ComboBoxMonitorSelection_SelectionChanged"
             />
         
-        <Button Name="CleanMonitorButton" Content="Remove Disconnected" 
-                Margin="-70,42,0,0" 
-                Grid.Row="6" 
-                Grid.Column="2"
-                Click="CleanButton_Click"/>
+        <ui:HyperlinkButton 
+            Name="CleanMonitorButton" 
+            Content="Remove disconnected monitors" 
+            Margin="0,80,0,0" 
+            Grid.Row="6" 
+            Grid.Column="1"
+            PreviewMouseDown="CleanMonitorButton_PreviewMouseDown"
+            PreviewKeyDown="CleanMonitorButton_PreviewKeyDown"
+            />
 
         <Grid
             Name="GridWallpaper"

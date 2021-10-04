@@ -175,9 +175,10 @@ namespace AutoDarkModeApp.Pages
                 ImagePreview.Visibility = Visibility.Visible;
                 TextBlockImagePath.Visibility = Visibility.Visible;
             }
-            catch (Exception ex)
+            catch
             {
-                ShowErrorMessage(ex, "ShowPreview");
+                TextBlockImagePath.Text = "Error while creating image preview! \nWe couldn't find the image at the given path. " +
+                    "Maybe it was deleted or moved. \n" + picture;
             }
         }
 
@@ -501,11 +502,6 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private async void CleanButton_Click(object sender, RoutedEventArgs e)
-        {
-            await CleanMonitors();
-        }
-
         private async Task CleanMonitors()
         {
             try
@@ -533,6 +529,19 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "cleanmonitors");
             }
 
+        }
+
+        private async void CleanMonitorButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            await CleanMonitors();
+        }
+
+        private void CleanMonitorButton_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter && e.Key == Key.Space)
+            {
+                CleanMonitorButton_PreviewMouseDown(this, null);
+            }
         }
     }
 
