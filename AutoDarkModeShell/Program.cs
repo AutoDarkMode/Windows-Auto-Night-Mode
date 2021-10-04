@@ -9,10 +9,12 @@ namespace AutoDarkModeComms
 {
     class Program
     {
+        private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
+
         public const string QuitShell = "QuitShell";
         static void Main(string[] args)
         {
-            Console.WriteLine("Auto Dark Mode Shell version 1.1");
+            Console.WriteLine($"Auto Dark Mode Shell version {Version.Major}.{Version.Minor}");
             ICommandClient client = new ZeroMQClient(Address.DefaultPort);
             if (args.Length > 0)
             {

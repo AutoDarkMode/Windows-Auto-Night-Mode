@@ -139,7 +139,7 @@
                     Margin="0,0,0,0"
                     VerticalAlignment="Top" HorizontalAlignment="Left"
                     FontSize="14"
-                    Text="Offers more fetures, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an account and individual sounds."
+                    Text="Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an account and individual sounds."
                     TextWrapping="Wrap"
                     MaxWidth="420"
                 />
