@@ -18,6 +18,7 @@ namespace AutoDarkModeComms
             ICommandClient client = new ZeroMQClient(Address.DefaultPort);
             if (args.Length > 0)
             {
+                Console.WriteLine(args[0]);
                 Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0])}");
                 Console.WriteLine("Please check service.log for more details");
                 Environment.Exit(0);
