@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Timers;
 using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 
 namespace AutoDarkModeSvc.Timers
 {
@@ -13,6 +14,7 @@ namespace AutoDarkModeSvc.Timers
         private Timer Timer { get; set; }
         public string Name { get; }
         private bool TickOnStart { get;  }
+        AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         /// <summary>
         /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
@@ -36,7 +38,11 @@ namespace AutoDarkModeSvc.Timers
         {
             // copying allows dynamic updates of the Module list since it can only be changed once every OnTimedEvent
             List<IAutoDarkModeModule> ready = new(Modules);
-            Logger.Debug($"{Name}timer signal received");
+            if (builder.Config.Tunable.DebugTimerMessage)
+            {
+                Logger.Debug($"{Name}timer signal received");
+            }
+
             ready.ForEach(t =>
             {
                 t.Fire();
