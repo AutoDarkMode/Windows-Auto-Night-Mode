@@ -16,9 +16,11 @@ By enabling the automatic theme switcher in the app, a task in the Task Schedule
 ## Features
 ![Screenshot showing Apps-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot2.png)  
 - Easy to use and clean user-interface.
-- Theme switch based on custom times or the suntimes of your location + time offset.
+- Theme switch based on custom times, geographic coordinates or the suntimes of your location + time offset.
 - Desktop wallpaper switch.
 - Windows .Theme-File switch, to also change Accent Color and Mouse Cursor.
+- Automatic Updates
+- Don't switch while playing a game to avoid stuttering
 - Office theme switch
 - You can choose if only Apps should change their theme, or both apps and system.
 - Support for accent color on the Taskbar and other system elements.
