@@ -100,7 +100,7 @@
             <TextBlock
                 Name="TextBlockBatteryPowered"
                 Margin="0,40,0,10"
-                Text="Battery powered devices"
+                Text="{x:Static p:Resources.SwitchModesTextBlockHeaderBatteryPowered}"
                 FontFamily="Segoe UI"
                 FontSize="19"
                 />
