@@ -70,7 +70,7 @@ namespace AutoDarkModeUpdater
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        string result = client.SendMessageAndGetReply(Command.Alive, 500);
+                        string result = client.SendMessageAndGetReply(Command.Alive, 1);
                         ApiResponse response = ApiResponse.FromString(result);
                         if (response.StatusCode != StatusCode.Timeout)
                         {

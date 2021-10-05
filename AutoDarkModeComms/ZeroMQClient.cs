@@ -52,15 +52,8 @@ namespace AutoDarkModeComms
 
         private string GetResponse(RequestSocket client, int timeoutSeconds)
         {
-            bool hasResponse = false;
-            string response;
-            hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, timeoutSeconds), out response);
-
-            if (hasResponse)
-            {
-                return response;
-            }
-            return StatusCode.Timeout;
+            bool hasResponse = client.TryReceiveFrameString(new TimeSpan(0, 0, timeoutSeconds), out string response);
+            return hasResponse ? response : StatusCode.Timeout;
         }
 
         public string SendMessageAndGetReply(string message, int timeoutSeconds)
