@@ -2,7 +2,7 @@
 name: Bug report
 about: If you have an issue with Auto Dark Mode
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---
