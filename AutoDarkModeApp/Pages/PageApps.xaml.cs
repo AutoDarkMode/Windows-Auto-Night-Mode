@@ -63,7 +63,7 @@ namespace AutoDarkModeApp
                 builder.Config.SystemSwitch.Enabled = false;
                 try
                 {
-                    builder.Save()
+                    builder.Save();
                 }
                 catch (Exception ex)
                 {
