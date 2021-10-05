@@ -145,7 +145,7 @@
 
                 <TextBlock 
                     Margin="40,0,0,0" 
-                    Text="Microsoft Office 2013 - 2019:" 
+                    Text="{x:Static p:Resources.lblOffice}" 
                     FontSize="14"
                     />
                 <Image 

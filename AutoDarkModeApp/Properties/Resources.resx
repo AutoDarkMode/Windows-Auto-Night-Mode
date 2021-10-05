@@ -567,7 +567,28 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="tbGetCoordinates" xml:space="preserve">
     <value>Geo coordinates for your location</value>
   </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019:</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Pick a theme</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Pick a wallpaper</value>
+  </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Disabled</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>This feature is disabled while theme mode is enabled.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>This feature is disabled while wallpaper mode is enabled.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an accent color and individual sounds.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
   </data>
 </root>

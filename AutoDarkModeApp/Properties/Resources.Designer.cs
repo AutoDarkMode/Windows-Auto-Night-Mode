@@ -622,11 +622,38 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Microsoft Office 2013 - 2019:.
+        /// </summary>
+        public static string lblOffice {
+            get {
+                return ResourceManager.GetString("lblOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offset.
         /// </summary>
         public static string lblOffset {
             get {
                 return ResourceManager.GetString("lblOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick a theme.
+        /// </summary>
+        public static string lblPickTheme {
+            get {
+                return ResourceManager.GetString("lblPickTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick a wallpaper.
+        /// </summary>
+        public static string lblPickWallpaper {
+            get {
+                return ResourceManager.GetString("lblPickWallpaper", resourceCulture);
             }
         }
         
@@ -1068,6 +1095,24 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This feature is disabled while theme mode is enabled..
+        /// </summary>
+        public static string tbFeatureDisabledWhileThemeMode {
+            get {
+                return ResourceManager.GetString("tbFeatureDisabledWhileThemeMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This feature is disabled while wallpaper mode is enabled..
+        /// </summary>
+        public static string tbFeatureDisabledWhileWallpaperMode {
+            get {
+                return ResourceManager.GetString("tbFeatureDisabledWhileWallpaperMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geo coordinates for your location.
         /// </summary>
         public static string tbGetCoordinates {
@@ -1082,6 +1127,24 @@ namespace AutoDarkModeApp.Properties {
         public static string tbHelp {
             get {
                 return ResourceManager.GetString("tbHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an accent color and individual sounds..
+        /// </summary>
+        public static string tbPickTheme {
+            get {
+                return ResourceManager.GetString("tbPickTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color..
+        /// </summary>
+        public static string tbPickWallpaper {
+            get {
+                return ResourceManager.GetString("tbPickWallpaper", resourceCulture);
             }
         }
         

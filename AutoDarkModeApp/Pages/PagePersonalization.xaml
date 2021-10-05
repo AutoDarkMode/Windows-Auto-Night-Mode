@@ -68,7 +68,7 @@
                 Grid.Column="1"
                 FontFamily="Segoe UI"
                 FontSize="20"
-                Text="Pick a wallpaper"
+                Text="{x:Static p:Resources.lblPickWallpaper}"
                 />
             </Grid>
 
@@ -78,7 +78,7 @@
                     Margin="0,0,0,0"
                     VerticalAlignment="Top" HorizontalAlignment="Left"
                     FontSize="14"
-                    Text="Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color."
+                    Text="{x:Static p:Resources.tbPickWallpaper}"
                     TextWrapping="Wrap"
                     MaxWidth="420"
                 />
@@ -98,7 +98,7 @@
                     Margin="0,0,0,0"
                     VerticalAlignment="Top" HorizontalAlignment="Left"
                     FontSize="14"
-                    Text="This feature is disabled while theme mode is enabled."
+                    Text="{x:Static p:Resources.tbFeatureDisabledWhileThemeMode}"
                     Foreground="#D44440"
                     FontFamily="Segoe UI"
                     TextWrapping="Wrap"
@@ -129,7 +129,7 @@
                 FontFamily="Segoe UI"
                 FontSize="20"
 
-                Text="Pick a theme"
+                Text="{x:Static p:Resources.lblPickTheme}"
                 />
             </Grid>
 
@@ -139,7 +139,7 @@
                     Margin="0,0,0,0"
                     VerticalAlignment="Top" HorizontalAlignment="Left"
                     FontSize="14"
-                    Text="Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an account and individual sounds."
+                    Text="{x:Static p:Resources.tbPickTheme}"
                     TextWrapping="Wrap"
                     MaxWidth="420"
                 />
@@ -148,7 +148,7 @@
                     Grid.Row="2" 
                     Name="HyperlinkThemeMode"
                     Margin="0,0,0,0"
-                    Content="Pick a theme"
+                    Content="{x:Static p:Resources.lblPickTheme}"
                     PreviewMouseDown="NavigateThemePicker"
                     PreviewKeyDown="HyperlinkThemeMode_PreviewKeyDown"
                     />
@@ -159,7 +159,7 @@
                 Margin="0,0,0,0"
                 VerticalAlignment="Top" HorizontalAlignment="Left"
                 FontSize="14"
-                Text="This feature is disabled while theme mode is enabled."
+                Text="{x:Static p:Resources.tbFeatureDisabledWhileWallpaperMode}"
                 Foreground="#D44440"
                 FontFamily="Segoe UI"
                 TextWrapping="Wrap"

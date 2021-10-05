@@ -547,10 +547,28 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="headerLocationData" xml:space="preserve">
     <value>Positionsdaten</value>
   </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Wähle ein Theme</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Wähle ein Hintergrundbild</value>
+  </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Deaktiviert</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
     <value>Von Sonnenuntergang bis Sonnenaufgang (geographische Koordinaten)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Diese Funktion ist deaktiviert während der Windows Theme Modus aktiv ist</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Diese Funktion ist deaktiviert während der Hintergrundbild Modus aktiv ist.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Mehr Funktionen, aber es ist erforderlich eine Windows .theme Datei anzulegen. Lege Hintergrundbilder pro Monitor fest, oder eine Diashow, ändere dein Mauszeiger, wähle eine Akzentfarbe und benutzerdefinierte Systemsounds.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Weniger Funktionen, aber einfacher zu konfigurieren. Personalisiere dein HIntergrundbild pro Monitor, einzeln, oder setze eine Hintergrundfarbe</value>
   </data>
 </root>
