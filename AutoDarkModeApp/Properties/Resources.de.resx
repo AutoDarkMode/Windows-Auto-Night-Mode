@@ -616,6 +616,21 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Ändere wie oft nach Updates gesucht wird</value>
   </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Dunkles Design</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Helles Design</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Bild</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Bild (mehrere Monitore)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
     <value>Modus</value>
   </data>
@@ -639,5 +654,29 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Hintergrundwechsel aktivieren</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Kein Designwechsel in einem Spiel</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Schnell (1 Abtastung)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Medium (2 Abtastungen)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Slow (3 Abtastungen)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU usage detection speed</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Geräte mit Akku</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Modi</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Minimale GPU Nutzung für verzögerten Wechsel</value>
   </data>
 </root>

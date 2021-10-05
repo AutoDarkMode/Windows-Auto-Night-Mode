@@ -30,7 +30,7 @@
         <TextBlock
             Grid.Row="1" Grid.Column="1"
             Margin="0,0,0,0"
-            Text="Switch Modes"
+            Text="{x:Static p:Resources.NavbarSwitchModes}"
             FontFamily="Segoe UI Semilight"
             FontSize="30"
             />
@@ -43,14 +43,14 @@
             <TextBlock
                 Name="TextBlockConditions"
                 Margin="0,10,0,10"
-                Text="Conditions"
+                Text="{x:Static p:Resources.SwitchModesTextBlockHeaderConditions}"
                 FontFamily="Segoe UI"
                 FontSize="19"
                 />
 
             <CheckBox
                 Name="CheckBoxGPUMonitoring"
-                Content="Don't switch while playing video games"
+                Content="{x:Static p:Resources.SwitchModesCheckBoxGPUMonitoring}"
                 Margin="0,0,0,0"
                 Click="CheckBoxGPUMonitoring_Click"
                 />
@@ -62,7 +62,7 @@
 
                 <TextBlock
                     Margin="0,20,0,0"
-                    Text="Minimum GPU usage to delay switching"
+                    Text="{x:Static p:Resources.SwitchModesTextBlockMinimumUsage}"
                     FontSize="14"
                     />
 
@@ -81,7 +81,7 @@
 
                 <TextBlock
                     Margin="0,20,0,0"
-                    Text="GPU usage detection speed"
+                    Text="{x:Static p:Resources.SwitchModesTextBlockGPUUsageDetectionSpeed}"
                     FontSize="14"
                     />
 
@@ -90,10 +90,10 @@
                     Margin="0,5,0,0"
                     MinWidth="160"
                     SelectionChanged="ComboBoxGPUSamples_SelectionChanged">
-                    
-                    <ComboBoxItem Tag="1" Content="Fast (1 sample)"/>
-                    <ComboBoxItem Tag="2" Content="Medium (2 samples)"/>
-                    <ComboBoxItem Tag="3" Content="Slow (3 samples)"/>
+
+                    <ComboBoxItem Tag="1" Content="{x:Static p:Resources.SwitchModesComboBoxItemSamplesFast}"/>
+                    <ComboBoxItem Tag="2" Content="{x:Static p:Resources.SwitchModesComboBoxItemSamplesMedium}"/>
+                    <ComboBoxItem Tag="3" Content="{x:Static p:Resources.SwitchModesComboBoxItemSamplesSlow}"/>
                 </ComboBox>
                 </ui:SimpleStackPanel>
 

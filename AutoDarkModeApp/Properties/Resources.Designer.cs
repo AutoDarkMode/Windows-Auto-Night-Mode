@@ -1122,6 +1122,78 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t switch while playing video games.
+        /// </summary>
+        public static string SwitchModesCheckBoxGPUMonitoring {
+            get {
+                return ResourceManager.GetString("SwitchModesCheckBoxGPUMonitoring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fast (1 sample).
+        /// </summary>
+        public static string SwitchModesComboBoxItemSamplesFast {
+            get {
+                return ResourceManager.GetString("SwitchModesComboBoxItemSamplesFast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium (2 samples).
+        /// </summary>
+        public static string SwitchModesComboBoxItemSamplesMedium {
+            get {
+                return ResourceManager.GetString("SwitchModesComboBoxItemSamplesMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slow (3 samples).
+        /// </summary>
+        public static string SwitchModesComboBoxItemSamplesSlow {
+            get {
+                return ResourceManager.GetString("SwitchModesComboBoxItemSamplesSlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU usage detection speed.
+        /// </summary>
+        public static string SwitchModesTextBlockGPUUsageDetectionSpeed {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockGPUUsageDetectionSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battery powered devices.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderBatteryPowered {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderBatteryPowered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conditions.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderConditions {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum GPU usage to delay switching.
+        /// </summary>
+        public static string SwitchModesTextBlockMinimumUsage {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockMinimumUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recommended tools.
         /// </summary>
         public static string tbAppsTitleRecommendedTools {
