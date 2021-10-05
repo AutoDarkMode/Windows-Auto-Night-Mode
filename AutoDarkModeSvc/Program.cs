@@ -38,14 +38,14 @@ namespace AutoDarkModeSvc
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
+                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }"
             };
             var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
             {
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:separator=|}"
+                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception}"
             };
 
             List<string> argsList;
