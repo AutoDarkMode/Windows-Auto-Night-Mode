@@ -207,11 +207,17 @@ namespace AutoDarkModeUpdater
                 Process.Start(Extensions.ExecutionPath);
                 if (restoreApp)
                 {
-                    _ = Process.Start(Extensions.ExecutionPathApp);
+                    using Process app = new();
+                    app.StartInfo.UseShellExecute = false;
+                    app.StartInfo.FileName = Path.Combine(Extensions.ExecutionPathApp);
+                    _ = app.Start();
                 }
                 if (restoreShell)
                 {
-                    _ = Process.Start(Extensions.ExecutionPathShell);
+                    using Process shell = new();
+                    shell.StartInfo.UseShellExecute = false;
+                    shell.StartInfo.FileName = Path.Combine(Extensions.ExecutionPathShell);
+                    _ = shell.Start();
                 }
 
                 if (failed)
@@ -221,11 +227,12 @@ namespace AutoDarkModeUpdater
                         Logger.Warn("could not send failed upate message due to service not starting in time");
                     }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Logger.Error(ex, "error while restarting auto dark mode");
             }
-           
+
         }
 
         private static void RollbackDir(string source, string target)
@@ -239,7 +246,8 @@ namespace AutoDarkModeUpdater
                     Logger.Info($"rolled back file {file.Name} to default dir {target}");
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Logger.Fatal(ex, "rollback failed this is non-recoverable, please reinstall auto dark mode:");
                 Environment.Exit(-2);
             }
