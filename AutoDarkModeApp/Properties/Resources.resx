@@ -609,6 +609,21 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Change how often we check for updates</value>
   </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Dark Theme</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Light Theme</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Picture (multiple monitors)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Solid color</value>
+  </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
     <value>Mode</value>
   </data>

@@ -74,8 +74,8 @@
             MinWidth="250"
             SelectionChanged="ComboBoxModeSelection_SelectionChanged">
 
-            <ComboBoxItem Content="Light theme" Name="ComboBoxModeSelectionLightTheme"/>
-            <ComboBoxItem Content="Dark theme" Name="ComboBoxModeSelectionDarkTheme"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemLight}" Name="ComboBoxModeSelectionLightTheme"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemDark}" Name="ComboBoxModeSelectionDarkTheme"/>
         </ComboBox>
 
         <TextBlock
@@ -92,9 +92,9 @@
             MinWidth="250"
             SelectionChanged="ComboBoxWallpaperTypeSelection_SelectionChanged">
 
-            <ComboBoxItem Content="Picture" Name="ComboBoxBackgroundSelectionGlobal"/>
-            <ComboBoxItem Content="Picture (multiple monitors)" Name="ComboBoxBackgroundSelectionIndividual"/>
-            <ComboBoxItem Content="Solid Color" Name="ComboBoxBackgroundSelectionSolidColor"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemPicture}" Name="ComboBoxBackgroundSelectionGlobal"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemPictureMM}" Name="ComboBoxBackgroundSelectionIndividual"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemSolidColor}" Name="ComboBoxBackgroundSelectionSolidColor"/>
         </ComboBox>
 
         <ComboBox

@@ -1474,6 +1474,51 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark Theme.
+        /// </summary>
+        public static string WallpaperComboBoxItemDark {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Theme.
+        /// </summary>
+        public static string WallpaperComboBoxItemLight {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string WallpaperComboBoxItemPicture {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture (multiple monitors).
+        /// </summary>
+        public static string WallpaperComboBoxItemPictureMM {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemPictureMM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solid color.
+        /// </summary>
+        public static string WallpaperComboBoxItemSolidColor {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemSolidColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mode.
         /// </summary>
         public static string WallpaperComboBoxMode {
