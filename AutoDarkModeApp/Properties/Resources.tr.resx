@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -130,7 +130,7 @@
     <value>Çeviri: Cumhur Kaya KURTOĞLU</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Konum</value>
+    <value>Şehir</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Dil (Language):</value>
@@ -170,9 +170,6 @@
   </data>
   <data name="restart" xml:space="preserve">
     <value>Yeniden başlat</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>İndir</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
     <value>Otomatik tema değişikliğini etkinleştir</value>
@@ -216,18 +213,6 @@
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
     <value>Tavsiye edilen araçlar</value>
   </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>Sonra indir</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Tekrar hatırlatma</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X mevcut</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>Emin misiniz?</value>
-  </data>
   <data name="lblDark" xml:space="preserve">
     <value>Koyu</value>
   </data>
@@ -241,7 +226,7 @@
     <value>Açık tema</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Değişiklikleri kaydetmet için Uygulaya basın</value>
+    <value>Değişiklikleri kaydetmet için Uygula'ya basın</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Devre dışı</value>
@@ -256,7 +241,7 @@
     <value>Bağış yap</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Sistem moduna uy</value>
+    <value>Sistem ayarını kullan</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Auto Dark Mode'u kullandığınız için teşekkürler!
@@ -309,7 +294,7 @@ Bunu indirmek istiyor musunuz?
     <value>Güncellemeleri arka planda kontrol et</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Zaman</value>
+    <value>Zamanlama</value>
   </data>
   <data name="NavbarWallpaper" xml:space="preserve">
     <value>Arka Plan/Tema</value>
@@ -345,14 +330,14 @@ Bunu indirmek istiyor musunuz?
     <value>Bir hata oluştu</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>Üzgünüz, ayarlarınızı uygulayamadık.
+    <value>Üzgünüz, ayarlarınızı kaydedemedik.
 
 İşte deneyebileceğiniz bazı şeyler:
-- Auto Dark Mode'u kaldırın ve ardından yeniden yükleyin.
-- Auto Dark Mode'un ayarlarında {0} seçeneğini devre dışı bırakmayı deneyin.
-- Masaüstü Duvar Kağıdını etkinleştirdiyseniz özelliği devre dışı bırakın ve tekrar deneyin.
+- Auto Dark Mode hizmetini yeniden başlatın.
+- Hizmetin çalışıp çalışmadığını kontrol edin.
+- Hizmeti kapatıp config.yaml dosyasını silin ve ayarları yeniden yapın.
 
-Bunlar yardımcı olmadıysa, GitHub'da sorununuzu hatanızın ekran görüntüsünü ekleyerek yazabilirsiniz. "Evet" düğmesine tıklayarak soruna erişebilirsiniz.</value>
+Bunlar yardımcı olmadıysa, GitHub'da sorununuzu yazabilirsiniz. "Evet" düğmesine tıklayarak Github'a erişebilirsiniz.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Hata: Girişiniz geçersiz</value>
@@ -365,7 +350,7 @@ Bunlar yardımcı olmadıysa, GitHub'da sorununuzu hatanızın ekran görüntüs
 {0}
 
 Şimdi yönetici olarak bir algoritma çalıştırarak bu sorunu çözmeye çalışacağız. Belki bu yardımcı olur.
-Auto Dark Mode daha sonra yeniden başlayacak ve maalesef ayarlarınızı yeniden uygulamanız gerekecek!
+Auto Dark Mode daha sonra yeniden başlayacak ve maalesef ayarlarınızı yeniden yapmanız gerekecek!
 
 Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
   </data>
@@ -402,7 +387,7 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
     <value>Şu an:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Koyun mod için duvar kağıdı</value>
+    <value>Koyun mod için arka plan</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Sil/Devre dışı bırak</value>
@@ -411,7 +396,7 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
     <value>Dosya seç</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Açık mod için duvar kağıdı</value>
+    <value>Açık mod için arka plan</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Masaüstü Arka Planı</value>
@@ -420,7 +405,7 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
     <value>Resimler</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Lütfen iki duvar kağıdı seçin</value>
+    <value>Lütfen iki arka plan resimi seçin</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>Lütfen bir resim seçin</value>
@@ -472,13 +457,13 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Windows Teması (daha fazla özellik)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Masaüstü Duvar Kağıdı (önerilir)</value>
+    <value>Masaüstü Arka Plan Resimi (önerilir)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
     <value>Windows Tema ayarlarını açmak için buraya tıklayın.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Şimdi 'Renkler' bölümüne gidin ve Açık Mod için sistem modunu 'Açık' olarak değiştirin. En sevdiğiniz duvar kağıdını, fare imlecini ve vurgu rengini seçin.</value>
+    <value>Şimdi 'Renkler' bölümüne gidin ve Açık Mod için sistem modunu 'Açık' olarak değiştirin. En sevdiğiniz arka plan resimini, fare imlecini ve vurgu rengini seçin.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Tema ayarlarına geri dönün ve temanızı kaydedin.</value>
@@ -499,28 +484,13 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Başlangıç girdisi yerine oturum açma görevi kullan</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Seçilen temaları uygularken hata oluştu. Tema değiştirmeyi devre dışı bıraktık</value>
+    <value>Seçilen temaları uygularken hata oluştu. Tema değiştirmeyi devre dışı bıraktık.</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Alternatif açık tema</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>.theme dosyası uygulanırken hata oluştu. Belki oluşturduğunuz tema silinmiş ya da taşınmıştır. Bu nedenle tema değiştirmeyi şimdilik devre dışı bıraktık. Yeniden etkinleştirmek için lütfen Auto Dark Mode'u açın ve {0} Ayarlarını yapılandırın.</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>Son birkaç ay içinde size mümkün olan en iyi güncellemeyi sağlamak için çok çalışıyoruz. Şimdi burada!
-
-Auto Dark Mode X tamamen sıfırdan yeniden yazılmıştır. Artık Windows Görev Zamanlayıcısına güvenmek yerine gerçek bir arka plan görevi var. Bu daha güvenilir ve daha esnek bir tema değiştirme deneyimi elde ettiğiniz anlamına gelir!
-
-Evet, bu arka planda daha fazla kaynak tüketir ancak karşılığında verimliliğinizi artırmak için size daha fazla özellik sunuyor. Örneğin:
-- Oyun Modu: bir oyun oynarken ya da GPU'nuz meşgulken tema değiştirmeyi devre dışı bırakır.
-- Klavye kısayollarını kullanarak tema değiştirme
-Ve daha fazlası!
-
-Güncelleme, ARM cihazı sahipleri hariç herkes için uygundur. Bunlar pil ömrü ile ilgili sorunlar yaşayacaktır. Çünkü arka plan işlemi taklit edilmelidir (Sadece orada!).</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Sürüm X, kesinlikle denemeniz gereken harika, büyük bir güncellemedir! İndirmek İSTEMEDİĞİNİZDEN emin misiniz? Size bir daha asla hatırlatmayacağız!</value>
+    <value>.theme dosyası uayarlanırken hata oluştu. Belki oluşturduğunuz tema silinmiş ya da taşınmıştır. Bu nedenle tema değiştirmeyi şimdilik devre dışı bıraktık. Yeniden etkinleştirmek için lütfen Auto Dark Mode'u açın ve {0} Ayarlarını yapılandırın.</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>Gri tonlamalı renk filtresini etkinleştirmek için isteğe bağlı gecikme:</value>
@@ -535,12 +505,171 @@ Güncelleme, ARM cihazı sahipleri hariç herkes için uygundur. Bunlar pil ömr
     <value>Enerji tasarrufu kaydırıcısı için varsayılan değer</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Tema değişimi için enerji tasarrufunu azaltma</value>
+    <value>Tema değişimi için enerji tasarrufu sınırlaması</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>Bu sadece pil tasarrufunu elle etkinleştirmediyseniz çalışır!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Bir sorunla ilgili yardıma mı ihtiyacınız var?</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Konum</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Devre dışı</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019:</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Bir tema seçin</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Bir arka plan seçin</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Tema modu etkinken bu özellik devre dışı bırakılır.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Arka plan modu etkinken bu özellik devre dışı bırakılır.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Daha fazla özellik sunar, ancak bir windows .theme dosyası ayarlamanız gerekir. Masaüstü arka plan resminizi her monitör için özelleştirebilir, bir slayt gösterisi ayarlayabilir, fare imlecini değiştirebilir, vurgu rengi ve sesleri ayarlayabilirsiniz.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Daha az özellik sunar, ancak kurulumu daha kolaydır. Tüm monitörler ya da ayrı ayrı her biri için arka plan resmini özelleştirebilir, bir arka plan rengi ayarlabilirsiniz.</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Koordinatları uygula</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Coğrafi koordinatlar</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Konum verisi</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Gün batımından gün doğumuna (coğrafi koordinatlar)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Konumunuz için coğrafi koordinatlar</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Değişim Modları</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Kişiselleştirme</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Bildirim alanı simgesini gizle (tavsiye edilmez)</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Arka planda Auto Dark Mode'un yeni sürümlerini kontrol ediyoruz. Bir güncelleme mevcut olduğunda sizi bilgilendireceğiz</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Yeni sürümleri otomatik olarak indir ve yükle</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Bildirim gösterme</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Güncelleme kanalı</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Auto Dark Mode başladığında güncellemeleri kontrol et</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 gün</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 gün</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 gün</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Son kontrol</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>hiçbir zaman</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Güncelleme kontrol sıklığı</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Koyu Tema</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Açık Tema</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Resim (çoklu monitör)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Düz renk</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Monitör</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Biçim</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Bağlantısı kesilmiş monitörleri kaldır</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Arka plan resimi</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Renk</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Hex kodu</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Arka plan değişimini etkinleştir</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Yapılandırma dosyasını aç</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Yapılandırma klasörünü aç</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Günlük dosyasını aç</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Yapılandırma</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Video oyunları oynarken değiştirme yapma</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Hızlı (1 deneme)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Orta (2 deneme)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Yavaş (3 deneme)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU kullanım algılama hızı</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Pille çalışan cihazlar</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Koşullar</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Değişimi geciktirmek için minimum GPU kullanımı</value>
   </data>
 </root>
