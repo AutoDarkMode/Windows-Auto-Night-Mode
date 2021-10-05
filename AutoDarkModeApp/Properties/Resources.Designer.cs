@@ -1474,6 +1474,78 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mode.
+        /// </summary>
+        public static string WallpaperComboBoxMode {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monitor.
+        /// </summary>
+        public static string WallpaperComboBoxMonitor {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxMonitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string WallpaperComboBoxType {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove disconnected monitors.
+        /// </summary>
+        public static string WallpaperHyperLinkRemoveDisconnected {
+            get {
+                return ResourceManager.GetString("WallpaperHyperLinkRemoveDisconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallpaper.
+        /// </summary>
+        public static string WallpaperTextBlockHeader {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string WallpaperTextBlockHeaderColor {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockHeaderColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hex code.
+        /// </summary>
+        public static string WallpaperTextBoxHeaderHex {
+            get {
+                return ResourceManager.GetString("WallpaperTextBoxHeaderHex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable wallpaper switch.
+        /// </summary>
+        public static string WallpaperToggleSwitch {
+            get {
+                return ResourceManager.GetString("WallpaperToggleSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activate the checkbox to enable automatic theme switching.
         /// </summary>
         public static string welcomeText {

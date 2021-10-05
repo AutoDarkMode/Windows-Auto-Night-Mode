@@ -609,4 +609,28 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Change how often we check for updates</value>
   </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Remove disconnected monitors</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Wallpaper</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Hex code</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Enable wallpaper switch</value>
+  </data>
 </root>

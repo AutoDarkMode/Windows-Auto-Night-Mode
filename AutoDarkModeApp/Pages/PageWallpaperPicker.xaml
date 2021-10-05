@@ -49,14 +49,14 @@
             Margin="35,0,0,0"
             FontFamily="Segoe UI Semilight"
             FontSize="30"
-            Text="Wallpaper"
+            Text="{x:Static p:Resources.WallpaperTextBlockHeader}"
             />
 
         <ui:ToggleSwitch
             Name="ToggleSwitchWallpaper"
             Grid.Row="3" Grid.Column="1"
             Margin="0,10,0,0"
-            Header="Enable wallpaper switch"
+            Header="{x:Static p:Resources.WallpaperToggleSwitch}"
             Toggled="ToggleSwitchWallpaper_Toggled"
             />
 
@@ -64,7 +64,7 @@
             Grid.Row="4" Grid.Column="1"
             Margin="0,20,0,0"
             FontSize="14"
-            Text="Mode"
+            Text="{x:Static p:Resources.WallpaperComboBoxMode}"
             />
 
         <ComboBox
@@ -82,7 +82,7 @@
             Grid.Row="5" Grid.Column="1"
             Margin="0,20,0,0"
             FontSize="14"
-            Text="Background"
+            Text="{x:Static p:Resources.WallpaperComboBoxType}"
             />
 
         <ComboBox
@@ -102,13 +102,13 @@
             Grid.Row="6" Grid.Column="1"
             Margin="0,20,0,0"
             MinWidth="250"
-            ui:ControlHelper.Header="Monitor"
+            ui:ControlHelper.Header="{x:Static p:Resources.WallpaperComboBoxMonitor}"
             SelectionChanged="ComboBoxMonitorSelection_SelectionChanged"
             />
         
         <ui:HyperlinkButton 
             Name="CleanMonitorButton" 
-            Content="Remove disconnected monitors" 
+            Content="{x:Static p:Resources.WallpaperHyperLinkRemoveDisconnected}" 
             Margin="0,80,0,0" 
             Grid.Row="6" 
             Grid.Column="1"
@@ -134,7 +134,7 @@
                 Grid.Row="0"
                 FontFamily="Segoe UI"
                 FontSize="20"
-                Text="Wallpaper"
+                Text="{x:Static p:Resources.WallpaperTextBlockHeader}"
                 />
 
             <Button
@@ -199,7 +199,7 @@
                     Grid.Column="1"
                     Grid.Row="1"
                     HorizontalAlignment="Left"
-                    ui:ControlHelper.Header="Hex Code"
+                    ui:ControlHelper.Header="{x:Static p:Resources.WallpaperTextBoxHeaderHex}"
                     Width="100"
                     TextChanged="HexColorTextBox_TextChanged"
                     Name="HexColorTextBox"

@@ -616,4 +616,28 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Ändere wie oft nach Updates gesucht wird</value>
   </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Modus</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Entferne alte Monitore</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Hintergrundbild</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Hex code</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Hintergrundwechsel aktivieren</value>
+  </data>
 </root>
