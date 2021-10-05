@@ -228,7 +228,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Activate the checkbox to enable automatic theme switching</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Translator: Armin Osaj</value>
+    <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>City</value>
@@ -325,7 +325,7 @@ If you run into issues: please increase the switching delay in settings. </value
     <value>Yes</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Search for updates in background</value>
+    <value>Automatic update check</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
     <value>Sorry, but we couldn't apply your settings.
@@ -489,36 +489,6 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="tbHelp" xml:space="preserve">
     <value>Need help with a problem?</value>
   </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>Download later</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Never remind me again</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>Download now</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>In the last couple of months we've been working hard to provide you the best update possible. Now it's here!
-
-Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
-
-Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
-- Game Mode: disable theme switching while you're playing a game or your GPU is busy.
-- Theme switching using keyboard shortcuts
-And more!
-
-The update is suitable for everyone, except for owners of an ARM device. These will have problems with battery life, because the background process has to be emulated (only there!).</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X is available</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Version X is a great, big update that you should definitely try out! Are you sure you DON'T want to download it? We will never remind you again!</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>Are you sure?</value>
-  </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Multi-User support</value>
   </data>
@@ -567,6 +537,18 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="tbGetCoordinates" xml:space="preserve">
     <value>Geo coordinates for your location</value>
   </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Open config file</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Open config folder</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Open log file</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Config</value>
+  </data>
   <data name="lblOffice" xml:space="preserve">
     <value>Microsoft Office 2013 - 2019:</value>
   </data>
@@ -579,6 +561,9 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   <data name="rbDisabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Hide tray icon (not recommended)</value>
+  </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>This feature is disabled while theme mode is enabled.</value>
   </data>
@@ -590,5 +575,38 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
     <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Automatically download and install new versions</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Don't show notifications</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Select update channel</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Check for updates when Auto Dark Mode starts</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 days</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 days</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 days</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Last checked</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>never</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Change how often we check for updates</value>
   </data>
 </root>

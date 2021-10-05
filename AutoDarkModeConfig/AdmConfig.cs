@@ -31,7 +31,6 @@ namespace AutoDarkModeConfig
         public BaseSettingsEnabled<SystemSwitchSettings> SystemSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
-        public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
         public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 20, 0, 0);
         public Location Location { get; set; }
@@ -39,7 +38,7 @@ namespace AutoDarkModeConfig
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
         public Updater Updater { get; set; }
-
+        public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
     }
 
     public class Addons
@@ -57,6 +56,7 @@ namespace AutoDarkModeConfig
         public bool Enabled { get; set; } = true;
         public bool Silent { get; set; }
         public int DaysBetweenUpdateCheck { get; set; } = 7;
+        public bool CheckOnStart { get; set; }
         public string VersionQueryUrl { get; set; }
         public string DownloadBaseUrl { get; set; }
         public string ZipCustomUrl { get; set; }

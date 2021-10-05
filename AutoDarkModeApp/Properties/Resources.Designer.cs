@@ -134,7 +134,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for updates in background.
+        ///   Looks up a localized string similar to Automatic update check.
         /// </summary>
         public static string cbBackgroundUpdate {
             get {
@@ -267,6 +267,42 @@ namespace AutoDarkModeApp.Properties {
         public static string cmbAlwWhite {
             get {
                 return ResourceManager.GetString("cmbAlwWhite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open config file.
+        /// </summary>
+        public static string ConfigHyperLinkOpenConfig {
+            get {
+                return ResourceManager.GetString("ConfigHyperLinkOpenConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open config folder.
+        /// </summary>
+        public static string ConfigHyperLinkOpenConfigFolder {
+            get {
+                return ResourceManager.GetString("ConfigHyperLinkOpenConfigFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open log file.
+        /// </summary>
+        public static string ConfigHyperLinkOpenLog {
+            get {
+                return ResourceManager.GetString("ConfigHyperLinkOpenLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Config.
+        /// </summary>
+        public static string ConfigTextBlockHeader {
+            get {
+                return ResourceManager.GetString("ConfigTextBlockHeader", resourceCulture);
             }
         }
         
@@ -712,7 +748,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translator: Armin Osaj.
+        ///   Looks up a localized string similar to Translator: Armin Osaj &amp; Samuel Schiegg.
         /// </summary>
         public static string lblTranslator {
             get {
@@ -1077,6 +1113,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide tray icon (not recommended).
+        /// </summary>
+        public static string SettingsCheckBoxHideTray {
+            get {
+                return ResourceManager.GetString("SettingsCheckBoxHideTray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recommended tools.
         /// </summary>
         public static string tbAppsTitleRecommendedTools {
@@ -1154,6 +1199,15 @@ namespace AutoDarkModeApp.Properties {
         public static string tbSettingsColourFilterDelay {
             get {
                 return ResourceManager.GetString("tbSettingsColourFilterDelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification.
+        /// </summary>
+        public static string tbUpdates {
+            get {
+                return ResourceManager.GetString("tbUpdates", resourceCulture);
             }
         }
         
@@ -1321,79 +1375,101 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatically download and install new versions.
+        /// </summary>
+        public static string UpdatesCheckBoxAutoInstall {
+            get {
+                return ResourceManager.GetString("UpdatesCheckBoxAutoInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t show notifications.
+        /// </summary>
+        public static string UpdatesCheckBoxSilent {
+            get {
+                return ResourceManager.GetString("UpdatesCheckBoxSilent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select update channel.
+        /// </summary>
+        public static string UpdatesCheckBoxUpdateChannel {
+            get {
+                return ResourceManager.GetString("UpdatesCheckBoxUpdateChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for updates when Auto Dark Mode starts.
+        /// </summary>
+        public static string UpdatesComboBoxAtStart {
+            get {
+                return ResourceManager.GetString("UpdatesComboBoxAtStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 14 days.
+        /// </summary>
+        public static string UpdatesComboBoxInterval14 {
+            get {
+                return ResourceManager.GetString("UpdatesComboBoxInterval14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3 days.
+        /// </summary>
+        public static string UpdatesComboBoxInterval3 {
+            get {
+                return ResourceManager.GetString("UpdatesComboBoxInterval3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 7 days.
+        /// </summary>
+        public static string UpdatesComboBoxInterval7 {
+            get {
+                return ResourceManager.GetString("UpdatesComboBoxInterval7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last checked.
+        /// </summary>
+        public static string UpdatesTextBlockLastChecked {
+            get {
+                return ResourceManager.GetString("UpdatesTextBlockLastChecked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to never.
+        /// </summary>
+        public static string UpdatesTextBlockLastCheckedNever {
+            get {
+                return ResourceManager.GetString("UpdatesTextBlockLastCheckedNever", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change how often we check for updates.
+        /// </summary>
+        public static string UpdatesTextBlockUpdateInterval {
+            get {
+                return ResourceManager.GetString("UpdatesTextBlockUpdateInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
         public static string userFeedback {
             get {
                 return ResourceManager.GetString("userFeedback", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Download later.
-        /// </summary>
-        public static string VersionXUpdaterButtonLater {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterButtonLater", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Never remind me again.
-        /// </summary>
-        public static string VersionXUpdaterButtonNever {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterButtonNever", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Download now.
-        /// </summary>
-        public static string VersionXUpdaterButtonNow {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterButtonNow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to In the last couple of months we&apos;ve been working hard to provide you the best update possible. Now it&apos;s here!
-        ///
-        ///Auto Dark Mode X has been completely rewritten from scratch. It now features a real background task instead of relying on Windows Task Scheduler. This means you get a more reliable and more flexible theme switching experience!
-        ///
-        ///Yes, this consumes more resources in the background, but in return we offer you more features, to enhance your productivity. For example:
-        ///- Game Mode: disable theme swit [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string VersionXUpdaterDescription {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Auto Dark Mode X is available.
-        /// </summary>
-        public static string VersionXUpdaterHeader {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Version X is a great, big update that you should definitely try out! Are you sure you DON&apos;T want to download it? We will never remind you again!.
-        /// </summary>
-        public static string VersionXUpdaterNeverDescription {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterNeverDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure?.
-        /// </summary>
-        public static string VersionXUpdaterNeverTitle {
-            get {
-                return ResourceManager.GetString("VersionXUpdaterNeverTitle", resourceCulture);
             }
         }
         

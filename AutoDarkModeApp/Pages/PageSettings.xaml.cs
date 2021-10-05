@@ -82,11 +82,12 @@ namespace AutoDarkModeApp.Pages
             //updater ui
             if (builder.UpdaterData.LastCheck.Year.ToString().Equals("1"))
             {
-                TextBlockUpdateInfo.Text = "Last checked: " + "never";
+                TextBlockUpdateInfo.Text = $"{Properties.Resources.UpdatesTextBlockLastChecked}: {Properties.Resources.UpdatesTextBlockLastCheckedNever}";
             }
             else
             {
-                TextBlockUpdateInfo.Text = "Last checked: " + builder.UpdaterData.LastCheck.ToString();
+                TextBlockUpdateInfo.Text = $"{Properties.Resources.UpdatesTextBlockLastChecked}: {builder.UpdaterData.LastCheck}";
+
             }
             CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
             switch (builder.Config.Updater.DaysBetweenUpdateCheck)
@@ -116,6 +117,11 @@ namespace AutoDarkModeApp.Pages
             {
                 RadioButtonBetaUpdateChannel.IsEnabled = false;
                 RadioButtonStableUpdateChannel.IsEnabled = false;
+            }
+            checkBoxUpdateOnStart.IsChecked = builder.Config.Updater.CheckOnStart;
+            if (checkBoxUpdateOnStart.IsChecked ?? false)
+            {
+                ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
             }
         }
 
@@ -450,6 +456,7 @@ namespace AutoDarkModeApp.Pages
             if((sender as RadioButton).IsChecked.Value)
             {
                 builder.Config.Updater.VersionQueryUrl = BetaVersionQueryURL;
+                builder.Config.Updater.CheckOnStart = true;
                 ButtonSearchUpdate.IsEnabled = true;
             }
             try
@@ -460,6 +467,8 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
             }
+            ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
+            checkBoxUpdateOnStart.IsChecked = true;
         }
 
         /// <summary>
@@ -516,6 +525,28 @@ namespace AutoDarkModeApp.Pages
             if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 HyperlinkOpenAppDataFolder_PreviewMouseDown(this, null);
+            }
+        }
+
+        private void CheckBoxUpdateOnStart(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Updater.CheckOnStart = true;
+                ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
+            }
+            else
+            {
+                builder.Config.Updater.CheckOnStart = false;
+                ComboBoxDaysBetweenUpdateCheck.IsEnabled = true;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxUpdateAtStart_Click");
             }
         }
     }

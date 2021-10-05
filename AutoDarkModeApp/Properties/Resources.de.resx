@@ -228,7 +228,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Aktiviere das Kontrollfeld, um automatisch das Theme zu wechseln!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Übersetzer: Armin Osaj</value>
+    <value>Übersetzer: Armin Osaj &amp; Samuel Schiegg</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Stadt</value>
@@ -541,6 +541,18 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Wechsel-Modi</value>
   </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Konfigurationsdatei öffnen</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Konfigurationsordner öffnen</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Logdatei öffnen</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Konfig</value>
+  </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Geographische Koordinaten</value>
   </data>
@@ -570,5 +582,38 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
     <value>Weniger Funktionen, aber einfacher zu konfigurieren. Personalisiere dein HIntergrundbild pro Monitor, einzeln, oder setze eine Hintergrundfarbe</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Wir suchen im Hintergrund nach Updates. Sobald eine neue Version verfügbar ist, senden wir eine Toast Benachrichtigung</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Automatischer Download und Installation</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Zeige keine Benachrichtigungen</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Wähle einen Update Kanal</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Suche nach Updates wenn Auto Dark Mode startet</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 Tage</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 Tage</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 Tage</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Zuletzt überprüft</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>nie</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Ändere wie oft nach Updates gesucht wird</value>
   </data>
 </root>
