@@ -47,35 +47,59 @@ namespace AutoDarkModeUpdater
 
             Logger.Info($"Auto Dark Mode Updater {Version.Major}.{Version.Minor}.{Version.Build}");
 
-            Logger.Info($"waiting for service to close...");
             bool serviceClosed = false;
-            for (int i = 0; i < 3; i++)
+            try
             {
-                string result = client.SendMessageAndGetReply(Command.Alive, 2);
+                Logger.Info("shutting down service");
+                string result = client.SendMessageAndGetReply(Command.Shutdown);
                 ApiResponse response = ApiResponse.FromString(result);
-                if (response.StatusCode != StatusCode.Timeout)
-                {
-                    try
-                    {
-                        Thread.Sleep(1000);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, "error waiting for service to end:");
-                    }
-                }
-                else
+                if (response.StatusCode == StatusCode.Timeout)
                 {
                     serviceClosed = true;
-                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not cleanly shut down service");
+            }
+
+            if (!serviceClosed)
+            {
+                Logger.Info($"waiting for service to stop");
+                try
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        string result = client.SendMessageAndGetReply(Command.Alive, 500);
+                        ApiResponse response = ApiResponse.FromString(result);
+                        if (response.StatusCode != StatusCode.Timeout)
+                        {
+                            Thread.Sleep(500);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error while waiting for service process to end:");
                 }
             }
 
             bool restoreShell = false;
             bool restoreApp = false;
-
             try
             {
+                Process[] pSvc = Process.GetProcessesByName("AutoDarkModeSvc");
+                if (pSvc.Length != 0)
+                {
+                    Logger.Warn("service still running, force stopping");
+                    pSvc[0].Kill();
+                }
+                Logger.Info("service stop confirmed");
+
                 Process[] pShell = Process.GetProcessesByName("AutoDarkModeShell");
                 Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
                 if (pShell.Length != 0)
@@ -90,44 +114,12 @@ namespace AutoDarkModeUpdater
                     pApp[0].Kill();
                     restoreApp = true;
                 }
-
-                if (!serviceClosed)
-                {
-                    Logger.Warn("service is still running, force stopping service");
-                    Process[] pSvc = Process.GetProcessesByName("AutoDarkModeSvc");
-                    if (pSvc.Length != 0)
-                    {
-                        pSvc[0].Kill();
-                    }
-                }
             }
             catch (Exception ex)
             {
                 Logger.Warn(ex, "other auto dark mode components still running, skipping update");
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-2);
-            }
-
-            try
-            {
-                Logger.Info("shutting down service");
-                string result = client.SendMessageAndGetReply(Command.Shutdown);
-                ApiResponse response = ApiResponse.FromString(result);
-                if (response.StatusCode != StatusCode.Ok && response.StatusCode != StatusCode.Timeout)
-                {
-                    Logger.Warn("could not cleanly shut down service, ending process");
-                    Process[] pService = Process.GetProcessesByName("AutoDarkModeSvc");
-                    if (pService.Length != 0)
-                    {
-                        Logger.Info("stopping app");
-                        pService[0].Kill();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Fatal(ex, "could not shut down service, aborting upgrade");
-                Environment.Exit(-1);
             }
 
             string admDir = Extensions.ExecutionDir;
