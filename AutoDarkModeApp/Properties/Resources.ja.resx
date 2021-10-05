@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
     <value>設定</value>
@@ -187,7 +187,7 @@
     <value>エラーが発生しました</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>位置情報の使用許可が必要です</value>
+    <value>位置情報の使用許可が必要</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>最新版はありません。</value>
@@ -208,7 +208,7 @@
     <value>Auto Dark Mode をご利用いただきありがとうございます。
 
 最新版が GitHub にあります。修正と機能が強化されています。
-ダウンロードしますか？
+インストールしますか？
 
 お使いのバージョン: {0}, 最新版: {1}</value>
   </data>
@@ -232,6 +232,9 @@
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>都市</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>位置</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
     <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
@@ -331,11 +334,11 @@
     <value>すみません。設定を適用できませんでした。
 
 以下を試してみてください:
-- このソフトをアンインストールし、もう一度インストールしてみる。
-- Auto Dark Mode の設定から一度無効にしてみてください。
-- デスクトップの壁紙が有効にされているなら、その機能を無効にしてから試してみる。
+- Auto Dark Mode のサービスを再起動
+- サービスが実行中か確認する
+- サービスを終了し、config.yaml を削除してから再設定する
 
-それでも解決しない場合、GitHub 上の issue (問題)  でそのエラーのスクリーンショットを添えてコメントすることもできます。「はい」で GitHub を開きます。</value>
+それでも解決しない場合、GitHub にて issue (問題)  を投稿できます。「はい」で GitHub を開きます。</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>エラー: 入力が正しくありません。</value>
@@ -478,7 +481,7 @@
     <value>.theme ファイルの適用中にエラーが発生しました。あなたが作成したテーマが削除されたり移動されているかもしれません。テーマの切り替えを無効化しました。再び有効にするには、Auto Dark Mode の設定 {0} を行ってください。</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>以下の問題があります: 
+    <value>以下の問題があります:
 {0}
 
 管理者としてアルゴリズムを実行することでこの問題の解決を試行します。助けになる可能性があります。
@@ -542,5 +545,11 @@ Auto Dark Mode X は最初から完全に書き直され、Windows タスクス�
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>これは手動でバッテリー節約機能を有効にしていない場合に動作します！</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>モードの切り替え</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>個人設定</value>
   </data>
 </root>
