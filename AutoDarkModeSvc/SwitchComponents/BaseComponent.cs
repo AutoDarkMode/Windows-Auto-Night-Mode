@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc.SwitchComponents
                     }
                     catch (Exception ex)
                     {
-                        Logger.Error(ex, $"error while running enable hook");
+                        Logger.Error(ex, $"error while running enable hook for {GetType().Name}");
                     }
                 }
                 if (ComponentNeedsUpdate(newTheme))
@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.SwitchComponents
                     }
                     catch (Exception ex)
                     {
-                        Logger.Error(ex, $"uncaught exception in component, source: {ex.Source}, message: ");
+                        Logger.Error(ex, $"uncaught exception in component {GetType().Name}, source: {ex.Source}, message: ");
                     }
                 }
             }
@@ -59,7 +59,7 @@ namespace AutoDarkModeSvc.SwitchComponents
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, $"error while running disable hook");
+                    Logger.Error(ex, $"error while running disable hook for {GetType().Name}");
                 }
             }
         }
