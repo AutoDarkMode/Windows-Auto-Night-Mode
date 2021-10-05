@@ -122,7 +122,6 @@ namespace AutoDarkModeSvc
 
         public void Exit(object sender, EventArgs e)
         {
-            NotifyIcon.Dispose();
             if (NotifyIcon != null)
             {
                 NotifyIcon.Dispose();
