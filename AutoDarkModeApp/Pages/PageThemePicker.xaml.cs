@@ -163,7 +163,8 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                return Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList();
+                List<string> files = Directory.EnumerateFiles(ThemeFolderPath, "*.*", SearchOption.AllDirectories).ToList();
+                return files.Where(f => f.EndsWith(".theme")).ToList();
             }
             catch
             {

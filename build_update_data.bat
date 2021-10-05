@@ -1,3 +1,4 @@
+call bin\Debug\AutoDarkModeShell.exe "--exit"
 call publish.bat
 
 REM tar -cvzf AutoDarkModeInstaller/Setup/ADM.zip -C bin/Publish *
