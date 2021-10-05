@@ -204,7 +204,10 @@ namespace AutoDarkModeUpdater
         {
             try
             {
-                Process.Start(Extensions.ExecutionPath);
+                using Process svc = new();
+                svc.StartInfo.UseShellExecute = false;
+                svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionPath);
+                _ = svc.Start();
                 if (restoreApp)
                 {
                     using Process app = new();
