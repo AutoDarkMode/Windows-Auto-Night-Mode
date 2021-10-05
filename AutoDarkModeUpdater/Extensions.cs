@@ -11,7 +11,7 @@ namespace AutoDarkModeUpdater
     {
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string UpdateDataDir = GetUpdateDataDir();
-        public static readonly string ExecutionPath = GetExecutionPath();
+        public static readonly string ExecutionPathSvc = GetExecutionPath();
         public static readonly string ExecutionPathApp = GetExecutionPathApp();
         public static readonly string ExecutionPathShell = GetExecutionPathShell();
         public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();

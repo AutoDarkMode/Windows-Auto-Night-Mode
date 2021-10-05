@@ -19,6 +19,8 @@ namespace AutoDarkModeUpdater
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
         private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+        private static bool restoreShell;
+        private static bool restoreApp;
 
         static void Main(string[] args)
         {
@@ -88,8 +90,6 @@ namespace AutoDarkModeUpdater
                 }
             }
 
-            bool restoreShell = false;
-            bool restoreApp = false;
             try
             {
                 Process[] pSvc = Process.GetProcessesByName("AutoDarkModeSvc");
@@ -122,7 +122,6 @@ namespace AutoDarkModeUpdater
                 Environment.Exit(-2);
             }
 
-            string admDir = Extensions.ExecutionDir;
             if (args.Length > 2)
             {
                 if (args[0].Contains("--notify"))
@@ -132,19 +131,60 @@ namespace AutoDarkModeUpdater
                 }
             }
 
-            // move old files out
-            // collect all files that are not within the update data directory or the updater itself
+            ApplyPatch();
+        }
+
+        private static void ApplyPatch()
+        {
+            MoveOldFiles();
+            CopyNewFiles();
+            UpdateInnoInstallerString();
+            Cleanup();
+            Relaunch(restoreShell, restoreApp, false);
+
+            try
+            {
+                FileVersionInfo currentVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
+                if (currentVersion != null)
+                {
+                    Logger.Info($"patch complete, installed version: {currentVersion.FileVersion}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not read installed version:");
+                Logger.Info("patch complete, starting service");
+            }
+        }
+
+        private static void MoveOldFiles()
+        {
+            // collect all files that are not within the update data directory or the updater itself and the ignore list
             IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir, "*.*", SearchOption.AllDirectories)
                 .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnorePaths(f));
 
             //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
-            if (!oldFilePaths.Contains(Extensions.ExecutionPath))
+            if (!oldFilePaths.Contains(Extensions.ExecutionPathSvc))
             {
-                Logger.Error($"update aborted, wrong directory / service executable not found {Extensions.ExecutionPath}");
+                Logger.Error($"patching aborted, wrong directory / service executable not found {Extensions.ExecutionPathSvc}");
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
-
+            else
+            {
+                try
+                {
+                    FileVersionInfo currentVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
+                    if (currentVersion != null)
+                    {
+                        Logger.Info($"currently installed version: {currentVersion.FileVersion}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "could not read installed version:");
+                }
+            }
 
             Logger.Info("backing up old files");
             // convert to file info list and move all files into a demporary directory that is a sub directory of the update data dir
@@ -156,7 +196,7 @@ namespace AutoDarkModeUpdater
                 {
                     Directory.CreateDirectory(holdingDir);
                 }
-                foreach (var file in oldFiles)
+                foreach (FileInfo file in oldFiles)
                 {
                     file.MoveTo(Path.Combine(holdingDir, file.Name), true);
                     //Logger.Info($"moved file {file.Name} to holding dir");
@@ -169,17 +209,21 @@ namespace AutoDarkModeUpdater
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
+        }
 
-
+        private static void CopyNewFiles()
+        {
             Logger.Info("patching auto dark mode");
             // move new files from unpack directory to assembly path
             string unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
+
+
             IEnumerable<FileInfo> files = Directory.GetFiles(unpackDirectory, "*.*", SearchOption.AllDirectories).Select(f => new FileInfo(f));
             try
             {
-                foreach (var file in files)
+                foreach (FileInfo file in files)
                 {
-                    file.MoveTo(Path.Combine(admDir, file.Name), true);
+                    file.MoveTo(Path.Combine(Extensions.ExecutionDir, file.Name), true);
                     //Logger.Info($"updated file {file.Name}");
                 }
             }
@@ -190,19 +234,33 @@ namespace AutoDarkModeUpdater
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
+        }
 
+        private static void UpdateInnoInstallerString()
+        {
             Logger.Info("updating setup version string");
             try
             {
                 using RegistryKey innoInstallerKey = Registry.Users.OpenSubKey($"{SID}\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{470BC918-3740-4A97-9797-8570A7961130}}_is1", true);
-                FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe"));
-                innoInstallerKey.SetValue("DisplayVersion", versionInfo.FileVersion);
+                if (innoInstallerKey == null)
+                {
+                    Logger.Info("inno installer not detected, assuming portable adm installation");
+                }
+                else
+                {
+                    FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe"));
+                    innoInstallerKey.SetValue("DisplayVersion", versionInfo.FileVersion);
+                }
             }
             catch (Exception ex)
             {
                 Logger.Warn(ex, "could not update installer version string:");
             }
+        }
 
+        private static void Cleanup()
+        {
+            // delete old files
             try
             {
                 Directory.Delete(Extensions.UpdateDataDir, true);
@@ -211,9 +269,6 @@ namespace AutoDarkModeUpdater
             {
                 Logger.Warn(ex, "could not delete holding dir, please investigate manually:");
             }
-
-            Logger.Info("update complete, starting service");
-            Relaunch(restoreShell, restoreApp, false);
         }
 
         private static SecurityIdentifier SID
@@ -232,7 +287,7 @@ namespace AutoDarkModeUpdater
             {
                 using Process svc = new();
                 svc.StartInfo.UseShellExecute = false;
-                svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionPath);
+                svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionPathSvc);
                 _ = svc.Start();
                 if (restoreApp)
                 {
