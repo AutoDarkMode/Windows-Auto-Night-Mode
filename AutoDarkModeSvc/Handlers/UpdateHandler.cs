@@ -256,7 +256,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
 
                 //download zip file file
-                Logger.Info("downloading new version");
+                Logger.Info("downloading update data");
                 using WebClient webClient = new();
                 webClient.Proxy = null;
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
