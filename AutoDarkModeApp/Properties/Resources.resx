@@ -672,4 +672,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
     <value>Minimum GPU usage to delay switching</value>
   </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Restore themes when changed externally</value>
+  </data>
 </root>

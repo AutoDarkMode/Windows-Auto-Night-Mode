@@ -71,6 +71,11 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.DarkThemePath);
             }
 
+            if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
+            {
+                CheckBoxMonitorActiveTheme.IsChecked = true;
+            }
+
             //check if Windows Theme Mode is enabled
             if (builder.Config.WindowsThemeMode.Enabled)
             {
@@ -309,6 +314,29 @@ namespace AutoDarkModeApp.Pages
         private void TextBlockBackButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Frame.Navigate(typeof(PagePersonalization), null, new DrillInNavigationTransitionInfo());
+        }
+
+        private void CheckBoxMonitorActiveTheme_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox cb)
+            {
+                if (cb.IsChecked ?? false)
+                {
+                    builder.Config.WindowsThemeMode.MonitorActiveTheme = true;
+                }
+                else
+                {
+                    builder.Config.WindowsThemeMode.MonitorActiveTheme = false;
+                }
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxMonitorActiveTheme");
+            }
         }
     }
 }

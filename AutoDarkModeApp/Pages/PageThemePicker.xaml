@@ -42,7 +42,7 @@
             MouseDown="TextBlockBackButton_MouseDown"
             Cursor="Hand"
             />
-        
+
         <TextBlock
             Grid.Row="1" Grid.Column="1"
             Margin="35,0,0,0"
@@ -51,13 +51,30 @@
             Text="Theme"
             />
 
-        <ui:ToggleSwitch
-            Name="ToggleSwitchThemeMode"
-            Grid.Row="3" Grid.Column="1"
-            Margin="0,10,0,0"
-            Header="Enable Windows Theme switch"
-            Toggled="ToggleSwitchThemeMode_Toggled"
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <ui:ToggleSwitch
+                Name="ToggleSwitchThemeMode"
+                Grid.Row="0"
+                Margin="0,10,0,0"
+                Header="Enable Windows Theme switch"
+                Toggled="ToggleSwitchThemeMode_Toggled"
             />
+
+            <CheckBox 
+                Name="CheckBoxMonitorActiveTheme"
+                Margin="0,10,0,0"
+                Grid.Row="1"
+                Content="{x:Static p:Resources.ThemePickerComboBoxKeepActive}"
+                Click="CheckBoxMonitorActiveTheme_Click"
+            />
+
+        </Grid>
+
 
         <!-- Tutorial: How to create theme -->
         <TextBlock
@@ -67,7 +84,7 @@
             FontSize="20"
             Text="{x:Static p:Resources.ThemeHeaderCreate}"
             />
-        
+
         <Grid
             Grid.Row="5" Grid.Column="1">
 
@@ -114,7 +131,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            
+
             <!-- Step 2 -->
             <TextBlock 
                 Name="TextBlockStep2"
@@ -132,7 +149,7 @@
                 Text="{x:Static p:Resources.ThemeTutorialStep2}" 
                 FontSize="14"
                 />
-            
+
             <!-- Step 3 -->
             <TextBlock 
                 Name="TextBlockStep3" 
@@ -150,7 +167,7 @@
                 Text="{x:Static p:Resources.ThemeTutorialStep3}"
                 FontSize="14"
                 />
-            
+
             <!-- Step 4 -->
             <TextBlock 
                 Name="TextBlockStep4" 
@@ -186,7 +203,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -216,7 +233,7 @@
                 DropDownOpened="ComboBox_DropDownOpened"
                 SelectionChanged="ComboBox_SelectionChanged"
                 />
-            
+
             <!-- Dark Theme Combobox -->
             <TextBlock 
                 Grid.Row="1" Grid.Column="0" 
@@ -242,7 +259,7 @@
                 SelectionChanged="ComboBox_SelectionChanged"
                 />
         </Grid>
-        
+
         <!-- Info Text -->
         <TextBlock
             Name="TextBlockUserFeedback"

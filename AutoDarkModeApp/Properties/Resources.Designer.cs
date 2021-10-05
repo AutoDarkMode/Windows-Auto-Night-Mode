@@ -1338,6 +1338,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restore themes when changed externally.
+        /// </summary>
+        public static string ThemePickerComboBoxKeepActive {
+            get {
+                return ResourceManager.GetString("ThemePickerComboBoxKeepActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select mode:.
         /// </summary>
         public static string ThemeSelection {
