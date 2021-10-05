@@ -60,6 +60,15 @@ namespace AutoDarkModeApp
                 SystemComboBox.ToolTip = Properties.Resources.cmb1903;
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
+                builder.Config.SystemSwitch.Enabled = false;
+                try
+                {
+                    builder.Save()
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex);
+                }
             }
             else
             //os version 1903+

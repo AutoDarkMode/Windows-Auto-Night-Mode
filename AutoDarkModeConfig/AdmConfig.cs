@@ -68,6 +68,7 @@ namespace AutoDarkModeConfig
         public bool Enabled { get; set; }
         public string DarkThemePath { get; set; }
         public string LightThemePath { get; set; }
+        public bool KeepTheme { get; set; }
     }
 
     public class Events
