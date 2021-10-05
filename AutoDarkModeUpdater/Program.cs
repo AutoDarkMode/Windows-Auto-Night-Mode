@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
+using System.Threading;
 
 namespace AutoDarkModeUpdater
 {
@@ -46,6 +47,29 @@ namespace AutoDarkModeUpdater
 
             Logger.Info($"Auto Dark Mode Updater {Version.Major}.{Version.Minor}.{Version.Build}");
 
+            Logger.Info($"waiting for service to close...");
+            bool serviceClosed = false;
+            for (int i = 0; i < 3; i++)
+            {
+                string result = client.SendMessageAndGetReply(Command.Alive, 2);
+                ApiResponse response = ApiResponse.FromString(result);
+                if (response.StatusCode != StatusCode.Timeout)
+                {
+                    try
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "error waiting for service to end:");
+                    }
+                }
+                else
+                {
+                    serviceClosed = true;
+                    break;
+                }
+            }
 
             bool restoreShell = false;
             bool restoreApp = false;
@@ -65,6 +89,16 @@ namespace AutoDarkModeUpdater
                     Logger.Info("stopping app");
                     pApp[0].Kill();
                     restoreApp = true;
+                }
+
+                if (!serviceClosed)
+                {
+                    Logger.Warn("service is still running, force stopping service");
+                    Process[] pSvc = Process.GetProcessesByName("AutoDarkModeSvc");
+                    if (pSvc.Length != 0)
+                    {
+                        pSvc[0].Kill();
+                    }
                 }
             }
             catch (Exception ex)
