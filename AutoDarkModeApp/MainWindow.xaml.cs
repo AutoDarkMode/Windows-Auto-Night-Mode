@@ -10,6 +10,8 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Pages;
 using System.Windows.Media;
 using ModernWpf.Media.Animation;
+using AutoDarkModeConfig;
+using AutoDarkModeComms;
 
 namespace AutoDarkModeApp
 {
@@ -35,6 +37,9 @@ namespace AutoDarkModeApp
 
                 //create jump list entries
                 AddJumpList();
+
+                //ensure auto start gets set if adm was reinstalled
+                EnsureAutostart();
 
                 //finished first startup code
                 Settings.Default.FirstRun = false; 
@@ -101,6 +106,24 @@ namespace AutoDarkModeApp
             catch
             {
 
+            }
+        }
+
+        private static void EnsureAutostart()
+        {
+            try
+            {
+                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+                builder.Load();
+                if (builder.Config.AutoThemeSwitchingEnabled)
+                {
+                    ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+                    _ = client.SendMessageAndGetReply(Command.AddAutostart);
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
             }
         }
 

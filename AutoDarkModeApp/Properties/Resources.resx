@@ -236,9 +236,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="lblPosition" xml:space="preserve">
     <value>Position</value>
   </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
-  </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>App restart required to see changes</value>
   </data>
@@ -551,5 +548,26 @@ The update is suitable for everyone, except for owners of an ARM device. These w
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalization</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Apply Coordinates</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Geographic coordinates</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Location data</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>From sunset to sunrise (geographic coordinates)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Geo coordinates for your location</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Disabled</value>
   </data>
 </root>

@@ -79,6 +79,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply Coordinates.
+        /// </summary>
+        public static string applyGeoButton {
+            get {
+                return ResourceManager.GetString("applyGeoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable automatic theme switching.
         /// </summary>
         public static string autoCheckBox {
@@ -501,6 +510,24 @@ namespace AutoDarkModeApp.Properties {
         public static string errorThemeApply {
             get {
                 return ResourceManager.GetString("errorThemeApply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geographic coordinates.
+        /// </summary>
+        public static string headerGeoCoordinates {
+            get {
+                return ResourceManager.GetString("headerGeoCoordinates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location data.
+        /// </summary>
+        public static string headerLocationData {
+            get {
+                return ResourceManager.GetString("headerLocationData", resourceCulture);
             }
         }
         
@@ -951,11 +978,29 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        public static string rbDisabled {
+            get {
+                return ResourceManager.GetString("rbDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From sunset to sunrise.
         /// </summary>
         public static string rbLocation {
             get {
                 return ResourceManager.GetString("rbLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From sunset to sunrise (geographic coordinates).
+        /// </summary>
+        public static string rbLocationGeo {
+            get {
+                return ResourceManager.GetString("rbLocationGeo", resourceCulture);
             }
         }
         
@@ -1019,6 +1064,15 @@ namespace AutoDarkModeApp.Properties {
         public static string tbDarkReaderDescription {
             get {
                 return ResourceManager.GetString("tbDarkReaderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geo coordinates for your location.
+        /// </summary>
+        public static string tbGetCoordinates {
+            get {
+                return ResourceManager.GetString("tbGetCoordinates", resourceCulture);
             }
         }
         

@@ -56,7 +56,7 @@
 
             <RadioButton 
                 Name="RadioButtonDisabled" 
-                Content="Disabled"
+                Content="{x:Static p:Resources.rbDisabled}"
                 IsChecked="True"
                 Margin="0,0,0,0"
                 Click="RadioButtonDisabled_Click"
@@ -78,7 +78,7 @@
 
             <RadioButton 
                 Name="RadioButtonCoordinateTimes"
-                Content="From sunset to sunrise (geographic coordinates)"
+                Content="{x:Static p:Resources.rbLocationGeo}"
                 Margin="0,5,0,0"
                 Click="RadioButtonCoordinateTimes_Click"
                 />
@@ -164,7 +164,7 @@
             Name="TextBlockLocationHeader"
             Grid.Row="1"
             Margin="0,0,0,0"
-            Text="Location data"
+            Text="{x:Static p:Resources.headerLocationData}"
             FontFamily="Segoe UI Semibold"
             FontSize="20"  
             />
@@ -212,7 +212,7 @@
             <TextBlock
                 Name="TextBlockCoordinatesHeader"
                 Grid.Row="1"
-                Text="Geographic coordinates"
+                Text="{x:Static p:Resources.headerGeoCoordinates}"
                 FontFamily="Segoe UI Semibold"
                 FontSize="20"
                 />
@@ -250,7 +250,7 @@
 
                 <Button 
                     x:Name="ButtonApplyCoordinates"
-                    Content="Apply Coordinates"
+                    Content="{x:Static p:Resources.applyGeoButton}"
                     VerticalAlignment="Bottom"
                     Margin="25,0,0,0" 
                     Click="ButtonApplyCoordinates_Click"
@@ -262,7 +262,7 @@
                 x:Name="TextBlockOpenLatLongWebsite"
                 Margin="0,15,0,0"
                 Grid.Row="4"
-                Text="Get coordinates for your location"
+                Text="{x:Static p:Resources.tbGetCoordinates}"
                 FontSize="14"
                 Focusable="True"
                 MouseDown="TextBlockOpenLatLongWebsite_MouseDown"

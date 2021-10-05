@@ -541,4 +541,16 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Wechsel-Modi</value>
   </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Geographische Koordinaten</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Positionsdaten</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Von Sonnenuntergang bis Sonnenaufgang (geographische Koordinaten)</value>
+  </data>
 </root>
