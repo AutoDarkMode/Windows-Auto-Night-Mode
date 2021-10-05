@@ -140,7 +140,7 @@ namespace AutoDarkModeUpdater
             //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
             if (!oldFilePaths.Contains(Extensions.ExecutionPath))
             {
-                Logger.Error($"updated aborted, wrong directory / service executable not found {Extensions.ExecutionPath}");
+                Logger.Error($"update aborted, wrong directory / service executable not found {Extensions.ExecutionPath}");
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
