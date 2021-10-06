@@ -139,9 +139,11 @@
                 <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent"/>
                 <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="Transparent"/>
                 <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
+                <!--
                 <SolidColorBrush x:Key="NavigationViewItemForegroundSelected" Color="{DynamicResource SystemAccentColor}"/>
                 <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPointerOver" Color="{DynamicResource SystemAccentColor}"/>
                 <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="{DynamicResource SystemAccentColor}"/>
+                -->
             </ui:NavigationView.Resources>
 
         </ui:NavigationView>
