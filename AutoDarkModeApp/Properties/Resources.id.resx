@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
     <value>Setelan</value>
@@ -218,12 +218,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
     <value>Kami memeriksa pembaruan setiap program memulai</value>
-  </data>
-  <data name="userFeedback" xml:space="preserve">
-    <value>Selamat Datang</value>
-  </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Translator: pc-v2</value>
@@ -525,5 +519,134 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalisasi</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Buka file konfigurasi</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Buka folder konfigurasi</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Buka file log</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019:</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Pilih tema</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Pilih latar belakang</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Sembunyikan ikon tray (tidak direkomendasikan</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Jangan berganti ketika bermain video game</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Cepat (1 sampel)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Sedang (2 sampel)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Lambat (3 sampel)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Kecepatan deteksi penggunaan GPU</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Perangkat dengan tenaga baterai</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Kondisi</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Batas minimum penggunaan GPU untuk menunda penggantian mode</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Fitur ini dinonaktifkan ketika mode tema diaktifkan</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Fitur ini dinonaktifkan ketika mode latar belakang diaktifkan</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Koordinat geografis Anda</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel diashow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Menawarkan lebih sedikit fitur, tetapi lebih mudah disiapkan. Kustomisasi latar belakang desktop Anda untuk semya layar, layar individu atau warna latar</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Kami memeriksa versi terbaru dari Auto Dark Mode di latar belakang. Ketika pembaruan tersedia, kami akan memberitahukan Anda.</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Unduh otomatis dan pasang versi terbaru</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 hari</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 hari</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 hari</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>tidak pernah</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Ubah seberapa sering kami memeriksa pembaruan</value>
+  </data>
+  <data name="userFeedback1" xml:space="preserve">
+    <value>Selamat Datang</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Tema Gelap</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Tema Terang</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Gambar</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Gambar (beberapa layar)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Warna solid</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Layar</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Tipe</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Hapus layar yang terputus</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Latar Belakang</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Warna</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Kode Hex</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Aktifkan perubahan layar</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
   </data>
 </root>
