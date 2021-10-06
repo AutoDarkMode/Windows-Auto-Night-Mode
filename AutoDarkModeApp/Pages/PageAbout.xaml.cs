@@ -35,7 +35,7 @@ namespace AutoDarkModeApp.Pages
 
         private void UpdateVersionNumbers()
         {
-            var currentDirectory = Environment.CurrentDirectory;
+            var currentDirectory = AdmExtensions.ExecutionPath;
             TextBlockCommitHash.Text = "Commit: " + AdmExtensions.CommitHash();
 
             TextBlockAppVersion.Text = "App: ";
