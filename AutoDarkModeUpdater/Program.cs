@@ -136,7 +136,7 @@ namespace AutoDarkModeUpdater
 
         private static void ApplyPatch()
         {
-            MoveOldFiles();
+            MoveToTemp();
             CopyNewFiles();
             UpdateInnoInstallerString();
             Cleanup();
@@ -157,10 +157,12 @@ namespace AutoDarkModeUpdater
             }
         }
 
-        private static void MoveOldFiles()
+
+
+        private static void MoveToTemp()
         {
             // collect all files that are not within the update data directory or the updater itself and the ignore list
-            IEnumerable<string> oldFilePaths = Directory.GetFiles(Extensions.ExecutionDir, "*.*", SearchOption.AllDirectories)
+            IEnumerable<string> oldFilePaths = Directory.EnumerateFileSystemEntries(Extensions.ExecutionDir, "*.*", SearchOption.TopDirectoryOnly)
                 .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnorePaths(f));
 
             //this operation is dangerous if in the wrong directory, ensure that the AutoDarkModeSvc.exe is in the same directory
@@ -189,16 +191,26 @@ namespace AutoDarkModeUpdater
             Logger.Info("backing up old files");
             // convert to file info list and move all files into a demporary directory that is a sub directory of the update data dir
             // this is done so the dir can be removed easily once the update is complete
-            IEnumerable<FileInfo> oldFiles = oldFilePaths.Select(f => new FileInfo(f));
             try
             {
                 if (!Directory.Exists(holdingDir))
                 {
                     Directory.CreateDirectory(holdingDir);
                 }
-                foreach (FileInfo file in oldFiles)
+                foreach (string path in oldFilePaths)
                 {
-                    file.MoveTo(Path.Combine(holdingDir, file.Name), true);
+                    if (File.Exists(path))
+                    {
+                        FileInfo file = new(path);
+                        string targetPath = Path.Combine(holdingDir, Path.GetRelativePath(Extensions.ExecutionDir, file.FullName));
+                        file.MoveTo(targetPath, true);
+                    }
+                    else if (Directory.Exists(path))
+                    {
+                        DirectoryInfo dir = new(path);
+                        string targetPath = Path.Combine(holdingDir, Path.GetRelativePath(Extensions.ExecutionDir, dir.FullName));
+                        dir.MoveTo(targetPath);
+                    }
                     //Logger.Info($"moved file {file.Name} to holding dir");
                 }
             }
@@ -206,6 +218,7 @@ namespace AutoDarkModeUpdater
             {
                 Logger.Error(ex, "could not move all files to holding dir, attempting rollback:");
                 RollbackDir(holdingDir, Extensions.ExecutionDir);
+                Cleanup();
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
@@ -218,19 +231,30 @@ namespace AutoDarkModeUpdater
             string unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
 
 
-            IEnumerable<FileInfo> files = Directory.GetFiles(unpackDirectory, "*.*", SearchOption.AllDirectories).Select(f => new FileInfo(f));
+            IEnumerable<string> paths = Directory.EnumerateFileSystemEntries(unpackDirectory, "*.*", SearchOption.TopDirectoryOnly);
             try
             {
-                foreach (FileInfo file in files)
+                foreach (string path in paths)
                 {
-                    file.MoveTo(Path.Combine(Extensions.ExecutionDir, file.Name), true);
-                    //Logger.Info($"updated file {file.Name}");
+                    if (File.Exists(path))
+                    {
+                        FileInfo file = new(path);
+                        string targetPath = Path.Combine(Extensions.ExecutionDir, Path.GetRelativePath(unpackDirectory, file.FullName));
+                        file.MoveTo(targetPath, true);
+                    }
+                    else if (Directory.Exists(path))
+                    {
+                        DirectoryInfo dir = new(path);
+                        string targetPath = Path.Combine(Extensions.ExecutionDir, Path.GetRelativePath(unpackDirectory, dir.FullName));
+                        dir.MoveTo(targetPath);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not move all files, attempting rollback:");
                 RollbackDir(holdingDir, Extensions.ExecutionDir);
+                Cleanup();
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
             }
@@ -275,8 +299,7 @@ namespace AutoDarkModeUpdater
         {
             get
             {
-                WindowsIdentity identity = null;
-                identity = WindowsIdentity.GetCurrent();
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
                 return identity.User;
             }
         }
@@ -321,21 +344,55 @@ namespace AutoDarkModeUpdater
 
         private static void RollbackDir(string source, string target)
         {
-            IEnumerable<FileInfo> holdingFiles = Directory.GetFiles(source, "*.*", SearchOption.AllDirectories).Select(f => new FileInfo(f));
             try
             {
-                foreach (var file in holdingFiles)
+                PrepareRollback();
+
+                IEnumerable<string> holdingPaths = Directory.EnumerateFileSystemEntries(source, "*.*", SearchOption.TopDirectoryOnly);
+                foreach (var path in holdingPaths)
                 {
-                    file.MoveTo(Path.Combine(target, file.Name), true);
-                    Logger.Info($"rolled back file {file.Name} to default dir {target}");
+                    if (File.Exists(path))
+                    {
+                        FileInfo file = new(path);
+                        string targetPath = Path.Combine(target, Path.GetRelativePath(source, file.FullName));
+                        file.MoveTo(targetPath, true);
+                        Logger.Info($"rolled back file {file.Name} to default dir {target}");
+                    }
+                    else if (Directory.Exists(path))
+                    {
+                        DirectoryInfo dir = new(path);
+                        string targetPath = Path.Combine(target, Path.GetRelativePath(source, dir.FullName));
+                        dir.MoveTo(targetPath);
+                        Logger.Info($"rolled back directory {dir.Name} to {targetPath}");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Logger.Fatal(ex, "rollback failed this is non-recoverable, please reinstall auto dark mode:");
+                Logger.Fatal(ex, "rollback failed, this is non-recoverable, please reinstall auto dark mode:");
                 Environment.Exit(-2);
             }
             Logger.Info("rollback successful, no update has been performed, restarting auto dark mode");
+        }
+
+        private static void PrepareRollback()
+        {
+            Logger.Info("preparing main directory for rollback");
+            IEnumerable<string> filePaths = Directory.EnumerateFileSystemEntries(Extensions.ExecutionDir, "*.*", SearchOption.TopDirectoryOnly)
+                .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnorePaths(f));
+
+            foreach (string path in filePaths)
+            {
+                Logger.Info($"deleting {path}");
+                if (Directory.Exists(path))
+                {
+                    Directory.Delete(path, true);
+                }
+                else if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
         }
 
         private static bool IgnorePaths(string path)
