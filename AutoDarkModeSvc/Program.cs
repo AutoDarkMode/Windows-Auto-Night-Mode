@@ -100,6 +100,7 @@ namespace AutoDarkModeSvc
                 if (commitHash != "")
                 {
                     Logger.Info($"commit hash: {commitHash}");
+                    Logger.Info($"cwd: {Extensions.ExecutionPath}");
                 }
                 else
                 {
