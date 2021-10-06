@@ -23,5 +23,8 @@ Details about the bug and how to reproduce it
 **Commit Hash and Version**
 <!-- Go to the About Page and provide the version and commit hash -->
 
+**Log Data**
+<!-- Attach relevant sections of the service.log file found in %AppData%\AutoDarkMode -->
+
 **Additional context**
 <!-- Add any other context about the problem here. -->
