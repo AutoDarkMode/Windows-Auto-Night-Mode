@@ -103,11 +103,16 @@ namespace AutoDarkModeSvc.Handlers
             {
                 using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
+                string admKey = (string)registryKey.GetValue("AutoDarkMode");
+                if (admKey == null)
+                {
+                    Logger.Warn("auto start entry not set");
+                }
                 return true;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "could not add AutoDarkModeSvc to autostart");
+                Logger.Error(ex, "could not add service to autostart");
                 return false;
             }
 
