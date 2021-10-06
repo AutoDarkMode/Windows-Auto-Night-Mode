@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿ using AutoDarkModeConfig;
 using Microsoft.Win32;
 using System;
 using System.Threading;
@@ -107,6 +107,10 @@ namespace AutoDarkModeSvc.Handlers
                 if (admKey == null)
                 {
                     Logger.Warn("auto start entry not set");
+                }
+                else
+                {
+                    Logger.Info($"key: AutoDarkMode, value: {admKey}");
                 }
                 return true;
             }
