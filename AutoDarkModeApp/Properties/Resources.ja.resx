@@ -236,9 +236,6 @@
   <data name="lblPosition" xml:space="preserve">
     <value>位置</value>
   </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
-  </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>変更の反映にはプログラムの再起動が必要です。</value>
   </data>
@@ -328,7 +325,7 @@
     <value>はい</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>バックグラウンドで最新版を確認</value>
+    <value>自動で最新版を確認</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
     <value>すみません。設定を適用できませんでした。
@@ -492,36 +489,6 @@
   <data name="tbHelp" xml:space="preserve">
     <value>問題解決にヘルプが必要ですか？(英語)</value>
   </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>後でダウンロード</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>再び表示しない</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>今すぐダウンロード</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>ここ数か月、私たちはできる限り最良の最新版を提供できるよう取り組んできました。それがこれです！
-
-Auto Dark Mode X は最初から完全に書き直され、Windows タスクスケジューラ―を使うのではなく、実際のバックグラウンドのタスクとなりました。このことで信頼性が向上し、より柔軟にテーマを切り替えることができます。
-
-バックグラウンドではより多くのリソースを消費しますが、あなたの生産性を向上させるための機能が追加されます。例:
-- ゲームモード: ゲームで遊んでいたり、GPU の負荷が高い間はテーマを無効化
-- キーボードショートカットによるテーマの切り替え
-そのほかにも！
-
-最新版は ARM の端末を除くすべてに適しています。バッテリー消費に問題があるでしょう。バックグラウンドのプロセスをエミュレートするする必要があるからです。 (ここが課題です！).</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X があります</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>バージョン X は、ぜひお試しいただきたい大型アップデートです！本当にダウンロードしませんか？再び通知することはありません！</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>確認</value>
-  </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>複数ユーザーへの対応</value>
   </data>
@@ -551,5 +518,161 @@ Auto Dark Mode X は最初から完全に書き直され、Windows タスクス�
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>個人設定</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>座標を適用</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>地理座標</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>位置情報</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>日の出から日没まで (地理座標)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>地理座標を検索</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>設定ファイルを開く</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>設定用フォルダを開く</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>ログを開く</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019:</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>テーマの選択</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>壁紙の選択</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>トレイアイコンを非表示 (非推奨)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>テーマモードが有効の間、この機能は無効です。</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>壁紙モードが有効の間、この機能は無効です。</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>より多くの機能がありますが、Windows の .theme ファイルを設定する必要があります。モニターごとに、壁紙やスライドショー、マウスカーソル、アクセントカラーや個別のサウンドを設定できます。</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>機能は少ないですが設定が簡単です。すべてのモニターや、個々のモニターの壁紙を指定したり、背景色を設定できます。</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Auto Dark Mode の最新版をバックグラウンドで確認します。最新版が利用可能ならば、ポップアップ通知でお知らせします</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>自動で最新版をダウンロードしインストール</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>通知を表示しない</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>確認する開発状態を選択</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Auto Dark Mode 開始時に最新版を確認</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 日</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 日</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 日</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>最終確認日時</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>最新版の確認頻度</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>ダークテーマ</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>ライトテーマ</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>画像 (複数モニター)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>無地の色</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>モニター</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>切断済みのモニターを除去</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>壁紙</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>16進の色コード</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>壁紙の有効を切り替え</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>ビデオゲーム中は切り替えない</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>早い (1 サンプル)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>中間 (2 サンプル)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>遅い (3 サンプル)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU 使用状態の検出速度</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>バッテリー駆動の端末</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>条件</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>切り替えを遅らせる最小の GPU 使用状態</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>外部で変更されたテーマの復元</value>
   </data>
 </root>
