@@ -333,12 +333,12 @@ namespace AutoDarkModeApp.Pages
             {
                 ApiResponse result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.LocationAccess));
                 LocationHandler handler = new();
-                if (result.StatusCode == StatusCode.NoLocAccess && builder.Config.Location.UseGeolocatorService)
+                if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
                 {
                     NoLocationAccess();
                     return;
                 }
-                else if (builder.Config.Location.UseGeolocatorService && (Geolocator.DefaultGeoposition.HasValue || result.StatusCode == StatusCode.Ok))
+                else if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
                 {
                     locationBlock.Text = Properties.Resources.lblCity + ": " + await handler.GetCityName();
                 }

@@ -128,7 +128,7 @@ namespace AutoDarkModeSvc.Communication
                     #region LocationAccess
                     case Command.LocationAccess:
                         Logger.Info("signal received: checking location access permissions");
-                        Task<bool> geoTask = Task.Run(async () => await LocationHandler.HasPermission());
+                        Task<bool> geoTask = Task.Run(async () => await LocationHandler.HasLocation());
                         geoTask.Wait();
                         var result = geoTask.Result;
                         if (result)

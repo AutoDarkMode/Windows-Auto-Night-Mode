@@ -117,9 +117,9 @@ namespace AutoDarkModeSvc.Handlers
 
         }
 
-        public async static Task<bool> HasPermission()
+        public async static Task<bool> HasLocation()
         {
-            return await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed;
+            return await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed || Geolocator.DefaultGeoposition.HasValue;
         }
 
         /// <summary>
