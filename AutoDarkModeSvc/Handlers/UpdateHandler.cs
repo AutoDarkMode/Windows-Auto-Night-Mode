@@ -195,6 +195,7 @@ namespace AutoDarkModeSvc.Handlers
 
             if (!success)
             {
+                ToastHandler.RemoveUpdaterToast();
                 ToastHandler.InvokeFailedUpdateToast();
                 Updating = false;
                 return;

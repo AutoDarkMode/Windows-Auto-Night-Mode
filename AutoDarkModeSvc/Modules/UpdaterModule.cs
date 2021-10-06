@@ -31,13 +31,11 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            /*
             _ = Task.Run(() =>
             {
                 Updater();
             });
-            */
-            Updater();
+            //Updater();
         }
 
         private void Updater()
