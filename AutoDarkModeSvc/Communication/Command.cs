@@ -102,6 +102,7 @@ namespace AutoDarkModeSvc.Communication
 
         public const string TestError = "--test-error";
 
+        [Includable]
         public const string Alive = "--alive";
 
         [Includable]

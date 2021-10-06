@@ -130,6 +130,7 @@ namespace AutoDarkModeSvc
                 return false;
             }
 
+            // TODO change tracking when having active theme monitor disabled
             if (Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath) != state.CurrentWindowsThemeName && newTheme == Theme.Dark)
             {
                 PowerHandler.DisableEnergySaver(config);

@@ -22,7 +22,7 @@ namespace AutoDarkModeApp
         {
             if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
             {
-                Shutdown();
+                Environment.Exit(-1);
             }
 
             List<string> args = new();
