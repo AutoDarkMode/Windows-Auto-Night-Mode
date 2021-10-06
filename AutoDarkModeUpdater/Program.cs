@@ -131,11 +131,6 @@ namespace AutoDarkModeUpdater
                 }
             }
 
-            ApplyPatch();
-        }
-
-        private static void ApplyPatch()
-        {
             MoveToTemp();
             CopyNewFiles();
             UpdateInnoInstallerString();
@@ -156,8 +151,6 @@ namespace AutoDarkModeUpdater
                 Logger.Info("patch complete, starting service");
             }
         }
-
-
 
         private static void MoveToTemp()
         {
