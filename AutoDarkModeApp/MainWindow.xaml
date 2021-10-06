@@ -11,7 +11,7 @@
         mc:Ignorable="d"
     
         Title="{x:Static p:Resources.Title}" 
-        MinHeight="760"
+        MinHeight="600"
         MinWidth="850" 
         Height="760" 
         Width="850" 
