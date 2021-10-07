@@ -30,16 +30,12 @@ namespace AutoDarkModeUpdater
             {
                 FileName = Path.Combine(configDir, "updater.log"),
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
-                "${callsite:includeNamespace=False:" +
-                "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }"
+                "${message} ${exception:format=ShortType,Message,Method:separator= > }"
             };
             NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
             {
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
-                "${callsite:includeNamespace=False:" +
-                "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }"
+                "${message} ${exception:format=ShortType,Message,Method:separator= > }"
             };
 
             NLog.Config.LoggingConfiguration logConfig = new();
@@ -135,7 +131,7 @@ namespace AutoDarkModeUpdater
             CopyNewFiles();
             UpdateInnoInstallerString();
             Cleanup();
-            Relaunch(restoreShell, restoreApp, false);
+
 
             try
             {
@@ -148,8 +144,11 @@ namespace AutoDarkModeUpdater
             catch (Exception ex)
             {
                 Logger.Warn(ex, "could not read installed version:");
-                Logger.Info("patch complete, starting service");
             }
+            Logger.Info("restarting service");
+            if (restoreShell) Logger.Info("restarting shell");
+            if (restoreApp) Logger.Info("restarting app");
+            Relaunch(restoreShell, restoreApp, false);
         }
 
         private static void MoveToTemp()
