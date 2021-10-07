@@ -70,6 +70,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Follow us.
+        /// </summary>
+        public static string AboutTextBlockFollowUs {
+            get {
+                return ResourceManager.GetString("AboutTextBlockFollowUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string applyButton {
@@ -996,15 +1005,6 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallpaper/Theme.
-        /// </summary>
-        public static string NavbarWallpaper {
-            get {
-                return ResourceManager.GetString("NavbarWallpaper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Set.
         /// </summary>
         public static string offsetButton {
@@ -1397,6 +1397,15 @@ namespace AutoDarkModeApp.Properties {
         public static string ThemeSelectionWallaper {
             get {
                 return ResourceManager.GetString("ThemeSelectionWallaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string ThemeTextBlockHeader {
+            get {
+                return ResourceManager.GetString("ThemeTextBlockHeader", resourceCulture);
             }
         }
         

@@ -48,7 +48,7 @@
             Margin="35,0,0,0"
             FontFamily="Segoe UI Semilight"
             FontSize="30"
-            Text="Theme"
+            Text="{x:Static p:Resources.ThemeTextBlockHeader}"
             />
 
         <Grid Grid.Row="3" Grid.Column="1">

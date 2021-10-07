@@ -370,9 +370,6 @@ You can set them up individually in your Windows Theme.</value>
   <data name="NavbarTime" xml:space="preserve">
     <value>Time</value>
   </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>Wallpaper/Theme</value>
-  </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Open Folder</value>
   </data>
@@ -700,5 +697,11 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
     <value>On</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Follow us</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Theme</value>
   </data>
 </root>

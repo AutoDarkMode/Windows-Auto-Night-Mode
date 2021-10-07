@@ -114,7 +114,7 @@
         <TextBlock 
                 Grid.Row="5" Grid.Column="1"
                 Margin="0,30,0,0"
-                Text="Follow us" 
+                Text="{x:Static p:Resources.AboutTextBlockFollowUs}" 
                 FontFamily="Segoe UI"
                 FontSize="20"/>
         
