@@ -144,10 +144,11 @@ namespace AutoDarkModeUpdater
             catch (Exception ex)
             {
                 Logger.Warn(ex, "could not read installed version:");
+                Logger.Info("patch complete");
             }
-            Logger.Info("restarting service");
-            if (restoreShell) Logger.Info("restarting shell");
-            if (restoreApp) Logger.Info("restarting app");
+            Logger.Info("starting service");
+            if (restoreShell) Logger.Info("relaunching shell");
+            if (restoreApp) Logger.Info("relaunching app");
             Relaunch(restoreShell, restoreApp, false);
         }
 
