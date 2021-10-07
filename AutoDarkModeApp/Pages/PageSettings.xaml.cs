@@ -63,6 +63,10 @@ namespace AutoDarkModeApp.Pages
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
+            if (!builder.Config.AutoThemeSwitchingEnabled)
+            {
+                CheckBoxLogonTask.IsEnabled = false;
+            }
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
 
@@ -263,6 +267,7 @@ namespace AutoDarkModeApp.Pages
 
         private async void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
         {
+            var result = "";
             try
             {
                 if (CheckBoxLogonTask.IsChecked.Value)
@@ -277,16 +282,16 @@ namespace AutoDarkModeApp.Pages
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
+                    result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
                     if (result != StatusCode.Ok)
                     {
-                        throw new AddAutoStartException($"error creating auto start task, ZMQ returned {result}", "AutoDarkModeSvc.MessageParser.AddAutostart");
+                        throw new AddAutoStartException($"error while processing CheckBoxLogonTask", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }
                 }
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex, "CheckBoxLogonTask_Click");
+                ErrorMessageBoxes.ShowErrorMessageFromApi(ApiResponse.FromString(result), ex, Window.GetWindow(this));
             }
         }
 

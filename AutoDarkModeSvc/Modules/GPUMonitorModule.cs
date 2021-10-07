@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.Modules
                 //the time between sunrise and sunset, aka "day"
                 if (Extensions.NowIsBetweenTimes(sunriseMonitor.TimeOfDay, sunsetMonitor.TimeOfDay))
                 {
-                    if (SuntimeIsWithinSpan(sunsetMonitor) && !PostponeDark)
+                    if (SuntimeIsWithinSpan(sunsetMonitor))
                     {
                         if (!PostponeDark)
                         {

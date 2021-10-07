@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoDarkModeSvc.Communication;
+using System;
+using System.Diagnostics;
+using System.Windows;
 
 namespace AutoDarkModeApp.Handlers
 {
@@ -43,6 +46,36 @@ namespace AutoDarkModeApp.Handlers
         public RemoveAutoStartException(string message, string source) : base(message)
         {
             this.Source = source;
+        }
+    }
+
+    public static class ErrorMessageBoxes
+    {
+        public static void ShowErrorMessageFromApi(ApiResponse response, Exception ex, Window owner)
+        {
+            string error = $"{Properties.Resources.errorThemeApply}\n\n" +
+                $"Exception Source: {ex.Source}\n" +
+                $"Exception Message: {ex.Message}\n" +
+                $"API Response:\n\n" +
+                $"Status Code: {response.StatusCode}\n" +
+                $"Message: {response.Message}\n" +
+                $"Details: {response.Details}";
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = owner
+            };
+            msg.ShowDialog();
+            bool result = msg.DialogResult ?? false;
+            if (result)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+            return;
         }
     }
 }

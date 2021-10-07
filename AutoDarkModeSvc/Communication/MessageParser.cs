@@ -62,35 +62,53 @@ namespace AutoDarkModeSvc.Communication
                     #region AddAutoStart
                     case Command.AddAutostart:
                         Logger.Info("signal received: add service to autostart");
-                        bool regOk;
-                        bool taskOk;
+                        bool regOk = false;
+                        bool taskOk = false;
                         if (builder.Config.Tunable.UseLogonTask)
                         {
                             Logger.Debug("logon task mode selected");
-                            regOk = RegistryHandler.RemoveAutoStart();
                             taskOk = TaskSchdHandler.CreateLogonTask();
+                            if (taskOk) regOk = RegistryHandler.RemoveAutoStart();
+
+                            if (regOk & taskOk)
+                            {
+                                SendResponse(new ApiResponse()
+                                {
+                                    StatusCode = StatusCode.Ok
+                                }.ToString());
+                            }
+                            else
+                            {
+                                regOk = RegistryHandler.AddAutoStart();
+                                SendResponse(new ApiResponse()
+                                {
+                                    StatusCode = StatusCode.Err,
+                                    Message = "failed setting logon task, trying to set autostart entry",
+                                    Details = $"autostart entry set success: {regOk}"
+                                }.ToString());
+                            }
                         }
                         else
                         {
                             Logger.Debug("autostart mode selected");
                             taskOk = TaskSchdHandler.RemoveLogonTask();
                             regOk = RegistryHandler.AddAutoStart();
-                        }
-                        if (regOk && taskOk)
-                        {
-                            SendResponse(new ApiResponse()
+                            if (regOk)
                             {
-                                StatusCode = StatusCode.Ok
-                            }.ToString());
+                                SendResponse(new ApiResponse()
+                                {
+                                    StatusCode = StatusCode.Ok,
+                                    Message = "added autostart task successfully",
+                                    Details = $"task removal success: {taskOk}"
+                                }.ToString());
+                            }
                         }
-                        else
+                        SendResponse(new ApiResponse()
                         {
-                            SendResponse(new ApiResponse()
-                            {
-                                StatusCode = StatusCode.Err,
-                                Message = $"RegOk: {regOk}, TaskOk: {taskOk}"
-                            }.ToString());
-                        }
+                            StatusCode = StatusCode.Err,
+                            Message = "autostart error",
+                            Details = $"regOk: {regOk}, taskOk: {taskOk}"
+                        }.ToString());
                         break;
                     #endregion
 

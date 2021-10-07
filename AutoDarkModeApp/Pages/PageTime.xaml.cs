@@ -416,22 +416,19 @@ namespace AutoDarkModeApp.Pages
         /// </summary>
         private async void EnableAutoStart()
         {
+            string result = "";
             try
             {
                 builder.Save();
-                var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
+                result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
                 if (result != StatusCode.Ok)
                 {
-                    throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
+                    throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                 }
-            }
-            catch (AddAutoStartException aex)
-            {
-                ShowErrorMessage(aex);
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ErrorMessageBoxes.ShowErrorMessageFromApi(ApiResponse.FromString(result), ex, Window.GetWindow(this));
             }
         }
         private async void DisableAutoStart()
