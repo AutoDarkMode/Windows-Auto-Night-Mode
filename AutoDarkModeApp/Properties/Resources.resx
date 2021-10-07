@@ -692,4 +692,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
     <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
   </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Enable Windows theme switch</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>On</value>
+  </data>
 </root>

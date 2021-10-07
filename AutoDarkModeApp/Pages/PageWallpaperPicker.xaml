@@ -54,6 +54,8 @@
 
         <ui:ToggleSwitch
             Name="ToggleSwitchWallpaper"
+            OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+            OnContent="{x:Static p:Resources.ToggleSwitchOn}"
             Grid.Row="3" Grid.Column="1"
             Margin="0,10,0,0"
             Header="{x:Static p:Resources.WallpaperToggleSwitch}"

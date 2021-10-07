@@ -1401,6 +1401,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable Windows theme switch.
+        /// </summary>
+        public static string ThemeToggleSwichEnableTheme {
+            get {
+                return ResourceManager.GetString("ThemeToggleSwichEnableTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Step.
         /// </summary>
         public static string ThemeTutorialStep {
@@ -1469,6 +1478,24 @@ namespace AutoDarkModeApp.Properties {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string ToggleSwitchOff {
+            get {
+                return ResourceManager.GetString("ToggleSwitchOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string ToggleSwitchOn {
+            get {
+                return ResourceManager.GetString("ToggleSwitchOn", resourceCulture);
             }
         }
         

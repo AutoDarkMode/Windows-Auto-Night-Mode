@@ -59,9 +59,11 @@
 
             <ui:ToggleSwitch
                 Name="ToggleSwitchThemeMode"
+                OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                OnContent="{x:Static p:Resources.ToggleSwitchOn}"
                 Grid.Row="0"
                 Margin="0,10,0,0"
-                Header="Enable Windows Theme switch"
+                Header="{x:Static p:Resources.ThemeToggleSwichEnableTheme}"
                 Toggled="ToggleSwitchThemeMode_Toggled"
             />
 
