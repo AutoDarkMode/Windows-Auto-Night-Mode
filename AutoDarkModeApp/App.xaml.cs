@@ -36,7 +36,17 @@ namespace AutoDarkModeApp
                 args.Remove("/debug");
             }
 
-            MainWindow mainWin = new();
+            OperatingSystem os = Environment.OSVersion;
+            MainWindow mainWin = null;
+            MainWindowMwpf mainWinMwpf = null;
+            if (os.Version.Major > 10)
+            {
+                mainWinMwpf = new();
+            }
+            else
+            {
+                mainWin = new();
+            }
 
             string message = "Service not running yet, please wait...";
             MsgBox msg = new(message, "Launching Service", "info", "none")
@@ -56,7 +66,14 @@ namespace AutoDarkModeApp
                 msg.Close();
                 Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             }
-            mainWin.Show();
+            if (mainWin != null)
+            {
+                mainWin.Show();
+            }
+            else
+            {
+                mainWinMwpf.Show();
+            }
         }
 
         private void WaitForServiceStart()
