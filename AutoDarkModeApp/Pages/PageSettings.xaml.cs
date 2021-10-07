@@ -278,13 +278,15 @@ namespace AutoDarkModeApp.Pages
                 {
                     builder.Config.Tunable.UseLogonTask = false;
                 }
-                builder.Save();
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
                     result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
                     if (result != StatusCode.Ok)
                     {
+                        builder.Config.Tunable.UseLogonTask = false;
+                        CheckBoxLogonTask.IsChecked = !CheckBoxLogonTask.IsChecked;
+                        builder.Config.Tunable.UseLogonTask = CheckBoxLogonTask.IsChecked ?? false;
                         throw new AddAutoStartException($"error while processing CheckBoxLogonTask", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }
                 }
@@ -293,6 +295,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ErrorMessageBoxes.ShowErrorMessageFromApi(ApiResponse.FromString(result), ex, Window.GetWindow(this));
             }
+            builder.Save();
         }
 
         private void CheckBoxHideTrayIcon_Click(object sender, RoutedEventArgs e)
