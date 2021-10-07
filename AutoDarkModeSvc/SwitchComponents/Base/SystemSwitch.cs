@@ -136,7 +136,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     }
                     else if (newTheme == Theme.Dark)
                     {
-                        Logger.Info(currentComponentTheme);
                         if (currentComponentTheme != Theme.Dark)
                         {
                             RegistryHandler.SetSystemTheme((int)Theme.Dark);
