@@ -8,7 +8,6 @@
       mc:Ignorable="d"
       
       Title="PageDonation"
-      Foreground="{DynamicResource SystemBaseHighColorBrush}"
       VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>

@@ -10,7 +10,6 @@
       mc:Ignorable="d"
       
       Title="PageSettings" 
-      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
       VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
@@ -242,10 +241,10 @@
                 </ComboBox>
                 
                 <CheckBox
-                    x:Name="checkBoxUpdateOnStart"
+                    x:Name="CheckBoxUpdateOnStart"
                     Margin="0,20,0,0"
                     Content="{x:Static p:Resources.UpdatesComboBoxAtStart}"
-                    Click="CheckBoxUpdateOnStart"
+                    Click="CheckBoxUpdateOnStart_Click"
                     />
 
                 <CheckBox

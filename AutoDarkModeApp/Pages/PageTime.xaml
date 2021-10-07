@@ -10,7 +10,6 @@
       mc:Ignorable="d"
       
       Title="PageTime" 
-      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
       fw:PointerTracker.Enabled="True" 
       Height="Auto" Width="Auto" 
       VerticalAlignment="Top" HorizontalAlignment="Left">
@@ -227,7 +226,7 @@
                     x:Name="NumberBoxLat"
                     Width="150" Height="Auto" 
                     Margin="0,0,0,0" 
-                    Header="Latitude"
+                    Header="{x:Static p:Resources.TimeNumberBoxHeaderLat}"
                     PlaceholderText="0.000"
                     SmallChange="0"
                     LargeChange="0"
@@ -239,7 +238,7 @@
                     x:Name="NumberBoxLon"
                     Width="150" Height="Auto"
                     Margin="25,0,0,0" 
-                    Header="Longitude"
+                    Header="{x:Static p:Resources.TimeNumberBoxHeaderLon}"
                     PlaceholderText="0.000"
                     SmallChange="0"
                     LargeChange="0"

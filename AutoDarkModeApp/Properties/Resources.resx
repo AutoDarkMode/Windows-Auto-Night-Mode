@@ -675,4 +675,12 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Restore themes when changed externally</value>
   </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Latitude</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Longitude</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
 </root>

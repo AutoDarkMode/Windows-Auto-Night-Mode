@@ -7,10 +7,7 @@
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       mc:Ignorable="d"
-      
-      Title="PageApps" 
-      Foreground="{DynamicResource SystemBaseHighColorBrush}">
-
+      Title="PageApps">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>

@@ -118,11 +118,7 @@ namespace AutoDarkModeApp.Pages
                 RadioButtonBetaUpdateChannel.IsEnabled = false;
                 RadioButtonStableUpdateChannel.IsEnabled = false;
             }
-            checkBoxUpdateOnStart.IsChecked = builder.Config.Updater.CheckOnStart;
-            if (checkBoxUpdateOnStart.IsChecked ?? false)
-            {
-                ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
-            }
+            CheckBoxUpdateOnStart.IsChecked = builder.Config.Updater.CheckOnStart;
         }
 
         private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -468,7 +464,7 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
             }
             ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
-            checkBoxUpdateOnStart.IsChecked = true;
+            CheckBoxUpdateOnStart.IsChecked = true;
         }
 
         /// <summary>
@@ -528,17 +524,15 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void CheckBoxUpdateOnStart(object sender, RoutedEventArgs e)
+        private void CheckBoxUpdateOnStart_Click(object sender, RoutedEventArgs e)
         {
             if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Updater.CheckOnStart = true;
-                ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
             }
             else
             {
                 builder.Config.Updater.CheckOnStart = false;
-                ComboBoxDaysBetweenUpdateCheck.IsEnabled = true;
             }
             try
             {

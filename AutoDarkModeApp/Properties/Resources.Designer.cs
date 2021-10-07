@@ -1419,6 +1419,24 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latitude.
+        /// </summary>
+        public static string TimeNumberBoxHeaderLat {
+            get {
+                return ResourceManager.GetString("TimeNumberBoxHeaderLat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude.
+        /// </summary>
+        public static string TimeNumberBoxHeaderLon {
+            get {
+                return ResourceManager.GetString("TimeNumberBoxHeaderLon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto Dark Mode.
         /// </summary>
         public static string Title {

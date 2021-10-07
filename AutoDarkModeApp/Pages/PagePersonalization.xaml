@@ -11,7 +11,6 @@
       
       Title="PagePersonalization" 
       d:MinWidth="450"
-      Foreground="{DynamicResource SystemBaseHighColorBrush}" 
       VerticalAlignment="Top" HorizontalAlignment="Left">
 
     <Grid>
@@ -87,7 +86,7 @@
                     Grid.Row="2" 
                     Name="HyperlinkWallpaper"
                     Margin="0,0,0,0"
-                    Content="Pick a wallpaper"
+                    Content="{x:Static p:Resources.lblPickWallpaper}"
                     PreviewMouseDown="NavigateWallpaperPicker"
                     PreviewKeyDown="HyperlinkWallpaper_PreviewKeyDown"
                     />
