@@ -11,6 +11,7 @@ using AutoDarkModeSvc.Communication;
 using System.Threading.Tasks;
 using AdmProperties = AutoDarkModeApp.Properties;
 using System.Management;
+using Microsoft.Win32;
 
 namespace AutoDarkModeApp
 {
@@ -38,21 +39,23 @@ namespace AutoDarkModeApp
                 args.Remove("/debug");
             }
 
-            OperatingSystem os = Environment.OSVersion;
             MainWindow mainWin = null;
             MainWindowMwpf mainWinMwpf = null;
-            string osVersionString = GetOsVer();
-            Version osVersion = new();
-            if (osVersionString != string.Empty)
+
+            int buildNumber = 0;
+            try
             {
-                try
+                using RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+                if (registryKey != null)
                 {
-                    string[] split = osVersionString.Split(".");
-                    osVersion = new(major: int.Parse(split[0]), minor: int.Parse(split[1]), build: int.Parse(split[2]));
+                    var buildString = registryKey.GetValue("CurrentBuild").ToString();
+                    int.TryParse(buildString, out buildNumber);
                 }
-                catch { }
+
             }
-            if (osVersion.Build >= 22000)
+            catch { }
+
+            if (buildNumber >= 22000)
             {
                 mainWinMwpf = new();
             }
@@ -121,34 +124,6 @@ namespace AutoDarkModeApp
                 }
             }
             return false;
-        }
-
-
-        private static ManagementObject GetMngObj(string className)
-        {
-            ManagementClass wmi = new ManagementClass(className);
-
-            foreach (ManagementBaseObject o in wmi.GetInstances())
-            {
-                ManagementObject mo = (ManagementObject)o;
-                if (mo != null) return mo;
-            }
-
-            return null;
-        }
-
-        public static string GetOsVer()
-        {
-            try
-            {
-                ManagementObject mo = GetMngObj("Win32_OperatingSystem");
-
-                return null == mo ? string.Empty : mo["Version"] as string;
-            }
-            catch
-            {
-                return string.Empty;
-            }
         }
     }
 }
