@@ -1122,6 +1122,33 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service not running yet, please wait....
+        /// </summary>
+        public static string StartupLaunchingServiceText {
+            get {
+                return ResourceManager.GetString("StartupLaunchingServiceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launching Service.
+        /// </summary>
+        public static string StartupLaunchingServiceTitle {
+            get {
+                return ResourceManager.GetString("StartupLaunchingServiceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!.
+        /// </summary>
+        public static string StartupServiceUnresponsive {
+            get {
+                return ResourceManager.GetString("StartupServiceUnresponsive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t switch while playing video games.
         /// </summary>
         public static string SwitchModesCheckBoxGPUMonitoring {

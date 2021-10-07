@@ -683,4 +683,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Longitude</value>
     <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Service not running yet, please wait...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Launching Service</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+  </data>
 </root>

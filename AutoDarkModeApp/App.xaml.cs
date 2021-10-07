@@ -9,6 +9,8 @@ using System.Windows;
 using System.Threading;
 using AutoDarkModeSvc.Communication;
 using System.Threading.Tasks;
+using AdmProperties = AutoDarkModeApp.Properties;
+
 
 namespace AutoDarkModeApp
 {
@@ -48,8 +50,8 @@ namespace AutoDarkModeApp
                 mainWin = new();
             }
 
-            string message = "Service not running yet, please wait...";
-            MsgBox msg = new(message, "Launching Service", "info", "none")
+            string message = AdmProperties.Resources.StartupLaunchingServiceText;
+            MsgBox msg = new(message, AdmProperties.Resources.StartupLaunchingServiceTitle, "info", "none")
             {
                 Owner = null
             };
@@ -81,7 +83,7 @@ namespace AutoDarkModeApp
             string heartBeatOK = commandClient.SendMessageWithRetries(Command.Alive, retries: 5);
             if (heartBeatOK == StatusCode.Timeout)
             {
-                string error = "Backend not responding. Check if AutoDarkModeSvc.exe is running and try again";
+                string error = AdmProperties.Resources.StartupServiceUnresponsive;
                 MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
                 {
                 };
