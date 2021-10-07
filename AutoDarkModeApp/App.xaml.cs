@@ -10,7 +10,7 @@ using System.Threading;
 using AutoDarkModeSvc.Communication;
 using System.Threading.Tasks;
 using AdmProperties = AutoDarkModeApp.Properties;
-
+using System.Management;
 
 namespace AutoDarkModeApp
 {
@@ -41,7 +41,18 @@ namespace AutoDarkModeApp
             OperatingSystem os = Environment.OSVersion;
             MainWindow mainWin = null;
             MainWindowMwpf mainWinMwpf = null;
-            if (os.Version.Major > 10)
+            string osVersionString = GetOsVer();
+            Version osVersion = new();
+            if (osVersionString != string.Empty)
+            {
+                try
+                {
+                    string[] split = osVersionString.Split(".");
+                    osVersion = new(major: int.Parse(split[0]), minor: int.Parse(split[1]), build: int.Parse(split[2]));
+                }
+                catch { }
+            }
+            if (osVersion.Major > 10)
             {
                 mainWinMwpf = new();
             }
@@ -110,6 +121,34 @@ namespace AutoDarkModeApp
                 }
             }
             return false;
+        }
+
+
+        private static ManagementObject GetMngObj(string className)
+        {
+            var wmi = new ManagementClass(className);
+
+            foreach (var o in wmi.GetInstances())
+            {
+                var mo = (ManagementObject)o;
+                if (mo != null) return mo;
+            }
+
+            return null;
+        }
+
+        public static string GetOsVer()
+        {
+            try
+            {
+                ManagementObject mo = GetMngObj("Win32_OperatingSystem");
+
+                return null == mo ? string.Empty : mo["Version"] as string;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 }
