@@ -52,7 +52,7 @@ namespace AutoDarkModeApp
                 }
                 catch { }
             }
-            if (osVersion.Major > 10)
+            if (osVersion.Build >= 22000)
             {
                 mainWinMwpf = new();
             }
@@ -126,11 +126,11 @@ namespace AutoDarkModeApp
 
         private static ManagementObject GetMngObj(string className)
         {
-            var wmi = new ManagementClass(className);
+            ManagementClass wmi = new ManagementClass(className);
 
-            foreach (var o in wmi.GetInstances())
+            foreach (ManagementBaseObject o in wmi.GetInstances())
             {
-                var mo = (ManagementObject)o;
+                ManagementObject mo = (ManagementObject)o;
                 if (mo != null) return mo;
             }
 
