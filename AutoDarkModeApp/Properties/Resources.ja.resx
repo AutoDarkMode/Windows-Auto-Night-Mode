@@ -675,4 +675,21 @@
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>外部で変更されたテーマの復元</value>
   </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>緯度 (Latitude)</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>経度 (Longitude)</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>サービスはまだ実行されていません。お待ちください...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>サービスの起動中</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>サービスは応答していません。AutoDarkModeSvc.exe が実行中か確認し、再起動をお試しください !</value>
+  </data>
 </root>
