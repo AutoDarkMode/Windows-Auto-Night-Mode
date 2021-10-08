@@ -142,7 +142,7 @@
     <value>Waktu mulai kustom</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Gelap</value>
+    <value>Terbenam</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
     <value>Tema gelap</value>
@@ -151,7 +151,7 @@
     <value>Edge (versi lama):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Terang</value>
+    <value>Terbit</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>Tema terang</value>
@@ -407,7 +407,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Mulai Ulang</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set waktu kustom</value>
+    <value>Atur waktu kustom</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>Dari terbit hingga terbenam</value>
@@ -672,6 +672,9 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
     <value>Ikuti Kami</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Kembalikan tema ketika diganti secara eksternal</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Tema</value>
