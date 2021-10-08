@@ -7,9 +7,15 @@ assignees: ''
 
 ---
 
+<!-- 
+IF YOU ARE ON A BETA BRANCH: 
+Make sure you have the latest version before opening an issue! 
+Open the App and click on "Check for Updates" on the Settings page!
+-->
+
 **Description**
 Details about the bug and how to reproduce it
-<!--- Give a concise description of what steps/clicks/modifications you made from the beginning, until the issue occurs -->
+<!-- Give a concise description of what steps/clicks/modifications you made from the beginning, until the issue occurs -->
 
 **Expected behavior**
 <!-- Describe what you see. How does that differ from what you expect? -->
