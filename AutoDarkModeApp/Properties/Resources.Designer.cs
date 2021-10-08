@@ -874,7 +874,7 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Searching your location....
+        ///   Looks up a localized string similar to Getting your location....
         /// </summary>
         public static string msgSearchLoc {
             get {
