@@ -142,7 +142,7 @@
     <value>Waktu mulai kustom</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Terbenam</value>
+    <value>Gelap</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
     <value>Tema gelap</value>
@@ -151,7 +151,7 @@
     <value>Edge (versi lama):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Terbit</value>
+    <value>Terang</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>Tema terang</value>
