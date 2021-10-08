@@ -383,16 +383,16 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Latar Belakang (Disarankan)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Tekan ini untuk membuka setelan tema Windows</value>
+    <value> Tekan ini untuk membuka setelan tema Windows</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Kemudian pilih warna Windows dalam Warna untuk tema terang. Pilih latar belakang, Kursor Mouse dan Warna Aksen</value>
+    <value> Kemudian pilih warna Windows dalam Warna untuk tema terang. Pilih latar belakang, Kursor Mouse dan Warna Aksen</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
+    <value> Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Ulangi proses untuk tema gelap</value>
+    <value> Ulangi proses untuk tema gelap</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Jeda untuk pergantian warna bilah tugas (ms):</value>
@@ -407,7 +407,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Mulai Ulang</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set waktu kustom</value>
+    <value>Atur waktu kustom</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>Dari terbit hingga terbenam</value>
@@ -530,7 +530,7 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
     <value>Buka file log</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Config</value>
+    <value>Konfigurasi</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
     <value>Microsoft Office 2013 - 2019:</value>
@@ -581,7 +581,7 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
     <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel diashow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Menawarkan lebih sedikit fitur, tetapi lebih mudah disiapkan. Kustomisasi latar belakang desktop Anda untuk semya layar, layar individu atau warna latar</value>
+    <value>Menawarkan lebih sedikit fitur, tetapi lebih mudah disiapkan. Kustomisasi latar belakang desktop Anda untuk semua layar, layar individu atau warna latar</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Kami memeriksa versi terbaru dari Auto Dark Mode di latar belakang. Ketika pembaruan tersedia, kami akan memberitahukan Anda.</value>
@@ -648,5 +648,38 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   </data>
   <data name="welcomeText" xml:space="preserve">
     <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Dari terbit hingga terbenam (koordinat geografis)</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Layanan sedang memulai, harap tunggu....</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Meluncurkan Layanan</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Layanan tidak merespon, Tolong periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi!</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Nyalakan penggantian tema Windows</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Mati</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Nyala</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Ikuti Kami</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Kembalikan tema ketika diganti secara eksternal</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Terapkan Koordinat</value>
   </data>
 </root>
