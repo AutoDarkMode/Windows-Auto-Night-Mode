@@ -84,8 +84,8 @@ namespace AutoDarkModeSvc.Handlers
                 configBuilder.LocationData.Lat = position.Latitude;
                 configBuilder.LocationData.LastUpdate = DateTime.Now;
                 configBuilder.LocationData.DataSourceIsGeolocator = true;
-
-                Logger.Info($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
+                Logger.Debug($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
+                Logger.Info("updated geoposition via geolocator");
                 success = true;
             }
 
