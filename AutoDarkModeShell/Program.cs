@@ -19,7 +19,7 @@ namespace AutoDarkModeComms
             if (args.Length > 0)
             {
                 Console.WriteLine(args[0]);
-                Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0])}");
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: 15)}");
                 Console.WriteLine("Please check service.log for more details");
                 Environment.Exit(0);
             }
@@ -37,7 +37,7 @@ namespace AutoDarkModeComms
                 if (selection != QuitShell)
                 {
                     selection = (string)typeof(Command).GetField(selection).GetValue(null);
-                    Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection)}");
+                    Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
                     Console.WriteLine("Please check service.log for more details");
                 }
             }
