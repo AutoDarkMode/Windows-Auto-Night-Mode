@@ -30,6 +30,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+
+        <!-- Title Bar -->
+        <TextBlock 
+                    HorizontalAlignment="Left" 
+                    Margin="10,7,0,0" 
+                    TextWrapping="Wrap" 
+                    Text="{x:Static p:Resources.Title}" 
+                    VerticalAlignment="Top" 
+                    Panel.ZIndex="1"
+         />
+
+
         <!-- Navbar -->
         <ui:NavigationView x:Name="NavBar" 
                            Grid.Row="1"
@@ -50,7 +62,9 @@
                            SelectionChanged="NavBar_SelectionChanged"
                            Loaded="NavBar_Loaded">
 
+
             <ui:NavigationView.MenuItems>
+
                 <ui:NavigationViewItemHeader Content="{x:Static p:Resources.NavbarTitle}" Height="60"/>
 
                 <ui:NavigationViewItem Tag="time" Content="{x:Static p:Resources.NavbarTime}" Height="50">

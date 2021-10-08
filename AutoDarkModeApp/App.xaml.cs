@@ -55,7 +55,7 @@ namespace AutoDarkModeApp
             }
             catch { }
 
-            if (buildNumber >= 22000)
+            if (buildNumber >= 15000)
             {
                 mainWinMwpf = new();
             }
