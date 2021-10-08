@@ -267,24 +267,16 @@ namespace AutoDarkModeApp.Pages
 
         private async void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
         {
-            var result = "";
+            ApiResponse result = new() { StatusCode = StatusCode.Err };
             try
             {
-                if (CheckBoxLogonTask.IsChecked.Value)
-                {
-                    builder.Config.Tunable.UseLogonTask = true;
-                }
-                else
-                {
-                    builder.Config.Tunable.UseLogonTask = false;
-                }
-
+                builder.Config.Tunable.UseLogonTask = CheckBoxLogonTask.IsChecked ?? false;
                 builder.Save();
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
-                    if (result != StatusCode.Ok)
+                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    if (result.StatusCode != StatusCode.Ok)
                     {
                         CheckBoxLogonTask.IsChecked = !CheckBoxLogonTask.IsChecked;
                         builder.Config.Tunable.UseLogonTask = CheckBoxLogonTask.IsChecked ?? false;
@@ -295,7 +287,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ErrorMessageBoxes.ShowErrorMessageFromApi(ApiResponse.FromString(result), ex, Window.GetWindow(this));
+                ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
             }
         }
 

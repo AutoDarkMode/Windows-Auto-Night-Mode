@@ -55,8 +55,8 @@ namespace AutoDarkModeApp.Handlers
         {
             string error = $"{Properties.Resources.errorThemeApply}\n\n" +
                 $"Exception Source: {ex.Source}\n" +
-                $"Exception Message: {ex.Message}\n" +
-                $"API Response:\n\n" +
+                $"Exception Message: {ex.Message}\n\n" +
+                $"API Response:\n" +
                 $"Status Code: {response.StatusCode}\n" +
                 $"Message: {response.Message}\n" +
                 $"Details: {response.Details}";
