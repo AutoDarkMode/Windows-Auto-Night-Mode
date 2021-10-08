@@ -49,7 +49,7 @@ namespace AutoDarkModeUpdater
             try
             {
                 Logger.Info("shutting down service");
-                string result = client.SendMessageAndGetReply(Command.Shutdown);
+                string result = client.SendMessageAndGetReply(Command.Shutdown, 5);
                 ApiResponse response = ApiResponse.FromString(result);
                 if (response.StatusCode == StatusCode.Timeout)
                 {
