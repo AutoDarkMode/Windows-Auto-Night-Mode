@@ -670,4 +670,10 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   <data name="ToggleSwitchOn" xml:space="preserve">
     <value>Nyala</value>
   </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Ikuti Kami</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Tema</value>
+  </data>
 </root>
