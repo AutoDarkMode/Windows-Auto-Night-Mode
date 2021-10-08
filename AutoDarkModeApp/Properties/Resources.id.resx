@@ -679,4 +679,7 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Tema</value>
   </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Terapkan Koordinat</value>
+  </data>
 </root>
