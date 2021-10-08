@@ -193,7 +193,7 @@
     <value>No new updates are available.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Searching your location...</value>
+    <value>Getting your location...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
     <value>Looking for updates...</value>
