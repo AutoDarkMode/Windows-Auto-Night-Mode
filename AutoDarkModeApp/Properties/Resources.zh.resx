@@ -207,7 +207,8 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>感谢您使用自动深色模式！
 
-新版本修复了部分漏洞并增强了一些功能。您想要下载更新吗？
+GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
+你想安装吗？
 
 当前安装版本: {0}, 最新版本: {1}</value>
   </data>
@@ -232,8 +233,8 @@
   <data name="lblCity" xml:space="preserve">
     <value>城市</value>
   </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>您未安装Windows 10 2019年四月更新，故此选项不可用。</value>
+  <data name="lblPosition" xml:space="preserve">
+    <value>位置</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>本程序需要重启才能应用更改</value>
@@ -332,7 +333,7 @@
 你可以尝试以下几种方法：
 - 卸载并重装本软件。
 - 尝试在自动深色模式的设置中禁用 {0}.
-- 如果你启用了桌面壁纸功能，关闭该功能并重试。
+- 如果你启用了桌面壁纸功能，关闭此功能并重试。
 
 如果上述方法无效，您可将错误原因与截图评论至GitHub issue。点击“是”跳转到issue页面。</value>
   </data>
@@ -344,7 +345,7 @@
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Microsoft Surface等移动设备正在使用一种新型的待机模式。
-启用此选项可确保在唤醒计算机后自动暗模式立即切换主题。
+启用此选项可确保在唤醒计算机后自动深色模式立即切换主题。
 但这也会缩短电池寿命！ 仅在必要时激活！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
@@ -368,9 +369,6 @@
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>时间</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>壁纸/主题</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>打开文件夹</value>
@@ -504,12 +502,206 @@
     <value>未充电时启用深色模式</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>节能滑动条的默认值</value>
+    <value>节电模式滑动条的默认值</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>主题切换的节能选项</value>
+    <value>节电模式下暂停主题切换</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>该功能仅在未手动启用省电功能时可用！</value>
+    <value>此功能仅在未手动启用节电模式时可用！</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>切换模式</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>个性化</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>应用坐标</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>您未安装Windows 10 2019年四月更新，故此选项不可用。</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>地理坐标</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>位置数据</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>日出至日落（根据地理坐标）</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>获取您的地区的坐标</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>打开配置文件</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>打开配置文件目录</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>打开日志文件</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>配置</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019：</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>选择一个主题</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>选择一张壁纸</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>已关闭</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>隐藏托盘图标（不推荐）</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>当主题模式开启时，此功能不可用。</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>当壁纸模式开启时，此功能不可用。</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>提供更多的功能，但您需要创建一个Windows的.theme文件。该模式下你可以自定义每个显示器的壁纸、设置壁纸自动切换、更改鼠标指针样式、设置强调色和个别提示音。</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>提供较少的功能，但是设置起来更为简单。该模式下你可以自定义所有显示器或个别显示器的壁纸，或者设置纯色背景。</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>我们将在后台检查自动深色模式是否有新版本。如果有更新可用，我们将会通过桌面通知来提醒你</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>自动下载并安装新版本</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>不要显示通知</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>选择更新频道</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>在自动深色模式启动时检查更新</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 天</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 天</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 天</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>上次检查</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>从未检查过更新</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>更改检查更新的频率</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>深色主题</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>浅色主题</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>图片（多显示器）</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>纯色</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>显示器</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>删除已断开连接的显示器</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>壁纸</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>十六进制颜色代码</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>启用壁纸切换</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>不要在玩游戏时切换</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>快（单样本）</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>中（双样本）</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>慢（三样本）</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU使用率检测速度</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>使用电池的设备</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>延迟切换的最低GPU使用率</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>在从外部更改时恢复主题</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>纬度</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>经度</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>服务尚未运行，请等待……</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>正在启动服务</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>服务无响应。请检查AutoDarkModeSvc.exe是否在运行并再试一次！</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>启用Windows主题切换</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>关注我们</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>主题</value>
   </data>
 </root>
