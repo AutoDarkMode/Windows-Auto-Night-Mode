@@ -488,36 +488,6 @@
   <data name="tbHelp" xml:space="preserve">
     <value>需要帮助吗？</value>
   </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>稍后下载</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>不要再提醒</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>现在下载</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>在过去的几个月中，我们一直在努力为您提供最佳的更新。现在，它来了！
-
-Auto Dark Mode X已完全从头开始重写。现在，它不再依赖Windows计划任务，而是能够真正地在后台运行。这意味着您将获得更可靠，更灵活的主题切换体验！
-
-虽然会在后台消耗更多资源，但是也提供了更多功能，提高生产力。例如：
--游戏模式：在玩游戏或GPU满载时禁用主题切换。
--使用快捷键切换主题
-以及更多功能！
-
-该更新适用于除ARM设备外的所有设备。因为此更新必须模拟后台进程（仅此一个问题！），所以会导致ARM设备续航出现问题。</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X 可更新</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>X版本是绝对值得一试的超棒大更新！您确定不想下载吗？我们将永远不会再提醒您！</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>您确定吗？</value>
-  </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>多用户支持</value>
   </data>
