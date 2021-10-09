@@ -129,7 +129,7 @@ namespace AutoDarkModeApp.Pages
             GetAutostartInfo();
         }
 
-        private void GetAutostartInfo()
+        private void GetAutostartInfo(bool noToggle = false)
         {
             try
             {
@@ -137,13 +137,13 @@ namespace AutoDarkModeApp.Pages
                 ApiResponse autostartResponse = ApiResponse.FromString(messagingClient.SendMessageAndGetReply(Command.GetAutostartState));
                 if (autostartResponse.StatusCode == StatusCode.Err)
                 {
-                    ErrorMessageBoxes.ShowErrorMessageFromApi(autostartResponse, new Handlers.AutoStartStatusGetException(), Window.GetWindow(this));
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(autostartResponse, new AutoStartStatusGetException(), Window.GetWindow(this));
                 }
                 else if (autostartResponse.StatusCode == StatusCode.AutostartRegistryEntry)
                 {
                     if (autostartResponse.Message == "Enabled")
                     {
-                        ToggleAutostart.IsOn = true;
+                        if (!noToggle) ToggleAutostart.IsOn = true;
                         TextBlockAutostartMode.Text = "Registry";
                         TextBlockAutostartPath.Text = autostartResponse.Details;
                     }
@@ -156,9 +156,15 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
                 {
-                    ToggleAutostart.IsOn = true;
+                    if (!noToggle) ToggleAutostart.IsOn = true;
                     TextBlockAutostartMode.Text = "Task";
                     TextBlockAutostartPath.Text = autostartResponse.Details;
+                }
+                else if (autostartResponse.StatusCode == StatusCode.Disabled)
+                {
+                    if (!noToggle) ToggleAutostart.IsOn = false;
+                    TextBlockAutostartMode.Text = "Disabled";
+                    TextBlockAutostartPath.Text = "None";
                 }
             }
             catch (Exception)
@@ -595,11 +601,12 @@ namespace AutoDarkModeApp.Pages
                 StatusCode = StatusCode.Err,
                 Message = "error setting autostart entry"
             };
-            if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
+            if (!(sender as ModernWpf.Controls.ToggleSwitch).IsOn)
             {
                 try
                 {
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    GetAutostartInfo(true);
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
@@ -607,6 +614,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 catch (Exception ex)
                 {
+                    ToggleAutostart.IsOn = false;
                     ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
                 }
             }
@@ -615,14 +623,16 @@ namespace AutoDarkModeApp.Pages
                 try
                 {
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
+                    GetAutostartInfo(true);
                     if (result.StatusCode != StatusCode.Ok)
                     {
-                        throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
+                        throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                     }
                 }
                 catch (Exception ex)
                 {
                     ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
+                    ToggleAutostart.IsOn = true;
                 }
             }
         }

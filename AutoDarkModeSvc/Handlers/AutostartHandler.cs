@@ -210,7 +210,10 @@ namespace AutoDarkModeSvc.Handlers
                 string autostartPath = RegistryHandler.GetAutostartPath();
                 if (autostartPath == null || !autostartPath.Contains(Extensions.ExecutionPath))
                 {
-                    autostartPath = autostartPath.Replace("\"", "");
+                    if (autostartPath != null)
+                    {
+                        autostartPath = autostartPath.Replace("\"", "");
+                    }
                     ApiResponse result = AddAutostart(modified: true);
                     string reason = autostartPath == null ? "missing entry" : "wrong path";
                     Logger.Warn($"auto start validation failed, {reason}. fixing autostart");

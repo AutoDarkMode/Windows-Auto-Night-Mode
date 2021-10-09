@@ -338,7 +338,7 @@
                     Grid.Row="3" Grid.Column="1"
                     Margin="0,15,0,0"
                     Header="Start Auto Dark Mode with Windows"
-                    Toggled="ToggleAutostart_Toggled"
+                    PreviewMouseDown="ToggleAutostart_Toggled"
                     />
 
                 <Grid Margin="0,15,10,0">
