@@ -136,7 +136,7 @@ namespace AutoDarkModeSvc.Handlers
                         {
                             StatusCode = StatusCode.AutostartRegistryEntry,
                             Message = $"Enabled",
-                            Details = autostartPath
+                            Details = autostartPath.Replace("\"", "")
                         };
                     }
                     else
@@ -145,7 +145,7 @@ namespace AutoDarkModeSvc.Handlers
                         {
                             StatusCode = StatusCode.AutostartRegistryEntry,
                             Message = $"Disabled",
-                            Details = autostartPath
+                            Details = autostartPath.Replace("\"", "")
                         };
                     }
                 }
@@ -163,7 +163,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>true if the state is valid, false if the state was invalid</returns>
         public static ApiResponse ValidateAutostart()
         {
-            if (!builder.Config.AutoThemeSwitchingEnabled || !builder.Config.AutoStart.Validate)
+            if (!builder.Config.AutoThemeSwitchingEnabled || !builder.Config.AutoStart.AutoValidate)
             {
                 return new()
                 {
@@ -208,8 +208,9 @@ namespace AutoDarkModeSvc.Handlers
             else
             {
                 string autostartPath = RegistryHandler.GetAutostartPath();
-                if (autostartPath == null || autostartPath != Extensions.ExecutionPath)
+                if (autostartPath == null || !autostartPath.Contains(Extensions.ExecutionPath))
                 {
+                    autostartPath = autostartPath.Replace("\"", "");
                     ApiResponse result = AddAutostart(modified: true);
                     string reason = autostartPath == null ? "missing entry" : "wrong path";
                     Logger.Warn($"auto start validation failed, {reason}. fixing autostart");

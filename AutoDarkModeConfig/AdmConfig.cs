@@ -54,7 +54,7 @@ namespace AutoDarkModeConfig
 
     public class AutoStart
     {
-        public bool Validate { get; set; } = true;
+        public bool AutoValidate { get; set; } = true;
     }
 
     public class Updater

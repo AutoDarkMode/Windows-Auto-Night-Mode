@@ -27,6 +27,7 @@ namespace AutoDarkModeApp.Pages
         private readonly bool init = true;
         readonly Updater updater = new();
         private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
+        private delegate void DispatcherDelegate();
 
         public PageSettings()
         {
@@ -109,7 +110,7 @@ namespace AutoDarkModeApp.Pages
             CheckBoxAutoInstall.IsChecked = builder.Config.Updater.AutoInstall;
             CheckBoxUpdateSilent.IsChecked = builder.Config.Updater.Silent;
             if (!CheckBoxAutoInstall.IsChecked.Value) CheckBoxUpdateSilent.IsEnabled = false;
-            if(String.IsNullOrEmpty(builder.Config.Updater.VersionQueryUrl))
+            if (String.IsNullOrEmpty(builder.Config.Updater.VersionQueryUrl))
             {
                 RadioButtonStableUpdateChannel.IsChecked = true;
             }
@@ -123,6 +124,47 @@ namespace AutoDarkModeApp.Pages
                 RadioButtonStableUpdateChannel.IsEnabled = false;
             }
             CheckBoxUpdateOnStart.IsChecked = builder.Config.Updater.CheckOnStart;
+
+            //autostart
+            GetAutostartInfo();
+        }
+
+        private void GetAutostartInfo()
+        {
+            try
+            {
+                AutostartDisabledMessage.Visibility = Visibility.Collapsed;
+                ApiResponse autostartResponse = ApiResponse.FromString(messagingClient.SendMessageAndGetReply(Command.GetAutostartState));
+                if (autostartResponse.StatusCode == StatusCode.Err)
+                {
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(autostartResponse, new Handlers.AutoStartStatusGetException(), Window.GetWindow(this));
+                }
+                else if (autostartResponse.StatusCode == StatusCode.AutostartRegistryEntry)
+                {
+                    if (autostartResponse.Message == "Enabled")
+                    {
+                        ToggleAutostart.IsOn = true;
+                        TextBlockAutostartMode.Text = "Registry";
+                        TextBlockAutostartPath.Text = autostartResponse.Details;
+                    }
+                    else
+                    {
+                        AutostartDisabledMessage.Visibility = Visibility.Visible;
+                        StackPanelAutostart.IsEnabled = false;
+                    }
+
+                }
+                else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
+                {
+                    ToggleAutostart.IsOn = true;
+                    TextBlockAutostartMode.Text = "Task";
+                    TextBlockAutostartPath.Text = autostartResponse.Details;
+                }
+            }
+            catch (Exception)
+            {
+                StackPanelAutostart.IsEnabled = false;
+            }
         }
 
         private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -190,7 +232,7 @@ namespace AutoDarkModeApp.Pages
 
         private async void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckBoxColourFilter.IsChecked.Value)
+            if (CheckBoxColourFilter.IsChecked.Value)
             {
                 builder.Config.ColorFilterSwitch.Enabled = true;
             }
@@ -248,7 +290,7 @@ namespace AutoDarkModeApp.Pages
             if (CheckBoxEnergySaverMitigation.IsChecked.Value)
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = true;
-                StackPanelBatterySlider.Visibility =  Visibility.Visible;
+                StackPanelBatterySlider.Visibility = Visibility.Visible;
             }
             else
             {
@@ -275,7 +317,8 @@ namespace AutoDarkModeApp.Pages
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         CheckBoxLogonTask.IsChecked = !CheckBoxLogonTask.IsChecked;
@@ -293,7 +336,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CheckBoxHideTrayIcon_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as CheckBox).IsChecked.Value)
+            if ((sender as CheckBox).IsChecked.Value)
             {
                 MsgBox confirm = new("Disabling the icon isn't recommended. Do you really want to continue?", "Hide Tray Icon", "info", "yesno")
                 {
@@ -364,7 +407,7 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                switch((sender as ComboBox).SelectedIndex)
+                switch ((sender as ComboBox).SelectedIndex)
                 {
                     case 0:
                         builder.Config.Updater.DaysBetweenUpdateCheck = 3;
@@ -389,7 +432,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CheckBoxAutoInstall_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as CheckBox).IsChecked.Value)
+            if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Updater.AutoInstall = true;
                 CheckBoxUpdateSilent.IsEnabled = true;
@@ -413,7 +456,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CheckBoxUpdateSilent_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as CheckBox).IsChecked.Value)
+            if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Updater.Silent = true;
             }
@@ -433,7 +476,7 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as RadioButton).IsChecked.Value)
+            if ((sender as RadioButton).IsChecked.Value)
             {
                 builder.Config.Updater.VersionQueryUrl = null;
                 ButtonSearchUpdate.IsEnabled = true;
@@ -450,7 +493,7 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonBetaUpdateChannel_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as RadioButton).IsChecked.Value)
+            if ((sender as RadioButton).IsChecked.Value)
             {
                 builder.Config.Updater.VersionQueryUrl = BetaVersionQueryURL;
                 builder.Config.Updater.CheckOnStart = true;
@@ -485,7 +528,7 @@ namespace AutoDarkModeApp.Pages
 
         private void HyperlinkOpenConfigFile_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter |  e.Key == Key.Space)
+            if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 HyperlinkOpenConfigFile_PreviewMouseDown(this, null);
             }
@@ -542,6 +585,39 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "CheckBoxUpdateAtStart_Click");
+            }
+        }
+
+        private void ToggleAutostart_Toggled(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAutostart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAutostartValidate_Click(object sender, RoutedEventArgs e)
+        {
+            _ = Dispatcher.BeginInvoke(new DispatcherDelegate(ValidateAutostart));
+        }
+
+        private void ValidateAutostart()
+        {
+            ApiResponse response = new();
+            try
+            {
+                response = ApiResponse.FromString(messagingClient.SendMessageAndGetReply(Command.ValidateAutostart));
+                if (response.StatusCode == StatusCode.Err)
+                {
+                    throw new AddAutoStartException();
+                }
+                GetAutostartInfo();
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessageFromApi(response, ex, Window.GetWindow(this));
             }
         }
     }

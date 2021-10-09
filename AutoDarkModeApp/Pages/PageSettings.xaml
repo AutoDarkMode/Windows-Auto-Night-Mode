@@ -25,6 +25,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
@@ -135,7 +136,7 @@
                 MinWidth="200" 
                 SelectedIndex="1" 
                 SelectionChanged="ComboBoxLanguageSelection_SelectionChanged">
-                
+
                 <ComboBoxItem Content="Czech" Name="cs"/>
                 <ComboBoxItem Content="Deutsch" Name="de"/>
                 <ComboBoxItem Content="English" Name="en"/>
@@ -239,7 +240,7 @@
                     <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval7}" Name="ComboBoxDaysBetweenUpdateCheck7Days"/>
                     <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval14}" Name="ComboBoxDaysBetweenUpdateCheck14Days"/>
                 </ComboBox>
-                
+
                 <CheckBox
                     x:Name="CheckBoxUpdateOnStart"
                     Margin="0,20,0,0"
@@ -288,7 +289,7 @@
                 <TextBlock
                     Margin="0,0,0,0"
                     Text="{x:Static p:Resources.ConfigTextBlockHeader}"
-                    FontFamily="Segeo UI"
+                    FontFamily="Segoe UI"
                     FontSize="20"
                     />
 
@@ -315,6 +316,91 @@
                     PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
                     PreviewKeyDown="HyperlinkOpenAppDataFolder_KeyDown"
                     />
+            </StackPanel>
+
+            <StackPanel
+                Name="StackPanelAutostart"
+                Margin="0,30,0,0"
+                Orientation="Vertical">
+
+                <TextBlock
+                    Margin="0,0,0,0"
+                    Text="Autostart"
+                    FontFamily="Segoe UI"
+                    FontSize="20"
+                    />
+
+
+                <ui:ToggleSwitch
+                    Name="ToggleAutostart"
+                    OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                    OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                    Grid.Row="3" Grid.Column="1"
+                    Margin="0,15,0,0"
+                    Header="Start Auto Dark Mode with Windows"
+                    Toggled="ToggleAutostart_Toggled"
+                    />
+
+                <Grid Margin="0,15,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition MaxWidth="1000"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" 
+                               Grid.Row="0" 
+                               FontSize="14" 
+                               TextWrapping="Wrap" 
+                               Text="Mode:"/>
+
+                    <TextBlock Grid.Column="1" 
+                               Grid.Row="0" 
+                               FontSize="14" 
+                               Margin="10,0,0,0" 
+                               TextWrapping="Wrap" 
+                               Name="TextBlockAutostartMode" 
+                               Text="Registry Key"/>
+
+                    <TextBlock Grid.Column="0" 
+                               Grid.Row="1" 
+                               FontSize="14" 
+                               TextWrapping="Wrap"
+                               Text="Path:" 
+                               Margin="0,15,0,0"/>
+
+                    <TextBlock Grid.Column="1" 
+                               Grid.Row="1" 
+                               FontSize="14" 
+                               TextWrapping="Wrap" 
+                               Name="TextBlockAutostartPath" 
+                               Text="None"  
+                               Margin="10,15,0,0"/>
+                </Grid>
+                <Button
+                    x:Name="ButtonAutostartValidate"
+                    Margin="0,20,0,0"
+                    Content="Refresh Autostart"
+                    MinWidth="150"
+                    Click="ButtonAutostartValidate_Click"
+                    />
+
+                <TextBlock
+                Name="AutostartDisabledMessage"
+                Grid.Row="3" 
+                Margin="0,15,0,0"
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                FontSize="14"
+                Text="You have disabled the auto start entry via Windows."
+                Foreground="#D44440"
+                FontFamily="Segoe UI"
+                TextWrapping="Wrap"
+                MaxWidth="420"
+                Visibility="Collapsed"
+                />
+
             </StackPanel>
         </StackPanel>
     </Grid>
