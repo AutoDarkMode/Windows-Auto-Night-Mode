@@ -348,7 +348,7 @@
 但这也会缩短电池寿命！ 仅在必要时激活！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>由于Windows的一个bug，任务栏无法在节电模式下正确切换颜色。 如果遇到问题，请关闭节电模式。</value>
+    <value>由于Windows的一个bug，任务栏无法在节电模式下正确切换颜色。如果遇到问题，请关闭节电模式。</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>调整</value>
@@ -467,6 +467,7 @@
   </data>
   <data name="donationDescription" xml:space="preserve">
     <value>您好！感谢您使用自动深色模式。至今为止，您喜欢这个应用吗？
+
 这个应用通过保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
 我并不靠这个项目盈利。
 
@@ -480,9 +481,9 @@
 {0}
 
 现在，我们将尝试通过以管理员身份运行程序来解决此问题。这种方法可能会解决问题。
-之后，自动暗黑模式将重新启动，您需要重新应用设置，抱歉！
+之后，自动深色模式将重新启动，您需要重新应用设置，抱歉！
 
-注：请勿以管理员身份手动运行自动暗黑模式！</value>
+注：请勿以管理员身份手动运行自动深色模式！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>需要帮助吗？</value>
@@ -521,10 +522,10 @@ Auto Dark Mode X已完全从头开始重写。现在，它不再依赖Windows计
     <value>多用户支持</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>延迟激活灰度滤镜（可选）：</value>
+    <value>激活灰度滤镜前的可选延迟：</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>适配系统</value>
+    <value>适应系统</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>重置</value>
@@ -539,6 +540,6 @@ Auto Dark Mode X已完全从头开始重写。现在，它不再依赖Windows计
     <value>主题切换的节能选项</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>该功能仅当尚未手动启用省电功能时可用！</value>
+    <value>该功能仅在未手动启用省电功能时可用！</value>
   </data>
 </root>
