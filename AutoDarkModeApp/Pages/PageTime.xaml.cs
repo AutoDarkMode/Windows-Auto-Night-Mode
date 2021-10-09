@@ -416,19 +416,23 @@ namespace AutoDarkModeApp.Pages
         /// </summary>
         private async void EnableAutoStart()
         {
-            string result = "";
+            ApiResponse result = new()
+            {
+                StatusCode = StatusCode.Err,
+                Message = "error in EnableAutostart()"
+            };
             try
             {
                 builder.Save();
-                result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
-                if (result != StatusCode.Ok)
+                result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                if (result.StatusCode != StatusCode.Ok)
                 {
                     throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                 }
             }
             catch (Exception ex)
             {
-                ErrorMessageBoxes.ShowErrorMessageFromApi(ApiResponse.FromString(result), ex, Window.GetWindow(this));
+                ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
             }
         }
         private async void DisableAutoStart()

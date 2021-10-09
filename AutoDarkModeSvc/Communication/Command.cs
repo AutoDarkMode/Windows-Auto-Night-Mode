@@ -98,6 +98,12 @@ namespace AutoDarkModeSvc.Communication
         public const string RemoveAutostart = "--remove-autostart";
 
         [Includable]
+        public const string GetAutostartState = "--get-autostart-state";
+
+        [Includable]
+        public const string ValidateAutostart = "--validate-autostart";
+
+        [Includable]
         public const string Shutdown = "--exit";
 
         public const string TestError = "--test-error";
@@ -111,10 +117,8 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string CleanMonitors = "--clean-monitors";
 
-        [Includable]
         public const string UpdateFailed = "--update-failed";
 
-        [Includable]
         public const string TestNotifications = "--test-notifications";
     }
 
@@ -125,16 +129,19 @@ namespace AutoDarkModeSvc.Communication
 
     public static class StatusCode
     {
-        public const string Available = "Available";
-        public const string New = "New";
-        public const string NoLocAccess = "NoLocAccess";
-        public const string Err = "Err";
-        public const string Ok = "Ok";
-        public const string Timeout = "Timeout";
-        public const string UnsupportedOperation = "UnsupportedOperation";
-        public const string No = "No";
-        public const string Disabled = "Disabled";
-        public const string InProgress = "InProgress";
+        public static string Available { get; } = "Available";
+        public static string New { get; } = "New";
+        public static string NoLocAccess { get; } = "NoLocAccess";
+        public static string Err { get; } = "Err";
+        public static string Ok { get; } = "Ok";
+        public static string Timeout { get; } = "Timeout";
+        public static string UnsupportedOperation { get; } = "UnsupportedOperation";
+        public static string No { get; } = "No";
+        public static string Disabled { get; } = "Disabled";
+        public static string InProgress { get; } = "InProgress";
+        public static string AutostartTask { get; } = "AutostartTask";
+        public static string AutostartRegistryEntry { get; } = "AutostartRegistryEntry";
+        public static string Modified { get; } = "Modified";
     }
 
     public class ApiResponse

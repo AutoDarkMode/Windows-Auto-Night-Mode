@@ -62,84 +62,28 @@ namespace AutoDarkModeSvc.Communication
                     #region AddAutoStart
                     case Command.AddAutostart:
                         Logger.Info("signal received: add service to autostart");
-                        bool regOk = false;
-                        bool taskOk = false;
-                        if (builder.Config.Tunable.UseLogonTask)
-                        {
-                            Logger.Debug("logon task mode selected");
-                            taskOk = TaskSchdHandler.CreateLogonTask();
-                            if (taskOk) regOk = RegistryHandler.RemoveAutoStart();
-
-                            if (regOk & taskOk)
-                            {
-                                SendResponse(new ApiResponse()
-                                {
-                                    StatusCode = StatusCode.Ok
-                                }.ToString());
-                            }
-                            else
-                            {
-                                regOk = RegistryHandler.AddAutoStart();
-                                SendResponse(new ApiResponse()
-                                {
-                                    StatusCode = StatusCode.Err,
-                                    Message = "failed setting logon task, trying to set autostart entry",
-                                    Details = $"autostart entry set success: {regOk}"
-                                }.ToString());
-                            }
-                        }
-                        else
-                        {
-                            Logger.Debug("autostart mode selected");
-                            taskOk = TaskSchdHandler.RemoveLogonTask();
-                            regOk = RegistryHandler.AddAutoStart();
-                            if (regOk)
-                            {
-                                SendResponse(new ApiResponse()
-                                {
-                                    StatusCode = StatusCode.Ok,
-                                    Message = "added autostart task successfully",
-                                    Details = $"task removal success: {taskOk}"
-                                }.ToString());
-                            }
-                        }
-                        SendResponse(new ApiResponse()
-                        {
-                            StatusCode = StatusCode.Err,
-                            Message = "autostart error",
-                            Details = $"regOk: {regOk}, taskOk: {taskOk}"
-                        }.ToString());
+                        SendResponse(AutoStartHandler.AddAutostart().ToString());
                         break;
                     #endregion
 
                     #region RemoveAutostart
                     case Command.RemoveAutostart:
                         Logger.Info("signal received: remove service from autostart");
-                        bool ok;
-                        if (builder.Config.Tunable.UseLogonTask)
-                        {
-                            Logger.Debug("logon task mode selected");
-                            ok = TaskSchdHandler.RemoveLogonTask();
-                        }
-                        else
-                        {
-                            Logger.Debug("autostart mode selected");
-                            ok = RegistryHandler.RemoveAutoStart();
-                        }
-                        if (ok)
-                        {
-                            SendResponse(new ApiResponse()
-                            {
-                                StatusCode = StatusCode.Ok
-                            }.ToString());
-                        }
-                        else
-                        {
-                            SendResponse(new ApiResponse()
-                            {
-                                StatusCode = StatusCode.Err
-                            }.ToString());
-                        }
+                        SendResponse(AutoStartHandler.RemoveAutostart().ToString());
+                        break;
+                    #endregion
+
+                    #region GetAutostartState
+                    case Command.GetAutostartState:
+                        Logger.Info("signal recevied: get autostart state");
+                        SendResponse(AutoStartHandler.GetAutostartState().ToString());
+                        break;
+                    #endregion
+
+                    #region ValidateAutostartAutostart
+                    case Command.ValidateAutostart:
+                        Logger.Info("signal received: validate autostart entries");
+                        SendResponse(AutoStartHandler.ValidateAutostart().ToString());
                         break;
                     #endregion
 

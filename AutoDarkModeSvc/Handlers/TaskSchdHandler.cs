@@ -1,6 +1,8 @@
 ﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Communication;
 using Microsoft.Win32.TaskScheduler;
 using System;
+using System.IO;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -63,6 +65,18 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Error(ex, "failed removing logon task, ");
             }
             return false;
+        }
+
+        public static Task GetLogonTask()
+        {
+            using TaskService taskService = new();
+            TaskFolder taskFolder = taskService.GetFolder(folder);
+            if (taskFolder == null)
+            {
+                Logger.Info("logon task folder does not exist");
+            }
+            Task logonTask = taskService.GetTask(Path.Combine(folder, logon));
+            return logonTask;
         }
     }
 }

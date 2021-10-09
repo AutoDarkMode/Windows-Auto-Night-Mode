@@ -11,21 +11,23 @@ namespace AutoDarkModeConfig
     {
         public AdmConfig()
         {
-            Location = new Location();
-            Tunable = new Tunable();
-            GPUMonitoring = new GPUMonitoring();
-            Events = new Events();
-            WindowsThemeMode = new WindowsThemeMode();
+            AutoStart = new();
+            Location = new();
+            Tunable = new();
+            GPUMonitoring = new();
+            Events = new();
+            WindowsThemeMode = new();
             Updater = new();
 
             //New Component Settings;
-            AppsSwitch = new BaseSettingsEnabled<AppsSwitchSettings>();
-            SystemSwitch = new BaseSettingsEnabled<SystemSwitchSettings>();
-            ColorFilterSwitch = new BaseSettings<object>();
-            OfficeSwitch = new BaseSettings<OfficeSwitchSettings>();
-            WallpaperSwitch = new BaseSettings<WallpaperSwitchSettings>();
+            AppsSwitch = new();
+            SystemSwitch = new();
+            ColorFilterSwitch = new();
+            OfficeSwitch = new();
+            WallpaperSwitch = new();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
+        public AutoStart AutoStart { get; set; }
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettingsEnabled<SystemSwitchSettings> SystemSwitch { get; set; }
@@ -48,6 +50,11 @@ namespace AutoDarkModeConfig
 
         }
         //put your custom settings here!
+    }
+
+    public class AutoStart
+    {
+        public bool Validate { get; set; } = true;
     }
 
     public class Updater

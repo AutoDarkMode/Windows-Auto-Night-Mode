@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
-        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly NumberFormatInfo nfi = new NumberFormatInfo();
         public static bool Updating
