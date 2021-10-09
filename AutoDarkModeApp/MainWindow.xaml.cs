@@ -43,10 +43,6 @@ namespace AutoDarkModeApp
                 Settings.Default.FirstRun = false; 
             }
 
-
-            //ensure auto start is valid
-            AutostartHandler.EnsureAutostart();
-
             //run if user changed language in previous session
             if (Settings.Default.LanguageChanged)
             {

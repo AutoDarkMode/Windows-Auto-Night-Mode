@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using AdmProperties = AutoDarkModeApp.Properties;
 using System.Management;
 using Microsoft.Win32;
+using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp
 {
@@ -38,6 +39,9 @@ namespace AutoDarkModeApp
                 debug = true;
                 args.Remove("/debug");
             }
+
+            bool serviceStartIssued = StartService();
+            Task serviceStart = Task.Run(() => WaitForServiceStart());
 
             MainWindow mainWin = null;
             MainWindowMwpf mainWinMwpf = null;
@@ -69,13 +73,11 @@ namespace AutoDarkModeApp
             {
                 Owner = null
             };
-            bool serviceStartIssued = StartService();
             if (serviceStartIssued)
             {
                 msg.Show();
             }
-
-            await Task.Run(() => WaitForServiceStart());
+            await serviceStart;
             if (serviceStartIssued)
             {
                 Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
@@ -84,6 +86,8 @@ namespace AutoDarkModeApp
             }
             if (mainWin != null)
             {
+                //ensure auto start is valid
+                AutostartHandler.EnsureAutostart();
                 mainWin.Show();
             }
             else
