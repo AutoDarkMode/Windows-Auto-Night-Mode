@@ -228,7 +228,7 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>选中此复选框以启用自动主题切换</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: zheolls，没有字的回音</value>
+    <value>翻译者: zheolls、没有字的回音、ThrRip</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>城市</value>
