@@ -588,14 +588,43 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void ToggleAutostart_Toggled(object sender, RoutedEventArgs e)
+        private async void ToggleAutostart_Toggled(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void ButtonAutostart_Click(object sender, RoutedEventArgs e)
-        {
-
+            ApiResponse result = new()
+            {
+                StatusCode = StatusCode.Err,
+                Message = "error setting autostart entry"
+            };
+            if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
+            {
+                try
+                {
+                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    if (result.StatusCode != StatusCode.Ok)
+                    {
+                        throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
+                }
+            }
+            else
+            {
+                try
+                {
+                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
+                    if (result.StatusCode != StatusCode.Ok)
+                    {
+                        throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
+                }
+            }
         }
 
         private void ButtonAutostartValidate_Click(object sender, RoutedEventArgs e)
