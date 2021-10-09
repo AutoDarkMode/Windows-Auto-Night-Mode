@@ -55,10 +55,13 @@ namespace AutoDarkModeApp
 
         private void Window_OnSourceInitialized(object sender, EventArgs e)
         {
-            Top = Settings.Default.Top;
-            Left = Settings.Default.Left;
-            Height = Settings.Default.Height;
-            Width = Settings.Default.Width;
+            if (Settings.Default.Width != 0 || Settings.Default.Height != 0)
+            {
+                Top = Settings.Default.Top;
+                Left = Settings.Default.Left;
+                Height = Settings.Default.Height;
+                Width = Settings.Default.Width;
+            }
             if (Settings.Default.Maximized)
             {
                 WindowState = WindowState.Maximized;
