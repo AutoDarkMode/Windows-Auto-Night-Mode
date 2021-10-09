@@ -16,7 +16,8 @@ namespace AutoDarkModeSvc.Modules
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool firstRun = true;
-        public UpdaterModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) 
+        private bool checkFailed;
+        public UpdaterModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             try
             {
@@ -33,20 +34,21 @@ namespace AutoDarkModeSvc.Modules
         {
             _ = Task.Run(() =>
             {
-                Updater();
+                Check();
             });
             //Updater();
         }
 
-        private void Updater()
+        private void Check()
         {
             try
             {
                 TimeSpan PollingCooldownTimeSpan = TimeSpan.FromDays(builder.Config.Updater.DaysBetweenUpdateCheck);
                 DateTime nextUpdate = builder.UpdaterData.LastCheck.Add(PollingCooldownTimeSpan);
-                if (DateTime.Now >= nextUpdate || firstRun)
+                if (DateTime.Now >= nextUpdate || (firstRun && builder.Config.Updater.CheckOnStart) || checkFailed)
                 {
                     firstRun = false;
+                    checkFailed = false;
                     _ = UpdateHandler.CheckNewVersion();
                     ApiResponse versionCheck = UpdateHandler.UpstreamResponse;
 
@@ -73,12 +75,17 @@ namespace AutoDarkModeSvc.Modules
                             ToastHandler.InvokeUpdateToast(canUseUpdater: false);
                         }
                     }
+                    else if (versionCheck.StatusCode == StatusCode.Err && versionCheck.Details != null && versionCheck.Details.Equals("WebException"))
+                    {
+                        Logger.Warn("rescheduling update check on next timer tick");
+                        checkFailed = true;
+                    }
                 }
                 else
                 {
                     Logger.Debug($"Next update check scheduled: {nextUpdate}");
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "error while running update checker:");

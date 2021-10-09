@@ -86,7 +86,8 @@ namespace AutoDarkModeSvc.Handlers
                 using RedirectWebClient webClient = new();
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 webClient.Headers.Add("Cache-Control", "no-cache");
-                string data = webClient.DownloadString(GetUpdateUrl());
+                string updateUrl = GetUpdateUrl();
+                string data = webClient.DownloadString(updateUrl);
                 UpstreamVersion = UpdateInfo.Deserialize(data);
                 Version newVersion = new(UpstreamVersion.Tag);
 
@@ -107,14 +108,28 @@ namespace AutoDarkModeSvc.Handlers
                     return response;
                 }
             }
+            catch (WebException ex)
+            {
+                Logger.Error(ex, "update check failed");
+                response = new ApiResponse()
+                {
+                    StatusCode = StatusCode.Err,
+                    Message = ex.Message,
+                    Details = "WebException"
+                };
+                UpstreamResponse = response;
+                return response;
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "update check failed");
-                return new ApiResponse()
+                response = new ApiResponse()
                 {
                     StatusCode = StatusCode.Err,
                     Message = ex.Message
                 };
+                UpstreamResponse = response;
+                return response;
             }
         }
 
