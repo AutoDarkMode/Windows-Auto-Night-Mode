@@ -341,7 +341,7 @@
                 Click="CheckBoxLogonTask_Click"
                 />
 
-                <ui:ProgressRing Height="52" Width="52" HorizontalAlignment="Left" Margin="0,15,0,0" Name="ProgressAutostartDetails"></ui:ProgressRing>
+                <ui:ProgressRing Height="52.1" Width="52.1" HorizontalAlignment="Left" Margin="0,15,0,0" Name="ProgressAutostartDetails"></ui:ProgressRing>
                 <Grid Margin="0,15,10,0" Name="GridAutostartDetails">
                     
                     <Grid.RowDefinitions>
