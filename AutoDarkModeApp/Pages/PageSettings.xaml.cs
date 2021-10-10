@@ -620,10 +620,22 @@ namespace AutoDarkModeApp.Pages
             }
             else
             {
+                MsgBox confirm = new("Auto Dark Mode will no longer start with Windows and switch your theme when you log in." +
+                                     "\nDo you really want to do this? ", "Disable Autostart", "info", "yesno")
+                {
+                    Owner = Window.GetWindow(this)
+                };
+                bool dialogResult = confirm.ShowDialog() ?? false;
+                if (!dialogResult)
+                {
+                    (sender as ModernWpf.Controls.ToggleSwitch).IsOn = true;
+                    return;
+                }
                 try
                 {
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
                     GetAutostartInfo(true);
+                    (sender as ModernWpf.Controls.ToggleSwitch).IsOn = false;
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
