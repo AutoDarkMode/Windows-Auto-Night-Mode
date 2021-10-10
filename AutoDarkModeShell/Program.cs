@@ -22,6 +22,7 @@ namespace AutoDarkModeComms
                 Console.WriteLine(args[0]);
                 if (args.Length == 2)
                 {
+                    Console.WriteLine($"custom timeout: {args[1]}s");
                     bool success = int.TryParse(args[1], out timeoutDefault);
                     if (!success)
                     {
