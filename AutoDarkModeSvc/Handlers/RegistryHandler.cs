@@ -142,7 +142,7 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not retrieve autostart startup approved entry:");
-                return false;
+                return true;
             }
             return false;
         }
