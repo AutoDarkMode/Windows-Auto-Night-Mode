@@ -134,6 +134,10 @@ namespace AutoDarkModeSvc.Handlers
             {
                 using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run", true);
                 byte[] admKey = (byte[])registryKey.GetValue("AutoDarkMode");
+                if (admKey == null)
+                {
+                    return true;
+                }
                 if (admKey[0] == 2)
                 {
                     return true;
