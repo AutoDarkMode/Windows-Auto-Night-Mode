@@ -138,7 +138,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     return true;
                 }
-                if (admKey[0] == 2)
+                if (admKey[0] == 2 || admKey[0] == 0)
                 {
                     return true;
                 }

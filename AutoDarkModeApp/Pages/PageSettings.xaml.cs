@@ -129,12 +129,15 @@ namespace AutoDarkModeApp.Pages
             GetAutostartInfo();
         }
 
-        private void GetAutostartInfo(bool noToggle = false)
+        private async void GetAutostartInfo(bool noToggle = false)
         {
+            ProgressAutostartDetails.IsActive = true;
+            ProgressAutostartDetails.Visibility = Visibility.Visible;
+            GridAutostartDetails.Visibility = Visibility.Collapsed;
             try
             {
                 AutostartDisabledMessage.Visibility = Visibility.Collapsed;
-                ApiResponse autostartResponse = ApiResponse.FromString(messagingClient.SendMessageAndGetReply(Command.GetAutostartState));
+                ApiResponse autostartResponse = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GetAutostartState));
                 if (autostartResponse.StatusCode == StatusCode.Err)
                 {
                     ErrorMessageBoxes.ShowErrorMessageFromApi(autostartResponse, new AutoStartStatusGetException(), Window.GetWindow(this));
@@ -171,6 +174,9 @@ namespace AutoDarkModeApp.Pages
             {
                 StackPanelAutostart.IsEnabled = false;
             }
+            ProgressAutostartDetails.IsActive = false;
+            ProgressAutostartDetails.Visibility = Visibility.Collapsed;
+            GridAutostartDetails.Visibility = Visibility.Visible;
         }
 
         private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -338,6 +344,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
             }
+
         }
 
         private void CheckBoxHideTrayIcon_Click(object sender, RoutedEventArgs e)

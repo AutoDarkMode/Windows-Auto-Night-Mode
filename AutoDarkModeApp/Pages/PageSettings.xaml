@@ -330,7 +330,6 @@
                     FontSize="20"
                     />
 
-
                 <ui:ToggleSwitch
                     Name="ToggleAutostart"
                     OffContent="{x:Static p:Resources.ToggleSwitchOff}"
@@ -341,7 +340,8 @@
                     PreviewMouseDown="ToggleAutostart_Toggled"
                     />
 
-                <Grid Margin="0,15,10,0">
+                <ui:ProgressRing Height="50" Width="50" HorizontalAlignment="Left" Margin="0,15,0,0" Name="ProgressAutostartDetails"></ui:ProgressRing>
+                <Grid Margin="0,15,10,0" Name="GridAutostartDetails">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
