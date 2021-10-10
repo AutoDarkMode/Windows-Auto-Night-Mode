@@ -146,7 +146,6 @@ namespace AutoDarkModeApp.Pages
         private async Task GetAutostartInfo(bool noToggle = false, bool toggleVisibility = true)
         {
             if (toggleVisibility) SetAutostartDetailsVisibility(false);
-            CheckBoxLogonTask.IsEnabled = false;
             try
             {
                 AutostartDisabledMessage.Visibility = Visibility.Collapsed;
@@ -182,12 +181,18 @@ namespace AutoDarkModeApp.Pages
                 else if (autostartResponse.StatusCode == StatusCode.Disabled)
                 {
                     if (!noToggle) ToggleAutostart.IsOn = false;
+                    CheckBoxLogonTask.IsEnabled = false;
                     TextBlockAutostartMode.Text = "Disabled";
                     TextBlockAutostartPath.Text = "None";
+                }
+                else
+                {
+                    CheckBoxLogonTask.IsEnabled = false;
                 }
             }
             catch (Exception)
             {
+                CheckBoxLogonTask.IsEnabled = false;
                 StackPanelAutostart.IsEnabled = false;
                 TextBlockAutostartMode.Text = "Not found";
                 TextBlockAutostartPath.Text = "None";
