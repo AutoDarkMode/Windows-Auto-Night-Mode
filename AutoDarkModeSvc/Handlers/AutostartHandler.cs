@@ -241,11 +241,11 @@ namespace AutoDarkModeSvc.Handlers
                     else
                     {
                         autostartPath = autostartPath.Replace("\"", "");
-                    }
-                    if (!autostartPath.Contains(Extensions.ExecutionPath))
-                    {
-                        reason = "wrong path";
-                        recreate = true;
+                        if (!autostartPath.Contains(Extensions.ExecutionPath))
+                        {
+                            reason = "wrong path";
+                            recreate = true;
+                        }
                     }
                 }
                
