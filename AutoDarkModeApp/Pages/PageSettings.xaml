@@ -340,7 +340,7 @@
                     PreviewMouseDown="ToggleAutostart_Toggled"
                     />
 
-                <ui:ProgressRing Height="50" Width="50" HorizontalAlignment="Left" Margin="0,15,0,0" Name="ProgressAutostartDetails"></ui:ProgressRing>
+                <ui:ProgressRing Height="52" Width="52" HorizontalAlignment="Left" Margin="0,15,0,0" Name="ProgressAutostartDetails"></ui:ProgressRing>
                 <Grid Margin="0,15,10,0" Name="GridAutostartDetails">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

@@ -13,6 +13,7 @@ using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -126,14 +127,28 @@ namespace AutoDarkModeApp.Pages
             CheckBoxUpdateOnStart.IsChecked = builder.Config.Updater.CheckOnStart;
 
             //autostart
-            GetAutostartInfo();
+            _ = GetAutostartInfo();
         }
 
-        private async void GetAutostartInfo(bool noToggle = false)
+        private void SetAutostartDetailsVisibility(bool visible)
         {
-            ProgressAutostartDetails.IsActive = true;
-            ProgressAutostartDetails.Visibility = Visibility.Visible;
-            GridAutostartDetails.Visibility = Visibility.Collapsed;
+            if (visible)
+            {
+                ProgressAutostartDetails.IsActive = false;
+                ProgressAutostartDetails.Visibility = Visibility.Collapsed;
+                GridAutostartDetails.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ProgressAutostartDetails.IsActive = true;
+                ProgressAutostartDetails.Visibility = Visibility.Visible;
+                GridAutostartDetails.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async Task GetAutostartInfo(bool noToggle = false, bool toggleVisibility = true)
+        {
+            if (toggleVisibility) SetAutostartDetailsVisibility(false);
             try
             {
                 AutostartDisabledMessage.Visibility = Visibility.Collapsed;
@@ -173,10 +188,10 @@ namespace AutoDarkModeApp.Pages
             catch (Exception)
             {
                 StackPanelAutostart.IsEnabled = false;
+                TextBlockAutostartMode.Text = "Not found";
+                TextBlockAutostartPath.Text = "None";
             }
-            ProgressAutostartDetails.IsActive = false;
-            ProgressAutostartDetails.Visibility = Visibility.Collapsed;
-            GridAutostartDetails.Visibility = Visibility.Visible;
+            if (toggleVisibility) SetAutostartDetailsVisibility(true);
         }
 
         private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -330,7 +345,7 @@ namespace AutoDarkModeApp.Pages
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
-                    GetAutostartInfo();
+                    _ = GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         CheckBoxLogonTask.IsChecked = !CheckBoxLogonTask.IsChecked;
@@ -613,7 +628,7 @@ namespace AutoDarkModeApp.Pages
                 try
                 {
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
-                    GetAutostartInfo(true);
+                    _ = GetAutostartInfo(true);
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
@@ -641,7 +656,7 @@ namespace AutoDarkModeApp.Pages
                 try
                 {
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
-                    GetAutostartInfo(true);
+                    _ = GetAutostartInfo(true);
                     (sender as ModernWpf.Controls.ToggleSwitch).IsOn = false;
                     if (result.StatusCode != StatusCode.Ok)
                     {
@@ -661,22 +676,25 @@ namespace AutoDarkModeApp.Pages
             _ = Dispatcher.BeginInvoke(new DispatcherDelegate(ValidateAutostart));
         }
 
-        private void ValidateAutostart()
+        private async void ValidateAutostart()
         {
+            SetAutostartDetailsVisibility(false);
             ApiResponse response = new();
             try
             {
-                response = ApiResponse.FromString(messagingClient.SendMessageAndGetReply(Command.ValidateAutostart));
+                response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.ValidateAutostart, 2));
                 if (response.StatusCode == StatusCode.Err)
                 {
                     throw new AddAutoStartException();
                 }
-                GetAutostartInfo();
+                await GetAutostartInfo(toggleVisibility: false);
             }
             catch (Exception ex)
             {
                 ErrorMessageBoxes.ShowErrorMessageFromApi(response, ex, Window.GetWindow(this));
             }
+            await Task.Delay(1000);
+            SetAutostartDetailsVisibility(true);
         }
     }
 }
