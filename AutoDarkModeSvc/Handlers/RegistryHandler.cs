@@ -152,7 +152,7 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         /// <summary>
-        /// Removes the application from Windows autostart
+        /// Removes the application from Windows autostart. Exceptions handled
         /// </summary>
         public static bool RemoveAutoStart()
         {
