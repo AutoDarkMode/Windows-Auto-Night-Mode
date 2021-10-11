@@ -124,7 +124,7 @@
     <value>应用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自动主题切换</value>
+    <value>自动切换主题</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>深色主题</value>
@@ -133,13 +133,13 @@
     <value>浅色主题</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用为Windows 1903设计的功能</value>
+    <value>启用Windows 1903相关的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>应用程序：</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>自定义开始时间</value>
+    <value>自定义起始时间</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>深色</value>
@@ -205,12 +205,12 @@
     <value>有新版可更新！</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感谢您使用自动深色模式！
+    <value>感谢您使用“自动深色模式”！
 
-GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
-你想安装吗？
+GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
+您想安装新版吗？
 
-当前安装版本: {0}, 最新版本: {1}</value>
+当前版本: {0}, 最新版本: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>自动深色模式</value>
@@ -219,13 +219,13 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>检查更新</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>每次启动检查更新</value>
+    <value>我们将在本程序启动时检查更新。</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>欢迎</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>选中此复选框以启用自动主题切换</value>
+    <value>勾选此项启用自动主题切换</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>翻译者: zheolls、没有字的回音、ThrRip</value>
@@ -237,13 +237,13 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>位置</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>本程序需要重启才能应用更改</value>
+    <value>重启后生效</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>语言：</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>任务栏显示主题色</value>
+    <value>将任务栏颜色改为主题色</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>取消</value>
@@ -255,7 +255,7 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>深色主题壁纸</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>删除/禁用</value>
+    <value>删除或禁用</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>选择文件</value>
@@ -273,13 +273,13 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>请选择两张壁纸</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>请选择图片</value>
+    <value>请选择图像</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>配置桌面背景</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>使用当前背景</value>
+    <value>设为当前背景</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>禁用</value>
@@ -294,20 +294,20 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>保存</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>您选择的图片可能已损坏，或者路径不存在。</value>
+    <value>您所选的图片可能已损坏，或所选的路径不存在。</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>抱歉！无法生成图片预览。</value>
+    <value>抱歉，无法生成图片预览！</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>抱歉！无法保存设置。</value>
+    <value>抱歉，无法保存设置！</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>发生错误</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>仅在深色主题下可见。
-如果您遇到了问题，请在设置中增加切换的延迟。</value>
+如果您遇到了相关问题，请在设置中增加切换等待时间。</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>信息</value>
@@ -325,17 +325,17 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>是</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>后台获取更新</value>
+    <value>自动检查更新</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>抱歉，未能正确应用你的设置。
+    <value>抱歉，无法保存您的设置。
 
-你可以尝试以下几种方法：
-- 卸载并重装本软件。
-- 尝试在自动深色模式的设置中禁用 {0}.
-- 如果你启用了桌面壁纸功能，关闭此功能并重试。
+您可以尝试以下几种方法：
+- 重启本应用的服务
+- 检查服务运行状态
+- 关闭服务，删除 config.yaml 并重新配置本程序
 
-如果上述方法无效，您可将错误原因与截图评论至GitHub issue。点击“是”跳转到issue页面。</value>
+如果上述方法无效，您可在GitHub上创建issue进行反馈。点击“是”即可跳转到issue页面。</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>错误：您的输入无效</value>
@@ -344,12 +344,12 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>Connected Standby状态下仍然切换主题（不推荐）</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface等移动设备正在使用一种新型的待机模式。
-启用此选项可确保在唤醒计算机后自动深色模式立即切换主题。
-但这也会缩短电池寿命！ 仅在必要时激活！</value>
+    <value>Microsoft Surface等移动设备使用的一种新型待机模式。
+启用此项可确保计算机唤醒后，“自动深色模式”会立即切换主题。
+但也将消耗更多电量，仅在必要时启用！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>由于Windows的一个bug，任务栏无法在节电模式下正确切换颜色。如果遇到问题，请关闭节电模式。</value>
+    <value>由于Windows的程序错误，在节电模式下，本应用无法切换任务栏的颜色。如遇到相关问题，请关闭节电模式。</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>调整</value>
@@ -358,8 +358,8 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>设置</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>使用Windows主题时，这些选项会被禁用。
-您可以在Windows主题中单独设置它们。</value>
+    <value>使用Windows主题模式时无法调整这些选项。
+您可以在Windows主题中单独设置这些选项。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>应用程序</value>
@@ -392,19 +392,19 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>桌面壁纸（推荐）</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>点击此处打开壁纸设置。</value>
+    <value>点击此处打开Windows壁纸设置。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>然后切换至“颜色”选项卡，选择默认系统颜色为浅色。选择您喜欢的壁纸，鼠标光标和色调。</value>
+    <value>现在，切换至“颜色”选项卡，将系统颜色改为“浅色”。再选择您喜欢的壁纸、鼠标光标和主题色。</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>返回主题设置并保存主题。</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>对深色主题重复上述步骤。</value>
+    <value>设置深色主题时重复上述步骤。</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>延迟切换任务栏颜色的时间（毫秒）：</value>
+    <value>切换任务栏颜色前的等待时间（毫秒）：</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
     <value>关于</value>
@@ -428,7 +428,7 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>使用灰度滤镜（Win + Ctrl + C）</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>使用登录任务代替启动项</value>
+    <value>不以启动项方式启动，而是以登录任务方式启动</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>选择模式：</value>
@@ -437,7 +437,7 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>应用所选主题时发生错误，已禁用主题切换</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>使用新版的“白色”主题</value>
+    <value>使用新版白色主题</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>下载扩展</value>
@@ -446,7 +446,7 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>推荐工具</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>此浏览器扩展使Chrome，Firefox和Edge中的网站也会跟随系统主题设定。</value>
+    <value>此浏览器扩展可使Chrome，Firefox和Edge中的网页跟随系统主题设定。</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>未找到相应的城市</value>
@@ -464,24 +464,24 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>捐赠</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>您好！感谢您使用自动深色模式。至今为止，您喜欢这个应用吗？
+    <value>您好！感谢您使用自动深色模式。迄今为止，您还喜欢这个应用吗？
 
-这个应用通过保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
-我并不靠这个项目盈利。
+这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
+我并不靠本项目盈利。
 
-如上述理由，您可以通过捐赠支持我。甚至一笔小钱都能让我开心得一蹦三尺高。只需捐赠您认为的、此项目相应价值的数额即可。</value>
+如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只需按项目价值，捐赠任意数额即可。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>应用.theme-file时发生错误，也许您创建的主题已被删除或移动到其它位置。我们将暂时停用主题切换。要重新启用它，请打开自动深色模式并配置{0}设置。</value>
+    <value>应用.theme文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开“自动深色模式”并配置{0}设置。</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>我们遇到了以下问题：
 {0}
 
-现在，我们将尝试通过以管理员身份运行程序来解决此问题。这种方法可能会解决问题。
-之后，自动深色模式将重新启动，您需要重新应用设置，抱歉！
+现在我们将尝试以管理员身份，运行算法程序来解决此问题。但无法保证百分百可解决问题。
+之后，“自动深色模式”将重新启动。您需要重新设置本应用，非常抱歉！
 
-注：请勿以管理员身份手动运行自动深色模式！</value>
+注：请勿手动以管理员身份运行“自动深色模式”！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>需要帮助吗？</value>
@@ -490,10 +490,10 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>多用户支持</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>激活灰度滤镜前的可选延迟：</value>
+    <value>延迟启动灰度滤镜（可选）：</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>适应系统</value>
+    <value>跟随系统</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>重置</value>
@@ -505,13 +505,13 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>节电模式滑动条的默认值</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>节电模式下暂停主题切换</value>
+    <value>节电模式下暂停切换主题</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>此功能仅在未手动启用节电模式时可用！</value>
+    <value>此功能仅在自动启用节电模式时生效！</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>切换模式</value>
+    <value>场景切换</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>个性化</value>
@@ -520,25 +520,25 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>应用坐标</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>您未安装Windows 10 2019年四月更新，故此选项不可用。</value>
+    <value>您未安装Windows 10 2019年4月更新，故此选项不可用。</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>地理坐标</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>位置数据</value>
+    <value>位置信息</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
     <value>日出至日落（根据地理坐标）</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>获取您的地区的坐标</value>
+    <value>了解所处位置的坐标</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>打开配置文件</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>打开配置文件目录</value>
+    <value>打开配置文件夹</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
     <value>打开日志文件</value>
@@ -550,58 +550,58 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>Microsoft Office 2013 - 2019：</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>选择一个主题</value>
+    <value>选择主题</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>选择一张壁纸</value>
+    <value>选择壁纸</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>已关闭</value>
+    <value>禁用</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
     <value>隐藏托盘图标（不推荐）</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>当主题模式开启时，此功能不可用。</value>
+    <value>启用主题模式时无法开启本功能。</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>当壁纸模式开启时，此功能不可用。</value>
+    <value>启用壁纸模式时无法开启本功能。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>提供更多的功能，但您需要创建一个Windows的.theme文件。该模式下你可以自定义每个显示器的壁纸、设置壁纸自动切换、更改鼠标指针样式、设置强调色和个别提示音。</value>
+    <value>功能更多，但需要创建Windows的.theme文件。该模式下您可以自定义各个显示器的壁纸、将壁纸设置为“幻灯片放映”、更改鼠标光标样式、设置主题色并修改各个声音。</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>提供较少的功能，但是设置起来更为简单。该模式下你可以自定义所有显示器或个别显示器的壁纸，或者设置纯色背景。</value>
+    <value>功能较少，但设置方便。该模式下您可以自定义所有显示器或各个显示器的壁纸，或者设置纯色背景。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>我们将在后台检查自动深色模式是否有新版本。如果有更新可用，我们将会通过桌面通知来提醒你</value>
+    <value>我们将在后台检查新版“自动深色模式”，并通过桌面通知提醒您更新。</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>自动下载并安装新版本</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>不要显示通知</value>
+    <value>不显示通知</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>选择更新频道</value>
+    <value>选择更新版本</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>在自动深色模式启动时检查更新</value>
+    <value>在“自动深色模式”启动时检查更新</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 天</value>
+    <value>14天</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 天</value>
+    <value>3天</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 天</value>
+    <value>7天</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>上次检查</value>
+    <value>上次检查时间</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>从未检查过更新</value>
+    <value>尚未检查过更新</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>更改检查更新的频率</value>
@@ -631,7 +631,7 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>类型</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>删除已断开连接的显示器</value>
+    <value>删除未连接的显示器</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
     <value>壁纸</value>
@@ -646,31 +646,31 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <value>启用壁纸切换</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>不要在玩游戏时切换</value>
+    <value>玩游戏时不进行切换</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>快（单样本）</value>
+    <value>快（单采样）</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>中（双样本）</value>
+    <value>中（双采样）</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>慢（三样本）</value>
+    <value>慢（三采样）</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
     <value>GPU使用率检测速度</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>使用电池的设备</value>
+    <value>电池设备</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
     <value>状态</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>延迟切换的最低GPU使用率</value>
+    <value>GPU使用率大于此值时，不切换主题</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>在从外部更改时恢复主题</value>
+    <value>主题被外部修改时改回原定主题</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>纬度</value>
@@ -681,16 +681,16 @@ GitHub上有一个可用的新版本，包括一些漏洞修复与新功能。
     <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>服务尚未运行，请等待……</value>
+    <value>服务尚未运行，请稍候……</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>正在启动服务</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>服务无响应。请检查AutoDarkModeSvc.exe是否在运行并再试一次！</value>
+    <value>服务无响应。请检查AutoDarkModeSvc.exe的运行状态并重试！</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>启用Windows主题切换</value>
+    <value>切换Windows主题</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
     <value>关闭</value>
