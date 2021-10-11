@@ -176,19 +176,27 @@ namespace AutoDarkModeSvc.Handlers
             {
                 try
                 {
+                    string autostartPath = RegistryHandler.GetAutostartPath();
                     using Microsoft.Win32.TaskScheduler.Task logonTask = TaskSchdHandler.GetLogonTask();
                     if (logonTask == null)
                     {
-                        Logger.Warn("auto start validation failed, missing logon task folder. fixing autostart");
+                        Logger.Warn("autostart validation failed, missing logon task folder. fixing autostart");
                         ApiResponse result = AddAutostart(modified: true);
                         result.Details += "\nvalidation mode: recreate task (missing folder)";
                         return result;
                     }
                     else if (logonTask.Definition.Actions.First().ToString().Trim() != Extensions.ExecutionPath)
                     {
-                        Logger.Warn("auto start validation failed, wrong execution path. fixing autostart");
+                        Logger.Warn("autostart validation failed, wrong execution path. fixing autostart");
                         ApiResponse result = AddAutostart(modified: true);
                         result.Details += "\nvalidation mode: recreate task (wrong path)";
+                        return result;
+                    } 
+                    else if (autostartPath != null)
+                    {
+                        Logger.Warn("autostart validation failed, wrong execution path. fixing autostart");
+                        ApiResponse result = AddAutostart(modified: true);
+                        result.Details += "\nvalidation mode: recreate task (regkey still active)";
                         return result;
                     }
                 }
@@ -207,16 +215,44 @@ namespace AutoDarkModeSvc.Handlers
             //check if registry keys are used, needs to be reset if the key is missing or the path differs from the execution base directory
             else
             {
-                string autostartPath = RegistryHandler.GetAutostartPath();
-                if (autostartPath == null || !autostartPath.Contains(Extensions.ExecutionPath))
+                bool recreate = false;
+                string reason = "";
+                try
                 {
-                    if (autostartPath != null)
+                    using Microsoft.Win32.TaskScheduler.Task logonTask = TaskSchdHandler.GetLogonTask();
+                    if (logonTask != null)
+                    {
+                        recreate = true;
+                        reason = "logon task active in registry mode";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "could not determine task scheduler autostart state:");
+                }
+                if (!recreate)
+                {
+                    string autostartPath = RegistryHandler.GetAutostartPath();
+                    if (autostartPath == null)
+                    {
+                        reason = "missing entry";
+                        recreate = true;
+                    }
+                    else
                     {
                         autostartPath = autostartPath.Replace("\"", "");
+                        if (!autostartPath.Contains(Extensions.ExecutionPath))
+                        {
+                            reason = "wrong path";
+                            recreate = true;
+                        }
                     }
+                }
+               
+                if (recreate)
+                {
+                    Logger.Warn($"autostart validation failed ({reason}), recreate autostart registry keys");
                     ApiResponse result = AddAutostart(modified: true);
-                    string reason = autostartPath == null ? "missing entry" : "wrong path";
-                    Logger.Warn($"auto start validation failed, {reason}. fixing autostart");
                     result.Details += $"\nvalidation mode: recreate regkey ({reason})";
                     return result;
                 }

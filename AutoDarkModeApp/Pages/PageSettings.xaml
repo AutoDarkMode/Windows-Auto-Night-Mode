@@ -51,12 +51,6 @@
                 Content="{x:Static p:Resources.cb12HourTime}" 
                 Margin="0,0,0,0" 
                 Click="CheckBoxAlterTime_Click"/>
-            <CheckBox 
-                Name="CheckBoxLogonTask" 
-                Content="{x:Static p:Resources.cbSettingsLogonTask}" 
-                Margin="0,10,0,0" 
-                Click="CheckBoxLogonTask_Click"
-                />
             <CheckBox
                 Name="CheckBoxHideTrayIcon"
                 Content="{x:Static p:Resources.SettingsCheckBoxHideTray}"
@@ -330,7 +324,6 @@
                     FontSize="20"
                     />
 
-
                 <ui:ToggleSwitch
                     Name="ToggleAutostart"
                     OffContent="{x:Static p:Resources.ToggleSwitchOff}"
@@ -341,7 +334,16 @@
                     PreviewMouseDown="ToggleAutostart_Toggled"
                     />
 
-                <Grid Margin="0,15,10,0">
+                <CheckBox 
+                Name="CheckBoxLogonTask" 
+                Content="{x:Static p:Resources.cbSettingsLogonTask}" 
+                Margin="0,10,0,0" 
+                Click="CheckBoxLogonTask_Click"
+                />
+
+                <ui:ProgressRing Height="52" Width="52" HorizontalAlignment="Left" Margin="0,15,0,0" Name="ProgressAutostartDetails"></ui:ProgressRing>
+                <Grid Margin="0,15,10,0" Name="GridAutostartDetails">
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -350,6 +352,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition MaxWidth="1000"/>
                     </Grid.ColumnDefinitions>
+                    
                     <TextBlock Grid.Column="0" 
                                Grid.Row="0" 
                                FontSize="14" 

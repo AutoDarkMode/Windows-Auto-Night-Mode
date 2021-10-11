@@ -134,7 +134,11 @@ namespace AutoDarkModeSvc.Handlers
             {
                 using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run", true);
                 byte[] admKey = (byte[])registryKey.GetValue("AutoDarkMode");
-                if (admKey[0] == 2)
+                if (admKey == null)
+                {
+                    return true;
+                }
+                if (admKey[0] == 2 || admKey[0] == 0)
                 {
                     return true;
                 }
@@ -142,13 +146,13 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not retrieve autostart startup approved entry:");
-                return false;
+                return true;
             }
             return false;
         }
 
         /// <summary>
-        /// Removes the application from Windows autostart
+        /// Removes the application from Windows autostart. Exceptions handled
         /// </summary>
         public static bool RemoveAutoStart()
         {

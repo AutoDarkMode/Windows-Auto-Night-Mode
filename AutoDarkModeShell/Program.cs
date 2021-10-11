@@ -18,8 +18,18 @@ namespace AutoDarkModeComms
             ICommandClient client = new ZeroMQClient(Address.DefaultPort);
             if (args.Length > 0)
             {
+                int timeoutDefault = 10;
                 Console.WriteLine(args[0]);
-                Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: 15)}");
+                if (args.Length == 2)
+                {
+                    Console.WriteLine($"custom timeout: {args[1]}s");
+                    bool success = int.TryParse(args[1], out timeoutDefault);
+                    if (!success)
+                    {
+                        timeoutDefault = 10;
+                    }
+                }
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: timeoutDefault)}");
                 Console.WriteLine("Please check service.log for more details");
                 Environment.Exit(0);
             }
