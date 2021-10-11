@@ -161,9 +161,9 @@ namespace AutoDarkModeSvc.Handlers
         /// Validates the Auto Dark Mode autostart entries for correctness
         /// </summary>
         /// <returns>true if the state is valid, false if the state was invalid</returns>
-        public static ApiResponse ValidateAutostart()
+        public static ApiResponse Validate()
         {
-            if (!builder.Config.AutoThemeSwitchingEnabled || !builder.Config.AutoStart.AutoValidate)
+            if (!builder.Config.Autostart.Validate)
             {
                 return new()
                 {

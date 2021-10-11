@@ -29,26 +29,6 @@ namespace AutoDarkModeApp
             LanguageHelper();
 
             InitializeComponent();
-            
-            //only run at first startup
-            if (Settings.Default.FirstRun)
-            {
-                //check if system uses 12 hour clock
-                SystemTimeFormat();
-
-                //create jump list entries
-                AddJumpList();
-
-                //finished first startup code
-                Settings.Default.FirstRun = false; 
-            }
-
-            //run if user changed language in previous session
-            if (Settings.Default.LanguageChanged)
-            {
-                AddJumpList();
-                Settings.Default.LanguageChanged = false;
-            }
         }
 
         private void Window_OnSourceInitialized(object sender, EventArgs e)

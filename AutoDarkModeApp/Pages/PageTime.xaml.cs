@@ -387,7 +387,14 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 builder.Config.AutoThemeSwitchingEnabled = true;
-                EnableAutoStart();
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "EnableThemeBasedSwitch PageTime");
+                }
             }
         }
         private void DisableTimeBasedSwitch()
@@ -410,53 +417,6 @@ namespace AutoDarkModeApp.Pages
             StackPanelTimePicker.IsEnabled = false;
             userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
-
-        /// <summary>
-        /// Autostart
-        /// </summary>
-        private async void EnableAutoStart()
-        {
-            ApiResponse result = new()
-            {
-                StatusCode = StatusCode.Err,
-                Message = "error in EnableAutostart()"
-            };
-            try
-            {
-                builder.Save();
-                result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
-                if (result.StatusCode != StatusCode.Ok)
-                {
-                    throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
-            }
-        }
-        private async void DisableAutoStart()
-        {
-            //remove autostart
-            try
-            {
-                var result = await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart);
-                if (result != StatusCode.Ok)
-                {
-                    throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
-                }
-            }
-            catch (AddAutoStartException aex)
-            {
-                ShowErrorMessage(aex);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
-        }
-
-
         private void UpdateSuntimes()
         {
             LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);

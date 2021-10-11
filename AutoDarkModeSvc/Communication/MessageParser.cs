@@ -83,7 +83,7 @@ namespace AutoDarkModeSvc.Communication
                     #region ValidateAutostartAutostart
                     case Command.ValidateAutostart:
                         Logger.Info("signal received: validate autostart entries");
-                        SendResponse(AutoStartHandler.ValidateAutostart().ToString());
+                        SendResponse(AutoStartHandler.Validate().ToString());
                         break;
                     #endregion
 

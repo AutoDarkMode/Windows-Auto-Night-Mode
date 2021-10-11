@@ -636,6 +636,8 @@ namespace AutoDarkModeApp.Pages
                 SetAutostartDetailsVisibility(false);
                 try
                 {
+                    builder.Config.Autostart.Validate = true;
+                    builder.Save();
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
                     await GetAutostartInfo(true, toggleVisibility: false);
                     if (result.StatusCode != StatusCode.Ok)
@@ -665,6 +667,8 @@ namespace AutoDarkModeApp.Pages
                 SetAutostartDetailsVisibility(false);
                 try
                 {
+                    builder.Config.Autostart.Validate = false;
+                    builder.Save();
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
                     await GetAutostartInfo(true, toggleVisibility: false);
                     (sender as ModernWpf.Controls.ToggleSwitch).IsOn = false;
