@@ -672,4 +672,24 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
     <value>Değişimi geciktirmek için minimum GPU kullanımı</value>
   </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Harici olarak değiştirildiğinde temaları geri yükle</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Enlem</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Boylam</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Hizmet henüz çalışmıyor, lütfen bekleyin...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Hizmet Başlatma</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Hizmet yanıt vermiyor. Lütfen AutoDarkModeSvc.exe'nin çalışıp çalışmadığını kontrol edin ve tekrar deneyin!</value>
+  </data>
 </root>
