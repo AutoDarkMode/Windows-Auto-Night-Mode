@@ -22,8 +22,4 @@
     <Compile Include="..\AutoDarkModeSvc\Communication\Command.cs" Link="Command.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="NetMQ" Version="4.0.1.6" />
-  </ItemGroup>
-
 </Project>

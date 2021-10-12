@@ -1,4 +1,5 @@
-﻿using NetMQ;
+﻿/*
+using NetMQ;
 using NetMQ.Sockets;
 using System;
 using System.Collections.Generic;
@@ -151,3 +152,4 @@ namespace AutoDarkModeSvc.Communication
         }
     }
 }
+*/
