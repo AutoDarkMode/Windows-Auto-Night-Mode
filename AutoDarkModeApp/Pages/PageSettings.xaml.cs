@@ -157,6 +157,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     if (autostartResponse.Message == "Enabled")
                     {
+                        ButtonAutostartValidate.IsEnabled = true;
                         CheckBoxLogonTask.IsEnabled = true;
                         if (!noToggle) ToggleAutostart.IsOn = true;
                         TextBlockAutostartMode.Text = "Registry";
@@ -164,6 +165,7 @@ namespace AutoDarkModeApp.Pages
                     }
                     else
                     {
+                        ButtonAutostartValidate.IsEnabled = false;
                         AutostartDisabledMessage.Visibility = Visibility.Visible;
                         StackPanelAutostart.IsEnabled = false;
                     }
@@ -171,6 +173,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
                 {
+                    ButtonAutostartValidate.IsEnabled = true;
                     CheckBoxLogonTask.IsEnabled = true;
                     if (!noToggle) ToggleAutostart.IsOn = true;
                     CheckBoxLogonTask.IsEnabled = true;
@@ -179,6 +182,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (autostartResponse.StatusCode == StatusCode.Disabled)
                 {
+                    ButtonAutostartValidate.IsEnabled = false;
                     if (!noToggle) ToggleAutostart.IsOn = false;
                     CheckBoxLogonTask.IsEnabled = false;
                     TextBlockAutostartMode.Text = "Disabled";
