@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Navigation;
 using AutoDarkModeApp.Properties;
-using NetMQ;
-using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Pages;
-using System.Windows.Media;
 using ModernWpf.Media.Animation;
-using AutoDarkModeConfig;
-using AutoDarkModeComms;
-using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp
 {
@@ -77,7 +70,7 @@ namespace AutoDarkModeApp
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
-            NetMQConfig.Cleanup();
+            //NetMQConfig.Cleanup();
             Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
