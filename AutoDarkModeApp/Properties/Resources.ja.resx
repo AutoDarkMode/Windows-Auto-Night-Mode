@@ -193,7 +193,7 @@
     <value>最新版はありません。</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>位置情報を検知中...</value>
+    <value>位置情報を取得中...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
     <value>最新版の確認中...</value>
@@ -369,9 +369,6 @@
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>時間</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>壁紙/テーマ</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>フォルダを開く</value>
@@ -691,5 +688,20 @@
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
     <value>サービスは応答していません。AutoDarkModeSvc.exe が実行中か確認し、再起動をお試しください !</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Windows テーマの有効を切り替え</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>フォローしてね</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>テーマ</value>
   </data>
 </root>
