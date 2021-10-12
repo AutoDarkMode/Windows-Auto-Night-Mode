@@ -47,6 +47,7 @@ namespace AutoDarkModeSvc.Modules
                 DateTime nextUpdate = builder.UpdaterData.LastCheck.Add(PollingCooldownTimeSpan);
                 if (DateTime.Now >= nextUpdate || (firstRun && builder.Config.Updater.CheckOnStart) || checkFailed)
                 {
+                    //Logger.Debug("performing update check");
                     firstRun = false;
                     checkFailed = false;
                     _ = UpdateHandler.CheckNewVersion();

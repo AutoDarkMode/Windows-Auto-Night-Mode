@@ -512,15 +512,12 @@ namespace AutoDarkModeApp.Pages
 
         private async void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
         {
+            bool offerDowngrade = false;
             if ((sender as RadioButton).IsChecked.Value)
             {
                 if (builder.Config.Updater.VersionQueryUrl != null)
                 {
-                    ApiResponse response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
-                    if (response.StatusCode == StatusCode.Downgrade)
-                    {
-                        TextBlockUpdateInfo.Text = "A downgrade is available";
-                    }
+                    offerDowngrade = true;
                 }
                 builder.Config.Updater.VersionQueryUrl = null;
                 ButtonSearchUpdate.IsEnabled = true;
@@ -528,11 +525,21 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
+                if (offerDowngrade)
+                {
+                    _ = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
+                    ApiResponse response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
+                    if (response.StatusCode == StatusCode.Downgrade)
+                    {
+                        TextBlockUpdateInfo.Text = "A downgrade is available";
+                    }
+                }               
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "RadioButtonStableUpdateChannel_Click");
             }
+
         }
 
         private void RadioButtonBetaUpdateChannel_Click(object sender, RoutedEventArgs e)
