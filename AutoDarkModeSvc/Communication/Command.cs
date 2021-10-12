@@ -64,6 +64,9 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string CheckForUpdateNotify = "--check-for-update-notify";
 
+        [Includable]
+        public const string CheckForDowngradeNotify = "--check-for-downgrade-notify";
+
         /// <summary>
         /// Invokes an update. this requires that CheckForUpdate has been run beforehand
         /// Returns an ApiResponse object as string with StatusCode.New if an update can be performed, <br/>
@@ -119,7 +122,11 @@ namespace AutoDarkModeSvc.Communication
 
         public const string UpdateFailed = "--update-failed";
 
+        [Includable]
         public const string TestNotifications = "--test-notifications";
+
+        [Includable]
+        public const string TestNotifications2 = "--test-notifications2";
     }
 
     [AttributeUsage(AttributeTargets.Field)]
@@ -131,6 +138,7 @@ namespace AutoDarkModeSvc.Communication
     {
         public static string Available { get; } = "Available";
         public static string New { get; } = "New";
+        public static string Downgrade { get; } = "Downgrade";
         public static string NoLocAccess { get; } = "NoLocAccess";
         public static string Err { get; } = "Err";
         public static string Ok { get; } = "Ok";

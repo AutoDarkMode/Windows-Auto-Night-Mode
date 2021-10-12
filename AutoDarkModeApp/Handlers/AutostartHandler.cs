@@ -7,26 +7,54 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AutoDarkModeApp.Handlers
 {
     public static class AutostartHandler
     {
-        public  static void EnsureAutostart()
+        public static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        public static void EnsureAutostart(Window owner)
         {
+            ApiResponse result = new()
+            {
+                StatusCode = StatusCode.Err,
+                Message = "error in frontend: EnsureAutostart()"
+            };
             try
             {
-                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-                builder.Load();
-                if (builder.Config.AutoThemeSwitchingEnabled)
+                ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+                _ = client.SendMessageAndGetReply(Command.ValidateAutostart);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, owner);
+            }
+        }
+
+
+        /// <summary>
+        /// Autostart
+        /// </summary>
+        public static async void EnableAutoStart(Window owner)
+        {
+            ApiResponse result = new()
+            {
+                StatusCode = StatusCode.Err,
+                Message = "error in frontend: EnableAutostart()"
+            };
+            try
+            {
+                ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+                result = ApiResponse.FromString(await client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                if (result.StatusCode != StatusCode.Ok)
                 {
-                    ICommandClient client = new ZeroMQClient(Address.DefaultPort);
-                    _ = client.SendMessageAndGetReply(Command.ValidateAutostart);
+                    throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                 }
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex);
+                ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, owner);
             }
         }
     }

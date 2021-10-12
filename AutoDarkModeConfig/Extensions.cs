@@ -35,6 +35,7 @@ namespace AutoDarkModeConfig
 
     public static class Extensions
     {
+        public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
         public const string UpdaterDirName = "Updater";
         public static readonly string ExecutionPath = GetExecutionPath();
         public static readonly string ExecutionDir = GetExecutionDir();
@@ -150,7 +151,7 @@ namespace AutoDarkModeConfig
         private static string GetExecutionPathUpdater()
         {
             var assemblyLocation = AppContext.BaseDirectory;
-            var executableName = "AutoDarkModeUpdater.exe";
+            var executableName = UpdaterExecutableName;
             var executablePath = Path.GetDirectoryName(assemblyLocation);
             return Path.Combine(executablePath, UpdaterDirName, executableName);
         }

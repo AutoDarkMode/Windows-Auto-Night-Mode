@@ -510,21 +510,36 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
+        private async void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
         {
+            bool offerDowngrade = false;
             if ((sender as RadioButton).IsChecked.Value)
             {
+                if (builder.Config.Updater.VersionQueryUrl != null)
+                {
+                    offerDowngrade = true;
+                }
                 builder.Config.Updater.VersionQueryUrl = null;
                 ButtonSearchUpdate.IsEnabled = true;
             }
             try
             {
                 builder.Save();
+                if (offerDowngrade)
+                {
+                    _ = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
+                    ApiResponse response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
+                    if (response.StatusCode == StatusCode.Downgrade)
+                    {
+                        TextBlockUpdateInfo.Text = "A downgrade is available";
+                    }
+                }               
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "RadioButtonStableUpdateChannel_Click");
             }
+
         }
 
         private void RadioButtonBetaUpdateChannel_Click(object sender, RoutedEventArgs e)
@@ -543,7 +558,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
             }
-            ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
             CheckBoxUpdateOnStart.IsChecked = true;
         }
 
@@ -636,6 +650,8 @@ namespace AutoDarkModeApp.Pages
                 SetAutostartDetailsVisibility(false);
                 try
                 {
+                    builder.Config.Autostart.Validate = true;
+                    builder.Save();
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
                     await GetAutostartInfo(true, toggleVisibility: false);
                     if (result.StatusCode != StatusCode.Ok)
@@ -665,6 +681,8 @@ namespace AutoDarkModeApp.Pages
                 SetAutostartDetailsVisibility(false);
                 try
                 {
+                    builder.Config.Autostart.Validate = false;
+                    builder.Save();
                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
                     await GetAutostartInfo(true, toggleVisibility: false);
                     (sender as ModernWpf.Controls.ToggleSwitch).IsOn = false;

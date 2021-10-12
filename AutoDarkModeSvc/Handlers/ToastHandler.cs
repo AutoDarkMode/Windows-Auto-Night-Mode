@@ -17,8 +17,8 @@ namespace AutoDarkModeSvc.Handlers
             {
                 string configPath = AdmConfigBuilder.Instance().ConfigDir;
                 new ToastContentBuilder()
-                    .AddText($"Update failed")
-                    .AddText($"An error occurred while updating.")
+                    .AddText($"Patching failed")
+                    .AddText($"An error occurred while patching")
                     .AddText($"Please see service.log and updater.log for more infos")
                      .AddButton(new ToastButton()
                      .SetContent("Open log directory")
@@ -32,8 +32,9 @@ namespace AutoDarkModeSvc.Handlers
         }
 
 
-        public static void InvokeUpdateInProgressToast()
+        public static void InvokeUpdateInProgressToast(string version, bool downgrade = false)
         {
+            string typeVerb = downgrade ? "Downgrading" : "Updating";
             Program.ActionQueue.Add(() =>
             {
                 // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later;
@@ -41,11 +42,11 @@ namespace AutoDarkModeSvc.Handlers
                 string group = "downloads";
 
                 // Construct the toast content with data bound fields
-                var content = new ToastContentBuilder()
-                    .AddText("Downloading new version...")
+                ToastContent content = new ToastContentBuilder()
+                    .AddText($"{typeVerb} to {version}")
                     .AddVisualChild(new AdaptiveProgressBar()
                     {
-                        Title = "Update in progress",
+                        Title = "Download in progress",
                         Value = new BindableProgressBarValue("progressValue"),
                         ValueStringOverride = new BindableString("progressValueString"),
                         Status = new BindableString("progressStatus")
@@ -53,7 +54,7 @@ namespace AutoDarkModeSvc.Handlers
                     .GetToastContent();
 
                 // Generate the toast notification
-                var toast = new ToastNotification(content.GetXml());
+                ToastNotification toast = new(content.GetXml());
 
                 // Assign the tag and group
                 toast.Tag = tag;
@@ -63,7 +64,7 @@ namespace AutoDarkModeSvc.Handlers
                 // Values must be of type string
                 toast.Data = new NotificationData();
                 toast.Data.Values["progressValue"] = "0.0";
-                toast.Data.Values["progressValueString"] = "";
+                toast.Data.Values["progressValueString"] = "0 MB";
                 toast.Data.Values["progressStatus"] = "Downloading...";
 
                 // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
@@ -93,12 +94,15 @@ namespace AutoDarkModeSvc.Handlers
             ToastNotificationManagerCompat.CreateToastNotifier().Update(data, tag, group);
         }
 
-        public static void InvokeUpdateToast(bool canUseUpdater = true)
+        public static void InvokeUpdateToast(bool canUseUpdater = true, bool downgrade = false)
         {
             if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
             {
                 return;
             }
+
+            string updateString = downgrade ? "Downgrade" : "Update";
+            string updateAction = downgrade ? "downgrade" : "update";
 
             Program.ActionQueue.Add(() =>
             {
@@ -106,12 +110,12 @@ namespace AutoDarkModeSvc.Handlers
                 if (canUseUpdater)
                 {
                     new ToastContentBuilder()
-                   .AddText($"Update {UpdateHandler.UpstreamVersion.Tag} available")
+                   .AddText($"{updateString} {UpdateHandler.UpstreamVersion.Tag} available")
                    .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
                    .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
                    .AddButton(new ToastButton()
-                   .SetContent("Update")
-                   .AddArgument("action", "update"))
+                   .SetContent(updateString)
+                   .AddArgument("action", updateAction))
                    .SetBackgroundActivation()
                    .AddButton(new ToastButton()
                    .SetContent("Postpone")
@@ -127,7 +131,7 @@ namespace AutoDarkModeSvc.Handlers
                 else
                 {
                     new ToastContentBuilder()
-                   .AddText($"Update {UpdateHandler.UpstreamVersion.Tag} available")
+                   .AddText($"{updateString} {UpdateHandler.UpstreamVersion.Tag} available")
                    .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
                    .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
                    .AddButton(new ToastButton()
@@ -146,8 +150,8 @@ namespace AutoDarkModeSvc.Handlers
         public static void RemoveUpdaterToast()
         {
             //Program.ActionQueue.Add(() => ToastNotificationManagerCompat.History.Remove("adm_update_in_progress"));
-            //ToastNotificationManagerCompat.History.Remove("adm_update_in_progress");
-            ToastNotificationManagerCompat.History.Clear();
+            ToastNotificationManagerCompat.History.Remove("adm_update_in_progress", "downloads");
+            //ToastNotificationManagerCompat.History.Clear();
             //Program.ActionQueue.Add(() => ToastNotificationManagerCompat.History.Clear());
         }
 
@@ -172,6 +176,11 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Info("updating app, caller toast");
                         Task.Run(() => UpdateHandler.Update(overrideSilent: true)).Wait();
+                    }
+                    else if (argument[0] == "action" && argument[1] == "downgrade")
+                    {
+                        Logger.Info("downgrading app, caller toast");
+                        Task.Run(() => _ = UpdateHandler.Downgrade()).Wait();
                     }
                     else if (argument[0] == "action" && argument[1] == "postpone")
                     {

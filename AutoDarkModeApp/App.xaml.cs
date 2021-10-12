@@ -1,6 +1,5 @@
 ﻿using AutoDarkModeComms;
 using AutoDarkModeConfig;
-using NetMQ;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,9 +9,11 @@ using System.Threading;
 using AutoDarkModeSvc.Communication;
 using System.Threading.Tasks;
 using AdmProperties = AutoDarkModeApp.Properties;
-using System.Management;
 using Microsoft.Win32;
 using AutoDarkModeApp.Handlers;
+using System.Windows.Shell;
+using System.Globalization;
+using AutoDarkModeApp.Properties;
 
 namespace AutoDarkModeApp
 {
@@ -55,7 +56,6 @@ namespace AutoDarkModeApp
                     var buildString = registryKey.GetValue("CurrentBuild").ToString();
                     int.TryParse(buildString, out buildNumber);
                 }
-
             }
             catch { }
 
@@ -73,6 +73,11 @@ namespace AutoDarkModeApp
             {
                 Owner = null
             };
+            if (!Settings.Default.FirstRun && (Settings.Default.Left != 0 || Settings.Default.Top != 0))
+            {
+                msg.Left = Settings.Default.Left;
+                msg.Top = Settings.Default.Top;
+            }
             if (serviceStartIssued)
             {
                 msg.Show();
@@ -84,10 +89,39 @@ namespace AutoDarkModeApp
                 msg.Close();
                 Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             }
+
+
+            //only run at first startup
+            if (Settings.Default.FirstRun)
+            {
+                //enable autostart
+                AutostartHandler.EnableAutoStart(null);
+
+                //check if system uses 12 hour clock
+                SystemTimeFormat();
+
+                //create jump list entries
+                AddJumpList();
+
+                //finished first startup code
+                Settings.Default.FirstRun = false;
+            }
+            else
+            {
+                // validate autostart always if firstrun has completed
+                AutostartHandler.EnsureAutostart(null);
+            }
+
+            //run if user changed language in previous session
+            if (Settings.Default.LanguageChanged)
+            {
+                AddJumpList();
+                Settings.Default.LanguageChanged = false;
+            }
+
+
             if (mainWin != null)
             {
-                //ensure auto start is valid
-                AutostartHandler.EnsureAutostart();
                 mainWin.Show();
             }
             else
@@ -102,11 +136,14 @@ namespace AutoDarkModeApp
             if (heartBeatOK == StatusCode.Timeout)
             {
                 string error = AdmProperties.Resources.StartupServiceUnresponsive;
-                MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                Dispatcher.Invoke(() =>
                 {
-                };
-                msgErr.ShowDialog();
-                return;
+                    MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                    {
+                    };
+                    _ = msgErr.ShowDialog();
+                });
+                Environment.Exit(-2);
             }
         }
 
@@ -129,5 +166,58 @@ namespace AutoDarkModeApp
             }
             return false;
         }
+
+        private static void SystemTimeFormat()
+        {
+            try
+            {
+                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
+                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+                {
+                    AdmProperties.Settings.Default.AlterTime = true;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        //jump list
+        private static void AddJumpList()
+        {
+            JumpTask darkJumpTask = new()
+            {
+                //Dark theme
+                Title = AdmProperties.Resources.lblDarkTheme,
+                Arguments = Command.Dark,
+                CustomCategory = AdmProperties.Resources.lblSwitchTheme
+            };
+            JumpTask lightJumpTask = new()
+            {
+                //Light theme
+                Title = AdmProperties.Resources.lblLightTheme,
+                Arguments = Command.Light,
+                CustomCategory = AdmProperties.Resources.lblSwitchTheme
+            };
+            JumpTask resetJumpTask = new()
+            {
+                //Reset
+                Title = AdmProperties.Resources.lblReset,
+                Arguments = Command.NoForce,
+                CustomCategory = AdmProperties.Resources.lblSwitchTheme
+            };
+
+            JumpList jumpList = new();
+            jumpList.JumpItems.Add(darkJumpTask);
+            jumpList.JumpItems.Add(lightJumpTask);
+            jumpList.JumpItems.Add(resetJumpTask);
+            jumpList.ShowFrequentCategory = false;
+            jumpList.ShowRecentCategory = false;
+
+            JumpList.SetJumpList(Current, jumpList);
+        }
+
     }
 }
