@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("socket bound to port: {0}", Port);
                     }
 
-                    NetMQPoller Poller = new() { ServerSocket };
+                    Poller = new NetMQPoller() { ServerSocket };
                     ServerSocket.ReceiveReady += ReceiveEvent;
                     try
                     {
