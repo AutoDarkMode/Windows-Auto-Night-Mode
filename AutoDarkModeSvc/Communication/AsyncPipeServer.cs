@@ -93,7 +93,6 @@ namespace AutoDarkModeSvc.Communication
                 {
                     sw.Write(response);
                 }
-                Logger.Debug("awaiting new connection");
             }
             catch (TaskCanceledException)
             {

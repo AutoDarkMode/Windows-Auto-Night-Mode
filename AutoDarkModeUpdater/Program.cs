@@ -18,38 +18,78 @@ namespace AutoDarkModeUpdater
         private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
-        private static readonly IMessageClient client = new ZeroMQClient(Address.DefaultPort);
+        private static IMessageClient Client { get; } = new PipeClient();
         private static bool restoreShell;
         private static bool restoreApp;
+        private static FileVersionInfo currentVersion;
+        private static FileVersionInfo patchedVersion;
 
         static void Main(string[] args)
         {
-            string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
-            // Targets where to log to: File and Console
-            NLog.Targets.FileTarget logfile = new("logfile")
-            {
-                FileName = Path.Combine(configDir, "updater.log"),
-                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
-                "${message} ${exception:format=ShortType,Message,Method:separator= > }"
-            };
-            NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
-            {
-                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
-                "${message} ${exception:format=ShortType,Message,Method:separator= > }"
-            };
-
-            NLog.Config.LoggingConfiguration logConfig = new();
-            logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
-            logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
-            LogManager.Configuration = logConfig;
-
+            LoggerSetup();
             Logger.Info($"Auto Dark Mode Updater {Version.Major}.{Version.Minor}.{Version.Build}");
 
+            ShutdownService();
+
+            if (args.Length > 2)
+            {
+                if (args[0].Contains("--notify"))
+                {
+                    restoreShell = args[1].Equals(true.ToString(), StringComparison.Ordinal);
+                    restoreApp = args[2].Equals(true.ToString(), StringComparison.Ordinal);
+                }
+            }
+
+            try
+            {
+                currentVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
+                if (currentVersion != null)
+                {
+                    Logger.Info($"currently installed version: {currentVersion.FileVersion}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not read installed version:");
+            }
+
+            MoveToTemp();
+            CopyNewFiles();
+            Cleanup();
+
+            try
+            {
+                patchedVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not read installed version:");
+                
+            }
+            if (patchedVersion != null)
+            {
+                Logger.Info($"patch complete, installed version: {patchedVersion.FileVersion}");
+            }
+            else
+            {
+                Logger.Info("patch complete");
+            }
+
+            UpdateInnoInstallerString();
+            Logger.Info("starting service");
+            if (restoreShell) Logger.Info("relaunching shell");
+            if (restoreApp) Logger.Info("relaunching app");
+            Relaunch(restoreShell, restoreApp, false);
+        }
+
+
+        private static void ShutdownService()
+        {
             bool serviceClosed = false;
             try
             {
                 Logger.Info("shutting down service");
-                string result = client.SendMessageAndGetReply(Command.Shutdown, 5);
+                string result = Client.SendMessageAndGetReply(Command.Shutdown, 5);
                 ApiResponse response = ApiResponse.FromString(result);
                 if (response.StatusCode == StatusCode.Timeout)
                 {
@@ -68,7 +108,7 @@ namespace AutoDarkModeUpdater
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        string result = client.SendMessageAndGetReply(Command.Alive, 1);
+                        string result = Client.SendMessageAndGetReply(Command.Alive, 1);
                         ApiResponse response = ApiResponse.FromString(result);
                         if (response.StatusCode != StatusCode.Timeout)
                         {
@@ -117,38 +157,6 @@ namespace AutoDarkModeUpdater
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-2);
             }
-
-            if (args.Length > 2)
-            {
-                if (args[0].Contains("--notify"))
-                {
-                    restoreShell = args[1].Equals(true.ToString(), StringComparison.Ordinal);
-                    restoreApp = args[2].Equals(true.ToString(), StringComparison.Ordinal);
-                }
-            }
-
-            MoveToTemp();
-            CopyNewFiles();
-            UpdateInnoInstallerString();
-            Cleanup();
-
-            try
-            {
-                FileVersionInfo newVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
-                if (newVersion != null)
-                {
-                    Logger.Info($"patch complete, installed version: {newVersion.FileVersion}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn(ex, "could not read installed version:");
-                Logger.Info("patch complete");
-            }
-            Logger.Info("starting service");
-            if (restoreShell) Logger.Info("relaunching shell");
-            if (restoreApp) Logger.Info("relaunching app");
-            Relaunch(restoreShell, restoreApp, false);
         }
 
         private static void MoveToTemp()
@@ -163,21 +171,6 @@ namespace AutoDarkModeUpdater
                 Logger.Error($"patching aborted, wrong directory / service executable not found {Extensions.ExecutionPathSvc}");
                 Relaunch(restoreShell, restoreApp, true);
                 Environment.Exit(-1);
-            }
-            else
-            {
-                try
-                {
-                    FileVersionInfo currentVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
-                    if (currentVersion != null)
-                    {
-                        Logger.Info($"currently installed version: {currentVersion.FileVersion}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "could not read installed version:");
-                }
             }
 
             Logger.Info("backing up old files");
@@ -264,8 +257,7 @@ namespace AutoDarkModeUpdater
                 }
                 else
                 {
-                    FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe"));
-                    innoInstallerKey.SetValue("DisplayVersion", versionInfo.FileVersion);
+                    innoInstallerKey.SetValue("DisplayVersion", patchedVersion.FileVersion);
                 }
             }
             catch (Exception ex)
@@ -321,7 +313,7 @@ namespace AutoDarkModeUpdater
 
                 if (failed)
                 {
-                    if (client.SendMessageWithRetries(Command.UpdateFailed, retries: 5) == StatusCode.Timeout)
+                    if (Client.SendMessageWithRetries(Command.UpdateFailed, retries: 5) == StatusCode.Timeout)
                     {
                         Logger.Warn("could not send failed update message due to service not starting in time");
                     }
@@ -402,6 +394,28 @@ namespace AutoDarkModeUpdater
                 return true;
             }
             return false;
+        }
+
+        private static void LoggerSetup()
+        {
+            string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+            // Targets where to log to: File and Console
+            NLog.Targets.FileTarget logfile = new("logfile")
+            {
+                FileName = Path.Combine(configDir, "updater.log"),
+                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
+                "${message} ${exception:format=ShortType,Message,Method:separator= > }"
+            };
+            NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
+            {
+                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
+                "${message} ${exception:format=ShortType,Message,Method:separator= > }"
+            };
+
+            NLog.Config.LoggingConfiguration logConfig = new();
+            logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
+            logConfig.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+            LogManager.Configuration = logConfig;
         }
     }
 }
