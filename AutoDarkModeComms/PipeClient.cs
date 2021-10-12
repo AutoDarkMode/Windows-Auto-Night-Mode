@@ -24,12 +24,13 @@ namespace AutoDarkModeComms
                     sw.Write(message);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new ApiResponse()
                 {
                     StatusCode = StatusCode.Timeout,
-                    Message = "The service did not acknowledge the req in time"
+                    Message = "The service did not acknowledge the req in time",
+                    Details = $"{ex.GetType()} {ex.Message}"
                 }.ToString();
             }
 
@@ -57,12 +58,13 @@ namespace AutoDarkModeComms
                     }.ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new ApiResponse()
                 {
                     StatusCode = StatusCode.Timeout,
-                    Message = "The service did not respond in time"
+                    Message = "The service did not respond in time",
+                    Details = $"{ex.GetType()} {ex.Message}"
                 }.ToString();
             }
         }

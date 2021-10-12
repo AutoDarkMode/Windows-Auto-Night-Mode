@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.Communication
             string msg;
             try
             {
-                NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.In, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+                NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.In, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
                 await requestPipe.WaitForConnectionAsync(stoptokenSource.Token);
 
                 if (requestPipe.IsConnected && requestPipe.CanRead)
@@ -80,7 +80,7 @@ namespace AutoDarkModeSvc.Communication
             {
                 CancellationTokenSource timeoutTokenSource = new();
                 timeoutTokenSource.CancelAfter(5000);
-                NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse, PipeDirection.Out, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+                NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse, PipeDirection.Out, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
                 await responsePipe.WaitForConnectionAsync(timeoutTokenSource.Token);
                 string response = "";
                 MessageParser.Parse(new List<string>() { msg }, (message) =>
