@@ -12,6 +12,7 @@ using System.Windows.Media;
 using ModernWpf.Media.Animation;
 using AutoDarkModeConfig;
 using AutoDarkModeComms;
+using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp
 {
@@ -28,29 +29,6 @@ namespace AutoDarkModeApp
             LanguageHelper();
 
             InitializeComponent();
-            
-            //only run at first startup
-            if (Settings.Default.FirstRun)
-            {
-                //check if system uses 12 hour clock
-                SystemTimeFormat();
-
-                //create jump list entries
-                AddJumpList();
-
-                //ensure auto start gets set if adm was reinstalled
-                EnsureAutostart();
-
-                //finished first startup code
-                Settings.Default.FirstRun = false; 
-            }
-
-            //run if user changed language in previous session
-            if (Settings.Default.LanguageChanged)
-            {
-                AddJumpList();
-                Settings.Default.LanguageChanged = false;
-            }
         }
 
         private void Window_OnSourceInitialized(object sender, EventArgs e)
@@ -109,24 +87,6 @@ namespace AutoDarkModeApp
             catch
             {
 
-            }
-        }
-
-        private static void EnsureAutostart()
-        {
-            try
-            {
-                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-                builder.Load();
-                if (builder.Config.AutoThemeSwitchingEnabled)
-                {
-                    ICommandClient client = new ZeroMQClient(Address.DefaultPort);
-                    _ = client.SendMessageAndGetReply(Command.AddAutostart);
-                }
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex);
             }
         }
 

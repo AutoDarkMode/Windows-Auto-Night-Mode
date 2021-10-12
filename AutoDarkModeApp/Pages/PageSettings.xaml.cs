@@ -13,6 +13,7 @@ using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -27,6 +28,8 @@ namespace AutoDarkModeApp.Pages
         private readonly bool init = true;
         readonly Updater updater = new();
         private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
+        private delegate void DispatcherDelegate();
+        private int fakeResponsiveUIDelay = 800;
 
         public PageSettings()
         {
@@ -63,10 +66,6 @@ namespace AutoDarkModeApp.Pages
 
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                CheckBoxLogonTask.IsEnabled = false;
-            }
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
 
@@ -109,7 +108,7 @@ namespace AutoDarkModeApp.Pages
             CheckBoxAutoInstall.IsChecked = builder.Config.Updater.AutoInstall;
             CheckBoxUpdateSilent.IsChecked = builder.Config.Updater.Silent;
             if (!CheckBoxAutoInstall.IsChecked.Value) CheckBoxUpdateSilent.IsEnabled = false;
-            if(String.IsNullOrEmpty(builder.Config.Updater.VersionQueryUrl))
+            if (String.IsNullOrEmpty(builder.Config.Updater.VersionQueryUrl))
             {
                 RadioButtonStableUpdateChannel.IsChecked = true;
             }
@@ -123,6 +122,82 @@ namespace AutoDarkModeApp.Pages
                 RadioButtonStableUpdateChannel.IsEnabled = false;
             }
             CheckBoxUpdateOnStart.IsChecked = builder.Config.Updater.CheckOnStart;
+
+            //autostart
+            _ = GetAutostartInfo();
+        }
+
+        private void SetAutostartDetailsVisibility(bool visible)
+        {
+            if (visible)
+            {
+                ProgressAutostartDetails.IsActive = false;
+                ProgressAutostartDetails.Visibility = Visibility.Collapsed;
+                GridAutostartDetails.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ProgressAutostartDetails.IsActive = true;
+                ProgressAutostartDetails.Visibility = Visibility.Visible;
+                GridAutostartDetails.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async Task GetAutostartInfo(bool noToggle = false, bool toggleVisibility = true)
+        {
+            if (toggleVisibility) SetAutostartDetailsVisibility(false);
+            try
+            {
+                AutostartDisabledMessage.Visibility = Visibility.Collapsed;
+                ApiResponse autostartResponse = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GetAutostartState));
+                if (autostartResponse.StatusCode == StatusCode.Err)
+                {
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(autostartResponse, new AutoStartStatusGetException(), Window.GetWindow(this));
+                }
+                else if (autostartResponse.StatusCode == StatusCode.AutostartRegistryEntry)
+                {
+                    if (autostartResponse.Message == "Enabled")
+                    {
+                        CheckBoxLogonTask.IsEnabled = true;
+                        if (!noToggle) ToggleAutostart.IsOn = true;
+                        TextBlockAutostartMode.Text = "Registry";
+                        TextBlockAutostartPath.Text = autostartResponse.Details;
+                    }
+                    else
+                    {
+                        AutostartDisabledMessage.Visibility = Visibility.Visible;
+                        StackPanelAutostart.IsEnabled = false;
+                    }
+
+                }
+                else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
+                {
+                    CheckBoxLogonTask.IsEnabled = true;
+                    if (!noToggle) ToggleAutostart.IsOn = true;
+                    CheckBoxLogonTask.IsEnabled = true;
+                    TextBlockAutostartMode.Text = "Task";
+                    TextBlockAutostartPath.Text = autostartResponse.Details;
+                }
+                else if (autostartResponse.StatusCode == StatusCode.Disabled)
+                {
+                    if (!noToggle) ToggleAutostart.IsOn = false;
+                    CheckBoxLogonTask.IsEnabled = false;
+                    TextBlockAutostartMode.Text = "Disabled";
+                    TextBlockAutostartPath.Text = "None";
+                }
+                else
+                {
+                    CheckBoxLogonTask.IsEnabled = false;
+                }
+            }
+            catch (Exception)
+            {
+                CheckBoxLogonTask.IsEnabled = false;
+                StackPanelAutostart.IsEnabled = false;
+                TextBlockAutostartMode.Text = "Not found";
+                TextBlockAutostartPath.Text = "None";
+            }
+            if (toggleVisibility) SetAutostartDetailsVisibility(true);
         }
 
         private void ComboBoxLanguageSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -190,7 +265,7 @@ namespace AutoDarkModeApp.Pages
 
         private async void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckBoxColourFilter.IsChecked.Value)
+            if (CheckBoxColourFilter.IsChecked.Value)
             {
                 builder.Config.ColorFilterSwitch.Enabled = true;
             }
@@ -248,7 +323,7 @@ namespace AutoDarkModeApp.Pages
             if (CheckBoxEnergySaverMitigation.IsChecked.Value)
             {
                 builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = true;
-                StackPanelBatterySlider.Visibility =  Visibility.Visible;
+                StackPanelBatterySlider.Visibility = Visibility.Visible;
             }
             else
             {
@@ -267,6 +342,7 @@ namespace AutoDarkModeApp.Pages
 
         private async void CheckBoxLogonTask_Click(object sender, RoutedEventArgs e)
         {
+            SetAutostartDetailsVisibility(false);
             ApiResponse result = new() { StatusCode = StatusCode.Err };
             try
             {
@@ -275,7 +351,8 @@ namespace AutoDarkModeApp.Pages
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                     result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    _ = GetAutostartInfo(toggleVisibility: false);
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         CheckBoxLogonTask.IsChecked = !CheckBoxLogonTask.IsChecked;
@@ -289,11 +366,13 @@ namespace AutoDarkModeApp.Pages
             {
                 ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
             }
+            await Task.Delay(fakeResponsiveUIDelay);
+            SetAutostartDetailsVisibility(true);
         }
 
         private void CheckBoxHideTrayIcon_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as CheckBox).IsChecked.Value)
+            if ((sender as CheckBox).IsChecked.Value)
             {
                 MsgBox confirm = new("Disabling the icon isn't recommended. Do you really want to continue?", "Hide Tray Icon", "info", "yesno")
                 {
@@ -364,7 +443,7 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                switch((sender as ComboBox).SelectedIndex)
+                switch ((sender as ComboBox).SelectedIndex)
                 {
                     case 0:
                         builder.Config.Updater.DaysBetweenUpdateCheck = 3;
@@ -389,7 +468,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CheckBoxAutoInstall_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as CheckBox).IsChecked.Value)
+            if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Updater.AutoInstall = true;
                 CheckBoxUpdateSilent.IsEnabled = true;
@@ -413,7 +492,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CheckBoxUpdateSilent_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as CheckBox).IsChecked.Value)
+            if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Updater.Silent = true;
             }
@@ -431,26 +510,41 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
+        private async void RadioButtonStableUpdateChannel_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as RadioButton).IsChecked.Value)
+            bool offerDowngrade = false;
+            if ((sender as RadioButton).IsChecked.Value)
             {
+                if (builder.Config.Updater.VersionQueryUrl != null)
+                {
+                    offerDowngrade = true;
+                }
                 builder.Config.Updater.VersionQueryUrl = null;
                 ButtonSearchUpdate.IsEnabled = true;
             }
             try
             {
                 builder.Save();
+                if (offerDowngrade)
+                {
+                    _ = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
+                    ApiResponse response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
+                    if (response.StatusCode == StatusCode.Downgrade)
+                    {
+                        TextBlockUpdateInfo.Text = "A downgrade is available";
+                    }
+                }               
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "RadioButtonStableUpdateChannel_Click");
             }
+
         }
 
         private void RadioButtonBetaUpdateChannel_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as RadioButton).IsChecked.Value)
+            if ((sender as RadioButton).IsChecked.Value)
             {
                 builder.Config.Updater.VersionQueryUrl = BetaVersionQueryURL;
                 builder.Config.Updater.CheckOnStart = true;
@@ -464,7 +558,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "RadioButtonBetaUpdateChannel_Click");
             }
-            ComboBoxDaysBetweenUpdateCheck.IsEnabled = false;
             CheckBoxUpdateOnStart.IsChecked = true;
         }
 
@@ -485,7 +578,7 @@ namespace AutoDarkModeApp.Pages
 
         private void HyperlinkOpenConfigFile_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter |  e.Key == Key.Space)
+            if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 HyperlinkOpenConfigFile_PreviewMouseDown(this, null);
             }
@@ -543,6 +636,95 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxUpdateAtStart_Click");
             }
+        }
+
+        private async void ToggleAutostart_Toggled(object sender, RoutedEventArgs e)
+        {
+            ApiResponse result = new()
+            {
+                StatusCode = StatusCode.Err,
+                Message = "error setting autostart entry"
+            };
+            if (!(sender as ModernWpf.Controls.ToggleSwitch).IsOn)
+            {
+                SetAutostartDetailsVisibility(false);
+                try
+                {
+                    builder.Config.Autostart.Validate = true;
+                    builder.Save();
+                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    await GetAutostartInfo(true, toggleVisibility: false);
+                    if (result.StatusCode != StatusCode.Ok)
+                    {
+                        throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ToggleAutostart.IsOn = false;
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
+                }
+            }
+            else
+            {
+                MsgBox confirm = new("Auto Dark Mode will no longer start with Windows and switch your theme when you log in." +
+                                     "\nDo you really want to do this? ", "Disable Autostart", "info", "yesno")
+                {
+                    Owner = Window.GetWindow(this)
+                };
+                bool dialogResult = confirm.ShowDialog() ?? false;
+                if (!dialogResult)
+                {
+                    (sender as ModernWpf.Controls.ToggleSwitch).IsOn = true;
+                    return;
+                }
+                SetAutostartDetailsVisibility(false);
+                try
+                {
+                    builder.Config.Autostart.Validate = false;
+                    builder.Save();
+                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
+                    await GetAutostartInfo(true, toggleVisibility: false);
+                    (sender as ModernWpf.Controls.ToggleSwitch).IsOn = false;
+                    if (result.StatusCode != StatusCode.Ok)
+                    {
+                        throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, Window.GetWindow(this));
+                    ToggleAutostart.IsOn = true;
+                }
+            }
+            await Task.Delay(fakeResponsiveUIDelay);
+            SetAutostartDetailsVisibility(true);
+        }
+
+        private void ButtonAutostartValidate_Click(object sender, RoutedEventArgs e)
+        {
+            _ = Dispatcher.BeginInvoke(new DispatcherDelegate(ValidateAutostart));
+        }
+
+        private async void ValidateAutostart()
+        {
+            SetAutostartDetailsVisibility(false);
+            ApiResponse response = new();
+            try
+            {
+                response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.ValidateAutostart, 2));
+                if (response.StatusCode == StatusCode.Err)
+                {
+                    throw new AddAutoStartException();
+                }
+                await GetAutostartInfo(toggleVisibility: false);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessageFromApi(response, ex, Window.GetWindow(this));
+            }
+            await Task.Delay(fakeResponsiveUIDelay);
+            SetAutostartDetailsVisibility(true);
         }
     }
 }

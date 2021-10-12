@@ -103,15 +103,6 @@ namespace AutoDarkModeSvc.Handlers
             {
                 using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
-                string admKey = (string)registryKey.GetValue("AutoDarkMode");
-                if (admKey == null)
-                {
-                    Logger.Warn("auto start entry not set");
-                }
-                else
-                {
-                    Logger.Info($"key: AutoDarkMode, value: {admKey}");
-                }
                 return true;
             }
             catch (Exception ex)
@@ -122,8 +113,46 @@ namespace AutoDarkModeSvc.Handlers
 
         }
 
+        public static string GetAutostartPath()
+        {
+            try
+            {
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                string admKey = (string)registryKey.GetValue("AutoDarkMode");
+                return admKey;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not retrieve autostart entry:");
+                return null;
+            }
+        }
+
+        public static bool IsAutostartApproved()
+        {
+            try
+            {
+                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run", true);
+                byte[] admKey = (byte[])registryKey.GetValue("AutoDarkMode");
+                if (admKey == null)
+                {
+                    return true;
+                }
+                if (admKey[0] == 2 || admKey[0] == 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not retrieve autostart startup approved entry:");
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
-        /// Removes the application from Windows autostart
+        /// Removes the application from Windows autostart. Exceptions handled
         /// </summary>
         public static bool RemoveAutoStart()
         {

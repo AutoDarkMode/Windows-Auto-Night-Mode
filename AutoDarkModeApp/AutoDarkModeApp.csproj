@@ -103,7 +103,7 @@
     <Resource Include="Resources\Settings_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentWPF" Version="0.10.0" />
+    <PackageReference Include="FluentWPF" Version="0.10.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="ModernWpfUI" Version="0.9.4" />
     <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.4" />

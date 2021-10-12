@@ -284,6 +284,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override void EnableHook()
         {
             WallpaperHandler.DetectMonitors();
+            currentWallpaperPosition = WallpaperHandler.GetPosition();
             base.EnableHook();
         }
 

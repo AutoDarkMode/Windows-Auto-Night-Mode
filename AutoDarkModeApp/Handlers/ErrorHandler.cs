@@ -34,6 +34,22 @@ namespace AutoDarkModeApp.Handlers
         }
     }
 
+
+    public class AutoStartStatusGetException : Exception
+    {
+        public override string Message => "Auto start info could not be retrievbed.";
+
+        public AutoStartStatusGetException()
+        {
+            this.Source = "AutoStartException";
+        }
+
+        public AutoStartStatusGetException(string message, string source) : base(message)
+        {
+            this.Source = source;
+        }
+    }
+
     public class RemoveAutoStartException : Exception
     {
         public override string Message => "Auto start task could not been removed.";

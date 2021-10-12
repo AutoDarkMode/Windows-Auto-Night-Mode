@@ -12,6 +12,7 @@ using System.Windows.Media;
 using ModernWpf.Media.Animation;
 using AutoDarkModeConfig;
 using AutoDarkModeComms;
+using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp
 {
@@ -28,29 +29,6 @@ namespace AutoDarkModeApp
             LanguageHelper();
 
             InitializeComponent();
-            
-            //only run at first startup
-            if (Settings.Default.FirstRun)
-            {
-                //check if system uses 12 hour clock
-                SystemTimeFormat();
-
-                //create jump list entries
-                AddJumpList();
-
-                //ensure auto start gets set if adm was reinstalled
-                EnsureAutostart();
-
-                //finished first startup code
-                Settings.Default.FirstRun = false; 
-            }
-
-            //run if user changed language in previous session
-            if (Settings.Default.LanguageChanged)
-            {
-                AddJumpList();
-                Settings.Default.LanguageChanged = false;
-            }
         }
 
         private void Window_OnSourceInitialized(object sender, EventArgs e)
@@ -94,76 +72,6 @@ namespace AutoDarkModeApp
             CultureInfo.CurrentCulture = langCode;
             CultureInfo.DefaultThreadCurrentUICulture = langCode;
             CultureInfo.DefaultThreadCurrentCulture = langCode;
-        }
-
-        private static void SystemTimeFormat()
-        {
-            try
-            {
-                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
-                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
-                {
-                    Settings.Default.AlterTime = true;
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private static void EnsureAutostart()
-        {
-            try
-            {
-                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-                builder.Load();
-                if (builder.Config.AutoThemeSwitchingEnabled)
-                {
-                    ICommandClient client = new ZeroMQClient(Address.DefaultPort);
-                    _ = client.SendMessageAndGetReply(Command.AddAutostart);
-                }
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex);
-            }
-        }
-
-        //jump list
-        private static void AddJumpList()
-        {
-            JumpTask darkJumpTask = new()
-            {
-                //Dark theme
-                Title = Properties.Resources.lblDarkTheme,
-                Arguments = Command.Dark,
-                CustomCategory = Properties.Resources.lblSwitchTheme
-            };
-            JumpTask lightJumpTask = new()
-            {
-                //Light theme
-                Title = Properties.Resources.lblLightTheme,
-                Arguments = Command.Light,
-                CustomCategory = Properties.Resources.lblSwitchTheme
-            };
-            JumpTask resetJumpTask = new()
-            {
-                //Reset
-                Title = Properties.Resources.lblReset,
-                Arguments = Command.NoForce,
-                CustomCategory = Properties.Resources.lblSwitchTheme
-            };
-
-            JumpList jumpList = new();
-            jumpList.JumpItems.Add(darkJumpTask);
-            jumpList.JumpItems.Add(lightJumpTask);
-            jumpList.JumpItems.Add(resetJumpTask);
-            jumpList.ShowFrequentCategory = false;
-            jumpList.ShowRecentCategory = false;
-
-            JumpList.SetJumpList(Application.Current, jumpList);
         }
 
         //application close behaviour

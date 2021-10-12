@@ -58,10 +58,10 @@ namespace AutoDarkModeSvc.Modules
                             PostponeDark = true;
                         }
                     }
-                    // if it's already light, check if the theme switch should be delayed
+                    // if it's already light, check if the theme switch from dark to light should be delayed
                     else if (PostponeLight && DateTime.Now >= sunriseMonitor)
                     {
-                        var result = await CheckForPostpone(sunriseMonitor);
+                        var result = await CheckForPostpone();
                         if (result != ThreshHigh)
                         {
                             PostponeLight = false;
@@ -90,10 +90,10 @@ namespace AutoDarkModeSvc.Modules
                             PostponeLight = true;
                         }
                     }
-                    // if it's already dark, check if the theme switch should be delayed
+                    // if it's already dark, check if the theme switch from light to dark should be delayed
                     else if (PostponeDark && DateTime.Now >= sunsetMonitor)
                     {
-                        var result = await CheckForPostpone(sunsetMonitor);
+                        var result = await CheckForPostpone();
                         if (result != ThreshHigh)
                         {
                             PostponeDark = false;
@@ -113,9 +113,20 @@ namespace AutoDarkModeSvc.Modules
             });
         }
 
-        private async Task<string> CheckForPostpone(DateTime time)
+        private async Task<string> CheckForPostpone()
         {
-            int gpuUsage = await GetGPUUsage();
+            int gpuUsage;
+            try
+            {
+               gpuUsage = await GetGPUUsage();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not read GPU usage, re-enabling theme switch:");
+                State.PostponeSwitch = false;
+                Alerted = false;
+                return ThreshLow;
+            }
             if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
             {
                 Counter++;
