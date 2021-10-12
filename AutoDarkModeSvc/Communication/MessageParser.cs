@@ -186,6 +186,23 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
+                    #region CheckForDowngradeNotify
+                    case Command.CheckForDowngradeNotify:
+                        Logger.Info("signal received: checking for downgrade and requesting notification");
+                        ApiResponse downgradeCheckData = UpdateHandler.CheckDowngrade();
+                        updateCheckData = UpdateHandler.CanUseUpdater();
+                        if (updateCheckData.StatusCode == StatusCode.Downgrade)
+                        {
+                            ToastHandler.InvokeUpdateToast(downgrade: true);
+                        }
+                        else if (updateCheckData.StatusCode == StatusCode.UnsupportedOperation || updateCheckData.StatusCode == StatusCode.Disabled)
+                        {
+                            ToastHandler.InvokeUpdateToast(downgrade: true, canUseUpdater: false);
+                        }
+                        SendResponse(updateCheckData.ToString());
+                        break;
+                    #endregion
+
                     #region Shutdown
                     case Command.Shutdown:
                         Logger.Info("signal received, exiting");
@@ -283,7 +300,20 @@ namespace AutoDarkModeSvc.Communication
                     #region TestNotifications
                     case Command.TestNotifications:
                         Logger.Info("signal received: test notifications");
-                        ToastHandler.InvokeUpdateInProgressToast();
+                        ToastHandler.InvokeUpdateInProgressToast("TestVersion");
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
+                        break;
+                    #endregion
+
+                    #region TestNotifications2
+                    case Command.TestNotifications2:
+                        Logger.Info("signal received: test notifications");
+                        //ToastHandler.InvokeUpdateToast(true, true);
+                        //ToastHandler.RemoveUpdaterToast();
+                        //ToastHandler.UpdateProgressToast("0.5", "test");
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok

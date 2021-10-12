@@ -132,13 +132,12 @@ namespace AutoDarkModeUpdater
             UpdateInnoInstallerString();
             Cleanup();
 
-
             try
             {
-                FileVersionInfo currentVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
-                if (currentVersion != null)
+                FileVersionInfo newVersion = FileVersionInfo.GetVersionInfo(Extensions.ExecutionPathSvc);
+                if (newVersion != null)
                 {
-                    Logger.Info($"patch complete, installed version: {currentVersion.FileVersion}");
+                    Logger.Info($"patch complete, installed version: {newVersion.FileVersion}");
                 }
             }
             catch (Exception ex)
@@ -154,6 +153,7 @@ namespace AutoDarkModeUpdater
 
         private static void MoveToTemp()
         {
+            Logger.Info(Extensions.ExecutionDirUpdater);
             // collect all files that are not within the update data directory or the updater itself and the ignore list
             IEnumerable<string> oldFilePaths = Directory.EnumerateFileSystemEntries(Extensions.ExecutionDir, "*.*", SearchOption.TopDirectoryOnly)
                 .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnorePaths(f));
@@ -324,7 +324,7 @@ namespace AutoDarkModeUpdater
                 {
                     if (client.SendMessageWithRetries(Command.UpdateFailed, retries: 5) == StatusCode.Timeout)
                     {
-                        Logger.Warn("could not send failed upate message due to service not starting in time");
+                        Logger.Warn("could not send failed update message due to service not starting in time");
                     }
                 }
             }

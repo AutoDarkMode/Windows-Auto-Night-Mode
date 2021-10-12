@@ -83,11 +83,7 @@ namespace AutoDarkModeSvc.Handlers
                     return response;
                 }
 
-                using RedirectWebClient webClient = new();
-                webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                webClient.Headers.Add("Cache-Control", "no-cache");
-                string updateUrl = GetUpdateUrl();
-                string data = webClient.DownloadString(updateUrl);
+                string data = FetchVersionYaml();
                 UpstreamVersion = UpdateInfo.Deserialize(data);
                 Version newVersion = new(UpstreamVersion.Tag);
 
@@ -104,6 +100,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     response.StatusCode = StatusCode.Ok;
                     response.Message = "No updates available";
+                    response.Details = data;
                     UpstreamResponse = response;
                     return response;
                 }
@@ -133,6 +130,33 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
+        public static ApiResponse CheckDowngrade()
+        {
+            if (UpstreamResponse.StatusCode == StatusCode.Ok)
+            {
+                Version newVersion = new(UpstreamVersion.Tag);
+                if (currentVersion.CompareTo(newVersion) > 0)
+                {
+                    UpstreamResponse.StatusCode = StatusCode.Downgrade;
+                    return UpstreamResponse;
+                }
+            }
+            return new()
+            {
+                StatusCode = StatusCode.No,
+                Message = "no downgrade available"
+            };
+        }
+
+        private static string FetchVersionYaml()
+        {
+            using RedirectWebClient webClient = new();
+            webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+            webClient.Headers.Add("Cache-Control", "no-cache");
+            string updateUrl = GetUpdateUrl();
+            return webClient.DownloadString(updateUrl);
+        }
+
         /// <summary>
         /// Checks if auto update is allowed <br/>
         /// If the service has been installed in all users mode, this is always disabled <br/>
@@ -152,7 +176,7 @@ namespace AutoDarkModeSvc.Handlers
                 };
             }
 
-            if (UpstreamResponse.StatusCode == StatusCode.New)
+            if (UpstreamResponse.StatusCode == StatusCode.New || UpstreamResponse.StatusCode == StatusCode.Downgrade)
             {
                 Version newVersion = new(UpstreamVersion.Tag);
                 if (newVersion.Major != currentVersion.Major && newVersion.Major != 420)
@@ -186,6 +210,65 @@ namespace AutoDarkModeSvc.Handlers
                 }
             }
             return UpstreamResponse;
+        }
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public static bool Downgrade()
+        {
+            if (UpstreamResponse.StatusCode != StatusCode.Downgrade)
+            {
+                Logger.Info("updater called, but no cached downgrade upstream version available");
+                return false;
+            }
+
+            if (!UpstreamVersion.AutoUpdateAvailable)
+            {
+                Logger.Info("auto update blocked by upstream, please update manually");
+                return false;
+            }
+
+            Updating = true;
+            bool success = GetPatchData(false, out _, true);
+            if (!success)
+            {
+                ToastHandler.RemoveUpdaterToast();
+                ToastHandler.InvokeFailedUpdateToast();
+                Updating = false;
+                return false;
+            }
+            EndBlockingProcesses(out bool shellRestart, out bool appRestart);
+
+            string futureUpdaterDir = Path.Combine(Extensions.ExecutionDir, "UpdaterFuture");
+            string futureUpdaterExecutablePath = Path.Combine(futureUpdaterDir, Extensions.UpdaterExecutableName);
+            try
+            {
+                if (Directory.Exists(futureUpdaterDir)) Directory.Delete(futureUpdaterDir, true);
+                Directory.Move(Extensions.ExecutionDirUpdater, futureUpdaterDir);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "couldn't rename updater directory for downgarde:");
+                ToastHandler.RemoveUpdaterToast();
+                ToastHandler.InvokeFailedUpdateToast();
+                Updating = false;
+                return false;
+            }
+
+            Logger.Info("downgrade preparation complete");
+
+            if (shellRestart || appRestart)
+            {
+                List<string> arguments = new();
+                arguments.Add("--notify");
+                arguments.Add(shellRestart.ToString());
+                arguments.Add(appRestart.ToString());
+                Process.Start(futureUpdaterExecutablePath, arguments);
+            }
+            else
+            {
+                Process.Start(futureUpdaterExecutablePath);
+            }
+            return false;
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
@@ -249,10 +332,35 @@ namespace AutoDarkModeSvc.Handlers
         /// The third item is to determine whether the app needs to be restarted</returns>
         private static (bool, bool, bool) PrepareUpdate(bool overrideSilent)
         {
-            bool shellRestart = false;
-            bool appRestart = false;
-            Progress = 0;
+            bool success = GetPatchData(overrideSilent, out string unpackDirectory, false);
+            if (!success)
+            {
+                return (false, false, false);
+            }
+            EndBlockingProcesses(out bool shellRestart, out bool appRestart);
+            try
+            {
+                if (UpdateUpdater(unpackDirectory))
+                {
+                    return (true, shellRestart, appRestart);
+                }
+                else
+                {
+                    Logger.Error("updating failed, rollback successful");
+                    return (false, false, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "updater failed, rollback failed, the updater is now missing and needs to be restored on next update attempt:");
+                return (false, false, false);
+            }
+        }
 
+        private static bool GetPatchData(bool overrideSilent, out string unpackDirectory, bool downgrade)
+        {
+            Progress = 0;
+            unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
             string baseZipUrl = GetBaseUrl();
             string baseUrlHash = GetBaseUrl();
             bool useCustomUrls = false;
@@ -268,7 +376,7 @@ namespace AutoDarkModeSvc.Handlers
                 // show toast if UI components were open to inform the user that the program is being updated
                 if (!builder.Config.Updater.Silent || overrideSilent)
                 {
-                    ToastHandler.InvokeUpdateInProgressToast();
+                    ToastHandler.InvokeUpdateInProgressToast(UpstreamVersion.Tag, downgrade);
                 }
 
                 //download zip file file
@@ -291,12 +399,10 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
 
-
                 DownloadProgressChangedEventHandler callback = new DownloadProgressChangedEventHandler(DownloadProgress);
                 webClient.DownloadProgressChanged += callback;
                 Task.Run(async () => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
                 webClient.DownloadProgressChanged -= callback;
-
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -317,23 +423,30 @@ namespace AutoDarkModeSvc.Handlers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "updating failed:");
-                return (false, false, false);
+                Logger.Error(ex, "downloading patch failed:");
+                return false;
             }
 
-            string unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
             try
             {
-                // unzip download data if hash is valid and update the updater
+                // unzip download data if hash is valid
                 Directory.CreateDirectory(unpackDirectory);
                 ZipFile.ExtractToDirectory(downloadPath, unpackDirectory, true);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "updating failed while extracting update data:");
-                return (false, false, false);
+                Logger.Error(ex, "error while extracting patch:");
+                return false;
             }
 
+            Logger.Info("patch preparation complete");
+            return true;
+        }
+
+        private static void EndBlockingProcesses(out bool shellRestart, out bool appRestart)
+        {
+            shellRestart = false;
+            appRestart = false;
             Process[] pShell = Array.Empty<Process>();
             Process[] pApp = Array.Empty<Process>();
             // kill auto dark mode app and shell if they were running to avoid file move/delete issues
@@ -356,7 +469,6 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Warn(ex, "other auto dark mode components still running, skipping update");
-                return (false, false, false);
             }
             finally
             {
@@ -368,24 +480,6 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     p.Dispose();
                 }
-            }
-
-            try
-            {
-                if (UpdateUpdater(unpackDirectory))
-                {
-                    return (true, shellRestart, appRestart);
-                }
-                else
-                {
-                    Logger.Error("updating failed, rollback successful");
-                    return (false, false, false);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "updater failed, rollback failed, the updater is now missing and needs to be restored on next update attempt:");
-                return (false, false, false);
             }
         }
 

@@ -67,10 +67,20 @@ namespace AutoDarkModeSvc.Communication
             Poller = new NetMQPoller { Server };
             Server.ReceiveReady += (s, a) =>
             {
-                string msg = a.Socket.ReceiveFrameString();
-                Logger.Debug("received message: {0}", msg);
+                string msg = "";
                 try
                 {
+                    msg = a.Socket.ReceiveFrameString();
+                    Logger.Debug("received message: {0}", msg);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error while receiving message:");
+                }
+
+                try
+                {
+
                     MessageParser.Parse(new List<string>() { msg }, (message) =>
                     {
                         bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);

@@ -136,11 +136,14 @@ namespace AutoDarkModeApp
             if (heartBeatOK == StatusCode.Timeout)
             {
                 string error = AdmProperties.Resources.StartupServiceUnresponsive;
-                MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                Dispatcher.Invoke(() =>
                 {
-                };
-                _ = msgErr.ShowDialog();
-                return;
+                    MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                    {
+                    };
+                    _ = msgErr.ShowDialog();
+                });
+                Environment.Exit(-2);
             }
         }
 
