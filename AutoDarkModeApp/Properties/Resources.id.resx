@@ -682,4 +682,19 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   <data name="applyGeoButton" xml:space="preserve">
     <value>Terapkan Koordinat</value>
   </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Koordinat geografis</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Data lokasi</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Dinonaktifkan</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Jangan perlihatkan notifikasi</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Pilih saluran pembaruan</value>
+  </data>
 </root>
