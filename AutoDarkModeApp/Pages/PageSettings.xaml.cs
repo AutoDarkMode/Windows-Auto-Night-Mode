@@ -715,7 +715,7 @@ namespace AutoDarkModeApp.Pages
             ApiResponse response = new();
             try
             {
-                response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.ValidateAutostart, 2));
+                response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync($"{Command.ValidateAutostart} true", 2));
                 if (response.StatusCode == StatusCode.Err)
                 {
                     throw new AddAutoStartException();

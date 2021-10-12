@@ -81,9 +81,17 @@ namespace AutoDarkModeSvc.Communication
                     #endregion
 
                     #region ValidateAutostartAutostart
-                    case Command.ValidateAutostart:
+                    case string s when s.StartsWith(Command.ValidateAutostart):
                         Logger.Info("signal received: validate autostart entries");
-                        SendResponse(AutoStartHandler.Validate().ToString());
+                        string[] split = s.Split(" ");
+                        if (split.Length > 1)
+                        {
+                            SendResponse(AutoStartHandler.Validate(true).ToString());
+                        }
+                        else
+                        {
+                            SendResponse(AutoStartHandler.Validate(false).ToString());
+                        }
                         break;
                     #endregion
 
