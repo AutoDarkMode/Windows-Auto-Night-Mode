@@ -65,65 +65,8 @@ namespace AutoDarkModeSvc.Communication
             }
 
             Poller = new NetMQPoller { Server };
-            Server.ReceiveReady += (s, a) =>
-            {
-                string msg = "";
-                try
-                {
-                    msg = a.Socket.ReceiveFrameString();
-                    Logger.Debug("received message: {0}", msg);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "error while receiving message:");
-                }
-
-                try
-                {
-
-                    MessageParser.Parse(new List<string>() { msg }, (message) =>
-                    {
-                        bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
-                        if (!sent)
-                        {
-                            Logger.Error("could not send response: timeout");
-                        }
-                    }, Service);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"exception while processing command {msg}");
-                    try
-                    {
-                        bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
-                        {
-                            StatusCode = StatusCode.Err,
-                            Message = ex.Message
-                        }.ToString());
-                        if (!sent)
-                        {
-                            Logger.Error("could not send response: timeout");
-                        }
-                    } 
-                    catch (Exception exErr)
-                    {
-                        Logger.Error(exErr, "could not send error response:");
-                    }
-                  
-                }
-            };
-            PollTask = Task.Run(() =>
-            {
-                try
-                {
-                    Poller.Run();
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "ZMQ Poller died");
-                    Environment.Exit(-1);
-                }
-            });
+            Server.ReceiveReady += ReceiveEvent;
+            Poller.RunAsync();
             Logger.Info("started server (polling)");
         }
 
@@ -134,7 +77,6 @@ namespace AutoDarkModeSvc.Communication
         {
             Logger.Info("stopping server");
             Poller.Stop();
-            PollTask.Wait();
             try
             {
                 Poller.Dispose();
@@ -146,6 +88,61 @@ namespace AutoDarkModeSvc.Communication
             Server.Dispose();
             _portshare.Dispose();
             NetMQConfig.Cleanup();
+        }
+        
+        public void ReceiveEvent(object sender, NetMQSocketEventArgs a)
+        {
+            string msg = "";
+            try
+            {
+                bool recv = a.Socket.TryReceiveFrameString(new TimeSpan(10000000), out msg);
+                if (recv)
+                {
+                    Logger.Debug("received message: {0}", msg);
+                }
+                else
+                {
+                    Logger.Error("server receive ready called, but no message available:");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error while receiving message:");
+            }
+
+            try
+            {
+
+                MessageParser.Parse(new List<string>() { msg }, (message) =>
+                {
+                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
+                    if (!sent)
+                    {
+                        Logger.Error("could not send response: timeout");
+                    }
+                }, Service);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"exception while processing command {msg}");
+                try
+                {
+                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
+                    {
+                        StatusCode = StatusCode.Err,
+                        Message = ex.Message
+                    }.ToString());
+                    if (!sent)
+                    {
+                        Logger.Error("could not send response: timeout");
+                    }
+                }
+                catch (Exception exErr)
+                {
+                    Logger.Error(exErr, "could not send error response:");
+                }
+
+            }
         }
     }
 }
