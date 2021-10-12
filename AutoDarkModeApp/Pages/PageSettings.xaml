@@ -127,27 +127,27 @@
                 HorizontalAlignment="Left" 
                 Margin="0,5,0,0"  
                 VerticalAlignment="Top" 
-                MinWidth="200" 
+                MinWidth="250" 
                 SelectedIndex="1" 
                 SelectionChanged="ComboBoxLanguageSelection_SelectionChanged">
 
-                <ComboBoxItem Content="Czech" Name="cs"/>
-                <ComboBoxItem Content="Deutsch" Name="de"/>
-                <ComboBoxItem Content="English" Name="en"/>
-                <ComboBoxItem Content="Français" Name="fr"/>
-                <ComboBoxItem Content="Bahasa Indonesia" Name="id"/>
-                <ComboBoxItem Content="Italiano" Name="it"/>
-                <ComboBoxItem Content="Nederlands" Name="nl"/>
-                <ComboBoxItem Content="Polski" Name="pl"/>
-                <ComboBoxItem Content="Magyarul" Name="hu"/>
-                <ComboBoxItem Content="Português" Name="pt"/>
-                <ComboBoxItem Content="Русский" Name="ru"/>
-                <ComboBoxItem Content="Espanol" Name="es"/>
-                <ComboBoxItem Content="Türkçe" Name="tr"/>
-                <ComboBoxItem Content="Українська" Name="uk"/>
-                <ComboBoxItem Content="日本語" Name="ja"/>
-                <ComboBoxItem Content="简体中文（中国）" Name="zh"/>
-                <ComboBoxItem Content="繁體中文" Name="zh_tw"/>
+                <ComboBoxItem Content="Czech (Czech)" Name="cs"/>
+                <ComboBoxItem Content="Deutsch (German)" Name="de"/>
+                <ComboBoxItem Content="English (English)" Name="en"/>
+                <ComboBoxItem Content="Français (French)" Name="fr"/>
+                <ComboBoxItem Content="Bahasa Indonesia (Indonesian)" Name="id"/>
+                <ComboBoxItem Content="Italiano (Italian)" Name="it"/>
+                <ComboBoxItem Content="Nederlands (Dutch)" Name="nl"/>
+                <ComboBoxItem Content="Polski (Polish)" Name="pl"/>
+                <ComboBoxItem Content="Magyarul (Hungarian)" Name="hu"/>
+                <ComboBoxItem Content="Português (Portuguese)" Name="pt"/>
+                <ComboBoxItem Content="Русский (Russian)" Name="ru"/>
+                <ComboBoxItem Content="Espanol (Spanish)" Name="es"/>
+                <ComboBoxItem Content="Türkçe (Turkish)" Name="tr"/>
+                <ComboBoxItem Content="Українська (Ukrainian)" Name="uk"/>
+                <ComboBoxItem Content="日本語 (Japanese)" Name="ja"/>
+                <ComboBoxItem Content="简体中文 (Simplified Chinese)" Name="zh"/>
+                <ComboBoxItem Content="繁體中文 (Traditional Chinese)" Name="zh_tw"/>
             </ComboBox>
             <TextBlock 
                 Name = "Translator" 
