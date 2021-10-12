@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.IO.MemoryMappedFiles;
-using System.Net.Sockets;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -43,61 +42,40 @@ namespace AutoDarkModeSvc.Communication
         /// </summary>
         public void Start()
         {
+            if (Port.Length != 0)
+            {
+                ServerSocket = new ResponseSocket();
+                int randomPort = ServerSocket.BindRandomPort("tcp://127.0.0.1");
+                using MemoryMappedViewAccessor viewAccessor = _portshare.CreateViewAccessor();
+                byte[] bytes = BitConverter.GetBytes(randomPort);
+                try
+                {
+                    viewAccessor.WriteArray(0, bytes, 0, bytes.Length);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("could not bind socket to port: {0}", ex.Message);
+                }
+                Logger.Info("socket bound to port: {0}", randomPort);
+            }
+            else
+            {
+                ServerSocket = new ResponseSocket("tcp://127.0.0.1:" + Port);
+                Logger.Info("socket bound to port: {0}", Port);
+            }
+
+            Poller = new NetMQPoller { ServerSocket };
+            ServerSocket.ReceiveReady += ReceiveReadyEvent;
             PollTask = Task.Run(() =>
             {
-                bool retry = true;
-                while (retry)
+                try
                 {
-                    if (Port.Length != 0)
-                    {
-                        ServerSocket = new ResponseSocket();
-                        int randomPort = ServerSocket.BindRandomPort("tcp://127.0.0.1");
-                        MemoryMappedViewAccessor viewAccessor = _portshare.CreateViewAccessor();
-                        using (viewAccessor)
-                        {
-                            byte[] bytes = BitConverter.GetBytes(randomPort);
-                            try
-                            {
-                                viewAccessor.WriteArray(0, bytes, 0, bytes.Length);
-                            }
-                            catch (Exception ex)
-                            {
-                                Logger.Error(ex, "could not write bound port to memory mapped file:");
-                            }
-                        }
-                        Logger.Info("socket bound to port: {0}", randomPort);
-                    }
-                    else
-                    {
-                        ServerSocket = new ResponseSocket("tcp://127.0.0.1:" + Port);
-                        Logger.Info("socket bound to port: {0}", Port);
-                    }
-
-                    Poller = new NetMQPoller() { ServerSocket };
-                    ServerSocket.ReceiveReady += ReceiveEvent;
-                    try
-                    {
-                        Poller.Run();
-                        retry = false;
-                    }
-                    catch (SocketException ex)
-                    {
-                        Logger.Error(ex, "socket no longer available, acquiring new socket. error:");
-                        try
-                        {
-                            Poller.Remove(ServerSocket);
-                            ServerSocket.Dispose();
-                        }
-                        catch (Exception ex1)
-                        {
-                            Logger.Error(ex1, "removing and disposing socket failed:");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, "zmq poller died");
-                        Environment.Exit(-1);
-                    }
+                    Poller.Run();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "ZMQ Poller died");
+                    Environment.Exit(-1);
                 }
             });
             Logger.Info("started server (polling)");
@@ -124,20 +102,13 @@ namespace AutoDarkModeSvc.Communication
             NetMQConfig.Cleanup();
         }
 
-        public void ReceiveEvent(object sender, NetMQSocketEventArgs a)
+        public void ReceiveReadyEvent(object sender, NetMQSocketEventArgs a)
         {
             string msg = "";
             try
             {
-                bool recv = a.Socket.TryReceiveFrameString(new TimeSpan(10000000), out msg);
-                if (recv)
-                {
-                    Logger.Debug("received message: {0}", msg);
-                }
-                else
-                {
-                    Logger.Error("server receive ready called, but no message available:");
-                }
+                msg = a.Socket.ReceiveFrameString();
+                Logger.Debug("received message: {0}", msg);
             }
             catch (Exception ex)
             {
