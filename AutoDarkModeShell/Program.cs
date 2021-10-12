@@ -15,7 +15,7 @@ namespace AutoDarkModeComms
         static void Main(string[] args)
         {
             Console.WriteLine($"Auto Dark Mode Shell version {Version.Major}.{Version.Minor}");
-            ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+            IMessageClient client = new PipeClient();
             if (args.Length > 0)
             {
                 int timeoutDefault = 10;

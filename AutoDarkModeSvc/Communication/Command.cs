@@ -6,9 +6,9 @@ namespace AutoDarkModeSvc.Communication
 {
     public static class Address
     {
-        public const string DefaultPipeName = "WindowsAutoDarkMode";
-        public const string DefaultPipeResponse = "_response";
-        public const string DefaultPipeCommand = "_command";
+        public const string PipePrefix = "WindowsAutoDarkMode";
+        public const string PipeResponse = "_response";
+        public const string PipeRequest = "_request";
         public const string DefaultPort = "54345";
     }
     public static class Command

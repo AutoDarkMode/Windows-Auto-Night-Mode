@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Communication
 {
-    interface ICommandServer
+    interface IMessageServer
     {
         /// <summary>
         /// Start a command server that receives command messages

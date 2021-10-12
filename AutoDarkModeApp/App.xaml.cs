@@ -19,7 +19,6 @@ namespace AutoDarkModeApp
 {
     public partial class App : Application
     {
-        private readonly ICommandClient commandClient = new ZeroMQClient(Address.DefaultPort);
         public static Mutex Mutex { get; private set; } = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
         private bool debug = false;
 
@@ -132,7 +131,7 @@ namespace AutoDarkModeApp
 
         private void WaitForServiceStart()
         {
-            string heartBeatOK = commandClient.SendMessageWithRetries(Command.Alive, retries: 5);
+            string heartBeatOK = MessageHandler.Client.SendMessageWithRetries(Command.Alive, retries: 5);
             if (heartBeatOK == StatusCode.Timeout)
             {
                 string error = AdmProperties.Resources.StartupServiceUnresponsive;

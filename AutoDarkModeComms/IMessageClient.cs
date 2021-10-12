@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeComms
 {
-    public interface ICommandClient
+    public interface IMessageClient
     {
         /// <summary>
         /// Sends a message via the command interface,

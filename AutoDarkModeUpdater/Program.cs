@@ -18,7 +18,7 @@ namespace AutoDarkModeUpdater
         private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly string holdingDir = Path.Combine(Extensions.UpdateDataDir, "tmp");
-        private static readonly ICommandClient client = new ZeroMQClient(Address.DefaultPort);
+        private static readonly IMessageClient client = new ZeroMQClient(Address.DefaultPort);
         private static bool restoreShell;
         private static bool restoreApp;
 

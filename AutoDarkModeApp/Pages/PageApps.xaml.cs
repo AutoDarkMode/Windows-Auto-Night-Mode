@@ -17,7 +17,6 @@ namespace AutoDarkModeApp
     public partial class PageApps : Page
     {
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private bool is1903 = false;
         private readonly bool init = true;
 
@@ -149,7 +148,7 @@ namespace AutoDarkModeApp
         {
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageApps");

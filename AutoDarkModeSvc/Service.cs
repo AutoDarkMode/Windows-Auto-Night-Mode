@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private NotifyIcon NotifyIcon { get; }
         private List<ModuleTimer> Timers { get; set; }
-        private ICommandServer CommandServer { get; }
+        private IMessageServer CommandServer { get; }
         private AdmConfigMonitor ConfigMonitor { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
         public readonly ToolStripMenuItem forceDarkMenuItem = new("Force Dark Mode");
@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc
                 NotifyIcon = new NotifyIcon();
                 InitTray();
             }
-            CommandServer = new ZeroMQServer(this);
+            CommandServer = new AsyncPipeServer(this);
             //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
 

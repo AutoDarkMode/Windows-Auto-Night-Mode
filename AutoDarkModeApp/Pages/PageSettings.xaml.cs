@@ -24,7 +24,6 @@ namespace AutoDarkModeApp.Pages
     {
         readonly string curLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private readonly bool init = true;
         readonly Updater updater = new();
         private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
@@ -149,7 +148,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 AutostartDisabledMessage.Visibility = Visibility.Collapsed;
-                ApiResponse autostartResponse = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GetAutostartState));
+                ApiResponse autostartResponse = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GetAutostartState));
                 if (autostartResponse.StatusCode == StatusCode.Err)
                 {
                     ErrorMessageBoxes.ShowErrorMessageFromApi(autostartResponse, new AutoStartStatusGetException(), Window.GetWindow(this));
@@ -281,7 +280,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
             }
-            _ = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
+            _ = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch);
         }
 
         private void ShowErrorMessage(Exception ex, string location)
@@ -351,7 +350,7 @@ namespace AutoDarkModeApp.Pages
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
                     _ = GetAutostartInfo(toggleVisibility: false);
                     if (result.StatusCode != StatusCode.Ok)
                     {
@@ -527,8 +526,8 @@ namespace AutoDarkModeApp.Pages
                 builder.Save();
                 if (offerDowngrade)
                 {
-                    _ = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
-                    ApiResponse response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
+                    _ = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
+                    ApiResponse response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
                     if (response.StatusCode == StatusCode.Downgrade)
                     {
                         TextBlockUpdateInfo.Text = "A downgrade is available";
@@ -652,7 +651,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     builder.Config.Autostart.Validate = true;
                     builder.Save();
-                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
                     await GetAutostartInfo(true, toggleVisibility: false);
                     if (result.StatusCode != StatusCode.Ok)
                     {
@@ -683,7 +682,7 @@ namespace AutoDarkModeApp.Pages
                 {
                     builder.Config.Autostart.Validate = false;
                     builder.Save();
-                    result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
+                    result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
                     await GetAutostartInfo(true, toggleVisibility: false);
                     (sender as ModernWpf.Controls.ToggleSwitch).IsOn = false;
                     if (result.StatusCode != StatusCode.Ok)
@@ -712,7 +711,7 @@ namespace AutoDarkModeApp.Pages
             ApiResponse response = new();
             try
             {
-                response = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.ValidateAutostart, 2));
+                response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.ValidateAutostart, 2));
                 if (response.StatusCode == StatusCode.Err)
                 {
                     throw new AddAutoStartException();

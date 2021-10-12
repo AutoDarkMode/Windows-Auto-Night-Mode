@@ -29,7 +29,6 @@ namespace AutoDarkModeApp.Pages
     {
         private bool init = true;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
 
         public PageSwitchModes()
         {

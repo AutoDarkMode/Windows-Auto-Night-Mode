@@ -23,8 +23,7 @@ namespace AutoDarkModeApp.Handlers
             };
             try
             {
-                ICommandClient client = new ZeroMQClient(Address.DefaultPort);
-                _ = client.SendMessageAndGetReply(Command.ValidateAutostart);
+                _ = MessageHandler.Client.SendMessageAndGetReply(Command.ValidateAutostart);
             }
             catch (Exception ex)
             {
@@ -45,8 +44,7 @@ namespace AutoDarkModeApp.Handlers
             };
             try
             {
-                ICommandClient client = new ZeroMQClient(Address.DefaultPort);
-                result = ApiResponse.FromString(await client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
                 if (result.StatusCode != StatusCode.Ok)
                 {
                     throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");

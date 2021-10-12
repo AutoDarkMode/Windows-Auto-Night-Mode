@@ -30,7 +30,6 @@ namespace AutoDarkModeApp.Pages
     public partial class PageWallpaperPicker : ModernWpf.Controls.Page
     {
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private bool init = true;
         private bool SelectedLight { get; set; } = true;
         private delegate void ShowPreviewDelegate(string picture);
@@ -54,7 +53,7 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.DetectMonitors);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.DetectMonitors);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");
@@ -421,7 +420,7 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageApps");
@@ -506,7 +505,7 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.CleanMonitors);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CleanMonitors);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException($"couldn't clean up monitor list, {result}", "PageWallpaper");

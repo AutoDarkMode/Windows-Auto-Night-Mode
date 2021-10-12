@@ -7,22 +7,21 @@ using System.Diagnostics;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeComms;
 using AutoDarkModeConfig;
+using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp
 {
     class Updater
     {
         ApiResponse response = new();
-        private readonly ICommandClient commandClient;
 
         public Updater()
         {
-            commandClient = new ZeroMQClient(Address.DefaultPort);
         }
 
         public bool CheckNewVersion()
         {
-            response = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.CheckForUpdateNotify));
+            response = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.CheckForUpdateNotify));
             return UpdateAvailable();
         }
 
@@ -43,7 +42,7 @@ namespace AutoDarkModeApp
         public void Update()
         {
             UpdateInfo info = UpdateInfo.Deserialize(response.Details);
-            ApiResponse updatePrepResponse = ApiResponse.FromString(commandClient.SendMessageAndGetReply(Command.Update));
+            ApiResponse updatePrepResponse = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.Update));
             if (updatePrepResponse.StatusCode == StatusCode.New)
             {
                 StartProcessByProcessInfo(info.GetUpdateInfoPage());

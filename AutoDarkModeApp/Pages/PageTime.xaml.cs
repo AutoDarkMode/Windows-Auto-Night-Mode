@@ -22,7 +22,6 @@ namespace AutoDarkModeApp.Pages
     public partial class PageTime : Page
     {
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private readonly bool init = true;
         private delegate void DispatcherDelegate();
 
@@ -260,7 +259,7 @@ namespace AutoDarkModeApp.Pages
 
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageTime");
@@ -312,7 +311,7 @@ namespace AutoDarkModeApp.Pages
             int maxTries = 5;
             for (int i = 0; i < maxTries; i++)
             {
-                ApiResponse result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
+                ApiResponse result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
                 if (result.StatusCode == StatusCode.Ok)
                 {
                     break;
@@ -331,7 +330,7 @@ namespace AutoDarkModeApp.Pages
 
             try
             {
-                ApiResponse result = ApiResponse.FromString(await messagingClient.SendMessageAndGetReplyAsync(Command.LocationAccess));
+                ApiResponse result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
                 LocationHandler handler = new();
                 if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
                 {

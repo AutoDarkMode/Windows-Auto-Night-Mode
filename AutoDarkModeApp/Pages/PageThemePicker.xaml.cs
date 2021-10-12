@@ -28,7 +28,6 @@ namespace AutoDarkModeApp.Pages
     public partial class PageThemePicker : ModernWpf.Controls.Page
     {
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private readonly ICommandClient messagingClient = new ZeroMQClient(Address.DefaultPort);
         private readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
         private bool init = true;
         private bool theme1 = false;
@@ -183,7 +182,7 @@ namespace AutoDarkModeApp.Pages
             string result = StatusCode.Err;
             try
             {
-                result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");

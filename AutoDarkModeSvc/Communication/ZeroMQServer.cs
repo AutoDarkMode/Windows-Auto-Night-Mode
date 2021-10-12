@@ -9,7 +9,7 @@ using System.IO.MemoryMappedFiles;
 
 namespace AutoDarkModeSvc.Communication
 {
-    class ZeroMQServer : ICommandServer
+    class ZeroMQServer : IMessageServer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string Port { get; }

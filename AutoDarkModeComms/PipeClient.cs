@@ -1,72 +1,80 @@
-﻿using System;
+﻿using AutoDarkModeSvc.Communication;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
+using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeComms
 {
-    public class PipeClient : ICommandClient
+    public class PipeClient : IMessageClient
     {
-        private string PipeName { get; set; }
-        public PipeClient(string pipename)
+        public string SendMessageAndGetReply(string message, int timeoutSeconds = 5)
         {
-            PipeName = pipename;
-        }
-
-        private void PipeMessenger(string message)
-        {
-            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Address.DefaultPipeCommand, PipeDirection.Out);
-            pipeClient.Connect(5000);
-            using StreamWriter sw = new StreamWriter(pipeClient)
-            {
-                AutoFlush = true
-            };
-            sw.WriteLine(message);
-        }
-
-        private bool ReceiveReponse()
-        {
-            bool ok = true;
-            using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", PipeName + Address.DefaultPipeResponse, PipeDirection.In);
+            using NamedPipeClientStream clientPipeRequest = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeRequest, PipeDirection.Out);
             try
             {
-                pipeClient.Connect(1000);
-                using StreamReader sr = new StreamReader(pipeClient);
-                string temp;
-                while ((temp = sr.ReadLine()) != null)
+                clientPipeRequest.Connect(timeoutSeconds * 1000);
+                StreamWriter sw = new StreamWriter(clientPipeRequest) { AutoFlush = true };
+                using (sw)
                 {
-                    if (temp.Contains(StatusCode.Err))
-                    {
-                        ok = false;
-                    }
+                    sw.Write(message);
                 }
             }
-            catch (TimeoutException)
+            catch (Exception)
             {
-                return false;
+                return new ApiResponse()
+                {
+                    StatusCode = StatusCode.Timeout,
+                    Message = "The service did not acknowledge the req in time"
+                }.ToString();
             }
-            return ok;
+
+            using NamedPipeClientStream clientPipeResponse = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeResponse, PipeDirection.In);
+            try
+            {
+                clientPipeResponse.Connect(timeoutSeconds * 1000);
+                if (clientPipeResponse.IsConnected && clientPipeResponse.CanRead)
+                {
+                    using StreamReader sr = new(clientPipeResponse);
+                    //sr.BaseStream.ReadTimeout = timeoutSeconds * 1000;
+                    string msg = sr.ReadToEnd();
+                    if (msg == null)
+                    {
+                        return StatusCode.Timeout;
+                    }
+                    return msg;
+                }
+                else
+                {
+                    return new ApiResponse()
+                    {
+                        StatusCode = StatusCode.Err,
+                        Message = "Pipe not connected or can't read"
+                    }.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse()
+                {
+                    StatusCode = StatusCode.Timeout,
+                    Message = "The service did not respond in time"
+                }.ToString();
+            }
         }
 
-        public string SendMessageAndGetReply(string message, int timeoutSeconds)
+        public Task<string> SendMessageAndGetReplyAsync(string message, int timeoutSeconds = 5)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> SendMessageAsync(string message, int timeoutSeconds)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> SendMessageAndGetReplyAsync(string message, int timeoutSeconds)
-        {
-            throw new NotImplementedException();
+            return Task.Run(() => SendMessageAndGetReply(message, timeoutSeconds));
         }
 
         public string SendMessageWithRetries(string message, int timeoutSeconds = 3, int retries = 3)
         {
-            throw new NotImplementedException();
+            return SendMessageAndGetReply(message, timeoutSeconds * retries);
         }
     }
 }
