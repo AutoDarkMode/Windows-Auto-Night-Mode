@@ -153,7 +153,6 @@ namespace AutoDarkModeUpdater
 
         private static void MoveToTemp()
         {
-            Logger.Info(Extensions.ExecutionDirUpdater);
             // collect all files that are not within the update data directory or the updater itself and the ignore list
             IEnumerable<string> oldFilePaths = Directory.EnumerateFileSystemEntries(Extensions.ExecutionDir, "*.*", SearchOption.TopDirectoryOnly)
                 .Where(f => !f.Contains(Extensions.UpdateDataDir) && !f.Contains(Extensions.ExecutionDirUpdater) && !IgnorePaths(f));
