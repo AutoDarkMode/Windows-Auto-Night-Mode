@@ -131,7 +131,7 @@
                 SelectedIndex="1" 
                 SelectionChanged="ComboBoxLanguageSelection_SelectionChanged">
 
-                <ComboBoxItem Content="Czech (Czech)" Name="cs"/>
+                <ComboBoxItem Content="Česky (Czech)" Name="cs"/>
                 <ComboBoxItem Content="Deutsch (German)" Name="de"/>
                 <ComboBoxItem Content="English (English)" Name="en"/>
                 <ComboBoxItem Content="Français (French)" Name="fr"/>
@@ -142,7 +142,7 @@
                 <ComboBoxItem Content="Magyarul (Hungarian)" Name="hu"/>
                 <ComboBoxItem Content="Português (Portuguese)" Name="pt"/>
                 <ComboBoxItem Content="Русский (Russian)" Name="ru"/>
-                <ComboBoxItem Content="Espanol (Spanish)" Name="es"/>
+                <ComboBoxItem Content="Español (Spanish)" Name="es"/>
                 <ComboBoxItem Content="Türkçe (Turkish)" Name="tr"/>
                 <ComboBoxItem Content="Українська (Ukrainian)" Name="uk"/>
                 <ComboBoxItem Content="日本語 (Japanese)" Name="ja"/>
