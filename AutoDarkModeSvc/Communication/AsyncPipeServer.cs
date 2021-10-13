@@ -47,8 +47,7 @@ namespace AutoDarkModeSvc.Communication
             string msg;
             try
             {
-                // if unmanaged clients want to connect, PipeDirection has to be InOut
-                NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.In, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+                using NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.InOut, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
                 await requestPipe.WaitForConnectionAsync(stoptokenSource.Token);
 
                 if (requestPipe.IsConnected && requestPipe.CanRead)
@@ -81,15 +80,14 @@ namespace AutoDarkModeSvc.Communication
             {
                 CancellationTokenSource timeoutTokenSource = new();
                 timeoutTokenSource.CancelAfter(5000);
-                // if unmanaged clients want to connect, PipeDirection has to be InOut
-                NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse, PipeDirection.Out, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+                using NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse, PipeDirection.InOut, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
                 await responsePipe.WaitForConnectionAsync(timeoutTokenSource.Token);
                 string response = "";
                 MessageParser.Parse(new List<string>() { msg }, (message) =>
                 {
                     response = message;
                 }, Service);
-                StreamWriter sw = new StreamWriter(responsePipe)
+                using StreamWriter sw = new StreamWriter(responsePipe)
                 { AutoFlush = true };
                 using (sw)
                 {
