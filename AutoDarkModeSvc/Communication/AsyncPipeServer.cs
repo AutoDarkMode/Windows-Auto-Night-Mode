@@ -97,7 +97,7 @@ namespace AutoDarkModeSvc.Communication
             }
             catch (TaskCanceledException)
             {
-                Logger.Warn("no client to send response to, processing request anyway");
+                Logger.Warn("no client waiting for response, processing request anyway");
                 MessageParser.Parse(new List<string>() { msg }, (message) => { }, Service);
             }
             catch (Exception ex)
