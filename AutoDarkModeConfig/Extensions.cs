@@ -37,7 +37,7 @@ namespace AutoDarkModeConfig
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
         public const string UpdaterDirName = "Updater";
-        public static readonly string ExecutionPath = GetExecutionPath();
+        public static readonly string ExecutionPath = GetExecutionPathService();
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string ExecutionPathApp = GetExecutionPathApp();
         public static readonly string ExecutionPathUpdater = GetExecutionPathUpdater();
@@ -132,7 +132,7 @@ namespace AutoDarkModeConfig
                 time.AddMinutes(Math.Abs(grace)).TimeOfDay);
         }
 
-        private static string GetExecutionPath()
+        private static string GetExecutionPathService()
         {
             var assemblyLocation = AppContext.BaseDirectory;
             var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
