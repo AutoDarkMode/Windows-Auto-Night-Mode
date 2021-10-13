@@ -82,6 +82,7 @@ namespace AutoDarkModeSvc.Communication
                 timeoutTokenSource.CancelAfter(5000);
                 using NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse, PipeDirection.InOut, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
                 await responsePipe.WaitForConnectionAsync(timeoutTokenSource.Token);
+
                 string response = "";
                 MessageParser.Parse(new List<string>() { msg }, (message) =>
                 {
@@ -96,7 +97,8 @@ namespace AutoDarkModeSvc.Communication
             }
             catch (TaskCanceledException)
             {
-                Logger.Debug("cancellation token invoked during response");
+                Logger.Warn("no client to send response to, processing request anyway");
+                MessageParser.Parse(new List<string>() { msg }, (message) => { }, Service);
             }
             catch (Exception ex)
             {
