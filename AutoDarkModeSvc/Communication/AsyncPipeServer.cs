@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.Communication
                 {
                     response = message;
                 }, Service);
-                using StreamWriter sw = new StreamWriter(responsePipe)
+                StreamWriter sw = new StreamWriter(responsePipe)
                 { AutoFlush = true };
                 using (sw)
                 {
