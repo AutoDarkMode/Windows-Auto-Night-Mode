@@ -6,7 +6,7 @@ namespace AutoDarkModeSvc.Communication
 {
     public static class Address
     {
-        public const string PipePrefix = "WindowsAutoDarkMode";
+        public static string PipePrefix { get; } = $"admpipe_{Environment.UserName.ToLower()}";
         public const string PipeResponse = "_response";
         public const string PipeRequest = "_request";
         public const string DefaultPort = "54345";

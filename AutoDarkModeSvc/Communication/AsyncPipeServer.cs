@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Communication
             stoptokenSource = new();
             Task.Run(async () =>
             {
-                Logger.Info("started message server (dual pipe)");
+                Logger.Info($"started message server (dual pipe), request: {Address.PipePrefix + Address.PipeRequest}, response: {Address.PipePrefix + Address.PipeResponse}");
                 while (Running)
                 {
                     string msg = await HandleRequest();
