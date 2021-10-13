@@ -554,7 +554,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Konfig</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Geographische Koordinaten</value>
+    <value>Geografische Koordinaten</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
     <value>Positionsdaten</value>
@@ -569,7 +569,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Deaktiviert</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>Von Sonnenuntergang bis Sonnenaufgang (geographische Koordinaten)</value>
+    <value>Von Sonnenuntergang bis Sonnenaufgang (geografische Koordinaten)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Diese Funktion ist deaktiviert während der Windows Theme Modus aktiv ist</value>
