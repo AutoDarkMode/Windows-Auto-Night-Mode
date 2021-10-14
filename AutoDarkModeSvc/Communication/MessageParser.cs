@@ -226,7 +226,7 @@ namespace AutoDarkModeSvc.Communication
                     #region TestError
                     case Command.TestError:
                         Logger.Info("signal received: test error");
-                        Thread.Sleep(10000);
+                        Thread.Sleep(5000);
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Err
