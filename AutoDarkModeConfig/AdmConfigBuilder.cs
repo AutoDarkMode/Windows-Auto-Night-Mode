@@ -164,6 +164,10 @@ namespace AutoDarkModeConfig
             Loading = false;
         }
 
+        /// <summary>
+        /// Event source tha should trigger whenever the main configuration file has updated
+        /// </summary>
+        /// <param name="old"></param>
         public void OnConfigUpdated(AdmConfig old)
         {
             configUpdatedHandler?.Invoke(old, Config);

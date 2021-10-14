@@ -32,6 +32,11 @@ namespace AutoDarkModeSvc
         private readonly ISwitchComponent SystemSwitch = new SystemSwitch();
         //private ISwitchComponent TaskbarAccentColorSwitch;
         private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
+
+        /// <summary>
+        /// Instructs all components to refresh their settings objects by injecting a new settings object
+        /// from the currently available configuration instance
+        /// </summary>
         public void UpdateSettings()
         {
             AppsSwitch.UpdateSettingsState(Builder.Config.AppsSwitch);
@@ -56,6 +61,9 @@ namespace AutoDarkModeSvc
             UpdateSettings();
         }
 
+        /// <summary>
+        /// Calls the disable hooks for all components
+        /// </summary>
         public void InvokeDisableHooks()
         {
             Components.ForEach(c => c.DisableHook());
@@ -69,6 +77,14 @@ namespace AutoDarkModeSvc
             Components.ForEach(c =>  c.ForceSwitch = true);
         }
 
+        /// <summary>
+        /// Checks whether components need an update, which is true: <br/>
+        /// if their <see cref="ISwitchComponent.ComponentNeedsUpdate(Theme)"/> method returns true <br/>
+        /// or the module has the force switch flag enabled <br/>
+        /// or the module was disabled and is still initialized
+        /// <param name="newTheme">The theme that should be checked against</param>
+        /// <returns>a list of components that require an update</returns>
+        /// </summary>
         public List<ISwitchComponent> GetComponentsToUpdate(Theme newTheme)
         {
             List<ISwitchComponent> shouldUpdate = new();
@@ -103,6 +119,12 @@ namespace AutoDarkModeSvc
             }
             return shouldUpdate;
         }
+
+        /// <summary>
+        /// Runs all components in a synchronized context and sorts them prior to execution based on their priorities
+        /// </summary>
+        /// <param name="components">The components to be run</param>
+        /// <param name="newTheme">the requested theme to switch to</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
         public void Run(List<ISwitchComponent> components, Theme newTheme)
         {

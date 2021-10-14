@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc
                 NotifyIcon = new NotifyIcon();
                 InitTray();
             }
-            CommandServer = new AsyncPipeServer(this);
+            CommandServer = new AsyncPipeServer(this, 5);
             //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             CommandServer.Start();
 

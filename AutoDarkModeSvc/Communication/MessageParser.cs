@@ -23,7 +23,8 @@ namespace AutoDarkModeSvc.Communication
         /// <param name="service">Service class for invoking application exit</param>
         public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
-            WaitForConfigUpdateCompletion();
+            //WaitForConfigUpdateCompletion();
+            state.ConfigIsUpdatingWaitHandle.WaitOne();
             msg.ForEach(message =>
             {
                 switch (message)
@@ -225,6 +226,7 @@ namespace AutoDarkModeSvc.Communication
                     #region TestError
                     case Command.TestError:
                         Logger.Info("signal received: test error");
+                        Thread.Sleep(10000);
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Err
@@ -344,12 +346,12 @@ namespace AutoDarkModeSvc.Communication
         private static void WaitForConfigUpdateCompletion()
         {
             bool notified = false;
-            int retries = 5;
+            int retries = 100;
             for (int i = 0; i < retries; i++)
             {
                 if (state.ConfigIsUpdating)
                 {
-                    if (notified)
+                    if (!notified)
                     {
                         Logger.Debug("waiting for config update to finish");
                         notified = true;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
@@ -49,6 +50,8 @@ namespace AutoDarkModeSvc.Config
                 }
             }
         }
+
+        public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true); 
 
         private bool configIsUpdating;
         public bool ConfigIsUpdating 

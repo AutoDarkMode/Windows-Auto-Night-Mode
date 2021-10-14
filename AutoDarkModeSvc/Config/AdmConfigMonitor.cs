@@ -54,6 +54,7 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
+            _ = state.ConfigIsUpdatingWaitHandle.Reset();
             state.ConfigIsUpdating = true;
             if (state.SkipConfigFileReload)
             {
@@ -82,6 +83,7 @@ namespace AutoDarkModeSvc.Config
                 Logger.Debug(ex, "config file load failed:");
             }
             state.ConfigIsUpdating = false;
+            if (!state.ConfigIsUpdatingWaitHandle.Set()) Logger.Fatal("could not trigger reset event");
         }
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
@@ -105,6 +107,9 @@ namespace AutoDarkModeSvc.Config
             }
         }
 
+        /// <summary>
+        /// Registers or deregisters events based on their enabled setting
+        /// </summary>
         public void UpdateEventStates()
         {
             if (builder.Config.Events.DarkThemeOnBattery)

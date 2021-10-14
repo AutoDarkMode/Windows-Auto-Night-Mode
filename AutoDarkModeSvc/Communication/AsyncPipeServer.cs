@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
@@ -13,86 +14,192 @@ namespace AutoDarkModeSvc.Communication
     class AsyncPipeServer : IMessageServer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private bool Running { get; set; } = true;
-        private CancellationTokenSource stoptokenSource;
+        private CancellationTokenSource WorkerTokenSource { get; set; }
         private Service Service { get; }
-
-        public AsyncPipeServer(Service service)
+        private int WorkerCount { get; set; }
+        private int availableWorkers;
+        public int AvailableWorkers
         {
+            get { return availableWorkers; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { availableWorkers = value; }
+        }
+        private BlockingCollection<TimeoutEventWrapper> MonitoredStreams { get; } = new();
+        private BlockingCollection<Action> Workers { get; } = new();
+        private Task TimeoutHandler { get; set; }
+        private Task ConnectionHandler { get; set; }
+        private readonly int streamTimeout;
+
+        public AsyncPipeServer(Service service, int workers, int streamTimeout = 5000)
+        {
+            WorkerCount = workers;
             Service = service;
+            this.streamTimeout = streamTimeout;
         }
         public void Start()
         {
-            stoptokenSource = new();
-            Task.Run(async () =>
+            WorkerTokenSource = new();
+            ConnectionHandler = Task.Run(() =>
             {
-                Logger.Info($"started message server (dual pipe), request: {Address.PipePrefix + Address.PipeRequest}, response: {Address.PipePrefix + Address.PipeResponse}");
-                while (Running)
+                Logger.Info($"started npipe server with {WorkerCount} worker{(WorkerCount == 1 ? "" : "s")} (single in, multi out), " +
+                    $"request: {Address.PipePrefix + Address.PipeRequest}");
+                for (int i = 0; i < WorkerCount; i++)
                 {
-                    string msg = await HandleRequest();
-                    if (msg == null) continue;
-                    HandleResponse(msg);
+                    Workers.Add(HandleClient);
+                }
+
+                // send workers to work whenever they are not blocking
+                while (Workers.TryTake(out Action a, -1))
+                {
+                    try
+                    {
+                        AvailableWorkers += 1;
+                        a.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "error in request worker:");
+                    }
+                }
+            });
+
+            TimeoutHandler = Task.Run(async () =>
+            {
+                while (MonitoredStreams.TryTake(out TimeoutEventWrapper stream, -1))
+                {
+                    await stream.Monitor();
                 }
             });
         }
         public void Stop()
         {
-            Running = false;
-            stoptokenSource.Cancel();
-            Logger.Info("message server stopped");
+            Workers.CompleteAdding();
+            MonitoredStreams.CompleteAdding();
+            WorkerTokenSource.Cancel();
+            TimeoutHandler.Wait();
+            ConnectionHandler.Wait();
+            WorkerTokenSource.Dispose();
+            Logger.Info("npipe server stopped");
         }
 
-        private async Task<string> HandleRequest()
+        private async void HandleClient()
         {
-            string msg;
+            Tuple<string, string> result = await HandleRequest();
+
+            // if we receive no string, then the worker should go into the queue again
+            if (result.Item1 == null)
+            {
+                Workers.Add(HandleClient);
+                return;
+            }
+            if (result.Item2 == "")
+            {
+                HandleResponse(result.Item1, result.Item2);
+            }
+            else
+            {
+                HandleResponse(result.Item1, $"_{result.Item2}");
+            }
+        }
+
+        private async Task<Tuple<string, string>> HandleRequest()
+        {
+            string msg = null;
+            string responderPipeId = "";
             try
             {
-                using NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.InOut, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-                await requestPipe.WaitForConnectionAsync(stoptokenSource.Token);
-
-                if (requestPipe.IsConnected && requestPipe.CanRead)
+                // this stream is the main requester loop and should only be cancelled from the outside if the server is stopped
+                using NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.InOut, WorkerCount, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+                await requestPipe.WaitForConnectionAsync(WorkerTokenSource.Token);
+                AvailableWorkers -= 1;
+                if (AvailableWorkers == 0)
                 {
-                    using StreamReader sr = new(requestPipe);
-                    msg = sr.ReadLine();
-                    Logger.Debug("received message: {0}", msg);
+                    Logger.Warn($"client connected, but no more workers available");
                 }
                 else
                 {
-                    return null;
+                    Logger.Debug($"client connected, available workers: {availableWorkers}");
+                }
+
+                // a read operation must be completed within streamTimeout, otherwise the pipe connection will be closed server-side to avoid infinite hanging
+                // this is especially important if a client connects, and never writes anything to the stream, this would block a worker until the client terminates
+                using CancellationTokenSource readTimeoutTokenSource = new();
+                Task tew = new TimeoutEventWrapper(requestPipe, readTimeoutTokenSource.Token).Monitor();
+                readTimeoutTokenSource.CancelAfter(streamTimeout);
+                if (requestPipe.CanRead)
+                {
+                    using StreamReader sr = new(requestPipe);
+
+                    // read two lines, the message and the output pipe address
+                    if (requestPipe.IsConnected) msg = sr.ReadLine();
+                    if (requestPipe.IsConnected) responderPipeId = sr.ReadLine() ?? "";
+                    if (msg == null)
+                    {
+                        Logger.Warn("no message received within request window");
+                        return new(null, responderPipeId);
+                    }
+                    Logger.Debug("received message: {0}, requested response channel: {1}", msg, responderPipeId == "" ? "root" : responderPipeId);
+                    // always cancel the monitor thread after a message has been received successfully
+                    readTimeoutTokenSource.Cancel();
+                    await tew;
+                }
+                else
+                {
+                    return new(null, responderPipeId);
                 }
             }
             catch (TaskCanceledException)
             {
-                Logger.Debug("cancellation token invoked during request");
-                return null;
+                return new(null, responderPipeId);
+            }
+            catch (IOException ex)
+            {
+                Logger.Warn("request pipe was closed prematurely");
+                Logger.Debug(ex, "exception:");
+                return new(null, responderPipeId);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "error in message server request:");
-                return null;
+                Logger.Error(ex, "error in npipe server request:");
+                return new(null, responderPipeId);
             }
-            return msg;
+            return new(msg, responderPipeId);
         }
 
-        private async void HandleResponse(string msg)
+        private async void HandleResponse(string msg, string responderPipeId)
         {
+            // for the response timeout, we don't want to wait forever, so it also adheres to streamTimeout
+            using CancellationTokenSource connectTimeoutTokenSource = new();
             try
             {
-                CancellationTokenSource timeoutTokenSource = new();
-                timeoutTokenSource.CancelAfter(5000);
-                using NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse, PipeDirection.InOut, 5, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-                await responsePipe.WaitForConnectionAsync(timeoutTokenSource.Token);
+                connectTimeoutTokenSource.CancelAfter(streamTimeout);
+                using NamedPipeServerStream responsePipe = new(Address.PipePrefix + Address.PipeResponse + $"{responderPipeId}", PipeDirection.InOut, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+                await responsePipe.WaitForConnectionAsync(connectTimeoutTokenSource.Token);
 
                 string response = "";
                 MessageParser.Parse(new List<string>() { msg }, (message) =>
                 {
                     response = message;
                 }, Service);
-                StreamWriter sw = new StreamWriter(responsePipe)
-                { AutoFlush = true };
-                using (sw)
+
+                try
                 {
-                    sw.Write(response);
+                    // exppect pipe data to be consumed within the streamTimeout timeframe
+                    // if not cancel the write operation
+                    using CancellationTokenSource writeTimeoutTokenSource = new();
+                    writeTimeoutTokenSource.CancelAfter(streamTimeout);
+                    StreamWriter sw = new(responsePipe)
+                    { AutoFlush = true };
+                    using (sw)
+                    {
+                        StringBuilder builder = new(response);
+                        await sw.WriteAsync(builder, writeTimeoutTokenSource.Token);
+                    }
+                }
+                catch (TaskCanceledException)
+                {
+                    Logger.Warn("no client available to consume data within response window");
                 }
             }
             catch (TaskCanceledException)
@@ -100,10 +207,48 @@ namespace AutoDarkModeSvc.Communication
                 Logger.Warn("no client waiting for response, processing request anyway");
                 MessageParser.Parse(new List<string>() { msg }, (message) => { }, Service);
             }
+            catch (IOException ex)
+            {
+                Logger.Warn("response pipe was closed prematurely");
+                Logger.Debug(ex, "exception:");
+            }
             catch (Exception ex)
             {
-                Logger.Error(ex, "error in message server:");
+                Logger.Error(ex, "error in npipe server:");
+            }
+            Workers.Add(HandleClient);
+        }
+    }
+
+    internal class TimeoutEventWrapper
+    {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly NamedPipeServerStream stream;
+        private readonly CancellationToken token;
+        public TimeoutEventWrapper(NamedPipeServerStream stream, CancellationToken token)
+        {
+            this.stream = stream;
+            this.token = token;
+        }
+
+        public async Task Monitor()
+        {
+            try
+            {
+                await Task.Delay(-1, token);
+            }
+            catch (TaskCanceledException)
+            {
+                if (stream.IsConnected)
+                {
+                    stream.Disconnect();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error while monitoring stream timeout:");
             }
         }
+
     }
 }

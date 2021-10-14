@@ -93,7 +93,7 @@ namespace AutoDarkModeApp.Pages
                     if (builder.Config.Location.UseGeolocatorService)
                     {
                         TogglePanelVisibility(false, true, true, false);
-                        ActivateLocationMode();
+                        ActivateLocationModeWrapper();
                         RadioButtonLocationTimes.IsChecked = true;
                     }
                     //custom geographic coordinates
@@ -101,7 +101,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         RadioButtonCoordinateTimes.IsChecked = true;
                         TogglePanelVisibility(false, true, true, true);
-                        ActivateLocationMode();
+                        ActivateLocationModeWrapper();
                     }
                 }
             }
@@ -287,11 +287,16 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
+        public async void ActivateLocationModeWrapper()
+        {
+            await ActivateLocationMode();
+        }
+
         /// <summary>
         /// Location based times & Windows Position Service
         /// </summary>
         // set starttime based on user location
-        public async void ActivateLocationMode()
+        public async Task ActivateLocationMode()
         {
             //ui
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
@@ -436,7 +441,7 @@ namespace AutoDarkModeApp.Pages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ButtonApplyCoordinates_Click(object sender, RoutedEventArgs e)
+        private async void ButtonApplyCoordinates_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -460,8 +465,8 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex);
             }
             ButtonApplyCoordinates.IsEnabled = false;
-            ActivateLocationMode();
-            Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
+            await ActivateLocationMode();
+            await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             TogglePanelVisibility(false, true, true, true);
         }
 
@@ -522,7 +527,7 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
+        private async void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
             EnableTimeBasedSwitch();
             builder.Config.Location.Enabled = true;
@@ -531,8 +536,8 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Save();
                 TogglePanelVisibility(false, true, true, false);
-                ActivateLocationMode();
-                Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
+                await ActivateLocationMode();
+                await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             }
             catch (Exception ex)
             {

@@ -14,6 +14,7 @@ namespace AutoDarkModeComms
     {
         public string SendMessageAndGetReply(string message, int timeoutSeconds = 5)
         {
+            string pipeId = $"C#_{Convert.ToBase64String(Guid.NewGuid().ToByteArray())}";
             using NamedPipeClientStream clientPipeRequest = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeRequest, PipeDirection.Out);
             try
             {
@@ -21,7 +22,8 @@ namespace AutoDarkModeComms
                 StreamWriter sw = new StreamWriter(clientPipeRequest) { AutoFlush = true };
                 using (sw)
                 {
-                    sw.Write(message);
+                    sw.WriteLine(message);
+                    sw.WriteLine(pipeId);
                 }
             }
             catch (Exception ex)
@@ -34,7 +36,7 @@ namespace AutoDarkModeComms
                 }.ToString();
             }
 
-            using NamedPipeClientStream clientPipeResponse = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeResponse, PipeDirection.In);
+            using NamedPipeClientStream clientPipeResponse = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeResponse + $"_{pipeId}", PipeDirection.In);
             try
             {
                 clientPipeResponse.Connect(timeoutSeconds * 1000);
