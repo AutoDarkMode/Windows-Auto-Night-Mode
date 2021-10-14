@@ -191,8 +191,8 @@ namespace AutoDarkModeSvc
                 int timerMillis = 0;
                 if (args.Length != 0)
                 {
-                    Logger.Info($"main timer override to {timerMillis} seconds");
-                    _ = int.TryParse(args[0], out timerMillis);
+                    bool success = int.TryParse(args[0], out timerMillis);
+                    if (success) Logger.Info($"main timer override to {timerMillis} seconds");
                 }
 
                 queueThread = new Thread(() =>

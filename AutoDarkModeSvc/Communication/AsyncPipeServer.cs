@@ -12,7 +12,7 @@ namespace AutoDarkModeSvc.Communication
     class AsyncPipeServer : IMessageServer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private CancellationTokenSource WorkerTokenSource { get; set; }
+        private CancellationTokenSource WorkerTokenSource { get; set; } = new();
         private Service Service { get; }
         private int WorkerCount { get; set; }
         private int availableWorkers;
@@ -29,17 +29,39 @@ namespace AutoDarkModeSvc.Communication
         private Task ConnectionHandler { get; set; }
         private readonly int streamTimeout;
 
-        public AsyncPipeServer(Service service, int workers, int streamTimeout = 5000)
+        public AsyncPipeServer(Service service, int numWorkers, int streamTimeout = 5000)
         {
-            WorkerCount = workers;
+            WorkerCount = numWorkers;
             Service = service;
             this.streamTimeout = streamTimeout;
         }
         public void Start()
         {
-            WorkerTokenSource = new();
+            Loop();
+        }
+        public void Stop()
+        {
+            Workers.CompleteAdding();
+            MonitoredStreams.CompleteAdding();
+            WorkerTokenSource.Cancel();
+            if (TimeoutHandler != null)
+            {
+                TimeoutHandler.Wait();
+            }
+            if (ConnectionHandler != null)
+            {
+                ConnectionHandler.Wait();
+            }
+            WorkerTokenSource.Dispose();
+            Logger.Info("npipe server stopped");
+        }
+
+        private void Loop()
+        {
             ConnectionHandler = Task.Run(() =>
             {
+                bool notify = false;
+                bool allowNotify = false;
                 Logger.Info($"started npipe server with {WorkerCount} worker{(WorkerCount == 1 ? "" : "s")} (single in, multi out), " +
                     $"request: {Address.PipePrefix + Address.PipeRequest}");
                 try
@@ -55,13 +77,30 @@ namespace AutoDarkModeSvc.Communication
                     Service.Exit(this, EventArgs.Empty);
                 }
 
-
                 // send workers to work whenever they are not blocking
                 while (Workers.TryTake(out Action a, -1))
                 {
                     try
                     {
+                        if (AvailableWorkers == 0 && !notify && allowNotify)
+                        {
+                            Logger.Warn($"request load saturates worker count ({WorkerCount})");
+                            notify = true;
+                        }
+                        else if (AvailableWorkers > 0 && notify && allowNotify)
+                        {
+                            Logger.Info($"request load returned to normal");
+                            notify = false;
+                        }
+
                         AvailableWorkers += 1;
+                        
+                        if (AvailableWorkers == WorkerCount)
+                        {
+                            allowNotify = true;
+                            notify = false;
+                        }
+
                         a.Invoke();
                     }
                     catch (Exception ex)
@@ -79,32 +118,14 @@ namespace AutoDarkModeSvc.Communication
                 }
             });
         }
-        public void Stop()
-        {
-            Workers.CompleteAdding();
-            MonitoredStreams.CompleteAdding();
-            WorkerTokenSource.Cancel();
-            TimeoutHandler.Wait();
-            ConnectionHandler.Wait();
-            WorkerTokenSource.Dispose();
-            Logger.Info("npipe server stopped");
-        }
 
         private async void HandleClient()
         {
             Tuple<string, string> result = await HandleRequest();
-
-            // if we receive no string, then the worker should go into the queue again
+            // if no string was received, add the worker back to the pool
             if (result.Item1 == null)
             {
-                try
-                {
-                    if (!Workers.IsAddingCompleted) Workers.Add(HandleClient);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "permanently lost worker due to error:");
-                }
+                TryAddWorker();
                 return;
             }
             if (result.Item2 == "")
@@ -129,7 +150,7 @@ namespace AutoDarkModeSvc.Communication
                 AvailableWorkers -= 1;
                 if (AvailableWorkers == 0)
                 {
-                    Logger.Info($"client connected, worker pool exhausted");
+                    Logger.Debug($"client connected, worker pool exhausted");
                 }
                 else
                 {
@@ -231,6 +252,11 @@ namespace AutoDarkModeSvc.Communication
                 Logger.Error(ex, "error in npipe server:");
             }
 
+            TryAddWorker();
+        }
+
+        private void TryAddWorker()
+        {
             try
             {
                 if (!Workers.IsAddingCompleted) Workers.Add(HandleClient);
@@ -241,6 +267,8 @@ namespace AutoDarkModeSvc.Communication
             }
         }
     }
+
+
 
     internal class TimeoutEventWrapper
     {

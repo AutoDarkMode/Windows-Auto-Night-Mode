@@ -102,14 +102,14 @@ namespace AutoDarkModeSvc.Timers
 
         public void Stop()
         {
-            Logger.Info("shutting down {0} timer", Name);
+            Logger.Debug("shutting down {0} timer", Name);
             Timer.Stop();
         }
 
         public void Dispose()
         {
-            Logger.Info("{0} timer disposed", Name);
             Timer.Dispose();
+            Logger.Debug("{0} timer disposed", Name);
         }
     }
 }
