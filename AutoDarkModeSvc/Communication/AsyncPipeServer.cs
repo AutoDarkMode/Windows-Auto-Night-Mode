@@ -44,10 +44,19 @@ namespace AutoDarkModeSvc.Communication
             {
                 Logger.Info($"started npipe server with {WorkerCount} worker{(WorkerCount == 1 ? "" : "s")} (single in, multi out), " +
                     $"request: {Address.PipePrefix + Address.PipeRequest}");
-                for (int i = 0; i < WorkerCount; i++)
+                try
                 {
-                    Workers.Add(HandleClient);
+                    for (int i = 0; i < WorkerCount; i++)
+                    {
+                        Workers.Add(HandleClient);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Logger.Fatal(ex, "could not instantiate workers");
+                    Service.Exit(this, EventArgs.Empty);
+                }
+
 
                 // send workers to work whenever they are not blocking
                 while (Workers.TryTake(out Action a, -1))
@@ -90,7 +99,14 @@ namespace AutoDarkModeSvc.Communication
             // if we receive no string, then the worker should go into the queue again
             if (result.Item1 == null)
             {
-                Workers.Add(HandleClient);
+                try
+                {
+                    if (!Workers.IsAddingCompleted) Workers.Add(HandleClient);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "permanently lost worker due to error:");
+                }
                 return;
             }
             if (result.Item2 == "")
@@ -216,7 +232,15 @@ namespace AutoDarkModeSvc.Communication
             {
                 Logger.Error(ex, "error in npipe server:");
             }
-            Workers.Add(HandleClient);
+
+            try
+            {
+                if (!Workers.IsAddingCompleted) Workers.Add(HandleClient);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "permanently lost worker due to error:");
+            }
         }
     }
 
