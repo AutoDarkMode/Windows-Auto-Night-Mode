@@ -221,31 +221,50 @@
                 Grid.Row="3"
                 Orientation="Horizontal" 
                 Margin="0,0,0,0">
-
-                <ui:NumberBox 
-                    x:Name="NumberBoxLat"
-                    Width="150" Height="Auto" 
-                    Margin="0,0,0,0" 
-                    Header="{x:Static p:Resources.TimeNumberBoxHeaderLat}"
-                    PlaceholderText="0.000"
-                    SmallChange="0"
-                    LargeChange="0"
-                    Tag="coordinates"
-                    ValueChanged="NumberBox_ValueChanged"
+                
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock 
+                        Text="{x:Static p:Resources.TimeNumberBoxHeaderLat}"
+                        FontFamily="Segoe UI"
+                        FontSize="14"
+                        Margin="0,0,0,4"
                     />
-
-                <ui:NumberBox 
-                    x:Name="NumberBoxLon"
-                    Width="150" Height="Auto"
-                    Margin="25,0,0,0" 
-                    Header="{x:Static p:Resources.TimeNumberBoxHeaderLon}"
-                    PlaceholderText="0.000"
-                    SmallChange="0"
-                    LargeChange="0"
-                    Tag="coordinates"
-                    ValueChanged="NumberBox_ValueChanged"
-                    PreviewTextInput="NumberBox_PreviewTextInput"
+                    <TextBox
+                        Grid.Row="1"
+                        x:Name="NumberBoxLat"
+                        Width="150" Height="Auto" 
+                        Margin="0,0,0,0" 
+                        PreviewTextInput="NumberBox_PreviewTextInput"
+                        LostFocus="NumberBox_Validate"
+                        Tag="coordinates"
                     />
+                </Grid>
+
+                <Grid Margin="25,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock 
+                        Text="{x:Static p:Resources.TimeNumberBoxHeaderLat}"
+                        FontFamily="Segoe UI"
+                        FontSize="14"
+                        Margin="0,0,0,4"
+                    />
+                    <TextBox
+                        Grid.Row="1"
+                        x:Name="NumberBoxLon"
+                        Width="150" Height="Auto" 
+                        Margin="0,0,0,0" 
+                        PreviewTextInput="NumberBox_PreviewTextInput"
+                        LostFocus="NumberBox_Validate"
+                        Tag="coordinates"
+                    />
+                </Grid>
 
                 <Button 
                     x:Name="ButtonApplyCoordinates"

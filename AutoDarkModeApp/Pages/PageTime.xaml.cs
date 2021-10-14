@@ -63,8 +63,8 @@ namespace AutoDarkModeApp.Pages
             NumberboxOffsetDark.Value = Convert.ToDouble(builder.Config.Location.SunsetOffsetMin);
 
             //read coordinates from config file
-            NumberBoxLat.Value = builder.Config.Location.CustomLat;
-            NumberBoxLon.Value = builder.Config.Location.CustomLon;
+            NumberBoxLat.Text = builder.Config.Location.CustomLat.ToString();
+            NumberBoxLon.Text = builder.Config.Location.CustomLon.ToString();
 
             //tick correct radio button and prepare UI
             //is auto theme switch enabled?
@@ -445,8 +445,8 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                builder.Config.Location.CustomLat = NumberBoxLat.Value;
-                builder.Config.Location.CustomLon = NumberBoxLon.Value;
+                builder.Config.Location.CustomLat = double.Parse(NumberBoxLat.Text, CultureInfo.InvariantCulture);
+                builder.Config.Location.CustomLon = double.Parse(NumberBoxLon.Text, CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -639,14 +639,14 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                if((sender as ModernWpf.Controls.NumberBox).Tag.Equals("offset"))
+                if(sender is ModernWpf.Controls.NumberBox nb && nb.Tag.Equals("offset"))
                 {
                     if (OffsetButton != null)
                     {
                         OffsetButton.IsEnabled = true;
                     }
                 }
-                else if ((sender as ModernWpf.Controls.NumberBox).Tag.Equals("coordinates"))
+                else if (sender is TextBox tb && tb.Tag.Equals("coordinates"))
                 {
                     if (ButtonApplyCoordinates != null)
                     {
@@ -667,6 +667,34 @@ namespace AutoDarkModeApp.Pages
             if(e.Key == Key.Enter | e.Key == Key.Space)
             {
                 TextBlockOpenLatLongWebsite_MouseDown(this, null);
+            }
+        }
+
+        private void NumberBox_Validate(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox tb)
+            {
+                string validated = tb.Text.Replace(",", ".");
+                validated = Regex.Replace(validated, @"[^\d.]", "");
+                if (validated.StartsWith("."))
+                {
+                    validated = "0" + validated;
+                }
+                if (validated.Length == 0)
+                {
+                    validated = "0";
+                }
+                if (validated.Contains("."))
+                {
+                    string[] split = validated.Split(".");
+                    string join = string.Join("", split[1..]);
+                    join = Regex.Replace(join, @"[^\d]", "");
+                    validated = join.Length > 0 ? $"{split[0]}.{join}" : split[0];
+                }
+                if (validated.StartsWith("0") && !validated.StartsWith("0.")) {
+                    validated = validated[1..];
+                }
+                tb.Text = validated;
             }
         }
     }
