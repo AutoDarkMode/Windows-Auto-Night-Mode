@@ -131,7 +131,7 @@ namespace AutoDarkModeSvc.Communication
                 AvailableWorkers -= 1;
                 if (AvailableWorkers == 0)
                 {
-                    Logger.Warn($"client connected, worker pool exhausted");
+                    Logger.Info($"client connected, worker pool exhausted");
                 }
                 else
                 {
