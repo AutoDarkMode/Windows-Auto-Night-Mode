@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.Communication
         public static void Parse(List<string> msg, Action<string> SendResponse, Service service)
         {
             //WaitForConfigUpdateCompletion();
-            state.ConfigIsUpdatingWaitHandle.WaitOne();
+            _ = state.ConfigIsUpdatingWaitHandle.WaitOne();
             msg.ForEach(message =>
             {
                 switch (message)

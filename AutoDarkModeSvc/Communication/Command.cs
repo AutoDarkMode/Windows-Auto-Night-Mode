@@ -122,10 +122,8 @@ namespace AutoDarkModeSvc.Communication
 
         public const string UpdateFailed = "--update-failed";
 
-        [Includable]
         public const string TestNotifications = "--test-notifications";
 
-        [Includable]
         public const string TestNotifications2 = "--test-notifications2";
     }
 
