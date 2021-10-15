@@ -676,16 +676,13 @@ namespace AutoDarkModeApp.Pages
             {
                 string validated = tb.Text.Replace(",", ".");
                 validated = Regex.Replace(validated, @"[^\d.]", "");
-                if (validated.StartsWith("."))
-                {
-                    validated = "0" + validated;
-                }
+
                 if (validated.Contains("."))
                 {
                     string[] split = validated.Split(".");
                     string join = string.Join("", split[1..]);
                     join = Regex.Replace(join, @"[^\d]", "");
-                    validated = join.Length > 0 ? $"{split[0]}.{join}" : split[0];
+                    validated = $"{split[0]}.{join}";
                 }
                 validated = validated.TrimEnd('0').TrimEnd('.');
                 if (validated.StartsWith('0'))
