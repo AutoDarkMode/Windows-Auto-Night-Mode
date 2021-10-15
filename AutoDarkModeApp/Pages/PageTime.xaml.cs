@@ -680,10 +680,6 @@ namespace AutoDarkModeApp.Pages
                 {
                     validated = "0" + validated;
                 }
-                if (validated.Length == 0)
-                {
-                    validated = "0";
-                }
                 if (validated.Contains("."))
                 {
                     string[] split = validated.Split(".");
@@ -691,11 +687,25 @@ namespace AutoDarkModeApp.Pages
                     join = Regex.Replace(join, @"[^\d]", "");
                     validated = join.Length > 0 ? $"{split[0]}.{join}" : split[0];
                 }
-                if (validated.StartsWith("0") && !validated.StartsWith("0.")) {
-                    validated = validated[1..];
+                validated = validated.TrimEnd('0').TrimEnd('.');
+                if (validated.StartsWith('0'))
+                {
+                    validated = validated.TrimStart('0');
+                    if (validated.StartsWith('.')) validated = "0" + validated;
+                }
+                if (validated.Length == 0)
+                {
+                    validated = "0";
                 }
                 tb.Text = validated;
             }
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            tb.SelectionStart = tb.Text.Length;
+            tb.SelectionLength = 0;
         }
     }
 }

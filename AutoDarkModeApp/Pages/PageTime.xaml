@@ -241,6 +241,7 @@
                         PreviewTextInput="NumberBox_PreviewTextInput"
                         LostFocus="NumberBox_Validate"
                         Tag="coordinates"
+                        GotFocus="TextBox_GotFocus"
                     />
                 </Grid>
 
@@ -263,6 +264,7 @@
                         PreviewTextInput="NumberBox_PreviewTextInput"
                         LostFocus="NumberBox_Validate"
                         Tag="coordinates"
+                        GotFocus="TextBox_GotFocus"
                     />
                 </Grid>
 
