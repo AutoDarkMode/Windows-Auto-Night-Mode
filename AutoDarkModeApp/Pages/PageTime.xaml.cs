@@ -675,6 +675,8 @@ namespace AutoDarkModeApp.Pages
             if (sender is TextBox tb)
             {
                 string validated = tb.Text.Replace(",", ".");
+                bool isNegative = false;
+                if (validated.StartsWith("-")) isNegative = true;
                 validated = Regex.Replace(validated, @"[^\d.]", "");
 
                 if (validated.Contains("."))
@@ -683,8 +685,8 @@ namespace AutoDarkModeApp.Pages
                     string join = string.Join("", split[1..]);
                     join = Regex.Replace(join, @"[^\d]", "");
                     validated = $"{split[0]}.{join}";
+                    validated = validated.TrimEnd('0').TrimEnd('.');
                 }
-                validated = validated.TrimEnd('0').TrimEnd('.');
                 if (validated.StartsWith('0'))
                 {
                     validated = validated.TrimStart('0');
@@ -693,6 +695,10 @@ namespace AutoDarkModeApp.Pages
                 if (validated.Length == 0)
                 {
                     validated = "0";
+                }
+                if (isNegative)
+                {
+                    validated = "-" + validated;
                 }
                 tb.Text = validated;
             }

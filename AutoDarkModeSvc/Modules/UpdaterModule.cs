@@ -39,6 +39,9 @@ namespace AutoDarkModeSvc.Modules
             //Updater();
         }
 
+        /// <summary>
+        /// Checks for updates and applies them if enabled and available
+        /// </summary>
         private void Check()
         {
             try

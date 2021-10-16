@@ -130,6 +130,14 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
+        /// <summary>
+        /// Checks whether a downgrade is available to apply <br/>
+        /// Updates the UpstreamResponse object <br/>
+        /// <returns>
+        /// Returns ApiResponse with StatusCode.Downgrade if a downgrade is available, <br/>
+        /// StatusCode.Ok if no downgrade is available
+        /// </returns>
+        /// </summary>
         public static ApiResponse CheckDowngrade()
         {
             if (UpstreamResponse.StatusCode == StatusCode.Ok)
@@ -189,7 +197,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 try
                 {
-                    Version updaterVersion = new Version(UpstreamVersion.UpdaterVersion);
+                    Version updaterVersion = new(UpstreamVersion.UpdaterVersion);
                     if (updaterVersion.CompareTo(minUpdaterVersion) < 0 || updaterVersion.CompareTo(maxUpdaterVersion) > 0)
                     {
                         return new ApiResponse

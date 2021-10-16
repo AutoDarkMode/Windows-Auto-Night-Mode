@@ -29,6 +29,9 @@ namespace AutoDarkModeSvc.Modules
             Priority = 1;
         }
 
+        /// <summary>
+        /// Registers all modules enabled in the AutoDarkMode Configuration
+        /// </summary>
         public override void Fire()
         {
             AdmConfig config = ConfigBuilder.Config;
@@ -65,7 +68,7 @@ namespace AutoDarkModeSvc.Modules
                 {
                     Timers.ForEach(t => t.DeregisterModule(moduleType.Name));
                 }
-            }            
+            }
         }
     }
 }
