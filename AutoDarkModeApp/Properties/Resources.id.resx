@@ -542,7 +542,7 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
     <value>Pilih latar belakang</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Sembunyikan ikon tray (tidak direkomendasikan</value>
+    <value>Sembunyikan ikon tray (tidak direkomendasikan)</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>Jangan berganti ketika bermain video game</value>
