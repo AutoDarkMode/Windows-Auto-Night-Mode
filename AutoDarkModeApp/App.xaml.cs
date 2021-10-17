@@ -46,19 +46,7 @@ namespace AutoDarkModeApp
             MainWindow mainWin = null;
             MainWindowMwpf mainWinMwpf = null;
 
-            int buildNumber = 0;
-            try
-            {
-                using RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
-                if (registryKey != null)
-                {
-                    var buildString = registryKey.GetValue("CurrentBuild").ToString();
-                    int.TryParse(buildString, out buildNumber);
-                }
-            }
-            catch { }
-
-            if (buildNumber >= 22000)
+            if (Environment.OSVersion.Version.Build >= 22000)
             {
                 mainWinMwpf = new();
             }
