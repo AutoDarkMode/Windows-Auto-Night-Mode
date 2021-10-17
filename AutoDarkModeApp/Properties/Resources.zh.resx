@@ -133,7 +133,7 @@
     <value>浅色主题</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用Windows 1903相关的功能</value>
+    <value>启用 Windows 1903 相关的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>应用程序：</value>
@@ -205,7 +205,7 @@
     <value>有新版可更新！</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感谢您使用“自动深色模式”！
+    <value>感谢您使用 Auto Dark Mode！
 
 GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
 您想安装新版吗？
@@ -213,7 +213,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
 当前版本: {0}, 最新版本: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>自动深色模式</value>
+    <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
     <value>检查更新</value>
@@ -335,21 +335,21 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
 - 检查服务运行状态
 - 关闭服务，删除 config.yaml 并重新配置本程序
 
-如果上述方法无效，您可在GitHub上创建issue进行反馈。点击“是”即可跳转到issue页面。</value>
+如果上述方法无效，您可在 GitHub 上创建 issue 进行反馈。点击“是”即可跳转到 issue 页面。</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>错误：您的输入无效</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Connected Standby状态下仍然切换主题（不推荐）</value>
+    <value>Connected Standby 状态下仍然切换主题（不推荐）</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Microsoft Surface等移动设备使用的一种新型待机模式。
-启用此项可确保计算机唤醒后，“自动深色模式”会立即切换主题。
+启用此项可确保计算机唤醒后，Auto Dark Mode 会立即切换主题。
 但也将消耗更多电量，仅在必要时启用！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>由于Windows的程序错误，在节电模式下，本应用无法切换任务栏的颜色。如遇到相关问题，请关闭节电模式。</value>
+    <value>由于 Windows 的程序错误，在节电模式下，本应用无法切换任务栏的颜色。如遇到相关问题，请关闭节电模式。</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>调整</value>
@@ -358,8 +358,8 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>设置</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>使用Windows主题模式时无法调整这些选项。
-您可以在Windows主题中单独设置这些选项。</value>
+    <value>使用 Windows 主题模式时无法调整这些选项。
+您可以在 Windows 主题中单独设置这些选项。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>应用程序</value>
@@ -392,7 +392,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>桌面壁纸（推荐）</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>点击此处打开Windows壁纸设置。</value>
+    <value>点击此处打开 Windows 壁纸设置。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>现在，切换至“颜色”选项卡，将系统颜色改为“浅色”。再选择您喜欢的壁纸、鼠标光标和主题色。</value>
@@ -446,7 +446,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>推荐工具</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>此浏览器扩展可使Chrome，Firefox和Edge中的网页跟随系统主题设定。</value>
+    <value>此浏览器扩展可使 Chrome、Firefox 和 Edge 中的网页跟随系统主题设定。</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>未找到相应的城市</value>
@@ -458,13 +458,13 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>如何捐赠？</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>您可以通过PayPal无偿自愿地向我汇款。</value>
+    <value>您可以通过 PayPal 无偿自愿地向我汇款。</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>捐赠</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>您好！感谢您使用自动深色模式。迄今为止，您还喜欢这个应用吗？
+    <value>您好！感谢您使用 Auto Dark Mode。迄今为止，您还喜欢这个应用吗？
 
 这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
 我并不靠本项目盈利。
@@ -472,16 +472,16 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
 如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只需按项目价值，捐赠任意数额即可。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>应用.theme文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开“自动深色模式”并配置{0}设置。</value>
+    <value>应用 .theme 文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开 Auto Dark Mode 并配置{0}设置。</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>我们遇到了以下问题：
 {0}
 
 现在我们将尝试以管理员身份，运行算法程序来解决此问题。但无法保证百分百可解决问题。
-之后，“自动深色模式”将重新启动。您需要重新设置本应用，非常抱歉！
+之后，Auto Dark Mode 将重新启动。您需要重新设置本应用，非常抱歉！
 
-注：请勿手动以管理员身份运行“自动深色模式”！</value>
+注：请勿手动以管理员身份运行 Auto Dark Mode！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>需要帮助吗？</value>
@@ -568,13 +568,13 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>启用壁纸模式时无法开启本功能。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>功能更多，但需要创建Windows的.theme文件。该模式下您可以自定义各个显示器的壁纸、将壁纸设置为“幻灯片放映”、更改鼠标光标样式、设置主题色并修改各个声音。</value>
+    <value>功能更多，但需要创建 Windows 的 .theme 文件。该模式下您可以自定义各个显示器的壁纸、将壁纸设置为“幻灯片放映”、更改鼠标光标样式、设置主题色并修改各个声音。</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
     <value>功能较少，但设置方便。该模式下您可以自定义所有显示器或各个显示器的壁纸，或者设置纯色背景。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>我们将在后台检查新版“自动深色模式”，并通过桌面通知提醒您更新。</value>
+    <value>我们将在后台检查新版 Auto Dark Mode，并通过桌面通知提醒您更新。</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>自动下载并安装新版本</value>
@@ -586,7 +586,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>选择更新版本</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>在“自动深色模式”启动时检查更新</value>
+    <value>在 Auto Dark Mode 启动时检查更新</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
     <value>14天</value>
@@ -687,10 +687,10 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>正在启动服务</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>服务无响应。请检查AutoDarkModeSvc.exe的运行状态并重试！</value>
+    <value>服务无响应。请检查 AutoDarkModeSvc.exe 的运行状态并重试！</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>切换Windows主题</value>
+    <value>切换 Windows 主题</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
     <value>关闭</value>
