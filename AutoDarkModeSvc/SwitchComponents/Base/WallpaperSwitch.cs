@@ -288,6 +288,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             base.EnableHook();
         }
 
+        public override void DisableHook()
+        {
+            currentSolidColorTheme = Theme.Unknown;
+            currentGlobalTheme = Theme.Unknown;
+            base.DisableHook();
+        }
+
         private Theme GetIndividualWallpapersState()
         {
             List<Tuple<string, string>> wallpapers = WallpaperHandler.GetWallpapers();
