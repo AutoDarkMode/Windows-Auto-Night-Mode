@@ -701,6 +701,22 @@ namespace AutoDarkModeApp.Pages
                     validated = "-" + validated;
                 }
                 tb.Text = validated;
+
+                double latParsed = 0;
+                double lonParsed = 0;
+                double.TryParse(NumberBoxLat.Text, out latParsed);
+                double.TryParse(NumberBoxLon.Text, out lonParsed);
+                if (latParsed != 0)
+                {
+                    if (latParsed > 90) tb.Text = "90";
+                    else if (latParsed < -90) tb.Text = "-90";
+                }
+                if (lonParsed != 0)
+                {
+                    if (lonParsed > 180) tb.Text = "180";
+                    else if (lonParsed < -180) tb.Text = "-180";
+                }
+
             }
         }
 
