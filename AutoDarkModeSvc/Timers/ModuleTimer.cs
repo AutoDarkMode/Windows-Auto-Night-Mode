@@ -7,7 +7,7 @@ using AutoDarkModeConfig;
 
 namespace AutoDarkModeSvc.Timers
 {
-    class ModuleTimer
+    public class ModuleTimer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private List<IAutoDarkModeModule> Modules { get; set; }

@@ -27,12 +27,14 @@ namespace AutoDarkModeSvc
         [STAThread]
         public static void Main(string[] args)
         {
+            List<string> argsList = args.Length > 0 ? new List<string>(args) : new List<string>();
+            string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+
             //Set up Logger
-            var config = new NLog.Config.LoggingConfiguration();
-            var configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+            NLog.Config.LoggingConfiguration config = new NLog.Config.LoggingConfiguration();
 
             // Targets where to log to: File and Console
-            var logfile = new NLog.Targets.FileTarget("logfile")
+            NLog.Targets.FileTarget logfile = new NLog.Targets.FileTarget("logfile")
             {
                 FileName = Path.Combine(configDir, "service.log"),
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
@@ -40,7 +42,7 @@ namespace AutoDarkModeSvc
                 "cleanNamesOfAnonymousDelegates=true:" +
                 "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }"
             };
-            var logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
+            NLog.Targets.ColoredConsoleTarget logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
             {
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
@@ -48,15 +50,6 @@ namespace AutoDarkModeSvc
                 "cleanNamesOfAsyncContinuations=true}: ${message} ${exception}"
             };
 
-            List<string> argsList;
-            if (args.Length > 0)
-            {
-                argsList = new List<string>(args);
-            }
-            else
-            {
-                argsList = new List<string>();
-            }
 
             // Rules for mapping loggers to targets       
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
@@ -71,14 +64,8 @@ namespace AutoDarkModeSvc
             // Apply config           
             LogManager.Configuration = config;
 
-            try
-            {
-                Directory.CreateDirectory(configDir);
-            }
-            catch (Exception e)
-            {
-                Logger.Fatal(e, "could not create config directory");
-            }
+            try { _ = Directory.CreateDirectory(configDir); }
+            catch (Exception e) { Logger.Fatal(e, "could not create config directory"); }
 
             try
             {
@@ -107,13 +94,13 @@ namespace AutoDarkModeSvc
                     Logger.Error("could not retrieve commit hash");
                 }
                 //Instantiate Runtime config
-                GlobalState.Instance();
+                GlobalState state = GlobalState.Instance();
 
                 //Populate configuration
-                AdmConfigBuilder Builder = AdmConfigBuilder.Instance();
+                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
                 try
                 {
-                    Builder.Load();
+                    builder.Load();
                     Logger.Debug("config builder instantiated and configuration loaded");
                 }
                 catch (Exception e)
@@ -121,7 +108,7 @@ namespace AutoDarkModeSvc
                     Logger.Error(e, "could not read config file, resetting config file:");
                     try
                     {
-                        Builder.BackupConfig();
+                        builder.BackupConfig();
                     }
                     catch (Exception ex)
                     {
@@ -129,11 +116,11 @@ namespace AutoDarkModeSvc
                     }
                     try
                     {
-                        Builder.Save();
+                        builder.Save();
                     }
                     catch (Exception ex)
                     {
-                        Logger.Error(ex, "could not create empty config file, resetting config file:");
+                        Logger.Fatal(ex, "could not create empty config file, this is a fatal error. exiting...");
                         LogManager.Shutdown();
                         Environment.Exit(-1);
                     }
@@ -141,14 +128,15 @@ namespace AutoDarkModeSvc
 
                 try
                 {
-                    Builder.LoadLocationData();
+                    builder.LoadLocationData();
                 }
                 catch (Exception ex)
                 {
                     Logger.Error(ex, "could not load location data:");
                 }
 
-                if (Builder.Config.Tunable.Debug && !argsList.Contains("/debug"))
+                // modify config if debug flag is set in config
+                if (builder.Config.Tunable.Debug && !argsList.Contains("/debug"))
                 {
                     config = new NLog.Config.LoggingConfiguration();
                     config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
@@ -160,18 +148,18 @@ namespace AutoDarkModeSvc
 
                 //if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
-                if (Builder.Config.WindowsThemeMode.Enabled)
+                if (builder.Config.WindowsThemeMode.Enabled)
                 {
-                    if (!File.Exists(Builder.Config.WindowsThemeMode.DarkThemePath) || Builder.Config.WindowsThemeMode.DarkThemePath == null)
+                    if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.DarkThemePath == null)
                     {
-                        Builder.Config.WindowsThemeMode.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-                            + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
+                        builder.Config.WindowsThemeMode.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                            + @"\Microsoft\Windows\Themes", state.CurrentWindowsThemeName + ".theme");
                         configUpdateNeeded = true;
                     }
-                    if (!File.Exists(Builder.Config.WindowsThemeMode.DarkThemePath) || Builder.Config.WindowsThemeMode.LightThemePath == null)
+                    if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.LightThemePath == null)
                     {
-                        Builder.Config.WindowsThemeMode.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-                           + @"\Microsoft\Windows\Themes", ThemeHandler.GetCurrentThemeName() + ".theme");
+                        builder.Config.WindowsThemeMode.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                           + @"\Microsoft\Windows\Themes", state.CurrentWindowsThemeName + ".theme");
                         configUpdateNeeded = true;
                     }
                     if (configUpdateNeeded)
@@ -179,7 +167,7 @@ namespace AutoDarkModeSvc
                         Logger.Warn("one or more theme paths not set at program start, reinstantiation needed");
                         try
                         {
-                            Builder.Save();
+                            builder.Save();
                         }
                         catch (Exception ex)
                         {
@@ -214,11 +202,11 @@ namespace AutoDarkModeSvc
 
                 ActionQueue.Add(() =>
                 {
-                   // Listen to toast notification activation
-                   Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.OnActivated += toastArgs =>
-                   {
-                       ToastHandler.HandleToastAction(toastArgs);
-                   };
+                    // Listen to toast notification activation
+                    Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.OnActivated += toastArgs =>
+                    {
+                        ToastHandler.HandleToastAction(toastArgs);
+                    };
                 });
 
                 timerMillis = (timerMillis == 0) ? TimerFrequency.Short : timerMillis;
@@ -253,7 +241,7 @@ namespace AutoDarkModeSvc
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn(ex, "couldn't close app before shutting down service");
+                    Logger.Warn(ex, "could not close app before shutting down service");
                 }
                 ActionQueue.CompleteAdding();
                 Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();

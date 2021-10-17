@@ -14,11 +14,12 @@ namespace AutoDarkModeSvc
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly ComponentManager cm = ComponentManager.Instance();
+        private static readonly GlobalState state = GlobalState.Instance();
+
 
         public static void TimedSwitch(AdmConfigBuilder builder, bool automatic = true)
         {
 
-            GlobalState state = GlobalState.Instance();
             if (state.ForcedTheme == Theme.Dark)
             {
                 SwitchTheme(builder.Config, Theme.Dark);
@@ -57,7 +58,7 @@ namespace AutoDarkModeSvc
 
         public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
-            if (!automatic)
+            if (!automatic && state.ForcedTheme == Theme.Unknown)
             {
                 Logger.Info($"theme switch invoked manually");
             }
@@ -131,13 +132,13 @@ namespace AutoDarkModeSvc
             }
 
             // TODO change tracking when having active theme monitor disabled
-            if (newTheme == Theme.Dark && state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal))
+            if (newTheme == Theme.Dark && !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal))
             {
                 PowerHandler.DisableEnergySaver(config);
                 ThemeHandler.Apply(config.WindowsThemeMode.DarkThemePath);
                 return true;
             }
-            else if (newTheme == Theme.Light && state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal))
+            else if (newTheme == Theme.Light && !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal))
             {
                 PowerHandler.DisableEnergySaver(config);
                 ThemeHandler.Apply(config.WindowsThemeMode.LightThemePath);

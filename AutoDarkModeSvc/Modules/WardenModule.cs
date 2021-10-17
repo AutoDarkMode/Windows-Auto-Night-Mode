@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class WardenModule : AutoDarkModeModule
+    public class WardenModule : AutoDarkModeModule
     {
         private AdmConfigBuilder ConfigBuilder { get; }
         private GlobalState State { get; }

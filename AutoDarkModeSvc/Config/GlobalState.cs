@@ -8,7 +8,7 @@ using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Config
 {
-    class GlobalState
+    public class GlobalState
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.Config
         protected GlobalState()
         {
             CurrentWallpaperTheme = Theme.Unknown;
-            CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
+            CurrentWindowsThemeName = GetCurrentThemeName();
             ForcedTheme = Theme.Unknown;
             PostponeSwitch = false;
         }
@@ -82,6 +82,13 @@ namespace AutoDarkModeSvc.Config
         public void SetWarden(WardenModule warden)
         {
             Warden = warden;
+        }
+
+        private static string GetCurrentThemeName()
+        {
+            string currentTheme = ThemeHandler.GetCurrentThemeName();
+            Logger.Debug($"active windows theme on startup: {currentTheme}");
+            return currentTheme;
         }
     }
 }

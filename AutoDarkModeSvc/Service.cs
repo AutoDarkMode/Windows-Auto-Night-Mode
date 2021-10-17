@@ -21,17 +21,17 @@ namespace AutoDarkModeSvc
         private List<ModuleTimer> Timers { get; set; }
         private IMessageServer MessageServer { get; }
         private AdmConfigMonitor ConfigMonitor { get; }
-        private AdmConfigBuilder ConfigBuilder { get; }
+        private AdmConfigBuilder Builder { get; }
         public readonly ToolStripMenuItem forceDarkMenuItem = new("Force Dark Mode");
         public readonly ToolStripMenuItem forceLightMenuItem = new("Force Light Mode");
         private delegate void SafeCallDelegate(string text);
 
         public Service(int timerMillis)
         {
-            ConfigBuilder = AdmConfigBuilder.Instance();
+            Builder = AdmConfigBuilder.Instance();
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
-            if (ConfigBuilder.Config.Tunable.ShowTrayIcon)
+            if (Builder.Config.Tunable.ShowTrayIcon)
             {
                 NotifyIcon = new NotifyIcon();
                 InitTray();
@@ -138,7 +138,7 @@ namespace AutoDarkModeSvc
                 Logger.Info("ui signal received: stop forcing specific theme");
                 GlobalState rtc = GlobalState.Instance();
                 rtc.ForcedTheme = Theme.Unknown;
-                ThemeManager.TimedSwitch(ConfigBuilder);
+                ThemeManager.TimedSwitch(Builder);
                 mi.Checked = false;
             }
             else
@@ -150,19 +150,20 @@ namespace AutoDarkModeSvc
                         (item as ToolStripMenuItem).Checked = false;
                     }
                 }
-                AdmConfig config = ConfigBuilder.Config;
-                GlobalState rtc = GlobalState.Instance();
+                GlobalState state = GlobalState.Instance();
                 if (mi.Name == "forceLight")
                 {
                     Logger.Info("ui signal received: forcing light theme");
-                    rtc.ForcedTheme = Theme.Light;
-                    ThemeManager.SwitchTheme(config, Theme.Light);
+                    state.ForcedTheme = Theme.Light;
+                    ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
+                    ThemeManager.SwitchTheme(Builder.Config, Theme.Light);
                 }
                 else if (mi.Name == "forceDark")
                 {
                     Logger.Info("ui signal received: forcing dark theme");
-                    rtc.ForcedTheme = Theme.Dark;
-                    ThemeManager.SwitchTheme(config, Theme.Dark);
+                    state.ForcedTheme = Theme.Dark;
+                    ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
+                    ThemeManager.SwitchTheme(Builder.Config, Theme.Dark);
                 }
                 mi.Checked = true;
             }
@@ -170,14 +171,19 @@ namespace AutoDarkModeSvc
 
         private void SwitchThemeNow(object sender, EventArgs e)
         {
-            AdmConfig config = ConfigBuilder.Config;
+            GlobalState rtc = GlobalState.Instance();
+            AdmConfig config = Builder.Config;
             Logger.Info("ui signal received: switching theme");
             if (RegistryHandler.AppsUseLightTheme())
             {
+                if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
+                    rtc.CurrentWindowsThemeName = "";
                 ThemeManager.SwitchTheme(config, Theme.Dark);
             }
             else
             {
+                if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
+                    rtc.CurrentWindowsThemeName = "";
                 ThemeManager.SwitchTheme(config, Theme.Light);
             }
         }
@@ -186,7 +192,7 @@ namespace AutoDarkModeSvc
         {
             ProcessStartInfo startInfo = new()
             {
-                Arguments = ConfigBuilder.ConfigDir,
+                Arguments = Builder.ConfigDir,
                 FileName = "explorer.exe"
             };
 

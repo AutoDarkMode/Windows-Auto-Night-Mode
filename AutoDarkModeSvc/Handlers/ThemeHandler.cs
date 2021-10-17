@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using AutoDarkModeSvc.Config;
+using AutoDarkModeConfig;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -75,7 +76,7 @@ namespace AutoDarkModeSvc.Handlers
             public static extern bool IsThemeActive();
         }
         public static string GetCurrentThemeName()
-        {
+        {   
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
         public static void Apply(string themeFilePath)
@@ -92,7 +93,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, $"couldn't apply theme \"{themeFilePath}\"");
+                    Logger.Error(ex, $"could not apply theme \"{themeFilePath}\"");
                 }
             })
             {
@@ -116,6 +117,27 @@ namespace AutoDarkModeSvc.Handlers
         public static string GetThemeStatus()
         {
             return NativeMethods.IsThemeActive() ? "running" : "stopped";
+        }
+
+        public static void EnforceNoMonitorUpdates(AdmConfigBuilder builder, GlobalState state, Theme theme)
+        {
+            string themePath = "";
+            switch (theme)
+            {
+                case Theme.Light:
+                    themePath = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.LightThemePath);
+                    break;
+                case Theme.Dark:
+                    themePath = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.DarkThemePath);
+                    break;
+            }
+            if (builder.Config.WindowsThemeMode.Enabled
+                && !builder.Config.WindowsThemeMode.MonitorActiveTheme
+                && state.CurrentWindowsThemeName == themePath)
+            {
+                Logger.Debug("enforcing theme refresh with disabled MonitorActiveTheme");
+                state.CurrentWindowsThemeName = "";
+            }
         }
     }
 }

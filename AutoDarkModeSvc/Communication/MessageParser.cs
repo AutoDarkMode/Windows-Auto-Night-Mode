@@ -248,6 +248,7 @@ namespace AutoDarkModeSvc.Communication
                     case Command.Light:
                         Logger.Info("signal received: force light theme");
                         state.ForcedTheme = Theme.Light;
+                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
                         ThemeManager.SwitchTheme(builder.Config, Theme.Light);
                         SendResponse(new ApiResponse()
                         {
@@ -260,6 +261,7 @@ namespace AutoDarkModeSvc.Communication
                     case Command.Dark:
                         Logger.Info("signal received: force dark theme");
                         state.ForcedTheme = Theme.Dark;
+                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
                         ThemeManager.SwitchTheme(builder.Config, Theme.Dark);
                         SendResponse(StatusCode.Ok);
                         break;

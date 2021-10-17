@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Modules
 {
-    abstract class AutoDarkModeModule : IAutoDarkModeModule
+    public abstract class AutoDarkModeModule : IAutoDarkModeModule
     {
         public string Name { get; }
         public abstract string TimerAffinity { get; }
