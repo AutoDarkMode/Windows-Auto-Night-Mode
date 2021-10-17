@@ -707,6 +707,7 @@ namespace AutoDarkModeApp.Pages
                 if (latParsed > 90) tb.Text = "90";
                 else if (latParsed < -90) tb.Text = "-90";
                 if (lonParsed > 180) tb.Text = "180";
+                else if (lonParsed < -180) tb.Text = "-180";
             }
         }
 
