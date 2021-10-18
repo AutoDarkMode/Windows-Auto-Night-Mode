@@ -1419,6 +1419,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Windows (Dark).
+        /// </summary>
+        public static string ThemePickerTheme11Dark {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11Dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flow.
         /// </summary>
         public static string ThemePickerTheme11Flow {
@@ -1433,6 +1442,15 @@ namespace AutoDarkModeApp.Properties {
         public static string ThemePickerTheme11Glow {
             get {
                 return ResourceManager.GetString("ThemePickerTheme11Glow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows (Light).
+        /// </summary>
+        public static string ThemePickerTheme11Light {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11Light", resourceCulture);
             }
         }
         

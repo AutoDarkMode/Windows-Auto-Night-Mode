@@ -34,10 +34,13 @@ namespace AutoDarkModeApp.Handlers
         {
             if (Environment.OSVersion.Version.Build >= 22000)
             {
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\aero.theme", Properties.Resources.ThemePickerTheme11Light));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\dark.theme", Properties.Resources.ThemePickerTheme11Dark));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeA.theme", Properties.Resources.ThemePickerTheme11Glow));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeB.theme", Properties.Resources.ThemePickerTheme11CapturedMotion));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeC.theme", Properties.Resources.ThemePickerTheme11Sunrise));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeD.theme", Properties.Resources.ThemePickerTheme11Flow));
+
             }
             else
             {
