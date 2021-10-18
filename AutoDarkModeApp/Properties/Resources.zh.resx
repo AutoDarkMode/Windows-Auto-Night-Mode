@@ -722,26 +722,26 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>捕获的动作</value>
-    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并将鼠标悬停在主题名称上)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows （深色主题）</value>
-    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并将鼠标悬停在主题名称上)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>流畅</value>
-    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并将鼠标悬停在主题名称上)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>发光</value>
-    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并将鼠标悬停在主题名称上)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows （浅色主题）</value>
-    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并将鼠标悬停在主题名称上)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>日出</value>
-    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并将鼠标悬停在主题名称上)</comment>
   </data>
 </root>
