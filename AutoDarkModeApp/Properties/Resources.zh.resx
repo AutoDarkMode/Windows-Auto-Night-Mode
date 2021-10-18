@@ -133,7 +133,7 @@
     <value>浅色主题</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用 Windows 1903 相关的功能</value>
+    <value>启用与 Windows 1903 相关的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>应用程序：</value>
@@ -228,7 +228,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>勾选此项启用自动主题切换</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: zheolls、没有字的回音、ThrRip</value>
+    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>城市</value>
@@ -344,7 +344,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>Connected Standby 状态下仍然切换主题（不推荐）</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface等移动设备使用的一种新型待机模式。
+    <value>Microsoft Surface 等移动设备使用的一种新型待机模式。
 启用此项可确保计算机唤醒后，Auto Dark Mode 会立即切换主题。
 但也将消耗更多电量，仅在必要时启用！</value>
   </data>
@@ -469,7 +469,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
 这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
 我并不靠本项目盈利。
 
-如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只需按项目价值，捐赠任意数额即可。</value>
+如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只要你重视我的工作，就捐献吧。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>应用 .theme 文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开 Auto Dark Mode 并配置{0}设置。</value>
@@ -478,7 +478,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>我们遇到了以下问题：
 {0}
 
-现在我们将尝试以管理员身份，运行算法程序来解决此问题。但无法保证百分百可解决问题。
+现在我们将尝试以管理员身份运行算法程序来解决此问题。但无法保证百分百可解决问题。
 之后，Auto Dark Mode 将重新启动。您需要重新设置本应用，非常抱歉！
 
 注：请勿手动以管理员身份运行 Auto Dark Mode！</value>
@@ -520,7 +520,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>应用坐标</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>您未安装Windows 10 2019年4月更新，故此选项不可用。</value>
+    <value>您未安装 Windows 10 2019年4月更新，故此选项不可用。</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>地理坐标</value>
@@ -658,7 +658,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>慢（三采样）</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU使用率检测速度</value>
+    <value>GPU 使用率检测速度</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
     <value>电池设备</value>
@@ -667,7 +667,7 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>状态</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>GPU使用率大于此值时，不切换主题</value>
+    <value>GPU 使用率大于此值时，不切换主题</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>主题被外部修改时改回原定主题</value>
@@ -703,5 +703,45 @@ GitHub上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>主题</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>鲜花</value>
+    <comment>使用 Win10 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>使用 Win10 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>使用 Win10 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows （浅色主题）</value>
+    <comment>使用 Win10 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>捕获的动作</value>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows （深色主题）</value>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>流畅</value>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>发光</value>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows （浅色主题）</value>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>日出</value>
+    <comment>使用 Win11 设置中的名称（转到个性化 -&gt; 主题并复制名称)</comment>
   </data>
 </root>
