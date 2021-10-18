@@ -67,8 +67,8 @@ namespace AutoDarkModeApp.Pages
                 IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
                 ComboBoxDarkTheme.ItemsSource = themeNames;
                 ComboBoxLightTheme.ItemsSource = themeNames;
-                ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.LightThemePath);
-                ComboBoxDarkTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.DarkThemePath);
+                ComboBoxLightTheme.SelectedItem = themeCollection.Where(t => t.Path == builder.Config.WindowsThemeMode.LightThemePath).FirstOrDefault().ToString();
+                ComboBoxDarkTheme.SelectedItem = themeCollection.Where(t => t.Path ==builder.Config.WindowsThemeMode.DarkThemePath).FirstOrDefault().ToString();
             }
 
             if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
