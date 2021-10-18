@@ -29,6 +29,7 @@ namespace AutoDarkModeApp.Pages
     {
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
+        private List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
         private bool init = true;
         private bool theme1 = false;
         private bool theme2 = false;
@@ -63,7 +64,7 @@ namespace AutoDarkModeApp.Pages
             //get all themes and select them in the combobox
             if (builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
             {
-                var themeNames = GetThemeFiles();
+                IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
                 ComboBoxDarkTheme.ItemsSource = themeNames;
                 ComboBoxLightTheme.ItemsSource = themeNames;
                 ComboBoxLightTheme.SelectedItem = Path.GetFileNameWithoutExtension(builder.Config.WindowsThemeMode.LightThemePath);
@@ -115,7 +116,7 @@ namespace AutoDarkModeApp.Pages
             string selectedLightTheme = (string)ComboBoxLightTheme.SelectedItem;
             try
             {
-                builder.Config.WindowsThemeMode.LightThemePath = GetUserThemes().Where(t => t.Contains(selectedLightTheme)).FirstOrDefault();
+                builder.Config.WindowsThemeMode.LightThemePath = themeCollection.Where(t => t.ToString().Contains(selectedLightTheme)).FirstOrDefault().Path;
             }
             catch
             {
@@ -127,7 +128,7 @@ namespace AutoDarkModeApp.Pages
             string selectedDarkTheme = (string)ComboBoxDarkTheme.SelectedItem;
             try
             {
-                builder.Config.WindowsThemeMode.DarkThemePath = GetUserThemes().Where(t => t.Contains(selectedDarkTheme)).FirstOrDefault();
+                builder.Config.WindowsThemeMode.DarkThemePath = themeCollection.Where(t => t.ToString().Contains(selectedDarkTheme)).FirstOrDefault().Path;
             }
             catch
             {
@@ -154,28 +155,6 @@ namespace AutoDarkModeApp.Pages
             Trace.WriteLine("Windows Theme Mode settings were applied");
         }
 
-        //convert list of all files to a list of file names without file extension
-        private IEnumerable GetThemeFiles()
-        {
-            var themePaths = GetUserThemes();
-            var themeNames = themePaths.Select(s => Path.GetFileNameWithoutExtension(s));
-            return themeNames;
-        }
-
-        //get a list of all files the theme folder contains. If there is no theme-folder, create one.
-        private List<string> GetUserThemes()
-        {
-            try
-            {
-                List<string> files = Directory.EnumerateFiles(ThemeFolderPath, "*.*", SearchOption.AllDirectories).ToList();
-                return files.Where(f => f.EndsWith(".theme")).ToList();
-            }
-            catch
-            {
-                Directory.CreateDirectory(ThemeFolderPath);
-                return GetUserThemes();
-            }
-        }
 
         private async void RequestThemeSwitch()
         {
@@ -244,7 +223,8 @@ namespace AutoDarkModeApp.Pages
         //display all theme files of the theme folder while opening the dropdown menu
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
-            var themeNames = GetThemeFiles();
+            themeCollection = ThemeCollectionHandler.GetUserThemes();
+            var themeNames = themeCollection.Select(t => t.ToString());
             ((ComboBox)sender).ItemsSource = themeNames;
         }
 

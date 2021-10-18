@@ -1374,6 +1374,78 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Flowers.
+        /// </summary>
+        public static string ThemePickerTheme10Flowers {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme10Flowers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows.
+        /// </summary>
+        public static string ThemePickerTheme10Windows {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme10Windows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows 10.
+        /// </summary>
+        public static string ThemePickerTheme10Windows10 {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme10Windows10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows (Light).
+        /// </summary>
+        public static string ThemePickerTheme10WindowsLight {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme10WindowsLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Captured Motion.
+        /// </summary>
+        public static string ThemePickerTheme11CapturedMotion {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11CapturedMotion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flow.
+        /// </summary>
+        public static string ThemePickerTheme11Flow {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11Flow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glow.
+        /// </summary>
+        public static string ThemePickerTheme11Glow {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11Glow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunrise.
+        /// </summary>
+        public static string ThemePickerTheme11Sunrise {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11Sunrise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select mode:.
         /// </summary>
         public static string ThemeSelection {

@@ -704,4 +704,36 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Flowers</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Light)</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Captured Motion</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Flow</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Glow</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Sunrise</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
 </root>
