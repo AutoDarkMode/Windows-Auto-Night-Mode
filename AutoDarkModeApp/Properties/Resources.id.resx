@@ -466,30 +466,6 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="tbHelp" xml:space="preserve">
     <value>Butuh bantuan?</value>
   </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>Unduh nanti</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Jangan ingatkan kembali</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>Unduh sekarang</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>Dalam beberapa bulan terakhir kami bekerja keras untuk memberikan Anda pembaruan terbaik, dan sekarang sudah tersedia! Auto Dark Mode X telah diketik ulang dari awal. Sekarang memakai tugas latar-belakang daripada mengandalkan Penjadwalan Tugas Windows. Ini berarti Anda mendapat pengalaman baru yang lebih andal dan fleksibel! Ya, ini memakai banyak sumber daya di latar belakang, namun sebagai imbalannya kami menawarkan lebih banyak fitur baru untuk meningkatkan produktivitas Anda. Sebagai contoh:
-- Mode Permainan: mematikan pergantian tema saat Anda memainkan game atau saat menggunakan aplikasi GPU intensif.
-- Berpindah tema dengan pintasan keyboard dan lebih banyak!
-Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini akan membuat masalah kepada penggunaan baterai, karena proses latar belakang harus diemulasi.</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X sekarang tersedia!</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Versi X adalah upgrade besar dan bagus yang pasti harus Anda coba! Apakah Anda yakin untuk TIDAK mengunduhnya? Kami tidak akan mengingatkan kembali!</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>Apa Anda yakin?</value>
-  </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Dukungan multi-pengguna</value>
   </data>
@@ -696,5 +672,45 @@ Pembaruan ini cocok untuk semua orang kecuali pengguna dengan perangkat ARM. ini
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
     <value>Pilih saluran pembaruan</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Bunga</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Terang)</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Gerakang Diambil</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (Gelap)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Flow</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Sinar</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (Terang)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Matahari Terbit</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
 </root>
