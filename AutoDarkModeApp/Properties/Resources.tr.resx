@@ -124,16 +124,16 @@
     <value>Uygula</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Yeni güncelleme mevcut!</value>
+    <value>Yeni güncelleme var!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Çeviri: Cumhur Kaya KURTOĞLU</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Şehir</value>
+    <value>Konum</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Dil (Language):</value>
+    <value>Dil:</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>İptal</value>
@@ -145,7 +145,7 @@
     <value>Güncellemeleri kontrol et</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Yeni güncelleme mevcut değil!</value>
+    <value>Yeni güncelleme yok.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Konumunuz aranıyor...</value>
@@ -226,7 +226,7 @@
     <value>Açık tema</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Değişiklikleri kaydetmet için Uygula'ya basın</value>
+    <value>Değişiklikleri kaydetmek için Uygula'ya basın</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Devre dışı</value>
@@ -291,13 +291,10 @@ Bunu indirmek istiyor musunuz?
     <value>12 saatlik zaman</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Güncellemeleri arka planda kontrol et</value>
+    <value>Otomatik güncelleme kontrolü</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Zamanlama</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>Arka Plan/Tema</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Klasörü Aç</value>
@@ -438,10 +435,10 @@ Bu seçeneğin etkinleştirilmesi Auto Dark Mode'un bilgisayarınızın uyandık
 Ama aynı zamanda pil ömrünü de azaltır. Bu yüzden SADECE gerekirse etkinleştirin!</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Kaydırma</value>
+    <value>Kaydırma (dk.)</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Ayarla</value>
+    <value>Uygula</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Bir Windows Teması kullanılırken bu seçenekler devre dışı bırakılır. 
@@ -490,7 +487,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Alternatif açık tema</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>.theme dosyası uayarlanırken hata oluştu. Belki oluşturduğunuz tema silinmiş ya da taşınmıştır. Bu nedenle tema değiştirmeyi şimdilik devre dışı bıraktık. Yeniden etkinleştirmek için lütfen Auto Dark Mode'u açın ve {0} Ayarlarını yapılandırın.</value>
+    <value>.theme dosyası ayarlanırken hata oluştu. Belki oluşturduğunuz tema silinmiş ya da taşınmıştır. Bu nedenle tema değiştirmeyi şimdilik devre dışı bıraktık. Yeniden etkinleştirmek için lütfen Auto Dark Mode'u açın ve {0} Ayarlarını yapılandırın.</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>Gri tonlamalı renk filtresini etkinleştirmek için isteğe bağlı gecikme:</value>
@@ -523,10 +520,10 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Microsoft Office 2013 - 2019:</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Bir tema seçin</value>
+    <value>Bir tema seç</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Bir arka plan seçin</value>
+    <value>Bir arka plan seç</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Tema modu etkinken bu özellik devre dışı bırakılır.</value>
@@ -541,7 +538,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Daha az özellik sunar, ancak kurulumu daha kolaydır. Tüm monitörler ya da ayrı ayrı her biri için arka plan resmini özelleştirebilir, bir arka plan rengi ayarlabilirsiniz.</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Koordinatları uygula</value>
+    <value>Uygula</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Coğrafi koordinatlar</value>
@@ -619,7 +616,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Monitör</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Biçim</value>
+    <value>Arka Plan</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
     <value>Bağlantısı kesilmiş monitörleri kaldır</value>
@@ -676,11 +673,11 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Harici olarak değiştirildiğinde temaları geri yükle</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Enlem</value>
+    <value>Enlem (Latitude)</value>
     <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Boylam</value>
+    <value>Boylam (Longitude)</value>
     <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
@@ -691,5 +688,60 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
     <value>Hizmet yanıt vermiyor. Lütfen AutoDarkModeSvc.exe'nin çalışıp çalışmadığını kontrol edin ve tekrar deneyin!</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Windows tema değişimini etkinleştir</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Bizi takip et</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Çiçekler</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Açık)</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Yakalanan Hareket</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (Koyu)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Akış</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (Açık)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Gün doğumu</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Işıma</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
 </root>
