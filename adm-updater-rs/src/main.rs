@@ -68,16 +68,16 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut restart_app = false;
     let mut restart_shell = false;
     let args: Vec<String> = env::args().collect();
-    info!("calling args: {:?}", args);
+    info!("args: {:?}", args);
     if args.len() >= 2 {
         if args.contains(&"--notify".to_string()) {
             if args.len() >= 3 {
-                if args[2] == "true" {
+                if args[2] == "True" {
                     restart_shell = true;
                 }
             }
             if args.len() >= 4 {
-                if args[3] == "true" {
+                if args[3] == "True" {
                     restart_app = true;
                 }
             }
