@@ -24,11 +24,6 @@ namespace AutoDarkModeApp
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
-            if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
-            {
-                Environment.Exit(-1);
-            }
-
             List<string> args = new();
             if (e.Args.Length > 0)
             {
@@ -39,6 +34,17 @@ namespace AutoDarkModeApp
                 debug = true;
                 args.Remove("/debug");
             }
+
+            if (args.Count > 0)
+            {
+                IMessageClient client = new PipeClient();
+                _ = client.SendMessageAndGetReply(args[0]);
+            }
+            
+            if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
+            {
+                Environment.Exit(-1);
+            }      
 
             bool serviceStartIssued = StartService();
             Task serviceStart = Task.Run(() => WaitForServiceStart());
