@@ -71,7 +71,7 @@ namespace AutoDarkModeSvc.Handlers
                         Message = "Update with custom URLs. Use at your own risk!",
                         Tag = "420.69",
                         AutoUpdateAvailable = true,
-                        UpdaterVersion = "2"
+                        UpdaterVersion = "2.0"
                     };
                     Logger.Info($"new custom version available");
                     response.StatusCode = StatusCode.New;
