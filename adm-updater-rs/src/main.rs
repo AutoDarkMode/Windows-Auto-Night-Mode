@@ -210,7 +210,7 @@ fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
 fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
     info!("shutting down service");
     let mut api_shutdown_confirmed = false;
-    if let Err(e) = send_message_and_get_reply("--exit", 1500, channel) {
+    if let Err(e) = send_message_and_get_reply("--exit", 3000, channel) {
         if e.is_timeout {
             api_shutdown_confirmed = true;
         } else {
@@ -221,7 +221,7 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
     if !api_shutdown_confirmed {
         info!("waiting for service to stop");
         for _ in 0..5 {
-            if let Err(e) = send_message_and_get_reply("--alive", 500, channel) {
+            if let Err(e) = send_message_and_get_reply("--alive", 1000, channel) {
                 if e.is_timeout {
                     break;
                 }

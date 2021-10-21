@@ -127,7 +127,7 @@ mod tests {
     #[test]
     fn test_message_capabilities() -> Result<(), Box<dyn Error>> {
         setup_logger()?;
-        let response = send_message_and_get_reply("--alive", 2000, "sam")?;
+        let response = send_message_and_get_reply("--alive", 5000, "sam")?;
         info!("{:?}", response);
         Ok(())
     }
