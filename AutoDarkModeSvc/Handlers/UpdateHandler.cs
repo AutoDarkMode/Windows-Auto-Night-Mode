@@ -70,7 +70,8 @@ namespace AutoDarkModeSvc.Handlers
                         PathFile = "",
                         Message = "Update with custom URLs. Use at your own risk!",
                         Tag = "420.69",
-                        AutoUpdateAvailable = true
+                        AutoUpdateAvailable = true,
+                        UpdaterVersion = "2"
                     };
                     Logger.Info($"new custom version available");
                     response.StatusCode = StatusCode.New;
