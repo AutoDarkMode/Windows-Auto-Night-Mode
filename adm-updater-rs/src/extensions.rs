@@ -8,9 +8,16 @@ static APP_EXE: &'static str = "AutoDarkModeApp.exe";
 static SHELL_EXE: &'static str = "AutoDarkModeShell.exe";
 
 /// Returns the execution directory the updater resides in
-pub fn get_execution_dir() -> PathBuf {
-    let dir = match std::env::current_dir() {
-        Ok(path) => path,
+pub fn get_assembly_dir() -> PathBuf {
+    let dir = match std::env::current_exe() {
+        Ok(path) => {
+            let parent = path.parent();
+            if parent.is_none() {
+                error!("adm updater must not be in root dir. this is really really dangerous, panicking!");
+                panic!("adm executed in root");
+            }
+            parent.unwrap().into()
+        }
         Err(e) => {
             error!("error getting current exe path: {}", e);
             panic!("{}", e)
@@ -23,7 +30,7 @@ pub fn get_execution_dir() -> PathBuf {
 
 /// Returns the working directory of the updater, which is used for copying data INTO
 pub fn get_working_dir() -> PathBuf {
-    let pb = get_execution_dir();
+    let pb = get_assembly_dir();
     let parent = match pb.parent() {
         Some(p) => p.to_path_buf(),
         None => pb,
@@ -64,7 +71,7 @@ mod tests {
     #[test]
     fn print_updater_paths() {
         use super::*;
-        println!("exedir: {:?}", get_execution_dir());
+        println!("exedir: {:?}", get_assembly_dir());
         println!("cwd: {:?}", get_working_dir());
         println!("service: {:?}", get_service_path());
         println!("app: {:?}", get_app_path());

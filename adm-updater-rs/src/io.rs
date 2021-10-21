@@ -11,7 +11,7 @@ use std::{
 use walkdir::WalkDir;
 
 use crate::{
-    extensions::{self, get_execution_dir, get_update_data_dir, get_working_dir},
+    extensions::{self, get_assembly_dir, get_update_data_dir, get_working_dir},
     OpError,
 };
 
@@ -95,7 +95,7 @@ pub fn get_adm_files(path: &PathBuf) -> Result<Vec<PathBuf>, OpError> {
 
 /// Checks if files should be ignored by the file collector
 pub fn check_ignored(entry: &Path) -> bool {
-    let execution_dir_str = get_execution_dir().to_str().unwrap_or("").to_string();
+    let execution_dir_str = get_assembly_dir().to_str().unwrap_or("").to_string();
     let update_data_dir_str = get_update_data_dir().to_str().unwrap_or("").to_string();
     //let work_dir_str = get_working_dir().to_str().unwrap_or("").to_string();
     let entry_str = entry.to_str().unwrap_or_default();

@@ -88,6 +88,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let username = whoami::username();
 
     info!("auto dark mode updater {}", VERSION);
+    info!("cwd: {}", get_working_dir().display());
     let _curver = io::get_file_version(get_service_path())
         .and_then(|ver| {
             info!("currently installed version: {}", ver);
