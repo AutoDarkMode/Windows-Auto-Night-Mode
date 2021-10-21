@@ -71,7 +71,8 @@ namespace AutoDarkModeSvc.Handlers
                         Message = "Update with custom URLs. Use at your own risk!",
                         Tag = "420.69",
                         AutoUpdateAvailable = true,
-                        UpdaterVersion = "2.0"
+                        UpdaterVersion = "2.0",
+                        ChangelogUrl= "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode"
                     };
                     Logger.Info($"new custom version available");
                     response.StatusCode = StatusCode.New;
