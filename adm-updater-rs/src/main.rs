@@ -61,6 +61,10 @@ where
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    if !setup_logger().is_ok() {
+        print!("failed to setup logger");
+    }
+
     let mut restart_app = false;
     let mut restart_shell = false;
     let args: Vec<String> = env::args().collect();
@@ -83,8 +87,6 @@ fn main() -> Result<(), Box<dyn Error>> {
             return Ok(());
         }
     }
-
-    setup_logger().unwrap();
 
     let username = whoami::username();
 

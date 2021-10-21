@@ -320,18 +320,19 @@ namespace AutoDarkModeSvc.Handlers
             Logger.Info("updater patch complete");
 
             Updating = false;
+
+            using Process updater = new();
+            updater.StartInfo.UseShellExecute = false;
+            updater.StartInfo.FileName = Path.Combine(Extensions.ExecutionPathUpdater);
+            updater.StartInfo.WorkingDirectory = Path.Combine(Extensions.ExecutionDirUpdater);
+
             if (notifyShell || notifyApp)
             {
-                List<string> arguments = new();
-                arguments.Add("--notify");
-                arguments.Add(notifyShell.ToString());
-                arguments.Add(notifyApp.ToString());
-                Process.Start(Extensions.ExecutionPathUpdater, arguments);
+                updater.StartInfo.ArgumentList.Add("--notify");
+                updater.StartInfo.ArgumentList.Add(notifyShell.ToString());
+                updater.StartInfo.ArgumentList.Add(notifyApp.ToString());
             }
-            else
-            {
-                Process.Start(Extensions.ExecutionPathUpdater);
-            }
+            updater.Start();
         }
 
         /// <summary>

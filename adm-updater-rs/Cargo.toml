@@ -1,6 +1,6 @@
 [package]
 name = "adm-updater-rs"
-version = "2.3.2"
+version = "2.3.3"
 authors = ["Sam <earthstamper@gmail.com>"]
 edition = "2018"
 
@@ -26,7 +26,7 @@ winres = "0.1"
 [package.metadata.winres]
 OriginalFilename = "AutoDarkModeUpdater"
 LegalCopyright = "Copyright © 2021"
-FileVersion = "2.3.2"
+FileVersion = "2.3.3"
 FileDescription = "subsystem that patches auto dark mode"
 
 [profile.dev]
