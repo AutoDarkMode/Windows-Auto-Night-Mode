@@ -1,4 +1,8 @@
+#![windows_subsystem = "windows"]
+
+use crate::extensions::{get_service_path, get_update_data_dir};
 use bindings::Windows::Win32::Foundation::{HWND, PWSTR};
+use bindings::Windows::Win32::UI::Shell::ShellExecuteW;
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
 use log::warn;
@@ -10,10 +14,6 @@ use std::rc::Rc;
 use std::{env, fmt, fs, ptr};
 use sysinfo::{ProcessExt, SystemExt};
 use sysinfo::{Signal, System};
-
-use bindings::Windows::Win32::UI::Shell::ShellExecuteW;
-
-use crate::extensions::{get_service_path, get_update_data_dir};
 
 mod comms;
 mod extensions;
@@ -65,10 +65,12 @@ fn main() -> Result<(), Box<dyn Error>> {
         print!("failed to setup logger");
     }
 
+    info!("auto dark mode updater {}", VERSION);
+    info!("cwd: {}", get_working_dir().display());
+
     let mut restart_app = false;
     let mut restart_shell = false;
     let args: Vec<String> = env::args().collect();
-    info!("args: {:?}", args);
     if args.len() >= 2 {
         if args.contains(&"--notify".to_string()) {
             if args.len() >= 3 {
@@ -87,11 +89,9 @@ fn main() -> Result<(), Box<dyn Error>> {
             return Ok(());
         }
     }
+    info!("restart app: {}, restart shell: {}", restart_app, restart_shell);
 
     let username = whoami::username();
-
-    info!("auto dark mode updater {}", VERSION);
-    info!("cwd: {}", get_working_dir().display());
     let _curver = io::get_file_version(get_service_path())
         .and_then(|ver| {
             info!("currently installed version: {}", ver);
