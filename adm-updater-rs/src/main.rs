@@ -121,7 +121,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     })?;
 
     patch(&get_update_data_dir().join("unpacked")).map_err(|op| {
-        error!("patching failed, attempting rollback with cleanup: {}", e);
+        error!("patching failed, attempting rollback with cleanup: {}", op);
         if let Err(e) = io::clean_adm_dir() {
             error!("{}", e);
             error!("preparing rollback failed, this is non-recoverable, please reinstall auto dark mode");
