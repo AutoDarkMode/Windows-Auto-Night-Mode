@@ -39,8 +39,8 @@ namespace AutoDarkModeConfig
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
-        public Updater Updater { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
+        public Updater Updater { get; set; }
     }
 
     public class Addons

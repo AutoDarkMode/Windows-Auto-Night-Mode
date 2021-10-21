@@ -40,11 +40,11 @@ namespace AutoDarkModeApp
                 IMessageClient client = new PipeClient();
                 _ = client.SendMessageAndGetReply(args[0]);
             }
-            
+
             if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
             {
                 Environment.Exit(-1);
-            }      
+            }    
 
             bool serviceStartIssued = StartService();
             Task serviceStart = Task.Run(() => WaitForServiceStart());
