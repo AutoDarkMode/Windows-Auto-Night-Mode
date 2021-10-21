@@ -333,6 +333,16 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
+                    #region ScriptTest
+                    case Command.Test:
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok,
+                            Message = "it works"
+                        }.ToString());
+                        break;
+                    #endregion
+
                     default:
                         Logger.Debug("unknown message received");
                         SendResponse(new ApiResponse()

@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (App)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build frontend",
+            "program": "${workspacefolder}/bin/Debug/net5.0-windows10.0.19041/AutoDarkModeApp.dll",
+            "args": [],
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Launch (Svc)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}\\bin\\Debug\\net5.0-windows10.0.19041.0\\AutoDarkModeSvc.dll",
+            "cwd": "${workspaceFolder}\\bin\\Debug\\net5.0-windows10.0.19041.0\\",
+            "args": [],
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}

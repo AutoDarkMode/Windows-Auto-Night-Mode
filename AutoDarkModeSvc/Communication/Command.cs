@@ -6,9 +6,9 @@ namespace AutoDarkModeSvc.Communication
 {
     public static class Address
     {
-        public static string PipePrefix { get; } = $"admpipe_{Environment.UserName.ToLower()}";
+        public const string PipePrefix = "admpipe";
         public const string PipeResponse = "_response";
-        public const string PipeRequest = "_request";
+        public static string PipeRequest { get; } = $"_request_{Environment.UserName.ToLower()}";
         public const string DefaultPort = "54345";
     }
     public static class Command
@@ -109,8 +109,6 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string Shutdown = "--exit";
 
-        public const string TestError = "--test-error";
-
         [Includable]
         public const string Alive = "--alive";
 
@@ -121,6 +119,11 @@ namespace AutoDarkModeSvc.Communication
         public const string CleanMonitors = "--clean-monitors";
 
         public const string UpdateFailed = "--update-failed";
+
+        [Includable]
+        public const string Test = "--test";
+
+        public const string TestError = "--test-error";
 
         public const string TestNotifications = "--test-notifications";
 

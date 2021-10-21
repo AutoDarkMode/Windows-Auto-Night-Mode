@@ -1,0 +1,36 @@
+[package]
+name = "adm-updater-rs"
+version = "2.3.0"
+authors = ["Sam <earthstamper@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.5.5"
+fern = "0.6.0"
+log = "0.4.14"
+chrono = "0.4.19"
+named_pipe = "0.4.1"
+whoami = "1.1.5"
+sysinfo = "0.20.5"
+walkdir = "2.3.2"
+winreg = "0.10.1"
+windows-permissions = "0.2.4"
+platform-dirs = "0.3.0"
+bindings = { path = "bindings" }
+
+[build-dependencies]
+winres = "0.1"
+
+[package.metadata.winres]
+OriginalFilename = "AutoDarkModeUpdater"
+LegalCopyright = "Copyright © 2021"
+FileVersion = "2.3.0"
+FileDescription = "subsystem that patches auto dark mode"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
