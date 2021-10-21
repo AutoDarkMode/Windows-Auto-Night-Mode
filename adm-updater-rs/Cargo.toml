@@ -1,13 +1,13 @@
 [package]
 name = "adm-updater-rs"
-version = "2.3.6"
+version = "2.3.7"
 authors = ["Sam <earthstamper@gmail.com>"]
 edition = "2018"
 
 [package.metadata.winres]
 OriginalFilename = "AutoDarkModeUpdater"
 LegalCopyright = "Copyright © 2021"
-FileVersion = "2.3.6"
+FileVersion = "2.3.7"
 FileDescription = "subsystem that patches auto dark mode"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

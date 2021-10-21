@@ -67,9 +67,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         print!("failed to setup logger");
     }
 
-    info!("auto dark mode updater {}", VERSION);
-    info!("cwd: {}", get_working_dir().display());
-
     let mut restart_app = false;
     let mut restart_shell = false;
     let args: Vec<String> = env::args().collect();
@@ -91,6 +88,8 @@ fn main() -> Result<(), Box<dyn Error>> {
             return Ok(());
         }
     }
+    info!("auto dark mode updater {}", VERSION);
+    info!("cwd: {}", get_working_dir().display());
     info!("restart app: {}, restart shell: {}", restart_app, restart_shell);
 
     let username = whoami::username();
