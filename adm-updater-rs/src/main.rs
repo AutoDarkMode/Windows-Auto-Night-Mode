@@ -320,7 +320,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         }
     }
     if !patch_success {
-        if let Err(e) = send_message_and_get_reply("--update-failed", 1500, channel) {
+        if let Err(e) = send_message_and_get_reply("--update-failed", 5000, channel) {
             warn!("could not send update failed message: {}", e);
         }
     }
