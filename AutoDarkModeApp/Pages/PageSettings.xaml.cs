@@ -94,6 +94,9 @@ namespace AutoDarkModeApp.Pages
             CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
             switch (builder.Config.Updater.DaysBetweenUpdateCheck)
             {
+                case 1:
+                    ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck1Day;
+                    break;
                 case 3:
                     ComboBoxDaysBetweenUpdateCheck.SelectedItem = ComboBoxDaysBetweenUpdateCheck3Days;
                     break;
@@ -449,12 +452,15 @@ namespace AutoDarkModeApp.Pages
                 switch ((sender as ComboBox).SelectedIndex)
                 {
                     case 0:
-                        builder.Config.Updater.DaysBetweenUpdateCheck = 3;
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 1;
                         break;
                     case 1:
-                        builder.Config.Updater.DaysBetweenUpdateCheck = 7;
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 3;
                         break;
                     case 2:
+                        builder.Config.Updater.DaysBetweenUpdateCheck = 7;
+                        break;
+                    case 3:
                         builder.Config.Updater.DaysBetweenUpdateCheck = 14;
                         break;
                 }

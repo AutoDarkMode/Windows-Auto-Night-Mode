@@ -744,4 +744,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Sunrise</value>
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Every day</value>
+  </data>
 </root>

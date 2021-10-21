@@ -1663,6 +1663,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Every day.
+        /// </summary>
+        public static string UpdatesComboBoxInterval1 {
+            get {
+                return ResourceManager.GetString("UpdatesComboBoxInterval1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 14 days.
         /// </summary>
         public static string UpdatesComboBoxInterval14 {

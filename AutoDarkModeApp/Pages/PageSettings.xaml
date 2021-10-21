@@ -230,6 +230,7 @@
                     Margin="0,5,0,0"
                     MinWidth="150"
                     SelectionChanged="ComboBoxDaysBetweenUpdateCheck_SelectionChanged">
+                    <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval1}"  Name="ComboBoxDaysBetweenUpdateCheck1Day"/>
                     <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval3}"  Name="ComboBoxDaysBetweenUpdateCheck3Days"/>
                     <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval7}" Name="ComboBoxDaysBetweenUpdateCheck7Days"/>
                     <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval14}" Name="ComboBoxDaysBetweenUpdateCheck14Days"/>
