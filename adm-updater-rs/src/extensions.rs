@@ -68,9 +68,12 @@ pub fn get_update_data_dir() -> PathBuf {
 
 #[cfg(test)]
 mod tests {
+    use bindings::Windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
     #[test]
     fn print_updater_paths() {
+
         use super::*;
+        unsafe { AttachConsole(ATTACH_PARENT_PROCESS); }
         println!("exedir: {:?}", get_assembly_dir());
         println!("cwd: {:?}", get_working_dir());
         println!("service: {:?}", get_service_path());

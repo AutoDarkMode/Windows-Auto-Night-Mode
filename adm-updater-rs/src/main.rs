@@ -2,6 +2,7 @@
 
 use crate::extensions::{get_service_path, get_update_data_dir};
 use bindings::Windows::Win32::Foundation::{HWND, PWSTR};
+use bindings::Windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
 use bindings::Windows::Win32::UI::Shell::ShellExecuteW;
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
@@ -61,6 +62,7 @@ where
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    unsafe { AttachConsole(ATTACH_PARENT_PROCESS); }
     if !setup_logger().is_ok() {
         print!("failed to setup logger");
     }
@@ -204,7 +206,7 @@ fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
         return Err(e);
     }
     info!("removing old files");
-    if let Err(e) = fs::remove_dir_all(update_dir) {
+    if let Err(e) = fs::remove_dir_all(get_update_data_dir()) {
         warn!("could not remove old update files, manual investigation required: {}", e);
     }
     Ok(())
