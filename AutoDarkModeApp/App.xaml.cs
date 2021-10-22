@@ -39,6 +39,7 @@ namespace AutoDarkModeApp
             {
                 IMessageClient client = new PipeClient();
                 _ = client.SendMessageAndGetReply(args[0]);
+                Environment.Exit(-1);
             }
 
             if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
