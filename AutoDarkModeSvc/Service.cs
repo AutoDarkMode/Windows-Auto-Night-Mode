@@ -262,7 +262,7 @@ namespace AutoDarkModeSvc
 
         protected override void WndProc(ref Message m)
         {
-            Logger.Debug($"wndproc message received: {}", m.Msg);
+            Logger.Debug($"wndproc message received: {m.Msg}");
             if (m.Msg is WM_QUERYENDSESSION or WM_ENDSESSION)
             {
                 base.WndProc(ref m);
