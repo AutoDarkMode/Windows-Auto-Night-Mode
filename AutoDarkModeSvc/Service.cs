@@ -33,11 +33,8 @@ namespace AutoDarkModeSvc
             Builder = AdmConfigBuilder.Instance();
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
-            if (Builder.Config.Tunable.ShowTrayIcon)
-            {
-                NotifyIcon = new NotifyIcon();
-                InitTray();
-            }
+            NotifyIcon = new NotifyIcon();
+            InitTray();
             MessageServer = new AsyncPipeServer(this, 5);
             //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             MessageServer.Start();
@@ -94,7 +91,11 @@ namespace AutoDarkModeSvc
             NotifyIcon.ContextMenuStrip.Items.Add(exitMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceDarkMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceLightMenuItem);
-            NotifyIcon.Visible = true;
+
+            if (Builder.Config.Tunable.ShowTrayIcon)
+            {
+                NotifyIcon.Visible = true;
+            }
         }
 
         private void UpdateCheckboxes(object sender, EventArgs e)
