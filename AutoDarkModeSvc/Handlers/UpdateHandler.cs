@@ -72,7 +72,7 @@ namespace AutoDarkModeSvc.Handlers
                         Tag = "420.69",
                         AutoUpdateAvailable = true,
                         UpdaterVersion = "2.0",
-                        ChangelogUrl= "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode"
+                        ChangelogUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode"
                     };
                     Logger.Info($"new custom version available");
                     response.StatusCode = StatusCode.New;
@@ -298,8 +298,8 @@ namespace AutoDarkModeSvc.Handlers
             Updating = true;
             (bool, bool, bool) result = PrepareUpdate(overrideSilent);
             bool success = result.Item1;
-            bool notifyShell = result.Item2;
-            bool notifyApp = result.Item3;
+            bool shellRestart = result.Item2;
+            bool appRestart = result.Item3;
 
             if (!success)
             {
@@ -321,18 +321,18 @@ namespace AutoDarkModeSvc.Handlers
 
             Updating = false;
 
-            using Process updater = new();
-            updater.StartInfo.UseShellExecute = false;
-            updater.StartInfo.FileName = Path.Combine(Extensions.ExecutionPathUpdater);
-            updater.StartInfo.WorkingDirectory = Path.Combine(Extensions.ExecutionDirUpdater);
-
-            if (notifyShell || notifyApp)
+            if (shellRestart || appRestart)
             {
-                updater.StartInfo.ArgumentList.Add("--notify");
-                updater.StartInfo.ArgumentList.Add(notifyShell.ToString());
-                updater.StartInfo.ArgumentList.Add(notifyApp.ToString());
+                List<string> arguments = new();
+                arguments.Add("--notify");
+                arguments.Add(shellRestart.ToString());
+                arguments.Add(appRestart.ToString());
+                Process.Start(Extensions.ExecutionPathUpdater, arguments);
             }
-            updater.Start();
+            else
+            {
+                Process.Start(Extensions.ExecutionPathUpdater);
+            }
         }
 
         /// <summary>

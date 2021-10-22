@@ -6,7 +6,7 @@ use bindings::Windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachCon
 use bindings::Windows::Win32::UI::Shell::ShellExecuteW;
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
-use log::warn;
+use log::{debug, warn};
 use log::{error, info};
 use std::error::Error;
 use std::path::PathBuf;
@@ -284,8 +284,9 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         })
     })?;
     if restart_app {
-        info!("relaunching app");
         let app_path = Rc::new(extensions::get_app_path());
+        info!("relaunching app");
+        debug!("app path {}", app_path.display());
         Command::new(&*Rc::clone(&app_path)).spawn().map_err(|e| {
             Box::new(OpError {
                 message: format!(
@@ -298,8 +299,10 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         })?;
     }
     if restart_shell {
+        let shell_path_buf = extensions::get_shell_path();
+        let shell_path = shell_path_buf.as_os_str().to_os_string();
         info!("relaunching shell");
-        let shell_path = extensions::get_shell_path().as_os_str().to_os_string();
+        debug!("shell path {}", shell_path_buf.display());
         let operation = "open";
         let SW_SHOW: i32 = 5;
         let result = unsafe {
