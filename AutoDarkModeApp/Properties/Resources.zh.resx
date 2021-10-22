@@ -744,4 +744,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>日出</value>
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>每天</value>
+  </data>
 </root>
