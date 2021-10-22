@@ -580,9 +580,6 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Ubah seberapa sering kami memeriksa pembaruan</value>
   </data>
-  <data name="userFeedback1" xml:space="preserve">
-    <value>Selamat Datang</value>
-  </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Tema Gelap</value>
   </data>
@@ -712,5 +709,16 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Matahari Terbit</value>
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Latitude</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Longitude</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Selamat Datang</value>
   </data>
 </root>
