@@ -264,6 +264,7 @@ namespace AutoDarkModeSvc
         {
             if (m.Msg is WM_QUERYENDSESSION or WM_ENDSESSION)
             {
+                base.WndProc(ref m);
                 m.Result = new IntPtr(1);
                 ShutdownBlockReasonCreate(Handle, "Shutting down Auto Dark Mode");
                 Exit(this, EventArgs.Empty);
@@ -271,9 +272,9 @@ namespace AutoDarkModeSvc
             else if (m.Msg == WM_CLOSE)
             {
                 Exit(this, EventArgs.Empty);
+                base.WndProc(ref m);
             }
 
-            base.WndProc(ref m);
         }
     }
 }
