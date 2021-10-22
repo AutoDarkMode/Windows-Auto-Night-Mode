@@ -220,7 +220,7 @@ namespace AutoDarkModeSvc.Communication
                         {
                             StatusCode = StatusCode.Ok
                         }.ToString());
-                        service.Exit(null, null);
+                        service.RequestExit(null, null);
                         break;
                     #endregion
 

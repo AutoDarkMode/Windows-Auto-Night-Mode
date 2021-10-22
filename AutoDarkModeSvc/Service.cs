@@ -63,7 +63,8 @@ namespace AutoDarkModeSvc
             Timers.ForEach(t => t.Start());
 
             //exit on shutdown
-            SystemEvents.SessionEnded += OnExit;
+            NotifyIcon.Disposed += Exit;
+            SystemEvents.SessionEnded += Exit;
         }
 
         protected override void SetVisibleCore(bool value)
@@ -75,7 +76,7 @@ namespace AutoDarkModeSvc
         {
             ToolStripMenuItem exitMenuItem = new("Close");
             ToolStripMenuItem openConfigDirItem = new("Open Config Directory");
-            exitMenuItem.Click += new EventHandler(Exit);
+            exitMenuItem.Click += new EventHandler(RequestExit);
             openConfigDirItem.Click += new EventHandler(OpenConfigDir);
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
             forceLightMenuItem.Click += new EventHandler(ForceMode);
@@ -117,7 +118,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        public void OnExit(object sender, EventArgs e)
+        public void Exit(object sender, EventArgs e)
         {
             Logger.Info("exiting service");
             MessageServer.Stop();
@@ -140,13 +141,13 @@ namespace AutoDarkModeSvc
             {
                 Logger.Warn(ex, "could not close app before shutting down service");
             }
+            Application.Exit();
         }
 
-        public void Exit(object sender, EventArgs e)
+        public void RequestExit(object sender, EventArgs e)
         {
             if (NotifyIcon != null) NotifyIcon.Dispose();
-            OnExit(sender, e);
-            Application.Exit();
+            else Exit(sender, e);
         }
 
         public void ForceMode(object sender, EventArgs e)

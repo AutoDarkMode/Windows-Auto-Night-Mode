@@ -74,7 +74,7 @@ namespace AutoDarkModeSvc.Communication
                 catch (Exception ex)
                 {
                     Logger.Fatal(ex, "could not instantiate workers");
-                    Service.Exit(this, EventArgs.Empty);
+                    Service.RequestExit(this, EventArgs.Empty);
                 }
 
                 // send workers to work whenever they are not blocking
