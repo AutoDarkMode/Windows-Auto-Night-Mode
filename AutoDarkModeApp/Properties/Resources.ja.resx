@@ -704,4 +704,47 @@
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>テーマ</value>
   </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>花</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (ライト)</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>キャプチャされたモーション</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (dark)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>フロー</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>光彩</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (ライト)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>日の出</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>毎日</value>
+  </data>
 </root>
