@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Concurrent;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeSvc
 {
@@ -222,29 +223,6 @@ namespace AutoDarkModeSvc
             }
             finally
             {
-                //clean shutdown
-                if (Service != null)
-                {
-                    Service.Cleanup();
-                }
-                try
-                {
-                    System.Diagnostics.Process[] pApp = System.Diagnostics.Process.GetProcessesByName("AutoDarkModeApp");
-                    if (pApp.Length != 0)
-                    {
-                        pApp[0].Kill();
-                    }
-                    foreach (System.Diagnostics.Process p in pApp)
-                    {
-                        p.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "could not close app before shutting down service");
-                }
-                ActionQueue.CompleteAdding();
-                Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
                 mutex.Dispose();
             }
         }

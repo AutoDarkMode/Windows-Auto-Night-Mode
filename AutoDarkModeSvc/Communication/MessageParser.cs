@@ -3,6 +3,7 @@ using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,6 +14,10 @@ namespace AutoDarkModeSvc.Communication
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessage(IntPtr hwnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
         //private static readonly ComponentManager cm = ComponentManager.Instance();
 
         /// <summary>
@@ -333,8 +338,9 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
-                    #region ScriptTest
+                    #region Test
                     case Command.Test:
+                        SendMessage(service.Handle, 0x0011, IntPtr.Zero, IntPtr.Zero);
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

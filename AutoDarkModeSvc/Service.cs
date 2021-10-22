@@ -10,11 +10,26 @@ using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 using AutoDarkModeConfig;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeSvc
 {
     class Service : Form
     {
+        private const int WM_CLOSE = 16;
+        public const int WM_QUERYENDSESSION = 0x0011;
+        public const int WM_ENDSESSION = 0x0016;
+        public const uint SHUTDOWN_NORETRY = 0x00000001;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool ShutdownBlockReasonCreate(IntPtr hWnd, [MarshalAs(UnmanagedType.LPWStr)] string reason);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool ShutdownBlockReasonDestroy(IntPtr hWnd);
+
+        [DllImport("kernel32.dll")]
+        private static extern bool SetProcessShutdownParameters(uint dwLevel, uint dwFlags);
+
         private readonly bool allowshowdisplay = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private NotifyIcon NotifyIcon { get; }
@@ -28,6 +43,7 @@ namespace AutoDarkModeSvc
 
         public Service(int timerMillis)
         {
+            SetProcessShutdownParameters(0x3FF, SHUTDOWN_NORETRY);
             Builder = AdmConfigBuilder.Instance();
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
@@ -56,12 +72,13 @@ namespace AutoDarkModeSvc
                 StateUpdateTimer
             };
 
-            WardenModule warden = new WardenModule("ModuleWarden", Timers, true);
+            WardenModule warden = new("ModuleWarden", Timers, true);
             ConfigMonitor.RegisterWarden(warden);
             ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
             Timers.ForEach(t => t.Start());
+            FormClosed += OnExit;
         }
 
         protected override void SetVisibleCore(bool value)
@@ -111,22 +128,40 @@ namespace AutoDarkModeSvc
             }
         }
 
-        public void Cleanup()
+        public void OnExit(object sender, EventArgs e)
         {
+            if (NotifyIcon != null) NotifyIcon.Dispose();
             Logger.Info("exiting service");
             MessageServer.Stop();
             ConfigMonitor.Dispose();
             Timers.ForEach(t => t.Stop());
             Timers.ForEach(t => t.Dispose());
+            try
+            {
+                System.Diagnostics.Process[] pApp = System.Diagnostics.Process.GetProcessesByName("AutoDarkModeApp");
+                if (pApp.Length != 0)
+                {
+                    pApp[0].Kill();
+                }
+                foreach (System.Diagnostics.Process p in pApp)
+                {
+                    p.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not close app before shutting down service");
+            }
+            Program.ActionQueue.CompleteAdding();
+            Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
+            Logger.Info("clean shutdown successful");
             NLog.LogManager.Shutdown();
+            _ = ShutdownBlockReasonDestroy(Handle);
         }
 
         public void Exit(object sender, EventArgs e)
         {
-            if (NotifyIcon != null)
-            {
-                NotifyIcon.Dispose();
-            }
+            OnExit(sender, e);
             Application.Exit();
         }
 
@@ -221,6 +256,23 @@ namespace AutoDarkModeSvc
                     Logger.Debug(ex, "mutex abandoned before wait");
                 }
             }
+        }
+
+
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg is WM_QUERYENDSESSION or WM_ENDSESSION)
+            {
+                ShutdownBlockReasonCreate(Handle, "Shutting down Auto Dark Mode");
+                Exit(this, EventArgs.Empty);
+            } 
+            else if (m.Msg == WM_CLOSE)
+            {
+                Exit(this, EventArgs.Empty);
+            }
+
+            base.WndProc(ref m);
         }
     }
 }
