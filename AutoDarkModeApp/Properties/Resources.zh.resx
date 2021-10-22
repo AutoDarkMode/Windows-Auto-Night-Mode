@@ -377,10 +377,10 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>深色主题：</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>创建你的主题</value>
+    <value>创建您的主题</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>选择你的主题</value>
+    <value>选择您的主题</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
     <value>浅色主题：</value>
@@ -469,7 +469,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
 这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
 我并不靠本项目盈利。
 
-如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只要你重视我的工作，就捐献吧。</value>
+如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只要您重视我的工作，就捐献吧。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>应用 .theme 文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开 Auto Dark Mode 并配置{0}设置。</value>
@@ -743,5 +743,8 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>日出</value>
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>每天</value>
   </data>
 </root>
