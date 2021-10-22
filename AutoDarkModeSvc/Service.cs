@@ -138,12 +138,12 @@ namespace AutoDarkModeSvc
             Timers.ForEach(t => t.Dispose());
             try
             {
-                System.Diagnostics.Process[] pApp = System.Diagnostics.Process.GetProcessesByName("AutoDarkModeApp");
+                Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
                 if (pApp.Length != 0)
                 {
                     pApp[0].Kill();
                 }
-                foreach (System.Diagnostics.Process p in pApp)
+                foreach (Process p in pApp)
                 {
                     p.Dispose();
                 }
@@ -264,6 +264,7 @@ namespace AutoDarkModeSvc
         {
             if (m.Msg is WM_QUERYENDSESSION or WM_ENDSESSION)
             {
+                m.Result = new IntPtr(1);
                 ShutdownBlockReasonCreate(Handle, "Shutting down Auto Dark Mode");
                 Exit(this, EventArgs.Empty);
             } 
