@@ -223,6 +223,10 @@ namespace AutoDarkModeSvc
             }
             finally
             {
+                ActionQueue.CompleteAdding();
+                Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
+                Logger.Info("service shutdown successful");
+                LogManager.Shutdown();
                 mutex.Dispose();
             }
         }

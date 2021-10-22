@@ -62,8 +62,7 @@ namespace AutoDarkModeSvc
 
             Timers.ForEach(t => t.Start());
 
-            //Exit service triggers, either via notify icon, or alternatively on system shutdown.
-            NotifyIcon.Disposed += OnExit;
+            //exit on shutdown
             SystemEvents.SessionEnded += OnExit;
         }
 
@@ -141,16 +140,12 @@ namespace AutoDarkModeSvc
             {
                 Logger.Warn(ex, "could not close app before shutting down service");
             }
-            Program.ActionQueue.CompleteAdding();
-            Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
-            Logger.Info("clean shutdown successful");
-            NLog.LogManager.Shutdown();
         }
 
         public void Exit(object sender, EventArgs e)
         {
             if (NotifyIcon != null) NotifyIcon.Dispose();
-            else OnExit(sender, e);
+            OnExit(sender, e);
             Application.Exit();
         }
 
