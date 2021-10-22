@@ -11,25 +11,12 @@ using AutoDarkModeSvc.Timers;
 using AutoDarkModeConfig;
 using System.IO;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 namespace AutoDarkModeSvc
 {
     class Service : Form
     {
-        private const int WM_CLOSE = 16;
-        public const int WM_QUERYENDSESSION = 0x0011;
-        public const int WM_ENDSESSION = 0x0016;
-        public const uint SHUTDOWN_NORETRY = 0x00000001;
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool ShutdownBlockReasonCreate(IntPtr hWnd, [MarshalAs(UnmanagedType.LPWStr)] string reason);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool ShutdownBlockReasonDestroy(IntPtr hWnd);
-
-        [DllImport("kernel32.dll")]
-        private static extern bool SetProcessShutdownParameters(uint dwLevel, uint dwFlags);
-
         private readonly bool allowshowdisplay = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private NotifyIcon NotifyIcon { get; }
@@ -43,7 +30,6 @@ namespace AutoDarkModeSvc
 
         public Service(int timerMillis)
         {
-            SetProcessShutdownParameters(0x3FF, SHUTDOWN_NORETRY);
             Builder = AdmConfigBuilder.Instance();
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
@@ -78,7 +64,10 @@ namespace AutoDarkModeSvc
             MainTimer.RegisterModule(warden);
 
             Timers.ForEach(t => t.Start());
-            FormClosed += OnExit;
+
+            //Exit service triggers, either via notify icon, or alternatively on system shutdown.
+            NotifyIcon.Disposed += OnExit;
+            SystemEvents.SessionEnded += OnExit;
         }
 
         protected override void SetVisibleCore(bool value)
@@ -130,7 +119,6 @@ namespace AutoDarkModeSvc
 
         public void OnExit(object sender, EventArgs e)
         {
-            if (NotifyIcon != null) NotifyIcon.Dispose();
             Logger.Info("exiting service");
             MessageServer.Stop();
             ConfigMonitor.Dispose();
@@ -156,12 +144,12 @@ namespace AutoDarkModeSvc
             Microsoft.Toolkit.Uwp.Notifications.ToastNotificationManagerCompat.Uninstall();
             Logger.Info("clean shutdown successful");
             NLog.LogManager.Shutdown();
-            _ = ShutdownBlockReasonDestroy(Handle);
         }
 
         public void Exit(object sender, EventArgs e)
         {
-            OnExit(sender, e);
+            if (NotifyIcon != null) NotifyIcon.Dispose();
+            else OnExit(sender, e);
             Application.Exit();
         }
 
@@ -256,26 +244,6 @@ namespace AutoDarkModeSvc
                     Logger.Debug(ex, "mutex abandoned before wait");
                 }
             }
-        }
-
-
-
-        protected override void WndProc(ref Message m)
-        {
-            Logger.Debug($"wndproc message received: {m.Msg}");
-            if (m.Msg is WM_QUERYENDSESSION or WM_ENDSESSION)
-            {
-                base.WndProc(ref m);
-                m.Result = new IntPtr(1);
-                ShutdownBlockReasonCreate(Handle, "Shutting down Auto Dark Mode");
-                Exit(this, EventArgs.Empty);
-            } 
-            else if (m.Msg == WM_CLOSE)
-            {
-                Exit(this, EventArgs.Empty);
-                base.WndProc(ref m);
-            }
-
         }
     }
 }
