@@ -321,6 +321,7 @@ namespace AutoDarkModeSvc.Handlers
 
             Updating = false;
 
+            // NEVER SET WORKING DIRECTORY TO THE UPDATER DIRECTORY
             if (shellRestart || appRestart)
             {
                 List<string> arguments = new();
