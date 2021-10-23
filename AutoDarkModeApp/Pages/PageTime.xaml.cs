@@ -645,6 +645,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         OffsetButton.IsEnabled = true;
                     }
+                    userFeedback.Text = Properties.Resources.TimeTextBlockClickOnSetMessage;
                 }
                 else if (sender is TextBox tb && tb.Tag.Equals("coordinates"))
                 {
@@ -652,8 +653,8 @@ namespace AutoDarkModeApp.Pages
                     {
                         ButtonApplyCoordinates.IsEnabled = true;
                     }
+                    userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
                 }
-                userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
             }
         }
 

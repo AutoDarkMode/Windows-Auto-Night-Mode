@@ -747,4 +747,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Every day</value>
   </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Click Set to save changes.</value>
+  </data>
 </root>

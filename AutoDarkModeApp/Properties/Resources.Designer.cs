@@ -1572,6 +1572,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click Set to save changes..
+        /// </summary>
+        public static string TimeTextBlockClickOnSetMessage {
+            get {
+                return ResourceManager.GetString("TimeTextBlockClickOnSetMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto Dark Mode.
         /// </summary>
         public static string Title {
