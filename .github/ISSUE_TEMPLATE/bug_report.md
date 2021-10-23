@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 <!-- 
-IF YOU ARE ON A BETA BRANCH: 
-Make sure you have the latest version before opening an issue! 
-Open the App and click on "Check for Updates" on the Settings page!
+PLEASE UPDATE TO THE LATEST BETA VERSION FIRST IF POSSIBLE!
+Go to settings and select the "Beta" update channel.
+Click "Check for Updates" and ensure the info message reads "No new updates available"
 -->
 
 **Description**
