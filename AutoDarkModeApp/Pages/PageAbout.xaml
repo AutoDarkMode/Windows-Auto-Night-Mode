@@ -105,11 +105,13 @@
                 />
             <TextBlock
                 Name="TextBlockNetCoreVersion"
-                Margin="0,5,0,10"
+                Margin="0,5,0,0"
                 FontSize="14"
                 />
             <Button
                 Name="ButtonCopyVersionInfo"
+                Margin="0,20,0,0"
+                MinWidth="100"
                 Click="ButtonCopyVersionInfo_Click">
                 Copy
             </Button>
