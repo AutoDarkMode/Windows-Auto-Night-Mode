@@ -14,8 +14,9 @@ Click "Check for Updates" and ensure the info message reads "No new updates avai
 -->
 
 **Description**
-Details about the bug and how to reproduce it
 <!-- Give a concise description of what steps/clicks/modifications you made from the beginning, until the issue occurs -->
+Details about the bug and how to reproduce it
+
 
 **Expected behavior**
 <!-- Describe what you see. How does that differ from what you expect? -->
