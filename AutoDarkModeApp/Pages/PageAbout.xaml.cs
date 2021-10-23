@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -23,6 +24,8 @@ namespace AutoDarkModeApp.Pages
         private int easterEgg;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
+        private VersionInfo versionInfo = new();
+
         public PageAbout()
         {
             InitializeComponent();
@@ -35,60 +38,12 @@ namespace AutoDarkModeApp.Pages
 
         private void UpdateVersionNumbers()
         {
-            var currentDirectory = AdmExtensions.ExecutionDir;
-            TextBlockCommitHash.Text = "Commit: " + AdmExtensions.CommitHash();
-
-            TextBlockAppVersion.Text = "App: ";
-            try
-            {
-                TextBlockAppVersion.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
-            catch
-            {
-                TextBlockAppVersion.Text += "not found";
-            }
-
-            TextBlockSvcVersion.Text = "Service: ";
-            try
-            {
-                var SvcVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeSvc.exe");
-                TextBlockSvcVersion.Text += SvcVersionInfo.FileVersion;
-            }
-            catch
-            {
-                TextBlockSvcVersion.Text += "not found";
-            }
-
-            TextBlockUpdaterVersion.Text = "Updater: ";
-            try
-            {
-                var UpdaterVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\Updater\AutoDarkModeUpdater.exe");
-                TextBlockUpdaterVersion.Text += UpdaterVersionInfo.FileVersion;
-            }
-            catch
-            {
-                TextBlockUpdaterVersion.Text += "not found";
-            }
-
-            TextBlockShellVersion.Text = "Shell: ";
-            try
-            {
-                var ShellVersionInfo = FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe");
-                TextBlockShellVersion.Text += ShellVersionInfo.FileVersion;
-            }
-            catch
-            {
-                TextBlockShellVersion.Text += "not found";
-            }
-            TextBlockNetCoreVersion.Text = ".Net: ";
-            try
-            {
-                TextBlockNetCoreVersion.Text += System.Environment.Version;
-            }
-            catch
-            {
-                TextBlockNetCoreVersion.Text += "not found";
-            }
+            TextBlockCommitHash.Text = "Commit: " + versionInfo.Commit;
+            TextBlockAppVersion.Text = "App: " + versionInfo.App;
+            TextBlockSvcVersion.Text = "Service: " + versionInfo.Svc;
+            TextBlockUpdaterVersion.Text = "Updater: " + versionInfo.Updater;
+            TextBlockShellVersion.Text = "Shell: " + versionInfo.Shell;
+            TextBlockNetCoreVersion.Text = ".Net: " + versionInfo.NetCore;
         }
 
         private void SystemTheme_ThemeChanged(object sender, EventArgs e)
@@ -442,5 +397,70 @@ namespace AutoDarkModeApp.Pages
             };
             _ = msg.ShowDialog();
         }
+        private void ButtonCopyVersionInfo_Click(object sender, RoutedEventArgs e)
+        {
+            // most likely use case is to paste in an issue, so
+            // we create a markddown string that will look nice
+            // in that context
+            var versionText = new StringBuilder()
+                .Append("- Commit: `")
+                .Append(versionInfo.Commit)
+                .AppendLine("`")
+                .Append("- App: `")
+                .Append(versionInfo.App)
+                .AppendLine("`")
+                .Append("- Service: `")
+                .Append(versionInfo.Svc)
+                .AppendLine("`")
+                .Append("- Updater: `")
+                .Append(versionInfo.Updater)
+                .AppendLine("`")
+                .Append("- Shell: `")
+                .Append(versionInfo.Shell)
+                .AppendLine("`")
+                .Append("- .Net: `")
+                .Append(versionInfo.NetCore)
+                .AppendLine("`");
+
+            Clipboard.SetData(DataFormats.Text, versionText);
+        }
+
+        private class VersionInfo
+        {
+            public string Commit { get; }
+            public string App { get; }
+            public string Svc { get; }
+            public string Updater { get; }
+            public string Shell { get; }
+            public string NetCore { get; }
+
+            public VersionInfo()
+            {
+                var currentDirectory = AdmExtensions.ExecutionDir;
+
+                Commit = AdmExtensions.CommitHash();
+
+                App = ValueOrNotFound(() => Assembly.GetExecutingAssembly().GetName().Version.ToString());
+
+                Svc = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeSvc.exe").FileVersion);
+                Updater = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(currentDirectory + @"\Updater\AutoDarkModeUpdater.exe").FileVersion);
+                Shell = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe").FileVersion);
+                NetCore = ValueOrNotFound(() => Environment.Version.ToString());
+
+                static string ValueOrNotFound(Func<string> value)
+                {
+                    try
+                    {
+                        return value();
+                    }
+                    catch
+                    {
+                        return "not found";
+                    }
+                }
+
+            }
+        }
+
     }
 }

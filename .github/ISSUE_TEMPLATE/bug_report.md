@@ -28,7 +28,7 @@ They can be found in %AppData%\AutoDarkMode
  -->
 
 **Commit Hash and Version**
-<!-- Go to the About Page and provide the version and commit hash -->
+<!-- Go to the About Page and copy the version info -->
 
 **Screenshots**
 <!-- If applicable, add screenshots to help explain your problem. -->
