@@ -67,8 +67,10 @@ namespace AutoDarkModeApp.Pages
                 IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
                 ComboBoxDarkTheme.ItemsSource = themeNames;
                 ComboBoxLightTheme.ItemsSource = themeNames;
-                ComboBoxLightTheme.SelectedItem = themeCollection.Where(t => t.Path == builder.Config.WindowsThemeMode.LightThemePath).FirstOrDefault().ToString();
-                ComboBoxDarkTheme.SelectedItem = themeCollection.Where(t => t.Path ==builder.Config.WindowsThemeMode.DarkThemePath).FirstOrDefault().ToString();
+                ThemeFile lightSelected = themeCollection.FirstOrDefault(t => t.Path == builder.Config.WindowsThemeMode.LightThemePath);
+                ThemeFile darkSelected = themeCollection.FirstOrDefault(t => t.Path == builder.Config.WindowsThemeMode.DarkThemePath);
+                if (lightSelected != null) ComboBoxLightTheme.SelectedItem = lightSelected.ToString();
+                if (darkSelected != null) ComboBoxDarkTheme.SelectedItem = darkSelected.ToString();
             }
 
             if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
@@ -116,7 +118,8 @@ namespace AutoDarkModeApp.Pages
             string selectedLightTheme = (string)ComboBoxLightTheme.SelectedItem;
             try
             {
-                builder.Config.WindowsThemeMode.LightThemePath = themeCollection.Where(t => t.ToString().Contains(selectedLightTheme)).FirstOrDefault().Path;
+                ThemeFile selected = themeCollection.FirstOrDefault(t => t.ToString().Contains(selectedLightTheme));
+                if (selected != null) builder.Config.WindowsThemeMode.LightThemePath = selected.Path;
             }
             catch
             {
@@ -128,7 +131,8 @@ namespace AutoDarkModeApp.Pages
             string selectedDarkTheme = (string)ComboBoxDarkTheme.SelectedItem;
             try
             {
-                builder.Config.WindowsThemeMode.DarkThemePath = themeCollection.Where(t => t.ToString().Contains(selectedDarkTheme)).FirstOrDefault().Path;
+                ThemeFile selected = themeCollection.FirstOrDefault(t => t.ToString().Contains(selectedDarkTheme));
+                if (selected != null) builder.Config.WindowsThemeMode.DarkThemePath = selected.Path;
             }
             catch
             {
@@ -241,7 +245,7 @@ namespace AutoDarkModeApp.Pages
                 theme2 = true;
             }
 
-            if (theme1 == true && theme2 == true && !init)
+            if ((theme1 || theme2) && !init)
             {
                 SaveThemeSettings();
             }
