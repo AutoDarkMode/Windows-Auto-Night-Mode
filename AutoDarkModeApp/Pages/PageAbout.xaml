@@ -71,21 +71,12 @@
             Margin="0,35,0,0"
             Orientation="Vertical">
 
-            <StackPanel
-                Name="StackPanelVersionHeader"
-                Orientation="Horizontal">
-                <TextBlock 
-                    Margin="0,0,15,0"
-                    Text="Version" 
-                    FontFamily="Segoe UI"
-                    FontSize="20"
-                    />
-                <Button
-                    Name="ButtonCopyVersionInfo" Click="ButtonCopyVersionInfo_Click">
-                    Copy
-                </Button>
-            </StackPanel>
-
+            <TextBlock 
+                Margin="0,0,0,0"
+                Text="Version" 
+                FontFamily="Segoe UI"
+                FontSize="20"
+                />
             <TextBlock
                 Name="TextBlockCommitHash"
                 Margin="0,15,0,0"
@@ -114,9 +105,14 @@
                 />
             <TextBlock
                 Name="TextBlockNetCoreVersion"
-                Margin="0,5,0,0"
+                Margin="0,5,0,10"
                 FontSize="14"
                 />
+            <Button
+                Name="ButtonCopyVersionInfo"
+                Click="ButtonCopyVersionInfo_Click">
+                Copy
+            </Button>
         </StackPanel>
 
         <!-- Social Media links-->
