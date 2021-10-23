@@ -76,38 +76,124 @@
                 Text="Version" 
                 FontFamily="Segoe UI"
                 FontSize="20"
+            />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Commit Hash-->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Commit"
+                    Margin="0,15,0,0"
+                    FontSize="14"
                 />
-            <TextBlock
-                Name="TextBlockCommitHash"
-                Margin="0,15,0,0"
-                FontSize="14"
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Name="TextBlockCommitHash"
+                    Margin="20,15,0,0"
+                    FontSize="14"
                 />
-            <TextBlock
-                Name="TextBlockSvcVersion"
-                Margin="0,5,0,0"
-                FontSize="14"
-                FontWeight="SemiBold"
+
+                <!-- Service Version -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="Service"
+                    Margin="0,5,0,0"
+                    FontSize="14"
+                    FontWeight="SemiBold"
                 />
-            <TextBlock
-                Name="TextBlockUpdaterVersion"
-                Margin="0,5,0,0"
-                FontSize="14"
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Name="TextBlockSvcVersion"
+                    Margin="20,5,0,0"
+                    FontSize="14"
+                    FontWeight="SemiBold"
                 />
-            <TextBlock
-                Name="TextBlockAppVersion"
-                Margin="0,5,0,0"
-                FontSize="14"
+                
+                <!-- Updater Version -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Text="Updater"
+                    Margin="0,5,0,0"
+                    FontSize="14"
                 />
-            <TextBlock
-                Name="TextBlockShellVersion"
-                Margin="0,5,0,0"
-                FontSize="14"
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Name="TextBlockUpdaterVersion"
+                    Margin="20,5,0,0"
+                    FontSize="14"
                 />
-            <TextBlock
-                Name="TextBlockNetCoreVersion"
-                Margin="0,5,0,0"
-                FontSize="14"
+
+                <!-- App Version -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Text="App"
+                    Margin="0,5,0,0"
+                    FontSize="14"
                 />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    Name="TextBlockAppVersion"
+                    Margin="20,5,0,0"
+                    FontSize="14"
+                />
+
+
+                <!-- Shell Version -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Text="Shell"
+                    Margin="0,5,0,0"
+                    FontSize="14"
+                />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    Name="TextBlockShellVersion"
+                    Margin="20,5,0,0"
+                    FontSize="14"
+                />
+
+                <!-- Net Core Version -->
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Text=".Net"
+                    Margin="0,5,0,0"
+                    FontSize="14"
+                />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="5"
+                    Name="TextBlockNetCoreVersion"
+                    Margin="20,5,0,0"
+                    FontSize="14"
+                />
+            </Grid>
+
             <Button
                 Name="ButtonCopyVersionInfo"
                 Margin="0,20,0,0"

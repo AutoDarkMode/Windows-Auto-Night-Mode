@@ -38,12 +38,12 @@ namespace AutoDarkModeApp.Pages
 
         private void UpdateVersionNumbers()
         {
-            TextBlockCommitHash.Text = "Commit: " + versionInfo.Commit;
-            TextBlockAppVersion.Text = "App: " + versionInfo.App;
-            TextBlockSvcVersion.Text = "Service: " + versionInfo.Svc;
-            TextBlockUpdaterVersion.Text = "Updater: " + versionInfo.Updater;
-            TextBlockShellVersion.Text = "Shell: " + versionInfo.Shell;
-            TextBlockNetCoreVersion.Text = ".Net: " + versionInfo.NetCore;
+            TextBlockCommitHash.Text = versionInfo.Commit;
+            TextBlockAppVersion.Text = versionInfo.App;
+            TextBlockSvcVersion.Text = versionInfo.Svc;
+            TextBlockUpdaterVersion.Text = versionInfo.Updater;
+            TextBlockShellVersion.Text = versionInfo.Shell;
+            TextBlockNetCoreVersion.Text = versionInfo.NetCore;
         }
 
         private void SystemTheme_ThemeChanged(object sender, EventArgs e)
