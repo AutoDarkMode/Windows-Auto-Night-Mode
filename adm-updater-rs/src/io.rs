@@ -1,13 +1,8 @@
 use bindings::Windows::Win32::Storage::FileSystem::{
     GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO,
 };
-use log::debug;
-use std::{
-    ffi::c_void,
-    fmt::Formatter,
-    fs, io,
-    path::{Path, PathBuf},
-};
+use log::{debug, error};
+use std::{ffi::c_void, fmt::Formatter, fs::{self, File}, io::{self, BufRead}, path::{Path, PathBuf}};
 use walkdir::WalkDir;
 
 use crate::{
@@ -42,6 +37,22 @@ impl std::fmt::Display for Version {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}.{}.{}.{}", self.major, self.minor, self.build, self.revision)
     }
+}
+
+lazy_static! {
+    static ref WHITELIST: Result<Vec<String>, OpError> = {
+        let mut v = Vec::new();
+        let file = File::open(get_assembly_dir().join("whitelist.txt"))
+            .map_err(|op| OpError::new(&format!("failed to open whitelist file: {}", op), true))?;
+        let reader = io::BufReader::new(file);
+        for line in reader.lines() {
+            let line = line.map_err(|op| {
+                OpError::new(&format!("failed to read whitelist file: {}", op), true)
+            })?;
+            v.push(line);
+        }
+        Ok(v)
+    };
 }
 
 /// gets all files recursively that do not match the filter criteria
@@ -93,6 +104,20 @@ pub fn get_adm_files(path: &PathBuf) -> Result<Vec<PathBuf>, OpError> {
     Ok(result)
 }
 
+pub fn is_whitelisted(entry: &Path) -> bool {
+    let whitelist = match WHITELIST.as_ref() {
+        Ok(v) => v,
+        Err(e) => {
+            error!("{}", e);
+            error!("aborting patch");
+            panic!("{}", e);
+        }
+    };
+
+    let entry_string = entry.display().to_string();
+    return whitelist.iter().any(|e| entry_string.ends_with(e))
+}
+
 /// Checks if files should be ignored by the file collector
 pub fn check_ignored(entry: &Path) -> bool {
     let execution_dir_str = get_assembly_dir().to_str().unwrap_or("").to_string();
@@ -110,7 +135,7 @@ pub fn check_ignored(entry: &Path) -> bool {
     } else if update_data_dir_str.len() > 0 && entry_str.contains(&update_data_dir_str) {
         return false;
     }
-    return true;
+    is_whitelisted(entry)
 }
 
 pub fn clean_adm_dir() -> Result<(), OpError> {

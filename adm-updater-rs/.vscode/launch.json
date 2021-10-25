@@ -4,7 +4,7 @@
             "name": "Debug Rust",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/target/debug/updater-rs.exe",
+            "program": "${workspaceRoot}/target/debug/adm-updater-rs.exe",
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

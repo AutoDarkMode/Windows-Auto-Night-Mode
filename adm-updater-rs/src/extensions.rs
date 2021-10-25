@@ -1,12 +1,21 @@
 #![allow(dead_code)]
 
-use log::error;
 use std::path::PathBuf;
+
+#[allow(unused_imports)]
+use log::error;
 
 static SERVICE_EXE: &'static str = "AutoDarkModeSvc.exe";
 static APP_EXE: &'static str = "AutoDarkModeApp.exe";
 static SHELL_EXE: &'static str = "AutoDarkModeShell.exe";
 
+#[cfg(debug_assertions)]
+/// Returns the execution directory the updater resides in
+pub fn get_assembly_dir() -> PathBuf {
+    PathBuf::from(r"D:\Code\Repos\AutoDarkMode\ADM-Test-Environment\App\Updater")
+}
+
+#[cfg(not(debug_assertions))]
 /// Returns the execution directory the updater resides in
 pub fn get_assembly_dir() -> PathBuf {
     let dir = match std::env::current_exe() {
@@ -24,8 +33,6 @@ pub fn get_assembly_dir() -> PathBuf {
         }
     };
     dir
-    //let dir2 = PathBuf::from(r"D:\Code\Repos\AutoDarkMode\ADM-Test-Environment\App\Updater");
-    //dir2
 }
 
 /// Returns the working directory of the updater, which is used for copying data INTO

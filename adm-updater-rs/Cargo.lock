@@ -4,11 +4,12 @@ version = 3
 
 [[package]]
 name = "adm-updater-rs"
-version = "2.3.9"
+version = "2.4.0"
 dependencies = [
  "bindings",
  "chrono",
  "fern",
+ "lazy_static",
  "log",
  "named_pipe",
  "platform-dirs",
