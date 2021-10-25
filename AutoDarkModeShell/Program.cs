@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using AutoDarkModeSvc.Communication;
 using Sharprompt;
 
@@ -24,8 +25,11 @@ namespace AutoDarkModeComms
             {
                 if (args.ToList().Contains("--and-launch-service"))
                 {
-                    Console.WriteLine($"attempting to start service");
+                    using Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
+                    if (mutex.WaitOne(1))
                     {
+                        Console.WriteLine($"attempting to start service");
+                        mutex.ReleaseMutex();
                         using Process svc = new();
                         svc.StartInfo.UseShellExecute = false;
                         svc.StartInfo.FileName = GetExecutionPathService();
@@ -59,7 +63,7 @@ namespace AutoDarkModeComms
                 {
                     selection = Prompt.Input<string>("Enter command:");
                     Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-                } 
+                }
                 else if (selection != QuitShell)
                 {
                     selection = selection.Split("(")[0].Trim();
