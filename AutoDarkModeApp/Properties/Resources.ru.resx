@@ -641,4 +641,37 @@ Auto Dark Mode X был полностью переписан с нуля. Те�
     <data name="AboutTextBlockFollowUs" xml:space="preserve">
     <value>Следите за нами</value>
   </data>
+    <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Режим</value>
+  </data>
+    <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Монитор</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Удалить отсоединённые мониторы</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Обои</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+    <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Тёмная тема</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Светлая тема</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Изображение (несколько мониторов)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Сплошной цвет</value>
+  </data>
 </root>
