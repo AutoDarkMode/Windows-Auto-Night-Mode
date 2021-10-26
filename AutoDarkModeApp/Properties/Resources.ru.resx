@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -184,7 +184,7 @@
     <value>Изменения сохранены!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Нажмите "Применить" что-бы сохранить изменения</value>
+    <value>Нажмите "Применить" для сохранения изменений</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Скачать обновление</value>
@@ -231,10 +231,10 @@
     <value>Добро пожаловать</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Поставьте галочку что-бы включить автоматическую смену темы</value>
+    <value>Поставьте галочку для включения автоматической смены тем</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Переводчик: Rikipm, Dvaderfun</value>
+    <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Город</value>
@@ -243,7 +243,7 @@
     <value>Недоступно, потому-что вы не установили Windows 10 April 2019 Update.</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Перезагрузите приложение что-бы изменения вступили в силу</value>
+    <value>Перезагрузите приложение, чтобы изменения вступили в силу</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Язык:</value>
@@ -459,7 +459,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Шаг</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Нажмите тут, чтоб открыть настройки темы Windows.</value>
+    <value>Нажмите тут, чтобы открыть настройки темы Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>Теперь установите светлый цвет Windows в разделе Цвета для светлой темы. Выберите любимый фон, курсор мыши и основной цвет.</value>
@@ -511,5 +511,134 @@ Auto Dark Mode X был полностью переписан с нуля. Те�
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Искать обновления в фоне</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Выбрать тему</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Выбрать обои</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Скрыть иконку в трее (не рекомендуется)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Эта функция отключена, пока включен выбор темы.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Эта функция отключена, пока включен выбор обоев.</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Включить смену тем</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Откл.</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Вкл.</value>
+  </data>
+    <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Геогравические координаты</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Данные местоположения</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>От рассвета до заката (географические координаты)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Гео координаты для твоего местоположения</value>
+  </data>
+    <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Широта</value>
+  </data>
+    <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Долгота</value>
+  </data>
+    <data name="lblOffset" xml:space="preserve">
+    <value>Смещение</value>
+  </data>
+    <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Смена режимов</value>
+  </data>
+    <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Условия</value>
+  </data>
+    <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Не переключать тему при запуске видеоигры</value>
+  </data>
+    <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Устройства с питанием от батареи</value>
+  </data>
+    <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Включать темный режим, когда устройство отключается от сети</value>
+  </data>
+    <data name="tbPickTheme" xml:space="preserve">
+    <value>Предлагает больше возможностей, но вам необходимо настроить файлы тем. Настройте обои рабочего стола для каждого монитора, установите несколько обоев на слайд-шоу, измените курсор мыши, установите цвета и отдельные звуки.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Предлагает меньше функций, но проще в настройке. Настройте обои рабочего стола для всех мониторов, отдельных мониторов или установите цвет фона.</value>
+  </data>
+    <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Включить смену обоев</value>
+  </data>
+    <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Восстанавливать темы при внешнем (ручном) изменении</value>
+  </data>
+    <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Включить режим энергосбережения при смене тем</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Это работает только в том случае, если вы вручную не включили экономию заряда батареи!</value>
+  </data>
+    <data name="tbUpdates" xml:space="preserve">
+    <value>Мы проверяем наличие новых версий Auto Dark Mode в фоновом режиме. Когда обновление будет доступно, мы сообщим вам об этом с помощью всплывающего уведомления</value>
+  </data>
+    <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Последняя проверка</value>
+  </data>
+    <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Интервал проверки обновлений</value>
+  </data>
+    <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Каждый день</value>
+  </data>
+    <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 дней</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 дня</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 дней</value>
+  </data>
+    <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Проверять обновления при запуске Auto Dark Mode</value>
+  </data>
+    <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Автоматически загружать и устанавливать новые версии</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Не показывать уведомления</value>
+  </data>
+    <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Выбрать канал обновления</value>
+  </data>
+    <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Файлы настроек</value>
+  </data>
+    <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Открыть файл настроек</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Открыть папку настроек</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Открыть логи</value>
+  </data>
+    <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Следите за нами</value>
   </data>
 </root>
