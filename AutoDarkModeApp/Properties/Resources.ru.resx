@@ -674,4 +674,13 @@ Auto Dark Mode X был полностью переписан с нуля. Те�
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
     <value>Сплошной цвет</value>
   </data>
+    <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Персонализация</value>
+  </data>
+    <data name="applyGeoButton" xml:space="preserve">
+    <value>Применить координаты</value>
+  </data>
+    <data name="offsetButton" xml:space="preserve">
+    <value>Установить</value>
+  </data>
 </root>
