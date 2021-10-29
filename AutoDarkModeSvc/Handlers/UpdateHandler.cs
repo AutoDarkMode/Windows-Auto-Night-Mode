@@ -397,7 +397,16 @@ namespace AutoDarkModeSvc.Handlers
                 webClient.Proxy = null;
                 webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
                 webClient.Headers.Add("Cache-Control", "no-cache");
+                try
+                {
+                    _ = webClient.DownloadString(UpstreamVersion.ChangelogUrl);
+                }
+                catch (Exception)
+                {
+                    Logger.Warn("changelog page not found");
+                }
                 byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
+
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
                 if (!Directory.Exists(Extensions.UpdateDataDir))
