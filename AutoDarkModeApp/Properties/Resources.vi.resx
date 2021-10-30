@@ -139,7 +139,7 @@
     <value>Các ứng dụng:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Tuỳ chọn thời điểm bắt đầu</value>
+    <value>Tuỳ chọn thời điểm chuyển đổi</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Tối</value>
@@ -368,7 +368,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Cài đặt</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Thời điểm</value>
+    <value>Thời điểm chuyển đổi</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Mở thư mục</value>
