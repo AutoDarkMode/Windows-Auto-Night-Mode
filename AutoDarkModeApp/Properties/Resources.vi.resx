@@ -127,10 +127,10 @@
     <value>Bật tính năng thay đổi giao diện</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Luôn là giao diện tối</value>
+    <value>Luôn là chủ đề tối</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Luôn là giao diện sáng</value>
+    <value>Luôn là chủ đề sáng</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Bật các tính năng cho Windows 1903</value>
@@ -145,22 +145,22 @@
     <value>Tối</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Giao diện tối</value>
+    <value>Chủ đề tối</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy):</value>
+    <value>Edge (Phiên bản cũ):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Sáng</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Giao diện sáng</value>
+    <value>Chủ đề sáng</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
     <value>Cài đặt</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Chuyển giao diện hiện tại</value>
+    <value>Chuyển chủ đề hiện tại</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>Hệ thống:</value>
@@ -187,10 +187,10 @@
     <value>có lỗi xảy ra :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>This app needs access to your location</value>
+    <value>Ứng dụng cần lấy vị trí của bạn</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>No new updates are available.</value>
+    <value>Không có cập nhật mới nào.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Đang lấy vị trí của bạn...</value>
@@ -199,7 +199,7 @@
     <value>Đang kiểm tra cập nhật...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Cảnh báo: Phần mềm không đọc được giao diện hiện tại của bạn.</value>
+    <value>Cảnh báo: Ứng dụng không đọc được chủ đề hiện tại của bạn.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Có một bản cập nhật mới!</value>
@@ -219,7 +219,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Kiểm tra cập nhật</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Phần mềm sẽ kiểm tra cập nhật mỗi khi khởi động.</value>
+    <value>Ứng dụng sẽ kiểm tra cập nhật mỗi khi khởi động.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Chào mừng</value>
@@ -243,7 +243,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Ngôn ngữ:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Màu nhấn (Accent Color) cho Taskbar</value>
+    <value>Màu nhấn (Accent color) cho Taskbar</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Huỷ</value>
@@ -252,7 +252,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Hiện tại:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Hình nền cho giao diện tối</value>
+    <value>Hình nền cho chủ đề tối</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Xoá/Vô hiệu hoá</value>
@@ -261,7 +261,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Chọn tập tin</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Hình nền cho giao diện sáng</value>
+    <value>Hình nền cho chủ đề sáng</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Hình nền</value>
@@ -285,7 +285,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Đang tắt</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Bật</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>hoặc</value>
@@ -297,10 +297,10 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Có thể do tập tin ảnh của bạn bị hư hỏng hoặc đường dẫn không tồn tại.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>We couldn't generate a preview of your image, sorry!</value>
+    <value>Ứng dụng không thể tạo ảnh xem trước, xin thứ lỗi!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>We couldn't save your settings, sorry!</value>
+    <value>Ứng dụng không thể lưu lại thiết lập, xin thứ lỗi!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Có lỗi đã xảy ra</value>
@@ -319,37 +319,37 @@ Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi
     <value>Tắt</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>Không</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
     <value>Có</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Automatic update check</value>
+    <value>Kiểm tra cập nhật tự động</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>Sorry, but we couldn't apply your settings.
+    <value>Xin lỗi, nhưng ứng dụng không thể áp dụng cài đặt của bạn.
 
-Here are some things you can try:
-- Restart the Auto Dark Mode service
-- Check if the service is running
-- Close the service, delete the config.yaml file and re-configue
+Dưới đây là một số điều bạn có thể thử:
+- Khởi động lại service Auto Dark Mode
+- Kiểm tra xem service có đang chạy không
+- Đóng service, xóa tập tin config.yaml và cấu hình lại
 
-If these things didn't help, you can create an issue on GitHub. You can access the issue by clicking the "Yes" button.</value>
+Nếu những điều trên không hữu ích, bạn có thể tạo Issue trên GitHub. Bạn có thể truy cập Issue bằng cách nhấp vào nút "Có".</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Lỗi: Thông tin bạn nhập không chính xác</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Switch after Connected Standby (not recommended)</value>
+    <value>Chuyển đổi chủ đề sau khi bật chế độ Connected Standby (không khuyến khích)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
-But it also reduces the battery life, so ONLY activate if necessary!</value>
+    <value>Các thiết bị di động, như Microsoft Surface, sử dụng một loại chế độ chờ mới.
+Bật tùy chọn này đảm bảo rằng Auto Dark Mode sẽ chuyển đổi chủ đề ngay lập tức sau khi máy tính của bạn được đánh thức.
+Nhưng nó cũng làm giảm tuổi thọ pin, vì vậy CHỈ kích hoạt nếu cần thiết!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>Do một lỗi của Windows, thanh tác vụ không chuyển đổi đúng màu của nó ở chế độ tiết kiệm pin. Vui lòng tắt trình tiết kiệm pin nếu bạn gặp sự cố.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Độ lệch giờ</value>
@@ -358,8 +358,8 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>Đặt</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme.
-You can set them up individually in your Windows Theme.</value>
+    <value>Các tùy chọn này được tắt khi sử dụng Windows Theme.
+Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Các ứng dụng</value>
@@ -374,34 +374,34 @@ You can set them up individually in your Windows Theme.</value>
     <value>Mở thư mục</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Giao diện tối:</value>
+    <value>Chủ đề tối:</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Tạo giao diện của bạn</value>
+    <value>Tạo chủ đề của bạn</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Chọn giao diện của bạn</value>
+    <value>Chọn chủ đề của bạn</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Giao diện sáng:</value>
+    <value>Chủ đề sáng:</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows Theme (more features)</value>
+    <value>Chủ đề Windows (nhiều chức năng hơn)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Desktop Wallpaper (recommended)</value>
+    <value>Hình nền (khuyến khích dùng)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
+    <value>Bấm vào đây để mở thiết lập cho chủ đề Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>Bây giờ đến phần 'Colors' và thay đổi màu hệ thống thành 'Light' cho chủ đề sáng. Chọn Wallpaper, Mouse Cursor và Accent color yêu thích của bạn.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
+    <value>Quay về thiết lập chủ đề Windows và lưu chủ đề của bạn.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Repeat this process for the dark theme.</value>
+    <value>Lặp lại những bước trên cho chủ đề tối.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Khoảng thời gian chờ khi chuyển màu taskbar (ms):</value>
@@ -422,22 +422,22 @@ You can set them up individually in your Windows Theme.</value>
     <value>Từ lúc mặt trời lặn tới lúc mặt trời mọc</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Step</value>
+    <value>Các bước thiết lập</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
+    <value>Sử dụng bộ lọc màu thang độ xám (tổ hợp phím Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Sử dụng logon task thay vì startup entry</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Select mode:</value>
+    <value>Chọn chế độ:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+    <value>Đã xảy ra lỗi khi áp dụng các chủ đề đã chọn, ứng dụng đã tắt chức năng chuyển đổi chủ đề</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Giao diện sáng khác</value>
+    <value>Chủ đề sáng khác</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Tải phần mở rộng</value>
@@ -446,42 +446,40 @@ You can set them up individually in your Windows Theme.</value>
     <value>Các công cụ gợi ý cho bạn</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.</value>
+    <value>Trình mở rộng này làm cho các trang web trong Chrome, Firefox và Edge biết được chủ đề của hệ thống.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>Không tìm thấy</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Why should you donate?</value>
+    <value>Tại sao bạn nên đóng góp tự nguyện?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>How to donate?</value>
+    <value>Làm cách nào để đóng góp tự nguyện?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+    <value>Bạn có thể gửi tiền cho tôi qua PayPal. Nó hoàn toàn tự nguyện và không thể bồi hoàn.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Quyên góp</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+    <value>Xin chào! Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
 
-This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
-I don't generate any profit with this project.
+Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở.
+Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
 
-For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng góp tự nguyện. Ngay cả một khoản tiền nhỏ cũng khiến tôi ngập trong vui sướng. Hãy đóng góp một mức mà bạn nghĩ là xứng đáng với lợi ích mà ứng dụng này mang đến cho bạn.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
+    <value>Đã xảy ra lỗi khi áp dụng tập tin .theme. Có thể chủ đề bạn đã tạo đã bị xóa hoặc di chuyển. Đó là lý do tại sao ứng dụng sẽ tắt tính năng chuyển đổi chủ đề ngay bây giờ. Để bật lại tính năng này, vui lòng mở Auto Dark Mode và định cấu hình cài đặt {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue:
-{0}
+    <value>Ứng dụng gặp phải vấn đề sau:{0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
-Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
+Bây giờ ứng dụng sẽ cố gắng giải quyết vấn đề này bằng cách chạy những đoạn mã với quyền quản trị viên. Auto Dark Mode sẽ khởi động lại sau đó và bạn sẽ cần phải thiết lập lại cài đặt của mình, xin thứ lỗi!
 
-Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
+Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên bằng cách thủ công!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Bạn cần giúp đỡ?</value>
@@ -490,7 +488,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Hỗ trợ đa người dùng</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Optional delay for activating grayscale color filter:</value>
+    <value>Thời gian chờ khi kích hoạt bộ lọc màu thang độ xám:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>Đồng bộ với hệ thống</value>
@@ -499,19 +497,19 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Đặt lại</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Bật giao diện tối khi đang dùng pin</value>
+    <value>Bật chủ đề tối khi đang dùng pin</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>Giá trị mặc định cho thanh trượt trình tiết kiệm năng lượng</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
+    <value>Giảm mức sử dụng năng lượng cho việc chuyển đổi chủ đề</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>Chỉ có tác dụng khi tính năng tiết kiệm pin không được bật thủ công!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Chuyển giao diện</value>
+    <value>Chuyển chủ đề</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Cá nhân hoá</value>
@@ -520,7 +518,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Áp dụng toạ độ</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Cài đặt này bị tắt, vì bạn chưa cài đặt bản cập nhật Windows 10 April 2019.</value>
+    <value>Cài đặt này bị tắt, vì bạn chưa cài bản cập nhật Windows 10 April 2019.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Toạ độ địa lý</value>
@@ -550,7 +548,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Microsoft Office 2013 - 2019:</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Chế độ đổi giao diện</value>
+    <value>Chế độ đổi chủ đề</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
     <value>Chế độ đổi hình nền</value>
@@ -562,19 +560,19 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Ẩn biểu tượng ở tray (không khuyến khích)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi giao diện.</value>
+    <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi chủ đề.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
     <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi hình nền.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an accent color and individual sounds.</value>
+    <value>Cung cấp nhiều tính năng hơn, nhưng bạn cần thiết lập tập tin .theme của Windows. Bạn có thể tùy chỉnh hình nền máy tính của bạn cho mỗi màn hình, thay đổi con trỏ chuột, đặt màu nhấn và âm thanh riêng lẻ.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
+    <value>Cung cấp ít tính năng hơn, nhưng dễ thiết lập hơn. Bạn có thể tùy chỉnh hình nền máy tính của bạn cho tất cả các màn hình, từng màn hình hoặc đặt màu nền.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Phần mềm sẽ kiểm tra cập nhật Auto Dark Mode tự động. Khi có cập nhật, phần mềm sẽ thông báo cho bạn</value>
+    <value>Ứng dụng sẽ kiểm tra cập nhật Auto Dark Mode tự động. Khi có cập nhật, ứng dụng sẽ thông báo cho bạn</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Tự động tải và cài đặt cập nhật mới</value>
@@ -607,10 +605,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Tần suất kiểm tra cập nhật</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Giao diện tối</value>
+    <value>Chủ đề tối</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Giao diện sáng</value>
+    <value>Chủ đề sáng</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
     <value>Hình ảnh</value>
@@ -646,7 +644,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Bật tính năng chuyển đổi ảnh nền</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Không chuyển giao diện khi đang chơi game</value>
+    <value>Không chuyển chủ đề khi đang chơi game</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
     <value>Nhanh (1 mẫu)</value>
@@ -667,10 +665,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Điều kiện</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Mức sử dụng GPU tối thiểu để chuyển đổi giao diện</value>
+    <value>Mức sử dụng GPU tối thiểu để chuyển đổi chủ đề</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+    <value>Phục hồi lại chủ đề khi bị thay đổi bên ngoài</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>Latitude</value>
@@ -690,7 +688,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Service không phản hồi. Vui lòng kiểm tra AutoDarkModeSvc.exe có đang chạy hay không, và thử lại!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Bật tính năng thay đổi giao diện Windows</value>
+    <value>Bật tính năng thay đổi chủ đề Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
     <value>Tắt</value>
@@ -702,7 +700,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Theo dõi chúng tôi trên</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Giao diện</value>
+    <value>Chủ đề</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Flowers</value>
@@ -748,6 +746,6 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Hằng ngày</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>Bấm vào Đặt để lưu thay đổi.</value>
   </data>
 </root>
