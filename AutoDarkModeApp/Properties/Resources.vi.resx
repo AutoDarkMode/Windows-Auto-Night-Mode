@@ -124,7 +124,7 @@
     <value>Áp dụng</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Bật tính năng thay đổi giao diện</value>
+    <value>Bật tính năng thay đổi chủ đề</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Luôn là chủ đề tối</value>
@@ -225,7 +225,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Chào mừng</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Tích vào để bật tính năng thay đổi giao diện</value>
+    <value>Tích vào để bật tính năng thay đổi chủ đề</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Dịch thuật: khoicandev</value>
@@ -306,8 +306,8 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Có lỗi đã xảy ra</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Chỉ có thể dùng được ở giao diện tối.
-Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi giao diện ở phần cài đặt.</value>
+    <value>Chỉ có thể dùng được ở chủ đề tối.
+Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi chủ đề ở phần cài đặt.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Thông tin</value>
