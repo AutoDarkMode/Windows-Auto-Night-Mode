@@ -11,6 +11,8 @@ pub fn display_license() {
     let winreg = "winreg - Copyright (c) 2015 Igor Shaula - MTI License - https://github.com/gentoo90/winreg-rs/blob/master/LICENSE\n";
     let windows_permissions = "windows-permissions - Copyright (c) 2021 Daniel Dulaney - MIT License - https://crates.io/crates/windows-permissions\n";
     let platform_dirs = "platform-dirs - Copyright (c) 2019 Caleb Bassi - MIT License - https://github.com/cjbassi/platform-dirs-rs/blob/master/LICENSE\n";
+    let lazy_static = "lazy_static - Copyright 2016 lazy-static.rs Developers - MIT License - https://choosealicense.com/licenses/mit\n";
+
 
     println!("auto dark mode rust updater, Copyright (c) 2021, Spiritreader, Auto Dark Mode - MIT License\n");
     println!("{}", rand);
@@ -25,4 +27,5 @@ pub fn display_license() {
     println!("{}", winreg);
     println!("{}", windows_permissions);
     println!("{}", platform_dirs);
+    println!("{}", lazy_static);
 }

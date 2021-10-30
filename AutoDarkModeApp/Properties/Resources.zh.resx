@@ -706,45 +706,48 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>鲜花</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows（浅色主题）</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>捕获的动作</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows（深色主题）</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>流畅</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>发光</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows（浅色主题）</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>日出</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>每天</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>单击“设置”保存更改。</value>
   </data>
 </root>

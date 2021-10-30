@@ -70,7 +70,7 @@ namespace AutoDarkModeSvc
 
             try
             {
-                if (!mutex.WaitOne(TimeSpan.FromSeconds(2), false))
+                if (!mutex.WaitOne(500, false))
                 {
                     Logger.Debug("app instance already open");
                     return;

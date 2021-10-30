@@ -1,5 +1,8 @@
 #![windows_subsystem = "windows"]
 
+#[macro_use]
+extern crate lazy_static;
+
 use crate::extensions::{get_service_path, get_update_data_dir};
 use bindings::Windows::Win32::Foundation::{HWND, PWSTR};
 use bindings::Windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
@@ -185,7 +188,7 @@ fn rollback(temp_dir: &PathBuf) -> Result<(), OpError> {
         e.severe = true;
         return Err(e);
     }
-    if let Err(e) = fs::remove_dir_all(temp_dir) {
+    if let Err(e) = fs::remove_dir(temp_dir) {
         warn!("could not delete temp directory after rollback: {}", e);
     }
     info!("rollback successful, no update has been performed, restarting auto dark mode");
