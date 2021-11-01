@@ -747,4 +747,7 @@
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>毎日</value>
   </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>変更を保存するには「適用」をクリックします。</value>
+  </data>
 </root>
