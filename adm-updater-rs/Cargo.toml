@@ -2,7 +2,7 @@
 name = "adm-updater-rs"
 version = "2.4.0"
 authors = ["Sam <earthstamper@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [package.metadata.winres]
 OriginalFilename = "AutoDarkModeUpdater"
