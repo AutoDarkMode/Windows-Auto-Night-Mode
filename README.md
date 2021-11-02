@@ -76,7 +76,7 @@ scoop install auto-dark-mode-np
 </details>
 
 ## Telegram group
-[Join our official Telegram group to get early access to new beta versions](https://t.me/autodarkmode)
+[Join our official Telegram group to talk directly to the dev team on beta issues!](https://t.me/autodarkmode)
 
 ## More information
 You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
