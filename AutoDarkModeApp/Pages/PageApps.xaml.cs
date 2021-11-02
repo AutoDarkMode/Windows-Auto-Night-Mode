@@ -43,25 +43,38 @@ namespace AutoDarkModeApp
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
-                SystemComboBox.IsEnabled = false;
-                SystemComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                SystemComboBoxItemSwitch.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                SystemComboBoxItemLightOnly.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                SystemComboBoxItemLightOnly.IsEnabled = false;
+                SystemComboBoxItemSwitch.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 NumberBoxColorDelay.IsEnabled = false;
                 NumberBoxColorDelay.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
-                StackPanelAdaptiveTaskbarAccent.IsEnabled = false;
-                StackPanelAdaptiveTaskbarAccent.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
             }
 
             if (builder.Config.SystemSwitch.Enabled)
             {
-                SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode;
+                switch (builder.Config.SystemSwitch.Component.Mode)
+                {
+                    case Mode.Switch:
+                        if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
+                        else SystemComboBox.SelectedItem = SystemComboBoxItemSwitch; 
+                        break;
+                    case Mode.LightOnly:
+                        if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
+                        else SystemComboBox.SelectedItem = SystemComboBoxItemLightOnly; 
+                        break;
+                    case Mode.AccentOnly: 
+                        SystemComboBox.SelectedItem = SystemComboBoxItemAccentOnly; 
+                        break;
+                }
                 RadioButtonAdaptiveTaskbarAccentOnDark.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Dark;
                 RadioButtonAdaptiveTaskbarAccentOnLight.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Light;
             }
             else
             {
-                SystemComboBox.SelectedIndex = 3;
+                SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
             }
 
             //if the OS version is older than 1903
@@ -203,7 +216,7 @@ namespace AutoDarkModeApp
             if (!init || sender == null)
             {
                 builder.Config.SystemSwitch.Enabled = true;
-                if (SystemComboBox.SelectedIndex.Equals(0))
+                if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemSwitch))
                 {
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
                     AccentColorCheckBox.IsEnabled = true;
@@ -212,7 +225,7 @@ namespace AutoDarkModeApp
                     NumberBoxColorDelay.Visibility = Visibility.Visible;
                     StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
                 }
-                else if (SystemComboBox.SelectedIndex.Equals(1))
+                else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemLightOnly))
                 {
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
                     AccentColorCheckBox.IsEnabled = false;
@@ -221,15 +234,23 @@ namespace AutoDarkModeApp
                     NumberBoxColorDelay.Visibility = Visibility.Collapsed;
                     StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
                 }
-                else if (SystemComboBox.SelectedIndex.Equals(2))
+                else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemAccentOnly))
                 {
-                    if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
+                    if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.AccentOnly;
                     AccentColorCheckBox.Visibility = Visibility.Collapsed;
-                    TextBlockColorDelay.Visibility = Visibility.Visible;
-                    NumberBoxColorDelay.Visibility = Visibility.Visible;
+                    if (!builder.Config.WindowsThemeMode.Enabled)
+                    {
+                        TextBlockColorDelay.Visibility = Visibility.Visible;
+                        NumberBoxColorDelay.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                        NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                    }
                     StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Visible;
                 }
-                else if (SystemComboBox.SelectedIndex.Equals(3))
+                else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemDisabled))
                 {
                     if (sender != null) builder.Config.SystemSwitch.Enabled = false;
                     AccentColorCheckBox.IsEnabled = false;

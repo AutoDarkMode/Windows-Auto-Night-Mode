@@ -96,6 +96,7 @@ namespace AutoDarkModeApp.Pages
             theme1 = false;
             theme2 = false;
             TextBlockUserFeedback.Visibility = Visibility.Collapsed;
+            RequestThemeSwitch();
         }
 
         private void EnableThemeMode()

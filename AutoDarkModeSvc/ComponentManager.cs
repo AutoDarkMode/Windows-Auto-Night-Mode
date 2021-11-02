@@ -75,7 +75,13 @@ namespace AutoDarkModeSvc
         /// </summary>
         public void InvokeDisableHooks()
         {
-            Components.ForEach(c => c.DisableHook());
+            Components.ForEach(c =>
+            {
+                if (!c.ThemeHandlerCompatibility)
+                {
+                    c.DisableHook();
+                }
+            });
         }
 
         /// <summary>
@@ -83,7 +89,7 @@ namespace AutoDarkModeSvc
         /// </summary>
         public void ForceAll()
         {
-            Components.ForEach(c =>  c.ForceSwitch = true);
+            Components.ForEach(c => c.ForceSwitch = true);
         }
 
         /// <summary>

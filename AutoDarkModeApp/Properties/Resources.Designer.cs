@@ -106,6 +106,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accent only.
+        /// </summary>
+        public static string AppSystemComboBoxItemAccentOnly {
+            get {
+                return ResourceManager.GetString("AppSystemComboBoxItemAccentOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable automatic theme switching.
         /// </summary>
         public static string autoCheckBox {

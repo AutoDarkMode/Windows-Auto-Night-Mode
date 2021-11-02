@@ -753,4 +753,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
   </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Accent only</value>
+  </data>
 </root>

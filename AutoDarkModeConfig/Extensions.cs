@@ -9,7 +9,8 @@ namespace AutoDarkModeConfig
     {   
         Switch = 0,
         LightOnly = 1,
-        DarkOnly = 2
+        DarkOnly = 2,
+        AccentOnly = 3
     };
     public enum Theme
     {

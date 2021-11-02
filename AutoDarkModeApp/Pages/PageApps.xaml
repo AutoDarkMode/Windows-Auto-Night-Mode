@@ -120,10 +120,10 @@
                     SelectionChanged="SystemComboBox_SelectionChanged"
                     MinHeight="30">
 
-                    <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
-                    <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
-                    <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
-                    <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
+                    <ComboBoxItem Name="SystemComboBoxItemSwitch" IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
+                    <ComboBoxItem Name="SystemComboBoxItemLightOnly" Content="{x:Static p:Resources.cmbAlwWhite}"/>
+                    <ComboBoxItem Name="SystemComboBoxItemAccentOnly" Content="{x:Static p:Resources.AppSystemComboBoxItemAccentOnly}"/>
+                    <ComboBoxItem Name="SystemComboBoxItemDisabled" Content="{x:Static p:Resources.disabled}"/>
                 </ComboBox>
 
 
