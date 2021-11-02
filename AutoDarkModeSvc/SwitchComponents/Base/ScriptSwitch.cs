@@ -68,7 +68,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             bool isInit = Settings == null;
             base.UpdateSettingsState(newSettings);
             if (isInit) return;
-            if (!Settings.Component.Equals(SettingsBefore))
+            if (!Settings.Component.Equals(SettingsBefore.Component))
             {
                 currentComponentTheme = Theme.Unknown;
             }
