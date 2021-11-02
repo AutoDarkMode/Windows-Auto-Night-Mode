@@ -42,16 +42,17 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         public string Name { get; set; }
         public string Command { get; set; }
         public string WorkingDirectory { get; set; }
-        public List<string> ArgsLight { get; set; }
-        public List<string> ArgsDark { get; set; }
+        public List<string> ArgsLight { get; set; } = new();
+        public List<string> ArgsDark { get; set; } = new();
         public override bool Equals(object obj)
         {
             if (obj is Script other)
             {
-                if (other.Name != this.Name) return false;
-                if (other.Command != this.Command) return false;
-                if (!other.ArgsDark.SequenceEqual(this.ArgsDark)) return false;
-                if (!other.ArgsLight.SequenceEqual(this.ArgsLight)) return false;
+                if (other.Name != Name) return false;
+                if (other.Command != Command) return false;
+                if (!other.ArgsDark.SequenceEqual(ArgsDark)) return false;
+                if (!other.ArgsLight.SequenceEqual(ArgsLight)) return false;
+                if (other.WorkingDirectory != WorkingDirectory) return false;
                 return true;
             }
             return base.Equals(obj);

@@ -93,34 +93,28 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
         {
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(AdmConfigBuilder.LocationDataPath)))
+            try
             {
-                try
-                {
-                    builder.LoadLocationData();
-                    Logger.Debug("updated location data file");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Debug(ex, "location data file locked, cannot load");
-                }
+                builder.LoadLocationData();
+                Logger.Debug("updated location data file");
+            }
+            catch (Exception ex)
+            {
+                Logger.Debug(ex, "location data file locked, cannot load");
             }
         }
 
         private void OnChangedScriptConfig(object source, FileSystemEventArgs e)
         {
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(AdmConfigBuilder.ScriptConfigPath)))
+            try
             {
-                try
-                {
-                    builder.LoadScriptConfig();
-                    componentManager.UpdateScriptSettings();
-                    Logger.Debug("updated script config file");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "could not refresh script config file, custom scripts most likely will not work:");
-                }
+                builder.LoadScriptConfig();
+                componentManager.UpdateScriptSettings();
+                Logger.Debug("updated script config file");
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "could not refresh script config file, custom scripts most likely will not work:");
             }
         }
 
