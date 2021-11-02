@@ -20,25 +20,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
         {
-
-            if (Settings.Component.Mode == Mode.DarkOnly && TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark))
+            if (newTheme == Theme.Dark)
             {
-                return true;
+                return TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark);
             }
-            else if (Settings.Component.Mode == Mode.LightOnly && TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light))
+            else if (newTheme == Theme.Light)
             {
-                return true;
-            }
-            else if (Settings.Component.Mode == Mode.Switch)
-            {
-                if (newTheme == Theme.Dark)
-                {
-                    return TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark);
-                }
-                else if (newTheme == Theme.Light)
-                {
-                    return TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light);
-                }
+                return TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light);
             }
             else if (currentWallpaperPosition != Settings.Component.Position)
             {
@@ -78,24 +66,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             string oldPos = Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition);
             try
             {
-                if (Settings.Component.Mode == Mode.DarkOnly)
+                if (newTheme == Theme.Dark)
                 {
                     HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
                 }
-                else if (Settings.Component.Mode == Mode.LightOnly)
+                else if (newTheme == Theme.Light)
                 {
                     HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
-                }
-                else
-                {
-                    if (newTheme == Theme.Dark)
-                    {
-                        HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
-                    }
-                    else if (newTheme == Theme.Light)
-                    {
-                        HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
-                    }
                 }
             }
             catch (Exception ex)
@@ -120,36 +97,36 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
                 string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
                 Logger.Info($"update info - previous global: {oldGlobal}/{oldPos}, " +
-                            $"curren global: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
+                            $"global now: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
                 Logger.Info($"update info - previous individual: {oldIndividual}/{oldPos}, " +
-                            $"current individual: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
+                            $"individual now: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
             else if (type == WallpaperType.Individual)
             {
                 string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
                 Logger.Info($"update info - previous: {oldIndividual}/{oldPos}, " +
-                            $"current: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
+                            $"now: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
             else if (type == WallpaperType.Global)
             {
                 string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
                 Logger.Info($"update info - previous: {oldGlobal}/{oldPos}, " +
-                            $"current: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
+                            $"now: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
             else if (type == WallpaperType.SolidColor)
             {
                 string currentSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
                 Logger.Info($"update info - previous: {oldSolid}/{oldPos}, " +
-                            $"current: {currentSolid}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}/{Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
+                            $"now: {currentSolid}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
         }
@@ -210,11 +187,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
             bool isInit = Settings == null;
             base.UpdateSettingsState(newSettings);
-
-            if (!isInit)
-            {
-                UpdateCurrentComponentState();
-            }
+            if (isInit) return;
+            UpdateCurrentComponentState();
         }
 
         private void StateUpdateOnTypeToggle(WallpaperType current)

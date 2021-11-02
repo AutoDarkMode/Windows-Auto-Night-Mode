@@ -164,7 +164,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not set system theme");
             }
-            Logger.Info($"update info - previous: {oldTheme}, current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}" +
+            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}" +
                 $", accent: {(Settings.Component.TaskbarColorOnDark ? "yes" : "no")}");
         }
     }

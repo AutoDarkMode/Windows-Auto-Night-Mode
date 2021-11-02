@@ -32,6 +32,7 @@ namespace AutoDarkModeSvc
         private readonly ISwitchComponent SystemSwitch = new SystemSwitch();
         //private ISwitchComponent TaskbarAccentColorSwitch;
         private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
+        private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
 
         /// <summary>
         /// Instructs all components to refresh their settings objects by injecting a new settings object
@@ -46,6 +47,12 @@ namespace AutoDarkModeSvc
             WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
             //TaskbarAccentcolorSwitch.UpdateSettingsState(Builder.Config.TaskbarAccentColorSwitch);
         }
+
+        public void UpdateScriptSettings()
+        {
+            ScriptSwitch.UpdateSettingsState(Builder.ScriptConfig);
+        }
+
         ComponentManager()
         {
             Builder = AdmConfigBuilder.Instance();
@@ -56,9 +63,11 @@ namespace AutoDarkModeSvc
                 OfficeSwitch,
                 SystemSwitch,
                 //TaskbarAccentColorSwitch
-                WallpaperSwitch
+                WallpaperSwitch,
+                ScriptSwitch
             };
             UpdateSettings();
+            UpdateScriptSettings();
         }
 
         /// <summary>

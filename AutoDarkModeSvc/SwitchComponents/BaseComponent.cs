@@ -78,10 +78,12 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public virtual void EnableHook()
         {
+            Logger.Debug($"running enable hook for {GetType().Name}");
             Initialized = true;
         }
         public virtual void DisableHook()
         {
+            Logger.Debug($"running disable hook for {GetType().Name}");
             Initialized = false;
         }
         /// <summary>

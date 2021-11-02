@@ -16,13 +16,12 @@ namespace AutoDarkModeSvc.Config
     {
         private FileSystemWatcher ConfigWatcher { get; }
         private FileSystemWatcher LocationDataWatcher { get; }
+        private FileSystemWatcher ScriptConfigWatcher { get; }
         private readonly ComponentManager componentManager = ComponentManager.Instance();
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private readonly GlobalState state = GlobalState.Instance();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IAutoDarkModeModule warden;
-        private DateTime lastTimeConfigChanged;
-        private DateTime lastTimeLocationConfigChanged;
 
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
@@ -31,19 +30,26 @@ namespace AutoDarkModeSvc.Config
         {
             ConfigWatcher = new FileSystemWatcher
             {
-                Path = builder.ConfigDir,
-                Filter = Path.GetFileName(builder.ConfigFilePath),
+                Path = AdmConfigBuilder.ConfigDir,
+                Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
             LocationDataWatcher = new FileSystemWatcher
             {
-                Path = builder.ConfigDir,
-                Filter = Path.GetFileName(builder.LocationDataPath),
+                Path = AdmConfigBuilder.ConfigDir,
+                Filter = Path.GetFileName(AdmConfigBuilder.LocationDataPath),
                 NotifyFilter = NotifyFilters.LastWrite
             };
+            ScriptConfigWatcher = new()
+            {
+                Path = AdmConfigBuilder.ConfigDir,
+                Filter = Path.GetFileName(AdmConfigBuilder.ScriptConfigPath),
+                NotifyFilter = NotifyFilters.LastWrite
+            };
+            ScriptConfigWatcher.Changed += OnChangedScriptConfig;
             ConfigWatcher.Changed += OnChangedConfig;
             LocationDataWatcher.Changed += OnChangedLocationData;
-
+            
             IConfigUpdateEvent<AdmConfig> geolocatorEvent = new GeolocatorEvent();
             IConfigUpdateEvent<AdmConfig> themeModeEvent = new ThemeModeEvent(componentManager);
 
@@ -62,7 +68,6 @@ namespace AutoDarkModeSvc.Config
                 Logger.Debug("skipping config file reload, update source internal");
                 return;
             }
-            lastTimeConfigChanged = DateTime.Now;
             try
             {
                 AdmConfig oldConfig = builder.Config;
@@ -88,12 +93,7 @@ namespace AutoDarkModeSvc.Config
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
         {
-            if (DateTime.Now.Subtract(lastTimeLocationConfigChanged).TotalMilliseconds < 20)
-            {
-                return;
-            }
-            lastTimeLocationConfigChanged = DateTime.Now;
-            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(builder.LocationDataPath)))
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(AdmConfigBuilder.LocationDataPath)))
             {
                 try
                 {
@@ -103,6 +103,23 @@ namespace AutoDarkModeSvc.Config
                 catch (Exception ex)
                 {
                     Logger.Debug(ex, "location data file locked, cannot load");
+                }
+            }
+        }
+
+        private void OnChangedScriptConfig(object source, FileSystemEventArgs e)
+        {
+            if (!AdmConfigBuilder.IsFileLocked(new FileInfo(AdmConfigBuilder.ScriptConfigPath)))
+            {
+                try
+                {
+                    builder.LoadScriptConfig();
+                    componentManager.UpdateScriptSettings();
+                    Logger.Debug("updated script config file");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "could not refresh script config file, custom scripts most likely will not work:");
                 }
             }
         }
@@ -139,6 +156,7 @@ namespace AutoDarkModeSvc.Config
         {
             ConfigWatcher.EnableRaisingEvents = true;
             LocationDataWatcher.EnableRaisingEvents = true;
+            ScriptConfigWatcher.EnableRaisingEvents = true;
         }
 
         /// <summary>

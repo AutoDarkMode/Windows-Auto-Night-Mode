@@ -1,7 +1,8 @@
-﻿using System;
+﻿using AutoDarkModeConfig.ComponentSettings;
+using AutoDarkModeConfig.ComponentSettings.Base;
+using System;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -13,11 +14,13 @@ namespace AutoDarkModeConfig
         private static AdmConfigBuilder instance;
         public AdmConfig Config { get; private set; }
         public AdmLocationData LocationData { get; private set; }
+        public BaseSettings<ScriptSwitchSettings> ScriptConfig { get; private set; }
         public UpdaterData UpdaterData { get; private set; }
-        public string ConfigDir { get; }
-        public string ConfigFilePath { get; }
-        public string LocationDataPath { get; }
-        public string UpdaterDataPath { get; }
+        public static string ConfigDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+        public static string ConfigFilePath { get; } = Path.Combine(ConfigDir, "config.yaml");
+        public static string LocationDataPath { get; } = Path.Combine(ConfigDir, "location_data.yaml");
+        public static string UpdaterDataPath { get; } = Path.Combine(ConfigDir, "update.yaml");
+        public static string ScriptConfigPath { get; } = Path.Combine(ConfigDir, "scripts.yaml");
         public bool Loading { get; private set; }
         private EventHandler<AdmConfig> configUpdatedHandler;
         public event EventHandler<AdmConfig> ConfigUpdatedHandler
@@ -52,13 +55,10 @@ namespace AutoDarkModeConfig
         {
             if (instance == null)
             {
-                Config = new AdmConfig();
-                LocationData = new AdmLocationData();
-                UpdaterData = new UpdaterData();
-                ConfigDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
-                ConfigFilePath = Path.Combine(ConfigDir, "config.yaml");
-                LocationDataPath = Path.Combine(ConfigDir, "location_data.yaml");
-                UpdaterDataPath = Path.Combine(ConfigDir, "update.yaml");
+                Config = new();
+                LocationData = new();
+                UpdaterData = new();
+                ScriptConfig = new();
             }
         }
 
@@ -126,7 +126,8 @@ namespace AutoDarkModeConfig
                     using StreamReader dataReader = new(File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
                     return dataReader.ReadToEnd();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     readException = ex;
                     Thread.Sleep(500);
                 }
@@ -159,9 +160,16 @@ namespace AutoDarkModeConfig
         {
             Loading = true;
             AdmConfig deser = Deserialize<AdmConfig>(ConfigFilePath, Config);
-            AdmConfig old = Config;
             Config = deser ?? Config;
             Loading = false;
+        }
+
+        public void LoadScriptConfig()
+        {
+            Loading = true;
+            BaseSettings<ScriptSwitchSettings> deser = Deserialize<BaseSettings<ScriptSwitchSettings>>(ScriptConfigPath, ScriptConfig);
+            ScriptConfig = deser ?? ScriptConfig;
+            Loading = true;
         }
 
         /// <summary>
@@ -183,7 +191,6 @@ namespace AutoDarkModeConfig
             T deserializedConfigYaml = yamlDeserializer.Deserialize<T>(LoadFile(FilePath));
             return deserializedConfigYaml;
         }
-
 
         /// <summary>
         /// Checks if the config file is locked

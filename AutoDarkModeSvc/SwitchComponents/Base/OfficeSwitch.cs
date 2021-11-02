@@ -11,16 +11,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     class OfficeSwitch : BaseComponent<OfficeSwitchSettings>
     {
-        private Theme currentComponentTheme;
-        private int ChoosenLightTheme;
+        private Theme currentComponentTheme = Theme.Unknown;
+        private int ChoosenLightTheme = 0;
 
-        public OfficeSwitch() : base()
-        {
-            currentComponentTheme = Theme.Unknown;
-            ChoosenLightTheme = 0;
-        }
-
-        public override bool ThemeHandlerCompatibility { get; } = false;
+        public override bool ThemeHandlerCompatibility { get; } = true;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
         {
@@ -82,7 +76,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not set office theme");
             }
-            Logger.Info($"update info - previous: {oldTheme}, current: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }
 
         /// <summary>

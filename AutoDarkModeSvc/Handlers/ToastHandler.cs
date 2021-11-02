@@ -15,7 +15,7 @@ namespace AutoDarkModeSvc.Handlers
         {
             Program.ActionQueue.Add(() =>
             {
-                string configPath = AdmConfigBuilder.Instance().ConfigDir;
+                string configPath = AdmConfigBuilder.ConfigDir;
                 new ToastContentBuilder()
                     .AddText($"Patching failed")
                     .AddText($"An error occurred while patching")

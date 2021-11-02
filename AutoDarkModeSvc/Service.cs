@@ -212,7 +212,7 @@ namespace AutoDarkModeSvc
         {
             ProcessStartInfo startInfo = new()
             {
-                Arguments = Builder.ConfigDir,
+                Arguments = AdmConfigBuilder.ConfigDir,
                 FileName = "explorer.exe"
             };
 

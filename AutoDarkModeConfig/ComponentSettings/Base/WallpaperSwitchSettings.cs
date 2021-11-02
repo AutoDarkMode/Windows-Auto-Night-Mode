@@ -15,24 +15,6 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
             SolidColors = new();
             GlobalWallpaper = new();
         }
-        private Mode mode;
-        //[JsonConverter(typeof(StringEnumConverter))]
-        public Mode Mode
-        {
-            get { return mode; }
-            set
-            {
-                if (value >= 0 && (int)value <= 2)
-                {
-                    mode = value;
-                }
-                else
-                {
-                    // DEFAULT
-                    mode = 0;
-                }
-            }
-        }
         public WallpaperType TypeLight { get; set; } = WallpaperType.Individual;
         public WallpaperType TypeDark { get; set; } = WallpaperType.Individual;
         public WallpaperPosition Position { get; set; } = WallpaperPosition.Fill;

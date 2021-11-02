@@ -129,6 +129,15 @@ namespace AutoDarkModeSvc
 
                 try
                 {
+                    builder.LoadScriptConfig();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, $"script configuration could not be loaded. All scripts inactive:");
+                }
+
+                try
+                {
                     builder.LoadLocationData();
                 }
                 catch (Exception ex)
