@@ -47,6 +47,7 @@ namespace AutoDarkModeApp
                 SystemComboBoxItemLightOnly.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBoxItemLightOnly.IsEnabled = false;
                 SystemComboBoxItemSwitch.IsEnabled = false;
+                SystemComboBoxItemDarkOnly.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 NumberBoxColorDelay.IsEnabled = false;
