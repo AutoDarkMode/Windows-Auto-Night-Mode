@@ -13,7 +13,10 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                Logger.Info($"running {name}: \"{path}\" {string.Join(" ", args.Select(a => $"\"{a}\""))}");
+                if (args == null) args = new();
+                string argsString = "";
+                argsString = string.Join(" ", args.Select(a => $"\"{a}\""));
+                Logger.Info($"running {name}: \"{path}\" {argsString}");
                 List<string> stdOut = new();
                 List<string> stdErr = new();
                 using Process p = new();
@@ -61,7 +64,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, "error while running {name}:");
+                Logger.Warn(ex, $"error while running {name}:");
             }
         }
     }
