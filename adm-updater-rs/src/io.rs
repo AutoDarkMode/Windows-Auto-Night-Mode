@@ -1,7 +1,7 @@
 use bindings::Windows::Win32::Storage::FileSystem::{
     GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO,
 };
-use log::{debug, error};
+use log::{debug, error, warn};
 use std::{ffi::c_void, fmt::Formatter, fs::{self, File}, io::{self, BufRead}, path::{Path, PathBuf}};
 use walkdir::WalkDir;
 
@@ -95,7 +95,7 @@ pub fn get_adm_files(path: &PathBuf) -> Result<Vec<PathBuf>, OpError> {
         .into_iter()
         .filter(|r| r.is_ok())
         .filter(|ent| match ent.as_ref() {
-            Ok(e) => check_ignored(e.path().as_path()),
+            Ok(e) => is_whitelisted(e.path().as_path()),
             Err(_) => false,
         })
         .map(|res| res.map(|e| e.path()))
@@ -104,22 +104,8 @@ pub fn get_adm_files(path: &PathBuf) -> Result<Vec<PathBuf>, OpError> {
     Ok(result)
 }
 
-pub fn is_whitelisted(entry: &Path) -> bool {
-    let whitelist = match WHITELIST.as_ref() {
-        Ok(v) => v,
-        Err(e) => {
-            error!("{}", e);
-            error!("aborting patch");
-            panic!("{}", e);
-        }
-    };
-
-    let entry_string = entry.display().to_string();
-    return whitelist.iter().any(|e| entry_string.ends_with(e))
-}
-
 /// Checks if files should be ignored by the file collector
-pub fn check_ignored(entry: &Path) -> bool {
+pub fn is_whitelisted(entry: &Path) -> bool {
     let execution_dir_str = get_assembly_dir().to_str().unwrap_or("").to_string();
     let update_data_dir_str = get_update_data_dir().to_str().unwrap_or("").to_string();
     //let work_dir_str = get_working_dir().to_str().unwrap_or("").to_string();
@@ -135,16 +121,31 @@ pub fn check_ignored(entry: &Path) -> bool {
     } else if update_data_dir_str.len() > 0 && entry_str.contains(&update_data_dir_str) {
         return false;
     }
-    is_whitelisted(entry)
+
+    let whitelist = match WHITELIST.as_ref() {
+        Ok(v) => v,
+        Err(e) => {
+            error!("{}", e);
+            error!("aborting patch");
+            panic!("{}", e);
+        }
+    };
+
+    let entry_string = entry.display().to_string();
+    let matches = whitelist.iter().any(|e| entry_string.ends_with(e));
+    if !matches {
+        warn!("found non-whitelisted entity in adm directory: {}", entry.display());
+    }
+    matches
 }
 
 pub fn clean_adm_dir() -> Result<(), OpError> {
-    let files = get_files_recurse(&extensions::get_working_dir(), check_ignored);
+    let files = get_files_recurse(&extensions::get_working_dir(), is_whitelisted);
     for file in files {
         debug!("removing file {}", file.display());
         std::fs::remove_file(file).map_err(|e| OpError::new(&format!("could not remove file: {}", e), true))?;
     }
-    let dirs = get_dirs(&extensions::get_working_dir(), check_ignored)?;
+    let dirs = get_dirs(&extensions::get_working_dir(), is_whitelisted)?;
     for dir in dirs {
         debug!("removing dir {}", dir.display());
         std::fs::remove_dir(dir).map_err(|e| OpError::new(&format!("could not remove directory: {}", e), true))?;
