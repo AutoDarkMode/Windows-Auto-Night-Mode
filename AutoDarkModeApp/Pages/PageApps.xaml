@@ -122,6 +122,7 @@
 
                     <ComboBoxItem Name="SystemComboBoxItemSwitch" IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
                     <ComboBoxItem Name="SystemComboBoxItemLightOnly" Content="{x:Static p:Resources.cmbAlwWhite}"/>
+                    <ComboBoxItem Name="SystemComboBoxItemDarkOnly" Content="{x:Static p:Resources.cmbAlwDark}"/>
                     <ComboBoxItem Name="SystemComboBoxItemAccentOnly" Content="{x:Static p:Resources.AppSystemComboBoxItemAccentOnly}"/>
                     <ComboBoxItem Name="SystemComboBoxItemDisabled" Content="{x:Static p:Resources.disabled}"/>
                 </ComboBox>

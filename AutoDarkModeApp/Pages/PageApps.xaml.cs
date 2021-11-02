@@ -65,6 +65,10 @@ namespace AutoDarkModeApp
                         if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
                         else SystemComboBox.SelectedItem = SystemComboBoxItemLightOnly; 
                         break;
+                    case Mode.DarkOnly:
+                        if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
+                        else SystemComboBox.SelectedItem = SystemComboBoxItemDarkOnly;
+                        break;
                     case Mode.AccentOnly: 
                         SystemComboBox.SelectedItem = SystemComboBoxItemAccentOnly; 
                         break;
@@ -229,6 +233,15 @@ namespace AutoDarkModeApp
                 {
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
                     AccentColorCheckBox.IsEnabled = false;
+                    AccentColorCheckBox.Visibility = Visibility.Visible;
+                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                    StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
+                }
+                else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemDarkOnly))
+                {
+                    if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
+                    AccentColorCheckBox.IsEnabled = true;
                     AccentColorCheckBox.Visibility = Visibility.Visible;
                     TextBlockColorDelay.Visibility = Visibility.Collapsed;
                     NumberBoxColorDelay.Visibility = Visibility.Collapsed;
