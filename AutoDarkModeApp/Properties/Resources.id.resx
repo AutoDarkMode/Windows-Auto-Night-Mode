@@ -722,7 +722,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Gunakan aksen bilah tugas saat</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Aksen Saja</value>
+    <value>Hanya aksen</value>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Setiap hari</value>
@@ -731,7 +731,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Terakhir diperiksa</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Periksa pembaruan saat Auto Dark Mode mulai</value>
+    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>Tekan atur untuk menyimpan perubahan.</value>
