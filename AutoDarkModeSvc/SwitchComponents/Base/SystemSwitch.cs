@@ -47,17 +47,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark && currentTaskbarColorActive) return true;
                     else if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Light && !currentTaskbarColorActive) return true;
                 }
-
-                // Task bar accent color is disabled, but still active
-                else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
-                {
-                    return true;
-                }
-                // task bar accent color should switch, and taskbar color hasn't switched yet
-                else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive)
-                {
-                    return true;
-                }
             }
             else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
             {
