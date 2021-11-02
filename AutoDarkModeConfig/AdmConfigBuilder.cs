@@ -1,9 +1,14 @@
 ﻿using AutoDarkModeConfig.ComponentSettings;
 using AutoDarkModeConfig.ComponentSettings.Base;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using YamlDotNet.Core;
+using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.EventEmitters;
 using YamlDotNet.Serialization.NamingConventions;
 
 
@@ -92,11 +97,15 @@ namespace AutoDarkModeConfig
             File.Copy(ConfigFilePath, backupPath, true);
         }
 
-        private void SaveConfig(string path, object obj)
+        private void SaveConfig(string path, object obj, bool useFlowStyleList = false)
         {
             Directory.CreateDirectory(ConfigDir);
             //string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            ISerializer yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            SerializerBuilder yamlBuilder;
+            yamlBuilder = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance);
+            if (useFlowStyleList) yamlBuilder.WithEventEmitter(next => new FlowStyleStringListEmitter(next));
+            ISerializer yamlSerializer = yamlBuilder.Build();
+                
             string yamlConfig = yamlSerializer.Serialize(obj);
             for (int i = 0; i < 10; i++)
             {
@@ -167,7 +176,7 @@ namespace AutoDarkModeConfig
         public void LoadScriptConfig()
         {
             Loading = true;
-            BaseSettings<ScriptSwitchSettings> deser = Deserialize<BaseSettings<ScriptSwitchSettings>>(ScriptConfigPath, ScriptConfig);
+            BaseSettings<ScriptSwitchSettings> deser = Deserialize<BaseSettings<ScriptSwitchSettings>>(ScriptConfigPath, ScriptConfig, true);
             ScriptConfig = deser ?? ScriptConfig;
             Loading = true;
         }
@@ -181,11 +190,11 @@ namespace AutoDarkModeConfig
             configUpdatedHandler?.Invoke(old, Config);
         }
 
-        private T Deserialize<T>(string FilePath, object current)
+        private T Deserialize<T>(string FilePath, object current, bool useFlowStyleList = false)
         {
             if (!File.Exists(FilePath))
             {
-                SaveConfig(FilePath, current);
+                SaveConfig(FilePath, current, useFlowStyleList);
             }
             var yamlDeserializer = new DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             T deserializedConfigYaml = yamlDeserializer.Deserialize<T>(LoadFile(FilePath));
@@ -222,6 +231,24 @@ namespace AutoDarkModeConfig
 
             //file is not locked
             return false;
+        }
+    }
+
+    class FlowStyleStringListEmitter : ChainedEventEmitter
+    {
+        public FlowStyleStringListEmitter(IEventEmitter nextEmitter)
+            : base(nextEmitter) { }
+
+        public override void Emit(SequenceStartEventInfo eventInfo, IEmitter emitter)
+        {
+            if (typeof(List<string>).IsAssignableFrom(eventInfo.Source.Type))
+            {
+                eventInfo = new SequenceStartEventInfo(eventInfo.Source)
+                {
+                    Style = SequenceStyle.Flow
+                };
+            }
+            nextEmitter.Emit(eventInfo, emitter);
         }
     }
 }
