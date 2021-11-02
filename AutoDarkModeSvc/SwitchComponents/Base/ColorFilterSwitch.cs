@@ -10,7 +10,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     {
         private bool currentColorFilterActive;
         public ColorFilterSwitch() : base() { }
-        public override bool ThemeHandlerCompatibility { get; } = true;
+        public override bool ThemeHandlerCompatibility => true;
         public override void EnableHook()
         {
             try
