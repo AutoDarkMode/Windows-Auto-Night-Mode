@@ -31,7 +31,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             if (Settings.Component.Mode == Mode.AccentOnly)
             {
-                // Themes do not match
+                // theme does not match dark, as accent color is avialable in dark only
+                // Do not return true on windows theme mode, as this would potentially modify the theme
+                if (currentComponentTheme != newTheme && !themeModeEnabled) return true;
+
                 if (newTheme == Theme.Dark)
                 {
                     // allow toggling of the taskbar color in dark mode if it is not active yet, or still active
