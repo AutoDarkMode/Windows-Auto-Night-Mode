@@ -49,6 +49,19 @@ namespace AutoDarkModeApp
                 AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
                 NumberBoxColorDelay.IsEnabled = false;
                 NumberBoxColorDelay.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                StackPanelAdaptiveTaskbarAccent.IsEnabled = false;
+                StackPanelAdaptiveTaskbarAccent.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+            }
+
+            if (builder.Config.SystemSwitch.Enabled)
+            {
+                SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode;
+                RadioButtonAdaptiveTaskbarAccentOnDark.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Dark;
+                RadioButtonAdaptiveTaskbarAccentOnLight.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Light;
+            }
+            else
+            {
+                SystemComboBox.SelectedIndex = 3;
             }
 
             //if the OS version is older than 1903
@@ -78,13 +91,8 @@ namespace AutoDarkModeApp
                 //numbox
                 NumberBoxColorDelay.Value = Convert.ToInt32(builder.Config.SystemSwitch.Component.TaskbarSwitchDelay);
 
-                //is accent color switch enabled?
-                AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnDark;
-                if (!AccentColorCheckBox.IsChecked.Value)
-                {
-                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
-                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
-                }
+                AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
+                SystemComboBox_SelectionChanged(null, null);
             }
 
             //combobox
@@ -95,15 +103,6 @@ namespace AutoDarkModeApp
             else
             {
                 AppComboBox.SelectedIndex = 3;
-            }
-
-            if (builder.Config.SystemSwitch.Enabled)
-            {
-                SystemComboBox.SelectedIndex = (int)builder.Config.SystemSwitch.Component.Mode;
-            }
-            else
-            {
-                SystemComboBox.SelectedIndex = 3;
             }
 
             if (builder.Config.OfficeSwitch.Enabled)
@@ -169,18 +168,22 @@ namespace AutoDarkModeApp
                 if (AppComboBox.SelectedIndex.Equals(0))
                 {
                     builder.Config.AppsSwitch.Component.Mode = Mode.Switch;
+                    AccentColorCheckBox.IsEnabled = true;
                 }
                 else if (AppComboBox.SelectedIndex.Equals(1))
                 {
                     builder.Config.AppsSwitch.Component.Mode = Mode.LightOnly;
+                    AccentColorCheckBox.IsEnabled = true;
                 }
                 else if (AppComboBox.SelectedIndex.Equals(2))
                 {
                     builder.Config.AppsSwitch.Component.Mode = Mode.DarkOnly;
+                    AccentColorCheckBox.IsEnabled = true;
                 }
                 else if (AppComboBox.SelectedIndex.Equals(3))
                 {
                     builder.Config.AppsSwitch.Enabled = false;
+                    AccentColorCheckBox.IsEnabled = false;
                 }
 
                 try
@@ -197,37 +200,56 @@ namespace AutoDarkModeApp
 
         private void SystemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!init)
+            if (!init || sender == null)
             {
                 builder.Config.SystemSwitch.Enabled = true;
                 if (SystemComboBox.SelectedIndex.Equals(0))
                 {
-                    builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
+                    if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
                     AccentColorCheckBox.IsEnabled = true;
+                    AccentColorCheckBox.Visibility = Visibility.Visible;
+                    TextBlockColorDelay.Visibility = Visibility.Visible;
+                    NumberBoxColorDelay.Visibility = Visibility.Visible;
+                    StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
                 }
                 else if (SystemComboBox.SelectedIndex.Equals(1))
                 {
-                    builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
+                    if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
                     AccentColorCheckBox.IsEnabled = false;
+                    AccentColorCheckBox.Visibility = Visibility.Visible;
+                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                    StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
                 }
                 else if (SystemComboBox.SelectedIndex.Equals(2))
                 {
-                    builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
-                    AccentColorCheckBox.IsEnabled = true;
+                    if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
+                    AccentColorCheckBox.Visibility = Visibility.Collapsed;
+                    TextBlockColorDelay.Visibility = Visibility.Visible;
+                    NumberBoxColorDelay.Visibility = Visibility.Visible;
+                    StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Visible;
                 }
                 else if (SystemComboBox.SelectedIndex.Equals(3))
                 {
-                    builder.Config.SystemSwitch.Enabled = false;
+                    if (sender != null) builder.Config.SystemSwitch.Enabled = false;
+                    AccentColorCheckBox.IsEnabled = false;
+                    AccentColorCheckBox.Visibility = Visibility.Visible;
+                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                    StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
                 }
-                try
+                if (sender != null)
                 {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex);
-                }
-                RequestThemeSwitch();
+                    try
+                    {
+                        builder.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex);
+                    }
+                    RequestThemeSwitch();
+                }              
             }
         }
 
@@ -235,13 +257,13 @@ namespace AutoDarkModeApp
         {
             if (((CheckBox)sender).IsChecked ?? false)
             {
-                builder.Config.SystemSwitch.Component.TaskbarColorOnDark = true;
+                builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive = true;
                 TextBlockColorDelay.Visibility = Visibility.Visible;
                 NumberBoxColorDelay.Visibility = Visibility.Visible;
             }
             else
             {
-                builder.Config.SystemSwitch.Component.TaskbarColorOnDark = false;
+                builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive = false;
                 TextBlockColorDelay.Visibility = Visibility.Collapsed;
                 NumberBoxColorDelay.Visibility = Visibility.Collapsed;
             }
@@ -339,6 +361,34 @@ namespace AutoDarkModeApp
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+        private void RadioButtonAdaptiveTaskbarAccentOnLight_Click(object sender, RoutedEventArgs e)
+        {
+            builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Light;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void RadioButtonAdaptiveTaskbarAccentOnDark_Click(object sender, RoutedEventArgs e)
+        {
+            builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Dark;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
         }
     }
 }

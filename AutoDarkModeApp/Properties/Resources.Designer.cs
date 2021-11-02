@@ -97,6 +97,15 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use Taskbar Accent Color during.
+        /// </summary>
+        public static string AppsTextBlockAdaptiveTaskbarAccent {
+            get {
+                return ResourceManager.GetString("AppsTextBlockAdaptiveTaskbarAccent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable automatic theme switching.
         /// </summary>
         public static string autoCheckBox {

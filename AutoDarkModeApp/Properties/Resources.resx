@@ -750,4 +750,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>Click Set to save changes.</value>
   </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Use Taskbar Accent Color during</value>
+  </data>
 </root>

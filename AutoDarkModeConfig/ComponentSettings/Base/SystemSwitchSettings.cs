@@ -6,7 +6,7 @@
         //[JsonConverter(typeof(StringEnumConverter))]
         public Mode Mode
         {
-            get { return mode; }
+            get => mode;
             set
             {
                 if (value >= 0 && (int)value <= 2)
@@ -21,6 +21,7 @@
             }
         }
         public int TaskbarSwitchDelay { get; set; } = 1200;
-        public bool TaskbarColorOnDark { get; set; }
+        public bool TaskbarColorOnAdaptive { get; set; }
+        public Theme TaskbarColorWhenNonAdaptive { get; set; } = Theme.Light;
     }
 }

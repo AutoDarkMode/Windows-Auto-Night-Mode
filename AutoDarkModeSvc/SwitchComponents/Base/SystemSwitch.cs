@@ -35,13 +35,26 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 {
                     return true;
                 }
+                else if (newTheme == Theme.Dark)
+                {
+                    // allow toggling of the taskbar color in dark mode if it is not active yet, or still active
+                    if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark && !currentTaskbarColorActive) return true;
+                    else if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Light && currentTaskbarColorActive) return true;
+                }
+                else if (newTheme == Theme.Light)
+                {
+                    // allow toggling of the taskbar color in light mode if it is not active yet, or still active (inverse of Theme.Dark if clause)
+                    if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark && currentTaskbarColorActive) return true;
+                    else if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Light && !currentTaskbarColorActive) return true;
+                }
+
                 // Task bar accent color is disabled, but still active
-                else if (!Settings.Component.TaskbarColorOnDark && currentTaskbarColorActive)
+                else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                 {
                     return true;
                 }
                 // task bar accent color should switch, and taskbar color hasn't switched yet
-                else if (Settings.Component.TaskbarColorOnDark && !currentTaskbarColorActive)
+                else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive)
                 {
                     return true;
                 }
@@ -58,17 +71,17 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     return true;
                 }
                 // Task bar accent color should switch, target is light mode and the taskbar color hasn't switched yet
-                else if (Settings.Component.TaskbarColorOnDark && currentTaskbarColorActive && newTheme == Theme.Light)
+                else if (Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive && newTheme == Theme.Light)
                 {
                     return true;
                 }
                 // Task bar accent color is disabled, but still active
-                else if (!Settings.Component.TaskbarColorOnDark && currentTaskbarColorActive)
+                else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                 {
                     return true;
                 }
                 // task bar accent color should switch, target is dark mode and taskbar color hasn't switched yet
-                else if (Settings.Component.TaskbarColorOnDark && !currentTaskbarColorActive && newTheme == Theme.Dark)
+                else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive && newTheme == Theme.Dark)
                 {
                     return true;
                 }
@@ -84,6 +97,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         private async Task SwitchSystemTheme(Theme newTheme)
         {
+            bool oldAccent = currentTaskbarColorActive;
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             int taskdelay = Settings.Component.TaskbarSwitchDelay;
             try
@@ -101,20 +115,37 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     }
                     currentComponentTheme = Theme.Dark;
                     await Task.Delay(taskdelay);
-                    if (Settings.Component.TaskbarColorOnDark)
+
+                    if (newTheme == Theme.Dark)
                     {
-                        RegistryHandler.SetColorPrevalence(1);
-                        currentTaskbarColorActive = true;
+                        if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark)
+                        {
+                            RegistryHandler.SetColorPrevalence(1);
+                            currentTaskbarColorActive = true;
+                        }
+                        else
+                        {
+                            RegistryHandler.SetColorPrevalence(0);
+                            currentTaskbarColorActive = false;
+                        }
                     }
-                    else if (!Settings.Component.TaskbarColorOnDark && currentTaskbarColorActive)
+                    else if (newTheme == Theme.Light)
                     {
-                        RegistryHandler.SetColorPrevalence(0);
-                        currentTaskbarColorActive = false;
+                        if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Light)
+                        {
+                            RegistryHandler.SetColorPrevalence(1);
+                            currentTaskbarColorActive = true;
+                        }
+                        else
+                        {
+                            RegistryHandler.SetColorPrevalence(0);
+                            currentTaskbarColorActive = false;
+                        }
                     }
                 }
                 else if (Settings.Component.Mode == Mode.LightOnly)
                 {
-                    if (Settings.Component.TaskbarColorOnDark)
+                    if (Settings.Component.TaskbarColorOnAdaptive)
                     {
                         RegistryHandler.SetColorPrevalence(0);
                         await Task.Delay(taskdelay);
@@ -146,12 +177,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                         }
                         currentComponentTheme = Theme.Dark;
                         await Task.Delay(taskdelay);
-                        if (Settings.Component.TaskbarColorOnDark)
+                        if (Settings.Component.TaskbarColorOnAdaptive)
                         {
                             RegistryHandler.SetColorPrevalence(1);
                             currentTaskbarColorActive = true;
                         }
-                        else if (!Settings.Component.TaskbarColorOnDark && currentTaskbarColorActive)
+                        else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                         {
                             RegistryHandler.SetColorPrevalence(0);
                             currentTaskbarColorActive = false;
@@ -164,8 +195,19 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "could not set system theme");
             }
-            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}" +
-                $", accent: {(Settings.Component.TaskbarColorOnDark ? "yes" : "no")}");
+            string accentInfo;
+            if (Settings.Component.Mode == Mode.DarkOnly)
+            {
+                accentInfo = $"on {Enum.GetName(typeof(Theme), Settings.Component.TaskbarColorWhenNonAdaptive).ToLower()}";
+            }
+            else
+            {
+                accentInfo = Settings.Component.TaskbarColorOnAdaptive ? "yes" : "no";
+            }
+            Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "accent" : "no accent")}, " +
+                $"now: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "accent" : "no accent")}, " +
+                $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
+                $"accent: {accentInfo}");
         }
     }
 }
