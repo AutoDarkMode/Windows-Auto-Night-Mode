@@ -358,9 +358,6 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="NavbarTime" xml:space="preserve">
     <value>Waktu</value>
   </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>Latar belakang/Tema</value>
-  </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Buka Folder</value>
   </data>
@@ -720,5 +717,23 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Selamat Datang</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Gunakan aksen bilah tugas saat</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Hanya aksen</value>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Setiap hari</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Terakhir diperiksa</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Tekan atur untuk menyimpan perubahan.</value>
   </data>
 </root>
