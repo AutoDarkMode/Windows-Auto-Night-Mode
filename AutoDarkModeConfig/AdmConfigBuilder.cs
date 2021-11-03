@@ -91,10 +91,9 @@ namespace AutoDarkModeConfig
             SaveConfig(UpdaterDataPath, UpdaterData);
         }
 
-        public static void BackupConfig()
+        public static void BackupFile(string originalPath, string backupPath)
         {
-            string backupPath = Path.Combine(ConfigDir, "config_backup.yaml");
-            File.Copy(ConfigFilePath, backupPath, true);
+            File.Copy(originalPath, backupPath, true);
         }
 
         private static void SaveConfig(string path, object obj, bool useFlowStyleList = false)

@@ -109,7 +109,7 @@ namespace AutoDarkModeSvc
                     Logger.Error(e, "could not read config file, resetting config file:");
                     try
                     {
-                        AdmConfigBuilder.BackupConfig();
+                        AdmConfigBuilder.BackupFile(AdmConfigBuilder.ConfigFilePath, Path.Combine(AdmConfigBuilder.ConfigDir, "config_backup.yaml"));
                     }
                     catch (Exception ex)
                     {
