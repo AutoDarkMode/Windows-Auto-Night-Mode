@@ -47,6 +47,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark && currentTaskbarColorActive) return true;
                     else if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Light && !currentTaskbarColorActive) return true;
                 }
+                return false;
             }
 
             if (themeModeEnabled)
@@ -72,10 +73,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 {
                     return true;
                 }
+                return false;
+
             }
-            else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
+            else if (Settings.Component.Mode == Mode.LightOnly)
             {
-                return true;
+                if (currentComponentTheme != Theme.Light) return true;
+                return false;
             }
             else if (Settings.Component.Mode == Mode.Switch)
             {
@@ -99,8 +103,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 {
                     return true;
                 }
+                return false;
             }
-
             return false;
         }
 
@@ -147,8 +151,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 accentInfo = Settings.Component.TaskbarColorOnAdaptive ? "yes" : "no";
             }
-            Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "accent" : "no accent")}, " +
-                $"now: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "accent" : "no accent")}, " +
+            Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "Accent" : "NoAccent")}, " +
+                $"now: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
                 $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
                 $"accent: {accentInfo}");
         }

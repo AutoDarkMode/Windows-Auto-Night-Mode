@@ -1,4 +1,5 @@
 ﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Core;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,11 @@ namespace AutoDarkModeSvc.Handlers
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             if (PowerManager.BatteryStatus == BatteryStatus.Discharging) {
                 Logger.Info("battery discharging, enabling dark mode");
-                ThemeManager.UpdateTheme(builder.Config, Theme.Dark, false);
+                ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(Events.SwitchSource.BatteryStatus));
             }
             else
             {
-                ThemeManager.RequestSwitch(builder);
+                ThemeManager.RequestSwitch(builder, new(Events.SwitchSource.BatteryStatus));
             }
         }
 
@@ -45,7 +46,7 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info("disabling event handler for dark mode on battery state discharging");
                     PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
                     darkThemeOnBatteryEnabled = false;
-                    ThemeManager.RequestSwitch(AdmConfigBuilder.Instance());
+                    ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(Events.SwitchSource.BatteryStatus));
                 }
             }
             catch (InvalidOperationException ex)
@@ -69,7 +70,7 @@ namespace AutoDarkModeSvc.Handlers
             if (e.Mode == PowerModes.Resume)
             {
                 Logger.Info("system resuming from suspended state, refreshing theme");
-                ThemeManager.RequestSwitch(AdmConfigBuilder.Instance());
+                ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(Events.SwitchSource.SystemResume));
             }
         }
 

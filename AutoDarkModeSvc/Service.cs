@@ -12,6 +12,8 @@ using AutoDarkModeConfig;
 using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc
 {
@@ -158,7 +160,7 @@ namespace AutoDarkModeSvc
                 Logger.Info("ui signal received: stop forcing specific theme");
                 GlobalState rtc = GlobalState.Instance();
                 rtc.ForcedTheme = Theme.Unknown;
-                ThemeManager.RequestSwitch(Builder);
+                ThemeManager.RequestSwitch(Builder, new(SwitchSource.Manual));
                 mi.Checked = false;
             }
             else
@@ -176,14 +178,14 @@ namespace AutoDarkModeSvc
                     Logger.Info("ui signal received: forcing light theme");
                     state.ForcedTheme = Theme.Light;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
-                    ThemeManager.UpdateTheme(Builder.Config, Theme.Light);
+                    ThemeManager.UpdateTheme(Builder.Config, Theme.Light, new(SwitchSource.Manual));
                 }
                 else if (mi.Name == "forceDark")
                 {
                     Logger.Info("ui signal received: forcing dark theme");
                     state.ForcedTheme = Theme.Dark;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
-                    ThemeManager.UpdateTheme(Builder.Config, Theme.Dark);
+                    ThemeManager.UpdateTheme(Builder.Config, Theme.Dark, new(SwitchSource.Manual));
                 }
                 mi.Checked = true;
             }
@@ -198,13 +200,13 @@ namespace AutoDarkModeSvc
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
                     rtc.CurrentWindowsThemeName = "";
-                ThemeManager.UpdateTheme(config, Theme.Dark);
+                ThemeManager.UpdateTheme(config, Theme.Dark, new(SwitchSource.Manual));
             }
             else
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
                     rtc.CurrentWindowsThemeName = "";
-                ThemeManager.UpdateTheme(config, Theme.Light);
+                ThemeManager.UpdateTheme(config, Theme.Light, new(SwitchSource.Manual));
             }
         }
 

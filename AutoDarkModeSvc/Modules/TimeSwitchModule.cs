@@ -3,6 +3,7 @@ using AutoDarkModeConfig;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Timers;
 using System.Diagnostics.CodeAnalysis;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -25,7 +26,7 @@ namespace AutoDarkModeSvc.Modules
         {
             Task.Run(() =>
             {
-                ThemeManager.RequestSwitch(ConfigBuilder);
+                ThemeManager.RequestSwitch(ConfigBuilder, new(Events.SwitchSource.TimeSwitchModule));
             });
         }
     }

@@ -10,8 +10,8 @@ namespace AutoDarkModeSvc.Handlers
     static class PowerHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static bool allowRestore = false;
-        public static void DisableEnergySaver(AdmConfig config)
+        private static bool allowRestore;
+        public static void RequestDisableEnergySaver(AdmConfig config)
         {
             if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        public static void RestoreEnergySaver(AdmConfig config)
+        public static void RequestRestoreEnergySaver(AdmConfig config)
         {
             if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
             {

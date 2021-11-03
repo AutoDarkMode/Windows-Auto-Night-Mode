@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build frontend",
-            "program": "${workspacefolder}/bin/Debug/net5.0-windows10.0.19041/AutoDarkModeApp.dll",
+            "program": "${workspacefolder}/bin/Debug/AutoDarkModeApp.dll",
             "args": [],
             "console": "internalConsole",
             "stopAtEntry": false
@@ -19,8 +19,8 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}\\bin\\Debug\\net5.0-windows10.0.19041.0\\AutoDarkModeSvc.dll",
-            "cwd": "${workspaceFolder}\\bin\\Debug\\net5.0-windows10.0.19041.0\\",
+            "program": "${workspaceFolder}\\bin\\Debug\\AutoDarkModeSvc.dll",
+            "cwd": "${workspaceFolder}\\bin\\Debug\\",
             "args": [],
             "console": "internalConsole",
             "stopAtEntry": false

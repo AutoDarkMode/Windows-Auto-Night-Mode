@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Config
         private WardenModule Warden { get; set; }
         public Theme LastRequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
-        public Theme ForcedTheme { get; set; }
+        public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
         private bool _postponeSwitch;
         // triggers update if and only if there is a change in value

@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Config.ConfigUpdateEvents;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
