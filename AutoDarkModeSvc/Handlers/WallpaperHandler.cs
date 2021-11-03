@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.Handlers
             if (hexString.IndexOf('#') != -1)
                 hexString = hexString.Replace("#", "");
 
-            int r = int.Parse(hexString.Substring(0, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+            int r = int.Parse(hexString[..2], System.Globalization.NumberStyles.AllowHexSpecifier);
             int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
             int b = int.Parse(hexString.Substring(4, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
             return Color.FromArgb(0, (byte)r, (byte)g, (byte)b);
@@ -219,7 +219,7 @@ namespace AutoDarkModeSvc.Handlers
 
         /// <summary>
         /// This enumeration is used to set and get slideshow options.
-        /// </summary> 
+        /// </summary>
         public enum DesktopSlideshowOptions
         {
             ShuffleImages = 0x01,     // When set, indicates that the order in which images in the slideshow are displayed can be randomized.
@@ -309,14 +309,14 @@ namespace AutoDarkModeSvc.Handlers
         {
             if (newTheme == Theme.Dark)
             {
-                win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
+                _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
                 string currentWallpaper = GetGlobalWallpaper();
                 return currentWallpaper == globalWallpaper.Dark;
 
             }
             else if (newTheme == Theme.Light)
             {
-                win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
+                _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
                 string currentWallpaper = GetGlobalWallpaper();
                 return currentWallpaper == globalWallpaper.Light;
             }
@@ -329,14 +329,16 @@ namespace AutoDarkModeSvc.Handlers
         /// <returns>string with a path to the current wallpapers</returns>
         public static string GetGlobalWallpaper()
         {
-            string currentWallpaper = new string('\0', 260);
-            win32.SystemParametersInfo(0x0073, currentWallpaper.Length, currentWallpaper, 0);
-            return currentWallpaper.Substring(0, currentWallpaper.IndexOf('\0'));
+            string currentWallpaper = new('\0', 260);
+            _ = Win32.SystemParametersInfo(0x0073, currentWallpaper.Length, currentWallpaper, 0);
+            return currentWallpaper[..currentWallpaper.IndexOf('\0')];
         }
 
-        internal sealed class win32
+        internal sealed class Win32
         {
+            #pragma warning disable CA2101
             [DllImport("user32.dll", CharSet = CharSet.Auto)]
+            #pragma warning restore CA2101
             internal static extern int SystemParametersInfo(int uAction, int uParam, String lpvParam, int fuWinIni);
         }
 

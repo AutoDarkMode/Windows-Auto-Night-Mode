@@ -152,11 +152,11 @@ namespace AutoDarkModeSvc.Modules
             return ThreshHigh;
         }
 
-        private async Task<int> GetGPUUsage()
+        private static async Task<int> GetGPUUsage()
         {
             var pcc = new PerformanceCounterCategory("GPU Engine");
             var counterNames = pcc.GetInstanceNames();
-            List<PerformanceCounter> counters = new List<PerformanceCounter>();
+            List<PerformanceCounter> counters = new();
             var counterAccu = 0f;
             foreach (string counterName in counterNames)
             {

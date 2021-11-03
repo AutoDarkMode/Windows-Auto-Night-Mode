@@ -22,9 +22,7 @@ namespace AutoDarkModeApp.Pages
     public partial class PageAbout : Page
     {
         private int easterEgg;
-        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-
-        private VersionInfo versionInfo = new();
+        private readonly VersionInfo versionInfo = new();
 
         public PageAbout()
         {
@@ -376,7 +374,7 @@ namespace AutoDarkModeApp.Pages
             string MessageBoxText = "";
             try
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo();
+                ProcessStartInfo startInfo = new();
                 using Process p = new();
                 startInfo.CreateNoWindow = true;
                 startInfo.RedirectStandardOutput = true;
@@ -391,7 +389,7 @@ namespace AutoDarkModeApp.Pages
             {
                 MessageBoxText += "Updater missing!\n";
             }
-           
+
             MessageBoxText += "\nThe MIT License (MIT) \n\n" +
                 "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), " +
                 "to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/ or " +

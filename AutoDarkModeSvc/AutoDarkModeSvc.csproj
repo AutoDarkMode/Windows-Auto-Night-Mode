@@ -31,6 +31,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ThemeManager.cs~RF40d17af8.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.0" />
     <PackageReference Include="NLog" Version="4.6.8" />
@@ -61,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Events\" />
     <Folder Include="SwitchComponents\Addons\" />
   </ItemGroup>
 

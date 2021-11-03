@@ -164,7 +164,7 @@ namespace AutoDarkModeApp.Pages
             ImagePreview.Visibility = Visibility.Collapsed;
             try
             {
-                BitmapImage bitmap = new BitmapImage();
+                BitmapImage bitmap = new();
                 bitmap.BeginInit();
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.UriSource = new Uri(picture, UriKind.Absolute);
@@ -368,7 +368,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ButtonFilePicker_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog
+            OpenFileDialog ofd = new()
             {
                 Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
@@ -457,7 +457,7 @@ namespace AutoDarkModeApp.Pages
             if (hexString.IndexOf('#') != -1)
                 hexString = hexString.Replace("#", "");
 
-            int r = int.Parse(hexString.Substring(0, 2), NumberStyles.AllowHexSpecifier);
+            int r = int.Parse(hexString[..2], NumberStyles.AllowHexSpecifier);
             int g = int.Parse(hexString.Substring(2, 2), NumberStyles.AllowHexSpecifier);
             int b = int.Parse(hexString.Substring(4, 2), NumberStyles.AllowHexSpecifier);
             return Color.FromRgb((byte)r, (byte)g, (byte)b);

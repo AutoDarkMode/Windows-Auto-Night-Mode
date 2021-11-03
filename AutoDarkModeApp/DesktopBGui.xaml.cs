@@ -14,7 +14,6 @@ namespace AutoDarkModeApp
 {
     public partial class DesktopBGui
     {
-        readonly WallpaperHandler deskBGHandler = new WallpaperHandler();
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         bool picture1 = false;
         bool picture2 = false;
@@ -45,7 +44,7 @@ namespace AutoDarkModeApp
         private void FilePicker1_Click(object sender, RoutedEventArgs e)
         {
             MonitorSettings settings = (MonitorSettings)MonitorSelectionComboBox.SelectedItem;
-            OpenFileDialog dlg = new OpenFileDialog
+            OpenFileDialog dlg = new()
             {
                 Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
@@ -68,7 +67,7 @@ namespace AutoDarkModeApp
 
         private void GetCurrentBG1_Click(object sender, RoutedEventArgs e)
         {
-            MsgBox msgBox = new MsgBox("I'm currently broken :)", "Nope!", "Info", "close")
+            MsgBox msgBox = new("I'm currently broken :)", "Nope!", "Info", "close")
             {
                 Owner = GetWindow(this)
             };
@@ -91,7 +90,7 @@ namespace AutoDarkModeApp
         {
             try
             {
-                BitmapImage bitmap = new BitmapImage();
+                BitmapImage bitmap = new();
                 bitmap.BeginInit();
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.UriSource = new Uri(picture, UriKind.Absolute);
@@ -113,7 +112,7 @@ namespace AutoDarkModeApp
             }
             catch
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "Wallpaper Preview Error", "close")
+                MsgBox msgBox = new(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "Wallpaper Preview Error", "close")
                 {
                     Owner = GetWindow(this)
                 };
@@ -145,7 +144,7 @@ namespace AutoDarkModeApp
             }
             catch (Exception ex)
             {
-                MsgBox msgBox = new MsgBox(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle + Environment.NewLine + ex, "error", "close")
+                MsgBox msgBox = new(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle + Environment.NewLine + ex, "error", "close")
                 {
                     Owner = GetWindow(this)
                 };

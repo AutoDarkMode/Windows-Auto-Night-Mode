@@ -14,7 +14,7 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PagePersonalization : ModernWpf.Controls.Page
     {
-        private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         public PagePersonalization()
         {
             try
@@ -90,7 +90,7 @@ namespace AutoDarkModeApp.Pages
         private void ShowErrorMessage(String message, Exception ex)
         {
             string error = Properties.Resources.errorThemeApply + $"\n\n{message}: " + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };

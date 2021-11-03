@@ -45,7 +45,7 @@ namespace AutoDarkModeApp
             if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(100)))
             {
                 Environment.Exit(-1);
-            }    
+            }
 
             bool serviceStartIssued = StartService();
             Task serviceStart = Task.Run(() => WaitForServiceStart());
@@ -166,7 +166,7 @@ namespace AutoDarkModeApp
             try
             {
                 string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
+                sysFormat = sysFormat[..sysFormat.IndexOf(":")];
                 if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
                 {
                     AdmProperties.Settings.Default.AlterTime = true;

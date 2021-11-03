@@ -79,6 +79,7 @@ namespace AutoDarkModeApp
         }
         */
 
+        #pragma warning disable IDE0051
         private static void ShowErrorMessage(Exception ex, string location)
         {
             string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
@@ -96,6 +97,7 @@ namespace AutoDarkModeApp
             }
             return;
         }
+        #pragma warning restore IDE0051
 
         private static void StartProcessByProcessInfo(string message)
         {

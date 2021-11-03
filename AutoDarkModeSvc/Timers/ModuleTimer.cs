@@ -14,7 +14,8 @@ namespace AutoDarkModeSvc.Timers
         private Timer Timer { get; set; }
         public string Name { get; }
         private bool TickOnStart { get;  }
-        AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         /// <summary>
         /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
@@ -29,7 +30,7 @@ namespace AutoDarkModeSvc.Timers
             {
                 Interval = interval,
                 Enabled = false,
-                AutoReset = true                
+                AutoReset = true
             };
             Timer.Elapsed += OnTimedEvent;
         }
@@ -69,7 +70,7 @@ namespace AutoDarkModeSvc.Timers
             // maybe counters concurrency mitigation delay
         }
 
-        public void DeregisterModule(IAutoDarkModeModule module) 
+        public void DeregisterModule(IAutoDarkModeModule module)
         {
             if (Modules.Contains(module))
             {
@@ -97,7 +98,7 @@ namespace AutoDarkModeSvc.Timers
             if (TickOnStart)
             {
                 OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
-            }            
+            }
         }
 
         public void Stop()

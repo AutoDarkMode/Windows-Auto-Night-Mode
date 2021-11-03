@@ -91,13 +91,13 @@ namespace AutoDarkModeConfig
             SaveConfig(UpdaterDataPath, UpdaterData);
         }
 
-        public void BackupConfig()
+        public static void BackupConfig()
         {
             string backupPath = Path.Combine(ConfigDir, "config_backup.yaml");
             File.Copy(ConfigFilePath, backupPath, true);
         }
 
-        private void SaveConfig(string path, object obj, bool useFlowStyleList = false)
+        private static void SaveConfig(string path, object obj, bool useFlowStyleList = false)
         {
             Directory.CreateDirectory(ConfigDir);
             //string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
@@ -105,7 +105,7 @@ namespace AutoDarkModeConfig
             yamlBuilder = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance);
             if (useFlowStyleList) yamlBuilder.WithEventEmitter(next => new FlowStyleStringListEmitter(next));
             ISerializer yamlSerializer = yamlBuilder.Build();
-                
+
             string yamlConfig = yamlSerializer.Serialize(obj);
             for (int i = 0; i < 10; i++)
             {

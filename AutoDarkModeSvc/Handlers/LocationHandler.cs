@@ -17,12 +17,11 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="configBuilder">config builder for the AutoDarkModeConfig to allow saving</param>
         private static void UpdateSunTime(AdmConfigBuilder configBuilder)
         {
-            double tsunrise, tsunset;
-            Sunriset.SunriseSunset(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, configBuilder.LocationData.Lat, configBuilder.LocationData.Lon, out tsunrise, out tsunset);
+            Sunriset.SunriseSunset(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, configBuilder.LocationData.Lat, configBuilder.LocationData.Lon, out double tsunrise, out double tsunset);
             TimeSpan sunriseTime = TimeSpan.FromHours(tsunrise);
             TimeSpan sunsetTime = TimeSpan.FromHours(tsunset);
 
-            DateTime today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime today = new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             DateTime sunriseUTC = today + sunriseTime;
             DateTime sunsetUTC = today + sunsetTime;
             if (sunriseUTC > sunsetUTC)
@@ -35,7 +34,7 @@ namespace AutoDarkModeSvc.Handlers
             */
             configBuilder.LocationData.Sunrise = TimeZoneInfo.ConvertTimeFromUtc(sunriseUTC, TimeZoneInfo.Local);
             configBuilder.LocationData.Sunset = TimeZoneInfo.ConvertTimeFromUtc(sunsetUTC, TimeZoneInfo.Local);
-            Logger.Info($"new sunrise ({configBuilder.LocationData.Sunrise.ToString("HH:mm")}) and new sunset ({configBuilder.LocationData.Sunset.ToString("HH:mm")})");
+            Logger.Info($"new sunrise ({configBuilder.LocationData.Sunrise:HH:mm}) and new sunset ({configBuilder.LocationData.Sunset:HH:mm})");
         }
 
         /// <summary>
@@ -92,7 +91,7 @@ namespace AutoDarkModeSvc.Handlers
             switch (permission)
             {
                 case GeolocationAccessStatus.Allowed:
-                    Geolocator locator = new Geolocator();
+                    Geolocator locator = new();
                     Geoposition location = await locator.GetGeopositionAsync();
                     BasicGeoposition position = location.Coordinate.Point.Position;
 
@@ -145,6 +144,7 @@ namespace AutoDarkModeSvc.Handlers
 
     public sealed class Sunriset
     {
+        #pragma warning disable IDE1006, IDE0051, IDE0018, IDE0054
         // https://github.com/Mursaat/SunriseSunset
         private Sunriset()
         {
@@ -231,8 +231,8 @@ namespace AutoDarkModeSvc.Handlers
         /* Converted to C# by Mursaat 05-Feb-2017 */
 
         /// <summary>
-        /// A function to compute the number of days elapsed since 2000 Jan 0.0 
-        /// (which is equal to 1999 Dec 31, 0h UT)  
+        /// A function to compute the number of days elapsed since 2000 Jan 0.0
+        /// (which is equal to 1999 Dec 31, 0h UT)
         /// </summary>
         /// <param name="y"></param>
         /// <param name="m"></param>
@@ -285,10 +285,10 @@ namespace AutoDarkModeSvc.Handlers
 
         /// <summary>
         /// The "workhorse" function for sun rise/set times
-        /// Note: year,month,date = calendar date, 1801-2099 only.             
-        /// Eastern longitude positive, Western longitude negative       
-        /// Northern latitude positive, Southern latitude negative       
-        /// The longitude value IS critical in this function! 
+        /// Note: year,month,date = calendar date, 1801-2099 only.
+        /// Eastern longitude positive, Western longitude negative
+        /// Northern latitude positive, Southern latitude negative
+        /// The longitude value IS critical in this function!
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
@@ -462,7 +462,7 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         /// <summary>
-        /// Computes the Sun's ecliptic longitude and distance 
+        /// Computes the Sun's ecliptic longitude and distance
         /// at an instant given in d, number of days since
         /// 2000 Jan 0.0.  The Sun's ecliptic latitude is not
         /// computed, since it's always very near 0.
@@ -555,25 +555,25 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         /// <summary>
-        /// This function computes GMST0, the Greenwich Mean Sidereal Time  
-        /// at 0h UT (i.e. the sidereal time at the Greenwhich meridian at  
-        /// 0h UT).  GMST is then the sidereal time at Greenwich at any     
-        /// time of the day.  I've generalized GMST0 as well, and define it 
-        /// as:  GMST0 = GMST - UT  --  this allows GMST0 to be computed at 
-        /// other times than 0h UT as well.  
-        /// 
+        /// This function computes GMST0, the Greenwich Mean Sidereal Time
+        /// at 0h UT (i.e. the sidereal time at the Greenwhich meridian at
+        /// 0h UT).  GMST is then the sidereal time at Greenwich at any
+        /// time of the day.  I've generalized GMST0 as well, and define it
+        /// as:  GMST0 = GMST - UT  --  this allows GMST0 to be computed at
+        /// other times than 0h UT as well.
+        ///
         /// While this sounds somewhat contradictory, it is very practical:
         /// instead of computing  GMST like:
-        /// GMST = (GMST0) + UT * (366.2422/365.2422)                                                                                     
-        /// where (GMST0) is the GMST last time UT was 0 hours, one simply  
-        /// computes: GMST = GMST0 + UT                                                                                                          
-        /// where GMST0 is the GMST "at 0h UT" but at the current moment! 
-        /// 
-        /// Defined in this way, GMST0 will increase with about 4 min a     
-        /// day.  It also happens that GMST0 (in degrees, 1 hr = 15 degr)   
-        /// is equal to the Sun's mean longitude plus/minus 180 degrees!    
-        /// (if we neglect aberration, which amounts to 20 seconds of arc   
-        /// or 1.33 seconds of time)    
+        /// GMST = (GMST0) + UT * (366.2422/365.2422)
+        /// where (GMST0) is the GMST last time UT was 0 hours, one simply
+        /// computes: GMST = GMST0 + UT
+        /// where GMST0 is the GMST "at 0h UT" but at the current moment!
+        ///
+        /// Defined in this way, GMST0 will increase with about 4 min a
+        /// day.  It also happens that GMST0 (in degrees, 1 hr = 15 degr)
+        /// is equal to the Sun's mean longitude plus/minus 180 degrees!
+        /// (if we neglect aberration, which amounts to 20 seconds of arc
+        /// or 1.33 seconds of time)
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
@@ -588,5 +588,6 @@ namespace AutoDarkModeSvc.Handlers
             sidtim0 = revolution((180.0 + 356.0470 + 282.9404) + (0.9856002585 + 4.70935E-5) * d);
             return sidtim0;
         }
+        #pragma warning restore IDE1006, IDE0051, IDE0018, IDE0054
     }
 }

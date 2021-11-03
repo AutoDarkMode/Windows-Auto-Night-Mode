@@ -15,11 +15,11 @@ namespace AutoDarkModeComms
         public string SendMessageAndGetReply(string message, int timeoutSeconds = 5)
         {
             string pipeId = $"C#_{Convert.ToBase64String(Guid.NewGuid().ToByteArray())}";
-            using NamedPipeClientStream clientPipeRequest = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeRequest, PipeDirection.Out);
+            using NamedPipeClientStream clientPipeRequest = new(".", Address.PipePrefix + Address.PipeRequest, PipeDirection.Out);
             try
             {
                 clientPipeRequest.Connect(timeoutSeconds * 1000);
-                StreamWriter sw = new StreamWriter(clientPipeRequest) { AutoFlush = true };
+                StreamWriter sw = new(clientPipeRequest) { AutoFlush = true };
                 using (sw)
                 {
                     sw.WriteLine(message);
@@ -36,7 +36,7 @@ namespace AutoDarkModeComms
                 }.ToString();
             }
 
-            using NamedPipeClientStream clientPipeResponse = new NamedPipeClientStream(".", Address.PipePrefix + Address.PipeResponse + $"_{pipeId}", PipeDirection.In);
+            using NamedPipeClientStream clientPipeResponse = new(".", Address.PipePrefix + Address.PipeResponse + $"_{pipeId}", PipeDirection.In);
             try
             {
                 clientPipeResponse.Connect(timeoutSeconds * 1000);

@@ -212,6 +212,7 @@ fn rollback(temp_dir: &PathBuf) -> Result<(), OpError> {
     Ok(())
 }
 
+
 fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
     info!("patching auto dark mode");
     let files = io::get_files_recurse(&update_dir, |_| true);
@@ -229,6 +230,7 @@ fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
         warn!("could not remove old update files, manual investigation required: {}", e);
     }
     Ok(())
+
 }
 
 fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {

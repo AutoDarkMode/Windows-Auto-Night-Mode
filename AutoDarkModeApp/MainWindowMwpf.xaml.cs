@@ -59,7 +59,7 @@ namespace AutoDarkModeApp
                 {
                     Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
                 }
-                
+
             }
             var langCode = new CultureInfo(Settings.Default.Language);
             CultureInfo.CurrentUICulture = langCode;
@@ -73,7 +73,7 @@ namespace AutoDarkModeApp
             try
             {
                 string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
+                sysFormat = sysFormat[..sysFormat.IndexOf(":")];
                 if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
                 {
                     Settings.Default.AlterTime = true;
@@ -157,7 +157,7 @@ namespace AutoDarkModeApp
         /// <summary>
         /// Navbar / NavigationView
         /// </summary>
-        
+
         //change displayed page based on selection
         private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
         {

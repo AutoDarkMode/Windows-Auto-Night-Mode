@@ -16,47 +16,52 @@ namespace AutoDarkModeSvc
         private static readonly ComponentManager cm = ComponentManager.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
 
-
-        public static void TimedSwitch(AdmConfigBuilder builder, bool automatic = true)
+        public static void RequestSwitch(AdmConfigBuilder builder, bool automatic = true)
         {
-
             if (state.ForcedTheme == Theme.Dark)
             {
-                SwitchTheme(builder.Config, Theme.Dark);
+                UpdateTheme(builder.Config, Theme.Dark);
                 return;
             }
             else if (state.ForcedTheme == Theme.Light)
             {
-                SwitchTheme(builder.Config, Theme.Light);
+                UpdateTheme(builder.Config, Theme.Light);
                 return;
             }
 
-            DateTime sunrise = builder.Config.Sunrise;
-            DateTime sunset = builder.Config.Sunset;
-            if (builder.Config.Location.Enabled)
+            if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                LocationHandler.GetSunTimesWithOffset(builder, out sunrise, out sunset);
-            }
-            //the time bewteen sunrise and sunset, aka "day"
-            if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
-            {
-                // ensure that the theme doesn't switch to light mode if the battery is discharging
-                if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.Discharging)
+                DateTime sunrise = builder.Config.Sunrise;
+                DateTime sunset = builder.Config.Sunset;
+                if (builder.Config.Location.Enabled)
                 {
-                    SwitchTheme(builder.Config, Theme.Light, automatic, sunset, sunrise);
+                    LocationHandler.GetSunTimesWithOffset(builder, out sunrise, out sunset);
                 }
-                else if (!builder.Config.Events.DarkThemeOnBattery)
+                //the time bewteen sunrise and sunset, aka "day"
+                if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay))
                 {
-                    SwitchTheme(builder.Config, Theme.Light, automatic, sunset, sunrise);
+                    // ensure that the theme doesn't switch to light mode if the battery is discharging
+                    if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.Discharging)
+                    {
+                        UpdateTheme(builder.Config, Theme.Light, automatic, sunset, sunrise);
+                    }
+                    else if (!builder.Config.Events.DarkThemeOnBattery)
+                    {
+                        UpdateTheme(builder.Config, Theme.Light, automatic, sunset, sunrise);
+                    }
+                }
+                else
+                {
+                    UpdateTheme(builder.Config, Theme.Dark, automatic, sunset, sunrise);
                 }
             }
             else
             {
-                SwitchTheme(builder.Config, Theme.Dark, automatic, sunset, sunrise);
+                UpdateTheme(builder.Config, state.LastRequestedTheme);
             }
         }
 
-        public static void SwitchTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
+        public static void UpdateTheme(AdmConfig config, Theme newTheme, bool automatic = false, DateTime sunset = new DateTime(), DateTime sunrise = new DateTime())
         {
             if (!automatic && state.ForcedTheme == Theme.Unknown)
             {

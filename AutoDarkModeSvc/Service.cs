@@ -158,7 +158,7 @@ namespace AutoDarkModeSvc
                 Logger.Info("ui signal received: stop forcing specific theme");
                 GlobalState rtc = GlobalState.Instance();
                 rtc.ForcedTheme = Theme.Unknown;
-                ThemeManager.TimedSwitch(Builder);
+                ThemeManager.RequestSwitch(Builder);
                 mi.Checked = false;
             }
             else
@@ -176,14 +176,14 @@ namespace AutoDarkModeSvc
                     Logger.Info("ui signal received: forcing light theme");
                     state.ForcedTheme = Theme.Light;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
-                    ThemeManager.SwitchTheme(Builder.Config, Theme.Light);
+                    ThemeManager.UpdateTheme(Builder.Config, Theme.Light);
                 }
                 else if (mi.Name == "forceDark")
                 {
                     Logger.Info("ui signal received: forcing dark theme");
                     state.ForcedTheme = Theme.Dark;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
-                    ThemeManager.SwitchTheme(Builder.Config, Theme.Dark);
+                    ThemeManager.UpdateTheme(Builder.Config, Theme.Dark);
                 }
                 mi.Checked = true;
             }
@@ -198,13 +198,13 @@ namespace AutoDarkModeSvc
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
                     rtc.CurrentWindowsThemeName = "";
-                ThemeManager.SwitchTheme(config, Theme.Dark);
+                ThemeManager.UpdateTheme(config, Theme.Dark);
             }
             else
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
                     rtc.CurrentWindowsThemeName = "";
-                ThemeManager.SwitchTheme(config, Theme.Light);
+                ThemeManager.UpdateTheme(config, Theme.Light);
             }
         }
 

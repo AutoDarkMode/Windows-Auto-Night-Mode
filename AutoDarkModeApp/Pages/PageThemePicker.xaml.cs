@@ -30,7 +30,7 @@ namespace AutoDarkModeApp.Pages
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
         private List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
-        private bool init = true;
+        private readonly bool init = true;
         private bool theme1 = false;
         private bool theme2 = false;
 

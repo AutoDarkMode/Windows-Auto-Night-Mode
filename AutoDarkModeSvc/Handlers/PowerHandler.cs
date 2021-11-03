@@ -13,7 +13,7 @@ namespace AutoDarkModeSvc.Handlers
         private static bool allowRestore = false;
         public static void DisableEnergySaver(AdmConfig config)
         {
-            if (!config.Tunable.DisableEnergySaverOnThemeSwitch) 
+            if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
                 Logger.Debug($"energy saver mitigation disabled");
                 return;
@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void ChangeBatterySlider(int value)
         {
-            using Process setBatterySlider = new Process();
+            using Process setBatterySlider = new();
             setBatterySlider.StartInfo.FileName = "powercfg.exe";
             setBatterySlider.StartInfo.Arguments = $"/setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD {value}";
             setBatterySlider.StartInfo.UseShellExecute = false;
@@ -56,7 +56,7 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Error("had to murder powercfg /setdcvalueindex process");
                     setBatterySlider.Kill();
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "error modifying energy saver slider:");
@@ -64,7 +64,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             Logger.Debug($"set battery saver slider to {value}");
 
-            using Process setSchemeActive = new Process();
+            using Process setSchemeActive = new();
             setSchemeActive.StartInfo.FileName = "powercfg.exe";
             setSchemeActive.StartInfo.Arguments = "/setactive SCHEME_CURRENT";
             setSchemeActive.StartInfo.UseShellExecute = false;

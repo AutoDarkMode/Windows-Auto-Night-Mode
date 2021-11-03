@@ -27,7 +27,7 @@ namespace AutoDarkModeApp.Pages
     /// </summary>
     public partial class PageSwitchModes : Page
     {
-        private bool init = true;
+        private readonly bool init = true;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         public PageSwitchModes()

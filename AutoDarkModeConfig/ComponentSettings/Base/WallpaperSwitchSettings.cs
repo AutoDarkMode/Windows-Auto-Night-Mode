@@ -64,7 +64,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                     else
                     {
                         string[] split = Id.Split('#', '&');
-                        MonitorString = $"{split[1]} - {split[5].Substring(3)}";
+                        MonitorString = $"{split[1]} - {split[5][3..]}";
                     }
                 }
                 catch

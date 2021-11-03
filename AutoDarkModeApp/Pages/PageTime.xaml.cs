@@ -148,7 +148,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
-            } 
+            }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "OffsetButton_Click");
@@ -275,7 +275,7 @@ namespace AutoDarkModeApp.Pages
         {
             userFeedback.Text = Properties.Resources.msgErrorOcc;
             string error = string.Format(Properties.Resources.errorThemeApply, Properties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -301,7 +301,7 @@ namespace AutoDarkModeApp.Pages
             //ui
             locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
             userFeedback.Text = Properties.Resources.msgSearchLoc;
-            
+
             await LoadGeolocationData();
             UpdateSuntimes();
 
@@ -336,7 +336,6 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 ApiResponse result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
-                LocationHandler handler = new();
                 if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
                 {
                     NoLocationAccess();
@@ -344,7 +343,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
                 {
-                    locationBlock.Text = Properties.Resources.lblCity + ": " + await handler.GetCityName();
+                    locationBlock.Text = Properties.Resources.lblCity + ": " + await LocationHandler.GetCityName();
                 }
                 else if (!builder.Config.Location.UseGeolocatorService)
                 {
@@ -491,7 +490,7 @@ namespace AutoDarkModeApp.Pages
             return;
         }
 
-        private void StartProcessByProcessInfo(string message)
+        private static void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
             {
@@ -589,7 +588,7 @@ namespace AutoDarkModeApp.Pages
         //numbox event handler
         private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
         private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -704,8 +703,8 @@ namespace AutoDarkModeApp.Pages
                 }
                 tb.Text = validated;
 
-                double.TryParse(NumberBoxLat.Text, out double latParsed);
-                double.TryParse(NumberBoxLon.Text, out double lonParsed);
+                _ = double.TryParse(NumberBoxLat.Text, out double latParsed);
+                _ = double.TryParse(NumberBoxLon.Text, out double lonParsed);
                 if (latParsed > 90) tb.Text = "90";
                 else if (latParsed < -90) tb.Text = "-90";
                 if (lonParsed > 180) tb.Text = "180";

@@ -32,10 +32,10 @@ namespace AutoDarkModeSvc
             string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
 
             //Set up Logger
-            NLog.Config.LoggingConfiguration config = new NLog.Config.LoggingConfiguration();
+            NLog.Config.LoggingConfiguration config = new();
 
             // Targets where to log to: File and Console
-            NLog.Targets.FileTarget logfile = new NLog.Targets.FileTarget("logfile")
+            NLog.Targets.FileTarget logfile = new("logfile")
             {
                 FileName = Path.Combine(configDir, "service.log"),
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
@@ -43,7 +43,7 @@ namespace AutoDarkModeSvc
                 "cleanNamesOfAnonymousDelegates=true:" +
                 "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }"
             };
-            NLog.Targets.ColoredConsoleTarget logconsole = new NLog.Targets.ColoredConsoleTarget("logconsole")
+            NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
             {
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
@@ -52,7 +52,7 @@ namespace AutoDarkModeSvc
             };
 
 
-            // Rules for mapping loggers to targets       
+            // Rules for mapping loggers to targets
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
             if (argsList.Contains("/debug"))
             {
@@ -62,7 +62,7 @@ namespace AutoDarkModeSvc
             {
                 config.AddRule(LogLevel.Info, LogLevel.Fatal, logfile);
             }
-            // Apply config           
+            // Apply config
             LogManager.Configuration = config;
 
             try { _ = Directory.CreateDirectory(configDir); }
@@ -109,7 +109,7 @@ namespace AutoDarkModeSvc
                     Logger.Error(e, "could not read config file, resetting config file:");
                     try
                     {
-                        builder.BackupConfig();
+                        AdmConfigBuilder.BackupConfig();
                     }
                     catch (Exception ex)
                     {

@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                using TaskService taskService = new TaskService();
+                using TaskService taskService = new();
                 taskService.RootFolder.CreateFolder(folder, null, false);
 
                 TaskDefinition tdLogon = taskService.NewTask();
@@ -48,7 +48,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static bool RemoveLogonTask()
         {
-            using TaskService taskService = new TaskService();
+            using TaskService taskService = new();
             TaskFolder taskFolder = taskService.GetFolder(folder);
             if (taskFolder == null)
             {

@@ -12,27 +12,22 @@ namespace AutoDarkModeSvc.Config
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        private static GlobalState rtc;
+        private static GlobalState state;
         public static GlobalState Instance()
         {
-            if (rtc == null)
+            if (state == null)
             {
-                rtc = new GlobalState();
+                state = new GlobalState();
             }
-            return rtc;
+            return state;
         }
-        protected GlobalState()
-        {
-            CurrentWallpaperTheme = Theme.Unknown;
-            CurrentWindowsThemeName = GetCurrentThemeName();
-            ForcedTheme = Theme.Unknown;
-            PostponeSwitch = false;
-        }
+        protected GlobalState() { }
 
         private WardenModule Warden { get; set; }
-        public Theme CurrentWallpaperTheme { get; set; }
+        public Theme LastRequestedTheme { get; set; } = Theme.Unknown;
+        public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; }
-        public string CurrentWindowsThemeName { get; set; }
+        public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
         private bool _postponeSwitch;
         // triggers update if and only if there is a change in value
         public bool PostponeSwitch
@@ -51,11 +46,11 @@ namespace AutoDarkModeSvc.Config
             }
         }
 
-        public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true); 
+        public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
 
         private bool configIsUpdating;
-        public bool ConfigIsUpdating 
-        { 
+        public bool ConfigIsUpdating
+        {
             get { return configIsUpdating; }
 
             [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]

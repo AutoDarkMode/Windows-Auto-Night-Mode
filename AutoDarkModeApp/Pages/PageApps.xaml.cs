@@ -60,18 +60,18 @@ namespace AutoDarkModeApp
                 {
                     case Mode.Switch:
                         if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
-                        else SystemComboBox.SelectedItem = SystemComboBoxItemSwitch; 
+                        else SystemComboBox.SelectedItem = SystemComboBoxItemSwitch;
                         break;
                     case Mode.LightOnly:
                         if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
-                        else SystemComboBox.SelectedItem = SystemComboBoxItemLightOnly; 
+                        else SystemComboBox.SelectedItem = SystemComboBoxItemLightOnly;
                         break;
                     case Mode.DarkOnly:
                         if (builder.Config.WindowsThemeMode.Enabled) SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
                         else SystemComboBox.SelectedItem = SystemComboBoxItemDarkOnly;
                         break;
-                    case Mode.AccentOnly: 
-                        SystemComboBox.SelectedItem = SystemComboBoxItemAccentOnly; 
+                    case Mode.AccentOnly:
+                        SystemComboBox.SelectedItem = SystemComboBoxItemAccentOnly;
                         break;
                 }
                 RadioButtonAdaptiveTaskbarAccentOnDark.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Dark;
@@ -143,7 +143,7 @@ namespace AutoDarkModeApp
         private void ShowErrorMessage(Exception ex)
         {
             string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -284,7 +284,7 @@ namespace AutoDarkModeApp
                         ShowErrorMessage(ex);
                     }
                     RequestThemeSwitch();
-                }              
+                }
             }
         }
 
@@ -389,7 +389,7 @@ namespace AutoDarkModeApp
             StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
         }
 
-        private void StartProcessByProcessInfo(string message)
+        private static void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
             {

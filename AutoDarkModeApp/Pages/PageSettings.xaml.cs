@@ -28,7 +28,7 @@ namespace AutoDarkModeApp.Pages
         readonly Updater updater = new();
         private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
         private delegate void DispatcherDelegate();
-        private int fakeResponsiveUIDelay = 800;
+        private const int fakeResponsiveUIDelay = 800;
 
         public PageSettings()
         {
@@ -542,7 +542,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         TextBlockUpdateInfo.Text = "A downgrade is available";
                     }
-                }               
+                }
             }
             catch (Exception ex)
             {

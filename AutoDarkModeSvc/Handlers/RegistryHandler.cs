@@ -190,7 +190,7 @@ namespace AutoDarkModeSvc.Handlers
             if ((dark && filterKey.Equals(0)) || (!dark && filterKey.Equals(1)))
             {
                 //simulate key presses
-                InputSimulator inputSimulator = new InputSimulator();
+                InputSimulator inputSimulator = new();
                 inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LWIN);
                 inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LCONTROL);
                 inputSimulator.Keyboard.KeyPress(VirtualKeyCode.VK_C);

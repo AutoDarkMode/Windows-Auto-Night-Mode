@@ -16,10 +16,10 @@ namespace AutoDarkModeApp.Pages
 
         private void ButtonPayPal_Click(object sender, RoutedEventArgs e)
         {
-           StartProcessByProcessInfo("https://paypal.me/arminosaj");
+            StartProcessByProcessInfo("https://paypal.me/arminosaj");
         }
 
-        private void StartProcessByProcessInfo(string message)
+        private static void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
             {

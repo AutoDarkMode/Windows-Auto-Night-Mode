@@ -83,7 +83,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         /// Changes the office theme
         /// </summary>
         /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white</param>
-        private void OfficeTheme(byte themeValue)
+        private static void OfficeTheme(byte themeValue)
         {
             string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
 

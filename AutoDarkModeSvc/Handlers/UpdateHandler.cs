@@ -28,7 +28,7 @@ namespace AutoDarkModeSvc.Handlers
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        private static readonly NumberFormatInfo nfi = new NumberFormatInfo();
+        private static readonly NumberFormatInfo nfi = new();
         public static bool Updating
         {
             get; [MethodImpl(MethodImplOptions.Synchronized)]
@@ -420,7 +420,7 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
 
-                DownloadProgressChangedEventHandler callback = new DownloadProgressChangedEventHandler(DownloadProgress);
+                DownloadProgressChangedEventHandler callback = new(DownloadProgress);
                 webClient.DownloadProgressChanged += callback;
                 Task.Run(async () => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
                 webClient.DownloadProgressChanged -= callback;
