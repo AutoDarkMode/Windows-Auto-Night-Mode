@@ -188,8 +188,25 @@ fn rollback(temp_dir: &PathBuf) -> Result<(), OpError> {
         e.severe = true;
         return Err(e);
     }
-    if let Err(e) = fs::remove_dir(temp_dir) {
-        warn!("could not delete temp directory after rollback: {}", e);
+
+    match io::get_dirs(&temp_dir, |_| true) {
+        Ok(dirs) => {
+            let mut error = false;
+            for dir in dirs {
+                if let Err(e) = fs::remove_dir(&dir) {
+                    warn!("could not remove temp subdirectory {}: {}", dir.display(), e);
+                    error = true;
+                }
+            }
+            if !error {
+                if let Err(e) = fs::remove_dir(temp_dir) {
+                    warn!("could not delete temp directory after rollback: {}", e);
+                }
+            }
+        }
+        Err(e) => {
+           warn!("could not retrieve directories to clean after rollback {}", e);
+        }
     }
     info!("rollback successful, no update has been performed, restarting auto dark mode");
     Ok(())

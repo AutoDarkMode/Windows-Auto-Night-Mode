@@ -60,9 +60,8 @@ pub fn get_files_recurse(path: &PathBuf, filter_criteria: fn(&Path) -> bool) -> 
     let mut old_files: Vec<PathBuf> = Vec::new();
     WalkDir::new(path)
         .into_iter()
-        .filter_entry(|e| filter_criteria(e.path()))
         .filter_map(|v| v.ok())
-        .filter(|e| e.file_type().is_file())
+        .filter(|e| e.file_type().is_file() && filter_criteria(e.path()))
         .for_each(|e| {
             old_files.push(PathBuf::from(e.path()));
         });
@@ -77,8 +76,8 @@ pub fn get_dirs(path: &PathBuf, filter_criteria: fn(&Path) -> bool) -> Result<Ve
         .into_iter()
         .filter_map(|e| e.ok())
         .map(|e| e.path())
-        .filter(|e| filter_criteria(e.as_path()))
         .filter(|e| e.is_dir())
+        .filter(|e| filter_criteria(e.as_path()))
         .collect::<Vec<PathBuf>>();
     let work_dir_str = get_working_dir();
     let filtered: Vec<PathBuf> = old_dirs.drain(..).filter(|e| !e.eq(&work_dir_str)).collect();
