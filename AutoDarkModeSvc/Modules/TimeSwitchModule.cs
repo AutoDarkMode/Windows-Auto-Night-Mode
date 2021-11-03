@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Modules
         {
             Task.Run(() =>
             {
-                ThemeManager.RequestSwitch(ConfigBuilder, new(Events.SwitchSource.TimeSwitchModule));
+                ThemeManager.RequestSwitch(ConfigBuilder, new(SwitchSource.TimeSwitchModule));
             });
         }
     }

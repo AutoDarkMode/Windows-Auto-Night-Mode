@@ -241,7 +241,7 @@ namespace AutoDarkModeConfig
 
         public override void Emit(SequenceStartEventInfo eventInfo, IEmitter emitter)
         {
-            if (typeof(List<string>).IsAssignableFrom(eventInfo.Source.Type))
+            if (typeof(List<string>).IsAssignableFrom(eventInfo.Source.Type) || typeof(List<SwitchSource>).IsAssignableFrom(eventInfo.Source.Type))
             {
                 eventInfo = new SequenceStartEventInfo(eventInfo.Source)
                 {

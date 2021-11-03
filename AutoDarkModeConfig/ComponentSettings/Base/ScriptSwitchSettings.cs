@@ -44,6 +44,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         public string WorkingDirectory { get; set; }
         public List<string> ArgsLight { get; set; } = new();
         public List<string> ArgsDark { get; set; } = new();
+        public List<SwitchSource> AllowedSources { get; set; } = new() { SwitchSource.Any };
         public override bool Equals(object obj)
         {
             if (obj is Script other)
@@ -53,6 +54,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 if (!other.ArgsDark.SequenceEqual(ArgsDark)) return false;
                 if (!other.ArgsLight.SequenceEqual(ArgsLight)) return false;
                 if (other.WorkingDirectory != WorkingDirectory) return false;
+                if (!other.AllowedSources.SequenceEqual(AllowedSources)) return false;
                 return true;
             }
             return base.Equals(obj);

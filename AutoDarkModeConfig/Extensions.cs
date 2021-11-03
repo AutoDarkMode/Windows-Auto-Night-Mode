@@ -34,6 +34,15 @@ namespace AutoDarkModeConfig
         Span = 5,
     }
 
+    public enum SwitchSource
+    {
+        Any,
+        TimeSwitchModule,
+        BatteryStatus,
+        SystemResume,
+        Manual,
+    }
+
     public static class Extensions
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";

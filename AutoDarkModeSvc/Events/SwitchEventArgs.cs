@@ -1,3 +1,4 @@
+using AutoDarkModeConfig;
 using System;
 
 namespace AutoDarkModeSvc.Events
@@ -10,14 +11,4 @@ namespace AutoDarkModeSvc.Events
         }
         public SwitchSource Source { get; }
     }
-
-    public enum SwitchSource
-    {
-        Any,
-        TimeSwitchModule,
-        BatteryStatus,
-        SystemResume,
-        Manual,
-    }
 }
-

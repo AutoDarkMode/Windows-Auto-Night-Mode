@@ -12,7 +12,6 @@ using AutoDarkModeConfig;
 using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
-using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc
