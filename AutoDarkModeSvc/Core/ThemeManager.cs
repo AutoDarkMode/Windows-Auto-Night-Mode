@@ -82,7 +82,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     PowerHandler.RequestDisableEnergySaver(config);
                 }
-                cm.Run(componentsToUpdate, newTheme);
+                cm.Run(componentsToUpdate, newTheme, e);
             }
 
             // disable mitigation after all components and theme switch have been executed

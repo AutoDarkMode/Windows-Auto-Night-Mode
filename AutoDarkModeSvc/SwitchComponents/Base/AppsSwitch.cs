@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeConfig.ComponentSettings.Base;
 using AutoDarkModeConfig.Interfaces;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using System;
@@ -42,7 +43,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme)
+        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             try

@@ -2,6 +2,7 @@
 using System;
 using AutoDarkModeConfig;
 using AutoDarkModeConfig.Interfaces;
+using AutoDarkModeSvc.Events;
 
 namespace AutoDarkModeSvc.SwitchComponents
 {
@@ -22,7 +23,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         {
             get { return Settings.Enabled; }
         }
-        public void Switch(Theme newTheme)
+        public void Switch(Theme newTheme, SwitchEventArgs e)
         {
             Logger.Debug($"switch invoked for {GetType().Name}");
             ForceSwitch = false;
@@ -43,7 +44,7 @@ namespace AutoDarkModeSvc.SwitchComponents
                 {
                     try
                     {
-                        HandleSwitch(newTheme);
+                        HandleSwitch(newTheme, e);
                     }
                     catch (Exception ex)
                     {
@@ -95,7 +96,8 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// Entrypoint, called when a component needs to be updated
         /// </summary>
         /// <param name="newTheme">the new theme to apply</param>
-        protected abstract void HandleSwitch(Theme newTheme);
+        /// <param name="e">the switch event args</param>
+        protected abstract void HandleSwitch(Theme newTheme, SwitchEventArgs e);
         /// <summary>
         /// Determines whether the component needs to be triggered to update to the correct system state
         /// </summary>

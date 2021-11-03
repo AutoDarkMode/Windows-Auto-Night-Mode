@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeConfig.ComponentSettings.Base;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
@@ -108,7 +109,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme)
+        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
         {
             Task.Run(async() => { await SwitchSystemTheme(newTheme);}).Wait();
         }

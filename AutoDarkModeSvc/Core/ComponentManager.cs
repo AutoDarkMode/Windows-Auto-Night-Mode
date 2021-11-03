@@ -1,4 +1,5 @@
 ﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
@@ -141,7 +142,7 @@ namespace AutoDarkModeSvc.Core
         /// <param name="components">The components to be run</param>
         /// <param name="newTheme">the requested theme to switch to</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void Run(List<ISwitchComponent> components, Theme newTheme)
+        public void Run(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
             {
@@ -157,11 +158,11 @@ namespace AutoDarkModeSvc.Core
             {
                 if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility)
                 {
-                    c.Switch(newTheme);
+                    c.Switch(newTheme, e);
                 }
                 else if (!Builder.Config.WindowsThemeMode.Enabled)
                 {
-                    c.Switch(newTheme);
+                    c.Switch(newTheme, e);
                 }
             });
         }

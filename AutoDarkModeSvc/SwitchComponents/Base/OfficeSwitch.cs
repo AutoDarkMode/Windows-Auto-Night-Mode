@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Win32;
+using AutoDarkModeSvc.Events;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -41,7 +42,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme)
+        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             try
