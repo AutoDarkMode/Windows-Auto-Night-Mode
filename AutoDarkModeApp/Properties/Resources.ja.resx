@@ -750,4 +750,10 @@
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>変更を保存するには「適用」をクリックします。</value>
   </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>使用するタスクバーのアクセントカラー</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>アクセントカラーのみ</value>
+  </data>
 </root>
