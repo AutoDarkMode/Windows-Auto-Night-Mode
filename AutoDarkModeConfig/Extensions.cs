@@ -38,7 +38,7 @@ namespace AutoDarkModeConfig
     {
         Any,
         TimeSwitchModule,
-        BatteryStatus,
+        BatteryStatusChanged,
         SystemResume,
         Manual,
     }

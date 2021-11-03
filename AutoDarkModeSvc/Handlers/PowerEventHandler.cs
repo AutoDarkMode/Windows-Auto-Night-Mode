@@ -29,11 +29,11 @@ namespace AutoDarkModeSvc.Handlers
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             if (PowerManager.BatteryStatus == BatteryStatus.Discharging) {
                 Logger.Info("battery discharging, enabling dark mode");
-                ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.BatteryStatus));
+                ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.BatteryStatusChanged));
             }
             else
             {
-                ThemeManager.RequestSwitch(builder, new(SwitchSource.BatteryStatus));
+                ThemeManager.RequestSwitch(builder, new(SwitchSource.BatteryStatusChanged));
             }
         }
 
@@ -46,7 +46,7 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info("disabling event handler for dark mode on battery state discharging");
                     PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
                     darkThemeOnBatteryEnabled = false;
-                    ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.BatteryStatus));
+                    ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.BatteryStatusChanged));
                 }
             }
             catch (InvalidOperationException ex)
