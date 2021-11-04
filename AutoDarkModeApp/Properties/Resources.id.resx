@@ -722,7 +722,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Gunakan aksen bilah tugas saat</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Hanya aksen</value>
+    <value>Dengan aksen</value>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Setiap hari</value>
