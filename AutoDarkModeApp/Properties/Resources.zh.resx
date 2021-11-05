@@ -750,4 +750,10 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>单击“设置”保存更改。</value>
   </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>使用任务栏强调颜色</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>仅强调</value>
+  </data>
 </root>
