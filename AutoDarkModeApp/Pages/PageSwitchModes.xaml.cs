@@ -48,6 +48,8 @@ namespace AutoDarkModeApp.Pages
             HotkeyTextboxForceLight.Text = builder.Config.Hotkeys.ForceLightHotkey ?? "";
             HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForceHotkey ?? "";
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
+            TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
+
             init = false;
         }
 
@@ -134,6 +136,7 @@ namespace AutoDarkModeApp.Pages
         private void ComboBoxGPUSamples_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             builder.Config.GPUMonitoring.Samples = ComboBoxGPUSamples.SelectedIndex + 1;
+            if (init) return;
             try
             {
                 builder.Save();
@@ -149,7 +152,6 @@ namespace AutoDarkModeApp.Pages
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
             if (ToggleHotkeys.IsOn) GridHotkeys.IsEnabled = false;
             else GridHotkeys.IsEnabled = true;
-
             if (init) return;
             builder.Config.Hotkeys.Enabled = ToggleHotkeys.IsOn;
             try
@@ -169,6 +171,7 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
+            if (hotkeyString == builder.Config.Hotkeys.NoForceHotkey) return;
             builder.Config.Hotkeys.NoForceHotkey = hotkeyString;
             try
             {
@@ -187,6 +190,7 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
+            if (hotkeyString == builder.Config.Hotkeys.ForceDarkHotkey) return;
             builder.Config.Hotkeys.ForceDarkHotkey = hotkeyString;
             try
             {
@@ -205,6 +209,7 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
+            if (hotkeyString == builder.Config.Hotkeys.ForceLightHotkey) return;
             builder.Config.Hotkeys.ForceLightHotkey = hotkeyString;
             try
             {
@@ -224,7 +229,7 @@ namespace AutoDarkModeApp.Pages
 
             if (keyString.Contains("Alt") || keyString.Contains("Shift") || keyString.Contains("Win") || keyString.Contains("Ctrl"))
             {
-                return "";
+                return null;
             }
 
             ModifierKeys modifiers = Keyboard.Modifiers;
@@ -233,7 +238,7 @@ namespace AutoDarkModeApp.Pages
             string isWin = (modifiers & ModifierKeys.Windows) == ModifierKeys.Windows ? "LWin + " : "";
             string isAlt = (modifiers & ModifierKeys.Alt) == ModifierKeys.Alt ? "Alt + " : "";
             string modifiersString = $"{isCtrl}{isShift}{isAlt}{isWin}";
-            return modifiersString.Length > 0 ? $"{modifiersString}{key}" : "";
+            return modifiersString.Length > 0 ? $"{modifiersString}{key}" : null;
         }
     }
 }
