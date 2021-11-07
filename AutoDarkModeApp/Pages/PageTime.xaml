@@ -157,6 +157,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock 
@@ -192,6 +193,16 @@
                     Margin="20,0,0,0"
                     FontSize="14"/>
             </StackPanel>
+
+            <Grid Grid.Row="4" Margin="0, 6, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Foreground="#696969" FontSize="12" Text="Next update at"/>
+                <TextBlock Margin="4,0,0,0" Grid.Column="1" Foreground="#696969" FontSize="12" Name="LocationNextUpdateDate"/>
+            </Grid>
         </Grid>
 
         <!-- Geographic Coordinates  -->

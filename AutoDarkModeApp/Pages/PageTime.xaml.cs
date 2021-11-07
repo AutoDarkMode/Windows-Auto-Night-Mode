@@ -433,6 +433,10 @@ namespace AutoDarkModeApp.Pages
                 TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
                 TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
             }
+            DateTime nextUpdate = builder.LocationData.LastUpdate.Add(builder.Config.Location.PollingCooldownTimeSpan);
+            if (Settings.Default.AlterTime) LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("en"));
+            else LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("de"));
+
         }
 
         /// <summary>
@@ -579,7 +583,7 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockHelpWiki_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter | e.Key == Key.Space)
+            if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 TextBlockHelpWiki_MouseDown(this, null);
             }
@@ -616,7 +620,7 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                if(sender.Tag.Equals("offset"))
+                if (sender.Tag.Equals("offset"))
                 {
                     if (OffsetButton != null)
                     {
@@ -626,7 +630,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (sender.Tag.Equals("coordinates"))
                 {
-                    if(ButtonApplyCoordinates != null)
+                    if (ButtonApplyCoordinates != null)
                     {
                         ButtonApplyCoordinates.IsEnabled = true;
                     }
@@ -639,7 +643,7 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                if(sender is ModernWpf.Controls.NumberBox nb && nb.Tag.Equals("offset"))
+                if (sender is ModernWpf.Controls.NumberBox nb && nb.Tag.Equals("offset"))
                 {
                     if (OffsetButton != null)
                     {
@@ -665,7 +669,7 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockOpenLatLongWebsite_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter | e.Key == Key.Space)
+            if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 TextBlockOpenLatLongWebsite_MouseDown(this, null);
             }
