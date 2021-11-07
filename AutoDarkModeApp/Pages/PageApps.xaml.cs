@@ -317,6 +317,9 @@ namespace AutoDarkModeApp
         {
             if (!init)
             {
+                if (double.IsNaN(NumberBoxColorDelay.Value)) //fixes crash when leaving box empty and clicking outside it
+                    return;
+
                 builder.Config.SystemSwitch.Component.TaskbarSwitchDelay = Convert.ToInt32(NumberBoxColorDelay.Value);
                 try
                 {

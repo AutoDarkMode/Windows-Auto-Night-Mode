@@ -73,7 +73,7 @@
 
             <TextBlock 
                 Margin="0,0,0,0"
-                Text="Version" 
+                Text="{x:Static p:Resources.AboutTextBlockVersion}" 
                 FontFamily="Segoe UI"
                 FontSize="20"
             />
@@ -198,9 +198,8 @@
                 Name="ButtonCopyVersionInfo"
                 Margin="0,20,0,0"
                 MinWidth="100"
-                Click="ButtonCopyVersionInfo_Click">
-                Copy
-            </Button>
+                Click="ButtonCopyVersionInfo_Click"
+                Content="{x:Static p:Resources.AboutButtonCopy}"></Button>
         </StackPanel>
 
         <!-- Social Media links-->
