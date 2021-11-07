@@ -1,24 +1,11 @@
-﻿using AutoDarkModeApp.Properties;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AutoDarkModeConfig;
-using AutoDarkModeSvc.Communication;
-using AutoDarkModeComms;
-using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 using System.Diagnostics;
+using ModernWpf.Controls.Primitives;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -52,11 +39,15 @@ namespace AutoDarkModeApp.Pages
                 CheckBoxGPUMonitoring.IsChecked = false;
                 StackPanelGPUMonitoring.Visibility = Visibility.Collapsed;
             }
-            ComboBoxGPUSamples.SelectedIndex = builder.Config.GPUMonitoring.Samples-1;
+            ComboBoxGPUSamples.SelectedIndex = builder.Config.GPUMonitoring.Samples - 1;
             NumberBoxGPUThreshold.Value = Convert.ToDouble(builder.Config.GPUMonitoring.Threshold);
 
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
 
+            HotkeyTextboxForceDark.Text = builder.Config.Hotkeys.ForceDarkHotkey ?? "";
+            HotkeyTextboxForceLight.Text = builder.Config.Hotkeys.ForceLightHotkey ?? "";
+            HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForceHotkey ?? "";
+            ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             init = false;
         }
 
@@ -142,19 +133,107 @@ namespace AutoDarkModeApp.Pages
 
         private void ComboBoxGPUSamples_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!init)
+            builder.Config.GPUMonitoring.Samples = ComboBoxGPUSamples.SelectedIndex + 1;
+            try
             {
-                builder.Config.GPUMonitoring.Samples = ComboBoxGPUSamples.SelectedIndex + 1;
-
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex, "ComboBoxGPUSamples_DropDownClosed");
-                }
+                builder.Save();
             }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "ComboBoxGPUSamples_DropDownClosed");
+            }
+        }
+
+        private void ToggleHotkeys_Toggled(object sender, RoutedEventArgs e)
+        {
+            TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
+            if (ToggleHotkeys.IsOn) GridHotkeys.IsEnabled = false;
+            else GridHotkeys.IsEnabled = true;
+
+            if (init) return;
+            builder.Config.Hotkeys.Enabled = ToggleHotkeys.IsOn;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "toggle_hotkeys");
+            }
+        }
+
+        private void HotkeyTextboxNoForce_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            string hotkeyString = GetHotkeyString(e);
+            if (sender is TextBox tb)
+            {
+                tb.Text = hotkeyString;
+            }
+            builder.Config.Hotkeys.NoForceHotkey = hotkeyString;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "hotkeybox_noforce");
+            }
+        }
+
+        private void HotkeyTextboxForceDark_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            string hotkeyString = GetHotkeyString(e);
+            if (sender is TextBox tb)
+            {
+                tb.Text = hotkeyString;
+            }
+            builder.Config.Hotkeys.ForceDarkHotkey = hotkeyString;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "hotkeybox_forcedark");
+            }
+        }
+
+        private void HotkeyTextboxForceLight_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            string hotkeyString = GetHotkeyString(e);
+            if (sender is TextBox tb)
+            {
+                tb.Text = hotkeyString;
+            }
+            builder.Config.Hotkeys.ForceLightHotkey = hotkeyString;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "hotkeybox_forcelight");
+            }
+        }
+
+        private static string GetHotkeyString(KeyEventArgs e)
+        {
+            e.Handled = true;
+            Key key = e.Key;
+            string keyString = e.Key.ToString();
+
+            if (keyString.Contains("Alt") || keyString.Contains("Shift") || keyString.Contains("Win") || keyString.Contains("Ctrl"))
+            {
+                return "";
+            }
+
+            ModifierKeys modifiers = Keyboard.Modifiers;
+            string isShift = (modifiers & ModifierKeys.Shift) == ModifierKeys.Shift ? "Shift + " : "";
+            string isCtrl = (modifiers & ModifierKeys.Control) == ModifierKeys.Control ? "Ctrl + " : "";
+            string isWin = (modifiers & ModifierKeys.Windows) == ModifierKeys.Windows ? "LWin + " : "";
+            string isAlt = (modifiers & ModifierKeys.Alt) == ModifierKeys.Alt ? "Alt + " : "";
+            string modifiersString = $"{isCtrl}{isShift}{isAlt}{isWin}";
+            return modifiersString.Length > 0 ? $"{modifiersString}{key}" : "";
         }
     }
 }

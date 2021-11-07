@@ -756,4 +756,22 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Accent only</value>
   </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>You can only edit hotkeys while they are disabled.</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>Force Dark Mode Hotkey</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>Force Light Mode Hotkey</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Hotkeys</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>Stop Forcing Theme Hotkey</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Enable system-wide hotkeys</value>
+  </data>
 </root>

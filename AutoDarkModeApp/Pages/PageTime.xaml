@@ -200,8 +200,8 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Foreground="#696969" FontSize="12" Text="Next update at"/>
-                <TextBlock Margin="4,0,0,0" Grid.Column="1" Foreground="#696969" FontSize="12" Name="LocationNextUpdateDate"/>
+                <TextBlock Grid.Column="0" Foreground="#999999" FontSize="12" Text="Next update at"/>
+                <TextBlock Margin="4,0,0,0" Grid.Column="1" Foreground="#999999" FontSize="12" Name="LocationNextUpdateDate"/>
             </Grid>
         </Grid>
 
