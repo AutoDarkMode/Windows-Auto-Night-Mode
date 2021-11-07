@@ -73,7 +73,7 @@
 
             <TextBlock 
                 Margin="0,0,0,0"
-                Text="{x:Static p:Resources.AboutTextBlockVersion}" 
+                Text="Version" 
                 FontFamily="Segoe UI"
                 FontSize="20"
             />

@@ -113,7 +113,7 @@
                 Margin="0,30,0,0"
                 FontFamily="Segoe UI"
                 FontSize="20"
-                Text="{x:Static p:Resources.SettingsPageLanguageSectionTitle}" 
+                Text="Language" 
                 />
             <TextBlock 
                 HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -364,7 +364,7 @@
                                Margin="10,0,0,0" 
                                TextWrapping="Wrap" 
                                Name="TextBlockAutostartMode" 
-                               Text="{x:Static p:Resources.SettingsPageAutostartModeRegistry}"/>
+                               Text="Registry key"/>
 
                     <TextBlock Grid.Column="0" 
                                Grid.Row="1" 
@@ -378,7 +378,7 @@
                                FontSize="14" 
                                TextWrapping="Wrap" 
                                Name="TextBlockAutostartPath" 
-                               Text="{x:Static p:Resources.SettingsPageAutostartModeNone}"  
+                               Text="None"  
                                Margin="10,15,0,0"/>
                 </Grid>
                 <Button

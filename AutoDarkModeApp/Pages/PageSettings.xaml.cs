@@ -163,7 +163,7 @@ namespace AutoDarkModeApp.Pages
                         ButtonAutostartValidate.IsEnabled = true;
                         CheckBoxLogonTask.IsEnabled = true;
                         if (!noToggle) ToggleAutostart.IsOn = true;
-                        TextBlockAutostartMode.Text = Properties.Resources.SettingsPageAutostartModeRegistry;
+                        TextBlockAutostartMode.Text = "Registry key";
                         TextBlockAutostartPath.Text = autostartResponse.Details;
                     }
                     else
@@ -180,7 +180,7 @@ namespace AutoDarkModeApp.Pages
                     CheckBoxLogonTask.IsEnabled = true;
                     if (!noToggle) ToggleAutostart.IsOn = true;
                     CheckBoxLogonTask.IsEnabled = true;
-                    TextBlockAutostartMode.Text = Properties.Resources.SettingsPageAutostartModeTask;
+                    TextBlockAutostartMode.Text = "Task";
                     TextBlockAutostartPath.Text = autostartResponse.Details;
                 }
                 else if (autostartResponse.StatusCode == StatusCode.Disabled)
@@ -188,8 +188,8 @@ namespace AutoDarkModeApp.Pages
                     ButtonAutostartValidate.IsEnabled = false;
                     if (!noToggle) ToggleAutostart.IsOn = false;
                     CheckBoxLogonTask.IsEnabled = false;
-                    TextBlockAutostartMode.Text = Properties.Resources.SettingsPageAutostartModeDisabled;
-                    TextBlockAutostartPath.Text = Properties.Resources.SettingsPageAutostartModeNone;
+                    TextBlockAutostartMode.Text = "Disabled";
+                    TextBlockAutostartPath.Text = "None";
                 }
                 else
                 {
@@ -200,8 +200,8 @@ namespace AutoDarkModeApp.Pages
             {
                 CheckBoxLogonTask.IsEnabled = false;
                 StackPanelAutostart.IsEnabled = false;
-                TextBlockAutostartMode.Text = Properties.Resources.SettingsPageAutostartModeNotFound;
-                TextBlockAutostartPath.Text = Properties.Resources.SettingsPageAutostartModeNone;
+                TextBlockAutostartMode.Text = "Not found";
+                TextBlockAutostartPath.Text = "None";
             }
             if (toggleVisibility) SetAutostartDetailsVisibility(true);
         }
