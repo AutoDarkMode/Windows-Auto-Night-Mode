@@ -228,13 +228,11 @@ namespace AutoDarkModeSvc.Handlers
                 filterType = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
             }
             var currentValue = filterType.GetValue("Active", null);
-            if (currentValue == null)
-            {
-                filterType.SetValue("Active", 0, RegistryValueKind.DWord);
-            }
+            if (currentValue == null) filterType.SetValue("Active", 0, RegistryValueKind.DWord);
 
-            //set filtertype to 0 for grayscale and activate hotkey functionality of windows
-            filterType.SetValue("FilterType", 0, RegistryValueKind.DWord); // 0 = gray
+            var currentType = filterType.GetValue("FilterType", null);
+            if (currentType == null) filterType.SetValue("FilterType", 0, RegistryValueKind.DWord); // 0 = gray
+
             filterType.SetValue("HotkeyEnabled", 1, RegistryValueKind.DWord); //and we activate the hotkey as free bonus :)
             filterType.Dispose();
         }
