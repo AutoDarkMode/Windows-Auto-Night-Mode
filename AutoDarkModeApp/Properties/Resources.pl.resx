@@ -785,4 +785,22 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Włącz zmianę tapety</value>
   </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Możesz edytować skróty tylko jak są wyłączone</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>Ustaw ciemny motyw</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>Ustaw jasny motyw</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Skróty klawiszowe</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>Wyłącz stały motyw i wróć do autowyboru</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Włącz skróty klawiszowe</value>
+  </data>
 </root>
