@@ -756,6 +756,57 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Accent only</value>
   </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Start Auto Dark Mode with Windows</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Autostart</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Path:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Refresh Autostart</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>Restart App</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Not found</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Registry Key</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>You have disabled the auto start entry via Windows.</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Next update at</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
     <value>You can only edit hotkeys while they are disabled.</value>
   </data>

@@ -163,7 +163,7 @@ namespace AutoDarkModeApp.Pages
                         ButtonAutostartValidate.IsEnabled = true;
                         CheckBoxLogonTask.IsEnabled = true;
                         if (!noToggle) ToggleAutostart.IsOn = true;
-                        TextBlockAutostartMode.Text = "Registry";
+                        TextBlockAutostartMode.Text = "Registry key";
                         TextBlockAutostartPath.Text = autostartResponse.Details;
                     }
                     else

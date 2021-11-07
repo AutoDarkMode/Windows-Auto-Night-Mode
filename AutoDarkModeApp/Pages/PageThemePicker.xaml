@@ -73,7 +73,7 @@
                 Grid.Row="1"
                 Content="{x:Static p:Resources.ThemePickerComboBoxKeepActive}"
                 Click="CheckBoxMonitorActiveTheme_Click"
-            />
+            /> 
 
         </Grid>
 

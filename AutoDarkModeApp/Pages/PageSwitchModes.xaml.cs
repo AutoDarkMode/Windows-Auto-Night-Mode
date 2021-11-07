@@ -120,6 +120,9 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
+                if (double.IsNaN(NumberBoxGPUThreshold.Value)) //fixes crash when leaving box empty and clicking outside it
+                    return;
+
                 builder.Config.GPUMonitoring.Threshold = Convert.ToInt32(NumberBoxGPUThreshold.Value);
 
                 try

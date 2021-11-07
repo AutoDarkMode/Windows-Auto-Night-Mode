@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
     <value>Ustawienia</value>
@@ -543,5 +543,264 @@ Aktualizację polecamy wszystkim, z wyjątkiem posiadaczy urządzeń z procesore
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Zastosuj</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Kopiuj</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Znajdź nas</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Wersja</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Zastosuj</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Przełącz na ciemny motyw przy odłączeniu ładowarki</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Wyłącz oszczędzanie energii podczas zmiany motywu</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>Co 14 dni</value>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Codziennie</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>Co 3 dni</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>Co 7 dni</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Otwórz plik konfiguracji</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Otwórz katalog konfiguracji</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Otwórz plik dziennika</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Konfiguracja</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Współrzędne geograficzne</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Dane lokalizacji</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Personalizacja</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Tryby przełączania</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Wyłączony</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Od wschodu do zachodu słońca (współrzędne geograficzne)</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Domyślna wartość trybu oszczędzania energii</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Ukryj ikonę na pasku zadań (niezalecane)</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Uruchamiaj Auto Dark Mode wraz z Windowsem</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Autouruchamianie</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Tryb:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Ścieżka:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Odśwież autouruchamianie</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Język</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>Restartuj</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Nie przełączaj podczas grania w gry wideo</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Szybkia (1 próbka)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Średnia (2 próbki)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Wolna (3 próbki)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Prędkość wykrywania zmian</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Urządzenia zasilane akumulatorem</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Przełączanie warunkowe</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Próg użycia procesora graficznego (%)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Znajdź współrzędne dla Twojej lokalizacji</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Aplikacja automatycznie sprawdza dostępność aktualizacji w tle.
+Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Szerokość</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Długość</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Automatycznie pobieraj i instaluj nowe wersje</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Nie pokazuj powiadomień</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Kanał aktualizacji</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Szukaj aktualizacji przy uruchamianiu</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Ostatnie sprawdzenie</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Częstotliwość szukania aktualizacji:</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Użyj koloru paska zadań dla motywu:</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Tylko kolor paska zadań</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Wybierz motyw</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Wybierz tapetę</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Wyłączony</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>Brak</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Nie znaleziono</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Klucz rejestru</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Zadanie</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Wyłączyłeś usługę autouruchamiania w ustawieniach Windowsa</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany motywu.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany tapety.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Więcej funkcji, jednak konieczne jest skonfigurowanie pliku motywu .theme. Pozwala na zastosowanie tapety pulpitu, pokazu slajdów, zmiany kursora myszki, koloru paska zadań i dźwięków systemu.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Mniej funkcji, za to prostsza konfiguracja. Zastosuj tapetę na pulpit poszczególnych lub wszystkich ekranów albo wybierz kolor tła.</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Przywracaj motywy zmienione zewnętrznie</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Motyw</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Włącz zmianę motywu Windowsa</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Następna aktualizacja:</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Kolor</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Ciemny motyw</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Jasny motyw</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Obraz</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Obraz (wybór ekranów)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Kolor</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Motyw</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Ekran</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Tryb</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Usuń odłączone ekrany</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Tapeta</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Kod HEX</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Włącz zmianę tapety</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Możesz edytować skróty tylko jak są wyłączone</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>Ustaw ciemny motyw</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>Ustaw jasny motyw</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Skróty klawiszowe</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>Wyłącz stały motyw i wróć do autowyboru</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Włącz skróty klawiszowe</value>
   </data>
 </root>

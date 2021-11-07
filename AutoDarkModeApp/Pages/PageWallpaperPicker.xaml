@@ -184,7 +184,7 @@
                 Grid.Row="0"
                 FontFamily="Segoe UI"
                 FontSize="20"
-                Text="Color"
+                Text="{x:Static p:Resources.WallpaperColor}"
                 />
 
             <Rectangle HorizontalAlignment="Left" 
