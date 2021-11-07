@@ -425,7 +425,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Step</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Use grayscale color filter (sends Win + Ctrl + C)</value>
+    <value>Use color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Use logon task instead of startup entry</value>
