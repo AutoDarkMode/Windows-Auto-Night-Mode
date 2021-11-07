@@ -31,6 +31,8 @@ namespace AutoDarkModeSvc.Handlers
                 tdLogon.Settings.ExecutionTimeLimit = TimeSpan.Zero;
                 tdLogon.Settings.AllowHardTerminate = false;
                 tdLogon.Settings.StartWhenAvailable = true;
+                tdLogon.Settings.StopIfGoingOnBatteries = false;
+                tdLogon.Settings.IdleSettings.StopOnIdleEnd = false;
 
                 tdLogon.Triggers.Add(new LogonTrigger { UserId = Environment.UserDomainName + @"\" + Environment.UserName });
                 tdLogon.Actions.Add(new ExecAction(Extensions.ExecutionPath));

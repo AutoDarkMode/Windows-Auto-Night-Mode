@@ -43,7 +43,7 @@ namespace AutoDarkModeSvc.Modules
                 DateTime sunsetMonitor = ConfigBuilder.Config.Sunset;
                 if (ConfigBuilder.Config.Location.Enabled)
                 {
-                    LocationHandler.GetSunTimesWithOffset(ConfigBuilder, out sunriseMonitor, out sunsetMonitor);
+                    LocationHandler.GetSunTimes(ConfigBuilder, out sunriseMonitor, out sunsetMonitor);
                 }
 
                 //the time between sunrise and sunset, aka "day"

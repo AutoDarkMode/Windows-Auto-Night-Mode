@@ -337,7 +337,6 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test
                     case Command.Test:
-                        ScriptHandler.Launch("powershell test", "pwsh", new() { @"D:\Code\Repos\AutoDarkMode\Deployment\generate_hash.ps1" });
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

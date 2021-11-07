@@ -10,9 +10,9 @@ using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 using AutoDarkModeConfig;
 using System.IO;
-using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using AutoDarkModeSvc.Core;
+using System.Linq;
 
 namespace AutoDarkModeSvc
 {
@@ -24,20 +24,20 @@ namespace AutoDarkModeSvc
         private List<ModuleTimer> Timers { get; set; }
         private IMessageServer MessageServer { get; }
         private AdmConfigMonitor ConfigMonitor { get; }
-        private AdmConfigBuilder Builder { get; }
+        private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
         public readonly ToolStripMenuItem forceDarkMenuItem = new("Force Dark Mode");
         public readonly ToolStripMenuItem forceLightMenuItem = new("Force Light Mode");
-        private delegate void SafeCallDelegate(string text);
 
         public Service(int timerMillis)
         {
-            Builder = AdmConfigBuilder.Instance();
+            // Tray Icon Initialization
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
             NotifyIcon = new NotifyIcon();
             InitTray();
+
+            // Sub-Service Initialization
             MessageServer = new AsyncPipeServer(this, 5);
-            //CommandServer = new ZeroMQServer(Command.DefaultPort, this);
             MessageServer.Start();
 
             ConfigMonitor = new AdmConfigMonitor();
@@ -62,6 +62,11 @@ namespace AutoDarkModeSvc
             MainTimer.RegisterModule(warden);
 
             Timers.ForEach(t => t.Start());
+
+            // Init window handle and register hotkeys
+            _ = Handle.ToInt32();
+            HotkeyHandler.Service = this;
+            if (Builder.Config.Hotkeys.Enabled) HotkeyHandler.RegisterAllHotkeys(Builder);
 
             //exit on shutdown
             NotifyIcon.Disposed += Exit;
@@ -153,12 +158,12 @@ namespace AutoDarkModeSvc
 
         public void ForceMode(object sender, EventArgs e)
         {
+            GlobalState state = GlobalState.Instance();
             ToolStripMenuItem mi = sender as ToolStripMenuItem;
             if (mi.Checked)
             {
                 Logger.Info("ui signal received: stop forcing specific theme");
-                GlobalState rtc = GlobalState.Instance();
-                rtc.ForcedTheme = Theme.Unknown;
+                state.ForcedTheme = Theme.Unknown;
                 ThemeManager.RequestSwitch(Builder, new(SwitchSource.Manual));
                 mi.Checked = false;
             }
@@ -171,7 +176,6 @@ namespace AutoDarkModeSvc
                         (item as ToolStripMenuItem).Checked = false;
                     }
                 }
-                GlobalState state = GlobalState.Instance();
                 if (mi.Name == "forceLight")
                 {
                     Logger.Info("ui signal received: forcing light theme");
@@ -242,6 +246,44 @@ namespace AutoDarkModeSvc
                     Logger.Debug(ex, "mutex abandoned before wait");
                 }
             }
+        }
+
+        public const int WM_HOTKEY = 0x312;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_HOTKEY && m.WParam == (IntPtr)0)
+            {
+                int modifiers = (int)m.LParam & 0xFFFF;
+                Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+                List<Keys> modifiersPressed = new();
+                if ((modifiers & (int)HotkeyHandler.ModifierKeys.Alt) != 0) modifiersPressed.Add(Keys.Alt);
+                if ((modifiers & (int)HotkeyHandler.ModifierKeys.Shift) != 0) modifiersPressed.Add(Keys.Shift);
+                if ((modifiers & (int)HotkeyHandler.ModifierKeys.Control) != 0) modifiersPressed.Add(Keys.Control);
+                if ((modifiers & (int)HotkeyHandler.ModifierKeys.Win) != 0) modifiersPressed.Add(Keys.LWin);
+
+                var match = HotkeyHandler.GetRegistered(modifiersPressed, key);
+                if (match == null)
+                {
+                    if (modifiersPressed.Contains(Keys.LWin))
+                    {
+                        modifiersPressed.Remove(Keys.LWin);
+                        modifiersPressed.Add(Keys.RWin);
+                    }
+                    match = HotkeyHandler.GetRegistered(modifiersPressed, key);
+                }
+                if (match != null)
+                {
+                    try
+                    {
+                        match.Action();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "error in hwnd proc while processing hotkey:");
+                    }
+                }
+            }
+            base.WndProc(ref m);
         }
     }
 }

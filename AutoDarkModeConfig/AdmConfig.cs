@@ -18,6 +18,7 @@ namespace AutoDarkModeConfig
             Events = new();
             WindowsThemeMode = new();
             Updater = new();
+            Hotkeys = new();
 
             //New Component Settings;
             AppsSwitch = new();
@@ -39,8 +40,18 @@ namespace AutoDarkModeConfig
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
+        public Hotkeys Hotkeys { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public Updater Updater { get; set; }
+    }
+
+    public class Hotkeys
+    {
+        public bool Enabled { get; set; }
+        public string ForceLightHotkey { get; set; }
+        public string ForceDarkHotkey { get; set; }
+        public string NoForceHotkey { get; set; }
+
     }
 
     public class Addons
