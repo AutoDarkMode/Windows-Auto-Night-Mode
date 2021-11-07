@@ -8,7 +8,7 @@
       xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
       mc:Ignorable="d" 
       
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="PageSwitchModes"
       Height="Auto" Width="Auto">
 
@@ -111,6 +111,78 @@
                 Margin="0,0,0,0" 
                 Click="CheckBoxBatteryDarkMode_Click"
                 />
+
+            <TextBlock
+                Name="TextBlockHotkeys"
+                Margin="0,40,0,10"
+                Text="{x:Static p:Resources.SwitchModesTextBlockHeaderHotkeys}"
+                FontFamily="Segoe UI"
+                FontSize="19"
+                />
+
+            <ui:ToggleSwitch
+                Name="ToggleHotkeys"
+                OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                Grid.Row="0"
+                Margin="0,10,0,0"
+                Header="{x:Static p:Resources.SwitchModesToggleHeaderHotkey}"
+                Toggled="ToggleHotkeys_Toggled"
+            />
+
+            <TextBlock
+                Name="TextBlockHotkeyEditHint"
+                Foreground="#999999"
+                Text="{x:Static p:Resources.SwitchModesHotkeyEditHint}"
+                FontSize="14"
+                />
+
+            <Grid Name="GridHotkeys">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0" Grid.Row="0">
+                    <TextBlock Text="{x:Static p:Resources.SwitchModesTextBlockHeaderForceLightHotkey}"
+                               FontSize="14"
+                    />
+                    <TextBox HorizontalAlignment="Left" 
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240" Margin="0,5,0,0" 
+                             Grid.Column="1" 
+                             Name="HotkeyTextboxForceLight" 
+                             PreviewKeyDown="HotkeyTextboxForceLight_PreviewKeyDown"/>
+                </ui:SimpleStackPanel>
+                
+                <ui:SimpleStackPanel Margin="0,10,0,0" Grid.Row="1">
+                    <TextBlock
+                    Text="{x:Static p:Resources.SwitchModesTextBlockHeaderForceDarkHotkey}"
+                    FontSize="14"
+                    />
+                    <TextBox HorizontalAlignment="Left" 
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240" 
+                             Margin="0,5,0,0" 
+                             Grid.Column="1" 
+                             Name="HotkeyTextboxForceDark" 
+                             PreviewKeyDown="HotkeyTextboxForceDark_PreviewKeyDown"/>
+                </ui:SimpleStackPanel>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0" Grid.Row="2">
+                    <TextBlock Text="{x:Static p:Resources.SwitchModesTextBlockHeaderNoForceHotkey}"
+                               FontSize="14"
+                    />
+                    <TextBox HorizontalAlignment="Left" 
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0" 
+                             Grid.Column="1" 
+                             Name="HotkeyTextboxNoForce" 
+                             PreviewKeyDown="HotkeyTextboxNoForce_PreviewKeyDown"/>
+                </ui:SimpleStackPanel>
+            </Grid>
         </ui:SimpleStackPanel>
     </Grid>
 </Page>

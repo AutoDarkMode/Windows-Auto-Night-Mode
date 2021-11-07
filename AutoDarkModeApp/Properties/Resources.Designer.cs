@@ -1338,7 +1338,16 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu GPU usage detection speed.
+        ///   Looks up a localized string similar to You can only edit hotkeys while they are disabled..
+        /// </summary>
+        public static string SwitchModesHotkeyEditHint {
+            get {
+                return ResourceManager.GetString("SwitchModesHotkeyEditHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU usage detection speed.
         /// </summary>
         public static string SwitchModesTextBlockGPUUsageDetectionSpeed {
             get {
@@ -1365,7 +1374,43 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Minimum GPU usage to delay switching.
+        ///   Looks up a localized string similar to Force Dark Mode Hotkey.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderForceDarkHotkey {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderForceDarkHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force Light Mode Hotkey.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderForceLightHotkey {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderForceLightHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotkeys.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderHotkeys {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderHotkeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop Forcing Theme Hotkey.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderNoForceHotkey {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderNoForceHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum GPU usage to delay switching.
         /// </summary>
         public static string SwitchModesTextBlockMinimumUsage {
             get {
@@ -1374,7 +1419,16 @@ namespace AutoDarkModeApp.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Recommended tools.
+        ///   Looks up a localized string similar to Enable system-wide hotkeys.
+        /// </summary>
+        public static string SwitchModesToggleHeaderHotkey {
+            get {
+                return ResourceManager.GetString("SwitchModesToggleHeaderHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recommended tools.
         /// </summary>
         public static string tbAppsTitleRecommendedTools {
             get {
