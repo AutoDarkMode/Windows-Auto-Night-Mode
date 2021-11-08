@@ -37,13 +37,13 @@ namespace AutoDarkModeSvc
 
         public Service(int timerMillis)
         {
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Builder.Config.Tunable.UICulture);
             // Tray Icon Initialization
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
             forceDarkMenuItem.Text = AdmProperties.Resources.ForceDarkTheme;
             forceLightMenuItem.Text = AdmProperties.Resources.ForceLightTheme;
 
-            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Builder.Config.Tunable.UICulture);
 
             NotifyIcon = new NotifyIcon();
             InitTray();

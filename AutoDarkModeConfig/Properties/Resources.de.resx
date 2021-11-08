@@ -686,6 +686,9 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Erzwinge Helles Design</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Konfigurationsverzeichnis öffnen</value>
+    <value>Konfigurationsordner Öffnen</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
 </root>
