@@ -475,7 +475,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Adım</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Gri tonlamalı renk filtresini kullan (Win+Ctrl+C gönderir)</value>
+    <value>Gri tonlamalı renk filtresini kullan (Win + Ctrl + C gönderir)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Başlangıç girdisi yerine oturum açma görevi kullan</value>
