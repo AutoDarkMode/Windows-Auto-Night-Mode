@@ -232,7 +232,7 @@
     <value>Devre dışı</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Kapat</value>
+    <value>Çıkış</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Uygulamalar</value>
@@ -438,7 +438,7 @@ Ama aynı zamanda pil ömrünü de azaltır. Bu yüzden SADECE gerekirse etkinle
     <value>Kaydırma (dk.)</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Uygula</value>
+    <value>Ayarla</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Bir Windows Teması kullanılırken bu seçenekler devre dışı bırakılır. 
@@ -706,42 +706,139 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Çiçekler</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (Açık)</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>Yakalanan Hareket</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (Koyu)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>Akış</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (Açık)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Gün doğumu</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>Işıma</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Her gün</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Değişiklikleri kaydetmek için Ayarla'ya basın</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Sürüm</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Windows başlangıcında çalıştır</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Otomatik başlatma</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Mod:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Yol:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Oto başlatmayı yenile</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>Uygulamayı Yeniden Başlat</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Devre dışı</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Bulunamadı</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Kayıt Defteri Anahtarı</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Görev</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Sonraki güncelleme:</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Renk</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>Koyu Temayı Zorla</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>Açık Temayı Zorla</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Simgenin gizlenmesi önerilmez.
+Gerçekten devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Bildirim Alanı Simgesi Gizleme</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>Yapılandırma Klasörünü Aç</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Temadayken Görev Çubuğu Vurgu Rengi'ni kullan</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Yalnızca vurgu</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Windows aracılığıyla otomatik başlatma girişini devre dışı bıraktınız.</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Kısayol tuşlarını yalnızca devre dışı bırakılmışken düzenleyebilirsiniz.</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>Koyu Temayı Zorla</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>Açık Temayı Zorla</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Kısayol Tuşları</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>Tema Zorlamayı Durdur</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Sistem genelinde kısayol tuşlarını etkinleştir</value>
   </data>
 </root>
