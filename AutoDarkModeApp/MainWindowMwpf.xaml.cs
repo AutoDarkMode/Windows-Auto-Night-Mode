@@ -87,41 +87,6 @@ namespace AutoDarkModeApp
             }
         }
 
-        //jump list
-        private static void AddJumpList()
-        {
-            JumpTask darkJumpTask = new()
-            {
-                //Dark theme
-                Title = AdmProperties.Resources.lblDarkTheme,
-                Arguments = Command.Dark,
-                CustomCategory = AdmProperties.Resources.lblSwitchTheme
-            };
-            JumpTask lightJumpTask = new()
-            {
-                //Light theme
-                Title = AdmProperties.Resources.lblLightTheme,
-                Arguments = Command.Light,
-                CustomCategory = AdmProperties.Resources.lblSwitchTheme
-            };
-            JumpTask resetJumpTask = new()
-            {
-                //Reset
-                Title = AdmProperties.Resources.lblReset,
-                Arguments = Command.NoForce,
-                CustomCategory = AdmProperties.Resources.lblSwitchTheme
-            };
-
-            JumpList jumpList = new();
-            jumpList.JumpItems.Add(darkJumpTask);
-            jumpList.JumpItems.Add(lightJumpTask);
-            jumpList.JumpItems.Add(resetJumpTask);
-            jumpList.ShowFrequentCategory = false;
-            jumpList.ShowRecentCategory = false;
-
-            JumpList.SetJumpList(Application.Current, jumpList);
-        }
-
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {

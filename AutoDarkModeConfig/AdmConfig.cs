@@ -133,7 +133,7 @@ namespace AutoDarkModeConfig
         public bool Debug { get; set; }
         public bool DebugTimerMessage { get; set; }
         public bool ShowTrayIcon { get; set; } = true;
-        public string UICulture { get; set; } = "en-us";
+        public string UICulture { get; set; } = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
     }
 
     public class GPUMonitoring

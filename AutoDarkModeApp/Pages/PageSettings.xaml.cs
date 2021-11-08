@@ -219,6 +219,15 @@ namespace AutoDarkModeApp.Pages
                     ButtonRestart.Content = AdmProperties.Resources.restart;
                     ButtonRestart.Visibility = Visibility.Visible;
                     Settings.Default.LanguageChanged = true;
+                    builder.Config.Tunable.UICulture = selectedLanguage;
+                    try
+                    {
+                        builder.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex, "comboboxlanguageselection_builder_save");
+                    }
                 }
                 else
                 {
@@ -242,6 +251,7 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
+                MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
                 Settings.Default.Save();
                 Process.Start(new ProcessStartInfo(Extensions.ExecutionPathApp)
                 {

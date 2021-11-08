@@ -165,10 +165,10 @@ namespace AutoDarkModeConfig
             Loading = true;
         }
 
-        public void Load()
+        public void Load(bool createIfNotExists = true)
         {
             Loading = true;
-            AdmConfig deser = Deserialize<AdmConfig>(ConfigFilePath, Config);
+            AdmConfig deser = Deserialize<AdmConfig>(ConfigFilePath, Config, createIfNotExists);
             Config = deser ?? Config;
             Loading = false;
         }
@@ -190,9 +190,9 @@ namespace AutoDarkModeConfig
             configUpdatedHandler?.Invoke(old, Config);
         }
 
-        private T Deserialize<T>(string FilePath, object current, bool useFlowStyleList = false)
+        private T Deserialize<T>(string FilePath, object current, bool useFlowStyleList = false, bool createIfNotExists = true)
         {
-            if (!File.Exists(FilePath))
+            if (!File.Exists(FilePath) && createIfNotExists)
             {
                 SaveConfig(FilePath, current, useFlowStyleList);
             }

@@ -33,7 +33,7 @@ namespace AutoDarkModeSvc
         public readonly ToolStripMenuItem forceDarkMenuItem = new();
 
         public readonly ToolStripMenuItem forceLightMenuItem = new();
-        private bool closeApp;
+        private bool closeApp = true;
 
         public Service(int timerMillis)
         {

@@ -52,7 +52,7 @@ namespace AutoDarkModeApp
             {
                 try
                 {
-                    Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+                    Settings.Default.Language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToString();
                 }
                 catch
                 {
