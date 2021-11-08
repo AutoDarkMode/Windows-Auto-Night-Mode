@@ -12,7 +12,10 @@ using AutoDarkModeConfig;
 using System.IO;
 using Microsoft.Win32;
 using AutoDarkModeSvc.Core;
-using System.Linq;
+using AdmProperties = AutoDarkModeConfig.Properties;
+using System.Globalization;
+using System.ComponentModel;
+using AutoDarkModeSvc.Events;
 
 namespace AutoDarkModeSvc
 {
@@ -20,19 +23,28 @@ namespace AutoDarkModeSvc
     {
         private readonly bool allowshowdisplay = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private NotifyIcon NotifyIcon { get; }
         private List<ModuleTimer> Timers { get; set; }
         private IMessageServer MessageServer { get; }
         private AdmConfigMonitor ConfigMonitor { get; }
         private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-        public readonly ToolStripMenuItem forceDarkMenuItem = new("Force Dark Mode");
-        public readonly ToolStripMenuItem forceLightMenuItem = new("Force Light Mode");
+
+        public readonly ToolStripMenuItem forceDarkMenuItem = new();
+
+        public readonly ToolStripMenuItem forceLightMenuItem = new();
+        private bool closeApp;
 
         public Service(int timerMillis)
         {
             // Tray Icon Initialization
             forceDarkMenuItem.Name = "forceDark";
             forceLightMenuItem.Name = "forceLight";
+            forceDarkMenuItem.Text = AdmProperties.Resources.ForceDarkTheme;
+            forceLightMenuItem.Text = AdmProperties.Resources.ForceLightTheme;
+
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Builder.Config.Tunable.UICulture);
+
             NotifyIcon = new NotifyIcon();
             InitTray();
 
@@ -40,7 +52,7 @@ namespace AutoDarkModeSvc
             MessageServer = new AsyncPipeServer(this, 5);
             MessageServer.Start();
 
-            ConfigMonitor = new AdmConfigMonitor();
+            ConfigMonitor = new AdmConfigMonitor(this);
             ConfigMonitor.Start();
 
             ModuleTimer MainTimer = new(timerMillis, TimerName.Main);
@@ -80,8 +92,8 @@ namespace AutoDarkModeSvc
 
         private void InitTray()
         {
-            ToolStripMenuItem exitMenuItem = new("Close");
-            ToolStripMenuItem openConfigDirItem = new("Open Config Directory");
+            ToolStripMenuItem exitMenuItem = new(AdmProperties.Resources.msgClose);
+            ToolStripMenuItem openConfigDirItem = new(AdmProperties.Resources.TrayMenuItemOpenConfigDir);
             exitMenuItem.Click += new EventHandler(RequestExit);
             openConfigDirItem.Click += new EventHandler(OpenConfigDir);
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
@@ -124,7 +136,7 @@ namespace AutoDarkModeSvc
             }
         }
 
-        public void Exit(object sender, EventArgs e)
+        private void Exit(object sender, EventArgs e)
         {
             Logger.Info("exiting service");
             MessageServer.Stop();
@@ -133,15 +145,18 @@ namespace AutoDarkModeSvc
             Timers.ForEach(t => t.Dispose());
             try
             {
-                Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
-                if (pApp.Length != 0)
+                if (closeApp)
                 {
-                    pApp[0].Kill();
-                }
-                foreach (Process p in pApp)
-                {
-                    p.Dispose();
-                }
+                    Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
+                    if (pApp.Length != 0)
+                    {
+                        pApp[0].Kill();
+                    }
+                    foreach (Process p in pApp)
+                    {
+                        p.Dispose();
+                    }
+                }              
             }
             catch (Exception ex)
             {
@@ -152,8 +167,26 @@ namespace AutoDarkModeSvc
 
         public void RequestExit(object sender, EventArgs e)
         {
+            if (e is ExitEventArgs exe)
+            {
+                closeApp = exe.CloseApp;
+            }
             if (NotifyIcon != null) NotifyIcon.Dispose();
             else Exit(sender, e);
+        }
+
+        public void Restart(object sender, EventArgs e)
+        {
+            _ = Process.Start(new ProcessStartInfo(Extensions.ExecutionPath)
+            {
+                UseShellExecute = false,
+                Verb = "open"
+            });
+            if (e is ExitEventArgs exe)
+            {
+                closeApp = exe.CloseApp;
+            }
+            RequestExit(sender, e);
         }
 
         public void ForceMode(object sender, EventArgs e)

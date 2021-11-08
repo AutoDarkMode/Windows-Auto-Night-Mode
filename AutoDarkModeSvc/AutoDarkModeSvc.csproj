@@ -65,7 +65,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="SwitchComponents\Addons\" />
   </ItemGroup>
 

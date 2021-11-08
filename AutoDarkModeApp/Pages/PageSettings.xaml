@@ -188,6 +188,7 @@
                 Text="{x:Static p:Resources.lblUpdates}"
                 />
                 <TextBlock
+                    HorizontalAlignment="Left"
                     FontSize="14"
                     Text="{x:Static p:Resources.tbUpdates}"
                     TextWrapping="Wrap"

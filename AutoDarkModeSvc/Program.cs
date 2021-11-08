@@ -10,6 +10,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
+using System.Globalization;
+using System.Reflection;
 
 namespace AutoDarkModeSvc
 {
@@ -87,7 +89,7 @@ namespace AutoDarkModeSvc
                 string commitHash = Extensions.CommitHash();
                 if (commitHash != "")
                 {
-                    Logger.Info($"commit hash: {commitHash}");
+                    Logger.Info($"commit hash: {commitHash}, build: {Assembly.GetExecutingAssembly().GetName().Version}");
                     Logger.Info($"cwd: {Extensions.ExecutionPath}");
                 }
                 else
@@ -225,6 +227,7 @@ namespace AutoDarkModeSvc
                 Application.SetCompatibleTextRenderingDefault(false);
                 Service = new Service(timerMillis);
                 Application.Run(Service);
+
             }
             catch (Exception ex)
             {

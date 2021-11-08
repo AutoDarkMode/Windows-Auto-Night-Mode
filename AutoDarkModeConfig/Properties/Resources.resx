@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
     <value>Settings</value>
@@ -824,5 +824,14 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Enable system-wide hotkeys</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>Force Dark Theme</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>Force Light Theme</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>Open Config Directory</value>
   </data>
 </root>

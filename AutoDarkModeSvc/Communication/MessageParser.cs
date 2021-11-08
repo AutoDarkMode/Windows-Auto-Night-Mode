@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Config;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
@@ -222,6 +223,17 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok
                         }.ToString());
                         service.RequestExit(null, null);
+                        break;
+                    #endregion
+
+                    #region Restart
+                    case Command.Restart:
+                        Logger.Info("signal received, restarting");
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
+                        service.Restart(null, new ExitEventArgs(false));
                         break;
                     #endregion
 

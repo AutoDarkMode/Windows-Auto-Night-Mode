@@ -110,6 +110,9 @@ namespace AutoDarkModeSvc.Communication
         public const string Shutdown = "--exit";
 
         [Includable]
+        public const string Restart = "--restart";
+
+        [Includable]
         public const string Alive = "--alive";
 
         [Includable]
