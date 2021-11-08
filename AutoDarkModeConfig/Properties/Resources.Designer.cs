@@ -1284,6 +1284,25 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hiding the icon isn&apos;t recommended.
+        ///Do you really want to continue?.
+        /// </summary>
+        public static string SettingsPageTrayDisableMessageBoxContent {
+            get {
+                return ResourceManager.GetString("SettingsPageTrayDisableMessageBoxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide Tray Icon.
+        /// </summary>
+        public static string SettingsPageTrayDisableMessageBoxHeader {
+            get {
+                return ResourceManager.GetString("SettingsPageTrayDisableMessageBoxHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have disabled the auto start entry via Windows..
         /// </summary>
         public static string SettingsPageWindowsAutostartDisabled {

@@ -52,7 +52,7 @@ namespace AutoDarkModeSvc
             MessageServer = new AsyncPipeServer(this, 5);
             MessageServer.Start();
 
-            ConfigMonitor = new AdmConfigMonitor(this);
+            ConfigMonitor = new AdmConfigMonitor();
             ConfigMonitor.Start();
 
             ModuleTimer MainTimer = new(timerMillis, TimerName.Main);

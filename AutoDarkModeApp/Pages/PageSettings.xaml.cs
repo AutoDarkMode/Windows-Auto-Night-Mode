@@ -389,7 +389,7 @@ namespace AutoDarkModeApp.Pages
         {
             if ((sender as CheckBox).IsChecked.Value)
             {
-                MsgBox confirm = new("Disabling the icon isn't recommended.\nIt also requires a reboot. Do you really want to continue?", "Hide Tray Icon", "info", "yesno")
+                MsgBox confirm = new(AdmProperties.Resources.SettingsPageTrayDisableMessageBoxContent, AdmProperties.Resources.SettingsPageTrayDisableMessageBoxHeader, "info", "yesno")
                 {
                     Owner = Window.GetWindow(this)
                 };
@@ -408,6 +408,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
+                _ = MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
             }
             catch (Exception ex)
             {

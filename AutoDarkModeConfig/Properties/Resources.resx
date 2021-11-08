@@ -674,11 +674,9 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>Latitude</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
     <value>Longitude</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
     <value>Service not running yet, please wait...</value>
@@ -706,43 +704,43 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Flowers</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (Light)</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>Captured Motion</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (Dark)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>Flow</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>Glow</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (Light)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Sunrise</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Every day</value>
@@ -830,6 +828,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
     <value>Force Light Theme</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Hiding the icon isn't recommended.
+Do you really want to continue?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Hide Tray Icon</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Open Config Directory</value>

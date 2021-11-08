@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.Config
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
         /// </summary>
-        public AdmConfigMonitor(Service service)
+        public AdmConfigMonitor()
         {
             ConfigWatcher = new FileSystemWatcher
             {
