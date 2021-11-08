@@ -62,8 +62,8 @@ namespace AutoDarkModeApp.Pages
             NumberboxOffsetDark.Value = Convert.ToDouble(builder.Config.Location.SunsetOffsetMin);
 
             //read coordinates from config file
-            NumberBoxLat.Text = builder.Config.Location.CustomLat.ToString();
-            NumberBoxLon.Text = builder.Config.Location.CustomLon.ToString();
+            NumberBoxLat.Text = builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
+            NumberBoxLon.Text = builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
             //tick correct radio button and prepare UI
             //is auto theme switch enabled?
@@ -706,8 +706,8 @@ namespace AutoDarkModeApp.Pages
                 }
                 tb.Text = validated;
 
-                _ = double.TryParse(NumberBoxLat.Text, out double latParsed);
-                _ = double.TryParse(NumberBoxLon.Text, out double lonParsed);
+                _ = double.TryParse(NumberBoxLat.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double latParsed);
+                _ = double.TryParse(NumberBoxLon.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double lonParsed);
                 if (latParsed > 90) NumberBoxLat.Text = "90";
                 else if (latParsed < -90) NumberBoxLat.Text = "-90";
                 if (lonParsed > 180) NumberBoxLon.Text = "180";
