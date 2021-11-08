@@ -674,11 +674,9 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>纬度</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
     <value>经度</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
     <value>服务尚未运行，请稍候……</value>
@@ -706,43 +704,43 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>鲜花</value>
-    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows（浅色主题）</value>
-    <comment>使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>捕获的动作</value>
-    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows（深色主题）</value>
-    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>流畅</value>
-    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>发光</value>
-    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows（浅色主题）</value>
-    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>日出</value>
-    <comment>使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>每天</value>
@@ -755,5 +753,90 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>仅强调色</value>
+  </data>
+    <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>开机启动 Auto Dark Mode</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>自启动</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>模式：</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>路径：</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>刷新自启动</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>重启应用</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>未找到</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>注册表键值</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>你在 Windows 中禁用了启动项。</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>下一次更新将在</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>你只能在快捷键已禁用的情况下进行编辑。</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>强制深色模式快捷键</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>强制浅色模式快捷键</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>快捷键</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>停止强制主题快捷键</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>启用系统级快捷键</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>强制深色主题</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>强制浅色主题</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>不建议隐藏托盘图标。
+你真的想继续吗？</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>隐藏托盘图标</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>打开配置文件夹</value>
   </data>
 </root>
