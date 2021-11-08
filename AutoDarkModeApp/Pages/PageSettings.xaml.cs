@@ -1,15 +1,14 @@
-﻿using AutoDarkModeApp.Properties;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeComms;
+using AdmProperties = AutoDarkModeConfig.Properties;
+using AutoDarkModeApp.Properties;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 using System.IO;
@@ -71,7 +70,7 @@ namespace AutoDarkModeApp.Pages
 
             //battery slider / energy saver mitigation
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
-            CheckBoxEnergySaverMitigation.ToolTip = Properties.Resources.cbSettingsEnergySaverMitigationInfo;
+            CheckBoxEnergySaverMitigation.ToolTip = AdmProperties.Resources.cbSettingsEnergySaverMitigationInfo;
             if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
                 StackPanelBatterySlider.Visibility = Visibility.Collapsed;
@@ -84,11 +83,11 @@ namespace AutoDarkModeApp.Pages
             //updater ui
             if (builder.UpdaterData.LastCheck.Year.ToString().Equals("1"))
             {
-                TextBlockUpdateInfo.Text = $"{Properties.Resources.UpdatesTextBlockLastChecked}: {Properties.Resources.UpdatesTextBlockLastCheckedNever}";
+                TextBlockUpdateInfo.Text = $"{AdmProperties.Resources.UpdatesTextBlockLastChecked}: {AdmProperties.Resources.UpdatesTextBlockLastCheckedNever}";
             }
             else
             {
-                TextBlockUpdateInfo.Text = $"{Properties.Resources.UpdatesTextBlockLastChecked}: {builder.UpdaterData.LastCheck}";
+                TextBlockUpdateInfo.Text = $"{AdmProperties.Resources.UpdatesTextBlockLastChecked}: {builder.UpdaterData.LastCheck}";
 
             }
             CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
@@ -214,10 +213,10 @@ namespace AutoDarkModeApp.Pages
                 if (selectedLanguage != curLanguage)
                 {
                     SetLanguage(selectedLanguage);
-                    Translator.Text = Properties.Resources.lblTranslator;
-                    TextBlockLanguageRestart.Text = Properties.Resources.restartNeeded;
+                    Translator.Text = AdmProperties.Resources.lblTranslator;
+                    TextBlockLanguageRestart.Text = AdmProperties.Resources.restartNeeded;
                     TextBlockLanguageRestart.Visibility = Visibility.Visible;
-                    ButtonRestart.Content = Properties.Resources.restart;
+                    ButtonRestart.Content = AdmProperties.Resources.restart;
                     ButtonRestart.Visibility = Visibility.Visible;
                     Settings.Default.LanguageChanged = true;
                 }
@@ -226,7 +225,7 @@ namespace AutoDarkModeApp.Pages
                     SetLanguage(selectedLanguage);
                     TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
                     ButtonRestart.Visibility = Visibility.Collapsed;
-                    Translator.Text = Properties.Resources.lblTranslator;
+                    Translator.Text = AdmProperties.Resources.lblTranslator;
                     Settings.Default.LanguageChanged = false;
                 }
             }
@@ -292,8 +291,8 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(Exception ex, string location)
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -412,15 +411,15 @@ namespace AutoDarkModeApp.Pages
         private void ButtonSearchUpdate_Click(object sender, RoutedEventArgs e)
         {
             ButtonSearchUpdate.IsEnabled = false;
-            TextBlockUpdateInfo.Text = Properties.Resources.msgSearchUpd;//searching for update...
+            TextBlockUpdateInfo.Text = AdmProperties.Resources.msgSearchUpd;//searching for update...
             updater.CheckNewVersion();
             if (updater.UpdateAvailable())
             {
-                TextBlockUpdateInfo.Text = Properties.Resources.msgUpdateAvail;//a new update is available!
+                TextBlockUpdateInfo.Text = AdmProperties.Resources.msgUpdateAvail;//a new update is available!
             }
             else
             {
-                TextBlockUpdateInfo.Text = Properties.Resources.msgNoUpd;//no new updates are available.
+                TextBlockUpdateInfo.Text = AdmProperties.Resources.msgNoUpd;//no new updates are available.
                 ButtonSearchUpdate.IsEnabled = true;
             }
         }

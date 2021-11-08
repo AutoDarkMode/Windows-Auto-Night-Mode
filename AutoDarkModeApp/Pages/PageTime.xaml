@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:ui="http://schemas.modernwpf.com/2019"
-      xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+      xmlns:p="clr-namespace:AutoDarkModeConfig.Properties;assembly=AutoDarkModeConfig"
       mc:Ignorable="d"
       
       Title="PageTime" 

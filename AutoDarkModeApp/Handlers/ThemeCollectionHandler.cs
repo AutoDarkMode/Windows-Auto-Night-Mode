@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AdmProperties = AutoDarkModeConfig.Properties;
+
 
 namespace AutoDarkModeApp.Handlers
 {
@@ -34,20 +33,20 @@ namespace AutoDarkModeApp.Handlers
         {
             if (Environment.OSVersion.Version.Build >= 22000)
             {
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\aero.theme", Properties.Resources.ThemePickerTheme11Light));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\dark.theme", Properties.Resources.ThemePickerTheme11Dark));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeA.theme", Properties.Resources.ThemePickerTheme11Glow));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeB.theme", Properties.Resources.ThemePickerTheme11CapturedMotion));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeC.theme", Properties.Resources.ThemePickerTheme11Sunrise));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeD.theme", Properties.Resources.ThemePickerTheme11Flow));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\aero.theme", AdmProperties.Resources.ThemePickerTheme11Light));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\dark.theme", AdmProperties.Resources.ThemePickerTheme11Dark));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeA.theme", AdmProperties.Resources.ThemePickerTheme11Glow));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeB.theme", AdmProperties.Resources.ThemePickerTheme11CapturedMotion));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeC.theme", AdmProperties.Resources.ThemePickerTheme11Sunrise));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeD.theme", AdmProperties.Resources.ThemePickerTheme11Flow));
 
             }
             else
             {
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\aero.theme", Properties.Resources.ThemePickerTheme10Windows));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\Light.theme", Properties.Resources.ThemePickerTheme10WindowsLight));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\theme1.theme", Properties.Resources.ThemePickerTheme10Windows10));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\theme2.theme", Properties.Resources.ThemePickerTheme10Flowers));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\aero.theme", AdmProperties.Resources.ThemePickerTheme10Windows));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\Light.theme", AdmProperties.Resources.ThemePickerTheme10WindowsLight));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\theme1.theme", AdmProperties.Resources.ThemePickerTheme10Windows10));
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\theme2.theme", AdmProperties.Resources.ThemePickerTheme10Flowers));
             }
         }
     }

@@ -3,15 +3,14 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
-using Windows.Devices.Geolocation;
 using Windows.System.Power;
+using AdmProperties = AutoDarkModeConfig.Properties;
 using AutoDarkModeApp.Properties;
 using System.Diagnostics;
 using AutoDarkModeConfig;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeComms;
 using AutoDarkModeApp.Handlers;
 
 namespace AutoDarkModeApp.Pages
@@ -126,7 +125,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch
             {
-                userFeedback.Text = Properties.Resources.errorNumberInput;
+                userFeedback.Text = AdmProperties.Resources.errorNumberInput;
                 return;
             }
 
@@ -213,7 +212,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch
             {
-                userFeedback.Text = Properties.Resources.errorNumberInput;
+                userFeedback.Text = AdmProperties.Resources.errorNumberInput;
                 return;
             }
 
@@ -249,12 +248,12 @@ namespace AutoDarkModeApp.Pages
             //show warning for notebook on battery with enabled battery saver
             if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+                userFeedback.Text = AdmProperties.Resources.msgChangesSaved + "\n\n" + AdmProperties.Resources.msgBatterySaver;
                 applyButton.IsEnabled = true;
             }
             else
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+                userFeedback.Text = AdmProperties.Resources.msgChangesSaved;//changes were saved!
             }
 
             try
@@ -273,9 +272,9 @@ namespace AutoDarkModeApp.Pages
         //if something went wrong while applying the settings :(
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
         {
-            userFeedback.Text = Properties.Resources.msgErrorOcc;
-            string error = string.Format(Properties.Resources.errorThemeApply, Properties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            userFeedback.Text = AdmProperties.Resources.msgErrorOcc;
+            string error = string.Format(AdmProperties.Resources.errorThemeApply, AdmProperties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -299,14 +298,14 @@ namespace AutoDarkModeApp.Pages
         public async Task ActivateLocationMode()
         {
             //ui
-            locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
-            userFeedback.Text = Properties.Resources.msgSearchLoc;
+            locationBlock.Text = AdmProperties.Resources.msgSearchLoc;//Searching your location...
+            userFeedback.Text = AdmProperties.Resources.msgSearchLoc;
 
             await LoadGeolocationData();
             UpdateSuntimes();
 
             // ui controls
-            userFeedback.Text = Properties.Resources.msgChangesSaved;
+            userFeedback.Text = AdmProperties.Resources.msgChangesSaved;
 
             return;
         }
@@ -343,11 +342,11 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
                 {
-                    locationBlock.Text = Properties.Resources.lblCity + ": " + await LocationHandler.GetCityName();
+                    locationBlock.Text = AdmProperties.Resources.lblCity + ": " + await LocationHandler.GetCityName();
                 }
                 else if (!builder.Config.Location.UseGeolocatorService)
                 {
-                    locationBlock.Text = $"{Properties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
+                    locationBlock.Text = $"{AdmProperties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
                 }
             }
             catch (Exception ex)
@@ -359,8 +358,8 @@ namespace AutoDarkModeApp.Pages
 
         private async void NoLocationAccess()
         {
-            locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
-            userFeedback.Text = Properties.Resources.msgLocPerm;
+            locationBlock.Text = AdmProperties.Resources.msgLocPerm;//The App needs permission to location
+            userFeedback.Text = AdmProperties.Resources.msgLocPerm;
             locationBlock.Visibility = Visibility.Visible;
             TextBlockDarkTime.Text = null;
             TextBlockLightTime.Text = null;
@@ -372,7 +371,7 @@ namespace AutoDarkModeApp.Pages
             TogglePanelVisibility(true, false, false, false);
 
             builder.Config.Location.Enabled = false;
-            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+            userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
         }
 
 
@@ -384,7 +383,7 @@ namespace AutoDarkModeApp.Pages
             //RadioButtonCustomTimes.IsChecked = builder.Config.Location.Enabled && !builder.Config.Location.UseGeolocatorService;
 
             StackPanelTimePicker.IsEnabled = true;
-            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+            userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
 
             //this setting enables all the configuration possibilities of auto dark mode
             if (!builder.Config.AutoThemeSwitchingEnabled)
@@ -418,20 +417,20 @@ namespace AutoDarkModeApp.Pages
             }
 
             StackPanelTimePicker.IsEnabled = false;
-            userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
+            userFeedback.Text = AdmProperties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
         private void UpdateSuntimes()
         {
             LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
             if (Settings.Default.AlterTime)
             {
-                TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock1
-                TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock2
+                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock2
             }
             else
             {
-                TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
-                TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
+                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
             }
             DateTime nextUpdate = builder.LocationData.LastUpdate.Add(builder.Config.Location.PollingCooldownTimeSpan);
             if (Settings.Default.AlterTime) LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("en"));
@@ -453,7 +452,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch
             {
-                userFeedback.Text = Properties.Resources.errorNumberInput;
+                userFeedback.Text = AdmProperties.Resources.errorNumberInput;
                 return;
             }
             builder.Config.Location.Enabled = true;
@@ -475,8 +474,8 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(Exception ex, string location = "PageTime")
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -626,7 +625,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         OffsetButton.IsEnabled = true;
                     }
-                    userFeedback.Text = Properties.Resources.TimeTextBlockClickOnSetMessage;
+                    userFeedback.Text = AdmProperties.Resources.TimeTextBlockClickOnSetMessage;
                 }
                 else if (sender.Tag.Equals("coordinates"))
                 {
@@ -634,7 +633,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         ButtonApplyCoordinates.IsEnabled = true;
                     }
-                    userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+                    userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
                 }
             }
         }
@@ -649,7 +648,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         OffsetButton.IsEnabled = true;
                     }
-                    userFeedback.Text = Properties.Resources.TimeTextBlockClickOnSetMessage;
+                    userFeedback.Text = AdmProperties.Resources.TimeTextBlockClickOnSetMessage;
                 }
                 else if (sender is TextBox tb && tb.Tag.Equals("coordinates"))
                 {
@@ -657,7 +656,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         ButtonApplyCoordinates.IsEnabled = true;
                     }
-                    userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+                    userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
                 }
             }
         }

@@ -5,7 +5,7 @@ using System.Windows.Input;
 using AutoDarkModeConfig;
 using Windows.System.Power;
 using System.Diagnostics;
-using ModernWpf.Controls.Primitives;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -75,8 +75,8 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(Exception ex, string location)
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };

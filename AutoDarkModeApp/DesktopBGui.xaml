@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoDarkModeApp"
-        xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+        xmlns:p="clr-namespace:AutoDarkModeConfig.Properties;assembly=AutoDarkModeConfig"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.dbTitle}" Height="360" MinWidth="660" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon" SizeToContent="Width" fw:PointerTracker.Enabled="True">

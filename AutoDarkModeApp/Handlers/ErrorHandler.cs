@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp.Handlers
 {
@@ -69,14 +70,14 @@ namespace AutoDarkModeApp.Handlers
     {
         public static void ShowErrorMessageFromApi(ApiResponse response, Exception ex, Window owner)
         {
-            string error = $"{Properties.Resources.errorThemeApply}\n\n" +
+            string error = $"{AdmProperties.Resources.errorThemeApply}\n\n" +
                 $"Exception Source: {ex.Source}\n" +
                 $"Exception Message: {ex.Message}\n\n" +
                 $"API Response:\n" +
                 $"Status Code: {response.StatusCode}\n" +
                 $"Message: {response.Message}\n" +
                 $"Details: {response.Details}";
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = owner
             };

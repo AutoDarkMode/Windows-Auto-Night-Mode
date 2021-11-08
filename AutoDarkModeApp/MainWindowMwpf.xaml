@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoDarkModeApp"
         xmlns:ui="http://schemas.modernwpf.com/2019"
-        xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+        xmlns:p="clr-namespace:AutoDarkModeConfig.Properties;assembly=AutoDarkModeConfig"
         mc:Ignorable="d"
     
         Title="{x:Static p:Resources.Title}" 

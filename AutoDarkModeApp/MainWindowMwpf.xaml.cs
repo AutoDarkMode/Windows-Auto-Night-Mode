@@ -8,6 +8,8 @@ using AutoDarkModeApp.Properties;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Pages;
 using ModernWpf.Media.Animation;
+using AdmProperties = AutoDarkModeConfig.Properties;
+
 
 namespace AutoDarkModeApp
 {
@@ -91,23 +93,23 @@ namespace AutoDarkModeApp
             JumpTask darkJumpTask = new()
             {
                 //Dark theme
-                Title = Properties.Resources.lblDarkTheme,
+                Title = AdmProperties.Resources.lblDarkTheme,
                 Arguments = Command.Dark,
-                CustomCategory = Properties.Resources.lblSwitchTheme
+                CustomCategory = AdmProperties.Resources.lblSwitchTheme
             };
             JumpTask lightJumpTask = new()
             {
                 //Light theme
-                Title = Properties.Resources.lblLightTheme,
+                Title = AdmProperties.Resources.lblLightTheme,
                 Arguments = Command.Light,
-                CustomCategory = Properties.Resources.lblSwitchTheme
+                CustomCategory = AdmProperties.Resources.lblSwitchTheme
             };
             JumpTask resetJumpTask = new()
             {
                 //Reset
-                Title = Properties.Resources.lblReset,
+                Title = AdmProperties.Resources.lblReset,
                 Arguments = Command.NoForce,
-                CustomCategory = Properties.Resources.lblSwitchTheme
+                CustomCategory = AdmProperties.Resources.lblSwitchTheme
             };
 
             JumpList jumpList = new();

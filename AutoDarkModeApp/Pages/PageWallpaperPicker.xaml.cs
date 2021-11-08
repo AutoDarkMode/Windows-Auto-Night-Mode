@@ -1,5 +1,4 @@
 ﻿using AutoDarkModeApp.Handlers;
-using AutoDarkModeComms;
 using AutoDarkModeConfig;
 using AutoDarkModeConfig.ComponentSettings.Base;
 using AutoDarkModeSvc.Communication;
@@ -10,17 +9,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using AdmProperties = AutoDarkModeConfig.Properties;
+using AutoDarkModeApp.Properties;
+using System.Windows.Input;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -140,8 +137,8 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(Exception ex, string location)
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
@@ -370,7 +367,7 @@ namespace AutoDarkModeApp.Pages
         {
             OpenFileDialog ofd = new()
             {
-                Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
+                Filter = AdmProperties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
             };
             bool? result = ofd.ShowDialog();

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp
 {
@@ -45,13 +44,13 @@ namespace AutoDarkModeApp
         {
             if (pButton.Equals("close"))
             {
-                CloseButton.Content = Properties.Resources.msgClose;
+                CloseButton.Content = AdmProperties.Resources.msgClose;
                 YesButton.Visibility = Visibility.Hidden;
             }
             else if (pButton.Equals("yesno"))
             {
-                CloseButton.Content = Properties.Resources.msgNo;
-                YesButton.Content = Properties.Resources.MsgYes;
+                CloseButton.Content = AdmProperties.Resources.msgNo;
+                YesButton.Content = AdmProperties.Resources.MsgYes;
             }
             else if (pButton.Equals("none"))
             {

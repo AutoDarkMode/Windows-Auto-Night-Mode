@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +7,7 @@ using AutoDarkModeConfig;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using AutoDarkModeConfig.ComponentSettings.Base;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp
 {
@@ -37,7 +36,7 @@ namespace AutoDarkModeApp
             else
             {
                 SaveButton1.IsEnabled = false;
-                SaveButton1.ToolTip = Properties.Resources.dbSaveToolTip;
+                SaveButton1.ToolTip = AdmProperties.Resources.dbSaveToolTip;
             }
         }
 
@@ -46,7 +45,7 @@ namespace AutoDarkModeApp
             MonitorSettings settings = (MonitorSettings)MonitorSelectionComboBox.SelectedItem;
             OpenFileDialog dlg = new()
             {
-                Filter = Properties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
+                Filter = AdmProperties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
             };
             bool? result = dlg.ShowDialog();
@@ -112,7 +111,7 @@ namespace AutoDarkModeApp
             }
             catch
             {
-                MsgBox msgBox = new(Properties.Resources.dbPreviewError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle, "Wallpaper Preview Error", "close")
+                MsgBox msgBox = new(AdmProperties.Resources.dbPreviewError + Environment.NewLine + AdmProperties.Resources.dbErrorText, AdmProperties.Resources.errorOcurredTitle, "Wallpaper Preview Error", "close")
                 {
                     Owner = GetWindow(this)
                 };
@@ -144,7 +143,7 @@ namespace AutoDarkModeApp
             }
             catch (Exception ex)
             {
-                MsgBox msgBox = new(Properties.Resources.dbSavedError + Environment.NewLine + Properties.Resources.dbErrorText, Properties.Resources.errorOcurredTitle + Environment.NewLine + ex, "error", "close")
+                MsgBox msgBox = new(AdmProperties.Resources.dbSavedError + Environment.NewLine + AdmProperties.Resources.dbErrorText, AdmProperties.Resources.errorOcurredTitle + Environment.NewLine + ex, "error", "close")
                 {
                     Owner = GetWindow(this)
                 };

@@ -127,11 +127,6 @@
     <Page Remove="AboutWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -150,13 +145,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
     <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeConfig.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>AutoDarkModeApp.Properties</CustomToolNamespace>
-    </EmbeddedResource>
   </ItemGroup>
 
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">

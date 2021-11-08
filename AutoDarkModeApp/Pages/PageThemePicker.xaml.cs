@@ -1,24 +1,16 @@
 ﻿using AutoDarkModeApp.Handlers;
-using AutoDarkModeComms;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
 using ModernWpf.Media.Animation;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -56,10 +48,10 @@ namespace AutoDarkModeApp.Pages
             TextBlockUserFeedback.Visibility = Visibility.Collapsed;
 
             //give numbers to the steps
-            TextBlockStep1.Text = Properties.Resources.ThemeTutorialStep + " 1)";
-            TextBlockStep2.Text = Properties.Resources.ThemeTutorialStep + " 2)";
-            TextBlockStep3.Text = Properties.Resources.ThemeTutorialStep + " 3)";
-            TextBlockStep4.Text = Properties.Resources.ThemeTutorialStep + " 4)";
+            TextBlockStep1.Text = AdmProperties.Resources.ThemeTutorialStep + " 1)";
+            TextBlockStep2.Text = AdmProperties.Resources.ThemeTutorialStep + " 2)";
+            TextBlockStep3.Text = AdmProperties.Resources.ThemeTutorialStep + " 3)";
+            TextBlockStep4.Text = AdmProperties.Resources.ThemeTutorialStep + " 4)";
 
             //get all themes and select them in the combobox
             if (builder.Config.WindowsThemeMode.LightThemePath != null && builder.Config.WindowsThemeMode.DarkThemePath != null)
@@ -181,8 +173,8 @@ namespace AutoDarkModeApp.Pages
         //display error message if something went wrong
         private void ShowErrorMessage(Exception ex, string location)
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };

@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using AutoDarkModeConfig;
 using ModernWpf.Media.Animation;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -89,8 +90,8 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(String message, Exception ex)
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\n{message}: " + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\n{message}: " + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };

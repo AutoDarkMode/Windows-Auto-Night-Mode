@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Reflection;
-using System.Xml;
-using System.Windows;
-using System.Globalization;
+using AdmProperties = AutoDarkModeConfig.Properties;
 using System.Diagnostics;
-using AutoDarkModeSvc.Communication;
-using AutoDarkModeComms;
 using AutoDarkModeConfig;
 using AutoDarkModeApp.Handlers;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp
 {
@@ -58,7 +54,7 @@ namespace AutoDarkModeApp
                 if (!silent)
                 {
                     UpdateInfo info = UpdateInfo.Deserialize(response.Details);
-                    string text = string.Format(Properties.Resources.msgUpdaterText, response.Message, info.Tag);
+                    string text = string.Format(AdmProperties.Resources.msgUpdaterText, response.Message, info.Tag);
                     MsgBox msgBox = new(text, "Auto Dark Mode Updater", "update", "yesno")
                     {
                         WindowStartupLocation = WindowStartupLocation.CenterScreen,
@@ -82,8 +78,8 @@ namespace AutoDarkModeApp
         #pragma warning disable IDE0051
         private static void ShowErrorMessage(Exception ex, string location)
         {
-            string error = Properties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno");
             msg.ShowDialog();
             var result = msg.DialogResult;
             if (result == true)

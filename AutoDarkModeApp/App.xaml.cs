@@ -8,11 +8,10 @@ using System.Windows;
 using System.Threading;
 using AutoDarkModeSvc.Communication;
 using System.Threading.Tasks;
-using AdmProperties = AutoDarkModeApp.Properties;
-using Microsoft.Win32;
 using AutoDarkModeApp.Handlers;
 using System.Windows.Shell;
 using System.Globalization;
+using AdmProperties = AutoDarkModeConfig.Properties;
 using AutoDarkModeApp.Properties;
 
 namespace AutoDarkModeApp
@@ -132,7 +131,7 @@ namespace AutoDarkModeApp
                 string error = AdmProperties.Resources.StartupServiceUnresponsive;
                 Dispatcher.Invoke(() =>
                 {
-                    MsgBox msgErr = new(error, AutoDarkModeApp.Properties.Resources.errorOcurredTitle, "error", "close")
+                    MsgBox msgErr = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "close")
                     {
                     };
                     _ = msgErr.ShowDialog();
@@ -169,7 +168,7 @@ namespace AutoDarkModeApp
                 sysFormat = sysFormat[..sysFormat.IndexOf(":")];
                 if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
                 {
-                    AdmProperties.Settings.Default.AlterTime = true;
+                    Settings.Default.AlterTime = true;
                 }
             }
             catch

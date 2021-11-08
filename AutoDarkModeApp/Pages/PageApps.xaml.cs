@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeConfig;
-using AutoDarkModeComms;
+using AdmProperties = AutoDarkModeConfig.Properties;
 
 namespace AutoDarkModeApp
 {
@@ -42,16 +40,16 @@ namespace AutoDarkModeApp
             if (builder.Config.WindowsThemeMode.Enabled)
             {
                 AccentColorCheckBox.IsEnabled = false;
-                AccentColorCheckBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
-                SystemComboBoxItemSwitch.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
-                SystemComboBoxItemLightOnly.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                AccentColorCheckBox.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
+                SystemComboBoxItemSwitch.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
+                SystemComboBoxItemLightOnly.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBoxItemLightOnly.IsEnabled = false;
                 SystemComboBoxItemSwitch.IsEnabled = false;
                 SystemComboBoxItemDarkOnly.IsEnabled = false;
                 AppComboBox.IsEnabled = false;
-                AppComboBox.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                AppComboBox.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
                 NumberBoxColorDelay.IsEnabled = false;
-                NumberBoxColorDelay.ToolTip = Properties.Resources.ToolTipDisabledDueTheme;
+                NumberBoxColorDelay.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
             }
 
             if (builder.Config.SystemSwitch.Enabled)
@@ -87,9 +85,9 @@ namespace AutoDarkModeApp
             if (!is1903)
             {
                 SystemComboBox.IsEnabled = false;
-                SystemComboBox.ToolTip = Properties.Resources.cmb1903;
+                SystemComboBox.ToolTip = AdmProperties.Resources.cmb1903;
                 AccentColorCheckBox.IsEnabled = false;
-                AccentColorCheckBox.ToolTip = Properties.Resources.cmb1903;
+                AccentColorCheckBox.ToolTip = AdmProperties.Resources.cmb1903;
                 builder.Config.SystemSwitch.Enabled = false;
                 try
                 {
@@ -104,7 +102,7 @@ namespace AutoDarkModeApp
             //os version 1903+
             {
                 //inform user about settings
-                if (!builder.Config.WindowsThemeMode.Enabled) AccentColorCheckBox.ToolTip = Properties.Resources.cbAccentColor;
+                if (!builder.Config.WindowsThemeMode.Enabled) AccentColorCheckBox.ToolTip = AdmProperties.Resources.cbAccentColor;
 
                 //numbox
                 NumberBoxColorDelay.Value = Convert.ToInt32(builder.Config.SystemSwitch.Component.TaskbarSwitchDelay);
@@ -142,8 +140,8 @@ namespace AutoDarkModeApp
 
         private void ShowErrorMessage(Exception ex)
         {
-            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            string error = AdmProperties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
