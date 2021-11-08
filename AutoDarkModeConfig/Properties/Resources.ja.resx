@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
     <value>設定</value>
@@ -222,7 +222,7 @@
     <value>プログラム起動時に最新版を確認しています。</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>ようこそ</value>
+    <value>こんにちは</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
     <value>チェックボックスを有効にすると、自動のテーマ切替を有効にします</value>
@@ -425,7 +425,7 @@
     <value>ステップ</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>グレースケールの色のフィルターを使用 (Win + Ctrl + C)</value>
+    <value>色のフィルターを使用 (Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>スタートアップには登録せずログイン時のタスクとして実行</value>
@@ -674,11 +674,9 @@
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>緯度 (Latitude)</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
     <value>経度 (Longitude)</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
     <value>サービスはまだ実行されていません。お待ちください...</value>
@@ -706,43 +704,43 @@
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>花</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (ライト)</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>キャプチャされたモーション</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (dark)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>フロー</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>光彩</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (ライト)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>日の出</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>毎日</value>
@@ -755,5 +753,90 @@
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>アクセントカラーのみ</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Windowsの開始時にAuto Dark Modeを実行</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>自動起動</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>種類:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>パス:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>自動起動の情報を更新</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>アプリを再起動</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>見つかりません</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>レジストリキー</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>タスク</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Windowsから自動起動を無効にしているようです。</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>次回更新は</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>無効中にのみ使用するホットキーを変更できます。</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>ダークモードに変更するホットキー</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>ライトモードに変更するホットキー</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>テーマの変更を中止するホットキー</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>システム全体でのホットキーを使用</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>ダークテーマに変更</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>ライトテーマに変更</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>このアイコンの非表示は推奨しません。
+それでも続行しますか？</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>トレイアイコンの非表示</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>設定用フォルダを開く</value>
   </data>
 </root>
