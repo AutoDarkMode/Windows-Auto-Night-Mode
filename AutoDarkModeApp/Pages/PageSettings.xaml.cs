@@ -91,6 +91,7 @@ namespace AutoDarkModeApp.Pages
 
             }
             CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
+            UpdatesStackPanelOptions.IsEnabled = builder.Config.Updater.Enabled;
             switch (builder.Config.Updater.DaysBetweenUpdateCheck)
             {
                 case 1:
@@ -440,10 +441,12 @@ namespace AutoDarkModeApp.Pages
             if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Updater.Enabled = true;
+                UpdatesStackPanelOptions.IsEnabled = true;
             }
             else
             {
                 builder.Config.Updater.Enabled = false;
+                UpdatesStackPanelOptions.IsEnabled = false;
             }
             try
             {

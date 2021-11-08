@@ -218,43 +218,46 @@
                     Click="CheckBoxEnableUpdater_Click"
                     />
 
-                <TextBlock
+
+                <StackPanel Name="UpdatesStackPanelOptions">
+                    <TextBlock
                     Margin="0,20,0,0"
                     Text="{x:Static p:Resources.UpdatesTextBlockUpdateInterval}"
                     FontSize="14"
                     />
 
-                <ComboBox
+                    <ComboBox
                     x:Name="ComboBoxDaysBetweenUpdateCheck"
                     Margin="0,5,0,0"
                     MinWidth="150"
                     SelectionChanged="ComboBoxDaysBetweenUpdateCheck_SelectionChanged">
-                    <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval1}"  Name="ComboBoxDaysBetweenUpdateCheck1Day"/>
-                    <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval3}"  Name="ComboBoxDaysBetweenUpdateCheck3Days"/>
-                    <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval7}" Name="ComboBoxDaysBetweenUpdateCheck7Days"/>
-                    <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval14}" Name="ComboBoxDaysBetweenUpdateCheck14Days"/>
-                </ComboBox>
+                        <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval1}"  Name="ComboBoxDaysBetweenUpdateCheck1Day"/>
+                        <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval3}"  Name="ComboBoxDaysBetweenUpdateCheck3Days"/>
+                        <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval7}" Name="ComboBoxDaysBetweenUpdateCheck7Days"/>
+                        <ComboBoxItem Content="{x:Static p:Resources.UpdatesComboBoxInterval14}" Name="ComboBoxDaysBetweenUpdateCheck14Days"/>
+                    </ComboBox>
 
-                <CheckBox
+                    <CheckBox
                     x:Name="CheckBoxUpdateOnStart"
                     Margin="0,20,0,0"
                     Content="{x:Static p:Resources.UpdatesComboBoxAtStart}"
                     Click="CheckBoxUpdateOnStart_Click"
                     />
 
-                <CheckBox
+                    <CheckBox
                     x:Name="CheckBoxAutoInstall"
                     Margin="0,5,0,0"
                     Content="{x:Static p:Resources.UpdatesCheckBoxAutoInstall}"
                     Click="CheckBoxAutoInstall_Click"
                     />
 
-                <CheckBox
+                    <CheckBox
                     x:Name="CheckBoxUpdateSilent"
                     Margin="0,5,0,0"
                     Content="{x:Static p:Resources.UpdatesCheckBoxSilent}"
                     Click="CheckBoxUpdateSilent_Click"
                     />
+                </StackPanel>
 
                 <TextBlock
                     Margin="0,20,0,0"
