@@ -708,10 +708,10 @@ namespace AutoDarkModeApp.Pages
 
                 _ = double.TryParse(NumberBoxLat.Text, out double latParsed);
                 _ = double.TryParse(NumberBoxLon.Text, out double lonParsed);
-                if (latParsed > 90) tb.Text = "90";
-                else if (latParsed < -90) tb.Text = "-90";
-                if (lonParsed > 180) tb.Text = "180";
-                else if (lonParsed < -180) tb.Text = "-180";
+                if (latParsed > 90) NumberBoxLat.Text = "90";
+                else if (latParsed < -90) NumberBoxLat.Text = "-90";
+                if (lonParsed > 180) NumberBoxLon.Text = "180";
+                else if (lonParsed < -180) NumberBoxLon.Text = "-180";
             }
         }
 
