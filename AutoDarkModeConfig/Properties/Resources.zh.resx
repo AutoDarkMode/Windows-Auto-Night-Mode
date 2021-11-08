@@ -761,7 +761,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>复制</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>开机启动 Auto Dark Mode</value>
+    <value>开机自启动 Auto Dark Mode</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
     <value>自启动</value>
@@ -797,7 +797,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>任务</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>你在 Windows 中禁用了启动项。</value>
+    <value>您在 Windows 中禁用了启动项。</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>下一次更新将在</value>
@@ -806,7 +806,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>颜色</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>你只能在快捷键已禁用的情况下进行编辑。</value>
+    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
     <value>强制深色模式快捷键</value>
@@ -831,7 +831,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>不建议隐藏托盘图标。
-你真的想继续吗？</value>
+您真的想继续吗？</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>隐藏托盘图标</value>
