@@ -33,27 +33,35 @@ namespace AutoDarkModeSvc.Handlers
         public static void RegisterAllHotkeys(AdmConfigBuilder builder)
         {
             Logger.Debug("registering hotkeys");
-            GlobalState state = GlobalState.Instance();
-            if (builder.Config.Hotkeys.ForceDarkHotkey != null) Register(builder.Config.Hotkeys.ForceDarkHotkey, () =>
+            try
             {
-                Logger.Info("hotkey signal received: forcing dark theme");
-                state.ForcedTheme = Theme.Dark;
-                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
-                ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.Manual));
-            });
-            if (builder.Config.Hotkeys.ForceLightHotkey != null) Register(builder.Config.Hotkeys.ForceLightHotkey, () =>
+                GlobalState state = GlobalState.Instance();
+                if (builder.Config.Hotkeys.ForceDarkHotkey != null) Register(builder.Config.Hotkeys.ForceDarkHotkey, () =>
+                {
+                    Logger.Info("hotkey signal received: forcing dark theme");
+                    state.ForcedTheme = Theme.Dark;
+                    ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
+                    ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.Manual));
+                });
+                if (builder.Config.Hotkeys.ForceLightHotkey != null) Register(builder.Config.Hotkeys.ForceLightHotkey, () =>
+                {
+                    Logger.Info("hotkey signal received: forcing light theme");
+                    state.ForcedTheme = Theme.Light;
+                    ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
+                    ThemeManager.UpdateTheme(builder.Config, Theme.Light, new(SwitchSource.Manual));
+                });
+                if (builder.Config.Hotkeys.NoForceHotkey != null) Register(builder.Config.Hotkeys.NoForceHotkey, () =>
+                {
+                    Logger.Info("hotkey signal received: stop forcing specific theme");
+                    state.ForcedTheme = Theme.Unknown;
+                    ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
+                });
+            } 
+            catch (Exception ex)
             {
-                Logger.Info("hotkey signal received: forcing light theme");
-                state.ForcedTheme = Theme.Light;
-                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
-                ThemeManager.UpdateTheme(builder.Config, Theme.Light, new(SwitchSource.Manual));
-            });
-            if (builder.Config.Hotkeys.NoForceHotkey != null) Register(builder.Config.Hotkeys.NoForceHotkey, () =>
-            {
-                Logger.Info("hotkey signal received: stop forcing specific theme");
-                state.ForcedTheme = Theme.Unknown;
-                ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
-            });
+                Logger.Error(ex, "could not register hotkeys:");
+            }
+           
         }
 
         public static void UnregisterAllHotkeys()
@@ -121,7 +129,7 @@ namespace AutoDarkModeSvc.Handlers
             List<Keys> keys = new();
             foreach (string keyString in splitKeys)
             {
-                Keys key = (Keys)converter.ConvertFromString(keyString);
+                Keys key = (Keys)converter.ConvertFromInvariantString(keyString);
                 keys.Add(key);
             }
             return keys;

@@ -8,11 +8,13 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using HttpClientProgress;
 
 
 namespace AutoDarkModeSvc.Handlers
@@ -160,11 +162,10 @@ namespace AutoDarkModeSvc.Handlers
 
         private static string FetchVersionYaml()
         {
-            using RedirectWebClient webClient = new();
-            webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-            webClient.Headers.Add("Cache-Control", "no-cache");
-            string updateUrl = GetUpdateUrl();
-            return webClient.DownloadString(updateUrl);
+            using HttpClient client = new();
+            Task<string> downloadString = client.GetStringAsync(GetUpdateUrl());
+            downloadString.Wait();
+            return downloadString.Result;
         }
 
         /// <summary>
@@ -393,19 +394,18 @@ namespace AutoDarkModeSvc.Handlers
 
                 //download zip file file
                 Logger.Info("downloading update data");
-                using WebClient webClient = new();
-                webClient.Proxy = null;
-                webClient.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                webClient.Headers.Add("Cache-Control", "no-cache");
+                using HttpClient client = new();
                 try
                 {
-                    _ = webClient.DownloadString(UpstreamVersion.ChangelogUrl);
+                    client.GetStringAsync(UpstreamVersion.ChangelogUrl).Wait();
                 }
                 catch (Exception)
                 {
                     Logger.Warn("changelog page not found");
                 }
-                byte[] buffer = webClient.DownloadData(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
+                Task<byte[]> hashDownloadTask = client.GetByteArrayAsync(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
+                hashDownloadTask.Wait();
+                byte[] buffer = hashDownloadTask.Result;
 
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
@@ -420,10 +420,13 @@ namespace AutoDarkModeSvc.Handlers
                     Directory.CreateDirectory(Extensions.UpdateDataDir);
                 }
 
-                DownloadProgressChangedEventHandler callback = new(DownloadProgress);
-                webClient.DownloadProgressChanged += callback;
-                Task.Run(async () => await webClient.DownloadFileTaskAsync(new Uri(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls)), downloadPath)).Wait();
-                webClient.DownloadProgressChanged -= callback;
+                var progress = new Progress<(float, long, long)>();
+                progress.ProgressChanged += DownloadProgress;
+
+                using (var file = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    Task.Run(async () => await client.DownloadDataAsync(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls), file, progress)).Wait();
+                }
 
                 // calculate hash of downloaded file, abort if hash mismatches
                 using SHA256 sha256 = SHA256.Create();
@@ -554,18 +557,22 @@ namespace AutoDarkModeSvc.Handlers
             return true;
         }
 
-        private static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
+        private static void DownloadProgress(object sender, (float, long, long) progress)
         {
-            if (e.ProgressPercentage > Progress)
+            int percent = (int)progress.Item1;
+            long totalBytes = progress.Item2;
+            long receivedBytes = progress.Item3;
+
+            if (percent > Progress)
             {
-                if (e.ProgressPercentage % 10 == 0)
+                if (percent % 10 == 0)
                 {
-                    string mbReceived = (e.BytesReceived / 1000000).ToString();
-                    string mbTotal = (e.TotalBytesToReceive / 1000000).ToString();
+                    string mbReceived = (receivedBytes / 1000000).ToString();
+                    string mbTotal = (totalBytes / 1000000).ToString();
                     nfi.NumberDecimalSeparator = ".";
-                    string progressString = (e.ProgressPercentage / 100d).ToString(nfi);
-                    Progress = e.ProgressPercentage;
-                    Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {e.ProgressPercentage} % complete");
+                    string progressString = percent.ToString(nfi);
+                    Progress = percent;
+                    Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {Progress} % complete");
                     try
                     {
                         ToastHandler.UpdateProgressToast(progressString, $"{mbReceived} / {mbTotal} MB");
@@ -638,23 +645,6 @@ namespace AutoDarkModeSvc.Handlers
             {
                 return current;
             }
-        }
-    }
-
-    class RedirectWebClient : WebClient
-    {
-        Uri _responseUri;
-
-        public Uri ResponseUri
-        {
-            get { return _responseUri; }
-        }
-
-        protected override WebResponse GetWebResponse(WebRequest request)
-        {
-            WebResponse response = base.GetWebResponse(request);
-            _responseUri = response.ResponseUri;
-            return response;
         }
     }
 }
