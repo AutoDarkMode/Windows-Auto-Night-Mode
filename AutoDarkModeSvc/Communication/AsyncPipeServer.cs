@@ -188,6 +188,10 @@ namespace AutoDarkModeSvc.Communication
             {
                 return new(null, responderPipeId);
             }
+            catch (OperationCanceledException)
+            {
+                return new(null, responderPipeId);
+            }
             catch (IOException ex)
             {
                 Logger.Warn("request pipe was closed prematurely");
