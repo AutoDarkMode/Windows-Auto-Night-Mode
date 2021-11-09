@@ -64,6 +64,7 @@ namespace AutoDarkModeApp.Pages
             //read coordinates from config file
             NumberBoxLat.Text = builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
             NumberBoxLon.Text = builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
+            ButtonApplyCoordinates.IsEnabled = false;
 
             //tick correct radio button and prepare UI
             //is auto theme switch enabled?
@@ -720,6 +721,15 @@ namespace AutoDarkModeApp.Pages
             TextBox tb = sender as TextBox;
             tb.SelectionStart = tb.Text.Length;
             tb.SelectionLength = 0;
+        }
+
+        private void NumberBoxLatLon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ButtonApplyCoordinates != null)
+            {
+                ButtonApplyCoordinates.IsEnabled = true;
+            }
+            userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
         }
     }
 }
