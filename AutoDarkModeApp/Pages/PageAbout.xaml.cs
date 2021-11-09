@@ -1,7 +1,4 @@
-﻿using AutoDarkModeComms;
-using AutoDarkModeConfig;
-using AutoDarkModeSvc.Communication;
-using SourceChord.FluentWPF;
+﻿using SourceChord.FluentWPF;
 using System;
 using System.Diagnostics;
 using System.IO;

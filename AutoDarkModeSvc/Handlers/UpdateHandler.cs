@@ -1,13 +1,11 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Communication;
-using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
-using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -109,7 +107,7 @@ namespace AutoDarkModeSvc.Handlers
                     return response;
                 }
             }
-            catch (WebException ex)
+            catch (System.Net.WebException ex)
             {
                 Logger.Error(ex, "update check failed");
                 response = new ApiResponse()
@@ -570,8 +568,8 @@ namespace AutoDarkModeSvc.Handlers
                     string mbReceived = (receivedBytes / 1000000).ToString();
                     string mbTotal = (totalBytes / 1000000).ToString();
                     nfi.NumberDecimalSeparator = ".";
-                    string progressString = percent.ToString(nfi);
                     Progress = percent;
+                    string progressString = (Progress / 100d).ToString(nfi);
                     Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {Progress} % complete");
                     try
                     {
