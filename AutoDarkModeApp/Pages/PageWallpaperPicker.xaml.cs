@@ -352,6 +352,10 @@ namespace AutoDarkModeApp.Pages
 
         private void ComboBoxMonitorSelection_SelectionChanged(object sender, EventArgs e)
         {
+            //fixes bug that shows multi monitor wallpaper on single monitor mode
+            if (ComboBoxWallpaperTypeSelection.SelectedItem != ComboBoxBackgroundSelectionIndividual)
+                return;
+
             MonitorSettings monitorSettings = (MonitorSettings)ComboBoxMonitorSelection.SelectedItem;
             if (monitorSettings != null && SelectedLight)
             {
