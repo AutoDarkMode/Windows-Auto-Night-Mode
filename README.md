@@ -51,7 +51,7 @@ If you're running Windows 11, you will find Auto Dark Mode on the Microsoft Stor
 #### Via WinGet
 Download Auto Dark Mode from [WinGet](https://github.com/microsoft/winget-cli/releases).
 ```powershell
-winget install "Auto Dark Mode"
+winget install --id Armin2208.WindowsAutoNightMode
 ```
 
 #### Via Chocolatey
