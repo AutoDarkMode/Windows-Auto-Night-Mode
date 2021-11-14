@@ -43,6 +43,7 @@ Windows, your webbrowser or some antivirus software may warn you from downloadin
 
 #### Download from Microsoft Store (Windows 11 only)
 If you're running Windows 11, you will find Auto Dark Mode on the Microsoft Store. Tested and verified by the Microsoft Store team.
+[Click here to download Auto Dark Mode from the Windows 11 Store](https://cutt.ly/JTfrKiM)
 
 #### More Installation Options
 <details>
