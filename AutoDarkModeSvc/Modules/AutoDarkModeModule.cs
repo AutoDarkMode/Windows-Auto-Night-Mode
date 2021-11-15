@@ -1,10 +1,4 @@
-﻿using AutoDarkModeSvc.Timers;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
-
-namespace AutoDarkModeSvc.Modules
+﻿namespace AutoDarkModeSvc.Modules
 {
     public abstract class AutoDarkModeModule : IAutoDarkModeModule
     {

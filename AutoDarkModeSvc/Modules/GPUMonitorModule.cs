@@ -162,12 +162,19 @@ namespace AutoDarkModeSvc.Modules
             {
                 if (counterName.EndsWith("engtype_3D") || counterName.Contains("Graphics") || counterName.Contains("Copy"))
                 {
-                    foreach (PerformanceCounter counter in pcc.GetCounters(counterName))
+                    try
                     {
-                        if (counter.CounterName == "Utilization Percentage")
+                        foreach (PerformanceCounter counter in pcc.GetCounters(counterName))
                         {
-                            counters.Add(counter);
+                            if (counter.CounterName == "Utilization Percentage")
+                            {
+                                counters.Add(counter);
+                            }
                         }
+                    } 
+                    catch (InvalidOperationException ex)
+                    {
+                        Logger.Warn(ex, "counter went away:");
                     }
                 }
             }
