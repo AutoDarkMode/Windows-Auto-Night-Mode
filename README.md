@@ -17,7 +17,7 @@ Auto Dark Mode helps you to be more productive. Because you shouldn't care about
 Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper. 
 
 ## Features
-![Screenshot showing Apps-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot2.png)
+![Screenshot showing Apps-Page](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/screenshot4.png)
 - Compatible with Windows 10 and Windows 11.
 - Theme switch based on sunrise and sunset.
 - Desktop wallpaper switch.
