@@ -28,7 +28,7 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Suitable for gamers: Don't switch while playing a game to avoid stuttering.
 - Lightweight with clean uninstall. No admin rights needed.
 - Automatic Updates.
-- Custom scripts.
+- Run custom scripts.
 
 ## Download and installing
 
@@ -39,15 +39,12 @@ If you're running the new Microsoft Store, you will find Auto Dark Mode on it. T
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
 
-#### Download from GitHub
 
+#### Download directly from GitHub
 [Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
 
-#### Installation
-Installing is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window.
 
-
-#### More Installation Options
+#### More download options
 <details>
   <summary>Click to expand</summary>
 
@@ -77,6 +74,12 @@ scoop install auto-dark-mode-np
 ```
   
 </details>
+
+
+#### Installation
+Installing is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window. 
+<br> <br>
+Sometimes Windows or a web browser will show a security notice while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
 
 ## More information
 You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
