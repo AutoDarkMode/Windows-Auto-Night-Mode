@@ -32,22 +32,20 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 
 ## Download and installing
 
-
-
-### [Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
-
-
-
-
-#### Installation
-Installing is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window.
-
-#### Download from Microsoft Store (Windows 11 only)
-If you're running Windows 11, you will find Auto Dark Mode on the Microsoft Store. Tested and verified by the Microsoft Store team.
+#### Download from Microsoft Store
+If you're running the new Microsoft Store, you will find Auto Dark Mode on it. Tested and verified by the Microsoft Store team.
 
 <a href="https://cutt.ly/JTfrKiM">
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
+
+#### Download from GitHub
+
+[Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
+
+#### Installation
+Installing is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window.
+
 
 #### More Installation Options
 <details>
