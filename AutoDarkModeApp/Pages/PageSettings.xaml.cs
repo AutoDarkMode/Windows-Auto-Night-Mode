@@ -151,6 +151,9 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 AutostartDisabledMessage.Visibility = Visibility.Collapsed;
+                CheckBoxLogonTask.IsEnabled = true;
+                ToggleAutostart.IsEnabled = true;
+
                 ApiResponse autostartResponse = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GetAutostartState));
                 if (autostartResponse.StatusCode == StatusCode.Err)
                 {
@@ -160,46 +163,41 @@ namespace AutoDarkModeApp.Pages
                 {
                     if (autostartResponse.Message == "Enabled")
                     {
-                        ButtonAutostartValidate.IsEnabled = true;
-                        CheckBoxLogonTask.IsEnabled = true;
                         if (!noToggle) ToggleAutostart.IsOn = true;
                         TextBlockAutostartMode.Text = "Registry key";
                         TextBlockAutostartPath.Text = autostartResponse.Details;
                     }
                     else
                     {
-                        ButtonAutostartValidate.IsEnabled = false;
                         AutostartDisabledMessage.Visibility = Visibility.Visible;
-                        StackPanelAutostart.IsEnabled = false;
+                        ToggleAutostart.IsEnabled = false;
+                        ToggleAutostart.IsOn = false;
                     }
 
                 }
                 else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
                 {
-                    ButtonAutostartValidate.IsEnabled = true;
-                    CheckBoxLogonTask.IsEnabled = true;
                     if (!noToggle) ToggleAutostart.IsOn = true;
-                    CheckBoxLogonTask.IsEnabled = true;
                     TextBlockAutostartMode.Text = "Task";
                     TextBlockAutostartPath.Text = autostartResponse.Details;
-                }
-                else if (autostartResponse.StatusCode == StatusCode.Disabled)
-                {
-                    ButtonAutostartValidate.IsEnabled = false;
-                    if (!noToggle) ToggleAutostart.IsOn = false;
-                    CheckBoxLogonTask.IsEnabled = false;
-                    TextBlockAutostartMode.Text = "Disabled";
-                    TextBlockAutostartPath.Text = "None";
                 }
                 else
                 {
                     CheckBoxLogonTask.IsEnabled = false;
+
+                    if (autostartResponse.StatusCode == StatusCode.Disabled)
+                    {
+                        if (!noToggle) ToggleAutostart.IsOn = false;
+                        TextBlockAutostartMode.Text = "Disabled";
+                        TextBlockAutostartPath.Text = "None";
+                    }
                 }
             }
             catch (Exception)
             {
                 CheckBoxLogonTask.IsEnabled = false;
-                StackPanelAutostart.IsEnabled = false;
+                ToggleAutostart.IsEnabled = false;
+                ToggleAutostart.IsOn = false;
                 TextBlockAutostartMode.Text = "Not found";
                 TextBlockAutostartPath.Text = "None";
             }
