@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -232,8 +233,8 @@
   <data name="lblCity" xml:space="preserve">
     <value>城市</value>
   </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>由於您尚未安裝 Windows 10 2019 年四月更新，此選項已停用。</value>
+  <data name="lblPosition" xml:space="preserve">
+    <value>位置</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>需要重新啟動程式以套用變更</value>
@@ -334,8 +335,7 @@
 - 嘗試在 Auto Dark Mode 設定中關閉 {0}。
 - 如果您啟用了桌布，請停用該功能，然後重試。
 
-如果這些操作都沒有用，你可以在 GitHub Issue 貼上包含該錯誤的截圖。你可以通過點擊 「是」 按鈕來前往 Github。
-</value>
+如果這些操作都沒有用，你可以在 GitHub Issue 貼上包含該錯誤的截圖。你可以通過點擊 「是」 按鈕來前往 Github。</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>錯誤：輸入無效</value>
@@ -358,7 +358,8 @@
     <value>設定</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>由於您使用了 Windows 佈景主題，這些選項將停用。您可以在 Windows 佈景主題中個別設置。</value>
+    <value>由於您使用了 Windows 佈景主題，這些選項將停用。
+    您可以在 Windows 佈景主題中個別設置。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>應用程式</value>
@@ -368,9 +369,6 @@
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>時間</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>桌布/主題</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>開啟資料夾</value>
@@ -439,7 +437,7 @@
     <value>套用您選擇的佈景主題時發生錯誤，我們停用了主題切換功能</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative light theme</value>
+    <value>白色主題</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>下載擴充功能</value>
@@ -480,42 +478,13 @@
     <value>我們遇到了以下問題： 
 {0}
 
-我們現在會以管理員身分執行程序以嘗試修復。Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。造成不便，敬請見諒。
+我們現在會以管理員身分執行程序以嘗試修復。
+Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。造成不便，敬請見諒。
 
 提醒：永遠不要手動以系統管理員身分執行 Auto Dark Mode！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>需要幫助嗎？</value>
-  </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>稍後下載</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>不再提醒</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>現在下載</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>在過去的幾個月中，我們持續努力為您提供最好的更新。現在，它終於來了！
-
-Auto Dark Mode X 完全從頭開始重新設計。現在 Auto Dark Mode 不再依靠工作排程器，而是使用真正的背景程序。這表示您將獲得更可靠且彈性的主題切換體驗！
-
-雖然在背景耗費的資源變多了，但我們也因此能提供更多功能來提高您的生產力。比如：
-- 遊戲模式: 在您遊玩遊戲或是 GPU 忙碌時停用主題切換。
-- 透過鍵盤快捷鍵切換主題
-以及更多功能！
-
-此更新適用於使用 ARM 裝置以外的使用者。因為此更新的背景程序在 ARM 裝置上必須被模擬，故會影響裝置續航。</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X 現在可用</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Version X 絕對是您值得一試的超棒更新！您確定不要下載嗎？我們以後不會再提醒您了！</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>您確定嗎？</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>支援多個使用者</value>
@@ -540,5 +509,334 @@ Auto Dark Mode X 完全從頭開始重新設計。現在 Auto Dark Mode 不再�
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>僅在您尚未手動啟用省電模式時可用！</value>
+    </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>切換模式</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>個人化</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>套用座標</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>您的電腦尚未安裝 Windows 10 2019 四月更新，故此選項已停用。</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>地理座標</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>位置資訊</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>日出至日落 (根據地理座標)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>您的位置的地理座標</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>開啟設定檔</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>開啟設定檔資料夾</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>開啟日誌檔</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>設定檔</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019：</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>選擇主題</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>選擇桌布</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>隱藏工具列圖示 (不建議)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>當主題模式啟用時，此功能將被停用。</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>當桌布模式啟用時，此功能將被停用。</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>提供更多功能，但您需要準備 .theme 檔案。您將能夠自訂每台顯示器的桌布，設置幻燈片、輔色、及音效，或是更換游標。</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>功能較少，但方便設置。為所有或個別顯示器自訂桌布或是背景顏色。</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>我們會在背景檢查 Auto Dark Mode 的新版本。如果有新版本可用，我們將透過通知提示您。</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>自動下載並安裝新版本</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>不要顯示通知</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>選擇更新通道</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>當 Auto Dark Mode 啟動時檢查更新</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 天</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 天</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 天</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>上次檢查時間</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>永不</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>修改檢查更新頻率</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>深色主題</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>淺色主題</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>圖片 (多台顯示器)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>純色</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>顯示器</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>移除未連接的顯示器</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>桌布</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>十六進制色碼</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>啟用桌布切換</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>不要在遊玩遊戲時切換</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>快速 (1 取樣)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>中等 (2 取樣)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>緩慢 (3 取樣)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU 使用率偵測速度</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>充電設備</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>條件</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>GPU 使用率大於此值時，延遲切換主題</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>被外部修改時復原佈景主題</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>緯度</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>經度</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>服務尚未啟動，請稍候...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>正在啟動服務</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>服務沒有回應。請檢查 AutoDarkModeSvc.exe 是否正在執行，並重試！</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>啟用 Windows 佈景主題切換</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>追蹤我們</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>佈景主題</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>花朵</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (淺色)</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>已擷取的動作</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (深色)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Flow</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>光暈</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (淺色)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>清新晨光</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>點擊設置以儲存變更。</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>使用工具列輔色時機</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>僅輔色</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>開機後自動開啟 Auto Dark Mode</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>自動啟動</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>模式：</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>路徑：</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>重新載入自動啟動</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>重新啟動應用程式</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>找不到</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>登錄機碼</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>工作</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>您已透過 Windows 停用自動啟動。</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>下次更新時間</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>您只能在快捷鍵被停用的情況下進行編輯。</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>強制使用深色模式</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>強制使用淺色模式</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>快捷鍵</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>停止強制使用</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>啟用全域快捷鍵</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>強制使用深色模式</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>強制使用淺色模式</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>不建議隱藏圖示。
+    您確定要繼續嗎？</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>隱藏工具列圖示</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>開啟設定檔路徑</value>
   </data>
 </root>
