@@ -568,7 +568,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>This feature is disabled while wallpaper mode is enabled.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an accent color and individual sounds.</value>
+    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
     <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
