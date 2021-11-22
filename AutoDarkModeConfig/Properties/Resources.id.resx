@@ -708,7 +708,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Garis Lintang</value>
+    <value>Garis lintang</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
     <value>Garis bujur</value>
