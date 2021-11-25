@@ -190,17 +190,19 @@ namespace AutoDarkModeApp.Pages
                     {
                         ButtonAutostartValidate.IsEnabled = true;
                         CheckBoxLogonTask.IsEnabled = true;
+                        StackPanelAutostart.IsEnabled = true;
                         if (!noToggle) ToggleAutostart.IsOn = true;
                         TextBlockAutostartMode.Text = "Registry key";
                         TextBlockAutostartPath.Text = autostartResponse.Details;
                     }
                     else
                     {
+                        if (!noToggle) ToggleAutostart.IsOn = false;
                         ButtonAutostartValidate.IsEnabled = false;
                         AutostartDisabledMessage.Visibility = Visibility.Visible;
                         StackPanelAutostart.IsEnabled = false;
+                        CheckBoxAutoInstall.IsEnabled = false;
                     }
-
                 }
                 else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
                 {
