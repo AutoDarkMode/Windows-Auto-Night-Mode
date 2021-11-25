@@ -83,7 +83,7 @@ namespace AutoDarkModeApp.Pages
             //language ui
             ButtonRestart.Visibility = Visibility.Collapsed;
             TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
-            ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString();
+            ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString().Replace("-", "_");
             if (ComboBoxLanguageSelection.SelectedValue == null)
             {
                 ComboBoxLanguageSelection.SelectedValue = "en";
@@ -240,7 +240,7 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString();
+                string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString().Replace("_", "-");
                 if (selectedLanguage != curLanguage)
                 {
                     SetLanguage(selectedLanguage);

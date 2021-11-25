@@ -259,7 +259,7 @@ namespace AutoDarkModeApp.Pages
         private void NetMQLicense_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string text = "Copyright (C) 2007 Free Software Foundation, Inc \n\n";
-            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "Licenses" , "lgpl.txt"));
+            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "Licenses", "lgpl.txt"));
             MsgBox msg = new(text, "", "info", "close")
             {
                 Owner = Window.GetWindow(this)
@@ -408,27 +408,39 @@ namespace AutoDarkModeApp.Pages
             // most likely use case is to paste in an issue, so
             // we create a markddown string that will look nice
             // in that context
-            var versionText = new StringBuilder()
-                .Append("- Commit: `")
-                .Append(versionInfo.Commit)
-                .AppendLine("`")
-                .Append("- Service: `")
-                .Append(versionInfo.Svc)
-                .AppendLine("`")
-                .Append("- Updater: `")
-                .Append(versionInfo.Updater)
-                .AppendLine("`")
-                .Append("- App: `")
-                .Append(versionInfo.App)
-                .AppendLine("`")
-                .Append("- Shell: `")
-                .Append(versionInfo.Shell)
-                .AppendLine("`")
-                .Append("- .Net: `")
-                .Append(versionInfo.NetCore)
-                .AppendLine("`");
+            try
+            {
+                var versionText = new StringBuilder()
+                    .Append("- Commit: `")
+                    .Append(versionInfo.Commit)
+                    .AppendLine("`")
+                    .Append("- Service: `")
+                    .Append(versionInfo.Svc)
+                    .AppendLine("`")
+                    .Append("- Updater: `")
+                    .Append(versionInfo.Updater)
+                    .AppendLine("`")
+                    .Append("- App: `")
+                    .Append(versionInfo.App)
+                    .AppendLine("`")
+                    .Append("- Shell: `")
+                    .Append(versionInfo.Shell)
+                    .AppendLine("`")
+                    .Append("- .Net: `")
+                    .Append(versionInfo.NetCore)
+                    .AppendLine("`");
+                Clipboard.SetData(DataFormats.Text, versionText);
 
-            Clipboard.SetData(DataFormats.Text, versionText);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "About_CopyButton");
+            }
+        }
+
+        private void ShowErrorMessage(Exception ex, string v)
+        {
+            throw new NotImplementedException();
         }
 
         private class VersionInfo
