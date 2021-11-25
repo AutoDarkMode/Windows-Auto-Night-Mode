@@ -72,9 +72,9 @@ namespace AutoDarkModeSvc.Core
         }
 
         /// <summary>
-        /// Calls the disable hooks for all components
+        /// Calls the disable hooks for all themes incompatible with the theme mode
         /// </summary>
-        public void InvokeDisableHooks()
+        public void InvokeDisableIncompatible()
         {
             Components.ForEach(c =>
             {

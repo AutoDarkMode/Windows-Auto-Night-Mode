@@ -13,6 +13,8 @@ using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
 using System.IO;
 using System.Threading.Tasks;
+using System.Management;
+using System.Security.Principal;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -42,8 +44,34 @@ namespace AutoDarkModeApp.Pages
             }
             InitializeComponent();
             UiHandler();
+
+            try
+            {
+                string sidString = SID.ToString();
+                string queryString = $"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = " +
+                    $"'{sidString}\\\\" +
+                    @"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run' AND ValueName='AutoDarkMode'";
+                WqlEventQuery query = new WqlEventQuery(queryString);
+                ManagementEventWatcher autostartWatcher = new ManagementEventWatcher(query);
+                autostartWatcher.EventArrived += new EventArrivedEventHandler(HandleAutostartEnabledEvent);
+                autostartWatcher.Start();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "ctor");
+            }
             init = false;
         }
+
+        private static SecurityIdentifier SID
+        {
+            get
+            {
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                return identity.User;
+            }
+        }
+
         private void UiHandler()
         {
             //disable elements which aren't compatible with this device
@@ -747,6 +775,18 @@ namespace AutoDarkModeApp.Pages
             }
             await Task.Delay(fakeResponsiveUIDelay);
             SetAutostartDetailsVisibility(true);
+        }
+
+        private void HandleAutostartEnabledEvent(object sender, EventArrivedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.Invoke(async () => { await GetAutostartInfo(toggleVisibility: false); });
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "autostart_monitor_event");
+            }
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,9 +20,25 @@ namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
         {
             bool themeModeToggled = newConfig.WindowsThemeMode.Enabled != oldConfig.WindowsThemeMode.Enabled;
             // if the theme mode is toggled to off, we need to reinitialize all components
-            if (themeModeToggled && newConfig.WindowsThemeMode.Enabled)
+            if (themeModeToggled)
             {
-                cm.InvokeDisableHooks();
+                if (newConfig.WindowsThemeMode.Enabled) {
+                    cm.InvokeDisableIncompatible();
+                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
+                }
+                else
+                {
+                    GlobalState.Instance().StopThemeMonitor();
+                }
+            } 
+            else if (newConfig.WindowsThemeMode.Enabled)
+            {
+                bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
+                if (monitorThemeToggled)
+                {
+                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
+                    else GlobalState.Instance().StopThemeMonitor();
+                }
             }
         }
     }

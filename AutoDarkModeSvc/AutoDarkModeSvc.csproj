@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>10.1.0.10</Version>
+    <Version>10.1.1.0</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <StartupObject>AutoDarkModeSvc.Program</StartupObject>
@@ -38,8 +38,10 @@
   <ItemGroup>
     <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.VsixColorCompiler" Version="17.0.31709.430" />
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Schema" Version="4.6.8" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
     <PackageReference Include="TaskScheduler" Version="2.9.1" />
   </ItemGroup>
 
