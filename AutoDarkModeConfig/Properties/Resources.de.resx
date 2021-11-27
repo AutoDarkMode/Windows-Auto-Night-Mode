@@ -581,7 +581,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Mehr Funktionen, aber es ist erforderlich eine Windows .theme Datei anzulegen. Lege Hintergrundbilder pro Monitor fest, oder eine Diashow, ändere dein Mauszeiger, wähle eine Akzentfarbe und benutzerdefinierte Systemsounds.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Weniger Funktionen, aber einfacher zu konfigurieren. Personalisiere dein HIntergrundbild pro Monitor, einzeln, oder setze eine Hintergrundfarbe</value>
+    <value>Weniger Funktionen, aber einfacher zu konfigurieren. Personalisiere dein Hintergrundbild pro Monitor, einzeln, oder setze eine Hintergrundfarbe</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Wir suchen im Hintergrund nach Updates. Sobald eine neue Version verfügbar ist, senden wir eine Toast Benachrichtigung</value>
