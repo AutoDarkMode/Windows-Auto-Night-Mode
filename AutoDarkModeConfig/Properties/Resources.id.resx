@@ -178,7 +178,7 @@
     <value>Penggantian telah tersimpan!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Tekan terapkan untuk menyimpan perubahan</value>
+    <value>Atur waktu pergantian dan pengaturan disimpan otomatis</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Unduh pembaruan</value>
