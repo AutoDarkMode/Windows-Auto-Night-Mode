@@ -178,7 +178,7 @@
     <value>Your changes have been saved!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Click Apply to save changes.</value>
+    <value>Set a time and your changes will be automatically saved.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Download update</value>
