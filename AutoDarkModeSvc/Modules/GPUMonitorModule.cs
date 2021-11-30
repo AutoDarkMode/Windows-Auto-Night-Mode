@@ -180,12 +180,26 @@ namespace AutoDarkModeSvc.Modules
             }
             counters.ForEach(c =>
             {
-                counterAccu += c.NextValue();
+                try
+                {
+                    counterAccu += c.NextValue();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "couldn't retrieve value from counter:");
+                }
             });
             await Task.Delay(1000);
             counters.ForEach(c =>
             {
-                counterAccu += c.NextValue();
+                try
+                {
+                    counterAccu += c.NextValue();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "couldn't retrieve value from counter:");
+                }
             });
             counters.Clear();
             return (int)counterAccu;

@@ -430,7 +430,6 @@ namespace AutoDarkModeApp.Pages
                     .Append(versionInfo.NetCore)
                     .AppendLine("`");
                 Clipboard.SetData(DataFormats.Text, versionText);
-
             }
             catch (Exception ex)
             {

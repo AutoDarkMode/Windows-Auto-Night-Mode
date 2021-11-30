@@ -779,11 +779,11 @@ namespace AutoDarkModeApp.Pages
             SetAutostartDetailsVisibility(true);
         }
 
-        private void HandleAutostartEnabledEvent(object sender, EventArrivedEventArgs e)
+        private async void HandleAutostartEnabledEvent(object sender, EventArrivedEventArgs e)
         {
             try
             {
-                Dispatcher.Invoke(async () => { await GetAutostartInfo(toggleVisibility: false); });
+                await Dispatcher.Invoke(async () => { await GetAutostartInfo(toggleVisibility: false); });
             }
             catch (Exception ex)
             {
