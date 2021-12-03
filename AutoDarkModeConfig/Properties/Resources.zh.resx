@@ -178,7 +178,7 @@
     <value>更改已保存！</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>单击“应用”保存更改。</value>
+    <value>设定好时间后，您的更改将会被自动保存。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>下载更新</value>
