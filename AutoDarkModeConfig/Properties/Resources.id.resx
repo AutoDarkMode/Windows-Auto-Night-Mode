@@ -488,7 +488,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Ini hanya akan bekerja jika Anda tidak menyalakan  manual penghemat baterai!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Ganti Mode</value>
+    <value>Beralih Mode</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalisasi</value>
