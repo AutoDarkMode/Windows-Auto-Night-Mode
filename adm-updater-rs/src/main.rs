@@ -264,6 +264,8 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
         warn!("service still running, force stopping");
         shutdown_failed = shutdown_failed || !p.kill(Signal::Kill);
     }
+
+    //todo kill all processes in the list and don't check for shutdown failed (resiliency for multi user updates)
     if let Some(p) = p_app.pop() {
         info!("stopping app");
         shutdown_failed = shutdown_failed || !p.kill(Signal::Kill);
@@ -273,8 +275,10 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
         shutdown_failed = shutdown_failed || !p.kill(Signal::Kill);
     }
     if shutdown_failed {
+        let msg = "other auto dark mode components still running, skipping update".to_string();
+        warn!("{}", &msg);
         return Err(Box::new(OpError {
-            message: "other auto dark mode components still running, skipping update".to_string(),
+            message: msg,
             severe: true,
         }));
     }
