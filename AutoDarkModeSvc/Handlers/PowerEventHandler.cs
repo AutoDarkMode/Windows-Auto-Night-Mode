@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers
@@ -27,7 +28,8 @@ namespace AutoDarkModeSvc.Handlers
         private static void PowerManager_BatteryStatusChanged(object sender, object e)
         {
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-            if (PowerManager.BatteryStatus == BatteryStatus.Discharging) {
+            if (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline)
+            {
                 Logger.Info("battery discharging, enabling dark mode");
                 ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.BatteryStatusChanged));
             }
