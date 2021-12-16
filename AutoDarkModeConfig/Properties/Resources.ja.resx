@@ -178,7 +178,7 @@
     <value>変更が保存されました。</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>適用をクリックし変更を保存します。</value>
+    <value>時間を指定すると、その変更内容は自動で保存されます。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>最新版をダウンロード</value>
