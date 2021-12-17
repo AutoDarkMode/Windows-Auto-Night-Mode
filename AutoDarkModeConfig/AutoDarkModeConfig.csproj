@@ -16,11 +16,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="VocaDb.ResXFileCodeGenerator" Version="2.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx" PublicClass="true">
       <CustomToolNamespace>AutoDarkModeConfig.Properties</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
