@@ -21,7 +21,7 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Compatible with Windows 10 and Windows 11.
 - Theme switch based on sunrise and sunset.
 - Desktop wallpaper switch.
-- Windows .Theme switch, to also change Accent Color, Diashow and Mouse Cursor.
+- Windows .Theme switch, to also change Accent Color, Slideshow and Mouse Cursor.
 - Support for accent color on the Taskbar and other system elements.
 - Office 2013 - 2019 theme switch.
 - Ability to automatically enable the grayscale color filter of Windows 10.
