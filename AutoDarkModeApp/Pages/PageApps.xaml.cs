@@ -41,6 +41,7 @@ namespace AutoDarkModeApp
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
+                TextBlockOfficeLabel.ToolTip = "Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting";
                 SystemComboBoxItemSwitch.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBoxItemLightOnly.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBoxItemLightOnly.IsEnabled = false;
@@ -79,6 +80,7 @@ namespace AutoDarkModeApp
             {
                 SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
             }
+
 
             //if the OS version is older than 1903
             if (int.Parse(RegistryHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
@@ -119,6 +121,11 @@ namespace AutoDarkModeApp
             else
             {
                 AppComboBox.SelectedIndex = 3;
+            }
+
+            if (builder.Config.OfficeSwitch.Component.Mode == Mode.FollowSystemTheme)
+            {
+                CheckBoxOfficeWhiteTheme.IsEnabled = false;
             }
 
             if (builder.Config.OfficeSwitch.Enabled)
@@ -180,7 +187,6 @@ namespace AutoDarkModeApp
             if (!init)
             {
                 builder.Config.AppsSwitch.Enabled = true;
-
                 if (AppComboBox.SelectedIndex.Equals(0))
                 {
                     builder.Config.AppsSwitch.Component.Mode = Mode.Switch;
@@ -335,6 +341,7 @@ namespace AutoDarkModeApp
             if (!init)
             {
                 builder.Config.OfficeSwitch.Enabled = true;
+                CheckBoxOfficeWhiteTheme.IsEnabled = true;
                 if (OfficeComboBox.SelectedIndex.Equals(0))
                 {
                     builder.Config.OfficeSwitch.Component.Mode = Mode.Switch;
@@ -348,6 +355,11 @@ namespace AutoDarkModeApp
                     builder.Config.OfficeSwitch.Component.Mode = Mode.DarkOnly;
                 }
                 else if (OfficeComboBox.SelectedIndex.Equals(3))
+                {
+                    builder.Config.OfficeSwitch.Component.Mode = Mode.FollowSystemTheme;
+                    CheckBoxOfficeWhiteTheme.IsEnabled = false;
+                }
+                else if (OfficeComboBox.SelectedIndex.Equals(4))
                 {
                     builder.Config.OfficeSwitch.Enabled = false;
                 }

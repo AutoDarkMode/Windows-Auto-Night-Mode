@@ -547,7 +547,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Config</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019:</value>
+    <value>Microsoft Office (legacy):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Pick a theme</value>
@@ -838,5 +838,8 @@ Do you really want to continue?</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Open Config Directory</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Let the app decide</value>
   </data>
 </root>

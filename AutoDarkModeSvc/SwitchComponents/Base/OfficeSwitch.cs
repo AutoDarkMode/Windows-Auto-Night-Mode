@@ -35,6 +35,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 return true;
             }
+            else if (Settings.Component.Mode == Mode.FollowSystemTheme && currentComponentTheme != Theme.Automatic)
+            {
+                return true;
+            }
             else if (ChoosenLightTheme != Settings.Component.LightTheme)
             {
                 return true;
@@ -58,6 +62,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     OfficeTheme(Settings.Component.LightTheme);
                     currentComponentTheme = Theme.Light;
                     ChoosenLightTheme = Settings.Component.LightTheme;
+                }
+                else if (Settings.Component.Mode == Mode.FollowSystemTheme)
+                {
+                    OfficeTheme(6);
+                    currentComponentTheme = newTheme;
+                    ChoosenLightTheme = 6;
                 }
                 else
                 {
@@ -83,7 +93,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         /// <summary>
         /// Changes the office theme
         /// </summary>
-        /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white</param>
+        /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white, 6 = follow_system</param>
         private static void OfficeTheme(byte themeValue)
         {
             string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";

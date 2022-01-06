@@ -19,7 +19,7 @@ namespace AutoDarkModeConfig.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -640,6 +640,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let the app decide.
+        /// </summary>
+        public static string LabelFollowSystemTheme {
+            get {
+                return ResourceManager.GetString("LabelFollowSystemTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apps:.
         /// </summary>
         public static string lblApps {
@@ -721,7 +730,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft Office 2013 - 2019:.
+        ///   Looks up a localized string similar to Microsoft Office (legacy):.
         /// </summary>
         public static string lblOffice {
             get {
@@ -865,7 +874,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click Apply to save changes..
+        ///   Looks up a localized string similar to Set a time and your changes will be automatically saved..
         /// </summary>
         public static string msgClickApply {
             get {
@@ -1519,7 +1528,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a diashow, change your mouse cursor, set an accent color and individual sounds..
+        ///   Looks up a localized string similar to Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds..
         /// </summary>
         public static string tbPickTheme {
             get {

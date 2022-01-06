@@ -10,14 +10,16 @@ namespace AutoDarkModeConfig
         Switch = 0,
         LightOnly = 1,
         DarkOnly = 2,
-        AccentOnly = 3
+        AccentOnly = 3,
+        FollowSystemTheme = 4
     };
     public enum Theme
     {
         Ignore = -2,
         Unknown = -1,
         Dark = 0,
-        Light = 1
+        Light = 1,
+        Automatic = 2
     };
 
     /// <summary>

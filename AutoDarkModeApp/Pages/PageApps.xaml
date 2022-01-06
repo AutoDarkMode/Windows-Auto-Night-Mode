@@ -199,7 +199,9 @@
                 Margin="0,25,0,0">
 
                 <TextBlock 
+                    Name="TextBlockOfficeLabel"
                     Margin="40,0,0,0" 
+                    ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="3" ToolTipService.HasDropShadow="True" 
                     Text="{x:Static p:Resources.lblOffice}" 
                     FontSize="14"
                     />
@@ -219,8 +221,8 @@
                     <ComboBoxItem IsSelected="True" Content="{x:Static p:Resources.cmbAdjTheme}"/>
                     <ComboBoxItem Content="{x:Static p:Resources.cmbAlwWhite}"/>
                     <ComboBoxItem Content="{x:Static p:Resources.cmbAlwDark}"/>
+                    <ComboBoxItem Content="{x:Static p:Resources.LabelFollowSystemTheme}"/>
                     <ComboBoxItem Content="{x:Static p:Resources.disabled}"/>
-
                 </ComboBox>
                 <CheckBox 
                     Content="{x:Static p:Resources.cbOfficeWhiteTheme}" 
