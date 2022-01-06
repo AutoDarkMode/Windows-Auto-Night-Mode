@@ -125,15 +125,16 @@ namespace AutoDarkModeApp
 
             if (builder.Config.OfficeSwitch.Enabled)
             {
-                OfficeComboBox.SelectedIndex = (int)builder.Config.OfficeSwitch.Component.Mode;
                 if (builder.Config.OfficeSwitch.Component.Mode == Mode.FollowSystemTheme)
                 {
+                    OfficeComboBox.SelectedIndex = 3;
                     CheckBoxOfficeWhiteTheme.IsEnabled = false;
                 }
+                else OfficeComboBox.SelectedIndex = (int)builder.Config.OfficeSwitch.Component.Mode;
             }
             else
             {
-                OfficeComboBox.SelectedIndex = 3;
+                OfficeComboBox.SelectedIndex = 4;
             }
 
 
