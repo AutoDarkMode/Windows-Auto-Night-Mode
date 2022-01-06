@@ -123,14 +123,13 @@ namespace AutoDarkModeApp
                 AppComboBox.SelectedIndex = 3;
             }
 
-            if (builder.Config.OfficeSwitch.Component.Mode == Mode.FollowSystemTheme)
-            {
-                CheckBoxOfficeWhiteTheme.IsEnabled = false;
-            }
-
             if (builder.Config.OfficeSwitch.Enabled)
             {
                 OfficeComboBox.SelectedIndex = (int)builder.Config.OfficeSwitch.Component.Mode;
+                if (builder.Config.OfficeSwitch.Component.Mode == Mode.FollowSystemTheme)
+                {
+                    CheckBoxOfficeWhiteTheme.IsEnabled = false;
+                }
             }
             else
             {
