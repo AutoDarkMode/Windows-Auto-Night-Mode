@@ -66,7 +66,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 else if (Settings.Component.Mode == Mode.FollowSystemTheme)
                 {
                     OfficeTheme(6);
-                    currentComponentTheme = newTheme;
+                    currentComponentTheme = Theme.Automatic;
                     ChoosenLightTheme = 6;
                 }
                 else
