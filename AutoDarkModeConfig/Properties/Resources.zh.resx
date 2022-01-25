@@ -547,7 +547,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>配置</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019：</value>
+    <value>Microsoft Office（旧版）：</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>选择主题</value>
@@ -838,5 +838,8 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>打开配置文件夹</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>由应用决定</value>
   </data>
 </root>
