@@ -12,3 +12,8 @@ REM call dotnet publish AutoDarkModeUpdater\AutoDarkModeUpdater.csproj /p:Publis
 
 REM Generate Updater Files whitelist
 dir /b bin\Publish\ > bin\Publish\Updater\whitelist.txt
+
+REM Custom old files
+echo mscordaccore_amd64_amd64_5.0.1021.41214.dll >> bin\Publish\Updater\whitelist.txt
+echo System.Diagnostics.EventLog.Messages.dll >> bin\Publish\Updater\whitelist.txt
+echo clrcompression.dll >> bin\Publish\Updater\whitelist.txt
