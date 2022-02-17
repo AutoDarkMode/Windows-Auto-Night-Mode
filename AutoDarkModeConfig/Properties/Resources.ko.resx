@@ -129,7 +129,7 @@
     <value>항상 어두은</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>항상 밝은Always light</value>
+    <value>항상 밝은</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Windows 1903용 기능 사용</value>
