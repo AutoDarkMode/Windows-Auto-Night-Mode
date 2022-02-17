@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -119,553 +119,727 @@
   </resheader>
   <data name="About" xml:space="preserve">
     <value>Setelan</value>
+    <comment/>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Terapkan</value>
+    <comment/>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
     <value>Nyalakan penggantian tema otomatis</value>
+    <comment/>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Selalu gelap</value>
+    <comment/>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
     <value>Selalu terang</value>
+    <comment/>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Nyalakan fitur untuk Windows 1903</value>
+    <comment/>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>Aplikasi:</value>
+    <comment/>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Waktu mulai kustom</value>
+    <comment/>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Gelap</value>
+    <comment/>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
     <value>Tema gelap</value>
+    <comment/>
   </data>
   <data name="lblEdge" xml:space="preserve">
     <value>Edge (versi lama):</value>
+    <comment/>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Terang</value>
+    <comment/>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>Tema terang</value>
+    <comment/>
   </data>
   <data name="lblSettings" xml:space="preserve">
     <value>Setelan</value>
+    <comment/>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
     <value>Ganti tema saat ini</value>
+    <comment/>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>Sistem:</value>
+    <comment/>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Aplikasi pihak ketiga yang terpakai</value>
+    <comment/>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>Pembaruan</value>
+    <comment/>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
     <value>Memakai layanan lokasi</value>
+    <comment/>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
     <value>Penggantian telah tersimpan!</value>
+    <comment/>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis</value>
+    <comment/>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Unduh pembaruan</value>
+    <comment/>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
     <value>masalah terjadi :(</value>
+    <comment/>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Aplikasi ini membutuhkan izin untuk menemukan lokasi</value>
+    <comment/>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>Pembaruan tidak tersedia</value>
+    <comment/>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Mencari lokasi Anda...</value>
+    <comment/>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
     <value>Mencari Pembaruan...</value>
+    <comment/>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Peringatan: Kami tidak dapat membaca membaca tema Anda saat ini.</value>
+    <comment/>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Pembaruan tersedia!</value>
+    <comment/>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Terima kasih untuk menggunakan Auto Dark Mode!
-Pembaruan tersedia di GitHub dengan perbaikan  dan peningkatan.
-Apakah Anda mau memasang?
-Versi saat ini: {0}, Versi terbaru: {1}</value>
+    <value>Terima kasih untuk menggunakan Auto Dark Mode!Pembaruan tersedia di GitHub dengan perbaikan  dan peningkatan.Apakah Anda mau memasang?Versi saat ini: {0}, Versi terbaru: {1}</value>
+    <comment/>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
+    <comment/>
   </data>
   <data name="updateButton" xml:space="preserve">
     <value>Mencari Pembaruan</value>
+    <comment/>
   </data>
   <data name="updateInfoText" xml:space="preserve">
     <value>Kami memeriksa pembaruan setiap program memulai</value>
+    <comment/>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Translator: pc-v2</value>
+    <comment/>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Kota</value>
+    <comment/>
   </data>
   <data name="lblPosition" xml:space="preserve">
     <value>Posisi</value>
+    <comment/>
   </data>
   <data name="cmb1903" xml:space="preserve">
     <value>Opsi ini tidak tersedia, lakukan pembaruan ke versi Windows terbaru</value>
+    <comment/>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>Memulai ulang aplikasi dibutuhkan untuk melihat perubahan</value>
+    <comment/>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Bahasa:</value>
+    <comment/>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
     <value>Aksen warna untuk bilah tugas</value>
+    <comment/>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Batalkan</value>
+    <comment/>
   </data>
   <data name="dbCurrently" xml:space="preserve">
     <value>Saat ini:</value>
+    <comment/>
   </data>
   <data name="dbDark" xml:space="preserve">
     <value>Latar belakang untuk mode gelap</value>
+    <comment/>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Hapus/Nonaktifkan</value>
+    <comment/>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>Pilih berkas</value>
+    <comment/>
   </data>
   <data name="dbLight" xml:space="preserve">
     <value>Latar belakang untuk mode terang</value>
+    <comment/>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Latar Belakang Desktop</value>
+    <comment/>
   </data>
   <data name="dbPictures" xml:space="preserve">
     <value>Gambar</value>
+    <comment/>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
     <value>Silahkan pilih dua latar belakang</value>
+    <comment/>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>Silahkan pilih gambar</value>
+    <comment/>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Mengatur Latar Belakang</value>
+    <comment/>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
     <value>Pakai latar belakang saat ini</value>
+    <comment/>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Dinonaktifkan</value>
+    <comment/>
   </data>
   <data name="enabled" xml:space="preserve">
     <value>Diaktifkan</value>
+    <comment/>
   </data>
   <data name="or" xml:space="preserve">
     <value>atau</value>
+    <comment/>
   </data>
   <data name="save" xml:space="preserve">
     <value>Simpan</value>
+    <comment/>
   </data>
   <data name="dbErrorText" xml:space="preserve">
     <value>Latar Belakang Anda mungkin rusak atau alamat tidak ada</value>
+    <comment/>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
     <value>Maaf! Kami tidak dapat memperlihatkan gambar Anda</value>
+    <comment/>
   </data>
   <data name="dbSavedError" xml:space="preserve">
     <value>Maaf! Kami tidak dapat menyimpan setelan Anda</value>
+    <comment/>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Masalah terjadi</value>
+    <comment/>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Hanya tersedia di mode gelap. Jika Anda mengalami isu: Coba untuk tingkatkan jeda di setelan.</value>
+    <comment/>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
+    <comment/>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
     <value>Sistem waktu 12 jam</value>
+    <comment/>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Tutup</value>
+    <comment/>
   </data>
   <data name="msgNo" xml:space="preserve">
     <value>Tidak</value>
+    <comment/>
   </data>
   <data name="MsgYes" xml:space="preserve">
     <value>Ya</value>
+    <comment/>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Mencari update di latar belakang</value>
+    <comment/>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>Maaf, tetapi kami tidak dapat menerapkan pengaturan Anda. Berikut adalah beberapa hal yang Anda dapat coba:
-- Mulai ulang layanan Auto Dark Mode
-- Periksa apakah layanan sedang berjalan- tutup layanan
-- Hapus file config.yaml dan konfigurasi ulang
-Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapat mengakses "Issue" dengan menekan tombol "Ya".</value>
+    <value>Maaf, tetapi kami tidak dapat menerapkan pengaturan Anda. Berikut adalah beberapa hal yang Anda dapat coba:- Mulai ulang layanan Auto Dark Mode- Periksa apakah layanan sedang berjalan- tutup layanan- Hapus file config.yaml dan konfigurasi ulangJika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapat mengakses "Issue" dengan menekan tombol "Ya".</value>
+    <comment/>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Kesalahan: inputmu tidak valid</value>
+    <comment/>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Beralih setelah masuk mode siaga (tidak direkomendasikan)</value>
+    <comment/>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Perangkat seluler, seperti produk Microsoft Surface menggunakan mode siaga terbaru. Menyalakan opsi ini membuat Auto Dark Mode mengganti tema setelah komputer kembali diakses. Tetapi mode tersebut dapat menguras baterai (aktifkan jika DIPERLUKAN).</value>
+    <comment/>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Dikarenakan bug dari Windows, bilah tugas tidak berganti warna saat keadaan. Matikan penghematan baterai jika Anda mengalami isu.</value>
+    <comment/>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
+    <comment/>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Atur</value>
+    <comment/>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Opsi ini dinonaktifkan ketika memakai Tema Windows. Anda dapat mengatur secara individu </value>
+    <comment/>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Aplikasi</value>
+    <comment/>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
     <value>Setelan</value>
+    <comment/>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Waktu</value>
+    <comment/>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Buka Folder</value>
+    <comment/>
   </data>
   <data name="ThemeDark" xml:space="preserve">
     <value>Tema Gelap:</value>
+    <comment/>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Buatlah tema Anda</value>
+    <comment/>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
     <value>Pilih tema Anda</value>
+    <comment/>
   </data>
   <data name="ThemeLight" xml:space="preserve">
     <value>Tema Terang:</value>
+    <comment/>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Tema Windows (banyak fitur)</value>
+    <comment/>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
     <value>Latar Belakang (Disarankan)</value>
+    <comment/>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
     <value> Tekan ini untuk membuka setelan tema Windows</value>
+    <comment/>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value> Kemudian pilih warna Windows dalam Warna untuk tema terang. Pilih latar belakang, Kursor Mouse dan Warna Aksen</value>
+    <comment/>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value> Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
+    <comment/>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value> Ulangi proses untuk tema gelap</value>
+    <comment/>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Jeda untuk pergantian warna bilah tugas (ms):</value>
+    <comment/>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
     <value>Tentang</value>
+    <comment/>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>
+    <comment/>
   </data>
   <data name="restart" xml:space="preserve">
     <value>Mulai Ulang</value>
+    <comment/>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
     <value>Atur waktu kustom</value>
+    <comment/>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>Dari terbit hingga terbenam</value>
+    <comment/>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Langkah</value>
+    <comment/>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
     <value>Pakai filter warna abu-abu (Tekan Win + Ctrl + C)</value>
+    <comment/>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
+    <comment/>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>Pilih mode:</value>
+    <comment/>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
     <value>Terjadi masalah saat mengaplikasikan tema, kami menonaktifkan pergantian tema</value>
+    <comment/>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Tema terang alternatif</value>
+    <comment/>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Unduh ekstensi</value>
+    <comment/>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
     <value>Alat yang direkomendasikan</value>
+    <comment/>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
     <value>Ekstensi ini membuat website dalam Chrome, Firefox dan Edge mengikuti tema sistem</value>
+    <comment/>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>Tidak ditemukan</value>
+    <comment/>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
     <value>Mengapa mendonasi?</value>
+    <comment/>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>Bagaimana cara mendonasi?</value>
+    <comment/>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
     <value>Anda dapat mendonasikan uang kepada kami menggunakan Paypal. Ini sepenuhnya secara sukarela dan Anda tidak berhak kompensasi apapun.</value>
+    <comment/>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Donasi</value>
+    <comment/>
   </data>
   <data name="donationDescription" xml:space="preserve">
     <value>Halo! Terima kasih telah menggunakan Auto Dark Mode! Apakah Anda menyukainya? Aplikasi ini membuat hari Anda lebih menyenangkan, dengan membantu merawat mata Anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source. Kami tidak mengambil keuntungan apa pun dari proyek ini. Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat kami senang!</value>
+    <comment/>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Terjadi masalah saat mengaplikasikan .theme-file. Mungkin saja tema yang Anda buat terbuang atau berpindah. Inilah kenapa kami menonaktifkan pengalihan tema untuk sekarang. Untuk mengaktifkan kembali, tolong buka Auto Dark Mode dan mengkonfigurasi {0} Setelan</value>
+    <comment/>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Kami mengalami beberapa masalah:{0}. Kami akan mencoba memperbaiki masalah ini dengan menjalankan melalui administrator. Mungkin ini dapat membantu. Auto Dark Mode akan memulai ulang setelah itu dan Anda harus menerapkan ulang setelan Anda.pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</value>
+    <comment/>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Butuh bantuan?</value>
+    <comment/>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Dukungan multi-pengguna</value>
+    <comment/>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>Jeda opsional untuk mengaktifkan filter abu abu:</value>
+    <comment/>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>Menyesuaikan dengan sistem</value>
+    <comment/>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>Atur Ulang</value>
+    <comment/>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
     <value>Nyalakan mode gelap saat catu daya dilepas</value>
+    <comment/>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Nilai bawaan untuk slider penghemat energi</value>
+    <comment/>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
     <value>Mitigasi penghemat energi untuk penggantian tema</value>
+    <comment/>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>Ini hanya akan bekerja jika Anda tidak menyalakan  manual penghemat baterai!</value>
+    <comment/>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Beralih Mode</value>
+    <comment/>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalisasi</value>
+    <comment/>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Buka file konfigurasi</value>
+    <comment/>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
     <value>Buka folder konfigurasi</value>
+    <comment/>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
     <value>Buka file log</value>
+    <comment/>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>Konfigurasi</value>
+    <comment/>
   </data>
   <data name="lblOffice" xml:space="preserve">
     <value>Microsoft Office 2013 - 2019:</value>
+    <comment/>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Pilih tema</value>
+    <comment/>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
     <value>Pilih latar belakang</value>
+    <comment/>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
     <value>Sembunyikan ikon tray (tidak direkomendasikan)</value>
+    <comment/>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>Jangan berganti ketika bermain video game</value>
+    <comment/>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
     <value>Cepat (1 sampel)</value>
+    <comment/>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
     <value>Sedang (2 sampel)</value>
+    <comment/>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
     <value>Lambat (3 sampel)</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
     <value>Kecepatan deteksi penggunaan GPU</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
     <value>Perangkat dengan tenaga baterai</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
     <value>Kondisi</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
     <value>Batas minimum penggunaan GPU untuk menunda penggantian mode</value>
+    <comment/>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Fitur ini dinonaktifkan ketika mode tema diaktifkan</value>
+    <comment/>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
     <value>Fitur ini dinonaktifkan ketika mode latar belakang diaktifkan</value>
+    <comment/>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
     <value>Koordinat geografis Anda</value>
+    <comment/>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel diashow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu</value>
+    <comment/>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
     <value>Menawarkan lebih sedikit fitur, tetapi lebih mudah disiapkan. Kustomisasi latar belakang desktop Anda untuk semua layar, layar individu atau warna latar</value>
+    <comment/>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Kami memeriksa versi terbaru dari Auto Dark Mode di latar belakang. Ketika pembaruan tersedia, kami akan memberitahukan Anda.</value>
+    <comment/>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Unduh otomatis dan pasang versi terbaru</value>
+    <comment/>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
     <value>14 hari</value>
+    <comment/>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
     <value>3 hari</value>
+    <comment/>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
     <value>7 hari</value>
+    <comment/>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
     <value>tidak pernah</value>
+    <comment/>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Ubah seberapa sering kami memeriksa pembaruan</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Tema Gelap</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
     <value>Tema Terang</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
     <value>Gambar</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
     <value>Gambar (beberapa layar)</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
     <value>Warna solid</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
     <value>Mode</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
     <value>Layar</value>
+    <comment/>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
     <value>Tipe</value>
+    <comment/>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
     <value>Hapus layar yang terputus</value>
+    <comment/>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
     <value>Latar Belakang</value>
+    <comment/>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
     <value>Warna</value>
+    <comment/>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
     <value>Kode Hex</value>
+    <comment/>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Aktifkan perubahan layar</value>
+    <comment/>
   </data>
   <data name="welcomeText" xml:space="preserve">
     <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
+    <comment/>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
     <value>Dari terbit hingga terbenam (koordinat geografis)</value>
+    <comment/>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
     <value>Layanan sedang memulai, harap tunggu....</value>
+    <comment/>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Meluncurkan Layanan</value>
+    <comment/>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
     <value>Layanan tidak merespon, Tolong periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi!</value>
+    <comment/>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Nyalakan penggantian tema Windows</value>
+    <comment/>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
     <value>Mati</value>
+    <comment/>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
     <value>Nyala</value>
+    <comment/>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
     <value>Ikuti Kami</value>
+    <comment/>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Kembalikan tema ketika diganti secara eksternal</value>
+    <comment/>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Tema</value>
+    <comment/>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
     <value>Terapkan Koordinat</value>
+    <comment/>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Koordinat geografis</value>
+    <comment/>
   </data>
   <data name="headerLocationData" xml:space="preserve">
     <value>Data lokasi</value>
+    <comment/>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Dinonaktifkan</value>
+    <comment/>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
     <value>Jangan perlihatkan notifikasi</value>
+    <comment/>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
     <value>Pilih saluran pembaruan</value>
+    <comment/>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Bunga</value>
@@ -709,89 +883,122 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>Garis lintang</value>
+    <comment/>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
     <value>Garis bujur</value>
+    <comment/>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Selamat Datang</value>
+    <comment/>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Gunakan aksen bilah tugas saat</value>
+    <comment/>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Dengan aksen</value>
+    <value>Hanya Aksen</value>
+    <comment/>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Setiap hari</value>
+    <comment/>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
     <value>Terakhir diperiksa</value>
+    <comment/>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
     <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
+    <comment/>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>Tekan atur untuk menyimpan perubahan.</value>
+    <comment/>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
     <value>Paksa Mode Gelap</value>
+    <comment/>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
     <value>Paksa Mode Terang</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
     <value>Mulai Auto Dark Mode Saat Masuk</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
     <value>Mulai Otomatis</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
     <value>Mode:</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Dinonaktifkan</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
     <value>Tidak ada</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
     <value>Tidak Ditemukan</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
     <value>Registry Key</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
     <value>Tugas</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
     <value>Alamat mulai otomatis</value>
+    <comment/>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
     <value>Segarkan Mulai Otomatis</value>
+    <comment/>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Bahasa</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
     <value>Hotkey Paksa Mode Gelap</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
     <value>Hotkey Paksa Mode Terang</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Hotkey</value>
+    <comment/>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
     <value>Hotkey Paksa Berhentikan Tema</value>
+    <comment/>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Nyalakan hotkey secara system-wide</value>
+    <comment/>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>Pembaruan selanjutnya pada</value>
+    <comment/>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Buka Folder Konfigurasi</value>
+    <comment/>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Biarkan aplikasi menentuka</value>
+    <comment/>
   </data>
 </root>
