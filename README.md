@@ -35,7 +35,7 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 #### Download from Microsoft Store
 If you're running the new Microsoft Store, you will find Auto Dark Mode on it. Tested and verified by the Microsoft Store team.
 
-<a href="https://cutt.ly/JTfrKiM">
+<a href="https://apps.microsoft.com/store/detail/auto-dark-mode/XP8JK4HZBVF435">
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
 
