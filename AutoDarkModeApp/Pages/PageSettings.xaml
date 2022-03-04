@@ -307,11 +307,19 @@
                     />
 
                 <ui:HyperlinkButton
-                    Name="HyperlinkOpenAppDataFolder"
+                    Name="HyperlinkOpenConfigFolder"
                     Margin="0,5,0,0"
                     Content="{x:Static p:Resources.ConfigHyperLinkOpenConfigFolder}"
-                    PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
-                    PreviewKeyDown="HyperlinkOpenAppDataFolder_KeyDown"
+                    PreviewMouseDown="HyperlinkOpenConfigFolder_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenConfigFolder_KeyDown"
+                    />
+
+                <ui:HyperlinkButton
+                    Name="HyperlinkOpenAppFolder"
+                    Margin="0,5,0,0"
+                    Content="{x:Static p:Resources.ConfigHyperLinkOpenAppFolder}"
+                    PreviewMouseDown="HyperlinkOpenAppFolder_PreviewMouseDown"
+                    PreviewKeyDown="HyperlinkOpenAppFolder_KeyDown"
                     />
             </StackPanel>
 

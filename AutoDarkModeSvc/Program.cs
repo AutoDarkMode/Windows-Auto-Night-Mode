@@ -31,7 +31,7 @@ namespace AutoDarkModeSvc
         public static void Main(string[] args)
         {
             List<string> argsList = args.Length > 0 ? new List<string>(args) : new List<string>();
-            string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+            string configDir = AdmConfigBuilder.ConfigDir;
 
             //Set up Logger
             NLog.Config.LoggingConfiguration config = new();

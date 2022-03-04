@@ -49,7 +49,12 @@ namespace AutoDarkModeConfig
     public static class Extensions
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
+        public const string ServiceExecutableName = "AutoDarkModeSvc.exe";
+        public const string AppExecutableName = "AutoDarkModeApp.exe";
+
         public const string UpdaterDirName = "Updater";
+        public const string UpdateDataDirName = "UpdateData";
+
         public static readonly string ExecutionPath = GetExecutionPathService();
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string ExecutionPathApp = GetExecutionPathApp();
@@ -147,26 +152,17 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionPathService()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath + executableName);
+            return $"{GetExecutionDir()}{Path.DirectorySeparatorChar}{ServiceExecutableName}";
         }
 
         private static string GetExecutionPathApp()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeApp.exe";
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath + executableName);
+            return $"{GetExecutionDir()}{Path.DirectorySeparatorChar}{AppExecutableName}";
         }
 
         private static string GetExecutionPathUpdater()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var executableName = UpdaterExecutableName;
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath, UpdaterDirName, executableName);
+            return Path.Combine(GetExecutionDir(), UpdaterDirName, UpdaterExecutableName);
         }
 
         private static string GetExecutionDir()
@@ -179,15 +175,13 @@ namespace AutoDarkModeConfig
 
         private static string GetExecutionDirUpdater()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath, UpdaterDirName);
+            return Path.Combine(GetExecutionDir(), UpdaterDirName);
         }
 
         private static string GetUpdateDataDir()
         {
             var assemblyLocation = AppContext.BaseDirectory;
-            var dataPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "UpdateData");
+            var dataPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), UpdateDataDirName);
             return dataPath;
         }
 

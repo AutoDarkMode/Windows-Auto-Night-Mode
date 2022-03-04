@@ -316,6 +316,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open App Folder.
+        /// </summary>
+        public static string ConfigHyperLinkOpenAppFolder {
+            get {
+                return ResourceManager.GetString("ConfigHyperLinkOpenAppFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open config file.
         /// </summary>
         public static string ConfigHyperLinkOpenConfig {

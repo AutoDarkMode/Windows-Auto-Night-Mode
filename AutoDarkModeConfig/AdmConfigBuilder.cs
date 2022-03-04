@@ -21,16 +21,18 @@ namespace AutoDarkModeConfig
         public AdmLocationData LocationData { get; private set; }
         public BaseSettings<ScriptSwitchSettings> ScriptConfig { get; private set; }
         public UpdaterData UpdaterData { get; private set; }
-        public static string ConfigDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+
+        public static string ConfigDir { get; private set; } = Path.Combine(Extensions.ExecutionDir, "config"); 
         public static string ConfigFilePath { get; } = Path.Combine(ConfigDir, "config.yaml");
         public static string LocationDataPath { get; } = Path.Combine(ConfigDir, "location_data.yaml");
         public static string UpdaterDataPath { get; } = Path.Combine(ConfigDir, "update.yaml");
         public static string ScriptConfigPath { get; } = Path.Combine(ConfigDir, "scripts.yaml");
+        public static string ServiceLogPath { get; } = Path.Combine(ConfigDir, "service.log");
         public bool Loading { get; private set; }
+
         private EventHandler<AdmConfig> configUpdatedHandler;
         public event EventHandler<AdmConfig> ConfigUpdatedHandler
         {
-
             add
             {
                 configUpdatedHandler -= value;

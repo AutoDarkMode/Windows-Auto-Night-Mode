@@ -552,6 +552,7 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Config.Updater.Silent = false;
             }
+
             try
             {
                 builder.Save();
@@ -618,10 +619,9 @@ namespace AutoDarkModeApp.Pages
         /// </summary>
         private void HyperlinkOpenConfigFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "config.yaml");
             new Process
             {
-                StartInfo = new ProcessStartInfo(filepath)
+                StartInfo = new ProcessStartInfo(AdmConfigBuilder.ConfigFilePath)
                 {
                     UseShellExecute = true
                 }
@@ -638,10 +638,9 @@ namespace AutoDarkModeApp.Pages
 
         private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
             new Process
             {
-                StartInfo = new ProcessStartInfo(filepath)
+                StartInfo = new ProcessStartInfo(AdmConfigBuilder.ServiceLogPath)
                 {
                     UseShellExecute = true
                 }
@@ -656,17 +655,29 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void HyperlinkOpenAppDataFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void HyperlinkOpenConfigFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var folderpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
-            Process.Start("explorer.exe", folderpath);
+            Process.Start("explorer.exe", AdmConfigBuilder.ConfigDir);
         }
 
-        private void HyperlinkOpenAppDataFolder_KeyDown(object sender, KeyEventArgs e)
+        private void HyperlinkOpenConfigFolder_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter | e.Key == Key.Space)
             {
-                HyperlinkOpenAppDataFolder_PreviewMouseDown(this, null);
+                HyperlinkOpenConfigFolder_PreviewMouseDown(this, null);
+            }
+        }
+
+        private void HyperlinkOpenAppFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", Extensions.ExecutionDir);
+        }
+
+        private void HyperlinkOpenAppFolder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                HyperlinkOpenAppFolder_PreviewMouseDown(this, null);
             }
         }
 
