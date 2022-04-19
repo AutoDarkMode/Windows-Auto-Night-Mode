@@ -198,6 +198,12 @@ namespace AutoDarkModeSvc.Communication
                 Logger.Debug(ex, "exception:");
                 return new(null, responderPipeId);
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                await Task.Delay(5000);
+                Logger.Error(ex, $"system permission missing to create request pipe, attempting to reinstantiate worker:");
+                return new(null, responderPipeId);
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "error in npipe server request:");
