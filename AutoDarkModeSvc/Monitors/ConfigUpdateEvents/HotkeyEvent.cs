@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {
     class HotkeyEvent : ConfigUpdateEvent<AdmConfig>
     {

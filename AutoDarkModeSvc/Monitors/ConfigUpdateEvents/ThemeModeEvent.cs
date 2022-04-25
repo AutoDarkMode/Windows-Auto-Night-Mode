@@ -8,7 +8,7 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {
     class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
     {
@@ -24,11 +24,11 @@ namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
             {
                 if (newConfig.WindowsThemeMode.Enabled) {
                     cm.InvokeDisableIncompatible();
-                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
+                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
                 }
                 else
                 {
-                    GlobalState.Instance().StopThemeMonitor();
+                    WindowsThemeMonitor.StopThemeMonitor();
                 }
             } 
             else if (newConfig.WindowsThemeMode.Enabled)
@@ -36,8 +36,8 @@ namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
                 bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
                 if (monitorThemeToggled)
                 {
-                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
-                    else GlobalState.Instance().StopThemeMonitor();
+                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+                    else WindowsThemeMonitor.StopThemeMonitor();
                 }
             }
         }

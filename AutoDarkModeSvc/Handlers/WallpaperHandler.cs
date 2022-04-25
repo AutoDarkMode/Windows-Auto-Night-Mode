@@ -5,7 +5,7 @@ using System.Linq;
 using AutoDarkModeConfig.ComponentSettings.Base;
 using AutoDarkModeConfig;
 using System.IO;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Display;

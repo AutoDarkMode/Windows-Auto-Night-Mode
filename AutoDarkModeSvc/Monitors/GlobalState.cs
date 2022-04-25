@@ -8,13 +8,11 @@ using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 
-namespace AutoDarkModeSvc.Config
+namespace AutoDarkModeSvc.Monitors
 {
     public class GlobalState
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private ManagementEventWatcher globalThemeEventWatcher;
-
         private static GlobalState state;
         public static GlobalState Instance()
         {
@@ -49,6 +47,13 @@ namespace AutoDarkModeSvc.Config
             }
         }
 
+        private static string GetCurrentThemeName()
+        {
+            string currentTheme = ThemeHandler.GetCurrentThemeName();
+            Logger.Debug($"active windows theme on startup: {currentTheme}");
+            return currentTheme;
+        }
+
         public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
 
         private bool configIsUpdating;
@@ -80,79 +85,6 @@ namespace AutoDarkModeSvc.Config
         public void SetWarden(WardenModule warden)
         {
             Warden = warden;
-        }
-
-        private static string GetCurrentThemeName()
-        {
-            string currentTheme = ThemeHandler.GetCurrentThemeName();
-            Logger.Debug($"active windows theme on startup: {currentTheme}");
-            return currentTheme;
-        }
-        private void HandleThemeMonitorEvent()
-        {
-            Logger.Debug("theme switch detected");
-            Thread thread = new(() =>
-            {
-                try
-                {
-                    CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not update theme name");
-                }
-            })
-            {
-                Name = "COMThemeManagerThread"
-            };
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            try
-            {
-                thread.Join();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "error while waiting for thread to stop:");
-            }
-            ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.ExternalThemeSwitch));
-        }
-
-        public void StartThemeMonitor()
-        {
-            try
-            {
-                if (globalThemeEventWatcher != null)
-                {
-                    return;
-                }
-                globalThemeEventWatcher = WMIHandler.CreateHKCURegistryValueMonitor(HandleThemeMonitorEvent, "SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Themes", "CurrentTheme");
-                globalThemeEventWatcher.Start();
-                Logger.Info("theme monitor enabled");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not start active theme monitor");
-            }
-        }
-
-        public void StopThemeMonitor()
-        {
-            try
-            {
-                if (globalThemeEventWatcher != null)
-                {
-                    globalThemeEventWatcher.Stop();
-                    globalThemeEventWatcher.Dispose();
-                    globalThemeEventWatcher = null;
-                    Logger.Info("theme monitor disabled");
-                };
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not stop active theme monitor");
-            }
-
         }
     }
 }

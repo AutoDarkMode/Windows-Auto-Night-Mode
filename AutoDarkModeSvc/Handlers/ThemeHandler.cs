@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
 
 /*

@@ -1,5 +1,5 @@
 ﻿using AutoDarkModeConfig;
-using AutoDarkModeSvc.Config.ConfigUpdateEvents;
+using AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Config
+namespace AutoDarkModeSvc.Monitors
 {
     class AdmConfigMonitor
     {

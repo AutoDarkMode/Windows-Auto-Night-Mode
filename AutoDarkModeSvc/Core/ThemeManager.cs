@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoDarkModeSvc.Handlers;
 using System.Threading.Tasks;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
 using System.IO;
 using Windows.System.Power;

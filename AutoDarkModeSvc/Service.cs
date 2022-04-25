@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc
             ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
-            if (Builder.Config.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
+            if (Builder.Config.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
             Timers.ForEach(t => t.Start());
 
             // Init window handle and register hotkeys
