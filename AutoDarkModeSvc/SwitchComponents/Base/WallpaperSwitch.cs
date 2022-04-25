@@ -60,6 +60,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
         {
+            // todo change behavior for win11 22H2, write and apply custom theme file. Use Winforms Screens to assing correct monitors.
             string oldIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
             string oldGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
             string oldSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
