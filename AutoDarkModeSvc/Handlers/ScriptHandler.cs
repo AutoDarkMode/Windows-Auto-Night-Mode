@@ -9,10 +9,11 @@ namespace AutoDarkModeSvc.Handlers
     public static class ScriptHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static void Launch(string name, string path, List<string> args, string cwd = null)
+        public static void Launch(string name, string path, List<string> args, int timeoutMills, string cwd = null)
         {
             try
             {
+                if (timeoutMills == 0) timeoutMills = 10000;
                 if (args == null) args = new();
                 string argsString = "";
                 argsString = string.Join(" ", args.Select(a => $"\"{a}\""));
@@ -39,7 +40,7 @@ namespace AutoDarkModeSvc.Handlers
                 p.Start();
                 p.BeginOutputReadLine();
                 p.BeginErrorReadLine();
-                bool timeout = !p.WaitForExit(10000);
+                bool timeout = !p.WaitForExit(timeoutMills);
                 if (!timeout)
                 {
                     p.WaitForExit();
@@ -55,7 +56,7 @@ namespace AutoDarkModeSvc.Handlers
                 if (timeout)
                 {
                     p.Kill();
-                    Logger.Warn($"{name}: {path} {args} took too long to complete and had to be stopped");
+                    Logger.Warn($"{name}: {path} {args} took too long (>{timeout}ms) to complete and had to be stopped");
                 }
                 if (p.ExitCode != 0)
                 {

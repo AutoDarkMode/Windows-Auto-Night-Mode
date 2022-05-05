@@ -45,6 +45,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         public List<string> ArgsLight { get; set; } = new();
         public List<string> ArgsDark { get; set; } = new();
         public List<SwitchSource> AllowedSources { get; set; } = new() { SwitchSource.Any };
+        public int TimeoutMillis { get; set; }
         public override bool Equals(object obj)
         {
             if (obj is Script other)
@@ -55,6 +56,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
                 if (!other.ArgsLight.SequenceEqual(ArgsLight)) return false;
                 if (other.WorkingDirectory != WorkingDirectory) return false;
                 if (!other.AllowedSources.SequenceEqual(AllowedSources)) return false;
+                //don't think a timeoutmillis comparison is necessary for equality, may be subject to change
                 return true;
             }
             return base.Equals(obj);
