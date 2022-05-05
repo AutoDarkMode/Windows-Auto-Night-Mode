@@ -8,7 +8,6 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
 {
     public class ScriptSwitchSettings
     {
-        public int TimeoutMillis { get; set; } = 10000;
         public List<Script> Scripts { get; set; }
         public ScriptSwitchSettings()
         {
