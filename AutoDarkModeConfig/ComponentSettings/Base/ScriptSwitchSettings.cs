@@ -44,7 +44,7 @@ namespace AutoDarkModeConfig.ComponentSettings.Base
         public List<string> ArgsLight { get; set; } = new();
         public List<string> ArgsDark { get; set; } = new();
         public List<SwitchSource> AllowedSources { get; set; } = new() { SwitchSource.Any };
-        public int TimeoutMillis { get; set; }
+        public int? TimeoutMillis { get; set; }
         public override bool Equals(object obj)
         {
             if (obj is Script other)

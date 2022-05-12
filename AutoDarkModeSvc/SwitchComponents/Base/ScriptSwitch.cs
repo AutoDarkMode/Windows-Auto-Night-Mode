@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     Settings.Component.Scripts.ForEach(s =>
                     {
                         if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
-                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis);
+                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis, s.WorkingDirectory);
                     });
                     currentComponentTheme = Theme.Light;
                 }
@@ -45,7 +45,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     Settings.Component.Scripts.ForEach(s =>
                     {
                         if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
-                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis);
+                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis, s.WorkingDirectory);
                     });
                     currentComponentTheme = Theme.Dark;
                 }
