@@ -11,13 +11,14 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string ThemeFilePath { get; set; }
-        public List<string> ThemeFileLoaded { get; private set; } = new();
+        public List<string> ThemeFileContent { get; private set; } = new();
         public string DisplayName { get; set; }
         public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";
 
         public Desktop Desktop { get; set; } = new();
         public VisualStyles VisualStyles { get; set; } = new();
         public Cursors Cursors { get; set; } = new();
+        public Colors Colors { get; set; } = new();
 
         public ThemeFile(string path)
         {
@@ -44,43 +45,86 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             return props;
         }
 
-        private void UpdateValue(string section, string key)
+        private void UpdateValue(string section, string key, string value)
         {
-
+            int found = ThemeFileContent.IndexOf(section);
+            if (found != -1)
+            {
+                bool updated = false;
+                for (int i = found + 1; i < ThemeFileContent.Count; i++)
+                {
+                    if (ThemeFileContent[i].StartsWith('[')) break;
+                    else if (ThemeFileContent[i].StartsWith(key))
+                    {
+                        ThemeFileContent[i] = $"{key}={value}";
+                        updated = true;
+                        break;
+                    }
+                }
+                if (!updated)
+                {
+                    ThemeFileContent.Insert(found + 1, $"{key}={value}");
+                }
+            }
+            else
+            {
+                ThemeFileContent.Add("");
+                ThemeFileContent.Add(section);
+                ThemeFileContent.Add($"{key}={value}");
+            }
         }
-        private void UpdateSection(string section, object obj)
+        private void UpdateSection(string section, List<string> lines)
         {
-            int found = ThemeFileLoaded.IndexOf(section);
+            int found = ThemeFileContent.IndexOf(section);
             if (found != -1)
             {
                 int i;
-                for (i = found + 1; i < ThemeFileLoaded.Count; i++)
+                for (i = found + 1; i < ThemeFileContent.Count; i++)
                 {
-                    if (ThemeFileLoaded[i].StartsWith('['))
+                    if (ThemeFileContent[i].StartsWith('['))
                     {
                         i--;
                         break;
                     }
                 }
-                ThemeFileLoaded.RemoveRange(found, i - found);
-                ThemeFileLoaded.InsertRange(found, GetClassFieldsAndValues(obj));
+                ThemeFileContent.RemoveRange(found, i - found);
+                ThemeFileContent.InsertRange(found, lines);
             }
             else
             {
-                ThemeFileLoaded.AddRange(GetClassFieldsAndValues(obj));
+                ThemeFileContent.Add("");
+                ThemeFileContent.AddRange(lines);
             }
         }
 
         public void Save()
         {
-            UpdateSection(Cursors.Section.Item1, Cursors);
-            UpdateSection(VisualStyles.Section.Item1, VisualStyles);
+            UpdateSection(Cursors.Section.Item1, GetClassFieldsAndValues(Cursors));
+            UpdateSection(VisualStyles.Section.Item1, GetClassFieldsAndValues(VisualStyles));
+            UpdateValue(Colors.Section.Item1, nameof(Colors.Background), Colors.Background.Item1);
+
+            //Update Desktop class manually due to the way it is internally represented
+            List<string> desktopSerialized = new();
+            desktopSerialized.Add(Desktop.Section.Item1);
+            desktopSerialized.Add($"{nameof(Desktop.Wallpaper)}={Desktop.Wallpaper}");
+            desktopSerialized.Add($"{nameof(Desktop.Pattern)}={Desktop.Pattern}");
+            desktopSerialized.Add($"{nameof(Desktop.MultimonBackgrounds)}={Desktop.MultimonBackgrounds}");
+            Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
+            UpdateSection(Desktop.Section.Item1, desktopSerialized);
+            try
+            {
+                System.IO.File.WriteAllLines(ThemeFilePath, ThemeFileContent, Encoding.GetEncoding(1252));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not save theme file: ");
+            }
         }
 
         public void Load()
         {
-            ThemeFileLoaded = System.IO.File.ReadAllLines(ThemeFilePath, Encoding.GetEncoding(1252)).ToList();
-            var iter = ThemeFileLoaded.GetEnumerator();
+            ThemeFileContent = System.IO.File.ReadAllLines(ThemeFilePath, Encoding.GetEncoding(1252)).ToList();
+            var iter = ThemeFileContent.GetEnumerator();
             bool processLastIterValue = false;
             while (processLastIterValue || iter.MoveNext())
             {
@@ -143,6 +187,18 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             break;
                         }
                         SetValues(iter.Current, Cursors);
+                    }
+                }
+                else if (iter.Current.Contains(Colors.Section.Item1))
+                {
+                    while (iter.MoveNext())
+                    {
+                        if (iter.Current.StartsWith("["))
+                        {
+                            processLastIterValue = true;
+                            break;
+                        }
+                        SetValues(iter.Current, Colors);
                     }
                 }
             }

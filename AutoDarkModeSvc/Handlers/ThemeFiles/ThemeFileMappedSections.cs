@@ -31,7 +31,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
     internal class Colors
     {
-        public (string, int) Section { get; } = (@"[Control Panel\Colors", 0);
+        public (string, int) Section { get; } = (@"[Control Panel\Colors]", 0);
         public (string, int) Background = ("0 0 0", 1);
     }
 

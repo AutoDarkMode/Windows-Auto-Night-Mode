@@ -350,7 +350,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test
                     case Command.Test:
-                        ThemeFile tf = new(@"C:\Users\Sam\AppData\Local\Microsoft\Windows\Themes\ADMTheme.theme");
+                        ThemeFile tf = new(@"C:\Users\Sam\AppData\Local\Microsoft\Windows\Themes\solid_test.theme");
                         tf.Save();
                         SendResponse(new ApiResponse()
                         {
