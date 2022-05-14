@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -296,7 +297,7 @@ namespace AutoDarkModeSvc.Communication
                     #region DetectMonitors
                     case Command.DetectMonitors:
                         Logger.Info("signal received: detecting new monitors");
-                        WallpaperHandler.DetectMonitors();
+                        DisplayHandler.DetectMonitors();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok
@@ -307,7 +308,7 @@ namespace AutoDarkModeSvc.Communication
                     #region CleanMonitors
                     case Command.CleanMonitors:
                         Logger.Info("signal received: removing disconnected monitors");
-                        WallpaperHandler.CleanUpMonitors();
+                        DisplayHandler.CleanUpMonitors();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok
@@ -349,6 +350,8 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test
                     case Command.Test:
+                        ThemeFile tf = new(@"C:\Users\Sam\AppData\Local\Microsoft\Windows\Themes\ADMTheme.theme");
+                        tf.Save();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

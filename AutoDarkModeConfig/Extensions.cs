@@ -197,6 +197,5 @@ namespace AutoDarkModeConfig
             string pFilesx64 = Environment.GetEnvironmentVariable("ProgramFiles");
             return !(ExecutionDir.Contains(pFilesx64) || ExecutionDir.Contains(pFilesx86));
         }
-
     }
 }

@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>10.1.1.13</Version>
+    <Version>10.1.1.14</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <StartupObject>AutoDarkModeSvc.Program</StartupObject>
@@ -41,6 +41,7 @@
     <PackageReference Include="NLog" Version="4.7.13" />
     <PackageReference Include="NLog.Schema" Version="4.7.13" />
     <PackageReference Include="System.Management" Version="6.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
     <PackageReference Include="TaskScheduler" Version="2.10.0" />
   </ItemGroup>
 

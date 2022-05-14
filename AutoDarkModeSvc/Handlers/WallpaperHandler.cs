@@ -94,7 +94,7 @@ namespace AutoDarkModeSvc.Handlers
                 else
                 {
                     Logger.Warn($"no wallpaper config found for monitor {monitorId}, adding missing monitors");
-                    DetectMonitors();
+                    DisplayHandler.DetectMonitors();
                 }
             }
         }
@@ -116,95 +116,6 @@ namespace AutoDarkModeSvc.Handlers
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             return handler.GetPosition();
-        }
-
-
-        private static async Task<List<DisplayMonitor>> GetMonitorInfosAsync()
-        {
-            var deviceInfos = await DeviceInformation.FindAllAsync(DisplayMonitor.GetDeviceSelector());
-            List<DisplayMonitor> monitors = new();
-            foreach (var deviceInfo in deviceInfos)
-            {
-                DisplayMonitor monitor = await DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
-                monitors.Add(monitor);
-            }
-            return monitors;
-        }
-
-        /// <summary>
-        /// Adds missing monitors to the configuration file
-        /// If a monitor configuration is not found,
-        /// it will automatically create a configuration with the respective monitor's current wallpaper
-        /// </summary>
-        public static void DetectMonitors()
-        {
-            var monitors = Task.Run(async () => await GetMonitorInfosAsync()).Result;
-            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-            List<string> monitorIds = new();
-            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
-            {
-                monitorIds.Add(handler.GetMonitorDevicePathAt(i));
-            }
-            bool needsUpdate = false;
-            foreach (string monitorId in monitorIds)
-            {
-                if (monitorId.Length == 0)
-                {
-                    continue;
-                }
-                MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitorId);
-                if (settings == null)
-                {
-                    Logger.Info($"missing monitor found, adding new default config for: {monitorId}");
-                    builder.Config.WallpaperSwitch.Component.Monitors.Add(new MonitorSettings()
-                    {
-                        DarkThemeWallpaper = handler.GetWallpaper(monitorId),
-                        LightThemeWallpaper = handler.GetWallpaper(monitorId),
-                        Id = monitorId
-                    });
-                    needsUpdate = true;
-                }
-            }
-            if (needsUpdate)
-            {
-                GlobalState state = GlobalState.Instance();
-                state.SkipConfigFileReload = true;
-                builder.Save();
-            }
-        }
-
-        public static void CleanUpMonitors()
-        {
-            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-            List<string> monitorIds = new();
-            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
-            {
-                monitorIds.Add(handler.GetMonitorDevicePathAt(i));
-            }
-            List<MonitorSettings> connectedSettings = new();
-            foreach (string monitorId in monitorIds)
-            {
-                if (monitorId.Length == 0)
-                {
-                    continue;
-                }
-                MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitorId);
-                if (settings != null)
-                {
-                    connectedSettings.Add(settings);
-                }
-            }
-            int diff = builder.Config.WallpaperSwitch.Component.Monitors.Count - connectedSettings.Count;
-            if (diff != 0)
-            {
-                Logger.Info($"removing {diff} disconnected monitors");
-                GlobalState state = GlobalState.Instance();
-                state.SkipConfigFileReload = true;
-                builder.Config.WallpaperSwitch.Component.Monitors = connectedSettings;
-                builder.Save();
-            }
         }
 
 
