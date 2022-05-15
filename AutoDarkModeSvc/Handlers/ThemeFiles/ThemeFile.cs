@@ -138,6 +138,12 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             {
                 Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
             }
+
+            Desktop = new();
+            VisualStyles = new();
+            Cursors = new();
+            Colors = new();
+
             var iter = ThemeFileContent.GetEnumerator();
             bool processLastIterValue = false;
             while (processLastIterValue || iter.MoveNext())
@@ -172,7 +178,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
                             if (success) Desktop.MultimonBackgrounds = num;
                         }
-                        else if (iter.Current.Contains("Wallpaper"))
+                        else if (iter.Current.Contains("Wallpaper") && !iter.Current.Equals("WallpaperWriteTime"))
                         {
                             string[] split = iter.Current.Split('=');
                             Desktop.MultimonWallpapers.Add((split[1], split[0].Replace("Wallpaper", "")));
