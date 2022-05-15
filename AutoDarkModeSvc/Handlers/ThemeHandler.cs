@@ -73,6 +73,12 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+        public static void ApplyManagedTheme(AdmConfig config, string path)
+        {
+            PowerHandler.RequestDisableEnergySaver(config);
+            Apply(path);
+        }
+
         [ComImport, Guid("D23CC733-5522-406D-8DFB-B3CF5EF52A71"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface ITheme
         {
@@ -127,9 +133,10 @@ namespace AutoDarkModeSvc.Handlers
             public static extern bool IsThemeActive();
         }
         public static string GetCurrentThemeName()
-        {   
+        {
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
+
         public static void Apply(string themeFilePath)
         {
             Thread thread = new(() =>
@@ -168,6 +175,12 @@ namespace AutoDarkModeSvc.Handlers
             return NativeMethods.IsThemeActive() ? "running" : "stopped";
         }
 
+        /// <summary>
+        /// Forces the theme to update when the automatic theme detection is disabled
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="state"></param>
+        /// <param name="theme"></param>
         public static void EnforceNoMonitorUpdates(AdmConfigBuilder builder, GlobalState state, Theme theme)
         {
             string themePath = "";

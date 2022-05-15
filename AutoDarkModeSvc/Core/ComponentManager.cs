@@ -27,10 +27,10 @@ namespace AutoDarkModeSvc.Core
         private Theme lastSorting = Theme.Unknown;
 
         // Components
-        private readonly ISwitchComponent AppsSwitch = new AppsSwitch();
+        private readonly ISwitchComponent AppsSwitch = new AppsSwitchThemeFile();
         private readonly ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
         private readonly ISwitchComponent OfficeSwitch = new OfficeSwitch();
-        private readonly ISwitchComponent SystemSwitch = new SystemSwitch();
+        private readonly ISwitchComponent SystemSwitch = new SystemSwitchThemeFile();
         //private ISwitchComponent TaskbarAccentColorSwitch;
         private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();

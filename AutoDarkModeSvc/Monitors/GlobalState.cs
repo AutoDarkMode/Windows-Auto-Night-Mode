@@ -6,6 +6,7 @@ using System.Threading;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Monitors
@@ -29,6 +30,7 @@ namespace AutoDarkModeSvc.Monitors
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
+        public ThemeFile ManagedThemeFile { get; } = new(Extensions.CustomThemePath);
         private bool _postponeSwitch;
         // triggers update if and only if there is a change in value
         public bool PostponeSwitch

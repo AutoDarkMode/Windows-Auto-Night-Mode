@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoDarkModeSvc.Monitors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
-    internal class ThemeFile
+    public class ThemeFile
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string ThemeFilePath { get; set; }
         public List<string> ThemeFileContent { get; private set; } = new();
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = "ADMTheme";
         public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";
 
         public Desktop Desktop { get; set; } = new();
@@ -23,7 +24,6 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public ThemeFile(string path)
         {
             ThemeFilePath = path;
-            Load();
         }
 
         public static List<string> GetClassFieldsAndValues(object obj)
@@ -99,6 +99,10 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         public void Save()
         {
+
+            UpdateValue("[Theme]", nameof(ThemeId), ThemeId);
+            UpdateValue("[Theme]", nameof(DisplayName), DisplayName);
+
             UpdateSection(Cursors.Section.Item1, GetClassFieldsAndValues(Cursors));
             UpdateSection(VisualStyles.Section.Item1, GetClassFieldsAndValues(VisualStyles));
             UpdateValue(Colors.Section.Item1, nameof(Colors.Background), Colors.Background.Item1);
@@ -109,6 +113,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             desktopSerialized.Add($"{nameof(Desktop.Wallpaper)}={Desktop.Wallpaper}");
             desktopSerialized.Add($"{nameof(Desktop.Pattern)}={Desktop.Pattern}");
             desktopSerialized.Add($"{nameof(Desktop.MultimonBackgrounds)}={Desktop.MultimonBackgrounds}");
+            desktopSerialized.Add($"{nameof(Desktop.PicturePosition)}={Desktop.PicturePosition}");
             Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(Desktop.Section.Item1, desktopSerialized);
             try
@@ -123,7 +128,16 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         public void Load()
         {
-            ThemeFileContent = System.IO.File.ReadAllLines(ThemeFilePath, Encoding.GetEncoding(1252)).ToList();
+            try
+            {
+                ThemeFileContent = System.IO.File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
+                DisplayName = "ADMTheme";
+                ThemeId = $"{{{Guid.NewGuid()}}}";
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
+            }
             var iter = ThemeFileContent.GetEnumerator();
             bool processLastIterValue = false;
             while (processLastIterValue || iter.MoveNext())
@@ -138,8 +152,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             processLastIterValue = true;
                             break;
                         }
-                        if (iter.Current.Contains("DisplayName")) DisplayName = iter.Current.Split('=')[1].Trim();
-                        else if (iter.Current.Contains("ThemeId")) ThemeId = iter.Current.Split('=')[1].Trim();
+                        // if (iter.Current.Contains("DisplayName")) DisplayName = iter.Current.Split('=')[1].Trim();
+                        // else if (iter.Current.Contains("ThemeId")) ThemeId = iter.Current.Split('=')[1].Trim();
                     }
                 }
                 else if (iter.Current.Contains(Desktop.Section.Item1))

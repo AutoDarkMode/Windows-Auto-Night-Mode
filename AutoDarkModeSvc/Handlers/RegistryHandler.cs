@@ -74,6 +74,12 @@ namespace AutoDarkModeSvc.Handlers
             return enabled;
         }
 
+        public static string GetActiveThemePath()
+        {
+            using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
+            return (string)key.GetValue("CurrentTheme") ?? "";
+        }
+
         /// <summary>
         /// Retrieves the operating system version
         /// </summary>
