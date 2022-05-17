@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -122,7 +123,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             UpdateSection(Desktop.Section.Item1, desktopSerialized);
             try
             {
-                System.IO.File.WriteAllLines(ThemeFilePath, ThemeFileContent, Encoding.GetEncoding(1252));
+                new FileInfo(ThemeFilePath).Directory.Create();
+                File.WriteAllLines(ThemeFilePath, ThemeFileContent, Encoding.GetEncoding(1252));
             }
             catch (Exception ex)
             {
@@ -134,7 +136,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         {
             try
             {
-                ThemeFileContent = System.IO.File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
+                ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
                 DisplayName = "ADMTheme";
                 ThemeId = $"{{{Guid.NewGuid()}}}";
             }
