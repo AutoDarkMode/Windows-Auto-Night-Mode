@@ -13,6 +13,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
     class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
     {
         private readonly ComponentManager cm;
+        private readonly GlobalState state = GlobalState.Instance();
         public ThemeModeEvent(ComponentManager cm) {
             this.cm = cm;
         }
@@ -29,6 +30,8 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 }
                 else
                 {
+                    state.ManagedThemeFile.Load();
+                    state.ManagedThemeFile.Save();
                     // currently unused due to change of how active theme monitoring is processed
 
                     //WindowsThemeMonitor.StopThemeMonitor();
