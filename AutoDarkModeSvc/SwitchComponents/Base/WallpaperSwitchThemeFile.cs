@@ -180,18 +180,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentGlobalTheme = Theme.Unknown;
                 currentIndividualTheme = Theme.Unknown;
             }
-            try
-            {
-                ThemeFile custom = new(Extensions.CustomThemePath);
-                custom.RefreshGuid();
-                custom.Save();
-                //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
-                ThemeHandler.Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "couldn't refresh custom theme, wallpapers may desync");
-            }
+            ThemeHandler.SyncCustomThemeToDisk();
             ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
             temp.Load();
             GlobalState.ManagedThemeFile.Desktop = temp.Desktop;

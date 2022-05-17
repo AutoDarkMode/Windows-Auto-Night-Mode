@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -73,6 +74,21 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+        public static void SyncCustomThemeToDisk()
+        {
+            try
+            {
+                ThemeFile custom = new(Extensions.CustomThemePath);
+                custom.RefreshGuid();
+                custom.Save();
+                //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
+                ThemeHandler.Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "couldn't refresh custom theme, wallpapers may desync");
+            }
+        }
         public static void ApplyManagedTheme(AdmConfig config, string path)
         {
             PowerHandler.RequestDisableEnergySaver(config);

@@ -77,7 +77,11 @@ namespace AutoDarkModeSvc.Core
             List<ISwitchComponent> componentsToUpdate = cm.GetComponentsToUpdate(newTheme);
             if (componentsToUpdate.Count > 0)
             {
-                if (!config.WindowsThemeMode.Enabled) state.ManagedThemeFile.Load();
+                if (!config.WindowsThemeMode.Enabled)
+                {
+                    ThemeHandler.SyncCustomThemeToDisk();
+                    state.ManagedThemeFile.Load();
+                }
                 //if a theme switch did not occur, run mitigations
                 if (!themeModeSwitched) PowerHandler.RequestDisableEnergySaver(config);
                 cm.Run(componentsToUpdate, newTheme, e);
