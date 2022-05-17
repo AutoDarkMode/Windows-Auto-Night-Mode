@@ -25,6 +25,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         {
             ThemeFilePath = path;
         }
+        
+        public void RefreshGuid()
+        {
+            ThemeId = $"{{{Guid.NewGuid()}}}";
+        }
 
         public static List<string> GetClassFieldsAndValues(object obj)
         {
@@ -99,7 +104,6 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         public void Save()
         {
-
             UpdateValue("[Theme]", nameof(ThemeId), ThemeId);
             UpdateValue("[Theme]", nameof(DisplayName), DisplayName);
 

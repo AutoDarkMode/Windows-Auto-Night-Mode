@@ -182,7 +182,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             try
             {
-                File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
+                ThemeFile custom = new(Extensions.CustomThemePath);
+                custom.RefreshGuid();
+                custom.Save();
+                //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
                 ThemeHandler.Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
             }
             catch (Exception ex)
