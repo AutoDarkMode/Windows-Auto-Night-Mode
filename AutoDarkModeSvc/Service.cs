@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc
             ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
-            if (Builder.Config.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+            WindowsThemeMonitor.StartThemeMonitor();
             Timers.ForEach(t => t.Start());
 
             // Init window handle and register hotkeys
@@ -142,6 +142,7 @@ namespace AutoDarkModeSvc
             Logger.Info("exiting service");
             MessageServer.Stop();
             ConfigMonitor.Dispose();
+            WindowsThemeMonitor.StopThemeMonitor();
             Timers.ForEach(t => t.Stop());
             Timers.ForEach(t => t.Dispose());
             try

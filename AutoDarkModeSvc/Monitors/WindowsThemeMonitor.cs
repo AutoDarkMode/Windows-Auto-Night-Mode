@@ -15,6 +15,7 @@ namespace AutoDarkModeSvc.Monitors
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static ManagementEventWatcher globalThemeEventWatcher;
+        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static void HandleThemeMonitorEvent()
         {
             Logger.Debug("theme switch detected");
@@ -42,7 +43,10 @@ namespace AutoDarkModeSvc.Monitors
             {
                 Logger.Error(ex, "error while waiting for thread to stop:");
             }
-            ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.ExternalThemeSwitch));
+            if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
+            {
+                ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.ExternalThemeSwitch));
+            }
         }
 
         public static void StartThemeMonitor()
@@ -55,7 +59,7 @@ namespace AutoDarkModeSvc.Monitors
                 }
                 globalThemeEventWatcher = WMIHandler.CreateHKCURegistryValueMonitor(HandleThemeMonitorEvent, "SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Themes", "CurrentTheme");
                 globalThemeEventWatcher.Start();
-                Logger.Info("theme monitor enabled");
+                Logger.Debug("theme monitor started");
             }
             catch (Exception ex)
             {
@@ -72,7 +76,7 @@ namespace AutoDarkModeSvc.Monitors
                     globalThemeEventWatcher.Stop();
                     globalThemeEventWatcher.Dispose();
                     globalThemeEventWatcher = null;
-                    Logger.Info("theme monitor disabled");
+                    Logger.Debug("theme monitor stopped");
                 };
             }
             catch (Exception ex)
