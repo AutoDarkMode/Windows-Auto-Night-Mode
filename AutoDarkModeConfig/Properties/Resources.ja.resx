@@ -547,7 +547,7 @@
     <value>設定</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019:</value>
+    <value>Microsoft Office (旧):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>テーマの選択</value>
@@ -838,5 +838,8 @@
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>設定用フォルダを開く</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>アプリが判断</value>
   </data>
 </root>
