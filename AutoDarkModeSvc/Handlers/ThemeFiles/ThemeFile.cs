@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         {
             ThemeFilePath = path;
         }
-        
+
         public void RefreshGuid()
         {
             ThemeId = $"{{{Guid.NewGuid()}}}";
@@ -132,19 +132,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
-        public void Load()
+        public void Parse()
         {
-            try
-            {
-                ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
-                DisplayName = "ADMTheme";
-                ThemeId = $"{{{Guid.NewGuid()}}}";
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
-            }
-
             Desktop = new();
             VisualStyles = new();
             Cursors = new();
@@ -179,6 +168,13 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                         }
                         if (iter.Current.Contains("Wallpaper=")) Desktop.Wallpaper = iter.Current.Split('=')[1].Trim();
                         else if (iter.Current.Contains("Pattern")) Desktop.Pattern = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.Contains("PicturePosition"))
+                        {
+                            if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int pos)) 
+                            {
+                                Desktop.PicturePosition = pos;
+                            }
+                        }
                         else if (iter.Current.Contains("MultimonBackgrounds"))
                         {
                             bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
@@ -228,6 +224,29 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     }
                 }
             }
+        }
+
+        public void Set(List<string> newContent)
+        {
+            string tempPath = ThemeFilePath;
+            ThemeFileContent = newContent;
+            ThemeFilePath = tempPath;
+            Parse();
+        }
+
+        public void Load()
+        {
+            try
+            {
+                ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
+                DisplayName = "ADMTheme";
+                ThemeId = $"{{{Guid.NewGuid()}}}";
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
+            }
+            Parse();
         }
 
         private static void SetValues(string input, object obj)

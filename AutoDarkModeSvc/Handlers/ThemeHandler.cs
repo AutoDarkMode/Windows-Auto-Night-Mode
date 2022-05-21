@@ -74,11 +74,16 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+        public static void SyncCurrentThemeToManaged()
+        {
+
+        }
+
         public static void SyncCustomThemeToDisk()
         {
             try
             {
-                ThemeFile custom = new(Extensions.CustomThemePath);
+                ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
                 custom.RefreshGuid();
                 custom.Save();
                 //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
