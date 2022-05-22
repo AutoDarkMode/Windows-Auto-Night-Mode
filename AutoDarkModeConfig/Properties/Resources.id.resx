@@ -626,7 +626,7 @@
     <comment/>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019:</value>
+    <value>Microsoft Office (versi lama):</value>
     <comment/>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
@@ -686,7 +686,7 @@
     <comment/>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel diashow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu</value>
+    <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel slideshow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu</value>
     <comment/>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
