@@ -1,5 +1,5 @@
 ﻿using AutoDarkModeConfig;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 using System;

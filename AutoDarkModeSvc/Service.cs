@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc
             ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
-            if (Builder.Config.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
+            WindowsThemeMonitor.StartThemeMonitor();
             Timers.ForEach(t => t.Start());
 
             // Init window handle and register hotkeys
@@ -142,6 +142,7 @@ namespace AutoDarkModeSvc
             Logger.Info("exiting service");
             MessageServer.Stop();
             ConfigMonitor.Dispose();
+            WindowsThemeMonitor.StopThemeMonitor();
             Timers.ForEach(t => t.Stop());
             Timers.ForEach(t => t.Dispose());
             try

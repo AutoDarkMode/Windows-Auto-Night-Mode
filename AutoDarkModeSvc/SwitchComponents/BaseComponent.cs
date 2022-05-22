@@ -3,12 +3,14 @@ using System;
 using AutoDarkModeConfig;
 using AutoDarkModeConfig.Interfaces;
 using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Monitors;
 
 namespace AutoDarkModeSvc.SwitchComponents
 {
     abstract class BaseComponent<T> : ISwitchComponent
     {
         protected NLog.Logger Logger { get; private set; }
+        protected GlobalState GlobalState { get; } = GlobalState.Instance();
         protected ISwitchComponentSettings<T> Settings { get; set; }
         protected ISwitchComponentSettings<T> SettingsBefore { get; set; }
         public bool Initialized { get; private set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 
 namespace AutoDarkModeSvc.Modules
 {

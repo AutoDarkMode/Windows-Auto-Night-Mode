@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Timers;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
 
 namespace AutoDarkModeSvc.Timers

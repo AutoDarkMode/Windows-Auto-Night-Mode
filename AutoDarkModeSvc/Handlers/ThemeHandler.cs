@@ -3,8 +3,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -73,6 +74,32 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+        public static void SyncCurrentThemeToManaged()
+        {
+
+        }
+
+        public static void SyncCustomThemeToDisk()
+        {
+            try
+            {
+                ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                custom.RefreshGuid();
+                custom.Save();
+                //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
+                ThemeHandler.Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "couldn't refresh custom theme, wallpapers may desync");
+            }
+        }
+        public static void ApplyManagedTheme(AdmConfig config, string path)
+        {
+            PowerHandler.RequestDisableEnergySaver(config);
+            Apply(path);
+        }
+
         [ComImport, Guid("D23CC733-5522-406D-8DFB-B3CF5EF52A71"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface ITheme
         {
@@ -127,9 +154,10 @@ namespace AutoDarkModeSvc.Handlers
             public static extern bool IsThemeActive();
         }
         public static string GetCurrentThemeName()
-        {   
+        {
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
+
         public static void Apply(string themeFilePath)
         {
             Thread thread = new(() =>
@@ -168,6 +196,12 @@ namespace AutoDarkModeSvc.Handlers
             return NativeMethods.IsThemeActive() ? "running" : "stopped";
         }
 
+        /// <summary>
+        /// Forces the theme to update when the automatic theme detection is disabled
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="state"></param>
+        /// <param name="theme"></param>
         public static void EnforceNoMonitorUpdates(AdmConfigBuilder builder, GlobalState state, Theme theme)
         {
             string themePath = "";

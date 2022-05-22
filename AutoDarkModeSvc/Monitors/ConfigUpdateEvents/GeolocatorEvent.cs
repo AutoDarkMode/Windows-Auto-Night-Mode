@@ -4,7 +4,7 @@ using AutoDarkModeSvc.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {
     public class GeolocatorEvent : ConfigUpdateEvent<AdmConfig>
     {

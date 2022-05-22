@@ -4,7 +4,7 @@ using Windows.Devices.Geolocation;
 using AutoDarkModeConfig;
 using SunriseCalculator;
 using System.Runtime.CompilerServices;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 
 namespace AutoDarkModeSvc.Handlers
 {

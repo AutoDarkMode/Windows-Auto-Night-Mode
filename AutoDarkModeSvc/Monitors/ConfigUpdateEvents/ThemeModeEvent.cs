@@ -8,11 +8,12 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {
     class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
     {
         private readonly ComponentManager cm;
+        private readonly GlobalState state = GlobalState.Instance();
         public ThemeModeEvent(ComponentManager cm) {
             this.cm = cm;
         }
@@ -24,21 +25,29 @@ namespace AutoDarkModeSvc.Config.ConfigUpdateEvents
             {
                 if (newConfig.WindowsThemeMode.Enabled) {
                     cm.InvokeDisableIncompatible();
-                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
+                    // currently unused due to change of how active theme monitoring is processed
+                    // if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
                 }
                 else
                 {
-                    GlobalState.Instance().StopThemeMonitor();
+                    state.ManagedThemeFile.Load();
+                    state.ManagedThemeFile.Save();
+                    // currently unused due to change of how active theme monitoring is processed
+
+                    //WindowsThemeMonitor.StopThemeMonitor();
                 }
             } 
             else if (newConfig.WindowsThemeMode.Enabled)
             {
+                // currently unused due to change of how active theme monitoring is processed
+                /*
                 bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
                 if (monitorThemeToggled)
                 {
-                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) GlobalState.Instance().StartThemeMonitor();
-                    else GlobalState.Instance().StopThemeMonitor();
+                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+                    else WindowsThemeMonitor.StopThemeMonitor();
                 }
+                */
             }
         }
     }

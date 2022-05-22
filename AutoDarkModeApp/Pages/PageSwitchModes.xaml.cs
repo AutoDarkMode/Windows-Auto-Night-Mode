@@ -227,15 +227,28 @@ namespace AutoDarkModeApp.Pages
         private static string GetHotkeyString(KeyEventArgs e)
         {
             e.Handled = true;
-            Key key = e.Key;
-            string keyString = e.Key.ToString();
+            Key key = e.SystemKey == Key.None ? e.Key : e.SystemKey;
+            string keyString = key.ToString();
 
-            if (keyString.Contains("Alt") || keyString.Contains("Shift") || keyString.Contains("Win") || keyString.Contains("Ctrl"))
+            //Trace.WriteLine(e.SystemKey);
+            Trace.WriteLine(keyString);
+
+            if (keyString.Contains("Alt") || keyString.Contains("Shift") || keyString.Contains("Win") || keyString.Contains("Ctrl") || keyString.Contains("System"))
             {
                 return null;
             }
 
             ModifierKeys modifiers = Keyboard.Modifiers;
+            if (Keyboard.IsKeyDown(Key.LWin) || Keyboard.IsKeyDown(Key.RWin))
+            {
+                modifiers |= ModifierKeys.Windows;
+            }
+
+            if (Keyboard.IsKeyDown(Key.LeftAlt))
+            {
+                modifiers |= ModifierKeys.Alt;
+            }
+
             string isShift = (modifiers & ModifierKeys.Shift) == ModifierKeys.Shift ? "Shift + " : "";
             string isCtrl = (modifiers & ModifierKeys.Control) == ModifierKeys.Control ? "Ctrl + " : "";
             string isWin = (modifiers & ModifierKeys.Windows) == ModifierKeys.Windows ? "LWin + " : "";
