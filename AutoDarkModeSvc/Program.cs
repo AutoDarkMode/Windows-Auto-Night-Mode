@@ -1,4 +1,4 @@
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
@@ -30,6 +30,7 @@ namespace AutoDarkModeSvc
         [STAThread]
         public static void Main(string[] args)
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             List<string> argsList = args.Length > 0 ? new List<string>(args) : new List<string>();
             string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
 

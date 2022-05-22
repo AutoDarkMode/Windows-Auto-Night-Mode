@@ -2,14 +2,16 @@
 using AutoDarkModeConfig.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Windows.UI;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
-    internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
+    internal class WallpaperSwitchThemeFile : BaseComponent<WallpaperSwitchSettings>
     {
         public override bool ThemeHandlerCompatibility => false;
         public override int PriorityToLight => 25;
@@ -178,6 +180,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentGlobalTheme = Theme.Unknown;
                 currentIndividualTheme = Theme.Unknown;
             }
+            ThemeHandler.SyncCustomThemeToDisk();
+            ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
+            temp.Load();
+            GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
+            GlobalState.ManagedThemeFile.Colors = temp.Colors;
         }
 
         /// <summary>

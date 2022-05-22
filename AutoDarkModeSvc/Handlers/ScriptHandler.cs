@@ -9,10 +9,12 @@ namespace AutoDarkModeSvc.Handlers
     public static class ScriptHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static void Launch(string name, string path, List<string> args, string cwd = null)
+        public static void Launch(string name, string path, List<string> args, int? timeoutMillis, string cwd = null)
         {
             try
             {
+                int timeoutValue = timeoutMillis ?? 0;
+                if (timeoutValue == 0) timeoutValue = 10000;
                 if (args == null) args = new();
                 string argsString = "";
                 argsString = string.Join(" ", args.Select(a => $"\"{a}\""));
@@ -22,12 +24,11 @@ namespace AutoDarkModeSvc.Handlers
                 using Process p = new();
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.FileName = path;
-                p.StartInfo.UseShellExecute = false;
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.RedirectStandardError = true;
                 args.ForEach(a => p.StartInfo.ArgumentList.Add(a));
-                if (cwd != null) p.StartInfo.WorkingDirectory = cwd;
+                if (cwd != null && cwd.Length > 0) p.StartInfo.WorkingDirectory = cwd;
                 p.ErrorDataReceived += (sender, line) =>
                 {
                     if (line.Data != null) stdErr.Add(line.Data);
@@ -39,7 +40,7 @@ namespace AutoDarkModeSvc.Handlers
                 p.Start();
                 p.BeginOutputReadLine();
                 p.BeginErrorReadLine();
-                bool timeout = !p.WaitForExit(10000);
+                bool timeout = !p.WaitForExit(timeoutValue);
                 if (!timeout)
                 {
                     p.WaitForExit();
@@ -55,7 +56,7 @@ namespace AutoDarkModeSvc.Handlers
                 if (timeout)
                 {
                     p.Kill();
-                    Logger.Warn($"{name}: {path} {args} took too long to complete and had to be stopped");
+                    Logger.Warn($"{name}: {path} {args} took too long (>{timeout}ms) to complete and had to be stopped");
                 }
                 if (p.ExitCode != 0)
                 {

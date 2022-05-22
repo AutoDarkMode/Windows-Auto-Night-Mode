@@ -8,13 +8,13 @@ Switches between the dark and light theme of Windows at scheduled times.
 
 ## Overview
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
-Tired of looking at dark content while the sun is shining brightly? But then at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
+Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
 
 Android, iOS and MacOS already offer the possibility of changing the system design based on the time of the day. We're bringing this feature to Windows on a larger scale. 
 
-Auto Dark Mode helps you to be more productive. Because you shouldn't care about changing Windows settings several times a day. As soon as the sun goes down, we'll take care of everything for you.
+Auto Dark Mode helps you to be more productive. Because you shouldn't care about changing Windows settings several times a day. As soon as the sun goes down, we'll take care of your eyes.
 
-Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper. 
+Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts. 
 
 ## Features
 ![Screenshot showing Apps-Page](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/screenshot4.png)
@@ -23,19 +23,19 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Desktop wallpaper switch.
 - Windows .Theme switch, to also change Accent Color, Slideshow and Mouse Cursor.
 - Support for accent color on the Taskbar and other system elements.
-- Office 2013 - 2019 theme switch.
-- Ability to automatically enable the grayscale color filter of Windows 10.
-- Suitable for gamers: Don't switch while playing a game to avoid stuttering.
-- Lightweight with clean uninstall. No admin rights needed.
-- Automatic Updates.
+- Office theme switch.
+- Auto Dark Mode can enable the grayscale color filter of Windows.
+- Suitable for gamers: doesn't switch while playing games to avoid stuttering.
 - Run custom scripts.
+- Automatic Updates.
+- Lightweight with clean uninstall. No admin rights needed.
 
 ## Download and installing
 
 #### Download from Microsoft Store
 If you're running the new Microsoft Store, you will find Auto Dark Mode on it. Tested and verified by the Microsoft Store team.
 
-<a href="https://cutt.ly/JTfrKiM">
+<a href="https://apps.microsoft.com/store/detail/auto-dark-mode/XP8JK4HZBVF435">
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
 

@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Windows.Foundation.Collections;
 
+// https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
+
 namespace AutoDarkModeSvc.Handlers
 {
     public class ToastHandler
