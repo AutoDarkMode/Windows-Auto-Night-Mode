@@ -74,11 +74,6 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
-        public static void SyncCurrentThemeToManaged()
-        {
-
-        }
-
         public static void SyncCustomThemeToDisk()
         {
             try
@@ -87,11 +82,11 @@ namespace AutoDarkModeSvc.Handlers
                 custom.RefreshGuid();
                 custom.Save();
                 //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
-                ThemeHandler.Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "couldn't refresh custom theme, wallpapers may desync");
+                Logger.Error(ex, "couldn't refresh custom theme, settings may desync");
             }
         }
         public static void ApplyManagedTheme(AdmConfig config, string path)
@@ -158,7 +153,8 @@ namespace AutoDarkModeSvc.Handlers
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
 
-        public static void Apply(string themeFilePath)
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public static void Apply(string themeFilePath, bool suppressLogging = false)
         {
             Thread thread = new(() =>
             {
@@ -166,7 +162,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
                     state.CurrentWindowsThemeName = Path.GetFileNameWithoutExtension(themeFilePath);
-                    Logger.Info($"applied theme \"{themeFilePath}\" successfully");
+                    if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully");
                 }
                 catch (Exception ex)
                 {

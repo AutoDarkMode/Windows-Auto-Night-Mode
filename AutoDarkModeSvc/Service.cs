@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc
             ConfigMonitor.UpdateEventStates();
             MainTimer.RegisterModule(warden);
 
-            WindowsThemeMonitor.StartThemeMonitor();
+            if (Builder.Config.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
             Timers.ForEach(t => t.Start());
 
             // Init window handle and register hotkeys

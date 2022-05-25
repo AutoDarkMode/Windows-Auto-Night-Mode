@@ -25,29 +25,23 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
             {
                 if (newConfig.WindowsThemeMode.Enabled) {
                     cm.InvokeDisableIncompatible();
-                    // currently unused due to change of how active theme monitoring is processed
-                    // if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
                 }
                 else
                 {
                     state.ManagedThemeFile.Load();
                     state.ManagedThemeFile.Save();
-                    // currently unused due to change of how active theme monitoring is processed
-
-                    //WindowsThemeMonitor.StopThemeMonitor();
+                    WindowsThemeMonitor.StopThemeMonitor();
                 }
             } 
             else if (newConfig.WindowsThemeMode.Enabled)
             {
-                // currently unused due to change of how active theme monitoring is processed
-                /*
                 bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
                 if (monitorThemeToggled)
                 {
                     if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
                     else WindowsThemeMonitor.StopThemeMonitor();
                 }
-                */
             }
         }
     }
