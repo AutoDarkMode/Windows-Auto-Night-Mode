@@ -1,6 +1,6 @@
 name: Bug Report
 description: If you have an issue with Auto Dark Mode
-labels: ['type:bug']
+labels: ['bug']
 body:
   - type: markdown
     attributes:
