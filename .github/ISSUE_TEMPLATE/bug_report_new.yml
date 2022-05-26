@@ -49,7 +49,7 @@ body:
     validations:
       required: true
 
-  - type: input
+  - type: textarea
     id: version
     attributes:
       label: Commit Hash and Version
