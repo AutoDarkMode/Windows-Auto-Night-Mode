@@ -1,0 +1,66 @@
+name: Bug Report
+description: Report a problem
+labels: ['type:bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        *PLEASE UPDATE TO THE LATEST BETA VERSION FIRST IF POSSIBLE!*
+
+        Go to settings and select the "Beta" update channel.
+
+        Click "Check for Updates" and ensure the info message reads "No new updates available"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Give a concise description of what steps/clicks/modifications you made from the beginning, until the issue occurs
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description:  Describe what you see. How does that differ from what you expect?
+      placeholder: |
+        ADM should do this
+        ADM should do that
+    validations:
+      required: false
+
+  - type: textarea
+    id: logdata
+    attributes:
+      label: Log Data
+      description:  |
+        Attach the service.log file
+        Attach the config.yaml file
+        They can be found in %AppData%\AutoDarkMode
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: Enter your Window major version and build number
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Commit Hash and Version
+      description: Go to the About Page and copy the version info
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, please provide screenshots depicting the problem.
+    validations:
+      required: false
