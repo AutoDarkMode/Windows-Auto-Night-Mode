@@ -5,6 +5,7 @@ using AutoDarkModeConfig;
 using SunriseCalculator;
 using System.Runtime.CompilerServices;
 using AutoDarkModeSvc.Monitors;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers
 {

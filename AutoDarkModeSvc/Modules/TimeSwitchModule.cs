@@ -11,6 +11,7 @@ namespace AutoDarkModeSvc.Modules
     {
         public override string TimerAffinity { get; } = TimerName.Main;
         private AdmConfigBuilder ConfigBuilder { get; }
+        private GlobalState state { get; } = GlobalState.Instance();
 
         /// <summary>
         /// Instantiates a new TimeSwitchModule.
@@ -24,10 +25,13 @@ namespace AutoDarkModeSvc.Modules
 
         public override void Fire()
         {
-            Task.Run(() =>
+            if (!state.PostponeManager.IsPostponed)
             {
-                ThemeManager.RequestSwitch(ConfigBuilder, new(SwitchSource.TimeSwitchModule));
-            });
+                Task.Run(() =>
+                {
+                    ThemeManager.RequestSwitch(ConfigBuilder, new(SwitchSource.TimeSwitchModule));
+                });
+            }
         }
     }
 }

@@ -95,7 +95,7 @@ namespace AutoDarkModeSvc.Core
                     try
                     {
                         state.ManagedThemeFile.Save();
-                        ThemeHandler.ApplyManagedTheme(config, Extensions.CustomThemePath);
+                        ThemeHandler.ApplyManagedTheme(config, Extensions.ManagedThemePath);
                     }
                     catch (Exception ex)
                     {

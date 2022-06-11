@@ -6,6 +6,7 @@ using System.Threading;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeConfig;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
+using AutoDarkModeSvc.Core;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs

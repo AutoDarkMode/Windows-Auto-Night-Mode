@@ -9,7 +9,7 @@ using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
 
-namespace AutoDarkModeSvc.Monitors
+namespace AutoDarkModeSvc.Core
 {
     public class GlobalState
     {
@@ -30,24 +30,8 @@ namespace AutoDarkModeSvc.Monitors
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
-        public ThemeFile ManagedThemeFile { get; } = new(Extensions.CustomThemePath);
-        private bool _postponeSwitch;
-        // triggers update if and only if there is a change in value
-        public bool PostponeSwitch
-        {
-            get { return _postponeSwitch; }
-            set
-            {
-                if (value != _postponeSwitch)
-                {
-                    _postponeSwitch = value;
-                    if (Warden != null)
-                    {
-                        Warden.Fire();
-                    }
-                }
-            }
-        }
+        public ThemeFile ManagedThemeFile { get; } = new(Extensions.ManagedThemePath);
+        public PostponeManager PostponeManager { get; } = new();
 
         private static string GetCurrentThemeName()
         {

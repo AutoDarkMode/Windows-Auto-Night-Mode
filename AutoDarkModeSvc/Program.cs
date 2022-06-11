@@ -12,6 +12,7 @@ using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Reflection;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc
 {

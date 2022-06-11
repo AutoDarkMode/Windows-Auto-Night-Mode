@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -54,7 +55,7 @@ namespace AutoDarkModeSvc.Modules
                         if (!PostponeDark)
                         {
                             Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
-                            State.PostponeSwitch = true;
+                            State.PostponeManager.Add(Name);
                             PostponeDark = true;
                         }
                     }
@@ -74,7 +75,7 @@ namespace AutoDarkModeSvc.Modules
                             Logger.Info($"ending GPU usage monitoring");
                             PostponeDark = false;
                             PostponeLight = false;
-                            State.PostponeSwitch = false;
+                            State.PostponeManager.Remove(Name);
                         }
                     }
                 }
@@ -86,7 +87,7 @@ namespace AutoDarkModeSvc.Modules
                         if (!PostponeLight)
                         {
                             Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
-                            State.PostponeSwitch = true;
+                            State.PostponeManager.Add(Name);
                             PostponeLight = true;
                         }
                     }
@@ -106,7 +107,7 @@ namespace AutoDarkModeSvc.Modules
                             Logger.Info($"ending GPU usage monitoring");
                             PostponeDark = false;
                             PostponeLight = false;
-                            State.PostponeSwitch = false;
+                            State.PostponeManager.Remove(Name);
                         }
                     }
                 }
@@ -123,7 +124,7 @@ namespace AutoDarkModeSvc.Modules
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not read GPU usage, re-enabling theme switch:");
-                State.PostponeSwitch = false;
+                State.PostponeManager.Remove(Name);
                 Alerted = false;
                 return ThreshLow;
             }
@@ -133,7 +134,7 @@ namespace AutoDarkModeSvc.Modules
                 if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
                 {
                     Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
-                    State.PostponeSwitch = false;
+                    State.PostponeManager.Remove(Name);
                     Alerted = false;
                     return ThreshLow;
                 }
@@ -220,7 +221,7 @@ namespace AutoDarkModeSvc.Modules
         public override void Cleanup()
         {
             Logger.Debug($"cleanup performed for module {Name}");
-            State.PostponeSwitch = false;
+            State.PostponeManager.Remove(Name);
         }
     }
 }

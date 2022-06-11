@@ -4,6 +4,7 @@ using AutoDarkModeConfig;
 using AutoDarkModeConfig.Interfaces;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Monitors;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.SwitchComponents
 {
