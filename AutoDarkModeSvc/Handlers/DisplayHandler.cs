@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeConfig;
 using AutoDarkModeConfig.ComponentSettings.Base;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
