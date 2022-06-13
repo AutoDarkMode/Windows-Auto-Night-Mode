@@ -1357,6 +1357,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t switch themes unless the system is idle.
+        /// </summary>
+        public static string SwitchModesCheckBoxIdleTimer {
+            get {
+                return ResourceManager.GetString("SwitchModesCheckBoxIdleTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fast (1 sample).
         /// </summary>
         public static string SwitchModesComboBoxItemSamplesFast {
@@ -1452,6 +1461,15 @@ namespace AutoDarkModeConfig.Properties {
         public static string SwitchModesTextBlockHeaderNoForceHotkey {
             get {
                 return ResourceManager.GetString("SwitchModesTextBlockHeaderNoForceHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minutes until the system is considered idle.
+        /// </summary>
+        public static string SwitchModesTextBlockIdleTimerDescription {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockIdleTimerDescription", resourceCulture);
             }
         }
         

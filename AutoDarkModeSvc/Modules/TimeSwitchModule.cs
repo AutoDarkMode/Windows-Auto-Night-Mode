@@ -21,7 +21,6 @@ namespace AutoDarkModeSvc.Modules
         public TimeSwitchModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             ConfigBuilder = AdmConfigBuilder.Instance();
-            State.PostponeManager.RegisterCallbackModule(this);
         }
 
         public override void Fire()
@@ -38,7 +37,6 @@ namespace AutoDarkModeSvc.Modules
         public override void Cleanup()
         {
             base.Cleanup();
-            State.PostponeManager.DeregisterCallbackModule(this);
         }
     }
 }

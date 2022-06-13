@@ -39,8 +39,21 @@ namespace AutoDarkModeApp.Pages
                 CheckBoxGPUMonitoring.IsChecked = false;
                 StackPanelGPUMonitoring.Visibility = Visibility.Collapsed;
             }
+
+            CheckBoxIdleTimer.IsChecked = builder.Config.IdleChecker.Enabled;
+            if (builder.Config.IdleChecker.Enabled)
+            {
+                StackPanelIdleTimer.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                StackPanelIdleTimer.Visibility = Visibility.Collapsed;
+            }
+
             ComboBoxGPUSamples.SelectedIndex = builder.Config.GPUMonitoring.Samples - 1;
             NumberBoxGPUThreshold.Value = Convert.ToDouble(builder.Config.GPUMonitoring.Threshold);
+
+            NumberBoxIdleTimer.Value = Convert.ToDouble(builder.Config.IdleChecker.Threshold);
 
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
 
@@ -70,6 +83,28 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "CheckBoxBatteryDarkMode_Click");
+            }
+        }
+
+        private void CheckBoxIdleTimer_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxIdleTimer.IsChecked.Value)
+            {
+                StackPanelIdleTimer.Visibility = Visibility.Visible;
+                builder.Config.IdleChecker.Enabled = true;
+            }
+            else
+            {
+                StackPanelIdleTimer.Visibility = Visibility.Collapsed;
+                builder.Config.IdleChecker.Enabled = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxIdleTimer_Click");
             }
         }
 
@@ -136,7 +171,26 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void ComboBoxGPUSamples_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void NumberBoxIdleTimer_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            if (!init)
+            {
+                if (double.IsNaN(NumberBoxIdleTimer.Value)) //fixes crash when leaving box empty and clicking outside it
+                    return;
+
+                builder.Config.IdleChecker.Threshold = Convert.ToInt32(NumberBoxIdleTimer.Value);
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "NumberBoxGPUThreshold_ValueChanged");
+                }
+            }
+        }
+
+            private void ComboBoxGPUSamples_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             builder.Config.GPUMonitoring.Samples = ComboBoxGPUSamples.SelectedIndex + 1;
             if (init) return;

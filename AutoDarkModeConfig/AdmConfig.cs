@@ -19,8 +19,9 @@ namespace AutoDarkModeConfig
             WindowsThemeMode = new();
             Updater = new();
             Hotkeys = new();
+            IdleChecker = new();
 
-            //New Component Settings;
+            // New Component Settings;
             AppsSwitch = new();
             SystemSwitch = new();
             ColorFilterSwitch = new();
@@ -41,8 +42,15 @@ namespace AutoDarkModeConfig
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
         public Hotkeys Hotkeys { get; set; }
+        public IdleChecker IdleChecker { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public Updater Updater { get; set; }
+    }
+
+    public class IdleChecker
+    {
+        public bool Enabled { get; set; }
+        public int Threshold { get; set; } = 5;
     }
 
     public class Hotkeys

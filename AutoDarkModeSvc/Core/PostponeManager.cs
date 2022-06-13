@@ -31,6 +31,7 @@ namespace AutoDarkModeSvc.Core
                 return false;
             }
             PostponedQueue.Add(reason);
+            Logger.Debug($"added {reason} to postpone queue: [{string.Join(", ", PostponedQueue)}]");
             return true;
         }
 
@@ -45,9 +46,10 @@ namespace AutoDarkModeSvc.Core
         {
             bool lastElement = PostponedQueue.Count == 1;
             bool result = PostponedQueue.Remove(reason);
-            if (!IsPostponed)
+            if (result) Logger.Debug($"removed {reason} from postpone queue: [{string.Join(", ", PostponedQueue)}]");
+            if (!IsPostponed && lastElement)
             {
-                Logger.Info("no more elements postponing theme switch, running callbacks");
+                Logger.Info("postpone queue cleared");
                 CallbackModules.ForEach(m => m.Fire());
             }
             return result;
@@ -64,7 +66,7 @@ namespace AutoDarkModeSvc.Core
             {
                 return false;
             }
-            Logger.Debug($"Registering module for {module.Name} callback");
+            Logger.Debug($"registering module {module.Name} for callback");
             CallbackModules.Add(module);
             return true;
         }
@@ -78,7 +80,7 @@ namespace AutoDarkModeSvc.Core
         {
             if (CallbackModules.Remove(module))
             {
-                Logger.Debug($"Deregistering module {module.Name} for callback ");
+                Logger.Debug($"deregistering module {module.Name} for callback ");
                 return true;
             }
             return false;

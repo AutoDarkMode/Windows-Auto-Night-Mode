@@ -36,6 +36,7 @@ namespace AutoDarkModeSvc.Modules
         public override void Fire()
         {
             AdmConfig config = ConfigBuilder.Config;
+            AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
             AutoManageModule(typeof(GeopositionUpdateModule), true, config.Location.Enabled);
             AutoManageModule(typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled);
             //AutoManageModule(typeof(ThemeUpdateModule), true, config.WindowsThemeMode.Enabled && config.WindowsThemeMode.MonitorActiveTheme);

@@ -842,4 +842,10 @@ Do you really want to continue?</value>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Let the app decide</value>
   </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Don't switch themes unless the system is idle</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Minutes until the system is considered idle</value>
+  </data>
 </root>
