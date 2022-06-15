@@ -84,6 +84,11 @@ namespace AutoDarkModeSvc
             //exit on shutdown
             NotifyIcon.Disposed += Exit;
             SystemEvents.SessionEnded += Exit;
+
+            if (Builder.Config.AutoThemeSwitchingEnabled)
+            {
+                ThemeManager.RequestSwitch(Builder, new(SwitchSource.Startup));
+            }
         }
 
         protected override void SetVisibleCore(bool value)

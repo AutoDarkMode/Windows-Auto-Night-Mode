@@ -43,7 +43,8 @@ namespace AutoDarkModeConfig
         BatteryStatusChanged,
         SystemResume,
         Manual,
-        ExternalThemeSwitch
+        ExternalThemeSwitch,
+        Startup
     }
 
     public static class Extensions
