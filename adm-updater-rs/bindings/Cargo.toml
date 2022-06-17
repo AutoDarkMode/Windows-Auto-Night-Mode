@@ -7,7 +7,7 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-windows = "0.21.1"
+windows = "0.32.0"
 
 [build-dependencies]
-windows = "0.21.1"
+windows = "0.32.0"
