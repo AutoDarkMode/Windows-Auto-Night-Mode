@@ -79,6 +79,7 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
+                Logger.Debug("refreshing Custom.theme values");
                 ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
                 custom.RefreshGuid();
                 custom.Save();
