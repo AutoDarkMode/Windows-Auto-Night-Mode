@@ -793,5 +793,13 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Buka Folder Konfigurasi</value>
+  </data>  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Biarkan aplikasi memilih</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Jangan beralih tema kecuali sistem menganggur</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Jumlah menit hingga sistem dianggap menganggur</value>
   </data>
 </root>
