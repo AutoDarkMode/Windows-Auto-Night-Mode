@@ -846,6 +846,6 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>系统非空闲状态时不进行切换</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>系统空闲状态判断时间（分钟)</value>
+    <value>系统空闲状态判断时间（分钟）</value>
   </data>
 </root>
