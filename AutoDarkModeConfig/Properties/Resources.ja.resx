@@ -842,4 +842,10 @@
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>アプリが判断</value>
   </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>システムがアイドル状態でないならテーマを切り替えない</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>システムがアイドル状態だと判定されるまでの分数</value>
+  </data>
 </root>
