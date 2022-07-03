@@ -23,6 +23,8 @@ namespace AutoDarkModeSvc.Handlers
 {
     public static class ThemeHandler
     {
+        private static readonly object _syncRoot = new();
+
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         private static readonly GlobalState state = GlobalState.Instance();
@@ -75,7 +77,6 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void SyncCustomThemeToDisk()
         {
             FileSystemWatcher watcher = new();
@@ -85,54 +86,16 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Debug("refreshing Custom.theme values");
                 ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
                 watcher.Path = Extensions.ThemeFolderPath;
-                watcher.NotifyFilter = NotifyFilters.Attributes |
-                    NotifyFilters.CreationTime |
-                    NotifyFilters.DirectoryName |
-                    NotifyFilters.FileName |
-                    NotifyFilters.LastAccess |
-                    NotifyFilters.LastWrite |
-                    NotifyFilters.Security |
-                    NotifyFilters.Size;
+                watcher.NotifyFilter = NotifyFilters.LastWrite;
                 watcher.Filter = "Custom.theme";
-
-                Thread cancellation = new(() =>
-                {
-                    try
-                    {
-                        if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000)))
-                        {
-                            Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
-                            watcher.EnableRaisingEvents = false;
-                            try
-                            {
-                                watcher.Dispose();
-                                interrupt.Dispose();
-                            }
-                            catch (Exception ex1)
-                            {
-                                Logger.Warn(ex1, "error disposing object: ");
-                            }
-                        }
-                    }
-                    catch (ThreadInterruptedException)
-                    {
-                        Logger.Debug("aborting cancellation procedure due to thread interrupt");
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, "error while waiting for timeout: ");
-                    }
-                });
-                cancellation.Start();
-
                 watcher.Changed += new((object source, FileSystemEventArgs e) =>
                 {
-                    Logger.Debug("Custom.theme modified");
+                    //Logger.Debug("Custom.theme modified");
                     ThemeFile customRefreshed = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
-                    if (customRefreshed.ThemeId != custom.ThemeId)
+                    customRefreshed.Load(keepId: true);
+                    if (customRefreshed.ThemeId != custom.ThemeId && custom.DisplayName == "Unsaved Theme")
                     {
                         Logger.Debug("windows Custom.theme write detected, refreshing theme");
-                        Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
                         try
                         {
                             interrupt.Set();
@@ -142,25 +105,36 @@ namespace AutoDarkModeSvc.Handlers
                             Logger.Warn(ex, "wait handle already closed: ");
                         }
                         watcher.EnableRaisingEvents = false;
-                        try
-                        {
-                            watcher.Dispose();
-                            interrupt.Dispose();
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Warn(ex, "error disposing object: ");
-                        }
                     }
                 });
                 watcher.EnableRaisingEvents = true;
                 custom.RefreshGuid();
+                custom.DisplayName = "Unsaved Theme";
                 custom.Save();
+
+                Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
+
+                if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000)))
+                {
+                    Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
+                    try
+                    {
+                        watcher.EnableRaisingEvents = false;
+                    } 
+                    catch (Exception ex)
+                    {
+                        Logger.Warn(ex, "error disposing object: ");
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "couldn't refresh custom theme, settings may desync");
                 watcher.EnableRaisingEvents = false;
+
+            }
+            finally
+            {
                 try
                 {
                     watcher.Dispose();
@@ -236,7 +210,6 @@ namespace AutoDarkModeSvc.Handlers
             return new ThemeManagerClass().CurrentTheme.DisplayName;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void Apply(string themeFilePath, bool suppressLogging = false)
         {
             /*Exception applyEx = null;*/

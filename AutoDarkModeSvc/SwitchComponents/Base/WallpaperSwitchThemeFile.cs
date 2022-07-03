@@ -180,7 +180,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentGlobalTheme = Theme.Unknown;
                 currentIndividualTheme = Theme.Unknown;
             }
-            ThemeHandler.SyncCustomThemeToDisk();
             ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
             temp.Load();
             GlobalState.ManagedThemeFile.Desktop = temp.Desktop;

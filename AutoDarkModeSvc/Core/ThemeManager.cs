@@ -79,7 +79,6 @@ namespace AutoDarkModeSvc.Core
             {
                 if (!config.WindowsThemeMode.Enabled)
                 {
-                    ThemeHandler.SyncCustomThemeToDisk();
                     state.ManagedThemeFile.Load();
                 }
                 //if a theme switch did not occur, run mitigations

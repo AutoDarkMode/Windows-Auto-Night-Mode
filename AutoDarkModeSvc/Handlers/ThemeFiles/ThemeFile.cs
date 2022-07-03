@@ -155,8 +155,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             processLastIterValue = true;
                             break;
                         }
-                        // if (iter.Current.Contains("DisplayName")) DisplayName = iter.Current.Split('=')[1].Trim();
-                        // else if (iter.Current.Contains("ThemeId")) ThemeId = iter.Current.Split('=')[1].Trim();
+                        if (iter.Current.Contains("DisplayName")) DisplayName = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.Contains("ThemeId")) ThemeId = iter.Current.Split('=')[1].Trim();
                     }
                 }
                 else if (iter.Current.Contains(Desktop.Section.Item1))
@@ -236,19 +236,19 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Parse();
         }
 
-        public void Load()
+        public void Load(bool keepId = false)
         {
             try
             {
                 ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
-                DisplayName = "ADMTheme";
-                ThemeId = $"{{{Guid.NewGuid()}}}";
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
             }
             Parse();
+            if (!keepId) DisplayName = "ADMTheme";
+            if (!keepId) ThemeId = $"{{{Guid.NewGuid()}}}";
         }
 
         private static void SetValues(string input, object obj)
