@@ -78,11 +78,12 @@ namespace AutoDarkModeSvc.Handlers
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void SyncCustomThemeToDisk()
         {
+            FileSystemWatcher watcher = new();
+            ManualResetEvent interrupt = new(false);
             try
             {
                 Logger.Debug("refreshing Custom.theme values");
                 ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
-                FileSystemWatcher watcher = new();
                 watcher.Path = Extensions.ThemeFolderPath;
                 watcher.NotifyFilter = NotifyFilters.Attributes |
                     NotifyFilters.CreationTime |
@@ -93,7 +94,6 @@ namespace AutoDarkModeSvc.Handlers
                     NotifyFilters.Security |
                     NotifyFilters.Size;
                 watcher.Filter = "Custom.theme";
-                ManualResetEvent interrupt = new(false);
 
                 Thread cancellation = new(() =>
                 {
@@ -101,9 +101,6 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000))) {
                             Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
-                            watcher.EnableRaisingEvents = false;
-                            watcher.Dispose();
-                            interrupt.Dispose();
                         }
                     }
                     catch (ThreadInterruptedException)
@@ -125,20 +122,24 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Debug("windows Custom.theme write detected, refreshing theme");
                         Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
-                        watcher.EnableRaisingEvents = false;
-                        watcher.Dispose();
                         interrupt.Set();
-                        interrupt.Dispose();
                     }
                 });
                 watcher.EnableRaisingEvents = true;
                 custom.RefreshGuid();
                 custom.Save();
+                cancellation.Join();
 
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "couldn't refresh custom theme, settings may desync");
+            }
+            finally
+            {
+                watcher.EnableRaisingEvents = false;
+                watcher.Dispose();
+                interrupt.Dispose();
             }
         }
         public static void ApplyManagedTheme(AdmConfig config, string path)
