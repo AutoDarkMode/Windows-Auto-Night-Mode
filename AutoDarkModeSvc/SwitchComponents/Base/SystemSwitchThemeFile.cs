@@ -35,7 +35,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 // theme does not match dark, as accent color is avialable in dark only
                 // Do not return true on windows theme mode, as this would potentially modify the theme
-                if (currentComponentTheme != newTheme && !themeModeEnabled) return true;
+                if (currentComponentTheme != Theme.Dark && !themeModeEnabled) return true;
 
                 if (newTheme == Theme.Dark)
                 {

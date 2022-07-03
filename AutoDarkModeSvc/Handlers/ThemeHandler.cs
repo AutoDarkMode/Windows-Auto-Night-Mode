@@ -93,6 +93,30 @@ namespace AutoDarkModeSvc.Handlers
                     NotifyFilters.Security |
                     NotifyFilters.Size;
                 watcher.Filter = "Custom.theme";
+                ManualResetEvent interrupt = new(false);
+
+                Thread cancellation = new(() =>
+                {
+                    try
+                    {
+                        if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000))) {
+                            Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
+                            watcher.EnableRaisingEvents = false;
+                            watcher.Dispose();
+                            interrupt.Dispose();
+                        }
+                    }
+                    catch (ThreadInterruptedException)
+                    {
+                        Logger.Debug("aborting cancellation procedure due to thread interrupt");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "error while waiting for timeout: ");
+                    }
+                });
+                cancellation.Start();
+
                 watcher.Changed += new((object source, FileSystemEventArgs e) =>
                 {
                     Logger.Debug("Custom.theme modified");
@@ -103,18 +127,14 @@ namespace AutoDarkModeSvc.Handlers
                         Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
                         watcher.EnableRaisingEvents = false;
                         watcher.Dispose();
+                        interrupt.Set();
+                        interrupt.Dispose();
                     }
                 });
                 watcher.EnableRaisingEvents = true;
                 custom.RefreshGuid();
                 custom.Save();
-                Thread cancellation = new(() =>
-                {
-                    Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
-                    Thread.Sleep(5);
-                    watcher.EnableRaisingEvents = false;
-                    watcher.Dispose();
-                });
+
             }
             catch (Exception ex)
             {
@@ -188,6 +208,7 @@ namespace AutoDarkModeSvc.Handlers
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void Apply(string themeFilePath, bool suppressLogging = false)
         {
+            /*Exception applyEx = null;*/
             Thread thread = new(() =>
             {
                 try
@@ -199,6 +220,7 @@ namespace AutoDarkModeSvc.Handlers
                 catch (Exception ex)
                 {
                     Logger.Error(ex, $"could not apply theme \"{themeFilePath}\"");
+                    //applyEx = ex;
                 }
             })
             {
@@ -214,6 +236,12 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Error(ex, "theme handler thread was interrupted");
             }
+            /*
+            if (applyEx != null)
+            {
+                throw applyEx;
+            }
+            */
         }
         public static string GetCurrentVisualStyleName()
         {
