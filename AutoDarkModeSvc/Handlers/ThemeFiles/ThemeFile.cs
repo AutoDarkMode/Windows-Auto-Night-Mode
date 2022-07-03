@@ -16,7 +16,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public List<string> ThemeFileContent { get; private set; } = new();
         public string DisplayName { get; set; } = "ADMTheme";
         public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";
-
+        public MasterThemeSelector MasterThemeSelector { get; set; } = new();
         public Desktop Desktop { get; set; } = new();
         public VisualStyles VisualStyles { get; set; } = new();
         public Cursors Cursors { get; set; } = new();
@@ -111,6 +111,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             UpdateSection(Cursors.Section.Item1, GetClassFieldsAndValues(Cursors));
             UpdateSection(VisualStyles.Section.Item1, GetClassFieldsAndValues(VisualStyles));
             UpdateValue(Colors.Section.Item1, nameof(Colors.Background), Colors.Background.Item1);
+
+            UpdateValue(MasterThemeSelector.Section.Item1, nameof(MasterThemeSelector.MTSM), MasterThemeSelector.MTSM);
 
             //Update Desktop class manually due to the way it is internally represented
             List<string> desktopSerialized = new();

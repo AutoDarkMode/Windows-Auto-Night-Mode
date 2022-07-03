@@ -17,10 +17,16 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public List<(string, string)> MultimonWallpapers { get; set; } = new();
     }
 
+    public class MasterThemeSelector
+    {
+        public (string, int) Section { get; } = (@"[MasterThemeSelector]", 0);
+        public string MTSM { get; set; } = "RJSPBS";
+    }
+
     public class VisualStyles
     {
         public (string, int) Section { get; } = (@"[VisualStyles]", 0);
-        public (string, int) Path { get; set; } = (@"Path=%SystemRoot%\resources\themes\Aero\Aero.msstyles", 1);
+        public (string, int) Path { get; set; } = (@"%SystemRoot%\resources\themes\Aero\Aero.msstyles", 1);
         public (string, int) ColorStyle { get; set; } = ("NormalColor", 2);
         public (string, int) Size { get; set; } = ("NormalSize", 3);
         public (string, int) AutoColorization { get; set; } = ("0", 4);
