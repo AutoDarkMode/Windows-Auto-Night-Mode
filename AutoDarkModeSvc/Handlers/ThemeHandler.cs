@@ -101,6 +101,9 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000))) {
                             Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
+                            watcher.EnableRaisingEvents = false;
+                            watcher.Dispose();
+                            interrupt.Dispose();
                         }
                     }
                     catch (ThreadInterruptedException)
@@ -123,20 +126,18 @@ namespace AutoDarkModeSvc.Handlers
                         Logger.Debug("windows Custom.theme write detected, refreshing theme");
                         Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
                         interrupt.Set();
+                        watcher.EnableRaisingEvents = false;
+                        watcher.Dispose();
+                        interrupt.Dispose();
                     }
                 });
                 watcher.EnableRaisingEvents = true;
                 custom.RefreshGuid();
                 custom.Save();
-                cancellation.Join();
-
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "couldn't refresh custom theme, settings may desync");
-            }
-            finally
-            {
                 watcher.EnableRaisingEvents = false;
                 watcher.Dispose();
                 interrupt.Dispose();
