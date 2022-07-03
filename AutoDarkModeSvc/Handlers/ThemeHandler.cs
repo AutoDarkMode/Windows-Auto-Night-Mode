@@ -99,11 +99,19 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     try
                     {
-                        if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000))) {
+                        if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000)))
+                        {
                             Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
                             watcher.EnableRaisingEvents = false;
-                            watcher.Dispose();
-                            interrupt.Dispose();
+                            try
+                            {
+                                watcher.Dispose();
+                                interrupt.Dispose();
+                            }
+                            catch (Exception ex1)
+                            {
+                                Logger.Warn(ex1, "error disposing object: ");
+                            }
                         }
                     }
                     catch (ThreadInterruptedException)
@@ -125,10 +133,24 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Debug("windows Custom.theme write detected, refreshing theme");
                         Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
-                        interrupt.Set();
+                        try
+                        {
+                            interrupt.Set();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Warn(ex, "wait handle already closed: ");
+                        }
                         watcher.EnableRaisingEvents = false;
-                        watcher.Dispose();
-                        interrupt.Dispose();
+                        try
+                        {
+                            watcher.Dispose();
+                            interrupt.Dispose();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Warn(ex, "error disposing object: ");
+                        }
                     }
                 });
                 watcher.EnableRaisingEvents = true;
@@ -139,8 +161,15 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Error(ex, "couldn't refresh custom theme, settings may desync");
                 watcher.EnableRaisingEvents = false;
-                watcher.Dispose();
-                interrupt.Dispose();
+                try
+                {
+                    watcher.Dispose();
+                    interrupt.Dispose();
+                }
+                catch (Exception ex1)
+                {
+                    Logger.Warn(ex1, "error disposing object: ");
+                }
             }
         }
         public static void ApplyManagedTheme(AdmConfig config, string path)
