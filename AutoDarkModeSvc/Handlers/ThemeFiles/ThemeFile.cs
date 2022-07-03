@@ -12,7 +12,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
     public class ThemeFile
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private string ThemeFilePath { get; set; }
+        public string ThemeFilePath { get; private set; }
         public List<string> ThemeFileContent { get; private set; } = new();
         public string DisplayName { get; set; } = "ADMTheme";
         public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";

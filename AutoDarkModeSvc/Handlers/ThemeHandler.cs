@@ -75,16 +75,46 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void SyncCustomThemeToDisk()
         {
             try
             {
                 Logger.Debug("refreshing Custom.theme values");
                 ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                FileSystemWatcher watcher = new();
+                watcher.Path = Extensions.ThemeFolderPath;
+                watcher.NotifyFilter = NotifyFilters.Attributes |
+                    NotifyFilters.CreationTime |
+                    NotifyFilters.DirectoryName |
+                    NotifyFilters.FileName |
+                    NotifyFilters.LastAccess |
+                    NotifyFilters.LastWrite |
+                    NotifyFilters.Security |
+                    NotifyFilters.Size;
+                watcher.Filter = "Custom.theme";
+                watcher.Changed += new((object source, FileSystemEventArgs e) =>
+                {
+                    Logger.Debug("Custom.theme modified");
+                    ThemeFile customRefreshed = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                    if (customRefreshed.ThemeId != custom.ThemeId)
+                    {
+                        Logger.Debug("windows Custom.theme write detected, refreshing theme");
+                        Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
+                        watcher.EnableRaisingEvents = false;
+                        watcher.Dispose();
+                    }
+                });
+                watcher.EnableRaisingEvents = true;
                 custom.RefreshGuid();
                 custom.Save();
-                //File.Copy(Extensions.CustomThemePath, Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), true);
-                Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
+                Thread cancellation = new(() =>
+                {
+                    Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
+                    Thread.Sleep(5);
+                    watcher.EnableRaisingEvents = false;
+                    watcher.Dispose();
+                });
             }
             catch (Exception ex)
             {
