@@ -1,10 +1,12 @@
-﻿using AutoDarkModeSvc.Monitors;
+﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
@@ -182,7 +184,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
                             if (success) Desktop.MultimonBackgrounds = num;
                         }
-                        else if (iter.Current.Contains("Wallpaper") && !iter.Current.Equals("WallpaperWriteTime"))
+                        else if (iter.Current.Contains("Wallpaper") && !iter.Current.Contains("WallpaperWriteTime"))
                         {
                             string[] split = iter.Current.Split('=');
                             Desktop.MultimonWallpapers.Add((split[1], split[0].Replace("Wallpaper", "")));
@@ -236,10 +238,55 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Parse();
         }
 
-        public void Load(bool keepId = false)
+        public void Load()
         {
             try
             {
+                ThemeFileContent = File.ReadAllLines(ThemeFilePath, Encoding.GetEncoding(1252)).ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
+            }
+            Parse();
+        }
+
+        public void SyncActiveThemeData()
+        {
+            try
+            {
+                string themeName = "";
+                /*Exception applyEx = null;*/
+                Thread thread = new(() =>
+                {
+                    try
+                    {
+                        themeName = ThemeHandler.GetCurrentThemeName();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, $"could not read active theme name");
+                        //applyEx = ex;
+                    }
+                })
+                {
+                    Name = "COMThemeManagerThreadThemeName"
+                };
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                try
+                {
+                    thread.Join();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "theme handler thread was interrupted");
+                }
+
+                string currentThemePath = RegistryHandler.GetActiveThemePath();
+                if (themeName == "Unsaved theme") {
+                    currentThemePath = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                }
                 ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
             }
             catch (Exception ex)
@@ -247,8 +294,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
             }
             Parse();
-            if (!keepId) DisplayName = "ADMTheme";
-            if (!keepId) ThemeId = $"{{{Guid.NewGuid()}}}";
+            DisplayName = "ADMTheme";
+            ThemeId = $"{{{Guid.NewGuid()}}}";
         }
 
         private static void SetValues(string input, object obj)

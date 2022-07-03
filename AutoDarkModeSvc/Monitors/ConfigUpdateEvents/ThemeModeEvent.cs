@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 }
                 else
                 {
-                    state.ManagedThemeFile.Load();
+                    state.ManagedThemeFile.SyncActiveThemeData();
                     state.ManagedThemeFile.Save();
                     WindowsThemeMonitor.StopThemeMonitor();
                 }

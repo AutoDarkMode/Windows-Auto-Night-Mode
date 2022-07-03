@@ -77,75 +77,6 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
-        public static void SyncCustomThemeToDisk()
-        {
-            FileSystemWatcher watcher = new();
-            ManualResetEvent interrupt = new(false);
-            try
-            {
-                Logger.Debug("refreshing Custom.theme values");
-                ThemeFile custom = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
-                watcher.Path = Extensions.ThemeFolderPath;
-                watcher.NotifyFilter = NotifyFilters.LastWrite;
-                watcher.Filter = "Custom.theme";
-                watcher.Changed += new((object source, FileSystemEventArgs e) =>
-                {
-                    //Logger.Debug("Custom.theme modified");
-                    ThemeFile customRefreshed = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
-                    customRefreshed.Load(keepId: true);
-                    if (customRefreshed.ThemeId != custom.ThemeId && custom.DisplayName == "Unsaved Theme")
-                    {
-                        Logger.Debug("windows Custom.theme write detected, refreshing theme");
-                        try
-                        {
-                            interrupt.Set();
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Warn(ex, "wait handle already closed: ");
-                        }
-                        watcher.EnableRaisingEvents = false;
-                    }
-                });
-                watcher.EnableRaisingEvents = true;
-                custom.RefreshGuid();
-                custom.DisplayName = "Unsaved Theme";
-                custom.Save();
-
-                Apply(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"), suppressLogging: true);
-
-                if (!interrupt.WaitOne(TimeSpan.FromMilliseconds(5000)))
-                {
-                    Logger.Error("theme update timeout, couldn't refresh custom theme, settings may desync");
-                    try
-                    {
-                        watcher.EnableRaisingEvents = false;
-                    } 
-                    catch (Exception ex)
-                    {
-                        Logger.Warn(ex, "error disposing object: ");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "couldn't refresh custom theme, settings may desync");
-                watcher.EnableRaisingEvents = false;
-
-            }
-            finally
-            {
-                try
-                {
-                    watcher.Dispose();
-                    interrupt.Dispose();
-                }
-                catch (Exception ex1)
-                {
-                    Logger.Warn(ex1, "error disposing object: ");
-                }
-            }
-        }
         public static void ApplyManagedTheme(AdmConfig config, string path)
         {
             PowerHandler.RequestDisableEnergySaver(config);
@@ -251,6 +182,7 @@ namespace AutoDarkModeSvc.Handlers
         {
             return Path.GetFileName(new ThemeManagerClass().CurrentTheme.VisualStyle);
         }
+
         public static string GetThemeStatus()
         {
             return NativeMethods.IsThemeActive() ? "running" : "stopped";

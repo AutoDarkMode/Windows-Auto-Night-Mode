@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc.Core
             {
                 if (!config.WindowsThemeMode.Enabled)
                 {
-                    state.ManagedThemeFile.Load();
+                    state.ManagedThemeFile.SyncActiveThemeData();
                 }
                 //if a theme switch did not occur, run mitigations
                 if (!themeModeSwitched) PowerHandler.RequestDisableEnergySaver(config);
