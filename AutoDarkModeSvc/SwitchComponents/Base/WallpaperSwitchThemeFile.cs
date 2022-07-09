@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 using Windows.UI;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
@@ -181,7 +182,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = Theme.Unknown;
             }
             ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
-            temp.Load();
+            temp.SyncActiveThemeData();
             GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
             GlobalState.ManagedThemeFile.Colors = temp.Colors;
         }
@@ -265,7 +266,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override void EnableHook()
         {
-            DisplayHandler.DetectMonitors();
             currentWallpaperPosition = WallpaperHandler.GetPosition();
             base.EnableHook();
         }
