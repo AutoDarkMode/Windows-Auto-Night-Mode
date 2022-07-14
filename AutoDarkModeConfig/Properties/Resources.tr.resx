@@ -517,7 +517,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Devre dışı</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019:</value>
+    <value>Microsoft Office:</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Bir tema seç</value>
@@ -840,5 +840,14 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Sistem genelinde kısayol tuşlarını etkinleştir</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Uygulama karar versin</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Sistem boşta olmadığı sürece temaları değiştirme</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Sistemin boşta kabul edilmesi geçmesi gereken dakika</value>
   </data>
 </root>
