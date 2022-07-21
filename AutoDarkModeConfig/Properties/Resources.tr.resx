@@ -517,7 +517,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Devre dışı</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office:</value>
+    <value>Microsoft Office (eski):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Bir tema seç</value>
