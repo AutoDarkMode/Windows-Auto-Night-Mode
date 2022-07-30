@@ -684,7 +684,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Gerakang Diambil</value>
+    <value>Gerakan Diambil</value>
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
@@ -692,7 +692,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>Aliran</value>
     <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
@@ -793,7 +793,8 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Buka Folder Konfigurasi</value>
-  </data>  <data name="LabelFollowSystemTheme" xml:space="preserve">
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Biarkan aplikasi memilih</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
