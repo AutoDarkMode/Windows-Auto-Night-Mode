@@ -196,7 +196,7 @@
     <value>Aplikacja potrzebuje dostępu do lokalizacji</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Brak aktualizacji</value>
+    <value>Brak aktualizacji.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Szukanie lokalizacji...</value>
@@ -208,7 +208,7 @@
     <value>Uwaga: Nie można wczytać obecnego motywu.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Nowa aktualizacja jest dostępna</value>
+    <value>Nowa aktualizacja jest dostępna!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Dziękujemy za używanie Auto Dark Mode!
@@ -225,7 +225,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Szukaj aktualizacji</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Program szuka aktualizacji przy uruchomieniu</value>
+    <value>Program szuka aktualizacji przy uruchomieniu.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Witamy</value>
@@ -276,7 +276,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Pliki graficzne</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Proszę wybrać dwie tapety pulpitu!</value>
+    <value>Proszę wybrać dwie tapety pulpitu</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>Proszę wybrać obraz</value>
@@ -428,7 +428,7 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Tapeta/Motyw</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Otwórz folder</value>
+    <value>Otwórz katalog</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
     <value>Ustaw własne godziny</value>
@@ -690,7 +690,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Ostatnie sprawdzenie</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Częstotliwość szukania aktualizacji:</value>
+    <value>Częstotliwość szukania aktualizacji</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Użyj koloru paska zadań dla motywu:</value>
@@ -720,7 +720,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Zadanie</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Wyłączyłeś usługę autouruchamiania w ustawieniach Windowsa</value>
+    <value>Wyłączyłeś usługę autouruchamiania w ustawieniach Windowsa.</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany motywu.</value>
@@ -770,9 +770,6 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
     <value>Ekran</value>
   </data>
-  <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Tryb</value>
-  </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
     <value>Usuń odłączone ekrany</value>
   </data>
@@ -786,7 +783,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Włącz zmianę tapety</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Możesz edytować skróty tylko jak są wyłączone</value>
+    <value>Możesz edytować skróty tylko jak są wyłączone.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
     <value>Ustaw ciemny motyw</value>
@@ -802,5 +799,81 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Włącz skróty klawiszowe</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Działa tylko, jeśli nie aktywowałeś ręcznie oszczędzania energii!</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Ukrywanie ikony nie jest zalecane.
+Czy chcesz kontynuować?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Ukryj ikonę paska zadań</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Proszę czekać, usługa systemu nie została jeszcze uruchomiona...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Uruchamianie usługi</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Usługa nie odpowiada. Sprawdź czy AutoDarkModeSvc.exe jest uruchomiony i spróbuj ponownie!</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Nie przełączaj, jeśli system jest zajęty</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Liczba minut, po której system jest uznawany jako bezczynny</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Kwiaty</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Kliknij 'Zastosuj', aby zapisać zmiany.</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>Otwórz katalog konfiguracji</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>nigdy</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Kolor</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Pozwól decydować aplikacji</value>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Jasny)</value>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Przechwytywanie ruchu</value>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (Ciemny)</value>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Przepływ</value>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Błysk</value>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (Jasny)</value>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Wschód słońca</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Pozycja</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Resetuj</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>Wymuś ciemny motyw</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>Wymuś jasny motyw</value>
   </data>
 </root>

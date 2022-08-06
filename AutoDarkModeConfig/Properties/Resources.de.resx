@@ -190,7 +190,7 @@
     <value>Die Anwendung benötigt Zugriff auf die Standort-Dienste von Windows</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Keine Updates verfügbar</value>
+    <value>Keine Updates verfügbar.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Standort suchen...</value>
@@ -202,7 +202,7 @@
     <value>Achtung: Das aktuelle Design kann nicht eingelesen werden.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Ein Update ist verfügbar</value>
+    <value>Ein Update ist verfügbar!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Danke für das Benutzen von Auto Dark Mode!
@@ -353,10 +353,10 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
     <value>Ein Fehler von Windows verhindert den Wechsel der Taskleistenfarbe im Stromsparmodus. Bitte deaktiviere den Stromsparmodus, falls bei dir Probleme auftreten.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Anpassen</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Festlegen</value>
+    <value>Anwenden</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Apps</value>
@@ -392,7 +392,7 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
     <value>Hintergrundbild (Empfohlen)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Klicke hier, um die Windows Design-Einstellungen zu öffnen</value>
+    <value>Klicke hier, um die Windows Design-Einstellungen zu öffnen.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>Setze nun unter 'Farben' deine Windows Farbe auf 'Hell'. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
@@ -668,7 +668,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Slow (3 Abtastungen)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+    <value>GPU-Auslastungserkennungsgeschwindigkeit</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
     <value>Geräte mit Akku</value>
@@ -690,5 +690,134 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   </data>
   <data name="String1" xml:space="preserve">
     <value />
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Folg uns</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Nur Akzentfarbe</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Taskleistenakzentfarbe benutzen für</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Lass die App entscheiden</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Systemtray-Icon verstecken (nicht empfohlen)</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Starte Auto Dark Mode mit Windows</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Modus:</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Der Dienst antwortet nicht. Prüfe ob AutoDarkModeSvc.exe läuft und versuche es erneut!</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Kein Designwechsel wenn das System beschäftigt ist</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Du kannst die Hotkeys nur bearbeiten, wenn sie deaktiviert sind.</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>Dunkles Design erzwingen</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>Helles Design erzwingen</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>Automatisches Wechseln aktivieren</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Minuten, bis das System als nicht beschäftigt angesehen wird</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Tastatur-Hotkeys aktivieren</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Finde die Koordinaten für deinen Standort</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Optionale Verzögerung für die Aktivierung des Graufilters:</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Extern veränderte Designs zurücksetzen</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Blumen</value>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Hell)</value>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Bewegungserfassung</value>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (Dunkel)</value>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Fluss</value>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Glanz</value>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (Hell)</value>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Sonnenaufgang</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Windows-Designwechsel aktivieren</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Breitengrad</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Längengrad</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Nächstes Aktualisierung um</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Klicke auf 'Anwenden', um die Änderungen zu speichern.</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Aus</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>An</value>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Jeden tag</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Personalisierung</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Systemtray-Icon verstecken</value>
   </data>
 </root>
