@@ -352,7 +352,7 @@ Activar esta opción asegura que Auto Dark Mode cambie inmediatamente el tema tr
     <value>Debido a un eror de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Retraso</value>
+    <value>Demora</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Establecer</value>
@@ -691,10 +691,10 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Activar cambio de temas de Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Apagado</value>
+    <value>Desactivado</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>Encendido</value>
+    <value>Activado</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
     <value>Síguenos</value>
@@ -761,7 +761,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Copiar</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Empezar Auto Dark Mode con Windows</value>
+    <value>Iniciar Auto Dark Mode con Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
     <value>Inicio automático</value>
@@ -843,7 +843,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Dejar que la aplicación decida</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>No cambioar temas salvo que el sistema esté en reposo</value>
+    <value>No cambiar temas salvo que el sistema esté en reposo</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minutos hasta que el sistema esté considerado en resposo</value>
