@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -333,7 +333,7 @@ If you run into issues: please increase the switching delay in settings. </value
 Here are some things you can try:
 - Restart the Auto Dark Mode service
 - Check if the service is running
-- Close the service, delete the config.yaml file and re-configue
+- Close the service, delete the config.yaml file and re-configure
 
 If these things didn't help, you can create an issue on GitHub. You can access the issue by clicking the "Yes" button.</value>
   </data>
