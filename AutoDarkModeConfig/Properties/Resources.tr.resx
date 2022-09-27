@@ -553,7 +553,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Konumunuz için coğrafi koordinatlar</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Değişim Modları</value>
+    <value>Modları Değiştirme</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Kişiselleştirme</value>
@@ -848,6 +848,6 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Sistem boşta olmadığı sürece temaları değiştirme</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Sistemin boşta kabul edilmesi geçmesi gereken dakika</value>
+    <value>Sistemin boşta kabul edilmesi için geçmesi gereken dakika</value>
   </data>
 </root>
