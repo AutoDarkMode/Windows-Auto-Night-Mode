@@ -493,7 +493,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>延迟启动灰度滤镜（可选）：</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>跟随系统</value>
+    <value>自动切换</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>重置</value>
@@ -754,7 +754,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>仅强调色</value>
   </data>
-    <data name="AboutTextBlockVersion" xml:space="preserve">
+  <data name="AboutTextBlockVersion" xml:space="preserve">
     <value>版本</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
@@ -842,7 +842,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>由应用决定</value>
   </data>
-   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
     <value>系统非空闲状态时不进行切换</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">

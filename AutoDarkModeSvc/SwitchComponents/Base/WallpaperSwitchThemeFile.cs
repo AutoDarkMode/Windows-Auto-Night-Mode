@@ -181,9 +181,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentGlobalTheme = Theme.Unknown;
                 currentIndividualTheme = Theme.Unknown;
             }
+
+            // update current theme file with new data
             ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
             temp.SyncActiveThemeData();
             GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
+            // for solid color
             GlobalState.ManagedThemeFile.Colors = temp.Colors;
         }
 
