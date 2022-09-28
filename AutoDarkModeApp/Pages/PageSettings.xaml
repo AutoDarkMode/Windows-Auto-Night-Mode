@@ -135,6 +135,7 @@
                 <ComboBoxItem Content="Deutsch (German)" Name="de"/>
                 <ComboBoxItem Content="English (English)" Name="en"/>
                 <ComboBoxItem Content="Français (French)" Name="fr"/>
+                <ComboBoxItem Content="Ελληνικά (Greek)" Name="el_gr"/>
                 <ComboBoxItem Content="Bahasa Indonesia (Indonesian)" Name="id"/>
                 <ComboBoxItem Content="Italiano (Italian)" Name="it"/>
                 <ComboBoxItem Content="Nederlands (Dutch)" Name="nl"/>
