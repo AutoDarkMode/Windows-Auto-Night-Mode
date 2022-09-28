@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "adm-updater-rs"
-version = "2.4.2"
+version = "2.5.0"
 dependencies = [
  "chrono",
  "fern",
