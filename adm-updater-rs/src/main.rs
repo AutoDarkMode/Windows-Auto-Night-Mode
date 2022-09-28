@@ -4,18 +4,21 @@
 extern crate lazy_static;
 
 use crate::extensions::{get_service_path, get_update_data_dir};
-use bindings::Windows::Win32::Foundation::{HWND, PWSTR};
-use bindings::Windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
-use bindings::Windows::Win32::UI::Shell::ShellExecuteW;
+use windows::core::PCWSTR;
+use windows::Win32::Foundation::{HWND};
+use windows::Win32::UI::WindowsAndMessaging::SHOW_WINDOW_CMD;
+use windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
+use windows::Win32::UI::Shell::ShellExecuteW;
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
 use log::{debug, warn};
 use log::{error, info};
+use windows::w;
 use std::error::Error;
 use std::path::PathBuf;
 use std::process::Command;
 use std::rc::Rc;
-use std::{env, fmt, fs, ptr};
+use std::{env, fmt, fs};
 use sysinfo::{ProcessExt, SystemExt};
 use sysinfo::{Signal, System};
 
@@ -326,19 +329,17 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
     }
     if restart_shell {
         let shell_path_buf = extensions::get_shell_path();
-        let shell_path = shell_path_buf.as_os_str().to_os_string();
+        let shell_path =  windows::core::HSTRING::from(shell_path_buf.as_os_str().to_os_string());
         info!("relaunching shell");
         debug!("shell path {}", shell_path_buf.display());
-        let operation = "open";
-        let SW_SHOW: i32 = 5;
         let result = unsafe {
             ShellExecuteW(
                 HWND(0),
-                operation,
-                shell_path,
-                PWSTR(ptr::null_mut()),
-                PWSTR(ptr::null_mut()),
-                SW_SHOW,
+                w!("open"),
+                &shell_path,
+                PCWSTR::null(),
+                PCWSTR::null(),
+                SHOW_WINDOW_CMD(5),
             )
         };
         if result.0 < 32 {

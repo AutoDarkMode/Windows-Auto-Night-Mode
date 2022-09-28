@@ -1,9 +1,13 @@
-use bindings::Windows::Win32::Storage::FileSystem::{
-    GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO,
-};
 use log::{debug, error, warn};
-use std::{ffi::c_void, fmt::Formatter, fs::{self, File}, io::{self, BufRead}, path::{Path, PathBuf}};
+use std::{
+    ffi::c_void,
+    fmt::Formatter,
+    fs::{self, File},
+    io::{self, BufRead},
+    path::{Path, PathBuf},
+};
 use walkdir::WalkDir;
+use windows::{Win32::Storage::FileSystem::{GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO}, w};
 
 use crate::{
     extensions::{self, get_assembly_dir, get_update_data_dir, get_working_dir},
@@ -46,9 +50,7 @@ lazy_static! {
             .map_err(|op| OpError::new(&format!("failed to open whitelist file: {}", op), true))?;
         let reader = io::BufReader::new(file);
         for line in reader.lines() {
-            let line = line.map_err(|op| {
-                OpError::new(&format!("failed to read whitelist file: {}", op), true)
-            })?;
+            let line = line.map_err(|op| OpError::new(&format!("failed to read whitelist file: {}", op), true))?;
             v.push(line);
         }
         Ok(v)
@@ -190,9 +192,9 @@ pub fn move_files(source: &PathBuf, target: &PathBuf, files: Vec<PathBuf>) -> Re
 
 /// Makes calls to the WinAPI, retrieving the file version of the given path
 pub fn get_file_version(path: PathBuf) -> Result<Version, OpError> {
-    let path = path.as_os_str();
+    let path =  windows::core::HSTRING::from(path.as_os_str());
     let mut handle: u32 = 2;
-    let size = unsafe { GetFileVersionInfoSizeW(path, &mut handle) };
+    let size = unsafe { GetFileVersionInfoSizeW(&path, Some(&mut handle)) };
     if size == 0 {
         let msg = "failed to get file version size";
         debug!("{}", msg);
@@ -200,7 +202,7 @@ pub fn get_file_version(path: PathBuf) -> Result<Version, OpError> {
     }
 
     let mut buffer: Vec<u8> = vec![0; size as usize];
-    let result = unsafe { GetFileVersionInfoW(path, 0, size, buffer.as_mut_ptr() as *mut c_void) };
+    let result = unsafe { GetFileVersionInfoW(&path, 0, size, buffer.as_mut_ptr() as *mut c_void) };
     if !result.as_bool() {
         let msg = "could not read file version";
         debug!("{}", msg);
@@ -218,7 +220,7 @@ pub fn get_file_version(path: PathBuf) -> Result<Version, OpError> {
     let result = unsafe {
         VerQueryValueW(
             buffer.as_mut_ptr() as *mut c_void,
-            "\\",
+            w!("\\"),
             &mut pads as _,
             //ppads as _,
             &mut value_len,

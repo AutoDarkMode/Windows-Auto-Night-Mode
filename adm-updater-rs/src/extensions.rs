@@ -75,7 +75,7 @@ pub fn get_update_data_dir() -> PathBuf {
 
 #[cfg(test)]
 mod tests {
-    use bindings::Windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
+    use windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
     #[test]
     fn print_updater_paths() {
 
