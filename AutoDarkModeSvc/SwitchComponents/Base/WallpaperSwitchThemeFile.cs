@@ -152,18 +152,21 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.Global)
             {
-                WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+                if (newTheme == Theme.Dark) GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
+                else GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
+                GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Clear();
                 currentGlobalTheme = newTheme;
                 currentIndividualTheme = Theme.Unknown;
                 currentSolidColorTheme = Theme.Unknown;
-
             }
             else if (type == WallpaperType.All)
             {
                 bool globalSwitched = false;
                 if (currentGlobalTheme != newTheme)
                 {
-                    WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+                    //change global wallpaper
+                    if (newTheme == Theme.Dark) GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
+                    else GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
                     globalSwitched = true;
                 }
                 if (currentIndividualTheme != newTheme || globalSwitched)
@@ -182,12 +185,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = Theme.Unknown;
             }
 
-            // update current theme file with new data
-            ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
-            temp.SyncActiveThemeData();
-            GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
-            // for solid color
-            GlobalState.ManagedThemeFile.Colors = temp.Colors;
+            if (type == WallpaperType.All || type == WallpaperType.Individual || type == WallpaperType.SolidColor)
+            {
+                // update current theme file with new data
+                ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
+                temp.SyncActiveThemeData();
+                GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
+                // for solid color
+                GlobalState.ManagedThemeFile.Colors = temp.Colors;
+            }
         }
 
         /// <summary>
