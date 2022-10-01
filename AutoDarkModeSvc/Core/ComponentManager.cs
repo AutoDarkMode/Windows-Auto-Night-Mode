@@ -28,7 +28,7 @@ namespace AutoDarkModeSvc.Core
         private Theme lastSorting = Theme.Unknown;
 
         // Components
-        private readonly ISwitchComponent AppsSwitch = new AppsSwitchThemeFile();
+        private readonly ISwitchComponent AppsSwitch;
         private readonly ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
         private readonly ISwitchComponent OfficeSwitch = new OfficeSwitch();
         private readonly ISwitchComponent SystemSwitch;
@@ -59,17 +59,18 @@ namespace AutoDarkModeSvc.Core
         {
             if (Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
             {
-                Logger.Info($"using components for newer Windows versions {Environment.OSVersion.Version.Build}");
+                Logger.Info($"using components for newer Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitchThemeFile();
                 WallpaperSwitch = new WallpaperSwitchThemeFile();
-    }
+                AppsSwitch = new AppsSwitchThemeFile();
+            }
             else if (Environment.OSVersion.Version.Build < Extensions.MinBuildForNewFeatures)
             {
-                Logger.Info($"using components for legacy Windows versions {Environment.OSVersion.Version.Build}");
+                Logger.Info($"using components for legacy Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitch();
                 WallpaperSwitch = new WallpaperSwitch();
+                AppsSwitch = new AppsSwitch();
             }
-
 
             Builder = AdmConfigBuilder.Instance();
             Components = new List<ISwitchComponent>
