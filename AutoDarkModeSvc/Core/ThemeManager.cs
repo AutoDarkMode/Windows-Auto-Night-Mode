@@ -78,7 +78,7 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0)
             {
                 //logic for our classic mode 2.0, gets the currently active theme for modification
-                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= 22000)
+                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
                 }
@@ -92,7 +92,7 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0 || themeModeSwitched)
             {
                 // Logic for our classic mode 2.0
-                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= 22000)
+                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
                 {
                     try
                     {
