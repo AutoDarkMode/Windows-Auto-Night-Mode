@@ -266,7 +266,6 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     catch (Exception ex)
                     {
                         Logger.Error(ex, $"could not read active theme name");
-                        //applyEx = ex;
                     }
                 })
                 {

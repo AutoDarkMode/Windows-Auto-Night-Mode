@@ -77,11 +77,13 @@ namespace AutoDarkModeSvc.Core
             List<ISwitchComponent> componentsToUpdate = cm.GetComponentsToUpdate(newTheme);
             if (componentsToUpdate.Count > 0)
             {
-                if (!config.WindowsThemeMode.Enabled)
+                //logic for our classic mode 2.0, gets the currently active theme for modification
+                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= 22000)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
                 }
-                //if a theme switch did not occur, run mitigations
+
+                // if theme mode is disabled, we need to disable energy saver for the modules
                 if (!themeModeSwitched) PowerHandler.RequestDisableEnergySaver(config);
                 cm.Run(componentsToUpdate, newTheme, e);
             }
@@ -89,7 +91,8 @@ namespace AutoDarkModeSvc.Core
             // disable mitigation after all components and theme switch have been executed
             if (componentsToUpdate.Count > 0 || themeModeSwitched)
             {
-                if (!config.WindowsThemeMode.Enabled)
+                // Logic for our classic mode 2.0
+                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= 22000)
                 {
                     try
                     {
@@ -101,6 +104,7 @@ namespace AutoDarkModeSvc.Core
                         Logger.Error(ex, "couldn't apply managed theme file: ");
                     }
                 }
+
                 if (e.Source == SwitchSource.TimeSwitchModule)
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source).ToLower()}, " +

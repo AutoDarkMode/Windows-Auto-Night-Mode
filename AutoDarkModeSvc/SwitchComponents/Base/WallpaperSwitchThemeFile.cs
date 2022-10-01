@@ -155,6 +155,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 if (newTheme == Theme.Dark) GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
                 else GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
                 GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Clear();
+                GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
                 currentGlobalTheme = newTheme;
                 currentIndividualTheme = Theme.Unknown;
                 currentSolidColorTheme = Theme.Unknown;

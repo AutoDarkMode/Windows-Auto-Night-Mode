@@ -12,6 +12,7 @@ namespace AutoDarkModeSvc.Core
 {
     class ComponentManager
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static ComponentManager instance;
         public static ComponentManager Instance()
         {
@@ -30,9 +31,9 @@ namespace AutoDarkModeSvc.Core
         private readonly ISwitchComponent AppsSwitch = new AppsSwitchThemeFile();
         private readonly ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
         private readonly ISwitchComponent OfficeSwitch = new OfficeSwitch();
-        private readonly ISwitchComponent SystemSwitch = new SystemSwitchThemeFile();
+        private readonly ISwitchComponent SystemSwitch;
         //private ISwitchComponent TaskbarAccentColorSwitch;
-        private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitchThemeFile();
+        private readonly ISwitchComponent WallpaperSwitch;
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
 
         /// <summary>
@@ -56,6 +57,20 @@ namespace AutoDarkModeSvc.Core
 
         ComponentManager()
         {
+            if (Environment.OSVersion.Version.Build >= 22000)
+            {
+                Logger.Info($"using components for newer Windows versions {Environment.OSVersion.Version.Build}");
+                SystemSwitch = new SystemSwitchThemeFile();
+                WallpaperSwitch = new WallpaperSwitchThemeFile();
+    }
+            else if (Environment.OSVersion.Version.Build < 22000)
+            {
+                Logger.Info($"using components for legacy Windows versions {Environment.OSVersion.Version.Build}");
+                SystemSwitch = new SystemSwitch();
+                WallpaperSwitch = new WallpaperSwitch();
+            }
+
+
             Builder = AdmConfigBuilder.Instance();
             Components = new List<ISwitchComponent>
             {

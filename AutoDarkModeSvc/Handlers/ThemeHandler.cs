@@ -79,7 +79,6 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void ApplyManagedTheme(AdmConfig config, string path)
         {
-            PowerHandler.RequestDisableEnergySaver(config);
             Apply(path);
         }
 
