@@ -57,7 +57,7 @@ namespace AutoDarkModeConfig
         public static readonly string ExecutionPathUpdater = GetExecutionPathUpdater();
         public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
         public static readonly string UpdateDataDir = GetUpdateDataDir();
-        public static readonly int MinBuildForNewFeatures = 22000;
+        public static readonly int MinBuildForNewFeatures = 19044;
         public static string ThemeFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
         public static string ManagedThemePath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes" ,"ADMTheme.theme");
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)

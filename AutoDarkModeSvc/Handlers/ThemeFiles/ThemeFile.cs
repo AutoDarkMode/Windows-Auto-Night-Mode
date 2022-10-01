@@ -283,6 +283,12 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 }
 
                 string currentThemePath = RegistryHandler.GetActiveThemePath();
+                /*
+                 * If the theme is unsaved, Windows will NOT update the registry path. Therefore,
+                 * we need to manually change the path to Custom.theme, which contains the current theme data
+                 * since we can only retrieve the theme name, but not the path, localization is required.
+                 * because we need the correct translated string for "Unsaved theme" in order for this to work
+                 */
                 if (themeName == "Unsaved theme") {
                     currentThemePath = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
                 }
