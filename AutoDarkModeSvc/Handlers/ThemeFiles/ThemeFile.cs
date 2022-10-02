@@ -55,53 +55,69 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         private void UpdateValue(string section, string key, string value)
         {
-            int found = ThemeFileContent.IndexOf(section);
-            if (found != -1)
+            try
             {
-                bool updated = false;
-                for (int i = found + 1; i < ThemeFileContent.Count; i++)
+                int found = ThemeFileContent.IndexOf(section);
+                if (found != -1)
                 {
-                    if (ThemeFileContent[i].StartsWith('[')) break;
-                    else if (ThemeFileContent[i].StartsWith(key))
+                    bool updated = false;
+                    for (int i = found + 1; i < ThemeFileContent.Count; i++)
                     {
-                        ThemeFileContent[i] = $"{key}={value}";
-                        updated = true;
-                        break;
+                        if (ThemeFileContent[i].StartsWith('[')) break;
+                        else if (ThemeFileContent[i].StartsWith(key))
+                        {
+                            ThemeFileContent[i] = $"{key}={value}";
+                            updated = true;
+                            break;
+                        }
+                    }
+                    if (!updated)
+                    {
+                        ThemeFileContent.Insert(found + 1, $"{key}={value}");
                     }
                 }
-                if (!updated)
+                else
                 {
-                    ThemeFileContent.Insert(found + 1, $"{key}={value}");
+                    ThemeFileContent.Add("");
+                    ThemeFileContent.Add(section);
+                    ThemeFileContent.Add($"{key}={value}");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                ThemeFileContent.Add("");
-                ThemeFileContent.Add(section);
-                ThemeFileContent.Add($"{key}={value}");
+                Logger.Error(ex, $"failed to update value {section}/{key} with value {value}, exception: ");
+                throw;
             }
         }
         private void UpdateSection(string section, List<string> lines)
         {
-            int found = ThemeFileContent.IndexOf(section);
-            if (found != -1)
+            try
             {
-                int i;
-                for (i = found + 1; i < ThemeFileContent.Count; i++)
+                int found = ThemeFileContent.IndexOf(section);
+                if (found != -1)
                 {
-                    if (ThemeFileContent[i].StartsWith('['))
+                    int i;
+                    for (i = found + 1; i < ThemeFileContent.Count; i++)
                     {
-                        i--;
-                        break;
+                        if (ThemeFileContent[i].StartsWith('['))
+                        {
+                            i--;
+                            break;
+                        }
                     }
+                    ThemeFileContent.RemoveRange(found, i - found);
+                    ThemeFileContent.InsertRange(found, lines);
                 }
-                ThemeFileContent.RemoveRange(found, i - found);
-                ThemeFileContent.InsertRange(found, lines);
+                else
+                {
+                    ThemeFileContent.Add("");
+                    ThemeFileContent.AddRange(lines);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ThemeFileContent.Add("");
-                ThemeFileContent.AddRange(lines);
+                Logger.Error(ex, $"failed to update section {section} with data: {string.Join('\n', lines)}\n exception: ");
+                throw;
             }
         }
 

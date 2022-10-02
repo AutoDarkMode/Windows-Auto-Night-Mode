@@ -102,6 +102,7 @@ namespace AutoDarkModeSvc.Core
                     catch (Exception ex)
                     {
                         Logger.Error(ex, "couldn't apply managed theme file: ");
+                        return;
                     }
                 }
 
