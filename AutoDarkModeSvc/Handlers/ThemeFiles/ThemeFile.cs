@@ -255,13 +255,13 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         {
             try
             {
-                string themeName = "";
+                string activeThemeName = "";
                 /*Exception applyEx = null;*/
                 Thread thread = new(() =>
                 {
                     try
                     {
-                        themeName = ThemeHandler.GetCurrentThemeName();
+                        activeThemeName = ThemeHandler.GetCurrentThemeName();
                     }
                     catch (Exception ex)
                     {
@@ -283,20 +283,21 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 }
 
                 string currentThemePath = RegistryHandler.GetActiveThemePath();
+                ThemeFile tempTheme = new(currentThemePath);
+                tempTheme.Load();
                 /*
-                 * If the theme is unsaved, Windows will NOT update the registry path. Therefore,
+                 * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
                  * we need to manually change the path to Custom.theme, which contains the current theme data
-                 * since we can only retrieve the theme name, but not the path, localization is required.
-                 * because we need the correct translated string for "Unsaved theme" in order for this to work
                  */
-                if (themeName == "Unsaved theme") {
+                if (tempTheme.DisplayName != activeThemeName) {
+                    Logger.Debug($"display name: {tempTheme.DisplayName} differs from expected name: {activeThemeName}, path: {currentThemePath}");
                     currentThemePath = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
                 }
                 ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
+                Logger.Error(ex, $"could not sync theme file at {ThemeFilePath}, using default values: ");
             }
             Parse();
             DisplayName = "ADMTheme";
