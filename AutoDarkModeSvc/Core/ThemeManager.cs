@@ -115,6 +115,10 @@ namespace AutoDarkModeSvc.Core
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source).ToLower()}, " +
                         $"{(newTheme == Theme.Light ? "sunrise" : "sunset")}: {switchTime}");
                 }
+                else if (e.Source == SwitchSource.SystemUnlock)
+                {
+                    Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} refreshed theme, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
+                }
                 else
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
