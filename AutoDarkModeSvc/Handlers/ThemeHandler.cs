@@ -38,7 +38,7 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="sunset"></param>
         /// <param name="sunrise"></param>
         /// <returns>true if an update was performed; false otherwise</returns>
-        public static bool ApplyTheme(AdmConfig config, Theme newTheme)
+        public static bool ApplyTheme(AdmConfig config, Theme newTheme, bool skipCheck = false)
         {
             if (config.WindowsThemeMode.DarkThemePath == null || config.WindowsThemeMode.LightThemePath == null)
             {
@@ -62,13 +62,15 @@ namespace AutoDarkModeSvc.Handlers
             }
 
             // TODO change tracking when having active theme monitor disabled
-            if (newTheme == Theme.Dark && !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal))
+            if (newTheme == Theme.Dark && (skipCheck || 
+                !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal)))
             {
                 PowerHandler.RequestDisableEnergySaver(config);
                 Apply(config.WindowsThemeMode.DarkThemePath);
                 return true;
             }
-            else if (newTheme == Theme.Light && !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal))
+            else if (newTheme == Theme.Light && (skipCheck || 
+                !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal)))
             {
                 PowerHandler.RequestDisableEnergySaver(config);
                 Apply(config.WindowsThemeMode.LightThemePath);

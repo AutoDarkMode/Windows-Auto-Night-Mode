@@ -66,7 +66,11 @@ namespace AutoDarkModeSvc.Core
             state.LastRequestedTheme = newTheme;
 
             bool themeModeSwitched = false;
-            if (config.WindowsThemeMode.Enabled)
+            if (e.Source == SwitchSource.SystemUnlock && config.WindowsThemeMode.Enabled)
+            {
+                themeModeSwitched = ThemeHandler.ApplyTheme(config, newTheme, skipCheck: true);
+            }
+            else if (config.WindowsThemeMode.Enabled)
             {
                 themeModeSwitched = ThemeHandler.ApplyTheme(config, newTheme);
             }
@@ -88,8 +92,8 @@ namespace AutoDarkModeSvc.Core
                 cm.Run(componentsToUpdate, newTheme, e);
             }
 
-            // disable mitigation after all components and theme switch have been executed
-            if (componentsToUpdate.Count > 0 || themeModeSwitched)
+
+            if (componentsToUpdate.Count > 0 || themeModeSwitched || e.Source == SwitchSource.SystemUnlock)
             {
                 // Logic for our classic mode 2.0
                 if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
@@ -115,6 +119,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
+                            // disable mitigation after all components and theme switch have been executed
                 PowerHandler.RequestRestoreEnergySaver(config);
             }
 

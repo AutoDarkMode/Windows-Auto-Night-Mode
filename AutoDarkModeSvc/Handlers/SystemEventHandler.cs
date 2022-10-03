@@ -61,14 +61,14 @@ namespace AutoDarkModeSvc.Handlers
         {
             if (!resumeEventEnabled)
             {
-                if (Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                if (Environment.OSVersion.Version.Build >= Extensions.Win11Build)
                 {
-                    Logger.Info("enabling theme refresh at system unlock");
+                    Logger.Info("enabling theme refresh at system unlock (win 11)");
                     SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
                 }
                 else
                 {
-                    Logger.Info("enabling theme refresh at system resume");
+                    Logger.Info("enabling theme refresh at system resume (win 10)");
                     SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
                 }
 
@@ -100,14 +100,14 @@ namespace AutoDarkModeSvc.Handlers
             {
                 if (resumeEventEnabled)
                 {
-                    if (Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                    if (Environment.OSVersion.Version.Build >= Extensions.Win11Build)
                     {
-                        Logger.Info("disabling theme refresh at system unlock");
+                        Logger.Info("disabling theme refresh at system unlock (win 11)");
                         SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
                     }
                     else
                     {
-                        Logger.Info("disabling theme refresh at system resume");
+                        Logger.Info("disabling theme refresh at system resume (win 10)");
                         SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
                     }
                     resumeEventEnabled = false;
