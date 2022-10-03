@@ -848,4 +848,7 @@ Do you really want to continue?</value>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minutes until the system is considered idle</value>
   </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Accent Color for title bars and window borders</value>
+  </data>
 </root>

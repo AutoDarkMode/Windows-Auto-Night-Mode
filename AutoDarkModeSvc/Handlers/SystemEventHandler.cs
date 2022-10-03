@@ -9,7 +9,7 @@ using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers
 {
-    static class PowerEventHandler
+    static class SystemEventHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static bool darkThemeOnBatteryEnabled;
@@ -61,9 +61,27 @@ namespace AutoDarkModeSvc.Handlers
         {
             if (!resumeEventEnabled)
             {
-                Logger.Info("enabling theme refresh at system resume");
-                SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+                if (Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                {
+                    Logger.Info("enabling theme refresh at system unlock");
+                    SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+                }
+                else
+                {
+                    Logger.Info("enabling theme refresh at system resume");
+                    SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+                }
+
                 resumeEventEnabled = true;
+            }
+        }
+
+        private static void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                Logger.Info("system unlocked, refreshing theme");
+                ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.SystemUnlock));
             }
         }
 
@@ -82,8 +100,16 @@ namespace AutoDarkModeSvc.Handlers
             {
                 if (resumeEventEnabled)
                 {
-                    Logger.Info("disabling theme refresh at system resume");
-                    SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+                    if (Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                    {
+                        Logger.Info("disabling theme refresh at system unlock");
+                        SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+                    }
+                    else
+                    {
+                        Logger.Info("disabling theme refresh at system resume");
+                        SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+                    }
                     resumeEventEnabled = false;
                 }
             }

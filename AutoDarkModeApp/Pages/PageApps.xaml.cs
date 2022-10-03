@@ -81,6 +81,17 @@ namespace AutoDarkModeApp
                 SystemComboBox.SelectedItem = SystemComboBoxItemDisabled;
             }
 
+            if (builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch)
+            {
+                CheckBoxDWMPrevalence.IsChecked = true;
+            }
+            else
+            {
+                StackPanelDWMPrevalenceOptions.IsEnabled = false;
+            }
+            RadioButtonDWMPrevalenceOnDark.IsChecked = builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Dark;
+            RadioButtonDWMPrevalenceOnLight.IsChecked = builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light;
+
 
             //if the OS version is older than 1903
             if (int.Parse(RegistryHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
@@ -428,6 +439,57 @@ namespace AutoDarkModeApp
         private void RadioButtonAdaptiveTaskbarAccentOnDark_Click(object sender, RoutedEventArgs e)
         {
             builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Dark;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void CheckBoxDWMPrevalence_Click(object sender, RoutedEventArgs e)
+        {
+            if (((CheckBox)sender).IsChecked ?? false)
+            {
+                builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch = true;
+                StackPanelDWMPrevalenceOptions.IsEnabled = true;
+            }
+            else
+            {
+                builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch = false;
+                StackPanelDWMPrevalenceOptions.IsEnabled = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void RadioButtonDWMPrevalenceOnLight_Click(object sender, RoutedEventArgs e)
+        {
+            builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Light;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void RadioButtonDWMPrevalenceOnDark_Click(object sender, RoutedEventArgs e)
+        {
+            builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Dark;
             try
             {
                 builder.Save();

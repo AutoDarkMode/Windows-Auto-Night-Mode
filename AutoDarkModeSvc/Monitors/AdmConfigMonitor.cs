@@ -128,20 +128,20 @@ namespace AutoDarkModeSvc.Monitors
         {
             if (builder.Config.Events.DarkThemeOnBattery)
             {
-                PowerEventHandler.RegisterThemeEvent();
+                SystemEventHandler.RegisterThemeEvent();
             }
             else
             {
-                PowerEventHandler.DeregisterThemeEvent();
+                SystemEventHandler.DeregisterThemeEvent();
             }
 
             if (builder.Config.Events.SystemResumeTrigger)
             {
-                PowerEventHandler.RegisterResumeEvent();
+                SystemEventHandler.RegisterResumeEvent();
             }
             else
             {
-                PowerEventHandler.DeregisterResumeEvent();
+                SystemEventHandler.DeregisterResumeEvent();
             }
         }
 

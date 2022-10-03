@@ -86,6 +86,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -191,6 +192,39 @@
                     LargeChange="100"
                     ValueChanged="NumberBoxColorDelay_ValueChanged"
                     />
+
+                <StackPanel
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Name="StackPanelDWMPrevalence"
+                    Margin="0,10,0,0"
+                    Orientation="Vertical"
+                    Width="Auto" Height="Auto">
+
+                    <CheckBox 
+                        Name="CheckBoxDWMPrevalence" 
+                        Content="{x:Static p:Resources.AppsCheckBoxDWMPrevalence}"
+                        Margin="0,0,0,0" 
+                        VerticalAlignment="Top"
+                        Click="CheckBoxDWMPrevalence_Click"
+                    />
+
+                    <StackPanel Name="StackPanelDWMPrevalenceOptions">
+                        <RadioButton 
+                            Name="RadioButtonDWMPrevalenceOnLight" 
+                            Content="{x:Static p:Resources.lblLightTheme}"
+                            IsChecked="True"
+                            Margin="0,0,0,0"
+                            Click="RadioButtonDWMPrevalenceOnLight_Click"/>
+
+                        <RadioButton 
+                            Name="RadioButtonDWMPrevalenceOnDark" 
+                            Content="{x:Static p:Resources.lblDarkTheme}" 
+                            Margin="0,0,0,0" 
+                            Click="RadioButtonDWMPrevalenceOnDark_Click"/>
+                    </StackPanel>
+
+                </StackPanel>
             </Grid>
 
             <!-- Office-->

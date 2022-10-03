@@ -44,7 +44,8 @@ namespace AutoDarkModeConfig
         SystemResume,
         Manual,
         ExternalThemeSwitch,
-        Startup
+        Startup,
+        SystemUnlock
     }
 
     public static class Extensions

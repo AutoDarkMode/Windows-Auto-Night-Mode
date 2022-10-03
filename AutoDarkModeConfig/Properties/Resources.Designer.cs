@@ -115,6 +115,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accent Color for title bars and window borders.
+        /// </summary>
+        public static string AppsCheckBoxDWMPrevalence {
+            get {
+                return ResourceManager.GetString("AppsCheckBoxDWMPrevalence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use Taskbar Accent Color during.
         /// </summary>
         public static string AppsTextBlockAdaptiveTaskbarAccent {
@@ -584,7 +593,7 @@ namespace AutoDarkModeConfig.Properties {
         ///Here are some things you can try:
         ///- Restart the Auto Dark Mode service
         ///- Check if the service is running
-        ///- Close the service, delete the config.yaml file and re-configue
+        ///- Close the service, delete the config.yaml file and re-configure
         ///
         ///If these things didn&apos;t help, you can create an issue on GitHub. You can access the issue by clicking the &quot;Yes&quot; button..
         /// </summary>

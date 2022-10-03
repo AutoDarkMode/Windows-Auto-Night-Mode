@@ -52,6 +52,19 @@ namespace AutoDarkModeSvc.Handlers
             return enabled;
         }
 
+        public static void SetDWMPrevalence(int theme)
+        {
+            using RegistryKey key = GetDWMKey();
+            key.SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
+        }
+
+        public static bool IsDWMPrevalence()
+        {
+            using RegistryKey key = GetDWMKey();
+            var enabled = key.GetValue("ColorPrevalence").Equals(1);
+            return enabled;
+        }
+
         /// <summary>
         /// Checks if system apps theme is light
         /// </summary>
@@ -97,6 +110,12 @@ namespace AutoDarkModeSvc.Handlers
         private static RegistryKey GetPersonalizeKey()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);
+            return registryKey;
+        }
+
+        private static RegistryKey GetDWMKey()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM", true);
             return registryKey;
         }
 

@@ -31,8 +31,8 @@ namespace AutoDarkModeSvc.Core
         private readonly ISwitchComponent AppsSwitch;
         private readonly ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
         private readonly ISwitchComponent OfficeSwitch = new OfficeSwitch();
+        private readonly ISwitchComponent AccentColorSwitch = new AccentColorSwitch();
         private readonly ISwitchComponent SystemSwitch;
-        //private ISwitchComponent TaskbarAccentColorSwitch;
         private readonly ISwitchComponent WallpaperSwitch;
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
 
@@ -46,8 +46,8 @@ namespace AutoDarkModeSvc.Core
             ColorFilterSwitch.UpdateSettingsState(Builder.Config.ColorFilterSwitch);
             OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
             SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
+            AccentColorSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
             WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
-            //TaskbarAccentcolorSwitch.UpdateSettingsState(Builder.Config.TaskbarAccentColorSwitch);
         }
 
         public void UpdateScriptSettings()
@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc.Core
                 ColorFilterSwitch,
                 OfficeSwitch,
                 SystemSwitch,
-                //TaskbarAccentColorSwitch
+                AccentColorSwitch,
                 WallpaperSwitch,
                 ScriptSwitch
             };
