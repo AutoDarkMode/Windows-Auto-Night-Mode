@@ -22,7 +22,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         public virtual int PriorityToLight { get; }
         public virtual int PriorityToDark { get; }
         public bool ForceSwitch { get; set; }
-        public bool Enabled
+        public virtual bool Enabled
         {
             get { return Settings.Enabled; }
         }

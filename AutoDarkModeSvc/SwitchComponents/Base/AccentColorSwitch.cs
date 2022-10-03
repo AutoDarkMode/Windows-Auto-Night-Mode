@@ -12,6 +12,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     {
         public override bool ThemeHandlerCompatibility => true;
 
+        public override bool Enabled
+        {
+            get { return Settings.Component.DWMPrevalenceSwitch; }
+        }
+
         private bool currentDWMColorActive;
 
         public AccentColorSwitch() : base()
@@ -73,7 +78,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     RegistryHandler.SetDWMPrevalence(0);
                     currentDWMColorActive = false;
                 }
-                Logger.Info($"update info - previous: dwm prevalence {previousSetting}, now: {currentDWMColorActive}, mode: during {Enum.GetName(typeof(Theme), Settings.Component.DWMPrevalenceEnableTheme)}");
+                Logger.Info($"update info - previous: dwm prevalence {previousSetting.ToString().ToLower()}, now: {currentDWMColorActive.ToString().ToLower()}, mode: during {Enum.GetName(typeof(Theme), Settings.Component.DWMPrevalenceEnableTheme).ToString().ToLower()}");
             }
             catch (Exception ex)
             {
