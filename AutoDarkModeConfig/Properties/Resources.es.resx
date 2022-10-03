@@ -175,7 +175,7 @@
     <value>Usar el servicio de localización</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>¡los cambios han sido guardados!</value>
+    <value>¡Los cambios han sido guardados!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Selecciona una hora y tus cambios serán guardados automáticamente.</value>
@@ -184,25 +184,25 @@
     <value>Descargar actualización</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Ha ocurrido un error :(</value>
+    <value>Ha ocurrido un error:(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Esta aplicación necesita acceder a tu ubicación</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>no hay nuevas actualizaciones disponibles.</value>
+    <value>No hay nuevas actualizaciones disponibles.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Obteniendo tu ubicación...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>buscando actualizaciones...</value>
+    <value>Buscando actualizaciones...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Advertencia: No pudimos leer tu tema actual.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>¡una nueva actualización está disponible!</value>
+    <value>¡Una nueva actualización está disponible!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>¡Gracias por usar Auto Dark Mode!
@@ -279,7 +279,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Configurar el fondo de escritorio</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>usa el fondo actual</value>
+    <value>Usa el fondo actual</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Desactivado</value>
@@ -297,10 +297,10 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Tal vez tu imagen está corrupta o la ruta no existe.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>No pudimos generar una previsualización de la imagen, ¡perdona!</value>
+    <value>No pudimos generar una previsualización de la imagen ¡Perdona!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>No pudimos guardar tus ajustes, ¡perdona!</value>
+    <value>No pudimos guardar tus ajustes ¡Perdona!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Ha ocurrido un error</value>
@@ -601,7 +601,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Comprobado por última vez</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>nunca</value>
+    <value>Nunca</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Cambiar con qué frecuencia buscamos actualizaciones</value>
