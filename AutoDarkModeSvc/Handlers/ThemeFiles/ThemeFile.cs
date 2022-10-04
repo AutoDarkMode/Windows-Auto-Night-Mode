@@ -309,9 +309,13 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                  * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
                  * we need to manually change the path to Custom.theme, which contains the current theme data
                  */
-                if (tempTheme.DisplayName != activeThemeName) {
+                if (tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\System32\themeui.dll")) {
                     Logger.Debug($"display name: {tempTheme.DisplayName} differs from expected name: {activeThemeName}, path: {currentThemePath}");
                     currentThemePath = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                }
+                else
+                {
+                    Logger.Debug($" currently active theme: {activeThemeName}, path: {currentThemePath}");
                 }
                 ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
             }
