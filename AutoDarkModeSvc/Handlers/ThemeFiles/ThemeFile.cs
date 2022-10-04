@@ -161,6 +161,10 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
             var iter = ThemeFileContent.GetEnumerator();
             bool processLastIterValue = false;
+            /* processLastIterValue ensures that new sections are parsed properly
+             * If it were not set, then the sections starting with [ would be discarded instead of re-processed at the start of the loop
+             * Due to lazy evaluation, iter.MoveNext() will not be called in such instances
+            /*/
             while (processLastIterValue || iter.MoveNext())
             {
                 processLastIterValue = false;
@@ -325,11 +329,18 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             var flags = BindingFlags.Instance | BindingFlags.Public;
             foreach (PropertyInfo p in obj.GetType().GetProperties(flags))
             {
-                (string, int) propValue = ((string, int))p.GetValue(obj);
-                if (input.StartsWith(p.Name))
+                try
                 {
-                    propValue.Item1 = input.Split('=')[1].Trim();
-                    p.SetValue(obj, propValue);
+                    (string, int) propValue = ((string, int))p.GetValue(obj);
+                    if (input.StartsWith(p.Name))
+                    {
+                        propValue.Item1 = input.Split('=')[1].Trim();
+                        p.SetValue(obj, propValue);
+                    }
+                } 
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not set value for input: {input}, exception: ");
                 }
             }
         }
