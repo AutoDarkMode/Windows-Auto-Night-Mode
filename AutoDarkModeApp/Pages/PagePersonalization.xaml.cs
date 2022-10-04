@@ -47,19 +47,19 @@ namespace AutoDarkModeApp.Pages
         private void SetThemePickerEnabled()
         {
             WallpaperDisabledMessage.Visibility = Visibility.Visible;
-            WallpaperPickerGrid.IsEnabled = false;
+            WallpaperPickerCard.IsEnabled = false;
 
             ThemeDisabledMessage.Visibility = Visibility.Collapsed;
-            ThemePickerGrid.IsEnabled = true;
+            ThemePickerCard.IsEnabled = true;
         }
 
         private void SetWallpaperPickerEnabled ()
         {
             WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
-            WallpaperPickerGrid.IsEnabled = true;
+            WallpaperPickerCard.IsEnabled = true;
 
             ThemeDisabledMessage.Visibility = Visibility.Visible;
-            ThemePickerGrid.IsEnabled = false;
+            ThemePickerCard.IsEnabled = false;
         }
 
         private void NavigateThemePicker(object sender, RoutedEventArgs e)

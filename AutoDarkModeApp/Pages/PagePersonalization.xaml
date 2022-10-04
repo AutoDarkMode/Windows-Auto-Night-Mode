@@ -47,13 +47,14 @@
                 Padding="5,5,5,5"
                 BorderThickness="2"
                 BorderBrush="{DynamicResource Win11Border}"
-                CornerRadius="4"
+                CornerRadius="5"
                 Background="{DynamicResource Win11Background}"
                 MouseDown="NavigateWallpaperPicker"
+                Name="WallpaperPickerCard"
                 Cursor="Hand">
 
 
-            <Grid Name="WallpaperPickerGrid"
+            <Grid
                   MouseDown="NavigateThemePicker"
                   Margin="0,15,0,15">
                 <Grid.ColumnDefinitions>
@@ -68,8 +69,7 @@
                              Glyph="&#xe8b9;" />
 
                 <Grid Grid.Column="1"
-                      Margin="15,0,0,0"
-                      >
+                      Margin="15,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -118,19 +118,19 @@
 
         </Border>
 
-        <Border Margin="0,15,0,10"
+        <Border Margin="0,15,0,15"
                 Padding="5,0,5,0"
                 Grid.Column="1"
                 Grid.Row="4"
                 BorderThickness="1"
                 BorderBrush="{DynamicResource Win11Border}"
-                CornerRadius="4"
+                CornerRadius="5"
                 Background="{DynamicResource Win11Background}"
                 MouseDown="NavigateThemePicker"
+                Name="ThemePickerCard"
                 Cursor="Hand">
 
-            <Grid Name="ThemePickerGrid"
-                  Margin="0,15,0,15">
+            <Grid Margin="0,15,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
