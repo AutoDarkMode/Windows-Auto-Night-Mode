@@ -168,7 +168,7 @@ namespace AutoDarkModeApp
                 sysFormat = sysFormat[..sysFormat.IndexOf(":")];
                 if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
                 {
-                    Settings.Default.AlterTime = true;
+                    if (Settings.Default.FirstRun) Settings.Default.AlterTime = true;
                 }
             }
             catch
