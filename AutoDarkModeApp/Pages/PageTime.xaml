@@ -385,8 +385,6 @@
                     Width="80" Height="30" 
                     Click="OffsetButton_Click" 
                     IsEnabled="False" 
-                    Style="{StaticResource ButtonAccentRevealStyle}" 
-                    BorderBrush="Black"
                     />
 
             </StackPanel>

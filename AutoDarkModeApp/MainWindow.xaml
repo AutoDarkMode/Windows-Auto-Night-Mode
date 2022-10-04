@@ -14,7 +14,7 @@
         MinHeight="600"
         MinWidth="850" 
         Height="760" 
-        Width="850" 
+        Width="1050" 
         ResizeMode="CanResize" 
         Closed="Window_Closed" 
         Closing="Window_Closing"
