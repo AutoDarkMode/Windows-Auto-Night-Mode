@@ -91,4 +91,14 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public (string, int) Wait { get; set; } = (@"%SystemRoot%\cursors\aero_busy.ani", 14);
         public (string, int) DefaultValue { get; set; } = (@"Windows Default", 15);
     }
+
+    public class Slideshow
+    {
+        public (string, int) Section { get; } = (@"[Slideshow]", 0);
+        public int Interval { get; set; } = 1337000;
+        public int Shuffle { get; set; } = 1;
+        public string ImagesRootPath { get; set; } = null;
+        public List<(string, string)> ItemPaths { get; set; } = new();
+        public string RssFeed { get; set; } = null;
+    }
 }

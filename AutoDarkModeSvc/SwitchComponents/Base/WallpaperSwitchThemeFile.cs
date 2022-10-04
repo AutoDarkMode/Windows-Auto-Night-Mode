@@ -195,6 +195,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // for solid color
                 GlobalState.ManagedThemeFile.Colors = temp.Colors;
             }
+
+            //remove slideshows if the wallpaper switcher is used, until we have our own UI for it
+            GlobalState.ManagedThemeFile.RemoveSlideshow();
         }
 
         /// <summary>

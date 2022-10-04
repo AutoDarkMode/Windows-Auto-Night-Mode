@@ -23,6 +23,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public VisualStyles VisualStyles { get; set; } = new();
         public Cursors Cursors { get; set; } = new();
         public Colors Colors { get; set; } = new();
+        public Slideshow Slideshow { get; set; } = new();
 
         public ThemeFile(string path)
         {
@@ -89,6 +90,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 throw;
             }
         }
+
         private void UpdateSection(string section, List<string> lines)
         {
             try
@@ -117,6 +119,32 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             catch (Exception ex)
             {
                 Logger.Error(ex, $"failed to update section {section} with data: {string.Join('\n', lines)}\n exception: ");
+                throw;
+            }
+        }
+
+        private void RemoveSection(string section)
+        {
+            try
+            {
+                int found = ThemeFileContent.IndexOf(section);
+                if (found != -1)
+                {
+                    int i;
+                    for (i = found + 1; i < ThemeFileContent.Count; i++)
+                    {
+                        if (ThemeFileContent[i].StartsWith('['))
+                        {
+                            i--;
+                            break;
+                        }
+                    }
+                    ThemeFileContent.RemoveRange(found, i - found);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"failed to remove section {section}\n exception: ");
                 throw;
             }
         }
@@ -150,6 +178,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             {
                 Logger.Error(ex, "could not save theme file: ");
             }
+        }
+
+        public void RemoveSlideshow()
+        {
+            RemoveSection(Slideshow.Section.Item1);
         }
 
         public void Parse()
@@ -245,6 +278,38 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             break;
                         }
                         SetValues(iter.Current, Colors);
+                    }
+                }
+                else if (iter.Current.Contains(Slideshow.Section.Item1))
+                {
+                    while (iter.MoveNext())
+                    {
+                        if (iter.Current.StartsWith("["))
+                        {
+                            processLastIterValue = true;
+                            break;
+                        }
+
+                        if (iter.Current.Contains("ImagesRootPath")) Slideshow.ImagesRootPath = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.Contains("RssFeed")) Slideshow.RssFeed = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.Contains("Interval"))
+                        {
+                            if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int interval))
+                            {
+                                Slideshow.Interval = interval;
+                            }
+                        }
+                        else if (iter.Current.Contains("Shuffle"))
+                        {
+                            bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
+                            if (success) Slideshow.Shuffle = num;
+                        }
+                        else if (iter.Current.Contains("Item"))
+                        {
+                            string[] split = iter.Current.Split('=');
+                            string itemNumber = split[0].Replace("Item", "").Replace("Path", "");
+                            Slideshow.ItemPaths.Add((split[1], itemNumber));
+                        }
                     }
                 }
             }
