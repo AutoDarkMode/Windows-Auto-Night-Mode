@@ -850,4 +850,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Sistemin boşta kabul edilmesi için geçmesi gereken dakika</value>
   </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Başlık çubukları ve pencere kenarlıkları için Vurgu Rengi</value>
+  </data>
 </root>
