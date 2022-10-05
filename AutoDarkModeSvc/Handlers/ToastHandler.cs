@@ -5,6 +5,7 @@ using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using Windows.Foundation.Collections;
+using AutoDarkModeSvc.Core;
 
 // https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
 
@@ -13,6 +14,25 @@ namespace AutoDarkModeSvc.Handlers
     public class ToastHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        private static readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
+        private static readonly GlobalState state = GlobalState.Instance();
+
+        public static void InvokeAutoSwitchNotificationToast()
+        {
+            Program.ActionQueue.Add(() =>
+            {
+                string currentAutoThemeSwitchState = configBuilder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
+                new ToastContentBuilder()
+                    .AddText($"Automatic theme switch {currentAutoThemeSwitchState}")
+                    .AddButton(new ToastButton().SetContent("Undo").AddArgument("action-undo-toggle-theme-switch", currentAutoThemeSwitchState))
+                    .Show(toast =>
+                    {
+                        toast.Tag = "adm-auto-switch-disabled-notif";
+                    });
+            });
+        }
+
         public static void InvokeFailedUpdateToast()
         {
             Program.ActionQueue.Add(() =>
@@ -32,7 +52,6 @@ namespace AutoDarkModeSvc.Handlers
                     });
             });
         }
-
 
         public static void InvokeUpdateInProgressToast(string version, bool downgrade = false)
         {
@@ -188,6 +207,28 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Debug("update postponed");
                         return;
+                    }
+                    else if (argument[0] == "action-undo-toggle-theme-switch")
+                    {
+                        if (argument[1] == "enabled")
+                        {
+                            Logger.Debug("undo enable auto theme switch via toast");
+                            configBuilder.Config.AutoThemeSwitchingEnabled = true;
+                        }
+                        else if (argument[1] == "disabled")
+                        {
+                            Logger.Debug("undo disable auto theme switch via toast");
+                            configBuilder.Config.AutoThemeSwitchingEnabled = true;
+                        }
+                        try
+                        {
+                            state.SkipConfigFileReload = true;
+                            configBuilder.Save();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "couldn't save config file: ");
+                        }
                     }
                 }
             }

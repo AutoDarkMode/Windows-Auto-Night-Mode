@@ -350,8 +350,8 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test
                     case Command.Test:
-                        ThemeFile tf = new(@"C:\Users\Sam\AppData\Local\Microsoft\Windows\Themes\solid_test.theme");
-                        tf.Save();
+                        PostponeManager pm = state.PostponeManager;
+                        state.PostponeManager.Add(new("testpostpone", DateTime.Now.AddMinutes(1)));
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,
@@ -359,6 +359,18 @@ namespace AutoDarkModeSvc.Communication
                         }.ToString());
                         break;
                     #endregion
+
+                    #region Test2
+                    case Command.Test2:
+                        bool rest2 = state.PostponeManager.Remove("testpostpone");
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok,
+                            Message = rest2.ToString()
+                        }.ToString());
+                        break;
+                    #endregion
+
 
                     default:
                         Logger.Debug("unknown message received");

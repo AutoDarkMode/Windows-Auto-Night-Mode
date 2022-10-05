@@ -28,7 +28,7 @@ namespace AutoDarkModeSvc.Modules
                 Logger.Info($"allow theme switch, system idle since {lastInputTime}, which is longer than {builder.Config.IdleChecker.Threshold} minute(s)");
                 State.PostponeManager.Remove(Name);
             }
-            else if (State.PostponeManager.Add(Name))
+            else if (State.PostponeManager.Add(new(Name)))
             {
                 Logger.Info("postponing theme switch due to system idle timer");
             }

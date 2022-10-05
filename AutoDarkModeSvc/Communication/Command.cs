@@ -126,6 +126,9 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string Test = "--test";
 
+        [Includable]
+        public const string Test2 = "--test2";
+
         public const string TestError = "--test-error";
 
         public const string TestNotifications = "--test-notifications";

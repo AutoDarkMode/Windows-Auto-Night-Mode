@@ -65,16 +65,19 @@ namespace AutoDarkModeSvc.Monitors
         {
             _ = state.ConfigIsUpdatingWaitHandle.Reset();
             state.ConfigIsUpdating = true;
-            if (state.SkipConfigFileReload)
-            {
-                state.SkipConfigFileReload = false;
-                Logger.Debug("skipping config file reload, update source internal");
-                return;
-            }
             try
             {
+                if (state.SkipConfigFileReload)
+                {
+                    state.SkipConfigFileReload = false;
+                    Logger.Debug("skipping config file reload, update source internal");
+                }
+                else
+                {
+                    builder.Load();
+                }
+
                 AdmConfig oldConfig = builder.Config;
-                builder.Load();
                 componentManager.UpdateSettings();
                 UpdateEventStates();
                 builder.OnConfigUpdated(oldConfig);

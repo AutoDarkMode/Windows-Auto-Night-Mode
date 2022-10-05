@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace AutoDarkModeSvc.Core
 {
     public class PostponeManager
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private List<string> PostponedQueue { get; } = new();
+        private List<PostponeItem> PostponedQueue { get; } = new();
         private List<IAutoDarkModeModule> CallbackModules { get; } = new();
 
         public bool IsPostponed
@@ -22,16 +24,16 @@ namespace AutoDarkModeSvc.Core
         /// <summary>
         /// Adds a new blocking reason to the postpone queue
         /// </summary>
-        /// <param name="reason">the name of the reason to be identified by</param>
+        /// <param name="item">the postpone item (to be identified by its reason)</param>
         /// <returns>True if element is not present in postpone queue and has been added successfully</returns>
-        public bool Add(string reason)
+        public bool Add(PostponeItem item)
         {
-            if (PostponedQueue.Contains(reason))
+            if (PostponedQueue.Any(x => x.Reason == item.Reason))
             {
                 return false;
             }
-            PostponedQueue.Add(reason);
-            Logger.Debug($"added {reason} to postpone queue: [{string.Join(", ", PostponedQueue)}]");
+            PostponedQueue.Add(item);
+            Logger.Debug($"added {item.Reason} to postpone queue: [{string.Join(", ", PostponedQueue)}]");
             return true;
         }
 
@@ -45,7 +47,13 @@ namespace AutoDarkModeSvc.Core
         public bool Remove(string reason)
         {
             bool lastElement = PostponedQueue.Count == 1;
-            bool result = PostponedQueue.Remove(reason);
+            PostponeItem item = PostponedQueue.Where(x => x.Reason == reason).FirstOrDefault();
+            if (item == null)
+            {
+                return false;
+            }
+            if (item.Expires) item.CancelExpiry();
+            bool result = PostponedQueue.Remove(item);
             if (result) Logger.Debug($"removed {reason} from postpone queue: [{string.Join(", ", PostponedQueue)}]");
             if (!IsPostponed && lastElement)
             {
@@ -84,6 +92,79 @@ namespace AutoDarkModeSvc.Core
                 return true;
             }
             return false;
+        }
+    }
+
+    public class PostponeItem
+    {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public string Reason { get; }
+        private DateTime? Expiry { get; set; }
+        private Task Task { get; set; }
+        CancellationTokenSource CancelTokenSource { get; } = new CancellationTokenSource();
+        public bool Expires
+        {
+            get
+            {
+                return Expiry != null;
+            }
+        }
+
+        public PostponeItem(string reason)
+        {
+            Reason = reason;
+        }
+
+        public PostponeItem(string reason, DateTime expiry)
+        {
+            Reason = reason;
+            Expiry = expiry;
+            HandleExpiry();
+        }
+
+        /// <summary>
+        /// Causes the Postpone item to immediately expire
+        /// </summary>
+        /// <returns>true if a cancellation was performed; false if there was no outstanding expiry</returns>
+        public bool CancelExpiry()
+        {
+            if (Task != null)
+            {
+                CancelTokenSource.Cancel();
+                Expiry = null;
+                return true;
+            }
+            return false;
+        }
+
+        private void HandleExpiry()
+        {
+            if (Expiry == null) return;
+            DateTime expiresUnwrapped = Expiry.Value;
+            if (Expiry > DateTime.Now)
+            {
+                Logger.Info($"postpone item with reason {Reason} will expire at {expiresUnwrapped:MM.dd.yyyy HH:mm:ss}");
+                TimeSpan delay = expiresUnwrapped - DateTime.Now;
+                CancellationToken token = CancelTokenSource.Token;
+                Task = Task.Delay(delay, token).ContinueWith(o =>
+                {
+                    if (token.IsCancellationRequested)
+                    {
+                        Logger.Info($"postpone item with reason {Reason} had its expiry cancelled");
+                    }
+                    else
+                    {
+                        PostponeManager pm = GlobalState.Instance().PostponeManager;
+                        pm.Remove(Reason);
+                        Logger.Info($"postpone item with reason {Reason} expired and was removed");
+                    }
+                });
+            }
+            else
+            {
+                Logger.Debug("expiry time before current time, removing myself");
+                GlobalState.Instance().PostponeManager.Remove(Reason);
+            }
         }
     }
 }
