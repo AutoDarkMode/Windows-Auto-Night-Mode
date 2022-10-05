@@ -43,6 +43,14 @@ namespace AutoDarkModeSvc.Communication
         public const string NoForce = "--no-force";
 
         /// <summary>
+        /// Toggles skipping the next pending theme switch off or on
+        /// Returns an APIResponse with StatusCode.Ok or a StatusCode.Timeout 
+        /// and a message with true or false to indicate whether skipping is enabled or disabled
+        /// </summary>
+        [Includable]
+        public const string ToggleSkipNext = "--toggle-skip-next";
+
+        /// <summary>
         /// Checks for updates silently
         /// ApiResponse with StatusCode.New if an update is available, <br/>
         /// StatusCode.Ok if no update is available <br/>

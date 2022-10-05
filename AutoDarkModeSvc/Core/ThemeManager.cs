@@ -183,6 +183,8 @@ namespace AutoDarkModeSvc.Core
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             Sunrise = builder.Config.Sunrise;
             Sunset = builder.Config.Sunset;
+            _adjustedSunrise = Sunrise;
+            _adjustedSunset = Sunset;
             if (builder.Config.Location.Enabled)
             {
                 LocationHandler.GetSunTimes(builder, out _adjustedSunrise, out _adjustedSunset);

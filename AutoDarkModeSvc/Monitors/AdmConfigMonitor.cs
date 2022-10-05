@@ -80,6 +80,7 @@ namespace AutoDarkModeSvc.Monitors
                 AdmConfig oldConfig = builder.Config;
                 componentManager.UpdateSettings();
                 UpdateEventStates();
+                // trigger config update event handlers
                 builder.OnConfigUpdated(oldConfig);
 
                 // fire warden ro register/unregister enabled/disabled modules
@@ -87,6 +88,9 @@ namespace AutoDarkModeSvc.Monitors
                 {
                     warden.Fire();
                 }
+
+                // update expiry on config update if necessary (handled by UpdateNextSwitchExpiry)
+                state.PostponeManager.UpdateSkipNextSwitchExpiry();
                 Logger.Debug("updated configuration file");
             }
             catch (Exception ex)

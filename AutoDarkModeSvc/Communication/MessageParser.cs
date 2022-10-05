@@ -294,6 +294,18 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
+                    #region ToggleSkipNext
+                    case Command.ToggleSkipNext:
+                        Logger.Info("signal received: toggle skip next switch");
+                        bool enabled = state.PostponeManager.ToggleSkipNextSwitch();
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok,
+                            Message = enabled.ToString()
+                        }.ToString());
+                        break;
+                    #endregion
+
                     #region DetectMonitors
                     case Command.DetectMonitors:
                         Logger.Info("signal received: detecting new monitors");
