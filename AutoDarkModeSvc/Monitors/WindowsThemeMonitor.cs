@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc.Monitors
             {
                 Logger.Error(ex, "error while waiting for thread to stop:");
             }
-            ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.ExternalThemeSwitch));
+            ThemeManager.RequestSwitch(new(SwitchSource.ExternalThemeSwitch));
         }
 
         public static void StartThemeMonitor()

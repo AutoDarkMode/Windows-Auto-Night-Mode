@@ -13,17 +13,18 @@ namespace AutoDarkModeSvc.Core
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static readonly ComponentManager cm = ComponentManager.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
+        private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
-        public static void RequestSwitch(AdmConfigBuilder builder, SwitchEventArgs e)
+        public static void RequestSwitch(SwitchEventArgs e)
         {
             if (state.ForcedTheme == Theme.Dark)
             {
-                UpdateTheme(builder.Config, Theme.Dark, e);
+                UpdateTheme(Theme.Dark, e);
                 return;
             }
             else if (state.ForcedTheme == Theme.Light)
             {
-                UpdateTheme(builder.Config, Theme.Light, e);
+                UpdateTheme(Theme.Light, e);
                 return;
             }
 
@@ -31,38 +32,70 @@ namespace AutoDarkModeSvc.Core
             {
                 if (PowerManager.BatteryStatus == BatteryStatus.Discharging)
                 {
-                    UpdateTheme(builder.Config, Theme.Dark, e);
+                    UpdateTheme(Theme.Dark, e);
                     return;
                 }
                 if (!builder.Config.AutoThemeSwitchingEnabled) {
-                    UpdateTheme(builder.Config, Theme.Light, e);
+                    UpdateTheme(Theme.Light, e);
                     return;
                 }
+            }
+
+            if (e.RequestedTheme.HasValue)
+            {
+                UpdateTheme(e.RequestedTheme.Value, e);
+                return;
             }
 
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
                 ThemeState ts = new();
-                UpdateTheme(builder.Config, ts.TargetTheme, e, ts.CurrentSwitchTime);
+                UpdateTheme(ts.TargetTheme, e, ts.CurrentSwitchTime);
             }
             else
             {
-                UpdateTheme(builder.Config, state.LastRequestedTheme, e);
+                UpdateTheme(state.LastRequestedTheme, e);
             }
         }
 
-        public static void UpdateTheme(AdmConfig config, Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
+        /// <summary>
+        /// Toggles the theme and postpones the automatic switch once until the next switching window
+        /// </summary>
+        /// <returns>the theme that was switched to</returns>
+        public static Theme ToggleTheme()
+        {
+            Theme newTheme;
+            if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
+            else newTheme = Theme.Light;
+
+            RequestSwitch(new(SwitchSource.Manual, newTheme));
+            if (builder.Config.AutoThemeSwitchingEnabled)
+            {
+                ThemeState ts = new();
+                if (ts.TargetTheme != newTheme)
+                {
+                    state.PostponeManager.AddSkipNextSwitch();
+                }
+                else
+                {
+                    state.PostponeManager.RemoveSkipNextSwitch();
+                }
+            }
+            return newTheme;
+        }
+
+        public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
         {
             state.LastRequestedTheme = newTheme;
 
             bool themeModeSwitched = false;
-            if (e.Source == SwitchSource.SystemUnlock && config.WindowsThemeMode.Enabled)
+            if (e.Source == SwitchSource.SystemUnlock && builder.Config.WindowsThemeMode.Enabled)
             {
-                themeModeSwitched = ThemeHandler.ApplyTheme(config, newTheme, skipCheck: true);
+                themeModeSwitched = ThemeHandler.ApplyTheme(builder.Config, newTheme, skipCheck: true);
             }
-            else if (config.WindowsThemeMode.Enabled)
+            else if (builder.Config.WindowsThemeMode.Enabled)
             {
-                themeModeSwitched = ThemeHandler.ApplyTheme(config, newTheme);
+                themeModeSwitched = ThemeHandler.ApplyTheme(builder.Config, newTheme);
             }
 
             // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
@@ -72,13 +105,13 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0)
             {
                 //logic for our classic mode 2.0, gets the currently active theme for modification
-                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
                 }
 
                 // if theme mode is disabled, we need to disable energy saver for the modules
-                if (!themeModeSwitched) PowerHandler.RequestDisableEnergySaver(config);
+                if (!themeModeSwitched) PowerHandler.RequestDisableEnergySaver(builder.Config);
                 cm.Run(componentsToUpdate, newTheme, e);
             }
 
@@ -86,12 +119,12 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0 || themeModeSwitched || e.Source == SwitchSource.SystemUnlock)
             {
                 // Logic for our classic mode 2.0
-                if (config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
                 {
                     try
                     {
                         state.ManagedThemeFile.Save();
-                        ThemeHandler.ApplyManagedTheme(config, Extensions.ManagedThemePath);
+                        ThemeHandler.ApplyManagedTheme(builder.Config, Extensions.ManagedThemePath);
                     }
                     catch (Exception ex)
                     {
@@ -114,7 +147,7 @@ namespace AutoDarkModeSvc.Core
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
                             // disable mitigation after all components and theme switch have been executed
-                PowerHandler.RequestRestoreEnergySaver(config);
+                PowerHandler.RequestRestoreEnergySaver(builder.Config);
             }
 
         }

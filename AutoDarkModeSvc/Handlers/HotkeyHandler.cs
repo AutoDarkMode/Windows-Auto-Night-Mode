@@ -37,26 +37,61 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 GlobalState state = GlobalState.Instance();
+
                 if (builder.Config.Hotkeys.ForceDark != null) Register(builder.Config.Hotkeys.ForceDark, () =>
                 {
                     Logger.Info("hotkey signal received: forcing dark theme");
                     state.ForcedTheme = Theme.Dark;
                     ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
-                    ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.Manual));
+                    ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
                 });
+
                 if (builder.Config.Hotkeys.ForceLight != null) Register(builder.Config.Hotkeys.ForceLight, () =>
                 {
                     Logger.Info("hotkey signal received: forcing light theme");
                     state.ForcedTheme = Theme.Light;
                     ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
-                    ThemeManager.UpdateTheme(builder.Config, Theme.Light, new(SwitchSource.Manual));
+                    ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
                 });
+
                 if (builder.Config.Hotkeys.NoForce != null) Register(builder.Config.Hotkeys.NoForce, () =>
                 {
                     Logger.Info("hotkey signal received: stop forcing specific theme");
                     state.ForcedTheme = Theme.Unknown;
-                    ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
+                    ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                 });
+
+                if (builder.Config.Hotkeys.ToggleTheme != null) Register(builder.Config.Hotkeys.ToggleTheme, () =>
+                {
+                    Logger.Info("hotkey signal received: toggle theme");
+                    Theme newTheme;
+                    if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
+                    else newTheme = Theme.Light;
+
+                    if (builder.Config.AutoThemeSwitchingEnabled)
+                    {
+                        ThemeState ts = new();
+                        if (ts.TargetTheme != newTheme)
+                        {
+                            state.PostponeManager.AddSkipNextSwitch();
+                        }
+                        else
+                        {
+                            state.PostponeManager.RemoveSkipNextSwitch();
+                        }
+                    }
+                    if (builder.Config.AutoThemeSwitchingEnabled)
+                    {
+                        ToastHandler.InvokePauseSwitchNotificationToast();
+                        if (state.PostponeManager.IsSkipNextSwitch) Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual, newTheme));
+                    }
+                    else
+                    {
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual, newTheme));
+                    }
+                });
+
                 if (builder.Config.Hotkeys.ToggleAutoThemeSwitch != null) Register(builder.Config.Hotkeys.ToggleAutoThemeSwitch, () =>
                 {
                     Logger.Info("hotkey signal received: toggle automatic theme switch");

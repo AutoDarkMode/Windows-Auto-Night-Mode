@@ -7,7 +7,7 @@
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:p="clr-namespace:AutoDarkModeConfig.Properties;assembly=AutoDarkModeConfig"
       mc:Ignorable="d"
-      d:DesignHeight="1000"
+      d:DesignHeight="1200"
       d:DesignWidth="800"
       Title="PageSwitchModes"
       Height="Auto"
@@ -146,12 +146,19 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <ui:SimpleStackPanel Margin="0,10,0,0"
                                      Grid.Row="0">
-                    <TextBlock Text="{x:Static p:Resources.SwitchModesTextBlockHeaderForceLightHotkey}"
-                               FontSize="14" />
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderForceLight}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                     <TextBox HorizontalAlignment="Left"
                              ui:TextBoxHelper.IsDeleteButtonVisible="false"
                              Width="240"
@@ -163,8 +170,14 @@
 
                 <ui:SimpleStackPanel Margin="0,10,0,0"
                                      Grid.Row="1">
-                    <TextBlock Text="{x:Static p:Resources.SwitchModesTextBlockHeaderForceDarkHotkey}"
-                               FontSize="14" />
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderForceDark}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                     <TextBox HorizontalAlignment="Left"
                              ui:TextBoxHelper.IsDeleteButtonVisible="false"
                              Width="240"
@@ -174,10 +187,17 @@
                              PreviewKeyDown="HotkeyTextboxForceDark_PreviewKeyDown" />
                 </ui:SimpleStackPanel>
 
+
                 <ui:SimpleStackPanel Margin="0,10,0,0"
                                      Grid.Row="2">
-                    <TextBlock Text="{x:Static p:Resources.SwitchModesTextBlockHeaderNoForceHotkey}"
-                               FontSize="14" />
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderNoForce}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                     <TextBox HorizontalAlignment="Left"
                              ui:TextBoxHelper.IsDeleteButtonVisible="false"
                              Width="240"
@@ -189,8 +209,33 @@
 
                 <ui:SimpleStackPanel Margin="0,10,0,0"
                                      Grid.Row="3">
-                    <TextBlock Text="{x:Static p:Resources.SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch}"
-                               FontSize="14" />
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.ToggleTheme}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxToggleTheme"
+                             PreviewKeyDown="HotkeyTextboxToggleTheme_PreviewKeyDown" />
+                </ui:SimpleStackPanel>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0"
+                                     Grid.Row="4">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                     <TextBox HorizontalAlignment="Left"
                              ui:TextBoxHelper.IsDeleteButtonVisible="false"
                              Width="240"

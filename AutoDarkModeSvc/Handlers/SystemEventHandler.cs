@@ -31,11 +31,11 @@ namespace AutoDarkModeSvc.Handlers
             if (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline)
             {
                 Logger.Info("battery discharging, enabling dark mode");
-                ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.BatteryStatusChanged));
+                ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.BatteryStatusChanged));
             }
             else
             {
-                ThemeManager.RequestSwitch(builder, new(SwitchSource.BatteryStatusChanged));
+                ThemeManager.RequestSwitch(new(SwitchSource.BatteryStatusChanged));
             }
         }
 
@@ -48,7 +48,7 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info("disabling event handler for dark mode on battery state discharging");
                     PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
                     darkThemeOnBatteryEnabled = false;
-                    ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.BatteryStatusChanged));
+                    ThemeManager.RequestSwitch(new(SwitchSource.BatteryStatusChanged));
                 }
             }
             catch (InvalidOperationException ex)
@@ -81,7 +81,7 @@ namespace AutoDarkModeSvc.Handlers
             if (e.Reason == SessionSwitchReason.SessionUnlock)
             {
                 Logger.Info("system unlocked, refreshing theme");
-                ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.SystemUnlock));
+                ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
             }
         }
 
@@ -90,7 +90,7 @@ namespace AutoDarkModeSvc.Handlers
             if (e.Mode == PowerModes.Resume)
             {
                 Logger.Info("system resuming from suspended state, refreshing theme");
-                ThemeManager.RequestSwitch(AdmConfigBuilder.Instance(), new(SwitchSource.SystemResume));
+                ThemeManager.RequestSwitch(new(SwitchSource.SystemResume));
             }
         }
 

@@ -61,6 +61,7 @@ namespace AutoDarkModeApp.Pages
             HotkeyTextboxForceLight.Text = builder.Config.Hotkeys.ForceLight ?? "";
             HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForce ?? "";
             HotkeyTextboxToggleAutomaticThemeSwitch.Text = builder.Config.Hotkeys.ToggleAutoThemeSwitch ?? "";
+            HotkeyTextboxToggleTheme.Text = builder.Config.Hotkeys.ToggleTheme ?? "";
             HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Hotkeys.AutoThemeSwitchingNotification;
 
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
@@ -350,6 +351,25 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "HotkeyCheckboxToggleAutomaticThemeSwitchNotification_Click");
+            }
+        }
+
+        private void HotkeyTextboxToggleTheme_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            string hotkeyString = GetHotkeyString(e);
+            if (sender is TextBox tb)
+            {
+                tb.Text = hotkeyString;
+            }
+            if (hotkeyString == builder.Config.Hotkeys.ToggleTheme) return;
+            builder.Config.Hotkeys.ToggleTheme = hotkeyString;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "hotkeybox_toggletheme");
             }
         }
     }

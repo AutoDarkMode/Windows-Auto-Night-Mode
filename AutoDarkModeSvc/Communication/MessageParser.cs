@@ -37,7 +37,7 @@ namespace AutoDarkModeSvc.Communication
                     case Command.Switch:
                         Logger.Info("signal received: invoke theme switch");
                         //cm.ForceAll();
-                        ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok
@@ -51,11 +51,11 @@ namespace AutoDarkModeSvc.Communication
                         if (RegistryHandler.AppsUseLightTheme())
                         {
 
-                            ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.Manual));
+                            ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
                         }
                         else
                         {
-                            ThemeManager.UpdateTheme(builder.Config, Theme.Light, new(SwitchSource.Manual));
+                            ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
                         }
                         SendResponse(new ApiResponse()
                         {
@@ -264,7 +264,7 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: force light theme");
                         state.ForcedTheme = Theme.Light;
                         ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
-                        ThemeManager.UpdateTheme(builder.Config, Theme.Light, new(SwitchSource.Manual));
+                        ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok
@@ -277,7 +277,7 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: force dark theme");
                         state.ForcedTheme = Theme.Dark;
                         ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
-                        ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.Manual));
+                        ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
                         SendResponse(StatusCode.Ok);
                         break;
                     #endregion
@@ -286,7 +286,7 @@ namespace AutoDarkModeSvc.Communication
                     case Command.NoForce:
                         Logger.Info("signal received: resetting forced modes");
                         state.ForcedTheme = Theme.Unknown;
-                        ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok

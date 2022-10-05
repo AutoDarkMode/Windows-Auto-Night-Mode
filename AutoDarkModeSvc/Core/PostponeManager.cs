@@ -17,6 +17,16 @@ namespace AutoDarkModeSvc.Core
         private List<PostponeItem> PostponedQueue { get; } = new();
         private List<IAutoDarkModeModule> CallbackModules { get; } = new();
 
+        public bool IsSkipNextSwitch
+        {
+            get
+            {
+                if (PostponedQueue.Any(x => x.Reason == "SkipNext"))
+                    return true;
+                return false;
+            }
+        }
+
         public bool IsPostponed
         {
             get { return PostponedQueue.Count > 0; }
@@ -64,6 +74,11 @@ namespace AutoDarkModeSvc.Core
             return result;
         }
 
+        public PostponeItem GetSkipNextSwitchItem()
+        {
+            return PostponedQueue.Where(x => x.Reason == "SkipNext").FirstOrDefault();
+        }
+
         /// <summary>
         /// Toggles the skip next switch feature off or on
         /// </summary>
@@ -77,13 +92,6 @@ namespace AutoDarkModeSvc.Core
             }
             AddSkipNextSwitch();
             return true;
-        }
-
-        public bool SkipNextSwitchActive()
-        {
-            if (PostponedQueue.Any(x => x.Reason == "SkipNext"))
-                return true;
-            return false;
         }
 
         /// <summary>
@@ -283,7 +291,7 @@ namespace AutoDarkModeSvc.Core
                 bool result = GlobalState.Instance().PostponeManager.Remove(Reason);
                 if (!result)
                 {
-                    Logger.Debug($"I ({Reason}) couldn't remove myself, i wasn't home");
+                    Logger.Debug($"i ({Reason}) couldn't remove myself, i wasn't home");
                 }
                 throw new ArgumentOutOfRangeException("Expiry", "expiry time can't be in the past");
             }

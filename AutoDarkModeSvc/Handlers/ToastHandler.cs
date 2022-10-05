@@ -22,6 +22,27 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
 
+        public static void InvokePauseSwitchNotificationToast()
+        {
+            if (state.PostponeManager.IsSkipNextSwitch)
+            {
+                Program.ActionQueue.Add(() =>
+                {
+                    DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
+
+                    new ToastContentBuilder()
+                        .AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}")
+                        .AddText($"{AdmProperties.Resources.ThemeSwitchPauseActionNotification}. {AdmProperties.Resources.ThemeSwitchPauseActionDisableQuestion}")
+                        .AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionDisable)
+                            .AddArgument("action-undo-toggle-theme-switch", "enabled")
+                            .AddArgument("action", "remove-skip-next"))
+                        .Show(toast =>
+                        {
+                            toast.Tag = "adm-theme-switch-paused-notif";
+                        });
+                });
+            }
+        }
 
         public static void InvokeAutoSwitchNotificationToast()
         {
@@ -30,14 +51,27 @@ namespace AutoDarkModeSvc.Handlers
                 Program.ActionQueue.Add(() =>
                 {
                     string currentAutoThemeSwitchState = configBuilder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
-                    new ToastContentBuilder()
-                        .AddText($"{AdmProperties.Resources.AutomaticThemeSwitch} {currentAutoThemeSwitchState}")
-                        .AddText($"{AdmProperties.Resources.RevertAction}")
-                        .AddButton(new ToastButton().SetContent("Undo").AddArgument("action-undo-toggle-theme-switch", currentAutoThemeSwitchState))
-                        .Show(toast =>
-                        {
-                            toast.Tag = "adm-auto-switch-disabled-notif";
-                        });
+                    string toastText = $"{AdmProperties.Resources.RevertAction}";
+
+                    ToastContentBuilder tcb = new ToastContentBuilder()
+                        .AddText($"{AdmProperties.Resources.AutomaticThemeSwitch} {currentAutoThemeSwitchState}");
+
+                    if (configBuilder.Config.AutoThemeSwitchingEnabled)
+                    {
+                        tcb.AddText(toastText += $" {AdmProperties.Resources.RequestSwitchAction}");
+                        tcb.AddButton(new ToastButton().SetContent("Hit me!").AddArgument("action", "request-switch"));
+                    }
+                    else
+                    {
+                        tcb.AddText(toastText);
+                    }
+
+                    tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-undo-toggle-theme-switch", currentAutoThemeSwitchState));
+                    tcb.Show(toast =>
+                    {
+                        toast.Tag = "adm-auto-switch-disabled-notif";
+                    });
+
                 });
             }
         }
@@ -216,6 +250,15 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Debug("update postponed");
                         return;
+                    }
+                    else if (argument[0] == "action" && argument[1] == "request-switch")
+                    {
+                        Logger.Info("request theme switch via toast");
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual));
+                    }
+                    else if (argument[0] == "action" && argument[1] == "remove-skip-next")
+                    {
+                        state.PostponeManager.RemoveSkipNextSwitch();
                     }
                     else if (argument[0] == "action-undo-toggle-theme-switch")
                     {

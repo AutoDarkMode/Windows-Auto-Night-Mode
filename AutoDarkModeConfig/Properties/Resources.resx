@@ -225,7 +225,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Welcome</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Activate the checkbox to enable automatic theme switching</value>
+    <value>Change settings here to modify the automatic theme switch behavior.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
@@ -808,17 +808,17 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
     <value>You can only edit hotkeys while they are disabled.</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>Force dark mode hotkey</value>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Force dark mode</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>Force light mode hotkey</value>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Force light mode</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>Stop forcing theme hotkey</value>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Stop forcing theme</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Enable system-wide hotkeys</value>
@@ -857,10 +857,43 @@ Do you really want to continue?</value>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Show notification on toggle</value>
   </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Hit confirm to request a theme switch immediately.</value>
+  </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>You can revert this action by clicking on the button below</value>
+    <value>Revert this action by clicking on the undo button below.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>hotkey</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Toggle automatic theme switch</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Disable automatic switch</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Skip next switch</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Would you like to disable auto switching instead?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Automatic switching will also resume if you return to your previous theme.</value>
+  </data>
+  <data name="ThemeSwitchPaused" xml:space="preserve">
+    <value>Resume switch</value>
+  </data>
+  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
+    <value>paused until</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Theme switching paused until</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
   </data>
 </root>

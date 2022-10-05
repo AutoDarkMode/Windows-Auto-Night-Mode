@@ -59,6 +59,7 @@ namespace AutoDarkModeConfig
         public string ForceLight { get; set; }
         public string ForceDark { get; set; }
         public string NoForce { get; set; }
+        public string ToggleTheme { get; set; }
         public string ToggleAutoThemeSwitch { get; set; }
         public bool AutoThemeSwitchingNotification { get; set; } = true;
     }

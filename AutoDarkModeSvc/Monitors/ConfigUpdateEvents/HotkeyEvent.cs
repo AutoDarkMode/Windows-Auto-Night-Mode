@@ -26,7 +26,8 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 bool lightHotkeyChanged = newConfig.Hotkeys.ForceLight != oldConfig.Hotkeys.ForceLight;
                 bool noForceHotkeyChanged = newConfig.Hotkeys.NoForce != oldConfig.Hotkeys.NoForce;
                 bool autoThemeSwitchHotkeyChanged = newConfig.Hotkeys.ToggleAutoThemeSwitch != oldConfig.Hotkeys.ToggleAutoThemeSwitch;
-                if (darkHotkeyChanged || lightHotkeyChanged || noForceHotkeyChanged || autoThemeSwitchHotkeyChanged)
+                bool toggleThemeHotkeyChanged = newConfig.Hotkeys.ToggleTheme != oldConfig.Hotkeys.ToggleTheme;
+                if (darkHotkeyChanged || lightHotkeyChanged || noForceHotkeyChanged || autoThemeSwitchHotkeyChanged || toggleThemeHotkeyChanged)
                 {
                     HotkeyHandler.UnregisterAllHotkeys();
                     HotkeyHandler.RegisterAllHotkeys(AdmConfigBuilder.Instance());

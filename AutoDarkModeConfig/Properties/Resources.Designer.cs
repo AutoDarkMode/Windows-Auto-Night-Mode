@@ -1158,6 +1158,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hit confirm to request a theme switch immediately..
+        /// </summary>
+        public static string RequestSwitchAction {
+            get {
+                return ResourceManager.GetString("RequestSwitchAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
         public static string restart {
@@ -1176,7 +1185,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can revert this action by clicking on the button below.
+        ///   Looks up a localized string similar to Revert this action by clicking on the undo button below..
         /// </summary>
         public static string RevertAction {
             get {
@@ -1429,6 +1438,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hotkey.
+        /// </summary>
+        public static string SwitchModesHotkey {
+            get {
+                return ResourceManager.GetString("SwitchModesHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can only edit hotkeys while they are disabled..
         /// </summary>
         public static string SwitchModesHotkeyEditHint {
@@ -1465,20 +1483,20 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force dark mode hotkey.
+        ///   Looks up a localized string similar to Force dark mode.
         /// </summary>
-        public static string SwitchModesTextBlockHeaderForceDarkHotkey {
+        public static string SwitchModesTextBlockHeaderForceDark {
             get {
-                return ResourceManager.GetString("SwitchModesTextBlockHeaderForceDarkHotkey", resourceCulture);
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderForceDark", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force light mode hotkey.
+        ///   Looks up a localized string similar to Force light mode.
         /// </summary>
-        public static string SwitchModesTextBlockHeaderForceLightHotkey {
+        public static string SwitchModesTextBlockHeaderForceLight {
             get {
-                return ResourceManager.GetString("SwitchModesTextBlockHeaderForceLightHotkey", resourceCulture);
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderForceLight", resourceCulture);
             }
         }
         
@@ -1492,11 +1510,11 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop forcing theme hotkey.
+        ///   Looks up a localized string similar to Stop forcing theme.
         /// </summary>
-        public static string SwitchModesTextBlockHeaderNoForceHotkey {
+        public static string SwitchModesTextBlockHeaderNoForce {
             get {
-                return ResourceManager.GetString("SwitchModesTextBlockHeaderNoForceHotkey", resourceCulture);
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderNoForce", resourceCulture);
             }
         }
         
@@ -1807,6 +1825,78 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable automatic switch.
+        /// </summary>
+        public static string ThemeSwitchActionDisable {
+            get {
+                return ResourceManager.GetString("ThemeSwitchActionDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undo.
+        /// </summary>
+        public static string ThemeSwitchActionUndo {
+            get {
+                return ResourceManager.GetString("ThemeSwitchActionUndo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip next switch.
+        /// </summary>
+        public static string ThemeSwitchPause {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to disable auto switching instead?.
+        /// </summary>
+        public static string ThemeSwitchPauseActionDisableQuestion {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPauseActionDisableQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic switching will also resume if you return to your previous theme..
+        /// </summary>
+        public static string ThemeSwitchPauseActionNotification {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPauseActionNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume switch.
+        /// </summary>
+        public static string ThemeSwitchPaused {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPaused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to paused until.
+        /// </summary>
+        public static string ThemeSwitchPausedUntil {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPausedUntil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme switching paused until.
+        /// </summary>
+        public static string ThemeSwitchPauseHeader {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPauseHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string ThemeTextBlockHeader {
@@ -1929,6 +2019,15 @@ namespace AutoDarkModeConfig.Properties {
         public static string ToggleSwitchOn {
             get {
                 return ResourceManager.GetString("ToggleSwitchOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle theme.
+        /// </summary>
+        public static string ToggleTheme {
+            get {
+                return ResourceManager.GetString("ToggleTheme", resourceCulture);
             }
         }
         
@@ -2204,7 +2303,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activate the checkbox to enable automatic theme switching.
+        ///   Looks up a localized string similar to Change settings here to modify the automatic theme switch behavior..
         /// </summary>
         public static string welcomeText {
             get {
