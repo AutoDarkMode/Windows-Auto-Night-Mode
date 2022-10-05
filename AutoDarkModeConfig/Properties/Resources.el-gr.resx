@@ -313,7 +313,7 @@
     <value>Πληροφορίες</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12ωρο ρολόι</value>
+    <value>12ωρη μορφή ώρας</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Κλείσιμο</value>
@@ -646,7 +646,7 @@
     <value>Ενεργοποίηση εναλλαγής ταπετσαρίας</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Να μη γίνεται εναλλαγή όταν εκτελείται ένα παιχνίδι</value>
+    <value>Να μην γίνεται εναλλαγή όταν εκτελείται ένα παιχνίδι</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
     <value>Γρήγορη (1 δείγμα)</value>
@@ -797,7 +797,7 @@
     <value>Διεργασία</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Έχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
+    <value>Εχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>Επόμενη ενημέρωση στις</value>
@@ -843,9 +843,9 @@
     <value>Αφήστε την εφαρμογή να αποφασίσει</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Να μην γίνεται εναλλαγή θεμάτων εκτός εάν το σύστημά είναι αδρανές</value>
+    <value>Να μην γίνεται εναλλαγή θεμάτων εκτός εάν το σύστημά είναι σε αδράνεια</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Λεπτά μέχρι το σύστημα να θεωρείται αδρανές</value>
+    <value>Λεπτά μέχρι να θεωρείται ότι το σύστημα βρίσκεται σε αδράνεια</value>
   </data>
 </root>
