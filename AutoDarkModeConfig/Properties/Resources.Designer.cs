@@ -151,6 +151,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic theme switch.
+        /// </summary>
+        public static string AutomaticThemeSwitch {
+            get {
+                return ResourceManager.GetString("AutomaticThemeSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download Extension.
         /// </summary>
         public static string buttonDownloadExtension {
@@ -636,6 +645,15 @@ namespace AutoDarkModeConfig.Properties {
         public static string headerLocationData {
             get {
                 return ResourceManager.GetString("headerLocationData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show notification on toggle.
+        /// </summary>
+        public static string HotkeyCheckboxToggleAutomaticThemeSwitchNotification {
+            get {
+                return ResourceManager.GetString("HotkeyCheckboxToggleAutomaticThemeSwitchNotification", resourceCulture);
             }
         }
         
@@ -1158,6 +1176,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can revert this action by clicking on the button below.
+        /// </summary>
+        public static string RevertAction {
+            get {
+                return ResourceManager.GetString("RevertAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string save {
@@ -1438,7 +1465,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Dark Mode Hotkey.
+        ///   Looks up a localized string similar to Force dark mode hotkey.
         /// </summary>
         public static string SwitchModesTextBlockHeaderForceDarkHotkey {
             get {
@@ -1447,7 +1474,7 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Light Mode Hotkey.
+        ///   Looks up a localized string similar to Force light mode hotkey.
         /// </summary>
         public static string SwitchModesTextBlockHeaderForceLightHotkey {
             get {
@@ -1465,11 +1492,20 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop Forcing Theme Hotkey.
+        ///   Looks up a localized string similar to Stop forcing theme hotkey.
         /// </summary>
         public static string SwitchModesTextBlockHeaderNoForceHotkey {
             get {
                 return ResourceManager.GetString("SwitchModesTextBlockHeaderNoForceHotkey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle automatic theme switch.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch", resourceCulture);
             }
         }
         

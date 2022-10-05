@@ -14,6 +14,7 @@ namespace AutoDarkModeSvc.Handlers
     static class HotkeyHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         public static Service Service { get; set; }
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
@@ -55,6 +56,16 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info("hotkey signal received: stop forcing specific theme");
                     state.ForcedTheme = Theme.Unknown;
                     ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
+                });
+                if (builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey != null) Register(builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey, () =>
+                {
+                    Logger.Info("hotkey signal received: toggle automatic theme switch");
+                    AdmConfig old = builder.Config;
+                    state.SkipConfigFileReload = true;
+                    builder.Config.AutoThemeSwitchingEnabled = !builder.Config.AutoThemeSwitchingEnabled;
+                    AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
+                    builder.Save();
+                    ToastHandler.InvokeAutoSwitchNotificationToast();
                 });
             } 
             catch (Exception ex)

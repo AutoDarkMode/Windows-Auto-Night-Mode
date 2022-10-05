@@ -59,7 +59,8 @@ namespace AutoDarkModeConfig
         public string ForceLightHotkey { get; set; }
         public string ForceDarkHotkey { get; set; }
         public string NoForceHotkey { get; set; }
-
+        public string ToggleAutoThemeSwitchingHotkey { get; set; }
+        public bool ToggleAutoThemeSwitchingShowNotification { get; set; } = true;
     }
 
     public class Addons

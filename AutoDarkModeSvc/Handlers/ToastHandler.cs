@@ -6,31 +6,40 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Windows.Foundation.Collections;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Monitors;
+using System.Globalization;
+using AdmProperties = AutoDarkModeConfig.Properties;
+
 
 // https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
 
 namespace AutoDarkModeSvc.Handlers
 {
-    public class ToastHandler
+    public static class ToastHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         private static readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
 
+
         public static void InvokeAutoSwitchNotificationToast()
         {
-            Program.ActionQueue.Add(() =>
+            if (configBuilder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification)
             {
-                string currentAutoThemeSwitchState = configBuilder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
-                new ToastContentBuilder()
-                    .AddText($"Automatic theme switch {currentAutoThemeSwitchState}")
-                    .AddButton(new ToastButton().SetContent("Undo").AddArgument("action-undo-toggle-theme-switch", currentAutoThemeSwitchState))
-                    .Show(toast =>
-                    {
-                        toast.Tag = "adm-auto-switch-disabled-notif";
-                    });
-            });
+                Program.ActionQueue.Add(() =>
+                {
+                    string currentAutoThemeSwitchState = configBuilder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
+                    new ToastContentBuilder()
+                        .AddText($"{AdmProperties.Resources.AutomaticThemeSwitch} {currentAutoThemeSwitchState}")
+                        .AddText($"{AdmProperties.Resources.RevertAction}")
+                        .AddButton(new ToastButton().SetContent("Undo").AddArgument("action-undo-toggle-theme-switch", currentAutoThemeSwitchState))
+                        .Show(toast =>
+                        {
+                            toast.Tag = "adm-auto-switch-disabled-notif";
+                        });
+                });
+            }
         }
 
         public static void InvokeFailedUpdateToast()
@@ -210,19 +219,22 @@ namespace AutoDarkModeSvc.Handlers
                     }
                     else if (argument[0] == "action-undo-toggle-theme-switch")
                     {
+
+                        AdmConfig old = configBuilder.Config;
                         if (argument[1] == "enabled")
                         {
-                            Logger.Debug("undo enable auto theme switch via toast");
-                            configBuilder.Config.AutoThemeSwitchingEnabled = true;
+                            Logger.Info("undo enable auto theme switch via toast");
+                            configBuilder.Config.AutoThemeSwitchingEnabled = false;
                         }
                         else if (argument[1] == "disabled")
                         {
-                            Logger.Debug("undo disable auto theme switch via toast");
+                            Logger.Info("undo disable auto theme switch via toast");
                             configBuilder.Config.AutoThemeSwitchingEnabled = true;
                         }
                         try
                         {
                             state.SkipConfigFileReload = true;
+                            AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
                             configBuilder.Save();
                         }
                         catch (Exception ex)

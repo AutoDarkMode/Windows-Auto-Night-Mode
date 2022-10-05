@@ -12,6 +12,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Handlers;
+using System.IO;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -21,8 +22,10 @@ namespace AutoDarkModeApp.Pages
     public partial class PageTime : Page
     {
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private readonly bool init = true;
+        private bool init = true;
+        private bool reload = false;
         private delegate void DispatcherDelegate();
+        private FileSystemWatcher ConfigWatcher { get; }
 
         public PageTime()
         {
@@ -36,6 +39,30 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex);
             }
+
+            ConfigWatcher = new FileSystemWatcher
+            {
+                Path = AdmConfigBuilder.ConfigDir,
+                Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
+                NotifyFilter = NotifyFilters.LastWrite
+            };
+
+            ConfigWatcher.Changed += (object sender, FileSystemEventArgs e) =>
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    ConfigWatcher.EnableRaisingEvents = false;
+                    init = true;
+                    reload = true;
+                    try
+                    {
+                        builder.Load();
+                    }
+                    catch { }
+                    LoadSettings();
+                });
+            };
+            ConfigWatcher.EnableRaisingEvents = true;
 
             //initialize ui components
             InitializeComponent();
@@ -53,6 +80,12 @@ namespace AutoDarkModeApp.Pages
                 TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("de");
             }
 
+
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
             //read datetime from config file
             TimePickerDark.SelectedDateTime = builder.Config.Sunset;
             TimePickerLight.SelectedDateTime = builder.Config.Sunrise;
@@ -106,6 +139,7 @@ namespace AutoDarkModeApp.Pages
                 }
             }
             init = false;
+            ConfigWatcher.EnableRaisingEvents = true;
         }
 
         /// <summary>
@@ -147,7 +181,7 @@ namespace AutoDarkModeApp.Pages
             Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             try
             {
-                builder.Save();
+                if (!init) builder.Save();
             }
             catch (Exception ex)
             {
@@ -232,7 +266,7 @@ namespace AutoDarkModeApp.Pages
 
             try
             {
-                builder.Save();
+                if (!init) builder.Save();
             }
             catch (Exception ex)
             {
@@ -289,7 +323,11 @@ namespace AutoDarkModeApp.Pages
 
         public async void ActivateLocationModeWrapper()
         {
-            await ActivateLocationMode();
+            if (!reload)
+            {
+                await ActivateLocationMode();
+            }
+            reload = false;
         }
 
         /// <summary>
@@ -376,7 +414,7 @@ namespace AutoDarkModeApp.Pages
         }
 
 
-        private void EnableTimeBasedSwitch()
+        private void SetTimeBasedSwitchEnabled()
         {
             // check the right radio button
             //RadioButtonCustomTimes.IsChecked = !builder.Config.Location.Enabled;
@@ -390,14 +428,7 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 builder.Config.AutoThemeSwitchingEnabled = true;
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex, "EnableThemeBasedSwitch PageTime");
-                }
+
             }
         }
         private void DisableTimeBasedSwitch()
@@ -458,10 +489,10 @@ namespace AutoDarkModeApp.Pages
             }
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
-            EnableTimeBasedSwitch();
+            SetTimeBasedSwitchEnabled();
             try
             {
-                builder.Save();
+                if (!init) builder.Save();
             }
             catch (Exception ex)
             {
@@ -516,12 +547,12 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
         {
-            EnableTimeBasedSwitch();
+            SetTimeBasedSwitchEnabled();
             DisableLocationMode();
             //applyButton.IsEnabled = true;
             try
             {
-                builder.Save();
+                if (!init) builder.Save();
                 Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             }
             catch (Exception ex)
@@ -532,12 +563,12 @@ namespace AutoDarkModeApp.Pages
 
         private async void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
-            EnableTimeBasedSwitch();
+            SetTimeBasedSwitchEnabled();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
             try
             {
-                builder.Save();
+                if (!init) builder.Save();
                 TogglePanelVisibility(false, true, true, false);
                 await ActivateLocationMode();
                 await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));

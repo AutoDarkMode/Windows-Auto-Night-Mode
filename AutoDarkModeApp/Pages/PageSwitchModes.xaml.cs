@@ -60,6 +60,9 @@ namespace AutoDarkModeApp.Pages
             HotkeyTextboxForceDark.Text = builder.Config.Hotkeys.ForceDarkHotkey ?? "";
             HotkeyTextboxForceLight.Text = builder.Config.Hotkeys.ForceLightHotkey ?? "";
             HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForceHotkey ?? "";
+            HotkeyTextboxToggleAutomaticThemeSwitch.Text = builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey ?? "";
+            HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification;
+
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
 
@@ -309,6 +312,45 @@ namespace AutoDarkModeApp.Pages
             string isAlt = (modifiers & ModifierKeys.Alt) == ModifierKeys.Alt ? "Alt + " : "";
             string modifiersString = $"{isCtrl}{isShift}{isAlt}{isWin}";
             return modifiersString.Length > 0 ? $"{modifiersString}{key}" : null;
+        }
+
+        private void HotkeyTextToggleAutomaticThemeSwitch_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            string hotkeyString = GetHotkeyString(e);
+            if (sender is TextBox tb)
+            {
+                tb.Text = hotkeyString;
+            }
+            if (hotkeyString == builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey) return;
+            builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey = hotkeyString;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "hotkeybox_toggletheme");
+            }
+        }
+
+        private void HotkeyCheckboxToggleAutomaticThemeSwitchNotification_Click(object sender, RoutedEventArgs e)
+        {
+            if (HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked.Value)
+            {
+                builder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification = true;
+            }
+            else
+            {
+                builder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "HotkeyCheckboxToggleAutomaticThemeSwitchNotification_Click");
+            }
         }
     }
 }

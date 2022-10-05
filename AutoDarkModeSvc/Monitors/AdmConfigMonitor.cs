@@ -15,6 +15,7 @@ namespace AutoDarkModeSvc.Monitors
 {
     class AdmConfigMonitor
     {
+        private static AdmConfigMonitor instance;
         private FileSystemWatcher ConfigWatcher { get; }
         private FileSystemWatcher LocationDataWatcher { get; }
         private FileSystemWatcher ScriptConfigWatcher { get; }
@@ -24,10 +25,19 @@ namespace AutoDarkModeSvc.Monitors
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private IAutoDarkModeModule warden;
 
+        public static AdmConfigMonitor Instance()
+        {
+            if (instance == null)
+            {
+                instance = new AdmConfigMonitor();
+            }
+            return instance;
+        }
+
         /// <summary>
         /// Creates a new ConfigFile watcher that monitors the configuration file for changes.
         /// </summary>
-        public AdmConfigMonitor()
+        protected AdmConfigMonitor()
         {
             ConfigWatcher = new FileSystemWatcher
             {
@@ -63,42 +73,13 @@ namespace AutoDarkModeSvc.Monitors
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)
         {
-            _ = state.ConfigIsUpdatingWaitHandle.Reset();
-            state.ConfigIsUpdating = true;
-            try
+            if (state.SkipConfigFileReload)
             {
-                if (state.SkipConfigFileReload)
-                {
-                    state.SkipConfigFileReload = false;
-                    Logger.Debug("skipping config file reload, update source internal");
-                }
-                else
-                {
-                    builder.Load();
-                }
-
-                AdmConfig oldConfig = builder.Config;
-                componentManager.UpdateSettings();
-                UpdateEventStates();
-                // trigger config update event handlers
-                builder.OnConfigUpdated(oldConfig);
-
-                // fire warden ro register/unregister enabled/disabled modules
-                if (warden != null)
-                {
-                    warden.Fire();
-                }
-
-                // update expiry on config update if necessary (handled by UpdateNextSwitchExpiry)
-                state.PostponeManager.UpdateSkipNextSwitchExpiry();
-                Logger.Debug("updated configuration file");
+                state.SkipConfigFileReload = false;
+                Logger.Debug("skipping config file reload, update source internal");
+                return;
             }
-            catch (Exception ex)
-            {
-                Logger.Debug(ex, "config file load failed:");
-            }
-            state.ConfigIsUpdating = false;
-            if (!state.ConfigIsUpdatingWaitHandle.Set()) Logger.Fatal("could not trigger reset event");
+            PerformConfigUpdate(builder.Config);
         }
 
         private void OnChangedLocationData(object source, FileSystemEventArgs e)
@@ -126,6 +107,37 @@ namespace AutoDarkModeSvc.Monitors
             {
                 Logger.Warn(ex, "could not refresh script config file, custom scripts most likely will not work:");
             }
+        }
+
+        public void PerformConfigUpdate(AdmConfig oldConfig, bool internalUpdate = false)
+        {
+            _ = state.ConfigIsUpdatingWaitHandle.Reset();
+            state.ConfigIsUpdating = true;
+
+            try
+            {
+                if (!internalUpdate) builder.Load();
+                componentManager.UpdateSettings();
+                UpdateEventStates();
+                // trigger config update event handlers
+                builder.OnConfigUpdated(oldConfig);
+
+                // fire warden ro register/unregister enabled/disabled modules
+                if (warden != null)
+                {
+                    warden.Fire();
+                }
+
+                // update expiry on config update if necessary (handled by UpdateNextSwitchExpiry)
+                state.PostponeManager.UpdateSkipNextSwitchExpiry();
+                Logger.Debug("updated configuration file");
+            }
+            catch (Exception ex)
+            {
+                Logger.Debug(ex, "config file load failed:");
+            }
+            state.ConfigIsUpdating = false;
+            if (!state.ConfigIsUpdatingWaitHandle.Set()) Logger.Fatal("could not trigger reset event");
         }
 
         /// <summary>
