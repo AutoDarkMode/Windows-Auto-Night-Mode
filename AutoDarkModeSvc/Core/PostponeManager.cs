@@ -1,4 +1,5 @@
-﻿using AutoDarkModeSvc.Modules;
+﻿using AutoDarkModeConfig;
+using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,28 @@ namespace AutoDarkModeSvc.Core
             return result;
         }
 
+        public void SkipNextSwitch()
+        {
+            ThemeState ts = new();
+            PostponeItem item = new("SkipNext", ts.NextSwitchTime.AddSeconds(1));
+            Add(item);
+        }
+
+        public void ModifyNextSwitchExpiry()
+        {
+            PostponeItem item = PostponedQueue.Where(x => x.Reason == "SkipNext").FirstOrDefault();
+            if (item != null)
+            {
+                ThemeState ts = new();
+                item.UpdateExpiryTime(ts.NextSwitchTime.AddSeconds(1));
+            }
+        }
+
+        public void RemoveSkipNextSwitch()
+        {
+            Remove("SkipNext");
+        }
+
         /// <summary>
         /// Registers a callback module with the postpone queueing system
         /// </summary>
@@ -119,6 +142,7 @@ namespace AutoDarkModeSvc.Core
         {
             Reason = reason;
             Expiry = expiry;
+            Logger.Info($"postpone item with reason {Reason} will expire at {expiry:MM.dd.yyyy HH:mm:ss}");
             HandleExpiry();
         }
 
@@ -137,14 +161,21 @@ namespace AutoDarkModeSvc.Core
             return false;
         }
 
+        public void UpdateExpiryTime(DateTime newExpiry)
+        {
+            Logger.Info($"updating expiry time for item {Reason} from {(Expiry == null ? "none" : Expiry.Value.ToString("MM.dd.yyyy HH:mm:ss"))} to {newExpiry:MM.dd.yyyy HH:mm:ss}");
+            CancelExpiry();
+            Expiry = newExpiry;
+            HandleExpiry();
+        }
+
         private void HandleExpiry()
         {
             if (Expiry == null) return;
-            DateTime expiresUnwrapped = Expiry.Value;
+            DateTime expiryUnwrapped = Expiry.Value;
             if (Expiry > DateTime.Now)
             {
-                Logger.Info($"postpone item with reason {Reason} will expire at {expiresUnwrapped:MM.dd.yyyy HH:mm:ss}");
-                TimeSpan delay = expiresUnwrapped - DateTime.Now;
+                TimeSpan delay = expiryUnwrapped - DateTime.Now;
                 CancellationToken token = CancelTokenSource.Token;
                 Task = Task.Delay(delay, token).ContinueWith(o =>
                 {

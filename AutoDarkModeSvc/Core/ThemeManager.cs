@@ -1,13 +1,10 @@
-﻿using System;
-using AutoDarkModeSvc.Handlers;
-using System.Threading.Tasks;
-using AutoDarkModeSvc.Monitors;
-using AutoDarkModeConfig;
-using System.IO;
-using Windows.System.Power;
-using System.Collections.Generic;
-using AutoDarkModeSvc.Interfaces;
+﻿using AutoDarkModeConfig;
 using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Interfaces;
+using System;
+using System.Collections.Generic;
+using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -45,15 +42,8 @@ namespace AutoDarkModeSvc.Core
 
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                DateTime sunrise = builder.Config.Sunrise;
-                DateTime sunset = builder.Config.Sunset;
-                if (builder.Config.Location.Enabled)
-                {
-                    LocationHandler.GetSunTimes(builder, out sunrise, out sunset);
-                }
-                //the time bewteen sunrise and sunset, aka "day"
-                if (Extensions.NowIsBetweenTimes(sunrise.TimeOfDay, sunset.TimeOfDay)) UpdateTheme(builder.Config, Theme.Light, e, sunrise);
-                else UpdateTheme(builder.Config, Theme.Dark, e, sunset);
+                ThemeState ts = new();
+                UpdateTheme(builder.Config, ts.TargetTheme, e, ts.CurrentSwitchTime);
             }
             else
             {
@@ -127,6 +117,89 @@ namespace AutoDarkModeSvc.Core
                 PowerHandler.RequestRestoreEnergySaver(config);
             }
 
+        }
+    }
+
+    /// <summary>
+    /// Contains information about timed theme switching
+    /// </summary>
+    public class ThemeState
+    {
+        /// <summary>
+        /// Sunrise given by geocoordinates, user input or location service
+        /// </summary>
+        public DateTime Sunrise { get; private set; }
+        /// <summary>
+        /// Sunrise given by geocoordinates, user input or location service
+        /// </summary>
+        public DateTime Sunset { get; private set; }
+
+        private DateTime _adjustedSunrise;
+        /// <summary>
+        /// Offset-adjusted sunrise given by geocoordinates, user input or location service
+        /// </summary>
+        public DateTime AdjustedSunrise
+        {
+            get
+            {
+                return _adjustedSunrise;
+            }
+        }
+        private DateTime _adjustedSunset;
+        /// <summary>
+        /// Offset-adjusted sunset given by geocoordinates, user input or location service
+        /// </summary>
+        public DateTime AdjustedSunset
+        {
+            get
+            {
+                return _adjustedSunset;
+            }
+        }
+        /// <summary>
+        /// The theme that should be active now
+        /// </summary>
+        public Theme TargetTheme { get; private set; }
+        /// <summary>
+        /// Precise Time when the next switch should occur (matches either adjusted sunset or sunrise)
+        /// </summary>
+        public DateTime NextSwitchTime { get; private set; }
+
+        /// <summary>
+        /// Precise Time when the target theme entered its activation window
+        /// </summary>
+        public DateTime CurrentSwitchTime { get; private set; }
+
+        /// <summary>
+        /// Instantiates a new ThemeState class and automatically caluclates timed theme switching data
+        /// </summary>
+        public ThemeState()
+        {
+            CalculateThemeState();
+        }
+
+        private void CalculateThemeState()
+        {
+            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+            Sunrise = builder.Config.Sunrise;
+            Sunset = builder.Config.Sunset;
+            if (builder.Config.Location.Enabled)
+            {
+                LocationHandler.GetSunTimes(builder, out _adjustedSunrise, out _adjustedSunset);
+            }
+            //the time bewteen sunrise and sunset, aka "day"
+            if (Extensions.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay))
+            {
+                TargetTheme = Theme.Light;
+                CurrentSwitchTime = _adjustedSunrise;
+                NextSwitchTime = _adjustedSunset;
+            }
+            else
+            {
+                TargetTheme = Theme.Dark;
+                CurrentSwitchTime = _adjustedSunset;
+                NextSwitchTime = _adjustedSunrise;
+            }
         }
     }
 }
