@@ -37,27 +37,27 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 GlobalState state = GlobalState.Instance();
-                if (builder.Config.Hotkeys.ForceDarkHotkey != null) Register(builder.Config.Hotkeys.ForceDarkHotkey, () =>
+                if (builder.Config.Hotkeys.ForceDark != null) Register(builder.Config.Hotkeys.ForceDark, () =>
                 {
                     Logger.Info("hotkey signal received: forcing dark theme");
                     state.ForcedTheme = Theme.Dark;
                     ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
                     ThemeManager.UpdateTheme(builder.Config, Theme.Dark, new(SwitchSource.Manual));
                 });
-                if (builder.Config.Hotkeys.ForceLightHotkey != null) Register(builder.Config.Hotkeys.ForceLightHotkey, () =>
+                if (builder.Config.Hotkeys.ForceLight != null) Register(builder.Config.Hotkeys.ForceLight, () =>
                 {
                     Logger.Info("hotkey signal received: forcing light theme");
                     state.ForcedTheme = Theme.Light;
                     ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
                     ThemeManager.UpdateTheme(builder.Config, Theme.Light, new(SwitchSource.Manual));
                 });
-                if (builder.Config.Hotkeys.NoForceHotkey != null) Register(builder.Config.Hotkeys.NoForceHotkey, () =>
+                if (builder.Config.Hotkeys.NoForce != null) Register(builder.Config.Hotkeys.NoForce, () =>
                 {
                     Logger.Info("hotkey signal received: stop forcing specific theme");
                     state.ForcedTheme = Theme.Unknown;
                     ThemeManager.RequestSwitch(builder, new(SwitchSource.Manual));
                 });
-                if (builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey != null) Register(builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey, () =>
+                if (builder.Config.Hotkeys.ToggleAutoThemeSwitch != null) Register(builder.Config.Hotkeys.ToggleAutoThemeSwitch, () =>
                 {
                     Logger.Info("hotkey signal received: toggle automatic theme switch");
                     AdmConfig old = builder.Config;

@@ -25,7 +25,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void InvokeAutoSwitchNotificationToast()
         {
-            if (configBuilder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification)
+            if (configBuilder.Config.Hotkeys.AutoThemeSwitchingNotification)
             {
                 Program.ActionQueue.Add(() =>
                 {

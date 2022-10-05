@@ -56,11 +56,11 @@ namespace AutoDarkModeConfig
     public class Hotkeys
     {
         public bool Enabled { get; set; }
-        public string ForceLightHotkey { get; set; }
-        public string ForceDarkHotkey { get; set; }
-        public string NoForceHotkey { get; set; }
-        public string ToggleAutoThemeSwitchingHotkey { get; set; }
-        public bool ToggleAutoThemeSwitchingShowNotification { get; set; } = true;
+        public string ForceLight { get; set; }
+        public string ForceDark { get; set; }
+        public string NoForce { get; set; }
+        public string ToggleAutoThemeSwitch { get; set; }
+        public bool AutoThemeSwitchingNotification { get; set; } = true;
     }
 
     public class Addons

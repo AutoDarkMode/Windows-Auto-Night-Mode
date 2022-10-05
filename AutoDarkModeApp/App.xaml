@@ -22,13 +22,16 @@
                             </ResourceDictionary.MergedDictionaries>
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="Dark">
-                            <SolidColorBrush x:Key="Win11Background" Color="#2b2b2b"></SolidColorBrush>
-                            <SolidColorBrush x:Key="Win11Border" Color="#1d1d1d"></SolidColorBrush>
                             <ResourceDictionary.MergedDictionaries>
-                                <ui:ColorPaletteResources
-                                TargetTheme="Dark"
-                                AltHigh="#202020"/>
+                                <ui:ColorPaletteResources TargetTheme="Dark"
+                                                          AltHigh="#202020"
+                                                          BaseMediumHigh="White" />
                             </ResourceDictionary.MergedDictionaries>
+
+                            <SolidColorBrush x:Key="Win11Background"
+                                             Color="#2b2b2b"></SolidColorBrush>
+                            <SolidColorBrush x:Key="Win11Border"
+                                             Color="#1d1d1d"></SolidColorBrush>
                         </ResourceDictionary>
                     </ui:ThemeResources.ThemeDictionaries>
                 </ui:ThemeResources>

@@ -79,6 +79,13 @@ namespace AutoDarkModeSvc.Core
             return true;
         }
 
+        public bool SkipNextSwitchActive()
+        {
+            if (PostponedQueue.Any(x => x.Reason == "SkipNext"))
+                return true;
+            return false;
+        }
+
         /// <summary>
         /// Adds a postpone item that skips the next planned timed theme switch only
         /// </summary>

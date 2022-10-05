@@ -57,11 +57,11 @@ namespace AutoDarkModeApp.Pages
 
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
 
-            HotkeyTextboxForceDark.Text = builder.Config.Hotkeys.ForceDarkHotkey ?? "";
-            HotkeyTextboxForceLight.Text = builder.Config.Hotkeys.ForceLightHotkey ?? "";
-            HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForceHotkey ?? "";
-            HotkeyTextboxToggleAutomaticThemeSwitch.Text = builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey ?? "";
-            HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification;
+            HotkeyTextboxForceDark.Text = builder.Config.Hotkeys.ForceDark ?? "";
+            HotkeyTextboxForceLight.Text = builder.Config.Hotkeys.ForceLight ?? "";
+            HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForce ?? "";
+            HotkeyTextboxToggleAutomaticThemeSwitch.Text = builder.Config.Hotkeys.ToggleAutoThemeSwitch ?? "";
+            HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Hotkeys.AutoThemeSwitchingNotification;
 
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
@@ -231,8 +231,8 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
-            if (hotkeyString == builder.Config.Hotkeys.NoForceHotkey) return;
-            builder.Config.Hotkeys.NoForceHotkey = hotkeyString;
+            if (hotkeyString == builder.Config.Hotkeys.NoForce) return;
+            builder.Config.Hotkeys.NoForce = hotkeyString;
             try
             {
                 builder.Save();
@@ -250,8 +250,8 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
-            if (hotkeyString == builder.Config.Hotkeys.ForceDarkHotkey) return;
-            builder.Config.Hotkeys.ForceDarkHotkey = hotkeyString;
+            if (hotkeyString == builder.Config.Hotkeys.ForceDark) return;
+            builder.Config.Hotkeys.ForceDark = hotkeyString;
             try
             {
                 builder.Save();
@@ -269,8 +269,8 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
-            if (hotkeyString == builder.Config.Hotkeys.ForceLightHotkey) return;
-            builder.Config.Hotkeys.ForceLightHotkey = hotkeyString;
+            if (hotkeyString == builder.Config.Hotkeys.ForceLight) return;
+            builder.Config.Hotkeys.ForceLight = hotkeyString;
             try
             {
                 builder.Save();
@@ -321,8 +321,8 @@ namespace AutoDarkModeApp.Pages
             {
                 tb.Text = hotkeyString;
             }
-            if (hotkeyString == builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey) return;
-            builder.Config.Hotkeys.ToggleAutoThemeSwitchingHotkey = hotkeyString;
+            if (hotkeyString == builder.Config.Hotkeys.ToggleAutoThemeSwitch) return;
+            builder.Config.Hotkeys.ToggleAutoThemeSwitch = hotkeyString;
             try
             {
                 builder.Save();
@@ -337,11 +337,11 @@ namespace AutoDarkModeApp.Pages
         {
             if (HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked.Value)
             {
-                builder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification = true;
+                builder.Config.Hotkeys.AutoThemeSwitchingNotification = true;
             }
             else
             {
-                builder.Config.Hotkeys.ToggleAutoThemeSwitchingShowNotification = false;
+                builder.Config.Hotkeys.AutoThemeSwitchingNotification = false;
             }
             try
             {
