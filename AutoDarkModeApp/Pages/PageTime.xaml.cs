@@ -98,8 +98,22 @@ namespace AutoDarkModeApp.Pages
                 postponeRefreshTimer.Stop();
                 ConfigWatcher.EnableRaisingEvents = false;
             };
-
+            
             LoadSettings();
+
+            Window window = Application.Current.MainWindow;
+            window.StateChanged += (s, e) =>
+            {
+                if (window.WindowState == WindowState.Minimized)
+                {
+                    postponeRefreshTimer.Stop();
+                }
+                else
+                {
+                    PostponeTimerEvent(null, new());
+                    postponeRefreshTimer.Start();
+                }
+            };
         }
 
         private void PostponeTimerEvent(object sender, EventArgs e)
