@@ -6,6 +6,7 @@ using AutoDarkModeSvc.Handlers.ThemeFiles;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Windows.UI;
@@ -191,6 +192,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // update current theme file with new data
                 ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
                 temp.SyncActiveThemeData();
+                Logger.Debug($"synced wallpaper data ({temp.DisplayName}): [{string.Join(',', temp.Desktop.MultimonWallpapers.Select(i => $"{i.Item2}:{i.Item1}").ToList())}]");
                 GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
                 // for solid color
                 GlobalState.ManagedThemeFile.Colors = temp.Colors;
