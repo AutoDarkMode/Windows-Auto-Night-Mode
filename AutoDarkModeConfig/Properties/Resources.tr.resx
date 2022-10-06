@@ -799,10 +799,10 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Renk</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Koyu Temayı Zorla</value>
+    <value>Koyu temayı zorla</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Açık Temayı Zorla</value>
+    <value>Açık temayı zorla</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Simgenin gizlenmesi önerilmez.
@@ -812,7 +812,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Bildirim Alanı Simgesi Gizleme</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Yapılandırma Klasörünü Aç</value>
+    <value>Yapılandırma klasörünü aç</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Temadayken Görev Çubuğu Vurgu Rengi'ni kullan</value>
@@ -826,17 +826,17 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
     <value>Kısayol tuşlarını yalnızca devre dışı bırakılmışken düzenleyebilirsiniz.</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>Koyu Temayı Zorla</value>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Tema zorlamayı durdur</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>Açık Temayı Zorla</value>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Açık temayı zorla</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Kısayol Tuşları</value>
+    <value>Kısayol tuşları</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>Tema Zorlamayı Durdur</value>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Koyu temayı zorla</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Sistem genelinde kısayol tuşlarını etkinleştir</value>
@@ -852,5 +852,50 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
     <value>Başlık çubukları ve pencere kenarlıkları için Vurgu Rengi</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Otomatik tema değişimi</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Değişimlerde bildirim göster</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Hemen bir tema değişikliği istemek için Onayla'ya basın.</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Aşağıdaki geri al düğmesine tıklayarak bu işlemi geri alabilirsiniz.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>kısayol tuşu</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Otomatik tema değişimini aç/kapat</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Otomatik değişimi devre dışı bırak</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Geri al</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Sonraki değişimi atla</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Bunun yerine otomatik değişimi devre dışı bırakmak ister misiniz?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Önceki temanıza dönerseniz otomatik değişim de devam eder.</value>
+  </data>
+  <data name="ThemeSwitchPaused" xml:space="preserve">
+    <value>Değişime devam et</value>
+  </data>
+  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
+    <value>şu saate kadar duraklatıldı:</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Tema değişimi şu saate kadar duraklatıldı:</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Temayı değiştir</value>
   </data>
 </root>
