@@ -192,7 +192,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // update current theme file with new data
                 ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
                 temp.SyncActiveThemeData(keepDisplayNameAndGuid: true);
-                Logger.Debug($"synced wallpaper data ({temp.DisplayName}): [{string.Join(',', temp.Desktop.MultimonWallpapers.Select(i => $"{i.Item2}:{i.Item1}").ToList())}]");
+                Logger.Debug($"synced wallpaper data ({temp.DisplayName}): [{string.Join(", ", temp.Desktop.MultimonWallpapers.Select(i => $"{i.Item2}:{i.Item1}").ToList())}]");
                 GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
                 // for solid color
                 GlobalState.ManagedThemeFile.Colors = temp.Colors;
