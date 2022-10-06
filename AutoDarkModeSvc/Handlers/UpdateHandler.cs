@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using HttpClientProgress;
-
+using System.Net.Http.Headers;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -161,6 +161,13 @@ namespace AutoDarkModeSvc.Handlers
         private static string FetchVersionYaml()
         {
             using HttpClient client = new();
+            client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
+            {
+                NoCache = true,
+                MaxAge = TimeSpan.FromSeconds(1),
+                MaxStale = false,
+                NoStore = true
+            };
             Task<string> downloadString = client.GetStringAsync(GetUpdateUrl());
             downloadString.Wait();
             return downloadString.Result;

@@ -336,7 +336,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Parse();
         }
 
-        public void SyncActiveThemeData()
+        public void SyncActiveThemeData(bool keepDisplayNameAndGuid = false)
         {
             try
             {
@@ -389,8 +389,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 Logger.Error(ex, $"could not sync theme file at {ThemeFilePath}, using default values: ");
             }
             Parse();
-            DisplayName = "ADMTheme";
-            ThemeId = $"{{{Guid.NewGuid()}}}";
+            if (!keepDisplayNameAndGuid)
+            {
+                DisplayName = "ADMTheme";
+                ThemeId = $"{{{Guid.NewGuid()}}}";
+            }
         }
 
         private static void SetValues(string input, object obj)
