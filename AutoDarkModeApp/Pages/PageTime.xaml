@@ -404,6 +404,7 @@
             
             <TextBlock Name="TextBlockPostponeInfo"
                        Margin="0,10,0,0"
+                       Text="{x:Static p:Resources.TimePagePostponeInfoNominal}"
                        FontSize="14"/>
             
             <TextBlock Name="TextBlockResumeInfo"
@@ -417,7 +418,7 @@
                        TextWrapping="Wrap" />
 
             <Button x:Name="ButtonControlPostponeQueue"
-                    Content="{x:Static p:Resources.Resume}"
+                    Content="{x:Static p:Resources.PostponeButtonSkipAutoSwitchOnce}"
                     VerticalAlignment="Bottom"
                     MinWidth="150"
                     Margin="0,10,0,0"

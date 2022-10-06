@@ -923,4 +923,7 @@ Do you really want to continue?</value>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
   </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Auto theme switching is enabled</value>
+  </data>
 </root>

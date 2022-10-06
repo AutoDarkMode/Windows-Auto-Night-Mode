@@ -86,7 +86,7 @@ namespace AutoDarkModeApp.Pages
                 TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("de");
             }
 
-            StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+            //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
             TextBlockResumeInfo.Visibility = Visibility.Collapsed;
             postponeRefreshTimer.Interval = 2000;
             postponeRefreshTimer.Elapsed += PostponeTimerEvent;
@@ -107,55 +107,61 @@ namespace AutoDarkModeApp.Pages
             ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
             if (reply.StatusCode != StatusCode.Timeout)
             {
-                if (reply.Message == "True")
-                {
-                    try
-                    {
-                        bool anyNoExpiry = false;
-                        bool autoPause = false;
-                        PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
-                        List<string> itemsStringList = dto.Items.Select(i =>
-                        {
-                            if (i.Expiry == null) anyNoExpiry = true;
-                            if (i.Reason == Extensions.SkipSwitchPostponeItemName) autoPause = true;
-
-                            // retrieve the value of the specified key
-                            i.Reason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
-                            return i.ToString();
-                        }).ToList();
-                        Dispatcher.Invoke(() =>
-                        {
-                            if (anyNoExpiry && !autoPause)
-                            {
-                                TextBlockResumeInfo.Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
-                                TextBlockResumeInfo.Visibility = Visibility.Collapsed;
-                            }
-
-                            if (autoPause)
-                            {
-                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
-                            }
-                            else
-                            {
-                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
-                            }
-
-                            StackPanelPostponeInfo.Visibility = Visibility.Visible;
-                            TextBlockPostponeInfo.Text = string.Join('\n', itemsStringList);
-                        });
-                    }
-                    catch { }
-                }
-                else
+                if (builder.Config.AutoThemeSwitchingEnabled)
                 {
                     Dispatcher.Invoke(() =>
                     {
-                        StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
-                        TextBlockPostponeInfo.Text = "";
+                        
                     });
+                    try
+                    {
+                        if (reply.Message == "True")
+                        {
+                            bool anyNoExpiry = false;
+                            bool autoPause = false;
+                            PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+                            List<string> itemsStringList = dto.Items.Select(i =>
+                            {
+                                if (i.Expiry == null) anyNoExpiry = true;
+                                if (i.Reason == Extensions.SkipSwitchPostponeItemName) autoPause = true;
+
+                                // retrieve the value of the specified key
+                                i.Reason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
+                                return i.ToString();
+                            }).ToList();
+                            Dispatcher.Invoke(() =>
+                            {
+                                if (anyNoExpiry && !autoPause)
+                                {
+                                    TextBlockResumeInfo.Visibility = Visibility.Visible;
+                                }
+                                else
+                                {
+                                    TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+                                }
+
+                                if (autoPause)
+                                {
+                                    ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+                                }
+                                else
+                                {
+                                    ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
+                                }
+                                TextBlockPostponeInfo.Text = string.Join('\n', itemsStringList);
+                            });
+                        }
+                        else
+                        {
+                            Dispatcher.Invoke(() =>
+                            {
+                                //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+                                TextBlockPostponeInfo.Text = AdmProperties.Resources.TimePagePostponeInfoNominal;
+                            });
+                        }
+
+                    }
+                    catch { }
                 }
             }
         }
@@ -183,10 +189,14 @@ namespace AutoDarkModeApp.Pages
                 DisableTimeBasedSwitch();
                 TogglePanelVisibility(true, false, false, false);
                 RadioButtonDisabled.IsChecked = true;
+                StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+
             }
             //enabled
             else
             {
+                StackPanelPostponeInfo.Visibility = Visibility.Visible;
+
                 //is custom timepicker input enabled?
                 if (!builder.Config.Location.Enabled)
                 {
@@ -214,6 +224,7 @@ namespace AutoDarkModeApp.Pages
                     }
                 }
             }
+
             init = false;
             ConfigWatcher.EnableRaisingEvents = true;
         }

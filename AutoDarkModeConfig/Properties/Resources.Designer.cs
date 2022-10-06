@@ -2050,6 +2050,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto theme switching is enabled.
+        /// </summary>
+        public static string TimePagePostponeInfoNominal {
+            get {
+                return ResourceManager.GetString("TimePagePostponeInfoNominal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resuming will only work for postpones that have an expiry time.
         /// </summary>
         public static string TimePageResumeInfo {
