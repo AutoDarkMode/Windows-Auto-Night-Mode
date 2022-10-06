@@ -13,6 +13,11 @@ using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Handlers;
 using System.IO;
+using System.Timers;
+using System.Text;
+using System.Linq;
+using System.Collections.Generic;
+using System.Resources;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -25,6 +30,7 @@ namespace AutoDarkModeApp.Pages
         private bool init = true;
         private bool reload = false;
         private delegate void DispatcherDelegate();
+        private Timer postponeRefreshTimer = new();
         private FileSystemWatcher ConfigWatcher { get; }
 
         public PageTime()
@@ -80,8 +86,78 @@ namespace AutoDarkModeApp.Pages
                 TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("de");
             }
 
+            StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+            TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+            postponeRefreshTimer.Interval = 2000;
+            postponeRefreshTimer.Elapsed += PostponeTimerEvent;
+            postponeRefreshTimer.Start();
+            PostponeTimerEvent(null, new());
+
+            Unloaded += (s, e) =>
+            {
+                postponeRefreshTimer.Stop();
+                ConfigWatcher.EnableRaisingEvents = false;
+            };
 
             LoadSettings();
+        }
+
+        private void PostponeTimerEvent(object sender, EventArgs e)
+        {
+            ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
+            if (reply.StatusCode != StatusCode.Timeout)
+            {
+                if (reply.Message == "True")
+                {
+                    try
+                    {
+                        bool anyNoExpiry = false;
+                        bool autoPause = false;
+                        PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+                        List<string> itemsStringList = dto.Items.Select(i =>
+                        {
+                            if (i.Expiry == null) anyNoExpiry = true;
+                            if (i.Reason == Extensions.SkipSwitchPostponeItemName) autoPause = true;
+
+                            // retrieve the value of the specified key
+                            i.Reason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
+                            return i.ToString();
+                        }).ToList();
+                        Dispatcher.Invoke(() =>
+                        {
+                            if (anyNoExpiry && !autoPause)
+                            {
+                                TextBlockResumeInfo.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+                            }
+
+                            if (autoPause)
+                            {
+                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+                            }
+                            else
+                            {
+                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
+                            }
+
+                            StackPanelPostponeInfo.Visibility = Visibility.Visible;
+                            TextBlockPostponeInfo.Text = string.Join('\n', itemsStringList);
+                        });
+                    }
+                    catch { }
+                }
+                else
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+                        TextBlockPostponeInfo.Text = "";
+                    });
+                }
+            }
         }
 
         private void LoadSettings()
@@ -761,6 +837,13 @@ namespace AutoDarkModeApp.Pages
                 ButtonApplyCoordinates.IsEnabled = true;
             }
             userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
+        }
+
+        private void ButtonControlPostponeQueue_Click(object sender, RoutedEventArgs e)
+        {
+            MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+            PostponeTimerEvent(null, new());
+            MessageHandler.Client.SendMessageAndGetReply(Command.Switch);
         }
     }
 }

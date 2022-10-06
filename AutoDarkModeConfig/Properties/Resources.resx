@@ -851,14 +851,32 @@ Do you really want to continue?</value>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
     <value>Accent Color for title bars and window borders</value>
   </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Version info copied to clipboard</value>
+  </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatic theme switch</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Show notification on toggle</value>
   </data>
+  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+    <value>Skip auto switch once</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPU monitor module</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Pause auto switch module</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>System idle checker</value>
+  </data>
   <data name="RequestSwitchAction" xml:space="preserve">
     <value>Hit confirm to request a theme switch immediately.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Revert this action by clicking on the undo button below.</value>
@@ -892,6 +910,15 @@ Do you really want to continue?</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
     <value>Theme switching paused until</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Auto theme switching is currently paused due to the following modules:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Resuming will only work for postpones that have an expiry time</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Postpone Info</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>

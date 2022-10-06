@@ -97,6 +97,15 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version info copied to clipboard.
+        /// </summary>
+        public static string AboutVersionInfoCopied {
+            get {
+                return ResourceManager.GetString("AboutVersionInfoCopied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string applyButton {
@@ -1122,6 +1131,42 @@ namespace AutoDarkModeConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skip auto switch once.
+        /// </summary>
+        public static string PostponeButtonSkipAutoSwitchOnce {
+            get {
+                return ResourceManager.GetString("PostponeButtonSkipAutoSwitchOnce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU monitor module.
+        /// </summary>
+        public static string PostponeReasonGPUMonitorModule {
+            get {
+                return ResourceManager.GetString("PostponeReasonGPUMonitorModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause auto switch module.
+        /// </summary>
+        public static string PostponeReasonPauseAutoSwitch {
+            get {
+                return ResourceManager.GetString("PostponeReasonPauseAutoSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System idle checker.
+        /// </summary>
+        public static string PostponeReasonSystemIdleCheckModule {
+            get {
+                return ResourceManager.GetString("PostponeReasonSystemIdleCheckModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set custom hours.
         /// </summary>
         public static string rbCustomHours {
@@ -1181,6 +1226,15 @@ namespace AutoDarkModeConfig.Properties {
         public static string restartNeeded {
             get {
                 return ResourceManager.GetString("restartNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        public static string Resume {
+            get {
+                return ResourceManager.GetString("Resume", resourceCulture);
             }
         }
         
@@ -1983,6 +2037,33 @@ namespace AutoDarkModeConfig.Properties {
         public static string TimePageNextUpdateAt {
             get {
                 return ResourceManager.GetString("TimePageNextUpdateAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto theme switching is currently paused due to the following modules:.
+        /// </summary>
+        public static string TimePagePostponeInfo {
+            get {
+                return ResourceManager.GetString("TimePagePostponeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resuming will only work for postpones that have an expiry time.
+        /// </summary>
+        public static string TimePageResumeInfo {
+            get {
+                return ResourceManager.GetString("TimePageResumeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postpone Info.
+        /// </summary>
+        public static string TimePageTextBlockPostponeInfoHeader {
+            get {
+                return ResourceManager.GetString("TimePageTextBlockPostponeInfoHeader", resourceCulture);
             }
         }
         

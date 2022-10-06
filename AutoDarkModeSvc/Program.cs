@@ -57,10 +57,14 @@ namespace AutoDarkModeSvc
 
 
             // Rules for mapping loggers to targets
-            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, logconsole);
             if (argsList.Contains("/debug"))
             {
                 config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+            }
+            else if (argsList.Contains("/trace"))
+            {
+                config.AddRule(LogLevel.Trace, LogLevel.Fatal, logfile);
             }
             else
             {
@@ -150,11 +154,19 @@ namespace AutoDarkModeSvc
                 }
 
                 // modify config if debug flag is set in config
-                if (builder.Config.Tunable.Debug && !argsList.Contains("/debug"))
+                if (!argsList.Contains("/debug") && !argsList.Contains("/trace"))
                 {
                     config = new NLog.Config.LoggingConfiguration();
-                    config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
-                    config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                    if (builder.Config.Tunable.Trace)
+                    {
+                        config.AddRule(LogLevel.Trace, LogLevel.Fatal, logconsole);
+                        config.AddRule(LogLevel.Trace, LogLevel.Fatal, logfile);
+                    }
+                    else if (builder.Config.Tunable.Debug)
+                    {
+                        config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
+                        config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                    }
                     LogManager.Configuration = config;
                 }
 

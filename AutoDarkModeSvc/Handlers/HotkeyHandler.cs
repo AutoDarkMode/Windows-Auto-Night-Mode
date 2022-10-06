@@ -58,6 +58,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Info("hotkey signal received: stop forcing specific theme");
                     state.ForcedTheme = Theme.Unknown;
+                    ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
                     ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                 });
 
@@ -80,6 +81,8 @@ namespace AutoDarkModeSvc.Handlers
                             state.PostponeManager.RemoveSkipNextSwitch();
                         }
                     }
+
+                    ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
                     if (builder.Config.AutoThemeSwitchingEnabled)
                     {
                         ToastHandler.InvokePauseSwitchNotificationToast();

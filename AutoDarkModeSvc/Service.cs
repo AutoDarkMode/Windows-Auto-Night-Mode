@@ -237,7 +237,7 @@ namespace AutoDarkModeSvc
 
         public void ToggleTheme(object sender, EventArgs e)
         {
-            Theme newTheme = ThemeManager.ToggleTheme();
+            Theme newTheme = ThemeManager.SwitchThemeAutoPause();
             Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(typeof(Theme), newTheme).ToLower()} theme");
         }
 

@@ -59,13 +59,15 @@ namespace AutoDarkModeSvc.Core
         }
 
         /// <summary>
-        /// Toggles the theme and postpones the automatic switch once until the next switching window
+        /// Switches the theme and postpones the automatic switch once until the next switching window is reached
+        /// If no argument is specified, it will swap the currently active theme
         /// </summary>
         /// <returns>the theme that was switched to</returns>
-        public static Theme ToggleTheme()
+        public static Theme SwitchThemeAutoPause(Theme target = Theme.Unknown)
         {
             Theme newTheme;
-            if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
+            if (target != Theme.Unknown) newTheme = target;
+            else if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
             else newTheme = Theme.Light;
 
             RequestSwitch(new(SwitchSource.Manual, newTheme));

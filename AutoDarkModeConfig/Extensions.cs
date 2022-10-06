@@ -52,6 +52,7 @@ namespace AutoDarkModeConfig
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
         public const string UpdaterDirName = "Updater";
+        public const string SkipSwitchPostponeItemName = "PauseAutoSwitch";
         public static readonly string ExecutionPath = GetExecutionPathService();
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string ExecutionPathApp = GetExecutionPathApp();

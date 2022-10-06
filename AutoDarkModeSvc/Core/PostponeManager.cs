@@ -14,14 +14,14 @@ namespace AutoDarkModeSvc.Core
     public class PostponeManager
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private List<PostponeItem> PostponedQueue { get; } = new();
+        private List<PostponeItem> PostponeQueue { get; } = new();
         private List<IAutoDarkModeModule> CallbackModules { get; } = new();
 
         public bool IsSkipNextSwitch
         {
             get
             {
-                if (PostponedQueue.Any(x => x.Reason == "SkipNext"))
+                if (PostponeQueue.Any(x => x.Reason == Extensions.SkipSwitchPostponeItemName))
                     return true;
                 return false;
             }
@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.Core
 
         public bool IsPostponed
         {
-            get { return PostponedQueue.Count > 0; }
+            get { return PostponeQueue.Count > 0; }
         }
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace AutoDarkModeSvc.Core
         /// <returns>True if element is not present in postpone queue and has been added successfully</returns>
         public bool Add(PostponeItem item)
         {
-            if (PostponedQueue.Any(x => x.Reason == item.Reason))
+            if (PostponeQueue.Any(x => x.Reason == item.Reason))
             {
                 return false;
             }
-            PostponedQueue.Add(item);
-            Logger.Debug($"added {item} to postpone queue: [{string.Join(", ", PostponedQueue)}]");
+            PostponeQueue.Add(item);
+            Logger.Debug($"added {item} to postpone queue: [{string.Join(", ", PostponeQueue)}]");
             return true;
         }
 
@@ -57,15 +57,15 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public bool Remove(string reason)
         {
-            bool lastElement = PostponedQueue.Count == 1;
-            PostponeItem item = PostponedQueue.Where(x => x.Reason == reason).FirstOrDefault();
+            bool lastElement = PostponeQueue.Count == 1;
+            PostponeItem item = PostponeQueue.Where(x => x.Reason == reason).FirstOrDefault();
             if (item == null)
             {
                 return false;
             }
             if (item.Expires) item.CancelExpiry();
-            bool result = PostponedQueue.Remove(item);
-            if (result) Logger.Debug($"removed {reason} from postpone queue: [{string.Join(", ", PostponedQueue)}]");
+            bool result = PostponeQueue.Remove(item);
+            if (result) Logger.Debug($"removed {reason} from postpone queue: [{string.Join(", ", PostponeQueue)}]");
             if (!IsPostponed && lastElement)
             {
                 Logger.Info("postpone queue cleared");
@@ -74,9 +74,18 @@ namespace AutoDarkModeSvc.Core
             return result;
         }
 
+        /// <summary>
+        /// Empties the postpone queue by correctly calling remove on all elements
+        /// </summary>
+        public void ClearQueue()
+        {
+            List<PostponeItem> toClear = PostponeQueue.Select(i => i).ToList();
+            toClear.ForEach(i => Remove(i.Reason));
+        }
+
         public PostponeItem GetSkipNextSwitchItem()
         {
-            return PostponedQueue.Where(x => x.Reason == "SkipNext").FirstOrDefault();
+            return PostponeQueue.Where(x => x.Reason == Extensions.SkipSwitchPostponeItemName).FirstOrDefault();
         }
 
         /// <summary>
@@ -85,7 +94,7 @@ namespace AutoDarkModeSvc.Core
         /// <returns>True if it was turned on; false if it was turned off</returns>
         public bool ToggleSkipNextSwitch()
         {
-            if (PostponedQueue.Any(x => x.Reason == "SkipNext"))
+            if (PostponeQueue.Any(x => x.Reason == Extensions.SkipSwitchPostponeItemName))
             {
                 RemoveSkipNextSwitch();
                 return false;
@@ -117,7 +126,7 @@ namespace AutoDarkModeSvc.Core
                 NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
             }
 
-            PostponeItem item = new("SkipNext", NextSwitchAdjusted.AddSeconds(1));
+            PostponeItem item = new(Extensions.SkipSwitchPostponeItemName, NextSwitchAdjusted.AddSeconds(1));
             try
             {
                 item.StartExpiry();
@@ -137,7 +146,7 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public void UpdateSkipNextSwitchExpiry()
         {
-            PostponeItem item = PostponedQueue.Where(x => x.Reason == "SkipNext").FirstOrDefault();
+            PostponeItem item = PostponeQueue.Where(x => x.Reason == Extensions.SkipSwitchPostponeItemName).FirstOrDefault();
             if (item != null)
             {
                 ThemeState ts = new();
@@ -169,7 +178,7 @@ namespace AutoDarkModeSvc.Core
 
         public void RemoveSkipNextSwitch()
         {
-            Remove("SkipNext");
+            Remove(Extensions.SkipSwitchPostponeItemName);
         }
 
         /// <summary>
@@ -201,6 +210,16 @@ namespace AutoDarkModeSvc.Core
                 return true;
             }
             return false;
+        }
+
+        public PostponeQueueDto MakeDto()
+        {
+            List<PostponeItemDto> itemDtos = new();
+            PostponeQueue.ForEach(i =>
+            {
+                itemDtos.Add(new(i.Reason, expiry: i.Expiry));
+            });
+            return new(itemDtos);
         }
     }
 

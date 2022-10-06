@@ -141,6 +141,7 @@ namespace AutoDarkModeConfig
         public bool DisableEnergySaverOnThemeSwitch { get; set; }
         public bool UseLogonTask { get; set; }
         public bool Debug { get; set; }
+        public bool Trace { get; set; }
         public bool DebugTimerMessage { get; set; }
         public bool ShowTrayIcon { get; set; } = true;
         public string UICulture { get; set; } = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;

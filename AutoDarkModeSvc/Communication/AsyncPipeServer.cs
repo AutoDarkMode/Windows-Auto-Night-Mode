@@ -42,6 +42,7 @@ namespace AutoDarkModeSvc.Communication
         private Task TimeoutHandler { get; set; }
         private Task ConnectionHandler { get; set; }
         private readonly int streamTimeout;
+        private readonly int abnormalWorkerCount = 3;
 
         public AsyncPipeServer(Service service, int numWorkers, int streamTimeout = 5000)
         {
@@ -166,9 +167,13 @@ namespace AutoDarkModeSvc.Communication
                 {
                     Logger.Debug($"client connected, worker pool exhausted");
                 }
+                else if (AvailableWorkers <= abnormalWorkerCount)
+                {
+                    Logger.Debug($"client connected (high load), available workers: {availableWorkers}");
+                }
                 else
                 {
-                    Logger.Debug($"client connected, available workers: {availableWorkers}");
+                    Logger.Trace($"client connected, available workers: {availableWorkers}");
                 }
 
                 // a read operation must be completed within streamTimeout, otherwise the pipe connection will be closed server-side to avoid infinite hanging
@@ -188,7 +193,15 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Warn("no message received within request window");
                         return new(null, responderPipeId);
                     }
-                    Logger.Debug("received message: {0}, requested response channel: {1}", msg, responderPipeId == "" ? "root" : responderPipeId);
+
+                    if (AvailableWorkers < abnormalWorkerCount)
+                    {
+                        Logger.Debug("received message: {0}, requested response channel: {1}", msg, responderPipeId == "" ? "root" : responderPipeId);
+                    }
+                    else
+                    {
+                        Logger.Trace("received message: {0}, requested response channel: {1}", msg, responderPipeId == "" ? "root" : responderPipeId);
+                    }
                     // always cancel the monitor thread after a message has been received successfully
                     readTimeoutTokenSource.Cancel();
                     await tew;

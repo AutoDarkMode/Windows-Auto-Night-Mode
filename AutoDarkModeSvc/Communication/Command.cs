@@ -22,19 +22,32 @@ namespace AutoDarkModeSvc.Communication
         /// <summary>
         /// Basically useless currently, needs rework
         /// </summary>
+        [Includable]
         public const string Swap = "--swap";
 
         /// <summary>
-        /// Forces light theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// Requests Auto Dark Mode to switch to the light theme and pauses automatic switching once. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
         public const string Light = "--light";
 
         /// <summary>
-        /// Forces dark theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// Requests Auto Dark Mode to switch to the dark theme. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
         public const string Dark = "--dark";
+
+        /// <summary>
+        /// Forces light theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// </summary>
+        [Includable]
+        public const string ForceLight = "--force-light";
+
+        /// <summary>
+        /// Forces dark theme and sets the GlobalState force flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// </summary>
+        [Includable]
+        public const string ForceDark = "--force-dark";
 
         /// <summary>
         /// Resets the GlobalState force theme flag. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
@@ -49,6 +62,12 @@ namespace AutoDarkModeSvc.Communication
         /// </summary>
         [Includable]
         public const string ToggleSkipNext = "--toggle-skip-next";
+
+        [Includable]
+        public const string ClearPostponeQueue = "--clear-postpone-queue";
+
+        [Includable]
+        public const string GetPostponeStatus = "--get-postpone-status";
 
         /// <summary>
         /// Checks for updates silently

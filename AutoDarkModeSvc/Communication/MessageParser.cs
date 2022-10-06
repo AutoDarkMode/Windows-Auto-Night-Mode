@@ -48,18 +48,11 @@ namespace AutoDarkModeSvc.Communication
                     #region Swap
                     case Command.Swap:
                         Logger.Info("signal received: swap themes");
-                        if (RegistryHandler.AppsUseLightTheme())
-                        {
-
-                            ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
-                        }
-                        else
-                        {
-                            ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
-                        }
+                        Theme theme = ThemeManager.SwitchThemeAutoPause();
                         SendResponse(new ApiResponse()
                         {
-                            StatusCode = StatusCode.Ok
+                            StatusCode = StatusCode.Ok,
+                            Message = Enum.GetName(typeof(Theme), theme)
                         }.ToString());
                         break;
                     #endregion
@@ -261,6 +254,27 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Light
                     case Command.Light:
+                        Logger.Info("signal received: set light theme");
+                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
+                        ThemeManager.SwitchThemeAutoPause(target: Theme.Light);
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
+                        }.ToString());
+                        break;
+                    #endregion
+
+                    #region Dark
+                    case Command.Dark:
+                        Logger.Info("signal received: set dark theme");
+                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
+                        ThemeManager.SwitchThemeAutoPause(target: Theme.Dark);
+                        SendResponse(StatusCode.Ok);
+                        break;
+                    #endregion
+
+                    #region ForceLight
+                    case Command.ForceLight:
                         Logger.Info("signal received: force light theme");
                         state.ForcedTheme = Theme.Light;
                         ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
@@ -272,8 +286,8 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
-                    #region Dark
-                    case Command.Dark:
+                    #region ForceDark
+                    case Command.ForceDark:
                         Logger.Info("signal received: force dark theme");
                         state.ForcedTheme = Theme.Dark;
                         ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
@@ -302,6 +316,27 @@ namespace AutoDarkModeSvc.Communication
                         {
                             StatusCode = StatusCode.Ok,
                             Message = enabled.ToString()
+                        }.ToString());
+                        break;
+                    #endregion
+
+                    #region GetPostponeStatus
+                    case Command.GetPostponeStatus:
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok,
+                            Message = state.PostponeManager.IsPostponed.ToString(),
+                            Details = state.PostponeManager.MakeDto().Serialize()
+                        }.ToString());
+                        break;
+                    #endregion
+
+                    #region ClearPostponeQueue
+                    case Command.ClearPostponeQueue:
+                        state.PostponeManager.ClearQueue();
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok
                         }.ToString());
                         break;
                     #endregion
