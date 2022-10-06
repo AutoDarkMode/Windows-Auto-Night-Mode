@@ -926,4 +926,10 @@ Do you really want to continue?</value>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>Auto theme switching is enabled</value>
   </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Follow Windows night light</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Follow Windows night light</value>
+  </data>
 </root>

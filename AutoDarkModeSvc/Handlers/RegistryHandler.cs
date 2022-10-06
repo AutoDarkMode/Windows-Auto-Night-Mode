@@ -87,6 +87,21 @@ namespace AutoDarkModeSvc.Handlers
             return enabled;
         }
 
+        /// <summary>
+        /// Checks if the bluelight is enabled
+        /// </summary>
+        /// <returns>true if enabled; false otherwise</returns>
+        public static bool IsNightLightEnabled()
+        {
+            using RegistryKey key = GetNightLightKey();
+            var data = key.GetValue("Data");
+            if (data is null)
+                return false;
+            var byteData = (byte[]) data;
+            return byteData.Length > 24 && byteData[23] == decimal.ToByte(0x10) && byteData[24] == decimal.ToByte(0x00);
+        }
+
+
         public static string GetActiveThemePath()
         {
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
@@ -118,6 +133,17 @@ namespace AutoDarkModeSvc.Handlers
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM", true);
             return registryKey;
         }
+
+        /// <summary>
+        /// Gets the current user's bluelight registry key value
+        /// </summary>
+        /// <returns>HKCU bluelight RegistryKey value</returns>
+        private static RegistryKey GetNightLightKey()
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate");
+            return key;
+        }
+
 
         /// <summary>
         /// Adds the application to Windows autostart

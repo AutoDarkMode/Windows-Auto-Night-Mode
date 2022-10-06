@@ -155,6 +155,7 @@ namespace AutoDarkModeSvc.Communication
 
         private async Task<Tuple<string, string>> HandleRequest()
         {
+            bool highLoad = false;
             string msg = null;
             string responderPipeId = "";
             try
@@ -170,6 +171,7 @@ namespace AutoDarkModeSvc.Communication
                 else if (AvailableWorkers <= abnormalWorkerCount)
                 {
                     Logger.Debug($"client connected (high load), available workers: {availableWorkers}");
+                    highLoad = true;
                 }
                 else
                 {
@@ -194,7 +196,7 @@ namespace AutoDarkModeSvc.Communication
                         return new(null, responderPipeId);
                     }
 
-                    if (AvailableWorkers < abnormalWorkerCount)
+                    if (highLoad)
                     {
                         Logger.Debug("received message: {0}, requested response channel: {1}", msg, responderPipeId == "" ? "root" : responderPipeId);
                     }

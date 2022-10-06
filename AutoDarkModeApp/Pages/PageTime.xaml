@@ -75,6 +75,10 @@
                          Content="{x:Static p:Resources.rbLocationGeo}"
                          Margin="0,5,0,0"
                          Click="RadioButtonCoordinateTimes_Click" />
+            <RadioButton Name="RadioButtonWindowsNightLight"
+                         Content="{x:Static p:Resources.TimePageFollowNightLight}"
+                         Margin="0,5,0,0"
+                         Click="RadioButtonWindowsNightLight_Click" />
         </StackPanel>
 
         <!-- Time selection -->

@@ -71,14 +71,24 @@ namespace AutoDarkModeSvc.Handlers
 
                     if (builder.Config.AutoThemeSwitchingEnabled)
                     {
-                        ThemeState ts = new();
-                        if (ts.TargetTheme != newTheme)
+                        if (builder.Config.Governor == Governor.Default)
                         {
-                            state.PostponeManager.AddSkipNextSwitch();
+                            ThemeState ts = new();
+                            if (ts.TargetTheme != newTheme)
+                            {
+                                state.PostponeManager.AddSkipNextSwitch();
+                            }
+                            else
+                            {
+                                state.PostponeManager.RemoveSkipNextSwitch();
+                            }
                         }
-                        else
+                        else if (builder.Config.Governor == Governor.NightLight)
                         {
-                            state.PostponeManager.RemoveSkipNextSwitch();
+                            if (state.NightLightActiveTheme != newTheme)
+                                state.PostponeManager.AddSkipNextSwitch();
+                            else
+                                state.PostponeManager.RemoveSkipNextSwitch();
                         }
                     }
 

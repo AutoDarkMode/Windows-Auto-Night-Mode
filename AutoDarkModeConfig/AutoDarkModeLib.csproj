@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
-      <CustomToolNamespace>AutoDarkModeConfig.Properties</CustomToolNamespace>
+      <CustomToolNamespace>AutoDarkModeLib.Properties</CustomToolNamespace>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>

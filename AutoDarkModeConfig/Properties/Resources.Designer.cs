@@ -2032,6 +2032,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Follow Windows night light.
+        /// </summary>
+        public static string TimePageFollowNightLight {
+            get {
+                return ResourceManager.GetString("TimePageFollowNightLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next update at.
         /// </summary>
         public static string TimePageNextUpdateAt {
@@ -2055,6 +2064,15 @@ namespace AutoDarkModeLib.Properties {
         public static string TimePagePostponeInfoNominal {
             get {
                 return ResourceManager.GetString("TimePagePostponeInfoNominal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Follow Windows night light.
+        /// </summary>
+        public static string TimePageRadioButtonNightLight {
+            get {
+                return ResourceManager.GetString("TimePageRadioButtonNightLight", resourceCulture);
             }
         }
         

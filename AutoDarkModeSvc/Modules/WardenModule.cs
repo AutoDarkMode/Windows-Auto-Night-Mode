@@ -38,7 +38,8 @@ namespace AutoDarkModeSvc.Modules
             AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
             AutoManageModule(typeof(GeopositionUpdateModule), true, config.Location.Enabled);
-            AutoManageModule(typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled);
+            AutoManageModule(typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && config.Governor == Governor.Default);
+            AutoManageModule(typeof(NightLightTrackerModule), true, config.AutoThemeSwitchingEnabled && config.Governor == Governor.NightLight);
             //AutoManageModule(typeof(ThemeUpdateModule), true, config.WindowsThemeMode.Enabled && config.WindowsThemeMode.MonitorActiveTheme);
             AutoManageModule(typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(UpdaterModule), true, config.Updater.Enabled);

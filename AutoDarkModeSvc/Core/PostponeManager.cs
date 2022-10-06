@@ -14,6 +14,7 @@ namespace AutoDarkModeSvc.Core
     public class PostponeManager
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private List<PostponeItem> PostponeQueue { get; } = new();
         private List<IAutoDarkModeModule> CallbackModules { get; } = new();
 
@@ -108,33 +109,41 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public void AddSkipNextSwitch()
         {
-            ThemeState ts = new();
-            // Delay by one second to create overlap. This avoids that the theme switches back too early
-            DateTime NextSwitchAdjusted = ts.NextSwitchTime;
-            if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+            if (builder.Config.Governor == Governor.Default)
             {
-                NextSwitchAdjusted = new DateTime(
-                    DateTime.Now.Year,
-                    DateTime.Now.Month,
-                    DateTime.Now.Day,
-                    ts.NextSwitchTime.Hour,
-                    ts.NextSwitchTime.Minute,
-                    ts.NextSwitchTime.Second);
-            }
-            if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
-            {
-                NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
-            }
+                ThemeState ts = new();
+                // Delay by one second to create overlap. This avoids that the theme switches back too early
+                DateTime NextSwitchAdjusted = ts.NextSwitchTime;
+                if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+                {
+                    NextSwitchAdjusted = new DateTime(
+                        DateTime.Now.Year,
+                        DateTime.Now.Month,
+                        DateTime.Now.Day,
+                        ts.NextSwitchTime.Hour,
+                        ts.NextSwitchTime.Minute,
+                        ts.NextSwitchTime.Second);
+                }
+                if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+                {
+                    NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
+                }
 
-            PostponeItem item = new(Helper.SkipSwitchPostponeItemName, NextSwitchAdjusted.AddSeconds(1));
-            try
-            {
-                item.StartExpiry();
-                Add(item);
+                PostponeItem item = new(Helper.SkipSwitchPostponeItemName, NextSwitchAdjusted.AddSeconds(1));
+                try
+                {
+                    item.StartExpiry();
+                    Add(item);
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Logger.Error(ex, "failed adding SkipNext postpone item to queue: ");
+                }
             }
-            catch (ArgumentOutOfRangeException ex)
+            else if (builder.Config.Governor == Governor.NightLight)
             {
-                Logger.Error(ex, "failed adding SkipNext postpone item to queue: ");
+                PostponeItem item = new(Helper.SkipSwitchPostponeItemName);
+                Add(item);
             }
         }
 
@@ -149,28 +158,31 @@ namespace AutoDarkModeSvc.Core
             PostponeItem item = PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
             if (item != null)
             {
-                ThemeState ts = new();
-                DateTime NextSwitchAdjusted = ts.NextSwitchTime;
-                if (item.Expiry.HasValue)
+                if (builder.Config.Governor == Governor.Default)
                 {
-                    if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
-                    { 
-                        NextSwitchAdjusted = new DateTime(
-                            DateTime.Now.Year, 
-                            DateTime.Now.Month, 
-                            DateTime.Now.Day, 
-                            ts.NextSwitchTime.Hour, 
-                            ts.NextSwitchTime.Minute, 
-                            ts.NextSwitchTime.Second);
-                    }
-                    if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+                    ThemeState ts = new();
+                    DateTime NextSwitchAdjusted = ts.NextSwitchTime;
+                    if (item.Expiry.HasValue)
                     {
-                        NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
-                    }
-                    NextSwitchAdjusted = NextSwitchAdjusted.AddSeconds(1);
-                    if (DateTime.Compare(NextSwitchAdjusted, item.Expiry.Value) != 0)
-                    {
-                        item.UpdateExpiryTime(NextSwitchAdjusted);
+                        if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+                        {
+                            NextSwitchAdjusted = new DateTime(
+                                DateTime.Now.Year,
+                                DateTime.Now.Month,
+                                DateTime.Now.Day,
+                                ts.NextSwitchTime.Hour,
+                                ts.NextSwitchTime.Minute,
+                                ts.NextSwitchTime.Second);
+                        }
+                        if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+                        {
+                            NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
+                        }
+                        NextSwitchAdjusted = NextSwitchAdjusted.AddSeconds(1);
+                        if (DateTime.Compare(NextSwitchAdjusted, item.Expiry.Value) != 0)
+                        {
+                            item.UpdateExpiryTime(NextSwitchAdjusted);
+                        }
                     }
                 }
             }

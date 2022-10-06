@@ -36,6 +36,7 @@ namespace AutoDarkModeLib
     public class PostponeItemDto
     {
         public string Reason { get; set; }
+        public string TranslatedReason { get; set; }
         public DateTime? Expiry { get; set; }
         public PostponeItemDto() { }
 
@@ -47,11 +48,15 @@ namespace AutoDarkModeLib
 
         public override string ToString()
         {
-            string[] split = Regex.Split(Reason, @"(?<!^)(?=[A-Z])");
-            Reason = string.Join(" ", split);
+            if (TranslatedReason != null && (TranslatedReason.Length > 0 || TranslatedReason == Reason))
+            {
+                string[] split = Regex.Split(Reason, @"(?<!^)(?=[A-Z])");
+                TranslatedReason = string.Join(" ", split);
+            }
 
-            if (Expiry != null) return $"{Reason} postpones until {Expiry:HH:mm}";
-            return $"{Reason} postpones until its condition is met";
+            if (Expiry != null) return $"{TranslatedReason} postpones until {Expiry:HH:mm}";
+            else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} postpones until next switch (expires)";
+            return $"{TranslatedReason} postpones until its condition is met";
         }
     }
 }

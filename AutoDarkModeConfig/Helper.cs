@@ -40,12 +40,19 @@ namespace AutoDarkModeLib
     {
         Any,
         TimeSwitchModule,
+        NightLightTrackerModule,
         BatteryStatusChanged,
         SystemResume,
         Manual,
         ExternalThemeSwitch,
         Startup,
         SystemUnlock
+    }
+
+    public enum Governor
+    {
+        Default,
+        NightLight
     }
 
     public static class Helper

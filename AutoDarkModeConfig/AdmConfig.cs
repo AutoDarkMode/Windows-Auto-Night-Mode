@@ -29,6 +29,7 @@ namespace AutoDarkModeLib
             WallpaperSwitch = new();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
+        public Governor Governor { get; set; } = Governor.Default;
         public Autostart Autostart { get; set; }
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }

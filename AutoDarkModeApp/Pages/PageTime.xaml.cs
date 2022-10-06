@@ -109,10 +109,6 @@ namespace AutoDarkModeApp.Pages
             {
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    Dispatcher.Invoke(() =>
-                    {
-                        
-                    });
                     try
                     {
                         if (reply.Message == "True")
@@ -126,7 +122,7 @@ namespace AutoDarkModeApp.Pages
                                 if (i.Reason == Helper.SkipSwitchPostponeItemName) autoPause = true;
 
                                 // retrieve the value of the specified key
-                                i.Reason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
+                                i.TranslatedReason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
                                 return i.ToString();
                             }).ToList();
                             Dispatcher.Invoke(() =>
@@ -187,41 +183,45 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 DisableTimeBasedSwitch();
-                TogglePanelVisibility(true, false, false, false);
+                TogglePanelVisibility(true, false, false, false, false);
                 RadioButtonDisabled.IsChecked = true;
-                StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
-
             }
             //enabled
             else
             {
-                StackPanelPostponeInfo.Visibility = Visibility.Visible;
-
-                //is custom timepicker input enabled?
-                if (!builder.Config.Location.Enabled)
+                if (builder.Config.Governor == Governor.Default)
                 {
-                    RadioButtonCustomTimes.IsChecked = true;
-                    TogglePanelVisibility(true, false, false, false);
-                    applyButton.IsEnabled = false;
+                    //is custom timepicker input enabled?
+                    if (!builder.Config.Location.Enabled)
+                    {
+                        RadioButtonCustomTimes.IsChecked = true;
+                        TogglePanelVisibility(true, false, false, false, true);
+                        applyButton.IsEnabled = false;
+                    }
+
+                    //is location mode enabled?
+                    if (builder.Config.Location.Enabled)
+                    {
+                        //windows location service
+                        if (builder.Config.Location.UseGeolocatorService)
+                        {
+                            TogglePanelVisibility(false, true, true, false, true);
+                            ActivateLocationModeWrapper();
+                            RadioButtonLocationTimes.IsChecked = true;
+                        }
+                        //custom geographic coordinates
+                        else
+                        {
+                            RadioButtonCoordinateTimes.IsChecked = true;
+                            TogglePanelVisibility(false, true, true, true, true);
+                            ActivateLocationModeWrapper();
+                        }
+                    }
                 }
-
-                //is location mode enabled?
-                if (builder.Config.Location.Enabled)
+                else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    //windows location service
-                    if (builder.Config.Location.UseGeolocatorService)
-                    {
-                        TogglePanelVisibility(false, true, true, false);
-                        ActivateLocationModeWrapper();
-                        RadioButtonLocationTimes.IsChecked = true;
-                    }
-                    //custom geographic coordinates
-                    else
-                    {
-                        RadioButtonCoordinateTimes.IsChecked = true;
-                        TogglePanelVisibility(false, true, true, true);
-                        ActivateLocationModeWrapper();
-                    }
+                    RadioButtonWindowsNightLight.IsChecked = true;
+                    TogglePanelVisibility(false, false, true, false, true);
                 }
             }
 
@@ -277,7 +277,7 @@ namespace AutoDarkModeApp.Pages
         }
 
 
-        private void TogglePanelVisibility(bool timepicker, bool location, bool offset, bool coordinates)
+        private void TogglePanelVisibility(bool timepicker, bool location, bool offset, bool coordinates, bool postpone)
         {
             if (timepicker)
             {
@@ -312,6 +312,14 @@ namespace AutoDarkModeApp.Pages
             else
             {
                 GridCoordinates.Visibility = Visibility.Collapsed;
+            }
+            if (postpone)
+            {
+
+            }
+            else
+            {
+                StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -494,7 +502,7 @@ namespace AutoDarkModeApp.Pages
 
         private void DisableLocationMode()
         {
-            TogglePanelVisibility(true, false, false, false);
+            TogglePanelVisibility(true, false, false, false, true);
 
             builder.Config.Location.Enabled = false;
             userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
@@ -515,7 +523,6 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 builder.Config.AutoThemeSwitchingEnabled = true;
-
             }
         }
         private void DisableTimeBasedSwitch()
@@ -564,6 +571,7 @@ namespace AutoDarkModeApp.Pages
         /// <param name="e"></param>
         private async void ButtonApplyCoordinates_Click(object sender, RoutedEventArgs e)
         {
+            builder.Config.Governor = Governor.Default;
             try
             {
                 builder.Config.Location.CustomLat = double.Parse(NumberBoxLat.Text, CultureInfo.InvariantCulture);
@@ -588,7 +596,7 @@ namespace AutoDarkModeApp.Pages
             ButtonApplyCoordinates.IsEnabled = false;
             await ActivateLocationMode();
             await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
-            TogglePanelVisibility(false, true, true, true);
+            TogglePanelVisibility(false, true, true, true, true);
         }
 
         private void ShowErrorMessage(Exception ex, string location = "PageTime")
@@ -629,13 +637,14 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonDisabled_Click(object sender, RoutedEventArgs e)
         {
             DisableTimeBasedSwitch();
-            TogglePanelVisibility(true, false, false, false);
+            TogglePanelVisibility(true, false, false, false, true);
         }
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
         {
             SetTimeBasedSwitchEnabled();
             DisableLocationMode();
+            builder.Config.Governor = Governor.Default;
             //applyButton.IsEnabled = true;
             try
             {
@@ -653,10 +662,11 @@ namespace AutoDarkModeApp.Pages
             SetTimeBasedSwitchEnabled();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
+            builder.Config.Governor = Governor.Default;
             try
             {
                 if (!init) builder.Save();
-                TogglePanelVisibility(false, true, true, false);
+                TogglePanelVisibility(false, true, true, false, true);
                 await ActivateLocationMode();
                 await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             }
@@ -671,12 +681,12 @@ namespace AutoDarkModeApp.Pages
         {
             if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
             {
-                TogglePanelVisibility(false, false, true, true);
+                TogglePanelVisibility(false, false, true, true, true);
                 ButtonApplyCoordinates_Click(this, null);
             }
             else
             {
-                TogglePanelVisibility(false, false, false, true);
+                TogglePanelVisibility(false, false, false, true, true);
             }
         }
 
@@ -855,6 +865,20 @@ namespace AutoDarkModeApp.Pages
             MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
             PostponeTimerEvent(null, new());
             MessageHandler.Client.SendMessageAndGetReply(Command.Switch);
+        }
+
+        private void RadioButtonWindowsNightLight_Click(object sender, RoutedEventArgs e)
+        {
+            TogglePanelVisibility(false, false, true, false, true);
+            builder.Config.Governor = Governor.NightLight;
+            try
+            {
+                if (!init) builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonWindowsNightLight_Click");
+            }
         }
     }
 }

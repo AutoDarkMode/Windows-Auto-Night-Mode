@@ -4,6 +4,7 @@ using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Core
@@ -35,7 +36,8 @@ namespace AutoDarkModeSvc.Core
                     UpdateTheme(Theme.Dark, e);
                     return;
                 }
-                if (!builder.Config.AutoThemeSwitchingEnabled) {
+                if (!builder.Config.AutoThemeSwitchingEnabled)
+                {
                     UpdateTheme(Theme.Light, e);
                     return;
                 }
@@ -49,8 +51,26 @@ namespace AutoDarkModeSvc.Core
 
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                ThemeState ts = new();
-                UpdateTheme(ts.TargetTheme, e, ts.CurrentSwitchTime);
+                if (builder.Config.Governor == Governor.Default)
+                {
+                    ThemeState ts = new();
+                    UpdateTheme(ts.TargetTheme, e, ts.CurrentSwitchTime);
+                }
+                else if (builder.Config.Governor == Governor.NightLight)
+                {
+                    if (e.RequestedTheme.HasValue)
+                    {
+                        if (e.Time.HasValue)
+                        {
+                            UpdateTheme(e.RequestedTheme.Value, e, e.Time.Value);
+                        }
+                        else
+                        {
+                            UpdateTheme(e.RequestedTheme.Value, e);
+                        }
+                    }
+                    else UpdateTheme(state.NightLightActiveTheme, e);
+                }
             }
             else
             {
@@ -73,19 +93,31 @@ namespace AutoDarkModeSvc.Core
             RequestSwitch(new(SwitchSource.Manual, newTheme));
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                ThemeState ts = new();
-                if (ts.TargetTheme != newTheme)
+                if (builder.Config.Governor == Governor.Default)
                 {
-                    state.PostponeManager.AddSkipNextSwitch();
+                    ThemeState ts = new();
+                    if (ts.TargetTheme != newTheme)
+                    {
+                        state.PostponeManager.AddSkipNextSwitch();
+                    }
+                    else
+                    {
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                    }
                 }
-                else
+                else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    state.PostponeManager.RemoveSkipNextSwitch();
+                    if (state.NightLightActiveTheme != newTheme)
+                        state.PostponeManager.AddSkipNextSwitch();
+                    else
+                        state.PostponeManager.RemoveSkipNextSwitch();
                 }
+
             }
             return newTheme;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
         {
             state.LastRequestedTheme = newTheme;
@@ -137,18 +169,23 @@ namespace AutoDarkModeSvc.Core
 
                 if (e.Source == SwitchSource.TimeSwitchModule)
                 {
-                    Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source).ToLower()}, " +
+                    Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}, " +
                         $"{(newTheme == Theme.Light ? "sunrise" : "sunset")}: {switchTime}");
                 }
                 else if (e.Source == SwitchSource.SystemUnlock)
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} refreshed theme, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
+                else if (e.Source == SwitchSource.NightLightTrackerModule && switchTime.Year > 2000)
+                {
+                    Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}, " +
+                    $"{(newTheme == Theme.Light ? "sunrise" : "sunset")}: {switchTime}");
+                }
                 else
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
-                            // disable mitigation after all components and theme switch have been executed
+                // disable mitigation after all components and theme switch have been executed
                 PowerHandler.RequestRestoreEnergySaver(builder.Config);
             }
 

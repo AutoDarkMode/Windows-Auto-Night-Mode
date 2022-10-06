@@ -28,6 +28,7 @@ namespace AutoDarkModeSvc.Core
         private WardenModule Warden { get; set; }
         public Theme LastRequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
+        public Theme NightLightActiveTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
         public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
