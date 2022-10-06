@@ -871,6 +871,7 @@ namespace AutoDarkModeApp.Pages
         {
             TogglePanelVisibility(false, false, true, false, true);
             builder.Config.Governor = Governor.NightLight;
+            builder.Config.Location.Enabled = false;
             try
             {
                 if (!init) builder.Save();
