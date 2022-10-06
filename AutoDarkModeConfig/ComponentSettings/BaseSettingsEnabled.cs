@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutoDarkModeConfig.ComponentSettings
+namespace AutoDarkModeLib.ComponentSettings
 {
     public class BaseSettingsEnabled<T> : BaseSettings<T>
     {

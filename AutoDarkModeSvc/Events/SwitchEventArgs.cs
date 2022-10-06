@@ -1,4 +1,4 @@
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using System;
 
 namespace AutoDarkModeSvc.Events

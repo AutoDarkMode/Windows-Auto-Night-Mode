@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
@@ -107,7 +107,7 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0)
             {
                 //logic for our classic mode 2.0, gets the currently active theme for modification
-                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
                 }
@@ -121,12 +121,12 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0 || themeModeSwitched || e.Source == SwitchSource.SystemUnlock)
             {
                 // Logic for our classic mode 2.0
-                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
                 {
                     try
                     {
                         state.ManagedThemeFile.Save();
-                        ThemeHandler.ApplyManagedTheme(builder.Config, Extensions.ManagedThemePath);
+                        ThemeHandler.ApplyManagedTheme(builder.Config, Helper.ManagedThemePath);
                     }
                     catch (Exception ex)
                     {
@@ -225,7 +225,7 @@ namespace AutoDarkModeSvc.Core
                 LocationHandler.GetSunTimes(builder, out _adjustedSunrise, out _adjustedSunset);
             }
             //the time bewteen sunrise and sunset, aka "day"
-            if (Extensions.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay))
+            if (Helper.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay))
             {
                 TargetTheme = Theme.Light;
                 CurrentSwitchTime = _adjustedSunrise;

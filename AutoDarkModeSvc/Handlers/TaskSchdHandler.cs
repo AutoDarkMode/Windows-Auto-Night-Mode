@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using Microsoft.Win32.TaskScheduler;
 using System;
@@ -35,7 +35,7 @@ namespace AutoDarkModeSvc.Handlers
                 tdLogon.Settings.IdleSettings.StopOnIdleEnd = false;
 
                 tdLogon.Triggers.Add(new LogonTrigger { UserId = Environment.UserDomainName + @"\" + Environment.UserName });
-                tdLogon.Actions.Add(new ExecAction(Extensions.ExecutionPath));
+                tdLogon.Actions.Add(new ExecAction(Helper.ExecutionPath));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(logon, tdLogon);
                 Logger.Info("created logon task");

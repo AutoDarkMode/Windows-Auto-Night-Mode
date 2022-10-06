@@ -1,7 +1,7 @@
 ﻿using AutoDarkModeSvc.Interfaces;
 using System;
-using AutoDarkModeConfig;
-using AutoDarkModeConfig.Interfaces;
+using AutoDarkModeLib;
+using AutoDarkModeLib.Interfaces;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Core;

@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
@@ -376,7 +376,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                  */
                 if (tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll")) {
                     Logger.Debug($"display name: {tempTheme.DisplayName} differs from expected name: {activeThemeName}, path: {currentThemePath}");
-                    currentThemePath = new(Path.Combine(Extensions.ThemeFolderPath, "Custom.theme"));
+                    currentThemePath = new(Path.Combine(Helper.ThemeFolderPath, "Custom.theme"));
                 }
                 else
                 {

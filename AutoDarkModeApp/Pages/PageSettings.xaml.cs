@@ -5,9 +5,9 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
 using AutoDarkModeApp.Handlers;
 using Windows.System.Power;
@@ -284,7 +284,7 @@ namespace AutoDarkModeApp.Pages
             {
                 MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
                 Settings.Default.Save();
-                Process.Start(new ProcessStartInfo(Extensions.ExecutionPathApp)
+                Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp)
                 {
                     UseShellExecute = false,
                     Verb = "open"

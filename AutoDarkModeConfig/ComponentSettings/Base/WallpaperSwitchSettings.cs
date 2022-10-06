@@ -5,7 +5,7 @@ using Windows.Devices.Display;
 using Windows.Devices.Enumeration;
 using Windows.UI;
 
-namespace AutoDarkModeConfig.ComponentSettings.Base
+namespace AutoDarkModeLib.ComponentSettings.Base
 {
     public class WallpaperSwitchSettings
     {

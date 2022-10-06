@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.Devices.Geolocation;
 using System.Runtime.InteropServices;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 
 namespace AutoDarkModeApp
 {

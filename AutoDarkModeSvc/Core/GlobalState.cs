@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Management;
 using System.Text;
 using System.Threading;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Core
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
-        public ThemeFile ManagedThemeFile { get; } = new(Extensions.ManagedThemePath);
+        public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
         public PostponeManager PostponeManager { get; } = new();
 
         private static string GetCurrentThemeName()

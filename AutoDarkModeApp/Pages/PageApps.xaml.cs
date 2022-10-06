@@ -4,8 +4,8 @@ using System.Windows.Controls;
 using System.Diagnostics;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeConfig;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AutoDarkModeLib;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 
 namespace AutoDarkModeApp.Handlers

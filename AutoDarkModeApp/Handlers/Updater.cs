@@ -1,7 +1,7 @@
 ﻿using System;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 using System.Diagnostics;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Communication;
 

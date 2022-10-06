@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;

@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using ModernWpf.Media.Animation;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp.Pages
 {

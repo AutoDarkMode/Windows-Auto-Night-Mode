@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeSvc", "AutoDark
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeApp", "AutoDarkModeApp\AutoDarkModeApp.csproj", "{2D03DA28-00D3-4EC3-85DC-C46564FB3F8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeConfig", "AutoDarkModeConfig\AutoDarkModeConfig.csproj", "{044D739A-2A81-4B51-9D4A-30057A1935E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeLib", "AutoDarkModeConfig\AutoDarkModeLib.csproj", "{044D739A-2A81-4B51-9D4A-30057A1935E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeComms", "AutoDarkModeComms\AutoDarkModeComms.csproj", "{C300F1BA-6280-4ECE-A0C3-7809625BA6AC}"
 EndProject

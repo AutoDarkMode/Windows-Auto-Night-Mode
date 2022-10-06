@@ -1,4 +1,4 @@
-﻿namespace AutoDarkModeConfig.ComponentSettings.Base
+﻿namespace AutoDarkModeLib.ComponentSettings.Base
 {
     public class OfficeSwitchSettings
     {

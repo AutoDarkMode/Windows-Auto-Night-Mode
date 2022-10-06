@@ -1,5 +1,5 @@
 ﻿using AutoDarkModeComms;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using System;
 using System.Collections.Generic;

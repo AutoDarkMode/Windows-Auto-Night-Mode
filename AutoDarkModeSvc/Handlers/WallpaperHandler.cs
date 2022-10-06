@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Linq;
-using AutoDarkModeConfig.ComponentSettings.Base;
-using AutoDarkModeConfig;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeLib;
 using System.IO;
 using AutoDarkModeSvc.Monitors;
 using System.Threading.Tasks;

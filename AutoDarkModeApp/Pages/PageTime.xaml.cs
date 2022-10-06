@@ -4,10 +4,10 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using Windows.System.Power;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
 using System.Diagnostics;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
@@ -123,7 +123,7 @@ namespace AutoDarkModeApp.Pages
                             List<string> itemsStringList = dto.Items.Select(i =>
                             {
                                 if (i.Expiry == null) anyNoExpiry = true;
-                                if (i.Reason == Extensions.SkipSwitchPostponeItemName) autoPause = true;
+                                if (i.Reason == Helper.SkipSwitchPostponeItemName) autoPause = true;
 
                                 // retrieve the value of the specified key
                                 i.Reason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;

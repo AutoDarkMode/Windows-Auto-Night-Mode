@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using System;
 using System.Collections.Generic;
@@ -175,7 +175,7 @@ namespace AutoDarkModeSvc.Handlers
         /// If auto install is available, the latest update check response will be returned instead</returns>
         public static ApiResponse CanUseUpdater()
         {
-            if (!Extensions.InstallModeUsers())
+            if (!Helper.InstallModeUsers())
             {
                 Logger.Warn("installed in for all users mode, auto updates are disabled");
                 return new ApiResponse
@@ -247,12 +247,12 @@ namespace AutoDarkModeSvc.Handlers
             }
             EndBlockingProcesses(out bool shellRestart, out bool appRestart);
 
-            string futureUpdaterDir = Path.Combine(Extensions.ExecutionDir, "UpdaterFuture");
-            string futureUpdaterExecutablePath = Path.Combine(futureUpdaterDir, Extensions.UpdaterExecutableName);
+            string futureUpdaterDir = Path.Combine(Helper.ExecutionDir, "UpdaterFuture");
+            string futureUpdaterExecutablePath = Path.Combine(futureUpdaterDir, Helper.UpdaterExecutableName);
             try
             {
                 if (Directory.Exists(futureUpdaterDir)) Directory.Delete(futureUpdaterDir, true);
-                Directory.Move(Extensions.ExecutionDirUpdater, futureUpdaterDir);
+                Directory.Move(Helper.ExecutionDirUpdater, futureUpdaterDir);
             }
             catch (Exception ex)
             {
@@ -327,11 +327,11 @@ namespace AutoDarkModeSvc.Handlers
                 arguments.Add("--notify");
                 arguments.Add(shellRestart.ToString());
                 arguments.Add(appRestart.ToString());
-                Process.Start(Extensions.ExecutionPathUpdater, arguments);
+                Process.Start(Helper.ExecutionPathUpdater, arguments);
             }
             else
             {
-                Process.Start(Extensions.ExecutionPathUpdater);
+                Process.Start(Helper.ExecutionPathUpdater);
             }
         }
 
@@ -371,7 +371,7 @@ namespace AutoDarkModeSvc.Handlers
         private static bool GetPatchData(bool overrideSilent, out string unpackDirectory, bool downgrade)
         {
             Progress = 0;
-            unpackDirectory = Path.Combine(Extensions.UpdateDataDir, "unpacked");
+            unpackDirectory = Path.Combine(Helper.UpdateDataDir, "unpacked");
             string baseZipUrl = GetBaseUrl();
             string baseUrlHash = GetBaseUrl();
             bool useCustomUrls = false;
@@ -381,7 +381,7 @@ namespace AutoDarkModeSvc.Handlers
                 baseUrlHash = builder.Config.Updater.HashCustomUrl;
                 useCustomUrls = true;
             }
-            string downloadPath = Path.Combine(Extensions.UpdateDataDir, "Update.zip");
+            string downloadPath = Path.Combine(Helper.UpdateDataDir, "Update.zip");
             try
             {
                 // show toast if UI components were open to inform the user that the program is being updated
@@ -407,15 +407,15 @@ namespace AutoDarkModeSvc.Handlers
 
                 string expectedHash = Encoding.ASCII.GetString(buffer);
 
-                if (!Directory.Exists(Extensions.UpdateDataDir))
+                if (!Directory.Exists(Helper.UpdateDataDir))
                 {
-                    Directory.CreateDirectory(Extensions.UpdateDataDir);
+                    Directory.CreateDirectory(Helper.UpdateDataDir);
                 }
                 else
                 {
                     Logger.Warn("found unclean update dir state, cleaning up first");
-                    Directory.Delete(Extensions.UpdateDataDir, true);
-                    Directory.CreateDirectory(Extensions.UpdateDataDir);
+                    Directory.Delete(Helper.UpdateDataDir, true);
+                    Directory.CreateDirectory(Helper.UpdateDataDir);
                 }
 
                 var progress = new Progress<(float, long, long)>();
@@ -507,7 +507,7 @@ namespace AutoDarkModeSvc.Handlers
 
         private static bool UpdateUpdater(string unpackDirectory)
         {
-            string tempDir = Path.Combine(Extensions.ExecutionDir, "Temp");
+            string tempDir = Path.Combine(Helper.ExecutionDir, "Temp");
             if (Directory.Exists(tempDir))
             {
                 Logger.Warn($"Temp directory {tempDir} already exists, cleaning");
@@ -524,21 +524,21 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 Logger.Info("applying updater patch");
-                if (Directory.Exists(Extensions.ExecutionDirUpdater))
+                if (Directory.Exists(Helper.ExecutionDirUpdater))
                 {
-                    Directory.Move(Extensions.ExecutionDirUpdater, tempDir);
+                    Directory.Move(Helper.ExecutionDirUpdater, tempDir);
                 }
                 else
                 {
                     Logger.Warn("huh, the updater is missing. trying to restore updater");
                 }
-                string newUpdaterPath = Path.Combine(unpackDirectory, Extensions.UpdaterDirName);
-                Directory.Move(newUpdaterPath, Extensions.ExecutionDirUpdater);
+                string newUpdaterPath = Path.Combine(unpackDirectory, Helper.UpdaterDirName);
+                Directory.Move(newUpdaterPath, Helper.ExecutionDirUpdater);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not move updater files directory, rolling back");
-                Directory.Move(tempDir, Extensions.ExecutionDirUpdater);
+                Directory.Move(tempDir, Helper.ExecutionDirUpdater);
                 return false;
             }
 

@@ -1,5 +1,5 @@
-﻿using AutoDarkModeConfig.ComponentSettings;
-using AutoDarkModeConfig.ComponentSettings.Base;
+﻿using AutoDarkModeLib.ComponentSettings;
+using AutoDarkModeLib.ComponentSettings.Base;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using YamlDotNet.Serialization.EventEmitters;
 using YamlDotNet.Serialization.NamingConventions;
 
 
-namespace AutoDarkModeConfig
+namespace AutoDarkModeLib
 {
     public class AdmConfigBuilder
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using AutoDarkModeSvc.Monitors;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers

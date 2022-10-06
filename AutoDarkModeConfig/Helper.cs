@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeConfig
+namespace AutoDarkModeLib
 {
     public enum Mode
     {   
@@ -48,7 +48,7 @@ namespace AutoDarkModeConfig
         SystemUnlock
     }
 
-    public static class Extensions
+    public static class Helper
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
         public const string UpdaterDirName = "Updater";

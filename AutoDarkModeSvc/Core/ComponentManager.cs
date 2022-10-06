@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
@@ -57,14 +57,14 @@ namespace AutoDarkModeSvc.Core
 
         ComponentManager()
         {
-            if (Environment.OSVersion.Version.Build >= Extensions.MinBuildForNewFeatures)
+            if (Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
             {
                 Logger.Info($"using components for newer Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitchThemeFile();
                 WallpaperSwitch = new WallpaperSwitchThemeFile();
                 AppsSwitch = new AppsSwitchThemeFile();
             }
-            else if (Environment.OSVersion.Version.Build < Extensions.MinBuildForNewFeatures)
+            else if (Environment.OSVersion.Version.Build < Helper.MinBuildForNewFeatures)
             {
                 Logger.Info($"using components for legacy Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitch();

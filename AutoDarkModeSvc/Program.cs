@@ -1,5 +1,5 @@
 using AutoDarkModeSvc.Monitors;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 using NLog;
@@ -92,11 +92,11 @@ namespace AutoDarkModeSvc
 
             try
             {
-                string commitHash = Extensions.CommitHash();
+                string commitHash = Helper.CommitHash();
                 if (commitHash != "")
                 {
                     Logger.Info($"commit hash: {commitHash}, build: {Assembly.GetExecutingAssembly().GetName().Version}");
-                    Logger.Info($"cwd: {Extensions.ExecutionPath}");
+                    Logger.Info($"cwd: {Helper.ExecutionPath}");
                 }
                 else
                 {

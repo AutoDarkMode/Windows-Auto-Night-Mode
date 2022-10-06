@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
@@ -48,7 +48,7 @@ namespace AutoDarkModeSvc.Modules
                 }
 
                 //the time between sunrise and sunset, aka "day"
-                if (Extensions.NowIsBetweenTimes(sunriseMonitor.TimeOfDay, sunsetMonitor.TimeOfDay))
+                if (Helper.NowIsBetweenTimes(sunriseMonitor.TimeOfDay, sunsetMonitor.TimeOfDay))
                 {
                     if (SuntimeIsWithinSpan(sunsetMonitor))
                     {
@@ -213,7 +213,7 @@ namespace AutoDarkModeSvc.Modules
         /// <returns>true if it's within the span; false otherwise</returns>
         private bool SuntimeIsWithinSpan(DateTime time)
         {
-            return Extensions.NowIsBetweenTimes(
+            return Helper.NowIsBetweenTimes(
                 time.AddMinutes(-Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay,
                 time.TimeOfDay);
         }

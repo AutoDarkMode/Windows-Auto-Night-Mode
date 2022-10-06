@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Timers;
 using AutoDarkModeSvc.Monitors;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 
 namespace AutoDarkModeSvc.Timers
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutoDarkModeConfig
+namespace AutoDarkModeLib
 {
     public class AdmLocationData
     {

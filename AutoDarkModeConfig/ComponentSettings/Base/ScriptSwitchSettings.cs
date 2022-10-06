@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeConfig.ComponentSettings.Base
+namespace AutoDarkModeLib.ComponentSettings.Base
 {
     public class ScriptSwitchSettings
     {

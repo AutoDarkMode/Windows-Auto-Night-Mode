@@ -8,11 +8,11 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using System.IO;
 using Microsoft.Win32;
 using AutoDarkModeSvc.Core;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 using System.Globalization;
 using System.ComponentModel;
 using AutoDarkModeSvc.Events;
@@ -210,7 +210,7 @@ namespace AutoDarkModeSvc
 
         public void Restart(object sender, EventArgs e)
         {
-            _ = Process.Start(new ProcessStartInfo(Extensions.ExecutionPath)
+            _ = Process.Start(new ProcessStartInfo(Helper.ExecutionPath)
             {
                 UseShellExecute = false,
                 Verb = "open"
@@ -355,7 +355,7 @@ namespace AutoDarkModeSvc
                             Console.WriteLine("Start App");
                             using Process app = new();
                             app.StartInfo.UseShellExecute = false;
-                            app.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeApp.exe");
+                            app.StartInfo.FileName = Path.Combine(Helper.ExecutionDir, "AutoDarkModeApp.exe");
                             app.Start();
                             appMutex.ReleaseMutex();
                         }

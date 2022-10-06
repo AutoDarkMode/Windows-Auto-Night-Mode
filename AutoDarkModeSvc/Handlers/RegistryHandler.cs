@@ -1,4 +1,4 @@
-﻿ using AutoDarkModeConfig;
+﻿ using AutoDarkModeLib;
 using Microsoft.Win32;
 using System;
 using System.Threading;
@@ -127,7 +127,7 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-                registryKey.SetValue("AutoDarkMode", '\u0022' + Extensions.ExecutionPath + '\u0022');
+                registryKey.SetValue("AutoDarkMode", '\u0022' + Helper.ExecutionPath + '\u0022');
                 return true;
             }
             catch (Exception ex)

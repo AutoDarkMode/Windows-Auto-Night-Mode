@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace AutoDarkModeConfig
+namespace AutoDarkModeLib
 {
     public class PostponeQueueDto
     {

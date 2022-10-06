@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace AutoDarkModeConfig
+namespace AutoDarkModeLib
 {
     public class UpdateInfo
     {

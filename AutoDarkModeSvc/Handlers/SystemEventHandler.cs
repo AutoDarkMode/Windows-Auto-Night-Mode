@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using Microsoft.Win32;
 using System;
@@ -61,7 +61,7 @@ namespace AutoDarkModeSvc.Handlers
         {
             if (!resumeEventEnabled)
             {
-                if (Environment.OSVersion.Version.Build >= Extensions.Win11Build)
+                if (Environment.OSVersion.Version.Build >= Helper.Win11Build)
                 {
                     Logger.Info("enabling theme refresh at system unlock (win 11)");
                     SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
@@ -100,7 +100,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 if (resumeEventEnabled)
                 {
-                    if (Environment.OSVersion.Version.Build >= Extensions.Win11Build)
+                    if (Environment.OSVersion.Version.Build >= Helper.Win11Build)
                     {
                         Logger.Info("disabling theme refresh at system unlock (win 11)");
                         SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;

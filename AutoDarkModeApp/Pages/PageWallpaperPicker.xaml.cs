@@ -1,6 +1,6 @@
 ﻿using AutoDarkModeApp.Handlers;
-using AutoDarkModeConfig;
-using AutoDarkModeConfig.ComponentSettings.Base;
+using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Communication;
 using Microsoft.Win32;
 using ModernWpf.Media.Animation;
@@ -15,7 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
 using System.Windows.Input;
 

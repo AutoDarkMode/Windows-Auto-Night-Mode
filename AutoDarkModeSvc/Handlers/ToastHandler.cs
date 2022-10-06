@@ -1,5 +1,5 @@
 ﻿using Windows.UI.Notifications;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Reflection;
@@ -8,7 +8,7 @@ using Windows.Foundation.Collections;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Monitors;
 using System.Globalization;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 
 // https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax

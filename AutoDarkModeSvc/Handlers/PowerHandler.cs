@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

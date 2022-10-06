@@ -1,6 +1,6 @@
-﻿using AutoDarkModeConfig;
-using AutoDarkModeConfig.ComponentSettings.Base;
-using AutoDarkModeConfig.Interfaces;
+﻿using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeLib.Interfaces;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;

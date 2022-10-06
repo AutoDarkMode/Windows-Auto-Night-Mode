@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using System;
 using System.Collections.Generic;
@@ -185,7 +185,7 @@ namespace AutoDarkModeSvc.Handlers
                         result.Details += "\nvalidation mode: recreate task (missing folder)";
                         return result;
                     }
-                    else if (logonTask.Definition.Actions.First().ToString().Trim() != Extensions.ExecutionPath)
+                    else if (logonTask.Definition.Actions.First().ToString().Trim() != Helper.ExecutionPath)
                     {
                         Logger.Warn("autostart validation failed, wrong execution path. fixing autostart");
                         ApiResponse result = AddAutostart(modified: true);
@@ -241,7 +241,7 @@ namespace AutoDarkModeSvc.Handlers
                     else
                     {
                         autostartPath = autostartPath.Replace("\"", "");
-                        if (!autostartPath.Contains(Extensions.ExecutionPath))
+                        if (!autostartPath.Contains(Helper.ExecutionPath))
                         {
                             reason = "wrong path";
                             recreate = true;

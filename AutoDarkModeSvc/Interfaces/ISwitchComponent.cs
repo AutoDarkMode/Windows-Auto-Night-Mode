@@ -1,5 +1,5 @@
-﻿using AutoDarkModeConfig;
-using AutoDarkModeConfig.Interfaces;
+﻿using AutoDarkModeLib;
+using AutoDarkModeLib.Interfaces;
 using AutoDarkModeSvc.Events;
 
 namespace AutoDarkModeSvc.Interfaces

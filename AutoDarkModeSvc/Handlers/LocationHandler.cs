@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using SunriseCalculator;
 using System.Runtime.CompilerServices;
 using AutoDarkModeSvc.Monitors;

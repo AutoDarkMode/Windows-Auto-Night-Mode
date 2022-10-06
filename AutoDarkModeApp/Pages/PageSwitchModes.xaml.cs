@@ -2,10 +2,10 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using Windows.System.Power;
 using System.Diagnostics;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp.Pages
 {

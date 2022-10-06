@@ -3,11 +3,11 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using Microsoft.Win32;
 using System.Collections.Generic;
-using AutoDarkModeConfig.ComponentSettings.Base;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp
 {

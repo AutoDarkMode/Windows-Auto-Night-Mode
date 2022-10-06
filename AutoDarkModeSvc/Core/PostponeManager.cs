@@ -1,4 +1,4 @@
-﻿using AutoDarkModeConfig;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace AutoDarkModeSvc.Core
         {
             get
             {
-                if (PostponeQueue.Any(x => x.Reason == Extensions.SkipSwitchPostponeItemName))
+                if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName))
                     return true;
                 return false;
             }
@@ -85,7 +85,7 @@ namespace AutoDarkModeSvc.Core
 
         public PostponeItem GetSkipNextSwitchItem()
         {
-            return PostponeQueue.Where(x => x.Reason == Extensions.SkipSwitchPostponeItemName).FirstOrDefault();
+            return PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace AutoDarkModeSvc.Core
         /// <returns>True if it was turned on; false if it was turned off</returns>
         public bool ToggleSkipNextSwitch()
         {
-            if (PostponeQueue.Any(x => x.Reason == Extensions.SkipSwitchPostponeItemName))
+            if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName))
             {
                 RemoveSkipNextSwitch();
                 return false;
@@ -126,7 +126,7 @@ namespace AutoDarkModeSvc.Core
                 NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
             }
 
-            PostponeItem item = new(Extensions.SkipSwitchPostponeItemName, NextSwitchAdjusted.AddSeconds(1));
+            PostponeItem item = new(Helper.SkipSwitchPostponeItemName, NextSwitchAdjusted.AddSeconds(1));
             try
             {
                 item.StartExpiry();
@@ -146,7 +146,7 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public void UpdateSkipNextSwitchExpiry()
         {
-            PostponeItem item = PostponeQueue.Where(x => x.Reason == Extensions.SkipSwitchPostponeItemName).FirstOrDefault();
+            PostponeItem item = PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
             if (item != null)
             {
                 ThemeState ts = new();
@@ -178,7 +178,7 @@ namespace AutoDarkModeSvc.Core
 
         public void RemoveSkipNextSwitch()
         {
-            Remove(Extensions.SkipSwitchPostponeItemName);
+            Remove(Helper.SkipSwitchPostponeItemName);
         }
 
         /// <summary>

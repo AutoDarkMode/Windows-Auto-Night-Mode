@@ -1,9 +1,9 @@
-﻿using AutoDarkModeConfig.Interfaces;
+﻿using AutoDarkModeLib.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutoDarkModeConfig.ComponentSettings
+namespace AutoDarkModeLib.ComponentSettings
 {
     public class BaseSettings<T> : ISwitchComponentSettings<T>
     {

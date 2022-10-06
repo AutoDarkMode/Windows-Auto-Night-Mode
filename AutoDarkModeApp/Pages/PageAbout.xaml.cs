@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using AdmExtensions = AutoDarkModeConfig.Extensions;
+using AdmExtensions = AutoDarkModeLib.Helper;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -430,7 +430,7 @@ namespace AutoDarkModeApp.Pages
                     .Append(versionInfo.NetCore)
                     .AppendLine("`");
                 Clipboard.SetData(DataFormats.Text, versionText);
-                TextBlockCopyInfo.Text = AutoDarkModeConfig.Properties.Resources.AboutVersionInfoCopied;
+                TextBlockCopyInfo.Text = AutoDarkModeLib.Properties.Resources.AboutVersionInfoCopied;
             }
             catch (Exception ex)
             {

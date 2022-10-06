@@ -1,5 +1,5 @@
 ﻿using AutoDarkModeComms;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using AutoDarkModeApp.Handlers;
 using System.Windows.Shell;
 using System.Globalization;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
 
 namespace AutoDarkModeApp
@@ -150,7 +150,7 @@ namespace AutoDarkModeApp
                 {
                     using Process svc = new();
                     svc.StartInfo.UseShellExecute = false;
-                    svc.StartInfo.FileName = Path.Combine(Extensions.ExecutionDir, "AutoDarkModeSvc.exe");
+                    svc.StartInfo.FileName = Path.Combine(Helper.ExecutionDir, "AutoDarkModeSvc.exe");
                     svc.StartInfo.CreateNoWindow = true;
                     svc.Start();
                     serviceRunning.ReleaseMutex();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutoDarkModeConfig.Interfaces
+namespace AutoDarkModeLib.Interfaces
 {
     public interface ISwitchComponentSettings<T>
     {

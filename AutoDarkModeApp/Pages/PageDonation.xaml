@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:p="clr-namespace:AutoDarkModeConfig.Properties;assembly=AutoDarkModeConfig"
+      xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       mc:Ignorable="d"
       

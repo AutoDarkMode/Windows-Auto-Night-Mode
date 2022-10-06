@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp.Handlers
 {

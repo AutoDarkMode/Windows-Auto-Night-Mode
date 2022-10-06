@@ -6,7 +6,7 @@
          xmlns:local="clr-namespace:AutoDarkModeApp"
          xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
          xmlns:ui="http://schemas.modernwpf.com/2019"
-         xmlns:p="clr-namespace:AutoDarkModeConfig.Properties;assembly=AutoDarkModeConfig"
+         xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
          mc:Ignorable="d"
          Title="PagePersonalization"
          d:MinWidth="450"

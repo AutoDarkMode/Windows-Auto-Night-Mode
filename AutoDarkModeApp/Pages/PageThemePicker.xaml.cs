@@ -1,5 +1,5 @@
 ﻿using AutoDarkModeApp.Handlers;
-using AutoDarkModeConfig;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using ModernWpf.Media.Animation;
 using System;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp.Pages
 {

@@ -8,7 +8,7 @@ using AutoDarkModeApp.Properties;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Pages;
 using ModernWpf.Media.Animation;
-using AdmProperties = AutoDarkModeConfig.Properties;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 
 namespace AutoDarkModeApp
