@@ -42,6 +42,10 @@ namespace AutoDarkModeSvc.Handlers
                         });
                 });
             }
+            else
+            {
+                ToastNotificationManagerCompat.History.Remove("adm-theme-switch-paused-notif");
+            }
         }
 
         public static void InvokeAutoSwitchNotificationToast()
