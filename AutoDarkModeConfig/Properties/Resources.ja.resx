@@ -848,4 +848,7 @@
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>システムがアイドル状態だと判定されるまでの分数</value>
   </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>タイトルバーとウィンドウの枠線のアクセントカラー</value>
+  </data>
 </root>
