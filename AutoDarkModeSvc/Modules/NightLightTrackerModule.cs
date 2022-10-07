@@ -71,6 +71,7 @@ namespace AutoDarkModeSvc.Modules
             Theme newTheme = RegistryHandler.IsNightLightEnabled() ? Theme.Dark : Theme.Light;
             if (newTheme != state.NightLightActiveTheme)
             {
+                state.PostponeManager.RemoveSkipNextSwitch();
                 state.NightLightActiveTheme = newTheme;
                 Fire();
             }
