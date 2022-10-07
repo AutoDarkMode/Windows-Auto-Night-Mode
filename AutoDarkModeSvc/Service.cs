@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc
             forceLightMenuItem.Name = "forceLight";
             autoThemeSwitchingItem.Name = "autoThemeSwitching";
             toggleThemeItem.Name = "toggleTheme";
-            pauseThemeSwitchItem.Name ="pauseThemeSwitch";
+            pauseThemeSwitchItem.Name = "pauseThemeSwitch";
             forceDarkMenuItem.Text = AdmProperties.Resources.ForceDarkTheme;
             forceLightMenuItem.Text = AdmProperties.Resources.ForceLightTheme;
             autoThemeSwitchingItem.Text = AdmProperties.Resources.AutomaticThemeSwitch;
@@ -108,7 +108,7 @@ namespace AutoDarkModeSvc
         {
             ToolStripMenuItem exitMenuItem = new(AdmProperties.Resources.msgClose);
             ToolStripMenuItem openConfigDirItem = new(AdmProperties.Resources.TrayMenuItemOpenConfigDir);
-            
+
             exitMenuItem.Click += new EventHandler(RequestExit);
             openConfigDirItem.Click += new EventHandler(OpenConfigDir);
             forceDarkMenuItem.Click += new EventHandler(ForceMode);
@@ -131,7 +131,7 @@ namespace AutoDarkModeSvc
             NotifyIcon.ContextMenuStrip.Items.Insert(0, toggleThemeItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, pauseThemeSwitchItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, autoThemeSwitchingItem);
-
+           
             if (Builder.Config.Tunable.ShowTrayIcon)
             {
                 NotifyIcon.Visible = true;
@@ -159,8 +159,15 @@ namespace AutoDarkModeSvc
             pauseThemeSwitchItem.Checked = state.PostponeManager.IsSkipNextSwitch;
             if (state.PostponeManager.IsSkipNextSwitch)
             {
-                DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchPausedUntil} {time:HH:mm})";
+                if (state.PostponeManager.GetSkipNextSwitchItem().Expiry.HasValue)
+                {
+                    DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
+                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchPausedUntil} {time:HH:mm})";
+                }
+                else
+                {
+                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchSkipOnce})";
+                }
             }
             else
             {
@@ -365,7 +372,7 @@ namespace AutoDarkModeSvc
                             if (processes.Count > 0)
                             {
                                 WindowHelper.BringProcessToFront(processes[0]);
-                            }                            
+                            }
                         }
                     }
                 }

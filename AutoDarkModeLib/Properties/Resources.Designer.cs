@@ -1960,6 +1960,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to skip once.
+        /// </summary>
+        public static string ThemeSwitchSkipOnce {
+            get {
+                return ResourceManager.GetString("ThemeSwitchSkipOnce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string ThemeTextBlockHeader {
