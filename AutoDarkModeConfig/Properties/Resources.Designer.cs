@@ -1951,6 +1951,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Theme switching is paused once!.
+        /// </summary>
+        public static string ThemeSwitchPauseHeaderNoExpiry {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPauseHeaderNoExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         public static string ThemeTextBlockHeader {

@@ -28,18 +28,24 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Program.ActionQueue.Add(() =>
                 {
-                    DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
+                    ToastContentBuilder tcb = new ToastContentBuilder();
 
-                    new ToastContentBuilder()
-                        .AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}")
-                        .AddText($"{AdmProperties.Resources.ThemeSwitchPauseActionNotification}. {AdmProperties.Resources.ThemeSwitchPauseActionDisableQuestion}")
-                        .AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionDisable)
-                            .AddArgument("action-undo-toggle-theme-switch", "enabled")
-                            .AddArgument("action", "remove-skip-next"))
-                        .Show(toast =>
-                        {
-                            toast.Tag = "adm-theme-switch-paused-notif";
-                        });
+                    if (state.PostponeManager.GetSkipNextSwitchItem().Expiry.HasValue)
+                    {
+                        DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
+                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
+                    }
+                    else
+                    {
+                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeaderNoExpiry}");
+                    }
+                    tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseActionNotification}. {AdmProperties.Resources.ThemeSwitchPauseActionDisableQuestion}")
+                       .AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionDisable)
+                       .AddArgument("action-undo-toggle-theme-switch", "enabled")
+                       .AddArgument("action", "remove-skip-next")).Show(toast =>
+                    {
+                        toast.Tag = "adm-theme-switch-paused-notif";
+                    });
                 });
             }
             else

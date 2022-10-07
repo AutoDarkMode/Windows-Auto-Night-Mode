@@ -123,8 +123,7 @@
             <!-- Content of Navbar, mainly the Frame which contains the Pages -->
             <ScrollViewer
                 PanningMode="Both"
-                x:Name="ScrollViewerNavbar"
-                CanContentScroll="False">
+                x:Name="ScrollViewerNavbar">
                 <ui:Frame
                        Content="Something went wrong :(" 
                        Background="{DynamicResource SystemAltHighColorBrush}" 

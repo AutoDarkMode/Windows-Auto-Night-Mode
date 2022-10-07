@@ -932,4 +932,7 @@ Do you really want to continue?</value>
   <data name="TimePageFollowNightLight" xml:space="preserve">
     <value>Follow Windows night light</value>
   </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Theme switching is paused once!</value>
+  </data>
 </root>
