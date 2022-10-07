@@ -166,6 +166,7 @@ namespace AutoDarkModeApp.Pages
                             Dispatcher.Invoke(() =>
                             {
                                 //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
                                 TextBlockPostponeInfo.Text = AdmProperties.Resources.TimePagePostponeInfoNominal;
                             });
                         }
@@ -876,6 +877,14 @@ namespace AutoDarkModeApp.Pages
 
         private void ButtonControlPostponeQueue_Click(object sender, RoutedEventArgs e)
         {
+            if ((string)ButtonControlPostponeQueue.Content == AdmProperties.Resources.Resume)
+            {
+                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
+            }
+            else
+            {
+                ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+            }
             MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
             PostponeTimerEvent(null, new());
             MessageHandler.Client.SendMessageAndGetReply(Command.Switch);

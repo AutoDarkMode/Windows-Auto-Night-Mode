@@ -149,7 +149,7 @@ namespace AutoDarkModeSvc
 
         private void UpdateCheckboxes(object sender, EventArgs e)
         {
-            if (state.LastRequestedTheme == Theme.Dark)
+            if (state.ActiveTheme == Theme.Dark)
             {
                 NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
             }

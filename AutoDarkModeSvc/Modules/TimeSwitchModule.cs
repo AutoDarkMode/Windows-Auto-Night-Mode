@@ -34,9 +34,9 @@ namespace AutoDarkModeSvc.Modules
             }
         }
 
-        public override void Cleanup()
+        public override void DisableHook()
         {
-            base.Cleanup();
+            base.DisableHook();
         }
     }
 }

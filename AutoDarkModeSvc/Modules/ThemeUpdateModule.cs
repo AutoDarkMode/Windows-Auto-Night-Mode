@@ -46,7 +46,7 @@ namespace AutoDarkModeSvc.Modules
             thread.Start();
         }
 
-        public override void Cleanup()
+        public override void DisableHook()
         {
             State.CurrentWindowsThemeName = "";
         }

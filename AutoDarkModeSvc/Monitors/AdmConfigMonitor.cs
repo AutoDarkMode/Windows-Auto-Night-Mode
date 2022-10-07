@@ -64,11 +64,14 @@ namespace AutoDarkModeSvc.Monitors
             IConfigUpdateEvent<AdmConfig> geolocatorEvent = new GeolocatorEvent();
             IConfigUpdateEvent<AdmConfig> themeModeEvent = new ThemeModeEvent(componentManager);
             IConfigUpdateEvent<AdmConfig> hotkeyEvent = new HotkeyEvent();
+            IConfigUpdateEvent<AdmConfig> governorEvent = new GovernorEvent();
 
             //change event trackers
             builder.ConfigUpdatedHandler += geolocatorEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += themeModeEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += hotkeyEvent.OnConfigUpdate;
+            builder.ConfigUpdatedHandler += governorEvent.OnConfigUpdate;
+
         }
 
         private void OnChangedConfig(object source, FileSystemEventArgs e)

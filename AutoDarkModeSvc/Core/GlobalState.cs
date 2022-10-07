@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Core
         protected GlobalState() { }
 
         private WardenModule Warden { get; set; }
-        public Theme LastRequestedTheme { get; set; } = Theme.Unknown;
+        public Theme ActiveTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme NightLightActiveTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;

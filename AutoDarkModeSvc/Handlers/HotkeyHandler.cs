@@ -66,7 +66,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Info("hotkey signal received: toggle theme");
                     Theme newTheme;
-                    if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
+                    if (state.ActiveTheme == Theme.Light) newTheme = Theme.Dark;
                     else newTheme = Theme.Light;
 
                     if (builder.Config.AutoThemeSwitchingEnabled)

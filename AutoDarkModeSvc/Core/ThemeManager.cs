@@ -74,7 +74,7 @@ namespace AutoDarkModeSvc.Core
             }
             else
             {
-                UpdateTheme(state.LastRequestedTheme, e);
+                UpdateTheme(state.ActiveTheme, e);
             }
         }
 
@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.Core
         {
             Theme newTheme;
             if (target != Theme.Unknown) newTheme = target;
-            else if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
+            else if (state.ActiveTheme == Theme.Light) newTheme = Theme.Dark;
             else newTheme = Theme.Light;
 
             if (builder.Config.AutoThemeSwitchingEnabled)
@@ -120,7 +120,7 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
         {
-            state.LastRequestedTheme = newTheme;
+            state.ActiveTheme = newTheme;
 
             bool themeModeSwitched = false;
             if (e.Source == SwitchSource.SystemUnlock && builder.Config.WindowsThemeMode.Enabled)

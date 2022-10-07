@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,16 +17,13 @@ namespace AutoDarkModeSvc.Modules
         public override string TimerAffinity => TimerName.Main;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private DateTime lastNightLightQueryTime = DateTime.Now;
+        private Theme requestedTheme = Theme.Unknown;
         private static ManagementEventWatcher nightLightKeyWatcher;
         private GlobalState state = GlobalState.Instance();
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private bool QueuePostponeRemove = false;
 
-        public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
-        {
-            nightLightKeyWatcher = WMIHandler.CreateHKCURegistryValueMonitor(UpdateNightLightState, "Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\CloudStore\\\\Store\\\\DefaultAccount\\\\Current\\\\default$windows.data.bluelightreduction.bluelightreductionstate\\\\windows.data.bluelightreduction.bluelightreductionstate", "Data");
-            nightLightKeyWatcher.Start();
-            UpdateNightLightState();
-        }
+        public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
 
         public override void Fire()
@@ -51,9 +49,9 @@ namespace AutoDarkModeSvc.Modules
             return;
         }
 
-        public override void Cleanup()
+        public override void DisableHook()
         {
-            base.Cleanup();
+            base.DisableHook();
             try
             {
                 nightLightKeyWatcher.Stop();
@@ -65,16 +63,45 @@ namespace AutoDarkModeSvc.Modules
             }
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public void UpdateNightLightState()
         {
-            lastNightLightQueryTime = DateTime.Now;
-            Theme newTheme = RegistryHandler.IsNightLightEnabled() ? Theme.Dark : Theme.Light;
-            if (newTheme != state.NightLightActiveTheme)
+            bool enabled = RegistryHandler.IsNightLightEnabled();
+            Theme newTheme = enabled ? Theme.Dark : Theme.Light;
+            if (newTheme != requestedTheme)
             {
-                state.PostponeManager.RemoveSkipNextSwitch();
+                lastNightLightQueryTime = DateTime.Now;
+                requestedTheme = newTheme;
+                Logger.Info($"night light status enabled changed to {enabled}");
+                bool isSkipNext = state.PostponeManager.GetSkipNextSwitchItem() != null;
+                // if we are on the right theme and postpone is still enabled, we need to clear postpone on the next switch
+                // As such we mark postpone for removal and take care of it on the next switch, allowing Fire()
+                // If the postpone was cleared otherwise in the meantime, we also need to reset the queue postpone
+                if (isSkipNext && !QueuePostponeRemove)
+                {
+                    QueuePostponeRemove = true;
+                    return;
+                }
+                else if (isSkipNext && QueuePostponeRemove)
+                {
+                    QueuePostponeRemove = false;
+                    state.PostponeManager.RemoveSkipNextSwitch();
+                }
+                else if (QueuePostponeRemove && !isSkipNext)
+                {
+                    QueuePostponeRemove = false;
+                }
                 state.NightLightActiveTheme = newTheme;
                 Fire();
             }
+        }
+
+        public override void EnableHook()
+        {
+            base.EnableHook();
+            nightLightKeyWatcher = WMIHandler.CreateHKCURegistryValueMonitor(UpdateNightLightState, "Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\CloudStore\\\\Store\\\\DefaultAccount\\\\Current\\\\default$windows.data.bluelightreduction.bluelightreductionstate\\\\windows.data.bluelightreduction.bluelightreductionstate", "Data");
+            nightLightKeyWatcher.Start();
+            UpdateNightLightState();
         }
     }
 }

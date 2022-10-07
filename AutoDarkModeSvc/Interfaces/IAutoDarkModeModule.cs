@@ -12,9 +12,13 @@ namespace AutoDarkModeSvc.Modules
         /// </summary>
         public void Fire();
         /// <summary>
+        /// Performs operations that should be called upon instantiation
+        /// </summary>
+        public void EnableHook();
+        /// <summary>
         /// Performs cleanup operations before a module is deregistered
         /// </summary>
-        public void Cleanup();
+        public void DisableHook();
         /// <summary>
         /// Unique timer identification
         /// </summary>

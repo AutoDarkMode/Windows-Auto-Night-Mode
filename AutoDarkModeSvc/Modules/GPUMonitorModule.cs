@@ -218,7 +218,7 @@ namespace AutoDarkModeSvc.Modules
                 time.TimeOfDay);
         }
 
-        public override void Cleanup()
+        public override void DisableHook()
         {
             Logger.Debug($"cleanup performed for module {Name}");
             State.PostponeManager.Remove(Name);

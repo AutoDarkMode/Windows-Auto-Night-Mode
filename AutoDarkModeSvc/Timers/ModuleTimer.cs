@@ -58,6 +58,7 @@ namespace AutoDarkModeSvc.Timers
         {
             if (!Modules.Contains(module))
             {
+                module.EnableHook();
                 if (module.FireOnRegistration)
                 {
                     module.Fire();
@@ -74,7 +75,7 @@ namespace AutoDarkModeSvc.Timers
         {
             if (Modules.Contains(module))
             {
-                module.Cleanup();
+                module.DisableHook();
                 Modules.Remove(Modules.Find(m => m.Name == module.Name));
                 Logger.Info($"deregistered {module.Name} from timer {Name}");
             }

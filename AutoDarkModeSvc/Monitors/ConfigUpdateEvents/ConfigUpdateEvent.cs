@@ -1,4 +1,5 @@
 ﻿using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
         protected NLog.Logger Logger { get; private set; }
         protected T oldConfig;
         protected T newConfig;
+        protected GlobalState State { get; } = GlobalState.Instance();
         public ConfigUpdateEvent()
         {
             Logger = NLog.LogManager.GetLogger(GetType().ToString());

@@ -7,6 +7,11 @@
         public abstract void Fire();
         public int Priority { get; set; }
         public bool FireOnRegistration { get; }
+        /// <summary>
+        /// Do not call logic in the constructor, as it is called whenever a name check is performed on a module
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="fireOnRegistration"></param>
         public AutoDarkModeModule(string name, bool fireOnRegistration)
         {
             Name = name;
@@ -57,7 +62,12 @@
             return other.Priority.CompareTo(Priority);
         }
 
-        public virtual void Cleanup()
+        public virtual void DisableHook()
+        {
+
+        }
+
+        public virtual void EnableHook()
         {
 
         }
