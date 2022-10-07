@@ -380,7 +380,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 }
                 else
                 {
-                    Logger.Debug($" currently active theme: {activeThemeName}, path: {currentThemePath}");
+                    Logger.Debug($"currently active theme: {activeThemeName}, path: {currentThemePath}");
                 }
                 ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
             }
