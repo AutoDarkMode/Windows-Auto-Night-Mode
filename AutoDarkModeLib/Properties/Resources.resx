@@ -935,7 +935,7 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Theme switching is paused once!</value>
   </data>
-  <data name="ThemeSwitchSkipOnce" xml:space="preserve">
-    <value>skip once</value>
+  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
+    <value>paused once</value>
   </data>
 </root>

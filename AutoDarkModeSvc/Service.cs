@@ -16,6 +16,9 @@ using AdmProperties = AutoDarkModeLib.Properties;
 using System.Globalization;
 using System.ComponentModel;
 using AutoDarkModeSvc.Events;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using static AutoDarkModeSvc.DarkColorTable;
 
 namespace AutoDarkModeSvc
 {
@@ -37,6 +40,10 @@ namespace AutoDarkModeSvc
         public readonly ToolStripMenuItem autoThemeSwitchingItem = new();
         public readonly ToolStripMenuItem toggleThemeItem = new();
         public readonly ToolStripMenuItem pauseThemeSwitchItem = new();
+
+        private readonly ToolStripProfessionalRenderer toolStripDarkRenderer = new DarkRenderer();
+        private readonly ToolStripProfessionalRenderer toolStripDefaultRenderer = new ToolStripProfessionalRenderer();
+
         private bool closeApp = true;
 
         public Service(int timerMillis)
@@ -131,7 +138,9 @@ namespace AutoDarkModeSvc
             NotifyIcon.ContextMenuStrip.Items.Insert(0, toggleThemeItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, pauseThemeSwitchItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, autoThemeSwitchingItem);
-           
+
+            //NotifyIcon.ContextMenuStrip.ForeColor = Color.FromArgb(232, 232, 232);
+
             if (Builder.Config.Tunable.ShowTrayIcon)
             {
                 NotifyIcon.Visible = true;
@@ -140,6 +149,15 @@ namespace AutoDarkModeSvc
 
         private void UpdateCheckboxes(object sender, EventArgs e)
         {
+            if (state.LastRequestedTheme == Theme.Dark)
+            {
+                NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
+            }
+            else
+            {
+                NotifyIcon.ContextMenuStrip.Renderer = toolStripDefaultRenderer;
+            }
+
             if (state.ForcedTheme == Theme.Light)
             {
                 forceDarkMenuItem.Checked = false;
@@ -166,7 +184,7 @@ namespace AutoDarkModeSvc
                 }
                 else
                 {
-                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchSkipOnce})";
+                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchPausedOnce})";
                 }
             }
             else
@@ -443,5 +461,81 @@ namespace AutoDarkModeSvc
         private static extern bool ShowWindow(IntPtr handle, int nCmdShow);
         [System.Runtime.InteropServices.DllImport("User32.dll")]
         private static extern bool IsIconic(IntPtr handle);
+    }
+
+    public class DarkColorTable : ProfessionalColorTable
+    {
+        public override Color MenuItemBorder
+        {
+            get { return Color.FromArgb(32, 32, 32); }
+        }
+        public override Color MenuItemSelected
+        {
+            get { return Color.FromArgb(32, 32, 32); }
+        }
+
+        public override Color MenuItemSelectedGradientBegin
+        {
+            get { return Color.FromArgb(64, 64, 64); }
+        }
+        public override Color MenuItemSelectedGradientEnd
+        {
+            get { return Color.FromArgb(64, 64, 64); }
+        }
+        public override Color ToolStripDropDownBackground
+        {
+            get {return Color.FromArgb(32, 32, 32); }
+        }
+        public override Color ImageMarginGradientBegin
+        {
+            get { return Color.FromArgb(32, 32, 32); }
+        }
+        public override Color ImageMarginGradientMiddle
+        {
+            get { return Color.FromArgb(32, 32, 32); }
+        }
+        public override Color ImageMarginGradientEnd
+        {
+            get { return Color.FromArgb(32, 32, 32); }
+        }
+
+        public class DarkRenderer : ToolStripProfessionalRenderer
+        {
+            public DarkRenderer()
+                : base(new DarkColorTable())
+            {
+            }
+            protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                var r = new Rectangle(e.ArrowRectangle.Location, e.ArrowRectangle.Size);
+                r.Inflate(-2, -6);
+                e.Graphics.DrawLines(Pens.Black, new Point[]{
+                    new Point(r.Left, r.Top),
+                    new Point(r.Right, r.Top + r.Height /2),
+                    new Point(r.Left, r.Top+ r.Height)});
+            }
+
+            protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                var r = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
+                r.Inflate(-4, -6);
+                e.Graphics.DrawLines(Pens.White, new Point[]{
+                    new Point(r.Left, r.Bottom - r.Height /2),
+                    new Point(r.Left + r.Width /3,  r.Bottom),
+                    new Point(r.Right, r.Top)});
+            }
+            protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+            {
+                if (e.Item is ToolStripMenuItem)
+                {
+                    e.TextColor = Color.FromArgb(232, 232, 232);
+                }
+
+                base.OnRenderItemText(e);
+            }
+
+        }
     }
 }

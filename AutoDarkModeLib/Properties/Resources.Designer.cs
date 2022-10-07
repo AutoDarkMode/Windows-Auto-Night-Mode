@@ -1933,6 +1933,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to paused once.
+        /// </summary>
+        public static string ThemeSwitchPausedOnce {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPausedOnce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to paused until.
         /// </summary>
         public static string ThemeSwitchPausedUntil {
@@ -1956,15 +1965,6 @@ namespace AutoDarkModeLib.Properties {
         public static string ThemeSwitchPauseHeaderNoExpiry {
             get {
                 return ResourceManager.GetString("ThemeSwitchPauseHeaderNoExpiry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to skip once.
-        /// </summary>
-        public static string ThemeSwitchSkipOnce {
-            get {
-                return ResourceManager.GetString("ThemeSwitchSkipOnce", resourceCulture);
             }
         }
         

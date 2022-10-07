@@ -90,7 +90,6 @@ namespace AutoDarkModeSvc.Core
             else if (state.LastRequestedTheme == Theme.Light) newTheme = Theme.Dark;
             else newTheme = Theme.Light;
 
-            RequestSwitch(new(SwitchSource.Manual, newTheme));
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
                 if (builder.Config.Governor == Governor.Default)
@@ -112,6 +111,7 @@ namespace AutoDarkModeSvc.Core
                     else
                         state.PostponeManager.RemoveSkipNextSwitch();
                 }
+                RequestSwitch(new(SwitchSource.Manual, newTheme));
 
             }
             return newTheme;
