@@ -73,6 +73,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeLib.csproj" />
+    <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
   </ItemGroup>
 </Project>

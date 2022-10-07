@@ -133,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
-    <ProjectReference Include="..\AutoDarkModeConfig\AutoDarkModeLib.csproj" />
+    <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
   </ItemGroup>
 
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
