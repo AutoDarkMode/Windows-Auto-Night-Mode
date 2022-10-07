@@ -14,6 +14,7 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static bool darkThemeOnBatteryEnabled;
         private static bool resumeEventEnabled;
+        private static GlobalState state = GlobalState.Instance();
 
         public static void RegisterThemeEvent()
         {
@@ -80,8 +81,14 @@ namespace AutoDarkModeSvc.Handlers
         {
             if (e.Reason == SessionSwitchReason.SessionUnlock)
             {
+                
                 Logger.Info("system unlocked, refreshing theme");
+                state.PostponeManager.Remove(new("SessionLock"));
                 ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+            }
+            else if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                state.PostponeManager.Add(new("SessionLock"));
             }
         }
 
