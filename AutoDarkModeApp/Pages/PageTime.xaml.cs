@@ -329,7 +329,7 @@ namespace AutoDarkModeApp.Pages
             }
             if (postpone)
             {
-
+                StackPanelPostponeInfo.Visibility = Visibility.Visible;
             }
             else
             {
