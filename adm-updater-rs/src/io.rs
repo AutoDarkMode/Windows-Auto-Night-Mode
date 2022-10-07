@@ -133,7 +133,8 @@ pub fn is_whitelisted(entry: &Path) -> bool {
     };
 
     let entry_string = entry.display().to_string();
-    let matches = whitelist.iter().any(|e| entry_string.ends_with(e));
+    let entry_string_lowercase = entry_string.to_lowercase();
+    let matches = whitelist.iter().any(|e| entry_string_lowercase.ends_with(&e.to_lowercase()));
     if !matches {
         warn!("found non-whitelisted entity in adm directory: {}", entry.display());
     }
