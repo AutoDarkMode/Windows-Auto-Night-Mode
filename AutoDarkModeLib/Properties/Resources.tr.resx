@@ -898,4 +898,46 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Temayı değiştir</value>
   </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Sürüm bilgisi panoya kopyalandı</value>
+  </data>
+  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+    <value>Otomatik değiştirmeyi bir kez atla</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPU izleme modülü</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Erteleme bilgisi</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Otomatik tema değiştirme etkin</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Devam et</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Sistem boşta denetleyicisi</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Otomatik değiştirme duraklatma modülü</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Aşağıdaki modüller nedeniyle otomatik tema değiştirme şu anda duraklatılmıştır:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Devam etme, sadece sona erme süresi olan ertelemeler için işe yarar</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Windows gece ışığını takip et</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Windows gece ışığını takip et</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Tema değiştirme bir kez duraklatıldı!</value>
+  </data>
+  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
+    <value>bir kez duraklatıldı</value>
+  </data>
 </root>
