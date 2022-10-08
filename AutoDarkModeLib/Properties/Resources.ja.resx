@@ -225,7 +225,7 @@
     <value>こんにちは</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>チェックボックスを有効にすると、自動のテーマ切替を有効にします</value>
+    <value>ここで設定を変更すると、テーマ自動切り替えの動作を変更します。</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>翻訳者: maboroshin</value>
@@ -808,20 +808,20 @@
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
     <value>無効中にのみ使用するホットキーを変更できます。</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>ダークモードに変更するホットキー</value>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>ダークモードに変更する</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>ライトモードに変更するホットキー</value>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>ライトモードに変更する</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>ホットキー</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>テーマの変更を中止するホットキー</value>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>テーマの変更を中止する</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>システム全体でのホットキーを使用</value>
+    <value>システム全体でホットキーを有効化</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
     <value>ダークテーマに変更</value>
@@ -850,5 +850,92 @@
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
     <value>タイトルバーとウィンドウの枠線のアクセントカラー</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>バージョン情報をクリップボードにコピーしました</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切り替え</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>切り替え時に通知を表示</value>
+  </data>
+  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+    <value>自動切替を一回行わない</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPUモニターモジュール</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>自動切替停止モジュール</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>システムアイドルチェッカー</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>ボタンを押すと、ただちにテーマ切替を試行します。</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>この操作を戻すには次のボタンをクリック</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切り替えをオンオフ</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>自動切替を無効にする</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>次回の切り替えを行わない</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>代わりに自動切替を無効にしますか？</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>以前のテーマに戻した場合、自動切替も再開されます。</value>
+  </data>
+  <data name="ThemeSwitchPaused" xml:space="preserve">
+    <value>切り替えの再開は</value>
+  </data>
+  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
+    <value>次の時間まで停止</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>テーマ切り替えを次の時間まで停止</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>テーマの自動切り替えは現在、次のモジュールが原因で停止されています:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>再開は、期限がある延期でのみ可能です</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>延期情報</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>テーマを切り替える</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>テーマの自動切替は有効</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Windows の夜間モードに従う</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Windows の夜間モードに従う</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>テーマの切り替えは一回停止されています！</value>
+  </data>
+  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
+    <value>一回停止</value>
   </data>
 </root>
