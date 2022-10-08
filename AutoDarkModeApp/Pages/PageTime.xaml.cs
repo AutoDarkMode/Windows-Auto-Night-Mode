@@ -18,6 +18,7 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using System.Resources;
+using System.Threading;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -30,7 +31,7 @@ namespace AutoDarkModeApp.Pages
         private bool init = true;
         private bool reload = false;
         private delegate void DispatcherDelegate();
-        private Timer postponeRefreshTimer = new();
+        private System.Timers.Timer postponeRefreshTimer = new();
         private FileSystemWatcher ConfigWatcher { get; }
 
         public PageTime()
@@ -135,8 +136,11 @@ namespace AutoDarkModeApp.Pages
                                 if (i.Expiry == null) anyNoExpiry = true;
                                 if (i.Reason == Helper.SkipSwitchPostponeItemName) autoPause = true;
 
+                                i.SetCulture(Thread.CurrentThread.CurrentCulture);
+
                                 // retrieve the value of the specified key
                                 i.TranslatedReason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
+                                
                                 return i.ToString();
                             }).ToList();
                             Dispatcher.Invoke(() =>

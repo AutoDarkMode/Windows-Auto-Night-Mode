@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -404,7 +404,7 @@ Falls diese Hilfestellungen nicht geholfen haben, kannst du das GitHub-Issue kom
     <value>Wiederhole den Vorgang für das dunkle Design.</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert. 
+    <value>Während der Nutzung des Windows Designwechsels ist diese Option deaktiviert.
 Du kannst sie individuell in deinem Windows Design ändern.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
@@ -482,7 +482,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
     <value>Ein Fehler ist beim Anwenden der .Theme-Datei aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren. Vielleicht wurde die Datei gelöscht oder verschoben. Um die Funktion zu reaktivieren besuche bitte die {0} Einstellungen.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Folgender Fehler ist aufgetreten: 
+    <value>Folgender Fehler ist aufgetreten:
 {0}
 
 Wir versuchen ihn nun zu beheben, indem wir einen Algorithmus als Administrator ausführen. Vielleicht gelingt es uns, das Problem zu lösen!
@@ -688,9 +688,6 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Konfigurationsordner Öffnen</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
   <data name="WallpaperColor" xml:space="preserve">
     <value>Farbe</value>
   </data>
@@ -819,5 +816,104 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>Systemtray-Icon verstecken</value>
+  </data>
+ <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Akzentfarbe für Titelleiste und Fensterränder</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Versionsinfo wurde kopiert</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatischer Themenwechsel</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Zeige Benachrichtung beim Umschalten</value>
+  </data>
+  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+    <value>Auto-Wechsel einmalig aussetzen</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPU Überwachungsmodul</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Auto-Pause Modul</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>System Inaktivitätschecker</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Bestätige, um sofort das Design zu wechseln!</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Fortsetzen</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Mache die Änderung rückgängig, indem du die Schaltfläche unten selektierst.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>Tastenkombination</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Auto-Wechsel an/ausschalten</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Auto-Wechsel ausschalten </value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Nächsten Wechsel aussetzen</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Möchtest du stattdessen den Auto-Wechsel deaktiveren?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Der Auto-Wechsel wird auch wieder aktiviert, wenn du zu deinem vorherigen Design zurückkehrst.</value>
+  </data>
+  <data name="ThemeSwitchPaused" xml:space="preserve">
+    <value>Auto-Wechsel fortsetzen</value>
+  </data>
+  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
+    <value>pausiert bis</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Designwechsel pausiert bis</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Der Auto-Wechsel ist zurzeit wegen den folgenden Modulen pausiert:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Fortsetzen funktioniert nur bei Modulen, die eine Ablaufzeit haben</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Designwechsel Pause</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Design umschalten</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Auto-Wechsel ist aktiviert</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>So wie Windows Nachtlicht</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>So wie Windows Nachtlicht</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Auto-Wechsel ist einmalig pausiert!</value>
+  </data>
+  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
+    <value>einmalig pausiert</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>verzögert bis</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>verzögert bis dessen Kondition eintrifft</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
+    <value>verzögert bis zum nächsten Wechsel (mit Ablaufzeit)</value>
   </data>
 </root>

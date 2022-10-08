@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -40,6 +41,7 @@ namespace AutoDarkModeLib
         public string TranslatedReason { get; set; }
         public DateTime? Expiry { get; set; }
         public PostponeItemDto() { }
+        private CultureInfo Culture { get; set; }
 
         public PostponeItemDto(string reason, DateTime? expiry = null)
         {
@@ -47,17 +49,26 @@ namespace AutoDarkModeLib
             Expiry = expiry;
         }
 
+        public void SetCulture(CultureInfo info)
+        {
+            Culture = info;
+        }
+
         public override string ToString()
         {
-            if (TranslatedReason != null && (TranslatedReason.Length > 0 || TranslatedReason == Reason))
+            if (TranslatedReason != null && (TranslatedReason.Length == 0 || TranslatedReason == Reason))
             {
                 string[] split = Regex.Split(Reason, @"(?<!^)(?=[A-Z])");
                 TranslatedReason = string.Join(" ", split);
             }
 
-            if (Expiry != null) return $"{TranslatedReason} {Resources.PostponeReasonPostponesUntil} {Expiry:HH:mm}";
-            else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} {Resources.PostponeReasonPostponesUntilNextSwitch}";
-            return $"{TranslatedReason} {Resources.PostponeReasonPostponesUntilCondition}";
+            string postponeReasonPostponesUntil = Resources.ResourceManager.GetString("PostponeReasonPostponesUntil", Culture);
+            string postponeReasonPostponesUntilNextSwitch = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilNextSwitch", Culture);
+            string postponeReasonPostponesUntilCondition = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilCondition", Culture);
+
+            if (Expiry != null) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
+            else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
+            return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";
         }
     }
 }
