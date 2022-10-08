@@ -384,7 +384,7 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
     <value>Şu an:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Koyun mod için arka plan</value>
+    <value>Koyu mod için arka plan</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Sil/Devre dışı bırak</value>
@@ -423,8 +423,8 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
     <value>Üzgünüz, ayarlarınızı kaydedemedik!</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Yalnızca karanlık modda görülebilir.
-Bir sorunla karşılaşırsanız lütfen ayarlardan değiştirme gecikmesini artırın.</value>
+    <value>Sadece koyu modda görünür.
+Sorunla yaşarsanız lütfen ayarlardan değiştirme gecikmesini artırın.</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Bağlı Bekleme Modundan sonra değişim yap (önerilmez)</value>
@@ -466,7 +466,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Tema ayarlarına geri dönün ve temanızı kaydedin.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Karanlık mod için bu işlemleri tekrarlayın.</value>
+    <value>Koyu mod için bu işlemleri tekrarlayın.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Görev çubuğu renklerini değiştirmek için gecikme (ms):</value>
@@ -818,13 +818,13 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Temadayken Görev Çubuğu Vurgu Rengi'ni kullan</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Yalnızca vurgu</value>
+    <value>Sadece vurgu</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
     <value>Windows aracılığıyla otomatik başlatma girişini devre dışı bıraktınız.</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Kısayol tuşlarını yalnızca devre dışı bırakılmışken düzenleyebilirsiniz.</value>
+    <value>Kısayol tuşlarını sadece devre dışı bırakılmışken düzenleyebilirsiniz.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
     <value>Tema zorlamayı durdur</value>
@@ -897,5 +897,47 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Temayı değiştir</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Sürüm bilgisi panoya kopyalandı</value>
+  </data>
+  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+    <value>Otomatik değiştirmeyi bir kez atla</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPU izleme modülü</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Erteleme bilgisi</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Otomatik tema değiştirme etkin</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Devam et</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Sistem boşta denetleyicisi</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Otomatik değiştirme duraklatma modülü</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Aşağıdaki modüller nedeniyle otomatik tema değiştirme şu anda duraklatılmıştır:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Devam etme, sadece sona erme süresi olan ertelemeler için işe yarar</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Windows gece ışığını takip et</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Windows gece ışığını takip et</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Tema değiştirme bir kez duraklatıldı!</value>
+  </data>
+  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
+    <value>bir kez duraklatıldı</value>
   </data>
 </root>
