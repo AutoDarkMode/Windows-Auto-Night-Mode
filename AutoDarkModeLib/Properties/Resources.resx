@@ -938,4 +938,13 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchPausedOnce" xml:space="preserve">
     <value>paused once</value>
   </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>postpones until</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>postpones until its condition is met</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
+    <value>postpones until next switch (expires)</value>
+  </data>
 </root>

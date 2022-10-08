@@ -1158,6 +1158,33 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to postpones until.
+        /// </summary>
+        public static string PostponeReasonPostponesUntil {
+            get {
+                return ResourceManager.GetString("PostponeReasonPostponesUntil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to postpones until its condition is met.
+        /// </summary>
+        public static string PostponeReasonPostponesUntilCondition {
+            get {
+                return ResourceManager.GetString("PostponeReasonPostponesUntilCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to postpones until next switch (expires).
+        /// </summary>
+        public static string PostponeReasonPostponesUntilNextSwitch {
+            get {
+                return ResourceManager.GetString("PostponeReasonPostponesUntilNextSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System idle checker.
         /// </summary>
         public static string PostponeReasonSystemIdleCheckModule {

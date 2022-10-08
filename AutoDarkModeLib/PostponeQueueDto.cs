@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization.NamingConventions;
+using Resources = AutoDarkModeLib.Properties.Resources;
 
 namespace AutoDarkModeLib
 {
@@ -54,9 +55,9 @@ namespace AutoDarkModeLib
                 TranslatedReason = string.Join(" ", split);
             }
 
-            if (Expiry != null) return $"{TranslatedReason} postpones until {Expiry:HH:mm}";
-            else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} postpones until next switch (expires)";
-            return $"{TranslatedReason} postpones until its condition is met";
+            if (Expiry != null) return $"{TranslatedReason} {Resources.PostponeReasonPostponesUntil} {Expiry:HH:mm}";
+            else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} {Resources.PostponeReasonPostponesUntilNextSwitch}";
+            return $"{TranslatedReason} {Resources.PostponeReasonPostponesUntilCondition}";
         }
     }
 }
