@@ -903,7 +903,7 @@
     <value>以前のテーマに戻した場合、自動切替も再開されます。</value>
   </data>
   <data name="ThemeSwitchPaused" xml:space="preserve">
-    <value>切り替えの再開は</value>
+    <value>切替の再開</value>
   </data>
   <data name="ThemeSwitchPausedUntil" xml:space="preserve">
     <value>次の時間まで停止</value>
@@ -921,7 +921,7 @@
     <value>延期情報</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>テーマを切り替える</value>
+    <value>テーマを切り替え</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>テーマの自動切替は有効</value>
