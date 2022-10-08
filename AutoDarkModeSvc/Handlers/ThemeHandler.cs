@@ -7,6 +7,7 @@ using AutoDarkModeSvc.Monitors;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Core;
+using System.Threading.Tasks;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -67,6 +68,10 @@ namespace AutoDarkModeSvc.Handlers
             {
                 PowerHandler.RequestDisableEnergySaver(config);
                 Apply(config.WindowsThemeMode.DarkThemePath);
+                Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
+                {
+                    state.CurrentWindowsThemeName = GetCurrentThemeName();
+                });
                 return true;
             }
             else if (newTheme == Theme.Light && (skipCheck || 
@@ -74,6 +79,10 @@ namespace AutoDarkModeSvc.Handlers
             {
                 PowerHandler.RequestDisableEnergySaver(config);
                 Apply(config.WindowsThemeMode.LightThemePath);
+                Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
+                {
+                    state.CurrentWindowsThemeName = GetCurrentThemeName();
+                });
                 return true;
             }
             return false;
@@ -139,7 +148,33 @@ namespace AutoDarkModeSvc.Handlers
         }
         public static string GetCurrentThemeName()
         {
-            return new ThemeManagerClass().CurrentTheme.DisplayName;
+            string themeName = "";/*Exception applyEx = null;*/
+            Thread thread = new(() =>
+            {
+                try
+                {
+                    themeName = new ThemeManagerClass().CurrentTheme.DisplayName;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not retrieve active theme name");
+                    //applyEx = ex;
+                }
+            })
+            {
+                Name = "COMThemeManagerThread"
+            };
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            try
+            {
+                thread.Join();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "theme handler thread was interrupted");
+            }
+            return themeName;
         }
 
         public static void Apply(string themeFilePath, bool suppressLogging = false)

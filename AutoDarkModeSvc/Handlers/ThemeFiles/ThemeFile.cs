@@ -340,32 +340,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         {
             try
             {
-                string activeThemeName = "";
+                string activeThemeName = ThemeHandler.GetCurrentThemeName();
                 /*Exception applyEx = null;*/
-                Thread thread = new(() =>
-                {
-                    try
-                    {
-                        activeThemeName = ThemeHandler.GetCurrentThemeName();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, $"could not read active theme name");
-                    }
-                })
-                {
-                    Name = "COMThemeManagerThreadThemeName"
-                };
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
-                try
-                {
-                    thread.Join();
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "theme handler thread was interrupted");
-                }
 
                 string currentThemePath = RegistryHandler.GetActiveThemePath();
                 ThemeFile tempTheme = new(currentThemePath);
