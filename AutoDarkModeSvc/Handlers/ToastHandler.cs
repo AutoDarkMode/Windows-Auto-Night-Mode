@@ -60,7 +60,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Program.ActionQueue.Add(() =>
                 {
-                    string currentAutoThemeSwitchState = configBuilder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
+                    string currentAutoThemeSwitchState = configBuilder.Config.AutoThemeSwitchingEnabled ? AdmProperties.Resources.enabled.ToLower() : AdmProperties.Resources.disabled.ToLower();
                     string toastText = $"{AdmProperties.Resources.RevertAction}";
 
                     ToastContentBuilder tcb = new ToastContentBuilder()

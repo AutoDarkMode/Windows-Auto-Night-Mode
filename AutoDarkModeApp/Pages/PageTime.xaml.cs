@@ -172,6 +172,7 @@ namespace AutoDarkModeApp.Pages
                                 //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
                                 ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
                                 TextBlockPostponeInfo.Text = AdmProperties.Resources.TimePagePostponeInfoNominal;
+                                TextBlockResumeInfo.Visibility = Visibility.Collapsed;
                             });
                         }
 
