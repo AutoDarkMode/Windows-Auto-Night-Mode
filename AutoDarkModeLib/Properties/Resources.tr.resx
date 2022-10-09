@@ -940,4 +940,13 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="ThemeSwitchPausedOnce" xml:space="preserve">
     <value>bir kez duraklatıldı</value>
   </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>şu saate kadar erteledi:</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>koşul sağlanana kadar erteledi</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
+    <value>bir sonraki değişime kadar erteledi (süresi dolana kadar)</value>
+  </data>
 </root>
