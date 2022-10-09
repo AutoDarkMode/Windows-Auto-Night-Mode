@@ -861,13 +861,13 @@
     <value>切り替え時に通知を表示</value>
   </data>
   <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
-    <value>自動切替を一回行わない</value>
+    <value>一回自動切替しない</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPUモニターモジュール</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>自動切替停止モジュール</value>
+    <value>自動切替モジュールを停止</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
     <value>システムアイドルチェッカー</value>
@@ -921,7 +921,7 @@
     <value>延期情報</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>テーマを切り替え</value>
+    <value>テーマを切り替える</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>テーマの自動切替は有効</value>
@@ -937,5 +937,14 @@
   </data>
   <data name="ThemeSwitchPausedOnce" xml:space="preserve">
     <value>一回停止</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>次の時間まで延期</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>条件に合うまで延期</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
+    <value>次回の切り替えまで延期 (expires)</value>
   </data>
 </root>
