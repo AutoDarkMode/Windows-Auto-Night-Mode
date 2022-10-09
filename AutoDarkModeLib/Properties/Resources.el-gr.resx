@@ -848,4 +848,103 @@
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Λεπτά μέχρι να θεωρείται ότι το σύστημα βρίσκεται σε αδράνεια</value>
   </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Χρώμα έμφασης στις γραμμές τίτλου και τα περιγράμματα παραθύρων</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Οι πληροφορίες έκδοσης αντιγράφηκαν στο πρόχειρο</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Αυτόματη εναλλαγή θεματος</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Εμφάνιση ειδοποίησης κατά την ενεργοποίηση/απενεργοποίηση </value>
+  </data>
+  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+    <value>Παράλειψη αυτόματης εναλλαγής μία φορά</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>Μονάδα παρακολούθησης GPU</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Παύση της μονάδας αυτόματης εναλλαγής</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Ελεγχος αδράνειας συστήματος</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Πατήστε επιβεβαίωση για να γίνει εναλλαγή θέματος τώρα.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Συνέχιση</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Ακυρώστε αυτήν την ενέργεια κάνοντας κλικ στο κουμπί αναίρεσης παρακάτω.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>πλήκτρο συντόμευσης</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση αυτόματης εναλλαγής θέματος</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Απενεργοποίηση αυτόματης εναλλαγής</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Αναίρεση</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Παράλειψη επόμενης εναλλαγής</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Θα θέλατε αντί για αυτό να απενεργοποιήσετε την αυτόματη εναλλαγή;</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θα συνεχιστεί επίσης εάν επιστρέψετε στο προηγούμενο θέμα σας.</value>
+  </data>
+  <data name="ThemeSwitchPaused" xml:space="preserve">
+    <value>Συνέχιση εναλλαγής</value>
+  </data>
+  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
+    <value>σε πάυση μέχρι</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Η εναλλαγή θεμάτων είναι σε πάυση μέχρι</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Αυτήν τη στιγμή, η αυτόματη εναλλαγή θέματος έχει τεθεί σε παύση λόγω των ακόλουθων μονάδων:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Η συνέχιση θα λειτουργήσει μόνο για αναβολές που έχουν χρόνο λήξης</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Πληροφορίες</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση θέματος</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θέματος είναι ενεργοποιημένη</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Παρακολούθηση νυχτερινού φωτισμού των Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Παρακολούθηση νυχτερινού φωτισμού των Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Η εναλλαγή θέματος τέθηκε σε παύση για μία φορά!</value>
+  </data>
+  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
+    <value>σε παύση για μία φορά</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>αναβολή μέχρι</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>αναβολή μέχρι να ικανοποιείται η συνθήκη του</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
+    <value>αναβολή μέχρι την επόμενη αλλαγή (λήγει)</value>
+  </data>
 </root>
