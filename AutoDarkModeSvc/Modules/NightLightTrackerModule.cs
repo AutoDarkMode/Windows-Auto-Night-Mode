@@ -23,7 +23,6 @@ namespace AutoDarkModeSvc.Modules
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool queuePostponeRemove = false;
-        private bool notified = false;
 
         public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -40,20 +39,15 @@ namespace AutoDarkModeSvc.Modules
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
             }
 
-            if (builder.Config.AutoSwitchNotify.Enabled)
+            if (builder.Config.AutoSwitchNotify.Enabled && !init)
             {
-                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-Math.Abs(-2)).TimeOfDay, adjustedTime.TimeOfDay))
+                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-2).TimeOfDay, adjustedTime.AddSeconds(10).TimeOfDay))
                 {
-                    if (!notified)
+                    if (state.PostponeManager.Get(Helper.DelayGracePeriodItemName) == null)
                     {
                         state.PostponeManager.Add(new(Helper.DelayGracePeriodItemName, DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
                         ToastHandler.InvokeDelayAutoSwitchNotificationToast();
-                        notified = true;
                     }
-                }
-                else if (notified)
-                {
-                    notified = false;
                 }
             }
 
