@@ -910,5 +910,10 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "RadioButtonWindowsNightLight_Click");
             }
         }
+
+        private async void ButtonOpenNightLightSettings_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
+        }
     }
 }

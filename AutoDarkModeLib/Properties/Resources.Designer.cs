@@ -2113,6 +2113,24 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Night light.
+        /// </summary>
+        public static string TimePageNightLightHeader {
+            get {
+                return ResourceManager.GetString("TimePageNightLightHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open night light settings.
+        /// </summary>
+        public static string TimePageOpenNightLight {
+            get {
+                return ResourceManager.GetString("TimePageOpenNightLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto theme switching is currently paused due to the following modules:.
         /// </summary>
         public static string TimePagePostponeInfo {

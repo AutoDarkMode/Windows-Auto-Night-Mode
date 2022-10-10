@@ -34,6 +34,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="50" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -81,9 +82,26 @@
                          Click="RadioButtonWindowsNightLight_Click" />
         </StackPanel>
 
+        <ui:SimpleStackPanel Name="GridNightLight" Margin="0,0,0,0" Grid.Row="5" Grid.Column="1">
+
+            <TextBlock Name="TextBlockNightLightHeader"
+                       Grid.Row="0"
+                       Margin="0,0,0,0"
+                       Text="{x:Static p:Resources.TimePageNightLightHeader}"
+                       FontFamily="Segoe UI Semibold"
+                       FontSize="20" />
+
+            <Button x:Name="ButtonOpenNightLightSettings"
+                    Content="{x:Static p:Resources.TimePageOpenNightLight}"
+                    VerticalAlignment="Bottom"
+                    MinWidth="150"
+                    Margin="0,10,0,0"
+                    Click="ButtonOpenNightLightSettings_Click" />
+        </ui:SimpleStackPanel>
+
         <!-- Time selection -->
         <Grid Name="GridTimePicker"
-              Grid.Row="5"
+              Grid.Row="6"
               Grid.Column="1"
               Margin="0,0,0,0"
               Height="Auto"
@@ -142,7 +160,7 @@
         <!-- Location -->
         <!--<CheckBox Grid.Row="5" Grid.Column="1" x:Name="locationCheckBox" Foreground="{DynamicResource SystemBaseHighColorBrush}" Content="{x:Static p:Resources.locationCheckBox}" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" Height="15" Width="Auto"/> -->
         <Grid Name="GridLocationTimeInfo"
-              Grid.Row="6"
+              Grid.Row="7"
               Grid.Column="1"
               Margin="0,0,0,0">
 
@@ -207,7 +225,7 @@
 
         <!-- Geographic Coordinates  -->
         <Grid Name="GridCoordinates"
-              Grid.Row="7"
+              Grid.Row="8"
               Grid.Column="1"
               Margin="0,0,0,0">
 
@@ -307,7 +325,7 @@
 
         <!-- Offset -->
         <Grid Name="GridOffset"
-              Grid.Row="8"
+              Grid.Row="9"
               Grid.Column="1"
               Margin="0,0,0,0">
 
@@ -378,7 +396,7 @@
         </Grid>
 
         <!-- Info -->
-        <TextBlock Grid.Row="9"
+        <TextBlock Grid.Row="10"
                    Grid.Column="1"
                    Margin="0,30,0,0"
                    Text="{x:Static p:Resources.info}"
@@ -386,14 +404,14 @@
                    FontSize="20"
                    Height="Auto"
                    Width="Auto" />
-        <TextBlock Grid.Row="10"
+        <TextBlock Grid.Row="11"
                    Grid.Column="1"
                    x:Name="userFeedback"
                    Margin="0,10,0,0"
                    Text="{x:Static p:Resources.userFeedback}"
                    FontSize="14" />
 
-        <ui:SimpleStackPanel Grid.Row="11"
+        <ui:SimpleStackPanel Grid.Row="12"
                              Grid.Column="1"
                              Name="StackPanelPostponeInfo">
 
@@ -431,7 +449,7 @@
 
         <!-- Help -->
         <TextBlock Name="TextBlockHelpWiki"
-                   Grid.Row="12"
+                   Grid.Row="13"
                    Grid.Column="1"
                    Margin="0,25,0,0"
                    Text="{x:Static p:Resources.tbHelp}"
