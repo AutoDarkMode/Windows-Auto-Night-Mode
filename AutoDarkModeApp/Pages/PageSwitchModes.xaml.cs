@@ -63,8 +63,8 @@ namespace AutoDarkModeApp.Pages
             HotkeyTextboxToggleAutomaticThemeSwitch.Text = builder.Config.Hotkeys.ToggleAutoThemeSwitch ?? "";
             HotkeyTextboxToggleTheme.Text = builder.Config.Hotkeys.ToggleTheme ?? "";
             HotkeyTextboxTogglePostpone.Text = builder.Config.Hotkeys.TogglePostpone ?? "";
-            HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Hotkeys.AutoThemeSwitchingNotification;
-            HotkeyCheckboxTogglePostpone.IsChecked = builder.Config.Hotkeys.AutoThemeSwitchingNotification;
+            HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Notifications.OnAutoThemeSwitching;
+            HotkeyCheckboxTogglePostpone.IsChecked = builder.Config.Notifications.OnSkipNextSwitch;
 
 
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
@@ -341,11 +341,11 @@ namespace AutoDarkModeApp.Pages
         {
             if (HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked.Value)
             {
-                builder.Config.Hotkeys.AutoThemeSwitchingNotification = true;
+                builder.Config.Notifications.OnAutoThemeSwitching = true;
             }
             else
             {
-                builder.Config.Hotkeys.AutoThemeSwitchingNotification = false;
+                builder.Config.Notifications.OnAutoThemeSwitching = false;
             }
             try
             {
@@ -399,11 +399,11 @@ namespace AutoDarkModeApp.Pages
         {
             if (HotkeyCheckboxTogglePostpone.IsChecked.Value)
             {
-                builder.Config.Hotkeys.PostponeNotification= true;
+                builder.Config.Notifications.OnSkipNextSwitch = true;
             }
             else
             {
-                builder.Config.Hotkeys.PostponeNotification = false;
+                builder.Config.Notifications.OnSkipNextSwitch  = false;
             }
             try
             {

@@ -333,7 +333,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region ClearPostponeQueue
                     case Command.ClearPostponeQueue:
-                        state.PostponeManager.ClearQueue();
+                        state.PostponeManager.RemoveAllManualPostpones();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok
@@ -409,15 +409,13 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test2
                     case Command.Test2:
-                        bool rest2 = state.PostponeManager.Remove("testpostpone");
+                        ToastHandler.InvokeDelayAutoSwitchNotificationToast();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,
-                            Message = rest2.ToString()
                         }.ToString());
                         break;
                     #endregion
-
 
                     default:
                         Logger.Debug("unknown message received");

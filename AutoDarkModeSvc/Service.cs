@@ -174,31 +174,40 @@ namespace AutoDarkModeSvc
                 forceLightMenuItem.Checked = false;
             }
             autoThemeSwitchingItem.Checked = builder.Config.AutoThemeSwitchingEnabled;
-            pauseThemeSwitchItem.Checked = state.PostponeManager.IsSkipNextSwitch;
 
             if (builder.Config.AutoThemeSwitchingEnabled) pauseThemeSwitchItem.Visible = true;
             else pauseThemeSwitchItem.Visible = false;
 
-            (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-            if (expiry.Year != 1)
+            PostponeItem tempDelay = state.PostponeManager.Get(Helper.DelaySwitchItemName);
+            if (tempDelay != null && !state.PostponeManager.IsSkipNextSwitch)
             {
-                pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
+                pauseThemeSwitchItem.Checked = true;
+                pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {tempDelay.Expiry:HH:mm})";
             }
             else
             {
-                if (skipType == SkipType.Sunrise)
+                pauseThemeSwitchItem.Checked = state.PostponeManager.IsSkipNextSwitch;
+                (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
+                if (expiry.Year != 1)
                 {
-                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
-                }
-                else if (skipType == SkipType.Sunset)
-                {
-                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
+                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
                 }
                 else
                 {
-                    pauseThemeSwitchItem.Text = AdmProperties.Resources.ThemeSwitchPause;
+                    if (skipType == SkipType.Sunrise)
+                    {
+                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
+                    }
+                    else if (skipType == SkipType.Sunset)
+                    {
+                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
+                    }
+                    else
+                    {
+                        pauseThemeSwitchItem.Text = AdmProperties.Resources.ThemeSwitchPause;
+                    }
                 }
-            }
+            }           
         }
 
         private void Exit(object sender, EventArgs e)
@@ -257,9 +266,9 @@ namespace AutoDarkModeSvc
 
         public void PauseThemeSwitch(object sender, EventArgs e)
         {
-            if (state.PostponeManager.IsSkipNextSwitch)
+            if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.Get(Helper.DelaySwitchItemName) != null)
             {
-                state.PostponeManager.RemoveSkipNextSwitch();
+                state.PostponeManager.RemoveAllManualPostpones();
                 ThemeManager.RequestSwitch(new(SwitchSource.Manual));
             }
             else

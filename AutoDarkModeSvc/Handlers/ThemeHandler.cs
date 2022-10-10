@@ -67,22 +67,36 @@ namespace AutoDarkModeSvc.Handlers
                 !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal)))
             {
                 PowerHandler.RequestDisableEnergySaver(config);
-                Apply(config.WindowsThemeMode.DarkThemePath);
-                Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
+                if (config.WindowsThemeMode.MonitorActiveTheme)
                 {
-                    state.CurrentWindowsThemeName = GetCurrentThemeName();
-                });
+                    WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
+                }
+                Apply(config.WindowsThemeMode.LightThemePath);
+                if (!config.WindowsThemeMode.MonitorActiveTheme)
+                {
+                    Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
+                    {
+                        state.CurrentWindowsThemeName = GetCurrentThemeName();
+                    });
+                }
                 return true;
             }
             else if (newTheme == Theme.Light && (skipCheck || 
                 !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal)))
             {
                 PowerHandler.RequestDisableEnergySaver(config);
-                Apply(config.WindowsThemeMode.LightThemePath);
-                Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
+                if (config.WindowsThemeMode.MonitorActiveTheme)
                 {
-                    state.CurrentWindowsThemeName = GetCurrentThemeName();
-                });
+                    WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
+                }
+                Apply(config.WindowsThemeMode.LightThemePath);
+                if (!config.WindowsThemeMode.MonitorActiveTheme)
+                {
+                    Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
+                    {
+                        state.CurrentWindowsThemeName = GetCurrentThemeName();
+                    });
+                }
                 return true;
             }
             return false;

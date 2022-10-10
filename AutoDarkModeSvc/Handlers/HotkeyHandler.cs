@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
+using System.Globalization;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -85,7 +86,7 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         if (state.PostponeManager.IsSkipNextSwitch)
                         {
-                            state.PostponeManager.RemoveSkipNextSwitch();
+                            state.PostponeManager.RemoveAllManualPostpones();
                             ToastHandler.InvokePauseNotificationToast();
                             Task.Delay(TimeSpan.FromSeconds(2)).ContinueWith(o => ThemeManager.RequestSwitch(new(SwitchSource.Manual)));
                         }
@@ -167,11 +168,13 @@ namespace AutoDarkModeSvc.Handlers
             string[] splitKeys = hotkeyString.Split("+");
             KeysConverter converter = new();
             List<Keys> keys = new();
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en");
             foreach (string keyString in splitKeys)
             {
                 Keys key = (Keys)converter.ConvertFromInvariantString(keyString);
                 keys.Add(key);
             }
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(builder.Config.Tunable.UICulture);
             return keys;
         }
 

@@ -20,6 +20,8 @@ namespace AutoDarkModeLib
             Updater = new();
             Hotkeys = new();
             IdleChecker = new();
+            Notifications = new();
+            Postpone = new();
 
             // New Component Settings;
             AppsSwitch = new();
@@ -42,10 +44,24 @@ namespace AutoDarkModeLib
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
+        public Notifications Notifications { get; set; }
+        public Postpone Postpone { get; set; }
         public Hotkeys Hotkeys { get; set; }
         public IdleChecker IdleChecker { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public Updater Updater { get; set; }
+    }
+
+    public class Postpone
+    {
+        public bool AutoSwitchNotify { get; set; } = false;
+        public int GracePeriodMinutes { get; set; } = 5;
+    }
+
+    public class Notifications
+    {
+        public bool OnAutoThemeSwitching { get; set; } = true;
+        public bool OnSkipNextSwitch { get; set; } = true;
     }
 
     public class IdleChecker
@@ -63,8 +79,6 @@ namespace AutoDarkModeLib
         public string ToggleTheme { get; set; }
         public string TogglePostpone { get; set; }
         public string ToggleAutoThemeSwitch { get; set; }
-        public bool AutoThemeSwitchingNotification { get; set; } = true;
-        public bool PostponeNotification { get; set; } = true;
     }
 
     public class Addons

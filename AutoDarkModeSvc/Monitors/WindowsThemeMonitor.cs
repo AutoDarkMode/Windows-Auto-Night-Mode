@@ -63,6 +63,19 @@ namespace AutoDarkModeSvc.Monitors
             }
         }
 
+        public static void PauseThemeMonitor(TimeSpan timeSpan)
+        {
+            if (globalThemeEventWatcher != null)
+            {
+                globalThemeEventWatcher.Stop();
+                Task.Delay(timeSpan).ContinueWith(e =>
+                {
+                    if (globalThemeEventWatcher != null)
+                        globalThemeEventWatcher.Start();
+                });
+            }
+        }
+
         public static void StopThemeMonitor()
         {
             try

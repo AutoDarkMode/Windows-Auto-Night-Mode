@@ -51,6 +51,14 @@ namespace AutoDarkModeSvc.Core
                 return false;
             }
             PostponeQueue.Add(item);
+            try
+            {
+                item.StartExpiry();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Logger.Error(ex, $"failed adding {item.Reason} postpone item to queue: ");
+            }
             Logger.Debug($"added {item} to postpone queue: [{string.Join(", ", PostponeQueue)}]");
             return true;
         }
@@ -99,23 +107,35 @@ namespace AutoDarkModeSvc.Core
             return PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
         }
 
+        public PostponeItem Get(string reason)
+        {
+            return PostponeQueue.Where(x => x.Reason == reason).FirstOrDefault();
+        }
+
         /// <summary>
         /// Toggles the skip next switch feature off or on
         /// </summary>
         /// <returns>True if it was turned on; false if it was turned off</returns>
         public bool ToggleSkipNextSwitch()
         {
-            if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName))
+            if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName || x.Reason == Helper.DelaySwitchItemName))
             {
-                RemoveSkipNextSwitch();
+                RemoveAllManualPostpones();
                 return false;
             }
             AddSkipNextSwitch();
             return true;
         }
 
-        public (DateTime, SkipType) GetSkipNextSwitchExpiryTime()
+        /// <summary>
+        /// Calculates when the nextswitch postpone should expire, dynamically depending on the governor
+        /// </summary>
+        /// <param name="overrideTheme">Optional: If you would like to calculate the postpone expiry for a specific active theme, pass the theme here</param>
+        /// <returns>The time the next switch should expire and the skiptype as a tuple, or an empty datetime object if that information is unavailable</returns>
+        public (DateTime, SkipType) GetSkipNextSwitchExpiryTime(Theme overrideTheme = Theme.Unknown)
         {
+            Theme newTheme = overrideTheme == Theme.Unknown ? state.RequestedTheme : overrideTheme;
+
             if (builder.Config.Governor != Governor.Default) return (new(), state.NightLight.Current == Theme.Light ? SkipType.Sunset : SkipType.Sunrise);
 
             ThemeState ts = new();
@@ -123,7 +143,7 @@ namespace AutoDarkModeSvc.Core
             SkipType skipType;
 
             // postpone longer if no switch was performed when postpone is engaged.
-            if (ts.TargetTheme == state.RequestedTheme)
+            if (ts.TargetTheme == newTheme)
             {
                 if (ts.TargetTheme == Theme.Light)
                 {
@@ -169,14 +189,7 @@ namespace AutoDarkModeSvc.Core
             if (builder.Config.Governor == Governor.Default)
             {
                 PostponeItem item = new(Helper.SkipSwitchPostponeItemName, nextSwitchAdjusted.AddSeconds(1), skipType);
-                try
-                {
-                    if (Add(item)) item.StartExpiry();
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
-                    Logger.Error(ex, "failed adding SkipNext postpone item to queue: ");
-                }
+                Add(item);
             }
             else if (builder.Config.Governor == Governor.NightLight)
             {
@@ -223,8 +236,9 @@ namespace AutoDarkModeSvc.Core
             }
         }
 
-        public void RemoveSkipNextSwitch()
+        public void RemoveAllManualPostpones()
         {
+            Remove(Helper.DelaySwitchItemName);
             Remove(Helper.SkipSwitchPostponeItemName);
         }
 
