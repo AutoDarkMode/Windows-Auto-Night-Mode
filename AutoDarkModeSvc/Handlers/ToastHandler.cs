@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.Handlers
                         new ToastSelectionBoxItem("15", "15 minutes"),
                         new ToastSelectionBoxItem("30", "30 minutes"),
                         new ToastSelectionBoxItem("60", "1 hour"),
-                        new ToastSelectionBoxItem("120", "2 hours"),
+                        new ToastSelectionBoxItem("180", "3 hours"),
                         new ToastSelectionBoxItem("next", until)
                     }
                 })
