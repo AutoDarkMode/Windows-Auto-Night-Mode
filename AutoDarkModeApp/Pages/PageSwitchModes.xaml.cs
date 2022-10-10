@@ -62,7 +62,10 @@ namespace AutoDarkModeApp.Pages
             HotkeyTextboxNoForce.Text = builder.Config.Hotkeys.NoForce ?? "";
             HotkeyTextboxToggleAutomaticThemeSwitch.Text = builder.Config.Hotkeys.ToggleAutoThemeSwitch ?? "";
             HotkeyTextboxToggleTheme.Text = builder.Config.Hotkeys.ToggleTheme ?? "";
+            HotkeyTextboxTogglePostpone.Text = builder.Config.Hotkeys.TogglePostpone ?? "";
             HotkeyCheckboxToggleAutomaticThemeSwitchNotification.IsChecked = builder.Config.Hotkeys.AutoThemeSwitchingNotification;
+            HotkeyCheckboxTogglePostpone.IsChecked = builder.Config.Hotkeys.AutoThemeSwitchingNotification;
+
 
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
@@ -370,6 +373,45 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "hotkeybox_toggletheme");
+            }
+        }
+
+        private void HotkeyTextboxTogglePostpone_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            string hotkeyString = GetHotkeyString(e);
+            if (sender is TextBox tb)
+            {
+                tb.Text = hotkeyString;
+            }
+            if (hotkeyString == builder.Config.Hotkeys.TogglePostpone) return;
+            builder.Config.Hotkeys.TogglePostpone = hotkeyString;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "hotkeybox_togglepostpone");
+            }
+        }
+
+        private void HotkeyCheckboxTogglePostpone_Click(object sender, RoutedEventArgs e)
+        {
+            if (HotkeyCheckboxTogglePostpone.IsChecked.Value)
+            {
+                builder.Config.Hotkeys.PostponeNotification= true;
+            }
+            else
+            {
+                builder.Config.Hotkeys.PostponeNotification = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "HotkeyCheckboxToggleAutomaticThemeSwitchNotification_Click");
             }
         }
     }

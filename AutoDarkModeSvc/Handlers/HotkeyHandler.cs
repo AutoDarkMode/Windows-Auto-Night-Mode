@@ -65,44 +65,7 @@ namespace AutoDarkModeSvc.Handlers
                 if (builder.Config.Hotkeys.ToggleTheme != null) Register(builder.Config.Hotkeys.ToggleTheme, () =>
                 {
                     Logger.Info("hotkey signal received: toggle theme");
-                    Theme newTheme;
-                    if (state.ActiveTheme == Theme.Light) newTheme = Theme.Dark;
-                    else newTheme = Theme.Light;
-
-                    if (builder.Config.AutoThemeSwitchingEnabled)
-                    {
-                        if (builder.Config.Governor == Governor.Default)
-                        {
-                            ThemeState ts = new();
-                            if (ts.TargetTheme != newTheme)
-                            {
-                                state.PostponeManager.AddSkipNextSwitch();
-                            }
-                            else
-                            {
-                                state.PostponeManager.RemoveSkipNextSwitch();
-                            }
-                        }
-                        else if (builder.Config.Governor == Governor.NightLight)
-                        {
-                            if (state.NightLightActiveTheme != newTheme)
-                                state.PostponeManager.AddSkipNextSwitch();
-                            else
-                                state.PostponeManager.RemoveSkipNextSwitch();
-                        }
-                    }
-
-                    ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
-                    if (builder.Config.AutoThemeSwitchingEnabled)
-                    {
-                        ToastHandler.InvokePauseSwitchNotificationToast();
-                        if (state.PostponeManager.IsSkipNextSwitch) Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
-                        ThemeManager.RequestSwitch(new(SwitchSource.Manual, newTheme));
-                    }
-                    else
-                    {
-                        ThemeManager.RequestSwitch(new(SwitchSource.Manual, newTheme));
-                    }
+                    ThemeManager.SwitchThemeAutoPauseAndNotify();
                 });
 
                 if (builder.Config.Hotkeys.ToggleAutoThemeSwitch != null) Register(builder.Config.Hotkeys.ToggleAutoThemeSwitch, () =>
@@ -114,6 +77,19 @@ namespace AutoDarkModeSvc.Handlers
                     AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
                     builder.Save();
                     ToastHandler.InvokeAutoSwitchNotificationToast();
+                });
+
+                if (builder.Config.Hotkeys.TogglePostpone != null) Register(builder.Config.Hotkeys.TogglePostpone, () =>
+                {
+                    if (state.PostponeManager.IsSkipNextSwitch)
+                    {
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                    }
+                    else
+                    {
+                        state.PostponeManager.AddSkipNextSwitch();
+                    }
+                    ToastHandler.InvokePauseNotificationToast();
                 });
             } 
             catch (Exception ex)

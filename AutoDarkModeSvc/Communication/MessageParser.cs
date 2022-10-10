@@ -398,7 +398,7 @@ namespace AutoDarkModeSvc.Communication
                     #region Test
                     case Command.Test:
                         PostponeManager pm = state.PostponeManager;
-                        state.PostponeManager.Add(new("testpostpone", DateTime.Now.AddMinutes(1)));
+                        state.PostponeManager.Add(new("testpostpone", DateTime.Now.AddMinutes(1), SkipType.Unspecified));
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

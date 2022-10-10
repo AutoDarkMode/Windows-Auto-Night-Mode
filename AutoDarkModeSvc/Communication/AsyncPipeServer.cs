@@ -167,6 +167,7 @@ namespace AutoDarkModeSvc.Communication
                 if (AvailableWorkers == 0)
                 {
                     Logger.Debug($"client connected, worker pool exhausted");
+                    highLoad = true;
                 }
                 else if (AvailableWorkers <= abnormalWorkerCount)
                 {

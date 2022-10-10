@@ -178,7 +178,7 @@
     <value>Your changes have been saved!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Set a time and your changes will be automatically saved.</value>
+    <value>Set a time and your changes will be saved automatically.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Download update</value>
@@ -894,19 +894,13 @@ Do you really want to continue?</value>
     <value>Undo</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Skip next switch</value>
+    <value>Pause auto switch</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Would you like to disable auto switching instead?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Automatic switching will also resume if you return to your previous theme.</value>
-  </data>
-  <data name="ThemeSwitchPaused" xml:space="preserve">
-    <value>Resume switch</value>
-  </data>
-  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
-    <value>paused until</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
     <value>Theme switching paused until</value>
@@ -935,16 +929,31 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Theme switching is paused once!</value>
   </data>
-  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
-    <value>paused once</value>
-  </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>postpones until</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
     <value>postpones until its condition is met</value>
   </data>
-  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
-    <value>postpones until next switch (expires)</value>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>postpones until next sunrise</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>postpones until next sunset</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>until</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>until next sunrise</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>until next sunset</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Toggle pause theme</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Auto theme switching resumed</value>
   </data>
 </root>

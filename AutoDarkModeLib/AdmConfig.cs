@@ -61,16 +61,14 @@ namespace AutoDarkModeLib
         public string ForceDark { get; set; }
         public string NoForce { get; set; }
         public string ToggleTheme { get; set; }
+        public string TogglePostpone { get; set; }
         public string ToggleAutoThemeSwitch { get; set; }
         public bool AutoThemeSwitchingNotification { get; set; } = true;
+        public bool PostponeNotification { get; set; } = true;
     }
 
     public class Addons
     {
-        public Addons()
-        {
-
-        }
         //put your custom settings here!
     }
 

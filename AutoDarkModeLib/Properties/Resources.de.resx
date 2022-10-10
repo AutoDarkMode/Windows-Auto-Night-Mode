@@ -817,7 +817,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>Systemtray-Icon verstecken</value>
   </data>
- <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
     <value>Akzentfarbe für Titelleiste und Fensterränder</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
@@ -857,13 +857,13 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Auto-Wechsel an/ausschalten</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Auto-Wechsel ausschalten </value>
+    <value>Auto-Wechsel ausschalten</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Rückgängig</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Nächsten Wechsel aussetzen</value>
+    <value>Auto-Wechsel pausieren</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Möchtest du stattdessen den Auto-Wechsel deaktiveren?</value>
@@ -875,7 +875,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Auto-Wechsel fortsetzen</value>
   </data>
   <data name="ThemeSwitchPausedUntil" xml:space="preserve">
-    <value>pausiert bis</value>
+    <value>bis</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
     <value>Designwechsel pausiert bis</value>
@@ -908,12 +908,24 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>einmalig pausiert</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>verzögert bis</value>
+    <value>pausiert bis</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>verzögert bis dessen Kondition eintrifft</value>
+    <value>pausiert bis dessen Kondition eintrifft</value>
   </data>
-  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
-    <value>verzögert bis zum nächsten Wechsel (mit Ablaufzeit)</value>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>pausiert bis zum nächsten Sonnenaufgang</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>pausiert bis zum nächsten Sonnenuntergang</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>bis</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>bis nächsten Morgen</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>bis nächsten Abend</value>
   </data>
 </root>

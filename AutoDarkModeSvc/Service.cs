@@ -128,7 +128,7 @@ namespace AutoDarkModeSvc
             NotifyIcon.Text = "Auto Dark Mode";
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
             NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
-            NotifyIcon.ContextMenuStrip.Opened += UpdateCheckboxes;
+            NotifyIcon.ContextMenuStrip.Opened += UpdateContextMenu;
             NotifyIcon.ContextMenuStrip.Items.Add(openConfigDirItem);
             NotifyIcon.ContextMenuStrip.Items.Add("-");
             NotifyIcon.ContextMenuStrip.Items.Add(exitMenuItem);
@@ -147,9 +147,9 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private void UpdateCheckboxes(object sender, EventArgs e)
+        private void UpdateContextMenu(object sender, EventArgs e)
         {
-            if (state.ActiveTheme == Theme.Dark)
+            if (state.RequestedTheme == Theme.Dark)
             {
                 NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
             }
@@ -175,21 +175,29 @@ namespace AutoDarkModeSvc
             }
             autoThemeSwitchingItem.Checked = builder.Config.AutoThemeSwitchingEnabled;
             pauseThemeSwitchItem.Checked = state.PostponeManager.IsSkipNextSwitch;
-            if (state.PostponeManager.IsSkipNextSwitch)
+
+            if (builder.Config.AutoThemeSwitchingEnabled) pauseThemeSwitchItem.Visible = true;
+            else pauseThemeSwitchItem.Visible = false;
+
+            (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
+            if (expiry.Year != 1)
             {
-                if (state.PostponeManager.GetSkipNextSwitchItem().Expiry.HasValue)
-                {
-                    DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchPausedUntil} {time:HH:mm})";
-                }
-                else
-                {
-                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPaused} ({AdmProperties.Resources.ThemeSwitchPausedOnce})";
-                }
+                pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
             }
             else
             {
-                pauseThemeSwitchItem.Text = AdmProperties.Resources.ThemeSwitchPause;
+                if (skipType == SkipType.Sunrise)
+                {
+                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
+                }
+                else if (skipType == SkipType.Sunset)
+                {
+                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
+                }
+                else
+                {
+                    pauseThemeSwitchItem.Text = AdmProperties.Resources.ThemeSwitchPause;
+                }
             }
         }
 
@@ -262,7 +270,7 @@ namespace AutoDarkModeSvc
 
         public void ToggleTheme(object sender, EventArgs e)
         {
-            Theme newTheme = ThemeManager.SwitchThemeAutoPause();
+            Theme newTheme = ThemeManager.SwitchThemeAutoPauseAndNotify();
             Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(typeof(Theme), newTheme).ToLower()} theme");
         }
 

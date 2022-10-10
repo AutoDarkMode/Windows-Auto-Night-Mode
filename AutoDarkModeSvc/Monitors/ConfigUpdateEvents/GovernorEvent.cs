@@ -16,8 +16,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
             {
                 if (State.PostponeManager.GetSkipNextSwitchItem() != null)
                 {
-                    State.PostponeManager.RemoveSkipNextSwitch();
-                    State.PostponeManager.AddSkipNextSwitch();
+                    State.PostponeManager.UpdateSkipNextSwitchExpiry();
                 }
             }
         }

@@ -5,6 +5,7 @@ using AutoDarkModeSvc.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Core
@@ -69,12 +70,12 @@ namespace AutoDarkModeSvc.Core
                             UpdateTheme(e.RequestedTheme.Value, e);
                         }
                     }
-                    else UpdateTheme(state.NightLightActiveTheme, e);
+                    else UpdateTheme(state.NightLight.Current, e);
                 }
             }
             else
             {
-                UpdateTheme(state.ActiveTheme, e);
+                UpdateTheme(state.RequestedTheme, e);
             }
         }
 
@@ -85,19 +86,48 @@ namespace AutoDarkModeSvc.Core
         /// <returns>the theme that was switched to</returns>
         public static Theme SwitchThemeAutoPause(Theme target = Theme.Unknown)
         {
+            Theme newTheme = PrepareSwitchAutoPause();
+            RequestSwitch(new(SwitchSource.Manual, newTheme));
+            return newTheme;
+        }
+
+        public static Theme SwitchThemeAutoPauseAndNotify()
+        {
+            Theme newTheme = PrepareSwitchAutoPause();
+
+            ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
+            if (builder.Config.AutoThemeSwitchingEnabled)
+            {
+                if (state.PostponeManager.IsSkipNextSwitch) Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
+                else ToastHandler.InvokeTogglePauseNotificationToast();
+                RequestSwitch(new(SwitchSource.Manual, newTheme));
+            }
+            else
+            {
+                RequestSwitch(new(SwitchSource.Manual, newTheme));
+            }
+            return newTheme;
+        }
+
+        private static Theme PrepareSwitchAutoPause(Theme target = Theme.Unknown)
+        {
             Theme newTheme;
             if (target != Theme.Unknown) newTheme = target;
-            else if (state.ActiveTheme == Theme.Light) newTheme = Theme.Dark;
+            else if (state.RequestedTheme == Theme.Light) newTheme = Theme.Dark;
             else newTheme = Theme.Light;
+
+            state.RequestedTheme = newTheme;
 
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
                 if (builder.Config.Governor == Governor.Default)
                 {
+                    // set the timer pause theme early to allow the postpone manager to update its pause times correctly
                     ThemeState ts = new();
                     if (ts.TargetTheme != newTheme)
                     {
-                        state.PostponeManager.AddSkipNextSwitch();
+                        if (state.PostponeManager.IsSkipNextSwitch) state.PostponeManager.UpdateSkipNextSwitchExpiry();
+                        else state.PostponeManager.AddSkipNextSwitch();
                     }
                     else
                     {
@@ -106,21 +136,20 @@ namespace AutoDarkModeSvc.Core
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    if (state.NightLightActiveTheme != newTheme)
+                    if (state.NightLight.Current != newTheme)
                         state.PostponeManager.AddSkipNextSwitch();
                     else
                         state.PostponeManager.RemoveSkipNextSwitch();
                 }
-                RequestSwitch(new(SwitchSource.Manual, newTheme));
-
             }
             return newTheme;
         }
 
+
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
         {
-            state.ActiveTheme = newTheme;
+            state.RequestedTheme = newTheme;
 
             bool themeModeSwitched = false;
             if (e.Source == SwitchSource.SystemUnlock && builder.Config.WindowsThemeMode.Enabled)

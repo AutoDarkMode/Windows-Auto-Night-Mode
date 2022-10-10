@@ -22,7 +22,7 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly AdmConfigBuilder configBuilder = AdmConfigBuilder.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
 
-        public static void InvokePauseSwitchNotificationToast()
+        public static void InvokeTogglePauseNotificationToast()
         {
             if (state.PostponeManager.IsSkipNextSwitch)
             {
@@ -30,16 +30,19 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     ToastContentBuilder tcb = new ToastContentBuilder();
 
-                    if (state.PostponeManager.GetSkipNextSwitchItem().Expiry.HasValue)
+                    if (state.PostponeManager.GetSkipNextSwitchItem().Expires)
                     {
                         DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
                         tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
                     }
                     else
                     {
-                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeaderNoExpiry}");
+                        (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
+                        string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
+
+                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeaderNoExpiry}\n({until})");
                     }
-                    tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseActionNotification}. {AdmProperties.Resources.ThemeSwitchPauseActionDisableQuestion}")
+                    tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseActionNotification} {AdmProperties.Resources.ThemeSwitchPauseActionDisableQuestion}")
                        .AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionDisable)
                        .AddArgument("action-undo-toggle-theme-switch", "enabled")
                        .AddArgument("action", "remove-skip-next")).Show(toast =>
@@ -84,6 +87,46 @@ namespace AutoDarkModeSvc.Handlers
 
                 });
             }
+        }
+
+        public static void InvokePauseNotificationToast()
+        {
+            if (!configBuilder.Config.Hotkeys.PostponeNotification) return;
+            Program.ActionQueue.Add(() =>
+            {
+
+                ToastContentBuilder tcb = new ToastContentBuilder();
+
+                if (state.PostponeManager.IsSkipNextSwitch)
+                {
+                    if (state.PostponeManager.GetSkipNextSwitchItem().Expires)
+                    {
+                        DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
+                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
+                    }
+                    else
+                    {
+                        (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
+                        string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
+                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeaderNoExpiry}\n({until})");
+                    }
+                    string toastText = $"{AdmProperties.Resources.RevertAction}";
+                    tcb.AddText(toastText);
+                }
+                else
+                {
+                    tcb.AddText($"{AdmProperties.Resources.ThemeSwitchResumeHeader}");
+                    tcb.AddText($"{AdmProperties.Resources.RevertAction}");
+                }
+
+                tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-undo-pause-theme-switch", state.PostponeManager.IsSkipNextSwitch));
+
+                tcb.Show(toast =>
+                {
+                    toast.Tag = "adm-pause-switch-notif";
+                });
+            });
+
         }
 
         public static void InvokeFailedUpdateToast()
@@ -293,6 +336,17 @@ namespace AutoDarkModeSvc.Handlers
                         catch (Exception ex)
                         {
                             Logger.Error(ex, "couldn't save config file: ");
+                        }
+                    }
+                    else if (argument[0] == "action-undo-pause-theme-switch")
+                    {
+                        if (argument[1] == true.ToString())
+                        {
+                            state.PostponeManager.RemoveSkipNextSwitch();
+                        }
+                        else
+                        {
+                            state.PostponeManager.AddSkipNextSwitch();
                         }
                     }
                 }

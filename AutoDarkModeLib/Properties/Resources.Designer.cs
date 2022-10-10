@@ -910,7 +910,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set a time and your changes will be automatically saved..
+        ///   Looks up a localized string similar to Set a time and your changes will be saved automatically..
         /// </summary>
         public static string msgClickApply {
             get {
@@ -1176,20 +1176,29 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to postpones until next switch (expires).
-        /// </summary>
-        public static string PostponeReasonPostponesUntilNextSwitch {
-            get {
-                return ResourceManager.GetString("PostponeReasonPostponesUntilNextSwitch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to System idle checker.
         /// </summary>
         public static string PostponeReasonSystemIdleCheckModule {
             get {
                 return ResourceManager.GetString("PostponeReasonSystemIdleCheckModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to postpones until next sunrise.
+        /// </summary>
+        public static string PostponeReasonUntilNextSunrise {
+            get {
+                return ResourceManager.GetString("PostponeReasonUntilNextSunrise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to postpones until next sunset.
+        /// </summary>
+        public static string PostponeReasonUntilNextSunset {
+            get {
+                return ResourceManager.GetString("PostponeReasonUntilNextSunset", resourceCulture);
             }
         }
         
@@ -1609,6 +1618,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle pause theme.
+        /// </summary>
+        public static string SwitchModesTextBlockHeaderTogglePostpone {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockHeaderTogglePostpone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minutes until the system is considered idle.
         /// </summary>
         public static string SwitchModesTextBlockIdleTimerDescription {
@@ -1924,7 +1942,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skip next switch.
+        ///   Looks up a localized string similar to Pause auto switch.
         /// </summary>
         public static string ThemeSwitchPause {
             get {
@@ -1951,33 +1969,6 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resume switch.
-        /// </summary>
-        public static string ThemeSwitchPaused {
-            get {
-                return ResourceManager.GetString("ThemeSwitchPaused", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to paused once.
-        /// </summary>
-        public static string ThemeSwitchPausedOnce {
-            get {
-                return ResourceManager.GetString("ThemeSwitchPausedOnce", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to paused until.
-        /// </summary>
-        public static string ThemeSwitchPausedUntil {
-            get {
-                return ResourceManager.GetString("ThemeSwitchPausedUntil", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Theme switching paused until.
         /// </summary>
         public static string ThemeSwitchPauseHeader {
@@ -1992,6 +1983,33 @@ namespace AutoDarkModeLib.Properties {
         public static string ThemeSwitchPauseHeaderNoExpiry {
             get {
                 return ResourceManager.GetString("ThemeSwitchPauseHeaderNoExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to until next sunrise.
+        /// </summary>
+        public static string ThemeSwitchPauseUntilSunrise {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPauseUntilSunrise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to until next sunset.
+        /// </summary>
+        public static string ThemeSwitchPauseUntilSunset {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPauseUntilSunset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto theme switching resumed.
+        /// </summary>
+        public static string ThemeSwitchResumeHeader {
+            get {
+                return ResourceManager.GetString("ThemeSwitchResumeHeader", resourceCulture);
             }
         }
         
@@ -2200,6 +2218,15 @@ namespace AutoDarkModeLib.Properties {
         public static string TrayMenuItemOpenConfigDir {
             get {
                 return ResourceManager.GetString("TrayMenuItemOpenConfigDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to until.
+        /// </summary>
+        public static string UntilTime {
+            get {
+                return ResourceManager.GetString("UntilTime", resourceCulture);
             }
         }
         

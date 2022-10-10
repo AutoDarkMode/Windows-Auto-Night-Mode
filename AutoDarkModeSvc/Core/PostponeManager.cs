@@ -17,6 +17,12 @@ namespace AutoDarkModeSvc.Core
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private List<PostponeItem> PostponeQueue { get; } = new();
         private List<IAutoDarkModeModule> CallbackModules { get; } = new();
+        private GlobalState state;
+
+        public PostponeManager(GlobalState state)
+        {
+            this.state = state;
+        }
 
         public bool IsSkipNextSwitch
         {
@@ -80,7 +86,11 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public void ClearQueue()
         {
-            List<PostponeItem> toClear = PostponeQueue.Select(i => i).ToList();
+            List<PostponeItem> toClear = PostponeQueue.Select(i =>
+            {
+                if (i.Expires) i.CancelExpiry();
+                return i;
+            }).ToList();
             toClear.ForEach(i => Remove(i.Reason));
         }
 
@@ -104,36 +114,64 @@ namespace AutoDarkModeSvc.Core
             return true;
         }
 
+        public (DateTime, SkipType) GetSkipNextSwitchExpiryTime()
+        {
+            if (builder.Config.Governor != Governor.Default) return (new(), state.NightLight.Current == Theme.Light ? SkipType.Sunset : SkipType.Sunrise);
+
+            ThemeState ts = new();
+            DateTime nextSwitchAdjusted;
+            SkipType skipType;
+
+            // postpone longer if no switch was performed when postpone is engaged.
+            if (ts.TargetTheme == state.RequestedTheme)
+            {
+                if (ts.TargetTheme == Theme.Light)
+                {
+                    nextSwitchAdjusted = ts.AdjustedSunrise;
+                    skipType = SkipType.Sunset;
+                }
+                else
+                {
+                    nextSwitchAdjusted = ts.AdjustedSunset;
+                    skipType = SkipType.Sunrise;
+                }
+            }
+            else
+            {
+                nextSwitchAdjusted = ts.NextSwitchTime;
+                if (ts.TargetTheme == Theme.Light) skipType = SkipType.Sunrise;
+                else skipType = SkipType.Sunset;
+            }
+            if (DateTime.Compare(nextSwitchAdjusted, DateTime.Now) < 0)
+            {
+                nextSwitchAdjusted = new DateTime(
+                    DateTime.Now.Year,
+                    DateTime.Now.Month,
+                    DateTime.Now.Day,
+                    nextSwitchAdjusted.Hour,
+                    nextSwitchAdjusted.Minute,
+                    nextSwitchAdjusted.Second);
+            }
+            if (DateTime.Compare(nextSwitchAdjusted, DateTime.Now) < 0)
+            {
+                // Delay by one second to create overlap. This avoids that the theme switches back too early
+                nextSwitchAdjusted = nextSwitchAdjusted.AddDays(1);
+            }
+            return (nextSwitchAdjusted, skipType);
+        }
+
         /// <summary>
         /// Adds a postpone item that skips the next planned timed theme switch only
         /// </summary>
         public void AddSkipNextSwitch()
         {
+            (DateTime nextSwitchAdjusted, SkipType skipType) = GetSkipNextSwitchExpiryTime();
             if (builder.Config.Governor == Governor.Default)
             {
-                ThemeState ts = new();
-                // Delay by one second to create overlap. This avoids that the theme switches back too early
-                DateTime NextSwitchAdjusted = ts.NextSwitchTime;
-                if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
-                {
-                    NextSwitchAdjusted = new DateTime(
-                        DateTime.Now.Year,
-                        DateTime.Now.Month,
-                        DateTime.Now.Day,
-                        ts.NextSwitchTime.Hour,
-                        ts.NextSwitchTime.Minute,
-                        ts.NextSwitchTime.Second);
-                }
-                if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
-                {
-                    NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
-                }
-
-                PostponeItem item = new(Helper.SkipSwitchPostponeItemName, NextSwitchAdjusted.AddSeconds(1));
+                PostponeItem item = new(Helper.SkipSwitchPostponeItemName, nextSwitchAdjusted.AddSeconds(1), skipType);
                 try
                 {
-                    item.StartExpiry();
-                    Add(item);
+                    if (Add(item)) item.StartExpiry();
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
@@ -143,6 +181,7 @@ namespace AutoDarkModeSvc.Core
             else if (builder.Config.Governor == Governor.NightLight)
             {
                 PostponeItem item = new(Helper.SkipSwitchPostponeItemName);
+                item.SkipType = skipType;
                 Add(item);
             }
         }
@@ -153,37 +192,33 @@ namespace AutoDarkModeSvc.Core
         /// Calling this method when there was no change in expiry time, or if the skip is inactive will do nothing
         /// and is safe to call
         /// </summary>
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public void UpdateSkipNextSwitchExpiry()
         {
             PostponeItem item = PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
             if (item != null)
             {
+                (DateTime nextSwitchAdjusted, SkipType skipType) = GetSkipNextSwitchExpiryTime();
                 if (builder.Config.Governor == Governor.Default)
                 {
-                    ThemeState ts = new();
-                    DateTime NextSwitchAdjusted = ts.NextSwitchTime;
                     if (item.Expiry.HasValue)
                     {
-                        if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
+                        nextSwitchAdjusted = nextSwitchAdjusted.AddSeconds(1);
+                        if (DateTime.Compare(nextSwitchAdjusted, item.Expiry.Value) != 0)
                         {
-                            NextSwitchAdjusted = new DateTime(
-                                DateTime.Now.Year,
-                                DateTime.Now.Month,
-                                DateTime.Now.Day,
-                                ts.NextSwitchTime.Hour,
-                                ts.NextSwitchTime.Minute,
-                                ts.NextSwitchTime.Second);
-                        }
-                        if (DateTime.Compare(NextSwitchAdjusted, DateTime.Now) < 0)
-                        {
-                            NextSwitchAdjusted = NextSwitchAdjusted.AddDays(1);
-                        }
-                        NextSwitchAdjusted = NextSwitchAdjusted.AddSeconds(1);
-                        if (DateTime.Compare(NextSwitchAdjusted, item.Expiry.Value) != 0)
-                        {
-                            item.UpdateExpiryTime(NextSwitchAdjusted);
+                            item.UpdateExpiryTime(nextSwitchAdjusted, skipType);
                         }
                     }
+                    else
+                    {
+                        item.UpdateExpiryTime(nextSwitchAdjusted.AddSeconds(1), skipType);
+                    }
+                }
+                else if (builder.Config.Governor == Governor.NightLight && item.Expires)
+                {
+                    item.CancelExpiry();
+                    item.SkipType = skipType;
                 }
             }
         }
@@ -229,7 +264,7 @@ namespace AutoDarkModeSvc.Core
             List<PostponeItemDto> itemDtos = new();
             PostponeQueue.ForEach(i =>
             {
-                itemDtos.Add(new(i.Reason, expiry: i.Expiry));
+                itemDtos.Add(new(i.Reason, expiry: i.Expiry, i.Expires, i.SkipType));
             });
             return new(itemDtos);
         }
@@ -241,12 +276,13 @@ namespace AutoDarkModeSvc.Core
         public string Reason { get; }
         public DateTime? Expiry { get; private set; }
         private Task Task { get; set; }
-        CancellationTokenSource CancelTokenSource { get; } = new CancellationTokenSource();
+        CancellationTokenSource CancelTokenSource { get; set; } = new CancellationTokenSource();
+        public SkipType SkipType { get; set; } = SkipType.Unspecified;
         public bool Expires
         {
             get
             {
-                return Expiry != null;
+                return Expiry != null && Task != null && !Task.IsCompleted;
             }
         }
 
@@ -260,10 +296,11 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         /// <param name="reason">the name of the postpone item</param>
         /// <param name="expiry">the datetime when it should expire</param>
-        public PostponeItem(string reason, DateTime expiry)
+        public PostponeItem(string reason, DateTime expiry, SkipType skipType)
         {
             Reason = reason;
             Expiry = expiry;
+            SkipType = skipType;
         }
 
         /// <summary>
@@ -275,17 +312,21 @@ namespace AutoDarkModeSvc.Core
             if (Task != null)
             {
                 CancelTokenSource.Cancel();
+                Task.Wait(1000);
                 Expiry = null;
+                Task = null;
                 return true;
             }
             return false;
         }
 
-        public void UpdateExpiryTime(DateTime newExpiry)
+        public void UpdateExpiryTime(DateTime newExpiry, SkipType skipType = SkipType.Unspecified)
         {
             Logger.Info($"updating expiry time for item {Reason} from {(Expiry == null ? "none" : Expiry.Value.ToString("dd.MM.yyyy HH:mm:ss"))} to {newExpiry:dd.MM.yyyy HH:mm:ss}");
             CancelExpiry();
             Expiry = newExpiry;
+            SkipType = skipType;
+            CancelTokenSource = new();
             StartExpiry(suppressLaunchMessage: true);
         }
 
@@ -306,7 +347,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     if (token.IsCancellationRequested)
                     {
-                        Logger.Info($"postpone item with reason {Reason} had its expiry cancelled");
+                        Logger.Info($"postpone item with reason {Reason} had its expiry at {Expiry:dd.MM.yyyy HH:mm:ss} cancelled");
                     }
                     else
                     {

@@ -21,7 +21,7 @@ namespace AutoDarkModeSvc.Modules
         private static ManagementEventWatcher nightLightKeyWatcher;
         private GlobalState state = GlobalState.Instance();
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private bool QueuePostponeRemove = false;
+        private bool init = true;
 
         public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.Modules
         public override void Fire()
         {
             DateTime adjustedTime;
-            if (state.NightLightActiveTheme == Theme.Dark)
+            if (state.NightLight.Current == Theme.Dark)
             {
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunsetOffsetMin);
             }
@@ -39,11 +39,12 @@ namespace AutoDarkModeSvc.Modules
             }
 
             // when the adjusted switch time is in the past and no postpones are queued, the theme should be updated
-            if (!state.PostponeManager.IsPostponed && DateTime.Compare(adjustedTime, DateTime.Now) <= 0)
+            if ((!state.PostponeManager.IsPostponed && DateTime.Compare(adjustedTime, DateTime.Now) <= 0) || init)
             {
+                if (init) init = false;
                 Task.Run(() =>
                 {
-                    ThemeManager.RequestSwitch(new(SwitchSource.NightLightTrackerModule, state.NightLightActiveTheme, adjustedTime));
+                    ThemeManager.RequestSwitch(new(SwitchSource.NightLightTrackerModule, state.NightLight.Current, adjustedTime));
                 });
             }
             return;
@@ -77,21 +78,22 @@ namespace AutoDarkModeSvc.Modules
                 // if we are on the right theme and postpone is still enabled, we need to clear postpone on the next switch
                 // As such we mark postpone for removal and take care of it on the next switch, allowing Fire()
                 // If the postpone was cleared otherwise in the meantime, we also need to reset the queue postpone
-                if (isSkipNext && !QueuePostponeRemove)
+                if (isSkipNext && !state.NightLight.QueuePostponeRemove)
                 {
-                    QueuePostponeRemove = true;
+                    state.NightLight.QueuePostponeRemove = true;
+                    state.NightLight.Current = newTheme;
                     return;
                 }
-                else if (isSkipNext && QueuePostponeRemove)
+                else if (isSkipNext && state.NightLight.QueuePostponeRemove)
                 {
-                    QueuePostponeRemove = false;
+                    state.NightLight.QueuePostponeRemove = false;
                     state.PostponeManager.RemoveSkipNextSwitch();
                 }
-                else if (QueuePostponeRemove && !isSkipNext)
+                else if (state.NightLight.QueuePostponeRemove && !isSkipNext)
                 {
-                    QueuePostponeRemove = false;
+                    state.NightLight.QueuePostponeRemove = false;
                 }
-                state.NightLightActiveTheme = newTheme;
+                state.NightLight.Current = newTheme;
                 Fire();
             }
         }
@@ -99,6 +101,7 @@ namespace AutoDarkModeSvc.Modules
         public override void EnableHook()
         {
             base.EnableHook();
+            state.NightLight.QueuePostponeRemove = false;
             nightLightKeyWatcher = WMIHandler.CreateHKCURegistryValueMonitor(UpdateNightLightState, "Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\CloudStore\\\\Store\\\\DefaultAccount\\\\Current\\\\default$windows.data.bluelightreduction.bluelightreductionstate\\\\windows.data.bluelightreduction.bluelightreductionstate", "Data");
             nightLightKeyWatcher.Start();
             UpdateNightLightState();

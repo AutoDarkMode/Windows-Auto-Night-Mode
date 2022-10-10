@@ -23,16 +23,18 @@ namespace AutoDarkModeSvc.Core
             }
             return state;
         }
-        protected GlobalState() { }
+        protected GlobalState() {
+             PostponeManager = new(this);
+        }
 
         private WardenModule Warden { get; set; }
-        public Theme ActiveTheme { get; set; } = Theme.Unknown;
+        public Theme RequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
-        public Theme NightLightActiveTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
         public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
-        public PostponeManager PostponeManager { get; } = new();
+        public PostponeManager PostponeManager { get; }
+        public NightLight NightLight { get; } = new();
 
         private static string GetCurrentThemeName()
         {
@@ -73,5 +75,11 @@ namespace AutoDarkModeSvc.Core
         {
             Warden = warden;
         }
+    }
+
+    public class NightLight
+    {
+        public Theme Current { get; set; } = Theme.Unknown;
+        public bool QueuePostponeRemove { get; set; } = false;
     }
 }

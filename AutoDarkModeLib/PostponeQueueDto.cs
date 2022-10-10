@@ -40,13 +40,16 @@ namespace AutoDarkModeLib
         public string Reason { get; set; }
         public string TranslatedReason { get; set; }
         public DateTime? Expiry { get; set; }
-        public PostponeItemDto() { }
+        public bool Expires { get; set; }
+        public SkipType SkipType { get; set; }
         private CultureInfo Culture { get; set; }
-
-        public PostponeItemDto(string reason, DateTime? expiry = null)
+        public PostponeItemDto() { }
+        public PostponeItemDto(string reason, DateTime? expiry = null, bool expires = false, SkipType skipType = SkipType.Unspecified)
         {
             Reason = reason;
             Expiry = expiry;
+            Expires = expires;
+            SkipType = skipType;
         }
 
         public void SetCulture(CultureInfo info)
@@ -66,7 +69,23 @@ namespace AutoDarkModeLib
             string postponeReasonPostponesUntilNextSwitch = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilNextSwitch", Culture);
             string postponeReasonPostponesUntilCondition = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilCondition", Culture);
 
-            if (Expiry != null) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
+            if (Reason == Helper.SkipSwitchPostponeItemName && !Expires)
+            {
+                string pausedUntilNextSunrise = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunset", Culture);
+                string pausedUntilNextSunset = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunrise", Culture);
+
+                if (SkipType == SkipType.Sunrise)
+                {
+
+                    postponeReasonPostponesUntilNextSwitch = $"{pausedUntilNextSunrise}";
+                }
+                else if (SkipType == SkipType.Sunset)
+                {
+                    postponeReasonPostponesUntilNextSwitch = $"{pausedUntilNextSunset}";
+                }
+            }
+
+            if (Expires) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
             else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
             return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";
         }

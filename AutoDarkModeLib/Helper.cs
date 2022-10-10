@@ -55,6 +55,13 @@ namespace AutoDarkModeLib
         NightLight
     }
 
+    public enum SkipType
+    {
+        Unspecified,
+        Sunrise,
+        Sunset
+    }
+
     public static class Helper
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
