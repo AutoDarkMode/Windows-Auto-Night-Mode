@@ -98,8 +98,11 @@ namespace AutoDarkModeSvc.Core
             ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                if (state.PostponeManager.IsSkipNextSwitch) Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
-                else ToastHandler.InvokeTogglePauseNotificationToast();
+                if (state.PostponeManager.IsSkipNextSwitch)
+                {
+                    ToastHandler.InvokeTogglePauseNotificationToast();
+                    Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
+                }
                 RequestSwitch(new(SwitchSource.Manual, newTheme));
             }
             else

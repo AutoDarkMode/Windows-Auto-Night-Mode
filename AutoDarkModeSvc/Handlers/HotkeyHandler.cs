@@ -81,15 +81,20 @@ namespace AutoDarkModeSvc.Handlers
 
                 if (builder.Config.Hotkeys.TogglePostpone != null) Register(builder.Config.Hotkeys.TogglePostpone, () =>
                 {
-                    if (state.PostponeManager.IsSkipNextSwitch)
+                    if (builder.Config.AutoThemeSwitchingEnabled)
                     {
-                        state.PostponeManager.RemoveSkipNextSwitch();
+                        if (state.PostponeManager.IsSkipNextSwitch)
+                        {
+                            state.PostponeManager.RemoveSkipNextSwitch();
+                            ToastHandler.InvokePauseNotificationToast();
+                            Task.Delay(TimeSpan.FromSeconds(2)).ContinueWith(o => ThemeManager.RequestSwitch(new(SwitchSource.Manual)));
+                        }
+                        else
+                        {
+                            state.PostponeManager.AddSkipNextSwitch();
+                            ToastHandler.InvokePauseNotificationToast();
+                        }
                     }
-                    else
-                    {
-                        state.PostponeManager.AddSkipNextSwitch();
-                    }
-                    ToastHandler.InvokePauseNotificationToast();
                 });
             } 
             catch (Exception ex)
