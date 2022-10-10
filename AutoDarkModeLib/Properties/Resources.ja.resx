@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -178,7 +178,7 @@
     <value>変更が保存されました。</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>時間を指定すると、その変更内容は自動で保存されます。</value>
+    <value>変更内容は自動で保存されます。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>最新版をダウンロード</value>
@@ -821,7 +821,7 @@
     <value>テーマの変更を中止する</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>システム全体でホットキーを有効化</value>
+    <value>システム全体でホットキーを有効にする</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
     <value>ダークテーマに変更</value>
@@ -879,7 +879,7 @@
     <value>再開</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>この操作を戻すには次のボタンをクリック</value>
+    <value>この操作を戻すには下のボタンをクリック</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
     <value>ホットキー</value>
@@ -894,7 +894,7 @@
     <value>元に戻す</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>次回の切り替えを行わない</value>
+    <value>自動切替を停止</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>代わりに自動切替を無効にしますか？</value>
@@ -902,20 +902,14 @@
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>以前のテーマに戻した場合、自動切替も再開されます。</value>
   </data>
-  <data name="ThemeSwitchPaused" xml:space="preserve">
-    <value>切替の再開</value>
-  </data>
-  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
-    <value>次の時間まで停止</value>
-  </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>テーマ切り替えを次の時間まで停止</value>
+    <value>テーマ切り替えをこの時間まで停止</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
     <value>テーマの自動切り替えは現在、次のモジュールが原因で停止されています:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>再開は、期限がある延期でのみ可能です</value>
+    <value>再開は、期限付きの延期でのみ可能です</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
     <value>延期情報</value>
@@ -924,7 +918,7 @@
     <value>テーマを切り替える</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>テーマの自動切替は有効</value>
+    <value>テーマの自動切替は有効です</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
     <value>Windows の夜間モードに従う</value>
@@ -935,16 +929,37 @@
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>テーマの切り替えは一回停止されています！</value>
   </data>
-  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
-    <value>一回停止</value>
-  </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>次の時間まで延期</value>
+    <value>この時間まで延期</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
     <value>条件に合うまで延期</value>
   </data>
-  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
-    <value>次回の切り替えまで延期 (expires)</value>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>日の出まで延期</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>日の入りまで延期</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>再開時間</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>日の出まで</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>日の入りまで</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>テーマの一時停止を切り替える</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>テーマの自動切り替えを再開しました</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>夜間モードの設定を開く</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>夜間モード</value>
   </data>
 </root>
