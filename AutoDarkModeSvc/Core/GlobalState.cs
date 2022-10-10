@@ -80,6 +80,5 @@ namespace AutoDarkModeSvc.Core
     public class NightLight
     {
         public Theme Current { get; set; } = Theme.Unknown;
-        public bool QueuePostponeRemove { get; set; } = false;
     }
 }

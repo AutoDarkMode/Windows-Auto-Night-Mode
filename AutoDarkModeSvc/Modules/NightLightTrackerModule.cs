@@ -22,6 +22,7 @@ namespace AutoDarkModeSvc.Modules
         private GlobalState state = GlobalState.Instance();
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
+        private bool queuePostponeRemove = false;
 
         public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -78,20 +79,20 @@ namespace AutoDarkModeSvc.Modules
                 // if we are on the right theme and postpone is still enabled, we need to clear postpone on the next switch
                 // As such we mark postpone for removal and take care of it on the next switch, allowing Fire()
                 // If the postpone was cleared otherwise in the meantime, we also need to reset the queue postpone
-                if (isSkipNext && !state.NightLight.QueuePostponeRemove)
+                if (isSkipNext && !queuePostponeRemove)
                 {
-                    state.NightLight.QueuePostponeRemove = true;
+                    queuePostponeRemove = true;
                     state.NightLight.Current = newTheme;
                     return;
                 }
-                else if (isSkipNext && state.NightLight.QueuePostponeRemove)
+                else if (isSkipNext && queuePostponeRemove)
                 {
-                    state.NightLight.QueuePostponeRemove = false;
+                    queuePostponeRemove = false;
                     state.PostponeManager.RemoveSkipNextSwitch();
                 }
-                else if (state.NightLight.QueuePostponeRemove && !isSkipNext)
+                else if (queuePostponeRemove && !isSkipNext)
                 {
-                    state.NightLight.QueuePostponeRemove = false;
+                    queuePostponeRemove = false;
                 }
                 state.NightLight.Current = newTheme;
                 Fire();
@@ -101,7 +102,6 @@ namespace AutoDarkModeSvc.Modules
         public override void EnableHook()
         {
             base.EnableHook();
-            state.NightLight.QueuePostponeRemove = false;
             nightLightKeyWatcher = WMIHandler.CreateHKCURegistryValueMonitor(UpdateNightLightState, "Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\CloudStore\\\\Store\\\\DefaultAccount\\\\Current\\\\default$windows.data.bluelightreduction.bluelightreductionstate\\\\windows.data.bluelightreduction.bluelightreductionstate", "Data");
             nightLightKeyWatcher.Start();
             UpdateNightLightState();
