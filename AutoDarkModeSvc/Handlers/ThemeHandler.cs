@@ -71,7 +71,7 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
                 }
-                Apply(config.WindowsThemeMode.LightThemePath);
+                Apply(config.WindowsThemeMode.DarkThemePath);
                 if (!config.WindowsThemeMode.MonitorActiveTheme)
                 {
                     Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>

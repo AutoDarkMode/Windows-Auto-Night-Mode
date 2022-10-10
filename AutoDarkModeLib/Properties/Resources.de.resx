@@ -829,7 +829,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Zeige Benachrichtung beim Umschalten</value>
   </data>
-  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
     <value>Auto-Wechsel einmalig aussetzen</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">

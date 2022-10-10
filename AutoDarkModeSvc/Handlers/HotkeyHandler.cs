@@ -86,7 +86,7 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         if (state.PostponeManager.IsSkipNextSwitch)
                         {
-                            state.PostponeManager.RemoveAllManualPostpones();
+                            state.PostponeManager.RemoveUserClearablePostpones();
                             ToastHandler.InvokePauseNotificationToast();
                             Task.Delay(TimeSpan.FromSeconds(2)).ContinueWith(o => ThemeManager.RequestSwitch(new(SwitchSource.Manual)));
                         }

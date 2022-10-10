@@ -23,6 +23,7 @@ namespace AutoDarkModeSvc.Modules
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool queuePostponeRemove = false;
+        private bool notified = false;
 
         public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -37,6 +38,23 @@ namespace AutoDarkModeSvc.Modules
             else
             {
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
+            }
+
+            if (builder.Config.AutoSwitchNotify.Enabled)
+            {
+                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-Math.Abs(-2)).TimeOfDay, adjustedTime.TimeOfDay))
+                {
+                    if (!notified)
+                    {
+                        state.PostponeManager.Add(new(Helper.DelayGracePeriodItemName, DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
+                        ToastHandler.InvokeDelayAutoSwitchNotificationToast();
+                        notified = true;
+                    }
+                }
+                else if (notified)
+                {
+                    notified = false;
+                }
             }
 
             // when the adjusted switch time is in the past and no postpones are queued, the theme should be updated
@@ -88,7 +106,7 @@ namespace AutoDarkModeSvc.Modules
                 else if (isSkipNext && queuePostponeRemove)
                 {
                     queuePostponeRemove = false;
-                    state.PostponeManager.RemoveAllManualPostpones();
+                    state.PostponeManager.RemoveUserClearablePostpones();
                 }
                 else if (queuePostponeRemove && !isSkipNext)
                 {

@@ -53,7 +53,7 @@ namespace AutoDarkModeSvc.Handlers
                 .Show(toast =>
                 {
                     toast.Tag = "adm-theme-switch-delayed-notif";
-                    toast.ExpirationTime = DateTime.Now.AddMinutes(builder.Config.Postpone.GracePeriodMinutes);
+                    toast.ExpirationTime = DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes);
                 });
             });
         }
@@ -351,7 +351,7 @@ namespace AutoDarkModeSvc.Handlers
                     }
                     else if (argument[0] == "action" && argument[1] == "remove-skip-next")
                     {
-                        state.PostponeManager.RemoveAllManualPostpones();
+                        state.PostponeManager.RemoveUserClearablePostpones();
                     }
                     else if (argument[0] == "action-undo-toggle-theme-switch")
                     {
@@ -382,7 +382,7 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         if (argument[1] == true.ToString())
                         {
-                            state.PostponeManager.RemoveAllManualPostpones();
+                            state.PostponeManager.RemoveUserClearablePostpones();
                         }
                         else
                         {
@@ -409,16 +409,17 @@ namespace AutoDarkModeSvc.Handlers
                                 Logger.Info("postpone auto switch for 60 minutes via toast");
                                 state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(60), SkipType.Unspecified));
                             }
-                            if (userInput.Values.Contains("120"))
+                            if (userInput.Values.Contains("180"))
                             {
-                                Logger.Info("postpone auto switch for 120 minutes via toast");
-                                state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(120), SkipType.Unspecified));
+                                Logger.Info("postpone auto switch for 180 minutes via toast");
+                                state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(180), SkipType.Unspecified));
                             }
                             if (userInput.Values.Contains("next"))
                             {
                                 Logger.Info("postpone auto switch once via toast");
                                 state.PostponeManager.AddSkipNextSwitch();
                             }
+                            state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
                         }
                     }
                     else if (arguments[0] == "switch-now")

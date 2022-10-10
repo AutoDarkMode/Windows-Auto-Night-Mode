@@ -21,7 +21,7 @@ namespace AutoDarkModeLib
             Hotkeys = new();
             IdleChecker = new();
             Notifications = new();
-            Postpone = new();
+            AutoSwitchNotify = new();
 
             // New Component Settings;
             AppsSwitch = new();
@@ -45,16 +45,16 @@ namespace AutoDarkModeLib
         public GPUMonitoring GPUMonitoring { get; set; }
         public Events Events { get; set; }
         public Notifications Notifications { get; set; }
-        public Postpone Postpone { get; set; }
+        public AutoSwitchNotify AutoSwitchNotify { get; set; }
         public Hotkeys Hotkeys { get; set; }
         public IdleChecker IdleChecker { get; set; }
         public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
         public Updater Updater { get; set; }
     }
 
-    public class Postpone
+    public class AutoSwitchNotify
     {
-        public bool AutoSwitchNotify { get; set; } = false;
+        public bool Enabled { get; set; } = false;
         public int GracePeriodMinutes { get; set; } = 5;
     }
 

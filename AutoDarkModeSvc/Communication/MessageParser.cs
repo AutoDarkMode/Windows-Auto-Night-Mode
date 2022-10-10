@@ -31,6 +31,30 @@ namespace AutoDarkModeSvc.Communication
             _ = state.ConfigIsUpdatingWaitHandle.WaitOne();
             msg.ForEach(message =>
             {
+
+                #region DelayBy
+                if (message.StartsWith(Command.DelayBy))
+                {
+                    string minutesString = message.Replace(Command.DelayBy, "").Trim();
+                    string statusCode = StatusCode.Err;
+                    if (int.TryParse(minutesString, out int minutes))
+                    {
+                        Logger.Info($"signal received: delay theme switch by {minutesString} minutes");
+                        state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(minutes), SkipType.Unspecified));
+                        statusCode = StatusCode.Ok;
+                    }
+                    else
+                    {
+                        Logger.Info($"signal received: delay theme switch with invalid data ({minutesString})");
+                    }
+                    SendResponse(new ApiResponse()
+                    {
+                        StatusCode = statusCode
+                    }.ToString());
+                    return;
+                }
+                #endregion
+
                 switch (message)
                 {
                     #region Switch
@@ -333,7 +357,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region ClearPostponeQueue
                     case Command.ClearPostponeQueue:
-                        state.PostponeManager.RemoveAllManualPostpones();
+                        state.PostponeManager.RemoveUserClearablePostpones();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok

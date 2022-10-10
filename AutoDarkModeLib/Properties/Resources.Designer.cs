@@ -910,7 +910,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set a time and your changes will be saved automatically..
+        ///   Looks up a localized string similar to Your changes will be saved automatically..
         /// </summary>
         public static string msgClickApply {
             get {
@@ -1131,11 +1131,11 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skip auto switch once.
+        ///   Looks up a localized string similar to Delay.
         /// </summary>
-        public static string PostponeButtonSkipAutoSwitchOnce {
+        public static string PostponeButtonDelay {
             get {
-                return ResourceManager.GetString("PostponeButtonSkipAutoSwitchOnce", resourceCulture);
+                return ResourceManager.GetString("PostponeButtonDelay", resourceCulture);
             }
         }
         
@@ -1199,6 +1199,15 @@ namespace AutoDarkModeLib.Properties {
         public static string PostponeReasonUntilNextSunset {
             get {
                 return ResourceManager.GetString("PostponeReasonUntilNextSunset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip auto switch once.
+        /// </summary>
+        public static string PostponeTimeSkipOnce {
+            get {
+                return ResourceManager.GetString("PostponeTimeSkipOnce", resourceCulture);
             }
         }
         
@@ -1483,6 +1492,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notify before automatically switching themes.
+        /// </summary>
+        public static string SwitchModesCheckBoxAutoSwitchNotification {
+            get {
+                return ResourceManager.GetString("SwitchModesCheckBoxAutoSwitchNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t switch while playing video games.
         /// </summary>
         public static string SwitchModesCheckBoxGPUMonitoring {
@@ -1542,6 +1560,15 @@ namespace AutoDarkModeLib.Properties {
         public static string SwitchModesHotkeyEditHint {
             get {
                 return ResourceManager.GetString("SwitchModesHotkeyEditHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time the notification waits for user input in minutes.
+        /// </summary>
+        public static string SwitchModesTextBlockAutoSwitchGracePeriod {
+            get {
+                return ResourceManager.GetString("SwitchModesTextBlockAutoSwitchGracePeriod", resourceCulture);
             }
         }
         
@@ -2104,6 +2131,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active delays.
+        /// </summary>
+        public static string TimePageHeaderActiveDelays {
+            get {
+                return ResourceManager.GetString("TimePageHeaderActiveDelays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next update at.
         /// </summary>
         public static string TimePageNextUpdateAt {
@@ -2167,7 +2203,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postpone Info.
+        ///   Looks up a localized string similar to Postpone control.
         /// </summary>
         public static string TimePageTextBlockPostponeInfoHeader {
             get {

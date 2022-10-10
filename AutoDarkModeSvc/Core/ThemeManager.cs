@@ -134,7 +134,7 @@ namespace AutoDarkModeSvc.Core
                     }
                     else
                     {
-                        state.PostponeManager.RemoveAllManualPostpones();
+                        state.PostponeManager.RemoveUserClearablePostpones();
                     }
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
@@ -142,7 +142,7 @@ namespace AutoDarkModeSvc.Core
                     if (state.NightLight.Current != newTheme)
                         state.PostponeManager.AddSkipNextSwitch();
                     else
-                        state.PostponeManager.RemoveAllManualPostpones();
+                        state.PostponeManager.RemoveUserClearablePostpones();
                 }
             }
             return newTheme;

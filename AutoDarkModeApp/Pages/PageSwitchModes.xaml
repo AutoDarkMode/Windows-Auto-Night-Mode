@@ -110,6 +110,26 @@
                               ValueChanged="NumberBoxIdleTimer_ValueChanged" />
             </ui:SimpleStackPanel>
 
+
+            <CheckBox Name="CheckBoxAutoSwitchNotify"
+                      Content="{x:Static p:Resources.SwitchModesCheckBoxAutoSwitchNotification}"
+                      Margin="0,25,0,0"
+                      Click="CheckBoxAutoSwitchNotify_Click" />
+            <ui:SimpleStackPanel Name="StackPanelAutoSwitchNotify">
+                <TextBlock Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.SwitchModesTextBlockAutoSwitchGracePeriod}"
+                           FontSize="14" />
+                <ui:NumberBox Name="NumberBoxAutoSwitchNotifyGracePeriod"
+                              Margin="0,5,0,0"
+                              HorizontalAlignment="Left"
+                              MinWidth="160"
+                              Minimum="1"
+                              SpinButtonPlacementMode="Inline"
+                              SmallChange="1"
+                              LargeChange="1"
+                              ValueChanged="NumberBoxAutoSwitchNotifyGracePeriod_ValueChanged" />
+            </ui:SimpleStackPanel>
+
             <TextBlock Name="TextBlockBatteryPowered"
                        Margin="0,40,0,10"
                        Text="{x:Static p:Resources.SwitchModesTextBlockHeaderBatteryPowered}"

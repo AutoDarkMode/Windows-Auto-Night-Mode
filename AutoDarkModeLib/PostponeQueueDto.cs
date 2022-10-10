@@ -85,7 +85,10 @@ namespace AutoDarkModeLib
                 }
             }
 
-            if (Expires) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
+            if (Expires) {
+                if (Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:dddd HH:mm}";
+                else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}"; 
+            }
             else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
             return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";
         }

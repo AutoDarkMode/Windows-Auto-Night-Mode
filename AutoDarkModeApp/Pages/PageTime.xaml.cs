@@ -32,6 +32,7 @@ namespace AutoDarkModeApp.Pages
         private bool reload = false;
         private delegate void DispatcherDelegate();
         private System.Timers.Timer postponeRefreshTimer = new();
+        private int selectedPostponeMinutes = -0;
         private FileSystemWatcher ConfigWatcher { get; }
 
         public PageTime()
@@ -117,6 +118,9 @@ namespace AutoDarkModeApp.Pages
             };
         }
 
+        /// <summary>
+        /// Repeatedly retrieves the postpone state and handles UI changes if the state has changed externally
+        /// </summary>
         private void PostponeTimerEvent(object sender, EventArgs e)
         {
             ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
@@ -158,10 +162,12 @@ namespace AutoDarkModeApp.Pages
                                 if (autoPause)
                                 {
                                     ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+                                    PostponeComboBox.IsEnabled = false;
                                 }
                                 else
                                 {
-                                    ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
+                                    ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
+                                    PostponeComboBox.IsEnabled = true;
                                 }
                                 TextBlockPostponeInfo.Text = string.Join('\n', itemsStringList);
                             });
@@ -171,9 +177,10 @@ namespace AutoDarkModeApp.Pages
                             Dispatcher.Invoke(() =>
                             {
                                 //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
-                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
+                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
                                 TextBlockPostponeInfo.Text = AdmProperties.Resources.TimePagePostponeInfoNominal;
                                 TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+                                PostponeComboBox.IsEnabled = true;
                             });
                         }
 
@@ -204,7 +211,7 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 DisableTimeBasedSwitch();
-                TogglePanelVisibility(true, false, false, false, false);
+                SetPanelVisibility(true, false, false, false, false);
                 RadioButtonDisabled.IsChecked = true;
             }
             //enabled
@@ -216,7 +223,7 @@ namespace AutoDarkModeApp.Pages
                     if (!builder.Config.Location.Enabled)
                     {
                         RadioButtonCustomTimes.IsChecked = true;
-                        TogglePanelVisibility(true, false, false, false, true);
+                        SetPanelVisibility(true, false, false, false, true);
                         applyButton.IsEnabled = false;
                     }
 
@@ -226,7 +233,7 @@ namespace AutoDarkModeApp.Pages
                         //windows location service
                         if (builder.Config.Location.UseGeolocatorService)
                         {
-                            TogglePanelVisibility(false, true, true, false, true);
+                            SetPanelVisibility(false, true, true, false, true);
                             ActivateLocationModeWrapper();
                             RadioButtonLocationTimes.IsChecked = true;
                         }
@@ -234,7 +241,7 @@ namespace AutoDarkModeApp.Pages
                         else
                         {
                             RadioButtonCoordinateTimes.IsChecked = true;
-                            TogglePanelVisibility(false, true, true, true, true);
+                            SetPanelVisibility(false, true, true, true, true);
                             ActivateLocationModeWrapper();
                         }
                     }
@@ -242,7 +249,7 @@ namespace AutoDarkModeApp.Pages
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
                     RadioButtonWindowsNightLight.IsChecked = true;
-                    TogglePanelVisibility(false, false, true, false, true);
+                    SetPanelVisibility(false, false, true, false, true, true);
                 }
             }
 
@@ -298,50 +305,25 @@ namespace AutoDarkModeApp.Pages
         }
 
 
-        private void TogglePanelVisibility(bool timepicker, bool location, bool offset, bool coordinates, bool postpone)
+        private void SetPanelVisibility(bool timepicker = false, bool location = false, bool offset = false, bool coordinates = false, bool postpone = false, bool nightLight = false)
         {
-            if (timepicker)
-            {
-                GridTimePicker.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                GridTimePicker.Visibility = Visibility.Collapsed;
-            }
+            if (timepicker) GridTimePicker.Visibility = Visibility.Visible;
+            else GridTimePicker.Visibility = Visibility.Collapsed;
 
-            if (location)
-            {
-                GridLocationTimeInfo.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                GridLocationTimeInfo.Visibility = Visibility.Collapsed;
-            }
+            if (location) GridLocationTimeInfo.Visibility = Visibility.Visible;
+            else GridLocationTimeInfo.Visibility = Visibility.Collapsed;
 
-            if (offset)
-            {
-                GridOffset.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                GridOffset.Visibility = Visibility.Collapsed;
-            }
-            if (coordinates)
-            {
-                GridCoordinates.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                GridCoordinates.Visibility = Visibility.Collapsed;
-            }
-            if (postpone)
-            {
-                StackPanelPostponeInfo.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
-            }
+            if (offset) GridOffset.Visibility = Visibility.Visible;
+            else GridOffset.Visibility = Visibility.Collapsed;
+
+            if (coordinates) GridCoordinates.Visibility = Visibility.Visible;
+            else GridCoordinates.Visibility = Visibility.Collapsed;
+
+            if (postpone) StackPanelPostponeInfo.Visibility = Visibility.Visible;
+            else StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+
+            if (nightLight) GridNightLight.Visibility = Visibility.Visible;
+            else GridNightLight.Visibility = Visibility.Collapsed;
         }
 
         //apply theme
@@ -523,7 +505,7 @@ namespace AutoDarkModeApp.Pages
 
         private void DisableLocationMode()
         {
-            TogglePanelVisibility(true, false, false, false, true);
+            SetPanelVisibility(true, false, false, false, true);
 
             builder.Config.Location.Enabled = false;
             userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
@@ -617,7 +599,7 @@ namespace AutoDarkModeApp.Pages
             ButtonApplyCoordinates.IsEnabled = false;
             await ActivateLocationMode();
             await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
-            TogglePanelVisibility(false, true, true, true, true);
+            SetPanelVisibility(false, true, true, true, true);
         }
 
         private void ShowErrorMessage(Exception ex, string location = "PageTime")
@@ -658,7 +640,7 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonDisabled_Click(object sender, RoutedEventArgs e)
         {
             DisableTimeBasedSwitch();
-            TogglePanelVisibility(true, false, false, false, true);
+            SetPanelVisibility(true, false, false, false, true);
         }
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
@@ -687,7 +669,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 if (!init) builder.Save();
-                TogglePanelVisibility(false, true, true, false, true);
+                SetPanelVisibility(false, true, true, false, true);
                 await ActivateLocationMode();
                 await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             }
@@ -702,12 +684,12 @@ namespace AutoDarkModeApp.Pages
         {
             if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
             {
-                TogglePanelVisibility(false, false, true, true, true);
+                SetPanelVisibility(false, false, true, true, true);
                 ButtonApplyCoordinates_Click(this, null);
             }
             else
             {
-                TogglePanelVisibility(false, false, false, true, true);
+                SetPanelVisibility(false, false, false, true, true);
             }
         }
 
@@ -883,22 +865,37 @@ namespace AutoDarkModeApp.Pages
 
         private void ButtonControlPostponeQueue_Click(object sender, RoutedEventArgs e)
         {
+            bool isDelayed = false;
             if ((string)ButtonControlPostponeQueue.Content == AdmProperties.Resources.Resume)
             {
-                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonSkipAutoSwitchOnce;
+                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
+                PostponeComboBox.IsEnabled = true;
+                isDelayed = true;
             }
             else
             {
                 ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+                PostponeComboBox.IsEnabled = false;
             }
-            MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+            if (selectedPostponeMinutes != 0 && !isDelayed)
+            {
+                MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {selectedPostponeMinutes}");
+            }
+            else if (selectedPostponeMinutes == 0)
+            {
+                MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+            }
+            else
+            {
+                MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
+            }
             PostponeTimerEvent(null, new());
             MessageHandler.Client.SendMessageAndGetReply(Command.Switch);
         }
 
         private void RadioButtonWindowsNightLight_Click(object sender, RoutedEventArgs e)
         {
-            TogglePanelVisibility(false, false, true, false, true);
+            SetPanelVisibility(false, false, true, false, true);
             builder.Config.Governor = Governor.NightLight;
             builder.Config.AutoThemeSwitchingEnabled = true;
             builder.Config.Location.Enabled = false;
@@ -915,6 +912,20 @@ namespace AutoDarkModeApp.Pages
         private async void ButtonOpenNightLightSettings_Click(object sender, RoutedEventArgs e)
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
+        }
+
+        private void PostponeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cb = (ComboBoxItem)PostponeComboBox.SelectedItem;
+            string minutesString = cb.Name.Replace("Postpone", "");
+            if (int.TryParse(minutesString, out int minutes))
+            {
+                selectedPostponeMinutes = minutes;
+            }
+            else
+            {
+                selectedPostponeMinutes = 0;
+            }
         }
     }
 }

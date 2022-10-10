@@ -82,7 +82,10 @@
                          Click="RadioButtonWindowsNightLight_Click" />
         </StackPanel>
 
-        <ui:SimpleStackPanel Name="GridNightLight" Margin="0,0,0,0" Grid.Row="5" Grid.Column="1">
+        <ui:SimpleStackPanel Name="GridNightLight"
+                             Margin="0,0,0,0"
+                             Grid.Row="5"
+                             Grid.Column="1">
 
             <TextBlock Name="TextBlockNightLightHeader"
                        Grid.Row="0"
@@ -415,20 +418,65 @@
                              Grid.Column="1"
                              Name="StackPanelPostponeInfo">
 
-            <TextBlock Grid.Row="9"
-                       Grid.Column="1"
-                       Margin="0,30,0,0"
+            <TextBlock Margin="0,30,0,0"
                        Text="{x:Static p:Resources.TimePageTextBlockPostponeInfoHeader}"
                        FontFamily="Segoe UI Semibold"
                        FontSize="20"
                        Height="Auto"
                        Width="Auto" />
-            
+
+            <ui:SimpleStackPanel Orientation="Horizontal">
+                <ComboBox Grid.Row="1"
+                          Grid.Column="1"
+                          Margin="0,15,0,0"
+                          MinWidth="200"
+                          Name="PostponeComboBox"
+                          ToolTipService.ShowOnDisabled="True"
+                          ToolTipService.InitialShowDelay="3"
+                          ToolTipService.HasDropShadow="True"
+                          SelectionChanged="PostponeComboBox_SelectionChanged"
+                          MinHeight="30">
+
+                    <ComboBoxItem Name="Postpone15"
+                                  Content="15 Minutes" />
+                    <ComboBoxItem Name="Postpone30"
+                                  Content="30 Minutes" />
+                    <ComboBoxItem Name="Postpone60"
+                                  Content="1 hour" />
+                    <ComboBoxItem Name="Postpone120"
+                                  Content="2 hours" />
+                    <ComboBoxItem Name="Postpone180"
+                                  Content="3 hours" />
+                    <ComboBoxItem Name="Postpone360"
+                                  Content="6 hours" />
+                    <ComboBoxItem Name="Postpone720"
+                                  Content="12 hours" />
+                    <ComboBoxItem Name="PostponeUntilNext"
+                                  IsSelected="True"
+                                  Content="{x:Static p:Resources.PostponeTimeSkipOnce}" />
+                </ComboBox>
+
+                <Button x:Name="ButtonControlPostponeQueue"
+                        Content="{x:Static p:Resources.PostponeButtonDelay}"
+                        VerticalAlignment="Bottom"
+                        MinWidth="80"
+                        Margin="25,0,0,0"
+                        Click="ButtonControlPostponeQueue_Click" />
+            </ui:SimpleStackPanel>
+
+
+
+            <TextBlock Name="TextBlockActiveDelays"
+                       Margin="0,20,0,0"
+                       Text="{x:Static p:Resources.TimePageHeaderActiveDelays}"
+                       FontFamily="Segoe UI"
+                       FontSize="18" />
+
             <TextBlock Name="TextBlockPostponeInfo"
                        Margin="0,10,0,0"
                        Text="{x:Static p:Resources.TimePagePostponeInfoNominal}"
-                       FontSize="14"/>
-            
+                       FontSize="14" />
+
             <TextBlock Name="TextBlockResumeInfo"
                        Margin="0,5,0,0"
                        VerticalAlignment="Top"
@@ -439,12 +487,7 @@
                        FontFamily="Segoe UI"
                        TextWrapping="Wrap" />
 
-            <Button x:Name="ButtonControlPostponeQueue"
-                    Content="{x:Static p:Resources.PostponeButtonSkipAutoSwitchOnce}"
-                    VerticalAlignment="Bottom"
-                    MinWidth="150"
-                    Margin="0,10,0,0"
-                    Click="ButtonControlPostponeQueue_Click" />
+
         </ui:SimpleStackPanel>
 
         <!-- Help -->

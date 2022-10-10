@@ -1,10 +1,10 @@
-﻿using System;
+﻿using AutoDarkModeLib;
+using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AutoDarkModeLib;
 using Windows.System.Power;
-using System.Diagnostics;
 using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp.Pages
@@ -49,6 +49,17 @@ namespace AutoDarkModeApp.Pages
             {
                 StackPanelIdleTimer.Visibility = Visibility.Collapsed;
             }
+
+            CheckBoxAutoSwitchNotify.IsChecked = builder.Config.AutoSwitchNotify.Enabled;
+            if (builder.Config.AutoSwitchNotify.Enabled)
+            {
+                StackPanelAutoSwitchNotify.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                StackPanelAutoSwitchNotify.Visibility = Visibility.Collapsed;
+            }
+            NumberBoxAutoSwitchNotifyGracePeriod.Value = Convert.ToDouble(builder.Config.AutoSwitchNotify.GracePeriodMinutes);
 
             ComboBoxGPUSamples.SelectedIndex = builder.Config.GPUMonitoring.Samples - 1;
             NumberBoxGPUThreshold.Value = Convert.ToDouble(builder.Config.GPUMonitoring.Threshold);
@@ -197,7 +208,48 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-            private void ComboBoxGPUSamples_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CheckBoxAutoSwitchNotify_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxAutoSwitchNotify.IsChecked.Value)
+            {
+                builder.Config.AutoSwitchNotify.Enabled = true;
+                StackPanelAutoSwitchNotify.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                builder.Config.AutoSwitchNotify.Enabled = false;
+                StackPanelAutoSwitchNotify.Visibility = Visibility.Collapsed;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxAutoSwitchNotifyClick");
+            }
+        }
+
+        private void NumberBoxAutoSwitchNotifyGracePeriod_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            if (!init)
+            {
+                if (double.IsNaN(NumberBoxAutoSwitchNotifyGracePeriod.Value)) //fixes crash when leaving box empty and clicking outside it
+                    return;
+
+                builder.Config.AutoSwitchNotify.GracePeriodMinutes = Convert.ToInt32(NumberBoxAutoSwitchNotifyGracePeriod.Value);
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "NumberBoxAutoSwitchNotifyGracePeriod_ValueChanged");
+                }
+            }
+        }
+
+        private void ComboBoxGPUSamples_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             builder.Config.GPUMonitoring.Samples = ComboBoxGPUSamples.SelectedIndex + 1;
             if (init) return;

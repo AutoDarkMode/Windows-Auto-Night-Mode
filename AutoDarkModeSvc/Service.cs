@@ -181,8 +181,10 @@ namespace AutoDarkModeSvc
             PostponeItem tempDelay = state.PostponeManager.Get(Helper.DelaySwitchItemName);
             if (tempDelay != null && !state.PostponeManager.IsSkipNextSwitch)
             {
+                DateTime expiry = tempDelay.Expiry ?? new();
                 pauseThemeSwitchItem.Checked = true;
-                pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {tempDelay.Expiry:HH:mm})";
+                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:ddd HH:mm})";
+                else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
             }
             else
             {
@@ -190,7 +192,8 @@ namespace AutoDarkModeSvc
                 (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
                 if (expiry.Year != 1)
                 {
-                    pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
+                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:ddd HH:mm})";
+                    else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
                 }
                 else
                 {
@@ -268,7 +271,7 @@ namespace AutoDarkModeSvc
         {
             if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.Get(Helper.DelaySwitchItemName) != null)
             {
-                state.PostponeManager.RemoveAllManualPostpones();
+                state.PostponeManager.RemoveUserClearablePostpones();
                 ThemeManager.RequestSwitch(new(SwitchSource.Manual));
             }
             else

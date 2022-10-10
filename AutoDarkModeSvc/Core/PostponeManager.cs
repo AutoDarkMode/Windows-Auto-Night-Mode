@@ -120,7 +120,7 @@ namespace AutoDarkModeSvc.Core
         {
             if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName || x.Reason == Helper.DelaySwitchItemName))
             {
-                RemoveAllManualPostpones();
+                RemoveUserClearablePostpones();
                 return false;
             }
             AddSkipNextSwitch();
@@ -236,10 +236,18 @@ namespace AutoDarkModeSvc.Core
             }
         }
 
-        public void RemoveAllManualPostpones()
+        public void RemoveUserClearablePostpones()
         {
-            Remove(Helper.DelaySwitchItemName);
-            Remove(Helper.SkipSwitchPostponeItemName);
+            List<PostponeItem> toClear = PostponeQueue.Select(i =>
+            {
+                if (i.IsUserClearable)
+                {
+                    if (i.Expires) i.CancelExpiry();
+                    return i;
+                }
+                return null;
+            }).ToList();
+            toClear.ForEach(i => Remove(i.Reason));
         }
 
         /// <summary>
@@ -288,6 +296,7 @@ namespace AutoDarkModeSvc.Core
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public string Reason { get; }
+        public bool IsUserClearable { get; }
         public DateTime? Expiry { get; private set; }
         private Task Task { get; set; }
         CancellationTokenSource CancelTokenSource { get; set; } = new CancellationTokenSource();
@@ -300,9 +309,10 @@ namespace AutoDarkModeSvc.Core
             }
         }
 
-        public PostponeItem(string reason)
+        public PostponeItem(string reason, bool isUserClearable = true)
         {
             Reason = reason;
+            IsUserClearable = isUserClearable;
         }
 
         /// <summary>
@@ -310,11 +320,12 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         /// <param name="reason">the name of the postpone item</param>
         /// <param name="expiry">the datetime when it should expire</param>
-        public PostponeItem(string reason, DateTime expiry, SkipType skipType)
+        public PostponeItem(string reason, DateTime expiry, SkipType skipType, bool isUserClearable = true)
         {
             Reason = reason;
             Expiry = expiry;
             SkipType = skipType;
+            IsUserClearable = isUserClearable;
         }
 
         /// <summary>

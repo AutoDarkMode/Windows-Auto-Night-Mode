@@ -55,6 +55,14 @@ namespace AutoDarkModeSvc.Communication
         [Includable]
         public const string NoForce = "--no-force";
 
+
+        /// <summary>
+        /// Delays the theme switch by a user set amount passed as additional parameter in minnutes 
+        /// Returns an APIResponse with StatusCode.Ok, StatusCode.Err if parameter is invalid or a StatusCode.Timeout
+        /// </summary>
+        [Includable]
+        public const string DelayBy = "--delay-by";
+
         /// <summary>
         /// Toggles skipping the next pending theme switch off or on
         /// Returns an APIResponse with StatusCode.Ok or a StatusCode.Timeout 
