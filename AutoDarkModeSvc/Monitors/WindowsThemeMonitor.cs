@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,13 @@ namespace AutoDarkModeSvc.Monitors
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static ManagementEventWatcher globalThemeEventWatcher;
+        private static bool IsPaused
+        {
+            get;
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set;
+        }
         private static void HandleThemeMonitorEvent()
         {
             Logger.Debug("theme switch detected");
@@ -65,13 +73,14 @@ namespace AutoDarkModeSvc.Monitors
 
         public static void PauseThemeMonitor(TimeSpan timeSpan)
         {
-            if (globalThemeEventWatcher != null)
+            if (globalThemeEventWatcher != null && !IsPaused)
             {
+                IsPaused = true;
                 globalThemeEventWatcher.Stop();
                 Task.Delay(timeSpan).ContinueWith(e =>
                 {
-                    if (globalThemeEventWatcher != null)
-                        globalThemeEventWatcher.Start();
+                    if (globalThemeEventWatcher != null) globalThemeEventWatcher.Start();
+                    IsPaused = false;
                 });
             }
         }
