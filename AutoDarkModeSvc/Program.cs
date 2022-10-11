@@ -154,7 +154,7 @@ namespace AutoDarkModeSvc
                 }
 
                 // modify config if debug flag is set in config
-                if (!argsList.Contains("/debug") && !argsList.Contains("/trace"))
+                if (!argsList.Contains("/debug") && !argsList.Contains("/trace") && (builder.Config.Tunable.Debug || builder.Config.Tunable.Trace))
                 {
                     config = new NLog.Config.LoggingConfiguration();
                     if (builder.Config.Tunable.Trace)

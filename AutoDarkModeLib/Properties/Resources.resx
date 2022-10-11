@@ -974,4 +974,7 @@ Do you really want to continue?</value>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
     <value>Time the notification waits for user input in minutes</value>
   </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Debug mode</value>
+  </data>
 </root>

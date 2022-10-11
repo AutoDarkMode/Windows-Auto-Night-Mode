@@ -1465,6 +1465,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debug mode.
+        /// </summary>
+        public static string SettngsPageDebugMode {
+            get {
+                return ResourceManager.GetString("SettngsPageDebugMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service not running yet, please wait....
         /// </summary>
         public static string StartupLaunchingServiceText {

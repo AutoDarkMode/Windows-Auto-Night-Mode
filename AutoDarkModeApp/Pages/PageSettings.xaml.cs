@@ -93,6 +93,7 @@ namespace AutoDarkModeApp.Pages
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
+            CheckBoxDebugMode.IsChecked = builder.Config.Tunable.Debug;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
 
 
@@ -361,6 +362,27 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "BatterySlider_Save");
+            }
+        }
+
+        private void CheckBoxDebugMode_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Tunable.Debug = true;
+            }
+            else
+            {
+                builder.Config.Tunable.Debug  = false;
+            }
+            try
+            {
+                builder.Save();
+                _ = MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxDebugMode_Click");
             }
         }
 
@@ -790,5 +812,7 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "autostart_monitor_event");
             }
         }
+
+      
     }
 }
