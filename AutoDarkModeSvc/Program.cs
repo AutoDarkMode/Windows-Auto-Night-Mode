@@ -179,13 +179,13 @@ namespace AutoDarkModeSvc
                     if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.DarkThemePath == null)
                     {
                         builder.Config.WindowsThemeMode.DarkThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-                            + @"\Microsoft\Windows\Themes", state.CurrentWindowsThemeName + ".theme");
+                            + @"\Microsoft\Windows\Themes", state.CurrentWindowsThemePath + ".theme");
                         configUpdateNeeded = true;
                     }
                     if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.LightThemePath == null)
                     {
                         builder.Config.WindowsThemeMode.LightThemePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-                           + @"\Microsoft\Windows\Themes", state.CurrentWindowsThemeName + ".theme");
+                           + @"\Microsoft\Windows\Themes", state.CurrentWindowsThemePath + ".theme");
                         configUpdateNeeded = true;
                     }
                     if (configUpdateNeeded)

@@ -64,7 +64,7 @@ namespace AutoDarkModeSvc.Handlers
 
             // TODO change tracking when having active theme monitor disabled
             if (newTheme == Theme.Dark && (skipCheck || 
-                !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal)))
+                !state.CurrentWindowsThemePath.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal)))
             {
                 PowerHandler.RequestDisableEnergySaver(config);
                 if (config.WindowsThemeMode.MonitorActiveTheme)
@@ -72,18 +72,10 @@ namespace AutoDarkModeSvc.Handlers
                     WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
                 }
                 Apply(config.WindowsThemeMode.DarkThemePath);
-                if (!config.WindowsThemeMode.MonitorActiveTheme)
-                {
-                    Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
-                    {
-                        state.CurrentWindowsThemeName = GetCurrentThemeName();
-                        Logger.Debug($"delayed theme refresh after switch. name: {state.CurrentWindowsThemeName}");
-                    });
-                }
                 return true;
             }
             else if (newTheme == Theme.Light && (skipCheck || 
-                !state.CurrentWindowsThemeName.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal)))
+                !state.CurrentWindowsThemePath.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal)))
             {
                 PowerHandler.RequestDisableEnergySaver(config);
                 if (config.WindowsThemeMode.MonitorActiveTheme)
@@ -91,14 +83,6 @@ namespace AutoDarkModeSvc.Handlers
                     WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
                 }
                 Apply(config.WindowsThemeMode.LightThemePath);
-                if (!config.WindowsThemeMode.MonitorActiveTheme)
-                {
-                    Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
-                    {
-                        state.CurrentWindowsThemeName = GetCurrentThemeName();
-                        Logger.Debug($"delayed theme refresh after switch. name: {state.CurrentWindowsThemeName}");
-                    });
-                }
                 return true;
             }
             return false;
@@ -201,7 +185,7 @@ namespace AutoDarkModeSvc.Handlers
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
-                    state.CurrentWindowsThemeName = Path.GetFileNameWithoutExtension(themeFilePath);
+                    state.CurrentWindowsThemePath = Path.GetFileNameWithoutExtension(themeFilePath);
                     if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully");
                 }
                 catch (Exception ex)
@@ -260,10 +244,10 @@ namespace AutoDarkModeSvc.Handlers
             }
             if (builder.Config.WindowsThemeMode.Enabled
                 && !builder.Config.WindowsThemeMode.MonitorActiveTheme
-                && state.CurrentWindowsThemeName == themePath)
+                && state.CurrentWindowsThemePath == themePath)
             {
                 Logger.Debug("enforcing theme refresh with disabled MonitorActiveTheme");
-                state.CurrentWindowsThemeName = "";
+                state.CurrentWindowsThemePath = "";
             }
         }
     }

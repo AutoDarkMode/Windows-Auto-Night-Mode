@@ -32,7 +32,7 @@ namespace AutoDarkModeSvc.Modules
             {
                 try
                 {
-                    State.CurrentWindowsThemeName = ThemeHandler.GetCurrentThemeName();
+                    State.CurrentWindowsThemePath = ThemeHandler.GetCurrentThemeName();
                 }
                 catch (Exception ex)
                 {
@@ -48,7 +48,7 @@ namespace AutoDarkModeSvc.Modules
 
         public override void DisableHook()
         {
-            State.CurrentWindowsThemeName = "";
+            State.CurrentWindowsThemePath = "";
         }
     }
 }

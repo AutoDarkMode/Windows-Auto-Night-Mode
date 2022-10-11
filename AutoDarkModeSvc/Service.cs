@@ -364,13 +364,13 @@ namespace AutoDarkModeSvc
             if (RegistryHandler.AppsUseLightTheme())
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
-                    state.CurrentWindowsThemeName = "";
+                    state.CurrentWindowsThemePath = "";
                 ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
             }
             else
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
-                    state.CurrentWindowsThemeName = "";
+                    state.CurrentWindowsThemePath = "";
                 ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
             }
         }

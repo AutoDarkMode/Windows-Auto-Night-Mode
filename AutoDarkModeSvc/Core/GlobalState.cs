@@ -31,7 +31,7 @@ namespace AutoDarkModeSvc.Core
         public Theme RequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
-        public string CurrentWindowsThemeName { get; set; } = GetCurrentThemeName();
+        public string CurrentWindowsThemePath { get; set; } = GetCurrentThemeName();
         public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
