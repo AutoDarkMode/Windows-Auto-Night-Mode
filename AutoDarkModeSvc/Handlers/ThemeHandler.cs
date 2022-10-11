@@ -96,7 +96,7 @@ namespace AutoDarkModeSvc.Handlers
                     Task.Delay(TimeSpan.FromSeconds(10)).ContinueWith(o =>
                     {
                         state.CurrentWindowsThemeName = GetCurrentThemeName();
-                        Logger.Debug($"delayed theme refresh after switch. name:{state.CurrentWindowsThemeName}");
+                        Logger.Debug($"delayed theme refresh after switch. name: {state.CurrentWindowsThemeName}");
                     });
                 }
                 return true;
