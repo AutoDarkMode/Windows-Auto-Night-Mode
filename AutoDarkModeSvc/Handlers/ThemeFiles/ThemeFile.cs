@@ -169,6 +169,22 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             desktopSerialized.Add($"{nameof(Desktop.PicturePosition)}={Desktop.PicturePosition}");
             Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(Desktop.Section.Item1, desktopSerialized);
+
+            //Update Slideshow
+            if (Slideshow.Enabled)
+            {
+                List<string> slideshowSerialized = new();
+                slideshowSerialized.Add(Slideshow.Section.Item1);
+                slideshowSerialized.Add($"{nameof(Slideshow.Interval)}={Slideshow.Interval}");
+                slideshowSerialized.Add($"{nameof(Slideshow.Shuffle)}={Slideshow.Shuffle}");
+                if (Slideshow.ImagesRootPath != null) slideshowSerialized.Add($"{nameof(Slideshow.ImagesRootPath)}={Slideshow.ImagesRootPath}");
+                if (Slideshow.ImagesRootPIDL != null) slideshowSerialized.Add($"{nameof(Slideshow.ImagesRootPIDL)}={Slideshow.ImagesRootPIDL}");
+                Slideshow.ItemPaths.ForEach(w => slideshowSerialized.Add($"Item{w.Item2}Path={w.Item1}"));
+                if (Slideshow.RssFeed != null) slideshowSerialized.Add($"{nameof(Slideshow.RssFeed)}={Slideshow.RssFeed}");
+                UpdateSection(Slideshow.Section.Item1, slideshowSerialized);
+            }
+
+
             try
             {
                 new FileInfo(ThemeFilePath).Directory.Create();
@@ -182,6 +198,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         public void RemoveSlideshow()
         {
+            Slideshow.Enabled = false;
             RemoveSection(Slideshow.Section.Item1);
         }
 
@@ -191,6 +208,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             VisualStyles = new();
             Cursors = new();
             Colors = new();
+            Slideshow = new();
 
             var iter = ThemeFileContent.GetEnumerator();
             bool processLastIterValue = false;
@@ -290,8 +308,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             break;
                         }
 
+                        Slideshow.Enabled = true;
+
                         if (iter.Current.Contains("ImagesRootPath")) Slideshow.ImagesRootPath = iter.Current.Split('=')[1].Trim();
                         else if (iter.Current.Contains("RssFeed")) Slideshow.RssFeed = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.Contains("ImagesRootPIDL")) Slideshow.ImagesRootPIDL = iter.Current.Split('=')[1].Trim();
                         else if (iter.Current.Contains("Interval"))
                         {
                             if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int interval))
@@ -379,6 +400,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             {
                 try
                 {
+                    if (p.Name == "Enabled") continue;
                     (string, int) propValue = ((string, int))p.GetValue(obj);
                     if (input.StartsWith(p.Name))
                     {
