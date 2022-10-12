@@ -246,7 +246,7 @@ namespace AutoDarkModeSvc.Core
                     return i;
                 }
                 return null;
-            }).ToList();
+            }).Where(i => i != null).ToList();
             toClear.ForEach(i => Remove(i.Reason));
         }
 

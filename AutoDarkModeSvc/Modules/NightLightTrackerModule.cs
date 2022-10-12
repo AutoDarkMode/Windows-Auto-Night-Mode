@@ -41,7 +41,7 @@ namespace AutoDarkModeSvc.Modules
 
             if (builder.Config.AutoSwitchNotify.Enabled && !init)
             {
-                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-2).TimeOfDay, adjustedTime.AddSeconds(10).TimeOfDay))
+                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay))
                 {
                     if (state.PostponeManager.Get(Helper.DelayGracePeriodItemName) == null)
                     {
