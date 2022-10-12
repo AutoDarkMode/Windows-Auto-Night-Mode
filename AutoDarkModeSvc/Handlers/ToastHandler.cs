@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void InvokeDelayAutoSwitchNotificationToast()
         {
-            if (state.PostponeManager.IsSkipNextSwitch)
+            if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.IsUserDelayed)
             {
                 state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
                 return;

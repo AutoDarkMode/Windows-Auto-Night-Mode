@@ -34,6 +34,16 @@ namespace AutoDarkModeSvc.Core
             }
         }
 
+        public bool IsUserDelayed
+        {
+            get
+            {
+                if (PostponeQueue.Any(x => x.Reason == Helper.DelaySwitchItemName))
+                    return true;
+                return false;
+            }
+        }
+
         public bool IsPostponed
         {
             get { return PostponeQueue.Count > 0; }
