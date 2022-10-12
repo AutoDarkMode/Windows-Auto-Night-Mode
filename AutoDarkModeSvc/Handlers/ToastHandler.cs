@@ -23,43 +23,58 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly GlobalState state = GlobalState.Instance();
 
-
-        public static void InvokeDelayAutoSwitchNotificationToast()
+        /// <summary>
+        /// Performs all logic related to showing the delay notifiction for auto-theme switching. <br/>
+        /// Will only show a toast and delay if another notficiation still has its grace period delay active, or if another theme switch pause is active. <br/>
+        /// </summary>
+        public static void InvokeDelayAutoSwitchNotifyToast()
         {
-            if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.IsUserDelayed)
+            try
             {
-                state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
-                return;
-            }
-
-            (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-            string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
-
-            Program.ActionQueue.Add(() =>
-            {
-                new ToastContentBuilder()
-                .AddText("Auto theme switch pending...")
-                .AddText("Would you like to switch now or postpone it further?")
-                .AddToastInput(new ToastSelectionBox("time")
+                if (state.PostponeManager.Get(Helper.PostponeItemDelayGracePeriod) != null) return;
+                if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.IsUserDelayed)
                 {
-                    DefaultSelectionBoxItemId = "15",
-                    Items =
+                    Logger.Info("another auto pause is already active, skipping toast and grace delay");
+                    state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
+                    return;
+                }
+
+                state.PostponeManager.Add(new(Helper.PostponeItemDelayGracePeriod, DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
+
+                // retrieve data on whether to show sunrise/sunset in the postpone combobox.
+                (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
+                string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
+
+                Program.ActionQueue.Add(() =>
+                {
+                    new ToastContentBuilder()
+                    .AddText("Auto theme switch pending...")
+                    .AddText("Would you like to switch now or postpone it further?")
+                    .AddToastInput(new ToastSelectionBox("time")
                     {
+                        DefaultSelectionBoxItemId = "15",
+                        Items =
+                        {
                         new ToastSelectionBoxItem("15", "15 minutes"),
                         new ToastSelectionBoxItem("30", "30 minutes"),
                         new ToastSelectionBoxItem("60", "1 hour"),
                         new ToastSelectionBoxItem("180", "3 hours"),
                         new ToastSelectionBoxItem("next", until)
-                    }
-                })
-                .AddButton(new ToastButton("Switch now", "switch-now"))
-                .AddButton(new ToastButton("Delay", "delay"))
-                .Show(toast =>
-                {
-                    toast.Tag = "adm-theme-switch-delayed-notif";
-                    toast.ExpirationTime = DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes);
+                        }
+                    })
+                    .AddButton(new ToastButton("Switch now", "switch-now"))
+                    .AddButton(new ToastButton("Delay", "delay"))
+                    .Show(toast =>
+                    {
+                        toast.Tag = "adm-theme-switch-delayed-notif";
+                        toast.ExpirationTime = DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes);
+                    });
                 });
-            });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error invoking auto switch notify toast: ");
+            }            
         }
 
 
@@ -401,35 +416,35 @@ namespace AutoDarkModeSvc.Handlers
                             if (userInput.Values.Contains("15"))
                             {
                                 Logger.Info("postpone auto switch for 15 minutes via toast");
-                                state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(15), SkipType.Unspecified));
+                                state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(15), SkipType.Unspecified));
                             }
                             if (userInput.Values.Contains("30"))
                             {
                                 Logger.Info("postpone auto switch for 30 minutes via toast");
-                                state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(30), SkipType.Unspecified));
+                                state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(30), SkipType.Unspecified));
                             }
                             if (userInput.Values.Contains("60"))
                             {
                                 Logger.Info("postpone auto switch for 60 minutes via toast");
-                                state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(60), SkipType.Unspecified));
+                                state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(60), SkipType.Unspecified));
                             }
                             if (userInput.Values.Contains("180"))
                             {
                                 Logger.Info("postpone auto switch for 180 minutes via toast");
-                                state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(180), SkipType.Unspecified));
+                                state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(180), SkipType.Unspecified));
                             }
                             if (userInput.Values.Contains("next"))
                             {
                                 Logger.Info("postpone auto switch once via toast");
                                 state.PostponeManager.AddSkipNextSwitch();
                             }
-                            state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
+                            state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
                         }
                     }
                     else if (arguments[0] == "switch-now")
                     {
                         Logger.Info("remove notification switch delay grace period delay via toast");
-                        state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
+                        state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
                         ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                     }
                 }

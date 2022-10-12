@@ -69,7 +69,7 @@ namespace AutoDarkModeLib
             string postponeReasonPostponesUntilNextSwitch = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilNextSwitch", Culture);
             string postponeReasonPostponesUntilCondition = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilCondition", Culture);
 
-            if (Reason == Helper.SkipSwitchPostponeItemName && !Expires)
+            if (Reason == Helper.PostponeItemPauseAutoSwitch && !Expires)
             {
                 string pausedUntilNextSunrise = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunset", Culture);
                 string pausedUntilNextSunset = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunrise", Culture);
@@ -89,7 +89,7 @@ namespace AutoDarkModeLib
                 if (Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:dddd HH:mm}";
                 else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}"; 
             }
-            else if (Reason == Helper.SkipSwitchPostponeItemName) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
+            else if (Reason == Helper.PostponeItemPauseAutoSwitch) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
             return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";
         }
     }

@@ -28,6 +28,10 @@ namespace AutoDarkModeSvc.Core
         }
 
         private WardenModule Warden { get; set; }
+        /// <summary>
+        /// The theme that was last requested. This either reflects the current internal theme of ADM, 
+        /// or the theme shortly before a switch will be performed
+        /// </summary>
         public Theme RequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;

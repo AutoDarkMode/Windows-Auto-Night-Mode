@@ -2,8 +2,7 @@
 using AutoDarkModeSvc.Core;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.System.Power;
 
@@ -15,6 +14,7 @@ namespace AutoDarkModeSvc.Handlers
         private static bool darkThemeOnBatteryEnabled;
         private static bool resumeEventEnabled;
         private static GlobalState state = GlobalState.Instance();
+        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         public static void RegisterThemeEvent()
         {
@@ -28,7 +28,6 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void PowerManager_BatteryStatusChanged(object sender, object e)
         {
-            AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             if (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Offline)
             {
                 Logger.Info("battery discharging, enabling dark mode");
@@ -65,39 +64,16 @@ namespace AutoDarkModeSvc.Handlers
                 if (Environment.OSVersion.Version.Build >= Helper.Win11Build)
                 {
                     Logger.Info("enabling theme refresh at system unlock (win 11)");
-                    SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+                    SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;
                 }
                 else
                 {
                     Logger.Info("enabling theme refresh at system resume (win 10)");
                     SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+                    SystemEvents.SessionSwitch += SystemEvents_Windows10_SessionSwitch;
                 }
 
                 resumeEventEnabled = true;
-            }
-        }
-
-        private static void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
-        {
-            if (e.Reason == SessionSwitchReason.SessionUnlock)
-            {
-                
-                Logger.Info("system unlocked, refreshing theme");
-                state.PostponeManager.Remove(new("SessionLock"));
-                ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
-            }
-            else if (e.Reason == SessionSwitchReason.SessionLock)
-            {
-                state.PostponeManager.Add(new("SessionLock"));
-            }
-        }
-
-        private static void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
-        {
-            if (e.Mode == PowerModes.Resume)
-            {
-                Logger.Info("system resuming from suspended state, refreshing theme");
-                ThemeManager.RequestSwitch(new(SwitchSource.SystemResume));
             }
         }
 
@@ -110,12 +86,14 @@ namespace AutoDarkModeSvc.Handlers
                     if (Environment.OSVersion.Version.Build >= Helper.Win11Build)
                     {
                         Logger.Info("disabling theme refresh at system unlock (win 11)");
-                        SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+                        SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;
                     }
                     else
                     {
                         Logger.Info("disabling theme refresh at system resume (win 10)");
                         SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+                        SystemEvents.SessionSwitch -= SystemEvents_Windows10_SessionSwitch;
+                        state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
                     }
                     resumeEventEnabled = false;
                 }
@@ -123,6 +101,85 @@ namespace AutoDarkModeSvc.Handlers
             catch (InvalidOperationException ex)
             {
                 Logger.Error(ex, "while deregistering SystemEvents_PowerModeChanged ");
+            }
+        }
+
+        private static void SystemEvents_Windows11_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {                
+                if (builder.Config.AutoSwitchNotify.Enabled)
+                {
+                    NotifyAtResume();
+                }
+                else
+                {
+                    Logger.Info("system unlocked, refreshing theme");
+                    state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
+                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                }                
+            }
+            else if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                state.PostponeManager.Add(new(Helper.PostponeItemSessionLock));
+            }
+        }
+
+        private static void SystemEvents_Windows10_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionUnlock)
+            {
+                if (builder.Config.AutoSwitchNotify.Enabled)
+                {
+                    NotifyAtResume();
+                }
+            }
+            else if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                if (builder.Config.AutoSwitchNotify.Enabled) state.PostponeManager.Add(new(Helper.PostponeItemSessionLock));
+            }
+        }
+
+
+        private static void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
+        {
+            if (e.Mode == PowerModes.Resume)
+            {
+                if (builder.Config.AutoSwitchNotify.Enabled == false)
+                {
+                    Logger.Info("system resuming from suspended state, refreshing theme");
+                    ThemeManager.RequestSwitch(new(SwitchSource.SystemResume));
+                }
+            }
+        }
+
+
+        private static void NotifyAtResume()
+        {
+            bool shouldNotify = false;
+            if (builder.Config.Governor == Governor.NightLight)
+            {
+                if (state.NightLight.Current != state.RequestedTheme) shouldNotify = true;
+            }
+            else if (builder.Config.Governor == Governor.Default)
+            {
+                TimedThemeState ts = new();
+                if (ts.TargetTheme != state.RequestedTheme) shouldNotify = true;
+            }
+
+            if (shouldNotify)
+            {
+                Logger.Info("system unlocked, prompting user for theme switch");
+                Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith(o =>
+                {
+                    ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                    state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
+                });
+            }
+            else
+            {
+                Logger.Info("system unlocked, theme state valid, not sending notification");
+                state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
             }
         }
     }

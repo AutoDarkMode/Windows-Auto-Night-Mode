@@ -178,7 +178,7 @@ namespace AutoDarkModeSvc
             if (builder.Config.AutoThemeSwitchingEnabled) pauseThemeSwitchItem.Visible = true;
             else pauseThemeSwitchItem.Visible = false;
 
-            PostponeItem tempDelay = state.PostponeManager.Get(Helper.DelaySwitchItemName);
+            PostponeItem tempDelay = state.PostponeManager.Get(Helper.PostponeItemDelayAutoSwitch);
             if (tempDelay != null && !state.PostponeManager.IsSkipNextSwitch)
             {
                 DateTime expiry = tempDelay.Expiry ?? new();
@@ -269,7 +269,7 @@ namespace AutoDarkModeSvc
 
         public void PauseThemeSwitch(object sender, EventArgs e)
         {
-            if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.Get(Helper.DelaySwitchItemName) != null)
+            if (state.PostponeManager.IsSkipNextSwitch || state.PostponeManager.Get(Helper.PostponeItemDelayAutoSwitch) != null)
             {
                 state.PostponeManager.RemoveUserClearablePostpones();
                 ThemeManager.RequestSwitch(new(SwitchSource.Manual));

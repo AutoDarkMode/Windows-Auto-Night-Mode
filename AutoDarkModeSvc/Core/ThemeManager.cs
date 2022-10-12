@@ -54,7 +54,7 @@ namespace AutoDarkModeSvc.Core
             {
                 if (builder.Config.Governor == Governor.Default)
                 {
-                    ThemeState ts = new();
+                    TimedThemeState ts = new();
                     UpdateTheme(ts.TargetTheme, e, ts.CurrentSwitchTime);
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
@@ -126,7 +126,7 @@ namespace AutoDarkModeSvc.Core
                 if (builder.Config.Governor == Governor.Default)
                 {
                     // set the timer pause theme early to allow the postpone manager to update its pause times correctly
-                    ThemeState ts = new();
+                    TimedThemeState ts = new();
                     if (ts.TargetTheme != newTheme)
                     {
                         if (state.PostponeManager.IsSkipNextSwitch) state.PostponeManager.UpdateSkipNextSwitchExpiry();
@@ -227,7 +227,7 @@ namespace AutoDarkModeSvc.Core
     /// <summary>
     /// Contains information about timed theme switching
     /// </summary>
-    public class ThemeState
+    public class TimedThemeState
     {
         /// <summary>
         /// Sunrise given by geocoordinates, user input or location service
@@ -270,19 +270,20 @@ namespace AutoDarkModeSvc.Core
         public DateTime NextSwitchTime { get; private set; }
 
         /// <summary>
-        /// Precise Time when the target theme entered its activation window
+        /// Precise Time when the target theme entered its activation window <br/> 
+        /// (when the last switch occurred or should have occurred)
         /// </summary>
         public DateTime CurrentSwitchTime { get; private set; }
 
         /// <summary>
         /// Instantiates a new ThemeState class and automatically caluclates timed theme switching data
         /// </summary>
-        public ThemeState()
+        public TimedThemeState()
         {
-            CalculateThemeState();
+            Calculate();
         }
 
-        private void CalculateThemeState()
+        private void Calculate()
         {
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             Sunrise = builder.Config.Sunrise;

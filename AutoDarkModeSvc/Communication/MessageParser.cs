@@ -40,7 +40,7 @@ namespace AutoDarkModeSvc.Communication
                     if (int.TryParse(minutesString, out int minutes))
                     {
                         Logger.Info($"signal received: delay theme switch by {minutesString} minutes");
-                        state.PostponeManager.Add(new(Helper.DelaySwitchItemName, DateTime.Now.AddMinutes(minutes), SkipType.Unspecified));
+                        state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(minutes), SkipType.Unspecified));
                         statusCode = StatusCode.Ok;
                     }
                     else
@@ -433,7 +433,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test2
                     case Command.Test2:
-                        ToastHandler.InvokeDelayAutoSwitchNotificationToast();
+                        ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

@@ -138,7 +138,7 @@ namespace AutoDarkModeApp.Pages
                             List<string> itemsStringList = dto.Items.Select(i =>
                             {
                                 if (i.Expiry == null) anyNoExpiry = true;
-                                if (i.Reason == Helper.SkipSwitchPostponeItemName || i.Reason == Helper.DelaySwitchItemName) 
+                                if (i.Reason == Helper.PostponeItemPauseAutoSwitch || i.Reason == Helper.PostponeItemDelayAutoSwitch) 
                                     autoPause = true;
 
                                 i.SetCulture(Thread.CurrentThread.CurrentCulture);

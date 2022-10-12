@@ -23,6 +23,7 @@ namespace AutoDarkModeSvc.Modules
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool queuePostponeRemove = false;
+        bool notified = false;
 
         public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -39,16 +40,13 @@ namespace AutoDarkModeSvc.Modules
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
             }
 
-            if (builder.Config.AutoSwitchNotify.Enabled && !init)
+            if (builder.Config.AutoSwitchNotify.Enabled && !init && state.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
-                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay))
+                if (Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay) && !notified)
                 {
-                    if (state.PostponeManager.Get(Helper.DelayGracePeriodItemName) == null)
-                    {
-                        state.PostponeManager.Add(new(Helper.DelayGracePeriodItemName, DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
-                        ToastHandler.InvokeDelayAutoSwitchNotificationToast();
-                    }
-                }
+                    ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                    notified = true;
+                } else if (notified && DateTime.Compare(DateTime.Now, adjustedTime.AddMinutes(1)) > 0) notified = false;
             }
 
             // when the adjusted switch time is in the past and no postpones are queued, the theme should be updated

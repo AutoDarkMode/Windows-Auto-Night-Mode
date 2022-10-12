@@ -1,4 +1,5 @@
 ﻿using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace AutoDarkModeSvc.Core
         {
             get
             {
-                if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName))
+                if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemPauseAutoSwitch))
                     return true;
                 return false;
             }
@@ -38,7 +39,7 @@ namespace AutoDarkModeSvc.Core
         {
             get
             {
-                if (PostponeQueue.Any(x => x.Reason == Helper.DelaySwitchItemName))
+                if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemDelayAutoSwitch))
                     return true;
                 return false;
             }
@@ -114,7 +115,7 @@ namespace AutoDarkModeSvc.Core
 
         public PostponeItem GetSkipNextSwitchItem()
         {
-            return PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
+            return PostponeQueue.Where(x => x.Reason == Helper.PostponeItemPauseAutoSwitch).FirstOrDefault();
         }
 
         public PostponeItem Get(string reason)
@@ -128,7 +129,7 @@ namespace AutoDarkModeSvc.Core
         /// <returns>True if it was turned on; false if it was turned off</returns>
         public bool ToggleSkipNextSwitch()
         {
-            if (PostponeQueue.Any(x => x.Reason == Helper.SkipSwitchPostponeItemName || x.Reason == Helper.DelaySwitchItemName))
+            if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemPauseAutoSwitch || x.Reason == Helper.PostponeItemDelayAutoSwitch))
             {
                 RemoveUserClearablePostpones();
                 return false;
@@ -148,7 +149,7 @@ namespace AutoDarkModeSvc.Core
 
             if (builder.Config.Governor != Governor.Default) return (new(), state.NightLight.Current == Theme.Light ? SkipType.Sunset : SkipType.Sunrise);
 
-            ThemeState ts = new();
+            TimedThemeState ts = new();
             DateTime nextSwitchAdjusted;
             SkipType skipType;
 
@@ -198,12 +199,12 @@ namespace AutoDarkModeSvc.Core
             (DateTime nextSwitchAdjusted, SkipType skipType) = GetSkipNextSwitchExpiryTime();
             if (builder.Config.Governor == Governor.Default)
             {
-                PostponeItem item = new(Helper.SkipSwitchPostponeItemName, nextSwitchAdjusted.AddSeconds(1), skipType);
+                PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, nextSwitchAdjusted.AddSeconds(1), skipType);
                 Add(item);
             }
             else if (builder.Config.Governor == Governor.NightLight)
             {
-                PostponeItem item = new(Helper.SkipSwitchPostponeItemName);
+                PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch);
                 item.SkipType = skipType;
                 Add(item);
             }
@@ -219,7 +220,7 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public void UpdateSkipNextSwitchExpiry()
         {
-            PostponeItem item = PostponeQueue.Where(x => x.Reason == Helper.SkipSwitchPostponeItemName).FirstOrDefault();
+            PostponeItem item = PostponeQueue.Where(x => x.Reason == Helper.PostponeItemPauseAutoSwitch).FirstOrDefault();
             if (item != null)
             {
                 (DateTime nextSwitchAdjusted, SkipType skipType) = GetSkipNextSwitchExpiryTime();
@@ -302,7 +303,8 @@ namespace AutoDarkModeSvc.Core
         }
     }
 
-    public class PostponeItem
+  
+public class PostponeItem
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public string Reason { get; }

@@ -13,6 +13,7 @@ namespace AutoDarkModeSvc.Modules
         public override string TimerAffinity { get; } = TimerName.Main;
         private AdmConfigBuilder Builder { get; }
         private GlobalState State { get; } = GlobalState.Instance();
+        private bool notified = false;
 
         /// <summary>
         /// Instantiates a new TimeSwitchModule.
@@ -28,16 +29,19 @@ namespace AutoDarkModeSvc.Modules
         {
             if (Builder.Config.AutoSwitchNotify.Enabled)
             {
-                ThemeState ts = new();
-                if (Helper.NowIsBetweenTimes(ts.NextSwitchTime.AddMinutes(-1).TimeOfDay, ts.NextSwitchTime.AddMinutes(1).TimeOfDay))
+                TimedThemeState ts = new();
+
+                if (State.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
                 {
-                    if (State.PostponeManager.Get(Helper.DelayGracePeriodItemName) == null)
+                    if (Helper.NowIsBetweenTimes(ts.NextSwitchTime.AddMinutes(-1).TimeOfDay, ts.CurrentSwitchTime.AddMinutes(1).TimeOfDay) && !notified)
                     {
-                        State.PostponeManager.Add(new(Helper.DelayGracePeriodItemName, DateTime.Now.AddMinutes(Builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
-                        ToastHandler.InvokeDelayAutoSwitchNotificationToast();
+                        ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                        notified = true;
                     }
+                    else if (notified && DateTime.Compare(DateTime.Now, ts.CurrentSwitchTime.AddMinutes(1)) > 0) notified = false;
                 }
             }
+
 
             if (!State.PostponeManager.IsPostponed)
             {
