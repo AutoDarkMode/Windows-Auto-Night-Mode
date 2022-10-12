@@ -42,7 +42,7 @@ namespace AutoDarkModeSvc.Communication
         private Task TimeoutHandler { get; set; }
         private Task ConnectionHandler { get; set; }
         private readonly int streamTimeout;
-        private readonly int abnormalWorkerCount = 3;
+        private readonly int abnormalWorkerCount = 2;
 
         public AsyncPipeServer(Service service, int numWorkers, int streamTimeout = 5000)
         {
