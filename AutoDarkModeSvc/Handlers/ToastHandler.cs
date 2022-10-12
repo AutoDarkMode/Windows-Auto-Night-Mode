@@ -426,6 +426,7 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Info("remove notification switch delay grace period delay via toast");
                         state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                     }
                 }
             }
