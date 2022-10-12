@@ -26,7 +26,11 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void InvokeDelayAutoSwitchNotificationToast()
         {
-            if (state.PostponeManager.IsSkipNextSwitch) return;
+            if (state.PostponeManager.IsSkipNextSwitch)
+            {
+                state.PostponeManager.Remove(Helper.DelayGracePeriodItemName);
+                return;
+            }
 
             (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
             string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
