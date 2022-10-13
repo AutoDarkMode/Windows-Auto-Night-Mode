@@ -474,7 +474,6 @@ namespace AutoDarkModeApp.Pages
         /// </summary>
         private void ButtonSearchUpdate_Click(object sender, RoutedEventArgs e)
         {
-            ButtonSearchUpdate.IsEnabled = false;
             TextBlockUpdateInfo.Text = AdmProperties.Resources.msgSearchUpd;//searching for update...
             updater.CheckNewVersion();
             if (updater.UpdateAvailable())
