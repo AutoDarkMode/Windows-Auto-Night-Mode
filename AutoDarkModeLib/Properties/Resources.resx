@@ -951,7 +951,7 @@ Do you really want to continue?</value>
     <value>until next sunset</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause theme</value>
+    <value>Toggle pause auto theme switch</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Auto theme switching resumed</value>

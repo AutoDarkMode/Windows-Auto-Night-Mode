@@ -1663,7 +1663,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle pause theme.
+        ///   Looks up a localized string similar to Toggle pause auto theme switch.
         /// </summary>
         public static string SwitchModesTextBlockHeaderTogglePostpone {
             get {
