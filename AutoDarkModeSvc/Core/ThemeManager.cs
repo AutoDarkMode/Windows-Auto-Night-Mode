@@ -119,6 +119,7 @@ namespace AutoDarkModeSvc.Core
             else if (state.RequestedTheme == Theme.Light) newTheme = Theme.Dark;
             else newTheme = Theme.Light;
 
+            // pre-set requested theme to set skip times correctly
             state.RequestedTheme = newTheme;
 
             if (builder.Config.AutoThemeSwitchingEnabled)

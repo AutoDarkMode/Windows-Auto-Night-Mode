@@ -153,7 +153,7 @@ namespace AutoDarkModeSvc.Core
             DateTime nextSwitchAdjusted;
             SkipType skipType;
 
-            // postpone longer if no switch was performed when postpone is engaged.
+            // postpone for longer if current theme is correct while performed when postpone is engaged.
             if (ts.TargetTheme == newTheme)
             {
                 if (ts.TargetTheme == Theme.Light)
