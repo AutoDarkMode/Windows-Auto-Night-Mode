@@ -391,7 +391,7 @@ namespace AutoDarkModeApp.Pages
 
             try
             {
-                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageTime");
@@ -890,7 +890,7 @@ namespace AutoDarkModeApp.Pages
                 MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
             }
             PostponeTimerEvent(null, new());
-            MessageHandler.Client.SendMessageAndGetReply(Command.Switch);
+            MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
         }
 
         private void RadioButtonWindowsNightLight_Click(object sender, RoutedEventArgs e)

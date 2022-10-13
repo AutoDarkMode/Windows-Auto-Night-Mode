@@ -328,7 +328,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
             }
-            _ = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch);
+            _ = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch);
         }
 
         private void ShowErrorMessage(Exception ex, string location)

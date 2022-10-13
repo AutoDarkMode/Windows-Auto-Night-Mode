@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Monitors
             {
                 try
                 {
-                    GlobalState.Instance().CurrentWindowsThemePath = ThemeHandler.GetCurrentThemeName();
+                    GlobalState.Instance().CurrentWindowsThemePath = RegistryHandler.GetActiveThemePath();
                 }
                 catch (Exception ex)
                 {

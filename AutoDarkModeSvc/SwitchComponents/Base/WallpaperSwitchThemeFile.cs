@@ -18,6 +18,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override bool ThemeHandlerCompatibility => false;
         public override int PriorityToLight => 25;
         public override int PriorityToDark => 25;
+        public override HookPosition HookPosition => HookPosition.PreSync;
         private Theme currentIndividualTheme = Theme.Unknown;
         private Theme currentGlobalTheme = Theme.Unknown;
         private Theme currentSolidColorTheme = Theme.Unknown;
@@ -187,16 +188,26 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = Theme.Unknown;
             }
 
+            /* 
             if (type == WallpaperType.All || type == WallpaperType.Individual || type == WallpaperType.SolidColor)
             {
                 // update current theme file with new data
-                ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
-                temp.SyncActiveThemeData(keepDisplayNameAndGuid: true);
-                Logger.Debug($"synced wallpaper data ({temp.DisplayName}): [{string.Join(", ", temp.Desktop.MultimonWallpapers.Select(i => $"{i.Item2}:{i.Item1}").ToList())}]");
-                GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
-                // for solid color
-                GlobalState.ManagedThemeFile.Colors = temp.Colors;
+                try
+                {
+                    ThemeFile temp = new(RegistryHandler.GetActiveThemePath());
+                    temp.Load();
+                    Logger.Debug($"synced wallpaper data ({temp.DisplayName}): [{string.Join(", ", temp.Desktop.MultimonWallpapers.Select(i => $"{i.Item2}:{i.Item1}").ToList())}]");
+                    GlobalState.ManagedThemeFile.Desktop = temp.Desktop;
+                    // for solid color
+                    GlobalState.ManagedThemeFile.Colors = temp.Colors;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error synchronizing themes: ");
+                }
+
             }
+            */
 
             //remove slideshows if the wallpaper switcher is used, until we have our own UI for it
             GlobalState.ManagedThemeFile.RemoveSlideshow();
@@ -282,6 +293,19 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override void EnableHook()
         {
             currentWallpaperPosition = WallpaperHandler.GetPosition();
+            currentIndividualTheme = GetIndividualWallpapersState();
+
+            // global wallpaper enable state synchronization;
+            string globalWallpaper = WallpaperHandler.GetGlobalWallpaper();
+            if (globalWallpaper == Settings.Component.GlobalWallpaper.Light) currentGlobalTheme = Theme.Light;
+            else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
+
+            // solid color enable state synchronization
+            string solidColorHex = WallpaperHandler.GetSolidColor();
+            if (solidColorHex == Settings.Component.SolidColors.Light) currentSolidColorTheme = Theme.Light;
+            else if (solidColorHex == Settings.Component.SolidColors.Dark) currentSolidColorTheme = Theme.Dark;
+
+            // base hook
             base.EnableHook();
         }
 

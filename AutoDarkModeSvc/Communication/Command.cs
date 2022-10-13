@@ -17,7 +17,7 @@ namespace AutoDarkModeSvc.Communication
         /// Invokes a theme switch based on time. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
-        public const string Switch = "--switch";
+        public const string RequestSwitch = "--switch";
 
         /// <summary>
         /// Basically useless currently, needs rework

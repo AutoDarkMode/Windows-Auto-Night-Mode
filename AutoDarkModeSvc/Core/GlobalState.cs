@@ -35,16 +35,31 @@ namespace AutoDarkModeSvc.Core
         public Theme RequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
-        public string CurrentWindowsThemePath { get; set; } = GetCurrentThemeName();
+        public string CurrentWindowsThemePath { get; set; } = GetCurrentThemePath();
         public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
+        public bool InitSyncSwitchPerformed { get; set; } = false;
 
         private static string GetCurrentThemeName()
         {
             string currentTheme = ThemeHandler.GetCurrentThemeName();
             Logger.Debug($"active windows theme on startup: {currentTheme}");
             return currentTheme;
+        }
+
+        private static string GetCurrentThemePath()
+        {
+            try
+            {
+                string activeTheme = RegistryHandler.GetActiveThemePath();
+                return activeTheme;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not retrieve active theme path: ");
+                return "";
+            }
         }
 
         public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);

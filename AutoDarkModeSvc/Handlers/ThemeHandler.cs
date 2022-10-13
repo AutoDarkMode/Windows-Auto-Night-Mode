@@ -29,6 +29,43 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         private static readonly GlobalState state = GlobalState.Instance();
+        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+
+        public static bool ThemeModeNeedsUpdate(Theme newTheme, bool skipCheck = false) {
+            if (builder.Config.WindowsThemeMode.DarkThemePath == null || builder.Config.WindowsThemeMode.LightThemePath == null)
+            {
+                Logger.Error("dark or light theme path empty");
+                return false;
+            }
+            if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath))
+            {
+                Logger.Error($"invalid dark theme path: {builder.Config.WindowsThemeMode.DarkThemePath}");
+                return false;
+            }
+            if (!File.Exists(builder.Config.WindowsThemeMode.LightThemePath))
+            {
+                Logger.Error($"invalid light theme path: {builder.Config.WindowsThemeMode.LightThemePath}");
+                return false;
+            }
+            if (!builder.Config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !builder.Config.WindowsThemeMode.DarkThemePath.EndsWith(".theme"))
+            {
+                Logger.Error("both theme paths must have a .theme extension");
+                return false;
+            }
+
+            // TODO change tracking when having active theme monitor disabled
+            if (newTheme == Theme.Dark && (skipCheck ||
+                !state.CurrentWindowsThemePath.Equals(builder.Config.WindowsThemeMode.DarkThemePath, StringComparison.Ordinal)))
+            {
+                return true;
+            }
+            else if (newTheme == Theme.Light && (skipCheck ||
+                !state.CurrentWindowsThemePath.Equals(builder.Config.WindowsThemeMode.LightThemePath, StringComparison.Ordinal)))
+            {
+                return true;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Applies the theme using the KAWAII Theme switcher logic for windows theme files
@@ -39,53 +76,15 @@ namespace AutoDarkModeSvc.Handlers
         /// <param name="sunset"></param>
         /// <param name="sunrise"></param>
         /// <returns>true if an update was performed; false otherwise</returns>
-        public static bool ApplyTheme(AdmConfig config, Theme newTheme, bool skipCheck = false)
+        public static void ApplyTheme(Theme newTheme)
         {
-            if (config.WindowsThemeMode.DarkThemePath == null || config.WindowsThemeMode.LightThemePath == null)
+            PowerHandler.RequestDisableEnergySaver(builder.Config);
+            if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
             {
-                Logger.Error("dark or light theme path empty");
-                return false;
+                WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
             }
-            if (!File.Exists(config.WindowsThemeMode.DarkThemePath))
-            {
-                Logger.Error($"invalid dark theme path: {config.WindowsThemeMode.DarkThemePath}");
-                return false;
-            }
-            if (!File.Exists(config.WindowsThemeMode.LightThemePath))
-            {
-                Logger.Error($"invalid light theme path: {config.WindowsThemeMode.LightThemePath}");
-                return false;
-            }
-            if (!config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !config.WindowsThemeMode.DarkThemePath.EndsWith(".theme"))
-            {
-                Logger.Error("both theme paths must have a .theme extension");
-                return false;
-            }
-
-            // TODO change tracking when having active theme monitor disabled
-            if (newTheme == Theme.Dark && (skipCheck || 
-                !state.CurrentWindowsThemePath.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.DarkThemePath), StringComparison.Ordinal)))
-            {
-                PowerHandler.RequestDisableEnergySaver(config);
-                if (config.WindowsThemeMode.MonitorActiveTheme)
-                {
-                    WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
-                }
-                Apply(config.WindowsThemeMode.DarkThemePath);
-                return true;
-            }
-            else if (newTheme == Theme.Light && (skipCheck || 
-                !state.CurrentWindowsThemePath.Equals(Path.GetFileNameWithoutExtension(config.WindowsThemeMode.LightThemePath), StringComparison.Ordinal)))
-            {
-                PowerHandler.RequestDisableEnergySaver(config);
-                if (config.WindowsThemeMode.MonitorActiveTheme)
-                {
-                    WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
-                }
-                Apply(config.WindowsThemeMode.LightThemePath);
-                return true;
-            }
-            return false;
+            if (newTheme == Theme.Light) Apply(builder.Config.WindowsThemeMode.LightThemePath);
+            else if (newTheme == Theme.Dark) Apply(builder.Config.WindowsThemeMode.DarkThemePath);
         }
 
         public static void ApplyManagedTheme(AdmConfig config, string path)

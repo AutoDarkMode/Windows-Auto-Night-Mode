@@ -77,7 +77,11 @@ namespace AutoDarkModeApp.Pages
             }
             else
             {
-                DisableThemeMode();
+                ComboBoxDarkTheme.IsEnabled = false;
+                ComboBoxLightTheme.IsEnabled = false;
+                theme1 = false;
+                theme2 = false;
+                TextBlockUserFeedback.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -158,7 +162,7 @@ namespace AutoDarkModeApp.Pages
             string result = StatusCode.Err;
             try
             {
-                result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageWallpaper");

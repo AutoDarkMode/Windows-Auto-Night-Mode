@@ -42,6 +42,10 @@ namespace AutoDarkModeSvc.Interfaces
         /// </summary>
         public int PriorityToLight { get; }
         /// <summary>
+        /// Determines whether the component should be called before or after a theme file synchronization
+        /// </summary>
+        public HookPosition HookPosition { get; }
+        /// <summary>
         /// Initializes the module if necessary
         /// </summary>
         public void EnableHook();

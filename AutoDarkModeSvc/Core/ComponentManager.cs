@@ -4,9 +4,7 @@ using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -125,6 +123,8 @@ namespace AutoDarkModeSvc.Core
                 // require update if theme mode is enabled, the module is enabled and compatible with theme mode
                 if (c.Enabled && c.ThemeHandlerCompatibility && Builder.Config.WindowsThemeMode.Enabled)
                 {
+                    if (!c.Initialized) c.EnableHook();
+
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
                         shouldUpdate.Add(c);
@@ -133,6 +133,8 @@ namespace AutoDarkModeSvc.Core
                 // require update if module is enabled and theme mode is disabled (previously known as classic mode)
                 else if (c.Enabled && !Builder.Config.WindowsThemeMode.Enabled)
                 {
+                    if (!c.Initialized) c.EnableHook();
+
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
                         shouldUpdate.Add(c);
@@ -153,12 +155,12 @@ namespace AutoDarkModeSvc.Core
         }
 
         /// <summary>
-        /// Runs all components in a synchronized context and sorts them prior to execution based on their priorities
+        /// Runs all post-sync components in a synchronized context and sorts them prior to execution based on their priorities
         /// </summary>
         /// <param name="components">The components to be run</param>
         /// <param name="newTheme">the requested theme to switch to</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void Run(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
+        public void RunPostSync(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
             {
@@ -172,13 +174,38 @@ namespace AutoDarkModeSvc.Core
             }
             components.ForEach(c =>
             {
-                if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility)
+                if (c.HookPosition == HookPosition.PostSync)
                 {
-                    c.Switch(newTheme, e);
+                    if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility) c.Switch(newTheme, e);
+                    else if (!Builder.Config.WindowsThemeMode.Enabled) c.Switch(newTheme, e);
                 }
-                else if (!Builder.Config.WindowsThemeMode.Enabled)
+            });
+        }
+
+        /// <summary>
+        /// Runs all pre-sync components in a synchronized context and sorts them prior to execution based on their priorities
+        /// </summary>
+        /// <param name="components">The components to be run</param>
+        /// <param name="newTheme">the requested theme to switch to</param>
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void RunPreSync(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
+        {
+            if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
+            {
+                components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
+                lastSorting = Theme.Dark;
+            }
+            else if (newTheme == Theme.Light && lastSorting != Theme.Light)
+            {
+                components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
+                lastSorting = Theme.Light;
+            }
+            components.ForEach(c =>
+            {
+                if (c.HookPosition == HookPosition.PreSync)
                 {
-                    c.Switch(newTheme, e);
+                    if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility) c.Switch(newTheme, e);
+                    else if (!Builder.Config.WindowsThemeMode.Enabled) c.Switch(newTheme, e);
                 }
             });
         }

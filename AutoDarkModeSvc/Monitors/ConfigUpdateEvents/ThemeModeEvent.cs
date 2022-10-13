@@ -29,8 +29,6 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 }
                 else
                 {
-                    state.ManagedThemeFile.SyncActiveThemeData();
-                    state.ManagedThemeFile.Save();
                     WindowsThemeMonitor.StopThemeMonitor();
                 }
             } 

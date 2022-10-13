@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.Core
                 }
             }
 
-            if (e.RequestedTheme.HasValue)
+            if (e.RequestedTheme.HasValue && e.Source != SwitchSource.NightLightTrackerModule)
             {
                 UpdateTheme(e.RequestedTheme.Value, e);
                 return;
@@ -84,10 +84,10 @@ namespace AutoDarkModeSvc.Core
         /// If no argument is specified, it will swap the currently active theme
         /// </summary>
         /// <returns>the theme that was switched to</returns>
-        public static Theme SwitchThemeAutoPause(Theme target = Theme.Unknown)
+        public static Theme SwitchThemeAutoPause(Theme target = Theme.Unknown, SwitchSource source = SwitchSource.Manual)
         {
-            Theme newTheme = PrepareSwitchAutoPause();
-            RequestSwitch(new(SwitchSource.Manual, newTheme));
+            Theme newTheme = PrepareSwitchAutoPause(target);
+            RequestSwitch(new(source, newTheme));
             return newTheme;
         }
 
@@ -155,35 +155,52 @@ namespace AutoDarkModeSvc.Core
         {
             state.RequestedTheme = newTheme;
 
-            bool themeModeSwitched = false;
-            if (e.Source == SwitchSource.SystemUnlock && builder.Config.WindowsThemeMode.Enabled)
-            {
-                themeModeSwitched = ThemeHandler.ApplyTheme(builder.Config, newTheme, skipCheck: true);
-            }
-            else if (builder.Config.WindowsThemeMode.Enabled)
-            {
-                themeModeSwitched = ThemeHandler.ApplyTheme(builder.Config, newTheme);
-            }
-
             // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
             //cm.UpdateSettings();
 
+            #region determine if theme mode and/or components need to switch
+            bool themeModeNeedsUpdate = false;
+            if (builder.Config.WindowsThemeMode.Enabled)
+            {
+                if (e.Source == SwitchSource.SystemUnlock) themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme, skipCheck: true);
+                else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
+            }
+
             List<ISwitchComponent> componentsToUpdate = cm.GetComponentsToUpdate(newTheme);
+
+            if (!state.InitSyncSwitchPerformed && (componentsToUpdate.Count > 0 || themeModeNeedsUpdate) && builder.Config.AutoSwitchNotify.Enabled)
+            {
+                ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                state.InitSyncSwitchPerformed = true;
+                return;
+            }
+
+            #endregion
+
+            #region apply themes and run components
             if (componentsToUpdate.Count > 0)
             {
+                // if theme mode is disabled, we need to disable energy saver for the modules
+                PowerHandler.RequestDisableEnergySaver(builder.Config);
+
+                // run modules that require their data to be re-synced with auto dark mode after running because they modify the active theme file
+                cm.RunPreSync(componentsToUpdate, newTheme, e);
+
                 //logic for our classic mode 2.0, gets the currently active theme for modification
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
-                }
+                }           
 
-                // if theme mode is disabled, we need to disable energy saver for the modules
-                if (!themeModeSwitched) PowerHandler.RequestDisableEnergySaver(builder.Config);
-                cm.Run(componentsToUpdate, newTheme, e);
+                // regular modules that do not require theme file synchronization
+                cm.RunPostSync(componentsToUpdate, newTheme, e);
             }
+            // windows theme mode apply theme
+            if (themeModeNeedsUpdate) ThemeHandler.ApplyTheme(newTheme);
 
 
-            if (componentsToUpdate.Count > 0 || themeModeSwitched || e.Source == SwitchSource.SystemUnlock)
+            // non theme mode switches & cleanup
+            if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate || e.Source == SwitchSource.SystemUnlock)
             {
                 // Logic for our classic mode 2.0
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
@@ -221,7 +238,12 @@ namespace AutoDarkModeSvc.Core
                 // disable mitigation after all components and theme switch have been executed
                 PowerHandler.RequestRestoreEnergySaver(builder.Config);
             }
+            #endregion
 
+            if (!state.InitSyncSwitchPerformed)
+            {
+                state.InitSyncSwitchPerformed = true;
+            }
         }
     }
 

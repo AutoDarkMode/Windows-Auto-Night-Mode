@@ -21,6 +21,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public virtual int PriorityToLight { get; }
         public virtual int PriorityToDark { get; }
+        public virtual HookPosition HookPosition { get; } = HookPosition.PostSync;
         public bool ForceSwitch { get; set; }
         public virtual bool Enabled
         {

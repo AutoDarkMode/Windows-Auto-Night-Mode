@@ -109,6 +109,7 @@ namespace AutoDarkModeApp.Pages
             if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
             {
                 builder.Config.WallpaperSwitch.Enabled = true;
+                if (!init) Dispatcher.BeginInvoke(new NoArgDelegate(RequestThemeSwitch), null);
                 ChangeUiEnabledStatus(true);
             }
             else
@@ -421,7 +422,7 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.Switch, 15);
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
                 if (result != StatusCode.Ok)
                 {
                     throw new SwitchThemeException(result, "PageApps");

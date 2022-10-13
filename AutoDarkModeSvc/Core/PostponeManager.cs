@@ -301,6 +301,11 @@ namespace AutoDarkModeSvc.Core
             });
             return new(itemDtos);
         }
+
+        public override string ToString()
+        {
+            return $"[{string.Join(", ", PostponeQueue)}]";
+        }
     }
 
   

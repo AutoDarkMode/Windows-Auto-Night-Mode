@@ -46,7 +46,8 @@ namespace AutoDarkModeLib
         Manual,
         ExternalThemeSwitch,
         Startup,
-        SystemUnlock
+        SystemUnlock,
+        Api
     }
 
     public enum Governor
@@ -60,6 +61,12 @@ namespace AutoDarkModeLib
         Unspecified,
         Sunrise,
         Sunset
+    }
+
+    public enum HookPosition
+    {
+        PreSync,
+        PostSync
     }
 
     public static class Helper

@@ -114,9 +114,16 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 else
                 {
-                    Logger.Info("system unlocked, refreshing theme");
                     state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
-                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                    if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
+                    {
+                        ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                        Logger.Info("system unlocked, refreshing theme");
+                    }
+                    else
+                    {
+                        Logger.Info($"system unlocked, no refresh due to active user postpones: {state.PostponeManager}");
+                    }
                 }                
             }
             else if (e.Reason == SessionSwitchReason.SessionLock)
@@ -147,8 +154,15 @@ namespace AutoDarkModeSvc.Handlers
             {
                 if (builder.Config.AutoSwitchNotify.Enabled == false)
                 {
-                    Logger.Info("system resuming from suspended state, refreshing theme");
-                    ThemeManager.RequestSwitch(new(SwitchSource.SystemResume));
+                    if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
+                    {
+                        ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                        Logger.Info("system resuming from suspended state, refreshing theme");
+                    }
+                    else
+                    {
+                        Logger.Info($"system resuming from suspended state, no refresh due to active user postpones: {state.PostponeManager}");
+                    }
                 }
             }
         }

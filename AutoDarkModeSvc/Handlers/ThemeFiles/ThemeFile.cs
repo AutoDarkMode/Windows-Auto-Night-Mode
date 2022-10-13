@@ -202,7 +202,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             RemoveSection(Slideshow.Section.Item1);
         }
 
-        public void Parse()
+        private void Parse()
         {
             Desktop = new();
             VisualStyles = new();
@@ -361,25 +361,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         {
             try
             {
-                string activeThemeName = ThemeHandler.GetCurrentThemeName();
-                /*Exception applyEx = null;*/
-
-                string currentThemePath = RegistryHandler.GetActiveThemePath();
-                ThemeFile tempTheme = new(currentThemePath);
-                tempTheme.Load();
-                /*
-                 * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
-                 * we need to manually change the path to Custom.theme, which contains the current theme data
-                 */
-                if (tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll")) {
-                    Logger.Debug($"display name: {tempTheme.DisplayName} differs from expected name: {activeThemeName}, path: {currentThemePath}");
-                    currentThemePath = new(Path.Combine(Helper.ThemeFolderPath, "Custom.theme"));
-                }
-                else
+                string themePath = RegistryHandler.GetActiveThemePath();
+                if (themePath != "")
                 {
-                    Logger.Debug($"currently active theme: {activeThemeName}, path: {currentThemePath}");
+                    ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
-                ThemeFileContent = File.ReadAllLines(RegistryHandler.GetActiveThemePath(), Encoding.GetEncoding(1252)).ToList();
             }
             catch (Exception ex)
             {

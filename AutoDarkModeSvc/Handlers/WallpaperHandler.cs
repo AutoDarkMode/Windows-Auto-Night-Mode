@@ -38,10 +38,12 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        public static Color GetSolidColor()
+        public static string GetSolidColor()
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-            return ToColor(handler.GetBackgroundColor());
+            Color c = ToColor(handler.GetBackgroundColor());
+            return $"#{(c.ToArgb() & 0x00FFFFFF).ToString("X6")}";
+
         }
 
         private static Color HexToColor(string hexString)
@@ -263,9 +265,9 @@ namespace AutoDarkModeSvc.Handlers
         private static Color ToColor(this uint value)
         {
             return Color.FromArgb((byte)((value >> 24) & 0xFF),
-                       (byte)((value >> 16) & 0xFF),
+                       (byte)(value & 0xFF),
                        (byte)((value >> 8) & 0xFF),
-                       (byte)(value & 0xFF));
+                       (byte)((value >> 16) & 0xFF));
         }
     }
 }

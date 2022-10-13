@@ -14,6 +14,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override bool ThemeHandlerCompatibility => false;
         public override int PriorityToLight => 25;
         public override int PriorityToDark => 25;
+        public override HookPosition HookPosition => HookPosition.PreSync;
         private Theme currentIndividualTheme = Theme.Unknown;
         private Theme currentGlobalTheme = Theme.Unknown;
         private Theme currentSolidColorTheme = Theme.Unknown;
@@ -259,8 +260,20 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override void EnableHook()
         {
-            DisplayHandler.DetectMonitors();
             currentWallpaperPosition = WallpaperHandler.GetPosition();
+            currentIndividualTheme = GetIndividualWallpapersState();
+
+            // global wallpaper enable state synchronization;
+            string globalWallpaper = WallpaperHandler.GetGlobalWallpaper();
+            if (globalWallpaper == Settings.Component.GlobalWallpaper.Light) currentGlobalTheme = Theme.Light;
+            else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
+
+            // solid color enable state synchronization
+            string solidColorHex = WallpaperHandler.GetSolidColor();
+            if (solidColorHex == Settings.Component.SolidColors.Light) currentSolidColorTheme = Theme.Light;
+            else if (solidColorHex == Settings.Component.SolidColors.Dark) currentSolidColorTheme = Theme.Dark;
+
+            // base hook
             base.EnableHook();
         }
 
