@@ -66,6 +66,10 @@
                       Content="{x:Static p:Resources.SettngsPageDebugMode}"
                       Margin="0,10,0,0"
                       Click="CheckBoxDebugMode_Click" />
+            <CheckBox Name="CheckBoxWin10AllowLockscreenSwitch"
+                      Content="{x:Static p:Resources.SettingsPageWin10AllowLockscreenSwitch}"
+                      Margin="0,10,0,0"
+                      Click="CheckBoxWin10AllowLockscreenSwitch_Click" />
             <CheckBox Name="CheckBoxEnergySaverMitigation"
                       Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}"
                       Margin="0,10,0,0"

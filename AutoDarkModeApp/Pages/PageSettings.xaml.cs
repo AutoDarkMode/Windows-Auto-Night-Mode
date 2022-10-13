@@ -95,7 +95,10 @@ namespace AutoDarkModeApp.Pages
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
             CheckBoxDebugMode.IsChecked = builder.Config.Tunable.Debug;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
+            CheckBoxWin10AllowLockscreenSwitch.IsChecked = builder.Config.Events.Win10AllowLockscreenSwitch;
 
+            if (Environment.OSVersion.Version.Build >= Helper.Win11Build) CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Hidden;
+            else CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
 
             //battery slider / energy saver mitigation
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
@@ -362,6 +365,26 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "BatterySlider_Save");
+            }
+        }
+
+        private void CheckBoxWin10AllowLockscreenSwitch_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Events.Win10AllowLockscreenSwitch = true;
+            }
+            else
+            {
+                builder.Config.Events.Win10AllowLockscreenSwitch  = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxWin10MultiUser_Click");
             }
         }
 
@@ -811,7 +834,5 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "autostart_monitor_event");
             }
         }
-
-      
     }
 }

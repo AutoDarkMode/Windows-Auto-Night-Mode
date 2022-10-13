@@ -1456,6 +1456,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow theme switching during lockscreen (Win10).
+        /// </summary>
+        public static string SettingsPageWin10AllowLockscreenSwitch {
+            get {
+                return ResourceManager.GetString("SettingsPageWin10AllowLockscreenSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have disabled the auto start entry via Windows..
         /// </summary>
         public static string SettingsPageWindowsAutostartDisabled {

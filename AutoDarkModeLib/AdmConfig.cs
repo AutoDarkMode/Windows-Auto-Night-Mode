@@ -115,7 +115,7 @@ namespace AutoDarkModeLib
     public class Events
     {
         public bool DarkThemeOnBattery { get; set; }
-        public bool SystemResumeTrigger { get; set; } = true;
+        public bool Win10AllowLockscreenSwitch { get; set; } = true;
     }
 
     public class Location

@@ -100,6 +100,8 @@ namespace AutoDarkModeSvc
             NotifyIcon.Disposed += Exit;
             SystemEvents.SessionEnded += Exit;
 
+            // register resume event (mandatory)
+            SystemEventHandler.RegisterResumeEvent();
             if (Builder.Config.AutoThemeSwitchingEnabled && Builder.Config.IdleChecker.Enabled)
             {
                 ThemeManager.RequestSwitch(new(SwitchSource.Startup));

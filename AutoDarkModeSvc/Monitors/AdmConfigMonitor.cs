@@ -65,12 +65,14 @@ namespace AutoDarkModeSvc.Monitors
             IConfigUpdateEvent<AdmConfig> themeModeEvent = new ThemeModeEvent(componentManager);
             IConfigUpdateEvent<AdmConfig> hotkeyEvent = new HotkeyEvent();
             IConfigUpdateEvent<AdmConfig> governorEvent = new GovernorEvent();
+            IConfigUpdateEvent<AdmConfig> eventConfigChangeEvent = new EventConfigChangeEvent();
 
             //change event trackers
             builder.ConfigUpdatedHandler += geolocatorEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += themeModeEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += hotkeyEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += governorEvent.OnConfigUpdate;
+            builder.ConfigUpdatedHandler += eventConfigChangeEvent.OnConfigUpdate;
 
         }
 
@@ -156,15 +158,6 @@ namespace AutoDarkModeSvc.Monitors
             {
                 SystemEventHandler.DeregisterThemeEvent();
             }
-
-            if (builder.Config.Events.SystemResumeTrigger)
-            {
-                SystemEventHandler.RegisterResumeEvent();
-            }
-            else
-            {
-                SystemEventHandler.DeregisterResumeEvent();
-            }
         }
 
 
@@ -185,6 +178,7 @@ namespace AutoDarkModeSvc.Monitors
         {
             ConfigWatcher.EnableRaisingEvents = false;
             LocationDataWatcher.EnableRaisingEvents = false;
+            ScriptConfigWatcher.EnableRaisingEvents = false;
         }
 
         /// <summary>

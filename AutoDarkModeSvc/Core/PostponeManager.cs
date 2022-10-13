@@ -25,6 +25,10 @@ namespace AutoDarkModeSvc.Core
             this.state = state;
         }
 
+        /// <summary>
+        /// Checks if a full theme switch skip is currently queued
+        /// </summary>
+        /// <returns>True if a skip is queued; false otherwise</returns>
         public bool IsSkipNextSwitch
         {
             get
@@ -35,6 +39,10 @@ namespace AutoDarkModeSvc.Core
             }
         }
 
+        /// <summary>
+        /// Checks if a timed user delay is currently queued
+        /// </summary>
+        /// <returns>True if a delay is queued; false otherwise</returns>
         public bool IsUserDelayed
         {
             get

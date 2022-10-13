@@ -66,11 +66,16 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info("enabling theme refresh at system unlock (win 11)");
                     SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;
                 }
-                else
+                else if (builder.Config.Events.Win10AllowLockscreenSwitch)
                 {
                     Logger.Info("enabling theme refresh at system resume (win 10)");
                     SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
                     SystemEvents.SessionSwitch += SystemEvents_Windows10_SessionSwitch;
+                }
+                else
+                {
+                    Logger.Info("enabling theme refresh at system unlock (win 10)");
+                    SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;
                 }
 
                 resumeEventEnabled = true;
@@ -83,18 +88,11 @@ namespace AutoDarkModeSvc.Handlers
             {
                 if (resumeEventEnabled)
                 {
-                    if (Environment.OSVersion.Version.Build >= Helper.Win11Build)
-                    {
-                        Logger.Info("disabling theme refresh at system unlock (win 11)");
-                        SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;
-                    }
-                    else
-                    {
-                        Logger.Info("disabling theme refresh at system resume (win 10)");
-                        SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
-                        SystemEvents.SessionSwitch -= SystemEvents_Windows10_SessionSwitch;
-                        state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
-                    }
+                    Logger.Info("disabling theme refresh events");
+                    state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
+                    SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
+                    SystemEvents.SessionSwitch -= SystemEvents_Windows10_SessionSwitch;
+                    SystemEvents.SessionSwitch -= SystemEvents_Windows11_SessionSwitch;
                     resumeEventEnabled = false;
                 }
             }

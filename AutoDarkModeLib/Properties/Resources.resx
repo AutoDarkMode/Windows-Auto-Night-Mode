@@ -977,4 +977,7 @@ Do you really want to continue?</value>
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Debug mode</value>
   </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Allow theme switching during lockscreen (Win10)</value>
+  </data>
 </root>
