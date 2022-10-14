@@ -13,7 +13,7 @@ body:
         
   - type: markdown
     attributes:
-      value: # Bug Report
+      value: #Bug Report
 
   - type: textarea
     id: description
