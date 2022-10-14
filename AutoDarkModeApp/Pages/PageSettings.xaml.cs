@@ -97,7 +97,7 @@ namespace AutoDarkModeApp.Pages
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             CheckBoxWin10AllowLockscreenSwitch.IsChecked = builder.Config.Events.Win10AllowLockscreenSwitch;
 
-            if (Environment.OSVersion.Version.Build >= Helper.Win11Build) CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Hidden;
+            if (Environment.OSVersion.Version.Build >= Helper.Win11Build) CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
             else CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
 
             //battery slider / energy saver mitigation
