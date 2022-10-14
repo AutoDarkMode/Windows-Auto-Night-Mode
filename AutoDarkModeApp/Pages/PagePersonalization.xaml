@@ -45,7 +45,7 @@
                 Grid.Row="3"
                 Margin="0,15,0,10"
                 Padding="5,5,5,5"
-                BorderThickness="2"
+                BorderThickness="1"
                 BorderBrush="{DynamicResource Win11Border}"
                 CornerRadius="5"
                 Background="{DynamicResource Win11Background}"
