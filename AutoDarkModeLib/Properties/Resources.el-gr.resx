@@ -951,7 +951,7 @@
     <value>μέχρι την επόμενη δύση του ηλίου</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Ενεργοποίηση/απενεργοποίηση παύσης θέματος</value>
+    <value>Ενεργοποίηση/απενεργοποίηση παύσης αυτόματης εναλλαγής θέματος</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Η αυτόματη εναλλαγή θέματος ενεργοποιήθηκε ξανά</value>
