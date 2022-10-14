@@ -133,13 +133,13 @@ namespace AutoDarkModeApp.Pages
                         if (reply.Message == "True")
                         {
                             bool anyNoExpiry = false;
-                            bool autoPause = false;
+                            bool canResume = false;
                             PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
                             List<string> itemsStringList = dto.Items.Select(i =>
                             {
                                 if (i.Expiry == null) anyNoExpiry = true;
-                                if (i.Reason == Helper.PostponeItemPauseAutoSwitch || i.Reason == Helper.PostponeItemDelayAutoSwitch) 
-                                    autoPause = true;
+                                if (i.IsUserClearable) 
+                                    canResume = true;
 
                                 i.SetCulture(Thread.CurrentThread.CurrentCulture);
 
@@ -150,7 +150,7 @@ namespace AutoDarkModeApp.Pages
                             }).ToList();
                             Dispatcher.Invoke(() =>
                             {
-                                if (anyNoExpiry && !autoPause)
+                                if (anyNoExpiry && !canResume)
                                 {
                                     TextBlockResumeInfo.Visibility = Visibility.Visible;
                                 }
@@ -159,7 +159,7 @@ namespace AutoDarkModeApp.Pages
                                     TextBlockResumeInfo.Visibility = Visibility.Collapsed;
                                 }
 
-                                if (autoPause)
+                                if (canResume)
                                 {
                                     ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
                                     PostponeComboBox.IsEnabled = false;
@@ -888,9 +888,9 @@ namespace AutoDarkModeApp.Pages
             else
             {
                 MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
+                MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
             }
             PostponeTimerEvent(null, new());
-            MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
         }
 
         private void RadioButtonWindowsNightLight_Click(object sender, RoutedEventArgs e)

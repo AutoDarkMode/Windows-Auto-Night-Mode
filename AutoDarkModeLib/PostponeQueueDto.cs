@@ -43,13 +43,15 @@ namespace AutoDarkModeLib
         public bool Expires { get; set; }
         public SkipType SkipType { get; set; }
         private CultureInfo Culture { get; set; }
+        public bool IsUserClearable { get; set; }
         public PostponeItemDto() { }
-        public PostponeItemDto(string reason, DateTime? expiry = null, bool expires = false, SkipType skipType = SkipType.Unspecified)
+        public PostponeItemDto(string reason, DateTime? expiry = null, bool expires = false, SkipType skipType = SkipType.Unspecified, bool isUserClearable = false)
         {
             Reason = reason;
             Expiry = expiry;
             Expires = expires;
             SkipType = skipType;
+            IsUserClearable = isUserClearable;
         }
 
         public void SetCulture(CultureInfo info)

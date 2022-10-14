@@ -64,6 +64,7 @@ namespace AutoDarkModeSvc.Handlers
                     })
                     .AddButton(new ToastButton("Switch now", "switch-now"))
                     .AddButton(new ToastButton("Delay", "delay"))
+                    .AddArgument("delay")
                     .Show(toast =>
                     {
                         toast.Tag = "adm-theme-switch-delayed-notif";

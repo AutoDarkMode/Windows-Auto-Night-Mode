@@ -305,7 +305,7 @@ namespace AutoDarkModeSvc.Core
             List<PostponeItemDto> itemDtos = new();
             PostponeQueue.ForEach(i =>
             {
-                itemDtos.Add(new(i.Reason, expiry: i.Expiry, i.Expires, i.SkipType));
+                itemDtos.Add(new(i.Reason, expiry: i.Expiry, i.Expires, i.SkipType, i.IsUserClearable));
             });
             return new(itemDtos);
         }
