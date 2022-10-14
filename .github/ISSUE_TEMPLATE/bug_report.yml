@@ -6,9 +6,10 @@ body:
     attributes:
       value: |
         # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
-        # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
         Go to settings and select the "Beta" update channel.
         Click "Check for Updates" and ensure the info message reads "No new updates available"
+        
+        # AUTO DARK MODE 10.1 IS INCOMPATIBLE WITH WiNDOWS 11 22H2
 
   - type: textarea
     id: description
