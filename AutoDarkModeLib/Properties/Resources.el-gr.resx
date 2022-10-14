@@ -977,4 +977,7 @@
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Λειτουργία εντοπισμού σφαλμάτων</value>
   </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Να επιτρέπεται η εναλλαγή θέματος όταν η οθόνη είναι κλειδωμένη (Win10)</value>
+  </data>
 </root>
