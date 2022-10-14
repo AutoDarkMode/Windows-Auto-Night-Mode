@@ -14,7 +14,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
     {
         private Theme currentComponentTheme;
-        public AppsSwitchThemeFile() : base() {
+        public AppsSwitchThemeFile() : base() { }
+
+        public override void EnableHook()
+        {
             try
             {
                 currentComponentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
@@ -23,6 +26,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "couldn't initialize apps theme state");
             }
+            base.EnableHook();
         }
 
         public override bool ThemeHandlerCompatibility { get; } = false;

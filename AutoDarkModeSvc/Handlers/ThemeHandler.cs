@@ -8,6 +8,7 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Core;
 using System.Threading.Tasks;
+using AutoDarkModeLib.Configs;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs

@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeLib.ComponentSettings;
 using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeLib.Configs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace AutoDarkModeLib
     {
         private static AdmConfigBuilder instance;
         public AdmConfig Config { get; private set; }
-        public AdmLocationData LocationData { get; private set; }
+        public LocationData LocationData { get; private set; }
         public BaseSettings<ScriptSwitchSettings> ScriptConfig { get; private set; }
         public UpdaterData UpdaterData { get; private set; }
         public static string ConfigDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
@@ -41,8 +42,8 @@ namespace AutoDarkModeLib
                 configUpdatedHandler -= value;
             }
         }
-        private EventHandler<AdmLocationData> locationDataUpdatedHandler;
-        public event EventHandler<AdmLocationData> LocationDataUpdatedHandler
+        private EventHandler<LocationData> locationDataUpdatedHandler;
+        public event EventHandler<LocationData> LocationDataUpdatedHandler
         {
 
             add
@@ -91,7 +92,7 @@ namespace AutoDarkModeLib
             SaveConfig(UpdaterDataPath, UpdaterData);
         }
 
-        public static void BackUpConfig()
+        public static void MakeConfigBackup()
         {
             string backupPath = Path.Combine(ConfigDir, "config_backup.yaml");
             File.Copy(ConfigFilePath, backupPath, true);
@@ -147,12 +148,12 @@ namespace AutoDarkModeLib
         public void LoadLocationData()
         {
             Loading = true;
-            AdmLocationData deser = Deserialize<AdmLocationData>(LocationDataPath, LocationData);
+            LocationData deser = Deserialize<LocationData>(LocationDataPath, LocationData);
             LocationData = deser ?? LocationData;
             Loading = false;
         }
 
-        public void OnLocationDataUpdated(AdmLocationData old)
+        public void OnLocationDataUpdated(LocationData old)
         {
             locationDataUpdatedHandler?.Invoke(old, LocationData);
         }

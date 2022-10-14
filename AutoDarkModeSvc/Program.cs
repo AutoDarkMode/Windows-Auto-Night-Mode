@@ -9,8 +9,6 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Concurrent;
-using System.Runtime.InteropServices;
-using System.Globalization;
 using System.Reflection;
 using AutoDarkModeSvc.Core;
 
@@ -117,7 +115,7 @@ namespace AutoDarkModeSvc
                     Logger.Error(e, "could not read config file, resetting config file:");
                     try
                     {
-                        AdmConfigBuilder.BackUpConfig();
+                        AdmConfigBuilder.MakeConfigBackup();
                     }
                     catch (Exception ex)
                     {

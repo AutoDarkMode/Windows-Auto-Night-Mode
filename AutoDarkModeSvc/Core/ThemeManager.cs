@@ -17,16 +17,16 @@ namespace AutoDarkModeSvc.Core
         private static readonly GlobalState state = GlobalState.Instance();
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
-        public static void RequestSwitch(SwitchEventArgs e)
+        public static void RequestSwitch(SwitchEventArgs switchArgs)
         {
             if (state.ForcedTheme == Theme.Dark)
             {
-                UpdateTheme(Theme.Dark, e);
+                UpdateTheme(Theme.Dark, switchArgs);
                 return;
             }
             else if (state.ForcedTheme == Theme.Light)
             {
-                UpdateTheme(Theme.Light, e);
+                UpdateTheme(Theme.Light, switchArgs);
                 return;
             }
 
@@ -34,19 +34,26 @@ namespace AutoDarkModeSvc.Core
             {
                 if (PowerManager.BatteryStatus == BatteryStatus.Discharging)
                 {
-                    UpdateTheme(Theme.Dark, e);
+                    UpdateTheme(Theme.Dark, switchArgs);
                     return;
                 }
                 if (!builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    UpdateTheme(Theme.Light, e);
+                    UpdateTheme(Theme.Light, switchArgs);
                     return;
                 }
             }
 
-            if (e.RequestedTheme.HasValue && e.Source != SwitchSource.NightLightTrackerModule)
+            // apply last requested theme if switch is postponed
+            if (state.PostponeManager.IsPostponed)
             {
-                UpdateTheme(e.RequestedTheme.Value, e);
+                UpdateTheme(state.RequestedTheme, switchArgs);
+                return;
+            }
+
+            if (switchArgs.Theme.HasValue && switchArgs.Source != SwitchSource.NightLightTrackerModule)
+            {
+                UpdateTheme(switchArgs.Theme.Value, switchArgs);
                 return;
             }
 
@@ -55,27 +62,27 @@ namespace AutoDarkModeSvc.Core
                 if (builder.Config.Governor == Governor.Default)
                 {
                     TimedThemeState ts = new();
-                    UpdateTheme(ts.TargetTheme, e, ts.CurrentSwitchTime);
+                    UpdateTheme(ts.TargetTheme, switchArgs, ts.CurrentSwitchTime);
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    if (e.RequestedTheme.HasValue)
+                    if (switchArgs.Theme.HasValue)
                     {
-                        if (e.Time.HasValue)
+                        if (switchArgs.Time.HasValue)
                         {
-                            UpdateTheme(e.RequestedTheme.Value, e, e.Time.Value);
+                            UpdateTheme(switchArgs.Theme.Value, switchArgs, switchArgs.Time.Value);
                         }
                         else
                         {
-                            UpdateTheme(e.RequestedTheme.Value, e);
+                            UpdateTheme(switchArgs.Theme.Value, switchArgs);
                         }
                     }
-                    else UpdateTheme(state.NightLight.Current, e);
+                    else UpdateTheme(state.NightLight.Current, switchArgs);
                 }
             }
             else
             {
-                UpdateTheme(state.RequestedTheme, e);
+                UpdateTheme(state.RequestedTheme, switchArgs);
             }
         }
 
@@ -153,6 +160,7 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
         {
+            // load theme state at previous adm shutdown if autoswitchnotify is enabled
             state.RequestedTheme = newTheme;
 
             // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
@@ -168,11 +176,24 @@ namespace AutoDarkModeSvc.Core
 
             List<ISwitchComponent> componentsToUpdate = cm.GetComponentsToUpdate(newTheme);
 
-            if (!state.InitSyncSwitchPerformed && (componentsToUpdate.Count > 0 || themeModeNeedsUpdate) && builder.Config.AutoSwitchNotify.Enabled)
+
+            // when the app ist launched for the first time, ask for notification
+            if (!state.InitSyncSwitchPerformed)
             {
-                ToastHandler.InvokeDelayAutoSwitchNotifyToast();
-                state.InitSyncSwitchPerformed = true;
-                return;
+                try
+                {
+                    if (builder.Config.AppsSwitch.Enabled) state.RequestedTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "couldn't initialize apps theme state");
+                }
+                if ((componentsToUpdate.Count > 0 || themeModeNeedsUpdate) && builder.Config.AutoSwitchNotify.Enabled)
+                {
+                    ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                    state.InitSyncSwitchPerformed = true;
+                    return;
+                }
             }
 
             #endregion
@@ -190,7 +211,7 @@ namespace AutoDarkModeSvc.Core
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
-                }           
+                }
 
                 // regular modules that do not require theme file synchronization
                 cm.RunPostSync(componentsToUpdate, newTheme, e);

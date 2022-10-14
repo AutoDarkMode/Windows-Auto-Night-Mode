@@ -10,6 +10,7 @@ using AutoDarkModeSvc.Monitors;
 using System.Globalization;
 using AdmProperties = AutoDarkModeLib.Properties;
 using System.Collections.Generic;
+using AutoDarkModeLib.Configs;
 
 
 // https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
@@ -90,7 +91,7 @@ namespace AutoDarkModeSvc.Handlers
                     if (state.PostponeManager.GetSkipNextSwitchItem().Expires)
                     {
                         DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
+                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:ddd HH:mm}");
                     }
                     else
                     {

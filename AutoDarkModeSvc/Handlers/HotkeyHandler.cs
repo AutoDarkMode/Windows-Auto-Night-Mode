@@ -9,6 +9,7 @@ using AutoDarkModeSvc.Monitors;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using System.Globalization;
+using AutoDarkModeLib.Configs;
 
 namespace AutoDarkModeSvc.Handlers
 {

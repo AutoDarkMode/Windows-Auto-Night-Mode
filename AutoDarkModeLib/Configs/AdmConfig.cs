@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings;
 using AutoDarkModeLib.ComponentSettings.Base;
 
-namespace AutoDarkModeLib
+namespace AutoDarkModeLib.Configs
 {
     public class AdmConfig
     {

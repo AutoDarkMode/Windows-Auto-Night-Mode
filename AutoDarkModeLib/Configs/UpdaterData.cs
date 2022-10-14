@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeLib
+namespace AutoDarkModeLib.Configs
 {
     public class UpdaterData
     {

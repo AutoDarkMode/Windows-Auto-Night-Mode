@@ -14,16 +14,20 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         private Theme currentComponentTheme = Theme.Unknown;
         private bool themeModeEnabled;
         private bool currentTaskbarColorActive;
-        public SystemSwitch() : base()
+        public SystemSwitch() : base() { }
+
+        public override void EnableHook()
         {
             try
             {
                 currentComponentTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
                 currentTaskbarColorActive = RegistryHandler.IsColorPrevalence();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Logger.Error(ex, "couldn't initialize system apps theme state");
             }
+            base.EnableHook();
         }
 
         public override bool ThemeHandlerCompatibility => true;

@@ -13,18 +13,18 @@ namespace AutoDarkModeSvc.Events
         public SwitchEventArgs(SwitchSource source, Theme requestedTheme)
         {
             Source = source;
-            RequestedTheme = requestedTheme;
+            Theme = requestedTheme;
         }
 
         public SwitchEventArgs(SwitchSource source, Theme requestedTheme, DateTime time)
         {
             Source = source;
-            RequestedTheme = requestedTheme;
+            Theme = requestedTheme;
             Time = time;
         }
 
         public SwitchSource Source { get; }
-        public Theme? RequestedTheme { get; } = null;
+        public Theme? Theme { get; } = null;
         public DateTime? Time { get; } = null;
     }
 }

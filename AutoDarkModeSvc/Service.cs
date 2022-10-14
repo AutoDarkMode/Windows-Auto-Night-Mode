@@ -19,6 +19,7 @@ using AutoDarkModeSvc.Events;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using static AutoDarkModeSvc.DarkColorTable;
+using AutoDarkModeLib.Configs;
 
 namespace AutoDarkModeSvc
 {
@@ -218,6 +219,7 @@ namespace AutoDarkModeSvc
         private void Exit(object sender, EventArgs e)
         {
             Logger.Info("exiting service");
+
             MessageServer.Stop();
             ConfigMonitor.Dispose();
             WindowsThemeMonitor.StopThemeMonitor();
