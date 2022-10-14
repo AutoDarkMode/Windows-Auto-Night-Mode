@@ -166,7 +166,7 @@
     <value>Система:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Використане програмне забезпечення третіх сторін</value>
+    <value>Використане стороннє програмне забезпечення</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>Оновлення</value>
@@ -175,10 +175,10 @@
     <value>Використовувати службу місцезнаходження</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>зміни були збережені!</value>
+    <value>Зміни збережені!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Натисніть на Застосувати, аби зберегти налаштування</value>
+    <value>Натисніть на Застосувати для збереження налаштувань</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Завантажити оновлення</value>
@@ -199,7 +199,7 @@
     <value>Пошук оновлень...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Попередження: Ми не змогли визначити поточну тему.</value>
+    <value>Попередження: Неможливо визначити поточну тему.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Доступне нове оновлення!</value>
@@ -219,7 +219,7 @@
     <value>Перевірити оновлення</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>ми перевіряємо наявність оновлень при кожному запуску.</value>
+    <value>наявність оновлень перевіряється щозапуску.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Ласкаво просимо</value>
@@ -237,7 +237,7 @@
     <value>Місцезнаходження</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Необхідний перезапуск програми, аби побачити зміни</value>
+    <value>Необхідний перезапуск програми для застосування змін</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Мова:</value>
@@ -252,7 +252,7 @@
     <value>Зараз:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Шпалери для темної теми</value>
+    <value>Фон для темної теми</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Видалити/Вимкнути</value>
@@ -270,10 +270,10 @@
     <value>Картинки</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Обрати дві шпалери</value>
+    <value>Обрати два фонові зображення</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Обрати картинку</value>
+    <value>Обрати зображення</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Налаштувати фон робочого стола</value>
@@ -294,13 +294,13 @@
     <value>Зберегти</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Можливо, файл із зображенням пошкоджено або шляху до нього не існує.</value>
+    <value>Можливо, файл із зображенням пошкоджений або до нього відсутній шлях.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Передперегляд картинки не було сформовано, просимо вибачення!</value>
+    <value>Вибачте, попередньо переглянути зображення неможливо.</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Налаштування не були збережені, просимо вибачення!</value>
+    <value>Вибачте, налаштування не збережені.</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Сталася помилка</value>
@@ -344,7 +344,7 @@
     <value>Перемикання після режиму очікування (не рекомендовано)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Мобільні пристрої, такі як продукти Microsoft Surface, використовують новий вид режиму очікування.
+    <value>Мобільні пристрої, як от продукти Microsoft Surface, використовують новий вид режиму очікування.
 Ввімкнення цієї опції гарантує, що Auto Dark Mode негайно перемикатиме тему після пробудження комп'ютера.
 Але це також скорочує ресурс акумулятора, тому активуйте ЛИШЕ за необхідности!</value>
   </data>
@@ -358,7 +358,7 @@
     <value>Встановити</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Ці параметри вимкнено під час використання теми Windows.
+    <value>Ці параметри вимкнені під час використання теми Windows.
 Ви можете налаштувати це окремо у вашій темі Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
@@ -404,10 +404,10 @@
     <value>Повторіть процес для темної теми.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Затримка перемикання кольору панелі задач (мс):</value>
+    <value>Затримка перемикання кольору панелі завдань (мс):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>Про програму</value>
+    <value>Про застосунок</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Меню</value>
@@ -434,7 +434,7 @@
     <value>Оберіть режим:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Під час застосування теми сталася помилка, ми вимкнули перемикання тем</value>
+    <value>Під час застосування теми сталася помилка, перемикання тем вимкнене</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Альтернативна світла тема</value>
@@ -464,21 +464,21 @@
     <value>Підтримати</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Вітаю! Дякую за використання Auto Dark Mode! Як вам це подобається?
+    <value>Вітаю! Дякую за використання Auto Dark Mode! Поки подобається цей застосунок?
 
-Ця програма робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час вона абсолютно безкоштовна, без реклами, не збирає даних про користувачів та з відкритим кодом.
+Auto Dark Mode робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час вона абсолютно безплатна, без реклами, не збирає даних про користувачів та з відкритим кодом.
 Я не отримую жодного прибутку від цього проєкту.
 
 З цієї причини ви могли б підтримати мене добровільним внеском. Навіть від невеликої суми я стрибатиму по квартирі. Просто пожертвуйте стільки, на скільки цінуєте мою роботу.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем  було вимкнено. Щоб знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри</value>
+    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем  вимкнене. Аби знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Було зустрінуто таку проблему:
+    <value>Трапилась така проблема:
 {0}.
 
-Зараз ми спробуємо вирішити її, запустивши алгоритм як адміністратор. Можливо, це допоможе.
+Зараз ми спробуємо вирішити її, запустивши програму з правами адміністратора. Можливо, це допоможе.
 Після цього Auto Dark Mode перезапуститься, і вам потрібно буде знову застосувати свої налаштування, вибачте!
 
 До речі, будь ласка, НІКОЛИ не запускайте Auto Dark Mode в режимі адміністратора!</value>
@@ -499,16 +499,16 @@
     <value>Скинути</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Дозволити темну тему коли пристрій не підключений до живлення</value>
+    <value>Дозволити темну тему коли пристрій не пд'єднаний до живлення</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Значення за замовчуванням для повзунка економії акумулятора</value>
+    <value>Типове значення для повзунка економії акумулятора</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Пом’якшення енергозбереження для перемикання теми</value>
+    <value>Зменшення економії енергії для перемикання теми</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>Це працюватиме, лише якщо ви не ввімкнули вручну режим економії заряду акумулятора!</value>
+    <value>Це працює за умови, що ви не ввімкнули вручну режим економії заряду акумулятора!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Перемикання режимів</value>
@@ -520,7 +520,7 @@
     <value>Застосувати координати</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Ця функція недоступна, оскільки на комп'ютер не було встановлено оновлення Windows 10 April 2019 Update...</value>
+    <value>Ця функція недоступна, оскільки на комп'ютері не встановлене оновлення Windows 10 April 2019 Update...</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Географічні координати</value>
@@ -538,22 +538,22 @@
     <value>Відкрити файл конфігурації</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Відкрити каталог конфігурації</value>
+    <value>Відкрити каталог з конфігурацією</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Відкрити файл журнала</value>
+    <value>Відкрити файл журналу</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>Конфігурація</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy):</value>
+    <value>Microsoft Office (оригінальний):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Виберіть тему</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Виберіть шпалери</value>
+    <value>Виберіть фонове зображення</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Заборонено</value>
@@ -562,19 +562,19 @@
     <value>Приховати піктограму в треї (не рекомендується)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Ця функція вимкнена, коли ввімкнено режим теми.</value>
+    <value>Ця функція вимкнена, коли ввімкнений режим тем.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Ця функція вимкнена, коли ввімкнено режим шпалер.</value>
+    <value>Ця функція вимкнена, коли ввімкнено режим фонів.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Пропонує більше функцій, але вам потрібно налаштувати файл Windows .theme. Налаштуйте шпалери робочого столу для кожного монітора, встановіть слайд-шоу, змініть курсор миші, встановіть колір акценту та окремі звуки.</value>
+    <value>Пропонує більше функцій, але вам потрібно налаштувати файл Windows .theme. Налаштуйте фони робочого столу для кожного монітора, встановіть слайд-шоу, змініть курсор миші, встановіть колір акценту та окремі звуки.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Пропонує менше функцій, але його легше налаштувати. Налаштуйте шпалери робочого столу для всіх моніторів, окремих моніторів або встановіть колір фону.</value>
+    <value>Пропонує менше функцій, але його легше налаштувати. Налаштуйте фонові зображення робочого столу для всіх моніторів, окремих моніторів або встановіть фоновий колір.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Ми перевіряємо нові версії Auto Dark Mode у фоновому режимі. Коли оновлення стане доступним, ми повідомимо вас за допомогою тостового сповіщення</value>
+    <value>Наявність нових версій перевіряється Auto Dark Mode у фоновому режимі. Коли оновлення стане доступним, ми повідомимо вас за допомогою спливального сповіщення</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Автоматично завантажуйте та встановлюйте нові версії</value>
@@ -583,7 +583,7 @@
     <value>Не показувати сповіщення</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Виберіть канал оновлення</value>
+    <value>Оберіть канал оновлення</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
     <value>Перевірте наявність оновлень, коли запуститься Auto Dark Mode</value>
@@ -604,7 +604,7 @@
     <value>ніколи</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Змініть, як часто ми перевіряємо наявність оновлень</value>
+    <value>Змініть, як часто перевіряється наявність оновлень</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Темна тема</value>
@@ -631,46 +631,46 @@
     <value>Тип</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Видалити відключені монітори</value>
+    <value>Видалити відімкнені монітори</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Шпалери</value>
+    <value>Фонове зображення</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
     <value>Колір</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex-код</value>
+    <value>Шістнадцятковий код</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Увімкнути перемикач шпалер</value>
+    <value>Увімкнути перемикач фонів</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>Не перемикатися під час гри у відеоігри</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Швидко (1 зразок)</value>
+    <value>Швидко (1 проба)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Середній (2 зразки)</value>
+    <value>Середній (2 проби)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Повільно (3 зразки)</value>
+    <value>Повільно (3 проби)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>Швидкість визначення використання GPU</value>
+    <value>Швидкість визначення використання ГП</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Пристрої з батарейним харчуванням</value>
+    <value>Пристрої з живленням від акумулятора</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
     <value>Умови</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Мінімальне використання GPU для затримки перемикання</value>
+    <value>Мінімальне використання ГП для затримки перемикання</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Відновлення тем, якщо їх змінено ззовні</value>
+    <value>Відновлення тем, якщо вони змінені ззовні</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>Широта</value>
@@ -697,7 +697,7 @@
     <value>Увімк.</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Слідуй за нами</value>
+    <value>Стежити за нами</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Тема</value>
@@ -746,10 +746,10 @@
     <value>Щодня</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Натисніть Встановити, щоб зберегти зміни.</value>
+    <value>Натисніть Встановити для збереження змін.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Використовуйте колір акценту панелі завдань під час</value>
+    <value>Використовувати акцентний колір панелі завдань під час</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Тільки акцент</value>
@@ -761,7 +761,7 @@
     <value>Копія</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Запускати Auto Dark Mode з Windows</value>
+    <value>Автоматично запускати Auto Dark Mode з Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
     <value>Автозапуск</value>
@@ -779,7 +779,7 @@
     <value>Мова</value>
   </data>
   <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Перезапустити додаток</value>
+    <value>Перезапустити застосунок</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Заборонити</value>
@@ -794,10 +794,10 @@
     <value>Ключ реєстру</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Завдання</value>
+    <value>Задача</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Ви вимкнули запис автоматичного запуску через Windows.</value>
+    <value>Ви вимкнули автозапуск застосунку засобами Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>Наступне оновлення о</value>
@@ -806,22 +806,22 @@
     <value>Колір</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Ви можете редагувати гарячі клавіші, лише якщо вони вимкнені.</value>
+    <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>Сполучення примусового темного режиму</value>
+    <value>Примусовий темний режим</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>Сполучення примусового світлого режиму</value>
+    <value>Примусовий світлий режим</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Сполучення</value>
+    <value>Гарячі клавіші</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>Сполучення зупинення примусової теми</value>
+    <value>Скасувати примусову тему</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Дозволити загальносистемні сполучення</value>
+    <value>Дозволити загальносистемні гарячі клавіші</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
     <value>Примусова темна тема</value>
@@ -830,16 +830,154 @@
     <value>Примусова світла тема</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Приховувати піктограму не рекомендується.
+    <value>Приховувати значок не рекомендується.
 Ви дійсно хочете продовжити?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Приховати піктограму в треї</value>
+    <value>Приховати значок в треї</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Відкрити каталог конфіга</value>
+    <value>Відкрити каталог з конфігурацією</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Дозволити вирішувати додатку</value>
+    <value>Залишити на розсуд застосунку</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Не перемикати теми якщо система не в режимі очікування</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Хвилин коли система вважатиметься в очікуванні</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Акцентний колір для рядку заголовка та меж вікон</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Інформація про версію скопійована до буферу обміну</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Автоматичне перемикання тем</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Показувати сповіщення за перемикання</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Відкласти</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>Модуль моніторину ГП</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Призупинити модуль автоперемикання</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Перевіряч режиму очікування системи</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Натисність затвердити для негайного перемикання тем.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Поновити</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Відкотіть цю дію, натиснувши кнопку скасування нижче.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>гаряча клавіша</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Перемкнути автозміну тем</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Вимкнути автоперемикання</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Призупинити автоперемикання</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Бажаєте натомість вимкнути автоперемикання?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Автоперемикання також поновиться якщо ви повернетесь до попередньої теми.</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Зміна тем призупинена до</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Автоперемикання тем наразі призупинене через такі модулі:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Поновлення працюватиме лише для відтермінувань що мають час закінчення</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Відкласти керування</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Перемкнути тему</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Автозміна теми активна</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Відповідно до нічника Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Відповідно до нічника Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Зміна тем призупинена одноразово!</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>відкладає до</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>відкладає поки не виконається умова</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>відкладає до наступного світанку</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>відкладає до наступного смеркання</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>до наступного світанку</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>до наступного смеркання</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Перемкнути призупинення автозміни тем</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Автозміна тем поновлена</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Відкрити параметри нічника</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Нічник</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Активні затримки</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Пропустити автоперемикання одноразово</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Сповіщувати перед автозміною тем</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Час очікування сповіщенням на введення користувача (в хвилинах)</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Режим відлагодження</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Дозволити зміну тем на екрані блокування (Win10)</value>
   </data>
 </root>
