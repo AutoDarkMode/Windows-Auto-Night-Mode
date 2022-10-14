@@ -160,7 +160,6 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
         {
-            // load theme state at previous adm shutdown if autoswitchnotify is enabled
             state.RequestedTheme = newTheme;
 
             // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
