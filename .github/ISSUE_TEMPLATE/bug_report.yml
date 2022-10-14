@@ -5,12 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
-        ## PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
-        ## PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
-        ## PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
-        ## PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
-        ## PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
+        # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
+        # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
+        # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
         Go to settings and select the "Beta" update channel.
         Click "Check for Updates" and ensure the info message reads "No new updates available"
 
