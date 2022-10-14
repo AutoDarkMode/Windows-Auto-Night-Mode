@@ -14,10 +14,6 @@ body:
         
         # Bug Report
         
-  - type: markdown
-    attributes:
-      value: 
-
   - type: textarea
     id: description
     attributes:
