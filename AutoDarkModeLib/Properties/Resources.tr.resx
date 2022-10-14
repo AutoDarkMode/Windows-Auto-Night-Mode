@@ -226,7 +226,7 @@
     <value>Açık tema</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Değişiklikleri kaydetmek için Uygula'ya basın</value>
+    <value>Değişiklikleriniz otomatik olarak kaydedilecektir.</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Devre dışı</value>
@@ -282,7 +282,7 @@ Bunu indirmek istiyor musunuz?
     <value>Uyarı: Mevcut temanızı okuyamadık.</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Otomatik tema değiştirmeyi etkinleştirmek için onay kutusunu işaretleyin</value>
+    <value>Otomatik tema değiştirmeyi etkinleştirmek için ayarları buradan yapın</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>Değişikliklerin etkin olması için uygulamanın yeniden başlatılması gerekli</value>
@@ -863,7 +863,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Hemen bir tema değişikliği istemek için Onayla'ya basın.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Aşağıdaki geri al düğmesine tıklayarak bu işlemi geri alabilirsiniz.</value>
+    <value>Aşağıdaki Geri al düğmesine tıklayarak bu işlemi geri alabilirsiniz.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
     <value>kısayol tuşu</value>
@@ -878,7 +878,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Geri al</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Sonraki değişimi atla</value>
+    <value>Otomatik değişimi duraklat</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Bunun yerine otomatik değişimi devre dışı bırakmak ister misiniz?</value>
@@ -886,11 +886,11 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Önceki temanıza dönerseniz otomatik değişim de devam eder.</value>
   </data>
-  <data name="ThemeSwitchPaused" xml:space="preserve">
-    <value>Değişime devam et</value>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>sonraki gün doğumuna kadar</value>
   </data>
-  <data name="ThemeSwitchPausedUntil" xml:space="preserve">
-    <value>şu saate kadar duraklatıldı:</value>
+  <data name="UntilTime" xml:space="preserve">
+    <value>şu saate kadar:</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
     <value>Tema değişimi şu saate kadar duraklatıldı:</value>
@@ -901,14 +901,14 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Sürüm bilgisi panoya kopyalandı</value>
   </data>
-  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
-    <value>Otomatik değiştirmeyi bir kez atla</value>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Ertele</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPU izleme modülü</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Erteleme bilgisi</value>
+    <value>Erteleme kontrolü</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>Otomatik tema değiştirme etkin</value>
@@ -920,7 +920,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Sistem boşta denetleyicisi</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Otomatik değiştirme duraklatma modülü</value>
+    <value>Otomatik değiştirmeyi duraklatma modülü</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
     <value>Aşağıdaki modüller nedeniyle otomatik tema değiştirme şu anda duraklatılmıştır:</value>
@@ -937,8 +937,8 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Tema değiştirme bir kez duraklatıldı!</value>
   </data>
-  <data name="ThemeSwitchPausedOnce" xml:space="preserve">
-    <value>bir kez duraklatıldı</value>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>sonraki gün batımına kadar erteledi</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>şu saate kadar erteledi:</value>
@@ -946,7 +946,40 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
     <value>koşul sağlanana kadar erteledi</value>
   </data>
-  <data name="PostponeReasonPostponesUntilNextSwitch" xml:space="preserve">
-    <value>bir sonraki değişime kadar erteledi (süresi dolana kadar)</value>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>sonraki gün doğumuna kadar erteledi</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>sonraki gün batımına kadar</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Otomatik tema değiştirmeyi duraklatma aç/kapat</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Otomatik tema değiştirme devam ettirildi</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Gece ışığı ayarlarını aç</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Gece ışığı</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Etkin gecikmeler</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Otomatik değişimi bir kez atla</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Temaları otomatik değiştirmeden önce bildir</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Bildirimin kullanıcı girişini beklediği süre (dk.)</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Hata ayıklama modu</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Kilit ekranı sırasında tema değişimine izin ver (Win10)</value>
   </data>
 </root>
