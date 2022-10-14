@@ -10,10 +10,13 @@ body:
         Click "Check for Updates" and ensure the info message reads "No new updates available"
         
         # AUTO DARK MODE 10.1 IS INCOMPATIBLE WITH WiNDOWS 11 22H2
+        Please don't file bug reports if you are on that verison or earlier, it's a known issue and you are required to update to further use the program.
+        
+        # Bug Report
         
   - type: markdown
     attributes:
-      value: #Bug Report
+      value: 
 
   - type: textarea
     id: description
