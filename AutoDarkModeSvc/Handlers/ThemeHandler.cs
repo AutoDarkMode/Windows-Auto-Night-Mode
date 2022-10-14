@@ -184,7 +184,7 @@ namespace AutoDarkModeSvc.Handlers
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
-                    state.CurrentWindowsThemePath = Path.GetFileNameWithoutExtension(themeFilePath);
+                    state.CurrentWindowsThemePath = themeFilePath;
                     if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully");
                 }
                 catch (Exception ex)
