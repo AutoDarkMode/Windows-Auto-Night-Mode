@@ -39,6 +39,7 @@ namespace AutoDarkModeSvc.Handlers
                     state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
                     return;
                 }
+                Logger.Info($"requested theme at delay notification time: {Enum.GetName(typeof(Theme), state.RequestedTheme).ToLower()}");
 
                 state.PostponeManager.Add(new(Helper.PostponeItemDelayGracePeriod, DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
 

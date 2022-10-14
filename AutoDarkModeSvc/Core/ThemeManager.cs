@@ -180,18 +180,19 @@ namespace AutoDarkModeSvc.Core
             // when the app ist launched for the first time, ask for notification
             if (!state.InitSyncSwitchPerformed)
             {
-                try
-                {
-                    if (builder.Config.AppsSwitch.Enabled) state.RequestedTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "couldn't initialize apps theme state");
-                }
                 if ((componentsToUpdate.Count > 0 || themeModeNeedsUpdate) && builder.Config.AutoSwitchNotify.Enabled)
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                     state.InitSyncSwitchPerformed = true;
+                    // take an educated guess what theme state is most likely to be active at bootup time.
+                    try
+                    {
+                        state.RequestedTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, "couldn't initialize apps theme state");
+                    }
                     return;
                 }
             }
