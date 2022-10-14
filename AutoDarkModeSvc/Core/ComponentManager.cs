@@ -31,7 +31,7 @@ namespace AutoDarkModeSvc.Core
         private readonly ISwitchComponent OfficeSwitch = new OfficeSwitch();
         private readonly ISwitchComponent AccentColorSwitch = new AccentColorSwitch();
         private readonly ISwitchComponent SystemSwitch;
-        private readonly ISwitchComponent WallpaperSwitch;
+        private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
 
         /// <summary>
@@ -59,14 +59,12 @@ namespace AutoDarkModeSvc.Core
             {
                 Logger.Info($"using components for newer Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitchThemeFile();
-                WallpaperSwitch = new WallpaperSwitchThemeFile();
                 AppsSwitch = new AppsSwitchThemeFile();
             }
             else if (Environment.OSVersion.Version.Build < Helper.MinBuildForNewFeatures)
             {
                 Logger.Info($"using components for legacy Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitch();
-                WallpaperSwitch = new WallpaperSwitch();
                 AppsSwitch = new AppsSwitch();
             }
 
