@@ -484,7 +484,7 @@ Auto Dark Mode will restart afterwards and you'll need to re-apply your settings
 Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Need help with a problem?</value>
+    <value>Help</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Multi-User support</value>

@@ -1744,7 +1744,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Need help with a problem?.
+        ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string tbHelp {
             get {
