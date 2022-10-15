@@ -103,11 +103,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     {
                         if (ThemeFileContent[i].StartsWith('['))
                         {
-                            i--;
                             break;
                         }
                     }
                     ThemeFileContent.RemoveRange(found, i - found);
+                    lines.Add("");
                     ThemeFileContent.InsertRange(found, lines);
                 }
                 else
