@@ -221,7 +221,7 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 DisableTimeBasedSwitch();
-                SetPanelVisibility(true, false, false, false, false);
+                SetPanelVisibility(false, false, false, false, false);
                 RadioButtonDisabled.IsChecked = true;
             }
             //enabled
@@ -673,7 +673,7 @@ namespace AutoDarkModeApp.Pages
         private void RadioButtonDisabled_Click(object sender, RoutedEventArgs e)
         {
             DisableTimeBasedSwitch();
-            SetPanelVisibility(true, false, false, false, true);
+            SetPanelVisibility(false, false, false, false, true);
         }
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
