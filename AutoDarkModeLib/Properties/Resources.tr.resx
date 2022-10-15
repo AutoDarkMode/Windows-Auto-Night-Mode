@@ -902,7 +902,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Sürüm bilgisi panoya kopyalandı</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Ertele</value>
+    <value>Geciktir</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPU izleme modülü</value>
@@ -920,7 +920,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Sistem boşta denetleyicisi</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Otomatik değiştirmeyi duraklatma modülü</value>
+    <value>Otomatik değişimi duraklatma modülü</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
     <value>Aşağıdaki modüller nedeniyle otomatik tema değiştirme şu anda duraklatılmıştır:</value>
@@ -953,7 +953,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>sonraki gün batımına kadar</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Otomatik tema değiştirmeyi duraklatma aç/kapat</value>
+    <value>Otomatik tema değişimini duraklat aç/kapat</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Otomatik tema değiştirme devam ettirildi</value>
@@ -981,5 +981,44 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
     <value>Kilit ekranı sırasında tema değişimine izin ver (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Onayla</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 saat</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 dakika</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 saat</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 dakika</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 saat</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 saat</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 saat</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Geciktirme modülü</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Şimdi değiştir</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Değişim bildirimi</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Tema değişimi beklemede</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Şimdi değişim yapmak mı ya da daha fazla geciktirmek mi istiyorsunuz?</value>
   </data>
 </root>
