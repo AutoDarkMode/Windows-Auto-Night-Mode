@@ -82,14 +82,15 @@
                          Click="RadioButtonWindowsNightLight_Click" />
         </StackPanel>
 
+        <!-- Night light settings-->
         <ui:SimpleStackPanel Name="GridNightLight"
-                             Margin="0,0,0,0"
+                             Margin="0,25,0,0"
                              Grid.Row="5"
                              Grid.Column="1">
 
             <TextBlock Name="TextBlockNightLightHeader"
                        Grid.Row="0"
-                       Margin="0,0,0,0"
+                       Margin="0,0,0,5"
                        Text="{x:Static p:Resources.TimePageNightLightHeader}"
                        FontFamily="Segoe UI Semibold"
                        FontSize="20" />
