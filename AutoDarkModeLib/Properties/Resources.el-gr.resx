@@ -980,4 +980,43 @@
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
     <value>Να επιτρέπεται η εναλλαγή θέματος όταν η οθόνη είναι κλειδωμένη (Win10)</value>
   </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Εναλλαγή τώρα</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Μονάδα καθυστέρησης</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Ειδοποίηση εναλλαγής</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 ώρες</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 λεπτά</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 ώρες</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 λεπτά</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 ώρες</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 ώρα</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 ώρες</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Εναλλαγή θέματος σε εκκρεμότητα</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Θέλετε να κάνετε εναλλαγή τώρα ή επιπλέον καθυστέρηση;</value>
+  </data>
 </root>
