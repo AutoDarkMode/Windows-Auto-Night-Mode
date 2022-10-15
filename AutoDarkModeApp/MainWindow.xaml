@@ -119,6 +119,14 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
             </ui:NavigationView.FooterMenuItems>
+            
+            <ui:NavigationView.PaneFooter>
+                <ui:NavigationViewItem Tag="help" Content="{x:Static p:Resources.tbHelp}" Height="50" MouseLeftButtonUp="HelpMenuItem_Clicked">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE897;" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.PaneFooter>
 
             <!-- Content of Navbar, mainly the Frame which contains the Pages -->
             <ScrollViewer

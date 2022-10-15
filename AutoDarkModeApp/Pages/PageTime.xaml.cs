@@ -30,7 +30,9 @@ namespace AutoDarkModeApp.Pages
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool reload = false;
+
         private delegate void DispatcherDelegate();
+
         private System.Timers.Timer postponeRefreshTimer = new();
         private int selectedPostponeMinutes = -0;
         private FileSystemWatcher ConfigWatcher { get; }
@@ -66,7 +68,10 @@ namespace AutoDarkModeApp.Pages
                     {
                         builder.Load();
                     }
-                    catch { }
+                    catch
+                    {
+                    }
+
                     LoadSettings();
                 });
             };
@@ -100,7 +105,7 @@ namespace AutoDarkModeApp.Pages
                 postponeRefreshTimer.Stop();
                 ConfigWatcher.EnableRaisingEvents = false;
             };
-            
+
             LoadSettings();
 
             Window window = Application.Current.MainWindow;
@@ -123,7 +128,8 @@ namespace AutoDarkModeApp.Pages
         /// </summary>
         private void PostponeTimerEvent(object sender, EventArgs e)
         {
-            ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
+            ApiResponse reply =
+                ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
             if (reply.StatusCode != StatusCode.Timeout)
             {
                 if (builder.Config.AutoThemeSwitchingEnabled)
@@ -138,14 +144,16 @@ namespace AutoDarkModeApp.Pages
                             List<string> itemsStringList = dto.Items.Select(i =>
                             {
                                 if (i.Expiry == null) anyNoExpiry = true;
-                                if (i.IsUserClearable) 
+                                if (i.IsUserClearable)
                                     canResume = true;
 
                                 i.SetCulture(Thread.CurrentThread.CurrentCulture);
 
                                 // retrieve the value of the specified key
-                                i.TranslatedReason = AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ?? i.Reason;
-                                
+                                i.TranslatedReason =
+                                    AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ??
+                                    i.Reason;
+
                                 return i.ToString();
                             }).ToList();
                             Dispatcher.Invoke(() =>
@@ -169,6 +177,7 @@ namespace AutoDarkModeApp.Pages
                                     ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
                                     PostponeComboBox.IsEnabled = true;
                                 }
+
                                 TextBlockPostponeInfo.Text = string.Join('\n', itemsStringList);
                             });
                         }
@@ -183,9 +192,10 @@ namespace AutoDarkModeApp.Pages
                                 PostponeComboBox.IsEnabled = true;
                             });
                         }
-
                     }
-                    catch { }
+                    catch
+                    {
+                    }
                 }
             }
         }
@@ -305,7 +315,8 @@ namespace AutoDarkModeApp.Pages
         }
 
 
-        private void SetPanelVisibility(bool timepicker = false, bool location = false, bool offset = false, bool coordinates = false, bool postpone = false, bool nightLight = false)
+        private void SetPanelVisibility(bool timepicker = false, bool location = false, bool offset = false,
+            bool coordinates = false, bool postpone = false, bool nightLight = false)
         {
             if (timepicker) GridTimePicker.Visibility = Visibility.Visible;
             else GridTimePicker.Visibility = Visibility.Collapsed;
@@ -341,7 +352,6 @@ namespace AutoDarkModeApp.Pages
                 darkStartMinutes = TimePickerDark.SelectedDateTime.Value.Minute;
                 lightStart = TimePickerLight.SelectedDateTime.Value.Hour;
                 lightStartMinutes = TimePickerLight.SelectedDateTime.Value.Minute;
-
             }
             catch
             {
@@ -359,8 +369,10 @@ namespace AutoDarkModeApp.Pages
             //TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
 
             //Apply Theme
-            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
-            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
+            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart,
+                darkStartMinutes, 0);
+            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart,
+                lightStartMinutes, 0);
 
             try
             {
@@ -370,6 +382,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex);
             }
+
             Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
 
             //ui
@@ -379,14 +392,16 @@ namespace AutoDarkModeApp.Pages
         private async void ApplyTheme()
         {
             //show warning for notebook on battery with enabled battery saver
-            if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch &&
+                PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
-                userFeedback.Text = AdmProperties.Resources.msgChangesSaved + "\n\n" + AdmProperties.Resources.msgBatterySaver;
+                userFeedback.Text = AdmProperties.Resources.msgChangesSaved + "\n\n" +
+                                    AdmProperties.Resources.msgBatterySaver;
                 applyButton.IsEnabled = true;
             }
             else
             {
-                userFeedback.Text = AdmProperties.Resources.msgChangesSaved;//changes were saved!
+                userFeedback.Text = AdmProperties.Resources.msgChangesSaved; //changes were saved!
             }
 
             try
@@ -402,11 +417,15 @@ namespace AutoDarkModeApp.Pages
                 ErrorWhileApplyingTheme($"Error while applying theme: ", ex.ToString());
             }
         }
+
         //if something went wrong while applying the settings :(
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
         {
             userFeedback.Text = AdmProperties.Resources.msgErrorOcc;
-            string error = string.Format(AdmProperties.Resources.errorThemeApply, AdmProperties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
+            string error =
+                string.Format(AdmProperties.Resources.errorThemeApply,
+                    AdmProperties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" +
+                exception;
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
@@ -415,7 +434,8 @@ namespace AutoDarkModeApp.Pages
             bool? result = msg.DialogResult;
             if (result == true)
             {
-                StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                ProcessHandler.StartProcessByProcessInfo(
+                    "https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
             }
         }
 
@@ -425,6 +445,7 @@ namespace AutoDarkModeApp.Pages
             {
                 await ActivateLocationMode();
             }
+
             reload = false;
         }
 
@@ -435,7 +456,7 @@ namespace AutoDarkModeApp.Pages
         public async Task ActivateLocationMode()
         {
             //ui
-            locationBlock.Text = AdmProperties.Resources.msgSearchLoc;//Searching your location...
+            locationBlock.Text = AdmProperties.Resources.msgSearchLoc; //Searching your location...
             userFeedback.Text = AdmProperties.Resources.msgSearchLoc;
 
             await LoadGeolocationData();
@@ -452,11 +473,14 @@ namespace AutoDarkModeApp.Pages
             int maxTries = 5;
             for (int i = 0; i < maxTries; i++)
             {
-                ApiResponse result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
+                ApiResponse result =
+                    ApiResponse.FromString(
+                        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
                 if (result.StatusCode == StatusCode.Ok)
                 {
                     break;
                 }
+
                 await Task.Delay(1000);
             }
 
@@ -471,7 +495,9 @@ namespace AutoDarkModeApp.Pages
 
             try
             {
-                ApiResponse result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+                ApiResponse result =
+                    ApiResponse.FromString(
+                        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
                 if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
                 {
                     NoLocationAccess();
@@ -483,7 +509,8 @@ namespace AutoDarkModeApp.Pages
                 }
                 else if (!builder.Config.Location.UseGeolocatorService)
                 {
-                    locationBlock.Text = $"{AdmProperties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
+                    locationBlock.Text =
+                        $"{AdmProperties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
                 }
             }
             catch (Exception ex)
@@ -495,7 +522,7 @@ namespace AutoDarkModeApp.Pages
 
         private async void NoLocationAccess()
         {
-            locationBlock.Text = AdmProperties.Resources.msgLocPerm;//The App needs permission to location
+            locationBlock.Text = AdmProperties.Resources.msgLocPerm; //The App needs permission to location
             userFeedback.Text = AdmProperties.Resources.msgLocPerm;
             locationBlock.Visibility = Visibility.Visible;
             TextBlockDarkTime.Text = null;
@@ -508,7 +535,7 @@ namespace AutoDarkModeApp.Pages
             SetPanelVisibility(true, false, false, false, true);
 
             builder.Config.Location.Enabled = false;
-            userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
+            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
         }
 
 
@@ -520,7 +547,7 @@ namespace AutoDarkModeApp.Pages
             //RadioButtonCustomTimes.IsChecked = builder.Config.Location.Enabled && !builder.Config.Location.UseGeolocatorService;
 
             StackPanelTimePicker.IsEnabled = true;
-            userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
+            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
 
             //this setting enables all the configuration possibilities of auto dark mode
             if (!builder.Config.AutoThemeSwitchingEnabled)
@@ -528,6 +555,7 @@ namespace AutoDarkModeApp.Pages
                 builder.Config.AutoThemeSwitchingEnabled = true;
             }
         }
+
         private void DisableTimeBasedSwitch()
         {
             if (!init)
@@ -546,25 +574,36 @@ namespace AutoDarkModeApp.Pages
             }
 
             StackPanelTimePicker.IsEnabled = false;
-            userFeedback.Text = AdmProperties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
+            userFeedback.Text =
+                AdmProperties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
+
         private void UpdateSuntimes()
         {
-            LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+            LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset,
+                out DateTime SunsetWithOffset);
             if (Settings.Default.AlterTime)
             {
-                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock1
-                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock2
+                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " +
+                                          SunriseWithOffset.ToString("hh:mm tt",
+                                              CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " +
+                                         SunsetWithOffset.ToString("hh:mm tt",
+                                             CultureInfo.InvariantCulture); //textblock2
             }
             else
             {
-                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
-                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
+                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " +
+                                          SunriseWithOffset.ToString("HH:mm",
+                                              CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " +
+                                         SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
             }
-            DateTime nextUpdate = builder.LocationData.LastUpdate.Add(builder.Config.Location.PollingCooldownTimeSpan);
-            if (Settings.Default.AlterTime) LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("en"));
-            else LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("de"));
 
+            DateTime nextUpdate = builder.LocationData.LastUpdate.Add(builder.Config.Location.PollingCooldownTimeSpan);
+            if (Settings.Default.AlterTime)
+                LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("en"));
+            else LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("de"));
         }
 
         /// <summary>
@@ -585,6 +624,7 @@ namespace AutoDarkModeApp.Pages
                 userFeedback.Text = AdmProperties.Resources.errorNumberInput;
                 return;
             }
+
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
             SetTimeBasedSwitchEnabled();
@@ -596,6 +636,7 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex);
             }
+
             ButtonApplyCoordinates.IsEnabled = false;
             await ActivateLocationMode();
             await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
@@ -604,7 +645,8 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(Exception ex, string location = "PageTime")
         {
-            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source +
+                           "\n\n" + ex.Message;
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
@@ -620,23 +662,14 @@ namespace AutoDarkModeApp.Pages
                     Verb = "open"
                 });
             }
-            return;
-        }
 
-        private static void StartProcessByProcessInfo(string message)
-        {
-            Process.Start(new ProcessStartInfo(message)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            });
+            return;
         }
 
 
         /// <summary>
         /// radio buttons
         /// </summary>
-
         private void RadioButtonDisabled_Click(object sender, RoutedEventArgs e)
         {
             DisableTimeBasedSwitch();
@@ -677,7 +710,6 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
             }
-
         }
 
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
@@ -697,7 +729,6 @@ namespace AutoDarkModeApp.Pages
         /// Just UI stuff
         /// Events of controls
         /// </summary>
-
         private void TimePicker_SelectedDateTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
             if (!init)
@@ -709,7 +740,8 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+            ProcessHandler.StartProcessByProcessInfo(
+                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
 
         private void TextBlockHelpWiki_KeyDown(object sender, KeyEventArgs e)
@@ -726,20 +758,20 @@ namespace AutoDarkModeApp.Pages
             Regex regex = new("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
         private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut ||
+                e.Command == ApplicationCommands.Paste)
             {
                 e.Handled = true;
             }
         }
+
         private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var textBox = ((System.Windows.Controls.TextBox)sender);
-            textBox.Dispatcher.BeginInvoke(new System.Action(() =>
-            {
-                textBox.SelectAll();
-            }));
+            textBox.Dispatcher.BeginInvoke(new System.Action(() => { textBox.SelectAll(); }));
         }
 
         private void NumberBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
@@ -747,7 +779,8 @@ namespace AutoDarkModeApp.Pages
             e.Handled = true;
         }
 
-        private void NumberBox_ValueChanged(ModernWpf.Controls.NumberBox sender, ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
+        private void NumberBox_ValueChanged(ModernWpf.Controls.NumberBox sender,
+            ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
         {
             if (!init)
             {
@@ -757,6 +790,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         OffsetButton.IsEnabled = true;
                     }
+
                     userFeedback.Text = AdmProperties.Resources.TimeTextBlockClickOnSetMessage;
                 }
                 else if (sender.Tag.Equals("coordinates"))
@@ -765,7 +799,8 @@ namespace AutoDarkModeApp.Pages
                     {
                         ButtonApplyCoordinates.IsEnabled = true;
                     }
-                    userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
+
+                    userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
                 }
             }
         }
@@ -780,6 +815,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         OffsetButton.IsEnabled = true;
                     }
+
                     userFeedback.Text = AdmProperties.Resources.TimeTextBlockClickOnSetMessage;
                 }
                 else if (sender is TextBox tb && tb.Tag.Equals("coordinates"))
@@ -788,14 +824,15 @@ namespace AutoDarkModeApp.Pages
                     {
                         ButtonApplyCoordinates.IsEnabled = true;
                     }
-                    userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
+
+                    userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
                 }
             }
         }
 
         private void TextBlockOpenLatLongWebsite_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            StartProcessByProcessInfo("https://www.latlong.net/");
+            ProcessHandler.StartProcessByProcessInfo("https://www.latlong.net/");
         }
 
         private void TextBlockOpenLatLongWebsite_KeyDown(object sender, KeyEventArgs e)
@@ -823,23 +860,29 @@ namespace AutoDarkModeApp.Pages
                     validated = $"{split[0]}.{join}";
                     validated = validated.TrimEnd('0').TrimEnd('.');
                 }
+
                 if (validated.StartsWith('0'))
                 {
                     validated = validated.TrimStart('0');
                     if (validated.StartsWith('.')) validated = "0" + validated;
                 }
+
                 if (validated.Length == 0)
                 {
                     validated = "0";
                 }
+
                 if (isNegative)
                 {
                     validated = "-" + validated;
                 }
+
                 tb.Text = validated;
 
-                _ = double.TryParse(NumberBoxLat.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double latParsed);
-                _ = double.TryParse(NumberBoxLon.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double lonParsed);
+                _ = double.TryParse(NumberBoxLat.Text, NumberStyles.Any, CultureInfo.InvariantCulture,
+                    out double latParsed);
+                _ = double.TryParse(NumberBoxLon.Text, NumberStyles.Any, CultureInfo.InvariantCulture,
+                    out double lonParsed);
                 if (latParsed > 90) NumberBoxLat.Text = "90";
                 else if (latParsed < -90) NumberBoxLat.Text = "-90";
                 if (lonParsed > 180) NumberBoxLon.Text = "180";
@@ -860,7 +903,8 @@ namespace AutoDarkModeApp.Pages
             {
                 ButtonApplyCoordinates.IsEnabled = true;
             }
-            userFeedback.Text = AdmProperties.Resources.msgClickApply;//Click on apply to save changes
+
+            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
         }
 
         private void ButtonControlPostponeQueue_Click(object sender, RoutedEventArgs e)
@@ -877,6 +921,7 @@ namespace AutoDarkModeApp.Pages
                 ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
                 PostponeComboBox.IsEnabled = false;
             }
+
             if (selectedPostponeMinutes != 0 && !isDelayed)
             {
                 MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {selectedPostponeMinutes}");
@@ -891,6 +936,7 @@ namespace AutoDarkModeApp.Pages
                 MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
                 MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
             }
+
             PostponeTimerEvent(null, new());
         }
 

@@ -2,7 +2,9 @@
 using System.Windows;
 using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Input;
 using System.Windows.Navigation;
+using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Properties;
 using AutoDarkModeApp.Pages;
 using ModernWpf.Media.Animation;
@@ -11,7 +13,6 @@ namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
-
         public MainWindow()
         {
             DataContext = this;
@@ -58,8 +59,8 @@ namespace AutoDarkModeApp
                 {
                     Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
                 }
-                
             }
+
             var langCode = new CultureInfo(Settings.Default.Language);
             CultureInfo.CurrentUICulture = langCode;
             CultureInfo.CurrentCulture = langCode;
@@ -75,7 +76,6 @@ namespace AutoDarkModeApp
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
-
 
 
         private void Window_Closing(object sender, EventArgs e)
@@ -104,9 +104,10 @@ namespace AutoDarkModeApp
         /// <summary>
         /// Navbar / NavigationView
         /// </summary>
-        
+
         //change displayed page based on selection
-        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender,
+            ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.SelectedItemContainer != null)
             {
@@ -136,6 +137,7 @@ namespace AutoDarkModeApp
                         FrameNavbar.Navigate(typeof(PageAbout), null, new EntranceNavigationTransitionInfo());
                         break;
                 }
+
                 ScrollViewerNavbar.ScrollToTop();
             }
         }
@@ -153,6 +155,12 @@ namespace AutoDarkModeApp
             {
                 e.Cancel = true;
             }
+        }
+
+        private void HelpMenuItem_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            ProcessHandler.StartProcessByProcessInfo(
+                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
     }
 }
