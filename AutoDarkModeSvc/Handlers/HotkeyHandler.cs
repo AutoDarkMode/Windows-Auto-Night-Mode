@@ -78,7 +78,7 @@ namespace AutoDarkModeSvc.Handlers
                     builder.Config.AutoThemeSwitchingEnabled = !builder.Config.AutoThemeSwitchingEnabled;
                     AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
                     builder.Save();
-                    ToastHandler.InvokeAutoSwitchNotificationToast();
+                    ToastHandler.InvokeAutoSwitchToggleToast();
                 });
 
                 if (builder.Config.Hotkeys.TogglePostpone != null) Register(builder.Config.Hotkeys.TogglePostpone, () =>
@@ -88,13 +88,13 @@ namespace AutoDarkModeSvc.Handlers
                         if (state.PostponeManager.IsSkipNextSwitch)
                         {
                             state.PostponeManager.RemoveUserClearablePostpones();
-                            ToastHandler.InvokePauseNotificationToast();
+                            ToastHandler.InvokePauseAutoSwitchToast();
                             Task.Delay(TimeSpan.FromSeconds(2)).ContinueWith(o => ThemeManager.RequestSwitch(new(SwitchSource.Manual)));
                         }
                         else
                         {
                             state.PostponeManager.AddSkipNextSwitch();
-                            ToastHandler.InvokePauseNotificationToast();
+                            ToastHandler.InvokePauseAutoSwitchToast();
                         }
                     }
                 });

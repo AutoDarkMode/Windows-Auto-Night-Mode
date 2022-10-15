@@ -61,7 +61,7 @@ namespace AutoDarkModeComms
                 selection = Prompt.Select("Select a command", fields);
                 if (selection == Custom)
                 {
-                    selection = Prompt.Input<string>("Enter command:");
+                    selection = Prompt.Input<string>("Enter command");
                     Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
                 }
                 else if (selection != QuitShell)

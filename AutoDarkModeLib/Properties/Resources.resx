@@ -980,4 +980,43 @@ Do you really want to continue?</value>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
     <value>Allow theme switching during lockscreen (Win10)</value>
   </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Switch now</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Delay module</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Switch notification</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 hours</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 minutes</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 hours</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 hours</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Theme switch pending</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Would you like to switch now or delay further?</value>
+  </data>
 </root>

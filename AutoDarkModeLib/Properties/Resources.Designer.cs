@@ -169,11 +169,29 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ButtonConfirm {
+            get {
+                return ResourceManager.GetString("ButtonConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download Extension.
         /// </summary>
         public static string buttonDownloadExtension {
             get {
                 return ResourceManager.GetString("buttonDownloadExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch now.
+        /// </summary>
+        public static string ButtonSwitchNow {
+            get {
+                return ResourceManager.GetString("ButtonSwitchNow", resourceCulture);
             }
         }
         
@@ -1140,6 +1158,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay module.
+        /// </summary>
+        public static string PostponeReasonDelayAutoSwitch {
+            get {
+                return ResourceManager.GetString("PostponeReasonDelayAutoSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GPU monitor module.
         /// </summary>
         public static string PostponeReasonGPUMonitorModule {
@@ -1176,6 +1203,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Switch notification.
+        /// </summary>
+        public static string PostponeReasonSwitchNotification {
+            get {
+                return ResourceManager.GetString("PostponeReasonSwitchNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System idle checker.
         /// </summary>
         public static string PostponeReasonSystemIdleCheckModule {
@@ -1199,6 +1235,69 @@ namespace AutoDarkModeLib.Properties {
         public static string PostponeReasonUntilNextSunset {
             get {
                 return ResourceManager.GetString("PostponeReasonUntilNextSunset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 hours.
+        /// </summary>
+        public static string PostponeTime120 {
+            get {
+                return ResourceManager.GetString("PostponeTime120", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 15 minutes.
+        /// </summary>
+        public static string PostponeTime15 {
+            get {
+                return ResourceManager.GetString("PostponeTime15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3 hours.
+        /// </summary>
+        public static string PostponeTime180 {
+            get {
+                return ResourceManager.GetString("PostponeTime180", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 30 minutes.
+        /// </summary>
+        public static string PostponeTime30 {
+            get {
+                return ResourceManager.GetString("PostponeTime30", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6 hours.
+        /// </summary>
+        public static string PostponeTime360 {
+            get {
+                return ResourceManager.GetString("PostponeTime360", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 hour.
+        /// </summary>
+        public static string PostponeTime60 {
+            get {
+                return ResourceManager.GetString("PostponeTime60", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 12 hours.
+        /// </summary>
+        public static string PostponeTime720 {
+            get {
+                return ResourceManager.GetString("PostponeTime720", resourceCulture);
             }
         }
         
@@ -2046,6 +2145,24 @@ namespace AutoDarkModeLib.Properties {
         public static string ThemeSwitchPauseUntilSunset {
             get {
                 return ResourceManager.GetString("ThemeSwitchPauseUntilSunset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme switch pending.
+        /// </summary>
+        public static string ThemeSwitchPending {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to switch now or delay further?.
+        /// </summary>
+        public static string ThemeSwitchPendingQuestion {
+            get {
+                return ResourceManager.GetString("ThemeSwitchPendingQuestion", resourceCulture);
             }
         }
         

@@ -50,22 +50,22 @@ namespace AutoDarkModeSvc.Handlers
                 Program.ActionQueue.Add(() =>
                 {
                     new ToastContentBuilder()
-                    .AddText("Auto theme switch pending...")
-                    .AddText("Would you like to switch now or postpone it further?")
+                    .AddText(AdmProperties.Resources.ThemeSwitchPending)
+                    .AddText(AdmProperties.Resources.ThemeSwitchPendingQuestion)
                     .AddToastInput(new ToastSelectionBox("time")
                     {
                         DefaultSelectionBoxItemId = "15",
                         Items =
                         {
-                        new ToastSelectionBoxItem("15", "15 minutes"),
-                        new ToastSelectionBoxItem("30", "30 minutes"),
-                        new ToastSelectionBoxItem("60", "1 hour"),
-                        new ToastSelectionBoxItem("180", "3 hours"),
+                        new ToastSelectionBoxItem("15", AdmProperties.Resources.PostponeTime15),
+                        new ToastSelectionBoxItem("30", AdmProperties.Resources.PostponeTime30),
+                        new ToastSelectionBoxItem("60", AdmProperties.Resources.PostponeTime60),
+                        new ToastSelectionBoxItem("180", AdmProperties.Resources.PostponeTime180),
                         new ToastSelectionBoxItem("next", until)
                         }
                     })
-                    .AddButton(new ToastButton("Switch now", "switch-now"))
-                    .AddButton(new ToastButton("Delay", "delay"))
+                    .AddButton(new ToastButton(AdmProperties.Resources.ButtonSwitchNow, "switch-now"))
+                    .AddButton(new ToastButton(AdmProperties.Resources.PostponeButtonDelay, "delay"))
                     .AddArgument("delay")
                     .Show(toast =>
                     {
@@ -81,18 +81,19 @@ namespace AutoDarkModeSvc.Handlers
         }
 
 
-        public static void InvokeTogglePauseNotificationToast()
+        public static void InvokePauseOnToggleThemeToast()
         {
             if (state.PostponeManager.IsSkipNextSwitch)
             {
                 Program.ActionQueue.Add(() =>
                 {
                     ToastContentBuilder tcb = new();
-
-                    if (state.PostponeManager.GetSkipNextSwitchItem().Expires)
+                    PostponeItem item = state.PostponeManager.GetSkipNextSwitchItem();
+                    if (item.Expires)
                     {
                         DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:ddd HH:mm}");
+                        if (item.Expiry.Value.Day > DateTime.Now.Day) tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:dddd HH:mm}");
+                        else tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
                     }
                     else
                     {
@@ -103,7 +104,7 @@ namespace AutoDarkModeSvc.Handlers
                     }
                     tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseActionNotification} {AdmProperties.Resources.ThemeSwitchPauseActionDisableQuestion}")
                        .AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionDisable)
-                       .AddArgument("action-undo-toggle-theme-switch", "enabled")
+                       .AddArgument("action-toggle-auto-theme-switch", "enabled")
                        .AddArgument("action", "remove-skip-next")).Show(toast =>
                     {
                         toast.Tag = "adm-theme-switch-paused-notif";
@@ -117,7 +118,7 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        public static void InvokeAutoSwitchNotificationToast()
+        public static void InvokeAutoSwitchToggleToast()
         {
             if (builder.Config.Notifications.OnAutoThemeSwitching)
             {
@@ -132,14 +133,14 @@ namespace AutoDarkModeSvc.Handlers
                     if (builder.Config.AutoThemeSwitchingEnabled)
                     {
                         tcb.AddText(toastText += $" {AdmProperties.Resources.RequestSwitchAction}");
-                        tcb.AddButton(new ToastButton().SetContent("Hit me!").AddArgument("action", "request-switch"));
+                        tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ButtonConfirm).AddArgument("action", "request-switch"));
                     }
                     else
                     {
                         tcb.AddText(toastText);
                     }
 
-                    tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-undo-toggle-theme-switch", currentAutoThemeSwitchState));
+                    tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-toggle-auto-theme-switch", currentAutoThemeSwitchState));
                     tcb.Show(toast =>
                     {
                         toast.Tag = "adm-auto-switch-disabled-notif";
@@ -150,7 +151,7 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        public static void InvokePauseNotificationToast()
+        public static void InvokePauseAutoSwitchToast()
         {
             if (!builder.Config.Notifications.OnSkipNextSwitch) return;
             Program.ActionQueue.Add(() =>
@@ -160,10 +161,12 @@ namespace AutoDarkModeSvc.Handlers
 
                 if (state.PostponeManager.IsSkipNextSwitch)
                 {
-                    if (state.PostponeManager.GetSkipNextSwitchItem().Expires)
+                    PostponeItem item = state.PostponeManager.GetSkipNextSwitchItem();
+                    if (item.Expires)
                     {
                         DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                        tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
+                        if (item.Expiry.Value.Day > DateTime.Now.Day) tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:dddd HH:mm}");
+                        else tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeader} {time:HH:mm}");
                     }
                     else
                     {
@@ -180,7 +183,7 @@ namespace AutoDarkModeSvc.Handlers
                     tcb.AddText($"{AdmProperties.Resources.RevertAction}");
                 }
 
-                tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-undo-pause-theme-switch", state.PostponeManager.IsSkipNextSwitch));
+                tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-toggle-pause-theme-switch", state.PostponeManager.IsSkipNextSwitch));
 
                 tcb.Show(toast =>
                 {
@@ -375,18 +378,18 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         state.PostponeManager.RemoveUserClearablePostpones();
                     }
-                    else if (argument[0] == "action-undo-toggle-theme-switch")
+                    else if (argument[0] == "action-toggle-auto-theme-switch")
                     {
 
                         AdmConfig old = builder.Config;
                         if (argument[1] == "enabled")
                         {
-                            Logger.Info("undo enable auto theme switch via toast");
+                            Logger.Info("enable auto theme switch via toast");
                             builder.Config.AutoThemeSwitchingEnabled = false;
                         }
                         else if (argument[1] == "disabled")
                         {
-                            Logger.Info("undo disable auto theme switch via toast");
+                            Logger.Info("disable auto theme switch via toast");
                             builder.Config.AutoThemeSwitchingEnabled = true;
                         }
                         try
@@ -400,15 +403,17 @@ namespace AutoDarkModeSvc.Handlers
                             Logger.Error(ex, "couldn't save config file: ");
                         }
                     }
-                    else if (argument[0] == "action-undo-pause-theme-switch")
+                    else if (argument[0] == "action-toggle-pause-theme-switch")
                     {
-                        if (argument[1] == true.ToString())
+                        if (argument[1] == "0")
                         {
-                            state.PostponeManager.RemoveUserClearablePostpones();
+                            Logger.Info("skip next switch via toast");
+                            state.PostponeManager.AddSkipNextSwitch();
                         }
                         else
                         {
-                            state.PostponeManager.AddSkipNextSwitch();
+                            Logger.Info("clear postpone queue via toast");
+                            state.PostponeManager.RemoveUserClearablePostpones();
                         }
                     }
                     else if (arguments[0] == "delay")
@@ -454,7 +459,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "updater failed, caller toast:");
+                Logger.Error(ex, "failed parsing toast callback:");
             }
 
         }

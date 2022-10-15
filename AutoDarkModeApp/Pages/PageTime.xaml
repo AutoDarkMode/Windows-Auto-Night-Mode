@@ -438,19 +438,19 @@
                           MinHeight="30">
 
                     <ComboBoxItem Name="Postpone15"
-                                  Content="15 Minutes" />
+                                  Content="{x:Static p:Resources.PostponeTime15}" />
                     <ComboBoxItem Name="Postpone30"
-                                  Content="30 Minutes" />
+                                  Content="{x:Static p:Resources.PostponeTime30}" />
                     <ComboBoxItem Name="Postpone60"
-                                  Content="1 hour" />
+                                  Content="{x:Static p:Resources.PostponeTime60}" />
                     <ComboBoxItem Name="Postpone120"
-                                  Content="2 hours" />
+                                  Content="{x:Static p:Resources.PostponeTime120}" />
                     <ComboBoxItem Name="Postpone180"
-                                  Content="3 hours" />
+                                  Content="{x:Static p:Resources.PostponeTime180}" />
                     <ComboBoxItem Name="Postpone360"
-                                  Content="6 hours" />
+                                  Content="{x:Static p:Resources.PostponeTime360}" />
                     <ComboBoxItem Name="Postpone720"
-                                  Content="12 hours" />
+                                  Content="{x:Static p:Resources.PostponeTime720}" />
                     <ComboBoxItem Name="PostponeUntilNext"
                                   IsSelected="True"
                                   Content="{x:Static p:Resources.PostponeTimeSkipOnce}" />

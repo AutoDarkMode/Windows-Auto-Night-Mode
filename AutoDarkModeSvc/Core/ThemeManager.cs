@@ -107,7 +107,7 @@ namespace AutoDarkModeSvc.Core
             {
                 if (state.PostponeManager.IsSkipNextSwitch)
                 {
-                    ToastHandler.InvokeTogglePauseNotificationToast();
+                    ToastHandler.InvokePauseOnToggleThemeToast();
                     Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
                 }
                 RequestSwitch(new(SwitchSource.Manual, newTheme));
