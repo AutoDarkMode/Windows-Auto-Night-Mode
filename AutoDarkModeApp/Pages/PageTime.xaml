@@ -489,32 +489,5 @@
 
 
         </ui:SimpleStackPanel>
-
-        <!-- Help -->
-        <TextBlock Name="TextBlockHelpWiki"
-                   Grid.Row="13"
-                   Grid.Column="1"
-                   Margin="0,25,0,0"
-                   Text="{x:Static p:Resources.tbHelp}"
-                   FontSize="14"
-                   Focusable="True"
-                   MouseDown="TextBlockHelpWiki_MouseDown"
-                   KeyDown="TextBlockHelpWiki_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground"
-                            Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter Property="Foreground"
-                                    Value="Gray" />
-                            <Setter Property="Cursor"
-                                    Value="Hand" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
     </Grid>
 </Page>
