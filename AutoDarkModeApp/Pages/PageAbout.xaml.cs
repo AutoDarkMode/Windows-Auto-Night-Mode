@@ -161,7 +161,7 @@ namespace AutoDarkModeApp.Pages
             if (easterEgg == 4) TextBoxVersionNumber.Foreground = Brushes.Blue;
             if (easterEgg == 5)
             {
-                if (easterEgg == 1) TextBoxVersionNumber.Foreground = Brushes.Black;
+                TextBoxVersionNumber.Foreground = Brushes.Gold;
                 easterEgg = 0;
             }
         }

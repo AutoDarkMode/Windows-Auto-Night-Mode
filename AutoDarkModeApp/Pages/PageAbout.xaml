@@ -56,13 +56,13 @@
                    Text="Auto Dark Mode X"
                    FontWeight="SemiBold"
                    FontSize="22"
-                   Margin="90,25,0,0" />
+                   Margin="95,25,0,0" />
         <TextBlock HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    Grid.Column="1"
                    Grid.Row="3"
-                   Margin="90,56,0,0"
-                   Text="© 2021 Armin Osaj &amp; Samuel Schiegg"
+                   Margin="95,56,0,0"
+                   Text="© 2022 Armin Osaj &amp; Samuel Schiegg"
                    FontSize="14" />
 
         <!-- Version Numbers -->
