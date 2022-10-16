@@ -1,5 +1,4 @@
-﻿<Window
-        x:Class="AutoDarkModeApp.MainWindowMwpf"
+﻿<Window x:Class="AutoDarkModeApp.MainWindowMwpf"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,14 +7,13 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
         mc:Ignorable="d"
-    
-        Title="{x:Static p:Resources.Title}" 
+        Title="{x:Static p:Resources.Title}"
         MinHeight="600"
-        MinWidth="850" 
-        Height="760" 
-        Width="850" 
-        ResizeMode="CanResize" 
-        Closed="Window_Closed" 
+        MinWidth="850"
+        Height="760"
+        Width="1050"
+        ResizeMode="CanResize"
+        Closed="Window_Closed"
         Closing="Window_Closing"
         SourceInitialized="Window_OnSourceInitialized"
         ContentRendered="Window_ContentRendered"
@@ -27,28 +25,44 @@
 
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="30" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <!-- Title Bar -->
-        <TextBlock 
-                    HorizontalAlignment="Left" 
-                    Margin="10,7,0,0" 
-                    TextWrapping="Wrap" 
-                    Text="{x:Static p:Resources.Title}" 
-                    VerticalAlignment="Top" 
-                    Panel.ZIndex="1"
-         />
+            <Rectangle Grid.Column="0"
+                       Fill="{DynamicResource NavbarFill}"
+                       Width="Auto"
+                       Height="Auto" />
+            <Rectangle Grid.Column="1"
+                       Fill="{DynamicResource SystemAltHighColorBrush}"
+                       Width="Auto"
+                       Height="Auto" />
+
+
+            <!-- Title Bar -->
+            <TextBlock HorizontalAlignment="Left"
+                       Margin="10,0,0,0"
+                       TextWrapping="Wrap"
+                       Text="{x:Static p:Resources.Title}"
+                       VerticalAlignment="Center"
+                       Grid.Column="0"
+                       Grid.Row="0" />
+        </Grid>
 
 
         <!-- Navbar -->
-        <ui:NavigationView x:Name="NavBar" 
+        <ui:NavigationView x:Name="NavBar"
                            Grid.Row="1"
-                           IsBackButtonVisible="Collapsed" 
-                           IsBackEnabled="False" 
-                           IsPaneOpen="True" 
-                           PaneDisplayMode="Left" 
+                           IsBackButtonVisible="Collapsed"
+                           IsBackEnabled="False"
+                           IsPaneOpen="True"
+                           PaneDisplayMode="Left"
                            OpenPaneLength="320"
                            IsPaneToggleButtonVisible="False"
                            IsSettingsVisible="False"
@@ -62,78 +76,112 @@
                            SelectionChanged="NavBar_SelectionChanged"
                            Loaded="NavBar_Loaded">
 
-
             <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItemHeader Content="{x:Static p:Resources.NavbarTitle}"
+                                             Height="60" />
 
-                <ui:NavigationViewItemHeader Content="{x:Static p:Resources.NavbarTitle}" Height="60"/>
-
-                <ui:NavigationViewItem Tag="time" Content="{x:Static p:Resources.NavbarTime}" Height="50">
+                <ui:NavigationViewItem Tag="time"
+                                       Content="{x:Static p:Resources.NavbarTime}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE823;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE823;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Tag="modes" Content="{x:Static p:Resources.NavbarSwitchModes}" Height="50">
+                <ui:NavigationViewItem Tag="modes"
+                                       Content="{x:Static p:Resources.NavbarSwitchModes}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE945;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE945;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Tag="apps" Content="{x:Static p:Resources.NavbarApps}" Height="50">
+                <ui:NavigationViewItem Tag="apps"
+                                       Content="{x:Static p:Resources.NavbarApps}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE71D;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE71D;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Tag="wallpaper" Content="{x:Static p:Resources.NavbarPersonalization}" Height="50">
+                <ui:NavigationViewItem Tag="wallpaper"
+                                       Content="{x:Static p:Resources.NavbarPersonalization}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE771;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE771;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Tag="settings" Content="{x:Static p:Resources.NavbarSettings}" Height="50">
+                <ui:NavigationViewItem Tag="settings"
+                                       Content="{x:Static p:Resources.NavbarSettings}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE713;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>
 
             <ui:NavigationView.FooterMenuItems>
-                <ui:NavigationViewItem Tag="donation" Content="{x:Static p:Resources.NavbarDonation}" Height="50">
+                <ui:NavigationViewItem Tag="donation"
+                                       Content="{x:Static p:Resources.NavbarDonation}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB51;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xEB51;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
-                <ui:NavigationViewItem Tag="about" Content="{x:Static p:Resources.NavbarAbout}" Height="50">
+                <ui:NavigationViewItem Tag="about"
+                                       Content="{x:Static p:Resources.NavbarAbout}"
+                                       Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE946;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
             </ui:NavigationView.FooterMenuItems>
 
+            <ui:NavigationView.PaneFooter>
+                <ui:NavigationViewItem Tag="help"
+                                       Content="{x:Static p:Resources.tbHelp}"
+                                       Height="50"
+                                       MouseLeftButtonUp="HelpMenuItem_Clicked">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xE897;" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.PaneFooter>
+
             <!-- Content of Navbar, mainly the Frame which contains the Pages -->
-            <ScrollViewer
-                PanningMode="Both"
-                x:Name="ScrollViewerNavbar">
-                <ui:Frame
-                       Content="Something went wrong :(" 
-                       Background="{DynamicResource SystemAltHighColorBrush}" 
-                       Name="FrameNavbar" 
-                       Margin="0,0,0,0" 
-                       Height="Auto" Width="Auto" 
-                       NavigationUIVisibility="Hidden" 
-                       Focusable="False" 
-                       Navigating="FrameNavbar_Navigating"/>
+            <ScrollViewer PanningMode="Both"
+                          x:Name="ScrollViewerNavbar">
+                <ui:Frame Content="Something went wrong :("
+                          Background="{DynamicResource SystemAltHighColorBrush}"
+                          Name="FrameNavbar"
+                          Margin="0,0,0,0"
+                          Height="Auto"
+                          Width="Auto"
+                          NavigationUIVisibility="Hidden"
+                          Focusable="False"
+                          Navigating="FrameNavbar_Navigating" />
             </ScrollViewer>
 
             <!-- Custom Navbar Styles -->
             <ui:NavigationView.Resources>
+                <SolidColorBrush x:Key="NavigationViewTopPaneBackground"
+                                 Color="{DynamicResource NavbarBackground}" />
+                <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground"
+                                 Color="{DynamicResource NavbarBackground}" />
+                <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground"
+                                 Color="{DynamicResource NavbarBackground}" />
+
                 <!--
-                <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent"/>
-                <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="Transparent"/>
-                <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
-              
                 <SolidColorBrush x:Key="NavigationViewItemForegroundSelected" Color="{DynamicResource SystemAccentColor}"/>
                 <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPointerOver" Color="{DynamicResource SystemAccentColor}"/>
                 <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="{DynamicResource SystemAccentColor}"/>
