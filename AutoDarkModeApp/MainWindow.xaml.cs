@@ -11,7 +11,7 @@ using ModernWpf.Media.Animation;
 
 namespace AutoDarkModeApp
 {
-    public partial class MainWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {

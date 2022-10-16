@@ -49,17 +49,7 @@ namespace AutoDarkModeApp
             bool serviceStartIssued = StartService();
             Task serviceStart = Task.Run(() => WaitForServiceStart());
 
-            MainWindow mainWin = null;
-            MainWindowMwpf mainWinMwpf = null;
-
-            if (Environment.OSVersion.Version.Build >= 22000)
-            {
-                mainWinMwpf = new();
-            }
-            else
-            {
-                mainWin = new();
-            }
+            MainWindow mainWin = new();
 
             string message = AdmProperties.Resources.StartupLaunchingServiceText;
             MsgBox msg = new(message, AdmProperties.Resources.StartupLaunchingServiceTitle, "info", "none")
@@ -113,14 +103,8 @@ namespace AutoDarkModeApp
             }
 
 
-            if (mainWin != null)
-            {
-                mainWin.Show();
-            }
-            else
-            {
-                mainWinMwpf.Show();
-            }
+            mainWin.Show();
+
         }
 
         private void WaitForServiceStart()
