@@ -94,7 +94,7 @@ namespace AutoDarkModeSvc.Modules
             bool enabled = false;
             try
             {
-                RegistryHandler.IsNightLightEnabled();
+                enabled = RegistryHandler.IsNightLightEnabled();
             }
             catch (Exception ex)
             {
