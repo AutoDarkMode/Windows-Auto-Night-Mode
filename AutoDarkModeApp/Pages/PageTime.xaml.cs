@@ -229,6 +229,8 @@ namespace AutoDarkModeApp.Pages
             {
                 if (builder.Config.Governor == Governor.Default)
                 {
+                    NumberboxOffsetDark.Minimum = -999;
+                    NumberBoxOffsetLight.Minimum = -999;
                     //is custom timepicker input enabled?
                     if (!builder.Config.Location.Enabled)
                     {
@@ -259,6 +261,8 @@ namespace AutoDarkModeApp.Pages
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
                     RadioButtonWindowsNightLight.IsChecked = true;
+                    NumberboxOffsetDark.Minimum = 0;
+                    NumberBoxOffsetLight.Minimum = 0;
                     SetPanelVisibility(false, false, true, false, true, true);
                 }
             }
@@ -678,6 +682,8 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
         {
+            NumberboxOffsetDark.Minimum = -999;
+            NumberBoxOffsetLight.Minimum = -999;
             SetTimeBasedSwitchEnabled();
             DisableLocationMode();
             builder.Config.Governor = Governor.Default;
@@ -695,6 +701,8 @@ namespace AutoDarkModeApp.Pages
 
         private async void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
         {
+            NumberboxOffsetDark.Minimum = -999;
+            NumberBoxOffsetLight.Minimum = -999;
             SetTimeBasedSwitchEnabled();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
@@ -714,6 +722,8 @@ namespace AutoDarkModeApp.Pages
 
         private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
         {
+            NumberboxOffsetDark.Minimum = -999;
+            NumberBoxOffsetLight.Minimum = -999;
             if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
             {
                 SetPanelVisibility(false, false, true, true, true);
@@ -946,6 +956,8 @@ namespace AutoDarkModeApp.Pages
             builder.Config.Governor = Governor.NightLight;
             builder.Config.AutoThemeSwitchingEnabled = true;
             builder.Config.Location.Enabled = false;
+            NumberboxOffsetDark.Minimum = 0;
+            NumberBoxOffsetLight.Minimum = 0;
             try
             {
                 if (!init) builder.Save();
