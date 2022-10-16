@@ -532,7 +532,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>From sunset to sunrise (geographic coordinates)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Geo coordinates for your location</value>
+    <value>Find geo coordinates for your location</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Open config file</value>
