@@ -43,7 +43,8 @@ namespace AutoDarkModeSvc
                 Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
                 "${callsite:includeNamespace=False:" +
                 "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }"
+                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }",
+                KeepFileOpen = false
             };
             NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
             {
@@ -52,7 +53,6 @@ namespace AutoDarkModeSvc
                 "cleanNamesOfAnonymousDelegates=true:" +
                 "cleanNamesOfAsyncContinuations=true}: ${message} ${exception}"
             };
-
 
             // Rules for mapping loggers to targets
             config.AddRule(LogLevel.Trace, LogLevel.Fatal, logconsole);
