@@ -1,8 +1,7 @@
 {
   "profiles": {
     "AutoDarkModeSvc": {
-      "commandName": "Project",
-      "commandLineArgs": "/trace"
+      "commandName": "Project"
     }
   }
 }
