@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib.Configs;
+using System.Windows.Forms;
 
 namespace AutoDarkModeSvc.Monitors
 {
@@ -134,6 +135,8 @@ namespace AutoDarkModeSvc.Monitors
                     warden.Fire();
                 }
 
+                state.UpdateNotifyIcon(builder);
+
                 // update expiry on config update if necessary (handled by UpdateNextSwitchExpiry)
                 state.PostponeManager.UpdateSkipNextSwitchExpiry();
                 Logger.Debug("updated configuration file");
@@ -142,6 +145,8 @@ namespace AutoDarkModeSvc.Monitors
             {
                 Logger.Debug(ex, "config file load failed:");
             }
+
+
             state.ConfigIsUpdating = false;
             if (!state.ConfigIsUpdatingWaitHandle.Set()) Logger.Fatal("could not trigger reset event");
         }

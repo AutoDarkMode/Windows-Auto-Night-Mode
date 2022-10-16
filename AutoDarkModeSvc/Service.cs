@@ -62,6 +62,7 @@ namespace AutoDarkModeSvc
             toggleThemeItem.Text = AdmProperties.Resources.ToggleTheme;
 
             NotifyIcon = new NotifyIcon();
+            state.SetNotifyIcon(NotifyIcon);
             InitTray();
 
             // Sub-Service Initialization

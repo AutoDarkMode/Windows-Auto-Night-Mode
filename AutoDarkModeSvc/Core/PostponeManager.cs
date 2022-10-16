@@ -79,6 +79,7 @@ namespace AutoDarkModeSvc.Core
                 Logger.Error(ex, $"failed adding {item.Reason} postpone item to queue: ");
             }
             Logger.Debug($"added {item} to postpone queue: [{string.Join(", ", PostponeQueue)}]");
+            state.UpdateNotifyIcon(builder);
             return true;
         }
 
@@ -105,6 +106,7 @@ namespace AutoDarkModeSvc.Core
                 Logger.Info("postpone queue cleared");
                 CallbackModules.ForEach(m => m.Fire());
             }
+            state.UpdateNotifyIcon(builder);
             return result;
         }
 

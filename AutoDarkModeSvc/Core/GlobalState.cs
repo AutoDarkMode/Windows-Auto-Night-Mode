@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Management;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
@@ -40,6 +41,7 @@ namespace AutoDarkModeSvc.Core
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
         public bool InitSyncSwitchPerformed { get; set; } = false;
+        private NotifyIcon NotifyIcon { get; set; }
 
         private static string GetCurrentThemeName()
         {
@@ -93,6 +95,23 @@ namespace AutoDarkModeSvc.Core
         public void SetWarden(WardenModule warden)
         {
             Warden = warden;
+        }
+
+        public void SetNotifyIcon(NotifyIcon icon)
+        {
+            NotifyIcon ??= icon;
+        }
+
+        public void UpdateNotifyIcon(AdmConfigBuilder builder)
+        {
+            if (NotifyIcon == null) return;
+
+            if (builder.Config.AutoThemeSwitchingEnabled)
+            {
+                if (PostponeManager.IsPostponed || PostponeManager.IsUserDelayed) NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
+                else NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
+            }
+            else NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconDisabledTray;
         }
     }
 

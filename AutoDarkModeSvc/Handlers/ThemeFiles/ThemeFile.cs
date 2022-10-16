@@ -210,6 +210,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Colors = new();
             Slideshow = new();
 
+            Logger.Trace($"theme file dump: {string.Join("\n", ThemeFileContent)}");
+
             var iter = ThemeFileContent.GetEnumerator();
             bool processLastIterValue = false;
             /* processLastIterValue ensures that new sections are parsed properly
@@ -336,11 +338,9 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
-        public void Set(List<string> newContent)
+        public void SetContent(List<string> newContent)
         {
-            string tempPath = ThemeFilePath;
             ThemeFileContent = newContent;
-            ThemeFilePath = tempPath;
             Parse();
         }
 
