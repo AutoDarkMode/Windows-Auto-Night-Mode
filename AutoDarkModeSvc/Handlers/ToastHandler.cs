@@ -125,6 +125,7 @@ namespace AutoDarkModeSvc.Handlers
                 Program.ActionQueue.Add(() =>
                 {
                     string currentAutoThemeSwitchState = builder.Config.AutoThemeSwitchingEnabled ? AdmProperties.Resources.enabled.ToLower() : AdmProperties.Resources.disabled.ToLower();
+                    string autoThemeSwitchStateArgument = builder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
                     string toastText = $"{AdmProperties.Resources.RevertAction}";
 
                     ToastContentBuilder tcb = new ToastContentBuilder()
@@ -140,7 +141,7 @@ namespace AutoDarkModeSvc.Handlers
                         tcb.AddText(toastText);
                     }
 
-                    tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-toggle-auto-theme-switch", currentAutoThemeSwitchState));
+                    tcb.AddButton(new ToastButton().SetContent(AdmProperties.Resources.ThemeSwitchActionUndo).AddArgument("action-toggle-auto-theme-switch", autoThemeSwitchStateArgument));
                     tcb.Show(toast =>
                     {
                         toast.Tag = "adm-auto-switch-disabled-notif";
