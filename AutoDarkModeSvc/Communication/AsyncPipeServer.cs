@@ -32,10 +32,7 @@ namespace AutoDarkModeSvc.Communication
         private int availableWorkers;
         public int AvailableWorkers
         {
-            get { return availableWorkers; }
-
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
-            set { availableWorkers = value; }
+            get { return Thread.VolatileRead(ref availableWorkers); }
         }
         private BlockingCollection<TimeoutEventWrapper> MonitoredStreams { get; } = new();
         private BlockingCollection<Action> Workers { get; } = new();
@@ -108,7 +105,7 @@ namespace AutoDarkModeSvc.Communication
                             notify = false;
                         }
 
-                        AvailableWorkers += 1;
+                        Interlocked.Increment(ref availableWorkers);
                         
                         if (AvailableWorkers == WorkerCount)
                         {
@@ -163,7 +160,7 @@ namespace AutoDarkModeSvc.Communication
                 // this stream is the main requester loop and should only be cancelled from the outside if the server is stopped
                 using NamedPipeServerStream requestPipe = new(Address.PipePrefix + Address.PipeRequest, PipeDirection.InOut, WorkerCount, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
                 await requestPipe.WaitForConnectionAsync(WorkerTokenSource.Token);
-                AvailableWorkers -= 1;
+                Interlocked.Decrement(ref availableWorkers);
                 if (AvailableWorkers == 0)
                 {
                     Logger.Debug($"client connected, worker pool exhausted");
