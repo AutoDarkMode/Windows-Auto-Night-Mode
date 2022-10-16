@@ -16,6 +16,7 @@
                             <SolidColorBrush x:Key="NavbarFill"
                                              Color="#fbfbfb">
                             </SolidColorBrush>
+                            <Color x:Key="NavbarBackground">#fbfbfb</Color>
                             <SolidColorBrush x:Key="Win11Background"
                                              Color="#fbfbfb"></SolidColorBrush>
                             <SolidColorBrush x:Key="Win11Border"
