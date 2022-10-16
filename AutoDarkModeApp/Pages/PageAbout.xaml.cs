@@ -34,11 +34,11 @@ namespace AutoDarkModeApp.Pages
         private void UpdateVersionNumbers()
         {
             TextBlockCommitHash.Text = versionInfo.Commit;
-            TextBlockAppVersion.Text = versionInfo.App;
             TextBlockSvcVersion.Text = versionInfo.Svc;
             TextBlockUpdaterVersion.Text = versionInfo.Updater;
             TextBlockShellVersion.Text = versionInfo.Shell;
             TextBlockNetCoreVersion.Text = versionInfo.NetCore;
+            TextBlockWindowsVersion.Text = versionInfo.WindowsVersion;
         }
 
         private void SystemTheme_ThemeChanged(object sender, EventArgs e)
@@ -52,41 +52,6 @@ namespace AutoDarkModeApp.Pages
                 gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_Black.png", UriKind.Relative));
             }
         }
-
-        /*
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!update)
-            {
-                updateInfoText.Text = AdmProperties.Resources.msgSearchUpd;//searching for update...
-                updateButton.IsEnabled = false;
-                updater.CheckNewVersion();
-                if (updater.UpdateAvailable())
-                {
-                    updateInfoText.Text = AdmProperties.Resources.msgUpdateAvail;//a new update is available!
-                    if (AdmExtensions.InstallModeUsers() && updater.CanUseUpdater())
-                    {
-                        updateButton.Content = "Update Available";
-                        updateButton.IsEnabled = false;
-                    }
-                    else
-                    {
-                        updateButton.Content = AdmProperties.Resources.msgDownloadUpd;//Download update
-                        updateButton.IsEnabled = true;
-                    }
-                    update = true;
-                }
-                else
-                {
-                    updateInfoText.Text = AdmProperties.Resources.msgNoUpd;//no new updates are available.
-                }
-            }
-            else
-            {
-                updater.Update();
-            }
-        }
-        */
 
         private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -196,7 +161,6 @@ namespace AutoDarkModeApp.Pages
             if (easterEgg == 4) TextBoxVersionNumber.Foreground = Brushes.Blue;
             if (easterEgg == 5)
             {
-                StartProcessByProcessInfo("https://bit.ly/qgraphics");
                 if (easterEgg == 1) TextBoxVersionNumber.Foreground = Brushes.Black;
                 easterEgg = 0;
             }
@@ -414,21 +378,22 @@ namespace AutoDarkModeApp.Pages
                     .Append("- Commit: `")
                     .Append(versionInfo.Commit)
                     .AppendLine("`")
-                    .Append("- Service: `")
+                    .Append("- Service/App: `")
                     .Append(versionInfo.Svc)
                     .AppendLine("`")
                     .Append("- Updater: `")
                     .Append(versionInfo.Updater)
-                    .AppendLine("`")
-                    .Append("- App: `")
-                    .Append(versionInfo.App)
                     .AppendLine("`")
                     .Append("- Shell: `")
                     .Append(versionInfo.Shell)
                     .AppendLine("`")
                     .Append("- .Net: `")
                     .Append(versionInfo.NetCore)
+                    .AppendLine("`")
+                    .Append("- Windows: `")
+                    .Append(versionInfo.WindowsVersion)
                     .AppendLine("`");
+
                 Clipboard.SetData(DataFormats.Text, versionText);
                 TextBlockCopyInfo.Text = AutoDarkModeLib.Properties.Resources.AboutVersionInfoCopied;
             }
@@ -451,6 +416,7 @@ namespace AutoDarkModeApp.Pages
             public string Updater { get; }
             public string Shell { get; }
             public string NetCore { get; }
+            public string WindowsVersion { get; }
 
             public VersionInfo()
             {
@@ -458,12 +424,13 @@ namespace AutoDarkModeApp.Pages
 
                 Commit = AdmExtensions.CommitHash();
 
-                App = ValueOrNotFound(() => Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                //App = ValueOrNotFound(() => Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
                 Svc = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeSvc.exe").FileVersion);
                 Updater = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(currentDirectory + @"\Updater\AutoDarkModeUpdater.exe").FileVersion);
                 Shell = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe").FileVersion);
                 NetCore = ValueOrNotFound(() => Environment.Version.ToString());
+                WindowsVersion = ValueOrNotFound(() => Environment.OSVersion.Version.Build.ToString());
 
                 static string ValueOrNotFound(Func<string> value)
                 {
@@ -476,9 +443,7 @@ namespace AutoDarkModeApp.Pages
                         return "not found";
                     }
                 }
-
             }
         }
-
     }
 }

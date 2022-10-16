@@ -108,7 +108,7 @@
                 <!-- Service Version -->
                 <TextBlock Grid.Column="0"
                            Grid.Row="1"
-                           Text="Service"
+                           Text="App/Service"
                            Margin="0,5,0,0"
                            FontSize="14"
                            FontWeight="SemiBold" />
@@ -131,42 +131,43 @@
                            Margin="20,5,0,0"
                            FontSize="14" />
 
-                <!-- App Version -->
-                <TextBlock Grid.Column="0"
-                           Grid.Row="3"
-                           Text="App"
-                           Margin="0,5,0,0"
-                           FontSize="14" />
-                <TextBlock Grid.Column="1"
-                           Grid.Row="3"
-                           Name="TextBlockAppVersion"
-                           Margin="20,5,0,0"
-                           FontSize="14" />
-
 
                 <!-- Shell Version -->
                 <TextBlock Grid.Column="0"
-                           Grid.Row="4"
+                           Grid.Row="3"
                            Text="Shell"
                            Margin="0,5,0,0"
                            FontSize="14" />
                 <TextBlock Grid.Column="1"
-                           Grid.Row="4"
+                           Grid.Row="3"
                            Name="TextBlockShellVersion"
                            Margin="20,5,0,0"
                            FontSize="14" />
 
                 <!-- Net Core Version -->
                 <TextBlock Grid.Column="0"
-                           Grid.Row="5"
+                           Grid.Row="4"
                            Text=".Net"
                            Margin="0,5,0,0"
                            FontSize="14" />
                 <TextBlock Grid.Column="1"
-                           Grid.Row="5"
+                           Grid.Row="4"
                            Name="TextBlockNetCoreVersion"
                            Margin="20,5,0,0"
                            FontSize="14" />
+
+                <!-- Windows Version -->
+                <TextBlock Grid.Column="0"
+                           Grid.Row="5"
+                           Text="Windows"
+                           Margin="0,5,0,0"
+                           FontSize="14" />
+                <TextBlock Grid.Column="1"
+                           Grid.Row="5"
+                           Name="TextBlockWindowsVersion"
+                           Margin="20,5,0,0"
+                           FontSize="14" />
+
             </Grid>
 
             <Button Name="ButtonCopyVersionInfo"
