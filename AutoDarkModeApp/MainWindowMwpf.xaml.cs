@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
-using System.Windows.Input;
 using System.Windows.Navigation;
-using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Properties;
+using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Pages;
 using ModernWpf.Media.Animation;
+using AdmProperties = AutoDarkModeLib.Properties;
+
 
 namespace AutoDarkModeApp
 {
-    public partial class MainWindow
+    public partial class MainWindowMwpf
     {
-        public MainWindow()
+
+        public MainWindowMwpf()
         {
             DataContext = this;
 
@@ -34,7 +37,6 @@ namespace AutoDarkModeApp
                 Height = Settings.Default.Height;
                 Width = Settings.Default.Width;
             }
-
             if (Settings.Default.Maximized)
             {
                 WindowState = WindowState.Maximized;
@@ -53,19 +55,36 @@ namespace AutoDarkModeApp
             {
                 try
                 {
-                    Settings.Default.Language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToString();
+                    Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
                 }
                 catch
                 {
                     Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
                 }
-            }
 
+            }
             var langCode = new CultureInfo(Settings.Default.Language);
             CultureInfo.CurrentUICulture = langCode;
             CultureInfo.CurrentCulture = langCode;
             CultureInfo.DefaultThreadCurrentUICulture = langCode;
             CultureInfo.DefaultThreadCurrentCulture = langCode;
+        }
+
+        private static void SystemTimeFormat()
+        {
+            try
+            {
+                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+                sysFormat = sysFormat[..sysFormat.IndexOf(":")];
+                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+                {
+                    Settings.Default.AlterTime = true;
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         //application close behaviour
@@ -76,6 +95,7 @@ namespace AutoDarkModeApp
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
+
 
 
         private void Window_Closing(object sender, EventArgs e)
@@ -106,8 +126,7 @@ namespace AutoDarkModeApp
         /// </summary>
 
         //change displayed page based on selection
-        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender,
-            ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
+        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.SelectedItemContainer != null)
             {
@@ -137,7 +156,6 @@ namespace AutoDarkModeApp
                         FrameNavbar.Navigate(typeof(PageAbout), null, new EntranceNavigationTransitionInfo());
                         break;
                 }
-
                 ScrollViewerNavbar.ScrollToTop();
             }
         }
@@ -155,12 +173,6 @@ namespace AutoDarkModeApp
             {
                 e.Cancel = true;
             }
-        }
-
-        private void HelpMenuItem_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            ProcessHandler.StartProcessByProcessInfo(
-                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
     }
 }
