@@ -1019,4 +1019,7 @@
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
     <value>Θέλετε να κάνετε εναλλαγή τώρα ή επιπλέον καθυστέρηση;</value>
   </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Λειτουργία παρακολούθησης</value>
+  </data>
 </root>
