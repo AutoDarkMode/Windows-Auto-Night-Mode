@@ -47,7 +47,7 @@ body:
   - type: textarea
     id: version
     attributes:
-      label: Commit Hash, Versio and Windows Build
+      label: Commit Hash, Version and Windows Build
       description: Go to the About Page and copy the version info
     validations:
       required: true
