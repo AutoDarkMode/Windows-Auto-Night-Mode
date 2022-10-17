@@ -44,18 +44,10 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: os
-    attributes:
-      label: Operating System
-      description: Enter your Window major version and build number
-    validations:
-      required: true
-
   - type: textarea
     id: version
     attributes:
-      label: Commit Hash and Version
+      label: Commit Hash, Versio and Windows Build
       description: Go to the About Page and copy the version info
     validations:
       required: true
