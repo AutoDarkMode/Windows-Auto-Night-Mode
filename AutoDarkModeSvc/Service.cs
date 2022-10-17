@@ -96,7 +96,10 @@ namespace AutoDarkModeSvc
             // Init window handle and register hotkeys
             _ = Handle.ToInt32();
 
-          HotkeyHandler.Service = this;
+            ThemeDllHandler.InitThemeManager();
+            ThemeDllHandler.GetThemeList();
+
+            HotkeyHandler.Service = this;
             if (Builder.Config.Hotkeys.Enabled) HotkeyHandler.RegisterAllHotkeys(Builder);
 
             //exit on shutdown

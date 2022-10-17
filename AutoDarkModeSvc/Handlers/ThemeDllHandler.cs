@@ -19,7 +19,7 @@ namespace AutoDarkModeSvc.Handlers
         [DllImport("ThemeDll.dll")]
         private static extern int themetool_get_theme_count(out ulong count);
         [DllImport("ThemeDll.dll")]
-        private static extern int themetool_theme_get_display_name(IntPtr theme, out IntPtr outPtr, int size);
+        private static extern int themetool_theme_get_display_name(IntPtr theme, IntPtr outPtr, int size);
         [DllImport("ThemeDll.dll")]
         private static extern int themetool_get_theme(ulong idx, out IntPtr theme);
 
@@ -36,12 +36,21 @@ namespace AutoDarkModeSvc.Handlers
         public static List<Theme2Wrapper> GetThemeList()
         {
             themetool_get_theme_count(out ulong uCount);
-            themetool_get_theme(7, out IntPtr theme);
-            themetool_theme_get_display_name(theme, out IntPtr outPtr, 256);
+
             int count = Convert.ToInt32(uCount);
             for (int i = 0; i < count; i++)
             {
-
+                themetool_get_theme(7, out IntPtr theme);
+                IntPtr ptr = IntPtr.Zero;
+                ptr = Marshal.AllocCoTaskMem(IntPtr.Size * 256);
+                themetool_theme_get_display_name(theme, ptr, 256);
+                string name = "";
+                if (ptr != IntPtr.Zero)
+                {
+                    name = Marshal.PtrToStringUni(ptr);
+                    Marshal.FreeCoTaskMem(ptr);
+                }
+                
             }
             return new();
         }
