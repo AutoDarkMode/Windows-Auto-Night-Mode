@@ -390,7 +390,7 @@ public class PostponeItem
         {
             if (Expiry == null) return;
             DateTime expiryUnwrapped = Expiry.Value;
-            if (!suppressLaunchMessage) Logger.Info($"postpone item with reason {Reason} will expire at {Expiry:dd.MM.yyyy HH:mm:ss}");
+            if (!suppressLaunchMessage) Logger.Info($"{Reason} will expire at {Expiry:dd.MM.yyyy HH:mm:ss}");
             if (DateTime.Compare(expiryUnwrapped, DateTime.Now) > 0)
             {
                 TimeSpan delay = expiryUnwrapped - DateTime.Now;
@@ -399,13 +399,13 @@ public class PostponeItem
                 {
                     if (token.IsCancellationRequested)
                     {
-                        Logger.Info($"postpone item with reason {Reason} had its expiry at {Expiry:dd.MM.yyyy HH:mm:ss} cancelled");
+                        Logger.Info($"{Reason} had its expiry at {Expiry:dd.MM.yyyy HH:mm:ss} cancelled");
                     }
                     else
                     {
                         PostponeManager pm = GlobalState.Instance().PostponeManager;
                         pm.Remove(Reason);
-                        Logger.Info($"postpone item with reason {Reason} expired and was removed");
+                        Logger.Info($"{Reason} expired and was removed");
                     }
                 });
             }

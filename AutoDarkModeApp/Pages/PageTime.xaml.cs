@@ -19,6 +19,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Resources;
 using System.Threading;
+using Windows.Foundation;
+using System.Windows.Navigation;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -33,9 +35,7 @@ namespace AutoDarkModeApp.Pages
 
         private delegate void DispatcherDelegate();
 
-        private System.Timers.Timer postponeRefreshTimer = new();
         private int selectedPostponeMinutes = -0;
-        private FileSystemWatcher ConfigWatcher { get; }
 
         public PageTime()
         {
@@ -50,32 +50,9 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex);
             }
 
-            ConfigWatcher = new FileSystemWatcher
-            {
-                Path = AdmConfigBuilder.ConfigDir,
-                Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
-                NotifyFilter = NotifyFilters.LastWrite
-            };
 
-            ConfigWatcher.Changed += (object sender, FileSystemEventArgs e) =>
-            {
-                Dispatcher.Invoke(() =>
-                {
-                    ConfigWatcher.EnableRaisingEvents = false;
-                    init = true;
-                    reload = true;
-                    try
-                    {
-                        builder.Load();
-                    }
-                    catch
-                    {
-                    }
-
-                    LoadSettings();
-                });
-            };
-            ConfigWatcher.EnableRaisingEvents = true;
+            StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
+            StateUpdateHandler.StartConfigWatcher();
 
             //initialize ui components
             InitializeComponent();
@@ -95,16 +72,9 @@ namespace AutoDarkModeApp.Pages
 
             //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
             TextBlockResumeInfo.Visibility = Visibility.Collapsed;
-            postponeRefreshTimer.Interval = 2000;
-            postponeRefreshTimer.Elapsed += PostponeTimerEvent;
-            postponeRefreshTimer.Start();
-            PostponeTimerEvent(null, new());
-
-            Unloaded += (s, e) =>
-            {
-                postponeRefreshTimer.Stop();
-                ConfigWatcher.EnableRaisingEvents = false;
-            };
+            StateUpdateHandler.OnPostponeTimerTick += PostponeTimerEvent;
+            StateUpdateHandler.StartPostponeTimer();
+            PostponeTimerEvent(null, new());  
 
             LoadSettings();
 
@@ -113,14 +83,34 @@ namespace AutoDarkModeApp.Pages
             {
                 if (window.WindowState == WindowState.Minimized)
                 {
-                    postponeRefreshTimer.Stop();
+                    StateUpdateHandler.StopPostponeTimer();
                 }
                 else
                 {
                     PostponeTimerEvent(null, new());
-                    postponeRefreshTimer.Start();
+                    StateUpdateHandler.StartPostponeTimer();
                 }
             };
+        }
+
+
+        private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                StateUpdateHandler.StopConfigWatcher();
+                init = true;
+                reload = true;
+                try
+                {
+                    builder.Load();
+                }
+                catch
+                {
+
+                }
+                LoadSettings();
+            });
         }
 
         /// <summary>
@@ -268,7 +258,7 @@ namespace AutoDarkModeApp.Pages
             }
 
             init = false;
-            ConfigWatcher.EnableRaisingEvents = true;
+            StateUpdateHandler.StartConfigWatcher();
         }
 
         /// <summary>

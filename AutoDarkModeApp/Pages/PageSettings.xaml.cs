@@ -74,10 +74,10 @@ namespace AutoDarkModeApp.Pages
 
         private void UiHandler()
         {
-            //disable elements which aren't compatible with this device
+            //hide elements which aren't compatible with this device
             if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
             {
-                CheckBoxEnergySaverMitigation.IsEnabled = false;
+                CheckBoxEnergySaverMitigation.Visibility = Visibility.Collapsed;
             }
 
             //language ui
@@ -89,16 +89,22 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxLanguageSelection.SelectedValue = "en";
             }
 
-
+            // checkboxes
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
-            CheckBoxDebugMode.IsChecked = builder.Config.Tunable.Debug;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             CheckBoxWin10AllowLockscreenSwitch.IsChecked = builder.Config.Events.Win10AllowLockscreenSwitch;
 
             if (Environment.OSVersion.Version.Build >= Helper.Win11Build) CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
             else CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
+
+            CheckBoxDebugMode.IsChecked = builder.Config.Tunable.Debug;
+            CheckBoxTraceMode.IsChecked = builder.Config.Tunable.Trace;
+            if (!builder.Config.Tunable.Debug)
+            {
+                CheckBoxTraceMode.Visibility = Visibility.Collapsed;
+            }
 
             //battery slider / energy saver mitigation
             BatterySlider.Value = builder.Config.Tunable.BatterySliderDefaultValue;
@@ -393,19 +399,44 @@ namespace AutoDarkModeApp.Pages
             if ((sender as CheckBox).IsChecked.Value)
             {
                 builder.Config.Tunable.Debug = true;
+                CheckBoxTraceMode.Visibility = Visibility.Visible;
             }
             else
             {
                 builder.Config.Tunable.Debug  = false;
+                builder.Config.Tunable.Trace = false;
+                CheckBoxTraceMode.IsChecked = false;
+                CheckBoxTraceMode.Visibility = Visibility.Collapsed;
             }
             try
             {
                 builder.Save();
-                _ = MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
+                //_ = MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
             }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "CheckBoxDebugMode_Click");
+            }
+        }
+
+        private void CheckBoxTraceMode_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked.Value)
+            {
+                builder.Config.Tunable.Trace = true;
+            }
+            else
+            {
+                builder.Config.Tunable.Trace = false;
+            }
+            try
+            {
+                builder.Save();
+                //_ = MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxTraceMode_Click");
             }
         }
 
@@ -834,5 +865,6 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "autostart_monitor_event");
             }
         }
+
     }
 }

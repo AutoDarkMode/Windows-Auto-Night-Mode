@@ -1019,4 +1019,7 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
     <value>Would you like to switch now or delay further?</value>
   </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Trace mode</value>
+  </data>
 </root>

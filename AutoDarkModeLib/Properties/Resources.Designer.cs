@@ -1582,6 +1582,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trace mode.
+        /// </summary>
+        public static string SettngsPageTraceMode {
+            get {
+                return ResourceManager.GetString("SettngsPageTraceMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service not running yet, please wait....
         /// </summary>
         public static string StartupLaunchingServiceText {
@@ -1834,7 +1843,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Geo coordinates for your location.
+        ///   Looks up a localized string similar to Find geo coordinates for your location.
         /// </summary>
         public static string tbGetCoordinates {
             get {

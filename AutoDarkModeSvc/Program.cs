@@ -36,37 +36,19 @@ namespace AutoDarkModeSvc
             //Set up Logger
             NLog.Config.LoggingConfiguration config = new();
 
-            // Targets where to log to: File and Console
-            NLog.Targets.FileTarget logfile = new("logfile")
-            {
-                FileName = Path.Combine(configDir, "service.log"),
-                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
-                "${callsite:includeNamespace=False:" +
-                "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }",
-                KeepFileOpen = false
-            };
-            NLog.Targets.ColoredConsoleTarget logconsole = new("logconsole")
-            {
-                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
-                "${callsite:includeNamespace=False:" +
-                "cleanNamesOfAnonymousDelegates=true:" +
-                "cleanNamesOfAsyncContinuations=true}: ${message} ${exception}"
-            };
-
             // Rules for mapping loggers to targets
-            config.AddRule(LogLevel.Trace, LogLevel.Fatal, logconsole);
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logconsole);
             if (argsList.Contains("/debug"))
             {
-                config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                config.AddRule(LogLevel.Debug, LogLevel.Fatal, LoggerSetup.Logfile);
             }
             else if (argsList.Contains("/trace"))
             {
-                config.AddRule(LogLevel.Trace, LogLevel.Fatal, logfile);
+                config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logfile);
             }
             else
             {
-                config.AddRule(LogLevel.Info, LogLevel.Fatal, logfile);
+                config.AddRule(LogLevel.Info, LogLevel.Fatal, LoggerSetup.Logfile);
             }
             // Apply config
             LogManager.Configuration = config;
@@ -155,15 +137,14 @@ namespace AutoDarkModeSvc
                 if (!argsList.Contains("/debug") && !argsList.Contains("/trace") && (builder.Config.Tunable.Debug || builder.Config.Tunable.Trace))
                 {
                     config = new NLog.Config.LoggingConfiguration();
+                    config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logconsole);
                     if (builder.Config.Tunable.Trace)
                     {
-                        config.AddRule(LogLevel.Trace, LogLevel.Fatal, logconsole);
-                        config.AddRule(LogLevel.Trace, LogLevel.Fatal, logfile);
+                        config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logfile);
                     }
                     else if (builder.Config.Tunable.Debug)
                     {
-                        config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
-                        config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+                        config.AddRule(LogLevel.Debug, LogLevel.Fatal, LoggerSetup.Logfile);
                     }
                     LogManager.Configuration = config;
                 }

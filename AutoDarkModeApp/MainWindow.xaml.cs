@@ -112,11 +112,13 @@ namespace AutoDarkModeApp
             if (args.SelectedItemContainer != null)
             {
                 var navItemTag = args.SelectedItemContainer.Tag.ToString();
+                StateUpdateHandler.ClearAllEvents();
+
 
                 switch (navItemTag)
                 {
                     case "time":
-                        FrameNavbar.Navigate(typeof(PageTime), null, new EntranceNavigationTransitionInfo());
+                        FrameNavbar.Navigate(typeof(PageTime), new EntranceNavigationTransitionInfo());
                         break;
                     case "modes":
                         FrameNavbar.Navigate(typeof(PageSwitchModes), null, new EntranceNavigationTransitionInfo());

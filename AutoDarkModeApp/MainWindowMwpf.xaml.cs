@@ -113,6 +113,7 @@ namespace AutoDarkModeApp
             if (args.SelectedItemContainer != null)
             {
                 var navItemTag = args.SelectedItemContainer.Tag.ToString();
+                StateUpdateHandler.ClearAllEvents();
 
                 switch (navItemTag)
                 {
