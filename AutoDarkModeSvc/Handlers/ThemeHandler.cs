@@ -216,39 +216,11 @@ namespace AutoDarkModeSvc.Handlers
             /*Exception applyEx = null;*/
             Thread thread = new(() =>
             {
-                bool tm2Found = false;
-                bool tm2Success = false;
-                string displayNameFromFile = null;
-                try
-                {
-                    (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
-
-                    (tm2Found, tm2Success) = ThemeDllHandler.SetTheme(displayNameFromFile);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
-                }
-
-                if (tm2Success)
-                {
-                    state.UnmanagedActiveThemePath = themeFilePath;
-                    return;
-                }
-
-                if (!tm2Found)
-                {
-                    Logger.Warn($"could not find theme for display name {displayNameFromFile}, using IThemeManager mitigation");
-                }
-
-                bool tm1Success = false;
-
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
                     state.UnmanagedActiveThemePath = themeFilePath;
                     if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully via IThemeManager");
-                    tm1Success = true;
                 }
                 catch (Exception ex)
                 {
@@ -256,27 +228,16 @@ namespace AutoDarkModeSvc.Handlers
                     //applyEx = ex;
                 }
 
-                if (tm1Success && !tm2Found)
+                string displayNameApi = GetCurrentThemeName();
+                bool tm2Found = false;
+                bool tm2Success = false;
+                try
                 {
-                    string displayNameApi = GetCurrentThemeName();
                     (tm2Found, tm2Success) = ThemeDllHandler.SetTheme(displayNameApi);
-                    if (!tm2Found)
-                    {
-                        Logger.Error("failed to find target theme after IThemeManager application");
-                    }
-                    else
-                    {
-                        if (!ThemeDllHandler.LearnedThemeNames.ContainsKey(displayNameFromFile))
-                        {
-                            Logger.Debug($"learnt new theme name association: {displayNameFromFile}={displayNameApi}");
-                            ThemeDllHandler.LearnedThemeNames.Add(displayNameFromFile, displayNameApi);
-                        }
-                        else
-                        {
-                            Logger.Debug($"updated theme name association: {displayNameFromFile}={displayNameApi}");
-                            ThemeDllHandler.LearnedThemeNames[displayNameFromFile] = displayNameApi;
-                        }
-                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
                 }
             })
             {
