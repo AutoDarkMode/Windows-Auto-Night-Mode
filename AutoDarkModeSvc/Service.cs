@@ -95,7 +95,8 @@ namespace AutoDarkModeSvc
 
             // Init window handle and register hotkeys
             _ = Handle.ToInt32();
-            HotkeyHandler.Service = this;
+
+          HotkeyHandler.Service = this;
             if (Builder.Config.Hotkeys.Enabled) HotkeyHandler.RegisterAllHotkeys(Builder);
 
             //exit on shutdown
@@ -369,13 +370,13 @@ namespace AutoDarkModeSvc
             if (RegistryHandler.AppsUseLightTheme())
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
-                    state.CurrentWindowsThemePath = "";
+                    state.UnmanagedActiveThemePath = "";
                 ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
             }
             else
             {
                 if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
-                    state.CurrentWindowsThemePath = "";
+                    state.UnmanagedActiveThemePath = "";
                 ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
             }
         }

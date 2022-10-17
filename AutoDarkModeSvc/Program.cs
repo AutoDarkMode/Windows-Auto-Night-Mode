@@ -82,8 +82,6 @@ namespace AutoDarkModeSvc
                 {
                     Logger.Error("could not retrieve commit hash");
                 }
-                //Instantiate Runtime config
-                GlobalState state = GlobalState.Instance();
 
                 //Populate configuration
                 AdmConfigBuilder builder = AdmConfigBuilder.Instance();
@@ -151,18 +149,23 @@ namespace AutoDarkModeSvc
 
                 Logger.Debug("config file loaded");
 
-                //if a path is set to null, set it to the currently actvie theme for convenience reasons
+                // Instantiate Runtime config
+                GlobalState state = GlobalState.Instance();
+                state.InitThemes(builder.Config);
+
+
+                // if a path is set to null, set it to the currently actvie theme for convenience reasons
                 bool configUpdateNeeded = false;
                 if (builder.Config.WindowsThemeMode.Enabled)
                 {
                     if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.DarkThemePath == null)
                     {
-                        builder.Config.WindowsThemeMode.DarkThemePath = state.CurrentWindowsThemePath;
+                        builder.Config.WindowsThemeMode.DarkThemePath = state.UnmanagedActiveThemePath;
                         configUpdateNeeded = true;
                     }
-                    if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.LightThemePath == null)
+                    if (!File.Exists(builder.Config.WindowsThemeMode.LightThemePath) || builder.Config.WindowsThemeMode.LightThemePath == null)
                     {
-                        builder.Config.WindowsThemeMode.DarkThemePath = state.CurrentWindowsThemePath;
+                        builder.Config.WindowsThemeMode.LightThemePath = state.UnmanagedActiveThemePath;
                         configUpdateNeeded = true;
                     }
                     if (configUpdateNeeded)

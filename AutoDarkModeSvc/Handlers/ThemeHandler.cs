@@ -56,12 +56,12 @@ namespace AutoDarkModeSvc.Handlers
 
             // TODO change tracking when having active theme monitor disabled
             if (newTheme == Theme.Dark && (skipCheck ||
-                !state.CurrentWindowsThemePath.Equals(builder.Config.WindowsThemeMode.DarkThemePath, StringComparison.Ordinal)))
+                !state.UnmanagedActiveThemePath.Equals(builder.Config.WindowsThemeMode.DarkThemePath, StringComparison.Ordinal)))
             {
                 return true;
             }
             else if (newTheme == Theme.Light && (skipCheck ||
-                !state.CurrentWindowsThemePath.Equals(builder.Config.WindowsThemeMode.LightThemePath, StringComparison.Ordinal)))
+                !state.UnmanagedActiveThemePath.Equals(builder.Config.WindowsThemeMode.LightThemePath, StringComparison.Ordinal)))
             {
                 return true;
             }
@@ -185,7 +185,7 @@ namespace AutoDarkModeSvc.Handlers
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
-                    state.CurrentWindowsThemePath = themeFilePath;
+                    state.UnmanagedActiveThemePath = themeFilePath;
                     if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully");
                 }
                 catch (Exception ex)
@@ -244,10 +244,10 @@ namespace AutoDarkModeSvc.Handlers
             }
             if (builder.Config.WindowsThemeMode.Enabled
                 && !builder.Config.WindowsThemeMode.MonitorActiveTheme
-                && state.CurrentWindowsThemePath == themePath)
+                && state.UnmanagedActiveThemePath == themePath)
             {
                 Logger.Debug("enforcing theme refresh with disabled MonitorActiveTheme");
-                state.CurrentWindowsThemePath = "";
+                state.UnmanagedActiveThemePath = "";
             }
         }
     }

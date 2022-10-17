@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using AutoDarkModeLib;
+using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
@@ -36,31 +37,30 @@ namespace AutoDarkModeSvc.Core
         public Theme RequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
-        public string CurrentWindowsThemePath { get; set; } = GetCurrentThemePath();
+        public string UnmanagedActiveThemePath { get; set; } = Helper.ManagedThemePath;
         public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
         public bool InitSyncSwitchPerformed { get; set; } = false;
         private NotifyIcon NotifyIcon { get; set; }
 
-        private static string GetCurrentThemeName()
+        public void InitThemes(AdmConfig config)
         {
-            string currentTheme = ThemeHandler.GetCurrentThemeName();
-            Logger.Debug($"active windows theme on startup: {currentTheme}");
-            return currentTheme;
-        }
-
-        private static string GetCurrentThemePath()
-        {
-            try
+            Logger.Debug("retrieving theme on startup");
+            if (config.WindowsThemeMode.Enabled)
             {
-                string activeTheme = RegistryHandler.GetActiveThemePath();
-                return activeTheme;
+                try
+                {
+                    UnmanagedActiveThemePath = RegistryHandler.GetActiveThemePath();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "could not retrieve active theme path: ");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Logger.Error(ex, "could not retrieve active theme path: ");
-                return "";
+                ManagedThemeFile.SyncActiveThemeData();
             }
         }
 

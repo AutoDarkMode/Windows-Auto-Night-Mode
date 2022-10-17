@@ -105,6 +105,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static string GetActiveThemePath()
         {
+            Logger.Trace("get active theme path called");
             // call first becaues it refreshes the regkey
             string activeThemeName = ThemeHandler.GetCurrentThemeName();
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");

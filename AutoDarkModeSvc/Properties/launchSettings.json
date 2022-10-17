@@ -1,7 +1,8 @@
 {
   "profiles": {
     "AutoDarkModeSvc": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "nativeDebugging": true
     }
   }
 }
