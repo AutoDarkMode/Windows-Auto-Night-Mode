@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>10.3.0.60</Version>
+    <Version>10.3.0.61</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <StartupObject>AutoDarkModeSvc.Program</StartupObject>
@@ -75,4 +75,14 @@
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
   </ItemGroup>
+
+  <Target Name="CopyThemeDll" AfterTargets="AfterBuild">
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.dll" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.exp" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.pdb" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.lib" DestinationFolder="$(OutDir)" />
+  </Target>
+  <Target Name="CopyThemeDllPublish" AfterTargets="Publish">
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.dll" DestinationFolder="$(PublishDir)\" />
+  </Target>
 </Project>

@@ -445,5 +445,19 @@ namespace AutoDarkModeApp.Pages
                 }
             }
         }
+
+        private void SecureUxTheme_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string text = "Copyright(c) 2022 Namazso \n\n";
+            text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "Licenses", "lgpl.txt"));
+            MsgBox msg = new(text, "SecureUxTheme License Information", "info", "close");
+            msg.Owner = Window.GetWindow(this);
+            _ = msg.ShowDialog();
+        }
+
+        private void SecureUxTheme_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) SecureUxTheme_MouseDown(this, null);
+        }
     }
 }

@@ -9,6 +9,7 @@ using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Core;
 using System.Threading.Tasks;
 using AutoDarkModeLib.Configs;
+using System.Collections.Generic;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -177,7 +178,7 @@ namespace AutoDarkModeSvc.Handlers
             return themeName;
         }
 
-        public static void Apply(string themeFilePath, bool suppressLogging = false)
+        private static void ApplyIThemeManager(string themeFilePath, bool suppressLogging = false)
         {
             /*Exception applyEx = null;*/
             Thread thread = new(() =>
@@ -207,13 +208,112 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Error(ex, "theme handler thread was interrupted");
             }
-            /*
-            if (applyEx != null)
-            {
-                throw applyEx;
-            }
-            */
         }
+
+        private static void ApplyIThemeManager2(string themeFilePath, bool suppressLogging = false)
+        {
+            DateTime start = DateTime.Now;
+            /*Exception applyEx = null;*/
+            Thread thread = new(() =>
+            {
+                bool tm2Found = false;
+                bool tm2Success = false;
+                string displayNameFromFile = null;
+                try
+                {
+                    (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
+
+                    (tm2Found, tm2Success) = ThemeDllHandler.SetTheme(displayNameFromFile);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
+                }
+
+                if (tm2Success)
+                {
+                    state.UnmanagedActiveThemePath = themeFilePath;
+                    return;
+                }
+
+                if (!tm2Found)
+                {
+                    Logger.Warn($"could not find theme for display name {displayNameFromFile}, using IThemeManager mitigation");
+                }
+
+                bool tm1Success = false;
+
+                try
+                {
+                    new ThemeManagerClass().ApplyTheme(themeFilePath);
+                    state.UnmanagedActiveThemePath = themeFilePath;
+                    if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully via IThemeManager");
+                    tm1Success = true;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not apply theme \"{themeFilePath}\"");
+                    //applyEx = ex;
+                }
+
+                if (tm1Success && !tm2Found)
+                {
+                    string displayNameApi = GetCurrentThemeName();
+                    (tm2Found, tm2Success) = ThemeDllHandler.SetTheme(displayNameApi);
+                    if (!tm2Found)
+                    {
+                        Logger.Error("failed to find target theme after IThemeManager application");
+                    }
+                    else
+                    {
+                        if (!ThemeDllHandler.LearnedThemeNames.ContainsKey(displayNameFromFile))
+                        {
+                            Logger.Debug($"learnt new theme name association: {displayNameFromFile}={displayNameApi}");
+                            ThemeDllHandler.LearnedThemeNames.Add(displayNameFromFile, displayNameApi);
+                        }
+                        else
+                        {
+                            Logger.Debug($"updated theme name association: {displayNameFromFile}={displayNameApi}");
+                            ThemeDllHandler.LearnedThemeNames[displayNameFromFile] = displayNameApi;
+                        }
+                    }
+                }
+            })
+            {
+                Name = "COMThemeManagerThread"
+            };
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            try
+            {
+                thread.Join();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "theme handler thread was interrupted");
+            }
+            DateTime end = DateTime.Now;
+
+            TimeSpan elapsed = end - start;
+
+            if (elapsed.TotalSeconds > 10)
+            {
+                Logger.Warn($"theme switching took longer than expected ({elapsed.TotalSeconds} seconds)");
+            }
+        }
+
+        public static void Apply(string themeFilePath, bool suppressLogging = false)
+        {
+            if (Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
+            {
+                ApplyIThemeManager2(themeFilePath, suppressLogging);
+            }
+            else
+            {
+                ApplyIThemeManager(themeFilePath, suppressLogging);
+            }
+        }
+
         public static string GetCurrentVisualStyleName()
         {
             return Path.GetFileName(new ThemeManagerClass().CurrentTheme.VisualStyle);

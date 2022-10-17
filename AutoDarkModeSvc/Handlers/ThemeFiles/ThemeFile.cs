@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Windows.Forms.LinkLabel;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
@@ -358,6 +359,16 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Parse();
         }
 
+        public static (List<string>, string) GetDisplayNameFromRaw(string themePath)
+        {
+            List<string> lines = new();
+            string pathThemeName = null;
+            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+            pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
+            if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
+            return (lines, pathThemeName);
+        }
+
         public void SyncActiveThemeData(bool keepDisplayNameAndGuid = false)
         {
 
@@ -372,9 +383,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 string pathThemeName = null;
                 if (themePath.Length > 0)
                 {
-                    lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-                    pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
-                    if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
+                    (lines, pathThemeName) = GetDisplayNameFromRaw(themePath);
                 }
                 else
                 {
