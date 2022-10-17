@@ -484,7 +484,7 @@
 注: Auto Dark Mode は管理者権限で実行しないでください！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>問題解決にヘルプが必要ですか？(英語)</value>
+    <value>ヘルプ(英語)</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>複数ユーザーへの対応</value>
@@ -574,7 +574,7 @@
     <value>機能は少ないですが設定が簡単です。すべてのモニターや、個々のモニターの壁紙を指定したり、背景色を設定できます。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Auto Dark Mode の最新版をバックグラウンドで確認します。最新版が利用可能ならば、ポップアップ通知でお知らせします</value>
+    <value>Auto Dark Mode の最新版をバックグラウンドで確認します。最新版が利用可能なら、ポップアップ通知でお知らせします</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>自動で最新版をダウンロードしインストール</value>
@@ -855,13 +855,13 @@
     <value>バージョン情報をクリップボードにコピーしました</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切り替え</value>
+    <value>テーマの自動切替</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>切り替え時に通知を表示</value>
   </data>
-  <data name="PostponeButtonSkipAutoSwitchOnce" xml:space="preserve">
-    <value>一回自動切替しない</value>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>遅延させる</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPUモニターモジュール</value>
@@ -885,7 +885,7 @@
     <value>ホットキー</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切り替えをオンオフ</value>
+    <value>テーマの自動切替をオン/オフ</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
     <value>自動切替を無効にする</value>
@@ -906,19 +906,19 @@
     <value>テーマ切り替えをこの時間まで停止</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>テーマの自動切り替えは現在、次のモジュールが原因で停止されています:</value>
+    <value>テーマの自動切替は現在、次のモジュールが原因で停止されています:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
     <value>再開は、期限付きの延期でのみ可能です</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>延期情報</value>
+    <value>延期の管理</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>テーマを切り替える</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>テーマの自動切替は有効です</value>
+    <value>テーマの自動切替が有効です</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
     <value>Windows の夜間モードに従う</value>
@@ -951,7 +951,7 @@
     <value>日の入りまで</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>テーマの一時停止を切り替える</value>
+    <value>テーマの自動切替を一時停止/再開</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>テーマの自動切り替えを再開しました</value>
@@ -961,5 +961,62 @@
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
     <value>夜間モード</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>遅延の状態</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>一回自動切替しない</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>テーマを自動で切り替える前に通知</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>通知がユーザーの入力を待つ分数</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>デバッグモード</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>ロック画面でもテーマを切り替え (Windows 10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>今すぐ切り替える</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>遅延モジュール</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>切り替えの通知</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 時間</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 分</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 時間</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 分</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 時間</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 時間</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 時間</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>テーマ切り替え待機中</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>今すぐ切り替えますか？それとも遅延させますか？</value>
   </data>
 </root>
