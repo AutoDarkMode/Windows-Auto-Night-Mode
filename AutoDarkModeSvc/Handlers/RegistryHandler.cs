@@ -103,22 +103,28 @@ namespace AutoDarkModeSvc.Handlers
             return byteData.Length > 24 && byteData[23] == decimal.ToByte(0x10) && byteData[24] == decimal.ToByte(0x00);
         }
 
-
         public static string GetActiveThemePath()
         {
+            // call first becaues it refreshes the regkey
+            string activeThemeName = ThemeHandler.GetCurrentThemeName();
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
             string themePath = (string)key.GetValue("CurrentTheme") ?? "";
 
-            string activeThemeName = ThemeHandler.GetCurrentThemeName();
-            /*Exception applyEx = null;*/
-
-            ThemeFile tempTheme = new(themePath);
-            tempTheme.Load();
+            ThemeFile tempTheme = null;
+            if (themePath.Length > 0)
+            {
+                tempTheme = new(themePath);
+                tempTheme.Load();
+            }
+            else
+            {
+                Logger.Warn("theme file path registry key empty, using custom theme");
+            }
             /*
              * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
              * we need to manually change the path to Custom.theme, which contains the current theme data
              */
-            if (tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+            if (tempTheme == null || tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
             {
                 Logger.Debug($"expected name: {activeThemeName} different from display name: {tempTheme.DisplayName} with path: {themePath}");
                 themePath = new(Path.Combine(Helper.ThemeFolderPath, "Custom.theme"));

@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Monitors;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -359,23 +360,52 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         public void SyncActiveThemeData(bool keepDisplayNameAndGuid = false)
         {
+
             try
             {
-                string themePath = RegistryHandler.GetActiveThemePath();
-                if (themePath != "")
+                // call first becaues it refreshes the regkey
+                string activeThemeName = ThemeHandler.GetCurrentThemeName();
+                using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
+                string themePath = (string)key.GetValue("CurrentTheme") ?? "";
+
+                List<string> lines = new();
+                string pathThemeName = null;
+                if (themePath.Length > 0)
                 {
+                    lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+                    pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
+                    if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
+                }
+                else
+                {
+                    Logger.Warn("theme file path registry key empty, using custom theme");
+                }
+                /*
+                 * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
+                 * we need to manually change the path to Custom.theme, which contains the current theme data
+                 */
+                if (pathThemeName == null || pathThemeName != activeThemeName && !pathThemeName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+                {
+                    Logger.Debug($"expected name: {activeThemeName} different from display name: {pathThemeName} with path: {themePath}");
+                    themePath = new(Path.Combine(Helper.ThemeFolderPath, "Custom.theme"));
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+                }
+                else
+                {
+                    Logger.Debug($"currently active theme: {activeThemeName}, path: {themePath}");
+                    ThemeFileContent = lines;
+                }
+                Parse();
+
+                if (!keepDisplayNameAndGuid)
+                {
+                    DisplayName = "ADMTheme";
+                    ThemeId = $"{{{Guid.NewGuid()}}}";
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, $"could not sync theme file at {ThemeFilePath}, using default values: ");
-            }
-            Parse();
-            if (!keepDisplayNameAndGuid)
-            {
-                DisplayName = "ADMTheme";
-                ThemeId = $"{{{Guid.NewGuid()}}}";
             }
         }
 
