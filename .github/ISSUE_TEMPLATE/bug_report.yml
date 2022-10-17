@@ -55,7 +55,7 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: Screenshots
-      description: If applicable, please provide screenshots depicting the problem.
+      label: Screenshots / Videos
+      description: If applicable, please provide screenshots or videos depicting the problem.
     validations:
       required: false
