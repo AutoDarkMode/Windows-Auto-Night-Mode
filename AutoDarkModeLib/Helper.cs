@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace AutoDarkModeLib
 {
@@ -69,6 +71,20 @@ namespace AutoDarkModeLib
         PostSync
     }
 
+    public enum BridgeResponseCode {
+        InvalidArguments,
+        Success,
+        Fail,
+        NotFound
+    }
+
+    public enum WindowsBuilds : int
+    {
+        MinBuildForNewFeatures = 19044,
+        Win11_RC = 22000,
+        Win11_22H2 = 22621,
+    }
+
     public static class Helper
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
@@ -81,10 +97,9 @@ namespace AutoDarkModeLib
         public static readonly string ExecutionDir = GetExecutionDir();
         public static readonly string ExecutionPathApp = GetExecutionPathApp();
         public static readonly string ExecutionPathUpdater = GetExecutionPathUpdater();
+        public static readonly string ExectuionPathThemeBridge = GetExecutionPathThemeBridge();
         public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
         public static readonly string UpdateDataDir = GetUpdateDataDir();
-        public static readonly int MinBuildForNewFeatures = 19044;
-        public static readonly int Win11Build = 22000;
         public static string ThemeFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
         public static string ManagedThemePath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes" ,"ADMTheme.theme");
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
@@ -214,6 +229,14 @@ namespace AutoDarkModeLib
             return Path.Combine(executablePath, UpdaterDirName);
         }
 
+        private static string GetExecutionPathThemeBridge()
+        {
+            var assemblyLocation = AppContext.BaseDirectory;
+            var executableName = Path.DirectorySeparatorChar + "IThemeManager2Bridge";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath + executableName);
+        }
+
         private static string GetUpdateDataDir()
         {
             var assemblyLocation = AppContext.BaseDirectory;
@@ -226,6 +249,18 @@ namespace AutoDarkModeLib
             string pFilesx86 = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
             string pFilesx64 = Environment.GetEnvironmentVariable("ProgramFiles");
             return !(ExecutionDir.Contains(pFilesx64) || ExecutionDir.Contains(pFilesx86));
+        }
+
+        public static string SerializeLearnedThemesDict(Dictionary<string, string> dict) {
+            YamlDotNet.Serialization.ISerializer yamlSerializer = new YamlDotNet.Serialization.SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            return yamlSerializer.Serialize(dict);
+        }
+
+        public static Dictionary<string, string> DeserializeLearnedThemesDict(string data)
+        {
+            var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+            Dictionary<string, string> deserialized = yamlDeserializer.Deserialize<Dictionary<string, string>>(data);
+            return deserialized;
         }
     }
 }

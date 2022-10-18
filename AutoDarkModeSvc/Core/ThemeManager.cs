@@ -208,7 +208,7 @@ namespace AutoDarkModeSvc.Core
                 cm.RunPreSync(componentsToUpdate, newTheme, e);
 
                 //logic for our classic mode 2.0, gets the currently active theme for modification
-                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
+                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
                 {
                     state.ManagedThemeFile.SyncActiveThemeData();
                 }
@@ -224,7 +224,7 @@ namespace AutoDarkModeSvc.Core
             if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate || e.Source == SwitchSource.SystemUnlock)
             {
                 // Logic for our classic mode 2.0
-                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
+                if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
                 {
                     try
                     {

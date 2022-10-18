@@ -10,6 +10,8 @@ using AutoDarkModeSvc.Core;
 using System.Threading.Tasks;
 using AutoDarkModeLib.Configs;
 using System.Collections.Generic;
+using System.Diagnostics;
+using AutoDarkModeSvc.Communication;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -216,11 +218,40 @@ namespace AutoDarkModeSvc.Handlers
             /*Exception applyEx = null;*/
             Thread thread = new(() =>
             {
+                bool tm2Found = false;
+                bool tm2Success = false;
+                string displayNameFromFile = null;
+                try
+                {
+                    (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
+
+
+                    (tm2Found, tm2Success) = ThemeDllHandler.SetThemeViaBridge(displayNameFromFile);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
+                }
+
+                if (tm2Success && tm2Found)
+                {
+                    state.UnmanagedActiveThemePath = themeFilePath;
+                    return;
+                }
+
+                if (!tm2Found)
+                {
+                    Logger.Warn($"could not find theme for display name {displayNameFromFile}, using IThemeManager mitigation");
+                }
+
+                bool tm1Success = false;
+
                 try
                 {
                     new ThemeManagerClass().ApplyTheme(themeFilePath);
                     state.UnmanagedActiveThemePath = themeFilePath;
                     if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully via IThemeManager");
+                    tm1Success = true;
                 }
                 catch (Exception ex)
                 {
@@ -228,16 +259,28 @@ namespace AutoDarkModeSvc.Handlers
                     //applyEx = ex;
                 }
 
-                string displayNameApi = GetCurrentThemeName();
-                bool tm2Found = false;
-                bool tm2Success = false;
-                try
+                if (tm1Success && !tm2Found)
                 {
-                    (tm2Found, tm2Success) = ThemeDllHandler.SetTheme(displayNameApi);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
+                    string displayNameApi = GetCurrentThemeName();
+                    Logger.Debug($"renewed display name: {displayNameApi}");
+                    (tm2Found, tm2Success) = ThemeDllHandler.SetThemeViaBridge(displayNameApi);
+                    if (!tm2Found)
+                    {
+                        Logger.Error("failed to find target theme after IThemeManager application");
+                    }
+                    else
+                    {
+                        if (!state.LearnedThemeNames.ContainsKey(displayNameFromFile))
+                        {
+                            Logger.Debug($"learnt new theme name association: {displayNameFromFile}={displayNameApi}");
+                            state.LearnedThemeNames.Add(displayNameFromFile, displayNameApi);
+                        }
+                        else
+                        {
+                            Logger.Debug($"updated theme name association: {displayNameFromFile}={displayNameApi}");
+                            state.LearnedThemeNames[displayNameFromFile] = displayNameApi;
+                        }
+                    }
                 }
             })
             {
@@ -265,7 +308,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void Apply(string themeFilePath, bool suppressLogging = false)
         {
-            if (Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
                 ApplyIThemeManager2(themeFilePath, suppressLogging);
             }

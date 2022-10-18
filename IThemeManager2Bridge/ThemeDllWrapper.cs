@@ -1,25 +1,15 @@
-﻿using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
-using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Handlers
+namespace IThemeManager2Bridge
 {
-    internal class ThemeDllHandler
+    internal static class ThemeDllWrapper
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
-        // Not working atm because I am unable to refresh the themes. Use bridge instead, it reloads the entire assembly
-        /*
-        public static Dictionary<string, string> LearnedThemeNames { get; } = new();
+        public static Dictionary<string, string> LearnedThemeNames { get; set; } = new();
 
         [DllImport("ThemeDll.dll")]
         private static extern int themetool_init();
@@ -42,10 +32,9 @@ namespace AutoDarkModeSvc.Handlers
 
         private static bool InitThemeManager()
         {
-            lock(_lock)
+            lock (_lock)
             {
                 if (initialized) return true;
-                Logger.Debug("initializing IThemeManger2");
                 try
                 {
                     int res = themetool_init();
@@ -58,14 +47,13 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "could not initialize IThemeManager2: ");
+                    ex.Data["UserMessage"] = "Source InitThemeManager";
+                    throw;
                 }
             }
-
-            return false;
         }
 
-        private static bool SetTheme(Theme2Wrapper theme)
+        public static bool SetTheme(Theme2Wrapper theme)
         {
             if (!initialized)
             {
@@ -74,7 +62,6 @@ namespace AutoDarkModeSvc.Handlers
             try
             {
                 int res = themetool_set_active(0, (ulong)theme.idx, true, 0, 0);
-                Logger.Info($"applied theme {theme.ThemeName} successfully via IThemeManager2");
                 if (res != 0)
                 {
                     throw new ExternalException($"StatusCode: {res}", res);
@@ -82,8 +69,8 @@ namespace AutoDarkModeSvc.Handlers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "could not apply theme:");
-                return false;
+                ex.Data["UserMessage"] = "Source SetTheme";
+                throw;
             }
             return true;
         }
@@ -123,7 +110,7 @@ namespace AutoDarkModeSvc.Handlers
             return (false, false);
         }
 
-        private static List<Theme2Wrapper> GetThemeList()
+        public static List<Theme2Wrapper> GetThemeList()
         {
             if (!initialized)
             {
@@ -136,13 +123,13 @@ namespace AutoDarkModeSvc.Handlers
                 int res = themetool_get_theme_count(out uCount);
                 if (res != 0)
                 {
-                    return new();
+                    throw new ExternalException($"StatusCode: {res}", res);
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, $"Error getting theme count from IThemeManager2:");
-                return list;
+                ex.Data["UserMessage"] = "Source GetThemeList->GetCount";
+                throw;
             }
 
             int count = Convert.ToInt32(uCount);
@@ -153,7 +140,7 @@ namespace AutoDarkModeSvc.Handlers
                     themetool_get_theme((ulong)i, out IntPtr theme);
                     IntPtr ptr = Marshal.AllocCoTaskMem(IntPtr.Size * 256);
                     themetool_theme_get_display_name(theme, ptr, 256);
-                    
+
                     //omit for now, entry point missing
                     //themetool_theme_release(theme);
                     string name = "";
@@ -171,57 +158,11 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, $"error getting theme data for id {i} from IThemeManager2:");
+                    ex.Data["UserMessage"] = "Source GetThemeList->CollectThemes";
+                    throw;
                 }
             }
             return list;
-        }
-        */
-
-        /// <summary>
-        /// Sets a theme given a path via a bridging application
-        /// </summary>
-        /// <param name="path">the path of the theme file</param>
-        /// <returns>the first tuple entry is true if the theme was found, the second is true if theme switching was successful</returns>
-        public static (bool, bool) SetThemeViaBridge(string displayName)
-        {
-
-            Process bridge = new();
-            bridge.StartInfo.FileName = Helper.ExectuionPathThemeBridge;
-            bridge.StartInfo.ArgumentList.Add(displayName);
-            bridge.StartInfo.RedirectStandardOutput = true;
-            bridge.Start();
-            string line = "";
-            while (!bridge.StandardOutput.EndOfStream)
-            {
-                line += bridge.StandardOutput.ReadLine();
-            }
-            bridge.WaitForExit();
-            int exitCode = bridge.ExitCode;
-            if (exitCode == 0)
-            {
-                ApiResponse response = ApiResponse.FromString(line);
-                bool success = Enum.TryParse(response.StatusCode, out BridgeResponseCode statusCode);
-                if (success)
-                {
-                    if (statusCode == BridgeResponseCode.Success)
-                    {
-                        Logger.Info($"applied theme {displayName} successfully via IThemeManager2");
-                        return (true, true);
-                    }
-                    else if (statusCode == BridgeResponseCode.NotFound)
-                    {
-                        return (false, true);
-                    }
-                    else if (statusCode == BridgeResponseCode.InvalidArguments) return (false, false);
-                    else if (statusCode == BridgeResponseCode.Fail) return (false, false);
-                }
-                if (response.Message != null)
-                {
-                    Logger.Error($"failed to apply theme via ThemeManager2: {response.Message}");
-                }
-            }
-            return (false, false);
         }
     }
 
@@ -231,3 +172,4 @@ namespace AutoDarkModeSvc.Handlers
         public int idx { get; set; }
     }
 }
+

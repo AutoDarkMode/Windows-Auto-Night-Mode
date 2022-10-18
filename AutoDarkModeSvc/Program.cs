@@ -220,6 +220,7 @@ namespace AutoDarkModeSvc
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Service = new Service(timerMillis);
+                Service.Text = "Auto Dark Mode";
                 Application.Run(Service);
 
             }

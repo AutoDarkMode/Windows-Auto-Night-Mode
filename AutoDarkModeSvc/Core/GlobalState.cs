@@ -43,6 +43,7 @@ namespace AutoDarkModeSvc.Core
         public NightLight NightLight { get; } = new();
         public bool InitSyncSwitchPerformed { get; set; } = false;
         private NotifyIcon NotifyIcon { get; set; }
+        public Dictionary<string, string> LearnedThemeNames { get; } = new();
 
         public void InitThemes(AdmConfig config)
         {

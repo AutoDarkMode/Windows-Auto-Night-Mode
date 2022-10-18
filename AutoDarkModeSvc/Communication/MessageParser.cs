@@ -395,6 +395,17 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
+                    #region GetLearnedThemeNames
+                    case Command.GetLearnedThemeNames:
+                        Logger.Info("signal received: get learned theme names");
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok,
+                            Message = Helper.SerializeLearnedThemesDict(state.LearnedThemeNames)
+                        }.ToString());
+                        break;
+                    #endregion
+
                     #region TestNotifications
                     case Command.TestNotifications:
                         Logger.Info("signal received: test notifications");

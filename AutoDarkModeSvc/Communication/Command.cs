@@ -158,6 +158,8 @@ namespace AutoDarkModeSvc.Communication
 
         public const string UpdateFailed = "--update-failed";
 
+        public const string GetLearnedThemeNames = "--get-learned-theme-names";
+
         [Includable]
         public const string Test = "--test";
 
@@ -196,7 +198,7 @@ namespace AutoDarkModeSvc.Communication
 
     public class ApiResponse
     {
-        private const string separator = "\nAdmApiDataRow=";
+        public const string separator = "\nAdmApiDataRow=";
         public string StatusCode { get; set; }
         public string Message { get; set; }
         public string Details { get; set; }

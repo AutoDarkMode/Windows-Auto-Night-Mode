@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IThemeManager2Bridge": {
+      "commandName": "Project",
+      "commandLineArgs": "Windows 10"
+    }
+  }
+}

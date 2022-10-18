@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeComms", "AutoDa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeShell", "AutoDarkModeShell\AutoDarkModeShell.csproj", "{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IThemeManager2Bridge", "IThemeManager2Bridge\IThemeManager2Bridge.csproj", "{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}"
+	ProjectSection(ProjectDependencies) = postProject
+		{044D739A-2A81-4B51-9D4A-30057A1935E2} = {044D739A-2A81-4B51-9D4A-30057A1935E2}
+		{C300F1BA-6280-4ECE-A0C3-7809625BA6AC} = {C300F1BA-6280-4ECE-A0C3-7809625BA6AC}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +139,26 @@ Global
 		{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}.Release|x64.Build.0 = Release|Any CPU
 		{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}.Release|x86.ActiveCfg = Release|Any CPU
 		{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}.Release|x86.Build.0 = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|x64.Build.0 = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Debug|x86.Build.0 = Debug|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|ARM.Build.0 = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|ARM64.Build.0 = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|x64.ActiveCfg = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|x64.Build.0 = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C572C4A-AB31-46F3-8ECC-F4F5C5272898}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

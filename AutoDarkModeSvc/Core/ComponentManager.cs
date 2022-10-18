@@ -55,13 +55,13 @@ namespace AutoDarkModeSvc.Core
 
         ComponentManager()
         {
-            if (Environment.OSVersion.Version.Build >= Helper.MinBuildForNewFeatures)
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 Logger.Info($"using components for newer Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitchThemeFile();
                 AppsSwitch = new AppsSwitchThemeFile();
             }
-            else if (Environment.OSVersion.Version.Build < Helper.MinBuildForNewFeatures)
+            else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 Logger.Info($"using components for legacy Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitch();
