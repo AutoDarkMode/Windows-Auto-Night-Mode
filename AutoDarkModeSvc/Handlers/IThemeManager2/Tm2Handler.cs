@@ -107,16 +107,17 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                                 Logger.Info($"applied theme {targetTheme.ThemeName} directly via IThemeManager2");
                             }
                         }
-                    }
-                    else
-                    {
-                        Logger.Warn("could not find theme name, using path apply (ignores flags");
-                        success = SetThemeViaPath(path, manager);
-                        if (success)
+                        else
                         {
-                            Logger.Info($"applied theme {displayName}, path: {path} via IThemeManager2");
+                            Logger.Warn("could not find theme name, using path apply (ignores flags");
+                            success = SetThemeViaPath(path, manager);
+                            if (success)
+                            {
+                                Logger.Info($"applied theme {displayName}, path: {path} via IThemeManager2");
+                            }
                         }
                     }
+                
                 }
                 catch (Exception ex)
                 {
