@@ -424,10 +424,14 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     Logger.Debug($"currently active theme: {activeThemeName}, path: {themePath}");
                     ThemeFileContent = lines;
                 }
+
+                string oldInfoText = Colors.InfoText.Item1;
+
                 Parse();
 
                 // ensure theme switching works properly in Win11 22H2. This is monumentally stupid but it seems to work.
                 PatchColorsWin11InMemory(this);
+                if (Colors.InfoText.Item1 == oldInfoText) PatchColorsWin11InMemory(this);
 
                 if (!keepDisplayNameAndGuid)
                 {
