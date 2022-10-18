@@ -28,7 +28,6 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
 
         private static Interfaces.IThemeManager2 InitManager()
         {
-            Logger.Debug("initializing IThemeManger2");
             var hr = CoCreateInstance(
                        Guid.Parse("9324da94-50ec-4a14-a770-e90ca03e7c8f"),
                        IntPtr.Zero,
@@ -71,7 +70,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
         /// </summary>
         /// <param name="path">the path of the theme file</param>
         /// <returns>the first tuple entry is true if the theme was found, the second is true if theme switching was successful</returns>
-        public static (bool, bool) SetTheme(string displayName, string path)
+        public static (bool, bool) SetTheme(string displayName, string originalPath)
         {
             bool found = false;
             bool success = false;
@@ -104,20 +103,15 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                             success = SetThemeViaIdx(targetTheme, manager);
                             if (success)
                             {
-                                Logger.Info($"applied theme {targetTheme.ThemeName} directly via IThemeManager2");
+                                Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
                             }
                         }
                         else
                         {
-                            Logger.Warn("could not find theme name, using path apply (ignores flags");
-                            success = SetThemeViaPath(path, manager);
-                            if (success)
-                            {
-                                Logger.Info($"applied theme {displayName}, path: {path} via IThemeManager2");
-                            }
+                            success = true;
                         }
                     }
-                
+
                 }
                 catch (Exception ex)
                 {

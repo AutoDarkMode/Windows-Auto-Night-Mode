@@ -37,7 +37,7 @@ namespace AutoDarkModeSvc.Core
         public Theme RequestedTheme { get; set; } = Theme.Unknown;
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
-        public string UnmanagedActiveThemePath { get; set; } = Helper.ManagedThemePath;
+        public string UnmanagedActiveThemePath { get; set; } = "";
         public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
@@ -53,6 +53,21 @@ namespace AutoDarkModeSvc.Core
                 try
                 {
                     UnmanagedActiveThemePath = RegistryHandler.GetActiveThemePath();
+
+                    bool unmanagedLight = UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath);
+                    bool unmanagedDark = UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath);
+                    if (unmanagedLight)
+                    {
+                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedLightThemePath);
+                        (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
+                        if (displayNameUnmanaged != displayNameSource) UnmanagedActiveThemePath = "";
+                    }
+                    if (unmanagedDark)
+                    {
+                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedDarkThemePath);
+                        (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
+                        if (displayNameUnmanaged != displayNameSource) UnmanagedActiveThemePath = "";
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -61,7 +76,7 @@ namespace AutoDarkModeSvc.Core
             }
             else
             {
-                ManagedThemeFile.SyncActiveThemeData();
+                ManagedThemeFile.SyncWithActiveTheme();
             }
         }
 

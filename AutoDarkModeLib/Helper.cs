@@ -102,6 +102,11 @@ namespace AutoDarkModeLib
         public static readonly string UpdateDataDir = GetUpdateDataDir();
         public static string ThemeFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
         public static string ManagedThemePath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes" ,"ADMTheme.theme");
+        public static string UnmanagedDarkThemePath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmanagedDark.theme");
+        public static string UnmanagedLightThemePath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmnagedLight.theme");
+        public static string UnmanagedLightThemeName { get; } = "ADMUnmanagedLight";
+        public static string UnmanagedDarkThemeName { get; } = "ADMUnmanagedDark";
+
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
         {
             if (start == end)

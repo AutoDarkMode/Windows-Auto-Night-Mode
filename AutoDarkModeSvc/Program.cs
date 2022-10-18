@@ -180,6 +180,8 @@ namespace AutoDarkModeSvc
                             Logger.Error(ex, "couldn't save configuration file");
                         }
                     }
+
+
                 }
 
                 int timerMillis = 0;

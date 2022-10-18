@@ -26,6 +26,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 if (newConfig.WindowsThemeMode.Enabled) {
                     cm.InvokeDisableIncompatible();
                     if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+                    state.InitThemes(newConfig);
                 }
                 else
                 {
@@ -34,6 +35,15 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
             } 
             else if (newConfig.WindowsThemeMode.Enabled)
             {
+
+                bool darkThemeChanged = newConfig.WindowsThemeMode.DarkThemePath != oldConfig.WindowsThemeMode.DarkThemePath;
+                bool lightThemeChanged = newConfig.WindowsThemeMode.LightThemePath != oldConfig.WindowsThemeMode.LightThemePath;
+                if (darkThemeChanged || lightThemeChanged)
+                {
+                    state.InitThemes(newConfig);
+                }
+
+
                 bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
                 if (monitorThemeToggled)
                 {

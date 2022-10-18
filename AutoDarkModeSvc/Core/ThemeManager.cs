@@ -169,6 +169,7 @@ namespace AutoDarkModeSvc.Core
             bool themeModeNeedsUpdate = false;
             if (builder.Config.WindowsThemeMode.Enabled)
             {
+
                 if (e.Source == SwitchSource.SystemUnlock) themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme, skipCheck: true);
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
@@ -210,7 +211,7 @@ namespace AutoDarkModeSvc.Core
                 //logic for our classic mode 2.0, gets the currently active theme for modification
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
                 {
-                    state.ManagedThemeFile.SyncActiveThemeData();
+                    state.ManagedThemeFile.SyncWithActiveTheme();
                 }
 
                 // regular modules that do not require theme file synchronization

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoDarkModeLib;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,11 @@ namespace AutoDarkModeApp.Handlers
             try
             {
                 List<string> files = Directory.EnumerateFiles(ThemeFolderPath, "*.*", SearchOption.AllDirectories).ToList();
-                files = files.Where(f => f.EndsWith(".theme")).ToList();
+                files = files.Where(f => f.EndsWith(".theme") 
+                    && !f.Contains(Helper.UnmanagedDarkThemePath) 
+                    && !f.Contains(Helper.UnmanagedLightThemeName) 
+                    && !f.Contains(Helper.ManagedThemePath))
+                .ToList();
                 List<ThemeFile> themeFiles = files.Select(f => new ThemeFile(f)).ToList();
                 InjectWindowsThemes(themeFiles);
                 return themeFiles;
@@ -31,7 +36,7 @@ namespace AutoDarkModeApp.Handlers
 
         private static void InjectWindowsThemes(List<ThemeFile> themeFiles)
         {
-            if (Environment.OSVersion.Version.Build >= 22000)
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
             {
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\aero.theme", AdmProperties.Resources.ThemePickerTheme11Light));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\dark.theme", AdmProperties.Resources.ThemePickerTheme11Dark));
