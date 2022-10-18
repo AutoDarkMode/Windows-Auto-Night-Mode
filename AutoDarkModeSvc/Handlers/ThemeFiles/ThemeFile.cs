@@ -457,11 +457,12 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
                 theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
+                PatchColorsWin11InMemory(theme);
             }
             theme.Save(managed: false);
         }
 
-        public static void PatchColorsWin11InMemory(ThemeFile theme, int deterministic = -1)
+        public static void PatchColorsWin11InMemory(ThemeFile theme)
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
