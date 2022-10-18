@@ -151,7 +151,7 @@ namespace AutoDarkModeSvc
 
                 // Instantiate Runtime config
                 GlobalState state = GlobalState.Instance();
-                state.InitThemes(builder.Config);
+                state.RefreshThemes(builder.Config);
 
 
                 // if a path is set to null, set it to the currently actvie theme for convenience reasons

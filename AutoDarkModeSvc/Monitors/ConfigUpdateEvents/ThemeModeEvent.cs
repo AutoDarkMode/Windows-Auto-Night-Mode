@@ -26,7 +26,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 if (newConfig.WindowsThemeMode.Enabled) {
                     cm.InvokeDisableIncompatible();
                     if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
-                    state.InitThemes(newConfig);
+                    state.RefreshThemes(newConfig);
                 }
                 else
                 {
@@ -40,7 +40,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 bool lightThemeChanged = newConfig.WindowsThemeMode.LightThemePath != oldConfig.WindowsThemeMode.LightThemePath;
                 if (darkThemeChanged || lightThemeChanged)
                 {
-                    state.InitThemes(newConfig);
+                    state.RefreshThemes(newConfig);
                 }
 
 

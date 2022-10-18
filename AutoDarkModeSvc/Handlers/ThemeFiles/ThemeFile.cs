@@ -392,7 +392,6 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
         public void SyncWithActiveTheme(bool keepDisplayNameAndGuid = false)
         {
-
             try
             {
                 // call first becaues it refreshes the regkey

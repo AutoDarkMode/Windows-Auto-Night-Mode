@@ -45,9 +45,8 @@ namespace AutoDarkModeSvc.Core
         private NotifyIcon NotifyIcon { get; set; }
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
 
-        public void InitThemes(AdmConfig config)
+        public void RefreshThemes(AdmConfig config)
         {
-            Logger.Debug("retrieving theme on startup");
             if (config.WindowsThemeMode.Enabled)
             {
                 try
