@@ -59,13 +59,21 @@ namespace AutoDarkModeSvc.Core
                     {
                         string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedLightThemePath);
                         (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
-                        if (displayNameUnmanaged != displayNameSource) UnmanagedActiveThemePath = "";
+                        if (displayNameUnmanaged != displayNameSource)
+                        {
+                            Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.LightThemePath}");
+                            UnmanagedActiveThemePath = "";
+                        }
                     }
                     if (unmanagedDark)
                     {
                         string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedDarkThemePath);
                         (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
-                        if (displayNameUnmanaged != displayNameSource) UnmanagedActiveThemePath = "";
+                        if (displayNameUnmanaged != displayNameSource)
+                        {
+                            Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.DarkThemePath}");
+                            UnmanagedActiveThemePath = "";
+                        }
                     }
                 }
                 catch (Exception ex)
