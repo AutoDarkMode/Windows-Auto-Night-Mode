@@ -124,7 +124,7 @@
     <value>Terapkan</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Nyalakan penggantian tema otomatis</value>
+    <value>Nyalakan pergantian tema otomatis</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Selalu gelap</value>
@@ -175,7 +175,7 @@
     <value>Memakai layanan lokasi</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Penggantian telah tersimpan!</value>
+    <value>Pergantian telah tersimpan!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis</value>
@@ -482,7 +482,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Nilai bawaan untuk slider penghemat energi</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Mitigasi penghemat energi untuk penggantian tema</value>
+    <value>Mitigasi penghemat energi untuk pergantian tema</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>Ini hanya akan bekerja jika Anda tidak menyalakan  manual penghemat baterai!</value>
@@ -539,7 +539,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Kondisi</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Batas minimum penggunaan GPU untuk menunda penggantian mode</value>
+    <value>Batas minimum penggunaan GPU untuk menunda pergantian mode</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Fitur ini dinonaktifkan ketika mode tema diaktifkan</value>
@@ -632,7 +632,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Layanan tidak merespon, Tolong periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Nyalakan penggantian tema Windows</value>
+    <value>Nyalakan pergantian tema Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
     <value>Mati</value>
@@ -802,5 +802,179 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Jumlah menit hingga sistem dianggap menganggur</value>
+  </data>
+	<data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Warna aksen untuk bilah judul dan bingkai jendela</value>
+  </data>
+	<data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Info versi disalin ke papan klip</value>
+  </data>
+	<data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Pergantian tema otomatis</value>
+  </data>
+	<data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Tampilkan notifikasi saat beralih</value>
+  </data>
+	<data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Tunda</value>
+  </data>
+	<data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>Modul monitor GPU</value>
+  </data>
+	<data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Tunda modul pergantian otomatis</value>
+  </data>
+	<data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Pemeriksa sistem saat diam</value>
+  </data>
+	<data name="RequestSwitchAction" xml:space="preserve">
+    <value>Tekan konfirmasi untuk meminta pergantian tema secepatnya.</value>
+  </data>
+	<data name="Resume" xml:space="preserve">
+    <value>Lanjutkan</value>
+  </data>
+	<data name="RevertAction" xml:space="preserve">
+    <value>Pulih kan aksi ini dengan menekan tombol batal di bawah.</value>
+  </data>
+	<data name="SwitchModesHotkey" xml:space="preserve">
+    <value>tombol pintas</value>
+  </data>
+	<data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Alihkan pergantian tema otomatis</value>
+  </data>
+	<data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Matikan pergantian otomatis</value>
+  </data>
+	<data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Batalkan</value>
+  </data>
+	<data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Tunda pergantian otomatis</value>
+  </data>
+	<data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Apakah anda ingin untuk menonaktifkan pergantian otomatis?</value>
+  </data>
+	<data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Pergantian otomatis akan juga berlanjut jika anda kembali menggunakan tema sebelumnya.</value>
+  </data>
+	<data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Pergantian tema akan ditunda hingga</value>
+  </data>
+	<data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Saat ini pergantian tema otomatis ditunda dikarenakan modul berikut:</value>
+  </data>
+	<data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Melanjutkan hanya akan berfungsi untuk penundaan yang memiliki waktu kedaluwarsa</value>
+  </data>
+	<data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Kontrol penundaan</value>
+  </data>
+	<data name="ToggleTheme" xml:space="preserve">
+    <value>Beralih tema</value>
+  </data>
+	<data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Pergantian tema otomatis diaktifkan</value>
+  </data>
+	<data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Ikuti cahaya malam Windows</value>
+  </data>
+	<data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Ikuti cahaya malam Windows</value>
+  </data>
+	<data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Pergantian tema tertunda sekali!</value>
+  </data>
+	<data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>tunda hingga</value>
+  </data>
+	<data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>tunda hingga kondisi dipenuhi</value>
+  </data>
+	<data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>tunda hingga matahari terbit berikutnya</value>
+  </data>
+	<data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>tunda hingga matahari terbenam berikutnya</value>
+  </data>
+	<data name="UntilTime" xml:space="preserve">
+    <value>hingga</value>
+  </data>
+	<data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>hingga matahari terbit berikutnya</value>
+  </data>
+	<data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>hingga matahari terbenam berikutnya</value>
+  </data>
+	<data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Alihkan jeda pergantian tema otomatis</value>
+  </data>
+	<data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Pergantian tema otomatis dilanjutkan</value>
+  </data>
+	<data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Buka setelan cahaya malam</value>
+  </data>
+	<data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Cahaya malam</value>
+  </data>
+	<data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Penundaan aktif</value>
+  </data>
+	<data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Lewati pergantian otomatis sekali</value>
+  </data>
+	<data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Ingatkan sebelum berganti tema otomatis</value>
+  </data>
+	<data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Waktu notifikasi menunggu input pengguna dalam hitungan menit</value>
+  </data>
+	<data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Mode debug</value>
+  </data>
+	<data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Izinkan pergantian tema saat di layar kunci (Win10)</value>
+  </data>
+	<data name="ButtonConfirm" xml:space="preserve">
+    <value>Konfirmasi</value>
+  </data>
+	<data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Ganti sekarang</value>
+  </data>
+	<data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Modul tunda</value>
+  </data>
+	<data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Notifikasi Pergantian</value>
+  </data>
+	<data name="PostponeTime120" xml:space="preserve">
+    <value>2 jam</value>
+  </data>
+	<data name="PostponeTime15" xml:space="preserve">
+    <value>15 menit</value>
+  </data>
+	<data name="PostponeTime180" xml:space="preserve">
+    <value>3 jam</value>
+  </data>
+	<data name="PostponeTime30" xml:space="preserve">
+    <value>30 menit</value>
+  </data>
+	<data name="PostponeTime360" xml:space="preserve">
+    <value>6 jam</value>
+  </data>
+	<data name="PostponeTime60" xml:space="preserve">
+    <value>1 jam</value>
+  </data>
+	<data name="PostponeTime720" xml:space="preserve">
+    <value>12 jam</value>
+  </data>
+	<data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Pergantian tema tertunda</value>
+  </data>
+	<data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Apakah anda mau untuk berganti sekarang? Atau tunda lebih lanjut?</value>
+  </data>
+	<data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Mode jejak</value>
   </data>
 </root>
