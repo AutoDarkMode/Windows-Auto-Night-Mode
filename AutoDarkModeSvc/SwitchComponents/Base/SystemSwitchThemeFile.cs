@@ -58,7 +58,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
             if (themeModeEnabled)
             {
-                if (Initialized) DisableHook();
                 currentComponentTheme = Theme.Unknown;
                 return false;
             }
