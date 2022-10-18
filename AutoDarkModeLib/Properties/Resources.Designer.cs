@@ -1591,6 +1591,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Special thanks.
+        /// </summary>
+        public static string SpecialThanks {
+            get {
+                return ResourceManager.GetString("SpecialThanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service not running yet, please wait....
         /// </summary>
         public static string StartupLaunchingServiceText {

@@ -40,6 +40,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
     {
         public (string, int) Section { get; } = (@"[Control Panel\Colors]", 0);
         public (string, int) Background { get; set; } = ("0 0 0", 1);
+        public (string, int) InfoText { get; set; } = ("0 0 0", 1);
     }
 
     public class ServerIcon

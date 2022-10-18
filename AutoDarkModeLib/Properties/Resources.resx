@@ -1022,4 +1022,7 @@ Do you really want to continue?</value>
   <data name="SettngsPageTraceMode" xml:space="preserve">
     <value>Trace mode</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Special thanks</value>
+  </data>
 </root>

@@ -1,17 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Core;
-using System.Threading.Tasks;
 using AutoDarkModeLib.Configs;
-using System.Collections.Generic;
-using System.Diagnostics;
-using AutoDarkModeSvc.Communication;
+using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
+using AutoDarkModeSvc.Handlers.IThemeManager;
 
 /*
  * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
@@ -35,7 +31,8 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly GlobalState state = GlobalState.Instance();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
-        public static bool ThemeModeNeedsUpdate(Theme newTheme, bool skipCheck = false) {
+        public static bool ThemeModeNeedsUpdate(Theme newTheme, bool skipCheck = false)
+        {
             if (builder.Config.WindowsThemeMode.DarkThemePath == null || builder.Config.WindowsThemeMode.LightThemePath == null)
             {
                 Logger.Error("dark or light theme path empty");
@@ -96,59 +93,6 @@ namespace AutoDarkModeSvc.Handlers
             Apply(path);
         }
 
-        [ComImport, Guid("D23CC733-5522-406D-8DFB-B3CF5EF52A71"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        public interface ITheme
-        {
-            [DispId(0x60010000)]
-            string DisplayName
-            {
-                [return: MarshalAs(UnmanagedType.BStr)]
-                [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-                get;
-            }
-            [DispId(0x60010001)]
-            string VisualStyle
-            {
-                [return: MarshalAs(UnmanagedType.BStr)]
-                [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-                get;
-            }
-        }
-        [ComImport, Guid("0646EBBE-C1B7-4045-8FD0-FFD65D3FC792"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        public interface IThemeManager
-        {
-            [DispId(0x60010000)]
-            ITheme CurrentTheme
-            {
-                [return: MarshalAs(UnmanagedType.Interface)]
-                [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-                get;
-            }
-            [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-            void ApplyTheme([In, MarshalAs(UnmanagedType.BStr)] string bstrThemePath);
-        }
-        [ComImport, Guid("A2C56C2A-E63A-433E-9953-92E94F0122EA"), CoClass(typeof(ThemeManagerClass))]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public interface ThemeManager : IThemeManager { }
-        [ComImport, Guid("C04B329E-5823-4415-9C93-BA44688947B0"), ClassInterface(ClassInterfaceType.None), TypeLibType(TypeLibTypeFlags.FCanCreate)]
-        public class ThemeManagerClass : IThemeManager, ThemeManager
-        {
-            [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-            public virtual extern void ApplyTheme([In, MarshalAs(UnmanagedType.BStr)] string bstrThemePath);
-            [DispId(0x60010000)]
-            public virtual extern ITheme CurrentTheme
-            {
-                [return: MarshalAs(UnmanagedType.Interface)]
-                [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-                get;
-            }
-        }
-        private static class NativeMethods
-        {
-            [DllImport("UxTheme.dll")]
-            [return: MarshalAs(UnmanagedType.Bool)]
-            public static extern bool IsThemeActive();
-        }
         public static string GetCurrentThemeName()
         {
             string themeName = "";/*Exception applyEx = null;*/
@@ -215,92 +159,39 @@ namespace AutoDarkModeSvc.Handlers
         private static void ApplyIThemeManager2(string themeFilePath, bool suppressLogging = false)
         {
             DateTime start = DateTime.Now;
-            /*Exception applyEx = null;*/
-            Thread thread = new(() =>
-            {
-                bool tm2Found = false;
-                bool tm2Success = false;
-                string displayNameFromFile = null;
-                try
-                {
-                    (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
 
-
-                    (tm2Found, tm2Success) = ThemeDllHandler.SetThemeViaBridge(displayNameFromFile);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
-                }
-
-                if (tm2Success && tm2Found)
-                {
-                    state.UnmanagedActiveThemePath = themeFilePath;
-                    return;
-                }
-
-                if (!tm2Found)
-                {
-                    Logger.Warn($"could not find theme for display name {displayNameFromFile}, using IThemeManager mitigation");
-                }
-
-                bool tm1Success = false;
-
-                try
-                {
-                    new ThemeManagerClass().ApplyTheme(themeFilePath);
-                    state.UnmanagedActiveThemePath = themeFilePath;
-                    if (!suppressLogging) Logger.Info($"applied theme \"{themeFilePath}\" successfully via IThemeManager");
-                    tm1Success = true;
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not apply theme \"{themeFilePath}\"");
-                    //applyEx = ex;
-                }
-
-                if (tm1Success && !tm2Found)
-                {
-                    string displayNameApi = GetCurrentThemeName();
-                    Logger.Debug($"renewed display name: {displayNameApi}");
-                    (tm2Found, tm2Success) = ThemeDllHandler.SetThemeViaBridge(displayNameApi);
-                    if (!tm2Found)
-                    {
-                        Logger.Error("failed to find target theme after IThemeManager application");
-                    }
-                    else
-                    {
-                        if (!state.LearnedThemeNames.ContainsKey(displayNameFromFile))
-                        {
-                            Logger.Debug($"learnt new theme name association: {displayNameFromFile}={displayNameApi}");
-                            state.LearnedThemeNames.Add(displayNameFromFile, displayNameApi);
-                        }
-                        else
-                        {
-                            Logger.Debug($"updated theme name association: {displayNameFromFile}={displayNameApi}");
-                            state.LearnedThemeNames[displayNameFromFile] = displayNameApi;
-                        }
-                    }
-                }
-            })
-            {
-                Name = "COMThemeManagerThread"
-            };
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            bool tm2Found = false;
+            bool tm2Success = false;
+            string displayNameFromFile = null;
             try
             {
-                thread.Join();
+                (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
+                (tm2Found, tm2Success) = IThemeManager2.Tm2Handler.SetTheme(displayNameFromFile, themeFilePath);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "theme handler thread was interrupted");
+                Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
             }
-            DateTime end = DateTime.Now;
 
+            if (!tm2Found && tm2Success)
+            {
+                string displayNameApi = GetCurrentThemeName();
+                if (!state.LearnedThemeNames.ContainsKey(displayNameFromFile))
+                {
+                    Logger.Debug($"learned new theme name association: {displayNameFromFile}={displayNameApi}");
+                    state.LearnedThemeNames.Add(displayNameFromFile, displayNameApi);
+                }
+                else
+                {
+                    Logger.Debug($"updated theme name association: {displayNameFromFile}={displayNameApi}");
+                    state.LearnedThemeNames[displayNameFromFile] = displayNameApi;
+                }
+            }
+
+            DateTime end = DateTime.Now;
             TimeSpan elapsed = end - start;
 
-            if (elapsed.TotalSeconds > 10)
+            if (elapsed.TotalSeconds > 10 && tm2Success)
             {
                 Logger.Warn($"theme switching took longer than expected ({elapsed.TotalSeconds} seconds)");
             }
@@ -308,7 +199,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void Apply(string themeFilePath, bool suppressLogging = false)
         {
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 ApplyIThemeManager2(themeFilePath, suppressLogging);
             }
@@ -321,11 +212,6 @@ namespace AutoDarkModeSvc.Handlers
         public static string GetCurrentVisualStyleName()
         {
             return Path.GetFileName(new ThemeManagerClass().CurrentTheme.VisualStyle);
-        }
-
-        public static string GetThemeStatus()
-        {
-            return NativeMethods.IsThemeActive() ? "running" : "stopped";
         }
 
         /// <summary>

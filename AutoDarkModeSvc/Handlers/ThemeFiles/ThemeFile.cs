@@ -26,6 +26,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public Cursors Cursors { get; set; } = new();
         public Colors Colors { get; set; } = new();
         public Slideshow Slideshow { get; set; } = new();
+        private bool mitigationAdded = false;
 
         public ThemeFile(string path)
         {
@@ -159,6 +160,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             UpdateSection(Cursors.Section.Item1, GetClassFieldsAndValues(Cursors));
             UpdateSection(VisualStyles.Section.Item1, GetClassFieldsAndValues(VisualStyles));
             UpdateValue(Colors.Section.Item1, nameof(Colors.Background), Colors.Background.Item1);
+            UpdateValue(Colors.Section.Item1, nameof(Colors.InfoText), Colors.InfoText.Item1);
 
             UpdateValue(MasterThemeSelector.Section.Item1, nameof(MasterThemeSelector.MTSM), MasterThemeSelector.MTSM);
 
@@ -405,6 +407,45 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     ThemeFileContent = lines;
                 }
                 Parse();
+
+                // ensure theme switching works properly in Win11. This is monumentally stupid but it seems to work.
+                if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+                {
+                    string[] rgb = Colors.InfoText.Item1.Split(" ");
+                    _ = int.TryParse(rgb[0], out int r);
+                    _ = int.TryParse(rgb[1], out int g);
+                    _ = int.TryParse(rgb[2], out int b);
+
+                    if (mitigationAdded)
+                    {
+                        if (r == 0)
+                        {
+                            r++;
+                        }
+                        else 
+                        {
+                            r--;
+                            mitigationAdded = false;
+                        }
+                    }
+                    else if (!mitigationAdded)
+                    {
+                        if (r == 255)
+                        {
+                            r--;
+                        }
+                        else
+                        {
+                            r++;
+                            mitigationAdded = true;
+                        }
+                    }
+
+                    Logger.Trace($"patched colors [{Colors.InfoText.Item1}] to [{r} {g} {b}]");
+
+
+                    Colors.InfoText = ($"{r} {g} {b}", Colors.InfoText.Item2);
+                }
 
                 if (!keepDisplayNameAndGuid)
                 {
