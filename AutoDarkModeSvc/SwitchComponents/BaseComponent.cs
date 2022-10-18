@@ -44,16 +44,13 @@ namespace AutoDarkModeSvc.SwitchComponents
                         Logger.Error(ex, $"error while running enable hook for {GetType().Name}");
                     }
                 }
-                if (ComponentNeedsUpdate(newTheme))
+                try
                 {
-                    try
-                    {
-                        HandleSwitch(newTheme, e);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, $"uncaught exception in component {GetType().Name}, source: {ex.Source}, message: ");
-                    }
+                    HandleSwitch(newTheme, e);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"uncaught exception in component {GetType().Name}, source: {ex.Source}, message: ");
                 }
             }
             else if (Initialized)

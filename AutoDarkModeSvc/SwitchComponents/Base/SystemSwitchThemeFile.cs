@@ -19,6 +19,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override void EnableHook()
         {
+            RefreshRegkeys();
+            base.EnableHook();
+        }
+
+        private void RefreshRegkeys()
+        {
             try
             {
                 currentComponentTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
@@ -28,7 +34,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "couldn't initialize system apps theme state");
             }
-            base.EnableHook();
         }
 
         public override bool ThemeHandlerCompatibility => true;
@@ -37,7 +42,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             if (Settings.Component.Mode == Mode.AccentOnly)
             {
-                // theme does not match dark, as accent color is avialable in dark only
+                // if theme does not match dark we need to report true, as accent color isn't available in light mode
                 // Do not return true on windows theme mode, as this would potentially modify the theme
                 if (currentComponentTheme != Theme.Dark && !themeModeEnabled) return true;
 
@@ -58,7 +63,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
             if (themeModeEnabled)
             {
-                currentComponentTheme = Theme.Unknown;
                 return false;
             }
             else if (Settings.Component.Mode == Mode.DarkOnly)
@@ -270,6 +274,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             base.UpdateSettingsState(newSettings);
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             themeModeEnabled = builder.Config.WindowsThemeMode.Enabled;
+            RefreshRegkeys();
         }
     }
 }
