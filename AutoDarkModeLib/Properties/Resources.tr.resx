@@ -535,7 +535,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Daha fazla özellik sunar, ancak bir windows .theme dosyası ayarlamanız gerekir. Masaüstü arka plan resminizi her monitör için özelleştirebilir, bir slayt gösterisi ayarlayabilir, fare imlecini değiştirebilir, vurgu rengi ve sesleri ayarlayabilirsiniz.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Daha az özellik sunar, ancak kurulumu daha kolaydır. Tüm monitörler ya da ayrı ayrı her biri için arka plan resmini özelleştirebilir, bir arka plan rengi ayarlabilirsiniz.</value>
+    <value>Daha az özellik sunar, ancak kurulumu daha kolaydır. Tüm monitörler ya da ayrı ayrı her biri için arka plan resmini özelleştirebilir, bir arka plan rengi ayarlayabilirsiniz.</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
     <value>Uygula</value>
@@ -1020,5 +1020,11 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
     <value>Şimdi değişim yapmak mı ya da daha fazla geciktirmek mi istiyorsunuz?</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>İzleme modu</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Özel teşekkürler</value>
   </data>
 </root>
