@@ -1022,4 +1022,7 @@
   <data name="SettngsPageTraceMode" xml:space="preserve">
     <value>Λειτουργία παρακολούθησης</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Θερμές ευχαριστίες</value>
+  </data>
 </root>
