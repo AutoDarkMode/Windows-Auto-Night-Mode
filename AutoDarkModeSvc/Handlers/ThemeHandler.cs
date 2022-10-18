@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.Handlers
                 ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.UnmanagedLightThemePath);
                 light.UnmanagedOriginalName = light.DisplayName;
                 light.DisplayName = Helper.UnmanagedLightThemeName;
-                ThemeFile.PatchColorsWin11AndSave(light);
+                ThemeFile.PatchColorsWin11AndSave(light, "0 0 1");
                 Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
             }
             else if (newTheme == Theme.Dark)
@@ -97,7 +97,7 @@ namespace AutoDarkModeSvc.Handlers
                 ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.UnmanagedDarkThemePath);
                 dark.UnmanagedOriginalName = dark.DisplayName;
                 dark.DisplayName = Helper.UnmanagedDarkThemeName;
-                ThemeFile.PatchColorsWin11AndSave(dark);
+                ThemeFile.PatchColorsWin11AndSave(dark, "0 1 0");
                 Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
             }
         }

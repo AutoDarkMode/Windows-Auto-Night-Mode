@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using YamlDotNet.Core;
 using static System.Windows.Forms.LinkLabel;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
@@ -452,13 +453,16 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             return target;
         }
 
-        public static void PatchColorsWin11AndSave(ThemeFile theme)
+        public static void PatchColorsWin11AndSave(ThemeFile theme, string data)
         {
-            PatchColorsWin11InMemory(theme);
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            {
+                theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
+            }
             theme.Save(managed: false);
         }
 
-        public static void PatchColorsWin11InMemory(ThemeFile theme)
+        public static void PatchColorsWin11InMemory(ThemeFile theme, int deterministic = -1)
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
