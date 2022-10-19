@@ -60,8 +60,8 @@ namespace AutoDarkModeSvc.Core
                 }
             }
 
-            // apply last requested theme if switch is postponed
-            if (state.PostponeManager.IsPostponed)
+            // apply last requested theme if switch is user-postponed
+            if (state.PostponeManager.IsUserDelayed || state.PostponeManager.IsSkipNextSwitch)
             {
                 UpdateTheme(state.RequestedTheme, switchArgs);
                 return;
@@ -246,7 +246,7 @@ namespace AutoDarkModeSvc.Core
                     try
                     {
                         state.ManagedThemeFile.Save();
-                        ThemeHandler.ApplyManagedTheme(builder.Config, Helper.ManagedThemePath);
+                        ThemeHandler.ApplyManagedTheme(builder.Config, Helper.PathManagedTheme);
                     }
                     catch (Exception ex)
                     {

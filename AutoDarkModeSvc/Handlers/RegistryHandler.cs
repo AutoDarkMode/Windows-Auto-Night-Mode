@@ -144,11 +144,11 @@ namespace AutoDarkModeSvc.Handlers
             if (tempTheme == null || tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
             {
                 Logger.Debug($"expected name: {activeThemeName} different from display name: {tempTheme.DisplayName} with path: {themePath}");
-                themePath = new(Path.Combine(Helper.ThemeFolderPath, "Custom.theme"));
+                themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
             }
             else
             {
-                Logger.Debug($"currently active theme: {activeThemeName}, path: {themePath}");
+                Logger.Debug($"current theme tracked by windows: {activeThemeName}, path: {themePath}");
             }
             return themePath;
         }

@@ -432,7 +432,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 if (pathThemeName == null || pathThemeName != activeThemeName && !pathThemeName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
                 {
                     Logger.Debug($"expected name: {activeThemeName} different from display name: {pathThemeName} with path: {themePath}");
-                    themePath = new(Path.Combine(Helper.ThemeFolderPath, "Custom.theme"));
+                    themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
                 else

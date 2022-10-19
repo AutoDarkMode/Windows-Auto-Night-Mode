@@ -16,6 +16,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management;
 using System.Text;
 using System.Threading;
@@ -41,8 +42,9 @@ namespace AutoDarkModeSvc.Core
             }
             return state;
         }
-        protected GlobalState() {
-             PostponeManager = new(this);
+        protected GlobalState()
+        {
+            PostponeManager = new(this);
         }
 
         private WardenModule Warden { get; set; }
@@ -54,13 +56,21 @@ namespace AutoDarkModeSvc.Core
         public Theme CurrentWallpaperTheme { get; set; } = Theme.Unknown;
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string UnmanagedActiveThemePath { get; set; } = "";
-        public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
+        public ThemeFile ManagedThemeFile { get; } = new(Helper.PathManagedTheme);
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
         public bool InitSyncSwitchPerformed { get; set; } = false;
         private NotifyIcon NotifyIcon { get; set; }
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
 
+        /// <summary>
+        /// This method is responsible for updating the internal UnmanagedActiveThemePath variable. <br/>
+        /// Without this ADM would have no idea if the applied theme is correct. <br/>
+        /// We append an UnmanagedOriginalName entry to each of adm's light or dark unmanaged theme
+        /// file. <br/> That tells us on what theme file it was based on. This way we can prevent unnecessary theme switches <br/>
+        /// Appending this extra parameter is done in ThemeHandler.ApplyTheme
+        /// </summary>
+        /// <param name="config">current adm config object</param>
         public void RefreshThemes(AdmConfig config)
         {
             if (config.WindowsThemeMode.Enabled)
@@ -69,26 +79,57 @@ namespace AutoDarkModeSvc.Core
                 {
                     UnmanagedActiveThemePath = RegistryHandler.GetActiveThemePath();
 
-                    bool unmanagedLight = UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath);
-                    bool unmanagedDark = UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath);
-                    if (unmanagedLight)
+                    // for unmanaged with flags we need to set the unmanagedactivethemepath to our internal names
+                    // This is because when using apply flags, the theme is reported as custom. However, our UnmanagedOriginalName
+                    // persists, so if we read that then we are aware of the origin theme
+                    if (config.WindowsThemeMode.ApplyFlags != null && config.WindowsThemeMode.ApplyFlags.Count > 0)
                     {
-                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedLightThemePath);
-                        (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
-                        if (displayNameUnmanaged != displayNameSource)
+                        string customPath = Path.Combine(Helper.PathThemeFolder, "Custom.theme");
+                        bool unmanagedCustom = UnmanagedActiveThemePath.Equals(customPath);
+                        if (unmanagedCustom)
                         {
-                            Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.LightThemePath}");
                             UnmanagedActiveThemePath = "";
+                            (_, string displayNameLight) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
+                            (_, string displayNameDark) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
+                            string sourceThemeNameCustom = ThemeFile.GetOriginalNameFromRaw(customPath);
+                            if (sourceThemeNameCustom == displayNameDark)
+                            {
+                                UnmanagedActiveThemePath = Helper.PathUnmanagedDarkTheme;
+                            }
+                            else if (sourceThemeNameCustom == displayNameLight)
+                            {
+                                UnmanagedActiveThemePath = Helper.PathUnmanagedLightTheme;
+                            }
+                            Logger.Debug($"refresh theme state with apply flags enabled, active theme: {(UnmanagedActiveThemePath == "" ? "undefined" : UnmanagedActiveThemePath)}");
                         }
                     }
-                    if (unmanagedDark)
+                    // for unmanaged without applyflags
+                    else
                     {
-                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedDarkThemePath);
-                        (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
-                        if (displayNameUnmanaged != displayNameSource)
+                        bool unmanagedLight = UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedLightTheme);
+                        bool unmanagedDark = UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedDarkTheme);
+
+                        // check if an unmanaged theme is active. If so, extract the original name from the theme path
+                        // This way, we know which origin theme is active and don't have to switch
+                        if (unmanagedLight)
                         {
-                            Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.DarkThemePath}");
-                            UnmanagedActiveThemePath = "";
+                            string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.PathUnmanagedLightTheme);
+                            (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
+                            if (displayNameUnmanaged != displayNameSource)
+                            {
+                                Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.LightThemePath}");
+                                UnmanagedActiveThemePath = "";
+                            }
+                        }
+                        if (unmanagedDark)
+                        {
+                            string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.PathUnmanagedDarkTheme);
+                            (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
+                            if (displayNameUnmanaged != displayNameSource)
+                            {
+                                Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.DarkThemePath}");
+                                UnmanagedActiveThemePath = "";
+                            }
                         }
                     }
                 }

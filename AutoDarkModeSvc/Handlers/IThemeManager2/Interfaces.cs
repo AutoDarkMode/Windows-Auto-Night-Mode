@@ -19,12 +19,9 @@
 // SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
-using static AutoDarkModeSvc.Handlers.IThemeManager2.Flags;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers.IThemeManager2
 {

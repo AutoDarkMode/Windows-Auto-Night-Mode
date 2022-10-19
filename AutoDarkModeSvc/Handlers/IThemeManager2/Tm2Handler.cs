@@ -41,7 +41,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
-using static AutoDarkModeSvc.Handlers.IThemeManager2.Flags;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers.IThemeManager2
 {
@@ -79,21 +79,35 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
             return manager;
         }
 
-
-        private static bool SetThemeViaIdx(Theme2Wrapper theme, Interfaces.IThemeManager2 manager)
+        /// <summary>
+        /// Sets a theme via the provided theme index
+        /// </summary>
+        /// <param name="theme">the theme wrapper file that should be used to apply the theme, containing the index</param>
+        /// <param name="manager">the theme manager com object that MUST be within the same thread as this method</param>
+        /// <param name="flags">application flags to ignore certain parts of theme switching</param>
+        /// <returns></returns>
+        /// <exception cref="ExternalException"></exception>
+        private static bool SetThemeViaIdx(Theme2Wrapper theme, Interfaces.IThemeManager2 manager, ThemeApplyFlags flags)
         {
 
-            int res = manager.SetCurrentTheme(IntPtr.Zero, theme.Idx, 1, 0, 0);
+            int res = manager.SetCurrentTheme(IntPtr.Zero, theme.Idx, 1, flags, 0);
             if (res != 0)
             {
                 throw new ExternalException($"error setting theme via id, hr: {res}", res);
             }
             return true;
         }
-
+        /// <summary>
+        /// This does not work. ignores the silent flag. opens control panel when switching themes.
+        /// Use at your own risk...
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="manager"></param>
+        /// <returns></returns>
+        /// <exception cref="ExternalException"></exception>
         private static bool SetThemeViaPath(string path, Interfaces.IThemeManager2 manager)
         {
-            int res = manager.OpenTheme(IntPtr.Zero, path, ThemePackFlags.ThemepackFlagSilent);
+            int res = manager.OpenTheme(IntPtr.Zero, path, ThemePackFlags.Silent);
             if (res != 0)
             {
                 throw new ExternalException($"error setting theme via path, hr: {res}", res);
@@ -106,7 +120,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
         /// </summary>
         /// <param name="path">the path of the theme file</param>
         /// <returns>the first tuple entry is true if the theme was found, the second is true if theme switching was successful</returns>
-        public static (bool, bool) SetTheme(string displayName, string originalPath)
+        public static (bool, bool) SetTheme(string displayName, string originalPath, List<ThemeApplyFlags> flagList = null, bool suppressLogging = false)
         {
             bool found = false;
             bool success = false;
@@ -114,6 +128,16 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
             if (displayName == null)
             {
                 return (found, success);
+            }
+
+            ThemeApplyFlags flags = 0;
+            if (flagList != null && flagList.Count > 0)
+            {
+                flagList.ForEach(f =>
+                {
+                    // never allow color ignore flag to be set as this breaks win 11 theme switching
+                    if (f != ThemeApplyFlags.IgnoreColor) flags |= f;
+                });
             }
 
             Thread thread = new(() =>
@@ -136,10 +160,10 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                         if (targetTheme != null)
                         {
                             found = true;
-                            success = SetThemeViaIdx(targetTheme, manager);
+                            success = SetThemeViaIdx(targetTheme, manager, flags);
                             if (success)
                             {
-                                Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
+                                if (suppressLogging) Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
                             }
                         }
                         else
@@ -172,7 +196,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
 
         }
 
-        public static List<Theme2Wrapper> GetThemeList(Interfaces.IThemeManager2 manager)
+        private static List<Theme2Wrapper> GetThemeList(Interfaces.IThemeManager2 manager)
         {
             List<Theme2Wrapper> list = new();
 

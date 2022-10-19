@@ -24,6 +24,8 @@ using AutoDarkModeSvc.Core;
 using AutoDarkModeLib.Configs;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
 using AutoDarkModeSvc.Handlers.IThemeManager;
+using System.Collections.Generic;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -61,12 +63,12 @@ namespace AutoDarkModeSvc.Handlers
 
             // TODO change tracking when having active theme monitor disabled
             if (newTheme == Theme.Dark && (skipCheck ||
-                (!state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath))))
+                (!state.UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedDarkTheme))))
             {
                 return true;
             }
             else if (newTheme == Theme.Light && (skipCheck ||
-                (!state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath))))
+                (!state.UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedLightTheme))))
             {
                 return true;
             }
@@ -91,17 +93,17 @@ namespace AutoDarkModeSvc.Handlers
             }
             if (newTheme == Theme.Light)
             {
-                ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.UnmanagedLightThemePath);
+                ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
                 light.UnmanagedOriginalName = light.DisplayName;
-                light.DisplayName = Helper.UnmanagedLightThemeName;
+                light.DisplayName = Helper.NameUnmanagedLightTheme;
                 ThemeFile.PatchColorsWin11AndSave(light, "0 0 1");
                 Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
             }
             else if (newTheme == Theme.Dark)
             {
-                ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.UnmanagedDarkThemePath);
+                ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
                 dark.UnmanagedOriginalName = dark.DisplayName;
-                dark.DisplayName = Helper.UnmanagedDarkThemeName;
+                dark.DisplayName = Helper.NameUnmanagedDarkTheme;
                 ThemeFile.PatchColorsWin11AndSave(dark, "0 1 0");
                 Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
             }
@@ -143,11 +145,11 @@ namespace AutoDarkModeSvc.Handlers
             return themeName;
         }
 
-        private static void ApplyIThemeManager(string originalPath, bool suppressLogging = false, ThemeFile unmanaged = null)
+        private static bool ApplyIThemeManager(string originalPath, bool suppressLogging = false, ThemeFile unmanaged = null)
         {
 
             string themeFilePath = unmanaged != null ? unmanaged.ThemeFilePath : originalPath;
-
+            bool success = false;
             /*Exception applyEx = null;*/
             Thread thread = new(() =>
             {
@@ -160,6 +162,7 @@ namespace AutoDarkModeSvc.Handlers
                         if (unmanaged != null) Logger.Info($"applied theme \"{originalPath}\" via IThemeManager");
                         else Logger.Info($"applied theme \"{themeFilePath}\" via IThemeManager");
                     }
+                    success = true;
                 }
                 catch (Exception ex)
                 {
@@ -179,6 +182,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Error(ex, "theme handler thread was interrupted");
             }
+            return success;
         }
 
         private static void ApplyIThemeManager2(string originalPath, bool suppressLogging = false, ThemeFile unmanagedPatched = null)
@@ -189,11 +193,17 @@ namespace AutoDarkModeSvc.Handlers
 
             bool tm2Found = false;
             bool tm2Success = false;
+            bool tmSuccess = false;
             string displayNameFromFile = null;
             try
             {
+                List<ThemeApplyFlags> flagList = null;
+                if (builder.Config.WindowsThemeMode.Enabled)
+                {
+                    flagList = builder.Config.WindowsThemeMode.ApplyFlags;
+                }
                 (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
-                (tm2Found, tm2Success) = IThemeManager2.Tm2Handler.SetTheme(displayNameFromFile, originalPath);
+                (tm2Found, tm2Success) = IThemeManager2.Tm2Handler.SetTheme(displayNameFromFile, originalPath, flagList: flagList, suppressLogging: suppressLogging);
             }
             catch (Exception ex)
             {
@@ -202,7 +212,7 @@ namespace AutoDarkModeSvc.Handlers
 
             if (!tm2Found && tm2Success)
             {
-                Logger.Warn("theme name not found in IThemeManager2, using mitigation");
+                Logger.Warn("theme name not found in IThemeManager2, using mitigation (ignores ignore flags)");
                 ApplyIThemeManager(themeFilePath, suppressLogging);
                 string displayNameApi = GetCurrentThemeName();
                 if (!state.LearnedThemeNames.ContainsKey(displayNameFromFile))
@@ -217,7 +227,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
             }
 
-            state.UnmanagedActiveThemePath = themeFilePath;
+            if (tm2Success || tmSuccess) state.UnmanagedActiveThemePath = themeFilePath;
 
             DateTime end = DateTime.Now;
             TimeSpan elapsed = end - start;
@@ -257,10 +267,10 @@ namespace AutoDarkModeSvc.Handlers
             switch (theme)
             {
                 case Theme.Light:
-                    themePath = Helper.UnmanagedLightThemePath;
+                    themePath = Helper.PathUnmanagedLightTheme;
                     break;
                 case Theme.Dark:
-                    themePath = Helper.UnmanagedDarkThemePath;
+                    themePath = Helper.PathUnmanagedDarkTheme;
                     break;
             }
             if (builder.Config.WindowsThemeMode.Enabled

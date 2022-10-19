@@ -16,6 +16,7 @@
 #endregion
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeLib.IThemeManager2;
 using AutoDarkModeSvc.Communication;
 using ModernWpf.Media.Animation;
 using System;
@@ -26,6 +27,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeApp.Pages
@@ -77,8 +79,13 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxLightTheme.ItemsSource = themeNames;
                 ThemeFile lightSelected = themeCollection.FirstOrDefault(t => t.Path == builder.Config.WindowsThemeMode.LightThemePath);
                 ThemeFile darkSelected = themeCollection.FirstOrDefault(t => t.Path == builder.Config.WindowsThemeMode.DarkThemePath);
+
+
                 if (lightSelected != null) ComboBoxLightTheme.SelectedItem = lightSelected.ToString();
                 if (darkSelected != null) ComboBoxDarkTheme.SelectedItem = darkSelected.ToString();
+
+                UpdateIgnoreStackPanel();
+
             }
 
             if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
@@ -99,6 +106,55 @@ namespace AutoDarkModeApp.Pages
                 theme2 = false;
                 TextBlockUserFeedback.Visibility = Visibility.Collapsed;
             }
+
+            UpdateApplyFlagCheckBoxes();
+
+        }
+
+        private void UpdateApplyFlagCheckBoxes()
+        {
+            CheckBoxIgnoreBackground.IsChecked = false;
+            CheckBoxIgnoreCursor.IsChecked = false;
+            CheckBoxIgnoreDesktopIcons.IsChecked = false;
+            CheckBoxIgnoreSound.IsChecked = false;
+
+            builder.Config.WindowsThemeMode.ApplyFlags.ForEach(f =>
+            {
+                switch (f)
+                {
+                    case ThemeApplyFlags.IgnoreBackground:
+                        CheckBoxIgnoreBackground.IsChecked = true;
+                        break;
+                    case ThemeApplyFlags.IgnoreCursor:
+                        CheckBoxIgnoreCursor.IsChecked = true;
+                        break;
+                    case ThemeApplyFlags.IgnoreDesktopIcons:
+                        CheckBoxIgnoreDesktopIcons.IsChecked = true;
+                        break;
+                    case ThemeApplyFlags.IgnoreSound:
+                        CheckBoxIgnoreSound.IsChecked = true;
+                        break;
+                }
+            });
+        }
+
+        private void UpdateIgnoreStackPanel()
+        {
+            ThemeFile lightThemeSelected = themeCollection.FirstOrDefault(t => t.Name == (string)ComboBoxLightTheme.SelectedItem);
+            ThemeFile darkThemeSelected = themeCollection.FirstOrDefault(t => t.Name == (string)ComboBoxDarkTheme.SelectedItem);
+
+            if (lightThemeSelected == null || darkThemeSelected == null || lightThemeSelected.IsWindowsTheme || darkThemeSelected.IsWindowsTheme)
+            {
+                StackPanelIgnoreSettings.IsEnabled = false;
+                IgnoreDisableMessage.Visibility = Visibility.Visible;
+                if (!init) builder.Config.WindowsThemeMode.ApplyFlags.Clear();
+                UpdateApplyFlagCheckBoxes();
+            }
+            else
+            {
+                StackPanelIgnoreSettings.IsEnabled = true;
+                IgnoreDisableMessage.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void DisableThemeMode()
@@ -115,7 +171,7 @@ namespace AutoDarkModeApp.Pages
         {
             ComboBoxDarkTheme.IsEnabled = true;
             ComboBoxLightTheme.IsEnabled = true;
-            if(!init && ComboBoxDarkTheme.SelectedItem != null && ComboBoxLightTheme.SelectedItem != null)
+            if (!init && ComboBoxDarkTheme.SelectedItem != null && ComboBoxLightTheme.SelectedItem != null)
             {
                 SaveThemeSettings();
             }
@@ -214,7 +270,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ToggleSwitchThemeMode_Toggled(object sender, RoutedEventArgs e)
         {
-            if(ToggleSwitchThemeMode.IsOn == true)
+            if (ToggleSwitchThemeMode.IsOn == true)
             {
                 EnableThemeMode();
             }
@@ -258,6 +314,8 @@ namespace AutoDarkModeApp.Pages
                 theme2 = true;
             }
 
+            UpdateIgnoreStackPanel();
+
             if ((theme1 || theme2) && !init)
             {
                 SaveThemeSettings();
@@ -271,7 +329,7 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockOpenImmersiveControlPanel_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter | e.Key == Key.Space)
+            if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 TextBlockOpenImmersiveControlPanel_MouseDown(this, null);
             }
@@ -301,7 +359,7 @@ namespace AutoDarkModeApp.Pages
 
         private void TextBlockOpenThemeFolder_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter | e.Key == Key.Space)
+            if (e.Key == Key.Enter | e.Key == Key.Space)
             {
                 TextBlockOpenThemeFolder_MouseDown(this, null);
             }
@@ -325,6 +383,26 @@ namespace AutoDarkModeApp.Pages
                     builder.Config.WindowsThemeMode.MonitorActiveTheme = false;
                 }
             }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxMonitorActiveTheme");
+            }
+        }
+
+        private void CheckBoxIgnoreFlag_Click(object sender, RoutedEventArgs e)
+        {
+            List<ThemeApplyFlags> flags = new();
+
+            if (CheckBoxIgnoreBackground.IsChecked ?? false) flags.Add(ThemeApplyFlags.IgnoreBackground);
+            if (CheckBoxIgnoreCursor.IsChecked ?? false) flags.Add(ThemeApplyFlags.IgnoreCursor);
+            if (CheckBoxIgnoreDesktopIcons.IsChecked ?? false) flags.Add(ThemeApplyFlags.IgnoreDesktopIcons);
+            if (CheckBoxIgnoreSound.IsChecked ?? false) flags.Add(ThemeApplyFlags.IgnoreSound);
+            builder.Config.WindowsThemeMode.ApplyFlags = flags;
+
             try
             {
                 builder.Save();

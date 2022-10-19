@@ -35,9 +35,9 @@ namespace AutoDarkModeApp.Handlers
             {
                 List<string> files = Directory.EnumerateFiles(ThemeFolderPath, "*.*", SearchOption.AllDirectories).ToList();
                 files = files.Where(f => f.EndsWith(".theme") 
-                    && !f.Contains(Helper.UnmanagedDarkThemePath) 
-                    && !f.Contains(Helper.UnmanagedLightThemeName) 
-                    && !f.Contains(Helper.ManagedThemePath))
+                    && !f.Contains(Helper.PathUnmanagedDarkTheme) 
+                    && !f.Contains(Helper.NameUnmanagedLightTheme) 
+                    && !f.Contains(Helper.PathManagedTheme))
                 .ToList();
                 List<ThemeFile> themeFiles = files.Select(f => new ThemeFile(f)).ToList();
                 InjectWindowsThemes(themeFiles);
@@ -82,10 +82,12 @@ namespace AutoDarkModeApp.Handlers
         public ThemeFile(string path, string name) : this(path)
         {
             Name = name;
+            IsWindowsTheme = true;
         }
 
         public string Path { get; }
         public string Name { get; }
+        public bool IsWindowsTheme { get; }
         public override string ToString()
         {
             return Name;

@@ -1924,6 +1924,42 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ignore background.
+        /// </summary>
+        public static string ThemeCheckBoxIgnoreBackground {
+            get {
+                return ResourceManager.GetString("ThemeCheckBoxIgnoreBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore cursor.
+        /// </summary>
+        public static string ThemeCheckBoxIgnoreCursor {
+            get {
+                return ResourceManager.GetString("ThemeCheckBoxIgnoreCursor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore desktop icons.
+        /// </summary>
+        public static string ThemeCheckBoxIgnoreDesktopIcons {
+            get {
+                return ResourceManager.GetString("ThemeCheckBoxIgnoreDesktopIcons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore sound.
+        /// </summary>
+        public static string ThemeCheckBoxIgnoreSound {
+            get {
+                return ResourceManager.GetString("ThemeCheckBoxIgnoreSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Theme:.
         /// </summary>
         public static string ThemeDark {
@@ -1942,11 +1978,29 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ignore settings.
+        /// </summary>
+        public static string ThemeHeaderIgnoreFlags {
+            get {
+                return ResourceManager.GetString("ThemeHeaderIgnoreFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick your themes.
         /// </summary>
         public static string ThemeHeaderPick {
             get {
                 return ResourceManager.GetString("ThemeHeaderPick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This option does not support default Windows themes.
+        /// </summary>
+        public static string ThemeIgnoreDisabledMessage {
+            get {
+                return ResourceManager.GetString("ThemeIgnoreDisabledMessage", resourceCulture);
             }
         }
         

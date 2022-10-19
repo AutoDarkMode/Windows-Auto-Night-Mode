@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using AutoDarkModeLib.ComponentSettings;
 using AutoDarkModeLib.ComponentSettings.Base;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeLib.Configs
 {
@@ -125,6 +126,7 @@ namespace AutoDarkModeLib.Configs
         public string DarkThemePath { get; set; }
         public string LightThemePath { get; set; }
         public bool MonitorActiveTheme { get; set; }
+        public List<ThemeApplyFlags> ApplyFlags { get; set; } = new();
     }
 
     public class Events
