@@ -1,3 +1,4 @@
+﻿extensions: designer.cs generated.cs
 extensions: .cs
 #region copyright
 //  Copyright (C) 2022 Auto Dark Mode
