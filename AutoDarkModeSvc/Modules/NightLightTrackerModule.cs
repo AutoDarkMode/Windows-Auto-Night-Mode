@@ -119,7 +119,8 @@ namespace AutoDarkModeSvc.Modules
             Theme newTheme = enabled ? Theme.Dark : Theme.Light;
             if (newTheme != requestedTheme)
             {
-                lastNightLightQueryTime = DateTime.Now;
+                if (init) lastNightLightQueryTime = DateTime.Now.AddHours(-24);
+                else lastNightLightQueryTime = DateTime.Now;
                 requestedTheme = newTheme;
                 Logger.Info($"night light status enabled changed to {enabled}");
                 bool isSkipNext = state.PostponeManager.GetSkipNextSwitchItem() != null;
