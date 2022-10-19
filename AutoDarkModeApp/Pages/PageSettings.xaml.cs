@@ -144,7 +144,7 @@ namespace AutoDarkModeApp.Pages
                 TextBlockUpdateInfo.Text = $"{AdmProperties.Resources.UpdatesTextBlockLastChecked}: {builder.UpdaterData.LastCheck}";
 
             }
-            CheckBoxEnableUpdater.IsChecked = builder.Config.Updater.Enabled;
+            ToggleSwitchEnableUpdater.IsOn = builder.Config.Updater.Enabled;
             UpdatesStackPanelOptions.IsEnabled = builder.Config.Updater.Enabled;
             switch (builder.Config.Updater.DaysBetweenUpdateCheck)
             {
@@ -557,9 +557,9 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void CheckBoxEnableUpdater_Click(object sender, RoutedEventArgs e)
+        private void ToggleSwitchEnableUpdater_Click(object sender, RoutedEventArgs e)
         {
-            if ((sender as CheckBox).IsChecked.Value)
+            if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
             {
                 builder.Config.Updater.Enabled = true;
                 UpdatesStackPanelOptions.IsEnabled = true;

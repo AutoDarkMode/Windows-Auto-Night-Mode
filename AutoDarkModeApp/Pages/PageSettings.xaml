@@ -225,11 +225,13 @@
                            FontSize="14"
                            Foreground="Gray" />
 
-                <CheckBox x:Name="CheckBoxEnableUpdater"
-                          Margin="0,20,0,0"
-                          Content="{x:Static p:Resources.cbBackgroundUpdate}"
-                          Click="CheckBoxEnableUpdater_Click" />
-
+                <ui:ToggleSwitch Name="ToggleSwitchEnableUpdater"
+                                 OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                 OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                                 Grid.Row="0"
+                                 Margin="0,20,0,0"
+                                 Header="{x:Static p:Resources.cbBackgroundUpdate}"
+                                 Toggled="ToggleSwitchEnableUpdater_Click" />
 
                 <StackPanel Name="UpdatesStackPanelOptions">
                     <TextBlock Margin="0,20,0,0"

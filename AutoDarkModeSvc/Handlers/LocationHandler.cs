@@ -18,8 +18,6 @@ using System;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using AutoDarkModeLib;
-using System.Runtime.CompilerServices;
-using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers
