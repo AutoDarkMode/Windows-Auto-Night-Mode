@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Автоматическая смена темы</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Зависит от текущей</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Всегда темная</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Всегда белая</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Включить фичи для Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Приложения:</value>
+  </data>
+  <data name="lblAuthor" xml:space="preserve">
+    <value>Автор: Armin Osaj © 2019</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Время смены темы</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Темная</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Темная тема</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (Старая версия):</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Светлая тема</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Сменить текущую тему</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>Система:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Используемое стороннее ПО</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Обновления</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>В зависимости от локации</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>Изменения сохранены!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>Нажмите "Применить" для сохранения изменений</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Скачать обновление</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>Ошибка :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>Необходимо разрешение на использование локации</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>Нет новых обновлений.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Определяем локацию...</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>Поиск обновлений...</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Внимание: мы не можем определить текушую тему.</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>Доступно новое обновление!</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Спасибо за использование Auto Dark Mode!
+
+Новая версия доступна на GitHub с исправлениями и новвоведениями.
+Хотите скачать её?
+
+Сейчас установлена версия: {0}, новая: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Проверить обновления</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>Мы автоматически проверяем обновления при запуске программы.</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Добро пожаловать</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Поставьте галочку для включения автоматической смены тем</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Недоступно, потому-что вы не установили Windows 10 April 2019 Update.</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Перезагрузите приложение, чтобы изменения вступили в силу</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Язык:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Менять цвет панели задач</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Сейчас:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Обои для темной темы</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Удалить/Отключить</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Выбрать файл</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Обои для светлой темы</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Обои</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Картинки</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Выберите обе картинки</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Выберите изображение</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Настроить рабочий стол</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>использовать текущие</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>или</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Возможно изображение испорчено или не существует.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Невозможно сгенерировать превью изображения!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Невозможно сохранить настройки!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Произошла ошибка</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Видно только в темной теме.
+ Если у вас возникли проблемы: увеличьте задержку переключения в настройках.</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Инфо</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12-часовое время</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Привет! Спасибо за использование Auto Dark Mode! Вам нравится?
+
+Это приложение делает вашу повседневную жизнь более приятной, помогая заботиться о ваших глазах. В то же время, оно абсолютно бесплатно, без рекламы, не собирает данные о пользователе и имеет открытый исходный код.
+Я не получаю никакой прибыли с этого проекта.
+
+По этой причине вы можете поддержать меня добровольным пожертвованием. Даже от небольшой суммы я буду прыгать от счастья по квартире. Просто пожертвуйте столько, насколько вы оцениваете мою работу.</value>
+  </data>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Вам нравится Auto Dark Mode?</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Скачать расширение</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Изменение после Connected Standby (не рекомендуется)</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Альтернативная светлая тема</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Использовать цветовой фильтр в серых оттенках (отправляет Win+Ctrl+C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Использовать задачу входа вместо записи в автозапуске</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Поддержка нескольких пользователей</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Зачем пожертвовать?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Как пожертвовать?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Вы можете отправить мне деньги через PayPal. Это полностью добровольно и не следует ожидать любой компенсации</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Мы столкнулись со следующей проблемой: 
+{0}. 
+
+Сейчас мы попробуем решить её запустив алгоритм как администратор. Возможно это поможет. 
+Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+
+И кстати: пожалуйста, НИКОГДА не запускайте Auto Dark Mode от имени администратора!</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>не найдено</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Приложения</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Пожертвовать</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Время</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Фон/Тема</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Открыть папку</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Установить пользовательские часы</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>От рассвета до заката</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Перезапустить</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Задержка переключения цвета панели задач (мс):</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Рекомендованные инструменты</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Это расширение обеспечивает следование теме системы на сайтах в Chrome, Firefox и Edge</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Нужна помощь в решении проблемы?</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Опциональная задержка для активации цветового фильтра в серых оттенках</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Во время применения темы возникла ошибка, мы выключили переключение тем</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Во время применения файла .theme произошла ошибка. Возможно, созданная вами тема была удалена или перемещена. Поэтому мы сейчас отключили переключение тем. Чтобы включить его заново, пожалуйста, откройте Auto Dark Mode и сконфигурируйте {0} Настройки</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Тёмная тема:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Создайте свои темы</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Выберите свои темы</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Светлая тема:</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Выберите режим:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Темы Windows (больше возможностей)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Фон рабочего стола (рекомендуется)</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Шаг</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Нажмите тут, чтобы открыть настройки темы Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Теперь установите светлый цвет Windows в разделе Цвета для светлой темы. Выберите любимый фон, курсор мыши и основной цвет.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Вернитесь обратно к настройкам темы и сохраните свою тему</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Повторите процесс для тёмной темы</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Эти параметры выключены во время использования темы Windows.
+Вы можете настроить это отдельно в вашей теме Windows.</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Скачать позже</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Никогда не напоминать</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Скачать сейчас</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>В последние пару месяцев мы усердно работали, чтобы предоставить вам наилучшее возможное обновление. Теперь оно здесь!
+
+Auto Dark Mode X был полностью переписан с нуля. Теперь он использует реальную фоновую задачу вместо того, чтобы полагаться на планировщик задач Windows. Это означает, что вы получите более надежный и гибкий способ переключения тем!
+
+Да, это потребляет больше ресурсов в фоновом режиме, но взамен мы предлагаем вам больше возможностей для повышения вашей производительности. Например:
+- Игровой режим: отключено переключение тем, когда вы играете в игру или ваш графический процессор занят.
+- Переключение темы с помощью сочетаний клавиш
+И больше!
+
+Обновление подходит всем, кроме владельцев устройства ARM. У них будут проблемы с временем автономной работы, потому что фоновый процесс должен быть эмулирован (только там!).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X доступен</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Версия X — это классное и большое обновление, которое вы обязательно должны попробовать! Вы уверены, что не хотите загрузить его? Вы больше не получите напоминание!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Вы уверены?</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Мобильные устройства, такие как продукты Microsoft Surface, используют новый вид режима ожидания.
+Включение этой опции гарантирует, что Auto Dark Mode немедленно переключит тему после пробуждения компьютера.
+Но это также сокращает время работы от батареи, поэтому активируйте ТОЛЬКО при необходимости!</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Искать обновления в фоне</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Выбрать тему</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Выбрать обои</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Скрыть иконку в трее (не рекомендуется)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Эта функция отключена, пока включен выбор темы.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Эта функция отключена, пока включен выбор обоев.</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Включить смену тем</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Откл.</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Вкл.</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Географические координаты</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Данные местоположения</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>От рассвета до заката (географические координаты)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Гео координаты для твоего местоположения</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Широта</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Долгота</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Смещение</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Смена режимов</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Условия</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Не переключать тему при запуске видеоигры</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Устройства с питанием от батареи</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Включать темный режим, когда устройство отключается от сети</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Предлагает больше возможностей, но вам необходимо настроить файлы тем. Настройте обои рабочего стола для каждого монитора, установите несколько обоев на слайд-шоу, измените курсор мыши, установите цвета и отдельные звуки.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Предлагает меньше функций, но проще в настройке. Настройте обои рабочего стола для всех мониторов, отдельных мониторов или установите цвет фона.</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Включить смену обоев</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Восстанавливать темы при внешнем (ручном) изменении</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Включить режим энергосбережения при смене тем</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Это работает только в том случае, если вы вручную не включили экономию заряда батареи!</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Мы проверяем наличие новых версий Auto Dark Mode в фоновом режиме. Когда обновление будет доступно, мы сообщим вам об этом с помощью всплывающего уведомления</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Последняя проверка</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Интервал проверки обновлений</value>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Каждый день</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 дней</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 дня</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 дней</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Проверять обновления при запуске Auto Dark Mode</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Автоматически загружать и устанавливать новые версии</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Не показывать уведомления</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Выбрать канал обновления</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Файлы настроек</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Открыть файл настроек</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Открыть папку настроек</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Открыть логи</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Следите за нами</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Режим</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Монитор</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Удалить отсоединённые мониторы</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Обои</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Тёмная тема</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Светлая тема</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Изображение (несколько мониторов)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Сплошной цвет</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Персонализация</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Применить координаты</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Установить</value>
+  </data>
+</root>

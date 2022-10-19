@@ -1,0 +1,297 @@
+﻿<Page x:Class="AutoDarkModeApp.Pages.PageSwitchModes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+      mc:Ignorable="d"
+      d:DesignHeight="1200"
+      d:DesignWidth="800"
+      Title="PageSwitchModes"
+      Height="Auto"
+      Width="Auto">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!-- Page Title -->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="0,0,0,0"
+                   Text="{x:Static p:Resources.NavbarSwitchModes}"
+                   FontFamily="Segoe UI Semilight"
+                   FontSize="30" />
+
+        <ui:SimpleStackPanel Grid.Row="3"
+                             Grid.Column="1"
+                             Margin="0,0,0,0"
+                             Orientation="Vertical">
+
+            <TextBlock Name="TextBlockConditions"
+                       Margin="0,10,0,10"
+                       Text="{x:Static p:Resources.SwitchModesTextBlockHeaderConditions}"
+                       FontFamily="Segoe UI"
+                       FontSize="19" />
+
+            <CheckBox Name="CheckBoxGPUMonitoring"
+                      Content="{x:Static p:Resources.SwitchModesCheckBoxGPUMonitoring}"
+                      Margin="0,0,0,0"
+                      Click="CheckBoxGPUMonitoring_Click" />
+
+            <ui:SimpleStackPanel Name="StackPanelGPUMonitoring"
+                                 HorizontalAlignment="Left"
+                                 Orientation="Vertical">
+
+                <TextBlock Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.SwitchModesTextBlockMinimumUsage}"
+                           FontSize="14" />
+
+                <ui:NumberBox Name="NumberBoxGPUThreshold"
+                              Margin="0,5,0,0"
+                              HorizontalAlignment="Left"
+                              MinWidth="160"
+                              Minimum="0"
+                              Maximum="100"
+                              SpinButtonPlacementMode="Inline"
+                              SmallChange="5"
+                              LargeChange="5"
+                              ValueChanged="NumberBoxGPUThreshold_ValueChanged" />
+
+                <TextBlock Margin="0,20,0,0"
+                           Text="{x:Static p:Resources.SwitchModesTextBlockGPUUsageDetectionSpeed}"
+                           FontSize="14" />
+
+                <ComboBox Name="ComboBoxGPUSamples"
+                          Margin="0,5,0,0"
+                          MinWidth="160"
+                          SelectionChanged="ComboBoxGPUSamples_SelectionChanged">
+
+                    <ComboBoxItem Tag="1"
+                                  Content="{x:Static p:Resources.SwitchModesComboBoxItemSamplesFast}" />
+                    <ComboBoxItem Tag="2"
+                                  Content="{x:Static p:Resources.SwitchModesComboBoxItemSamplesMedium}" />
+                    <ComboBoxItem Tag="3"
+                                  Content="{x:Static p:Resources.SwitchModesComboBoxItemSamplesSlow}" />
+                </ComboBox>
+            </ui:SimpleStackPanel>
+
+            <CheckBox Name="CheckBoxIdleTimer"
+                      Content="{x:Static p:Resources.SwitchModesCheckBoxIdleTimer}"
+                      Margin="0,25,0,0"
+                      Click="CheckBoxIdleTimer_Click" />
+
+            <ui:SimpleStackPanel Name="StackPanelIdleTimer"
+                                 HorizontalAlignment="Left"
+                                 Orientation="Vertical">
+                <TextBlock Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.SwitchModesTextBlockIdleTimerDescription}"
+                           FontSize="14" />
+                <ui:NumberBox Name="NumberBoxIdleTimer"
+                              Margin="0,5,0,0"
+                              HorizontalAlignment="Left"
+                              MinWidth="160"
+                              Minimum="1"
+                              SpinButtonPlacementMode="Inline"
+                              SmallChange="1"
+                              LargeChange="1"
+                              ValueChanged="NumberBoxIdleTimer_ValueChanged" />
+            </ui:SimpleStackPanel>
+
+
+            <CheckBox Name="CheckBoxAutoSwitchNotify"
+                      Content="{x:Static p:Resources.SwitchModesCheckBoxAutoSwitchNotification}"
+                      Margin="0,25,0,0"
+                      Click="CheckBoxAutoSwitchNotify_Click" />
+            <ui:SimpleStackPanel Name="StackPanelAutoSwitchNotify">
+                <TextBlock Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.SwitchModesTextBlockAutoSwitchGracePeriod}"
+                           FontSize="14" />
+                <ui:NumberBox Name="NumberBoxAutoSwitchNotifyGracePeriod"
+                              Margin="0,5,0,0"
+                              HorizontalAlignment="Left"
+                              MinWidth="160"
+                              Minimum="1"
+                              SpinButtonPlacementMode="Inline"
+                              SmallChange="1"
+                              LargeChange="1"
+                              ValueChanged="NumberBoxAutoSwitchNotifyGracePeriod_ValueChanged" />
+            </ui:SimpleStackPanel>
+
+            <TextBlock Name="TextBlockBatteryPowered"
+                       Margin="0,40,0,10"
+                       Text="{x:Static p:Resources.SwitchModesTextBlockHeaderBatteryPowered}"
+                       FontFamily="Segoe UI"
+                       FontSize="19" />
+
+            <CheckBox Name="CheckBoxBatteryDarkMode"
+                      Content="{x:Static p:Resources.cbSettingsBatteryDarkMode}"
+                      Margin="0,0,0,0"
+                      Click="CheckBoxBatteryDarkMode_Click" />
+
+            <TextBlock Name="TextBlockHotkeys"
+                       Margin="0,40,0,10"
+                       Text="{x:Static p:Resources.SwitchModesTextBlockHeaderHotkeys}"
+                       FontFamily="Segoe UI"
+                       FontSize="19" />
+
+            <ui:ToggleSwitch Name="ToggleHotkeys"
+                             OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                             OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                             Grid.Row="0"
+                             Margin="0,10,0,0"
+                             Header="{x:Static p:Resources.SwitchModesToggleHeaderHotkey}"
+                             Toggled="ToggleHotkeys_Toggled" />
+
+            <TextBlock Name="TextBlockHotkeyEditHint"
+                       Foreground="#999999"
+                       Text="{x:Static p:Resources.SwitchModesHotkeyEditHint}"
+                       FontSize="14" />
+
+            <Grid Name="GridHotkeys">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0"
+                                     Grid.Row="0">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderForceLight}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxForceLight"
+                             PreviewKeyDown="HotkeyTextboxForceLight_PreviewKeyDown" />
+                </ui:SimpleStackPanel>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0"
+                                     Grid.Row="1">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderForceDark}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxForceDark"
+                             PreviewKeyDown="HotkeyTextboxForceDark_PreviewKeyDown" />
+                </ui:SimpleStackPanel>
+
+
+                <ui:SimpleStackPanel Margin="0,10,0,0"
+                                     Grid.Row="2">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderNoForce}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxNoForce"
+                             PreviewKeyDown="HotkeyTextboxNoForce_PreviewKeyDown" />
+                </ui:SimpleStackPanel>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0"
+                                     Grid.Row="3">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.ToggleTheme}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxToggleTheme"
+                             PreviewKeyDown="HotkeyTextboxToggleTheme_PreviewKeyDown" />
+                </ui:SimpleStackPanel>
+
+                <ui:SimpleStackPanel Margin="0,10,0,0"
+                                     Grid.Row="4">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxToggleAutomaticThemeSwitch"
+                             PreviewKeyDown="HotkeyTextToggleAutomaticThemeSwitch_PreviewKeyDown" />
+                    <CheckBox Name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification"
+                              Content="{x:Static p:Resources.HotkeyCheckboxToggleAutomaticThemeSwitchNotification}"
+                              Click="HotkeyCheckboxToggleAutomaticThemeSwitchNotification_Click"></CheckBox>
+                </ui:SimpleStackPanel>
+
+                <ui:SimpleStackPanel Margin="0,5,0,0"
+                                     Grid.Row="5">
+                    <TextBlock FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderTogglePostpone}" />
+                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBox HorizontalAlignment="Left"
+                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                             Width="240"
+                             Margin="0,5,0,0"
+                             Grid.Column="1"
+                             Name="HotkeyTextboxTogglePostpone"
+                             PreviewKeyDown="HotkeyTextboxTogglePostpone_PreviewKeyDown" />
+                    <CheckBox Name="HotkeyCheckboxTogglePostpone"
+                              Content="{x:Static p:Resources.HotkeyCheckboxToggleAutomaticThemeSwitchNotification}"
+                              Click="HotkeyCheckboxTogglePostpone_Click"></CheckBox>
+                </ui:SimpleStackPanel>
+
+            </Grid>
+        </ui:SimpleStackPanel>
+    </Grid>
+</Page>

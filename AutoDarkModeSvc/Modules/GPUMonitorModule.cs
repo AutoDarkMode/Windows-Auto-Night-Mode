@@ -1,4 +1,5 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeLib;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 using System;
@@ -6,31 +7,33 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Modules
 {
     class GPUMonitorModule : AutoDarkModeModule
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static readonly string NoSwitch = "no_switch_pending";
+        //private static readonly string NoSwitch = "no_switch_pending";
         private static readonly string ThreshLow = "threshold_low";
-        private static readonly string ThreshBelow = "theshold_below";
+        //private static readonly string ThreshBelow = "theshold_below";
         private static readonly string ThreshHigh = "threshold_high";
-        private static readonly string Frozen = "frozen";
-            
+        //private static readonly string Frozen = "frozen";
+
         public override string TimerAffinity { get; } = TimerName.Main;
         private GlobalState State { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
-        private bool Monitor { get; set; }
-        private bool Freeze { get; set; }
         private int Counter { get; set; }
+        private bool PostponeLight { get; set; }
+        private bool PostponeDark { get; set; }
+        private bool Alerted { get; set; }
 
         public GPUMonitorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             State = GlobalState.Instance();
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Monitor = false;
-            Freeze = false;
+            PostponeDark = false;
+            PostponeLight = false;
         }
 
         public override void Fire()
@@ -41,151 +44,184 @@ namespace AutoDarkModeSvc.Modules
                 DateTime sunsetMonitor = ConfigBuilder.Config.Sunset;
                 if (ConfigBuilder.Config.Location.Enabled)
                 {
-                    LocationHandler.GetSunTimesWithOffset(ConfigBuilder, out sunriseMonitor, out sunsetMonitor);
+                    LocationHandler.GetSunTimes(ConfigBuilder, out sunriseMonitor, out sunsetMonitor);
                 }
 
                 //the time between sunrise and sunset, aka "day"
-                if (Extensions.NowIsBetweenTimes(sunriseMonitor.TimeOfDay, sunsetMonitor.TimeOfDay))
+                if (Helper.NowIsBetweenTimes(sunriseMonitor.TimeOfDay, sunsetMonitor.TimeOfDay))
                 {
-                    //check if theme switching should be postponed, depending on whether a sunrise or sunset is currently pending
-                    var result = await CheckForPostpone(sunsetMonitor, Freeze);
-                    if (result != ThreshHigh)
+                    if (SuntimeIsWithinSpan(sunsetMonitor))
                     {
-                        Freeze = true;
+                        if (!PostponeDark)
+                        {
+                            Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
+                            State.PostponeManager.Add(new(Name, isUserClearable: false));
+                            PostponeDark = true;
+                        }
                     }
-                    //disable freezing once sun time monitoring is off the grace period
-                    if (!SuntimeIsWithinSpan(sunsetMonitor))
+                    // if it's already light, check if the theme switch from dark to light should be delayed
+                    else if (PostponeLight && DateTime.Now >= sunriseMonitor)
                     {
-                        Freeze = false;
+                        var result = await CheckForPostpone();
+                        if (result != ThreshHigh)
+                        {
+                            PostponeLight = false;
+                        }
+                    }
+                    else
+                    {
+                        if (PostponeDark || PostponeLight)
+                        {
+                            Logger.Info($"ending GPU usage monitoring");
+                            PostponeDark = false;
+                            PostponeLight = false;
+                            State.PostponeManager.Remove(Name);
+                        }
                     }
                 }
+                // the time between sunset and sunrise, aka "night"
                 else
                 {
-                    var result = await CheckForPostpone(sunriseMonitor, Freeze);
-                    if (result != ThreshHigh)
+                    if (SuntimeIsWithinSpan(sunriseMonitor))
                     {
-                        Freeze = true;
+                        if (!PostponeLight)
+                        {
+                            Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
+                            State.PostponeManager.Add(new(Name, isUserClearable: false));
+                            PostponeLight = true;
+                        }
                     }
-                    if (!SuntimeIsWithinSpan(sunriseMonitor))
+                    // if it's already dark, check if the theme switch from light to dark should be delayed
+                    else if (PostponeDark && DateTime.Now >= sunsetMonitor)
                     {
-                        Freeze = false;
+                        var result = await CheckForPostpone();
+                        if (result != ThreshHigh)
+                        {
+                            PostponeDark = false;
+                        }
+                    }
+                    else
+                    {
+                        if (PostponeDark || PostponeLight)
+                        {
+                            Logger.Info($"ending GPU usage monitoring");
+                            PostponeDark = false;
+                            PostponeLight = false;
+                            State.PostponeManager.Remove(Name);
+                        }
                     }
                 }
             });
         }
 
-        private async Task<string> CheckForPostpone(DateTime time, bool freeze)
+        private async Task<string> CheckForPostpone()
         {
-            if (SuntimeIsWithinSpan(time) && !Monitor)
+            int gpuUsage;
+            try
             {
-                // if theme switching is not frozen, start GPU monitoring
-                if (!freeze)
+               gpuUsage = await GetGPUUsage();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "could not read GPU usage, re-enabling theme switch:");
+                State.PostponeManager.Remove(Name);
+                Alerted = false;
+                return ThreshLow;
+            }
+            if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
+            {
+                Counter++;
+                if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
                 {
-                    Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minutes");
-                    Monitor = true;
+                    Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
+                    State.PostponeManager.Remove(Name);
+                    Alerted = false;
+                    return ThreshLow;
                 }
-                else
-                {
-                    // if theme switching is frozen, immediately disable monitoring and return a frozen state
-                    Monitor = false;
-                    return Frozen;
-                }
+                Logger.Debug($"lower threshold sample {Counter} ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
             }
             else
             {
-                // if monitoring is disabled, a no switch condition is reached (meaning that the suntime is not within the grace time period)
-                if (!Monitor)
-                {
-                    return NoSwitch;
-                }
-            }
-
-            if (!State.PostponeSwitch)
-            {
-                var gpuUsage = await GetGPUUsage();
-                if (gpuUsage > ConfigBuilder.Config.GPUMonitoring.Threshold)
+                if (!Alerted)
                 {
                     Logger.Info($"postponing theme switch ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
-                    State.PostponeSwitch = true;
-                    return ThreshHigh;
+                    Alerted = true;
                 }
-                else
-                {
-                    Logger.Info($"ending GPU usage monitoring, no postpone. threshold: ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
-                    Monitor = false;
-                    return ThreshBelow;
-                }
+                Logger.Debug($"lower threshold sample reset ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
+                Counter = 0;
             }
-            else
-            {
-                var gpuUsage = await GetGPUUsage();
-                if (gpuUsage <= ConfigBuilder.Config.GPUMonitoring.Threshold)
-                {
-                    if (Counter >= ConfigBuilder.Config.GPUMonitoring.Samples)
-                    {
-                        Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
-                        State.PostponeSwitch = false;
-                        Monitor = false;
-                        return ThreshLow;
-                    }
-                    Counter++;
-                }
-                else
-                {
-                    Counter = 0;
-                }
-                return ThreshHigh;
-            }
+            return ThreshHigh;
         }
 
-        private async Task<int> GetGPUUsage()
+        private static async Task<int> GetGPUUsage()
         {
             var pcc = new PerformanceCounterCategory("GPU Engine");
             var counterNames = pcc.GetInstanceNames();
-            List<PerformanceCounter> counters = new List<PerformanceCounter>();
+            List<PerformanceCounter> counters = new();
             var counterAccu = 0f;
             foreach (string counterName in counterNames)
             {
-                if (counterName.EndsWith("engtype_3D"))
+                if (counterName.EndsWith("engtype_3D") || counterName.Contains("Graphics") || counterName.Contains("Copy"))
                 {
-                    foreach (PerformanceCounter counter in pcc.GetCounters(counterName))
+                    try
                     {
-                        if (counter.CounterName == "Utilization Percentage")
+                        foreach (PerformanceCounter counter in pcc.GetCounters(counterName))
                         {
-                            counters.Add(counter);
+                            if (counter.CounterName == "Utilization Percentage")
+                            {
+                                counters.Add(counter);
+                            }
                         }
+                    } 
+                    catch (InvalidOperationException ex)
+                    {
+                        Logger.Warn(ex, "counter went away:");
                     }
                 }
             }
             counters.ForEach(c =>
             {
-                counterAccu += c.NextValue();
+                try
+                {
+                    counterAccu += c.NextValue();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "couldn't retrieve value from counter:");
+                }
             });
             await Task.Delay(1000);
             counters.ForEach(c =>
             {
-                counterAccu += c.NextValue();
+                try
+                {
+                    counterAccu += c.NextValue();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "couldn't retrieve value from counter:");
+                }
             });
             counters.Clear();
             return (int)counterAccu;
         }
 
         /// <summary>
-        /// checks whether a time is within a grace period (within x minutes of a DateTime)
+        /// checks whether a time is within a grace period (within x minutes before a DateTime)
         /// </summary>
         /// <param name="time">time to be checked</param>
         /// <returns>true if it's within the span; false otherwise</returns>
         private bool SuntimeIsWithinSpan(DateTime time)
         {
-            return Extensions.NowIsBetweenTimes(
+            return Helper.NowIsBetweenTimes(
                 time.AddMinutes(-Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay,
-                time.AddMinutes(Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay);
+                time.TimeOfDay);
         }
 
-        public override void Cleanup()
+        public override void DisableHook()
         {
             Logger.Debug($"cleanup performed for module {Name}");
-            State.PostponeSwitch = false;
+            State.PostponeManager.Remove(Name);
         }
     }
 }

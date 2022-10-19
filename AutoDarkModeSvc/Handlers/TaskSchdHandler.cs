@@ -1,5 +1,8 @@
-﻿using Microsoft.Win32.TaskScheduler;
+﻿using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
+using Microsoft.Win32.TaskScheduler;
 using System;
+using System.IO;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -16,7 +19,7 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                using TaskService taskService = new TaskService();
+                using TaskService taskService = new();
                 taskService.RootFolder.CreateFolder(folder, null, false);
 
                 TaskDefinition tdLogon = taskService.NewTask();
@@ -28,9 +31,11 @@ namespace AutoDarkModeSvc.Handlers
                 tdLogon.Settings.ExecutionTimeLimit = TimeSpan.Zero;
                 tdLogon.Settings.AllowHardTerminate = false;
                 tdLogon.Settings.StartWhenAvailable = true;
+                tdLogon.Settings.StopIfGoingOnBatteries = false;
+                tdLogon.Settings.IdleSettings.StopOnIdleEnd = false;
 
                 tdLogon.Triggers.Add(new LogonTrigger { UserId = Environment.UserDomainName + @"\" + Environment.UserName });
-                tdLogon.Actions.Add(new ExecAction(Extensions.ExecutionPath));
+                tdLogon.Actions.Add(new ExecAction(Helper.ExecutionPath));
 
                 taskService.GetFolder(folder).RegisterTaskDefinition(logon, tdLogon);
                 Logger.Info("created logon task");
@@ -45,7 +50,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static bool RemoveLogonTask()
         {
-            using TaskService taskService = new TaskService();
+            using TaskService taskService = new();
             TaskFolder taskFolder = taskService.GetFolder(folder);
             if (taskFolder == null)
             {
@@ -62,6 +67,18 @@ namespace AutoDarkModeSvc.Handlers
                 Logger.Error(ex, "failed removing logon task, ");
             }
             return false;
+        }
+
+        public static Task GetLogonTask()
+        {
+            using TaskService taskService = new();
+            TaskFolder taskFolder = taskService.GetFolder(folder);
+            if (taskFolder == null)
+            {
+                Logger.Info("logon task folder does not exist");
+            }
+            Task logonTask = taskService.GetTask(Path.Combine(folder, logon));
+            return logonTask;
         }
     }
 }

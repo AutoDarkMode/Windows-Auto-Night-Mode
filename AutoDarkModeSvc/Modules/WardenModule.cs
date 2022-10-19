@@ -1,4 +1,7 @@
-﻿using AutoDarkModeSvc.Config;
+﻿using AutoDarkModeLib;
+using AutoDarkModeLib.Configs;
+using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;
@@ -6,7 +9,7 @@ using System.Text;
 
 namespace AutoDarkModeSvc.Modules
 {
-    class WardenModule : AutoDarkModeModule
+    public class WardenModule : AutoDarkModeModule
     {
         private AdmConfigBuilder ConfigBuilder { get; }
         private GlobalState State { get; }
@@ -28,14 +31,19 @@ namespace AutoDarkModeSvc.Modules
             Priority = 1;
         }
 
+        /// <summary>
+        /// Registers all modules enabled in the AutoDarkMode Configuration
+        /// </summary>
         public override void Fire()
         {
             AdmConfig config = ConfigBuilder.Config;
-            AutoManageModule(typeof(GeopositionUpdateModule).Name, typeof(GeopositionUpdateModule), true, config.Location.Enabled);
-            AutoManageModule(typeof(TimeSwitchModule).Name, typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && !State.PostponeSwitch);
-            AutoManageModule(typeof(ThemeUpdateModule).Name, typeof(ThemeUpdateModule), true, !config.ClassicMode);
-            AutoManageModule(typeof(GPUMonitorModuleV2).Name, typeof(GPUMonitorModuleV2), true, config.GPUMonitoring.Enabled);
-            AutoManageModule(typeof(EventModule).Name, typeof(EventModule), true, config.Events.Enabled);
+            AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
+            AutoManageModule(typeof(GeopositionUpdateModule), true, config.Location.Enabled);
+            AutoManageModule(typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && config.Governor == Governor.Default);
+            AutoManageModule(typeof(NightLightTrackerModule), false, config.AutoThemeSwitchingEnabled && config.Governor == Governor.NightLight);
+            //AutoManageModule(typeof(ThemeUpdateModule), true, config.WindowsThemeMode.Enabled && config.WindowsThemeMode.MonitorActiveTheme);
+            AutoManageModule(typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
+            AutoManageModule(typeof(UpdaterModule), true, config.Updater.Enabled);
         }
 
         /// <summary>
@@ -45,7 +53,7 @@ namespace AutoDarkModeSvc.Modules
         /// <param name="moduleType">Type of a class implementing the <see cref="IAutoDarkModeModule"/> interface</param>
         /// <param name="fireOnRegistration">Determines whether a module should fire upon registration to a timer</param>
         /// <param name="condition">condition whether a module should be registered or deregistered</param>
-        private void AutoManageModule(string moduleName, Type moduleType, bool fireOnRegistration, bool condition)
+        private void AutoManageModule(Type moduleType, bool fireOnRegistration, bool condition)
         {
             // check if the type impplements the interface for compatibility with a ModuleTimer
             if (typeof(IAutoDarkModeModule).IsAssignableFrom(moduleType))
@@ -53,7 +61,7 @@ namespace AutoDarkModeSvc.Modules
                 // register a module if the condition has been set to true (should be predetermined in Poll() before calling this method
                 if (condition)
                 {
-                    IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleName, fireOnRegistration) as IAutoDarkModeModule;
+                    IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleType.Name, fireOnRegistration) as IAutoDarkModeModule;
                     var timer = Timers.Find(t => t.Name == module.TimerAffinity);
                     if (timer != null)
                     {
@@ -62,9 +70,9 @@ namespace AutoDarkModeSvc.Modules
                 }
                 else
                 {
-                    Timers.ForEach(t => t.DeregisterModule(moduleName));
+                    Timers.ForEach(t => t.DeregisterModule(moduleType.Name));
                 }
-            }            
+            }
         }
     }
 }

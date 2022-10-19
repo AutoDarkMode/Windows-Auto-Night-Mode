@@ -1,4 +1,5 @@
-﻿using NetMQ;
+﻿/*
+using NetMQ;
 using NetMQ.Sockets;
 using System;
 using System.Collections.Generic;
@@ -9,16 +10,16 @@ using System.IO.MemoryMappedFiles;
 
 namespace AutoDarkModeSvc.Communication
 {
-    class ZeroMQServer : ICommandServer
+    class ZeroMQServer : IMessageServer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string Port { get; }
         private Service Service { get; }
-        private ResponseSocket Server { set; get; }
+        private ResponseSocket ServerSocket { set; get; }
         private NetMQPoller Poller { get; set; }
         private Task PollTask { get; set; }
         private readonly MemoryMappedFile _portshare;
-        
+
         /// <summary>
         /// Instantiate a ZeroMQ server for socket based messaging
         /// </summary>
@@ -37,8 +38,6 @@ namespace AutoDarkModeSvc.Communication
             Service = service;
         }
 
-        private bool AcceptConnections { get; set; }
-
         /// <summary>
         /// Start the ZeroMQ server
         /// </summary>
@@ -46,8 +45,8 @@ namespace AutoDarkModeSvc.Communication
         {
             if (Port.Length != 0)
             {
-                Server = new ResponseSocket();
-                int randomPort = Server.BindRandomPort("tcp://127.0.0.1");
+                ServerSocket = new ResponseSocket();
+                int randomPort = ServerSocket.BindRandomPort("tcp://127.0.0.1");
                 using MemoryMappedViewAccessor viewAccessor = _portshare.CreateViewAccessor();
                 byte[] bytes = BitConverter.GetBytes(randomPort);
                 try
@@ -62,38 +61,12 @@ namespace AutoDarkModeSvc.Communication
             }
             else
             {
-                Server = new ResponseSocket("tcp://127.0.0.1:" + Port);
+                ServerSocket = new ResponseSocket("tcp://127.0.0.1:" + Port);
                 Logger.Info("socket bound to port: {0}", Port);
             }
-            
-            Poller = new NetMQPoller { Server };
-            Server.ReceiveReady += (s, a) =>
-            {
-                string msg = a.Socket.ReceiveFrameString();
-                Logger.Debug("received message: {0}", msg);
-                try
-                {
-                    MessageParser.Parse(new List<string>() { msg }, (message) =>
-                    {
-                        try
-                        {
-                            var sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
-                            if (!sent)
-                            {
-                                Logger.Error("could not send response: timeout");
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Logger.Error(e, "could not send response:");
-                        }
-                    }, Service);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"message parser exception in {ex.Source}");
-                }               
-            };
+
+            Poller = new NetMQPoller { ServerSocket };
+            ServerSocket.ReceiveReady += ReceiveReadyEvent;
             PollTask = Task.Run(() =>
             {
                 try
@@ -120,13 +93,63 @@ namespace AutoDarkModeSvc.Communication
             try
             {
                 Poller.Dispose();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Logger.Fatal(ex, "could not dispose Poller");
             }
-            Server.Dispose();
+            ServerSocket.Dispose();
             _portshare.Dispose();
             NetMQConfig.Cleanup();
         }
+
+        public void ReceiveReadyEvent(object sender, NetMQSocketEventArgs a)
+        {
+            string msg = "";
+            try
+            {
+                msg = a.Socket.ReceiveFrameString();
+                Logger.Debug("received message: {0}", msg);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error while receiving message:");
+            }
+
+            try
+            {
+
+                MessageParser.Parse(new List<string>() { msg }, (message) =>
+                {
+                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), message);
+                    if (!sent)
+                    {
+                        Logger.Error("could not send response: timeout");
+                    }
+                }, Service);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"exception while processing command {msg}");
+                try
+                {
+                    bool sent = a.Socket.TrySendFrame(new TimeSpan(10000000), new ApiResponse()
+                    {
+                        StatusCode = StatusCode.Err,
+                        Message = ex.Message
+                    }.ToString());
+                    if (!sent)
+                    {
+                        Logger.Error("could not send response: timeout");
+                    }
+                }
+                catch (Exception exErr)
+                {
+                    Logger.Error(exErr, "could not send error response:");
+                }
+
+            }
+        }
     }
 }
+*/

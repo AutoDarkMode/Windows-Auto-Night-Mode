@@ -121,6 +121,12 @@
   <data name="AutoDarkModeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adm_new.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AutoDarkModeIconDisabledTray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adm_tray_new_disabled.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AutoDarkModeIconPausedTray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adm_tray_new_paused.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AutoDarkModeIconTray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adm_tray_new.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

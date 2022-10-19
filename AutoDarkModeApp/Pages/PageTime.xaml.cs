@@ -3,16 +3,24 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
-using Windows.Devices.Geolocation;
 using Windows.System.Power;
+using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
 using System.Diagnostics;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeLib;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
-using AutoDarkModeApp.Communication;
 using AutoDarkModeApp.Handlers;
+using System.IO;
+using System.Timers;
+using System.Text;
+using System.Linq;
+using System.Collections.Generic;
+using System.Resources;
+using System.Threading;
+using Windows.Foundation;
+using System.Windows.Navigation;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -22,11 +30,16 @@ namespace AutoDarkModeApp.Pages
     public partial class PageTime : Page
     {
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private readonly bool init = true;
-        readonly ICommandClient messagingClient = new ZeroMQClient(Command.DefaultPort);
+        private bool init = true;
+        private bool reload = false;
+
+        private delegate void DispatcherDelegate();
+
+        private int selectedPostponeMinutes = -0;
 
         public PageTime()
         {
+            //read config file
             try
             {
                 builder.Load();
@@ -36,79 +49,222 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex);
             }
+
+
+            StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
+            StateUpdateHandler.StartConfigWatcher();
+
+            //initialize ui components
             InitializeComponent();
-            if (builder.Config.AutoThemeSwitchingEnabled)
+
+            //enable 12 hour clock:
+            if (Properties.Settings.Default.AlterTime)
             {
-                autoCheckBox.IsChecked = true;
+                TimePickerDark.Culture = CultureInfo.CreateSpecificCulture("en");
+                TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("en");
             }
-            if (builder.Config.Location.Enabled)
-            {
-                ActivateLocationMode();
-                RadioButtonLocationTimes.IsChecked = true;
-            }
+            //enable 24 hour clock:
             else
             {
-                applyButton.IsEnabled = false;
-                if (Properties.Settings.Default.AlterTime)
+                TimePickerDark.Culture = CultureInfo.CreateSpecificCulture("de");
+                TimePickerLight.Culture = CultureInfo.CreateSpecificCulture("de");
+            }
+
+            //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+            TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+            StateUpdateHandler.OnPostponeTimerTick += PostponeTimerEvent;
+            StateUpdateHandler.StartPostponeTimer();
+            PostponeTimerEvent(null, new());  
+
+            LoadSettings();
+
+            Window window = Application.Current.MainWindow;
+            window.StateChanged += (s, e) =>
+            {
+                if (window.WindowState == WindowState.Minimized)
                 {
-                    darkStartBox.Text = builder.Config.Sunset.ToString("hh", CultureInfo.InvariantCulture);
-                    lightStartBox.Text = builder.Config.Sunrise.ToString("hh", CultureInfo.InvariantCulture);
+                    StateUpdateHandler.StopPostponeTimer();
                 }
                 else
                 {
-                    darkStartBox.Text = builder.Config.Sunset.ToString("HH", CultureInfo.InvariantCulture);
-                    lightStartBox.Text = builder.Config.Sunrise.ToString("HH", CultureInfo.InvariantCulture);
+                    PostponeTimerEvent(null, new());
+                    StateUpdateHandler.StartPostponeTimer();
                 }
-                DarkStartMinutesBox.Text = builder.Config.Sunset.ToString("mm", CultureInfo.InvariantCulture);
-                LightStartMinutesBox.Text = builder.Config.Sunrise.ToString("mm", CultureInfo.InvariantCulture);
-            }
-            InitOffset();
-            if (Settings.Default.AlterTime) AlterTime(true);
-            init = false;
+            };
         }
 
-        //offset for sunrise and sunset hours
-        private void PopulateOffsetFields(int offsetDark, int offsetLight)
+
+        private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
         {
-            if (offsetLight < 0)
+            Dispatcher.Invoke(() =>
             {
-                OffsetLightModeButton.Content = "-";
-                OffsetLightBox.Text = Convert.ToString(-offsetLight);
+                StateUpdateHandler.StopConfigWatcher();
+                init = true;
+                reload = true;
+                try
+                {
+                    builder.Load();
+                }
+                catch
+                {
+
+                }
+                LoadSettings();
+            });
+        }
+
+        /// <summary>
+        /// Repeatedly retrieves the postpone state and handles UI changes if the state has changed externally
+        /// </summary>
+        private void PostponeTimerEvent(object sender, EventArgs e)
+        {
+            ApiResponse reply =
+                ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
+            if (reply.StatusCode != StatusCode.Timeout)
+            {
+                if (builder.Config.AutoThemeSwitchingEnabled)
+                {
+                    try
+                    {
+                        if (reply.Message == "True")
+                        {
+                            bool anyNoExpiry = false;
+                            bool canResume = false;
+                            PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+                            List<string> itemsStringList = dto.Items.Select(i =>
+                            {
+                                if (i.Expiry == null) anyNoExpiry = true;
+                                if (i.IsUserClearable)
+                                    canResume = true;
+
+                                i.SetCulture(Thread.CurrentThread.CurrentCulture);
+
+                                // retrieve the value of the specified key
+                                i.TranslatedReason =
+                                    AdmProperties.Resources.ResourceManager.GetString("PostponeReason" + i.Reason) ??
+                                    i.Reason;
+
+                                return i.ToString();
+                            }).ToList();
+                            Dispatcher.Invoke(() =>
+                            {
+                                if (anyNoExpiry && !canResume)
+                                {
+                                    TextBlockResumeInfo.Visibility = Visibility.Visible;
+                                }
+                                else
+                                {
+                                    TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+                                }
+
+                                if (canResume)
+                                {
+                                    ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+                                    PostponeComboBox.IsEnabled = false;
+                                }
+                                else
+                                {
+                                    ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
+                                    PostponeComboBox.IsEnabled = true;
+                                }
+
+                                TextBlockPostponeInfo.Text = string.Join('\n', itemsStringList);
+                            });
+                        }
+                        else
+                        {
+                            Dispatcher.Invoke(() =>
+                            {
+                                //StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+                                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
+                                TextBlockPostponeInfo.Text = AdmProperties.Resources.TimePagePostponeInfoNominal;
+                                TextBlockResumeInfo.Visibility = Visibility.Collapsed;
+                                PostponeComboBox.IsEnabled = true;
+                            });
+                        }
+                    }
+                    catch
+                    {
+                    }
+                }
             }
+        }
+
+        private void LoadSettings()
+        {
+            //read datetime from config file
+            TimePickerDark.SelectedDateTime = builder.Config.Sunset;
+            TimePickerLight.SelectedDateTime = builder.Config.Sunrise;
+
+            //read offset from config file
+            NumberBoxOffsetLight.Value = Convert.ToDouble(builder.Config.Location.SunriseOffsetMin);
+            NumberboxOffsetDark.Value = Convert.ToDouble(builder.Config.Location.SunsetOffsetMin);
+
+            //read coordinates from config file
+            NumberBoxLat.Text = builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
+            NumberBoxLon.Text = builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
+            ButtonApplyCoordinates.IsEnabled = false;
+
+            //tick correct radio button and prepare UI
+            //is auto theme switch enabled?
+            //disabled
+            if (!builder.Config.AutoThemeSwitchingEnabled)
+            {
+                DisableTimeBasedSwitch();
+                SetPanelVisibility(false, false, false, false, false);
+                RadioButtonDisabled.IsChecked = true;
+            }
+            //enabled
             else
             {
-                OffsetLightBox.Text = Convert.ToString(offsetLight);
-            }
-            if (offsetDark < 0)
-            {
-                OffsetDarkModeButton.Content = "-";
-                OffsetDarkBox.Text = Convert.ToString(-offsetDark);
-            }
-            else
-            {
-                OffsetDarkBox.Text = Convert.ToString(offsetDark);
-            }
-        }
-        private void InitOffset()
-        {
-            PopulateOffsetFields(builder.Config.Location.SunsetOffsetMin, builder.Config.Location.SunriseOffsetMin);
-        }
-        //+ and - button
-        private void OffsetModeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button)
-            {
-                if (button.Content.ToString() == "+")
+                if (builder.Config.Governor == Governor.Default)
                 {
-                    button.Content = "-";
+                    NumberboxOffsetDark.Minimum = -999;
+                    NumberBoxOffsetLight.Minimum = -999;
+                    //is custom timepicker input enabled?
+                    if (!builder.Config.Location.Enabled)
+                    {
+                        RadioButtonCustomTimes.IsChecked = true;
+                        SetPanelVisibility(true, false, false, false, true);
+                        applyButton.IsEnabled = false;
+                    }
+
+                    //is location mode enabled?
+                    if (builder.Config.Location.Enabled)
+                    {
+                        //windows location service
+                        if (builder.Config.Location.UseGeolocatorService)
+                        {
+                            SetPanelVisibility(false, true, true, false, true);
+                            ActivateLocationModeWrapper();
+                            RadioButtonLocationTimes.IsChecked = true;
+                        }
+                        //custom geographic coordinates
+                        else
+                        {
+                            RadioButtonCoordinateTimes.IsChecked = true;
+                            SetPanelVisibility(false, true, true, true, true);
+                            ActivateLocationModeWrapper();
+                        }
+                    }
                 }
-                else
+                else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    button.Content = "+";
+                    RadioButtonWindowsNightLight.IsChecked = true;
+                    NumberboxOffsetDark.Minimum = 0;
+                    NumberBoxOffsetLight.Minimum = 0;
+                    SetPanelVisibility(false, false, true, false, true, true);
                 }
-                OffsetButton.IsEnabled = true;
             }
+
+            init = false;
+            StateUpdateHandler.StartConfigWatcher();
         }
+
+        /// <summary>
+        /// Offset
+        /// for sunrise and sunset hours
+        /// </summary>
         //apply offset
         private void OffsetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -118,39 +274,62 @@ namespace AutoDarkModeApp.Pages
             //get values from TextBox
             try
             {
-                offsetDark = int.Parse(OffsetDarkBox.Text);
-                offsetLight = int.Parse(OffsetLightBox.Text);
+                offsetDark = Convert.ToInt32(NumberboxOffsetDark.Value);
+                offsetLight = Convert.ToInt32(NumberBoxOffsetLight.Value);
             }
             catch
             {
-                userFeedback.Text = Properties.Resources.errorNumberInput;
+                userFeedback.Text = AdmProperties.Resources.errorNumberInput;
                 return;
             }
 
-            PopulateOffsetFields(offsetDark, offsetLight);
-
-            if (OffsetLightModeButton.Content.ToString() == "+")
+            //send the values / offset to Svc
+            try
             {
                 builder.Config.Location.SunriseOffsetMin = offsetLight;
-            }
-            else
-            {
-                builder.Config.Location.SunriseOffsetMin = -offsetLight;
-            }
-
-            if (OffsetDarkModeButton.Content.ToString() == "+")
-            {
                 builder.Config.Location.SunsetOffsetMin = offsetDark;
             }
-            else
+            catch
             {
-                builder.Config.Location.SunsetOffsetMin = -offsetDark;
+                userFeedback.Text = "Error while sending offset digits to Svc";
+                return;
             }
-            UpdateSuntimes();
+
             OffsetButton.IsEnabled = false;
-            ApplyTheme();
+            UpdateSuntimes();
+            Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
+            try
+            {
+                if (!init) builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "OffsetButton_Click");
+            }
         }
 
+
+        private void SetPanelVisibility(bool timepicker = false, bool location = false, bool offset = false,
+            bool coordinates = false, bool postpone = false, bool nightLight = false)
+        {
+            if (timepicker) GridTimePicker.Visibility = Visibility.Visible;
+            else GridTimePicker.Visibility = Visibility.Collapsed;
+
+            if (location) GridLocationTimeInfo.Visibility = Visibility.Visible;
+            else GridLocationTimeInfo.Visibility = Visibility.Collapsed;
+
+            if (offset) GridOffset.Visibility = Visibility.Visible;
+            else GridOffset.Visibility = Visibility.Collapsed;
+
+            if (coordinates) GridCoordinates.Visibility = Visibility.Visible;
+            else GridCoordinates.Visibility = Visibility.Collapsed;
+
+            if (postpone) StackPanelPostponeInfo.Visibility = Visibility.Visible;
+            else StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
+
+            if (nightLight) GridNightLight.Visibility = Visibility.Visible;
+            else GridNightLight.Visibility = Visibility.Collapsed;
+        }
 
         //apply theme
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -163,256 +342,182 @@ namespace AutoDarkModeApp.Pages
             //get values from TextBox
             try
             {
-                darkStart = int.Parse(darkStartBox.Text);
-                darkStartMinutes = int.Parse(DarkStartMinutesBox.Text);
-                lightStart = int.Parse(lightStartBox.Text);
-                lightStartMinutes = int.Parse(LightStartMinutesBox.Text);
+                darkStart = TimePickerDark.SelectedDateTime.Value.Hour;
+                darkStartMinutes = TimePickerDark.SelectedDateTime.Value.Minute;
+                lightStart = TimePickerLight.SelectedDateTime.Value.Hour;
+                lightStartMinutes = TimePickerLight.SelectedDateTime.Value.Minute;
             }
             catch
             {
-                userFeedback.Text = Properties.Resources.errorNumberInput;
+                userFeedback.Text = AdmProperties.Resources.errorNumberInput;
                 return;
             }
 
-            //check values from TextBox
-            //hours with 24 hour time
-            if (!Settings.Default.AlterTime)
-            {
-                if (darkStart >= 24)
-                {
-                    darkStart = 23;
-                    darkStartMinutes = 59;
-                }
-                if (lightStart < 0)
-                {
-                    lightStart = 6;
-                    darkStart = 17;
-                }
-            }
-            //hours with 12 hour time
-            else
-            {
-                if (darkStart >= 12)
-                {
-                    darkStart = 11;
-                    darkStartMinutes = 59;
-                }
-                if(darkStart == 0)
-                {
-                    darkStart = 1;
-                }
-                if (lightStart >= 13)
-                {
-                    lightStart = 12;
-                }
-            }
+            //check values from timepicker
 
-            //minutes
-            if (lightStartMinutes > 59)
-            {
-                lightStartMinutes = 59;
-            }
-            if (darkStartMinutes > 59)
-            {
-                darkStartMinutes = 59;
-            }
+            //currently nothing to check
 
             //display edited hour values for the user
-            darkStartBox.Text = Convert.ToString(darkStart);
-            lightStartBox.Text = Convert.ToString(lightStart);
-
-            //display minute values + more beautiful display of minutes, if they are under 10
-            if (lightStartMinutes < 10)
-            {
-                LightStartMinutesBox.Text = "0" + Convert.ToString(lightStartMinutes);
-            }
-            else
-            {
-                LightStartMinutesBox.Text = Convert.ToString(lightStartMinutes);
-            }
-            if (darkStartMinutes < 10)
-            {
-                DarkStartMinutesBox.Text = "0" + Convert.ToString(darkStartMinutes);
-            }
-            else
-            {
-                DarkStartMinutesBox.Text = Convert.ToString(darkStartMinutes);
-            }
+            //disabled because we don't check and edit anything
+            //TimePickerDark.SelectedDateTime = new DateTime(2000, 08, 22, darkStart, darkStartMinutes, 0);
+            //TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
 
             //Apply Theme
-            if (Properties.Settings.Default.AlterTime)
+            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart,
+                darkStartMinutes, 0);
+            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart,
+                lightStartMinutes, 0);
+
+            try
             {
-                darkStart += 12;
+                if (!init) builder.Save();
             }
-            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart, darkStartMinutes, 0);
-            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart, lightStartMinutes, 0);
-            ApplyTheme();
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+
+            Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
 
             //ui
-            applyButton.IsEnabled = false;
+            //applyButton.IsEnabled = false;
         }
 
         private async void ApplyTheme()
         {
             //show warning for notebook on battery with enabled battery saver
-            if (PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+            if (!builder.Config.Tunable.DisableEnergySaverOnThemeSwitch &&
+                PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved + "\n\n" + Properties.Resources.msgBatterySaver;
+                userFeedback.Text = AdmProperties.Resources.msgChangesSaved + "\n\n" +
+                                    AdmProperties.Resources.msgBatterySaver;
                 applyButton.IsEnabled = true;
             }
             else
             {
-                userFeedback.Text = Properties.Resources.msgChangesSaved;//changes were saved!
+                userFeedback.Text = AdmProperties.Resources.msgChangesSaved; //changes were saved!
             }
 
-            if (builder.Config.Location.Enabled)
-            {
-                ActivateLocationMode();
-            }
-            else
-            {
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex);
-                }
-            }
             try
             {
-                string result = await messagingClient.SendMessageAndGetReplyAsync(Command.Switch);
-                if (result == Response.Err)
+                string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+                if (result != StatusCode.Ok)
                 {
-                    throw new SwitchThemeException();
+                    throw new SwitchThemeException(result, "PageTime");
                 }
-            } 
+            }
             catch (Exception ex)
             {
-                ErrorWhileApplyingTheme($"ZMQ message is {Response.Err}", ex.ToString());
+                ErrorWhileApplyingTheme($"Error while applying theme: ", ex.ToString());
             }
-
         }
+
         //if something went wrong while applying the settings :(
         private void ErrorWhileApplyingTheme(string erroDescription, string exception)
         {
-            userFeedback.Text = Properties.Resources.msgErrorOcc;
-            string error = string.Format(Properties.Resources.errorThemeApply, Properties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" + exception;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno");
-            msg.Owner = Window.GetWindow(this);
-            msg.ShowDialog();
-            var result = msg.DialogResult;
+            userFeedback.Text = AdmProperties.Resources.msgErrorOcc;
+            string error =
+                string.Format(AdmProperties.Resources.errorThemeApply,
+                    AdmProperties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" +
+                exception;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            _ = msg.ShowDialog();
+            bool? result = msg.DialogResult;
             if (result == true)
             {
-                StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                ProcessHandler.StartProcessByProcessInfo(
+                    "https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
             }
         }
 
+        public async void ActivateLocationModeWrapper()
+        {
+            if (!reload)
+            {
+                await ActivateLocationMode();
+            }
+
+            reload = false;
+        }
+
+        /// <summary>
+        /// Location based times & Windows Position Service
+        /// </summary>
         // set starttime based on user location
-        public async void ActivateLocationMode()
+        public async Task ActivateLocationMode()
         {
             //ui
-            StackPanelTimePicker.Visibility = Visibility.Collapsed;
-            TextBlockDark.Visibility = Visibility.Collapsed;
-            TextBlockLight.Visibility = Visibility.Collapsed;
-            StackPanelLocationTime.Visibility = Visibility.Visible;
-            SetOffsetVisibility(Visibility.Visible);
-            locationBlock.Visibility = Visibility.Visible;
-            locationBlock.Text = Properties.Resources.msgSearchLoc;//Searching your location...
-            userFeedback.Text = Properties.Resources.msgSearchLoc;
+            locationBlock.Text = AdmProperties.Resources.msgSearchLoc; //Searching your location...
+            userFeedback.Text = AdmProperties.Resources.msgSearchLoc;
 
-            if (!init)
-            {
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex);
-                }
-            }
-
-            int timeout = 2;
-            bool loaded = false;
-            for (int i = 0; i < timeout; i++)
-            {
-                if (builder.LocationData.LastUpdate == DateTime.MinValue)
-                {
-                    try
-                    {
-                        var result = await messagingClient.SendMessageAndGetReplyAsync(Command.Location);
-                        if (result == Response.NoLocAccess)
-                        {
-                            NoLocationAccess();
-                            break;
-                        }
-                        builder.LoadLocationData();
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex);
-                        loaded = true;
-                        break;
-                    }
-                    await Task.Delay(1000);
-                }
-                else
-                {
-                    loaded = true;
-                    break;
-                }                
-            }
-
-            LocationHandler locationHandler = new LocationHandler();
-            var accesStatus = await Geolocator.RequestAccessAsync();
-            switch (accesStatus)
-            {
-                case GeolocationAccessStatus.Allowed:
-                    //locate user + get sunrise & sunset times
-                    locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    break;
-
-                case GeolocationAccessStatus.Denied:
-                    if (Geolocator.DefaultGeoposition.HasValue)
-                    {
-                        //locate user + get sunrise & sunset times
-                        locationBlock.Text = Properties.Resources.lblCity + ": " + await locationHandler.GetCityName();
-                    }
-                    else
-                    {
-                        NoLocationAccess();
-                        loaded = false;
-                    }
-                    break;
-
-                case GeolocationAccessStatus.Unspecified:
-                    NoLocationAccess();
-                    loaded = false;
-                    break;
-            }
-
-            if (!loaded)
-            {
-                ShowErrorMessage(new TimeoutException("waiting for location data timed out"));
-            }
-
+            await LoadGeolocationData();
             UpdateSuntimes();
 
             // ui controls
-            lightStartBox.IsEnabled = false;
-            LightStartMinutesBox.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
-            DarkStartMinutesBox.IsEnabled = false;
-            userFeedback.Text = Properties.Resources.msgChangesSaved;
+            userFeedback.Text = AdmProperties.Resources.msgChangesSaved;
 
             return;
         }
+
+        private async Task LoadGeolocationData()
+        {
+            int maxTries = 5;
+            for (int i = 0; i < maxTries; i++)
+            {
+                ApiResponse result =
+                    ApiResponse.FromString(
+                        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
+                if (result.StatusCode == StatusCode.Ok)
+                {
+                    break;
+                }
+
+                await Task.Delay(1000);
+            }
+
+            try
+            {
+                builder.LoadLocationData();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+
+            try
+            {
+                ApiResponse result =
+                    ApiResponse.FromString(
+                        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+                if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
+                {
+                    NoLocationAccess();
+                    return;
+                }
+                else if (builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+                {
+                    locationBlock.Text = AdmProperties.Resources.lblCity + ": " + await LocationHandler.GetCityName();
+                }
+                else if (!builder.Config.Location.UseGeolocatorService)
+                {
+                    locationBlock.Text =
+                        $"{AdmProperties.Resources.lblPosition}: Lat {Math.Round(builder.LocationData.Lat, 3)} / Lon {Math.Round(builder.LocationData.Lon, 3)}";
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+                return;
+            }
+        }
+
         private async void NoLocationAccess()
         {
-            locationBlock.Text = Properties.Resources.msgLocPerm;//The App needs permission to location
-            userFeedback.Text = Properties.Resources.msgLocPerm;
+            locationBlock.Text = AdmProperties.Resources.msgLocPerm; //The App needs permission to location
+            userFeedback.Text = AdmProperties.Resources.msgLocPerm;
             locationBlock.Visibility = Visibility.Visible;
             TextBlockDarkTime.Text = null;
             TextBlockLightTime.Text = null;
@@ -421,230 +526,128 @@ namespace AutoDarkModeApp.Pages
 
         private void DisableLocationMode()
         {
-            lightStartBox.IsEnabled = true;
-            LightStartMinutesBox.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
-            DarkStartMinutesBox.IsEnabled = true;
-            applyButton.Visibility = Visibility.Visible;
-            applyButton.IsEnabled = true;
-            locationBlock.Visibility = Visibility.Collapsed;
-            StackPanelLocationTime.Visibility = Visibility.Collapsed;
-            StackPanelTimePicker.Visibility = Visibility.Visible;
-            TextBlockDark.Visibility = Visibility.Visible;
-            TextBlockLight.Visibility = Visibility.Visible;
-            SetOffsetVisibility(Visibility.Collapsed);
+            SetPanelVisibility(true, false, false, false, true);
 
             builder.Config.Location.Enabled = false;
-            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
         }
 
-        //automatic theme switch checkbox
-        private async void AutoCheckBox_Checked(object sender, RoutedEventArgs e)
+
+        private void SetTimeBasedSwitchEnabled()
         {
-            StackPanelRadioHolder.IsEnabled = true;
-            RadioButtonCustomTimes.IsChecked = true;
-            applyButton.IsEnabled = true;
-            darkStartBox.IsEnabled = true;
-            DarkStartMinutesBox.IsEnabled = true;
-            lightStartBox.IsEnabled = true;
-            LightStartMinutesBox.IsEnabled = true;
-            userFeedback.Text = Properties.Resources.msgClickApply;//Click on apply to save changes
+            // check the right radio button
+            //RadioButtonCustomTimes.IsChecked = !builder.Config.Location.Enabled;
+            //RadioButtonLocationTimes.IsChecked = builder.Config.Location.Enabled && builder.Config.Location.UseGeolocatorService;
+            //RadioButtonCustomTimes.IsChecked = builder.Config.Location.Enabled && !builder.Config.Location.UseGeolocatorService;
+
+            StackPanelTimePicker.IsEnabled = true;
+            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
+
             //this setting enables all the configuration possibilities of auto dark mode
-            builder.Config.AutoThemeSwitchingEnabled = true;
+            if (!builder.Config.AutoThemeSwitchingEnabled)
+            {
+                builder.Config.AutoThemeSwitchingEnabled = true;
+            }
+        }
+
+        private void DisableTimeBasedSwitch()
+        {
             if (!init)
             {
-                try
-                {
-                    builder.Save();
-                    var result = await messagingClient.SendMessageAndGetReplyAsync(Command.AddAutostart);
-                    if (result != Response.Ok)
-                    {
-                        throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
-                    }
-                }
-                catch (AddAutoStartException aex)
-                {
-                    ShowErrorMessage(aex);
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex);
-                }
-            }
-
-        }
-        private async void AutoCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //remove all tasks + autostart
-            if (e != null && !init)
-            {
+                //disable auto theme switching in svc
                 builder.Config.AutoThemeSwitchingEnabled = false;
+                builder.Config.Location.Enabled = false;
                 try
                 {
                     builder.Save();
-                    var result = await messagingClient.SendMessageAndGetReplyAsync(Command.RemoveAutostart);
-                    if (result != Response.Ok)
-                    {
-                        throw new AddAutoStartException($"ZMQ command {result}", "AutoCheckBox_Checked");
-                    }
-                }
-                catch (AddAutoStartException aex)
-                {
-                    ShowErrorMessage(aex);
                 }
                 catch (Exception ex)
                 {
-                    ShowErrorMessage(ex);
+                    ShowErrorMessage(ex, "DisableTimeBasedSwitch");
                 }
             }
 
-            //ui
-            StackPanelRadioHolder.IsEnabled = false;
-            RadioButtonCustomTimes.IsChecked = true;
-            DisableLocationMode();
-            applyButton.IsEnabled = false;
-            darkStartBox.IsEnabled = false;
-            DarkStartMinutesBox.IsEnabled = false;
-            lightStartBox.IsEnabled = false;
-            LightStartMinutesBox.IsEnabled = false;
-            userFeedback.Text = Properties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
-        }
-
-        //12 hour times
-        private void AlterTime(bool enable)
-        {
-            if (enable)
-            {
-                Properties.Settings.Default.AlterTime = true;
-                amTextBlock.Text = "am";
-                pmTextBlock.Text = "pm";
-                TextBlockDark.Margin = new Thickness(113,0,0,0);
-                int darkTime = Convert.ToInt32(darkStartBox.Text) - 12;
-                if (darkTime < 1)
-                {
-                    darkTime = 7;
-                }
-                darkStartBox.Text = Convert.ToString(darkTime);
-
-                int lightTime = Convert.ToInt32(lightStartBox.Text);
-                if (lightTime > 12)
-                {
-                    lightTime = 7;
-                }
-                lightStartBox.Text = Convert.ToString(lightTime);
-            }
-            else
-            {
-                Properties.Settings.Default.AlterTime = false;
-                amTextBlock.Text = "";
-                pmTextBlock.Text = "";
-                applyButton.Margin = new Thickness(184, 25, 0, 0);
-                int darkTime = Convert.ToInt32(darkStartBox.Text) + 12;
-                if (darkTime > 24)
-                {
-                    darkTime = 19;
-                }
-                if (darkTime == 24)
-                {
-                    darkTime = 23;
-                }
-                darkStartBox.Text = Convert.ToString(darkTime);
-            }
-
-        }
-        private void SetOffsetVisibility(Visibility value)
-        {
-            OffsetLbl.Visibility = value;
-            OffsetDarkLbl.Visibility = value;
-            OffsetDarkModeButton.Visibility = value;
-            OffsetLightLbl.Visibility = value;
-            OffsetLightModeButton.Visibility = value;
-            OffsetLightBox.Visibility = value;
-            OffsetDarkBox.Visibility = value;
-            OffsetDarkDot.Visibility = value;
-            OffsetLightDot.Visibility = value;
-            OffsetButton.Visibility = value;
-        }
-
-        private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
-        {
-            DisableLocationMode();
-        }
-
-        private void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
-        {
-            builder.Config.Location.Enabled = true;
-            ApplyTheme();
-        }
-
-        //textbox event handlers
-        private void TextBox_BlockChars_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            applyButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
-        {
-            OffsetButton.IsEnabled = true;
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            var textBox = ((System.Windows.Controls.TextBox)sender);
-            textBox.Dispatcher.BeginInvoke(new System.Action(() =>
-            {
-                textBox.SelectAll();
-            }));
-        }
-        private void TextBox_TabNext_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (((TextBox)sender).MaxLength == ((TextBox)sender).Text.Length)
-            {
-                var ue = e.OriginalSource as FrameworkElement;
-                e.Handled = true;
-                ue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-            }
-        }
-
-        private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+            StackPanelTimePicker.IsEnabled = false;
+            userFeedback.Text =
+                AdmProperties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
         }
 
         private void UpdateSuntimes()
         {
-            LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+            LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset,
+                out DateTime SunsetWithOffset);
             if (Settings.Default.AlterTime)
             {
-                TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock1
-                TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture); //textblock2
+                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " +
+                                          SunriseWithOffset.ToString("hh:mm tt",
+                                              CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " +
+                                         SunsetWithOffset.ToString("hh:mm tt",
+                                             CultureInfo.InvariantCulture); //textblock2
             }
             else
             {
-                TextBlockLightTime.Text = Properties.Resources.lblLight + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock1
-                TextBlockDarkTime.Text = Properties.Resources.lblDark + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
+                TextBlockLightTime.Text = AdmProperties.Resources.lblLight + ": " +
+                                          SunriseWithOffset.ToString("HH:mm",
+                                              CultureInfo.InvariantCulture); //textblock1
+                TextBlockDarkTime.Text = AdmProperties.Resources.lblDark + ": " +
+                                         SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture); //textblock2
             }
+
+            DateTime nextUpdate = builder.LocationData.LastUpdate.Add(builder.Config.Location.PollingCooldownTimeSpan);
+            if (Settings.Default.AlterTime)
+                LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("en"));
+            else LocationNextUpdateDate.Text = nextUpdate.ToString(CultureInfo.CreateSpecificCulture("de"));
         }
 
-        private void ShowErrorMessage(Exception ex)
+        /// <summary>
+        /// Geographic Coordinates
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void ButtonApplyCoordinates_Click(object sender, RoutedEventArgs e)
         {
-            string error = Properties.Resources.errorThemeApply + "\n\nError ocurred in: " + ex.Source + "\n\n" + ex.Message;
-            MsgBox msg = new MsgBox(error, Properties.Resources.errorOcurredTitle, "error", "yesno")
+            builder.Config.Governor = Governor.Default;
+            try
+            {
+                builder.Config.Location.CustomLat = double.Parse(NumberBoxLat.Text, CultureInfo.InvariantCulture);
+                builder.Config.Location.CustomLon = double.Parse(NumberBoxLon.Text, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                userFeedback.Text = AdmProperties.Resources.errorNumberInput;
+                return;
+            }
+
+            builder.Config.Location.Enabled = true;
+            builder.Config.Location.UseGeolocatorService = false;
+            SetTimeBasedSwitchEnabled();
+            try
+            {
+                if (!init) builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+
+            ButtonApplyCoordinates.IsEnabled = false;
+            await ActivateLocationMode();
+            await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
+            SetPanelVisibility(false, true, true, true, true);
+        }
+
+        private void ShowErrorMessage(Exception ex, string location = "PageTime")
+        {
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source +
+                           "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)
             };
             msg.ShowDialog();
-            var result = msg.DialogResult;
-            if (result == true)
+            bool result = msg.DialogResult ?? false;
+            if (result)
             {
                 string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)
@@ -653,16 +656,325 @@ namespace AutoDarkModeApp.Pages
                     Verb = "open"
                 });
             }
+
             return;
         }
 
-        private void StartProcessByProcessInfo(string message)
+
+        /// <summary>
+        /// radio buttons
+        /// </summary>
+        private void RadioButtonDisabled_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(message)
+            DisableTimeBasedSwitch();
+            SetPanelVisibility(false, false, false, false, true);
+        }
+
+        private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
+        {
+            NumberboxOffsetDark.Minimum = -999;
+            NumberBoxOffsetLight.Minimum = -999;
+            SetTimeBasedSwitchEnabled();
+            DisableLocationMode();
+            builder.Config.Governor = Governor.Default;
+            //applyButton.IsEnabled = true;
+            try
             {
-                UseShellExecute = true,
-                Verb = "open"
-            });
+                if (!init) builder.Save();
+                Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
+            }
+        }
+
+        private async void RadioButtonLocationTimes_Click(object sender, RoutedEventArgs e)
+        {
+            NumberboxOffsetDark.Minimum = -999;
+            NumberBoxOffsetLight.Minimum = -999;
+            SetTimeBasedSwitchEnabled();
+            builder.Config.Location.Enabled = true;
+            builder.Config.Location.UseGeolocatorService = true;
+            builder.Config.Governor = Governor.Default;
+            try
+            {
+                if (!init) builder.Save();
+                SetPanelVisibility(false, true, true, false, true);
+                await ActivateLocationMode();
+                await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
+            }
+        }
+
+        private void RadioButtonCoordinateTimes_Click(object sender, RoutedEventArgs e)
+        {
+            NumberboxOffsetDark.Minimum = -999;
+            NumberBoxOffsetLight.Minimum = -999;
+            if (builder.Config.Location.CustomLat != 0 & builder.Config.Location.CustomLon != 0)
+            {
+                SetPanelVisibility(false, false, true, true, true);
+                ButtonApplyCoordinates_Click(this, null);
+            }
+            else
+            {
+                SetPanelVisibility(false, false, false, true, true);
+            }
+        }
+
+        /// <summary>
+        /// Just UI stuff
+        /// Events of controls
+        /// </summary>
+        private void TimePicker_SelectedDateTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
+        {
+            if (!init)
+            {
+                //applyButton.IsEnabled = true;
+                ApplyButton_Click(this, null);
+            }
+        }
+
+        private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ProcessHandler.StartProcessByProcessInfo(
+                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+        }
+
+        private void TextBlockHelpWiki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                TextBlockHelpWiki_MouseDown(this, null);
+            }
+        }
+
+        //numbox event handler
+        private void TextBox_BlockChars_TextInput_Offset(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TextBox_BlockCopyPaste_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy || e.Command == ApplicationCommands.Cut ||
+                e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TexttBox_SelectAll_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            var textBox = ((System.Windows.Controls.TextBox)sender);
+            textBox.Dispatcher.BeginInvoke(new System.Action(() => { textBox.SelectAll(); }));
+        }
+
+        private void NumberBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void NumberBox_ValueChanged(ModernWpf.Controls.NumberBox sender,
+            ModernWpf.Controls.NumberBoxValueChangedEventArgs args)
+        {
+            if (!init)
+            {
+                if (sender.Tag.Equals("offset"))
+                {
+                    if (OffsetButton != null)
+                    {
+                        OffsetButton.IsEnabled = true;
+                    }
+
+                    userFeedback.Text = AdmProperties.Resources.TimeTextBlockClickOnSetMessage;
+                }
+                else if (sender.Tag.Equals("coordinates"))
+                {
+                    if (ButtonApplyCoordinates != null)
+                    {
+                        ButtonApplyCoordinates.IsEnabled = true;
+                    }
+
+                    userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
+                }
+            }
+        }
+
+        private void NumberBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!init)
+            {
+                if (sender is ModernWpf.Controls.NumberBox nb && nb.Tag.Equals("offset"))
+                {
+                    if (OffsetButton != null)
+                    {
+                        OffsetButton.IsEnabled = true;
+                    }
+
+                    userFeedback.Text = AdmProperties.Resources.TimeTextBlockClickOnSetMessage;
+                }
+                else if (sender is TextBox tb && tb.Tag.Equals("coordinates"))
+                {
+                    if (ButtonApplyCoordinates != null)
+                    {
+                        ButtonApplyCoordinates.IsEnabled = true;
+                    }
+
+                    userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
+                }
+            }
+        }
+
+        private void TextBlockOpenLatLongWebsite_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ProcessHandler.StartProcessByProcessInfo("https://www.latlong.net/");
+        }
+
+        private void TextBlockOpenLatLongWebsite_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter | e.Key == Key.Space)
+            {
+                TextBlockOpenLatLongWebsite_MouseDown(this, null);
+            }
+        }
+
+        private void NumberBox_Validate(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox tb)
+            {
+                string validated = tb.Text.Replace(",", ".");
+                bool isNegative = false;
+                if (validated.StartsWith("-")) isNegative = true;
+                validated = Regex.Replace(validated, @"[^\d.]", "");
+
+                if (validated.Contains("."))
+                {
+                    string[] split = validated.Split(".");
+                    string join = string.Join("", split[1..]);
+                    join = Regex.Replace(join, @"[^\d]", "");
+                    validated = $"{split[0]}.{join}";
+                    validated = validated.TrimEnd('0').TrimEnd('.');
+                }
+
+                if (validated.StartsWith('0'))
+                {
+                    validated = validated.TrimStart('0');
+                    if (validated.StartsWith('.')) validated = "0" + validated;
+                }
+
+                if (validated.Length == 0)
+                {
+                    validated = "0";
+                }
+
+                if (isNegative)
+                {
+                    validated = "-" + validated;
+                }
+
+                tb.Text = validated;
+
+                _ = double.TryParse(NumberBoxLat.Text, NumberStyles.Any, CultureInfo.InvariantCulture,
+                    out double latParsed);
+                _ = double.TryParse(NumberBoxLon.Text, NumberStyles.Any, CultureInfo.InvariantCulture,
+                    out double lonParsed);
+                if (latParsed > 90) NumberBoxLat.Text = "90";
+                else if (latParsed < -90) NumberBoxLat.Text = "-90";
+                if (lonParsed > 180) NumberBoxLon.Text = "180";
+                else if (lonParsed < -180) NumberBoxLon.Text = "-180";
+            }
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            tb.SelectionStart = tb.Text.Length;
+            tb.SelectionLength = 0;
+        }
+
+        private void NumberBoxLatLon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ButtonApplyCoordinates != null)
+            {
+                ButtonApplyCoordinates.IsEnabled = true;
+            }
+
+            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
+        }
+
+        private void ButtonControlPostponeQueue_Click(object sender, RoutedEventArgs e)
+        {
+            bool isDelayed = false;
+            if ((string)ButtonControlPostponeQueue.Content == AdmProperties.Resources.Resume)
+            {
+                ButtonControlPostponeQueue.Content = AdmProperties.Resources.PostponeButtonDelay;
+                PostponeComboBox.IsEnabled = true;
+                isDelayed = true;
+            }
+            else
+            {
+                ButtonControlPostponeQueue.Content = AdmProperties.Resources.Resume;
+                PostponeComboBox.IsEnabled = false;
+            }
+
+            if (selectedPostponeMinutes != 0 && !isDelayed)
+            {
+                MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {selectedPostponeMinutes}");
+            }
+            else if (selectedPostponeMinutes == 0)
+            {
+                MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+                if (isDelayed) MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
+            }
+            else
+            {
+                MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
+                MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
+            }
+
+            PostponeTimerEvent(null, new());
+        }
+
+        private void RadioButtonWindowsNightLight_Click(object sender, RoutedEventArgs e)
+        {
+            SetPanelVisibility(false, false, true, false, true);
+            builder.Config.Governor = Governor.NightLight;
+            builder.Config.AutoThemeSwitchingEnabled = true;
+            builder.Config.Location.Enabled = false;
+            NumberboxOffsetDark.Minimum = 0;
+            NumberBoxOffsetLight.Minimum = 0;
+            try
+            {
+                if (!init) builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "RadioButtonWindowsNightLight_Click");
+            }
+        }
+
+        private async void ButtonOpenNightLightSettings_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
+        }
+
+        private void PostponeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cb = (ComboBoxItem)PostponeComboBox.SelectedItem;
+            string minutesString = cb.Name.Replace("Postpone", "");
+            if (int.TryParse(minutesString, out int minutes))
+            {
+                selectedPostponeMinutes = minutes;
+            }
+            else
+            {
+                selectedPostponeMinutes = 0;
+            }
         }
     }
 }

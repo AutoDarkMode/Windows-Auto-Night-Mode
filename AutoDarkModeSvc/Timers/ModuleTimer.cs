@@ -2,17 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Timers;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
+using AutoDarkModeLib;
 
 namespace AutoDarkModeSvc.Timers
 {
-    class ModuleTimer
+    public class ModuleTimer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private List<IAutoDarkModeModule> Modules { get; set; }
         private Timer Timer { get; set; }
         public string Name { get; }
         private bool TickOnStart { get;  }
+
+        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         /// <summary>
         /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
@@ -27,7 +30,7 @@ namespace AutoDarkModeSvc.Timers
             {
                 Interval = interval,
                 Enabled = false,
-                AutoReset = true                
+                AutoReset = true
             };
             Timer.Elapsed += OnTimedEvent;
         }
@@ -35,8 +38,12 @@ namespace AutoDarkModeSvc.Timers
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             // copying allows dynamic updates of the Module list since it can only be changed once every OnTimedEvent
-            List<IAutoDarkModeModule> ready = new List<IAutoDarkModeModule>(Modules);
-            Logger.Debug($"{Name}timer signal received");
+            List<IAutoDarkModeModule> ready = new(Modules);
+            if (builder.Config.Tunable.DebugTimerMessage)
+            {
+                Logger.Debug($"{Name}timer signal received");
+            }
+
             ready.ForEach(t =>
             {
                 t.Fire();
@@ -51,6 +58,7 @@ namespace AutoDarkModeSvc.Timers
         {
             if (!Modules.Contains(module))
             {
+                module.EnableHook();
                 if (module.FireOnRegistration)
                 {
                     module.Fire();
@@ -63,11 +71,11 @@ namespace AutoDarkModeSvc.Timers
             // maybe counters concurrency mitigation delay
         }
 
-        public void DeregisterModule(IAutoDarkModeModule module) 
+        public void DeregisterModule(IAutoDarkModeModule module)
         {
             if (Modules.Contains(module))
             {
-                module.Cleanup();
+                module.DisableHook();
                 Modules.Remove(Modules.Find(m => m.Name == module.Name));
                 Logger.Info($"deregistered {module.Name} from timer {Name}");
             }
@@ -91,19 +99,19 @@ namespace AutoDarkModeSvc.Timers
             if (TickOnStart)
             {
                 OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
-            }            
+            }
         }
 
         public void Stop()
         {
-            Logger.Info("shutting down {0} timer", Name);
+            Logger.Debug("shutting down {0} timer", Name);
             Timer.Stop();
         }
 
         public void Dispose()
         {
-            Logger.Info("{0} timer disposed", Name);
             Timer.Dispose();
+            Logger.Debug("{0} timer disposed", Name);
         }
     }
 }

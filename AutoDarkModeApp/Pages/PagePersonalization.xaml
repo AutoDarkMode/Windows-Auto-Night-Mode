@@ -1,0 +1,191 @@
+﻿<ui:Page x:Class="AutoDarkModeApp.Pages.PagePersonalization"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:local="clr-namespace:AutoDarkModeApp"
+         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+         xmlns:ui="http://schemas.modernwpf.com/2019"
+         xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+         mc:Ignorable="d"
+         Title="PagePersonalization"
+         d:MinWidth="450"
+         VerticalAlignment="Top"
+         HorizontalAlignment="Left">
+
+    <Grid Margin="0,0,15,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="0,0,0,0"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{x:Static p:Resources.NavbarPersonalization}"
+                   FontSize="30"
+                   FontFamily="Segoe UI Semilight" />
+
+
+        <!-- content wallpaper pick-->
+        <Border Grid.Column="1"
+                Grid.Row="3"
+                Margin="0,15,0,10"
+                Padding="5,5,5,5"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Win11Border}"
+                CornerRadius="5"
+                Background="{DynamicResource Win11Background}"
+                MouseDown="NavigateWallpaperPicker"
+                Name="WallpaperPickerCard"
+                Cursor="Hand">
+
+
+            <Grid
+                  MouseDown="NavigateThemePicker"
+                  Margin="0,15,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ui:FontIcon Grid.Column="0"
+                             Margin="15, 0, 0, 0"
+                             FontFamily="Segoe MDL2 Assets"
+                             Glyph="&#xe8b9;" />
+
+                <Grid Grid.Column="1"
+                      Margin="15,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Margin="0, 0, 0, 0"
+                               Grid.Row="0"
+                               FontFamily="Segoe UI"
+                               FontSize="17"
+                               Text="{x:Static p:Resources.lblPickWallpaper}" />
+
+                    <TextBlock Name="TextBlockThemePickerDescription"
+                               Grid.Row="1"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="{x:Static p:Resources.tbPickWallpaper}"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+
+                    <TextBlock Name="WallpaperDisabledMessage"
+                               Grid.Row="3"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.tbFeatureDisabledWhileThemeMode}"
+                               Foreground="#D44440"
+                               FontFamily="Segoe UI"
+                               TextWrapping="Wrap" />
+
+                </Grid>
+
+                <ui:FontIcon Grid.Column="3"
+                             Margin="15, 0, 10, 0"
+                             FontSize="15"
+                             FontFamily="Segoe MDL2 Assets"
+                             Glyph="&#xe76C;" />
+
+
+            </Grid>
+
+
+        </Border>
+
+        <Border Margin="0,15,0,15"
+                Padding="5,0,5,0"
+                Grid.Column="1"
+                Grid.Row="4"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Win11Border}"
+                CornerRadius="5"
+                Background="{DynamicResource Win11Background}"
+                MouseDown="NavigateThemePicker"
+                Name="ThemePickerCard"
+                Cursor="Hand">
+
+            <Grid Margin="0,15,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ui:FontIcon Grid.Column="0"
+                             Margin="15, 0, 0, 0"
+                             FontFamily="Segoe MDL2 Assets"
+                             Glyph="&#xe790;" />
+
+                <Grid Grid.Column="1"
+                      Margin="15,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Margin="0, 0, 0, 0"
+                               Grid.Row="0"
+                               FontFamily="Segoe UI"
+                               FontSize="17"
+                               Text="{x:Static p:Resources.lblPickTheme}" />
+
+                    <TextBlock Grid.Row="1"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="{x:Static p:Resources.tbPickTheme}"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+
+                    <TextBlock Name="ThemeDisabledMessage"
+                               Grid.Row="3"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.tbFeatureDisabledWhileWallpaperMode}"
+                               Foreground="#D44440"
+                               FontFamily="Segoe UI"
+                               TextWrapping="Wrap" />
+
+                </Grid>
+
+                <ui:FontIcon Grid.Column="3"
+                             Margin="15, 0, 10, 0"
+                             FontSize="15"
+                             FontFamily="Segoe MDL2 Assets"
+                             Glyph="&#xe76C;" />
+
+            </Grid>
+        </Border>
+    </Grid>
+</ui:Page>

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoDarkModeApp"
-        xmlns:p="clr-namespace:AutoDarkModeApp.Properties"
+        xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.dbTitle}" Height="360" MinWidth="660" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Icon="Resources/Photo_Icon.png" Background="{x:Null}" fw:AcrylicWindowStyle="NoIcon" SizeToContent="Width" fw:PointerTracker.Enabled="True">
@@ -68,5 +68,6 @@
                 <Image x:Name="Thumb1" HorizontalAlignment="Left" Height="170" Margin="0,-87,0,0" VerticalAlignment="Top" Width="283" Stretch="Fill"/>
             </StackPanel>
         </Border>
+        <ComboBox Name="MonitorSelectionComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="9,0,0,10" VerticalAlignment="Bottom" Width="283" BorderThickness="1" DropDownOpened="ComboBox_DropDownOpened" SelectionChanged="ComboBox_SelectionChanged" Grid.ColumnSpan="2"/>
     </Grid>
 </fw:AcrylicWindow>

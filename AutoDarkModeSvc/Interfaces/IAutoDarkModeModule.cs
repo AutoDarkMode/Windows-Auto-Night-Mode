@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using AutoDarkModeSvc.Config;
+using AutoDarkModeSvc.Monitors;
 
 namespace AutoDarkModeSvc.Modules
 {
-    interface IAutoDarkModeModule : IEquatable<IAutoDarkModeModule>, IComparable<IAutoDarkModeModule>
+    public interface IAutoDarkModeModule : IEquatable<IAutoDarkModeModule>, IComparable<IAutoDarkModeModule>
     {
         /// <summary>
         /// Polling method to be periodically called by <see cref="AutoDarkModeSvc.Timers.ModuleTimer.OnTimedEvent(object, System.Timers.ElapsedEventArgs)"/>
         /// </summary>
         public void Fire();
         /// <summary>
+        /// Performs operations that should be called upon instantiation
+        /// </summary>
+        public void EnableHook();
+        /// <summary>
         /// Performs cleanup operations before a module is deregistered
         /// </summary>
-        public void Cleanup();
+        public void DisableHook();
         /// <summary>
         /// Unique timer identification
         /// </summary>

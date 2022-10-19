@@ -1,13 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>10.0.0.1</Version>
+    <Version>10.3.0.71</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
-    <StartupObject />
+    <StartupObject>AutoDarkModeSvc.Program</StartupObject>
     <PackageId>AutoDarkModeService</PackageId>
     <Company>AutoDarkMode</Company>
     <Authors>AutoDarkModeService</Authors>
@@ -15,6 +16,9 @@
     <Configurations>Debug;Release</Configurations>
     <PackageIcon>adm_new.ico</PackageIcon>
     <PackageIconUrl />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -24,16 +28,23 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ThemeManager.cs~RF40d17af8.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17134.1000" />
-    <PackageReference Include="NetMQ" Version="4.0.0.207" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="NLog" Version="4.6.8" />
-    <PackageReference Include="NLog.Schema" Version="4.6.8" />
-    <PackageReference Include="TaskScheduler" Version="2.8.17" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.VsixColorCompiler" Version="17.0.31709.430" />
+    <PackageReference Include="NLog" Version="5.0.4" />
+    <PackageReference Include="NLog.Schema" Version="5.0.4" />
+    <PackageReference Include="System.Management" Version="6.0.0" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
+    <PackageReference Include="TaskScheduler" Version="2.10.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,4 +69,11 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SwitchComponents\Addons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
+  </ItemGroup>
 </Project>

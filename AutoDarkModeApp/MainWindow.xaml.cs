@@ -1,109 +1,66 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Shell;
 using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Input;
 using System.Windows.Navigation;
+using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Properties;
-using NetMQ;
-using AutoDarkModeSvc.Communication;
-using System.Windows.Media;
+using AutoDarkModeApp.Pages;
+using ModernWpf.Media.Animation;
 
 namespace AutoDarkModeApp
 {
     public partial class MainWindow
     {
-        private ScaleTransform Transform { get; set;  }
-        private int BasewindowX { get; } = 640;
-        private int BaseWindowY { get; } = 560;
-        public string WindowX { get; }
-        public string WindowY { get; }
-        public string ScaleStringX { get; }
-        public string ScaleStringY { get; }
-
-
         public MainWindow()
         {
             DataContext = this;
-            WindowX = ((int)(Settings.Default.UIScale * BasewindowX)).ToString();
-            WindowY = ((int)((Settings.Default.UIScale) * BaseWindowY)).ToString();
-            ScaleStringX = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
-            ScaleStringY = Settings.Default.UIScale.ToString("N2", CultureInfo.CreateSpecificCulture("en-US"));
-            Console.WriteLine("--------- AppStart");
-            LanguageHelper(); //set current UI language
+
+            Trace.WriteLine("--------- AppStart");
+
+            //set current UI language
+            LanguageHelper();
+
             InitializeComponent();
+        }
 
-            //only run at first startup
-            if (Settings.Default.FirstRun)
+        private void Window_OnSourceInitialized(object sender, EventArgs e)
+        {
+            if (Settings.Default.Width != 0 || Settings.Default.Height != 0)
             {
-                SystemTimeFormat(); //check if system uses 12 hour clock
-                AddJumpList(); //create jump list entries
-
-                var regEdit = new RegeditHandler();
-                //is accent color for taskbar active?
-                if (regEdit.GetColorPrevalence())
-                {
-                    Settings.Default.AccentColor = true;
-                }
-
-                //set taskfolder name with username for multiple user environments
-                try
-                {
-                    Settings.Default.TaskFolderTitle = "ADM_" + Environment.UserName;
-                    Settings.Default.TaskFolderTitleMultiUser = true;
-                }
-                catch
-                {
-                    Settings.Default.TaskFolderTitle = "Auto Dark Mode";
-                    Settings.Default.TaskFolderTitleMultiUser = true;
-                }
-
-                //finished first startup code
-                Settings.Default.FirstRun = false; 
+                Top = Settings.Default.Top;
+                Left = Settings.Default.Left;
+                Height = Settings.Default.Height;
+                Width = Settings.Default.Width;
             }
 
-            if (Settings.Default.LanguageChanged)
+            if (Settings.Default.Maximized)
             {
-                AddJumpList();
-                Settings.Default.LanguageChanged = false;
+                WindowState = WindowState.Maximized;
             }
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             LanguageHelper();
-            ButtonNavarTime_Click(this, null); //select and display the main page
-            DonationScreen();
-            try
-            {
-                Updater updater = new Updater(false);
-                updater.CheckNewVersion(); //check github xaml file for a higher version number than installed
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void DonationScreen()
-        {
-            //generate random number between 1 and 100. If the number is 50, show donation msgbox
-            Random rdmnumber = new Random();
-            int generatedNumber = rdmnumber.Next(1, 100);
-            Console.WriteLine("generated number: " + generatedNumber);
-            if (generatedNumber == 50)
-            {
-                ButtonNavbarDonation_Click(this, null);
-            }
         }
 
         //region time and language
-        private void LanguageHelper()
+        private static void LanguageHelper()
         {
             if (string.IsNullOrWhiteSpace(Settings.Default.Language.ToString()))
             {
-                Settings.Default.Language = CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToString();
+                try
+                {
+                    Settings.Default.Language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToString();
+                }
+                catch
+                {
+                    Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
+                }
             }
+
             var langCode = new CultureInfo(Settings.Default.Language);
             CultureInfo.CurrentUICulture = langCode;
             CultureInfo.CurrentCulture = langCode;
@@ -111,108 +68,101 @@ namespace AutoDarkModeApp
             CultureInfo.DefaultThreadCurrentCulture = langCode;
         }
 
-        private void SystemTimeFormat()
-        {
-            try
-            {
-                string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-                sysFormat = sysFormat.Substring(0, sysFormat.IndexOf(":"));
-                if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
-                {
-                    Settings.Default.AlterTime = true;
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        //jump list
-        private void AddJumpList()
-        {
-            JumpTask darkJumpTask = new JumpTask
-            {
-                Title = Properties.Resources.lblDarkTheme,//Dark theme
-                Arguments = Command.Dark,
-                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
-            };
-            JumpTask lightJumpTask = new JumpTask
-            {
-                Title = Properties.Resources.lblLightTheme,//Light theme
-                Arguments = Command.Light,
-                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
-            };
-            JumpTask resetJumpTask = new JumpTask
-            {
-                Title = Properties.Resources.lblReset,//Light theme
-                Arguments = Command.NoForce,
-                CustomCategory = Properties.Resources.lblSwitchTheme//Switch current theme
-            };
-
-            JumpList jumpList = new JumpList();
-            jumpList.JumpItems.Add(darkJumpTask);
-            jumpList.JumpItems.Add(lightJumpTask);
-            jumpList.JumpItems.Add(resetJumpTask);
-            jumpList.ShowFrequentCategory = false;
-            jumpList.ShowRecentCategory = false;
-
-            JumpList.SetJumpList(Application.Current, jumpList);
-        }
-
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
-            NetMQConfig.Cleanup();
+            //NetMQConfig.Cleanup();
             Settings.Default.Save();
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
         }
 
-        //navigation bar
-        private void ButtonNavarTime_Click(object sender, RoutedEventArgs e)
+
+        private void Window_Closing(object sender, EventArgs e)
         {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageTime.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 45, 0, 0);
+            if (WindowState == WindowState.Maximized)
+            {
+                // Use the RestoreBounds as the current values will be 0, 0 and the size of the screen
+                Settings.Default.Top = RestoreBounds.Top;
+                Settings.Default.Left = RestoreBounds.Left;
+                Settings.Default.Height = RestoreBounds.Height;
+                Settings.Default.Width = RestoreBounds.Width;
+                Settings.Default.Maximized = true;
+            }
+            else
+            {
+                Settings.Default.Top = Top;
+                Settings.Default.Left = Left;
+                Settings.Default.Height = Height;
+                Settings.Default.Width = Width;
+                Settings.Default.Maximized = false;
+            }
+
+            Settings.Default.Save();
         }
 
-        private void ButtonNavbarApps_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Navbar / NavigationView
+        /// </summary>
+
+        //change displayed page based on selection
+        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender,
+            ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageApps.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0,90,0,0);
+            if (args.SelectedItemContainer != null)
+            {
+                var navItemTag = args.SelectedItemContainer.Tag.ToString();
+                StateUpdateHandler.ClearAllEvents();
+
+
+                switch (navItemTag)
+                {
+                    case "time":
+                        FrameNavbar.Navigate(typeof(PageTime), new EntranceNavigationTransitionInfo());
+                        break;
+                    case "modes":
+                        FrameNavbar.Navigate(typeof(PageSwitchModes), null, new EntranceNavigationTransitionInfo());
+                        break;
+                    case "apps":
+                        FrameNavbar.Navigate(typeof(PageApps), null, new EntranceNavigationTransitionInfo());
+                        break;
+                    case "wallpaper":
+                        FrameNavbar.Navigate(typeof(PagePersonalization), null, new EntranceNavigationTransitionInfo());
+                        break;
+                    case "settings":
+                        FrameNavbar.Navigate(typeof(PageSettings), null, new EntranceNavigationTransitionInfo());
+                        break;
+                    case "donation":
+                        FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
+                        break;
+                    case "about":
+                        FrameNavbar.Navigate(typeof(PageAbout), null, new EntranceNavigationTransitionInfo());
+                        break;
+                }
+
+                ScrollViewerNavbar.ScrollToTop();
+            }
         }
 
-        private void ButtonNavbarWallpaper_Click(object sender, RoutedEventArgs e)
+        //startup page
+        private void NavBar_Loaded(object sender, RoutedEventArgs e)
         {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageWallpaper.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 135, 0, 0);
+            NavBar.SelectedItem = NavBar.MenuItems[1];
         }
 
-        private void ButtonNavbarSettings_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageSettings.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 180, 0, 0);
-        }
-
-        private void ButtonNavbarDonation_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageDonation.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 445, 0, 0);
-        }
-
-        private void ButtonNavbarAbout_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavbar.Navigate(new Uri(@"/Pages/PageAbout.xaml", UriKind.Relative));
-            NavbarRectangle.Margin = new Thickness(0, 490, 0, 0);
-        }
-
-        //frame
-        private void FrameNavbar_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        //Block back and forward on the frame
+        private void FrameNavbar_Navigating(object sender, NavigatingCancelEventArgs e)
         {
             if (e.NavigationMode == NavigationMode.Forward | e.NavigationMode == NavigationMode.Back)
             {
                 e.Cancel = true;
             }
+        }
+
+        private void HelpMenuItem_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            ProcessHandler.StartProcessByProcessInfo(
+                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
     }
 }

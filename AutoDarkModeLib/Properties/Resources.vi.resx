@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Bật tính năng thay đổi chủ đề</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Luôn là chủ đề tối</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Luôn là chủ đề sáng</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Bật các tính năng cho Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Các ứng dụng:</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Tuỳ chọn thời điểm chuyển đổi</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Chủ đề tối</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (Phiên bản cũ):</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Chủ đề sáng</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Chuyển chủ đề hiện tại</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>Hệ thống:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Các thành phần của bên thứ ba</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>Sử dụng Location Service</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>Các thiết lập của bạn đã được lưu!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>Bấm Áp dụng để lưu thiết lập.</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Tải bản cập nhật</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>có lỗi xảy ra :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>Ứng dụng cần lấy vị trí của bạn</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>Không có cập nhật mới nào.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Đang lấy vị trí của bạn...</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>Đang kiểm tra cập nhật...</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Cảnh báo: Ứng dụng không đọc được chủ đề hiện tại của bạn.</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>Có một bản cập nhật mới!</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Cảm ơn bạn đã sử dụng Auto Dark Mode!
+
+Một phiên bản mới đã ra mắt trên GitHub với nhiều sửa lỗi và cải tiến.
+Bạn có muốn cài đặt?
+
+Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Kiểm tra cập nhật</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>Ứng dụng sẽ kiểm tra cập nhật mỗi khi khởi động.</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Chào mừng</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Tích vào để bật tính năng thay đổi chủ đề</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Dịch thuật: khoicandev</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Thành phố</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Vị trí</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Cần khởi động lại chương trình để áp dụng thay đổi</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Ngôn ngữ:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Màu nhấn (Accent color) cho Taskbar</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Huỷ</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Hiện tại:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Hình nền cho chủ đề tối</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Xoá/Vô hiệu hoá</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Chọn tập tin</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Hình nền cho chủ đề sáng</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Hình nền</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Vui lòng chọn hai hình nền</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Vui lòng chọn hình nền</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Tuỳ chỉnh hình nền</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>sử dụng hình nền hiện tại</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Đang tắt</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>hoặc</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Có thể do tập tin ảnh của bạn bị hư hỏng hoặc đường dẫn không tồn tại.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Ứng dụng không thể tạo ảnh xem trước, xin thứ lỗi!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Ứng dụng không thể lưu lại thiết lập, xin thứ lỗi!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Có lỗi đã xảy ra</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Chỉ có thể dùng được ở chủ đề tối.
+Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi chủ đề ở phần cài đặt.</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Hiển thị giờ kiểu 12 tiếng</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Kiểm tra cập nhật tự động</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Xin lỗi, nhưng ứng dụng không thể áp dụng cài đặt của bạn.
+
+Dưới đây là một số điều bạn có thể thử:
+- Khởi động lại service Auto Dark Mode
+- Kiểm tra xem service có đang chạy không
+- Đóng service, xóa tập tin config.yaml và cấu hình lại
+
+Nếu những điều trên không hữu ích, bạn có thể tạo Issue trên GitHub. Bạn có thể truy cập Issue bằng cách nhấp vào nút "Có".</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Lỗi: Thông tin bạn nhập không chính xác</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Chuyển đổi chủ đề sau khi bật chế độ Connected Standby (không khuyến khích)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Các thiết bị di động, như Microsoft Surface, sử dụng một loại chế độ chờ mới.
+Bật tùy chọn này đảm bảo rằng Auto Dark Mode sẽ chuyển đổi chủ đề ngay lập tức sau khi máy tính của bạn được đánh thức.
+Nhưng nó cũng làm giảm tuổi thọ pin, vì vậy CHỈ kích hoạt nếu cần thiết!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Do một lỗi của Windows, thanh tác vụ không chuyển đổi đúng màu của nó ở chế độ tiết kiệm pin. Vui lòng tắt trình tiết kiệm pin nếu bạn gặp sự cố.</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Độ lệch giờ</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Đặt</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Các tùy chọn này được tắt khi sử dụng Windows Theme.
+Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Các ứng dụng</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Thời điểm chuyển đổi</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Mở thư mục</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Chủ đề tối:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Tạo chủ đề của bạn</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Chọn chủ đề của bạn</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Chủ đề sáng:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Chủ đề Windows (nhiều chức năng hơn)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Hình nền (khuyến khích dùng)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Bấm vào đây để mở thiết lập cho chủ đề Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Bây giờ đến phần 'Colors' và thay đổi màu hệ thống thành 'Light' cho chủ đề sáng. Chọn Wallpaper, Mouse Cursor và Accent color yêu thích của bạn.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Quay về thiết lập chủ đề Windows và lưu chủ đề của bạn.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Lặp lại những bước trên cho chủ đề tối.</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Khoảng thời gian chờ khi chuyển màu taskbar (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Khởi động lại</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Đặt giờ tuỳ chọn</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Từ lúc mặt trời lặn tới lúc mặt trời mọc</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Các bước thiết lập</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Sử dụng bộ lọc màu thang độ xám (tổ hợp phím Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Sử dụng logon task thay vì startup entry</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Chọn chế độ:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Đã xảy ra lỗi khi áp dụng các chủ đề đã chọn, ứng dụng đã tắt chức năng chuyển đổi chủ đề</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Chủ đề sáng khác</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Tải phần mở rộng</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Các công cụ gợi ý cho bạn</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Trình mở rộng này làm cho các trang web trong Chrome, Firefox và Edge biết được chủ đề của hệ thống.</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>Không tìm thấy</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Tại sao bạn nên đóng góp tự nguyện?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Làm cách nào để đóng góp tự nguyện?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Bạn có thể gửi tiền cho tôi qua PayPal. Nó hoàn toàn tự nguyện và không thể bồi hoàn.</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Quyên góp</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Xin chào! Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
+
+Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở.
+Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
+
+Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng góp tự nguyện. Ngay cả một khoản tiền nhỏ cũng khiến tôi ngập trong vui sướng. Hãy đóng góp một mức mà bạn nghĩ là xứng đáng với lợi ích mà ứng dụng này mang đến cho bạn.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Đã xảy ra lỗi khi áp dụng tập tin .theme. Có thể chủ đề bạn đã tạo đã bị xóa hoặc di chuyển. Đó là lý do tại sao ứng dụng sẽ tắt tính năng chuyển đổi chủ đề ngay bây giờ. Để bật lại tính năng này, vui lòng mở Auto Dark Mode và định cấu hình cài đặt {0}.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Ứng dụng gặp phải vấn đề sau:{0}
+
+Bây giờ ứng dụng sẽ cố gắng giải quyết vấn đề này bằng cách chạy những đoạn mã với quyền quản trị viên. Auto Dark Mode sẽ khởi động lại sau đó và bạn sẽ cần phải thiết lập lại cài đặt của mình, xin thứ lỗi!
+
+Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên bằng cách thủ công!</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Bạn cần giúp đỡ?</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Hỗ trợ đa người dùng</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Thời gian chờ khi kích hoạt bộ lọc màu thang độ xám:</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Đồng bộ với hệ thống</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Bật chủ đề tối khi đang dùng pin</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Giá trị mặc định cho thanh trượt trình tiết kiệm năng lượng</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Giảm mức sử dụng năng lượng cho việc chuyển đổi chủ đề</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Chỉ có tác dụng khi tính năng tiết kiệm pin không được bật thủ công!</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Chuyển chủ đề</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Cá nhân hoá</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Áp dụng toạ độ</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Cài đặt này bị tắt, vì bạn chưa cài bản cập nhật Windows 10 April 2019.</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Toạ độ địa lý</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Dữ liệu vị trí</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Từ lúc mặt trời lặn tới lúc mặt trời mọc (theo toạ độ địa lý)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Kiểm tra toạ độ địa lý cho địa điểm của bạn</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Mở tập tin cấu hình</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Mở thư mục cấu hình</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Mở tập tin cấu hình</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Cấu hình</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office 2013 - 2019:</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Chế độ đổi chủ đề</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Chế độ đổi hình nền</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Ẩn biểu tượng ở tray (không khuyến khích)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi chủ đề.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi hình nền.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Cung cấp nhiều tính năng hơn, nhưng bạn cần thiết lập tập tin .theme của Windows. Bạn có thể tùy chỉnh hình nền máy tính của bạn cho mỗi màn hình, thay đổi con trỏ chuột, đặt màu nhấn và âm thanh riêng lẻ.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Cung cấp ít tính năng hơn, nhưng dễ thiết lập hơn. Bạn có thể tùy chỉnh hình nền máy tính của bạn cho tất cả các màn hình, từng màn hình hoặc đặt màu nền.</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Ứng dụng sẽ kiểm tra cập nhật Auto Dark Mode tự động. Khi có cập nhật, ứng dụng sẽ thông báo cho bạn</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Tự động tải và cài đặt cập nhật mới</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Không hiển thị thông báo</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Chọn kênh cập nhật</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Kiểm tra cập nhật khi Auto Dark Mode khởi động</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 ngày</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 ngày</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 ngày</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Kiểm tra lần cuối</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>chưa kiểm tra</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Tần suất kiểm tra cập nhật</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Chủ đề tối</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Chủ đề sáng</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Hình ảnh (đa màn hình)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Màu đơn</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Chế độ</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Loại bỏ các màn hình đã bị ngắt kết nối</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Ảnh nền</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Màu</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Mã hex</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Bật tính năng chuyển đổi ảnh nền</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Không chuyển chủ đề khi đang chơi game</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Nhanh (1 mẫu)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Trung bình (2 mẫu)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Chậm (3 mẫu)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Tần suất kiểm tra mức sử dụng GPU</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Thiết bị di động</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Điều kiện</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Mức sử dụng GPU tối thiểu để chuyển đổi chủ đề</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Phục hồi lại chủ đề khi bị thay đổi bên ngoài</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Latitude</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Longitude</value>
+    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Service chưa được chạy, vui lòng đợi...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Đang khởi động Service</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Service không phản hồi. Vui lòng kiểm tra AutoDarkModeSvc.exe có đang chạy hay không, và thử lại!</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Bật tính năng thay đổi chủ đề Windows</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Theo dõi chúng tôi trên</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Flowers</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Light)</value>
+    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Captured Motion</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (Dark)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Flow</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Glow</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (Light)</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Sunrise</value>
+    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Hằng ngày</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Bấm vào Đặt để lưu thay đổi.</value>
+  </data>
+</root>

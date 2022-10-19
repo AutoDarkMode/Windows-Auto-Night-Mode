@@ -8,6 +8,7 @@ Translation/
 Cert/
 AutoDarkModeInstaller/
 compile.bat
+overrides.json
 
 # User-specific files
 *.suo

@@ -1,0 +1,226 @@
+﻿<ui:Page x:Class="AutoDarkModeApp.Pages.PageWallpaperPicker"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      mc:Ignorable="d" 
+         
+      d:DesignWidth="470"
+      Title="PageWallpaperPicker"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="1" Grid.Column="1"
+            Name="TextBlockBackButton"
+            Margin="0,13,0,0"
+            FontFamily="Segoe MDL2 Assets"
+            FontSize="20"
+            Text="&#xe830;"
+            Cursor="Hand"
+            MouseDown="TextBlockBackButton_MouseDown"
+            />
+
+        <TextBlock
+            Grid.Row="1" Grid.Column="1"
+            Margin="35,0,0,0"
+            FontFamily="Segoe UI Semilight"
+            FontSize="30"
+            Text="{x:Static p:Resources.WallpaperTextBlockHeader}"
+            />
+
+        <ui:ToggleSwitch
+            Name="ToggleSwitchWallpaper"
+            OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+            OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+            Grid.Row="3" Grid.Column="1"
+            Margin="0,10,0,0"
+            Header="{x:Static p:Resources.WallpaperToggleSwitch}"
+            Toggled="ToggleSwitchWallpaper_Toggled"
+            />
+
+        <TextBlock
+            Grid.Row="4" Grid.Column="1"
+            Margin="0,20,0,0"
+            FontSize="14"
+            Text="{x:Static p:Resources.WallpaperComboBoxMode}"
+            />
+
+        <ComboBox
+            Name="ComboBoxModeSelection"
+            Grid.Row="4" Grid.Column="1"
+            Margin="0,45,0,0"
+            MinWidth="250"
+            SelectionChanged="ComboBoxModeSelection_SelectionChanged">
+
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemLight}" Name="ComboBoxModeSelectionLightTheme"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemDark}" Name="ComboBoxModeSelectionDarkTheme"/>
+        </ComboBox>
+
+        <TextBlock
+            Grid.Row="5" Grid.Column="1"
+            Margin="0,20,0,0"
+            FontSize="14"
+            Text="{x:Static p:Resources.WallpaperComboBoxType}"
+            />
+
+        <ComboBox
+            Name="ComboBoxWallpaperTypeSelection"
+            Grid.Row="5" Grid.Column="1"
+            Margin="0,45,0,0"
+            MinWidth="250"
+            SelectionChanged="ComboBoxWallpaperTypeSelection_SelectionChanged">
+
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemPicture}" Name="ComboBoxBackgroundSelectionGlobal"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemPictureMM}" Name="ComboBoxBackgroundSelectionIndividual"/>
+            <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemSolidColor}" Name="ComboBoxBackgroundSelectionSolidColor"/>
+        </ComboBox>
+
+        <ComboBox
+            Name="ComboBoxMonitorSelection"
+            Grid.Row="6" Grid.Column="1"
+            Margin="0,20,0,0"
+            MinWidth="250"
+            ui:ControlHelper.Header="{x:Static p:Resources.WallpaperComboBoxMonitor}"
+            SelectionChanged="ComboBoxMonitorSelection_SelectionChanged"
+            />
+        
+        <ui:HyperlinkButton 
+            Name="CleanMonitorButton" 
+            Content="{x:Static p:Resources.WallpaperHyperLinkRemoveDisconnected}" 
+            Margin="0,80,0,0" 
+            Grid.Row="6" 
+            Grid.Column="1"
+            PreviewMouseDown="CleanMonitorButton_PreviewMouseDown"
+            PreviewKeyDown="CleanMonitorButton_PreviewKeyDown"
+            />
+
+        <Grid
+            Name="GridWallpaper"
+            Grid.Row="7" Grid.Column="1"
+            Margin="0,30,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Margin="0,0,0,20"
+                Grid.Row="0"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="{x:Static p:Resources.WallpaperTextBlockHeader}"
+                />
+
+            <Button
+                Name="ButtonFilePicker"
+                Grid.Row="1"
+                Margin="0,0,0,0"
+                MinWidth="140"
+                Content="{x:Static p:Resources.dbFilePicker}"
+                Click="ButtonFilePicker_Click"
+                />
+
+
+            <Image
+                Name="ImagePreview"
+                Grid.Row="2"
+                Margin="0,20,0,0"
+                Width="350"
+                Stretch="Uniform"
+                HorizontalAlignment="Left"
+                />
+
+
+            <TextBlock
+                Name="TextBlockImagePath"
+                Grid.Row="3"
+                Margin="0,10,0,0"
+                FontSize="14"
+                TextWrapping="Wrap"
+                />
+        </Grid>
+
+        <Grid Grid.Row="8" Grid.Column="1" Margin="0,20,0,0" Name="SolidColorPicker" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Margin="0,0,0,0"
+                Grid.Row="0"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="{x:Static p:Resources.WallpaperColor}"
+                />
+
+            <Rectangle HorizontalAlignment="Left" 
+                           Name="ColorPreview"
+                           Grid.Column="0" 
+                           Grid.Row="1"
+                           Margin="0,0,0,6"
+                           Width="50"
+                           Height="50"
+                           Stroke="Gray" StrokeDashArray="1 2"
+                           />
+            <TextBox
+                    Text="#"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    ui:ControlHelper.Header="{x:Static p:Resources.WallpaperTextBoxHeaderHex}"
+                    Width="100"
+                    TextChanged="HexColorTextBox_TextChanged"
+                    Name="HexColorTextBox"
+                    Margin="0,10,0,20"
+                    FontSize="14"
+                    TextWrapping="Wrap"
+                />
+
+            <Button
+                Name="ButtonColorSet"
+                Grid.Row="1"
+                Grid.Column="2"
+                Height="33"
+                Margin="20,12,0,0"
+                Width="80"
+                Content="{x:Static p:Resources.offsetButton}"
+                Click="ButtonColorSet_Click"
+                />
+        </Grid>
+
+    </Grid>
+</ui:Page>
