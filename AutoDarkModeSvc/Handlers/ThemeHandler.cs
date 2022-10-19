@@ -9,17 +9,6 @@ using AutoDarkModeLib.Configs;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
 using AutoDarkModeSvc.Handlers.IThemeManager;
 
-/*
- * Source: https://github.com/kuchienkz/KAWAII-Theme-Swithcer/blob/master/KAWAII%20Theme%20Switcher/KAWAII%20Theme%20Helper.cs
- * Originally created by Kuchienkz.
- * Email: wahyu.darkflame@gmail.com
- * Licensed under: GNU General Public License v3.0
- * 
- * Other Contributors (modified by):
- * Armin2208
- * Spiritreader
-*/
-
 namespace AutoDarkModeSvc.Handlers
 {
     public static class ThemeHandler
