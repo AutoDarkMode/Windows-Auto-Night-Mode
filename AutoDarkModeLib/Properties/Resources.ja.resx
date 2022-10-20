@@ -1019,4 +1019,28 @@
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
     <value>今すぐ切り替えますか？それとも遅延させますか？</value>
   </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>追跡モード</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>謝辞</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>背景を除外</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>カーソルを除外</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>デスクトップアイコンを除外</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>サウンドを除外</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>除外の設定</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>このオプションは標準のWindowsテーマには対応していません</value>
+  </data>
 </root>
