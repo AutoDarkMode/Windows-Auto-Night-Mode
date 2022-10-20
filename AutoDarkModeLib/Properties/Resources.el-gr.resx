@@ -1041,6 +1041,6 @@
     <value>Ρυθμίσεις παράβλεψης</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>Αυτή η επιλογή δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
+    <value>Αυτή η ρύθμιση δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
   </data>
 </root>
