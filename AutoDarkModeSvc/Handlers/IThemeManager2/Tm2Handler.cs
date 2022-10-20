@@ -163,7 +163,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                             success = SetThemeViaIdx(targetTheme, manager, flags);
                             if (success)
                             {
-                                if (suppressLogging) Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
+                                if (!suppressLogging) Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
                             }
                         }
                         else
