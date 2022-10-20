@@ -54,7 +54,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 
                 bool darkThemeChanged = newConfig.WindowsThemeMode.DarkThemePath != oldConfig.WindowsThemeMode.DarkThemePath;
                 bool lightThemeChanged = newConfig.WindowsThemeMode.LightThemePath != oldConfig.WindowsThemeMode.LightThemePath;
-                bool flagsChanged = newConfig.WindowsThemeMode.ApplyFlags.SequenceEqual(oldConfig.WindowsThemeMode.ApplyFlags);
+                bool flagsChanged = !newConfig.WindowsThemeMode.ApplyFlags.SequenceEqual(oldConfig.WindowsThemeMode.ApplyFlags);
                 if (darkThemeChanged || lightThemeChanged || flagsChanged)
                 {
                     state.RefreshThemes(newConfig);
