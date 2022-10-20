@@ -1025,4 +1025,22 @@
   <data name="SpecialThanks" xml:space="preserve">
     <value>Θερμές ευχαριστίες</value>
   </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Παράβλεψη φόντου</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Παράβλεψη δρομέα ποντικιού</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Παράβλεψη εικονιδίων επιφάνειας εργασίας</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Παράβλεψη ήχων</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ρυθμίσεις παράβλεψης</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Αυτή η επιλογή δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
+  </data>
 </root>
