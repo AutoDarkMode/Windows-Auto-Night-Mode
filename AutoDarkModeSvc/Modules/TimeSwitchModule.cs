@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.Modules
 
                 if (State.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
                 {
-                    if (!notified && Helper.NowIsBetweenTimes(ts.NextSwitchTime.AddMinutes(-1).TimeOfDay, ts.CurrentSwitchTime.AddMinutes(1).TimeOfDay) && !notified)
+                    if (!notified && Helper.NowIsBetweenTimes(ts.NextSwitchTime.TimeOfDay, ts.CurrentSwitchTime.AddMinutes(2).TimeOfDay) && !notified)
                     {
                         ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                         notified = true;
