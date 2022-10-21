@@ -43,7 +43,7 @@
         <!-- content wallpaper pick-->
         <Border Grid.Column="1"
                 Grid.Row="3"
-                Margin="0,15,0,10"
+                Margin="0,15,0,0"
                 Padding="5,5,5,5"
                 BorderThickness="1"
                 BorderBrush="{DynamicResource Win11Border}"

@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:AutoDarkModeApp"
              xmlns:ui="http://schemas.modernwpf.com/2019"
              Startup="Application_Startup">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,9 +19,12 @@
                             </SolidColorBrush>
                             <Color x:Key="NavbarBackground">#fbfbfb</Color>
                             <SolidColorBrush x:Key="Win11Background"
-                                             Color="#fbfbfb"></SolidColorBrush>
+                                             Opacity="0.85"
+                                             Color="#fffbfbfb"></SolidColorBrush>
                             <SolidColorBrush x:Key="Win11Border"
                                              Color="#e5e5e5"></SolidColorBrush>
+                            <SolidColorBrush x:Key="AltHighClone"
+                                             Color="#f3f3f3"></SolidColorBrush>
                             <ResourceDictionary.MergedDictionaries>
                                 <ui:ColorPaletteResources TargetTheme="Light"
                                                           AltHigh="#f3f3f3" />
@@ -39,9 +43,12 @@
 
                             <Color x:Key="NavbarBackground">#2b2b2b</Color>
                             <SolidColorBrush x:Key="Win11Background"
-                                             Color="#2b2b2b"></SolidColorBrush>
+                                             Opacity="0.05"
+                                             Color="#fffbfbfb"></SolidColorBrush>
                             <SolidColorBrush x:Key="Win11Border"
                                              Color="#1d1d1d"></SolidColorBrush>
+                            <SolidColorBrush x:Key="AltHighClone"
+                                             Color="#202020"></SolidColorBrush>
                         </ResourceDictionary>
                     </ui:ThemeResources.ThemeDictionaries>
                 </ui:ThemeResources>

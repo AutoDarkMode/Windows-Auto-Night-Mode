@@ -48,7 +48,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle Grid.Column="1" Fill="{DynamicResource SystemAltHighColorBrush}" Width="Auto" Height="50"/>
+            <Rectangle Grid.Column="1" Fill="{DynamicResource AltHighClone}" Width="Auto" Height="50"/>
         </Grid>
 
 

@@ -25,6 +25,17 @@ using AutoDarkModeApp.Properties;
 using AutoDarkModeApp.Pages;
 using ModernWpf.Media.Animation;
 using System.Windows.Media.Media3D;
+using static AutoDarkModeApp.PInvoke.ParameterTypes;
+using System.Windows.Interop;
+using ModernWpf;
+using System.Windows.Media;
+using static AutoDarkModeApp.PInvoke;
+using AutoDarkModeLib.IThemeManager2;
+using AutoDarkModeLib;
+using ModernWpf.Controls;
+using System.Windows.Controls;
+using ModernWpf.Controls.Primitives;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeApp
 {
@@ -40,6 +51,64 @@ namespace AutoDarkModeApp
             LanguageHelper();
 
             InitializeComponent();
+            Loaded += OnLoaded;
+
+        }
+
+        private void ConfigureMica()
+        {
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            {
+                Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                NavBar.Resources["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                NavBar.Resources["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                NavBar.Resources["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                TopBarCloseButtonsOpaque.Visibility = Visibility.Collapsed;
+                TopBarHeader.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                TopBarTitle.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                Methods.SetWindowAttribute(
+                    new WindowInteropHelper(this).Handle,
+                    DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
+                    2
+                );
+                RefreshFrame();
+                RefreshDarkMode();
+                ThemeManager.Current.ActualApplicationThemeChanged += (_, _) => RefreshDarkMode();
+            }
+            else
+            {
+                TopBarCloseButtonsForMica.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ConfigureMica();
+        }
+
+        private void RefreshFrame()
+        {
+            IntPtr mainWindowPtr = new WindowInteropHelper(this).Handle;
+            HwndSource mainWindowSrc = HwndSource.FromHwnd(mainWindowPtr);
+            mainWindowSrc.CompositionTarget.BackgroundColor = Color.FromArgb(0, 0, 0, 0);
+
+            MARGINS margins = new MARGINS();
+            margins.cxLeftWidth = -1;
+            margins.cxRightWidth = -1;
+            margins.cyTopHeight = -1;
+            margins.cyBottomHeight = -1;
+
+            Methods.ExtendFrame(mainWindowSrc.Handle, margins);
+        }
+
+        private void RefreshDarkMode()
+        {
+            var isDark = ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark;
+            int flag = isDark ? 1 : 0;
+            Methods.SetWindowAttribute(
+                new WindowInteropHelper(this).Handle,
+                DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE,
+                flag);
         }
 
         private void Window_OnSourceInitialized(object sender, EventArgs e)

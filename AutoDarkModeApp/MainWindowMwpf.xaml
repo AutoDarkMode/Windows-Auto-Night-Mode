@@ -25,7 +25,7 @@
 
         <!-- Grid Layout -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+            <RowDefinition Height="32" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -33,17 +33,31 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="320" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="138" />
             </Grid.ColumnDefinitions>
 
             <Rectangle Grid.Column="0"
+                       Name="TopBarTitle"
                        Fill="{DynamicResource NavbarFill}"
                        Width="Auto"
                        Height="Auto" />
             <Rectangle Grid.Column="1"
-                       Fill="{DynamicResource SystemAltHighColorBrush}"
+                       Name="TopBarHeader"
+                       Fill="{DynamicResource AltHighClone}"
                        Width="Auto"
                        Height="Auto" />
-
+            <Rectangle Grid.Column="2"
+                       Name="TopBarCloseButtonsOpaque"
+                       Fill="{DynamicResource AltHighClone}"
+                       Width="Auto"
+                       Height="Auto" />
+            <Border BorderThickness="2"
+                    Name="TopBarCloseButtonsForMica"
+                    BorderBrush="{DynamicResource AltHighClone}"
+                    CornerRadius="0,5,0,7"
+                    Background="{DynamicResource AltHighClone}"
+                    Grid.Column="2">
+            </Border>
 
             <!-- Title Bar -->
             <TextBlock HorizontalAlignment="Left"
@@ -162,7 +176,6 @@
             <ScrollViewer PanningMode="Both"
                           x:Name="ScrollViewerNavbar">
                 <ui:Frame Content="Something went wrong :("
-                          Background="{DynamicResource SystemAltHighColorBrush}"
                           Name="FrameNavbar"
                           Margin="0,0,0,0"
                           Height="Auto"
@@ -175,10 +188,13 @@
             <!-- Custom Navbar Styles -->
             <ui:NavigationView.Resources>
                 <SolidColorBrush x:Key="NavigationViewTopPaneBackground"
+                                 Opacity="0.85"
                                  Color="{DynamicResource NavbarBackground}" />
                 <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground"
+                                 Opacity="0.85"
                                  Color="{DynamicResource NavbarBackground}" />
                 <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground"
+                                 Opacity="0.85"
                                  Color="{DynamicResource NavbarBackground}" />
 
                 <!--
