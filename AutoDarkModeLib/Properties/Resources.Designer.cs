@@ -1798,7 +1798,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum GPU usage to delay switching.
+        ///   Looks up a localized string similar to Minimum GPU usage % to delay switching.
         /// </summary>
         public static string SwitchModesTextBlockMinimumUsage {
             get {
