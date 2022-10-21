@@ -47,30 +47,6 @@ namespace AutoDarkModeSvc.Communication
             _ = state.ConfigIsUpdatingWaitHandle.WaitOne();
             msg.ForEach(message =>
             {
-
-                #region DelayBy
-                if (message.StartsWith(Command.DelayBy))
-                {
-                    string minutesString = message.Replace(Command.DelayBy, "").Trim();
-                    string statusCode = StatusCode.Err;
-                    if (int.TryParse(minutesString, out int minutes))
-                    {
-                        Logger.Info($"signal received: delay theme switch by {minutesString} minutes");
-                        state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(minutes), SkipType.Unspecified));
-                        statusCode = StatusCode.Ok;
-                    }
-                    else
-                    {
-                        Logger.Info($"signal received: delay theme switch with invalid data ({minutesString})");
-                    }
-                    SendResponse(new ApiResponse()
-                    {
-                        StatusCode = statusCode
-                    }.ToString());
-                    return;
-                }
-                #endregion
-
                 switch (message)
                 {
                     #region Switch
@@ -135,7 +111,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region LocationAccess
                     case Command.LocationAccess:
-                        Logger.Info("signal received: checking location access permissions");
+                        Logger.Debug("signal received: checking location access permissions");
                         Task<bool> geoTask = Task.Run(async () => await LocationHandler.HasLocation());
                         geoTask.Wait();
                         var result = geoTask.Result;
@@ -159,7 +135,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region GeoloatorIsUpdating
                     case Command.GeolocatorIsUpdating:
-                        Logger.Info("signal received: check if geolocator is busy");
+                        Logger.Debug("signal received: check if geolocator is busy");
                         if (state.GeolocatorIsUpdating)
                         {
                             SendResponse(new ApiResponse()
@@ -381,6 +357,27 @@ namespace AutoDarkModeSvc.Communication
                         break;
                     #endregion
 
+                    #region DelayBy
+                    case string s when s.StartsWith(Command.DelayBy):
+                        string minutesString = message.Replace(Command.DelayBy, "").Trim();
+                        string statusCode = StatusCode.Err;
+                        if (int.TryParse(minutesString, out int minutes))
+                        {
+                            Logger.Info($"signal received: delay theme switch by {minutesString} minutes");
+                            state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(minutes), SkipType.Unspecified));
+                            statusCode = StatusCode.Ok;
+                        }
+                        else
+                        {
+                            Logger.Info($"signal received: delay theme switch with invalid data ({minutesString})");
+                        }
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = statusCode
+                        }.ToString());
+                        break;
+                    #endregion
+
                     #region DetectMonitors
                     case Command.DetectMonitors:
                         Logger.Info("signal received: detecting new monitors");
@@ -413,7 +410,7 @@ namespace AutoDarkModeSvc.Communication
 
                     #region GetLearnedThemeNames
                     case Command.GetLearnedThemeNames:
-                        Logger.Info("signal received: get learned theme names");
+                        Logger.Debug("signal received: get learned theme names");
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

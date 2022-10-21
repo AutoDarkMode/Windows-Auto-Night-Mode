@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Monitors;
 using Microsoft.Win32;
 using NLog.Targets;
@@ -54,25 +55,6 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public void RefreshGuid()
         {
             ThemeId = $"{{{Guid.NewGuid()}}}";
-        }
-
-        public static List<string> GetClassFieldsAndValues(object obj)
-        {
-            var flags = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public;
-            List<string> props = obj.GetType().GetProperties(flags)
-            .OrderBy(p =>
-            {
-                (string, int) propValue = ((string, int))p.GetValue(obj);
-                return propValue.Item2;
-            })
-            .Select(p =>
-            {
-                (string, int) propValue = ((string, int))p.GetValue(obj);
-                if (p.Name == "Section" || p.Name == "Description") return propValue.Item1;
-                else return $"{p.Name}={propValue.Item1}";
-            })
-            .ToList();
-            return props;
         }
 
         private void UpdateValue(string section, string key, string value)
@@ -386,34 +368,14 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Parse();
         }
 
-        public static (List<string>, string) GetDisplayNameFromRaw(string themePath)
-        {
-            List<string> lines = new();
-            string pathThemeName = null;
-            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-            pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
-            if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
-            return (lines, pathThemeName);
-        }
-
-        public static string GetOriginalNameFromRaw(string themePath)
-        {
-            List<string> lines = new();
-            string originalName = null;
-            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-            originalName = lines.Where(x => x.StartsWith($"{nameof(UnmanagedOriginalName)}".Trim())).FirstOrDefault();
-            if (originalName != null) originalName = originalName.Split("=")[1];
-            return originalName;
-        }
-
         public void SyncWithActiveTheme(bool keepDisplayNameAndGuid = false)
         {
             try
             {
                 // call first becaues it refreshes the regkey
-                string activeThemeName = ThemeHandler.GetCurrentThemeName();
+                (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
                 using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
-                string themePath = (string)key.GetValue("CurrentTheme") ?? "";
+                string themePath = (string)key.GetValue("CurrentTheme") ?? new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
 
                 List<string> lines = new();
                 string pathThemeName = null;
@@ -424,20 +386,28 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 else
                 {
                     Logger.Warn("theme file path registry key empty, using custom theme");
+                    isCustom = true;
                 }
-                /*
-                 * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
-                 * we need to manually change the path to Custom.theme, which contains the current theme data
-                 */
-                if (pathThemeName == null || pathThemeName != activeThemeName && !pathThemeName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+
+
+                if (isCustom)
                 {
-                    Logger.Debug($"expected name: {activeThemeName} different from display name: {pathThemeName} with path: {themePath}");
+                    Logger.Info($"theme used for synching is custom theme, path: {themePath}");
+                    ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+                }
+                else if (pathThemeName != null && pathThemeName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+                {
+                    Logger.Info($"theme used for syncing is default theme with localized name, path: {themePath}");
+                    ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+                }
+                if (pathThemeName == null || pathThemeName != activeThemeName)
+                {
+                    Logger.Info($"theme used for syncing has wrong name, using custom theme. expected: {activeThemeName} actual: {pathThemeName} with path: {themePath}");
                     themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
                 else
                 {
-                    Logger.Debug($"currently active theme: {activeThemeName}, path: {themePath}");
                     ThemeFileContent = lines;
                 }
 
@@ -520,6 +490,26 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
+        public static (List<string>, string) GetDisplayNameFromRaw(string themePath)
+        {
+            List<string> lines = new();
+            string pathThemeName = null;
+            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+            pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
+            if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
+            return (lines, pathThemeName.Trim());
+        }
+
+        public static string GetOriginalNameFromRaw(string themePath)
+        {
+            List<string> lines = new();
+            string originalName = null;
+            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
+            originalName = lines.Where(x => x.StartsWith($"{nameof(UnmanagedOriginalName)}".Trim())).FirstOrDefault();
+            if (originalName != null) originalName = originalName.Split("=")[1];
+            return originalName.Trim();
+        }
+
         private static void SetValues(string input, object obj)
         {
             var flags = BindingFlags.Instance | BindingFlags.Public;
@@ -540,6 +530,25 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     Logger.Error(ex, $"could not set value for input: {input}, exception: ");
                 }
             }
+        }
+
+        private static List<string> GetClassFieldsAndValues(object obj)
+        {
+            var flags = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public;
+            List<string> props = obj.GetType().GetProperties(flags)
+            .OrderBy(p =>
+            {
+                (string, int) propValue = ((string, int))p.GetValue(obj);
+                return propValue.Item2;
+            })
+            .Select(p =>
+            {
+                (string, int) propValue = ((string, int))p.GetValue(obj);
+                if (p.Name == "Section" || p.Name == "Description") return propValue.Item1;
+                else return $"{p.Name}={propValue.Item1}";
+            })
+            .ToList();
+            return props;
         }
     }
 

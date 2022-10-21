@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using Microsoft.Win32;
 using System;
@@ -121,11 +122,10 @@ namespace AutoDarkModeSvc.Handlers
 
         public static string GetActiveThemePath()
         {
-            Logger.Trace("get active theme path called");
             // call first becaues it refreshes the regkey
-            string activeThemeName = ThemeHandler.GetCurrentThemeName();
+            (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
-            string themePath = (string)key.GetValue("CurrentTheme") ?? "";
+            string themePath = (string)key.GetValue("CurrentTheme") ?? new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
 
             ThemeFile tempTheme = null;
             if (themePath.Length > 0)
@@ -135,14 +135,21 @@ namespace AutoDarkModeSvc.Handlers
             }
             else
             {
-                Logger.Warn("theme file path registry key empty, using custom theme");
+                Logger.Warn($"theme file path registry key empty, using custom theme, path: {themePath}");
+                return themePath;
             }
-            /*
-             * If the theme is unsaved, Windows will sometimes NOT update the registry path. Therefore,
-             * we need to manually change the path to Custom.theme, which contains the current theme data
-             */
-            if (tempTheme == null || tempTheme.DisplayName != activeThemeName && !tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+
+            if (isCustom)
             {
+                Logger.Debug($"current theme tracked by windows is custom theme, path: {themePath}");
+            }
+            else if (tempTheme.DisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+            {
+                Logger.Debug($"current theme tracked by windows is default theme with localized name, path: {themePath}");
+            }
+            else if (tempTheme == null || tempTheme.DisplayName != activeThemeName)
+            {
+                // if the name of the retrieved theme doesn't match, we will just select the custom theme as fallback
                 Logger.Debug($"expected name: {activeThemeName} different from display name: {tempTheme.DisplayName} with path: {themePath}");
                 themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
             }

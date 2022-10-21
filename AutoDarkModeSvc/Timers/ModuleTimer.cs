@@ -110,7 +110,7 @@ namespace AutoDarkModeSvc.Timers
 
         public void Start()
         {
-            Logger.Info($"starting {Name} timer with {Timer.Interval} ms timer interval");
+            Logger.Debug($"starting {Name} timer with {Timer.Interval} ms timer interval");
             Timer.Start();
             if (TickOnStart)
             {

@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -13,19 +14,20 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
+
+using AutoDarkModeLib;
+using AutoDarkModeLib.Configs;
+using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
+using AutoDarkModeSvc.Monitors;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using AutoDarkModeSvc.Monitors;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
-using AutoDarkModeSvc.Core;
-using AutoDarkModeLib.Configs;
-using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
-using AutoDarkModeSvc.Handlers.IThemeManager;
-using System.Collections.Generic;
 using static AutoDarkModeLib.IThemeManager2.Flags;
+using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -37,6 +39,122 @@ namespace AutoDarkModeSvc.Handlers
 
         private static readonly GlobalState state = GlobalState.Instance();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+
+        public static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
+        {
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+            {
+                ApplyIThemeManager2(themeFilePath, suppressLogging, unmanagedPatched, flagList);
+            }
+            else
+            {
+                ApplyIThemeManager(themeFilePath, suppressLogging, unmanagedPatched);
+            }
+        }
+
+        public static void ApplyManagedTheme(AdmConfig config, string path)
+        {
+            List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground };
+            Apply(path, flagList: flagList);
+        }
+
+        /// <summary>
+        /// Applies the theme using the KAWAII Theme switcher logic for windows theme files
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="newTheme"></param>
+        /// <param name="automatic"></param>
+        /// <param name="sunset"></param>
+        /// <param name="sunrise"></param>
+        /// <returns>true if an update was performed; false otherwise</returns>
+        public static void ApplyTheme(Theme newTheme)
+        {
+            PowerHandler.RequestDisableEnergySaver(builder.Config);
+            if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
+            {
+                WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
+            }
+            if (newTheme == Theme.Light)
+            {
+                ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
+                light.UnmanagedOriginalName = light.DisplayName;
+                light.DisplayName = Helper.NameUnmanagedLightTheme;
+                ThemeFile.PatchColorsWin11AndSave(light, "0 0 1");
+                Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
+            }
+            else if (newTheme == Theme.Dark)
+            {
+                ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
+                dark.UnmanagedOriginalName = dark.DisplayName;
+                dark.DisplayName = Helper.NameUnmanagedDarkTheme;
+                ThemeFile.PatchColorsWin11AndSave(dark, "0 1 0");
+                Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
+            }
+        }
+
+        /// <summary>
+        /// Forces the theme to update when the automatic theme detection is disabled
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="state"></param>
+        /// <param name="theme"></param>
+        public static void EnforceNoMonitorUpdates(AdmConfigBuilder builder, GlobalState state, Theme theme)
+        {
+            string themePath = "";
+            switch (theme)
+            {
+                case Theme.Light:
+                    themePath = Helper.PathUnmanagedLightTheme;
+                    break;
+
+                case Theme.Dark:
+                    themePath = Helper.PathUnmanagedDarkTheme;
+                    break;
+            }
+            if (builder.Config.WindowsThemeMode.Enabled
+                && !builder.Config.WindowsThemeMode.MonitorActiveTheme
+                && state.UnmanagedActiveThemePath == themePath)
+            {
+                Logger.Debug("enforcing theme refresh with disabled MonitorActiveTheme");
+                state.UnmanagedActiveThemePath = "";
+            }
+        }
+
+        public static string GetCurrentThemeName()
+        {
+            string themeName = "";/*Exception applyEx = null;*/
+            Thread thread = new(() =>
+            {
+                try
+                {
+                    themeName = new ThemeManagerClass().CurrentTheme.DisplayName;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not retrieve active theme name");
+                    //applyEx = ex;
+                }
+            })
+            {
+                Name = "COMThemeManagerThread"
+            };
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            try
+            {
+                thread.Join();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "theme handler thread was interrupted");
+            }
+            return themeName;
+        }
+
+        public static string GetCurrentVisualStyleName()
+        {
+            return Path.GetFileName(new ThemeManagerClass().CurrentTheme.VisualStyle);
+        }
 
         public static bool ThemeModeNeedsUpdate(Theme newTheme, bool skipCheck = false)
         {
@@ -74,80 +192,8 @@ namespace AutoDarkModeSvc.Handlers
             }
             return false;
         }
-
-        /// <summary>
-        /// Applies the theme using the KAWAII Theme switcher logic for windows theme files
-        /// </summary>
-        /// <param name="config"></param>
-        /// <param name="newTheme"></param>
-        /// <param name="automatic"></param>
-        /// <param name="sunset"></param>
-        /// <param name="sunrise"></param>
-        /// <returns>true if an update was performed; false otherwise</returns>
-        public static void ApplyTheme(Theme newTheme)
-        {
-            PowerHandler.RequestDisableEnergySaver(builder.Config);
-            if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
-            {
-                WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
-            }
-            if (newTheme == Theme.Light)
-            {
-                ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
-                light.UnmanagedOriginalName = light.DisplayName;
-                light.DisplayName = Helper.NameUnmanagedLightTheme;
-                ThemeFile.PatchColorsWin11AndSave(light, "0 0 1");
-                Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
-            }
-            else if (newTheme == Theme.Dark)
-            {
-                ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
-                dark.UnmanagedOriginalName = dark.DisplayName;
-                dark.DisplayName = Helper.NameUnmanagedDarkTheme;
-                ThemeFile.PatchColorsWin11AndSave(dark, "0 1 0");
-                Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
-            }
-        }
-
-        public static void ApplyManagedTheme(AdmConfig config, string path)
-        {
-            Apply(path);
-        }
-
-        public static string GetCurrentThemeName()
-        {
-            string themeName = "";/*Exception applyEx = null;*/
-            Thread thread = new(() =>
-            {
-                try
-                {
-                    themeName = new ThemeManagerClass().CurrentTheme.DisplayName;
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not retrieve active theme name");
-                    //applyEx = ex;
-                }
-            })
-            {
-                Name = "COMThemeManagerThread"
-            };
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            try
-            {
-                thread.Join();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "theme handler thread was interrupted");
-            }
-            return themeName;
-        }
-
         private static bool ApplyIThemeManager(string originalPath, bool suppressLogging = false, ThemeFile unmanaged = null)
         {
-
             string themeFilePath = unmanaged != null ? unmanaged.ThemeFilePath : originalPath;
             bool success = false;
             /*Exception applyEx = null;*/
@@ -185,7 +231,7 @@ namespace AutoDarkModeSvc.Handlers
             return success;
         }
 
-        private static void ApplyIThemeManager2(string originalPath, bool suppressLogging = false, ThemeFile unmanagedPatched = null)
+        private static void ApplyIThemeManager2(string originalPath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
         {
             DateTime start = DateTime.Now;
 
@@ -197,10 +243,10 @@ namespace AutoDarkModeSvc.Handlers
             string displayNameFromFile = null;
             try
             {
-                List<ThemeApplyFlags> flagList = null;
                 if (builder.Config.WindowsThemeMode.Enabled)
                 {
-                    flagList = builder.Config.WindowsThemeMode.ApplyFlags;
+                    if (flagList == null) flagList = builder.Config.WindowsThemeMode.ApplyFlags;
+                    else builder.Config.WindowsThemeMode.ApplyFlags.ForEach(f => { if (!flagList.Contains(f)) flagList.Add(f); });
                 }
                 (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
                 (tm2Found, tm2Success) = IThemeManager2.Tm2Handler.SetTheme(displayNameFromFile, originalPath, flagList: flagList, suppressLogging: suppressLogging);
@@ -235,50 +281,6 @@ namespace AutoDarkModeSvc.Handlers
             if (elapsed.TotalSeconds > 10 && tm2Success)
             {
                 Logger.Warn($"theme switching took longer than expected ({elapsed.TotalSeconds} seconds)");
-            }
-        }
-
-        public static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null)
-        {
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
-            {
-                ApplyIThemeManager2(themeFilePath, suppressLogging, unmanagedPatched);
-            }
-            else
-            {
-                ApplyIThemeManager(themeFilePath, suppressLogging, unmanagedPatched);
-            }
-        }
-
-        public static string GetCurrentVisualStyleName()
-        {
-            return Path.GetFileName(new ThemeManagerClass().CurrentTheme.VisualStyle);
-        }
-
-        /// <summary>
-        /// Forces the theme to update when the automatic theme detection is disabled
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="state"></param>
-        /// <param name="theme"></param>
-        public static void EnforceNoMonitorUpdates(AdmConfigBuilder builder, GlobalState state, Theme theme)
-        {
-            string themePath = "";
-            switch (theme)
-            {
-                case Theme.Light:
-                    themePath = Helper.PathUnmanagedLightTheme;
-                    break;
-                case Theme.Dark:
-                    themePath = Helper.PathUnmanagedDarkTheme;
-                    break;
-            }
-            if (builder.Config.WindowsThemeMode.Enabled
-                && !builder.Config.WindowsThemeMode.MonitorActiveTheme
-                && state.UnmanagedActiveThemePath == themePath)
-            {
-                Logger.Debug("enforcing theme refresh with disabled MonitorActiveTheme");
-                state.UnmanagedActiveThemePath = "";
             }
         }
     }

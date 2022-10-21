@@ -165,7 +165,7 @@ namespace AutoDarkModeSvc.Core
         }
 
         /// <summary>
-        /// Calculates when the nextswitch postpone should expire, dynamically depending on the governor
+        /// Calculates when the nextswitch postpone should expire when the time module is used
         /// </summary>
         /// <param name="overrideTheme">Optional: If you would like to calculate the postpone expiry for a specific active theme, pass the theme here</param>
         /// <returns>The time the next switch should expire and the skiptype as a tuple, or an empty datetime object if that information is unavailable</returns>

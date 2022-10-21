@@ -252,10 +252,19 @@ namespace AutoDarkModeSvc.Communication
                 await responsePipe.WaitForConnectionAsync(connectTimeoutTokenSource.Token);
 
                 string response = "";
+
+                DateTime start = DateTime.Now;
                 MessageParser.Parse(new List<string>() { msg }, (message) =>
                 {
                     response = message;
                 }, Service);
+
+                DateTime end = DateTime.Now;
+                TimeSpan elapsed = end - start;
+                if (elapsed.TotalSeconds > 5)
+                {
+                    Logger.Warn($"processing message: {msg} took longer than expected ({Math.Round(elapsed.TotalSeconds, 2)} seconds), requested response channel: {responderPipeId}");
+                }
 
                 try
                 {

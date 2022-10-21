@@ -35,9 +35,11 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 
+using AutoDarkModeLib.IThemeManager2;
 using AutoDarkModeSvc.Core;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -113,6 +115,46 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                 throw new ExternalException($"error setting theme via path, hr: {res}", res);
             }
             return true;
+        }
+
+        public static (bool, string) GetActiveThemeName()
+        {
+            bool isCustom = false;
+            string displayName = null;
+            Thread thread = new(() =>
+            {
+                try
+                {
+                    var manager = InitManager();
+                    manager.GetCurrentTheme(out int idxCurrent);
+                    manager.GetCustomTheme(out int idxCustom);
+                    if (idxCurrent == idxCustom)
+                    {
+                        manager.UpdateCustomTheme();
+                        isCustom = true;
+                    }
+                    manager.GetTheme(idxCurrent, out Interfaces.ITheme theme);
+                    displayName = theme.DisplayName;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not apply theme via IThemeManager2");
+                }
+            })
+            {
+                Name = "COMThemeManagerThread"
+            };
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            try
+            {
+                thread.Join();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "theme handler thread was interrupted");
+            }
+            return (isCustom, displayName);
         }
 
         /// <summary>

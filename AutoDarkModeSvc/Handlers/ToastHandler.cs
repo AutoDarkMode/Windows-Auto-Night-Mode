@@ -468,7 +468,7 @@ namespace AutoDarkModeSvc.Handlers
                     }
                     else if (arguments[0] == "switch-now")
                     {
-                        Logger.Info("remove notification switch delay grace period delay via toast");
+                        Logger.Debug("remove notification switch delay grace period delay via toast");
                         state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
                         ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                     }

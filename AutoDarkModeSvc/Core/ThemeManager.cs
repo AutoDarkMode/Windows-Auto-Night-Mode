@@ -201,6 +201,7 @@ namespace AutoDarkModeSvc.Core
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                     state.InitSyncSwitchPerformed = true;
                     // take an educated guess what theme state is most likely to be active at bootup time.
+                    // this is necessary such that postpones have the correct requestedtheme!
                     try
                     {
                         state.RequestedTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
