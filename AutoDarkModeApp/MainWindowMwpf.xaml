@@ -51,10 +51,10 @@
                        Background="{DynamicResource AltHighClone}"
                        Width="Auto"
                        Height="Auto" />
-            <Border BorderThickness="2"
+            <Border BorderThickness="5"
                     Name="TopBarCloseButtonsForMica"
                     BorderBrush="{DynamicResource AltHighClone}"
-                    CornerRadius="0,5,0,7"
+                    CornerRadius="0,0,0,7"
                     Background="{DynamicResource AltHighClone}"
                     Grid.Column="2">
             </Border>

@@ -136,16 +136,20 @@ namespace AutoDarkModeApp
             {
                 Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
-                var newResources = new ResourceDictionary();
-                newResources["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                newResources["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                newResources["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                var newResources = new ResourceDictionary
+                {
+                    ["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)),
+                    ["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)),
+                    ["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))
+                };
                 NavBar.Resources = newResources;
+                TopBarCloseButtonsOpaque.Visibility = Visibility.Hidden;
                 TopBarHeader.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                 TopBarTitle.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             }
             else
             {
+                TopBarCloseButtonsOpaque.Visibility = Visibility.Visible;
                 SetResourceReference(BackgroundProperty, "AltHighClone");
                 NavBar.Resources = navbarDict;
                 TopBarHeader.SetResourceReference(BackgroundProperty, "AltHighClone");
