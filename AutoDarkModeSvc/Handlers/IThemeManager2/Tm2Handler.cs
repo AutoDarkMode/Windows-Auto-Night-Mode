@@ -123,6 +123,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
             string displayName = null;
             Thread thread = new(() =>
             {
+                Interfaces.ITheme theme = null;
                 try
                 {
                     var manager = InitManager();
@@ -133,12 +134,16 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                         manager.UpdateCustomTheme();
                         isCustom = true;
                     }
-                    manager.GetTheme(idxCurrent, out Interfaces.ITheme theme);
+                    manager.GetTheme(idxCurrent, out theme);
                     displayName = theme.DisplayName;
                 }
                 catch (Exception ex)
                 {
                     Logger.Error(ex, $"could not apply theme via IThemeManager2");
+                }
+                finally
+                {
+                    if (theme != null) Marshal.ReleaseComObject(theme);
                 }
             })
             {
@@ -184,9 +189,10 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
 
             Thread thread = new(() =>
             {
+                Interfaces.IThemeManager2 manager = null;
                 try
                 {
-                    var manager = InitManager();
+                    manager = InitManager();
 
                     if (state.LearnedThemeNames.ContainsKey(displayName))
                     {
@@ -218,6 +224,10 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                 catch (Exception ex)
                 {
                     Logger.Error(ex, $"could not apply theme via IThemeManager2");
+                }
+                finally
+                {
+                    if (manager != null) Marshal.ReleaseComObject(manager);
                 }
             })
             {
@@ -259,9 +269,10 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
 
             for (int i = 0; i < count; i++)
             {
+                Interfaces.ITheme theme = null;
                 try
                 {
-                    manager.GetTheme(i, out Interfaces.ITheme theme);
+                    manager.GetTheme(i, out theme);
 
                     list.Add(new()
                     {
@@ -273,6 +284,10 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                 {
                     Logger.Error(ex, $"exception in Source GetThemeList->GetCount: ");
                     throw;
+                }
+                finally
+                {
+                    if (theme != null) Marshal.ReleaseComObject(theme);
                 }
             }
 
