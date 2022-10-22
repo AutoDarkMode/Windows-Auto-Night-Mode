@@ -802,6 +802,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paused.
+        /// </summary>
+        public static string lblPaused {
+            get {
+                return ResourceManager.GetString("lblPaused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick a theme.
         /// </summary>
         public static string lblPickTheme {

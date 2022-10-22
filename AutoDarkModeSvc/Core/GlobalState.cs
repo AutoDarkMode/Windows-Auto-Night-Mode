@@ -27,6 +27,8 @@ using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
+using AdmProperties = AutoDarkModeLib.Properties;
+
 
 namespace AutoDarkModeSvc.Core
 {
@@ -48,11 +50,28 @@ namespace AutoDarkModeSvc.Core
         }
 
         private WardenModule Warden { get; set; }
+
+        public Theme _requestedTheme = Theme.Unknown;
         /// <summary>
         /// The theme that was last requested to be set. This either reflects the already applied theme, 
         /// or the pending theme shortly before a switch will be performed
         /// </summary>
-        public Theme RequestedTheme { get; set; } = Theme.Unknown;
+        public Theme RequestedTheme
+        {
+            get { return _requestedTheme; }
+            set
+            {
+                _requestedTheme = value;
+                try
+                {
+                    UpdateNotifyIcon(AdmConfigBuilder.Instance());
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "failed updating tray icon theme status:");
+                }
+            }
+        }
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string UnmanagedActiveThemePath { get; set; } = "";
         public ThemeFile ManagedThemeFile { get; } = new(Helper.PathManagedTheme);
@@ -185,12 +204,38 @@ namespace AutoDarkModeSvc.Core
         {
             if (NotifyIcon == null) return;
 
+            string themeState = "";
+            if (RequestedTheme != Theme.Unknown)
+            {
+                if (RequestedTheme == Theme.Light)
+                {
+                    themeState = AdmProperties.Resources.lblLight;
+                }
+                else
+                {
+                    themeState = AdmProperties.Resources.lblDark;
+                }
+            }
+
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                if (PostponeManager.IsPostponed || PostponeManager.IsUserDelayed) NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
-                else NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
+                if (PostponeManager.IsPostponed || PostponeManager.IsUserDelayed)
+                {
+                    NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
+                    NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.lblPaused}";
+                }
+                else
+                {
+                    NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
+                    NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.enabled}";
+                }
             }
-            else NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconDisabledTray;
+            else
+            {
+                NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconDisabledTray;
+                if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.disabled}";
+                else NotifyIcon.Text = $"Auto Dark Mode\nDisabled";
+            }
         }
     }
 

@@ -145,8 +145,8 @@ namespace AutoDarkModeSvc
             toggleThemeItem.Click += new EventHandler(ToggleTheme);
             pauseThemeSwitchItem.Click += new EventHandler(PauseThemeSwitch);
 
-            state.UpdateNotifyIcon(builder);
             NotifyIcon.Text = "Auto Dark Mode";
+            state.UpdateNotifyIcon(builder);
             NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
             NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
             NotifyIcon.ContextMenuStrip.Opened += UpdateContextMenu;

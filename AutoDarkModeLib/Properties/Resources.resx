@@ -1046,4 +1046,7 @@ Do you really want to continue?</value>
   <data name="Minutes" xml:space="preserve">
     <value>minutes</value>
   </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
 </root>
