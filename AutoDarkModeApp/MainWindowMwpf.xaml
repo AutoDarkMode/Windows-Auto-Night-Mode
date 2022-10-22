@@ -36,19 +36,19 @@
                 <ColumnDefinition Width="138" />
             </Grid.ColumnDefinitions>
 
-            <Rectangle Grid.Column="0"
+            <StackPanel Grid.Column="0"
                        Name="TopBarTitle"
-                       Fill="{DynamicResource NavbarFill}"
+                       Background="{DynamicResource NavbarFill}"
                        Width="Auto"
                        Height="Auto" />
-            <Rectangle Grid.Column="1"
+            <StackPanel Grid.Column="1"
                        Name="TopBarHeader"
-                       Fill="{DynamicResource AltHighClone}"
+                       Background="{DynamicResource AltHighClone}"
                        Width="Auto"
                        Height="Auto" />
-            <Rectangle Grid.Column="2"
+            <StackPanel Grid.Column="2"
                        Name="TopBarCloseButtonsOpaque"
-                       Fill="{DynamicResource AltHighClone}"
+                       Background="{DynamicResource AltHighClone}"
                        Width="Auto"
                        Height="Auto" />
             <Border BorderThickness="2"
@@ -188,13 +188,10 @@
             <!-- Custom Navbar Styles -->
             <ui:NavigationView.Resources>
                 <SolidColorBrush x:Key="NavigationViewTopPaneBackground"
-                                 Opacity="0.85"
                                  Color="{DynamicResource NavbarBackground}" />
                 <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground"
-                                 Opacity="0.85"
                                  Color="{DynamicResource NavbarBackground}" />
                 <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground"
-                                 Opacity="0.85"
                                  Color="{DynamicResource NavbarBackground}" />
 
                 <!--

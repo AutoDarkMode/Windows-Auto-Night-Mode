@@ -36,11 +36,25 @@ using ModernWpf.Controls;
 using System.Windows.Controls;
 using ModernWpf.Controls.Primitives;
 using System.Runtime.InteropServices;
+using System.Management;
+using System.Security.Cryptography;
+using System.Security.Principal;
 
 namespace AutoDarkModeApp
 {
     public partial class MainWindowMwpf : Window
     {
+        private ResourceDictionary navbarDict;
+
+        private static SecurityIdentifier SID
+        {
+            get
+            {
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                return identity.User;
+            }
+        }
+
         public MainWindowMwpf()
         {
             DataContext = this;
@@ -51,6 +65,25 @@ namespace AutoDarkModeApp
             LanguageHelper();
 
             InitializeComponent();
+            navbarDict = NavBar.Resources;
+
+            try
+            {
+                string sidString = SID.ToString();
+                string queryString = $"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = " +
+                    $"'{sidString}\\\\" +
+                    @"Software\\Microsoft\\Windows\\DWM' AND ValueName='ColorPrevalence'";
+                WqlEventQuery query = new WqlEventQuery(queryString);
+                ManagementEventWatcher DWMPrevalenceWatcher = new ManagementEventWatcher(query);
+                DWMPrevalenceWatcher.EventArrived += new EventArrivedEventHandler((s, e) => Dispatcher.Invoke(RefreshDarkMode));
+                DWMPrevalenceWatcher.Start();
+            }
+            catch
+            {
+                // ignore, only causes minor UI instability if it fails
+            }
+
+
             Loaded += OnLoaded;
 
         }
@@ -59,13 +92,6 @@ namespace AutoDarkModeApp
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
-                Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                NavBar.Resources["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                NavBar.Resources["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                NavBar.Resources["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                TopBarCloseButtonsOpaque.Visibility = Visibility.Collapsed;
-                TopBarHeader.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                TopBarTitle.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                 Methods.SetWindowAttribute(
                     new WindowInteropHelper(this).Handle,
                     DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
@@ -105,6 +131,28 @@ namespace AutoDarkModeApp
         {
             var isDark = ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark;
             int flag = isDark ? 1 : 0;
+
+            if (!RegistryHandler.IsDWMPrevalence())
+            {
+                Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+
+                var newResources = new ResourceDictionary();
+                newResources["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                newResources["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                newResources["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                NavBar.Resources = newResources;
+                TopBarHeader.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                TopBarTitle.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            }
+            else
+            {
+                SetResourceReference(BackgroundProperty, "AltHighClone");
+                NavBar.Resources = navbarDict;
+                TopBarHeader.SetResourceReference(BackgroundProperty, "AltHighClone");
+                TopBarTitle.SetResourceReference(BackgroundProperty, "NavbarFill");
+            }
+
+
             Methods.SetWindowAttribute(
                 new WindowInteropHelper(this).Handle,
                 DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE,

@@ -29,5 +29,25 @@ namespace AutoDarkModeApp.Handlers
             var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
             return osVersion;
         }
+
+        public static bool IsDWMPrevalence()
+        {
+            try
+            {
+                using RegistryKey key = GetDWMKey();
+                var enabled = key.GetValue("ColorPrevalence").Equals(1);
+                return enabled;
+            }
+            catch
+            {
+                return true;
+            }           
+        }
+
+        private static RegistryKey GetDWMKey()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM", true);
+            return registryKey;
+        }
     }
 }

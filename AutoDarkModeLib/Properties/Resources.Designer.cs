@@ -910,6 +910,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        public static string Minutes {
+            get {
+                return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Due to a Windows bug, the taskbar doesn&apos;t properly switch its color in battery saver mode. Please turn off battery saver if you run into issues..
         /// </summary>
         public static string msgBatterySaver {

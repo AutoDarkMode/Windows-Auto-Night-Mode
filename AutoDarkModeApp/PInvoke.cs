@@ -25,7 +25,8 @@ namespace AutoDarkModeApp
             public enum DWMWINDOWATTRIBUTE
             {
                 DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
-                DWMWA_SYSTEMBACKDROP_TYPE = 38
+                DWMWA_SYSTEMBACKDROP_TYPE = 38,
+                DWMWA_CAPTION_COLOR = 35
             }
 
             [StructLayout(LayoutKind.Sequential)]

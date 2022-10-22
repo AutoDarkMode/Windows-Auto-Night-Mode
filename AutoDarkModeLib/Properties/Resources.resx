@@ -1043,4 +1043,7 @@ Do you really want to continue?</value>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
     <value>This option does not support default Windows themes</value>
   </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
 </root>

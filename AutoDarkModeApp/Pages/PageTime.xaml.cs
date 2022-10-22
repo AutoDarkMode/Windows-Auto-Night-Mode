@@ -73,6 +73,9 @@ namespace AutoDarkModeApp.Pages
             //initialize ui components
             InitializeComponent();
 
+            NumberBoxOffsetLight.Header = $"{AdmProperties.Resources.lblLight} ({AdmProperties.Resources.Minutes})";
+            NumberboxOffsetDark.Header = $"{AdmProperties.Resources.lblDark} ({AdmProperties.Resources.Minutes})";
+
             //enable 12 hour clock:
             if (Properties.Settings.Default.AlterTime)
             {
