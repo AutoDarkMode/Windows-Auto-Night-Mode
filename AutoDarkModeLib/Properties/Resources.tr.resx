@@ -127,7 +127,7 @@
     <value>Yeni güncelleme var!</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Çeviri: Cumhur Kaya KURTOĞLU</value>
+    <value>Çeviri: cmhrky (cumhur)</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Konum</value>
@@ -435,7 +435,7 @@ Bu seçeneğin etkinleştirilmesi Auto Dark Mode'un bilgisayarınızın uyandık
 Ama aynı zamanda pil ömrünü de azaltır. Bu yüzden SADECE gerekirse etkinleştirin!</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Kaydırma (dk.)</value>
+    <value>Kaydırma</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Ayarla</value>
@@ -667,7 +667,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Koşullar</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Değişimi geciktirmek için minimum GPU kullanımı</value>
+    <value>Değişimi geciktirmek için en düşük GPU kullanımı (%)</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Harici olarak değiştirildiğinde temaları geri yükle</value>
@@ -1026,5 +1026,29 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Özel teşekkürler</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Arka planı yoksay</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Fare imlecini yoksay</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Masaüstü simgelerini yoksay</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Sesleri yoksay</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Yoksayma seçenekleri</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Bu seçenek varsayılan Windows temalarını desteklemez</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>dakika</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Duraklatıldı</value>
   </data>
 </root>
