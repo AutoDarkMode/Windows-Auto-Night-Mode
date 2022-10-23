@@ -26,6 +26,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using AutoDarkModeApp.Handlers;
 using SourceChord.FluentWPF;
 using AdmExtensions = AutoDarkModeLib.Helper;
 
@@ -420,7 +421,7 @@ public partial class PageAbout : Page
 
     private void ShowErrorMessage(Exception ex, string v)
     {
-        throw new NotImplementedException();
+        ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageAbout");
     }
 
     private void SecureUxTheme_MouseDown(object sender, MouseButtonEventArgs e)

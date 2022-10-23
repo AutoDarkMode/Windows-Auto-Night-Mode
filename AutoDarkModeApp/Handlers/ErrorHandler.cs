@@ -110,5 +110,28 @@ namespace AutoDarkModeApp.Handlers
             }
             return;
         }
+
+        public static void ShowErrorMessage(Exception ex, Window owner, string location)
+        {
+            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location} " + ex.Source +
+                           "\n\n" + ex.Message;
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = owner
+            };
+            msg.ShowDialog();
+            bool result = msg.DialogResult ?? false;
+            if (result)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+
+            return;
+        }
     }
 }

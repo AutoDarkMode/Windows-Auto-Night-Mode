@@ -63,7 +63,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime");
             }
 
 
@@ -323,7 +323,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex, "OffsetButton_Click");
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime OffsetButton_Click");
             }
         }
 
@@ -393,7 +393,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime");
             }
 
             Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
@@ -503,7 +503,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime");
             }
 
             try
@@ -528,7 +528,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime");
                 return;
             }
         }
@@ -582,7 +582,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 catch (Exception ex)
                 {
-                    ShowErrorMessage(ex, "DisableTimeBasedSwitch");
+                    ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime DisableTimeBasedSwitch");
                 }
             }
 
@@ -647,36 +647,13 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex);
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime");
             }
 
             ButtonApplyCoordinates.IsEnabled = false;
             await ActivateLocationMode();
             await Dispatcher.BeginInvoke(new DispatcherDelegate(ApplyTheme));
             SetPanelVisibility(false, true, true, true, true);
-        }
-
-        private void ShowErrorMessage(Exception ex, string location = "PageTime")
-        {
-            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source +
-                           "\n\n" + ex.Message;
-            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
-            {
-                Owner = Window.GetWindow(this)
-            };
-            msg.ShowDialog();
-            bool result = msg.DialogResult ?? false;
-            if (result)
-            {
-                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
-                Process.Start(new ProcessStartInfo(issueUri)
-                {
-                    UseShellExecute = true,
-                    Verb = "open"
-                });
-            }
-
-            return;
         }
 
 
@@ -704,7 +681,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime RadioButtonCustomTimes_Click");
             }
         }
 
@@ -725,7 +702,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex, "RadioButtonCustomTimes_Click");
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime RadioButtonLocationTimes_Click");
             }
         }
 
@@ -973,7 +950,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ShowErrorMessage(ex, "RadioButtonWindowsNightLight_Click");
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime RadioButtonWindowsNightLight_Click");
             }
         }
 
