@@ -263,7 +263,7 @@ namespace AutoDarkModeSvc.Core
                 }
                 else if (e.Source == SwitchSource.SystemUnlock)
                 {
-                    Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} refreshed theme, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
+                    Logger.Info($"refreshed {Enum.GetName(typeof(Theme), newTheme).ToLower()} theme, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
                 else if (e.Source == SwitchSource.NightLightTrackerModule && switchTime.Year > 2000)
                 {
