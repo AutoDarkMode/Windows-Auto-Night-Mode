@@ -239,7 +239,7 @@ namespace AutoDarkModeSvc.Core
 
 
             // non theme mode switches & cleanup
-            if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate || e.Source == SwitchSource.SystemUnlock)
+            if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
             {
                 // Logic for our classic mode 2.0
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
