@@ -17,13 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Management;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
-using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
@@ -158,7 +155,8 @@ namespace AutoDarkModeSvc.Core
             }
             else
             {
-                ManagedThemeFile.SyncWithActiveTheme();
+                // we're only reading here, so we can't apply the theme fix safely
+                ManagedThemeFile.SyncWithActiveTheme(false);
             }
         }
 

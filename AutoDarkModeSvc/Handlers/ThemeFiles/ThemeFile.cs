@@ -46,9 +46,12 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public Cursors Cursors { get; set; } = new();
         public Colors Colors { get; set; } = new();
         public Slideshow Slideshow { get; set; } = new();
-        private bool mitigationAdded = false;
+        private bool themeFixShouldAdd = false;
         public ThemeFile(string path)
         {
+            Random rnd = new Random();
+            int val = rnd.Next(0, 2);
+            if (val == 0) themeFixShouldAdd = true;
             ThemeFilePath = path;
         }
 
@@ -368,7 +371,12 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             Parse();
         }
 
-        public void SyncWithActiveTheme(bool keepDisplayNameAndGuid = false)
+        /// <summary>
+        /// Synchronizes the currently active Windows theme with Auto Dark Mode
+        /// </summary>
+        /// <param name="patch">if the theme switch fix should be applied or not</param>
+        /// <param name="keepDisplayNameAndGuid">if the name and guid of the original theme should be preserved</param>
+        public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid = false)
         {
             try
             {
@@ -400,7 +408,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     Logger.Info($"theme used for syncing is default theme with localized name, path: {themePath}");
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
-                if (pathThemeName == null || pathThemeName != activeThemeName)
+                else if (pathThemeName == null || pathThemeName != activeThemeName)
                 {
                     Logger.Info($"theme used for syncing has wrong name, using custom theme. expected: {activeThemeName} actual: {pathThemeName} with path: {themePath}");
                     themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
@@ -408,16 +416,25 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 }
                 else
                 {
+                    Logger.Info($"theme used for syncing is {pathThemeName}, path: {themePath}");
                     ThemeFileContent = lines;
                 }
 
+                // save before parsing, because parsing updates the colors object
                 string oldInfoText = Colors.InfoText.Item1;
 
                 Parse();
 
                 // ensure theme switching works properly in Win11 22H2. This is monumentally stupid but it seems to work.
-                PatchColorsWin11InMemory(this);
-                if (Colors.InfoText.Item1 == oldInfoText) PatchColorsWin11InMemory(this);
+                if (patch)
+                {
+                    if (Colors.InfoText.Item1 == oldInfoText) PatchColorsWin11InMemory(this);
+                    else
+                    {
+                        Logger.Trace($"no color patch necessary. target theme: [{Colors.InfoText.Item1}], we have: [{oldInfoText}]");
+                    }
+                }
+
 
                 if (!keepDisplayNameAndGuid)
                 {
@@ -461,7 +478,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 _ = int.TryParse(rgb[1], out int g);
                 _ = int.TryParse(rgb[2], out int b);
 
-                if (theme.mitigationAdded)
+                if (theme.themeFixShouldAdd)
                 {
                     if (r == 0)
                     {
@@ -470,10 +487,10 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     else
                     {
                         r--;
-                        theme.mitigationAdded = false;
+                        theme.themeFixShouldAdd = false;
                     }
                 }
-                else if (!theme.mitigationAdded)
+                else if (!theme.themeFixShouldAdd)
                 {
                     if (r == 255)
                     {
@@ -482,7 +499,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     else
                     {
                         r++;
-                        theme.mitigationAdded = true;
+                        theme.themeFixShouldAdd = true;
                     }
                 }
                 Logger.Trace($"patched colors [{theme.Colors.InfoText.Item1}] to [{r} {g} {b}]");

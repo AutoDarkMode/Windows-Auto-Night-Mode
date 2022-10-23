@@ -228,7 +228,8 @@ namespace AutoDarkModeSvc.Core
                 //logic for our classic mode 2.0, gets the currently active theme for modification
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
                 {
-                    state.ManagedThemeFile.SyncWithActiveTheme();
+                    // get data from active theme and apply theme fix
+                    state.ManagedThemeFile.SyncWithActiveTheme(true);
                 }
 
                 // regular modules that do not require theme file synchronization
