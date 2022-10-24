@@ -1098,6 +1098,7 @@ Do you really want to continue?</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Downgrade {0} available</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Go to download page</value>

@@ -74,7 +74,6 @@ namespace AutoDarkModeApp.Pages
             }
             catch (ManagementException manEx)
             {
-
                 if (manEx.ErrorCode != ManagementStatus.NotFound)
                 {
                     ShowErrorMessage(manEx, "(non-critical) Settings Constructor Regkey Watcher");
