@@ -14,7 +14,9 @@ body:
         Click "Check for Updates" and ensure the info message reads "No new updates available".
         If you live in China, the updater will not work. Instead, please to the [Beta repository](https://github.com/AutoDarkMode/AutoDarkModeVersion/releases) an dupdate manually.
         
-        # Auto Dark Mode 10.1 and 10.2 are incompatible with Windows 11 22H2
+        # Old Auto Dark Mode Versions
+        Auto Dark Mode 10.1 is incompatible with Windows 11 22H2.
+        Auto Dark Mode 10.2 is partly incompatible with Windows 11 22H2.
         Please don't file bug reports if you are on these versions or earlier, it's a known issue and you are required to update to further use the program.
         
         # Bug Report
