@@ -3,9 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
-      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:ui="http://schemas.modernwpf.com/2019"
       mc:Ignorable="d"
       Title="PageSettings"
@@ -115,12 +113,11 @@
             </StackPanel>
 
             <!-- Language selection-->
-            <TextBlock Grid.Column="1"
-                       Grid.Row="4"
-                       Margin="0,30,0,0"
-                       FontFamily="Segoe UI"
-                       FontSize="20"
-                       Text="Language" />
+            <TextBlock
+                Margin="0,30,0,0"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                Text="Language" />
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Top"
                        Margin="0,15,0,0"
@@ -228,7 +225,6 @@
                 <ui:ToggleSwitch Name="ToggleSwitchEnableUpdater"
                                  OffContent="{x:Static p:Resources.ToggleSwitchOff}"
                                  OnContent="{x:Static p:Resources.ToggleSwitchOn}"
-                                 Grid.Row="0"
                                  Margin="0,20,0,0"
                                  Header="{x:Static p:Resources.cbBackgroundUpdate}"
                                  Toggled="ToggleSwitchEnableUpdater_Click" />
@@ -321,8 +317,6 @@
                 <ui:ToggleSwitch Name="ToggleAutostart"
                                  OffContent="{x:Static p:Resources.ToggleSwitchOff}"
                                  OnContent="{x:Static p:Resources.ToggleSwitchOn}"
-                                 Grid.Row="3"
-                                 Grid.Column="1"
                                  Margin="0,15,0,0"
                                  Header="{x:Static p:Resources.SettingsPageAutostartDescription}"
                                  PreviewMouseDown="ToggleAutostart_Toggled" />
@@ -336,7 +330,7 @@
                                  Width="52"
                                  HorizontalAlignment="Left"
                                  Margin="0,15,0,0"
-                                 Name="ProgressAutostartDetails"></ui:ProgressRing>
+                                 Name="ProgressAutostartDetails" />
                 <Grid Margin="0,15,10,0"
                       Name="GridAutostartDetails">
 
@@ -385,7 +379,6 @@
                         Click="ButtonAutostartValidate_Click" />
 
                 <TextBlock Name="AutostartDisabledMessage"
-                           Grid.Row="3"
                            Margin="0,15,0,0"
                            VerticalAlignment="Top"
                            HorizontalAlignment="Left"
