@@ -144,7 +144,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowErrorMessage(Exception ex, string location)
         {
-            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            string error = AdmProperties.Resources.ErrorMessageBox + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
                 Owner = Window.GetWindow(this)

@@ -606,6 +606,23 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an issue with the UI.
+        ///
+        ///Please ensure:
+        ///- the service is running
+        ///- your config.yaml file is correct
+        ///
+        ///Would you like to create an issue on the Auto Dark Mode repository?
+        ///Click &quot;Yes&quot; to open a new browser window.
+        ///.
+        /// </summary>
+        public static string ErrorMessageBox {
+            get {
+                return ResourceManager.GetString("ErrorMessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error: Your input is invalid.
         /// </summary>
         public static string errorNumberInput {
@@ -620,22 +637,6 @@ namespace AutoDarkModeLib.Properties {
         public static string errorOcurredTitle {
             get {
                 return ResourceManager.GetString("errorOcurredTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sorry, but we couldn&apos;t apply your settings.
-        ///
-        ///Here are some things you can try:
-        ///- Restart the Auto Dark Mode service
-        ///- Check if the service is running
-        ///- Close the service, delete the config.yaml file and re-configure
-        ///
-        ///If these things didn&apos;t help, you can create an issue on GitHub. You can access the issue by clicking the &quot;Yes&quot; button..
-        /// </summary>
-        public static string errorThemeApply {
-            get {
-                return ResourceManager.GetString("errorThemeApply", resourceCulture);
             }
         }
         

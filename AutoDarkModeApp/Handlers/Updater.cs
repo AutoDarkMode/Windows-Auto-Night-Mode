@@ -94,7 +94,7 @@ namespace AutoDarkModeApp
         #pragma warning disable IDE0051
         private static void ShowErrorMessage(Exception ex, string location)
         {
-            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
+            string error = AdmProperties.Resources.ErrorMessageBox + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno");
             msg.ShowDialog();
             var result = msg.DialogResult;

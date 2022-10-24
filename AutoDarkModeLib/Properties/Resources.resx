@@ -327,15 +327,16 @@ If you run into issues: please increase the switching delay in settings. </value
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Automatic update check</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Sorry, but we couldn't apply your settings.
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>There was an issue with the UI.
 
-Here are some things you can try:
-- Restart the Auto Dark Mode service
-- Check if the service is running
-- Close the service, delete the config.yaml file and re-configure
+Please ensure:
+- the service is running
+- your config.yaml file is correct
 
-If these things didn't help, you can create an issue on GitHub. You can access the issue by clicking the "Yes" button.</value>
+Would you like to create an issue on the Auto Dark Mode repository?
+Click "Yes" to open a new browser window.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Error: Your input is invalid</value>

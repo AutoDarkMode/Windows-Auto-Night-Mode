@@ -86,7 +86,7 @@ namespace AutoDarkModeApp.Handlers
     {
         public static void ShowErrorMessageFromApi(ApiResponse response, Exception ex, Window owner)
         {
-            string error = $"{AdmProperties.Resources.errorThemeApply}\n\n" +
+            string error = $"{AdmProperties.Resources.ErrorMessageBox}\n\n" +
                 $"Exception Source: {ex.Source}\n" +
                 $"Exception Message: {ex.Message}\n\n" +
                 $"API Response:\n" +
@@ -113,7 +113,7 @@ namespace AutoDarkModeApp.Handlers
 
         public static void ShowErrorMessage(Exception ex, Window owner, string location)
         {
-            string error = AdmProperties.Resources.errorThemeApply + $"\n\nError ocurred in: {location} " + ex.Source +
+            string error = AdmProperties.Resources.ErrorMessageBox + $"\n\nError ocurred in: {location} " + ex.Source +
                            "\n\n" + ex.Message;
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {

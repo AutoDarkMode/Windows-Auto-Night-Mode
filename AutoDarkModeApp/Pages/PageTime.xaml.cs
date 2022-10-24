@@ -436,7 +436,7 @@ namespace AutoDarkModeApp.Pages
         {
             userFeedback.Text = AdmProperties.Resources.msgErrorOcc;
             string error =
-                string.Format(AdmProperties.Resources.errorThemeApply,
+                string.Format(AdmProperties.Resources.ErrorMessageBox,
                     AdmProperties.Resources.cbSettingsMultiUserImprovements) + "\n\n" + erroDescription + "\n\n" +
                 exception;
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
