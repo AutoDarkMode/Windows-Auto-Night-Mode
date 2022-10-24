@@ -944,9 +944,6 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
     <value>Aktive Verzögerungen</value>
   </data>
-  <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Auto Wechsel einmalig aussetzen</value>
-  </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
     <value>Benachrichtigen bei Auto-Designwechsel</value>
   </data>
