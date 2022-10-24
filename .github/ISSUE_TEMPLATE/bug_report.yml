@@ -7,6 +7,7 @@ body:
       value: |
         # Please check the list of known issues first
         You can find them here: [Known issues and limitations](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Known-limitations)
+        If your issue is listed there, we are aware and you don't need to file a report.
       
         # Please update to the latest beta first
         Go to settings and select the "Beta" update channel.
