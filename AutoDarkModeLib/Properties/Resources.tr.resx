@@ -326,16 +326,6 @@ Bunu indirmek istiyor musunuz?
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Bir hata oluştu</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Üzgünüz, ayarlarınızı kaydedemedik.
-
-İşte deneyebileceğiniz bazı şeyler:
-- Auto Dark Mode hizmetini yeniden başlatın.
-- Hizmetin çalışıp çalışmadığını kontrol edin.
-- Hizmeti kapatıp config.yaml dosyasını silin ve ayarları yeniden yapın.
-
-Bunlar yardımcı olmadıysa, GitHub'da sorununuzu yazabilirsiniz. "Evet" düğmesine tıklayarak Github'a erişebilirsiniz.</value>
-  </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Hata: Girişiniz geçersiz</value>
   </data>
@@ -1050,5 +1040,68 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>Duraklatıldı</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Sadece Office 2013-2019 ile ya da Office'in 'Sistem ayarını kullan' seçeneği ile ilgili sorunlar yaşıyorsanız kullanın</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Dosyalar yüklenirken bir hata oluştu.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Şu anki Sürüm</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>İndiriliyor...</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Yeni sürüm mevcut: {0}</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Sürümü düşür</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Günlük klasörünü aç</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Ertele</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Düşük sürüm mevcut: {0}</value>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>İndirme sayfasına git</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Sürüm düşürülüyor:</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>İndirme devam ediyor</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Güncelleniyor:</value>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Yükleme başarısız oldu</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Bilgi için lütfen service.log ve updater.log'u kontrol edin</value>
+  </data>
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>Kullanıcı arayüzüyle ilgili bir sorun var.
+
+Lütfen şunlardan emin olun:
+- Hizmet çalışıyor mu?
+- config.yaml dosyanız düzgün mü?
+
+Auto Dark Mode deposunda bir sorun oluşturmak ister misiniz?
+Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
+</value>
   </data>
 </root>
