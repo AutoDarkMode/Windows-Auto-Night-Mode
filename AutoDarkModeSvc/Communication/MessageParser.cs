@@ -436,6 +436,8 @@ namespace AutoDarkModeSvc.Communication
                         //ToastHandler.InvokeUpdateToast(true, true);
                         //ToastHandler.RemoveUpdaterToast();
                         //ToastHandler.UpdateProgressToast("0.5", "test");
+                        //ToastHandler.InvokeUpdateToast();
+                        ToastHandler.InvokeFailedUpdateToast();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok

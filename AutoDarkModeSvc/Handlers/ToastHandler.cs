@@ -217,11 +217,11 @@ namespace AutoDarkModeSvc.Handlers
             {
                 string configPath = AdmConfigBuilder.ConfigDir;
                 new ToastContentBuilder()
-                    .AddText($"Patching failed")
-                    .AddText($"An error occurred while patching")
-                    .AddText($"Please see service.log and updater.log for more infos")
+                    .AddText($"{AdmProperties.Resources.UpdateToastPatchingFailed}")
+                    .AddText($"{AdmProperties.Resources.UpdateToastAnErrorOccuredPatching}")
+                    .AddText($"{AdmProperties.Resources.UpdateToastSeeLogs}")
                      .AddButton(new ToastButton()
-                     .SetContent("Open log directory")
+                     .SetContent(AdmProperties.Resources.UpdateToastButtonOpenLogDirectory)
                      .SetProtocolActivation(new Uri(configPath)))
                     .SetProtocolActivation(new Uri(configPath))
                     .Show(toast =>
@@ -233,7 +233,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void InvokeUpdateInProgressToast(string version, bool downgrade = false)
         {
-            string typeVerb = downgrade ? "Downgrading" : "Updating";
+            string typeVerb = downgrade ? AdmProperties.Resources.UpdateToastDowngradingTo : AdmProperties.Resources.UpdateToastUpgradingTo;
             Program.ActionQueue.Add(() =>
             {
                 // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later;
@@ -242,10 +242,10 @@ namespace AutoDarkModeSvc.Handlers
 
                 // Construct the toast content with data bound fields
                 ToastContent content = new ToastContentBuilder()
-                    .AddText($"{typeVerb} to {version}")
+                    .AddText($"{typeVerb} {version}")
                     .AddVisualChild(new AdaptiveProgressBar()
                     {
-                        Title = "Download in progress",
+                        Title = $"{AdmProperties.Resources.UpdateToastDownloadInProgress}",
                         Value = new BindableProgressBarValue("progressValue"),
                         ValueStringOverride = new BindableString("progressValueString"),
                         Status = new BindableString("progressStatus")
@@ -264,7 +264,7 @@ namespace AutoDarkModeSvc.Handlers
                 toast.Data = new NotificationData();
                 toast.Data.Values["progressValue"] = "0.0";
                 toast.Data.Values["progressValueString"] = "0 MB";
-                toast.Data.Values["progressStatus"] = "Downloading...";
+                toast.Data.Values["progressStatus"] = AdmProperties.Resources.UpdateToastDownloading;
 
                 // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
                 toast.Data.SequenceNumber = 0;
@@ -300,8 +300,10 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
 
-            string updateString = downgrade ? "Downgrade" : "Update";
+            string updateString = downgrade ? string.Format(AdmProperties.Resources.UpdateToastDowngradeAvailable, UpdateHandler.UpstreamVersion.Tag) : string.Format(AdmProperties.Resources.UpdateToastNewVersionAvailable, UpdateHandler.UpstreamVersion.Tag);
             string updateAction = downgrade ? "downgrade" : "update";
+            string updateButton = downgrade ? AdmProperties.Resources.UpdateToastButtonDowngrade : AdmProperties.Resources.UpdateToastButtonUpdate;
+
 
             Program.ActionQueue.Add(() =>
             {
@@ -309,15 +311,15 @@ namespace AutoDarkModeSvc.Handlers
                 if (canUseUpdater)
                 {
                     new ToastContentBuilder()
-                   .AddText($"{updateString} {UpdateHandler.UpstreamVersion.Tag} available")
-                   .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
-                   .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
+                   .AddText(updateString)
+                   .AddText($"{AdmProperties.Resources.UpdateToastCurrentVersion}: {Assembly.GetExecutingAssembly().GetName().Version}")
+                   .AddText($"{AdmProperties.Resources.UpdateToastMessage} {UpdateHandler.UpstreamVersion.Message}")
                    .AddButton(new ToastButton()
-                   .SetContent(updateString)
+                   .SetContent(updateButton)
                    .AddArgument("action", updateAction))
                    .SetBackgroundActivation()
                    .AddButton(new ToastButton()
-                   .SetContent("Postpone")
+                   .SetContent(AdmProperties.Resources.UpdateToastButtonPostpone)
                    .AddArgument("action", "postpone"))
                    //.SetBackgroundActivation()
                    //.SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
@@ -330,11 +332,11 @@ namespace AutoDarkModeSvc.Handlers
                 else
                 {
                     new ToastContentBuilder()
-                   .AddText($"{updateString} {UpdateHandler.UpstreamVersion.Tag} available")
-                   .AddText($"Current Version: {Assembly.GetExecutingAssembly().GetName().Version}")
-                   .AddText($"Message: {UpdateHandler.UpstreamVersion.Message}")
+                   .AddText($"{updateString}")
+                   .AddText($"{AdmProperties.Resources.UpdateToastCurrentVersion}: {Assembly.GetExecutingAssembly().GetName().Version}")
+                   .AddText($"{AdmProperties.Resources.UpdateToastMessage} {UpdateHandler.UpstreamVersion.Message}")
                    .AddButton(new ToastButton()
-                     .SetContent("Go to download page")
+                     .SetContent(AdmProperties.Resources.UpdateToastGoToDownloadPage)
                      .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl)))
                    .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl))
                    .Show(toast =>

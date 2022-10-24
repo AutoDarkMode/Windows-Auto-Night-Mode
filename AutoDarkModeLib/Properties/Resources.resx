@@ -1049,4 +1049,56 @@ Do you really want to continue?</value>
   <data name="lblPaused" xml:space="preserve">
     <value>Paused</value>
   </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>An error occurred while patching.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Current Version</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Downgrading to</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Downloading...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Download in progress</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>New version {0} available</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Patching failed</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Please check service.log and updater.log for infos</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Updating to</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Downgrade</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Open log directory</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Postpone</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Downgrade {0} available</value>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Go to download page</value>
+  </data>
 </root>

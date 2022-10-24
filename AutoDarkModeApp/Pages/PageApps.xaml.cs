@@ -57,7 +57,7 @@ namespace AutoDarkModeApp
             {
                 AccentColorCheckBox.IsEnabled = false;
                 AccentColorCheckBox.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
-                TextBlockOfficeLabel.ToolTip = "Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting";
+                TextBlockOfficeLabel.ToolTip = AdmProperties.Resources.ToolTipOfficeDisclaimer;
                 SystemComboBoxItemSwitch.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBoxItemLightOnly.ToolTip = AdmProperties.Resources.ToolTipDisabledDueTheme;
                 SystemComboBoxItemLightOnly.IsEnabled = false;

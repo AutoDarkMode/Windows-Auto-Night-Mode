@@ -2492,6 +2492,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only use with Office 2013-2019 or if you experience issues with Office&apos;s &apos;use system&apos; setting.
+        /// </summary>
+        public static string ToolTipOfficeDisclaimer {
+            get {
+                return ResourceManager.GetString("ToolTipOfficeDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Config Directory.
         /// </summary>
         public static string TrayMenuItemOpenConfigDir {
@@ -2623,6 +2632,150 @@ namespace AutoDarkModeLib.Properties {
         public static string UpdatesTextBlockUpdateInterval {
             get {
                 return ResourceManager.GetString("UpdatesTextBlockUpdateInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while patching..
+        /// </summary>
+        public static string UpdateToastAnErrorOccuredPatching {
+            get {
+                return ResourceManager.GetString("UpdateToastAnErrorOccuredPatching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downgrade.
+        /// </summary>
+        public static string UpdateToastButtonDowngrade {
+            get {
+                return ResourceManager.GetString("UpdateToastButtonDowngrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open log directory.
+        /// </summary>
+        public static string UpdateToastButtonOpenLogDirectory {
+            get {
+                return ResourceManager.GetString("UpdateToastButtonOpenLogDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postpone.
+        /// </summary>
+        public static string UpdateToastButtonPostpone {
+            get {
+                return ResourceManager.GetString("UpdateToastButtonPostpone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string UpdateToastButtonUpdate {
+            get {
+                return ResourceManager.GetString("UpdateToastButtonUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Version.
+        /// </summary>
+        public static string UpdateToastCurrentVersion {
+            get {
+                return ResourceManager.GetString("UpdateToastCurrentVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downgrade {0} available.
+        /// </summary>
+        public static string UpdateToastDowngradeAvailable {
+            get {
+                return ResourceManager.GetString("UpdateToastDowngradeAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downgrading to.
+        /// </summary>
+        public static string UpdateToastDowngradingTo {
+            get {
+                return ResourceManager.GetString("UpdateToastDowngradingTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading....
+        /// </summary>
+        public static string UpdateToastDownloading {
+            get {
+                return ResourceManager.GetString("UpdateToastDownloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download in progress.
+        /// </summary>
+        public static string UpdateToastDownloadInProgress {
+            get {
+                return ResourceManager.GetString("UpdateToastDownloadInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to download page.
+        /// </summary>
+        public static string UpdateToastGoToDownloadPage {
+            get {
+                return ResourceManager.GetString("UpdateToastGoToDownloadPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string UpdateToastMessage {
+            get {
+                return ResourceManager.GetString("UpdateToastMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New version {0} available.
+        /// </summary>
+        public static string UpdateToastNewVersionAvailable {
+            get {
+                return ResourceManager.GetString("UpdateToastNewVersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patching failed.
+        /// </summary>
+        public static string UpdateToastPatchingFailed {
+            get {
+                return ResourceManager.GetString("UpdateToastPatchingFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check service.log and updater.log for infos.
+        /// </summary>
+        public static string UpdateToastSeeLogs {
+            get {
+                return ResourceManager.GetString("UpdateToastSeeLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating to.
+        /// </summary>
+        public static string UpdateToastUpgradingTo {
+            get {
+                return ResourceManager.GetString("UpdateToastUpgradingTo", resourceCulture);
             }
         }
         

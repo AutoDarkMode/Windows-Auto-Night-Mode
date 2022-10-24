@@ -824,7 +824,7 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
     <value>Versionsinfo wurde kopiert</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatischer Themenwechsel</value>
+    <value>Automatischer Designwechsel</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Zeige Benachrichtung beim Umschalten</value>
@@ -927,5 +927,157 @@ Wir legen dieses Update jedem ans Herzen, außer ARM-Gerätebesitzer. Da Hinterg
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
     <value>bis nächsten Abend</value>
+  </data>
+
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Automatischen Designwechsel umschalten</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Automatischer Wechsel fortgesetzt</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Nachtlichteinstellungen öffnen</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Nachtlicht</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Aktive Verzögerungen</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Auto Wechsel einmalig aussetzen</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Benachrichtigen bei Auto-Designwechsel</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Die Benachrichtung soll so viele Minuten aktiv sein</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Debug Modus</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Designwehcsel während dem Sperrbildschirm erlauben (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Jetzt wechseln</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Verzögerungsmodul</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Benachrichtigung bei Designwechsel</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 Stunden</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 Minuten</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 Stunden</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 Minuten</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 Stunden</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 Stunde</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 Stunden</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Ausstehender Designwechsel</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Would you like to switch now or delay further?</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Trace Modus</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Besonderer Dank</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Hintergrundbild ignorieren</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Mauszeiger ignorieren</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Desktopsymbole ignorieren</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Sounds ignorieren</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ausschlussoptionen</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Diese Option wird von Standard Windows Designs nicht unterstützt</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Pausiert</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Nur mit Office 2013-2019 zu verwenden, oder die Einstellung, sich dem System-Design anzupassen nicht funktioniert.</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Aktuelle Version</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Zurückstufen auf</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Lädt herunter...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Fortschritt</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Nachricht</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Neue Version {0} verfügbar</value>
+    <comment>MUST contain the placerholder string!!</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Update Anwenden fehlgeschlagen</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Weitere Informationen findest du im service.log und updater.log</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Aktualisieren auf</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Downgrade</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Log-Verzeichnis öffnen</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Vorherige Version {0} verfügbar</value>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Gehe zur Downloadseite</value>
   </data>
 </root>
