@@ -72,6 +72,14 @@ namespace AutoDarkModeApp.Pages
                 autostartWatcher.EventArrived += new EventArrivedEventHandler(HandleAutostartEnabledEvent);
                 autostartWatcher.Start();
             }
+            catch (ManagementException manEx)
+            {
+
+                if (manEx.ErrorCode != ManagementStatus.NotFound)
+                {
+                    ShowErrorMessage(manEx, "(non-critical) Settings Constructor Regkey Watcher");
+                }
+            }
             catch (Exception ex)
             {
                 ShowErrorMessage(ex, "(non-critical) Settings Constructor Regkey Watcher");
