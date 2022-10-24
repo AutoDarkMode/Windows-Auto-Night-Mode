@@ -5,15 +5,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        # PLEASE READ THROUGH THE LIST OF KNOWN ISSUES BEFORE FILING A REPORT
-        https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Known-limitations
+        # Please check the list of known issues first
+        You can find them here: [https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Known-limitations](Known issued and limitations)
       
-        # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
+        # Please update to the latest beta first
         Go to settings and select the "Beta" update channel.
         Click "Check for Updates" and ensure the info message reads "No new updates available"
+        If you live in China, the updater will not work. Instead, please to the [https://github.com/AutoDarkMode/AutoDarkModeVersion/releases](Beta repository) an dupdate manually.
         
-        # AUTO DARK MODE 10.1 IS INCOMPATIBLE WITH WINDOWS 11 22H2
-        Please don't file bug reports if you are on that verison or earlier, it's a known issue and you are required to update to further use the program.
+        # Auto Dark Mode 10.1 and 10.2 are incompatible with Windows 11 22H2
+        Please don't file bug reports if you are on these versions or earlier, it's a known issue and you are required to update to further use the program.
         
         # Bug Report
         
