@@ -5,6 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
+        # PLEASE READ THROUGH THE LIST OF KNOWN ISSUES BEFORE FILING A REPORT
+        https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Known-limitations
+      
         # PLEASE UPDATE TO THE LATEST BETA VERSION FIRST!
         Go to settings and select the "Beta" update channel.
         Click "Check for Updates" and ensure the info message reads "No new updates available"
