@@ -187,7 +187,7 @@ namespace AutoDarkModeSvc.Handlers
             bool shouldNotify = false;
             if (builder.Config.Governor == Governor.NightLight)
             {
-                if (state.NightLight.Current != state.RequestedTheme) shouldNotify = true;
+                if (state.NightLight.Requested != state.RequestedTheme) shouldNotify = true;
             }
             else if (builder.Config.Governor == Governor.Default)
             {

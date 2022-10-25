@@ -173,7 +173,7 @@ namespace AutoDarkModeSvc.Core
         {
             Theme newTheme = overrideTheme == Theme.Unknown ? state.RequestedTheme : overrideTheme;
 
-            if (builder.Config.Governor != Governor.Default) return (new(), state.NightLight.Current == Theme.Light ? SkipType.Sunset : SkipType.Sunrise);
+            if (builder.Config.Governor != Governor.Default) return (new(), state.NightLight.Requested == Theme.Light ? SkipType.Sunset : SkipType.Sunrise);
 
             TimedThemeState ts = new();
             DateTime nextSwitchAdjusted;

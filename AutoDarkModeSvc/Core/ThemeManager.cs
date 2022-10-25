@@ -93,7 +93,7 @@ namespace AutoDarkModeSvc.Core
                             UpdateTheme(switchArgs.Theme.Value, switchArgs);
                         }
                     }
-                    else UpdateTheme(state.NightLight.Current, switchArgs);
+                    else UpdateTheme(state.NightLight.Requested, switchArgs);
                 }
             }
             else
@@ -163,7 +163,7 @@ namespace AutoDarkModeSvc.Core
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    if (state.NightLight.Current != newTheme)
+                    if (state.NightLight.Requested != newTheme)
                         state.PostponeManager.AddSkipNextSwitch();
                     else
                         state.PostponeManager.RemoveUserClearablePostpones();

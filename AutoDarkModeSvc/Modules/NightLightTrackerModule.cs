@@ -47,6 +47,8 @@ namespace AutoDarkModeSvc.Modules
         public override void Fire()
         {
             DateTime adjustedTime;
+
+            //apply offsets to the latest available switch times
             if (requestedTheme == Theme.Dark)
             {
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunsetOffsetMin);
@@ -56,20 +58,23 @@ namespace AutoDarkModeSvc.Modules
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
             }
 
+            // if the switch time is in the future, we need to set the global night light theme to the opposite of the internally tracked oned
+            // Otherwise the incorrect theme will show up
             if (DateTime.Compare(adjustedTime, DateTime.Now) > 0 && !init)
             {
-                if (requestedTheme == Theme.Light) state.NightLight.Current = Theme.Dark;
-                else if (requestedTheme == Theme.Dark) state.NightLight.Current = Theme.Light;
+                if (requestedTheme == Theme.Light) state.NightLight.Requested = Theme.Dark;
+                else if (requestedTheme == Theme.Dark) state.NightLight.Requested = Theme.Light;
             }
-            else if (state.NightLight.Current != requestedTheme)
+            else if (state.NightLight.Requested != requestedTheme)
             {
-                state.NightLight.Current = requestedTheme;
+                state.NightLight.Requested = requestedTheme;
             }
 
+            // if auto switch notify is enabled and we are approaching the switch window, we need to show a notification
             if (builder.Config.AutoSwitchNotify.Enabled && !init && state.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
                 if (!notified && Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay)
-                    && state.NightLight.Current != state.RequestedTheme)
+                    && state.NightLight.Requested != state.RequestedTheme)
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                     notified = true;
@@ -84,7 +89,7 @@ namespace AutoDarkModeSvc.Modules
 
                 Task.Run(() =>
                 {
-                    ThemeManager.RequestSwitch(new(SwitchSource.NightLightTrackerModule, state.NightLight.Current, adjustedTime));
+                    ThemeManager.RequestSwitch(new(SwitchSource.NightLightTrackerModule, state.NightLight.Requested, adjustedTime));
                 });
             }
             return;
@@ -130,7 +135,7 @@ namespace AutoDarkModeSvc.Modules
                 if (isSkipNext && !queuePostponeRemove)
                 {
                     queuePostponeRemove = true;
-                    state.NightLight.Current = newTheme;
+                    state.NightLight.Requested = newTheme;
                     return;
                 }
                 else if (isSkipNext && queuePostponeRemove)
