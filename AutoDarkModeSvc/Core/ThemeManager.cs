@@ -357,6 +357,11 @@ namespace AutoDarkModeSvc.Core
             {
                 LocationHandler.GetSunTimes(builder, out _adjustedSunrise, out _adjustedSunset);
             }
+            else
+            {
+                _adjustedSunrise = _adjustedSunrise.AddMinutes(builder.Config.Location.SunriseOffsetMin);
+                _adjustedSunset = _adjustedSunset.AddMinutes(builder.Config.Location.SunsetOffsetMin);
+            }
             //the time bewteen sunrise and sunset, aka "day"
             if (Helper.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay))
             {
