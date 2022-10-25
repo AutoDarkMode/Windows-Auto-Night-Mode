@@ -285,7 +285,7 @@
     <value>無効</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>有効</value>
+    <value>有効にしました</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>または</value>
@@ -667,7 +667,7 @@
     <value>条件</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>切り替えを遅らせる最小の GPU 使用状態</value>
+    <value>切り替えを遅延させる GPU 使用率 % の最低値</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>外部で変更されたテーマの復元</value>
@@ -1042,5 +1042,64 @@
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
     <value>このオプションは標準のWindowsテーマには対応していません</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>停止しました</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Office 2013-2019 か、Office の設定「システム設定を使用する」を使用中に問題が発生している時にのみ使います</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>更新プログラム適用中にエラーが発生しました。</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>現在のバージョン</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>ダウングレード後のバージョン:</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>ダウンロード中...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>ダウンロード進行状況</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>お知らせ</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>最新バージョン {0} があります</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>更新プログラム適用に失敗</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>service.log と updater.log で詳細情報をご覧ください</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>アップデート後のバージョン:</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>ダウングレード</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>ログのフォルダーを開く</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>延期</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>ダウングレード Ver {0} が利用可能</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>ダウンロードページを開く</value>
   </data>
 </root>
