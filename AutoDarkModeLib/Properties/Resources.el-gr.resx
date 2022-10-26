@@ -327,15 +327,16 @@
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Αυτόματος έλεγχος για ενημερώσεις</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Λυπούμαστε, αλλά δεν ήταν δυνατή η εφαρμογή των ρυθμίσεών σας.
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>Παρουσιάστηκε ένα πρόβλημα με τη διεπαφή χρήστη.
 
-Μερικά πράγματα που μπορείτε να δοκιμάσετε:
-- Επανεκκινήστε την υπηρεσία Auto Dark Mode
-- Ελέγξτε εάν η υπηρεσία εκτελείται
-- Κλείστε την υπηρεσία, διαγράψτε το αρχείο config.yaml και κάντε τις ρυθμίσεις σας ξανά
+Παρακαλώ βεβαιωθείτε ότι:
+- η υπηρεσία λειτουργεί
+- Το αρχείο config.yaml σας είναι σωστό
 
-Εάν αυτά δεν βοήθησαν, μπορείτε να δημιουργήσετε ένα ζήτημα (issue) στο GitHub. Μπορείτε να αποκτήσετε πρόσβαση στο issue κάνοντας κλικ στο κουμπί "Ναι".</value>
+Θέλετε να δημιουργήσετε ένα ζήτημα (issue) στο αποθετήριο του Auto Dark Mode;
+Κάντε κλικ στο "Ναι" για να ανοίξετε ένα νέο παράθυρο προγράμματος περιήγησης.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Σφάλμα: Τα δεδομένα που εισάγατε δεν είναι έγκυρα</value>
@@ -667,7 +668,7 @@
     <value>Συνθήκες</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Ελάχιστη χρήση GPU για καθυστέρηση εναλλαγής</value>
+    <value>Ελάχιστη χρήση GPU % για καθυστέρηση εναλλαγής</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Επαναφορά θεμάτων όταν αλλάζουν εξωτερικά</value>
@@ -1042,5 +1043,64 @@
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
     <value>Αυτή η ρύθμιση δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>λεπτά</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Σε παύση</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Χρησιμοποιήστε το μόνο με το Office 2013-2019 ή εάν αντιμετωπίζετε προβλήματα με τη ρύθμιση "Χρήση ρύθμισης συστήματος" του Office</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά την αναβάθμιση.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Τρέχουσα Εκδοση</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Υποβάθμιση σε</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Λήψη...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Λήψη σε εξέλιξη</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Μήνυμα</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Νέα έκδοση διαθέσιμη {0}</value>
+    <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Η αναβάθμιση απέτυχε</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Παρακαλώ ελέγξτε το service.log και το updater.log για πληροφορίες</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Ενημέρωση σε</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Υποβάθμιση</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Ανοιγμα καταλόγου αρχείου καταγραφής (log)</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Αναβολή</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Ενημέρωση</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Παλαιότερη έκδοση διαθέσιμη {0}</value>
+    <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Μετάβαση στη σελίδα λήψης</value>
   </data>
 </root>
