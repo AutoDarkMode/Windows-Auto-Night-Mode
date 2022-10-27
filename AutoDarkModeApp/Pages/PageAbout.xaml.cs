@@ -455,7 +455,7 @@ public partial class PageAbout : Page
             Shell = ValueOrNotFound(() =>
                 FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe").FileVersion);
             NetCore = ValueOrNotFound(() => Environment.Version.ToString());
-            WindowsVersion = ValueOrNotFound(() => Environment.OSVersion.Version.Build.ToString());
+            WindowsVersion = ValueOrNotFound(() => $"{ Environment.OSVersion.Version.Build}.{RegistryHandler.GetUbr()}");
 
             static string ValueOrNotFound(Func<string> value)
             {
