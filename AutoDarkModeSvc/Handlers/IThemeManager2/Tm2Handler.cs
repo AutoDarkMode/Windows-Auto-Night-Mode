@@ -123,10 +123,11 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
             string displayName = null;
             Thread thread = new(() =>
             {
+                Interfaces.IThemeManager2 manager = null;
                 Interfaces.ITheme theme = null;
                 try
                 {
-                    var manager = InitManager();
+                    manager = InitManager();
                     manager.GetCurrentTheme(out int idxCurrent);
                     manager.GetCustomTheme(out int idxCustom);
                     if (idxCurrent == idxCustom)
@@ -139,11 +140,12 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, $"could not apply theme via IThemeManager2");
+                    Logger.Error(ex, $"could not get active theme name via IThemeManager2");
                 }
                 finally
                 {
                     if (theme != null) Marshal.ReleaseComObject(theme);
+                    if (manager != null) Marshal.ReleaseComObject(manager);
                 }
             })
             {
