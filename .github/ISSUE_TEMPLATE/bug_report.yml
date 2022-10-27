@@ -12,7 +12,7 @@ body:
         # Please update to the latest beta first
         Go to settings and select the "Beta" update channel.
         Click "Check for Updates" and ensure the info message reads "No new updates available".
-        If you live in China, the updater will not work. Instead, please go to the [Beta repository](https://github.com/AutoDarkMode/AutoDarkModeVersion/releases) and update manually.
+        If you live in China, the updater will not work because raw.githubusercontent is blocked. Instead, please use a VPN or go to the [Beta repository](https://github.com/AutoDarkMode/AutoDarkModeVersion/releases) and update manually.
         
         # Old Auto Dark Mode Versions
         Please don't file bug reports if you are on versions 10.2 or earlier. There are known issue with them and you are required to update to further use the program.
