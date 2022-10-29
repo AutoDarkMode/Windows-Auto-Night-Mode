@@ -1074,6 +1074,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Düşük sürüm mevcut: {0}</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>İndirme sayfasına git</value>
@@ -1103,5 +1104,8 @@ Lütfen şunlardan emin olun:
 Auto Dark Mode deposunda bir sorun oluşturmak ister misiniz?
 Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
 </value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Düşük sürüm mevcut</value>
   </data>
 </root>
