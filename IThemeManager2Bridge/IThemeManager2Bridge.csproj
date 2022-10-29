@@ -27,7 +27,6 @@
   <Target Name="CopyThemeDll" AfterTargets="AfterBuild">
     <Copy SourceFiles="..\ThemeDll\ThemeDll.dll" DestinationFolder="$(OutDir)" />
     <Copy SourceFiles="..\ThemeDll\ThemeDll.exp" DestinationFolder="$(OutDir)" />
-    <Copy SourceFiles="..\ThemeDll\ThemeDll.pdb" DestinationFolder="$(OutDir)" />
     <Copy SourceFiles="..\ThemeDll\ThemeDll.lib" DestinationFolder="$(OutDir)" />
   </Target>
   <Target Name="CopyThemeDllPublish" AfterTargets="Publish">

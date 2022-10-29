@@ -8,7 +8,7 @@ REM DOTNET BUILD AND PUBLISH
 call dotnet publish AutoDarkModeApp\AutoDarkModeApp.csproj /p:PublishProfile=$(SolutionDir)AutoDarkModeApp\Properties\PublishProfiles\AppPublish.pubxml
 call dotnet publish AutoDarkModeSvc\AutoDarkModeSvc.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeSvc\Properties\PublishProfiles\ServicePublish.pubxml
 call dotnet publish AutoDarkModeShell\AutoDarkModeShell.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeShell\Properties\PublishProfiles\FolderProfile.pubxml
-call dotnet publish IThemeManager2Bridge\IThemeManager2Bridge.csproj /p:PublishProfile=$(SolutionDir)\IThemeManaber2Bridge\Properties\PublishProfiles\FolderProfile.pubxml
+REM call dotnet publish IThemeManager2Bridge\IThemeManager2Bridge.csproj /p:PublishProfile=$(SolutionDir)\IThemeManaber2Bridge\Properties\PublishProfiles\FolderProfile.pubxml
 REM call dotnet publish AutoDarkModeUpdater\AutoDarkModeUpdater.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeUpdater\Properties\PublishProfiles\FolderProfile.pubxml
 
 REM Generate Updater Files whitelist
