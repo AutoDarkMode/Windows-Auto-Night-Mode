@@ -327,15 +327,16 @@
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>自動で最新版を確認</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>すみません。設定を適用できませんでした。
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>UI の問題が発生しました。
 
-以下を試してみてください:
-- Auto Dark Mode のサービスを再起動
-- サービスが実行中か確認する
-- サービスを終了し、config.yaml を削除してから再設定する
-
-それでも解決しない場合、GitHub にて issue (問題)  を投稿できます。「はい」で GitHub を開きます。</value>
+以下を確認してください:
+- Auto Dark Mode のサービスが実行中になっている
+- config.yaml が正しいものである
+      
+Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
+「はい」のクリックで、ブラウザのウィンドウを表示します。
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>エラー: 入力が正しくありません。</value>
