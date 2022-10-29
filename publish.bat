@@ -22,4 +22,5 @@ echo AutoDarkModeConfig.dll>> bin\Publish\Updater\whitelist.txt
 echo AutoDarkModeConfig.pdb>> bin\Publish\Updater\whitelist.txt
 echo mscordaccore_amd64_amd64_6.0.121.56705.dll>> bin\Publish\Updater\whitelist.txt
 echo mscordaccore_amd64_amd64_6.0.21.52210.dll>> bin\Publish\Updater\whitelist.txt
+echo zh-tw>> bin\Publish\Updater\whitelist.txt
 echo overrides.json.dll>> bin\Publish\Updater\whitelist.txt
