@@ -170,9 +170,9 @@
                 <ComboBoxItem Content="日本語 (Japanese)"
                               Name="ja" />
                 <ComboBoxItem Content="简体中文 (Simplified Chinese)"
-                              Name="zh" />
+                              Name="zh_hans" />
                 <ComboBoxItem Content="繁體中文 (Traditional Chinese)"
-                              Name="zh_cht" />
+                              Name="zh_hant" />
             </ComboBox>
             <TextBlock Name="Translator"
                        HorizontalAlignment="Left"
