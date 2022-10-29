@@ -1082,7 +1082,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Sürüm düşürülüyor:</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>İndirme devam ediyor</value>
+    <value>İndirme durumu</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
     <value>Güncelleniyor:</value>
