@@ -681,7 +681,7 @@ namespace AutoDarkModeApp.Pages
                     ApiResponse response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
                     if (response.StatusCode == StatusCode.Downgrade)
                     {
-                        TextBlockUpdateInfo.Text = "A downgrade is available";
+                        TextBlockUpdateInfo.Text = AdmProperties.Resources.SettingsPageDowngradeAvailable;
                     }
                 }
             }

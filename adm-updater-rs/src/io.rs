@@ -57,7 +57,7 @@ lazy_static! {
     };
 }
 
-/// gets all files recursively that do not match the filter criteria
+/// gets all files recursively that match the filter criteria
 pub fn get_files_recurse(path: &PathBuf, filter_criteria: fn(&Path) -> bool) -> Vec<PathBuf> {
     let mut old_files: Vec<PathBuf> = Vec::new();
     WalkDir::new(path)

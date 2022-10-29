@@ -1537,6 +1537,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A downgrade is available.
+        /// </summary>
+        public static string SettingsPageDowngradeAvailable {
+            get {
+                return ResourceManager.GetString("SettingsPageDowngradeAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string SettingsPageLanguageSectionTitle {

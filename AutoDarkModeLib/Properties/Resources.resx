@@ -1103,4 +1103,7 @@ Do you really want to continue?</value>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Go to download page</value>
   </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>A downgrade is available</value>
+  </data>
 </root>
