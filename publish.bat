@@ -23,4 +23,13 @@ echo AutoDarkModeConfig.pdb>> bin\Publish\Updater\whitelist.txt
 echo mscordaccore_amd64_amd64_6.0.121.56705.dll>> bin\Publish\Updater\whitelist.txt
 echo mscordaccore_amd64_amd64_6.0.21.52210.dll>> bin\Publish\Updater\whitelist.txt
 echo zh-tw>> bin\Publish\Updater\whitelist.txt
+echo zh>> bin\Publish\Updater\whitelist.txt
+echo mscordaccore_amd64_amd64_6.0.722.32202.dll>> bin\Publish\Updater\whitelist.txt
+echo ThemeDll.dll>> bin\Publish\Updater\whitelist.txt
+echo IThemeManager2Bridge.deps.json>> bin\Publish\Updater\whitelist.txt
+echo IThemeManager2Bridge.dll>> bin\Publish\Updater\whitelist.txt
+echo IThemeManager2Bridge.exe>> bin\Publish\Updater\whitelist.txt
+echo IThemeManager2Bridge.pdb>> bin\Publish\Updater\whitelist.txt
+echo IThemeManager2Bridge.runtimeconfig.json>> bin\Publish\Updater\whitelist.txt
+echo overrides.json>> bin\Publish\Updater\whitelist.txt
 echo overrides.json.dll>> bin\Publish\Updater\whitelist.txt
