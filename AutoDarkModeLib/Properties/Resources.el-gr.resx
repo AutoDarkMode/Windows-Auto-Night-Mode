@@ -1103,4 +1103,7 @@
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Μετάβαση στη σελίδα λήψης</value>
   </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Μια παλαιότερη έκδοση είναι διαθέσιμη</value>
+  </data>
 </root>
