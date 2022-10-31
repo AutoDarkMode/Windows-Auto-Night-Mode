@@ -181,7 +181,7 @@ namespace AutoDarkModeSvc.Communication
                 // a read operation must be completed within streamTimeout, otherwise the pipe connection will be closed server-side to avoid infinite hanging
                 // this is especially important if a client connects, and never writes anything to the stream, this would block a worker until the client terminates
                 using CancellationTokenSource readTimeoutTokenSource = new();
-                Task tew = new TimeoutEventWrapper(requestPipe, readTimeoutTokenSource.Token).Monitor();
+                using Task tew = new TimeoutEventWrapper(requestPipe, readTimeoutTokenSource.Token).Monitor();
                 readTimeoutTokenSource.CancelAfter(streamTimeout);
                 if (requestPipe.CanRead)
                 {
