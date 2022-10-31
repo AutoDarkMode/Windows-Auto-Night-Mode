@@ -392,7 +392,7 @@ Puedes activarlas individualmente en tu tema de Windows.</value>
     <value>Fondo de escritorio (recomendado)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Haz click aquí para abrir los ajustes del tema de Windows.</value>
+    <value>Pulsa aquí para abrir los ajustes del tema de Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>Ahora ve a 'Colores' y cambia el color del sistema a 'Claro' para el tema claro. Seleciona tu fondo de pantalla, cursor y color de acento favoritos.</value>
@@ -847,5 +847,262 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minutos hasta que el sistema esté considerado en resposo</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Color de acento para barras de título y bordes de ventana</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Información sobre la versión copiada al portapapeles</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Cambio de tema automático</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Mostrar notificación al cambiar</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Demorar</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>Módulo de monitorización de GPU</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Pausar módulo de cambio automático</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Comprobar si el sistema está en reposo</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Pulsa confirmar para solicitar un cambio de tema inmediatamente.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Reanudar</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Revertir esta acción pulsando en el botón deshacer de abajo.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>Atajo de teclado</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Activar cambio de tema automático</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Desactivar cambio automático</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Deshacer</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Pausar cambio automático</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>¿Te gustaría desactivar el cambio automático en su lugar?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>El cambio automático también se reanudará si vuelves a tu tema anterior.</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Cambio de tema pausado hasta</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>El cambio de tema automático está actualmente pausado debido a los siguientes módulos:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Reanudar solo funcionará para elementos pospuestos que tienen un tiempo de expiración</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Control de posposición</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Cambiar tema</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>El cambio de tema automático está activado</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Seguir la luz nocturna de Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Seguir la luz nocturna de Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>¡El cambio de tema está pausado una vez!</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>Posposiciones hasta</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>Posposiciones hasta que su condición se cumple</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>Posposiciones hasta el próximo amanecer</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>Pospocisiones hasta el próximo anochecer</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>Hasta el próximo amanecer</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>Hasta el próximo atardecer</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Pausar el cambio de tema automático</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Cambio de tema automático reanudado</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Abrir ajustes de luz nocturna</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Luz nocturna</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Demoras activas</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Saltar cambio automático una vez</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Notificar antes de cambiar temas automáticamente</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Tiempo que la notificación espera entrada del usuario en minutos</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Modo de depuración</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Permitir cambio de tema en la pantalla de bloqueo (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Cambiar ahora</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Demorar módulo</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Cambiar notificación</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 horas</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 minutos</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 horas</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 minutos</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 horas</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 hora</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 horas</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Cambio de tema en espera</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>¿Quieres cambiar ya o posponerlo más?</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Modo rastreo</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Agradecimientos especiales</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Ignorar fondo</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Ignorar cursor</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignorar iconos del escritorio</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Ignorar sonido</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ignorar ajustes</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Esta opción no soporta los temas por defecto de Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutos</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Usar solo con Office 2013-2019 o si tienes errores con la opción de 'utilizar la configuración del sistema' de Office</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Ocurrió un error parcheando.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Versión actual</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Volviendo a la versión anterior</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Descargando...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Descarga en proceso</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Nueva versión {0} disponible</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Parcheado fallido</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Por favor, revisa service.log y updater.log para más información</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Actualizando a</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Volver a una versión anterior</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Abrir carpeta de registro</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Posponer</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Versión anterior {0} disponible</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Ir a la página de descargas</value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Un versión anterior está disponible</value>
   </data>
 </root>
