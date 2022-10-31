@@ -1,21 +1,45 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Rust",
-            "type": "cppvsdbg",
+            "type": "lldb",
             "request": "launch",
-            "program": "${workspaceRoot}/target/debug/adm-updater-rs.exe",
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "console": "integratedTerminal",
-            "symbolSearchPath": "https://msdl.microsoft.com/download/symbols",
-            "sourceFileMap": {
-                "/rustc/c8dfcfe046a7680554bf4eb612bad840e7631c4b": "${env:USERPROFILE}/.rustup/toolchains/stable-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+            "name": "Debug executable 'adm-updater-rs'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=adm-updater-rs",
+                    "--package=adm-updater-rs"
+                ],
+                "filter": {
+                    "name": "adm-updater-rs",
+                    "kind": "bin"
+                }
             },
-            "preLaunchTask": "${defaultBuildTask}",
-            //"args": ["--info"]
-            "args": ["--notify", "false", "false"]
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'adm-updater-rs'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=adm-updater-rs",
+                    "--package=adm-updater-rs"
+                ],
+                "filter": {
+                    "name": "adm-updater-rs",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

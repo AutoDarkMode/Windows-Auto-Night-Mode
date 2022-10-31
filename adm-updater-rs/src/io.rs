@@ -7,7 +7,10 @@ use std::{
     path::{Path, PathBuf},
 };
 use walkdir::WalkDir;
-use windows::{Win32::Storage::FileSystem::{GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO}, w};
+use windows::{
+    w,
+    Win32::Storage::FileSystem::{GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO},
+};
 
 use crate::{
     extensions::{self, get_assembly_dir, get_update_data_dir, get_working_dir},
@@ -132,9 +135,16 @@ pub fn is_whitelisted(entry: &Path) -> bool {
         }
     };
 
-    let entry_string = entry.display().to_string();
-    let entry_string_lowercase = entry_string.to_lowercase();
-    let matches = whitelist.iter().any(|e| entry_string_lowercase.ends_with(&e.to_lowercase()));
+    let file_name = match entry.file_name().and_then(|stem| stem.to_str()) {
+        Some(f) => f,
+        None => {
+            warn!("skipping file, could not retrieve file name for {}", entry.display());
+            return false;
+        }
+    };
+    let file_name_lower = file_name.to_lowercase();
+    // check both ways, that ensures a whitelist entry can be wildcarded by ommitting the end string
+    let matches = whitelist.iter().any(|e| file_name_lower.starts_with(&e.to_lowercase()));
     if !matches {
         warn!("found non-whitelisted entity in adm directory: {}", entry.display());
     }
@@ -193,7 +203,7 @@ pub fn move_files(source: &PathBuf, target: &PathBuf, files: Vec<PathBuf>) -> Re
 
 /// Makes calls to the WinAPI, retrieving the file version of the given path
 pub fn get_file_version(path: PathBuf) -> Result<Version, OpError> {
-    let path =  windows::core::HSTRING::from(path.as_os_str());
+    let path = windows::core::HSTRING::from(path.as_os_str());
     let mut handle: u32 = 2;
     let size = unsafe { GetFileVersionInfoSizeW(&path, Some(&mut handle)) };
     if size == 0 {
