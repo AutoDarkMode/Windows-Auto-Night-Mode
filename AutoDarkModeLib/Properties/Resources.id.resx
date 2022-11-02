@@ -175,7 +175,7 @@
     <value>Memakai layanan lokasi</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Pergantian telah tersimpan!</value>
+    <value>Pergantian telah tersimpan</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis</value>
@@ -202,10 +202,10 @@
     <value>Peringatan: Kami tidak dapat membaca membaca tema Anda saat ini.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Pembaruan tersedia!</value>
+    <value>Pembaruan tersedia</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Terima kasih untuk menggunakan Auto Dark Mode!
+    <value>Terima kasih untuk menggunakan Auto Dark Mode
 Pembaruan tersedia di GitHub dengan perbaikan  dan peningkatan.
 Apakah Anda mau memasang?
 Versi saat ini: {0}, Versi terbaru: {1}</value>
@@ -292,10 +292,10 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Latar Belakang Anda mungkin rusak atau alamat tidak ada</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Maaf! Kami tidak dapat memperlihatkan gambar Anda</value>
+    <value>Maaf, Kami tidak dapat memperlihatkan gambar Anda</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Maaf! Kami tidak dapat menyimpan setelan Anda</value>
+    <value>Maaf, Kami tidak dapat menyimpan setelan Anda</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Masalah terjadi</value>
@@ -452,13 +452,13 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Donasi</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode! Apakah Anda menyukainya? Aplikasi ini membuat hari Anda lebih menyenangkan, dengan membantu merawat mata Anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source. Kami tidak mengambil keuntungan apa pun dari proyek ini. Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat kami senang!</value>
+    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode Apakah Anda menyukainya? Aplikasi ini membuat hari Anda lebih menyenangkan, dengan membantu merawat mata Anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source. Kami tidak mengambil keuntungan apa pun dari proyek ini. Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat kami senang</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Terjadi masalah saat mengaplikasikan .theme-file. Mungkin saja tema yang Anda buat terbuang atau berpindah. Inilah kenapa kami menonaktifkan pengalihan tema untuk sekarang. Untuk mengaktifkan kembali, tolong buka Auto Dark Mode dan mengkonfigurasi {0} Setelan</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Kami mengalami beberapa masalah:{0}. Kami akan mencoba memperbaiki masalah ini dengan menjalankan melalui administrator. Mungkin ini dapat membantu. Auto Dark Mode akan memulai ulang setelah itu dan Anda harus menerapkan ulang setelan Anda.pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</value>
+    <value>Kami mengalami beberapa masalah:{0}. Kami akan mencoba memperbaiki masalah ini dengan menjalankan melalui administrator. Mungkin ini dapat membantu. Auto Dark Mode akan memulai ulang setelah itu dan Anda harus menerapkan ulang setelan Anda.pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Butuh bantuan?</value>
@@ -485,7 +485,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Mitigasi penghemat energi untuk pergantian tema</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>Ini hanya akan bekerja jika Anda tidak menyalakan  manual penghemat baterai!</value>
+    <value>Ini hanya akan bekerja jika Anda tidak menyalakan  manual penghemat baterai</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Beralih Mode</value>
@@ -629,7 +629,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Meluncurkan Layanan</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Layanan tidak merespon, Tolong periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi!</value>
+    <value>Layanan tidak merespon, Tolong periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Nyalakan pergantian tema Windows</value>
@@ -882,7 +882,7 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Ikuti cahaya malam Windows</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Pergantian tema tertunda sekali!</value>
+    <value>Pergantian tema tertunda sekali</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>tunda hingga</value>
@@ -1012,5 +1012,93 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>Sembunyikan Ikon Tray</value>
+  </data>
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>Ada masalah dengan UI.
+
+Pastikan:
+- layanan berjalan
+- file config.yaml anda sudah benar
+
+Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
+Klik "Ya" untuk membuka jendela peramban baru.</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Abaikan latar belakang</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Abaikan kursor</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Abaikan ikon desktop</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Abaikan notifikasi suara</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Abaikan pengaturan</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Opsi ini tidak mendukung tema Windows bawaan</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>menit</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Jeda</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Hanya gunakan dengan Office 2013 -2019 atau jika Anda mengalami masalah dengan pengaturan 'gunakan sistem' Office</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Terjadi kesalahan saat menambal.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Versi Terkini</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Menurunkan versi ke</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Mengunduh...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Unduhan sedang berlangsung</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Versi baru {0} tersedia</value>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Gagal menambal</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Silakan periksa service.log dan updater.log untuk info</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Memperbarui ke</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Penurunan</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Catatan Sejarah Direktori</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Tunda</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Versi lama {0} tersedia</value>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Buka halaman unduhan</value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Versi sebelumnya tersedia</value>
   </data>
 </root>
