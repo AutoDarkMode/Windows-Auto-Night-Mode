@@ -202,7 +202,7 @@
     <value>Προειδοποίηση: Δεν μπορέσαμε να διαβάσουμε το τρέχον θέμα σας.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Μια νέα ενημέρωση είναι διαθέσιμη!</value>
+    <value>Μια νέα έκδοση είναι διαθέσιμη!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Σας ευχαριστούμε που χρησιμοποιείτε το Auto Dark Mode!
@@ -216,10 +216,10 @@
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Ελεγχος για ενημερώσεις</value>
+    <value>Ελεγχος για νέα έκδοση</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Ελέγχουμε για ενημερώσεις σε κάθε εκκίνηση του προγράμματος.</value>
+    <value>Ελέγχουμε για νέα έκδοση σε κάθε εκκίνηση του προγράμματος.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Καλώς ορίσατε</value>
@@ -325,7 +325,7 @@
     <value>Ναι</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Αυτόματος έλεγχος για ενημερώσεις</value>
+    <value>Αυτόματος έλεγχος για νέα έκδοση</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Παρουσιάστηκε ένα πρόβλημα με τη διεπαφή χρήστη.
@@ -587,7 +587,7 @@
     <value>Επιλέξτε κανάλι ενημερώσεων</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Ελεγχος για ενημερώσεις κατά την εκκίνηση του Auto Dark Mode</value>
+    <value>Ελεγχος για νέα έκδοση κατά την εκκίνηση του Auto Dark Mode</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
     <value>14 ημέρες</value>
@@ -605,7 +605,7 @@
     <value>ποτέ</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Αλλάξτε τη συχνότητα ελέγχου για ενημερώσεις</value>
+    <value>Αλλάξτε τη συχνότητα ελέγχου για νέα έκδοση</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Σκοτεινό Θέμα</value>
@@ -1076,7 +1076,7 @@
     <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Η αναβάθμιση απέτυχε</value>
+    <value>Η ενημέρωση απέτυχε</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
     <value>Παρακαλώ ελέγξτε το service.log και το updater.log για πληροφορίες</value>
