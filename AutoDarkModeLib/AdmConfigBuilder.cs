@@ -110,7 +110,7 @@ namespace AutoDarkModeLib
 
         public void SaveScripts()
         {
-            SaveConfig(ScriptConfigPath, ScriptConfig, true);
+            SaveConfig(ScriptConfigPath, ScriptConfig, true, true);
         }
 
         public static void MakeConfigBackup()
@@ -119,13 +119,17 @@ namespace AutoDarkModeLib
             File.Copy(ConfigFilePath, backupPath, true);
         }
 
-        private static void SaveConfig(string path, object obj, bool useFlowStyleList = false)
+        private static void SaveConfig(string path, object obj, bool useFlowStyleList = false, bool omitEmpty = false)
         {
             Directory.CreateDirectory(ConfigDir);
             //string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
             SerializerBuilder yamlBuilder;
             yamlBuilder = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance);
             if (useFlowStyleList) yamlBuilder.WithEventEmitter(next => new FlowStyleStringListEmitter(next));
+            if (omitEmpty)
+            {
+                yamlBuilder.ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull | DefaultValuesHandling.OmitEmptyCollections);
+            }
             ISerializer yamlSerializer = yamlBuilder.Build();
 
             string yamlConfig = yamlSerializer.Serialize(obj);
