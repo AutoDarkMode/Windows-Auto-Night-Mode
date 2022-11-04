@@ -1105,6 +1105,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scripts.
+        /// </summary>
+        public static string NavbarScripts {
+            get {
+                return ResourceManager.GetString("NavbarScripts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string NavbarSettings {
@@ -1164,6 +1173,33 @@ namespace AutoDarkModeLib.Properties {
         public static string or {
             get {
                 return ResourceManager.GetString("or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open script config.
+        /// </summary>
+        public static string PageScriptsButtonOpenConfig {
+            get {
+                return ResourceManager.GetString("PageScriptsButtonOpenConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scripts.
+        /// </summary>
+        public static string PageScriptsTextBlockHeader {
+            get {
+                return ResourceManager.GetString("PageScriptsTextBlockHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable custom scripts.
+        /// </summary>
+        public static string PageScriptsToggle {
+            get {
+                return ResourceManager.GetString("PageScriptsToggle", resourceCulture);
             }
         }
         

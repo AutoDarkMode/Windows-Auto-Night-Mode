@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="AboutWindow.xaml.cs" />
+    <None Remove="Pages\PageScripts.xaml~RFacb2461.TMP" />
     <Page Remove="AboutWindow.xaml" />
   </ItemGroup>
   <ItemGroup>

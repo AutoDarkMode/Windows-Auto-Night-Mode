@@ -130,6 +130,15 @@
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 
+                <ui:NavigationViewItem Tag="scripts"
+                                       Content="{x:Static p:Resources.NavbarScripts}"
+                                       Height="50">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xF000;" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+
                 <ui:NavigationViewItem Tag="settings"
                                        Content="{x:Static p:Resources.NavbarSettings}"
                                        Height="50">

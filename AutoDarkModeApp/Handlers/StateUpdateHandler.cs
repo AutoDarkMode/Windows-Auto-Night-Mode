@@ -19,14 +19,25 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
 namespace AutoDarkModeApp.Handlers
 {
+
     public static class StateUpdateHandler
     {
+        public static SecurityIdentifier SID
+        {
+            get
+            {
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                return identity.User;
+            }
+        }
+
         static StateUpdateHandler()
         {
             PostponeRefreshTimer.Interval = 2000;
@@ -34,12 +45,20 @@ namespace AutoDarkModeApp.Handlers
 
         private static List<ElapsedEventHandler> delegatesTimer = new();
         private static List<FileSystemEventHandler> delegatesConfigWatcher = new();
+        private static List<FileSystemEventHandler> delegatesScriptConfigWatcher = new();
 
 
         private static FileSystemWatcher ConfigWatcher { get; } = new FileSystemWatcher
         {
             Path = AdmConfigBuilder.ConfigDir,
             Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
+            NotifyFilter = NotifyFilters.LastWrite
+        };
+
+        private static FileSystemWatcher ScriptConfigWatcher { get; } = new FileSystemWatcher
+        {
+            Path = AdmConfigBuilder.ConfigDir,
+            Filter = Path.GetFileName(AdmConfigBuilder.ScriptConfigPath),
             NotifyFilter = NotifyFilters.LastWrite
         };
 
@@ -57,8 +76,22 @@ namespace AutoDarkModeApp.Handlers
                 ConfigWatcher.Changed-= eh;
             }
             delegatesConfigWatcher.Clear();
+            foreach (FileSystemEventHandler eh in delegatesScriptConfigWatcher)
+            {
+                ScriptConfigWatcher.Changed-= eh;
+            }
+            delegatesScriptConfigWatcher.Clear();
         }
 
+        public static void StartScriptWatcher()
+        {
+            ScriptConfigWatcher.EnableRaisingEvents = true;
+        }
+
+        public static void StopScriptWatcher()
+        {
+            ScriptConfigWatcher.EnableRaisingEvents = false;
+        }
 
         public static void StartPostponeTimer()
         {
@@ -78,6 +111,20 @@ namespace AutoDarkModeApp.Handlers
         public static void StopConfigWatcher()
         {
             ConfigWatcher.EnableRaisingEvents = false;
+        }
+
+        public static event FileSystemEventHandler OnScriptConfigUpdate
+        {
+            add
+            {
+                ScriptConfigWatcher.Changed += value;
+                delegatesScriptConfigWatcher.Add(value);
+            }
+            remove
+            {
+                ScriptConfigWatcher.Changed -= value;
+                delegatesScriptConfigWatcher.Remove(value);
+            }
         }
 
         public static event FileSystemEventHandler OnConfigUpdate {

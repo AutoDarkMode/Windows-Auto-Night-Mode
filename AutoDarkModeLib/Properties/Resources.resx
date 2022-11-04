@@ -1106,4 +1106,16 @@ Do you really want to continue?</value>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>A downgrade is available</value>
   </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Open script config</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Enable custom scripts</value>
+  </data>
 </root>

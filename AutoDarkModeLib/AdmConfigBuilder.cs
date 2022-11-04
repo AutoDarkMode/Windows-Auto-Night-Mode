@@ -108,6 +108,11 @@ namespace AutoDarkModeLib
             SaveConfig(UpdaterDataPath, UpdaterData);
         }
 
+        public void SaveScripts()
+        {
+            SaveConfig(ScriptConfigPath, ScriptConfig, true);
+        }
+
         public static void MakeConfigBackup()
         {
             string backupPath = Path.Combine(ConfigDir, "config_backup.yaml");
