@@ -1,6 +1,6 @@
 
 # Windows Auto Dark Mode
-![App Logo](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/logo.png)  
+![App Logo](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/master/Readme/msstore_award_banner.jpg)  
 
 Switches between the dark and light theme of Windows at scheduled times.
 
@@ -22,29 +22,30 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Theme switch based on sunrise and sunset.
 - Desktop wallpaper switch.
 - Windows .Theme switch, to also change Accent Color, Slideshow and Mouse Cursor.
-- Support for accent color on the Taskbar and other system elements.
+- Support for accent color on the Taskbar and title bars.
 - Office theme switch.
 - Auto Dark Mode can enable the grayscale color filter of Windows.
 - Suitable for gamers: doesn't switch while playing games to avoid stuttering.
 - Run custom scripts.
-- Automatic Updates.
+- Keyboard shortcuts.
+- Postpone or delay the next switch as you like.
+- Automatic updates.
 - Lightweight with clean uninstall. No admin rights needed.
 
-## Download and installing
+## Download
 
 #### Download from Microsoft Store
-If you're running the new Microsoft Store, you will find Auto Dark Mode on it. Tested and verified by the Microsoft Store team.
 
 <a href="https://apps.microsoft.com/store/detail/auto-dark-mode/XP8JK4HZBVF435">
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
 
 
-#### Download directly from GitHub
-[Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases)
+#### Download from GitHub
+[Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases/latest)
 
 
-#### More download options
+#### Even more download options
 <details>
   <summary>Click to expand</summary>
 
@@ -77,9 +78,9 @@ scoop install auto-dark-mode-np
 
 
 #### Installation
-Installing is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window. 
+Installation is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window. 
 <br> <br>
-Sometimes Windows or a web browser will show a security notice while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
+Sometimes Windows or web browsers will show a security notice while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
 
 ## More information
 You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
