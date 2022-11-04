@@ -2,13 +2,13 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:ui="http://schemas.modernwpf.com/2019"
       d:DesignHeight="900"
       d:DesignWidth="500"
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       Title="PageScripts">
 
     <Grid>
@@ -21,6 +21,10 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -64,5 +68,105 @@
 
             </Grid>
         </Border>
+
+        <Border Grid.Column="1"
+                Grid.Row="5"
+                Margin="0,0,15,0"
+                Padding="5,5,5,5"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Win11Border}"
+                CornerRadius="5"
+                Background="{DynamicResource Win11Background}"
+                MouseDown="CardDocumentationLink_MouseDown"
+                Name="CardDocumentationLink"
+                Cursor="Hand">
+
+
+            <Grid Margin="0,15,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0"
+                      Margin="15,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock
+                               Grid.Row="0"
+                               Margin="0,0,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="Documentation for custom scripts"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+
+                </Grid>
+
+                <ui:FontIcon Grid.Column="3"
+                             Margin="15, 0, 10, 0"
+                             FontSize="15"
+                             FontFamily="Segoe fluent Icons"
+                             Glyph="&#xe71b;" />
+
+
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="1"
+                Grid.Row="7"
+                Margin="0,0,15,0"
+                Padding="5,5,5,5"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource Win11Border}"
+                CornerRadius="5"
+                Background="{DynamicResource Win11Background}"
+                MouseDown="CardScripts_MouseDown"
+                Name="CardScripts"
+                Cursor="Hand">
+
+
+            <Grid Margin="0,15,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0"
+                      Margin="15,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock
+                               Grid.Row="0"
+                               Margin="0,0,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="Custom script user repository"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+
+                </Grid>
+
+                <ui:FontIcon Grid.Column="3"
+                             Margin="15, 0, 10, 0"
+                             FontSize="15"
+                             FontFamily="Segoe fluent Icons"
+                             Glyph="&#xe71b;" />
+
+
+            </Grid>
+        </Border>
+
+
     </Grid>
 </Page>

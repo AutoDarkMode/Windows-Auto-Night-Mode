@@ -90,5 +90,15 @@ namespace AutoDarkModeApp.Pages
                 }
             }.Start();
         }
+        private void CardDocumentationLink_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ProcessHandler.StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/How-to-add-custom-scripts");
+
+        }
+
+        private void CardScripts_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ProcessHandler.StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/discussions/categories/custom-scripts");
+        }
     }
 }
