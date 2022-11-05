@@ -228,7 +228,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>勾选此项启用自动主题切换</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88</value>
+    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>城市</value>
@@ -847,5 +847,98 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>系统空闲状态判断时间（分钟）</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>版本信息已复制到剪贴板</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>在标题栏和窗口边框使用强调色</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>推迟</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>推迟模块</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPU监视模块</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>暂停自动切换模块</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>推迟到</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>推迟到调件满足为止</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>切换行为的通知</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>系统闲置检查</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>推迟到下一次日出</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>推迟到下一次日落</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 小时</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 分钟</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 小时</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 分钟</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 小时</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 小时</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>跳过一次自动切换</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>在自动切换主题时提醒</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>跟随Windows夜间模式设置</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>生效的推迟</value>
+  </data>
+  <data name="TimePageNextUpdateAt1" xml:space="preserve">
+    <value>下次更新</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>夜间模式</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>打开夜间模式设置</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>自动主题切换目前已经暂停</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>自动主题切换已启用</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>跟随Windows夜间模式设置</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>恢复将只会对有失效期限的推迟有效</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>推迟控制</value>
   </data>
 </root>
