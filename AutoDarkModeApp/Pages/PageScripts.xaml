@@ -8,6 +8,7 @@
       d:DesignHeight="900"
       d:DesignWidth="500"
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+      xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
       mc:Ignorable="d"
       Title="PageScripts">
 
@@ -36,18 +37,11 @@
                    FontSize="30"
                    Text="{x:Static p:Resources.PageScriptsTextBlockHeader}" />
 
-
-        <Border Grid.Column="1"
-                Grid.Row="3"
-                Margin="0,15,0,0"
-                Padding="15,5,5,15"
-                BorderThickness="1"
-                BorderBrush="{DynamicResource Win11Border}"
-                CornerRadius="5"
-                Background="{DynamicResource Win11Background}">
-
-            <Grid Grid.Row="3"
-                  Grid.Column="1">
+        <uc:Card Margin="0,10,0,0"
+                 Padding="15,5,5,15"
+                 Grid.Row="3"
+                 Grid.Column="1">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -68,22 +62,16 @@
                         Click="ButtonOpenScriptsFile_Click" />
 
             </Grid>
-        </Border>
+        </uc:Card>
 
-        <Border Grid.Column="1"
-                Grid.Row="5"
-                Margin="0,0,0,0"
-                Padding="5,5,5,5"
-                BorderThickness="1"
-                BorderBrush="{DynamicResource Win11Border}"
-                CornerRadius="5"
-                Background="{DynamicResource Win11Background}"
-                MouseDown="CardDocumentationLink_MouseDown"
-                Name="CardDocumentationLink"
-                Cursor="Hand">
+        <uc:Card Grid.Column="1"
+                 Grid.Row="5"
+                 Padding="5,5,5,5"
+                 MouseDown="CardDocumentationLink_MouseDown"
+                 x:Name="CardDocumentationLink"
+                 Cursor="Hand">
 
-
-            <Grid Margin="0,15,0,15">
+            <Grid Margin="0,15,0,13">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -117,22 +105,17 @@
 
 
             </Grid>
-        </Border>
+        </uc:Card>
 
-        <Border Grid.Column="1"
+        <uc:Card Grid.Column="1"
                 Grid.Row="7"
                 Margin="0,0,0,0"
                 Padding="5,5,5,5"
-                BorderThickness="1"
-                BorderBrush="{DynamicResource Win11Border}"
-                CornerRadius="5"
-                Background="{DynamicResource Win11Background}"
                 MouseDown="CardScripts_MouseDown"
-                Name="CardScripts"
+                x:Name="CardScripts"
                 Cursor="Hand">
 
-
-            <Grid Margin="0,15,0,15">
+            <Grid Margin="0,15,0,13">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -166,8 +149,7 @@
 
 
             </Grid>
-        </Border>
-
+        </uc:Card>
 
     </Grid>
 </Page>

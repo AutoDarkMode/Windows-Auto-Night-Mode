@@ -93,7 +93,7 @@ namespace AutoDarkModeApp.Pages
             TextBlockResumeInfo.Visibility = Visibility.Collapsed;
             StateUpdateHandler.OnPostponeTimerTick += PostponeTimerEvent;
             StateUpdateHandler.StartPostponeTimer();
-            PostponeTimerEvent(null, new());  
+            PostponeTimerEvent(null, new());
 
             LoadSettings();
 
@@ -229,13 +229,21 @@ namespace AutoDarkModeApp.Pages
             //disabled
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
-                DisableTimeBasedSwitch();
+                DisableTimePicker();
+                StackPanelModeSelection.IsEnabled = false;
                 SetPanelVisibility(false, false, false, false, false);
-                RadioButtonDisabled.IsChecked = true;
+                ToggleAutoSwitchEnabled.IsOn = false;
+
+                if (builder.Config.Governor == Governor.NightLight) RadioButtonWindowsNightLight.IsChecked = true;
+                else if (!builder.Config.Location.Enabled) RadioButtonCustomTimes.IsChecked = true;
+                else if (builder.Config.Location.UseGeolocatorService) RadioButtonLocationTimes.IsChecked = true;
+                else RadioButtonCoordinateTimes.IsChecked = true;
             }
             //enabled
             else
             {
+                StackPanelModeSelection.IsEnabled = true;
+                ToggleAutoSwitchEnabled.IsOn = true;
                 if (builder.Config.Governor == Governor.Default)
                 {
                     NumberboxOffsetDark.Minimum = -999;
@@ -346,8 +354,17 @@ namespace AutoDarkModeApp.Pages
             if (postpone) StackPanelPostponeInfo.Visibility = Visibility.Visible;
             else StackPanelPostponeInfo.Visibility = Visibility.Collapsed;
 
-            if (nightLight) GridNightLight.Visibility = Visibility.Visible;
-            else GridNightLight.Visibility = Visibility.Collapsed;
+            if (nightLight)
+            {
+                GridNightLight.Visibility = Visibility.Visible;
+                TextBlockNightLightHeader.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                GridNightLight.Visibility = Visibility.Collapsed;
+                TextBlockNightLightHeader.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         //apply theme
@@ -569,23 +586,8 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void DisableTimeBasedSwitch()
+        private void DisableTimePicker()
         {
-            if (!init)
-            {
-                //disable auto theme switching in svc
-                builder.Config.AutoThemeSwitchingEnabled = false;
-                builder.Config.Location.Enabled = false;
-                try
-                {
-                    builder.Save();
-                }
-                catch (Exception ex)
-                {
-                    ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageTime DisableTimeBasedSwitch");
-                }
-            }
-
             StackPanelTimePicker.IsEnabled = false;
             userFeedback.Text =
                 AdmProperties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
@@ -660,10 +662,30 @@ namespace AutoDarkModeApp.Pages
         /// <summary>
         /// radio buttons
         /// </summary>
-        private void RadioButtonDisabled_Click(object sender, RoutedEventArgs e)
+        private void ToggleAutoSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-            DisableTimeBasedSwitch();
-            SetPanelVisibility(false, false, false, false, true);
+            if (init) return;
+            try
+            {
+                if (ToggleAutoSwitchEnabled.IsOn)
+                {
+                    builder.Config.AutoThemeSwitchingEnabled = true;
+                    builder.Save();
+                    init = true;
+                    LoadSettings();
+                }
+                else
+                {
+                    builder.Config.AutoThemeSwitchingEnabled = false;
+                    builder.Save();
+                    SetPanelVisibility(false, false, false, false, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "ToggleAutoSwitch");
+            }
+
         }
 
         private void RadioButtonCustomTimes_Click(object sender, RoutedEventArgs e)
@@ -954,11 +976,6 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private async void ButtonOpenNightLightSettings_Click(object sender, RoutedEventArgs e)
-        {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
-        }
-
         private void PostponeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem cb = (ComboBoxItem)PostponeComboBox.SelectedItem;
@@ -971,6 +988,11 @@ namespace AutoDarkModeApp.Pages
             {
                 selectedPostponeMinutes = 0;
             }
+        }
+
+        private async void GridNightLight_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
         }
     }
 }

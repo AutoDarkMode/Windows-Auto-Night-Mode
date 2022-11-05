@@ -2,11 +2,30 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AutoDarkModeApp"
+             xmlns:control="clr-namespace:AutoDarkModeApp.Controls"
              xmlns:ui="http://schemas.modernwpf.com/2019"
              Startup="Application_Startup">
 
     <Application.Resources>
         <ResourceDictionary>
+            <Style TargetType="control:Card">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="control:Card">
+                            <Border
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource Win11Border}"
+                                    CornerRadius="5"
+                                    Padding="{TemplateBinding Padding}"
+                                    Margin="{TemplateBinding Margin}"
+                                    Background="{DynamicResource Win11Background}">
+                                <ContentControl Content="{TemplateBinding Content}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <ResourceDictionary.MergedDictionaries>
                 <!--  FluentWPF Controls  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />

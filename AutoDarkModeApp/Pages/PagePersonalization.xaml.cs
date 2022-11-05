@@ -78,29 +78,19 @@ namespace AutoDarkModeApp.Pages
             ThemePickerCard.IsEnabled = false;
         }
 
-        private void NavigateThemePicker(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(PageThemePicker), null, new DrillInNavigationTransitionInfo());
-        }
-
         private void HyperlinkThemeMode_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Space)
             {
-                NavigateThemePicker(this, null);
+                ThemePickerCard_MouseDown(this, null);
             }
-        }
-
-        private void NavigateWallpaperPicker(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(PageWallpaperPicker), null, new DrillInNavigationTransitionInfo());
         }
 
         private void HyperlinkWallpaper_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if(e.Key == Key.Enter || e.Key == Key.Space)
             {
-                NavigateWallpaperPicker(this, null);
+                WallpaperPickerCard_MouseDown(this, null);
             }
         }
 
@@ -123,6 +113,16 @@ namespace AutoDarkModeApp.Pages
                 });
             }
             return;
+        }
+
+        private void WallpaperPickerCard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Navigate(typeof(PageWallpaperPicker), null, new DrillInNavigationTransitionInfo());
+        }
+
+        private void ThemePickerCard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Navigate(typeof(PageThemePicker), null, new DrillInNavigationTransitionInfo());
         }
     }
 }
