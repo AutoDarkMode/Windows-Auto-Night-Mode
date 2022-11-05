@@ -848,4 +848,64 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>系统空闲状态判断时间（分钟）</value>
   </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>跟随Windows夜间模式</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>跟随Windows夜间模式</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>推迟直到</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>推迟直到满足条件</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>推迟直到下次日出</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>推迟直到下次日落</value>
+  </data>
+    <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Toggle pause auto theme switch</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Auto theme switching resumed</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>打开Windows夜间模式设置</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>夜间模式</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>已经生效的推迟</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>跳过一次自动切换</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 小时</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 分钟</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 小时</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 分钟</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 小时</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 小时</value>
+  </data>
+    <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>在自动切换主题前提示</value>
+  </data>
 </root>
