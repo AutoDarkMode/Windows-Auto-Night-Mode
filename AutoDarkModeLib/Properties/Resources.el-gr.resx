@@ -1106,4 +1106,16 @@
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>Μια παλαιότερη έκδοση είναι διαθέσιμη</value>
   </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Ανοιγμα ρυθμίσεων script (config)</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Ενεργοποίηση προσαρμοσμένων scripts</value>
+  </data>
 </root>
