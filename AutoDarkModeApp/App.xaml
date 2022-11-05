@@ -34,11 +34,11 @@
                     <ui:ThemeResources.ThemeDictionaries>
                         <ResourceDictionary x:Key="Light">
                             <SolidColorBrush x:Key="NavbarFill"
-                                             Color="#f9f9f9">
+                                             Color="#f7f7f7">
                             </SolidColorBrush>
                             <Color x:Key="NavbarBackground">#f9f9f9</Color>
                             <SolidColorBrush x:Key="Win11Background"
-                                             Opacity="0.85"
+                                             Opacity="0.75"
                                              Color="#fffbfbfb"></SolidColorBrush>
                             <SolidColorBrush x:Key="Win11Border"
                                              Color="#e5e5e5"></SolidColorBrush>

@@ -52,7 +52,7 @@
 
         <uc:Card x:Name="StackPanelRadioHolder"
                  Grid.Row="3"
-                 Padding="15,8,5,8"
+                 Padding="15,4,5,3"
                  Grid.Column="1"
                  Margin="0,0,0,0">
 
@@ -60,7 +60,7 @@
                 <DockPanel LastChildFill="false">
                     <TextBlock FontSize="14"
                                FontFamily="Segoe UI Variable"
-                               Margin="0,7"
+                               Margin="0,7,0,8"
                                Text="{x:Static p:Resources.autoCheckBox}" />
                     <ui:ToggleSwitch DockPanel.Dock="Right"
                                      x:Name="ToggleAutoSwitchEnabled"
