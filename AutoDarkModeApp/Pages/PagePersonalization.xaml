@@ -114,7 +114,7 @@
 
         </uc:Card>
 
-        <uc:Card Margin="0,5,0,15"
+        <uc:Card Margin="0,2,0,15"
                 Padding="5,0,5,0"
                 Grid.Column="1"
                 Grid.Row="4"

@@ -136,7 +136,6 @@ namespace AutoDarkModeApp
                 //numbox
                 NumberBoxColorDelay.Value = Convert.ToInt32(builder.Config.SystemSwitch.Component.TaskbarSwitchDelay);
 
-                AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
                 SystemComboBox_SelectionChanged(null, null);
             }
 
@@ -257,8 +256,25 @@ namespace AutoDarkModeApp
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
                     AccentColorCheckBox.IsEnabled = true;
                     AccentColorCheckBox.Visibility = Visibility.Visible;
-                    TextBlockColorDelay.Visibility = Visibility.Visible;
-                    NumberBoxColorDelay.Visibility = Visibility.Visible;
+                    AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
+                    if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+                    {
+                        NumberBoxColorDelay.Visibility = NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                        TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    }
+                    else if (AccentColorCheckBox.IsChecked ?? false)
+                    {
+                        if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+                        {
+                            TextBlockColorDelay.Visibility = Visibility.Visible;
+                            NumberBoxColorDelay.Visibility = Visibility.Visible;
+                        }
+                    }
+                    else
+                    {
+                        NumberBoxColorDelay.Visibility = NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                        TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    }
                     StackPanelAdaptiveTaskbarAccent.Visibility = Visibility.Collapsed;
                 }
                 else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemLightOnly))
@@ -285,8 +301,16 @@ namespace AutoDarkModeApp
                     AccentColorCheckBox.Visibility = Visibility.Collapsed;
                     if (!builder.Config.WindowsThemeMode.Enabled)
                     {
-                        TextBlockColorDelay.Visibility = Visibility.Visible;
-                        NumberBoxColorDelay.Visibility = Visibility.Visible;
+                        if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+                        {
+                            TextBlockColorDelay.Visibility = Visibility.Visible;
+                            NumberBoxColorDelay.Visibility = Visibility.Visible;
+                        }                        
+                        else
+                        {
+                            TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                            NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                        }
                     }
                     else
                     {
@@ -324,8 +348,16 @@ namespace AutoDarkModeApp
             if (((CheckBox)sender).IsChecked ?? false)
             {
                 builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive = true;
-                TextBlockColorDelay.Visibility = Visibility.Visible;
-                NumberBoxColorDelay.Visibility = Visibility.Visible;
+                if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+                {
+                    TextBlockColorDelay.Visibility = Visibility.Visible;
+                    NumberBoxColorDelay.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    TextBlockColorDelay.Visibility = Visibility.Collapsed;
+                    NumberBoxColorDelay.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {

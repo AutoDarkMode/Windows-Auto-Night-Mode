@@ -704,7 +704,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apps:.
+        ///   Looks up a localized string similar to Apps.
         /// </summary>
         public static string lblApps {
             get {
@@ -866,7 +866,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to System:.
+        ///   Looks up a localized string similar to System.
         /// </summary>
         public static string lblSystem {
             get {

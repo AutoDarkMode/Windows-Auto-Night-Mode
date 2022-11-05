@@ -75,7 +75,7 @@
                             <ui:NumberBox Name="NumberBoxGPUThreshold"
                                           Margin="0,5,0,0"
                                           DockPanel.Dock="Right"
-                                          MinWidth="160"
+                                          MinWidth="170"
                                           Minimum="0"
                                           Maximum="100"
                                           SpinButtonPlacementMode="Inline"
@@ -95,9 +95,9 @@
                                        FontSize="14" />
 
                             <ComboBox Name="ComboBoxGPUSamples"
-                                      Margin="0,5,0,0"
+                                      Margin="0,10,0,0"
                                       DockPanel.Dock="Right"
-                                      MinWidth="160"
+                                      MinWidth="170"
                                       SelectionChanged="ComboBoxGPUSamples_SelectionChanged">
 
                                 <ComboBoxItem Tag="1"
@@ -139,7 +139,7 @@
                                       Margin="0,15,0,0"
                                       DockPanel.Dock="Right"
                                       HorizontalAlignment="Left"
-                                      MinWidth="160"
+                                      MinWidth="170"
                                       Minimum="1"
                                       SpinButtonPlacementMode="Inline"
                                       SmallChange="1"
@@ -174,7 +174,7 @@
                         <ui:NumberBox Name="NumberBoxAutoSwitchNotifyGracePeriod"
                                       Margin="0,15,0,0"
                                       HorizontalAlignment="Left"
-                                      MinWidth="160"
+                                      MinWidth="170"
                                       DockPanel.Dock="Right"
                                       Minimum="1"
                                       SpinButtonPlacementMode="Inline"
@@ -366,7 +366,7 @@
                                      ui:TextBoxHelper.IsDeleteButtonVisible="false"
                                      Width="240"
                                      DockPanel.Dock="Right"
-                                     Margin="0,5,0,0"
+                                     Margin="0,5,0,5"
                                      Grid.Column="1"
                                      Name="HotkeyTextboxToggleAutomaticThemeSwitch"
                                      PreviewKeyDown="HotkeyTextToggleAutomaticThemeSwitch_PreviewKeyDown" />
@@ -384,7 +384,7 @@
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="5">
-                    <ui:SimpleStackPanel Margin="0,0,0,0">
+                    <ui:SimpleStackPanel Margin="0,5,0,0">
                         <DockPanel LastChildFill="false">
                             <TextBlock FontSize="14"
                                        VerticalAlignment="Center">
@@ -398,7 +398,7 @@
                             <TextBox HorizontalAlignment="Left"
                                      ui:TextBoxHelper.IsDeleteButtonVisible="false"
                                      Width="240"
-                                     Margin="0,5,0,0"
+                                     Margin="0,0,0,5"
                                      DockPanel.Dock="Right"
                                      Grid.Column="1"
                                      Name="HotkeyTextboxTogglePostpone"

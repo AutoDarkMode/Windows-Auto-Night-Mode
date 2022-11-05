@@ -136,7 +136,7 @@
     <value>Enable features for Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Apps</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Custom start time</value>
@@ -163,7 +163,7 @@
     <value>Switch current theme</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System:</value>
+    <value>System</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Used third party software</value>
