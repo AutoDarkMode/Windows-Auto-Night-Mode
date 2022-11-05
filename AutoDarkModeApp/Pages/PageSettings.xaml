@@ -9,13 +9,13 @@
       xmlns:ui="http://schemas.modernwpf.com/2019"
       mc:Ignorable="d"
       Title="PageSettings"
-      VerticalAlignment="Top"
-      HorizontalAlignment="Left">
+      VerticalAlignment="Top">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="10*" MaxWidth="1000" MinWidth="450"/>
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>

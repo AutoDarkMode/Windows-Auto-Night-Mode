@@ -10,13 +10,13 @@
          mc:Ignorable="d"
          Title="PagePersonalization"
          d:MinWidth="450"
-         VerticalAlignment="Top"
-         HorizontalAlignment="Left">
+         VerticalAlignment="Top">
 
-    <Grid Margin="0,0,15,0">
+    <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="10*" MaxWidth="1000" MinWidth="450" />
+            <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -118,7 +118,7 @@
 
         </Border>
 
-        <Border Margin="0,15,0,15"
+        <Border Margin="0,5,0,15"
                 Padding="5,0,5,0"
                 Grid.Column="1"
                 Grid.Row="4"

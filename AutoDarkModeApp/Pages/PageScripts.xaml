@@ -11,10 +11,11 @@
       mc:Ignorable="d"
       Title="PageScripts">
 
-    <Grid>
+    <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="10*" MaxWidth="1000" MinWidth="450"/>
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -38,7 +39,7 @@
 
         <Border Grid.Column="1"
                 Grid.Row="3"
-                Margin="0,15,15,0"
+                Margin="0,15,0,0"
                 Padding="15,5,5,15"
                 BorderThickness="1"
                 BorderBrush="{DynamicResource Win11Border}"
@@ -71,7 +72,7 @@
 
         <Border Grid.Column="1"
                 Grid.Row="5"
-                Margin="0,0,15,0"
+                Margin="0,0,0,0"
                 Padding="5,5,5,5"
                 BorderThickness="1"
                 BorderBrush="{DynamicResource Win11Border}"
@@ -120,7 +121,7 @@
 
         <Border Grid.Column="1"
                 Grid.Row="7"
-                Margin="0,0,15,0"
+                Margin="0,0,0,0"
                 Padding="5,5,5,5"
                 BorderThickness="1"
                 BorderBrush="{DynamicResource Win11Border}"
