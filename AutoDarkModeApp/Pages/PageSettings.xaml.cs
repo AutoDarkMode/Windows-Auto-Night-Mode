@@ -98,14 +98,14 @@ namespace AutoDarkModeApp.Pages
         private void UiHandler()
         {
             //hide elements which aren't compatible with this device
-            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
+            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent || Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 CheckBoxEnergySaverMitigation.Visibility = Visibility.Collapsed;
+                SeparatorEnergySaverMitigation.Visibility = Visibility.Collapsed;
             }
 
             //language ui
-            ButtonRestart.Visibility = Visibility.Collapsed;
-            TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
+            DockPanelLanguageRestart.Visibility = Visibility.Collapsed;
             ComboBoxLanguageSelection.SelectedValue = Settings.Default.Language.ToString().Replace("-", "_");
             if (ComboBoxLanguageSelection.SelectedValue == null)
             {
@@ -119,14 +119,23 @@ namespace AutoDarkModeApp.Pages
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             CheckBoxWin10AllowLockscreenSwitch.IsChecked = builder.Config.Events.Win10AllowLockscreenSwitch;
 
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC) CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
-            else CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+            {
+                CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
+                SeparatorWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
+                SeparatorWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
+            }
 
             CheckBoxDebugMode.IsChecked = builder.Config.Tunable.Debug;
             CheckBoxTraceMode.IsChecked = builder.Config.Tunable.Trace;
             if (!builder.Config.Tunable.Debug)
             {
                 CheckBoxTraceMode.Visibility = Visibility.Collapsed;
+                SeparatorTraceMode.Visibility = Visibility.Collapsed;
             }
 
             //battery slider / energy saver mitigation
@@ -278,10 +287,9 @@ namespace AutoDarkModeApp.Pages
                 {
                     SetLanguage(selectedLanguage);
                     Translator.Text = AdmProperties.Resources.lblTranslator;
+                    DockPanelLanguageRestart.Visibility = Visibility.Visible;
                     TextBlockLanguageRestart.Text = AdmProperties.Resources.restartNeeded;
-                    TextBlockLanguageRestart.Visibility = Visibility.Visible;
                     ButtonRestart.Content = AdmProperties.Resources.restart;
-                    ButtonRestart.Visibility = Visibility.Visible;
                     Settings.Default.LanguageChanged = true;
                     builder.Config.Tunable.UICulture = selectedLanguage;
                     try
@@ -296,8 +304,7 @@ namespace AutoDarkModeApp.Pages
                 else
                 {
                     SetLanguage(selectedLanguage);
-                    TextBlockLanguageRestart.Visibility = Visibility.Collapsed;
-                    ButtonRestart.Visibility = Visibility.Collapsed;
+                    DockPanelLanguageRestart.Visibility = Visibility.Visible;
                     Translator.Text = AdmProperties.Resources.lblTranslator;
                     Settings.Default.LanguageChanged = false;
                 }
@@ -423,6 +430,7 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Config.Tunable.Debug = true;
                 CheckBoxTraceMode.Visibility = Visibility.Visible;
+                SeparatorTraceMode.Visibility = Visibility.Visible;
             }
             else
             {
@@ -430,6 +438,7 @@ namespace AutoDarkModeApp.Pages
                 builder.Config.Tunable.Trace = false;
                 CheckBoxTraceMode.IsChecked = false;
                 CheckBoxTraceMode.Visibility = Visibility.Collapsed;
+                SeparatorTraceMode.Visibility = Visibility.Collapsed;
             }
             try
             {

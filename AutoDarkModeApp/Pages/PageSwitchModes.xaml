@@ -352,8 +352,16 @@
                          Grid.Row="4">
                     <ui:SimpleStackPanel Margin="0,0,0,0"
                                          >
-                        <DockPanel LastChildFill="false">
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
                             <TextBlock FontSize="14"
+                                       Grid.Column="0"
+                                       TextWrapping="Wrap"
                                        VerticalAlignment="Center">
                                 <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0} {1}">
@@ -363,14 +371,14 @@
                                 </TextBlock.Text>
                             </TextBlock>
                             <TextBox HorizontalAlignment="Left"
+                                     Grid.Column="1"
                                      ui:TextBoxHelper.IsDeleteButtonVisible="false"
                                      Width="240"
                                      DockPanel.Dock="Right"
                                      Margin="0,5,0,5"
-                                     Grid.Column="1"
                                      Name="HotkeyTextboxToggleAutomaticThemeSwitch"
                                      PreviewKeyDown="HotkeyTextToggleAutomaticThemeSwitch_PreviewKeyDown" />
-                        </DockPanel>
+                        </Grid>
 
                         <Separator Margin="-30,10,-15,15"
                                    Background="{DynamicResource Win11Border}" />
@@ -385,9 +393,18 @@
                          Margin="0,2,0,0"
                          Grid.Row="5">
                     <ui:SimpleStackPanel Margin="0,5,0,0">
-                        <DockPanel LastChildFill="false">
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+
                             <TextBlock FontSize="14"
-                                       VerticalAlignment="Center">
+                                       VerticalAlignment="Center"
+                                       Grid.Column="0"
+                                       TextWrapping="Wrap">
                                 <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0} {1}">
                                         <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderTogglePostpone}" />
@@ -403,7 +420,7 @@
                                      Grid.Column="1"
                                      Name="HotkeyTextboxTogglePostpone"
                                      PreviewKeyDown="HotkeyTextboxTogglePostpone_PreviewKeyDown" />
-                        </DockPanel>
+                        </Grid>
 
                         <Separator Margin="-30,10,-15,15"
                                    Background="{DynamicResource Win11Border}" />
