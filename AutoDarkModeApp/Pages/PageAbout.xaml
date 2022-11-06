@@ -278,7 +278,7 @@
 
             <TextBlock Text="{x:Static p:Resources.SpecialThanks}"
                        FontFamily="Segoe UI Semibold"
-                       Margin="0,0,0,10"
+                       Margin="0,15,0,10"
                        FontSize="14" />
 
             <uc:Card Padding="30,15,15,15"
