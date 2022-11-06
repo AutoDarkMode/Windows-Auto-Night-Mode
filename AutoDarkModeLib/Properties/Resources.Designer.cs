@@ -2024,7 +2024,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark Theme:.
+        ///   Looks up a localized string similar to Dark Theme.
         /// </summary>
         public static string ThemeDark {
             get {
@@ -2069,7 +2069,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Light Theme:.
+        ///   Looks up a localized string similar to Light Theme.
         /// </summary>
         public static string ThemeLight {
             get {

@@ -7,6 +7,7 @@
          xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
          xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+         xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
          mc:Ignorable="d"
          d:DesignHeight="900"
          d:DesignWidth="500"
@@ -25,6 +26,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -54,289 +56,364 @@
                    FontSize="30"
                    Text="{x:Static p:Resources.ThemeTextBlockHeader}" />
 
-        <Grid Grid.Row="3"
-              Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <uc:Card Padding="30,15,15,10"
+                 Grid.Row="3"
+                 Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <ui:ToggleSwitch Name="ToggleSwitchThemeMode"
-                             OffContent="{x:Static p:Resources.ToggleSwitchOff}"
-                             OnContent="{x:Static p:Resources.ToggleSwitchOn}"
-                             Grid.Row="0"
-                             Margin="0,10,0,0"
-                             Header="{x:Static p:Resources.ThemeToggleSwichEnableTheme}"
-                             Toggled="ToggleSwitchThemeMode_Toggled" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <CheckBox Name="CheckBoxMonitorActiveTheme"
-                      Margin="0,10,0,0"
-                      Grid.Row="1"
-                      Content="{x:Static p:Resources.ThemePickerComboBoxKeepActive}"
-                      Click="CheckBoxMonitorActiveTheme_Click" />
+                <TextBlock Text="{x:Static p:Resources.ThemeToggleSwichEnableTheme}"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center" />
 
-        </Grid>
+
+                <ui:ToggleSwitch Name="ToggleSwitchThemeMode"
+                                 OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                 OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                                 Grid.Row="0"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,0,0"
+                                 Grid.Column="1"
+                                 Toggled="ToggleSwitchThemeMode_Toggled" />
+
+                <Separator Margin="-30,10,-15,10"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="1"
+                           Background="{DynamicResource Win11Border}" />
+
+                <CheckBox Name="CheckBoxMonitorActiveTheme"
+                          Margin="0,0,0,0"
+                          Grid.Row="2"
+                          Content="{x:Static p:Resources.ThemePickerComboBoxKeepActive}"
+                          Click="CheckBoxMonitorActiveTheme_Click" />
+
+            </Grid>
+        </uc:Card>
 
 
         <!-- Tutorial: How to create theme -->
         <TextBlock Grid.Row="4"
                    Grid.Column="1"
-                   Margin="0,20,0,20"
-                   FontFamily="Segoe UI"
-                   FontSize="20"
+                   Margin="0,30,0,10"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="14"
                    Text="{x:Static p:Resources.ThemeHeaderCreate}" />
 
-        <Grid Grid.Row="5"
-              Grid.Column="1">
+        <uc:Card Padding="30,15,15,15"
+                 Grid.Row="5"
+                 Grid.Column="1">
+            <Grid>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65" />
-                <ColumnDefinition MaxWidth="350" />
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <!-- Step 1 -->
-            <TextBlock Name="TextBlockStep1"
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       Text="{x:Static p:Resources.ThemeTutorialStep}"
-                       Foreground="Gray"
-                       FontSize="14" />
+                <!-- Step 1 -->
+                <TextBlock Name="TextBlockStep1"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Text="{x:Static p:Resources.ThemeTutorialStep}"
+                           Foreground="Gray"
+                           FontSize="14" />
 
-            <TextBlock Name="TextBlockOpenImmersiveControlPanel"
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       VerticalAlignment="Top"
-                       HorizontalAlignment="Left"
-                       TextWrapping="Wrap"
-                       Text="{x:Static p:Resources.ThemeTutorialStep1}"
-                       FontSize="14"
-                       Focusable="True"
-                       MouseDown="TextBlockOpenImmersiveControlPanel_MouseDown"
-                       KeyDown="TextBlockOpenImmersiveControlPanel_KeyDown">
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Foreground"
-                                Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver"
-                                     Value="True">
-                                <Setter Property="Foreground"
-                                        Value="Gray" />
-                                <Setter Property="Cursor"
-                                        Value="Hand" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+                <TextBlock Name="TextBlockOpenImmersiveControlPanel"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           TextWrapping="Wrap"
+                           Text="{x:Static p:Resources.ThemeTutorialStep1}"
+                           FontSize="14"
+                           Focusable="True"
+                           MouseDown="TextBlockOpenImmersiveControlPanel_MouseDown"
+                           KeyDown="TextBlockOpenImmersiveControlPanel_KeyDown">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground"
+                                    Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Foreground"
+                                            Value="Gray" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
 
-            <!-- Step 2 -->
-            <TextBlock Name="TextBlockStep2"
-                       Grid.Column="0"
-                       Grid.Row="1"
-                       Margin="0,10,0,0"
-                       Text="{x:Static p:Resources.ThemeTutorialStep}"
-                       Foreground="Gray"
-                       FontSize="14" />
-            <TextBlock Grid.Row="1"
-                       Grid.Column="1"
-                       Margin="0,10,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       TextWrapping="Wrap"
-                       Text="{x:Static p:Resources.ThemeTutorialStep2}"
-                       FontSize="14" />
+                <!-- Step 2 -->
+                <TextBlock Name="TextBlockStep2"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.ThemeTutorialStep}"
+                           Foreground="Gray"
+                           FontSize="14" />
+                <TextBlock Grid.Row="1"
+                           Grid.Column="1"
+                           Margin="0,10,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           TextWrapping="Wrap"
+                           Text="{x:Static p:Resources.ThemeTutorialStep2}"
+                           FontSize="14" />
 
-            <!-- Step 3 -->
-            <TextBlock Name="TextBlockStep3"
-                       Grid.Column="0"
-                       Grid.Row="2"
-                       Margin="0,10,0,0"
-                       Text="{x:Static p:Resources.ThemeTutorialStep}"
-                       Foreground="Gray"
-                       FontSize="14" />
-            <TextBlock HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       Margin="0,10,0,0"
-                       TextWrapping="Wrap"
-                       Text="{x:Static p:Resources.ThemeTutorialStep3}"
-                       FontSize="14" />
+                <!-- Step 3 -->
+                <TextBlock Name="TextBlockStep3"
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.ThemeTutorialStep}"
+                           Foreground="Gray"
+                           FontSize="14" />
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           Margin="0,10,0,0"
+                           TextWrapping="Wrap"
+                           Text="{x:Static p:Resources.ThemeTutorialStep3}"
+                           FontSize="14" />
 
-            <!-- Step 4 -->
-            <TextBlock Name="TextBlockStep4"
-                       Grid.Column="0"
-                       Grid.Row="4"
-                       Margin="0,10,0,0"
-                       Text="{x:Static p:Resources.ThemeTutorialStep}"
-                       Foreground="Gray"
-                       FontSize="14" />
-            <TextBlock Grid.Column="1"
-                       Grid.Row="3"
-                       Margin="0,10,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       TextWrapping="Wrap"
-                       Text="{x:Static p:Resources.ThemeTutorialStep4}"
-                       FontSize="14" />
-        </Grid>
+                <!-- Step 4 -->
+                <TextBlock Name="TextBlockStep4"
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           Margin="0,10,0,0"
+                           Text="{x:Static p:Resources.ThemeTutorialStep}"
+                           Foreground="Gray"
+                           FontSize="14" />
+                <TextBlock Grid.Column="1"
+                           Grid.Row="3"
+                           Margin="0,10,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           TextWrapping="Wrap"
+                           Text="{x:Static p:Resources.ThemeTutorialStep4}"
+                           FontSize="14" />
+            </Grid>
+        </uc:Card>
 
         <!-- Combobox pick theme -->
         <TextBlock Grid.Row="6"
                    Grid.Column="1"
-                   Margin="0,30,0,20"
-                   FontFamily="Segoe UI"
-                   FontSize="20"
+                   Margin="0,30,0,10"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="14"
                    Text="{x:Static p:Resources.ThemeHeaderPick}" />
 
-        <Grid Grid.Row="7"
-              Grid.Column="1">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <!-- Light Theme Combobox -->
+        <uc:Card Grid.Row="7"
+                 Grid.Column="1"
+                 Padding="15,15,15,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Margin="0,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           FontSize="30"
+                           Text="&#xE706;" />
 
-            <!-- Light Theme Combobox -->
-            <TextBlock Grid.Column="0"
-                       Grid.Row="0"
-                       Margin="0,20,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       FontFamily="Segoe MDL2 Assets"
-                       FontSize="30"
-                       Text="&#xE706;" />
-            <TextBlock Grid.Row="0"
-                       Grid.Column="1"
-                       Margin="20,0,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       FontSize="14"
-                       Text="{x:Static p:Resources.ThemeLight}" />
-            <ComboBox Grid.Row="0"
-                      Grid.Column="1"
-                      Name="ComboBoxLightTheme"
-                      Margin="20,25,0,0"
-                      MinWidth="220"
-                      MaxWidth="300"
-                      DropDownOpened="ComboBox_DropDownOpened"
-                      SelectionChanged="ComboBox_SelectionChanged" />
+                <TextBlock Grid.Row="0"
+                           Grid.Column="1"
+                           Margin="20,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           Text="{x:Static p:Resources.ThemeLight}" />
 
-            <!-- Dark Theme Combobox -->
-            <TextBlock Grid.Row="1"
-                       Grid.Column="0"
-                       Margin="0,30,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       FontFamily="Segoe MDL2 Assets"
-                       FontSize="30"
-                       Text="&#xE708;" />
-            <TextBlock Grid.Row="1"
-                       Grid.Column="1"
-                       Margin="20,10,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       FontSize="14"
-                       Text="{x:Static p:Resources.ThemeDark}" />
-            <ComboBox Name="ComboBoxDarkTheme"
-                      Grid.Row="1"
-                      Grid.Column="1"
-                      Margin="20,35,0,0"
-                      MinWidth="220"
-                      MaxWidth="300"
-                      DropDownOpened="ComboBox_DropDownOpened"
-                      SelectionChanged="ComboBox_SelectionChanged" />
-        </Grid>
+                <ComboBox Grid.Row="0"
+                          Grid.Column="2"
+                          Name="ComboBoxLightTheme"
+                          Margin="0,0,0,0"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Right"
+                          MinWidth="220"
+                          MaxWidth="300"
+                          DropDownOpened="ComboBox_DropDownOpened"
+                          SelectionChanged="ComboBox_SelectionChanged" />
+
+            </Grid>
+        </uc:Card>
+
+        <!-- Dark Theme Combobox -->
+        <uc:Card Grid.Row="8"
+                 Margin="0,2,0,0"
+                 Grid.Column="1"
+                 Padding="15,15,15,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Margin="0,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           FontSize="30"
+                           Text="&#xE708;" />
+                <TextBlock Grid.Column="1"
+                           Margin="20,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           Text="{x:Static p:Resources.ThemeDark}" />
+                <ComboBox Name="ComboBoxDarkTheme"
+                          Grid.Column="2"
+                          Margin="0,0,0,0"
+                          MinWidth="220"
+                          HorizontalAlignment="Right"
+                          MaxWidth="300"
+                          DropDownOpened="ComboBox_DropDownOpened"
+                          SelectionChanged="ComboBox_SelectionChanged" />
+
+            </Grid>
+        </uc:Card>
 
         <!-- Buttons -->
-        <TextBlock Name="TextBlockOpenThemeFolder"
-                   Grid.Column="1"
-                   Grid.Row="8"
-                   Margin="0,20,0,0"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap"
-                   FontSize="14"
-                   Text="{x:Static p:Resources.OpenPath}"
-                   Focusable="True"
-                   MouseDown="TextBlockOpenThemeFolder_MouseDown"
-                   KeyDown="TextBlockOpenThemeFolder_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground"
-                            Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter Property="Foreground"
-                                    Value="Gray" />
-                            <Setter Property="Cursor"
-                                    Value="Hand" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
 
-        <TextBlock Grid.Row="9"
+        <uc:Card Padding="30,20,5,20"
+                 Margin="0,2,0,0"
+                 Cursor="Hand"
+                 Grid.Column="1"
+                 Grid.Row="9"
+                 MouseDown="TextBlockOpenThemeFolder_MouseDown"
+                 KeyDown="TextBlockOpenThemeFolder_KeyDown">
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0"
+                      Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Grid.Row="0"
+                               Margin="0,0,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="{x:Static p:Resources.OpenPath}"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+                </Grid>
+
+                <ui:FontIcon Grid.Column="3"
+                             Margin="15, 0, 10, 0"
+                             FontSize="15"
+                             FontFamily="Segoe fluent Icons"
+                             Glyph="&#xe8a7;" />
+            </Grid>
+        </uc:Card>
+
+        <!-- ignore settings-->
+        <TextBlock Grid.Row="10"
                    Grid.Column="1"
-                   FontFamily="Segoe UI"
-                   Margin="0,20,0,0"
-                   FontSize="20"
+                   FontFamily="Segoe UI Semibold"
+                   Margin="0,30,0,10"
+                   FontSize="14"
                    Text="{x:Static p:Resources.ThemeHeaderIgnoreFlags}" />
 
-        <ui:SimpleStackPanel Margin="0,0,0,0"
-                             Grid.Column="1"
-                             Grid.Row="10"
-                             Name="StackPanelIgnoreSettings">
 
-            <TextBlock Name="IgnoreDisableMessage"
-                       Grid.Row="3"
-                       Margin="0,5,0,-23"
-                       VerticalAlignment="Top"
-                       HorizontalAlignment="Left"
-                       FontSize="14"
-                       Text="{x:Static p:Resources.ThemeIgnoreDisabledMessage}"
-                       Foreground="#D44440"
-                       FontFamily="Segoe UI"
-                       TextWrapping="Wrap" />
-
-            <CheckBox Margin="0,25,0,0" Content="{x:Static p:Resources.ThemeCheckBoxIgnoreBackground}"
-                      Name="CheckBoxIgnoreBackground"
-                      Click="CheckBoxIgnoreFlag_Click"></CheckBox>
-            <CheckBox Content="{x:Static p:Resources.ThemeCheckBoxIgnoreCursor}"
-                      Name="CheckBoxIgnoreCursor"
-                      Click="CheckBoxIgnoreFlag_Click"></CheckBox>
-            <CheckBox Content="{x:Static p:Resources.ThemeCheckBoxIgnoreSound}"
-                      Name="CheckBoxIgnoreSound"
-                      Click="CheckBoxIgnoreFlag_Click"></CheckBox>
-            <CheckBox Content="{x:Static p:Resources.ThemeCheckBoxIgnoreDesktopIcons}"
-                      Name="CheckBoxIgnoreDesktopIcons"
-                      Click="CheckBoxIgnoreFlag_Click"></CheckBox>
-        </ui:SimpleStackPanel>
+        <uc:Card  Grid.Column="1"
+                  Grid.Row="11"
+                  Padding="30,15,15,10">
+            <ui:SimpleStackPanel Margin="0,0,0,0"
+                                 Name="StackPanelIgnoreSettings">
+                <CheckBox Margin="0,0,0,0"
+                          Content="{x:Static p:Resources.ThemeCheckBoxIgnoreBackground}"
+                          Name="CheckBoxIgnoreBackground"
+                          Click="CheckBoxIgnoreFlag_Click"></CheckBox>
+                <Separator Margin="-30,10,-15,10"
+                           Background="{DynamicResource Win11Border}" />
+                <CheckBox Content="{x:Static p:Resources.ThemeCheckBoxIgnoreCursor}"
+                          Name="CheckBoxIgnoreCursor"
+                          Click="CheckBoxIgnoreFlag_Click"></CheckBox>
+                <Separator Margin="-30,10,-15,10"
+                           Background="{DynamicResource Win11Border}" />
+                <CheckBox Content="{x:Static p:Resources.ThemeCheckBoxIgnoreSound}"
+                          Name="CheckBoxIgnoreSound"
+                          Click="CheckBoxIgnoreFlag_Click"></CheckBox>
+                <Separator Margin="-30,10,-15,10"
+                           Background="{DynamicResource Win11Border}" />
+                <CheckBox Content="{x:Static p:Resources.ThemeCheckBoxIgnoreDesktopIcons}"
+                          Name="CheckBoxIgnoreDesktopIcons"
+                          Click="CheckBoxIgnoreFlag_Click"></CheckBox>
+                <Separator Margin="-30,5,-15,10"
+                           Name="IgnoreDisableSeparator"
+                           Background="{DynamicResource Win11Border}" />
+                <TextBlock Name="IgnoreDisableMessage"
+                           Margin="0,5,0,5"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           FontSize="14"
+                           Text="{x:Static p:Resources.ThemeIgnoreDisabledMessage}"
+                           Foreground="#D44440"
+                           FontFamily="Segoe UI Semibold"
+                           TextWrapping="Wrap" />
+            </ui:SimpleStackPanel>
+        </uc:Card>
 
         <!-- Info Text -->
-        <TextBlock Name="TextBlockUserFeedback"
-                   Grid.Column="1"
-                   Grid.Row="11"
-                   Margin="0,20,0,0"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap"
-                   FontSize="14"
-                   Text="{x:Static p:Resources.msgChangesSaved}" />
+        <ui:SimpleStackPanel Grid.Column="1"
+                             Grid.Row="12">
+            <TextBlock Grid.Row="11"
+                       Grid.Column="1"
+                       Margin="0,30,0,10"
+                       Text="{x:Static p:Resources.info}"
+                       FontFamily="Segoe UI Semibold"
+                       FontSize="14"
+                       Height="Auto"
+                       Width="Auto" />
+            <uc:Card Padding="30,15,15,15"
+                     Margin="0,0,0,0">
+                <TextBlock Name="TextBlockUserFeedback"
+                           Margin="0,0,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           TextWrapping="Wrap"
+                           FontSize="14"
+                           Text="{x:Static p:Resources.msgChangesSaved}" />
+            </uc:Card>
+        </ui:SimpleStackPanel>
+
     </Grid>
 </ui:Page>

@@ -375,7 +375,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Open Folder</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dark Theme:</value>
+    <value>Dark Theme</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Create your themes</value>
@@ -384,7 +384,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Pick your themes</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Light Theme:</value>
+    <value>Light Theme</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Windows Theme (more features)</value>
