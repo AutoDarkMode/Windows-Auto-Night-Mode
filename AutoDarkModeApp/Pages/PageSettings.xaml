@@ -485,42 +485,7 @@
                                      Glyph="&#xe8a7;" />
                     </Grid>
                 </uc:Card>
-                <uc:Card Padding="30,20,5,20"
-                         Margin="0,2,0,0"
-                         Cursor="Hand"
-                         PreviewMouseDown="HyperlinkOpenLogFile_PreviewMouseDown"
-                         PreviewKeyDown="HyperlinkOpenLogFile_KeyDown">
-                    <Grid Margin="0,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Margin="0,0,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-
-                            <TextBlock Grid.Row="0"
-                                       Margin="0,0,0,0"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       FontSize="13"
-                                       Text="{x:Static p:Resources.ConfigHyperLinkOpenLog}"
-                                       TextWrapping="Wrap"
-                                       MaxWidth="650" />
-                        </Grid>
-
-                        <ui:FontIcon Grid.Column="3"
-                                     Margin="15, 0, 10, 0"
-                                     FontSize="15"
-                                     FontFamily="Segoe fluent Icons"
-                                     Glyph="&#xe8a7;" />
-                    </Grid>
-                </uc:Card>
+               
                 <uc:Card Padding="30,20,5,20"
                          Margin="0,2,0,0"
                          Cursor="Hand"

@@ -743,26 +743,6 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
-            new Process
-            {
-                StartInfo = new ProcessStartInfo(filepath)
-                {
-                    UseShellExecute = true
-                }
-            }.Start();
-        }
-
-        private void HyperlinkOpenLogFile_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter | e.Key == Key.Space)
-            {
-                HyperlinkOpenLogFile_PreviewMouseDown(this, null);
-            }
-        }
-
         private void HyperlinkOpenAppDataFolder_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var folderpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");

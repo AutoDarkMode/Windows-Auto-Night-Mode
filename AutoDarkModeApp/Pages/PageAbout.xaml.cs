@@ -419,6 +419,26 @@ public partial class PageAbout : Page
         }
     }
 
+    private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
+        new Process
+        {
+            StartInfo = new ProcessStartInfo(filepath)
+            {
+                UseShellExecute = true
+            }
+        }.Start();
+    }
+
+    private void HyperlinkOpenLogFile_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter | e.Key == Key.Space)
+        {
+            HyperlinkOpenLogFile_PreviewMouseDown(this, null);
+        }
+    }
+
     private void ShowErrorMessage(Exception ex, string v)
     {
         ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageAbout");
