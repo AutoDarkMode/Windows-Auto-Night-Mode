@@ -46,6 +46,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                
 
                 <ui:ToggleSwitch Name="ToggleSwitchScripts"
                                  OffContent="{x:Static p:Resources.ToggleSwitchOff}"

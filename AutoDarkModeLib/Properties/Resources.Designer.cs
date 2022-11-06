@@ -2925,6 +2925,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose your wallpaper.
+        /// </summary>
+        public static string WallpaperTextBlockChooseWallpaper {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockChooseWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper.
         /// </summary>
         public static string WallpaperTextBlockHeader {
@@ -2939,6 +2948,15 @@ namespace AutoDarkModeLib.Properties {
         public static string WallpaperTextBlockHeaderColor {
             get {
                 return ResourceManager.GetString("WallpaperTextBlockHeaderColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image path.
+        /// </summary>
+        public static string WallpaperTextBlockImagePath {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockImagePath", resourceCulture);
             }
         }
         

@@ -1118,4 +1118,10 @@ Do you really want to continue?</value>
   <data name="PageScriptsToggle" xml:space="preserve">
     <value>Enable custom scripts</value>
   </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Choose your wallpaper</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Image path</value>
+  </data>
 </root>
