@@ -870,7 +870,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>推迟到</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>推迟到调件满足为止</value>
+    <value>推迟到条件满足为止</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
     <value>切换行为的通知</value>
@@ -940,5 +940,50 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
     <value>推迟控制</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>在启用时显示通知</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>脚本</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>打开脚本设置</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>脚本</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>启用自定义脚本</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>调试模式</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>追踪模式</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>特别感谢</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>快捷键</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>强制深色模式</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>强制浅色模式</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>停止强制使用主题</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>启用自动主题切换</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>暂停自动主题切换</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>启用主题</value>
   </data>
 </root>
