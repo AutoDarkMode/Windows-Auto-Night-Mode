@@ -779,9 +779,6 @@ Click "Yes" to open a new browser window.
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>语言</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>已禁用</value>
   </data>
