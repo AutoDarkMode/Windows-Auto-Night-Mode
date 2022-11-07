@@ -8,7 +8,7 @@
       xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
       mc:Ignorable="d"
-      d:DesignHeight="1350"
+      d:DesignHeight="1450"
       d:DesignWidth="800"
       Title="PageSwitchModes"
       Height="Auto"
@@ -225,6 +225,7 @@
                     <TextBlock Name="TextBlockHotkeyEditHint"
                                Foreground="#999999"
                                Margin="0,5,0,0"
+                               TextWrapping="Wrap"
                                DockPanel.Dock="Bottom"
                                Text="{x:Static p:Resources.SwitchModesHotkeyEditHint}"
                                FontSize="14" />
@@ -247,36 +248,52 @@
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="0">
-                <DockPanel LastChildFill="false"
-                           Margin="0,0,0,0"
-                           >
-                    <TextBlock FontSize="14"
-                               VerticalAlignment="Center">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderForceLight}" />
-                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                    <TextBox HorizontalAlignment="Left"
-                             DockPanel.Dock="Right"
-                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
-                             Width="240"
-                             Margin="0,5,0,0"
-                             Grid.Column="1"
-                             Name="HotkeyTextboxForceLight"
-                             PreviewKeyDown="HotkeyTextboxForceLight_PreviewKeyDown" />
-                </DockPanel>
+                    <Grid
+                               Margin="0,0,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock FontSize="14"
+                                   Grid.Column="0"
+                                   Margin="0,0,10,0"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Source="{x:Static p:Resources.SwitchModesTextBlockHeaderForceLight}" />
+                                    <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBox HorizontalAlignment="Left"
+                                 ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                                 Width="240"
+                                 Margin="0,5,0,0"
+                                 Grid.Column="1"
+                                 Name="HotkeyTextboxForceLight"
+                                 PreviewKeyDown="HotkeyTextboxForceLight_PreviewKeyDown" />
+                    </Grid>
                 </uc:Card>
 
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="1">
-                    <DockPanel LastChildFill="false"
-                               Margin="0,0,0,0"
-                              >
+                    <Grid
+                               Margin="0,0,0,0">
+                       
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
                         <TextBlock FontSize="14"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,10,0"
+                                   Grid.Column="0"
                                    VerticalAlignment="Center">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -287,22 +304,28 @@
                         </TextBlock>
                         <TextBox HorizontalAlignment="Left"
                                  ui:TextBoxHelper.IsDeleteButtonVisible="false"
-                                 DockPanel.Dock="Right"
                                  Width="240"
                                  Margin="0,5,0,0"
                                  Grid.Column="1"
                                  Name="HotkeyTextboxForceDark"
                                  PreviewKeyDown="HotkeyTextboxForceDark_PreviewKeyDown" />
-                    </DockPanel>
+                    </Grid>
                 </uc:Card>
 
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="2">
-                    <DockPanel LastChildFill="false"
-                               Margin="0,00,0,0"
-                               >
+                    <Grid Margin="0,0,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
                         <TextBlock FontSize="14"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,10,0"
+                                   Grid.Column="0"
                                    VerticalAlignment="Center">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} {1}">
@@ -314,53 +337,59 @@
                         <TextBox HorizontalAlignment="Left"
                                  ui:TextBoxHelper.IsDeleteButtonVisible="false"
                                  Width="240"
-                                 DockPanel.Dock="Right"
                                  Margin="0,5,0,0"
                                  Grid.Column="1"
                                  Name="HotkeyTextboxNoForce"
                                  PreviewKeyDown="HotkeyTextboxNoForce_PreviewKeyDown" />
-                    </DockPanel>
+                    </Grid>
                 </uc:Card>
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="3">
-                    <DockPanel LastChildFill="false"
-                           Margin="0,00,0,0"
-                          >
-                    <TextBlock FontSize="14"
-                               VerticalAlignment="Center">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Source="{x:Static p:Resources.ToggleTheme}" />
-                                <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                    <TextBox HorizontalAlignment="Left"
-                             ui:TextBoxHelper.IsDeleteButtonVisible="false"
-                             Width="240"
-                             DockPanel.Dock="Right"
-                             Margin="0,5,0,0"
-                             Grid.Column="1"
-                             Name="HotkeyTextboxToggleTheme"
-                             PreviewKeyDown="HotkeyTextboxToggleTheme_PreviewKeyDown" />
-                </DockPanel>
-                    </uc:Card>
+                    <Grid Margin="0,00,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock FontSize="14"
+                                   Grid.Column="0"
+                                   Margin="0,0,10,0"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Source="{x:Static p:Resources.ToggleTheme}" />
+                                    <Binding Source="{x:Static p:Resources.SwitchModesHotkey}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBox HorizontalAlignment="Left"
+                                 ui:TextBoxHelper.IsDeleteButtonVisible="false"
+                                 Width="240"
+                                 Margin="0,5,0,0"
+                                 Grid.Column="1"
+                                 Name="HotkeyTextboxToggleTheme"
+                                 PreviewKeyDown="HotkeyTextboxToggleTheme_PreviewKeyDown" />
+                    </Grid>
+                </uc:Card>
 
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="4">
-                    <ui:SimpleStackPanel Margin="0,0,0,0"
-                                         >
+                    <ui:SimpleStackPanel Margin="0,0,0,0">
                         <Grid>
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            
+
                             <TextBlock FontSize="14"
                                        Grid.Column="0"
+                                       Margin="0,0,10,0"
                                        TextWrapping="Wrap"
                                        VerticalAlignment="Center">
                                 <TextBlock.Text>
@@ -403,6 +432,7 @@
 
                             <TextBlock FontSize="14"
                                        VerticalAlignment="Center"
+                                       Margin="0,0,10,0"
                                        Grid.Column="0"
                                        TextWrapping="Wrap">
                                 <TextBlock.Text>
