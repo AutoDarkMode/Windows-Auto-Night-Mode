@@ -786,9 +786,6 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Język</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Wyłączony</value>
   </data>
