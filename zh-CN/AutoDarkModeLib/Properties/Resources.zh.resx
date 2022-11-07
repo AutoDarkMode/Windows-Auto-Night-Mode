@@ -118,866 +118,872 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Про програму</value>
+    <value>设置</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Застосувати</value>
+    <value>应用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Увімкнути автоматичне перемикання тем</value>
+    <value>自动切换主题</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Завжди темна</value>
+    <value>深色主题</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Завжди світла</value>
+    <value>浅色主题</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Увімкнути функції для Windows 1903</value>
+    <value>启用与 Windows 1903 相关的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Програми:</value>
+    <value>应用程序：</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Оберіть свій час початку</value>
+    <value>自定义起始时间</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Темна</value>
+    <value>深色</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Темна тема</value>
+    <value>深色主题</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (стара версія):</value>
+    <value>Edge（旧版）：</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Світла</value>
+    <value>浅色</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Світла тема</value>
+    <value>浅色主题</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>设置</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Перемкнути поточну тему</value>
+    <value>切换当前主题</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Система:</value>
+    <value>系统界面：</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Використане стороннє програмне забезпечення</value>
+    <value>本程序所使用的第三方软件</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Оновлення</value>
+    <value>更新</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Використовувати службу місцезнаходження</value>
+    <value>使用定位服务</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Зміни збережені!</value>
+    <value>更改已保存！</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Натисніть на Застосувати для збереження налаштувань</value>
+    <value>设定好时间后，您的更改将会被自动保存。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Завантажити оновлення</value>
+    <value>下载更新</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>сталася помилка :(</value>
+    <value>发生错误 :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Програма потребує дозволу для визначення місцезнаходження</value>
+    <value>此应用程序需要使用您的位置信息</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>немає нових оновлень.</value>
+    <value>暂无更新</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Пошук місцезнаходження...</value>
+    <value>正在定位……</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Пошук оновлень...</value>
+    <value>正在获取更新……</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Попередження: Неможливо визначити поточну тему.</value>
+    <value>警告：无法读取您当前的主题。</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Доступне нове оновлення!</value>
+    <value>有新版可更新！</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Дякуємо за використання Auto Dark Mode!
+    <value>感谢您使用 Auto Dark Mode！
 
-Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
-Ви хочете її завантажити?
+GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
+您想安装新版吗？
 
-Зараз встановлена версія: {0}, нова версія: {1}</value>
+当前版本: {0}, 最新版本: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Перевірити оновлення</value>
+    <value>检查更新</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>наявність оновлень перевіряється щозапуску.</value>
+    <value>我们将在本程序启动时检查更新。</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Ласкаво просимо</value>
+    <value>欢迎</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Активувати прапорець для автоматичного перемикання тем</value>
+    <value>勾选此项启用自动主题切换</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Перекладачі: Mykhailo Lytvynenko, Vlad Anisimov</value>
+    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Місто</value>
+    <value>城市</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Місцезнаходження</value>
+    <value>位置</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Необхідний перезапуск програми для застосування змін</value>
+    <value>重启后生效</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Мова:</value>
+    <value>语言：</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Колір для панелі задач</value>
+    <value>将任务栏颜色改为主题色</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Скасувати</value>
+    <value>取消</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Зараз:</value>
+    <value>当前：</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Фон для темної теми</value>
+    <value>深色主题壁纸</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Видалити/Вимкнути</value>
+    <value>删除或禁用</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Обрати файл</value>
+    <value>选择文件</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Шпалери для світлої теми</value>
+    <value>浅色主题壁纸</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Фон робочого стола</value>
+    <value>桌面背景</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Картинки</value>
+    <value>图片</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Обрати два фонові зображення</value>
+    <value>请选择两张壁纸</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Обрати зображення</value>
+    <value>请选择图像</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Налаштувати фон робочого стола</value>
+    <value>配置桌面背景</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>використовувати поточний фон</value>
+    <value>设为当前背景</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Вимкнено</value>
+    <value>禁用</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Увімкнено</value>
+    <value>启用</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>або</value>
+    <value>或</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Зберегти</value>
+    <value>保存</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Можливо, файл із зображенням пошкоджений або до нього відсутній шлях.</value>
+    <value>您所选的图片可能已损坏，或所选的路径不存在。</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Вибачте, попередньо переглянути зображення неможливо.</value>
+    <value>抱歉，无法生成图片预览！</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Вибачте, налаштування не збережені.</value>
+    <value>抱歉，无法保存设置！</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Сталася помилка</value>
+    <value>发生错误</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Видимий лише в темному режимі.
-Якщо у вас виникли проблеми: збільште затримку перемикання в налаштуваннях.</value>
+    <value>仅在深色主题下可见。
+如果您遇到了相关问题，请在设置中增加切换等待时间。</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Інформація</value>
+    <value>信息</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12-годинний формат</value>
+    <value>12小时制</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Закрити</value>
+    <value>关闭</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>Ні</value>
+    <value>否</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Так</value>
+    <value>是</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Фоновий пошук оновлень</value>
+    <value>自动检查更新</value>
   </data>
   <data name="errorThemeApply" xml:space="preserve">
-    <value>Вибачте, але нам не вдалося застосувати ваші налаштування.
+    <value>抱歉，无法保存您的设置。
 
-Ось деякі речі, які ви можете спробувати:
-- Перезапустіть службу Auto Dark Mode
-- Перевірте, чи працює служба
-- Закрийте службу, видаліть файл config.yaml та переконфігуруйте знов
+您可以尝试以下几种方法：
+- 重启本应用的服务
+- 检查服务运行状态
+- 关闭服务，删除 config.yaml 并重新配置本程序
 
-Якщо ці речі не допомогли, ви можете створити скаргу на GitHub. Ви можете отримати доступ до скарг, натиснувши кнопку «Так».</value>
+如果上述方法无效，您可在 GitHub 上创建 issue 进行反馈。点击“是”即可跳转到 issue 页面。</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Помилка: введені Вами дані недійсні</value>
+    <value>错误：您的输入无效</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Перемикання після режиму очікування (не рекомендовано)</value>
+    <value>Connected Standby 状态下仍然切换主题（不推荐）</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Мобільні пристрої, як от продукти Microsoft Surface, використовують новий вид режиму очікування.
-Ввімкнення цієї опції гарантує, що Auto Dark Mode негайно перемикатиме тему після пробудження комп'ютера.
-Але це також скорочує ресурс акумулятора, тому активуйте ЛИШЕ за необхідности!</value>
+    <value>Microsoft Surface 等移动设备使用的一种新型待机模式。
+启用此项可确保计算机唤醒后，Auto Dark Mode 会立即切换主题。
+但也将消耗更多电量，仅在必要时启用！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Через помилку Windows панель завдань неправильно змінює колір у режимі економії заряду акумулятора. Вимкніть режим економії заряду акумулятора, якщо у вас виникнуть проблеми.</value>
+    <value>由于 Windows 的程序错误，在节电模式下，本应用无法切换任务栏的颜色。如遇到相关问题，请关闭节电模式。</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Зміщення</value>
+    <value>调整</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Встановити</value>
+    <value>设置</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Ці параметри вимкнені під час використання теми Windows.
-Ви можете налаштувати це окремо у вашій темі Windows.</value>
+    <value>使用 Windows 主题模式时无法调整这些选项。
+您可以在 Windows 主题中单独设置这些选项。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Застосунки</value>
+    <value>应用程序</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>设置</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Час</value>
+    <value>时间</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Відкрити папку</value>
+    <value>打开文件夹</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Темна тема:</value>
+    <value>深色主题：</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Створіть свої теми</value>
+    <value>创建您的主题</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Оберіть теми</value>
+    <value>选择您的主题</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Світла тема:</value>
+    <value>浅色主题：</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Теми Windows (більше можливостей)</value>
+    <value>Windows主题（更多功能）</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Фон робочого столу (рекомендовано)</value>
+    <value>桌面壁纸（推荐）</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Натисніть тут, щоб відкрити налаштування теми Windows.</value>
+    <value>点击此处打开 Windows 壁纸设置。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Тепер встановіть світлий колір Windows у розділі Кольори для світлої теми. Виберіть улюблений фон, курсор миші та основний колір.</value>
+    <value>现在，切换至“颜色”选项卡，将系统颜色改为“浅色”。再选择您喜欢的壁纸、鼠标光标和主题色。</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Поверніться до налаштувань теми та збережіть свою тему.</value>
+    <value>返回主题设置并保存主题。</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Повторіть процес для темної теми.</value>
+    <value>设置深色主题时重复上述步骤。</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Затримка перемикання кольору панелі завдань (мс):</value>
+    <value>切换任务栏颜色前的等待时间（毫秒）：</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>Про застосунок</value>
+    <value>关于</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>Меню</value>
+    <value>菜单</value>
   </data>
   <data name="restart" xml:space="preserve">
-    <value>Перезапустити</value>
+    <value>重启</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Встановити користувацький розклад</value>
+    <value>自定义时间</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Від світанку до смеркання</value>
+    <value>日出至日落</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Крок</value>
+    <value>步骤</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Використовувати колірний фільтр сірого (надсилає Win + Ctrl + C)</value>
+    <value>使用灰度滤镜（Win + Ctrl + C）</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Використовувати задачу входу в систему замість задіяння автозапуску</value>
+    <value>不以启动项方式启动，而是以登录任务方式启动</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Оберіть режим:</value>
+    <value>选择模式：</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Під час застосування теми сталася помилка, перемикання тем вимкнене</value>
+    <value>应用所选主题时发生错误，已禁用主题切换</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Альтернативна світла тема</value>
+    <value>使用新版白色主题</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Завантажити розширення</value>
+    <value>下载扩展</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>Рекомендовані засоби</value>
+    <value>推荐工具</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>За допомогою цього розширення веб-сайти в Chrome, Firefox та Edge відповідатимуть системній темі</value>
+    <value>此浏览器扩展可使 Chrome、Firefox 和 Edge 中的网页跟随系统主题设定。</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>не знайдено</value>
+    <value>未找到相应的城市</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Чому?</value>
+    <value>为什么要捐赠？</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>Як підтримати?</value>
+    <value>如何捐赠？</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Ви можете надіслати мені гроші через PayPal. Це повністю добровільно, і не слід очікувати жодної компенсації.</value>
+    <value>您可以通过 PayPal 无偿自愿地向我汇款。</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>Підтримати</value>
+    <value>捐赠</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Вітаю! Дякую за використання Auto Dark Mode! Поки подобається цей застосунок?
+    <value>您好！感谢您使用 Auto Dark Mode。迄今为止，您还喜欢这个应用吗？
 
-Auto Dark Mode робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час вона абсолютно безплатна, без реклами, не збирає даних про користувачів та з відкритим кодом.
-Я не отримую жодного прибутку від цього проєкту.
+这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
+我并不靠本项目盈利。
 
-З цієї причини ви могли б підтримати мене добровільним внеском. Навіть від невеликої суми я стрибатиму по квартирі. Просто пожертвуйте стільки, на скільки цінуєте мою роботу.</value>
+如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只要您重视我的工作，就捐献吧。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем  вимкнене. Аби знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри</value>
+    <value>应用 .theme 文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开 Auto Dark Mode 并配置{0}设置。</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Трапилась така проблема:
-{0}.
+    <value>我们遇到了以下问题：
+{0}
 
-Зараз ми спробуємо вирішити її, запустивши програму з правами адміністратора. Можливо, це допоможе.
-Після цього Auto Dark Mode перезапуститься, і вам потрібно буде знову застосувати свої налаштування, вибачте!
+现在我们将尝试以管理员身份运行算法程序，来解决此问题。但无法保证一定有效。
+之后，Auto Dark Mode 将重新启动。您需要重新设置本应用，非常抱歉！
 
-До речі, будь ласка, НІКОЛИ не запускайте Auto Dark Mode в режимі адміністратора!</value>
+注：请勿手动以管理员身份运行 Auto Dark Mode！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Потрібна допомога у вирішенні проблеми?</value>
+    <value>需要帮助吗？</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Підтримка багатьох користувачів</value>
+    <value>多用户支持</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Необов’язкова затримка для активації колірного фільтра сірого:</value>
+    <value>延迟启动灰度滤镜（可选）：</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Як в поточній темі</value>
+    <value>自动切换</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Скинути</value>
+    <value>重置</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Дозволити темну тему коли пристрій не пд'єднаний до живлення</value>
+    <value>未充电时启用深色模式</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Типове значення для повзунка економії акумулятора</value>
+    <value>节电模式滑动条的默认值</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Зменшення економії енергії для перемикання теми</value>
+    <value>节电模式下暂停切换主题</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>Це працює за умови, що ви не ввімкнули вручну режим економії заряду акумулятора!</value>
+    <value>此功能仅在自动启用节电模式时生效！</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Перемикання режимів</value>
+    <value>场景切换</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Персоналізація</value>
+    <value>个性化</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Застосувати координати</value>
+    <value>应用坐标</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Ця функція недоступна, оскільки на комп'ютері не встановлене оновлення Windows 10 April 2019 Update...</value>
+    <value>您未安装 Windows 10 2019年4月更新，故此选项不可用。</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Географічні координати</value>
+    <value>地理坐标</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>Дані розташування</value>
+    <value>位置信息</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>Від світанку до смеркання (географічні координати)</value>
+    <value>日出至日落（根据地理坐标）</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Географічні координати Вашого місцезнаходження</value>
+    <value>了解所处位置的坐标</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>Відкрити файл конфігурації</value>
+    <value>打开配置文件</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Відкрити каталог з конфігурацією</value>
+    <value>打开配置文件夹</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Відкрити файл журналу</value>
+    <value>打开日志文件</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Конфігурація</value>
+    <value>配置</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (оригінальний):</value>
+    <value>Microsoft Office（旧版）：</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Виберіть тему</value>
+    <value>选择主题</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Виберіть фонове зображення</value>
+    <value>选择壁纸</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>Заборонено</value>
+    <value>禁用</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Приховати піктограму в треї (не рекомендується)</value>
+    <value>隐藏托盘图标（不推荐）</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Ця функція вимкнена, коли ввімкнений режим тем.</value>
+    <value>启用主题模式时无法开启本功能。</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Ця функція вимкнена, коли ввімкнено режим фонів.</value>
+    <value>启用壁纸模式时无法开启本功能。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Пропонує більше функцій, але вам потрібно налаштувати файл Windows .theme. Налаштуйте фони робочого столу для кожного монітора, встановіть слайд-шоу, змініть курсор миші, встановіть колір акценту та окремі звуки.</value>
+    <value>功能更多，但需要创建 Windows 的 .theme 文件。该模式下您可以自定义各个显示器的壁纸、将壁纸设置为“幻灯片放映”、更改鼠标光标样式、设置主题色并修改各个声音。</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Пропонує менше функцій, але його легше налаштувати. Налаштуйте фонові зображення робочого столу для всіх моніторів, окремих моніторів або встановіть фоновий колір.</value>
+    <value>功能较少，但设置方便。该模式下您可以自定义所有显示器或各个显示器的壁纸，或者设置纯色背景。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Наявність нових версій перевіряється Auto Dark Mode у фоновому режимі. Коли оновлення стане доступним, ми повідомимо вас за допомогою спливального сповіщення</value>
+    <value>我们将在后台检查新版 Auto Dark Mode，并通过桌面通知提醒您更新。</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Автоматично завантажуйте та встановлюйте нові версії</value>
+    <value>自动下载并安装新版本</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Не показувати сповіщення</value>
+    <value>不显示通知</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Оберіть канал оновлення</value>
+    <value>选择更新版本</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Перевірте наявність оновлень, коли запуститься Auto Dark Mode</value>
+    <value>在 Auto Dark Mode 启动时检查更新</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 днів</value>
+    <value>14天</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 дні</value>
+    <value>3天</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 днів</value>
+    <value>7天</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Остання перевірка</value>
+    <value>上次检查时间</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>ніколи</value>
+    <value>尚未检查过更新</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Змініть, як часто перевіряється наявність оновлень</value>
+    <value>更改检查更新的频率</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Темна тема</value>
+    <value>深色主题</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Світла тема</value>
+    <value>浅色主题</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>Зображення</value>
+    <value>图片</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>Зображення (кілька моніторів)</value>
+    <value>图片（多显示器）</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Суцільний колір</value>
+    <value>纯色</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Режим</value>
+    <value>模式</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>Монітор</value>
+    <value>显示器</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Тип</value>
+    <value>类型</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Видалити відімкнені монітори</value>
+    <value>删除未连接的显示器</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Фонове зображення</value>
+    <value>壁纸</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Колір</value>
+    <value>颜色</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Шістнадцятковий код</value>
+    <value>十六进制颜色代码</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Увімкнути перемикач фонів</value>
+    <value>启用壁纸切换</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Не перемикатися під час гри у відеоігри</value>
+    <value>玩游戏时不进行切换</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Швидко (1 проба)</value>
+    <value>快（单采样）</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Середній (2 проби)</value>
+    <value>中（双采样）</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Повільно (3 проби)</value>
+    <value>慢（三采样）</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>Швидкість визначення використання ГП</value>
+    <value>GPU 使用率检测速度</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Пристрої з живленням від акумулятора</value>
+    <value>电池设备</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Умови</value>
+    <value>状态</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Мінімальне використання ГП для затримки перемикання</value>
+    <value>GPU 使用率大于此值时，不切换主题</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Відновлення тем, якщо вони змінені ззовні</value>
+    <value>主题被外部修改时改回原定主题</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Широта</value>
+    <value>纬度</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Довгота</value>
+    <value>经度</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Служба ще не працює, зачекайте...</value>
+    <value>服务尚未运行，请稍候……</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Запуск служби</value>
+    <value>正在启动服务</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Служба не відповідає. Перевірте, чи запущено AutoDarkModeSvc.exe, і повторіть спробу!</value>
+    <value>服务无响应。请检查 AutoDarkModeSvc.exe 的运行状态并重试！</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Увімкніть перемикач тем Windows</value>
+    <value>切换 Windows 主题</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Вимк.</value>
+    <value>关闭</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>Увімк.</value>
+    <value>开启</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Стежити за нами</value>
+    <value>关注我们</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Тема</value>
+    <value>主题</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Квіти</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>鲜花</value>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
-    <value>Вікна</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>Windows</value>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (світла)</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>Windows（浅色主题）</value>
+    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Захоплений рух</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>捕获的动作</value>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (темна)</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Windows（深色主题）</value>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Потік</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>流畅</value>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Світіння</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>发光</value>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Windows（浅色主题）</value>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Схід сонця</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>日出</value>
+    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Щодня</value>
+    <value>每天</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Натисніть Встановити для збереження змін.</value>
+    <value>单击“设置”保存更改。</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Використовувати акцентний колір панелі завдань під час</value>
+    <value>使用任务栏强调色</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Тільки акцент</value>
+    <value>仅强调色</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Версія</value>
+    <value>版本</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Копія</value>
+    <value>复制</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Автоматично запускати Auto Dark Mode з Windows</value>
+    <value>开机自启动 Auto Dark Mode</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Автозапуск</value>
+    <value>自启动</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Режим:</value>
+    <value>模式：</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Шлях:</value>
+    <value>路径：</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Оновити автозапуск</value>
+    <value>刷新自启动</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Мова</value>
+    <value>语言</value>
   </data>
   <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Перезапустити застосунок</value>
+    <value>重启应用</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Заборонити</value>
+    <value>已禁用</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>Немає</value>
+    <value>无</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Не знайдено</value>
+    <value>未找到</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Ключ реєстру</value>
+    <value>注册表键值</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Задача</value>
+    <value>任务</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Ви вимкнули автозапуск застосунку засобами Windows.</value>
+    <value>您在 Windows 中禁用了启动项。</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Наступне оновлення о</value>
+    <value>下一次更新将在</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>Колір</value>
+    <value>颜色</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
+    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>Примусовий темний режим</value>
+    <value>强制深色模式快捷键</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>Примусовий світлий режим</value>
+    <value>强制浅色模式快捷键</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Гарячі клавіші</value>
+    <value>快捷键</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>Скасувати примусову тему</value>
+    <value>停止强制主题快捷键</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Дозволити загальносистемні гарячі клавіші</value>
+    <value>启用系统级快捷键</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Примусова темна тема</value>
+    <value>强制深色主题</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Примусова світла тема</value>
+    <value>强制浅色主题</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Приховувати значок не рекомендується.
-Ви дійсно хочете продовжити?</value>
+    <value>不建议隐藏托盘图标。
+您真的想继续吗？</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Приховати значок в треї</value>
+    <value>隐藏托盘图标</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Відкрити каталог з конфігурацією</value>
+    <value>打开配置文件夹</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Залишити на розсуд застосунку</value>
+    <value>由应用决定</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Не перемикати теми якщо система не в режимі очікування</value>
+    <value>系统非空闲状态时不进行切换</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Хвилин коли система вважатиметься в очікуванні</value>
-  </data>
-  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Акцентний колір для рядку заголовка та меж вікон</value>
+    <value>系统空闲状态判断时间（分钟）</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Інформація про версію скопійована до буферу обміну</value>
+    <value>版本信息已复制到剪贴板</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Автоматичне перемикання тем</value>
-  </data>
-  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Показувати сповіщення за перемикання</value>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>在标题栏和窗口边框使用强调色</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Відкласти</value>
+    <value>推迟</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>推迟模块</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>Модуль моніторину ГП</value>
+    <value>GPU监视模块</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Призупинити модуль автоперемикання</value>
-  </data>
-  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>Перевіряч режиму очікування системи</value>
-  </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Натисність затвердити для негайного перемикання тем.</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Поновити</value>
-  </data>
-  <data name="RevertAction" xml:space="preserve">
-    <value>Відкотіть цю дію, натиснувши кнопку скасування нижче.</value>
-  </data>
-  <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>гаряча клавіша</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Перемкнути автозміну тем</value>
-  </data>
-  <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Вимкнути автоперемикання</value>
-  </data>
-  <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Скасувати</value>
-  </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Призупинити автоперемикання</value>
-  </data>
-  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Бажаєте натомість вимкнути автоперемикання?</value>
-  </data>
-  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Автоперемикання також поновиться якщо ви повернетесь до попередньої теми.</value>
-  </data>
-  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Зміна тем призупинена до</value>
-  </data>
-  <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Автоперемикання тем наразі призупинене через такі модулі:</value>
-  </data>
-  <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Поновлення працюватиме лише для відтермінувань що мають час закінчення</value>
-  </data>
-  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Відкласти керування</value>
-  </data>
-  <data name="ToggleTheme" xml:space="preserve">
-    <value>Перемкнути тему</value>
-  </data>
-  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Автозміна теми активна</value>
-  </data>
-  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Відповідно до нічника Windows</value>
-  </data>
-  <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Відповідно до нічника Windows</value>
-  </data>
-  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Зміна тем призупинена одноразово!</value>
+    <value>暂停自动切换模块</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>відкладає до</value>
+    <value>推迟到</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>відкладає поки не виконається умова</value>
+    <value>推迟到条件满足为止</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>切换行为的通知</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>系统闲置检查</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>відкладає до наступного світанку</value>
+    <value>推迟到下一次日出</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>відкладає до наступного смеркання</value>
+    <value>推迟到下一次日落</value>
   </data>
-  <data name="UntilTime" xml:space="preserve">
-    <value>до</value>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 小时</value>
   </data>
-  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>до наступного світанку</value>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 分钟</value>
   </data>
-  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>до наступного смеркання</value>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 小时</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Перемкнути призупинення автозміни тем</value>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 分钟</value>
   </data>
-  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Автозміна тем поновлена</value>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 小时</value>
   </data>
-  <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Відкрити параметри нічника</value>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 小时</value>
   </data>
-  <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Нічник</value>
-  </data>
-  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Активні затримки</value>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 小时</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Пропустити автоперемикання одноразово</value>
+    <value>跳过一次自动切换</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Сповіщувати перед автозміною тем</value>
+    <value>在自动切换主题时提醒</value>
   </data>
-  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Час очікування сповіщенням на введення користувача (в хвилинах)</value>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>跟随Windows夜间模式设置</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>生效的推迟</value>
+  </data>
+  <data name="TimePageNextUpdateAt1" xml:space="preserve">
+    <value>下次更新</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>夜间模式</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>打开夜间模式设置</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>自动主题切换目前已经暂停</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>自动主题切换已启用</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>跟随Windows夜间模式设置</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>恢复将只会对有失效期限的推迟有效</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>推迟控制</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>在启用时显示通知</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>脚本</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>打开脚本设置</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>脚本</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>启用自定义脚本</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Режим відлагодження</value>
+    <value>调试模式</value>
   </data>
-  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Дозволити зміну тем на екрані блокування (Win10)</value>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>追踪模式</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>特别感谢</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>快捷键</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>强制深色模式</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>强制浅色模式</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>停止强制使用主题</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>启用自动主题切换</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>暂停自动主题切换</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>启用主题</value>
   </data>
 </root>
