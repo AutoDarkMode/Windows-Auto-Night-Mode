@@ -779,9 +779,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Мова</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Перезапустити застосунок</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Заборонити</value>
   </data>
