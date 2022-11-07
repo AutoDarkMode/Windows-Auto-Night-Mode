@@ -375,7 +375,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Klasörü Aç</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Koyu Tema:</value>
+    <value>Koyu Tema</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Temalarınızı oluşturun</value>
@@ -384,7 +384,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Temalarınızı seçin</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Açık Tema:</value>
+    <value>Açık Tema</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Windows Teması (daha fazla özellik)</value>
