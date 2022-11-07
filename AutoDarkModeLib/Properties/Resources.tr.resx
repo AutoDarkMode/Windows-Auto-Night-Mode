@@ -779,9 +779,6 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Dil</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Uygulamayı Yeniden Başlat</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Devre dışı</value>
   </data>
