@@ -118,725 +118,1010 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>設定</value>
+    <value>Ρυθμίσεις</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>套用</value>
+    <value>Εφαρμογή</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自動切換主題</value>
+    <value>Ενεργοποίηση αυτόματης εναλλαγής θέματος</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>總是深色</value>
+    <value>Πάντα σκοτεινό</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>總是淺色</value>
+    <value>Πάντα φωτεινό</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>啟用 Windows 1903 功能</value>
+    <value>Ενεργοποίηση χαρακτηριστικών για Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>應用程式：</value>
+    <value>Εφαρμογές</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>自訂開始時間</value>
+    <value>Προσαρμοσμένη ώρα εκκίνησης</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>深色</value>
+    <value>Σκοτεινό</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>深色主題</value>
+    <value>Σκοτεινό θέμα</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge（舊版）：</value>
+    <value>Edge (παλιά μέθοδος):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>淺色</value>
+    <value>Φωτεινό</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>淺色主題</value>
+    <value>Φωτεινό θέμα</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>設定</value>
+    <value>Ρυθμίσεις</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>切換目前主題</value>
+    <value>Εναλλαγή τρέχοντος θέματος</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>系統：</value>
+    <value>Σύστημα</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>使用的第三方軟體</value>
+    <value>Λογισμικό τρίτων που χρησιμοποιήθηκε</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>Ενημερώσεις</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>使用定位服務</value>
+    <value>Χρήση υπηρεσίας τοποθεσίας</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>已儲存變更！</value>
+    <value>Οι αλλαγές σας έχουν αποθηκευτεί!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>點按「套用」以儲存變更。</value>
+    <value>Ορίστε μια ώρα και οι αλλαγές σας θα αποθηκευτούν αυτόματα.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>下載更新</value>
+    <value>Λήψη ενημέρωσης</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>發生錯誤 :(</value>
+    <value>παρουσιάστηκε σφάλμα :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>應用程式需要您的位置存取權限</value>
+    <value>Αυτή η εφαρμογή χρειάζεται πρόσβαση στην τοποθεσία σας</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>已是最新版本</value>
+    <value>Δεν υπάρχουν διαθέσιμες νέες ενημερώσεις.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>正在搜尋您的位置…</value>
+    <value>Λήψη της τοποθεσίας σας...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>正在搜尋更新…</value>
+    <value>Αναζήτηση για ενημερώσεις...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告：我們無法取得您目前使用的主題。</value>
+    <value>Προειδοποίηση: Δεν μπορέσαμε να διαβάσουμε το τρέχον θέμα σας.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>有可用的更新！</value>
+    <value>Μια νέα έκδοση είναι διαθέσιμη!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感謝您使用 Auto Dark Mode！
+    <value>Σας ευχαριστούμε που χρησιμοποιείτε το Auto Dark Mode!
 
-在 Github 上有新版本，包含了 Bug 修補及一些新的功能。
-您想要前往下載嗎？
+Μια νέα έκδοση είναι διαθέσιμη στο GitHub με διορθώσεις και βελτιώσεις.
+Θέλετε να την εγκαταστήσετε;
 
-目前版本：{0}，新版本：{1}</value>
+Τρέχουσα εγκατεστημένη έκδοση: {0}, νέα έκδοση: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>檢查更新</value>
+    <value>Ελεγχος για νέα έκδοση</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>我們將在每次程式啟動時檢查更新。</value>
+    <value>Ελέγχουμε για νέα έκδοση σε κάθε εκκίνηση του προγράμματος.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>歡迎</value>
+    <value>Καλώς ορίσατε</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>勾選核取方塊以啟用自動主題切換</value>
+    <value>Τσεκάρετε το πλαίσιο ελέγχου για να ενεργοποιήσετε την αυτόματη εναλλαγή θέματος</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>譯者：hugoalh、SiderealArt；臺灣在地化校正：jrthsr700tmax</value>
+    <value>Μετάφραση: Thunderstrike116</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>城市</value>
+    <value>Πόλη</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>位置</value>
+    <value>Θέση</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>需要重新啟動程式以套用變更</value>
+    <value>Απαιτείται επανεκκίνηση της εφαρμογής για να δείτε τις αλλαγές</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>語言：</value>
+    <value>Γλώσσα:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>工作列輔色</value>
+    <value>Χρώμα έμφασης στη γραμμή εργασιών</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Ακυρο</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>目前：</value>
+    <value>Αυτή τη στιγμή:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>深色主題桌布</value>
+    <value>Ταπετσαρία για σκούρο θέμα</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>刪除/停用</value>
+    <value>Διαγραφή/Απενεργοποίηση</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>選擇檔案</value>
+    <value>Επιλογή αρχείου</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>深色主題桌布</value>
+    <value>Ταπετσαρία για φωτεινό θέμα</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>桌面背景</value>
+    <value>Φόντο Επιφάνειας Εργασίας</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>圖片</value>
+    <value>Εικόνες</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>請選擇兩個桌布</value>
+    <value>Παρακαλώ επιλέξτε δύο ταπετσαρίες</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>請選擇一張圖片</value>
+    <value>Παρακαλώ επιλέξτε μια εικόνα</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>設定桌面背景</value>
+    <value>Ρύθμιση Φόντου Επιφάνειας Εργασίας</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>使用目前的桌面背景</value>
+    <value>χρήση τρέχοντος φόντου</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>停用</value>
+    <value>Ανενεργό</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>啟用</value>
+    <value>Ενεργό</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>或</value>
+    <value>ή</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>儲存</value>
+    <value>Αποθήκευση</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>您的圖片可能已經損毀或路徑不存在。</value>
+    <value>Ισως το αρχείο εικόνας σας είναι κατεστραμμένο ή η διαδρομή δεν υπάρχει.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>很抱歉，無法產生預覽！</value>
+    <value>Δεν ήταν δυνατή η δημιουργία προεπισκόπησης της εικόνας σας, συγγνώμη!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>很抱歉，無法儲存您的設定！</value>
+    <value>Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεών σας, συγγνώμη!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>發生錯誤</value>
+    <value>Παρουσιάστηκε ένα σφάλμα</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>只在深色主題下可見。
-如果您遇到問題，請提高設定中的切換延遲。</value>
+    <value>Ορατό μόνο σε σκοτεινή λειτουργία.
+Εάν αντιμετωπίσετε προβλήματα: παρακαλώ αυξήστε την καθυστέρηση εναλλαγής στις ρυθμίσεις.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>資訊</value>
+    <value>Πληροφορίες</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 小時制</value>
+    <value>12ωρη μορφή ώρας</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>關閉</value>
+    <value>Κλείσιμο</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>否</value>
+    <value>Οχι</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>是</value>
+    <value>Ναι</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>在背景搜尋更新</value>
+    <value>Αυτόματος έλεγχος για νέα έκδοση</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>抱歉，我們無法儲存您的設定！
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>Παρουσιάστηκε ένα πρόβλημα με τη διεπαφή χρήστη.
 
-您可以嘗試以下操作：
-- 解除安裝後重新安裝此程式。
-- 嘗試在 Auto Dark Mode 設定中關閉 {0}。
-- 如果您啟用了桌布，請停用該功能，然後重試。
+Παρακαλώ βεβαιωθείτε ότι:
+- η υπηρεσία λειτουργεί
+- Το αρχείο config.yaml σας είναι σωστό
 
-如果這些操作都無法解決，你可以在 GitHub Issue 貼上包含該錯誤的截圖。您可以點按「是」按鈕來前往 Github。</value>
+Θέλετε να δημιουργήσετε ένα ζήτημα (issue) στο αποθετήριο του Auto Dark Mode;
+Κάντε κλικ στο "Ναι" για να ανοίξετε ένα νέο παράθυρο προγράμματος περιήγησης.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>錯誤：輸入無效</value>
+    <value>Σφάλμα: Τα δεδομένα που εισάγατε δεν είναι έγκυρα</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>連線待機模式後切換 (不建議)</value>
+    <value>Εναλλαγή μετά από Σύνδεση Αναστολή λειτουργίας (δεν συνιστάται)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>例如 Microsoft Surface 的行動裝置使用了一種新的待機模式。
-啟用這項功能可以確保 Auto Dark Mode 在您喚醒電腦後立刻切換主題。 
-但同時會增加耗電量，非必要請勿啟用！</value>
+    <value>Οι κινητές συσκευές, όπως τα προϊόντα Microsoft Surface, χρησιμοποιούν ένα νέο είδος κατάστασης αναστολής λειτουργίας.
+Η ενεργοποίηση αυτής της επιλογής διασφαλίζει ότι η αυτόματη σκοτεινή λειτουργία αλλάζει αμέσως το θέμα μετά την αφύπνιση του υπολογιστή σας.
+Μειώνει όμως και τη διάρκεια ζωής της μπαταρίας, οπότε ενεργοποιήστε τη ΜΟΝΟ εάν είναι απαραίτητο!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>由於 Windows 的 Bug，工作列在省電模式時無法正確切換顏色。如果您遇到相關問題，請關閉省電模式。</value>
+    <value>Λόγω σφάλματος των Windows, η γραμμή εργασιών δεν αλλάζει σωστά το χρώμα της στη λειτουργία εξοικονόμησης μπαταρίας. Παρακαλώ απενεργοποιήστε την εξοικονόμηση μπαταρίας εάν αντιμετωπίζετε προβλήματα.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>偏移</value>
+    <value>Μετατόπιση</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>設定</value>
+    <value>Ορισμός</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>由於您使用了 Windows 佈景主題，這些選項將會停用。
-    您可以在 Windows 佈景主題中個別設定。</value>
+    <value>Αυτές οι επιλογές είναι απενεργοποιημένες όταν χρησιμοποιείται ένα Θέμα Windows.
+Μπορείτε να τις ρυθμίσετε μεμονωμένα στο Θέμα Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>應用程式</value>
+    <value>Εφαρμογές</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>設定</value>
+    <value>Ρυθμίσεις</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>時間</value>
+    <value>Ωρα</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>開啟資料夾</value>
+    <value>Ανοιγμα φακέλου</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>深色佈景主題：</value>
+    <value>Σκοτεινό Θέμα</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>建立佈景主題</value>
+    <value>Δημιουργήστε τα θέματά σας</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>選擇您的佈景主題</value>
+    <value>Επιλέξτε τα θέματά σας</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>淺色佈景主題：</value>
+    <value>Φωτεινό Θέμα</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows 佈景主題 (更多功能)</value>
+    <value>Θέμα Windows (περισσότερα χαρακτηριστικά)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>桌布 (建議)</value>
+    <value>Ταπετσαρία επιφάνειας εργασίας (συνιστάται)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>點按此處以開啟 Windows 佈景主題設定。</value>
+    <value>Κάντε κλικ εδώ για να ανοίξετε τις ρυθμίσεις Θέματος των Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>前往「色彩」並將系統顏色設為「淺色」。選擇您想要的桌布、游標、及輔色。</value>
+    <value>Τώρα μεταβείτε στην επιλογή "Χρώματα" και αλλάξτε το χρώμα του συστήματος σε "Φωτεινό" για το φωτεινό θέμα. Επιλέξτε την αγαπημένη σας Ταπετσαρία, Δείκτη Ποντικιού και Χρώμα Εμφασης.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>返回主題設定並儲存您的佈景主題。</value>
+    <value>Επιστρέψτε στις ρυθμίσεις θέματος και αποθηκεύστε το θέμα σας.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>重複以上步驟以設定深色主題。</value>
+    <value>Επαναλάβετε αυτή τη διαδικασία για το σκοτεινό θέμα.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>切換工作列顏色延遲 (毫秒)：</value>
+    <value>Καθυστέρηση εναλλαγής χρωμάτων της γραμμής εργασιών (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>關於</value>
+    <value>Σχετικά</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>選單</value>
+    <value>Μενού</value>
   </data>
   <data name="restart" xml:space="preserve">
-    <value>重新啟動</value>
+    <value>Επανεκκίνηση</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>設定自訂時間</value>
+    <value>Προσαρμοσμένες ώρες</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>從日出到日落</value>
+    <value>Από τη δύση μέχρι την ανατολή του ηλίου</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>步驟</value>
+    <value>Βήμα</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>使用灰階濾鏡 (等同按下 Win + Ctrl + C)</value>
+    <value>Χρήση φίλτρου χρώματος (στέλνει το συνδυασμό Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>使用登入工作而非啟動項目</value>
+    <value>Χρήση διεργασίας σύνδεσης αντί για καταχώριση εκκίνησης</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>選擇模式：</value>
+    <value>Επιλογή λειτουργίας:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>套用您選擇的佈景主題時發生錯誤，已停用主題切換功能</value>
+    <value>Παρουσιάστηκε σφάλμα κατά την εφαρμογή των επιλεγμένων θεμάτων, απενεργοποιήσαμε την εναλλαγή θεμάτων</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>白色主題</value>
+    <value>Εναλλακτικό φωτεινό θέμα</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>下載擴充功能</value>
+    <value>Λήψη Επέκτασης</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>建議工具</value>
+    <value>Προτεινόμενα εργαλεία</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>此擴充功能可以使 Chrome、Firefox 和 Edge 的網頁隨著系統主題切換顏色。</value>
+    <value>Αυτή η επέκταση προγράμματος περιήγησης κάνει τους ιστότοπους σε Chrome, Firefox και Edge να σέβονται το θέμα του συστήματος.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>找不到</value>
+    <value>Δεν βρέθηκε</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>為什麼要贊助？</value>
+    <value>Γιατί να κάνετε δωρεά;</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>要怎麼贊助？</value>
+    <value>Πώς να κάνετε δωρεά;</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>您可以透過 PayPal 贊助我。完全不強迫，您不應該期待有任何報酬。</value>
+    <value>Μπορείτε να μου στείλετε χρήματα μέσω PayPal. Είναι εντελώς εθελοντικό και δεν πρέπει να περιμένετε καμία αποζημίωση.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>贊助</value>
+    <value>Δωρεά</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>嗨！感謝您使用 Auto Dark Mode！到目前為止您還喜歡這個程式嗎？
+    <value>Γειά σας! Σας ευχαριστούμε που χρησιμοποιείτε το Auto Dark Mode! Σας αρέσει μέχρι τώρα;
 
-此應用程式透過自動調整顏色保護您的眼睛，使您使用電腦時更加舒適。且同時免費、不收集使用者資料，且開放原始碼。
-我不會從此程式獲得任何收益。
+Αυτή η εφαρμογή κάνει την καθημερινότητά σας πιο ευχάριστη, βοηθώντας σας να φροντίζετε τα μάτια σας. Ταυτόχρονα είναι εντελώς δωρεάν, χωρίς διαφημίσεις, δεν συλλέγει δεδομένα χρήστη και είναι ανοιχτού κώδικα.
+Δεν αποφέρω κανένα κέρδος με αυτό το έργο.
 
-所以希望您能透過贊助支持我。即使是一小筆錢也能使我開心地活蹦亂跳。只要贊助您覺得此程式在您心中值多少錢即可。</value>
+Για αυτό το λόγο μπορείτε να με υποστηρίξετε με μια εθελοντική δωρεά. Ακόμη και έναα μικρό ποσό με κάνει να χοροπηδάω χαρούμενος στο διαμέρισμά μου. Απλώς κάντε μια δωρεά αντίστοιχη της εκτίμησής σας για τη δουλειά μου.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>套用 .theme-file 時發生錯誤。您建立的佈景主題可能被刪除或移動。我們暫時先停用自動主題切換。若要重新啟用，請開啟 Auto Dark Mode 並調整 {0} 設定。</value>
+    <value>Παρουσιάστηκε σφάλμα κατά την εφαρμογή ενός αρχείου .theme. Ισως το θέμα που δημιουργήσατε να διαγράφηκε ή να μετακινήθηκε. Αυτός είναι ο λόγος για τον οποίο απενεργοποιήσαμε την εναλλαγή θέματος προς το παρόν. Για να την ενεργοποιήσετε ξανά, ανοίξτε το Auto Dark Mode και διαμορφώστε τις ρυθμίσεις {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>我們遇到了以下問題： 
+    <value>Αντιμετωπίσαμε το εξής θέμα:
 {0}
 
-我們現在會以管理員身分執行應用程式以嘗試修復。
-Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。造成不便，敬請見諒。
+Τώρα θα προσπαθήσουμε να λύσουμε αυτό το πρόβλημα εκτελώντας έναν αλγόριθμο ως διαχειριστής. Ισως αυτό να βοηθήσει.
+Το Auto Dark Mode θα κάνει στη συνέχεια επανεκκίνηση και θα χρειαστεί να εφαρμόσετε ξανά τις ρυθμίσεις σας, συγγνώμη!
 
-提醒：永遠不要手動以系統管理員身分執行 Auto Dark Mode！</value>
+Υποσημείωση: ΠΟΤΕ μην εκτελείτε το Auto Dark Mode ως διαχειριστής χειροκίνητα!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>需要協助嗎？</value>
+    <value>Χρειάζεστε βοήθεια για ένα πρόβλημα;</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>支援多個使用者</value>
+    <value>Υποστήριξη πολλών χρηστών</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>啟用灰階濾鏡延遲 (選填)：</value>
+    <value>Προαιρετική καθυστέρηση για την ενεργοποίηση του χρωματικού φίλτρου σε κλίμακα του γκρι:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>跟隨系統</value>
+    <value>Προσαρμογή στο σύστημα</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>重設</value>
+    <value>Επαναφορά</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>未在充電時啟用深色模式</value>
+    <value>Ενεργοποίηση σκοτεινής λειτουργίας όταν η συσκευή είναι αποσυνδεδεμένη από την πρίζα</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>省電滑條預設值</value>
+    <value>Προεπιλεγμένη τιμή για το ρυθμιστικό εξοικονόμησης ενέργειας</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>降低主題切換的耗電量</value>
+    <value>Μετριασμός εξοικονόμησης ενέργειας για εναλλαγή θέματος</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>僅在您尚未手動啟用省電模式時可用！</value>
-    </data>
+    <value>Αυτό λειτουργεί μόνο εάν δεν έχετε ενεργοποιήσει χειροκίνητα την εξοικονόμηση μπαταρίας!</value>
+  </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>切換模式</value>
+    <value>Λειτουργίες Εναλλαγής</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>個人化</value>
+    <value>Εξατομίκευση</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>套用座標</value>
+    <value>Εφαρμογή συντεταγμένων</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>您的電腦尚未安裝 Windows 10 2019 四月更新，因此已停用這個選項。</value>
+    <value>Αυτή η επιλογή είναι απενεργοποιημένη, επειδή δεν έχετε εγκαταστήσει την ενημέρωση Windows 10 April 2019 στον υπολογιστή σας.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>地理座標</value>
+    <value>Γεωγραφικές συντεταγμένες</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>位置資訊</value>
+    <value>Δεδομένα τοποθεσίας</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>日出至日落 (根據地理座標)</value>
+    <value>Από τη δύση μέχρι την ανατολή του ηλίου (γεωγραφικές συντεταγμένες)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>您的位置的地理座標</value>
+    <value>Εύρεση γεωγρ. συντεταγμένων για την τοποθεσία σας</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>開啟設定檔</value>
+    <value>Ανοιγμα αρχείου ρυθμίσεων (config)</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>開啟設定檔資料夾</value>
+    <value>Ανοιγμα φακέλου ρυθμίσεων (config)</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>開啟日誌檔</value>
+    <value>Ανοιγμα αρχείου καταγραφής (log)</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>設定檔</value>
+    <value>Διαμόρφωση</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019：</value>
+    <value>Microsoft Office (παλιά μέθοδος):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>選擇主題</value>
+    <value>Επιλέξτε ένα θέμα</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>選擇桌布</value>
+    <value>Επιλέξτε μια ταπετσαρία</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>停用</value>
+    <value>Ανενεργό</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>隱藏工具列圖示 (不建議)</value>
+    <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων (δεν συνιστάται)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>當主題模式啟用時，此功能將被停用。</value>
+    <value>Αυτή η δυνατότητα είναι απενεργοποιημένη όταν είναι ενεργοποιημένη η λειτουργία θέματος.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>當桌布模式啟用時，此功能將被停用。</value>
+    <value>Αυτή η δυνατότητα είναι απενεργοποιημένη όταν είναι ενεργοποιημένη η λειτουργία ταπετσαρίας.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>提供更多功能，但您需要準備 .theme 檔案。您將能夠自訂每台顯示器的桌布，設置幻燈片、輔色、及音效，或是更換游標。</value>
+    <value>Προσφέρει περισσότερες δυνατότητες, αλλά πρέπει να ρυθμίσετε ένα αρχείο Windows .theme. Προσαρμόστε την ταπετσαρία της επιφάνειας εργασίας σας ανά οθόνη, ορίστε μια παρουσίαση, αλλάξτε τον δείκτη του ποντικιού σας, ορίστε ένα χρώμα έμφασης και μεμονωμένους ήχους.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>功能較少，但方便設置。為所有或個別顯示器自訂桌布或是背景顏色。</value>
+    <value>Προσφέρει λιγότερες δυνατότητες, αλλά είναι πιο εύκολο να ρυθμιστεί. Προσαρμόστε την ταπετσαρία της επιφάνειας εργασίας σας για όλες τις οθόνες, μεμονωμένες οθόνες ή ορίστε ένα χρώμα φόντου.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>我們會在背景檢查 Auto Dark Mode 的新版本。如果有新版本可用，我們將透過通知提示您。</value>
+    <value>Ελέγχουμε για νέες εκδόσεις του Auto Dark Mode στο παρασκήνιο. Οταν είναι διαθέσιμη μια ενημέρωση, θα σας ειδοποιήσουμε μέσω αναδυόμενης ειδοποίησης (toast)</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>自動下載並安裝新版本</value>
+    <value>Αυτόματη λήψη και εγκατάσταση νέων εκδόσεων</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>不要顯示通知</value>
+    <value>Να μην εμφανίζονται ειδοποιήσεις</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>選擇更新通道</value>
+    <value>Επιλέξτε κανάλι ενημερώσεων</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>當 Auto Dark Mode 啟動時檢查更新</value>
+    <value>Ελεγχος για νέα έκδοση κατά την εκκίνηση του Auto Dark Mode</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 天</value>
+    <value>14 ημέρες</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 天</value>
+    <value>3 ημέρες</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 天</value>
+    <value>7 ημέρες</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>上次檢查時間</value>
+    <value>Τελευταίος έλεγχος</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>永不</value>
+    <value>ποτέ</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>修改檢查更新頻率</value>
+    <value>Αλλάξτε τη συχνότητα ελέγχου για νέα έκδοση</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>深色主題</value>
+    <value>Σκοτεινό Θέμα</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>淺色主題</value>
+    <value>Φωτεινό Θέμα</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>圖片</value>
+    <value>Εικόνα</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>圖片 (多台顯示器)</value>
+    <value>Εικόνα (πολλαπλές οθόνες)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>純色</value>
+    <value>Αμιγές χρώμα</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>模式</value>
+    <value>Λειτουργία</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>顯示器</value>
+    <value>Οθόνη</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>類型</value>
+    <value>Τύπος</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>移除未連接的顯示器</value>
+    <value>Αφαίρεση αποσυνδεδεμένων οθονών</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>桌布</value>
+    <value>Ταπετσαρία</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>顏色</value>
+    <value>Χρώμα</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>十六進制色碼</value>
+    <value>Δεκαεξαδικός κωδικός</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>啟用桌布切換</value>
+    <value>Ενεργοποίηση εναλλαγής ταπετσαρίας</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>不要在遊玩遊戲時切換</value>
+    <value>Να μην γίνεται εναλλαγή όταν εκτελείται ένα παιχνίδι</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>快速 (1 取樣)</value>
+    <value>Γρήγορη (1 δείγμα)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>中等 (2 取樣)</value>
+    <value>Μέτρια (2 δείγματα)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>緩慢 (3 取樣)</value>
+    <value>Αργή (3 δείγματα)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU 使用率偵測速度</value>
+    <value>Ταχύτητα ανίχνευσης χρήσης GPU</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>充電設備</value>
+    <value>Συσκευές με μπαταρία</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>條件</value>
+    <value>Συνθήκες</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>GPU 使用率大於此值時，延遲切換主題</value>
+    <value>Ελάχιστη χρήση GPU % για καθυστέρηση εναλλαγής</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>被外部修改時復原佈景主題</value>
+    <value>Επαναφορά θεμάτων όταν αλλάζουν εξωτερικά</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>緯度</value>
+    <value>Γεωγραφικό πλάτος</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>經度</value>
+    <value>Γεωγραφικό μήκος</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>服務尚未啟動，請稍候...</value>
+    <value>Η υπηρεσία δεν λειτουργεί ακόμα, παρακαλώ περιμένετε...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>正在啟動服務</value>
+    <value>Εκκίνηση Υπηρεσίας</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>服務沒有回應。請檢查 AutoDarkModeSvc.exe 是否正在執行，並重試！</value>
+    <value>Η υπηρεσία δεν ανταποκρίνεται. Παρακαλώ ελέγξτε εάν το AutoDarkModeSvc.exe εκτελείται και δοκιμάστε ξανά!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>啟用 Windows 佈景主題切換</value>
+    <value>Ενεργοποίηση εναλλαγής θέματος των Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>停用</value>
+    <value>Ανενεργό</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>啟用</value>
+    <value>Ενεργό</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>追蹤我們</value>
+    <value>Ακολουθήστε μας</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>佈景主題</value>
+    <value>Θέμα</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>花朵</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>Ανθος</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (淺色)</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>Windows (ανοιχτόχρωμο)</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>已擷取的動作</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Κίνηση που καταγράφηκε</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (深色)</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Windows (σκουρόχρωμο)</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Ροή</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>光暈</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Λάμψη</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (淺色)</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Windows (ανοιχτόχρωμο)</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>清新晨光</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Ανατολή</value>
+    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>每天</value>
+    <value>Κάθε μέρα</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>點擊設置以儲存變更。</value>
+    <value>Κάντε κλικ στο Ορισμός για να αποθηκεύσετε τις αλλαγές.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>使用工具列輔色時機</value>
+    <value>Χρήση Xρώματος Eμφασης Γραμμής Εργασιών όταν χρησιμοποιειται</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>僅輔色</value>
+    <value>Μόνο χρώμα έμφασης</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>版本</value>
+    <value>Εκδοση</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>複製</value>
+    <value>Αντιγραφή</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>開機後自動開啟 Auto Dark Mode</value>
+    <value>Εκκίνηση του Auto Dark Mode με τα Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>自動啟動</value>
+    <value>Αυτόματη εκκίνηση</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>模式：</value>
+    <value>Λειτουργία:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>路徑：</value>
+    <value>Διαδρομή:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>重新載入自動啟動</value>
+    <value>Ανανέωση αυτόματης εκκίνησης</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>語言</value>
+    <value>Γλώσσα</value>
   </data>
   <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>重新啟動應用程式</value>
+    <value>Επανεκκίνηση εφαρμογής</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>停用</value>
+    <value>Ανενεργό</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>無</value>
+    <value>Καμία</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>找不到</value>
+    <value>Δεν βρέθηκε</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>登錄機碼</value>
+    <value>Κλειδί Μητρώου</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>工作</value>
+    <value>Διεργασία</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>您已透過 Windows 停用自動啟動。</value>
+    <value>Εχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>下次更新時間</value>
+    <value>Επόμενη ενημέρωση στις</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>顏色</value>
+    <value>Χρώμα</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>您只能在快捷鍵被停用的情況下進行編輯。</value>
+    <value>Μπορείτε να επεξεργαστείτε τα πλήκτρα συντόμευσης μόνο όταν είναι απενεργοποιημένα.</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>強制使用深色模式</value>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Επιβολή σκοτεινής λειτουργίας</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>強制使用淺色模式</value>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Επιβολή φωτεινής λειτουργίας</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>快速鍵</value>
+    <value>Πλήκτρα συντόμευσης</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>停止強制使用</value>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Διακοπή επιβολής Θέματος</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>啟用全域快速鍵</value>
+    <value>Ενεργοποίηση πλήκτρων συντόμευσης σε όλο το σύστημα</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>強制使用深色模式</value>
+    <value>Επιβολή Σκοτεινής Λειτουργίας</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>強制使用淺色模式</value>
+    <value>Επιβολή Φωτεινής Λειτουργίας</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>不建議隱藏圖示。
-    您確定要繼續嗎？</value>
+    <value>Η απόκρυψη του εικονιδίου δεν συνιστάται.
+Θέλετε πραγματικά να συνεχίσετε;</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>隱藏工具列圖示</value>
+    <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>開啟設定檔路徑</value>
+    <value>Ανοιγμα καταλόγου ρυθμίσεων (config)</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Αφήστε την εφαρμογή να αποφασίσει</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Να μην γίνεται εναλλαγή θεμάτων εκτός εάν το σύστημά είναι σε αδράνεια</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Λεπτά μέχρι να θεωρείται ότι το σύστημα βρίσκεται σε αδράνεια</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Χρώμα έμφασης στις γραμμές τίτλου και τα περιγράμματα παραθύρων</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Οι πληροφορίες έκδοσης αντιγράφηκαν στο πρόχειρο</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Αυτόματη εναλλαγή θεματος</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Εμφάνιση ειδοποίησης κατά την ενεργοποίηση/απενεργοποίηση </value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Καθυστέρηση</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>Μονάδα παρακολούθησης GPU</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Παύση της μονάδας αυτόματης εναλλαγής</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Ελεγχος αδράνειας συστήματος</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Πατήστε επιβεβαίωση για να γίνει εναλλαγή θέματος τώρα.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Συνέχιση</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Ακυρώστε αυτήν την ενέργεια κάνοντας κλικ στο κουμπί αναίρεσης παρακάτω.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>πλήκτρο συντόμευσης</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση αυτόματης εναλλαγής θέματος</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Απενεργοποίηση αυτόματης εναλλαγής</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Αναίρεση</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Παύση αυτόματης εναλλαγής</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Θα θέλατε αντί για αυτό να απενεργοποιήσετε την αυτόματη εναλλαγή;</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θα συνεχιστεί επίσης εάν επιστρέψετε στο προηγούμενο θέμα σας.</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Η εναλλαγή θεμάτων είναι σε πάυση μέχρι</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Αυτήν τη στιγμή, η αυτόματη εναλλαγή θέματος έχει τεθεί σε παύση λόγω των ακόλουθων μονάδων:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Η συνέχιση θα λειτουργήσει μόνο για αναβολές που έχουν χρόνο λήξης</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Πληροφορίες</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση θέματος</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θέματος είναι ενεργοποιημένη</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Παρακολούθηση νυχτερινού φωτισμού των Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Παρακολούθηση νυχτερινού φωτισμού των Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Η εναλλαγή θέματος τέθηκε σε παύση για μία φορά!</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>αναβολή μέχρι</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>αναβολή μέχρι να ικανοποιείται η συνθήκη του</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>αναβολή μέχρι την επόμενη ανατολή του ηλίου</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>αναβολή μέχρι την επόμενη δύση του ηλίου</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>μέχρι</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>μέχρι την επόμενη ανατολή του ηλίου</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>μέχρι την επόμενη δύση του ηλίου</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση παύσης αυτόματης εναλλαγής θέματος</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θέματος ενεργοποιήθηκε ξανά</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Ανοιγμα ρυθμίσεων νυχτερινού φωτισμού</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Νυχτερινός φωτισμός</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Ενεργές καθυστερήσεις</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Παράλειψη αυτόματης εναλλαγής μία φορά</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Ειδοποίηση πριν από την αυτόματη εναλλαγή θεμάτων</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Χρόνος που περιμένει η ειδοποίηση για είσοδο από τον χρήστη σε λεπτά</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Λειτουργία εντοπισμού σφαλμάτων</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Να επιτρέπεται η εναλλαγή θέματος όταν η οθόνη είναι κλειδωμένη (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Εναλλαγή τώρα</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Μονάδα καθυστέρησης</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Ειδοποίηση εναλλαγής</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 ώρες</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 λεπτά</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 ώρες</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 λεπτά</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 ώρες</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 ώρα</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 ώρες</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Εναλλαγή θέματος σε εκκρεμότητα</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Θέλετε να κάνετε εναλλαγή τώρα ή επιπλέον καθυστέρηση;</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Λειτουργία παρακολούθησης</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Θερμές ευχαριστίες</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Παράβλεψη φόντου</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Παράβλεψη δρομέα ποντικιού</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Παράβλεψη εικονιδίων επιφάνειας εργασίας</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Παράβλεψη ήχων</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ρυθμίσεις παράβλεψης</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Αυτή η ρύθμιση δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>λεπτά</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Σε παύση</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Χρησιμοποιήστε το μόνο με το Office 2013-2019 ή εάν αντιμετωπίζετε προβλήματα με τη ρύθμιση "Χρήση ρύθμισης συστήματος" του Office</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά την αναβάθμιση.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Τρέχουσα Εκδοση</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Υποβάθμιση σε</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Λήψη...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Λήψη σε εξέλιξη</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Μήνυμα</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Νέα έκδοση διαθέσιμη {0}</value>
+    <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Η ενημέρωση απέτυχε</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Παρακαλώ ελέγξτε το service.log και το updater.log για πληροφορίες</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Ενημέρωση σε</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Υποβάθμιση</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Ανοιγμα καταλόγου αρχείου καταγραφής (log)</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Αναβολή</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Ενημέρωση</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Παλαιότερη έκδοση διαθέσιμη {0}</value>
+    <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Μετάβαση στη σελίδα λήψης</value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Μια παλαιότερη έκδοση είναι διαθέσιμη</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Ανοιγμα ρυθμίσεων script (config)</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Ενεργοποίηση προσαρμοσμένων scripts</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Επιλέξτε την ταπετσαρία σας</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Διαδρομή εικόνας</value>
   </data>
 </root>
