@@ -210,7 +210,7 @@
 Eine neue Version mit einigen Verbesserungen und Neuerungen ist auf GitHub verfügbar.
 Möchtest du sie herunterladen?
 
-Aktuell installierte Version: {0}, Neue Version: {1}</value>
+Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
@@ -225,7 +225,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Willkommen</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Aktiviere das Kontrollfeld, um automatisch das Theme zu wechseln!</value>
+    <value>Aktiviere das Kontrollfeld, um automatisch das Design zu wechseln.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Übersetzer: Armin Osaj &amp; Samuel Schiegg</value>
@@ -258,7 +258,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Löschen/Deaktivieren</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>aus Datei</value>
+    <value>Wähle Datei</value>
   </data>
   <data name="dbLight" xml:space="preserve">
     <value>Hintergrund für helles Design</value>
@@ -307,7 +307,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Nur im dunklen Design sichtbar.
-Falls die Aktivierung Probleme verursacht: erhöhe die Verzögerungszeit in den Einstellungen.</value>
+Falls die Aktivierung Probleme verursacht: erhöhe die Verzögerungszeit in den Einstellungen. </value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
@@ -335,10 +335,11 @@ Bitte stelle sicher dass:
 - Die config.yaml Datei korrekt ist
 
 Möchtest du eine Fehlermeldung in unserem Github Repo erstellen?
-Wähle ja um ein neues Browserfenster zu öffnen.</value>
+Drücke "ja" um ein neues Browserfenster zu öffnen.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Fehler: deine Eingabe ist nicht zulässig.</value>
+    <value>Fehler: deine Eingabe ist nicht zulässig</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Design-Wechsel nach Connected Standby (nicht empfohlen)</value>
@@ -375,7 +376,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Ordner öffnen</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dunkles Design:</value>
+    <value>Dunkles Design</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Erstelle deine Designs</value>
@@ -384,7 +385,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Wähle deine Designs</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Helles Design:</value>
+    <value>Helles Design</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Windows Design (mehr Funktionen)</value>
@@ -435,7 +436,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Modus wählen:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Ein Fehler ist beim festlegen des Designs aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren</value>
+    <value>Ein Fehler ist beim Festlegen des Designs aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Alternatives helles Design</value>
@@ -447,10 +448,10 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Empfohlene Tools</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Diese Browser-Erweiterung färbt Webseiten in Chrome, Firefox und Edge passend zur Systemfarbe dunkel ein</value>
+    <value>Diese Browser-Erweiterung färbt Webseiten in Chrome, Firefox und Edge passend zur Systemfarbe dunkel ein.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>nicht gefunden</value>
+    <value>Nicht gefunden</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
     <value>Wieso spenden?</value>
@@ -485,7 +486,7 @@ Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Eins
 Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Benötigst du Hilfe bei einem Problem?</value>
+    <value>Hilfe</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Unterstützung für mehrere Nutzerkonten</value>
@@ -500,10 +501,10 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Zurücksetzen</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Dunkles Design aktivieren wenn Gerät im Batteriemodus läuft</value>
+    <value>Dunkles Design aktivieren, wenn Gerät im Batteriemodus läuft</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Stromsparmodus aktivieren bei folgdendem Akkustand</value>
+    <value>Stromsparmodus aktivieren bei folgendem Akkustand</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
     <value>Versuche den Stormsparmodus für den Designwechsel zu deaktivieren</value>
@@ -521,7 +522,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Anwenden</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Du benötigst das Windows 10 April 2019 Update, um diese Einstellung ändern zu können.</value>
+    <value>Du benötigst das Windows 10. April 2019 Update, um diese Einstellung ändern zu können.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Geografische Koordinaten</value>
@@ -560,10 +561,10 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Deaktiviert</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Systemtray-Icon verstecken (nicht empfohlen)</value>
+    <value>System Tray-Icon verstecken (nicht empfohlen)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Diese Funktion ist deaktiviert während der Windows Theme Modus aktiv ist</value>
+    <value>Diese Funktion ist deaktiviert während der Windows Theme Modus aktiv ist.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
     <value>Diese Funktion ist deaktiviert während der Hintergrundbild Modus aktiv ist.</value>
@@ -572,7 +573,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Mehr Funktionen, aber es ist erforderlich eine Windows .theme Datei anzulegen. Lege Hintergrundbilder pro Monitor fest, oder eine Diashow, ändere dein Mauszeiger, wähle eine Akzentfarbe und benutzerdefinierte Systemsounds.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Weniger Funktionen, aber einfacher zu konfigurieren. Personalisiere dein Hintergrundbild pro Monitor, einzeln, oder setze eine Hintergrundfarbe</value>
+    <value>Weniger Funktionen, aber einfacher zu konfigurieren. Personalisiere dein Hintergrundbild pro Monitor, einzeln, oder setze eine Hintergrundfarbe.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Wir suchen im Hintergrund nach Updates. Sobald eine neue Version verfügbar ist, senden wir eine Toast Benachrichtigung</value>
@@ -584,10 +585,10 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Zeige keine Benachrichtigungen</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Wähle einen Update Kanal</value>
+    <value>Wähle Update Kanal</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Suche nach Updates wenn Auto Dark Mode startet</value>
+    <value>Suche nach Updates, wenn Auto Dark Mode startet</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
     <value>14 Tage</value>
@@ -656,7 +657,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Medium (2 Abtastungen)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 Abtastungen)</value>
+    <value>Langsam (3 Abtastungen)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
     <value>GPU-Auslastungserkennungsgeschwindigkeit</value>
@@ -698,7 +699,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>An</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Folg uns</value>
+    <value>Folge uns</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Design</value>
@@ -744,7 +745,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Jeden tag</value>
+    <value>Jeden Tag</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>Klicke auf 'Anwenden', um die Änderungen zu speichern.</value>
@@ -798,7 +799,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Autostart ist via Windows deaktiviert.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Nächstes Aktualisierung um</value>
+    <value>Nächste Aktualisierung um</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
     <value>Farbe</value>
@@ -822,10 +823,10 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Tastatur-Hotkeys aktivieren</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Erzwinge Dunkles Design</value>
+    <value>Erzwinge dunkles Design</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Erzwinge Helles Design</value>
+    <value>Erzwinge helles Design</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Das Icon zu verstecken ist nicht empfohlen.
@@ -841,7 +842,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Lass die App entscheiden</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Kein Designwechsel wenn das System beschäftigt ist</value>
+    <value>Kein Designwechsel, wenn das System beschäftigt ist</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minuten, bis das System als nicht beschäftigt angesehen wird</value>
@@ -856,7 +857,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Automatischer Designwechsel</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Zeige Benachrichtung beim Umschalten</value>
+    <value>Zeige Benachrichtigung beim Umschalten</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
     <value>Verzögern</value>
@@ -871,7 +872,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>System Inaktivitätschecker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Bestätige, um sofort das Design zu wechseln!</value>
+    <value>Bestätige, um sofort das Design zu wechseln.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Fortsetzen</value>
@@ -895,7 +896,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Auto-Wechsel pausieren</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Möchtest du stattdessen den Auto-Wechsel deaktiveren?</value>
+    <value>Möchtest du stattdessen den Auto-Wechsel deaktivieren?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Der Auto-Wechsel wird auch wieder aktiviert, wenn du zu deinem vorherigen Design zurückkehrst.</value>
@@ -904,7 +905,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Designwechsel pausiert bis</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Der Auto-Wechsel ist zurzeit wegen den folgenden Modulen pausiert:</value>
+    <value>Der Auto-Wechsel ist zurzeit wegen diesen Modulen pausiert:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
     <value>Fortsetzen funktioniert nur bei Modulen, die eine Ablaufzeit haben</value>
@@ -970,13 +971,13 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Benachrichtigen bei Auto-Designwechsel</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Die Benachrichtung soll so viele Minuten aktiv sein</value>
+    <value>Die Benachrichtigung soll so viele Minuten aktiv sein</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Debug Modus</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Designwehcsel während dem Sperrbildschirm erlauben (Win10)</value>
+    <value>Designwechsel während dem Sperrbildschirm erlauben (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
     <value>Bestätigen</value>
@@ -1030,7 +1031,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Mauszeiger ignorieren</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
-    <value>Desktopsymbole ignorieren</value>
+    <value>Desktop Symbole ignorieren</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
     <value>Sounds ignorieren</value>
