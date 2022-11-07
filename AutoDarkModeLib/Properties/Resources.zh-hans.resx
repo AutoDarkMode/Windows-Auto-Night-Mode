@@ -306,8 +306,8 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>发生错误</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>仅在深色模式下可见。
+如果您遇到了相关问题，请在设置中增加切换等待时间。</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>信息</value>
@@ -862,7 +862,7 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>推迟</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU监视模块</value>
+    <value>GPU 监视模块</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
     <value>暂停自动切换模块</value>
@@ -919,10 +919,10 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>自动主题切换已启用</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>跟随Windows夜间模式设置</value>
+    <value>跟随 Windows 夜间模式设置</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>跟随Windows夜间模式设置</value>
+    <value>跟随 Windows 夜间模式设置</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>主题切换已暂停一次！</value>
@@ -1060,7 +1060,7 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>正在降级至</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>下载中…</value>
+    <value>下载中……</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>正在下载中</value>
