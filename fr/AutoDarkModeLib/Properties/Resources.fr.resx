@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -53,7 +53,6 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -118,872 +117,412 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>设置</value>
+    <value>Nastavení</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>应用</value>
+    <value>Potvrdit</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自动切换主题</value>
+    <value>Povolit automatické přepínání motivů</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Přizpůsobit motivu</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>深色主题</value>
+    <value>Vždy tmavý</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>浅色主题</value>
+    <value>Vždy světlý</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用与 Windows 1903 相关的功能</value>
+    <value>Zapnout možnosti pro Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>应用程序：</value>
+    <value>Aplikace:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>自定义起始时间</value>
+    <value>Vlastní čas začátku</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>深色</value>
+    <value>Tmavý</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>深色主题</value>
+    <value>Tmavý motiv</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge（旧版）：</value>
+    <value>Edge (stará verze):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>浅色</value>
+    <value>Světlý</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>浅色主题</value>
+    <value>Světlý motiv</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>设置</value>
+    <value>Nastavení</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>切换当前主题</value>
+    <value>Změnit současný motiv</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>系统界面：</value>
+    <value>Systém:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>本程序所使用的第三方软件</value>
+    <value>Použitý software třetích stran</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>Aktualizace</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>使用定位服务</value>
+    <value>Použít službu zjišťování polohy</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>更改已保存！</value>
+    <value>Změny byly uloženy!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>设定好时间后，您的更改将会被自动保存。</value>
+    <value>Kliknutím na potvrdit uložíte změny</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>下载更新</value>
+    <value>Nainstalovat aktualizaci</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>发生错误 :(</value>
+    <value>Nastala chyba</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>此应用程序需要使用您的位置信息</value>
+    <value>Aplikace vyžaduje přístup k Vaší poloze</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>暂无更新</value>
+    <value>Máte nejnovější verzi aplikace.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>正在定位……</value>
+    <value>Hledání Vaší polohy...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>正在获取更新……</value>
+    <value>Hledání aktualizace...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告：无法读取您当前的主题。</value>
+    <value>Varování: Nemohli jsme zjistit současný motiv.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>有新版可更新！</value>
+    <value>Nalezena nová aktualizace!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>感谢您使用 Auto Dark Mode！
+    <value>Děkujeme, že používáte Auto Dark Mode!
 
-GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
-您想安装新版吗？
+Na Github je k mání nová verze s mnoha vylepšeními.
+Chcete ji nainstalovat?
 
-当前版本: {0}, 最新版本: {1}</value>
+Nainstalovaná verze: {0}, nová verze: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>检查更新</value>
+    <value>Zjistit aktualizace</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>我们将在本程序启动时检查更新。</value>
+    <value>Hledáme aktualizace při každém spuštění programu.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>欢迎</value>
+    <value>Vítejte</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>勾选此项启用自动主题切换</value>
+    <value>Pro automatickou změnu motivů zaškrtněte aktivační políčko</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee</value>
+    <value>Překladatelé: Farmansn a zoe, korekce Dr.CRYO</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>城市</value>
-  </data>
-  <data name="lblPosition" xml:space="preserve">
-    <value>位置</value>
-  </data>
-  <data name="restartNeeded" xml:space="preserve">
-    <value>重启后生效</value>
-  </data>
-  <data name="lblLanguage" xml:space="preserve">
-    <value>语言：</value>
-  </data>
-  <data name="cmbAccentColor" xml:space="preserve">
-    <value>将任务栏颜色改为主题色</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="dbCurrently" xml:space="preserve">
-    <value>当前：</value>
-  </data>
-  <data name="dbDark" xml:space="preserve">
-    <value>深色主题壁纸</value>
-  </data>
-  <data name="dbDel" xml:space="preserve">
-    <value>删除或禁用</value>
-  </data>
-  <data name="dbFilePicker" xml:space="preserve">
-    <value>选择文件</value>
-  </data>
-  <data name="dbLight" xml:space="preserve">
-    <value>浅色主题壁纸</value>
-  </data>
-  <data name="dbMainHeader" xml:space="preserve">
-    <value>桌面背景</value>
-  </data>
-  <data name="dbPictures" xml:space="preserve">
-    <value>图片</value>
-  </data>
-  <data name="dbSaveToolTip" xml:space="preserve">
-    <value>请选择两张壁纸</value>
-  </data>
-  <data name="dbSelectImage" xml:space="preserve">
-    <value>请选择图像</value>
-  </data>
-  <data name="dbTitle" xml:space="preserve">
-    <value>配置桌面背景</value>
-  </data>
-  <data name="dbUseCurrent" xml:space="preserve">
-    <value>设为当前背景</value>
-  </data>
-  <data name="disabled" xml:space="preserve">
-    <value>禁用</value>
-  </data>
-  <data name="enabled" xml:space="preserve">
-    <value>启用</value>
-  </data>
-  <data name="or" xml:space="preserve">
-    <value>或</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="dbErrorText" xml:space="preserve">
-    <value>您所选的图片可能已损坏，或所选的路径不存在。</value>
-  </data>
-  <data name="dbPreviewError" xml:space="preserve">
-    <value>抱歉，无法生成图片预览！</value>
-  </data>
-  <data name="dbSavedError" xml:space="preserve">
-    <value>抱歉，无法保存设置！</value>
-  </data>
-  <data name="errorOcurredTitle" xml:space="preserve">
-    <value>发生错误</value>
-  </data>
-  <data name="cbAccentColor" xml:space="preserve">
-    <value>仅在深色主题下可见。
-如果您遇到了相关问题，请在设置中增加切换等待时间。</value>
-  </data>
-  <data name="info" xml:space="preserve">
-    <value>信息</value>
-  </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12小时制</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>关闭</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>否</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>自动检查更新</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>抱歉，无法保存您的设置。
-
-您可以尝试以下几种方法：
-- 重启本应用的服务
-- 检查服务运行状态
-- 关闭服务，删除 config.yaml 并重新配置本程序
-
-如果上述方法无效，您可在 GitHub 上创建 issue 进行反馈。点击“是”即可跳转到 issue 页面。</value>
-  </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>错误：您的输入无效</value>
-  </data>
-  <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Connected Standby 状态下仍然切换主题（不推荐）</value>
-  </data>
-  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface 等移动设备使用的一种新型待机模式。
-启用此项可确保计算机唤醒后，Auto Dark Mode 会立即切换主题。
-但也将消耗更多电量，仅在必要时启用！</value>
-  </data>
-  <data name="msgBatterySaver" xml:space="preserve">
-    <value>由于 Windows 的程序错误，在节电模式下，本应用无法切换任务栏的颜色。如遇到相关问题，请关闭节电模式。</value>
-  </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>调整</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>设置</value>
-  </data>
-  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>使用 Windows 主题模式时无法调整这些选项。
-您可以在 Windows 主题中单独设置这些选项。</value>
-  </data>
-  <data name="NavbarApps" xml:space="preserve">
-    <value>应用程序</value>
-  </data>
-  <data name="NavbarSettings" xml:space="preserve">
-    <value>设置</value>
-  </data>
-  <data name="NavbarTime" xml:space="preserve">
-    <value>时间</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>打开文件夹</value>
-  </data>
-  <data name="ThemeDark" xml:space="preserve">
-    <value>深色主题：</value>
-  </data>
-  <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>创建您的主题</value>
-  </data>
-  <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>选择您的主题</value>
-  </data>
-  <data name="ThemeLight" xml:space="preserve">
-    <value>浅色主题：</value>
-  </data>
-  <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows主题（更多功能）</value>
-  </data>
-  <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>桌面壁纸（推荐）</value>
-  </data>
-  <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>点击此处打开 Windows 壁纸设置。</value>
-  </data>
-  <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>现在，切换至“颜色”选项卡，将系统颜色改为“浅色”。再选择您喜欢的壁纸、鼠标光标和主题色。</value>
-  </data>
-  <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>返回主题设置并保存主题。</value>
-  </data>
-  <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>设置深色主题时重复上述步骤。</value>
-  </data>
-  <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>切换任务栏颜色前的等待时间（毫秒）：</value>
-  </data>
-  <data name="NavbarAbout" xml:space="preserve">
-    <value>关于</value>
-  </data>
-  <data name="NavbarTitle" xml:space="preserve">
-    <value>菜单</value>
-  </data>
-  <data name="restart" xml:space="preserve">
-    <value>重启</value>
-  </data>
-  <data name="rbCustomHours" xml:space="preserve">
-    <value>自定义时间</value>
-  </data>
-  <data name="rbLocation" xml:space="preserve">
-    <value>日出至日落</value>
-  </data>
-  <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>步骤</value>
-  </data>
-  <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>使用灰度滤镜（Win + Ctrl + C）</value>
-  </data>
-  <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>不以启动项方式启动，而是以登录任务方式启动</value>
-  </data>
-  <data name="ThemeSelection" xml:space="preserve">
-    <value>选择模式：</value>
-  </data>
-  <data name="ThemeApplyError1" xml:space="preserve">
-    <value>应用所选主题时发生错误，已禁用主题切换</value>
-  </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>使用新版白色主题</value>
-  </data>
-  <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>下载扩展</value>
-  </data>
-  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>推荐工具</value>
-  </data>
-  <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>此浏览器扩展可使 Chrome、Firefox 和 Edge 中的网页跟随系统主题设定。</value>
-  </data>
-  <data name="locationCityNotFound" xml:space="preserve">
-    <value>未找到相应的城市</value>
-  </data>
-  <data name="DonationHeaderReason" xml:space="preserve">
-    <value>为什么要捐赠？</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>如何捐赠？</value>
-  </data>
-  <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>您可以通过 PayPal 无偿自愿地向我汇款。</value>
-  </data>
-  <data name="NavbarDonation" xml:space="preserve">
-    <value>捐赠</value>
-  </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>您好！感谢您使用 Auto Dark Mode。迄今为止，您还喜欢这个应用吗？
-
-这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
-我并不靠本项目盈利。
-
-如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只要您重视我的工作，就捐献吧。</value>
-  </data>
-  <data name="ThemeApplyError2" xml:space="preserve">
-    <value>应用 .theme 文件时发生错误，您创建的主题可能已被删除或被移动到了其它位置。主题切换已停用，若要重新启用，请打开 Auto Dark Mode 并配置{0}设置。</value>
-  </data>
-  <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>我们遇到了以下问题：
-{0}
-
-现在我们将尝试以管理员身份运行算法程序，来解决此问题。但无法保证一定有效。
-之后，Auto Dark Mode 将重新启动。您需要重新设置本应用，非常抱歉！
-
-注：请勿手动以管理员身份运行 Auto Dark Mode！</value>
-  </data>
-  <data name="tbHelp" xml:space="preserve">
-    <value>需要帮助吗？</value>
-  </data>
-  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>多用户支持</value>
-  </data>
-  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>延迟启动灰度滤镜（可选）：</value>
-  </data>
-  <data name="cmbAdjTheme" xml:space="preserve">
-    <value>自动切换</value>
-  </data>
-  <data name="lblReset" xml:space="preserve">
-    <value>重置</value>
-  </data>
-  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>未充电时启用深色模式</value>
-  </data>
-  <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>节电模式滑动条的默认值</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>节电模式下暂停切换主题</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>此功能仅在自动启用节电模式时生效！</value>
-  </data>
-  <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>场景切换</value>
-  </data>
-  <data name="NavbarPersonalization" xml:space="preserve">
-    <value>个性化</value>
-  </data>
-  <data name="applyGeoButton" xml:space="preserve">
-    <value>应用坐标</value>
+    <value>Město</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>您未安装 Windows 10 2019年4月更新，故此选项不可用。</value>
+    <value>Tato možnost je nedostupná, protože jste zatím neaktualizovali Windows na verzi z dubna 2019 (1903).</value>
   </data>
-  <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>地理坐标</value>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>K zobrazení změn je třeba restartovat aplikaci</value>
   </data>
-  <data name="headerLocationData" xml:space="preserve">
-    <value>位置信息</value>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Jazyk:</value>
   </data>
-  <data name="rbLocationGeo" xml:space="preserve">
-    <value>日出至日落（根据地理坐标）</value>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Zvýraznění barev hlavního panelu</value>
   </data>
-  <data name="tbGetCoordinates" xml:space="preserve">
-    <value>了解所处位置的坐标</value>
+  <data name="cancel" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
-  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>打开配置文件</value>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Současně:</value>
   </data>
-  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>打开配置文件夹</value>
+  <data name="dbDark" xml:space="preserve">
+    <value>Tapeta tmavého motivu</value>
   </data>
-  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>打开日志文件</value>
+  <data name="dbDel" xml:space="preserve">
+    <value>Vymazat/Vypnout</value>
   </data>
-  <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>配置</value>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Vybrat soubor</value>
   </data>
-  <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office（旧版）：</value>
+  <data name="dbLight" xml:space="preserve">
+    <value>Tapeta světlého motivu</value>
   </data>
-  <data name="lblPickTheme" xml:space="preserve">
-    <value>选择主题</value>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Pozadí plochy</value>
   </data>
-  <data name="lblPickWallpaper" xml:space="preserve">
-    <value>选择壁纸</value>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Obrázky</value>
   </data>
-  <data name="rbDisabled" xml:space="preserve">
-    <value>禁用</value>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Zvolte prosím dvě tapety</value>
   </data>
-  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>隐藏托盘图标（不推荐）</value>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Zvolte prosím obrázek</value>
   </data>
-  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>启用主题模式时无法开启本功能。</value>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Nastavení pozadí plochy</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>启用壁纸模式时无法开启本功能。</value>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>použijte současné pozadí</value>
   </data>
-  <data name="tbPickTheme" xml:space="preserve">
-    <value>功能更多，但需要创建 Windows 的 .theme 文件。该模式下您可以自定义各个显示器的壁纸、将壁纸设置为“幻灯片放映”、更改鼠标光标样式、设置主题色并修改各个声音。</value>
+  <data name="disabled" xml:space="preserve">
+    <value>Vypnuto</value>
   </data>
-  <data name="tbPickWallpaper" xml:space="preserve">
-    <value>功能较少，但设置方便。该模式下您可以自定义所有显示器或各个显示器的壁纸，或者设置纯色背景。</value>
+  <data name="enabled" xml:space="preserve">
+    <value>Zapnuto</value>
   </data>
-  <data name="tbUpdates" xml:space="preserve">
-    <value>我们将在后台检查新版 Auto Dark Mode，并通过桌面通知提醒您更新。</value>
+  <data name="or" xml:space="preserve">
+    <value>nebo</value>
   </data>
-  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>自动下载并安装新版本</value>
+  <data name="save" xml:space="preserve">
+    <value>Uložit</value>
   </data>
-  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>不显示通知</value>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Váš obrázek je nečitelný, nebo jste zadali neplatnou cestu.</value>
   </data>
-  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>选择更新版本</value>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Nepodařilo se načíst náhled obrázku.</value>
   </data>
-  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>在 Auto Dark Mode 启动时检查更新</value>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Nastavení se nepodařilo uložit.</value>
   </data>
-  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14天</value>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Nastala chyba</value>
   </data>
-  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3天</value>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Viditelné v tmavém motivu. Při problémech prosím zvyšte zpoždění přepínání v nastavení. </value>
   </data>
-  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7天</value>
+  <data name="info" xml:space="preserve">
+    <value>Informace</value>
   </data>
-  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>上次检查时间</value>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12hodinové časy</value>
   </data>
-  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>尚未检查过更新</value>
+  <data name="msgClose" xml:space="preserve">
+    <value>Zavřít</value>
   </data>
-  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>更改检查更新的频率</value>
+  <data name="msgNo" xml:space="preserve">
+    <value>Ne</value>
   </data>
-  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>深色主题</value>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Ano</value>
   </data>
-  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>浅色主题</value>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Vyhledávat aktualizace na pozadí</value>
   </data>
-  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>图片</value>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Toto nastavení se nepodařilo použít..
+
+Zde je pár věcí, které můžete zkusit:
+- Odeberte a znovu nainstalujte Auto Dark Mode.
+- Zkuste vypnout {0} v nastavení Auto Dark Mode.
+- Jestli jste zapnuli tapetu na ploše, tuto funkci vypněte a zkuste to znovu.
+
+Pokud ani výše uvedené kroky nepomohly, můžete nám kliknutím na tlačítko Ano poslat skrze Github snímek Vaší chyby společně s popisem, co k chybě vedlo.</value>
   </data>
-  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>图片（多显示器）</value>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Chyba: Vstup je neplatný</value>
   </data>
-  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>纯色</value>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Přepnout po Připojeném pohotovostním režimu (nedoporučuje se)</value>
   </data>
-  <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>模式</value>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobilní zařízení, například produkty Microsoft Surface, používají moderní pohotovostní režim. 
+Povolením této možnosti zajistíte, že Auto Dark Mode přepne motiv ihned po probuzení počítače.
+Funkci povolte pouze v případě, že ji skutečně potřebujete, neboť snižuje výdrž baterie.</value>
   </data>
-  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>显示器</value>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Kvůli chybě Windows nemění hlavní panel barvu tak, jak by měl, pokud je zapnutý spořič baterie. V případě problémů vypněte spořič baterie.</value>
   </data>
-  <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>类型</value>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Časový posun</value>
   </data>
-  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>删除未连接的显示器</value>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Nastavit</value>
   </data>
-  <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>壁纸</value>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Při používání motivu Windows jsou tyto možnosti vypnuté.
+Můžete je však nastavit přímo v motivu Windows.</value>
   </data>
-  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>颜色</value>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplikace</value>
   </data>
-  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>十六进制颜色代码</value>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Nastavení</value>
   </data>
-  <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>启用壁纸切换</value>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Čas</value>
   </data>
-  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>玩游戏时不进行切换</value>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Tapeta/Motiv</value>
   </data>
-  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>快（单采样）</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Otevřít složku</value>
   </data>
-  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>中（双采样）</value>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tmavý motiv:</value>
   </data>
-  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>慢（三采样）</value>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Vytvořte si vlastní motivy</value>
   </data>
-  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU 使用率检测速度</value>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Zvolte vlastní motivy</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>电池设备</value>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Světlý motiv:</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>状态</value>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows motiv (více možností)</value>
   </data>
-  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>GPU 使用率大于此值时，不切换主题</value>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Tapeta na ploše (doporučené)</value>
   </data>
-  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>主题被外部修改时改回原定主题</value>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Klikutím sem přejděte do nastavení motivu Windows.</value>
   </data>
-  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>纬度</value>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Nyní přejděte na Barvy a změňte systémový režim na "Světlý". Nastavte si oblíbené pozadí, ukazatel myši či barvu zvýraznění.</value>
   </data>
-  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>经度</value>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Jděte zpět do nastavení motivů a uložte si svůj motiv.</value>
   </data>
-  <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>服务尚未运行，请稍候……</value>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Zopakujte postup pro tmavý motiv.</value>
   </data>
-  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>正在启动服务</value>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Zpoždění změny barvy hlavního panelu (ms):</value>
   </data>
-  <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>服务无响应。请检查 AutoDarkModeSvc.exe 的运行状态并重试！</value>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>O programu</value>
   </data>
-  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>切换 Windows 主题</value>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Nabídka</value>
   </data>
-  <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>关闭</value>
+  <data name="restart" xml:space="preserve">
+    <value>Restart</value>
   </data>
-  <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>开启</value>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Nastavit vlastní časy</value>
   </data>
-  <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>关注我们</value>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Od východu do západu slunce</value>
   </data>
-  <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>主题</value>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Krok</value>
   </data>
-  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>鲜花</value>
-    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Použít černobílý filtr (Win+Ctrl+C)</value>
   </data>
-  <data name="ThemePickerTheme10Windows" xml:space="preserve">
-    <value>Windows</value>
-    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Použít úlohu po přihlášení namísto programu po spuštění.</value>
   </data>
-  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
-    <value>Windows 10</value>
-    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Zvolit režim:</value>
   </data>
-  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows（浅色主题）</value>
-    <comment>译者须知：使用来自 Windows 10 “设置”应用内的名称（前往“个性化” -&gt; “主题”并复制其名称）</comment>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Došlo k chybě při nastavování vybraných motivů; vypnuli jsme přepínání motivů.</value>
   </data>
-  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>捕获的动作</value>
-    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Náhradní světlý motiv</value>
   </data>
-  <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows（深色主题）</value>
-    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Nainstalovat rozšíření</value>
   </data>
-  <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>流畅</value>
-    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Doporučené nástroje</value>
   </data>
-  <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>发光</value>
-    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Toto rozšíření prohlížeče vynutí režim webových stránelk dle systémového motivu.</value>
   </data>
-  <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows（浅色主题）</value>
-    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>nenalezeno</value>
   </data>
-  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>日出</value>
-    <comment>译者须知：使用来自 Windows 11 “设置”应用内的名称（前往“个性化” -&gt; “主题”并将鼠标指针悬停于主题名称上）</comment>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Proč byste měli přispět?</value>
   </data>
-  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>每天</value>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Jak přispět?</value>
   </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>单击“设置”保存更改。</value>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Peníze mi můžete poslat skrze PayPal. Váš příspěvek je zcela dobrovolný a nezakládá se Vám za něj žádného odškodnění.</value>
   </data>
-  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>使用任务栏强调色</value>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Přispět</value>
   </data>
-  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>仅强调色</value>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Ahoj a děkuji, že používáte Auto Dark Mode.
+
+Auto Dark Mode se snaží zpříjemnit každodenní používání počítače tím, že se stará o Váš zrak. Přitom je zcela zdarma, bez reklam, open-source, ani nesbírá žádná data.
+Aplikace je nezisková.
+
+Jestli se Vám moje aplikace líbí, zvažte, zda byste mne nechtěli podpořit. I malý peněžní příspěvek mi udělá neskonalou radost; u větších budu přímo skákat radostí po bytě.</value>
   </data>
-  <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>版本</value>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Nastala chyba při zavádění .theme-file. Je možné, že Váš vlastní motiv už není dostupný. Proto jsme zatím omezili přepínání motivů. K opětovnému povolení přepínání motivů prosím otevřete Auto Dark Mode a upravte {0} nastavení.</value>
   </data>
-  <data name="AboutButtonCopy" xml:space="preserve">
-    <value>复制</value>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Narazili jsme na následující problém: 
+{0}
+
+Zkusíme jej vyřešit spuštěním algoritmu s administrátorskými právy. To leckdy pomůže.
+Auto Dark Mode se poté restartuje. Bude však nezbytné vše znovu nastavit - mrzí nás to.
+
+Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
   </data>
-  <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>开机自启动 Auto Dark Mode</value>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Potřebujete pomoc s problémem?</value>
   </data>
-  <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>自启动</value>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Stáhnout později</value>
   </data>
-  <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>模式：</value>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Už nepřipomínat</value>
   </data>
-  <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>路径：</value>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Stáhnout nyní</value>
   </data>
-  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>刷新自启动</value>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>Posledních pár měsíců jsme tvrdě dřeli na nejlepší možné aktualizaci, kterou Vám můžeme nabídnout. A konečně je tady!
+
+Auto Dark Mode X byl znovu od zákaldu přepsán. Staví na skutečném procesu na pozadí namísto spolehání se na naplánované úlohy, což umožňuje o mnoho pružnější a spolehlivější změnu motivů než kdykoli předtím!
+
+Je to sice o něco náročnější na výpočetní prostředky, na druhou stranu je možné využívat pokročilé fukce, jako například:
+- Herní režim: Přepínač motivů se vypne při hraní hry nebo když je vytížená GPU.
+- Přepínání motivů zkratkami na klávesnici a více!
+
+Aktualizace je vhodná pro všechny, až na majitele ARM zařízení, kteří mohou mít kvůli nezbytné emulaci procesů na pozadí problémy s výdrží baterie.</value>
   </data>
-  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>语言</value>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X je k dispozici</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>重启应用</value>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>Verze X je skvělá a velká aktualizace, kterou určitě musíte vyzkoušet! Jste si jistí, že ji nechcete nainstalovat? Už Vám ji nebudeme dále nabízet.</value>
   </data>
-  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>已禁用</value>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Jste si jistí?</value>
   </data>
-  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>无</value>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Podpora více uživatelů</value>
   </data>
-  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>未找到</value>
-  </data>
-  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>注册表键值</value>
-  </data>
-  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>任务</value>
-  </data>
-  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>您在 Windows 中禁用了启动项。</value>
-  </data>
-  <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>下一次更新将在</value>
-  </data>
-  <data name="WallpaperColor" xml:space="preserve">
-    <value>颜色</value>
-  </data>
-  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>强制深色模式快捷键</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>强制浅色模式快捷键</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>快捷键</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>停止强制主题快捷键</value>
-  </data>
-  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>启用系统级快捷键</value>
-  </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
-    <value>强制深色主题</value>
-  </data>
-  <data name="ForceLightTheme" xml:space="preserve">
-    <value>强制浅色主题</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>不建议隐藏托盘图标。
-您真的想继续吗？</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>隐藏托盘图标</value>
-  </data>
-  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>打开配置文件夹</value>
-  </data>
-  <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>由应用决定</value>
-  </data>
-  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>系统非空闲状态时不进行切换</value>
-  </data>
-  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>系统空闲状态判断时间（分钟）</value>
-  </data>
-  <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>版本信息已复制到剪贴板</value>
-  </data>
-  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>在标题栏和窗口边框使用强调色</value>
-  </data>
-  <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>推迟</value>
-  </data>
-  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>推迟模块</value>
-  </data>
-  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU监视模块</value>
-  </data>
-  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>暂停自动切换模块</value>
-  </data>
-  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>推迟到</value>
-  </data>
-  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>推迟到条件满足为止</value>
-  </data>
-  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>切换行为的通知</value>
-  </data>
-  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>系统闲置检查</value>
-  </data>
-  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>推迟到下一次日出</value>
-  </data>
-  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>推迟到下一次日落</value>
-  </data>
-  <data name="PostponeTime120" xml:space="preserve">
-    <value>2 小时</value>
-  </data>
-  <data name="PostponeTime15" xml:space="preserve">
-    <value>15 分钟</value>
-  </data>
-  <data name="PostponeTime180" xml:space="preserve">
-    <value>3 小时</value>
-  </data>
-  <data name="PostponeTime30" xml:space="preserve">
-    <value>30 分钟</value>
-  </data>
-  <data name="PostponeTime360" xml:space="preserve">
-    <value>6 小时</value>
-  </data>
-  <data name="PostponeTime60" xml:space="preserve">
-    <value>1 小时</value>
-  </data>
-  <data name="PostponeTime720" xml:space="preserve">
-    <value>12 小时</value>
-  </data>
-  <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>跳过一次自动切换</value>
-  </data>
-  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>在自动切换主题时提醒</value>
-  </data>
-  <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>跟随Windows夜间模式设置</value>
-  </data>
-  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>生效的推迟</value>
-  </data>
-  <data name="TimePageNextUpdateAt1" xml:space="preserve">
-    <value>下次更新</value>
-  </data>
-  <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>夜间模式</value>
-  </data>
-  <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>打开夜间模式设置</value>
-  </data>
-  <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>自动主题切换目前已经暂停</value>
-  </data>
-  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>自动主题切换已启用</value>
-  </data>
-  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>跟随Windows夜间模式设置</value>
-  </data>
-  <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>恢复将只会对有失效期限的推迟有效</value>
-  </data>
-  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>推迟控制</value>
-  </data>
-  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>在启用时显示通知</value>
-  </data>
-  <data name="NavbarScripts" xml:space="preserve">
-    <value>脚本</value>
-  </data>
-  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>打开脚本设置</value>
-  </data>
-  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>脚本</value>
-  </data>
-  <data name="PageScriptsToggle" xml:space="preserve">
-    <value>启用自定义脚本</value>
-  </data>
-  <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>调试模式</value>
-  </data>
-  <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>追踪模式</value>
-  </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>特别感谢</value>
-  </data>
-  <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>快捷键</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>强制深色模式</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>强制浅色模式</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>停止强制使用主题</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>启用自动主题切换</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>暂停自动主题切换</value>
-  </data>
-  <data name="ToggleTheme" xml:space="preserve">
-    <value>启用主题</value>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Dodatečné zpoždění černobílého filtru:</value>
   </data>
 </root>
