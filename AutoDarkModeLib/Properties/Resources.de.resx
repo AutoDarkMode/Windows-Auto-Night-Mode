@@ -133,7 +133,7 @@
     <value>Immer hell</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Enable features for Windows 1903</value>
+    <value>Features für Windows 1903 aktivieren</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>Anwendungen:</value>
@@ -234,7 +234,7 @@ Aktuell installierte Version: {0}, Neue Version: {1}</value>
     <value>Stadt</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Position</value>
+    <value>Standort</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>Ein Neustart wird benötigt</value>
@@ -548,7 +548,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Konfig</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy):</value>
+    <value>Microsoft Office (Alt)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Wähle ein Theme</value>
@@ -641,7 +641,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Farbe</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Hex Code</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Hintergrundwechsel aktivieren</value>
@@ -680,10 +680,10 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Längengrad</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait...</value>
+    <value>Service läuft noch nicht, bitte warten...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Launching Service</value>
+    <value>Starte Service</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
     <value>Der Dienst antwortet nicht. Prüfe ob AutoDarkModeSvc.exe läuft und versuche es erneut!</value>
@@ -771,34 +771,31 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Modus:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Path:</value>
+    <value>Pfad:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>Autostart aktualisieren</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
+    <value>Sprache</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Deaktiviert</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>None</value>
+    <value>Keiner</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>Nicht gefunden</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>Registrierungsschlüssel</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>Aufgabenplaner</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>Autostart ist via Windows deaktiviert.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>Nächstes Aktualisierung um</value>
@@ -810,16 +807,16 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Du kannst die Hotkeys nur bearbeiten, wenn sie deaktiviert sind.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Erzwinge dunkles Design</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Erzwinge helles Design</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>Tastenkürzel</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Design erzwingen beenden</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Tastatur-Hotkeys aktivieren</value>
@@ -831,8 +828,8 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Erzwinge Helles Design</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>Das Icon zu verstecken ist nicht empfohlen.
+Möchten Sie wirklich fortfahren?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>Systemtray-Icon verstecken</value>
@@ -862,7 +859,7 @@ Do you really want to continue?</value>
     <value>Zeige Benachrichtung beim Umschalten</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>Verzögern</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPU Überwachungsmodul</value>
@@ -1018,7 +1015,7 @@ Do you really want to continue?</value>
     <value>Ausstehender Designwechsel</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>Soll der Designwechsel jetzt erfolgen oder später?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
     <value>Trace Modus</value>
@@ -1104,24 +1101,24 @@ Do you really want to continue?</value>
     <value>Gehe zur Downloadseite</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>Ein Downgrade ist verfügbar</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Skripte</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Skript-Konfig öffnen</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Skripte</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Eigene Skripte aktivieren</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Wähle ein Hintergrundbild</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Dateipfad</value>
   </data>
 </root>

@@ -777,9 +777,6 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Ngôn ngữ</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Khởi động lại chương trình</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Tắt</value>
   </data>

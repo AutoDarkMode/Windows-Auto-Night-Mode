@@ -779,9 +779,6 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Taal</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>App opnieuw starten</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Uitgeschakeld</value>
   </data>

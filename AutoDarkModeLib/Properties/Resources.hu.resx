@@ -779,9 +779,6 @@ Mellékjegyzet: SOHA ne futtassa manuálisan rendszergazdaként az Auto Dark Mod
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
