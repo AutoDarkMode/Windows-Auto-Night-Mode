@@ -779,6 +779,9 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>Restart App</value>
+  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
