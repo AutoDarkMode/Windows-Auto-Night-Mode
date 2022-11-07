@@ -63,9 +63,15 @@ public partial class PageAbout : Page
     private void SystemTheme_ThemeChanged(object sender, EventArgs e)
     {
         if (SystemTheme.AppTheme.Equals(ApplicationTheme.Dark))
+        {     
             gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_White.png", UriKind.Relative));
+            telegramImage.Source = new BitmapImage(new Uri(@"/Resources/telegram-light.png", UriKind.Relative));
+        }
         else
+        { 
             gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_Black.png", UriKind.Relative));
+            telegramImage.Source = new BitmapImage(new Uri(@"/Resources/telegram.png", UriKind.Relative));
+        }
     }
 
     private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

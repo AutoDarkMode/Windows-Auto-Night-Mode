@@ -299,7 +299,7 @@
                    FontFamily="Segoe UI Semibold"
                    FontSize="14" />
 
-        <uc:Card Padding="30,15,15,15"
+        <uc:Card Padding="30,15,15,14"
                  Grid.Column="1"
                  Grid.Row="7">
             <ui:SimpleStackPanel Margin="0,0,0,0"
@@ -307,9 +307,13 @@
                 <Image x:Name="gitHubImage"
                        HorizontalAlignment="Left"
                        Height="30"
+                       Cursor="Hand"
                        Margin="0,0,0,0"
+                       RenderOptions.BitmapScalingMode="HighQuality"
                        VerticalAlignment="Top"
                        Width="30"
+                       MouseLeftButtonDown="GitHubTextBlock_MouseLeftButtonDown"
+                       KeyDown="GitHubTextBlock_KeyDown"
                        Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png" />
                 <TextBlock x:Name="GitHubTextBlock"
                            FontSize="14"
@@ -339,19 +343,21 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Left"
-                           Margin="35,0,0,0"
-                           Grid.Column="1"
-                           Grid.Row="6"
-                           TextWrapping="Wrap"
-                           Text="&#xE8BD;"
-                           VerticalAlignment="Top"
-                           FontFamily="Segoe MDL2 Assets"
-                           FontSize="28" />
+                <Image x:Name="telegramImage"
+                       HorizontalAlignment="Left"
+                       Height="31"
+                       Margin="30,0,0,0"
+                       VerticalAlignment="Top"
+                       Width="31"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       Cursor="Hand"
+                       MouseLeftButtonDown="TelegramTextBlock_MouseDown"
+                       KeyDown="TelegramTextBlock_KeyDown"
+                       Source="/AutoDarkModeApp;component/Resources/telegram.png" />
                 <TextBlock x:Name="telegramTextBlock"
                            FontSize="14"
                            HorizontalAlignment="Left"
-                           Margin="10,5,0,0"
+                           Margin="9,5,0,0"
                            Grid.Column="1"
                            Grid.Row="6"
                            TextWrapping="Wrap"
