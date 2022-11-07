@@ -306,8 +306,8 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Um erro ocorreu</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Apenas visível no modo escuro.
+Se você tiver problemas: aumente o atraso da troca nas configurações.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informações</value>
