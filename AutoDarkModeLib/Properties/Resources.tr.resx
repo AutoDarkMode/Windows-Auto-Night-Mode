@@ -136,7 +136,7 @@
     <value>Windows 1903 için özellikleri etkinleştir</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Uygulamalar:</value>
+    <value>Uygulamalar</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Başlangıç zamanı</value>
@@ -163,7 +163,7 @@
     <value>Geçerli temayı değiştir</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistem:</value>
+    <value>Sistem</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Kullanılan üçüncü parti uygulamalar</value>
@@ -307,7 +307,7 @@ Bunu indirmek istiyor musunuz?
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Sadece koyu modda görünür.
-Sorunla yaşarsanız lütfen ayarlardan değiştirme gecikmesini artırın.</value>
+Sorun yaşarsanız lütfen ayarlardan değiştirme gecikmesini artırın.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Bilgi</value>
@@ -375,7 +375,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Klasörü Aç</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Koyu Tema:</value>
+    <value>Koyu Tema</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Temalarınızı oluşturun</value>
@@ -384,7 +384,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Temalarınızı seçin</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Açık Tema:</value>
+    <value>Açık Tema</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Windows Teması (daha fazla özellik)</value>
@@ -548,7 +548,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Yapılandırma</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (eski):</value>
+    <value>Microsoft Office (eski)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Bir tema seç</value>
@@ -1104,21 +1104,21 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Düşük sürüm mevcut</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Komut Dosyaları</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Komut dosyası yapılandırmasını aç</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Komut Dosyaları</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Özel komut dosyalarını etkinleştir</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Arka plan resimi seç</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Resim konumu</value>
   </data>
 </root>

@@ -306,8 +306,8 @@
     <value>發生錯誤</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>只在深色主題下可見。
-如果您遇到問題，請提高設定中的切換延遲。</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>資訊</value>
