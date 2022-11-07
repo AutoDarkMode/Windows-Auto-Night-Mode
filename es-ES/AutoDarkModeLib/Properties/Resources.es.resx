@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -118,430 +118,870 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Beállítások</value>
-  </data>
+        <value>Paramètres</value>
+        <comment/>
+    </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Alkalmaz</value>
-  </data>
+        <value>Appliquer</value>
+        <comment/>
+    </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Automatikus téma változtatás engedélyezése</value>
-  </data>
-  <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Bővítmény letöltése</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>Mégse</value>
-  </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12 órás óra</value>
-  </data>
-  <data name="cbAccentColor" xml:space="preserve">
-    <value>Csak sötét módban látható.
-Ha problémába ütközik: kérjük növelje az átváltási időt a beállításokban.</value>
-  </data>
-  <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Frissítések keresése a háttérben.</value>
-  </data>
-  <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Váltás Connected Standby után (Nem ajánlott)</value>
-    <comment>Connected standby?</comment>
-  </data>
-  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>A mobil eszközök, mint például a Microsoft Felület termékei, egy új fajta készenléti állapotot használnak.
-Ennek az opciónak az engedélyezésével az Auto Dark Mode azonnal témát vált, amint az eszköze felébred.
-Viszont ez az opció használja az akkumulátort, szóval csak akkor engedélyezze, ha muszáj!</value>
-  </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternatív világos mód</value>
-  </data>
-  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Sötét mód engedélyezése amikor az eszköz nincs hálózathoz csatlakoztatva.</value>
-  </data>
-  <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Szürkeárnyalatos szűrő használata (Win + Ctrl + C -t küld)</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energiatakarékos enyhítés a témaváltáshoz</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>Ez csak akkor működik, ha nem engedélyezte manuálisan az akkumulátorkímélőt!</value>
-  </data>
-  <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Használjon bejelentkezési feladatot indítási bejegyzés helyett</value>
-  </data>
-  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Többfelhasználós támogatás</value>
-  </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>Ez a lehetőség le van tiltva, mert még nem telepítette a Windows 10 2019. április 10-i frissítést a számítógépére.</value>
-  </data>
-  <data name="cmbAccentColor" xml:space="preserve">
-    <value>Kiemelő szín a tálcához</value>
-  </data>
-  <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Alkalmazkodjon a rendszerhez</value>
-  </data>
+        <value>Activer le changement de thème automatique</value>
+        <comment/>
+    </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Mindig sötét</value>
-  </data>
+        <value>Toujours sombre</value>
+        <comment/>
+    </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Mindig világos</value>
-  </data>
-  <data name="dbCurrently" xml:space="preserve">
-    <value>Jelenleg:</value>
-  </data>
-  <data name="dbDark" xml:space="preserve">
-    <value>Háttérkép a sötét módhoz</value>
-  </data>
-  <data name="dbDel" xml:space="preserve">
-    <value>Törlés/Letiltás</value>
-  </data>
-  <data name="dbErrorText" xml:space="preserve">
-    <value>Lehet, hogy a képfájlja sérült, vagy az elérési út nem létezik.</value>
-  </data>
-  <data name="dbFilePicker" xml:space="preserve">
-    <value>Fájl kiválasztása</value>
-  </data>
-  <data name="dbLight" xml:space="preserve">
-    <value>Háttérkép a világos témához</value>
-  </data>
-  <data name="dbMainHeader" xml:space="preserve">
-    <value>Asztal háttere</value>
-  </data>
-  <data name="dbPictures" xml:space="preserve">
-    <value>Képek</value>
-  </data>
-  <data name="dbPreviewError" xml:space="preserve">
-    <value>Nem tudtuk előállítani a kép előnézetét, sajnáljuk!</value>
-  </data>
-  <data name="dbSavedError" xml:space="preserve">
-    <value>Nem sikerült elmenteni a beállításait, sajnáljuk!</value>
-  </data>
-  <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Kérjük két háttérképet válasszon</value>
-  </data>
-  <data name="dbSelectImage" xml:space="preserve">
-    <value>Válasszon képet</value>
-  </data>
-  <data name="dbTitle" xml:space="preserve">
-    <value>Konfigurálja az Asztal hátterét</value>
-  </data>
-  <data name="dbUseCurrent" xml:space="preserve">
-    <value>használja az aktuális hátteret</value>
-  </data>
+        <value>Toujours clair</value>
+        <comment/>
+    </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Funkciók engedélyezése a Windows 1903 rendszerhez</value>
-  </data>
+        <value>Activer les fonctionnalités pour Windows 1903</value>
+        <comment/>
+    </data>
+  <data name="lblApps" xml:space="preserve">
+        <value>Applications :</value>
+        <comment/>
+    </data>
+  <data name="lblCustomStart" xml:space="preserve">
+        <value>Heure de début personnalisée</value>
+    </data>
+  <data name="lblDark" xml:space="preserve">
+        <value>Sombre</value>
+    </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+        <value>Thème sombre</value>
+    </data>
+  <data name="lblEdge" xml:space="preserve">
+        <value>Edge (ancienne version) :</value>
+    </data>
+  <data name="lblLight" xml:space="preserve">
+        <value>Clair</value>
+    </data>
+  <data name="lblLightTheme" xml:space="preserve">
+        <value>Thème clair</value>
+    </data>
+  <data name="lblSettings" xml:space="preserve">
+        <value>Paramètres</value>
+    </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+        <value>Changer le thème actuel</value>
+    </data>
+  <data name="lblSystem" xml:space="preserve">
+        <value>Système :</value>
+    </data>
+  <data name="lblThirdParty" xml:space="preserve">
+        <value>Logiciels tiers utilisés</value>
+    </data>
+  <data name="lblUpdates" xml:space="preserve">
+        <value>Mises à jour</value>
+    </data>
+  <data name="locationCheckBox" xml:space="preserve">
+        <value>Utiliser le service de localisation</value>
+    </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+        <value>Vos modifications ont été enregistrées</value>
+    </data>
+  <data name="msgClickApply" xml:space="preserve">
+        <value>Définissez une heure et les modifications seront automatiquement enregistrées.</value>
+    </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+        <value>Télécharger la mise à jour</value>
+    </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+        <value>Une erreur est survenue :(</value>
+    </data>
+  <data name="msgLocPerm" xml:space="preserve">
+        <value>Cette application a besoin d'accéder à votre localisation</value>
+    </data>
+  <data name="msgNoUpd" xml:space="preserve">
+        <value>Aucune nouvelle mise à jour disponible.</value>
+    </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+        <value>Récupération de votre emplacement…</value>
+    </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+        <value>Recherche de mises à jour…</value>
+    </data>
+  <data name="msgThemeError" xml:space="preserve">
+        <value>Avertissement : Impossible de détecter votre thème actuel</value>
+    </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+        <value>Une nouvelle mise à jour est disponible !</value>
+    </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+            <value>Merci d'utiliser Auto Dark Mode !
+
+Une nouvelle version comportant des corrections et des améliorations est disponible sur GitHub.
+Souhaitez-vous l'installer ?
+
+Version installée : {0}, nouvelle version : {1}</value>
+    </data>
+  <data name="Title" xml:space="preserve">
+        <value>Thème sombre automatique</value>
+    </data>
+  <data name="updateButton" xml:space="preserve">
+        <value>Vérifier les mises à jour</value>
+    </data>
+  <data name="updateInfoText" xml:space="preserve">
+        <value>Nous vérifions les mise à jour au démarrage de l'application.</value>
+    </data>
+  <data name="userFeedback" xml:space="preserve">
+        <value>Bienvenue</value>
+    </data>
+  <data name="welcomeText" xml:space="preserve">
+        <value>Activez l'option pour activer le changement de thème automatique</value>
+    </data>
+  <data name="lblTranslator" xml:space="preserve">
+        <value>Traducteur : Nathan Bonnemains</value>
+    </data>
+  <data name="lblCity" xml:space="preserve">
+        <value>Ville</value>
+    </data>
+  <data name="lblPosition" xml:space="preserve">
+        <value>Emplacement</value>
+    </data>
+  <data name="restartNeeded" xml:space="preserve">
+        <value>Redémarrez l'application pour appliquer les modifications</value>
+    </data>
+  <data name="lblLanguage" xml:space="preserve">
+        <value>Langue :</value>
+    </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+        <value>Couleur d'accentuation pour la barre des tâches</value>
+    </data>
+  <data name="cancel" xml:space="preserve">
+        <value>Annuler</value>
+    </data>
+  <data name="dbCurrently" xml:space="preserve">
+        <value>Actuellement :</value>
+    </data>
+  <data name="dbDark" xml:space="preserve">
+        <value>Fond d'écran pour le thème sombre</value>
+    </data>
+  <data name="dbDel" xml:space="preserve">
+        <value>Supprimer/Désactiver</value>
+    </data>
+  <data name="dbFilePicker" xml:space="preserve">
+        <value>Sélectionner un fichier</value>
+    </data>
+  <data name="dbLight" xml:space="preserve">
+        <value>Fond d'écran pour le thème clair</value>
+    </data>
+  <data name="dbMainHeader" xml:space="preserve">
+        <value>Arrière-plan du bureau</value>
+    </data>
+  <data name="dbPictures" xml:space="preserve">
+        <value>Images</value>
+    </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+        <value>Veuillez sélectionner deux fonds d'écran</value>
+    </data>
+  <data name="dbSelectImage" xml:space="preserve">
+        <value>Veuillez sélectionner une image</value>
+    </data>
+  <data name="dbTitle" xml:space="preserve">
+        <value>Configurer l'arrière-plan du bureau</value>
+    </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+        <value>Utiliser l'arrière-plan actuel</value>
+    </data>
   <data name="disabled" xml:space="preserve">
-    <value>Tiltva</value>
-  </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>Helló! Köszönjük, hogy az Auto Dark Mode alkalmazást használja. Hogy tetszik önnek eddig?
-
-Ez az alkalmazás kellemesebbé teszi mindennapjait, azáltal, hogy gondoskodik a szeméről. Ugyanakkor teljesen ingyenes, hirdetésmentes, nem gyűjt felhasználói adatokat és nyílt forráskódú.
-Ez a projekt nem hoz nekem semennyi hasznot.
-
-Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis összegtől is boldogan ugrálnék a lakásomban. Csak annyit adományozzon, amennyire ön értékeli a munkámat.</value>
-  </data>
-  <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Miért kellene adományoznia?</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>Hogyan lehet adományozni?</value>
-  </data>
-  <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Pénzt küldhet nekem PayPal-on keresztül. Ez teljesen önkéntes, és nem szabad semmilyen kompenzációra számítani.</value>
-  </data>
+        <value>Désactivé</value>
+    </data>
   <data name="enabled" xml:space="preserve">
-    <value>Engedélyezve</value>
-  </data>
+        <value>Activé</value>
+    </data>
+  <data name="or" xml:space="preserve">
+        <value>ou</value>
+    </data>
+  <data name="save" xml:space="preserve">
+        <value>Enregistrer</value>
+    </data>
+  <data name="dbErrorText" xml:space="preserve">
+        <value>Peut-être que votre fichier d'image est corrompu ou que le chemin d'accès n'existe pas.</value>
+    </data>
+  <data name="dbPreviewError" xml:space="preserve">
+        <value>Nous n'avons pas pu générer d'aperçu pour votre image.</value>
+    </data>
+  <data name="dbSavedError" xml:space="preserve">
+        <value>Nous n'avons pas pu enregistrer vos paramètres.</value>
+    </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+        <value>Une erreur est survenue</value>
+    </data>
+  <data name="cbAccentColor" xml:space="preserve">
+        <value>Visible uniquement avec le thème sombre.
+Si vous rencontrez des problèmes : augmentez le délai de transition dans les paramètres.</value>
+    </data>
+  <data name="info" xml:space="preserve">
+        <value>Informations</value>
+    </data>
+  <data name="cb12HourTime" xml:space="preserve">
+        <value>Format 12 heures</value>
+    </data>
+  <data name="msgClose" xml:space="preserve">
+        <value>Fermer</value>
+    </data>
+  <data name="msgNo" xml:space="preserve">
+        <value>Non</value>
+    </data>
+  <data name="MsgYes" xml:space="preserve">
+        <value>Oui</value>
+    </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+        <value>Vérification automatique des mises à jour</value>
+    </data>
+  <data name="errorThemeApply" xml:space="preserve">
+        <value>Désolé, mais nous n'avons pas pu appliquer vos paramètres.
+
+Voici ce que vous pouvez essayer :
+- Redémarrer le service Auto Dark Mode
+- Vérifier si le service est en cours d'exécution
+- Fermer le service, supprimer le fichier config.yaml et réeffectuer la configuration
+
+Si ces choses n'ont pas aidé, vous pouvez créer une issue sur GitHub. Vous pouvez accéder à l'issue en cliquant sur le bouton « Oui ».</value>
+    </data>
+  <data name="errorNumberInput" xml:space="preserve">
+        <value>Erreur : Votre saisie est invalide</value>
+    </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+        <value>Transition après la mise en veille (non recommandé)</value>
+    </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+        <value>Les appareils mobiles, comme les produits Microsoft Surface, utilisent un nouveau type de mode veille.
+L'activation de cette option permet de s'assurer que le thème du mode sombre automatique change immédiatement après la sortie de veille de votre ordinateur.
+Mais elle réduit également l'autonomie de la batterie, alors ne l'activez que si nécessaire !</value>
+    </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+        <value>En raison d'un défaut de Windows, la barre des tâches ne change pas correctement de couleur en mode économiseur de batterie. Veuillez désactiver l'économiseur de batterie si vous rencontrez des problèmes.</value>
+    </data>
+  <data name="lblOffset" xml:space="preserve">
+        <value>Décalage</value>
+    </data>
+  <data name="offsetButton" xml:space="preserve">
+        <value>Définir</value>
+    </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+        <value>Ces options sont désactivées lorsque vous utilisez un thème Windows.
+Vous pouvez les configurer individuellement dans votre thème Windows.</value>
+    </data>
+  <data name="NavbarApps" xml:space="preserve">
+        <value>Applications</value>
+    </data>
+  <data name="NavbarSettings" xml:space="preserve">
+        <value>Paramètres</value>
+    </data>
+  <data name="NavbarTime" xml:space="preserve">
+        <value>Heure</value>
+    </data>
+  <data name="OpenPath" xml:space="preserve">
+        <value>Ouvrir le dossier</value>
+    </data>
+  <data name="ThemeDark" xml:space="preserve">
+        <value>Thème sombre :</value>
+    </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+        <value>Créez vos thèmes</value>
+    </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+        <value>Sélectionnez vos thèmes</value>
+        <comment/>
+    </data>
+  <data name="ThemeLight" xml:space="preserve">
+        <value>Thème clair :</value>
+        <comment/>
+    </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+        <value>Thème de Windows (plus de fonctionnalités)</value>
+        <comment/>
+    </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+        <value>Fond d'écran du bureau (recommandé)</value>
+        <comment/>
+    </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+        <value>Cliquez pour ouvrir les paramètres de thème de Windows.</value>
+        <comment/>
+    </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+        <value>Maintenant, naviguez jusqu'à « Couleurs » et changez la couleur du système en « Clair » pour le thème clair. Sélectionnez votre fond d'écran préféré, le curseur de la souris et la couleur d'accentuation.</value>
+        <comment/>
+    </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+        <value>Revenez aux paramètres du thème et enregistrez-le.</value>
+        <comment/>
+    </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+        <value>Répétez ce processus pour le thème sombre.</value>
+        <comment/>
+    </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+        <value>Délai de transition pour la couleur de la barre des tâches (en ms) :</value>
+        <comment/>
+    </data>
+  <data name="NavbarAbout" xml:space="preserve">
+        <value>À propos</value>
+        <comment/>
+    </data>
+  <data name="NavbarTitle" xml:space="preserve">
+        <value>Menu</value>
+        <comment/>
+    </data>
+  <data name="restart" xml:space="preserve">
+        <value>Redémarrer</value>
+        <comment/>
+    </data>
+  <data name="rbCustomHours" xml:space="preserve">
+        <value>Définir des horaires personnalisés</value>
+        <comment/>
+    </data>
+  <data name="rbLocation" xml:space="preserve">
+        <value>Du coucher au lever du soleil</value>
+        <comment/>
+    </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+        <value>Étape</value>
+        <comment/>
+    </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+        <value>Utiliser un filtre de couleur (envoie Win + Ctrl + C)</value>
+        <comment/>
+    </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+        <value>Utiliser une tâche planifiée à la connexion plutôt qu'une entrée au démarrage</value>
+        <comment/>
+    </data>
+  <data name="ThemeSelection" xml:space="preserve">
+        <value>Sélectionner le thème :</value>
+        <comment/>
+    </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+        <value>Une erreur s'est produite lors de l'application des thèmes sélectionnés. Nous avons désactivé le changement de thème</value>
+        <comment/>
+    </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+        <value>Thème clair alternatif</value>
+        <comment/>
+    </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+        <value>Télécharger l'extension</value>
+        <comment/>
+    </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+        <value>Outils recommandés</value>
+        <comment/>
+    </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+        <value>Cette extension du navigateur permet aux sites Web de respecter le thème sombre dans Chrome, Firefox et Edge.</value>
+        <comment/>
+    </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+        <value>Non trouvé</value>
+        <comment/>
+    </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+        <value>Pourquoi faire un don ?</value>
+        <comment/>
+    </data>
+  <data name="DonationHowTo" xml:space="preserve">
+        <value>Comment donner ?</value>
+        <comment/>
+    </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+        <value>Vous pouvez m'envoyer de l'argent via PayPal. C'est totalement volontaire et vous ne devez pas vous attendre à une quelconque compensation.</value>
+        <comment/>
+    </data>
+  <data name="NavbarDonation" xml:space="preserve">
+        <value>Faire un don</value>
+        <comment/>
+    </data>
+  <data name="donationDescription" xml:space="preserve">
+        <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous aimez l'application jusqu'à présent ?
+Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est complètement gratuite, sans publicité, ne collecte pas les données des utilisateurs et est open source.
+Je ne génère aucun profit avec ce projet.
+
+C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant me fait sauter de joie dans mon appartement. Faites un don dans la mesure où vous appréciez mon travail.</value>
+        <comment/>
+    </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+        <value>Une erreur s'est produite lors de l'application d'un fichier .theme. Le thème que vous aviez créé a peut-être été supprimé ou déplacé. C'est pourquoi nous avons désactivé le changement de thème pour le moment. Pour le réactiver, ouvrez Auto Dark Mode et configurez les paramètres {0}.</value>
+        <comment/>
+    </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>A következő problémába ütköztünk:
+        <value>Nous avons rencontré le problème suivant :
 {0}
 
-Most megpróbáljuk megoldani ezt a problémát egy algoritmus futtatásával rendszergazdaként. Talán ez segíteni fog.
-Az Auto Dark Mode ezt követően újraindul, és újra kell alkalmaznia a beállításait, sajnálom!
+Nous allons tenter de résoudre ce problème en exécutant un algorithme en tant qu'administrateur. Auto Dark Mode redémarrera ensuite et vous devrez réappliquer vos paramètres.
 
-Mellékjegyzet: SOHA ne futtassa manuálisan rendszergazdaként az Auto Dark Mode módot!</value>
-  </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>Hiba: A bevitt adatok érvénytelenek</value>
-  </data>
-  <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Hiba történt</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Sajnáljuk, de nem tudtuk alkalmazni a beállításait.
-
-Íme néhány dolog, amit kipróbálhat:
-- Távolítsa el, majd telepítse újra az Auto Dark Mode alkalmazást.
-- Próbálja meg kikapcsolni a(z) {0} opciót az Auto Dark Mode beállításai között.
-- Ha engedélyezte az Asztal háttérképet, tiltsa le a funkciót, és próbálja újra.
-
-Ha ezek a dolgok sem segítenek, megjegyzést fűzhet a GitHub problémához egy a hibával kapcsolatos képernyőkép csatolásával. A probléma eléréséhez kattintson az "Igen" gombra.</value>
-  </data>
-  <data name="info" xml:space="preserve">
-    <value>Infó</value>
-  </data>
-  <data name="lblApps" xml:space="preserve">
-    <value>Alkalmazások:</value>
-  </data>
-  <data name="lblCity" xml:space="preserve">
-    <value>Város</value>
-  </data>
-  <data name="lblCustomStart" xml:space="preserve">
-    <value>Egyéni kezdési idő</value>
-  </data>
-  <data name="lblDark" xml:space="preserve">
-    <value>Sötét</value>
-  </data>
-  <data name="lblDarkTheme" xml:space="preserve">
-    <value>Sötét téma</value>
-  </data>
-  <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy):</value>
-  </data>
-  <data name="lblLanguage" xml:space="preserve">
-    <value>Nyelv:</value>
-  </data>
-  <data name="lblLight" xml:space="preserve">
-    <value>Világos</value>
-  </data>
-  <data name="lblLightTheme" xml:space="preserve">
-    <value>Világos téma</value>
-  </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>Eltolás</value>
-  </data>
-  <data name="lblReset" xml:space="preserve">
-    <value>Visszaállítás</value>
-  </data>
-  <data name="lblSettings" xml:space="preserve">
-    <value>Beállítások</value>
-  </data>
-  <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Jelenlegi téma váltása</value>
-  </data>
-  <data name="lblSystem" xml:space="preserve">
-    <value>Rendszer:</value>
-  </data>
-  <data name="lblThirdParty" xml:space="preserve">
-    <value>Használt harmadik féltől származó szoftver</value>
-  </data>
-  <data name="lblTranslator" xml:space="preserve">
-    <value>Fordító: Armin Osaj</value>
-  </data>
-  <data name="lblUpdates" xml:space="preserve">
-    <value>Frissítések</value>
-  </data>
-  <data name="locationCheckBox" xml:space="preserve">
-    <value>Használja a Helyszolgáltatást</value>
-  </data>
-  <data name="locationCityNotFound" xml:space="preserve">
-    <value>Nem található</value>
-  </data>
-  <data name="msgBatterySaver" xml:space="preserve">
-    <value>A Windows hibája miatt a tálca nem váltja megfelelően a színét akkumulátorkímélő módban. Ha problémák merülnek fel, kapcsolja ki az akkumulátorkímélőt.</value>
-  </data>
-  <data name="msgChangesSaved" xml:space="preserve">
-    <value>A váloztatásaid el lettek mentve!</value>
-  </data>
-  <data name="msgClickApply" xml:space="preserve">
-    <value>A módosítások mentéséhez kattintson az Alkalmaz gombra.</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>Bezárás</value>
-  </data>
-  <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Frissítés letöltése</value>
-  </data>
-  <data name="msgErrorOcc" xml:space="preserve">
-    <value>hiba történt :(</value>
-  </data>
-  <data name="msgLocPerm" xml:space="preserve">
-    <value>Ennek az alkalmazásnak szüksége van az ön tartózkodási helyéhez</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>Nem</value>
-  </data>
-  <data name="msgNoUpd" xml:space="preserve">
-    <value>Nincsenek új frissítések.</value>
-  </data>
-  <data name="msgSearchLoc" xml:space="preserve">
-    <value>Az ön helyzetének keresése...</value>
-  </data>
-  <data name="msgSearchUpd" xml:space="preserve">
-    <value>Frissítések keresése...</value>
-  </data>
-  <data name="msgThemeError" xml:space="preserve">
-    <value>Figyelem: Nem tudtuk megállapítani az aktuális témát.</value>
-  </data>
-  <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Új frissítés érhető el!</value>
-  </data>
-  <data name="msgUpdaterText" xml:space="preserve">
-    <value>Köszönjük, hogy az Auto Dark Mode alkalmazást használja!
-
-Egy új verzió érhető el a GitHub-on javításokkal és fejlesztésekkel.
-Szeretné letölteni?
-
-Jelenleg telepített verzió: {0}, új verzió: {1}</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>Igen</value>
-  </data>
-  <data name="NavbarAbout" xml:space="preserve">
-    <value>Rólunk</value>
-  </data>
-  <data name="NavbarApps" xml:space="preserve">
-    <value>Alkalmazások</value>
-  </data>
-  <data name="NavbarDonation" xml:space="preserve">
-    <value>Támogatás</value>
-  </data>
-  <data name="NavbarSettings" xml:space="preserve">
-    <value>Beállítások</value>
-  </data>
-  <data name="NavbarTime" xml:space="preserve">
-    <value>Idő</value>
-  </data>
-  <data name="NavbarTitle" xml:space="preserve">
-    <value>Menü</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>Háttérkép/Téma</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>Beállít</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>Mappa megnyitása</value>
-  </data>
-  <data name="or" xml:space="preserve">
-    <value>vagy</value>
-  </data>
-  <data name="rbCustomHours" xml:space="preserve">
-    <value>Egyéni órák beállítása</value>
-  </data>
-  <data name="rbLocation" xml:space="preserve">
-    <value>Napnyugtától napkeltéig</value>
-  </data>
-  <data name="restart" xml:space="preserve">
-    <value>Újraindítás</value>
-  </data>
-  <data name="restartNeeded" xml:space="preserve">
-    <value>A változások megtekintéséhez újra kell indítani az alkalmazást</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>Mentés</value>
-  </data>
-  <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Késleltetés a tálca színeinek váltásakor (ms):</value>
-  </data>
-  <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Az energiatakarékos csúszka alapértelmezett értéke</value>
-  </data>
-  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>Ajánlott eszközök</value>
-  </data>
-  <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Ez a böngészőbővítmény beállítja a webhelyeket Chrome, a Firefox és az Edge böngészőkben, hogy alkalmazkodjanak a rendszer témájához.</value>
-  </data>
+Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellement !</value>
+        <comment/>
+    </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Segítségre van szüksége egy problémával kapcsolatban?</value>
-  </data>
+        <value>Vous rencontrez un problème et avez besoin d'aide ?</value>
+        <comment/>
+    </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+        <value>Support multi-utilisateurs</value>
+        <comment/>
+    </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Opcionális késleltetés a szürkeárnyalatos színszűrő aktiválásához:</value>
-  </data>
-  <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Hiba történt a kiválasztott témák alkalmazása során, letiltottuk a témaváltást</value>
-  </data>
-  <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Hiba történt a .theme-fájl alkalmazása során. Lehet, hogy a létrehozott témát törölték vagy áthelyezték. Ezért egyelőre deaktiváltuk a témaváltást. Az újbóli engedélyezéshez nyissa meg az Auto Dark mode alkalmazást, és konfigurálja a {0} Beállításokat.</value>
-  </data>
-  <data name="ThemeDark" xml:space="preserve">
-    <value>Sötét téma:</value>
-  </data>
-  <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Saját témák készítése:</value>
-  </data>
-  <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Saját téma kiválasztása</value>
-  </data>
-  <data name="ThemeLight" xml:space="preserve">
-    <value>Világos téma:</value>
-  </data>
-  <data name="ThemeSelection" xml:space="preserve">
-    <value>Mód kiválasztása:</value>
-  </data>
-  <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows téma (több funkció)</value>
-  </data>
-  <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Asztali háttérkép (ajánlott)</value>
-  </data>
-  <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Lépés</value>
-  </data>
-  <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Kattintson ide a Windows téma beállításainak megnyitásához.</value>
-  </data>
-  <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Most keresse meg a „Színek” elemet, és változtassa meg a rendszer színét „Világos” -ra a világos témához. Válaszd ki a kedvenc háttérképedet, egérkurzorodat és a téma színét.</value>
-  </data>
-  <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Térjen vissza a téma beállításaihoz, és mentse el a témát.</value>
-  </data>
-  <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Ismételje meg ezt a folyamatot a sötét témához.</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
-  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Ezek az opciók le vannak tiltva a Windows téma használata közben.
-A Windows téma beállításai között egyedileg beállíthatja őket.</value>
-  </data>
-  <data name="updateButton" xml:space="preserve">
-    <value>Frissítések keresése</value>
-  </data>
-  <data name="updateInfoText" xml:space="preserve">
-    <value>A program minden indításakor ellenőrizzük, hogy van-e elérhető frissítés.</value>
-  </data>
-  <data name="userFeedback" xml:space="preserve">
-    <value>Üdvözöljük</value>
-  </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>Letöltés később</value>
-  </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Ne emlékeztessen többször</value>
-  </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>Letöltés most</value>
-  </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>Az elmúlt néhány hónapban keményen dolgoztunk a lehető legjobb frissítés érdekében. Most itt van!
-
-Az Auto Dark Mode X teljesen a semmiből lett újra írva. Most egy igazi háttérfeladatot tartalmaz, ahelyett, hogy a Windows Feladatütemezőre hagyatkozna. Ez azt jelenti, hogy egy megbízhatóbb és rugalmasabb témaváltási élményt kap!
-
-Igen, ez több erőforrást emészt fel a háttérben, de cserébe több funkciót kínálunk Önnek a termelékenység növelése érdekében. Például:
-- Játék mód: letiltja a témaváltást amikor éppen játszik vagy ha a GPU foglalt.
-- Témaváltás billentyű parancsokkal
-És még több minden!
-
-A frissítés mindenki számára alkalmas, kivéve az ARM-eszközök tulajdonosait. Nekik problémái lesznek az akkumulátor élettartamával, mert a háttérfolyamatot emulálni kell (csak ott!).</value>
-  </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Az Auto Dark Mode X elérhető</value>
-  </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Az X verzió egy nagyszerű, nagy frissítés, amelyet mindenképpen ki kell próbálni! Biztos, hogy NEM akarja letölteni? Soha többé nem fogjuk emlékeztetni!</value>
-  </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>Biztos benne?</value>
-  </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>Aktiválja a jelölőnégyzetet az automatikus témaváltás engedélyezéséhez</value>
-  </data>
+        <value>Délai facultatif pour l'activation du filtre de couleur en niveaux de gris :</value>
+        <comment/>
+    </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+        <value>Adapter au système</value>
+        <comment/>
+    </data>
+  <data name="lblReset" xml:space="preserve">
+        <value>Réinitialiser</value>
+        <comment/>
+    </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+        <value>Activer le thème sombre lorsque l'appareil est débranché</value>
+        <comment/>
+    </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+        <value>Valeur par défaut du curseur d'économie d'énergie</value>
+        <comment/>
+    </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+        <value>Réduction de la consommation d'énergie pour le changement de thème</value>
+        <comment/>
+    </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+        <value>Cela ne fonctionne que si vous n'avez pas activé l'économiseur de batterie manuellement !</value>
+        <comment/>
+    </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+        <value>Modes de transition</value>
+        <comment/>
+    </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+        <value>Personnalisation</value>
+        <comment/>
+    </data>
+  <data name="applyGeoButton" xml:space="preserve">
+        <value>Appliquer les coordonnées</value>
+        <comment/>
+    </data>
+  <data name="cmb1903" xml:space="preserve">
+        <value>Cette option est désactivée, car vous n'avez pas installé la mise à jour d'avril 2019 de Windows 10 sur votre machine.</value>
+        <comment/>
+    </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+        <value>Coordonnées géographiques</value>
+        <comment/>
+    </data>
+  <data name="headerLocationData" xml:space="preserve">
+        <value>Données de localisation</value>
+        <comment/>
+    </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+        <value>Du coucher au lever du soleil (coordonnées géographiques)</value>
+        <comment/>
+    </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+        <value>Coordonnées géographiques pour votre emplacement</value>
+        <comment/>
+    </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+        <value>Ouvrir le fichier de configuration</value>
+        <comment/>
+    </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+        <value>Ouvrir le dossier de configuration</value>
+        <comment/>
+    </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+        <value>Ouvrir le fichier du journal</value>
+        <comment/>
+    </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+        <value>Configuration</value>
+        <comment/>
+    </data>
+  <data name="lblOffice" xml:space="preserve">
+        <value>Microsoft Office (ancienne version) :</value>
+        <comment/>
+    </data>
+  <data name="lblPickTheme" xml:space="preserve">
+        <value>Sélectionner un thème</value>
+        <comment/>
+    </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+        <value>Sélectionner un fond d'écran</value>
+        <comment/>
+    </data>
+  <data name="rbDisabled" xml:space="preserve">
+        <value>Désactivé</value>
+        <comment/>
+    </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+        <value>Masquer l'icône de la barre des tâches (non recommandé)</value>
+        <comment/>
+    </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+        <value>Cette fonctionnalité est désactivée tant que le mode thème est activé.</value>
+        <comment/>
+    </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+        <value>Cette fonctionnalité est désactivée tant que le mode fond d'écran est activé.</value>
+        <comment/>
+    </data>
+  <data name="tbPickTheme" xml:space="preserve">
+        <value>Offre plus de fonctionnalités, mais vous devez configurer un fichier .theme pour Windows. Personnalisez votre fond d'écran par écran, utilisez un diaporama, modifiez le curseur de votre souris, sélectionnez une couleur d'accentuation et des sons spécifiques.</value>
+        <comment/>
+    </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+        <value>Offre moins de fonctionnalités, mais est plus facile à configurer. Personnalisez votre fond d'écran pour tous les écrans, les écrans individuellement ou sélectionnez une couleur d'arrière-plan.</value>
+        <comment/>
+    </data>
+  <data name="tbUpdates" xml:space="preserve">
+        <value>Nous vérifions l'existence de nouvelles versions d'Auto Dark Mode en arrière-plan. Lorsqu'une mise à jour est disponible, nous vous en informons par une notification.</value>
+        <comment/>
+    </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+        <value>Télécharger et installer automatiquement les nouvelles versions</value>
+        <comment/>
+    </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+        <value>Ne pas afficher de notifications</value>
+        <comment/>
+    </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+        <value>Sélectionner le canal de mise à jour</value>
+        <comment/>
+    </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+        <value>Vérifier les mises à jour au démarrage d'Auto Dark Mode</value>
+        <comment/>
+    </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+        <value>14 jours</value>
+        <comment/>
+    </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+        <value>3 jours</value>
+        <comment/>
+    </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+        <value>7 jours</value>
+        <comment/>
+    </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+        <value>Dernière vérification</value>
+        <comment/>
+    </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+        <value>jamais</value>
+        <comment/>
+    </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+        <value>Fréquence de mise à jour</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+        <value>Thème sombre</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+        <value>Thème clair</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+        <value>Image</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+        <value>Image (plusieurs écrans)</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+        <value>Couleur</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+        <value>Thème</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+        <value>Écran</value>
+        <comment/>
+    </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+        <value>Type</value>
+        <comment/>
+    </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+        <value>Supprimer les écrans non connectés</value>
+        <comment/>
+    </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+        <value>Fond d'écran</value>
+        <comment/>
+    </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+        <value>Couleur</value>
+        <comment/>
+    </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+        <value>Code héxadécimal</value>
+        <comment/>
+    </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+        <value>Activer le changement de fond d'écran</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+        <value>Ne pas changer pendant les jeux vidéos</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+        <value>Rapide (1 échantillon)</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+        <value>Moyen (2 échantillons)</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+        <value>Lent (3 échantillons)</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+        <value>Vitesse de détection de l'utilisation de la carte graphique</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+        <value>Appareils alimentés par batterie</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+        <value>Conditions</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+        <value>Utilisation minimale de la carte graphique pour décaler le changement</value>
+        <comment/>
+    </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+        <value>Restaurer les thèmes en cas de modification externe</value>
+        <comment/>
+    </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+        <value>Latitude</value>
+        <comment/>
+    </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+        <value>Longitude</value>
+        <comment/>
+    </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+        <value>Le service n'est pas encore en cours d'exécution, veuillez patienter…</value>
+        <comment/>
+    </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+        <value>Démarrage du service</value>
+        <comment/>
+    </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+        <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez.</value>
+        <comment/>
+    </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+        <value>Activer le changement de thème de Windows</value>
+        <comment/>
+    </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+        <value>Désactivé</value>
+        <comment/>
+    </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+        <value>Activé</value>
+        <comment/>
+    </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+        <value>Nous suivre</value>
+        <comment/>
+    </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+        <value>Thème</value>
+        <comment/>
+    </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+        <value>Fleurs</value>
+        <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+        <value>Windows</value>
+        <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+        <value>Windows 10</value>
+        <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+        <value>Windows (Clair)</value>
+        <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+        <value>Mouvement capturé</value>
+        <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+        <value>Windows (Sombre)</value>
+        <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+        <value>Débit</value>
+        <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+        <value>Éclat</value>
+        <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+        <value>Windows (Clair)</value>
+        <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+        <value>Lever de soleil</value>
+        <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+        <value>Chaque jour</value>
+        <comment/>
+    </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+        <value>Cliquez sur Définir pour enregistrer les modifications.</value>
+        <comment/>
+    </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+        <value>Utiliser la couleur d'accentuation de la barre des tâches</value>
+        <comment/>
+    </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+        <value>Couleur d'accentuation uniquement</value>
+        <comment/>
+    </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+        <value>Version</value>
+        <comment/>
+    </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+        <value>Copier</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+        <value>Démarrer Auto Dark Mode avec Windows</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+        <value>Démarrage automatique</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+        <value>Mode :</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+        <value>Chemin :</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+        <value>Actualiser le démarrage automatique</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+        <value>Langue</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+        <value>Redémarrer l'application</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+        <value>Désactivé</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+        <value>Aucun</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+        <value>Non trouvé</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+        <value>Clé du registre</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+        <value>Tâche</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+        <value>Vous avez désactivé l'entrée du démarrage automatique dans Windows.</value>
+        <comment/>
+    </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+        <value>Prochaine mise à jour le</value>
+        <comment/>
+    </data>
+  <data name="WallpaperColor" xml:space="preserve">
+        <value>Couleur</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+        <value>Vous ne pouvez modifier les touches de raccourci que lorsqu'elles sont désactivées.</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+        <value>Raccourci pour forcer le thème sombre</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+        <value>Raccourci pour forcer le thème clair</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+        <value>Raccourcis</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+        <value>Raccourci pour arrêter de forcer le thème</value>
+        <comment/>
+    </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+        <value>Activer les raccourcis du système</value>
+        <comment/>
+    </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+        <value>Forcer le thème sombre</value>
+        <comment/>
+    </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+        <value>Forcer le thème clair</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+        <value>Il n'est pas recommandé de masquer l'icône.
+Voulez-vous vraiment continuer ?</value>
+        <comment/>
+    </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+        <value>Masquer l'icône de la barre des tâches</value>
+        <comment/>
+    </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+        <value>Ouvrir le dossier de configuration</value>
+        <comment/>
+    </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+        <value>Laisser l'application décider</value>
+        <comment/>
+    </data>
 </root>
