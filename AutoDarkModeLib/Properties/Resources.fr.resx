@@ -663,7 +663,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Appareils alimentés par batterie</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Conditions</value>
+    <value>Condition</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
     <value>Utilisation minimale de la carte graphique pour décaler le changement</value>
