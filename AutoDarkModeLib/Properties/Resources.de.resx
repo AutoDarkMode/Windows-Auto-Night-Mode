@@ -307,7 +307,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Nur im dunklen Design sichtbar.
-Falls die Aktivierung Probleme verursacht: erhöhe die Verzögerungszeit in den Einstellungen. </value>
+Falls die Aktivierung Probleme verursacht: erhöhe bitte die Verzögerungszeit in den Einstellungen.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
