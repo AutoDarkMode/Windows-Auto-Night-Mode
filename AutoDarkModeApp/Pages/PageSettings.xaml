@@ -264,7 +264,7 @@
                         </StackPanel>
                         <Button Name="ButtonRestart"
                                 Grid.Row="1"
-                                Content="{x:Static p:Resources.SettingsPageRestartButton}"
+                                Content="{x:Static p:Resources.restart}"
                                 HorizontalAlignment="Right"
                                 Grid.Column="2"
                                 Margin="0,5,0,0"
