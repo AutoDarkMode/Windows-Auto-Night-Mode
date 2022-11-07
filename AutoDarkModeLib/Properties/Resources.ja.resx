@@ -779,6 +779,9 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>言語</value>
   </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>Restart App</value>
+  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>無効</value>
   </data>
