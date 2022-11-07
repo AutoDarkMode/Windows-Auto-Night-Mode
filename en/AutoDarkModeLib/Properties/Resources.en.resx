@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -112,768 +112,734 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Ustawienia</value>
+    <value>Instellingen</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Zastosuj</value>
+    <value>Toepassen</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Włącz automatyczne przełączanie motywu</value>
-  </data>
-  <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Dostosuj do motywu</value>
+    <value>Automatisch wisselen van thema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Zawsze ciemny</value>
+    <value>Altijd donker</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Zawsze jasny</value>
+    <value>Altijd licht</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Włącz funkcje dla Windowsa 1903</value>
+    <value>Functies voor Windows 1903 inschakelen</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Aplikacje:</value>
-  </data>
-  <data name="lblAuthor" xml:space="preserve">
-    <value>Twórca: Armin Osaj © 2019</value>
+    <value>Apps:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Wybierz czas uruchamiania</value>
+    <value>Aangepaste starttijd</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Ciemny</value>
+    <value>Donker</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Ciemny motyw</value>
+    <value>Donker thema</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (stara wersja):</value>
+    <value>Edge (oud):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Jasny</value>
+    <value>Licht</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Jasny motyw</value>
+    <value>Licht thema</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Ustawienia</value>
+    <value>Instellingen</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Zmień obecny motyw</value>
+    <value>Van thema wisselen</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System:</value>
+    <value>Systeem:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Zawiera oprogramowanie osób trzecich</value>
+    <value>Gebruikte software van derden</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Aktualizacje</value>
+    <value>Updates</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Użyj usługi lokalizacji</value>
+    <value>Locatiedienst gebruiken</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Zapisano zmiany!</value>
+    <value>Uw wijzigingen zijn opgeslagen.</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Kliknij 'Zastosuj', aby zapisać zmiany</value>
+    <value>Klik op Toepassen om wijzigingen op te slaan</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Pobierz aktualizację</value>
+    <value>Update installeren</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Wystąpił błąd :(</value>
+    <value>Er is een fout opgetreden.</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Aplikacja potrzebuje dostępu do lokalizacji</value>
+    <value>Locatietoegang is vereist</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Brak aktualizacji.</value>
+    <value>Er zijn geen nieuwe updates beschikbaar.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Szukanie lokalizacji...</value>
+    <value>Zoeken naar uw locatie...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Szukanie aktualizacji...</value>
+    <value>Zoeken naar updates...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Uwaga: Nie można wczytać obecnego motywu.</value>
+    <value>Let op: Uw huidige thema kon niet worden gelezen.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>Nowa aktualizacja jest dostępna!</value>
+    <value>Er is een nieuwe update beschikbaar.</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Dziękujemy za używanie Auto Dark Mode!
+    <value>Bedankt voor het gebruiken van Auto Dark Mode!
 
-Nowa wersja programu z poprawkami i dodatkami jest dostępna na GitHubie.
-Chcesz ją pobrać?
+Er is een nieuwe versie beschikbaar op GitHub met fixes en verbeteringen.
+Wilt u deze installeren?
 
-Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
+Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Szukaj aktualizacji</value>
+    <value>Op updates controleren</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Program szuka aktualizacji przy uruchomieniu.</value>
+    <value>Er wordt gezocht naar updates wanneer dit programma wordt gestart.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Witamy</value>
+    <value>Welkom</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Aktywuj kontrolkę na górze, aby włączyć automatyczną zmianę motywu!</value>
+    <value>Vink het selectievakje aan om automatische themawisseling in te schakelen</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Spolszczenie: Jan Bartula</value>
+    <value>Vertalers: ChillTick en Quinten Althues</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Miasto</value>
+    <value>Stad</value>
   </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>Ta opcja nie jest dostępna, ponieważ nie masz zainstalowanego Windowsa 10 April 2019 Update.</value>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Positie</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Aby zastosować zmiany, uruchom ponownie aplikację</value>
+    <value>Het programma moet worden herstart om de wijzigingen door te voeren.</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Język:</value>
+    <value>Taal:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Kolor paska zadań</value>
+    <value>Accentkleur voor taakbalk</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Anuluj</value>
+    <value>Annuleren</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Status:</value>
+    <value>Huidig:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Tapeta ciemnego motywu</value>
+    <value>Achtergrond voor donker thema</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Wyłącz funkcję</value>
+    <value>Verwijderen/uitschakelen</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Wybierz plik</value>
+    <value>Bestand kiezen</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Tapeta jasnego motywu</value>
+    <value>Achtergrond voor licht thema</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Zmiana tapety pulpitu</value>
+    <value>Bureaubladachtergrond</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pliki graficzne</value>
+    <value>Afbeeldingen</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Proszę wybrać dwie tapety pulpitu</value>
+    <value>Selecteer twee achtergronden</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Proszę wybrać obraz</value>
+    <value>Selecteer een afbeelding</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Ustaw tapetę</value>
+    <value>Bureaubladachtergrond instellen</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>Użyj obecnej tapety</value>
+    <value>huidige achtergrond gebruiken</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Wyłączono</value>
+    <value>Uitgeschakeld</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Włączono</value>
+    <value>Ingeschakeld</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>albo</value>
+    <value>of</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Zapisz</value>
+    <value>Opslaan</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Proszę upewnić się, że dany plik istnieje i nie jest uszkodzony.</value>
+    <value>De afbeelding is mogelijk beschadigd of het pad bestaat niet.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Wystąpił błąd podczas wczytywania podglądu pliku graficznego!</value>
+    <value>Er kon geen voorbeeld van uw afbeelding worden vertoond.</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Wystąpił błąd podczas zapisywania ustawień!</value>
+    <value>Uw instellingen konden niet worden opgeslagen.</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Wystąpił błąd</value>
+    <value>Er is een fout opgetreden.</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Widoczny tylko w ciemnym motywie.
-W przypadku błędów: Podwyższ opóźnienie zmiany w ustawieniach.</value>
+    <value>Alleen zichtbaar in donkere modus.
+Als u problemen ondervindt, verhoog dan de wisselvertraging in instellingen. </value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Informacja</value>
+    <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>Zegar 12-godzinny</value>
-  </data>
-  <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Szukaj aktualizacji w tle</value>
-  </data>
-  <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Zmień po obudzeniu z InstantGo (niezalecane)</value>
-  </data>
-  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Urządzenia mobilne, np. Microsoft Surface używają nowego trybu uśpienia.
-Ta opcja włącza automatyczną zmianę motywu po obudzeniu komputera,
-jednak powoduje szybsze zużycie baterii.</value>
-  </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>Błąd: Wprowadzono nieprawidłowe dane</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Przepraszamy, wystąpił błąd podczas zapisywania ustawień.
-
-Zalecamy spróbować:
-- Zainstaluj ponownie Auto Dark Mode
-- Spróbuj wyłączyć "{0}" w ustawieniach.
-- Wyłącz i włącz ponownie zmianę tapety
-
-Jeśli to nie pomoże, prosimy o przesłanie zrzutu ekranu błędu na GitHubie.
-Kliknij ""Tak"", aby otworzyć stronę GitHub.</value>
-  </data>
-  <data name="msgBatterySaver" xml:space="preserve">
-    <value>Z powodu błędu Windowsa zmiana koloru paska zadań w trybie oszczędzania baterii nie działa poprawnie. W przypadku błędów zalecamy wyłączenie tego trybu.</value>
+    <value>12-uursklok</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Zamknij</value>
+    <value>Sluiten</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>Nie</value>
+    <value>Nee</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Tak</value>
+    <value>Ja</value>
   </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>Witaj! Dzięki, że używasz Auto Dark Mode! Jak Ci się podoba?
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Automatisch op updates controleren</value>
+  </data>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Uw instellingen konden niet worden toegepast.
 
-Ta aplikacja sprawia każdy Twój dzień łatwiejszy i dba o Twoje oczy.
-Równocześnie jest całkowicie darmowa, bez reklam i nie szpieguje Twoich danych, a kod źródłowy jest otwarty i publiczny.
-Dlatego niestety nie zarabiam ani grosza na tym projekcie.
+Dit zijn enkele dingen die u kunt proberen:
+- Start de service Auto Dark Mode opnieuw.
+- Controleer of de service wordt uitgevoerd
+- Stop de service, verwijder het bestand config.yaml en stel opnieuw in
 
-Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną.
-Nawet najmniejsza kwota sprawia, że skaczę szczęśliwy po mieszkaniu.
-Podaruj tyle, na ile cenisz moją pracę.</value>
+Als dit niet helpt kunt u een GitHub-issue aanmaken met een schermafbeelding van het probleem. U kunt toegang krijgen tot de issue met de "Ja"-knop.</value>
   </data>
-  <data name="donationTitle" xml:space="preserve">
-    <value>Lubisz Auto Dark Mode?</value>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Fout: Ongeldige waarde ingevoerd</value>
   </data>
-  <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Pobierz rozszerzenie</value>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Wisselen na Connected Standby (niet aanbevolen)</value>
   </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternatywny biały motyw</value>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobiele apparaten zoals Microsoft Surface-producten gebruiken een nieuw soort stand-bymodus. 
+Deze optie staat Auto Dark Mode toe meteen van thema wisselen na het inschakelen van uw computer. 
+Echter gebruikt dit meer accuvermogen, dus schakel ALLEEN in indien nodig.</value>
   </data>
-  <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Użyj szarego filtru kolorów (Win + Ctrl + C)</value>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Als gevolg van een Windows-fout verandert de taakbalk niet correct van kleur in batterijbesparingsmodus. Schakel de batterijbesparing uit als u problemen ondervindt.</value>
   </data>
-  <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Użyj harmonogramu Windowsa zamiast autouruchamiania</value>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Verschuiving</value>
   </data>
-  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Wsparcie wielu użytkowników</value>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Opslaan</value>
   </data>
-  <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Dlaczego?</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>Jak?</value>
-  </data>
-  <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Możesz mi wysłać pieniądze PayPalem. Jest to całkowicie dobrowolne, dlatego niestety nie otrzymasz niczego w zamian.</value>
-  </data>
-  <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Aplikacja napotkała błąd:
-{0}
-
-Spróbujemy naprawić problem, uruchamiając część aplikacji jako administrator.
-Auto Dark Mode zostanie zrestartowany, po czym będzie konieczna ponowna konfiguracja ustawień.
-Przepraszamy za to!
-
-Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</value>
-  </data>
-  <data name="locationCityNotFound" xml:space="preserve">
-    <value>nie znaleziono</value>
-  </data>
-  <data name="NavbarAbout" xml:space="preserve">
-    <value>O programie</value>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Deze opties zijn uitgeschakeld als u een Windows-thema gebruikt. 
+U kunt dit individueel instellen in uw Windows-thema.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Aplikacje</value>
+    <value>Toepassingen</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Ustawienia</value>
+    <value>Instellingen</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Harmonogram</value>
+    <value>Tijd</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Map openen</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Donker thema:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Creëer uw thema's</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Kies uw thema's</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Licht thema:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows-thema (meer functies)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Bureaubladachtergrond (aanbevolen)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Klik hier om Windows-themainstellingen te openen.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Navigeer nu naar 'Kleuren' en stel de systeemkleur in op 'Licht' voor het lichte thema. Selecteer vervolgens uw favoriete bureaubladachtergrond, muisaanwijzer en accentkleur.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Ga terug naar de themainstellingen en sla uw thema op.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Herhaal dit proces voor het donkere thema.</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Vertraging voor taakbalkkleurwisseling (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Over</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>
   </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>Tapeta/Motyw</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>Otwórz katalog</value>
+  <data name="restart" xml:space="preserve">
+    <value>Opnieuw starten</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Ustaw własne godziny</value>
+    <value>Aangepaste tijden kiezen</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Od wschodu do zachodu słońca</value>
-  </data>
-  <data name="restart" xml:space="preserve">
-    <value>Uruchom ponownie</value>
-  </data>
-  <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Opóźnienie zmiany koloru paska zadań (milisekundy):</value>
-  </data>
-  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>Zalecane narzędzia</value>
-  </data>
-  <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>To rozszerzenie stosuje motyw systemu do witryn w Chromie, Firefoxie i Edge.</value>
-  </data>
-  <data name="tbHelp" xml:space="preserve">
-    <value>Masz problem i potrzebujesz pomocy?</value>
-  </data>
-  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Opcjonalne opóźnienie aktywacji szarego filtru kolorów:</value>
-  </data>
-  <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Nastąpił błąd podczas stosowania motywu, wyłączono zmianę motywu.</value>
-  </data>
-  <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Nastąpił błąd podczas stosowania motywu. Być może motyw został usunięty lub przeniesiony. 
-Z tego powodu zmiana motywu została tymczasowo wyłączona. 
-Aby zreaktywować ją, otwórz Auto Dark Mode i skonfiguruj: {0}.</value>
-  </data>
-  <data name="ThemeDark" xml:space="preserve">
-    <value>Ciemny motyw:</value>
-  </data>
-  <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Utwórz motywy</value>
-  </data>
-  <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Wybierz motywy</value>
-  </data>
-  <data name="ThemeLight" xml:space="preserve">
-    <value>Jasny motyw:</value>
-  </data>
-  <data name="ThemeSelection" xml:space="preserve">
-    <value>Wybierz tryb:</value>
-  </data>
-  <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Motyw Windowsa (więcej funkcji)</value>
-  </data>
-  <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Tapeta pulpitu (zalecane)</value>
+    <value>Van zonsonder- tot -opgang</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Krok</value>
+    <value>Stap</value>
   </data>
-  <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Kliknij tutaj, aby otworzyć ustawienia personalizacji.</value>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Gebruik grijswaardenfilter (verstuurt Win + Ctrl + C)</value>
   </data>
-  <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>W sekcji 'Kolory' przy 'Wybierz kolor' zaznacz 'Jasny' dla jasnego motywu. Wybierz ulubioną tapetę, wskaźniki i kolory wiodące.</value>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Taak bij inloggen gebruiken in plaats van Autostart</value>
   </data>
-  <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Wróć do sekcji 'Kompozycje' i zapisz kompozycję.</value>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Modus selecteren:</value>
   </data>
-  <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Powtórz ten proces z ciemnym motywem.</value>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het toepassen van de geselecteerde thema's. Themawisseling is uitgeschakeld.</value>
   </data>
-  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Te opcje są niedostępne, ponieważ korzystasz z kompozycji Windowsa.
-Możesz je dopasować indywidualnie w danej kompozycji.</value>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Alternatief wit thema</value>
   </data>
-  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
-    <value>Pobierz później</value>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Extensie installeren</value>
   </data>
-  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
-    <value>Nie przypominaj mi</value>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Aanbevolen tools</value>
   </data>
-  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
-    <value>Pobierz teraz</value>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Deze browserextensie zorgt ervoor dat websites in Chrome, Firefox en Edge het systeemthema respecteren.</value>
   </data>
-  <data name="VersionXUpdaterDescription" xml:space="preserve">
-    <value>Przez kilka ostatnich miesięcy ciężko pracowaliśmy, aby stworzyć najlepszą aktualizację programu. Teraz nadszedł ten moment!
-
-Auto Dark Mode X został napisany na nowo kompletnie od zera.
-Nowa wersja korzysta z procesu w tle, który w przeciwieństwie do harmonogramu Windowsa gwarantuje płynną zmianę motywu w czasie rzeczywistym!
-
-Co prawda, to zużywa trochę więcej zasobów, ale za to oferujemy Ci więcej funkcji zwiększających Twoją produktywność.
-
-Na przykład:
-- Tryb gry: Zmiana motywu jest wyłączona podczas grania lub jeśli procesor graficzny jest obciążony
-- Zmiana motywu skrótem klawiszowym
-I wiele więcej!
-
-Aktualizację polecamy wszystkim, z wyjątkiem posiadaczy urządzeń z procesorem ARM, na których aplikacja miałaby negatywny wpływ na baterię, iż proces w tle musi być emulowany.</value>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>Niet gevonden</value>
   </data>
-  <data name="VersionXUpdaterHeader" xml:space="preserve">
-    <value>Auto Dark Mode X jest dostępny</value>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Waarom doneren?</value>
   </data>
-  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
-    <value>Wersja X to wielka i ciekawa aktualizacja. Zalecamy wypróbować! Na pewno nie chcesz jej pobrać? Już Ci nigdy więcej nie przypomnimy!</value>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Hoe doneren?</value>
   </data>
-  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
-    <value>Na pewno?</value>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>U kunt geld sturen via PayPal. Het is volledig vrijwillig en u hoeft geen compensatie te verwachten.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>Przekaż darowiznę</value>
-  </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>Dostosuj</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>Zastosuj</value>
-  </data>
-  <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Kopiuj</value>
-  </data>
-  <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Znajdź nas</value>
-  </data>
-  <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Wersja</value>
-  </data>
-  <data name="applyGeoButton" xml:space="preserve">
-    <value>Zastosuj</value>
-  </data>
-  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Przełącz na ciemny motyw przy odłączeniu ładowarki</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Wyłącz oszczędzanie energii podczas zmiany motywu</value>
-  </data>
-  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>Co 14 dni</value>
-  </data>
-  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Codziennie</value>
-  </data>
-  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>Co 3 dni</value>
-  </data>
-  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>Co 7 dni</value>
-  </data>
-  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>Otwórz plik konfiguracji</value>
-  </data>
-  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Otwórz katalog konfiguracji</value>
-  </data>
-  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Otwórz plik dziennika</value>
-  </data>
-  <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Konfiguracja</value>
-  </data>
-  <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Współrzędne geograficzne</value>
-  </data>
-  <data name="headerLocationData" xml:space="preserve">
-    <value>Dane lokalizacji</value>
-  </data>
-  <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Personalizacja</value>
-  </data>
-  <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Tryby przełączania</value>
-  </data>
-  <data name="rbDisabled" xml:space="preserve">
-    <value>Wyłączony</value>
-  </data>
-  <data name="rbLocationGeo" xml:space="preserve">
-    <value>Od wschodu do zachodu słońca (współrzędne geograficzne)</value>
-  </data>
-  <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Domyślna wartość trybu oszczędzania energii</value>
-  </data>
-  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Ukryj ikonę na pasku zadań (niezalecane)</value>
-  </data>
-  <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Uruchamiaj Auto Dark Mode wraz z Windowsem</value>
-  </data>
-  <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autouruchamianie</value>
-  </data>
-  <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Tryb:</value>
-  </data>
-  <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Ścieżka:</value>
-  </data>
-  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Odśwież autouruchamianie</value>
-  </data>
-  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Język</value>
-  </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restartuj</value>
-  </data>
-  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Nie przełączaj podczas grania w gry wideo</value>
-  </data>
-  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Szybkia (1 próbka)</value>
-  </data>
-  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Średnia (2 próbki)</value>
-  </data>
-  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Wolna (3 próbki)</value>
-  </data>
-  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>Prędkość wykrywania zmian</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Urządzenia zasilane akumulatorem</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Przełączanie warunkowe</value>
-  </data>
-  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Próg użycia procesora graficznego (%)</value>
-  </data>
-  <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Znajdź współrzędne dla Twojej lokalizacji</value>
-  </data>
-  <data name="tbUpdates" xml:space="preserve">
-    <value>Aplikacja automatycznie sprawdza dostępność aktualizacji w tle.
-Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
-  </data>
-  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Szerokość</value>
-  </data>
-  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Długość</value>
-  </data>
-  <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Nie</value>
-  </data>
-  <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>Tak</value>
-  </data>
-  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Automatycznie pobieraj i instaluj nowe wersje</value>
-  </data>
-  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Nie pokazuj powiadomień</value>
-  </data>
-  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Kanał aktualizacji</value>
-  </data>
-  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Szukaj aktualizacji przy uruchamianiu</value>
-  </data>
-  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Ostatnie sprawdzenie</value>
-  </data>
-  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Częstotliwość szukania aktualizacji</value>
-  </data>
-  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Użyj koloru paska zadań dla motywu:</value>
-  </data>
-  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Tylko kolor paska zadań</value>
-  </data>
-  <data name="lblPickTheme" xml:space="preserve">
-    <value>Wybierz motyw</value>
-  </data>
-  <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Wybierz tapetę</value>
-  </data>
-  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Wyłączony</value>
-  </data>
-  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>Brak</value>
-  </data>
-  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Nie znaleziono</value>
-  </data>
-  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Klucz rejestru</value>
-  </data>
-  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Zadanie</value>
-  </data>
-  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Wyłączyłeś usługę autouruchamiania w ustawieniach Windowsa.</value>
-  </data>
-  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany motywu.</value>
-  </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany tapety.</value>
-  </data>
-  <data name="tbPickTheme" xml:space="preserve">
-    <value>Więcej funkcji, jednak konieczne jest skonfigurowanie pliku motywu .theme. Pozwala na zastosowanie tapety pulpitu, pokazu slajdów, zmiany kursora myszki, koloru paska zadań i dźwięków systemu.</value>
-  </data>
-  <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Mniej funkcji, za to prostsza konfiguracja. Zastosuj tapetę na pulpit poszczególnych lub wszystkich ekranów albo wybierz kolor tła.</value>
-  </data>
-  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Przywracaj motywy zmienione zewnętrznie</value>
-  </data>
-  <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Motyw</value>
-  </data>
-  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Włącz zmianę motywu Windowsa</value>
-  </data>
-  <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Następna aktualizacja:</value>
-  </data>
-  <data name="WallpaperColor" xml:space="preserve">
-    <value>Kolor</value>
-  </data>
-  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Ciemny motyw</value>
-  </data>
-  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Jasny motyw</value>
-  </data>
-  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>Obraz</value>
-  </data>
-  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>Obraz (wybór ekranów)</value>
-  </data>
-  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Kolor</value>
-  </data>
-  <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Motyw</value>
-  </data>
-  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>Ekran</value>
-  </data>
-  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Usuń odłączone ekrany</value>
-  </data>
-  <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Tapeta</value>
-  </data>
-  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Kod HEX</value>
-  </data>
-  <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Włącz zmianę tapety</value>
-  </data>
-  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Możesz edytować skróty tylko jak są wyłączone.</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>Ustaw ciemny motyw</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>Ustaw jasny motyw</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Skróty klawiszowe</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>Wyłącz stały motyw i wróć do autowyboru</value>
-  </data>
-  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Włącz skróty klawiszowe</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>Działa tylko, jeśli nie aktywowałeś ręcznie oszczędzania energii!</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Ukrywanie ikony nie jest zalecane.
-Czy chcesz kontynuować?</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Ukryj ikonę paska zadań</value>
-  </data>
-  <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Proszę czekać, usługa systemu nie została jeszcze uruchomiona...</value>
-  </data>
-  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Uruchamianie usługi</value>
-  </data>
-  <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Usługa nie odpowiada. Sprawdź czy AutoDarkModeSvc.exe jest uruchomiony i spróbuj ponownie!</value>
-  </data>
-  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Nie przełączaj, jeśli system jest zajęty</value>
-  </data>
-  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Liczba minut, po której system jest uznawany jako bezczynny</value>
-  </data>
-  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Kwiaty</value>
-  </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Kliknij 'Zastosuj', aby zapisać zmiany.</value>
-  </data>
-  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Otwórz katalog konfiguracji</value>
-  </data>
-  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>nigdy</value>
-  </data>
-  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Kolor</value>
-  </data>
-  <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Pozwól decydować aplikacji</value>
-  </data>
-  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Jasny)</value>
-  </data>
-  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Przechwytywanie ruchu</value>
-  </data>
-  <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (Ciemny)</value>
-  </data>
-  <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Przepływ</value>
-  </data>
-  <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Błysk</value>
-  </data>
-  <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Jasny)</value>
-  </data>
-  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Wschód słońca</value>
-  </data>
-  <data name="lblPosition" xml:space="preserve">
-    <value>Pozycja</value>
+    <value>Doneren</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Hallo! Dankuwel voor het gebruiken van Auto Dark Mode! Wat vindt u ervan?
+
+Deze app maakt uw beleving aangenamer door u te helpen voor uw ogen te zorgen. Tegelijkertijd is het compleet gratis, advertentievrij, verzamelt het geen gebruikersgegevens en is het opensource.
+Ik genereer geen inkomsten met dit project.
+
+Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bedrag maakt me zo blij dat ik door mijn hele appartement spring. Doneer zo veel als u mijn werk waard vindt.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Fout bij het toepassen van een .theme-bestand. Misschien is uw thema verwijderd of verplaatst. Hierom is momenteel het wisselen van thema uitgeschakeld. Open Auto Dark Mode en configureer {0} Instellingen.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Het volgende probleem trad op: 
+{0}
+
+Er wordt geprobeerd dit probleem op te lossen door een algoritme uit te voeren als administrator. Dit kan helpen. 
+Auto Dark Mode zal daarna opnieuw opstarten. U zult alles opnieuw moeten instellen, sorry!
+
+N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Hulp nodig bij een probleem?</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Ondersteuning voor meerdere gebruikers</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Vertraging inschakelen grijswaardenfilter:</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Aan systeem aanpassen</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Resetuj</value>
+    <value>Herstellen</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Donker thema inschakelen wanneer niet aangesloten</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Standaardwaarde voor energiebesparingsmodus</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Mitigatie energiebesparingsmodus voor themawisseling</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Dit werkt alleen als energiebesparingsmodus niet handmatig is ingeschakeld.</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Van modus wisselen</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Personalisatie</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Coördinaten toepassen</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Deze optie is uitgeschakeld omdat de Windows 10-update van april 2019 niet is geïnstalleerd.</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Geografische coördinaten</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Locatiegegevens</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Van zonsonder- tot -opgang (geografische coördinaten)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Geografische coördinaten voor uw locatie</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Configuratiebestand openen</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Configuratiemap openen</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Logboekbestand openen</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Configuratie</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office (oud):</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Thema selecteren</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Bureaubladachtergrond selecteren</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Uitgeschakeld</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Systeemvakicoon verbergen (niet aanbevolen)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Deze functie is uitgeschakeld wanneer het lichte thema is ingeschakeld.</value>
+  </data>
+  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
+    <value>Deze functie is uitgeschakeld wanneer de bureaubladachtergrondmodus is ingeschakeld.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Biedt meer functies, maar er moet een .theme-bestand worden ingesteld. Stel een andere bureaubladachtergrond in per beeldscherm, stel een diavoorstelling in of stel verschillende accentkleuren en geluiden in.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Biedt minder functies, maar is makkelijker om in te stellen. Stel een andere bureaubladachtergrond of -kleur in voor alle beeldschermen of voor individuele beeldschermen.</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Er wordt op de achtergrond gezocht naar nieuwe versies van Auto Dark Mode. Wanneer er een update beschikbaar is, wordt u op de hoogte gesteld middels een melding.</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Nieuwe versies automatisch downloaden en installeren</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Geen meldingen weergeven</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Updatekanaal selecteren</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Op updates controleren wanneer Auto Dark Mode wordt gestart</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 dagen</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 dagen</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 dagen</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Laatst gecontroleerd</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>nooit</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Wijzig hoe vaak er op updates wordt gecontroleerd</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Donker thema</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Licht thema</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Afbeelding</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Afbeelding (meerdere beeldschermen)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Effen kleur</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Modus</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Beeldscherm</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Ontkoppelde beeldschermen verwijderen</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Bureaubladachtergrond</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>HEX-code</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Bureaubladachtergrondwisseling inschakelen</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Niet van thema wisselen tijdens het spelen van games</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Snel (1 sample)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Gemiddeld (2 samples)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Langzaam (3 samples)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Detectiesnelheid GPU-gebruik</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Apparaten met batterij</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Voorwaarden</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Minimaal GPU-gebruik om themawisseling te vertragen</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Thema herstellen wanneer extern gewijzigd</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Breedtegraad</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Lengtegraad</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Service wordt niet uitgevoerd. Even geduld...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Service uitvoeren</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>De service reageert niet. Controleer of AutoDarkModeSvc.exe wordt uitgevoerd en probeer het opnieuw.</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Wisselen van Windows-thema inschakelen</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Volg ons</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Bloemen</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (licht)</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Gevangen beweging</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (donker)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Vloeiend</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Bloesem</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (licht)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Zonsopkomst</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Dagelijks</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Klik Opslaan om de wijzigingen toe te passen.</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Accentkleur taakbalk gebruiken tijdens</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Alleen accentkleur</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Versie</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Auto Dark Mode samen met Windows opstarten</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Automatisch starten</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Modus:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Pad:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Automatisch starten verversen</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>App opnieuw starten</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Uitgeschakeld</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Niet gevonden</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Registersleutel</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Taak</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>U heeft de invoer voor automatisch starten uitgeschakeld via Windows.</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Volgende update om</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Kleur</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>U kunt sneltoetsen alleen bewerken als ze zijn uitgeschakeld.</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
+    <value>Sneltoets donker thema forceren</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
+    <value>Sneltoets licht thema forceren</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Sneltoetsen</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
+    <value>Forceren themasneltoets stoppen</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Sneltoetsen in systeem inschakelen</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Wymuś ciemny motyw</value>
+    <value>Donker thema forceren</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Wymuś jasny motyw</value>
+    <value>Licht thema forceren</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Het is niet aanbevolen om het icoon te verbergen.
+    Toch doorgaan?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Systeemvakicoon verbergen</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>Configuratiemap openen</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Laat de app kiezen</value>
   </data>
 </root>
