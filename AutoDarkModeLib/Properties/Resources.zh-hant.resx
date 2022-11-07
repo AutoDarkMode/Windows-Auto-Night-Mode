@@ -779,6 +779,9 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>語言</value>
   </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>Restart App</value>
+  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>停用</value>
   </data>
