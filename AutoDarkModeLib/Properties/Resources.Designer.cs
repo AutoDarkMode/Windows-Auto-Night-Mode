@@ -1591,15 +1591,6 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Restart App.
-        /// </summary>
-        public static string SettingsPageRestartButton {
-            get {
-                return ResourceManager.GetString("SettingsPageRestartButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Hiding the icon isn&apos;t recommended.
         ///Do you really want to continue?.
         /// </summary>
