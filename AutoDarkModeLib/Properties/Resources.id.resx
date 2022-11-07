@@ -761,9 +761,6 @@ Klik "Ya" untuk membuka jendela peramban baru.</value>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Bahasa</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Dinonaktifkan</value>
   </data>
