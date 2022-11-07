@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -327,15 +327,16 @@
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>在背景搜尋更新</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>抱歉，我們無法儲存您的設定！
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>There was an issue with the UI.
 
-您可以嘗試以下操作：
-- 解除安裝後重新安裝此程式。
-- 嘗試在 Auto Dark Mode 設定中關閉 {0}。
-- 如果您啟用了桌布，請停用該功能，然後重試。
+Please ensure:
+- the service is running
+- your config.yaml file is correct
 
-如果這些操作都無法解決，你可以在 GitHub Issue 貼上包含該錯誤的截圖。您可以點按「是」按鈕來前往 Github。</value>
+Would you like to create an issue on the Auto Dark Mode repository?
+Click "Yes" to open a new browser window.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>錯誤：輸入無效</value>
@@ -509,7 +510,7 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
     <value>僅在您尚未手動啟用省電模式時可用！</value>
-    </data>
+  </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>切換模式</value>
   </data>
@@ -778,9 +779,6 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>語言</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>重新啟動應用程式</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>停用</value>
   </data>
@@ -808,17 +806,17 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
     <value>您只能在快捷鍵被停用的情況下進行編輯。</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>強制使用深色模式</value>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Force dark mode</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>強制使用淺色模式</value>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Force light mode</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>快速鍵</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>停止強制使用</value>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Stop forcing theme</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>啟用全域快速鍵</value>
@@ -838,5 +836,289 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>開啟設定檔路徑</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Let the app decide</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Don't switch themes unless the system is idle</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Minutes until the system is considered idle</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Accent Color for title bars and window borders</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Version info copied to clipboard</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatic theme switch</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Show notification on toggle</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPU monitor module</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Pause auto switch module</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>System idle checker</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Hit confirm to request a theme switch immediately.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Revert this action by clicking on the undo button below.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>hotkey</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Toggle automatic theme switch</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Disable automatic switch</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Pause auto switch</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Would you like to disable auto switching instead?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Automatic switching will also resume if you return to your previous theme.</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Theme switching paused until</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Auto theme switching is currently paused due to the following modules:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Resuming will only work for postpones that have an expiry time</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Postpone control</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Auto theme switching is enabled</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Follow Windows night light</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Follow Windows night light</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Theme switching is paused once!</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>postpones until</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>postpones until its condition is met</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>postpones until next sunrise</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>postpones until next sunset</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>until</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>until next sunrise</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>until next sunset</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Toggle pause auto theme switch</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Auto theme switching resumed</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Open night light settings</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Night light</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Active delays</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Skip auto switch once</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Notify before automatically switching themes</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Time the notification waits for user input in minutes</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Debug mode</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Allow theme switching during lockscreen (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Switch now</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Delay module</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Switch notification</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 hours</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 minutes</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 hours</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 hours</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Theme switch pending</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Would you like to switch now or delay further?</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Trace mode</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Special thanks</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Ignore background</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Ignore cursor</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignore desktop icons</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Ignore sound</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ignore settings</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>This option does not support default Windows themes</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>An error occurred while patching.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Current Version</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Downgrading to</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Downloading...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Download in progress</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>New version {0} available</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Patching failed</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Please check service.log and updater.log for infos</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Updating to</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Downgrade</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Open log directory</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Postpone</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Downgrade {0} available</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Go to download page</value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>A downgrade is available</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Open script config</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Enable custom scripts</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Choose your wallpaper</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Image path</value>
   </data>
 </root>

@@ -1,0 +1,3 @@
+files:
+  - source: /AutoDarkModeLib/Properties/Resources.resx
+    translation: /**/%original_path%/Resources.%two_letters_code%.%file_extension%
