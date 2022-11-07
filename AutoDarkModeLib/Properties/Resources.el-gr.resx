@@ -136,7 +136,7 @@
     <value>Ενεργοποίηση χαρακτηριστικών για Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Εφαρμογές:</value>
+    <value>Εφαρμογές</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Προσαρμοσμένη ώρα εκκίνησης</value>
@@ -163,7 +163,7 @@
     <value>Εναλλαγή τρέχοντος θέματος</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Σύστημα:</value>
+    <value>Σύστημα</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Λογισμικό τρίτων που χρησιμοποιήθηκε</value>
@@ -375,7 +375,7 @@
     <value>Ανοιγμα φακέλου</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Σκοτεινό Θέμα:</value>
+    <value>Σκοτεινό Θέμα</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Δημιουργήστε τα θέματά σας</value>
@@ -1117,5 +1117,11 @@
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
     <value>Ενεργοποίηση προσαρμοσμένων scripts</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Επιλέξτε την ταπετσαρία σας</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Διαδρομή εικόνας</value>
   </data>
 </root>
