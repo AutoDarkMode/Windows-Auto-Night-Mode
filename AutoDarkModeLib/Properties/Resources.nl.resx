@@ -306,8 +306,8 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Er is een fout opgetreden.</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Alleen zichtbaar in donkere modus.
-Als u problemen ondervindt, verhoog dan de wisselvertraging in instellingen. </value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
