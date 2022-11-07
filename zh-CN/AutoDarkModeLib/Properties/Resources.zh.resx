@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,35 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -111,564 +112,995 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>설정</value>
+    <value>設定</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>적용</value>
+    <value>適用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>테마 자동 전환 사용</value>
+    <value>テーマを自動で切り替える</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>항상 어두은</value>
+    <value>常にダーク</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>항상 밝은</value>
+    <value>常にライト</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Windows 1903용 기능 사용</value>
+    <value>Windows 10 バージョン 1903 の機能を有効化</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>앱:</value>
+    <value>ソフトウェア:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>사용자 지정 시작 시간</value>
+    <value>開始時間の指定</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>어두운</value>
+    <value>ダーク</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>어두은 테마</value>
+    <value>ダークテーマ</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (레거시):</value>
+    <value>Edge (旧バージョン用):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>밝은</value>
+    <value>ライト</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>밝은 테마</value>
+    <value>ライトテーマ</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>설정</value>
+    <value>設定</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>현재 테마 전환</value>
+    <value>現在のテーマを切り替え</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>시스템:</value>
+    <value>システム:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>타사 소프트웨어 사용</value>
+    <value>使用しているサードパーティーのソフトウェア</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>업데이트</value>
+    <value>更新</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>위치 서비스 사용</value>
+    <value>位置情報の使用</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>변경 사항이 저장되었습니다!</value>
+    <value>変更が保存されました。</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>적용을 클릭하여 변경 내용을 저장합니다.</value>
+    <value>変更内容は自動で保存されます。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>업데이트 다운로드</value>
+    <value>最新版をダウンロード</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>오류가 발생했습니다 :(</value>
+    <value>エラーが発生しました</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>이 앱은 사용자 위치에 액세스해야 합니다</value>
+    <value>位置情報の使用許可が必要</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>사용할 수 있는 새 업데이트가 없습니다.</value>
+    <value>最新版はありません。</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>위치를 검색하는 중...</value>
+    <value>位置情報を取得中...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>업데이트를 찾는 중...</value>
+    <value>最新版の確認中...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>경고: 현재 테마를 읽을 수 없습니다.</value>
+    <value>警告: システムの現在のテーマを読み込めませんでした。</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>새 업데이트를 사용할 수 있습니다!</value>
+    <value>最新版があります！</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>자동 다크 모드를 사용해 주셔서 감사합니다!
+    <value>Auto Dark Mode をご利用いただきありがとうございます。
 
-새로운 버전은 GitHub에서 수정 및 향상된 기능과 함께 사용할 수 있습니다.
-설치하시겠습니까?
+最新版が GitHub にあります。修正と機能が強化されています。
+インストールしますか？
 
-현재 설치된 버전: {0}, 새 버전: {1}</value>
+お使いのバージョン: {0}, 最新版: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>업데이트 확인</value>
+    <value>最新版の確認</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>모든 프로그램 시작시 업데이트를 확인합니다.</value>
+    <value>プログラム起動時に最新版を確認しています。</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>환영합니다</value>
+    <value>こんにちは</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>확인란을 활성화하여 테마 자동 전환 사용</value>
+    <value>ここで設定を変更すると、テーマ自動切り替えの動作を変更します。</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>한국어: VenusGirl💗비너스걸</value>
+    <value>翻訳者: maboroshin</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>도시</value>
+    <value>都市</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>위치</value>
+    <value>位置</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>변경 내용을 보려면 앱을 다시 시작해야 함</value>
+    <value>変更の反映にはプログラムの再起動が必要です。</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>언어:</value>
+    <value>言語:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>작업 표시줄의 강조 색상</value>
+    <value>タスクバーのアクセントカラー</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>취소</value>
+    <value>キャンセル</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>현재:</value>
+    <value>現在:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>어두운 테마를 위한 배경화면</value>
+    <value>ダークテーマ用の壁紙</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>삭제/사용 안 함</value>
+    <value>削除/無効</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>파일 선택</value>
+    <value>ファイルを選ぶ</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>밝은 테마를 위한 배경화면</value>
+    <value>ライトテーマ用の壁紙</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>바탕 화면 배경</value>
+    <value>デスクトップの背景</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>사진</value>
+    <value>画像</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>두 개의 배경화면을 선택하십시오</value>
+    <value>壁紙を2つ選択してください</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>이미지를 선택하십시오</value>
+    <value>画像を選択してください</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>바탕 화면 배경 구성</value>
+    <value>デスクトップの背景の設定</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>현재 배경 사용</value>
+    <value>現在の背景を使う</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>사용 안 함</value>
+    <value>無効</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>사용함</value>
+    <value>有効にしました</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>또는</value>
+    <value>または</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>저장</value>
+    <value>保存</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>사진 파일이 손상되었거나 경로가 존재하지 않을 수 있습니다.</value>
+    <value>ファイルが破損しているか、パスが存在しません</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>이미지 미리 보기를 생성할 수 없습니다. 죄송합니다!</value>
+    <value>画像のプレビューを生成できません。</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>설정을 저장할 수 없습니다. 죄송합니다!</value>
+    <value>設定が保存できませんでした。</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>오류가 발생했습니다</value>
+    <value>エラーが発生しました。</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>어두운 모드에서만 볼 수 있습니다.
-문제가 발생할 경우: 설정에서 전환 지연 시간을 늘리십시오. </value>
+    <value>ダークモードでのみ表示されます。
+問題が発生する場合、設定で切り替え遅延時間を増やしてください。</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>정보</value>
+    <value>情報</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 시간</value>
+    <value>AM/PMで表示</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>닫기</value>
+    <value>閉じる</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>아니오</value>
+    <value>いいえ</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>예</value>
+    <value>はい</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>자동 업데이트 확인</value>
+    <value>自動で最新版を確認</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>죄송합니다. 설정을 적용할 수 없습니다.
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>UI の問題が発生しました。
 
-다음은 시도해 볼 수 있는 몇 가지 방법입니다:
-- 자동 다크 모드 서비스 다시 시작
-- 서비스가 실행 중인지 확인
-- 서비스를 닫고 config.yaml 파일을 삭제한 후 다시 구성
-
-만약 이런 것들이 도움이 되지 않는다면, GitHub에 문제를 만들 수 있습니다. 예 버튼을 클릭하여 문제에 액세스할 수 있습니다.</value>
+以下を確認してください:
+- Auto Dark Mode のサービスが実行中になっている
+- config.yaml が正しいものである
+      
+Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
+「はい」のクリックで、ブラウザのウィンドウを表示します。
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>오류: 입력이 잘못되었습니다</value>
+    <value>エラー: 入力が正しくありません。</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>연결된 대기 후 전환 (권장되지 않음)</value>
+    <value>スタンバイ後に切り替える (非推奨)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface 제품과 같은 모바일 장치는 새로운 종류의 대기 모드를 사용하고 있습니다.
-이 옵션을 활성화하면 컴퓨터의 절전 모드를 해제한 후 자동 다크 모드가 테마를 즉시 전환합니다.
-그러나 배터리 수명도 감소하므로 필요한 경우에만 활성화하십시오!</value>
+    <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
+このオプションを有効にするとパソコンの起動後、Auto Dark Mode がただちにテーマを切り替えます。
+しかし、充電池を浪費するので、必要な場合にのみ有効化してください。</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Windows 버그로 인해 배터리 절약 모드에서 작업 표시줄의 색이 제대로 전환되지 않습니다. 문제가 발생하면 배터리 절약 기능을 끄십시오.</value>
+    <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>오프셋</value>
+    <value>補正</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>설정</value>
+    <value>適用</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>이러한 옵션은 Windows 테마를 사용하는 동안 사용할 수 없습니다.
-Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
+    <value>Windows テーマの使用中は、これらのオプションは無効です。
+これらの設定は、Windowsテーマから個別に設定できます。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>앱</value>
+    <value>アプリ</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>설정</value>
+    <value>設定</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>시간</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>배경화면/테마</value>
+    <value>時間</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>폴더 열기</value>
+    <value>フォルダを開く</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>어두운 테마:</value>
+    <value>ダークテーマ:</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>테마 만들기</value>
+    <value>自分のテーマを作成</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>테마 선택</value>
+    <value>テーマの選択</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>밝은 테마:</value>
+    <value>ライトテーマ:</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows 테마 (추가 기능)</value>
+    <value>Windows テーマ (高機能)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>바탕 화면 배경화면 (권장)</value>
+    <value>デスクトップの壁紙 (おすすめ)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>여기를 클릭하여 Windows 테마 설정을 엽니다.</value>
+    <value>ここから Windows のテーマの設定を開く。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>이제 '색상'으로 이동하고 조명 테마에 대한 시스템 색상을 '밝은'으로 변경합니다. 좋아하는 배경화면, 마우스 커서 및 강조 색상을 선택합니다.</value>
+    <value>設定の「色」を開き、「白」を選択しライトテーマを適用します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>테마 설정으로 돌아가서 테마를 저장합니다.</value>
+    <value>テーマの設定に戻り、テーマを保存します。</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>어두운 테마에 대해 이 과정을 반복합니다.</value>
+    <value>同様に「黒」を選択しダークテーマ用に作成します。</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>작업 표시줄 색상 전환 지연 (ms):</value>
+    <value>タスクバーの色を切り替える遅延時間 (ミリ秒):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>제품 정보</value>
+    <value>情報</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>메뉴</value>
+    <value>メニュー</value>
   </data>
   <data name="restart" xml:space="preserve">
-    <value>다시 시작</value>
+    <value>再起動</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>사용자 지정 시간 설정</value>
+    <value>時間を指定</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>일몰부터 일출까지</value>
+    <value>日の出から日没まで</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>단걔</value>
+    <value>ステップ</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>그레이스케일 컬러 필터 사용 (Win + Ctrl + C로 보내기)</value>
+    <value>色のフィルターを使用 (Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>시작 항목 대신 로그온 작업 사용</value>
+    <value>スタートアップには登録せずログイン時のタスクとして実行</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>선택 모드:</value>
+    <value>切り替え対象の選択:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>선택한 테마를 적용하는 동안 오류가 발생하여 테마 전환을 사용할 수 없습니다</value>
+    <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>대체 밝은 테마</value>
+    <value>別のライトテーマ</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>확장 다운로드</value>
+    <value>拡張機能のダウンロード</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>권장 도구</value>
+    <value>おすすめのツール</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>이 브라우저 확장을 통해 Chrome, Firefox 및 Edge의 웹 사이트가 시스템 테마를 준수할 수 있습니다.</value>
+    <value>このブラウザー拡張機能は Chrome, Firefox と Edge でのサイトの表示をシステムのテーマに従ったものにします。</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>찾을 수 없음</value>
+    <value>見つかりません</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>왜 기부를 해야 합니까?</value>
+    <value>なぜ寄付するといいの？</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>기부는 어떻게 하나요?</value>
+    <value>寄付するには？</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>PayPal로 송금하시면 됩니다. 그것은 전적으로 자발적인 것이므로 어떤 보상도 기대해서는 안 됩니다.</value>
+    <value>PayPal 経由で送金できます。寄付は自発的なもので、あなたへの見返りを期待しないでください。</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>기부</value>
+    <value>寄付</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>안녕하세요! 자동 다크 모드를 이용해 주셔서 감사합니다! 어때 맘에 드세요?
+    <value>Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
 
-이 앱은 여러분의 눈을 돌보도록 도와줌으로써 여러분의 일상을 더욱 즐겁게 만들어줍니다. 이와 동시에 완전히 무료이고 광고도 없으며 사용자 데이터를 수집하지 않으며 오픈 소스입니다.
-저는 이 프로젝트로는 아무런 이윤도 창출하지 못합니다.
+このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
+私はこのプロジェクトから利益を生み出していません。
 
-이러한 이유로 당신은 자발적인 기부를 통해 저를 지원할 수 있습니다. 아주 적은 양이라도 저는 제 아파트를 뛰어다니며 행복하게 만들어요. 제 작품을 소중히 여기는 만큼만 기부해 주세요.</value>
+こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>.theme 파일을 적용하는 동안 오류가 발생했습니다. 만든 테마가 삭제되거나 이동되었을 수 있습니다. 이것이 우리가 테마 전환을 일단 비활성화한 이유입니다. 다시 설정하려면 자동 다크 모드를 열고 {0} 설정을 구성하십시오.</value>
+    <value>.theme ファイルの適用中にエラーが発生しました。あなたが作成したテーマが削除されたり移動されているかもしれません。テーマの切り替えを無効化しました。再び有効にするには、Auto Dark Mode の設定 {0} を行ってください。</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>우리는 다음 문제에 부딪혔습니다:
+    <value>以下の問題があります:
 {0}
 
-이제 관리자로 알고리즘을 실행하여 이 문제를 해결하려고 합니다. 아마도 이것이 도움이 될거예요.
-이후 자동 다크 모드가 다시 시작되고 설정을 다시 적용해야 합니다. 죄송합니다!
+管理者としてアルゴリズムを実行することでこの問題の解決を試行します。助けになる可能性があります。
+その後、Auto Dark Mode が再起動するので、お手数ですが設定を再び適用してください。
 
-참고: 절대 수동으로 자동 다크 모드를 관리자 권한으로 실행하지 마십시오!</value>
+注: Auto Dark Mode は管理者権限で実行しないでください！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>문제 해결이 필요하십니까?</value>
+    <value>ヘルプ(英語)</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>다중 사용자 지원</value>
+    <value>複数ユーザーへの対応</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>그레이 스케일 컬러 필터를 활성화하기 위한 선택적 지연:</value>
+    <value>グレースケールの色のフィルターを適用するための追加の遅延:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>시스템 적응</value>
+    <value>システムの設定に従う</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>재설정</value>
+    <value>初期化</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>장치의 플러그를 뽑았을 때 어두운 모드 사용</value>
+    <value>端末の電源プラグを抜いたらダークモードを有効化</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>에너지 절약 슬라이더의 기본값</value>
+    <value>バッテリー節約機能のスライダーの初期値</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>테마 전환을 위한 에너지 절약 완화</value>
+    <value>テーマ切り替え用のバッテリー節約機能の緩和</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>배터리 절약을 수동으로 설정하지 않은 경우에만 작동합니다!</value>
+    <value>これは手動でバッテリー節約機能を有効にしていない場合に動作します！</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>전환 모드</value>
+    <value>モードの切り替え</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>개인 설정</value>
+    <value>個人設定</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>좌표 적용</value>
+    <value>座標を適用</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>컴퓨터에 2019년 4월 10일 Windows Update를 설치하지 않았기 때문에 이 옵션은 사용할 수 없습니다.</value>
+    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>지리 좌표</value>
+    <value>地理座標</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>위치 데이터</value>
+    <value>位置情報</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>일몰에서 일출까지 (지리 좌표)</value>
+    <value>日の出から日没まで (地理座標)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>사용자 위치에 대한 지리적 좌표</value>
+    <value>地理座標を検索</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>구성 파일 열기</value>
+    <value>設定ファイルを開く</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>구성 폴더 열기</value>
+    <value>設定用フォルダを開く</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>로그 파일 열기</value>
+    <value>ログを開く</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>구성 </value>
+    <value>設定</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019:</value>
+    <value>Microsoft Office (旧):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>테마 선택</value>
+    <value>テーマの選択</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>배경화면 선택</value>
+    <value>壁紙の選択</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>사용 안 함</value>
+    <value>無効</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>트레이 아이콘 숨기기 (권장되지 않음)</value>
+    <value>トレイアイコンを非表示 (非推奨)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>테마 모드가 활성화된 동안에는 이 기능을 사용할 수 없습니다.</value>
+    <value>テーマモードが有効の間、この機能は無効です。</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>배경화면 모드가 활성화된 동안에는 이 기능을 사용할 수 없습니다.</value>
+    <value>壁紙モードが有効の間、この機能は無効です。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>더 많은 기능을 제공하지만 Windows .theme 파일을 설정해야 합니다. 모니터별로 바탕 화면 배경화면을 사용자 지정하고, 디아시를 설정하고, 마우스 커서를 변경하고, 강조 색상과 개별 소리를 설정합니다.</value>
+    <value>より多くの機能がありますが、Windows の .theme ファイルを設定する必要があります。モニターごとに、壁紙やスライドショー、マウスカーソル、アクセントカラーや個別のサウンドを設定できます。</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>기능은 적지만 설정하기는 더 쉽습니다. 모든 모니터, 개별 모니터에 대해 바탕 화면 배경화면을 사용자 지정하거나 배경색을 설정합니다.</value>
+    <value>機能は少ないですが設定が簡単です。すべてのモニターや、個々のモニターの壁紙を指定したり、背景色を設定できます。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>백그라운드에서 새 버전의 Auto Dark Mode를 확인합니다. 업데이트가 가능하면 토스트 알림을 통해 알려드리겠습니다.</value>
+    <value>Auto Dark Mode の最新版をバックグラウンドで確認します。最新版が利用可能なら、ポップアップ通知でお知らせします</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>새 버전 자동 다운로드 및 설치</value>
+    <value>自動で最新版をダウンロードしインストール</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>알림 표시 안 함</value>
+    <value>通知を表示しない</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>업데이트 채널 선택</value>
+    <value>確認する開発状態を選択</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>자동 다크 모드 시작 시 업데이트 확인</value>
+    <value>Auto Dark Mode 開始時に最新版を確認</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14일</value>
+    <value>14 日</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3일</value>
+    <value>3 日</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7일</value>
+    <value>7 日</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>마지막 확인</value>
+    <value>最終確認日時</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>안함</value>
+    <value>なし</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>업데이트 확인 빈도 변경</value>
+    <value>最新版の確認頻度</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>어두운 테마</value>
+    <value>ダークテーマ</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>밝은 테마</value>
+    <value>ライトテーマ</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>사진</value>
+    <value>画像</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>사진 (다중 모니터)</value>
+    <value>画像 (複数モニター)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>단색</value>
+    <value>無地の色</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>모드</value>
+    <value>モード</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>모니터</value>
+    <value>モニター</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>유형</value>
+    <value>種類</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>연결이 끊긴 모니터 제거</value>
+    <value>切断済みのモニターを除去</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>배경화면</value>
+    <value>壁紙</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>색상</value>
+    <value>色</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>16진수 코드</value>
+    <value>16進の色コード</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>배경화면 전환 사용</value>
+    <value>壁紙の有効を切り替え</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>비디오 게임을 하는 동안 전환 안 함</value>
+    <value>ビデオゲーム中は切り替えない</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>빠름 (1 샘플)</value>
+    <value>早い (1 サンプル)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>중간 (2 샘플)</value>
+    <value>中間 (2 サンプル)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>느림 (3 샘플)</value>
+    <value>遅い (3 サンプル)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU 사용량 감지 속도</value>
+    <value>GPU 使用状態の検出速度</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>배터리 구동 장치</value>
+    <value>バッテリー駆動の端末</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>조건</value>
+    <value>条件</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>전환을 지연하기 위한 최소 GPU 사용량</value>
+    <value>切り替えを遅延させる GPU 使用率 % の最低値</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>外部で変更されたテーマの復元</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>緯度 (Latitude)</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>経度 (Longitude)</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>サービスはまだ実行されていません。お待ちください...</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>サービスの起動中</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>サービスは応答していません。AutoDarkModeSvc.exe が実行中か確認し、再起動をお試しください !</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Windows テーマの有効を切り替え</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>フォローしてね</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>花</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (ライト)</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>キャプチャされたモーション</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (dark)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>フロー</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>光彩</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (ライト)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>日の出</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>毎日</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>変更を保存するには「適用」をクリックします。</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>使用するタスクバーのアクセントカラー</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>アクセントカラーのみ</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Windowsの開始時にAuto Dark Modeを実行</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>自動起動</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>種類:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>パス:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>自動起動の情報を更新</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="SettingsPageRestartButton" xml:space="preserve">
+    <value>アプリを再起動</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>見つかりません</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>レジストリキー</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>タスク</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Windowsから自動起動を無効にしているようです。</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>次回更新は</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>無効中にのみ使用するホットキーを変更できます。</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>ダークモードに変更する</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>ライトモードに変更する</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>テーマの変更を中止する</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>システム全体でホットキーを有効にする</value>
+  </data>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>ダークテーマに変更</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>ライトテーマに変更</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>このアイコンの非表示は推奨しません。
+それでも続行しますか？</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>トレイアイコンの非表示</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>設定用フォルダを開く</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>アプリが判断</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>システムがアイドル状態でないならテーマを切り替えない</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>システムがアイドル状態だと判定されるまでの分数</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>タイトルバーとウィンドウの枠線のアクセントカラー</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>バージョン情報をクリップボードにコピーしました</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>切り替え時に通知を表示</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>遅延させる</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>GPUモニターモジュール</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>自動切替モジュールを停止</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>システムアイドルチェッカー</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>ボタンを押すと、ただちにテーマ切替を試行します。</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>この操作を戻すには下のボタンをクリック</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替をオン/オフ</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>自動切替を無効にする</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>自動切替を停止</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>代わりに自動切替を無効にしますか？</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>以前のテーマに戻した場合、自動切替も再開されます。</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>テーマ切り替えをこの時間まで停止</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>テーマの自動切替は現在、次のモジュールが原因で停止されています:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>再開は、期限付きの延期でのみ可能です</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>延期の管理</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>テーマを切り替える</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>テーマの自動切替が有効です</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Windows の夜間モードに従う</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Windows の夜間モードに従う</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>テーマの切り替えは一回停止されています！</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>この時間まで延期</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>条件に合うまで延期</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>日の出まで延期</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>日の入りまで延期</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>再開時間</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>日の出まで</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>日の入りまで</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>テーマの自動切替を一時停止/再開</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>テーマの自動切り替えを再開しました</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>夜間モードの設定を開く</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>夜間モード</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>遅延の状態</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>一回自動切替しない</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>テーマを自動で切り替える前に通知</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>通知がユーザーの入力を待つ分数</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>デバッグモード</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>ロック画面でもテーマを切り替え (Windows 10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>今すぐ切り替える</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>遅延モジュール</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>切り替えの通知</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 時間</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 分</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 時間</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 分</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 時間</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 時間</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 時間</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>テーマ切り替え待機中</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>今すぐ切り替えますか？それとも遅延させますか？</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>追跡モード</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>謝辞</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>背景を除外</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>カーソルを除外</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>デスクトップアイコンを除外</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>サウンドを除外</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>除外の設定</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>このオプションは標準のWindowsテーマには対応していません</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>停止しました</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Office 2013-2019 か、Office の設定「システム設定を使用する」を使用中に問題が発生している時にのみ使います</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>更新プログラム適用中にエラーが発生しました。</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>現在のバージョン</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>ダウングレード後のバージョン:</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>ダウンロード中...</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>ダウンロード進行状況</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>お知らせ</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>最新バージョン {0} があります</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>更新プログラム適用に失敗</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>service.log と updater.log で詳細情報をご覧ください</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>アップデート後のバージョン:</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>ダウングレード</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>ログのフォルダーを開く</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>延期</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>ダウングレード Ver {0} が利用可能</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>ダウンロードページを開く</value>
   </data>
 </root>
