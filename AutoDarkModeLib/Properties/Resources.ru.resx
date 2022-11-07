@@ -306,8 +306,8 @@
     <value>Произошла ошибка</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Видно только в темной теме.
- Если у вас возникли проблемы: увеличьте задержку переключения в настройках.</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Инфо</value>
