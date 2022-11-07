@@ -304,7 +304,8 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Masalah terjadi</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Hanya tersedia di mode gelap. Jika Anda mengalami isu: Coba untuk tingkatkan jeda di setelan.</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>

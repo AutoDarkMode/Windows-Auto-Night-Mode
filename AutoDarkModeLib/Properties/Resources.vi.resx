@@ -306,8 +306,8 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Có lỗi đã xảy ra</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Chỉ có thể dùng được ở chủ đề tối.
-Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi chủ đề ở phần cài đặt.</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Thông tin</value>
