@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -705,43 +705,43 @@
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Ανθος</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (ανοιχτόχρωμο)</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 10 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αντιγράψτε το όνομα)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>Κίνηση που καταγράφηκε</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (σκουρόχρωμο)</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>Ροή</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>Λάμψη</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (ανοιχτόχρωμο)</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Ανατολή</value>
-    <comment>Πληροφορίες για μεταφραστές: Χρησιμοποιήστε την ονομασία από τις ρυθμίσεις των Windows 11 (μεταβείτε στο εξατομίκευση -&gt; θέματα και αφήστε το ποντίκι πάνω στο όνομα του θέματος)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Κάθε μέρα</value>
@@ -1073,7 +1073,7 @@
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
     <value>Νέα έκδοση διαθέσιμη {0}</value>
-    <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
     <value>Η ενημέρωση απέτυχε</value>
@@ -1098,7 +1098,7 @@
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Παλαιότερη έκδοση διαθέσιμη {0}</value>
-    <comment>ΠΡΕΠΕΙ να περιέχει το placerholder της συμβολοσειράς!! Εκεί μπαίνει ο αριθμός έκδοσης.</comment>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Μετάβαση στη σελίδα λήψης</value>
