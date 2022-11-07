@@ -6,6 +6,8 @@ Switches between the dark and light theme of Windows at scheduled times.
 
 [Overview](#overview) • [Features](#features) • [Download](#download-and-installing) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
+[![Crowdin](https://badges.crowdin.net/windows-auto-dark-mode/localized.svg)](https://crowdin.com/project/windows-auto-dark-mode)
+
 ## Overview
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
 Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
@@ -81,6 +83,11 @@ scoop install auto-dark-mode-np
 Installation is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window. 
 <br> <br>
 Sometimes Windows or web browsers will show a security notice while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
+
+## Translations
+
+You can manually edit the translation files in `AutoDarkModeLib/Properties/Resources` or use [crowdin](https://crowdin.com/project/windows-auto-dark-mode)
+
 
 ## More information
 You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
