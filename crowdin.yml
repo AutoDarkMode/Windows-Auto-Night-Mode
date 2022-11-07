@@ -1,0 +1,8 @@
+files:
+  - source: /AutoDarkModeLib/Properties/Resources.*.resx
+    ignore:
+      - Resources.Designer.cs
+      - Resources.cs
+    translation: '%original_path%/Resources.%two_letters_code%.%file_extension%'
+  - source: /AutoDarkModeLib/Properties/Resources.resx
+    translation: '%original_path%/%original_file_name%'
