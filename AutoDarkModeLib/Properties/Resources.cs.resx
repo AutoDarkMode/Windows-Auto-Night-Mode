@@ -306,7 +306,8 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
     <value>Nastala chyba</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Viditelné v tmavém motivu. Při problémech prosím zvyšte zpoždění přepínání v nastavení. </value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informace</value>
