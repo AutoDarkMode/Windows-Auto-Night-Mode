@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -111,564 +112,418 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>설정</value>
+    <value>Configurações</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>적용</value>
+    <value>Aplicar</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>테마 자동 전환 사용</value>
+    <value>Habilitar a troca automatica de tema</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Ajustar ao tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>항상 어두은</value>
+    <value>Sempre escuro</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>항상 밝은</value>
+    <value>Sempre claro</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Windows 1903용 기능 사용</value>
+    <value>Ativar recursos para o Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>앱:</value>
+    <value>Apps:</value>
+  </data>
+  <data name="lblAuthor" xml:space="preserve">
+    <value>Autor: Armin Osaj © 2019</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>사용자 지정 시작 시간</value>
+    <value>Hora de início personalizada:</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>어두운</value>
+    <value>Escuro</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>어두은 테마</value>
+    <value>Tema escuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (레거시):</value>
+    <value>Edge (versão antiga):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>밝은</value>
+    <value>Claro</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>밝은 테마</value>
+    <value>Tema claro</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>설정</value>
+    <value>Configurações</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>현재 테마 전환</value>
+    <value>Trocar o tema atual</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>시스템:</value>
+    <value>Sistema:</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>타사 소프트웨어 사용</value>
+    <value>Software de terceiros usados</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>업데이트</value>
+    <value>Atualizações</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>위치 서비스 사용</value>
+    <value>Usar serviços de localização</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>변경 사항이 저장되었습니다!</value>
+    <value>mudanças foram salvas!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>적용을 클릭하여 변경 내용을 저장합니다.</value>
+    <value>Clique em aplicar para salvar as mudanças</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>업데이트 다운로드</value>
+    <value>Baixar atualização</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>오류가 발생했습니다 :(</value>
+    <value>Erro ocorrido:(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>이 앱은 사용자 위치에 액세스해야 합니다</value>
+    <value>O aplicativo precisa da permissão da localização</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>사용할 수 있는 새 업데이트가 없습니다.</value>
+    <value>nenhuma nova atualização disponível</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>위치를 검색하는 중...</value>
+    <value>buscando sua localização...</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>업데이트를 찾는 중...</value>
+    <value>buscando por atualizações...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>경고: 현재 테마를 읽을 수 없습니다.</value>
+    <value>Aviso: Nós não podemos detectar seu tema atual.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>새 업데이트를 사용할 수 있습니다!</value>
+    <value>uma nova atualização está disponível!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>자동 다크 모드를 사용해 주셔서 감사합니다!
+    <value>Obrigado por usar o Auto Dark Mode!
 
-새로운 버전은 GitHub에서 수정 및 향상된 기능과 함께 사용할 수 있습니다.
-설치하시겠습니까?
+Uma nova versão está disponível no GitHub com correções de bugs e aprimoramentos.
+Você quer baixá-lo?
 
-현재 설치된 버전: {0}, 새 버전: {1}</value>
+Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>업데이트 확인</value>
+    <value>Buscar por atualizações</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>모든 프로그램 시작시 업데이트를 확인합니다.</value>
+    <value>nós verificamos novas atualizações sempre que o programa é iníciado.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>환영합니다</value>
+    <value>Bem vindo</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>확인란을 활성화하여 테마 자동 전환 사용</value>
+    <value>Ative a caixa de seleção para habilitar a troca automatica de temas</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>한국어: VenusGirl💗비너스걸</value>
+    <value>Tradutor: Vítor Gomes (vctgomes)</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>도시</value>
-  </data>
-  <data name="lblPosition" xml:space="preserve">
-    <value>위치</value>
-  </data>
-  <data name="restartNeeded" xml:space="preserve">
-    <value>변경 내용을 보려면 앱을 다시 시작해야 함</value>
-  </data>
-  <data name="lblLanguage" xml:space="preserve">
-    <value>언어:</value>
-  </data>
-  <data name="cmbAccentColor" xml:space="preserve">
-    <value>작업 표시줄의 강조 색상</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>취소</value>
-  </data>
-  <data name="dbCurrently" xml:space="preserve">
-    <value>현재:</value>
-  </data>
-  <data name="dbDark" xml:space="preserve">
-    <value>어두운 테마를 위한 배경화면</value>
-  </data>
-  <data name="dbDel" xml:space="preserve">
-    <value>삭제/사용 안 함</value>
-  </data>
-  <data name="dbFilePicker" xml:space="preserve">
-    <value>파일 선택</value>
-  </data>
-  <data name="dbLight" xml:space="preserve">
-    <value>밝은 테마를 위한 배경화면</value>
-  </data>
-  <data name="dbMainHeader" xml:space="preserve">
-    <value>바탕 화면 배경</value>
-  </data>
-  <data name="dbPictures" xml:space="preserve">
-    <value>사진</value>
-  </data>
-  <data name="dbSaveToolTip" xml:space="preserve">
-    <value>두 개의 배경화면을 선택하십시오</value>
-  </data>
-  <data name="dbSelectImage" xml:space="preserve">
-    <value>이미지를 선택하십시오</value>
-  </data>
-  <data name="dbTitle" xml:space="preserve">
-    <value>바탕 화면 배경 구성</value>
-  </data>
-  <data name="dbUseCurrent" xml:space="preserve">
-    <value>현재 배경 사용</value>
-  </data>
-  <data name="disabled" xml:space="preserve">
-    <value>사용 안 함</value>
-  </data>
-  <data name="enabled" xml:space="preserve">
-    <value>사용함</value>
-  </data>
-  <data name="or" xml:space="preserve">
-    <value>또는</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>저장</value>
-  </data>
-  <data name="dbErrorText" xml:space="preserve">
-    <value>사진 파일이 손상되었거나 경로가 존재하지 않을 수 있습니다.</value>
-  </data>
-  <data name="dbPreviewError" xml:space="preserve">
-    <value>이미지 미리 보기를 생성할 수 없습니다. 죄송합니다!</value>
-  </data>
-  <data name="dbSavedError" xml:space="preserve">
-    <value>설정을 저장할 수 없습니다. 죄송합니다!</value>
-  </data>
-  <data name="errorOcurredTitle" xml:space="preserve">
-    <value>오류가 발생했습니다</value>
-  </data>
-  <data name="cbAccentColor" xml:space="preserve">
-    <value>어두운 모드에서만 볼 수 있습니다.
-문제가 발생할 경우: 설정에서 전환 지연 시간을 늘리십시오. </value>
-  </data>
-  <data name="info" xml:space="preserve">
-    <value>정보</value>
-  </data>
-  <data name="cb12HourTime" xml:space="preserve">
-    <value>12 시간</value>
-  </data>
-  <data name="msgClose" xml:space="preserve">
-    <value>닫기</value>
-  </data>
-  <data name="msgNo" xml:space="preserve">
-    <value>아니오</value>
-  </data>
-  <data name="MsgYes" xml:space="preserve">
-    <value>예</value>
-  </data>
-  <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>자동 업데이트 확인</value>
-  </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>죄송합니다. 설정을 적용할 수 없습니다.
-
-다음은 시도해 볼 수 있는 몇 가지 방법입니다:
-- 자동 다크 모드 서비스 다시 시작
-- 서비스가 실행 중인지 확인
-- 서비스를 닫고 config.yaml 파일을 삭제한 후 다시 구성
-
-만약 이런 것들이 도움이 되지 않는다면, GitHub에 문제를 만들 수 있습니다. 예 버튼을 클릭하여 문제에 액세스할 수 있습니다.</value>
-  </data>
-  <data name="errorNumberInput" xml:space="preserve">
-    <value>오류: 입력이 잘못되었습니다</value>
-  </data>
-  <data name="cbConnectedStandby" xml:space="preserve">
-    <value>연결된 대기 후 전환 (권장되지 않음)</value>
-  </data>
-  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Microsoft Surface 제품과 같은 모바일 장치는 새로운 종류의 대기 모드를 사용하고 있습니다.
-이 옵션을 활성화하면 컴퓨터의 절전 모드를 해제한 후 자동 다크 모드가 테마를 즉시 전환합니다.
-그러나 배터리 수명도 감소하므로 필요한 경우에만 활성화하십시오!</value>
-  </data>
-  <data name="msgBatterySaver" xml:space="preserve">
-    <value>Windows 버그로 인해 배터리 절약 모드에서 작업 표시줄의 색이 제대로 전환되지 않습니다. 문제가 발생하면 배터리 절약 기능을 끄십시오.</value>
-  </data>
-  <data name="lblOffset" xml:space="preserve">
-    <value>오프셋</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>설정</value>
-  </data>
-  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>이러한 옵션은 Windows 테마를 사용하는 동안 사용할 수 없습니다.
-Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
-  </data>
-  <data name="NavbarApps" xml:space="preserve">
-    <value>앱</value>
-  </data>
-  <data name="NavbarSettings" xml:space="preserve">
-    <value>설정</value>
-  </data>
-  <data name="NavbarTime" xml:space="preserve">
-    <value>시간</value>
-  </data>
-  <data name="NavbarWallpaper" xml:space="preserve">
-    <value>배경화면/테마</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>폴더 열기</value>
-  </data>
-  <data name="ThemeDark" xml:space="preserve">
-    <value>어두운 테마:</value>
-  </data>
-  <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>테마 만들기</value>
-  </data>
-  <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>테마 선택</value>
-  </data>
-  <data name="ThemeLight" xml:space="preserve">
-    <value>밝은 테마:</value>
-  </data>
-  <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows 테마 (추가 기능)</value>
-  </data>
-  <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>바탕 화면 배경화면 (권장)</value>
-  </data>
-  <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>여기를 클릭하여 Windows 테마 설정을 엽니다.</value>
-  </data>
-  <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>이제 '색상'으로 이동하고 조명 테마에 대한 시스템 색상을 '밝은'으로 변경합니다. 좋아하는 배경화면, 마우스 커서 및 강조 색상을 선택합니다.</value>
-  </data>
-  <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>테마 설정으로 돌아가서 테마를 저장합니다.</value>
-  </data>
-  <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>어두운 테마에 대해 이 과정을 반복합니다.</value>
-  </data>
-  <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>작업 표시줄 색상 전환 지연 (ms):</value>
-  </data>
-  <data name="NavbarAbout" xml:space="preserve">
-    <value>제품 정보</value>
-  </data>
-  <data name="NavbarTitle" xml:space="preserve">
-    <value>메뉴</value>
-  </data>
-  <data name="restart" xml:space="preserve">
-    <value>다시 시작</value>
-  </data>
-  <data name="rbCustomHours" xml:space="preserve">
-    <value>사용자 지정 시간 설정</value>
-  </data>
-  <data name="rbLocation" xml:space="preserve">
-    <value>일몰부터 일출까지</value>
-  </data>
-  <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>단걔</value>
-  </data>
-  <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>그레이스케일 컬러 필터 사용 (Win + Ctrl + C로 보내기)</value>
-  </data>
-  <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>시작 항목 대신 로그온 작업 사용</value>
-  </data>
-  <data name="ThemeSelection" xml:space="preserve">
-    <value>선택 모드:</value>
-  </data>
-  <data name="ThemeApplyError1" xml:space="preserve">
-    <value>선택한 테마를 적용하는 동안 오류가 발생하여 테마 전환을 사용할 수 없습니다</value>
-  </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>대체 밝은 테마</value>
-  </data>
-  <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>확장 다운로드</value>
-  </data>
-  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>권장 도구</value>
-  </data>
-  <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>이 브라우저 확장을 통해 Chrome, Firefox 및 Edge의 웹 사이트가 시스템 테마를 준수할 수 있습니다.</value>
-  </data>
-  <data name="locationCityNotFound" xml:space="preserve">
-    <value>찾을 수 없음</value>
-  </data>
-  <data name="DonationHeaderReason" xml:space="preserve">
-    <value>왜 기부를 해야 합니까?</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>기부는 어떻게 하나요?</value>
-  </data>
-  <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>PayPal로 송금하시면 됩니다. 그것은 전적으로 자발적인 것이므로 어떤 보상도 기대해서는 안 됩니다.</value>
-  </data>
-  <data name="NavbarDonation" xml:space="preserve">
-    <value>기부</value>
-  </data>
-  <data name="donationDescription" xml:space="preserve">
-    <value>안녕하세요! 자동 다크 모드를 이용해 주셔서 감사합니다! 어때 맘에 드세요?
-
-이 앱은 여러분의 눈을 돌보도록 도와줌으로써 여러분의 일상을 더욱 즐겁게 만들어줍니다. 이와 동시에 완전히 무료이고 광고도 없으며 사용자 데이터를 수집하지 않으며 오픈 소스입니다.
-저는 이 프로젝트로는 아무런 이윤도 창출하지 못합니다.
-
-이러한 이유로 당신은 자발적인 기부를 통해 저를 지원할 수 있습니다. 아주 적은 양이라도 저는 제 아파트를 뛰어다니며 행복하게 만들어요. 제 작품을 소중히 여기는 만큼만 기부해 주세요.</value>
-  </data>
-  <data name="ThemeApplyError2" xml:space="preserve">
-    <value>.theme 파일을 적용하는 동안 오류가 발생했습니다. 만든 테마가 삭제되거나 이동되었을 수 있습니다. 이것이 우리가 테마 전환을 일단 비활성화한 이유입니다. 다시 설정하려면 자동 다크 모드를 열고 {0} 설정을 구성하십시오.</value>
-  </data>
-  <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>우리는 다음 문제에 부딪혔습니다:
-{0}
-
-이제 관리자로 알고리즘을 실행하여 이 문제를 해결하려고 합니다. 아마도 이것이 도움이 될거예요.
-이후 자동 다크 모드가 다시 시작되고 설정을 다시 적용해야 합니다. 죄송합니다!
-
-참고: 절대 수동으로 자동 다크 모드를 관리자 권한으로 실행하지 마십시오!</value>
-  </data>
-  <data name="tbHelp" xml:space="preserve">
-    <value>문제 해결이 필요하십니까?</value>
-  </data>
-  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>다중 사용자 지원</value>
-  </data>
-  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>그레이 스케일 컬러 필터를 활성화하기 위한 선택적 지연:</value>
-  </data>
-  <data name="cmbAdjTheme" xml:space="preserve">
-    <value>시스템 적응</value>
-  </data>
-  <data name="lblReset" xml:space="preserve">
-    <value>재설정</value>
-  </data>
-  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>장치의 플러그를 뽑았을 때 어두운 모드 사용</value>
-  </data>
-  <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>에너지 절약 슬라이더의 기본값</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>테마 전환을 위한 에너지 절약 완화</value>
-  </data>
-  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>배터리 절약을 수동으로 설정하지 않은 경우에만 작동합니다!</value>
-  </data>
-  <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>전환 모드</value>
-  </data>
-  <data name="NavbarPersonalization" xml:space="preserve">
-    <value>개인 설정</value>
-  </data>
-  <data name="applyGeoButton" xml:space="preserve">
-    <value>좌표 적용</value>
+    <value>Cidade</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>컴퓨터에 2019년 4월 10일 Windows Update를 설치하지 않았기 때문에 이 옵션은 사용할 수 없습니다.</value>
+    <value>Essa opção está desativada, porque você não instalou a atualização de abril de 2019 do Windows 10 April 2019 em sua máquina.</value>
   </data>
-  <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>지리 좌표</value>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>O aplicativo precisa reiniciar para gravar as mudanças</value>
   </data>
-  <data name="headerLocationData" xml:space="preserve">
-    <value>위치 데이터</value>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Idioma:</value>
   </data>
-  <data name="rbLocationGeo" xml:space="preserve">
-    <value>일몰에서 일출까지 (지리 좌표)</value>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Cor de destaque para a barra de tarefas</value>
   </data>
-  <data name="tbGetCoordinates" xml:space="preserve">
-    <value>사용자 위치에 대한 지리적 좌표</value>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>구성 파일 열기</value>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Atualmente:</value>
   </data>
-  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>구성 폴더 열기</value>
+  <data name="dbDark" xml:space="preserve">
+    <value>Papel de parede para o tema escuro</value>
   </data>
-  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>로그 파일 열기</value>
+  <data name="dbDel" xml:space="preserve">
+    <value>Apagar/Desativar</value>
   </data>
-  <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>구성 </value>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Escolher arquivo</value>
   </data>
-  <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019:</value>
+  <data name="dbLight" xml:space="preserve">
+    <value>Papel de parede para o tema claro</value>
   </data>
-  <data name="lblPickTheme" xml:space="preserve">
-    <value>테마 선택</value>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Fundo da área de trabalho</value>
   </data>
-  <data name="lblPickWallpaper" xml:space="preserve">
-    <value>배경화면 선택</value>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Imagens</value>
   </data>
-  <data name="rbDisabled" xml:space="preserve">
-    <value>사용 안 함</value>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Por favor, selecione dois papeis de parede</value>
   </data>
-  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>트레이 아이콘 숨기기 (권장되지 않음)</value>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Por favor, selecione uma imagem</value>
   </data>
-  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>테마 모드가 활성화된 동안에는 이 기능을 사용할 수 없습니다.</value>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Configurar fundo da área de trabalho</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>배경화면 모드가 활성화된 동안에는 이 기능을 사용할 수 없습니다.</value>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>usar o fundo atual</value>
   </data>
-  <data name="tbPickTheme" xml:space="preserve">
-    <value>더 많은 기능을 제공하지만 Windows .theme 파일을 설정해야 합니다. 모니터별로 바탕 화면 배경화면을 사용자 지정하고, 디아시를 설정하고, 마우스 커서를 변경하고, 강조 색상과 개별 소리를 설정합니다.</value>
+  <data name="disabled" xml:space="preserve">
+    <value>Desativar</value>
   </data>
-  <data name="tbPickWallpaper" xml:space="preserve">
-    <value>기능은 적지만 설정하기는 더 쉽습니다. 모든 모니터, 개별 모니터에 대해 바탕 화면 배경화면을 사용자 지정하거나 배경색을 설정합니다.</value>
+  <data name="enabled" xml:space="preserve">
+    <value>Habilitar</value>
   </data>
-  <data name="tbUpdates" xml:space="preserve">
-    <value>백그라운드에서 새 버전의 Auto Dark Mode를 확인합니다. 업데이트가 가능하면 토스트 알림을 통해 알려드리겠습니다.</value>
+  <data name="or" xml:space="preserve">
+    <value>ou</value>
   </data>
-  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>새 버전 자동 다운로드 및 설치</value>
+  <data name="save" xml:space="preserve">
+    <value>Salvar</value>
   </data>
-  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>알림 표시 안 함</value>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Talvez o seu arquivo de imagem esteja corrompido ou a localização não exista.</value>
   </data>
-  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>업데이트 채널 선택</value>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Nós não conseguimos gerar a visualização da imagem, desculpe!</value>
   </data>
-  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>자동 다크 모드 시작 시 업데이트 확인</value>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Nós não conseguimos salvar suas configurações, desculpe!</value>
   </data>
-  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14일</value>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Um erro ocorreu</value>
   </data>
-  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3일</value>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Apenas visível no modo escuro.
+Se você tiver problemas: aumente o atraso da troca nas configurações.</value>
   </data>
-  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7일</value>
+  <data name="info" xml:space="preserve">
+    <value>Informações</value>
   </data>
-  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>마지막 확인</value>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Hora em formato de 12 horas</value>
   </data>
-  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>안함</value>
+  <data name="msgClose" xml:space="preserve">
+    <value>Fechar</value>
   </data>
-  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>업데이트 확인 빈도 변경</value>
+  <data name="msgNo" xml:space="preserve">
+    <value>Não</value>
   </data>
-  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>어두운 테마</value>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Sim</value>
   </data>
-  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>밝은 테마</value>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Procurar por atualizações em segundo plano</value>
   </data>
-  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>사진</value>
+  <data name="errorThemeApply" xml:space="preserve">
+    <value>Desculpe, mas nós não conseguimos salvar suas configurações.
+
+Aqui estão algumas coisas que você pode tentar:
+- Desinstalar e, então, reinstalar o Auto Dark Mode;
+- Try to disable {0} in the Auto Dark Mode settings.
+- Se você habilitou o papel de parede na área de trabalho, desative e tente novamente.
+
+Se essas dicas não ajudaram, você pode comentar o problema no GitHub, postando uma captura de tela do erro. Você pode acessar o problema clicando no botão "Sim"
+</value>
   </data>
-  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>사진 (다중 모니터)</value>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Erro: Sua entrada está inválida</value>
   </data>
-  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>단색</value>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Mudar após o modo de espera (não recomendado)</value>
   </data>
-  <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>모드</value>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão usando um novo tipo de modo de espera.
+Habilite essa opção para ter certeza que o Auto Dark Mode troque imediatamente o tema após o seu computar ligar/acordar.
+Isso também pode reduzir a duração da bateria! APENAS ative se for necessário!</value>
   </data>
-  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>모니터</value>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Por conta da um problema com o Windows, a barra de tarefas não alterna corretamente sua cor no modo de economia de bateria. Por favor, desligue a economia de bateria se você estiver tendo problemas.</value>
   </data>
-  <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>유형</value>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Olá! Obrigado por usar o Auto Dark Mode! Você está gostando?
+
+Este aplicativo torna o seu dia a dia mais agradável, ajudando você a cuidar dos seus olhos. Ao mesmo tempo, é totalmente gratuito, sem anúncios, não coleta dados do usuário e é de código aberto. Não gero nenhum lucro com este projeto.
+
+Por esse motivo, você poderia me apoiar com uma doação voluntária. Mesmo uma pequena quantia me faz pular feliz pelo meu apartamento. Apenas doe o quanto você valoriza o meu trabalho.</value>
   </data>
-  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>연결이 끊긴 모니터 제거</value>
+  <data name="donationTitle" xml:space="preserve">
+    <value>Você gosta do Auto Dark Mode?</value>
   </data>
-  <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>배경화면</value>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Extensão de Download</value>
   </data>
-  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>색상</value>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Tema branco alternativo</value>
   </data>
-  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>16진수 코드</value>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Usar filtro de cores em escala de cinza (Win + Ctrl + C)</value>
   </data>
-  <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>배경화면 전환 사용</value>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Use a tarefa de logon em vez da entrada de inicialização automática</value>
   </data>
-  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>비디오 게임을 하는 동안 전환 안 함</value>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Suporte multiusuário</value>
   </data>
-  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>빠름 (1 샘플)</value>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Por que doar?</value>
   </data>
-  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>중간 (2 샘플)</value>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Como doar?</value>
   </data>
-  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>느림 (3 샘플)</value>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Você pode me enviar dinheiro via PayPal. É completamente voluntário e você não deve esperar nenhuma compensação.</value>
   </data>
-  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU 사용량 감지 속도</value>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Nós encontramos o seguinte problema:  
+{0}. 
+
+ Agora, tentaremos resolver esse problema executando um algoritmo como administrador. Talvez isso ajude. O Modo escuro automático será reiniciado depois disso e você precisará reaplicar suas configurações, desculpe!
+
+E antes que eu me esqueça: NUNCA execute o Auto Dark Mode como administrador!</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>배터리 구동 장치</value>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>não encontrado</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>조건</value>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Sobre</value>
   </data>
-  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>전환을 지연하기 위한 최소 GPU 사용량</value>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplicativos</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Doar</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="NavbarWallpaper" xml:space="preserve">
+    <value>Papel de Parede/Tema</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Abrir Pasta</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Definir horários personalizados</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Do pôr do sol ao nascer do sol</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Atraso na troca de cores da barra de tarefas (ms):</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Ferramentas recomendadas</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Esta extensão faz com que sites no Chrome, Firefox e Edge respeitem o tema do sistema</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Precisa de ajuda com um problema?</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Atraso opcional para ativar o filtro de cores em escala de cinza:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Ocorreu um erro ao aplicar o tema, desativamos a troca de temas</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Ocorreu um erro ao aplicar um arquivo .theme. Talvez o seu tema criado tenha sido excluído ou movido. É por isso que desativamos a troca de temas por enquanto. Para reativá-lo, abra o Modo escuro automático e defina {0} Configurações</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tema escuro:</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Crie seus temas</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Escolha seus temas</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Tema claro:</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Modo de seleção:</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Tema do Windows (mais recursos)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Papel de parede da área de trabalho (recomendado)</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Passo</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Clique aqui para abrir as configurações de tema do Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Agora defina a cor do Windows para o tema claro. Selecione seu papel de parede, cursor do mouse e cor de destaque favoritos.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Volte para as configurações do tema e salve o seu tema.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Repita o processo para o tema escuro.</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Essas opções são desativadas ao usar um Tema do Windows. Você pode configurá-lo individualmente no seu Tema do Windows.</value>
+  </data>
+  <data name="VersionXUpdaterButtonLater" xml:space="preserve">
+    <value>Baixar depois</value>
+  </data>
+  <data name="VersionXUpdaterButtonNever" xml:space="preserve">
+    <value>Nunca me lembre novamente</value>
+  </data>
+  <data name="VersionXUpdaterButtonNow" xml:space="preserve">
+    <value>Baixe Agora</value>
+  </data>
+  <data name="VersionXUpdaterDescription" xml:space="preserve">
+    <value>Nos últimos meses, trabalhamos duro para fornecer a melhor atualização possível. Agora está aqui!
+
+O Auto Dark Mode X foi completamente reescrito do zero. Agora, ele apresenta uma tarefa real em segundo plano, em vez de depender do Agendador de Tarefas do Windows. Isso significa que você obtém uma experiência de troca de tema mais confiável e flexível!
+
+Sim, isso consome mais recursos em segundo plano, mas, em troca, oferecemos mais recursos para aprimorar sua produtividade. Por exemplo:
+- Modo de jogo: troca de tema desabilitado enquanto você estiver jogando ou sua GPU está ocupada.
+- Alternando tema com atalhos de teclado
+E mais!
+
+A atualização é adequada para todos, exceto para os proprietários de um dispositivo ARM. Isso terá problemas com a vida útil da bateria, porque o processo em segundo plano deve ser emulado (somente lá!).</value>
+  </data>
+  <data name="VersionXUpdaterHeader" xml:space="preserve">
+    <value>Auto Dark Mode X está disponível</value>
+  </data>
+  <data name="VersionXUpdaterNeverDescription" xml:space="preserve">
+    <value>A versão X é uma ótima e grande atualização que você definitivamente deveria experimentar! Tem certeza de que NÃO deseja fazer o download? Nós nunca iremos lembrá-lo novamente!</value>
+  </data>
+  <data name="VersionXUpdaterNeverTitle" xml:space="preserve">
+    <value>Você tem certeza?</value>
   </data>
 </root>
