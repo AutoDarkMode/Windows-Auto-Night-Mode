@@ -776,9 +776,6 @@ E antes que eu me esqueça: NUNCA execute o Auto Dark Mode como administrador!</
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
