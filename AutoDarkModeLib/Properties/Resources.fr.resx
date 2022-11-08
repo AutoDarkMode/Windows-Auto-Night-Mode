@@ -478,7 +478,8 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
     <value>Nous avons rencontré le problème suivant :
 {0}
 
-Nous allons tenter de résoudre ce problème en exécutant un algorithme en tant qu'administrateur. Auto Dark Mode redémarrera ensuite et vous devrez réappliquer vos paramètres.
+Nous allons tenter de résoudre ce problème en exécutant un algorithme en tant qu'administrateur. 
+Auto Dark Mode redémarrera ensuite et vous devrez réappliquer vos paramètres.
 
 Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellement !</value>
   </data>
@@ -486,7 +487,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Vous rencontrez un problème et avez besoin d'aide ?</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Support multi-utilisateurs</value>
+    <value>Support multi-utilisateur</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>Délai facultatif pour l'activation du filtre de couleur en niveaux de gris :</value>
@@ -531,7 +532,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Du coucher au lever du soleil (coordonnées géographiques)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Coordonnées géographiques pour votre emplacement</value>
+    <value>Trouver les coordonnées géographiques de votre emplacement</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Ouvrir le fichier de configuration</value>
