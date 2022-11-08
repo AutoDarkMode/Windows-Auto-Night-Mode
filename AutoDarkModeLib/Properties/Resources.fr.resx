@@ -345,7 +345,7 @@ Cliquez sur "Oui" pour ouvrir une nouvelle fenêtre du navigateur.
     <value>Transition après la mise en veille (non recommandé)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Les appareils mobiles, comme les produits Microsoft Surface, utilisent un nouveau type de mode veille.
+    <value>Les appareils mobiles, comme les produits Microsoft Surface, utilisent un nouveau type de mise en veille.
 L'activation de cette option permet de s'assurer que le thème du mode sombre automatique change immédiatement après la sortie de veille de votre ordinateur.
 Mais elle réduit également l'autonomie de la batterie, alors ne l'activez que si nécessaire !</value>
   </data>
@@ -384,7 +384,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Sélectionnez vos thèmes</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Thème clair :</value>
+    <value>Thème clair</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Thème de Windows (plus de fonctionnalités)</value>
@@ -393,7 +393,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Fond d'écran du bureau (recommandé)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Cliquez pour ouvrir les paramètres de thème de Windows.</value>
+    <value>Cliquez ici pour ouvrir les paramètres de thème de Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>Maintenant, naviguez jusqu'à « Couleurs » et changez la couleur du système en « Clair » pour le thème clair. Sélectionnez votre fond d'écran préféré, le curseur de la souris et la couleur d'accentuation.</value>
