@@ -667,7 +667,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Conditions</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Utilisation minimale de la carte graphique pour décaler le changement</value>
+    <value>Utilisation minimale de la carte graphique en % pour décaler le changement</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Restaurer les thèmes en cas de modification externe</value>
@@ -679,13 +679,13 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Le service n'est pas encore en cours d'exécution, veuillez patienter…</value>
+    <value>Le service n'est pas encore démarré, veuillez patienter...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Démarrage du service</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez.</value>
+    <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez !</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Activer le changement de thème de Windows</value>
@@ -840,7 +840,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Laisser l'application décider</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Ne pas changer de thème sauf si le système est inactif</value>
+    <value>Ne pas changer de thème à moins que le système ne soit inactif</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minutes jusqu'à ce que le système soit considéré comme inactif</value>
@@ -849,7 +849,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Couleur d'accentuation pour les barres de titre et les bordures de fenêtre</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Information de version copiée vers le presse-papier</value>
+    <value>Information de version copiée dans le presse-papier</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Basculement automatique du thème</value>
@@ -861,7 +861,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Délai</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>Module de moniteur GPU</value>
+    <value>Module de surveillance GPU</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
     <value>Mettre en pause le module de basculement automatique</value>
@@ -894,7 +894,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Suspendre le changement automatique</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Souhaitez-vous désactiver le changement automatique à la place ?</value>
+    <value>Souhaitez-vous plutôt désactiver le changement automatique ?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Le changement automatique reprendra également si vous revenez à votre thème précédent.</value>
@@ -939,7 +939,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>reporte jusqu'au prochain lever du soleil</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>jusqu'a</value>
+    <value>jusqu'à</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
     <value>jusqu'au prochain lever du soleil</value>
@@ -1047,13 +1047,13 @@ Voulez-vous vraiment continuer ?</value>
     <value>Suspendu</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Utiliser uniquement avec Office 2013-2019 ou si vous rencontrez des problèmes avec le paramètre « système d'utilisation» d'Office</value>
+    <value>Utiliser uniquement avec Office 2013-2019 ou si vous rencontrez des problèmes avec le paramètre « système d'utilisation » d'Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Une erreur est survenue lors de la mise à jour.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Version Courante</value>
+    <value>Version Actuelle</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
     <value>Retourner à la version antérieure</value>
@@ -1072,7 +1072,7 @@ Voulez-vous vraiment continuer ?</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>L'installation du patch a échouée</value>
+    <value>L'installation du correctif a échouée</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
     <value>Veuillez consulter service.log et updater.log pour plus d'informations</value>
