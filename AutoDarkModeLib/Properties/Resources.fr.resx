@@ -574,7 +574,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Offre moins de fonctionnalités, mais est plus facile à configurer. Personnalisez votre fond d'écran pour tous les écrans, les écrans individuellement ou sélectionnez une couleur d'arrière-plan.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Nous vérifions l'existence de nouvelles versions d'Auto Dark Mode en arrière-plan. Lorsqu'une mise à jour est disponible, nous vous en informons par une notification.</value>
+    <value>Nous vérifions l'existence de nouvelles versions d'Auto Dark Mode en arrière-plan. Lorsqu'une mise à jour est disponible, nous vous en informons par une notification</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Télécharger et installer automatiquement les nouvelles versions</value>
@@ -640,7 +640,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Couleur</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Code héxadécimal</value>
+    <value>Code hexadécimal</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Activer le changement de fond d'écran</value>
@@ -664,7 +664,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Appareils alimentés par batterie</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Condition</value>
+    <value>Conditions</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
     <value>Utilisation minimale de la carte graphique pour décaler le changement</value>
