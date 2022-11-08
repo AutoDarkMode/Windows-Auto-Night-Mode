@@ -184,7 +184,7 @@
     <value>Télécharger la mise à jour</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Une erreur est survenue :(</value>
+    <value>une erreur est survenue :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Cette application a besoin d'accéder à votre localisation</value>
@@ -225,7 +225,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Bienvenue</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Activez l'option pour activer le changement de thème automatique</value>
+    <value>Activez l'option pour activer le changement de thème automatique.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Traducteur : Nathan Bonnemains &amp; Damien Trouillet</value>
@@ -306,8 +306,8 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Une erreur est survenue</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Visible uniquement avec le thème sombre.
+Si vous rencontrez des problèmes : augmentez le délai de transition dans les paramètres.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informations</value>
