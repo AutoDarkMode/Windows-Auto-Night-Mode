@@ -306,11 +306,11 @@ Versione in uso: {0}, nuova versione: {1}</value>
     <value>Si è verificato un errore</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Visibile solo in modalità scura.
+In caso di problemi: aumenta il valore di ritardo nelle impostazioni.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>Informazioni</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
     <value>Orologio in modalità 12 ore</value>
@@ -352,7 +352,7 @@ Controindicazione: consuma più batteria! Abilita SOLO se necessario!</value>
     <value>A causa di un bug di Windows, la taskbar non cambia tema in modalità risparmio energetico. Disabilita questa funzionalità se riscontri degli errori.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Spostamento</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Imposta</value>
@@ -764,7 +764,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Avvia Auto Dark Mode con Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>Avvio automatico</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
     <value>Modalità:</value>
@@ -906,7 +906,7 @@ Vuoi davvero continuare?</value>
     <value>Il cambio automatico del tema è in pausa a causa dei seguenti moduli:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>Riprendere funzionerà solo per i rinvii che hanno un tempo di scadenza</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
     <value>Posticipa</value>
@@ -948,7 +948,7 @@ Vuoi davvero continuare?</value>
     <value>fino al prossimo tramonto</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Attiva/Disattiva interruttore di pausa tema automatico</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Cambio automatico del tema ripreso</value>
@@ -1115,9 +1115,9 @@ Vuoi davvero continuare?</value>
     <value>Abilita script personalizzati</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Scegli sfondo</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Percorso immagine</value>
   </data>
 </root>
