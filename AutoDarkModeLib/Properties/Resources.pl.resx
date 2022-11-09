@@ -148,7 +148,7 @@
     <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (stara wersja):</value>
+    <value>Edge (starsza wersja):</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Jasny</value>
@@ -252,7 +252,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Status:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Tapeta ciemnego motywu</value>
+    <value>Tło dla ciemnego motywu</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Wyłącz funkcję</value>
@@ -261,7 +261,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Wybierz plik</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Tapeta jasnego motywu</value>
+    <value>Tło dla jasnego motywu</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>Zmiana tapety pulpitu</value>
@@ -270,7 +270,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Pliki graficzne</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Proszę wybrać dwie tapety pulpitu</value>
+    <value>Wybierz dwa tła</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>Proszę wybrać obraz</value>
@@ -306,8 +306,8 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Wystąpił błąd</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Widoczny tylko w ciemnym motywie.
+W przypadku błędów: Podwyższ opóźnienie zmiany w ustawieniach.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informacja</value>
@@ -328,14 +328,14 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Szukaj aktualizacji w tle</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Wystąpił problem z interfejsem użytkownika.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Upewnij się, że:
+- usługa jest uruchomiona
+- twój plik config.yaml jest prawidłowy
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Czy chcesz zgłosić problem w repozytorium Auto Dark Mode?
+Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -390,7 +390,7 @@ Możesz je dopasować indywidualnie w danej kompozycji.</value>
     <value>Motyw Windowsa (więcej funkcji)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Tapeta pulpitu (zalecane)</value>
+    <value>Tło pulpitu (zalecane)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
     <value>Kliknij tutaj, aby otworzyć ustawienia personalizacji.</value>
@@ -554,13 +554,13 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Konfiguracja</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy):</value>
+    <value>Microsoft Office (starsza wersja):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Wybierz motyw</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Wybierz tapetę</value>
+    <value>Wybierz tło</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Wyłączony</value>
@@ -572,7 +572,7 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany motywu.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany tapety.</value>
+    <value>Ta opcja jest wyłączona, ponieważ wybrano tryb zmiany tła.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Więcej funkcji, jednak konieczne jest skonfigurowanie pliku motywu .theme. Pozwala na zastosowanie tapety pulpitu, pokazu slajdów, zmiany kursora myszki, koloru paska zadań i dźwięków systemu.</value>
@@ -636,13 +636,13 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Ekran</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Type</value>
+    <value>Typ</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
     <value>Usuń odłączone ekrany</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Tapeta</value>
+    <value>Tło</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
     <value>Kolor</value>
@@ -651,7 +651,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Kod HEX</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Włącz zmianę tapety</value>
+    <value>Włącz zmianę tła</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>Nie przełączaj podczas grania w gry wideo</value>
@@ -814,16 +814,16 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Możesz edytować skróty tylko jak są wyłączone.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Wymuś tryb ciemny</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Wymuś tryb jasny</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Skróty klawiszowe</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Przestań wymuszać motyw</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Włącz skróty klawiszowe</value>
@@ -854,25 +854,25 @@ Czy chcesz kontynuować?</value>
     <value>Liczba minut, po której system jest uznawany jako bezczynny</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders</value>
+    <value>Kolor akcentu pasków tytułowych i ramek okna</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
+    <value>Informacje o wersji skopiowano do schowka</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>Automatyczne przełączanie motywu</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Show notification on toggle</value>
+    <value>Pokazuj powiadomienia przy przełączaniu</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>Opóźnij</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPU monitor module</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
+    <value>Wstrzymaj moduł automatycznego przełączania</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
     <value>System idle checker</value>
@@ -1123,9 +1123,9 @@ Czy chcesz kontynuować?</value>
     <value>Enable custom scripts</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Wybierz swoje tło</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Ścieżka obrazu</value>
   </data>
 </root>
