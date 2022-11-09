@@ -4,7 +4,7 @@
 
 Switches between the dark and light theme of Windows at scheduled times.
 
-[Overview](#overview) • [Features](#features) • [Download](#download-and-installing) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
+[Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
 [![Crowdin](https://badges.crowdin.net/windows-autodarkmode/localized.svg)](https://crowdin.com/project/windows-autodarkmode)
 
