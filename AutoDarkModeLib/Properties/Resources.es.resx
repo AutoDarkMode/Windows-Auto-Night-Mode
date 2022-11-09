@@ -306,8 +306,8 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Ha ocurrido un error</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Solo visible en el modo oscuro.
+Si te encuentras con errores: por favor, aumenta la demora del cambio en los ajustes.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Información</value>
@@ -328,14 +328,14 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Comprobación automática de actualizaciones</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Hubo un problema con la interfaz de usuario.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Asegúrate de que:
+- El servicio se está ejecutando
+- Su archivo config.yaml es correcto
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+¿Desea crear un problema en el repositorio Auto Dark Mode?
+Pulse "Sí" para abrir una nueva ventana del navegador.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -807,16 +807,16 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Solo puedes editar los atajos de teclado mientras estén desactivados.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Forzar tema oscuro</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Forzar tema claro</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Atajos de teclado</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Dejar de forzar tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Activar atajos de sistema a nivel de sistema</value>
@@ -1104,21 +1104,21 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Un versión anterior está disponible</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Comandos</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Abrir configuración de comandos</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Comandos</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Habilitar comandos personalizados</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Elige tu fondo de pantalla</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Ruta de imagen</value>
   </data>
 </root>
