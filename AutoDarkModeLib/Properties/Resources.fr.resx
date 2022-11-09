@@ -184,7 +184,7 @@
     <value>Télécharger la mise à jour</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Une erreur est survenue :(</value>
+    <value>une erreur est survenue :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Cette application a besoin d'accéder à votre localisation</value>
@@ -225,7 +225,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Bienvenue</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Activez l'option pour activer le changement de thème automatique</value>
+    <value>Activez l'option pour activer le changement de thème automatique.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Traducteur : Nathan Bonnemains &amp; Damien Trouillet</value>
@@ -306,8 +306,8 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Une erreur est survenue</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Visible uniquement avec le thème sombre.
+Si vous rencontrez des problèmes : augmentez le délai de transition dans les paramètres.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informations</value>
@@ -345,7 +345,7 @@ Cliquez sur "Oui" pour ouvrir une nouvelle fenêtre du navigateur.
     <value>Transition après la mise en veille (non recommandé)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Les appareils mobiles, comme les produits Microsoft Surface, utilisent un nouveau type de mode veille.
+    <value>Les appareils mobiles, comme les produits Microsoft Surface, utilisent un nouveau type de mise en veille.
 L'activation de cette option permet de s'assurer que le thème du mode sombre automatique change immédiatement après la sortie de veille de votre ordinateur.
 Mais elle réduit également l'autonomie de la batterie, alors ne l'activez que si nécessaire !</value>
   </data>
@@ -384,7 +384,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Sélectionnez vos thèmes</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Thème clair :</value>
+    <value>Thème clair</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Thème de Windows (plus de fonctionnalités)</value>
@@ -393,7 +393,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Fond d'écran du bureau (recommandé)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Cliquez pour ouvrir les paramètres de thème de Windows.</value>
+    <value>Cliquez ici pour ouvrir les paramètres de thème de Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>Maintenant, naviguez jusqu'à « Couleurs » et changez la couleur du système en « Clair » pour le thème clair. Sélectionnez votre fond d'écran préféré, le curseur de la souris et la couleur d'accentuation.</value>
@@ -478,7 +478,8 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
     <value>Nous avons rencontré le problème suivant :
 {0}
 
-Nous allons tenter de résoudre ce problème en exécutant un algorithme en tant qu'administrateur. Auto Dark Mode redémarrera ensuite et vous devrez réappliquer vos paramètres.
+Nous allons tenter de résoudre ce problème en exécutant un algorithme en tant qu'administrateur. 
+Auto Dark Mode redémarrera ensuite et vous devrez réappliquer vos paramètres.
 
 Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellement !</value>
   </data>
@@ -486,7 +487,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Vous rencontrez un problème et avez besoin d'aide ?</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Support multi-utilisateurs</value>
+    <value>Support multi-utilisateur</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>Délai facultatif pour l'activation du filtre de couleur en niveaux de gris :</value>
@@ -531,7 +532,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Du coucher au lever du soleil (coordonnées géographiques)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Coordonnées géographiques pour votre emplacement</value>
+    <value>Trouver les coordonnées géographiques de votre emplacement</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Ouvrir le fichier de configuration</value>
@@ -573,7 +574,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Offre moins de fonctionnalités, mais est plus facile à configurer. Personnalisez votre fond d'écran pour tous les écrans, les écrans individuellement ou sélectionnez une couleur d'arrière-plan.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Nous vérifions l'existence de nouvelles versions d'Auto Dark Mode en arrière-plan. Lorsqu'une mise à jour est disponible, nous vous en informons par une notification.</value>
+    <value>Nous vérifions l'existence de nouvelles versions d'Auto Dark Mode en arrière-plan. Lorsqu'une mise à jour est disponible, nous vous en informons par une notification</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Télécharger et installer automatiquement les nouvelles versions</value>
@@ -639,7 +640,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Couleur</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Code héxadécimal</value>
+    <value>Code hexadécimal</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Activer le changement de fond d'écran</value>
@@ -663,10 +664,10 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Appareils alimentés par batterie</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Condition</value>
+    <value>Conditions</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Utilisation minimale de la carte graphique pour décaler le changement</value>
+    <value>Utilisation minimale de la carte graphique en % pour décaler le changement</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Restaurer les thèmes en cas de modification externe</value>
@@ -678,13 +679,13 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Le service n'est pas encore en cours d'exécution, veuillez patienter…</value>
+    <value>Le service n'est pas encore démarré, veuillez patienter...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Démarrage du service</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez.</value>
+    <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez !</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Activer le changement de thème de Windows</value>
@@ -839,7 +840,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Laisser l'application décider</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Ne pas changer de thème sauf si le système est inactif</value>
+    <value>Ne pas changer de thème à moins que le système ne soit inactif</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minutes jusqu'à ce que le système soit considéré comme inactif</value>
@@ -848,7 +849,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Couleur d'accentuation pour les barres de titre et les bordures de fenêtre</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Information de version copiée vers le presse-papier</value>
+    <value>Information de version copiée dans le presse-papier</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Basculement automatique du thème</value>
@@ -860,7 +861,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Délai</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>Module de moniteur GPU</value>
+    <value>Module de surveillance GPU</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
     <value>Mettre en pause le module de basculement automatique</value>
@@ -893,7 +894,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Suspendre le changement automatique</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Souhaitez-vous désactiver le changement automatique à la place ?</value>
+    <value>Souhaitez-vous plutôt désactiver le changement automatique ?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Le changement automatique reprendra également si vous revenez à votre thème précédent.</value>
@@ -938,7 +939,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>reporte jusqu'au prochain lever du soleil</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>jusqu'a</value>
+    <value>jusqu'à</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
     <value>jusqu'au prochain lever du soleil</value>
@@ -1046,13 +1047,13 @@ Voulez-vous vraiment continuer ?</value>
     <value>Suspendu</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Utiliser uniquement avec Office 2013-2019 ou si vous rencontrez des problèmes avec le paramètre « système d'utilisation» d'Office</value>
+    <value>Utiliser uniquement avec Office 2013-2019 ou si vous rencontrez des problèmes avec le paramètre « système d'utilisation » d'Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Une erreur est survenue lors de la mise à jour.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Version Courante</value>
+    <value>Version Actuelle</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
     <value>Retourner à la version antérieure</value>
@@ -1071,7 +1072,7 @@ Voulez-vous vraiment continuer ?</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>L'installation du patch a échouée</value>
+    <value>L'installation du correctif a échouée</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
     <value>Veuillez consulter service.log et updater.log pour plus d'informations</value>

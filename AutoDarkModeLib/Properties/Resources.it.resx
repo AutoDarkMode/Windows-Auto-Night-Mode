@@ -163,7 +163,7 @@
     <value>Cambia il tema corrente</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>Sistema</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Software di terze parti usato</value>
@@ -190,7 +190,7 @@
     <value>L'app richiede il permesso di accedere alla posizione</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>Nessun aggiornamento disponibile</value>
+    <value>Nessun aggiornamento disponibile.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
     <value>Ricerca della posizione...</value>
@@ -199,7 +199,7 @@
     <value>Ricerca di aggiornamenti...</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Attenzione: impossibile individuare il tema in uso</value>
+    <value>Attenzione: impossibile individuare il tema in uso.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Un nuovo aggiornamento è disponibile!</value>
@@ -219,13 +219,13 @@ Versione in uso: {0}, nuova versione: {1}</value>
     <value>Controlla aggiornamenti</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Cerca aggiornamenti ad ogni avvio dell'app</value>
+    <value>Cerca aggiornamenti ad ogni avvio dell'app.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Benvenuto</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Spunta la casella per abilitare il cambio di tema automatico</value>
+    <value>Spunta la casella per abilitare il cambio di tema automatico.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Traduttore: balzabalza &amp; albertopasqualetto &amp; LightDestory</value>
@@ -243,7 +243,7 @@ Versione in uso: {0}, nuova versione: {1}</value>
     <value>Lingua:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Colore secondario per la taskbar</value>
+    <value>Colore Secondario per la Taskbar</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Annulla</value>
@@ -306,11 +306,11 @@ Versione in uso: {0}, nuova versione: {1}</value>
     <value>Si è verificato un errore</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Visibile solo in modalità scura.
+In caso di problemi: aumenta il valore di ritardo nelle impostazioni.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>Informazioni</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
     <value>Orologio in modalità 12 ore</value>
@@ -335,7 +335,8 @@ Assicurati che:
 - La tua configurazione (config.yaml) sia corretta
 
 Vorresti aprire una issue nel repository di Auto Dark Mode?
-Premi il pulsante "Sì" per aprire una nuova finestra del browser.</value>
+Premi il pulsante "Sì" per aprire una nuova finestra del browser.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Errore: L'input non è valido</value>
@@ -352,7 +353,7 @@ Controindicazione: consuma più batteria! Abilita SOLO se necessario!</value>
     <value>A causa di un bug di Windows, la taskbar non cambia tema in modalità risparmio energetico. Disabilita questa funzionalità se riscontri degli errori.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Spostamento</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>Imposta</value>
@@ -374,7 +375,7 @@ Puoi impostarle individualmente nel tuo Tema di Windows</value>
     <value>Apri cartella</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Tema scuro:</value>
+    <value>Tema scuro</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Crea i tuoi temi</value>
@@ -383,19 +384,19 @@ Puoi impostarle individualmente nel tuo Tema di Windows</value>
     <value>Scegli i tuoi temi</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Tema chiaro:</value>
+    <value>Tema chiaro</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Tema di Windows (opzione con più personalizzazioni)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Sfondo del deskotp (opzione consigliata)</value>
+    <value>Sfondo del desktop (opzione consigliata)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
     <value>Clicca per aprire le impostazione del tema di Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Nagiva nella sezione "Colori" e imposta la modalità "Chiara" per il tema chiaro. Puoi scegliere il tuo sfondo preferito, il cursore del mouse e il colore secondario.</value>
+    <value>Naviga nella sezione "Colori" e imposta la modalità "Chiara" per il tema chiaro. Puoi scegliere il tuo sfondo preferito, il cursore del mouse e il colore secondario.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Torna indietro nelle impostazioni di personalizzazione e salva il tuo tema.</value>
@@ -428,7 +429,7 @@ Puoi impostarle individualmente nel tuo Tema di Windows</value>
     <value>Usa il filtro di scala di grigi (compone Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Usa Logon Task al posto di Autostart</value>
+    <value>Usa attività di accesso al posto di una voce di avvio</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>Scegli modalità:</value>
@@ -446,7 +447,7 @@ Puoi impostarle individualmente nel tuo Tema di Windows</value>
     <value>Strumenti consigliati</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Questa estensione applica il tema di sistema ai siti in Chrome, Firefox e Edge</value>
+    <value>Questa estensione applica il tema di sistema ai siti in Chrome, Firefox e Edge.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>Non trovata</value>
@@ -466,17 +467,17 @@ Puoi impostarle individualmente nel tuo Tema di Windows</value>
   <data name="donationDescription" xml:space="preserve">
     <value>Ciao! Grazie per usare Auto Dark Mode! Sei soddisfatto finora?
 
-Questa app facilita la tua vita di tutti i giorni, prendendosi cura dei tuoi occhi. Al tempo stesso è totalmente gratis, non contiene pubblicità, non raccoglie dati personali ed è open-source.
+Questa app facilita la tua vita di tutti i giorni, prendendosi cura dei tuoi occhi. Al tempo stesso è totalmente gratis, non contiene pubblicità, non raccoglie dati personali ed è open source.
 Nessun profitto viene generato da quest'app.
 
-Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anche piccola: tanto mi basta per farmi saltare di gioia. Dona tanto quanto meriti il mio lavoro.</value>
+Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anche piccola: tanto mi basta per farmi saltare di gioia. Dona tanto quanto valuti il mio lavoro.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Errore nell'applicare un .theme-file. Forse il tema da te creato è stato cancellato o spostato. Per questo motivo il cambio di tema è stato sospeso per il momento. Per ripristinarlo, avvia Auto Dark Mode e configura le {0} Impostazioni</value>
+    <value>Errore nell'applicare un .theme-file. Forse il tema da te creato è stato cancellato o spostato. Per questo motivo il cambio di tema è stato sospeso per il momento. Per ripristinarlo, avvia Auto Dark Mode e configura le {0} Impostazioni.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Si è verificato il seguente problema:
-{0}.
+{0}
 
 Per risolvere il problema, verrà eseguito un algoritmo come amministratore. Forse funzionerà.
 Auto Dark Mode verrà riavviato e dovrai riconfigurare le impostazioni. Ci dispiace!
@@ -487,10 +488,10 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Hai bisogno di aiuto?</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Supporto multi-utente</value>
+    <value>Supporto multiutente</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Ritardo (opzionale) per abilitare il filtro di scala di grigi:</value>
+    <value>Ritardo opzionale per abilitare il filtro di scala di grigi:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>Adatta al sistema</value>
@@ -520,7 +521,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Applica Coordinate</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Questa opzione è disabilitata perchè non hai installato l'aggiornamento di Windows 10 datato Aprile 2019 sulla tua macchina.</value>
+    <value>Questa opzione è disabilitata perché non hai installato l'aggiornamento di Windows 10 datato Aprile 2019 sulla tua macchina.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Coordinate Geografiche</value>
@@ -568,10 +569,10 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Questa funzionalità è disabilitata mentre la modalità sfondo è abilitata.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offre più funzioni, ma è necessario impostare un .theme file di windows. Personalizza il tuo sfondo del desktop per ogni schermo, imposta uno slideshow, cambia il tuo cursore del mouse, imposta un colore di accente singoli suoni.</value>
+    <value>Offre più funzioni, ma è necessario impostare un .theme file di windows. Personalizza il tuo sfondo del desktop per ogni schermo, imposta uno slideshow, cambia il tuo cursore del mouse, imposta un colore di accento e suoni individuali.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Offre meno funzioni, ma è più facile da configurare. Personzalzza il tuo sfondo per tutti gli schermi, indivualmente per schermo o imposta una tinta unica.</value>
+    <value>Offre meno funzioni, ma è più facile da configurare. Personalizza il tuo sfondo per tutti gli schermi, individualmente per schermo o imposta una tinta unica.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Cerchiamo la disponibilità di una nuova versione di Auto Dark Mode in background. Quando un aggiornamento è disponibile, te lo notificheremo con una notifica toast</value>
@@ -682,7 +683,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Il servizio non è ancora in esecuzione, attendi...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Avvio del servizio...</value>
+    <value>Avvio del servizio in corso</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
     <value>Il servizio non risponde. Controlla che AutoDarkModeSvc.exe sia attivo e riprova!</value>
@@ -764,7 +765,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Avvia Auto Dark Mode con Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>Avvio automatico</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
     <value>Modalità:</value>
@@ -803,7 +804,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Colore</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Puoi modificare le scoriatoie solo mentre sono disabilitate</value>
+    <value>Puoi modificare le scorciatoie solo mentre sono disabilitate.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
     <value>Forza modalità scura</value>
@@ -840,7 +841,7 @@ Vuoi davvero continuare?</value>
     <value>Lascia decidere alla app</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Non cambiare tema finche il sistema è inattivo</value>
+    <value>Non cambiare tema finché il sistema è inattivo</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minuti prima che il sistema sia considerato inattivo</value>
@@ -849,7 +850,7 @@ Vuoi davvero continuare?</value>
     <value>Colore d'accento per la barra dei titoli e i bordi della finestra</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Le informazioni sulla versione sono state copiate nella clipboard</value>
+    <value>Le informazioni sulla versione sono state copiate negli appunti</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Cambio automatico del tema</value>
@@ -864,19 +865,19 @@ Vuoi davvero continuare?</value>
     <value>Modulo per monitoraggio GPU</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Metti in pausa il moduelo del cambio automatico</value>
+    <value>Metti in pausa il modulo del cambio automatico</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
     <value>Controllo dell'inattività del sistema</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Premi conferma per richiede un cambio di tema immediatamente</value>
+    <value>Premi conferma per richiede un cambio di tema immediatamente.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Riprendi</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Ripristina questa azione cliccando sul tasto Ripristina qua sotto</value>
+    <value>Ripristina questa azione cliccando sul tasto ripristina qua sotto.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
     <value>scorciatoia</value>
@@ -897,7 +898,7 @@ Vuoi davvero continuare?</value>
     <value>Vorresti invece disabilitare il cambio automatico del tema?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Il cambio automatico del tema riprenderà se ritorni al tema precedente</value>
+    <value>Il cambio automatico del tema riprenderà se ritorni al tema precedente.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
     <value>Cambio del tema in pausa fino</value>
@@ -906,7 +907,7 @@ Vuoi davvero continuare?</value>
     <value>Il cambio automatico del tema è in pausa a causa dei seguenti moduli:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>Riprendere funzionerà solo per i rinvii che hanno un tempo di scadenza</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
     <value>Posticipa</value>
@@ -924,7 +925,7 @@ Vuoi davvero continuare?</value>
     <value>Segui le impostazioni della luce notturna di Windows</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Il cambio del tema è in pausa per il prossimo cambio</value>
+    <value>Il cambio del tema è in pausa per il prossimo cambio!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>posticipa fino</value>
@@ -948,13 +949,13 @@ Vuoi davvero continuare?</value>
     <value>fino al prossimo tramonto</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Attiva/Disattiva interruttore di pausa tema automatico</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Cambio automatico del tema ripreso</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Apri impostazioni luce netturna</value>
+    <value>Apri impostazioni luce notturna</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
     <value>Luce notturna</value>
@@ -1035,7 +1036,7 @@ Vuoi davvero continuare?</value>
     <value>Ignora i suoi</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
-    <value>Ignore le impostazioni</value>
+    <value>Ignora le impostazioni</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
     <value>Questa opzione non supporta il tema predefinito di Windows</value>
@@ -1050,13 +1051,13 @@ Vuoi davvero continuare?</value>
     <value>Usare solo con Office 2013-2019 o in caso di problemi con l'opzione "adatta al sistema" di Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>Si è verificato un errore durante il patching</value>
+    <value>Si è verificato un errore durante la patch.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
     <value>Versione attuale</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Retrocedento a</value>
+    <value>Retrocedendo a</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
     <value>Scaricando...</value>
@@ -1068,11 +1069,11 @@ Vuoi davvero continuare?</value>
     <value>Messaggio</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>Nuona versione {0} disponibile</value>
+    <value>Nuova versione {0} disponibile</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching fallito</value>
+    <value>Patch fallita</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
     <value>Per maggiori informazioni controlla i file service.log e updater.log</value>
@@ -1093,7 +1094,7 @@ Vuoi davvero continuare?</value>
     <value>Aggiorna</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>E' disponibile la versione precedente {0}</value>
+    <value>È disponibile la versione precedente {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
@@ -1115,9 +1116,9 @@ Vuoi davvero continuare?</value>
     <value>Abilita script personalizzati</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Scegli sfondo</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Percorso immagine</value>
   </data>
 </root>
