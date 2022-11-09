@@ -1,6 +1,6 @@
 
 # Windows Auto Dark Mode
-![App Logo](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/master/Readme/msstore_award_banner.jpg)  
+![App Logo](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/master/Readme/msstore_award_banner.png)  
 
 Switches between the dark and light theme of Windows at scheduled times.
 
