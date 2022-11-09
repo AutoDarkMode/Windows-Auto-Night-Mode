@@ -34,6 +34,7 @@ using System.Windows.Media.Imaging;
 using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
 using System.Windows.Input;
+using System.ComponentModel;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -175,7 +176,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ShowPreview(string picture)
         {
-            ImagePreview.Visibility = Visibility.Collapsed;
+            StackPanelImagePreview.Visibility = Visibility.Collapsed;
             try
             {
                 BitmapImage bitmap = new();
@@ -185,7 +186,7 @@ namespace AutoDarkModeApp.Pages
                 bitmap.EndInit();
                 ImagePreview.Source = bitmap;
                 TextBlockImagePath.Text = picture;
-                ImagePreview.Visibility = Visibility.Visible;
+                StackPanelImagePreview.Visibility = Visibility.Visible;
                 TextBlockImagePath.Visibility = Visibility.Visible;
             }
             catch
@@ -206,17 +207,20 @@ namespace AutoDarkModeApp.Pages
                     case WallpaperType.Global:
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
                         GridWallpaper.Visibility = Visibility.Visible;
+                        WallpaperHeader.Visibility = Visibility.Visible;
                         SolidColorPicker.Visibility = Visibility.Collapsed;
                         break;
 
                     case WallpaperType.Individual:
                         GridWallpaper.Visibility = Visibility.Visible;
                         SolidColorPicker.Visibility = Visibility.Collapsed;
+                        WallpaperHeader.Visibility = Visibility.Visible;
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionIndividual;
                         break;
 
                     case WallpaperType.SolidColor:
                         GridWallpaper.Visibility = Visibility.Collapsed;
+                        WallpaperHeader.Visibility = Visibility.Collapsed;
                         SolidColorPicker.Visibility = Visibility.Visible;
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
                         break;
@@ -253,15 +257,17 @@ namespace AutoDarkModeApp.Pages
             else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionIndividual)
             {
                 GridWallpaper.Visibility = Visibility.Visible;
+                WallpaperHeader.Visibility = Visibility.Visible;
                 SolidColorPicker.Visibility = Visibility.Collapsed;
                 ComboBoxMonitorSelection_SelectionChanged(this, null);
-                ComboBoxMonitorSelection.Visibility = Visibility.Visible;
+                GridMonitorSelect.Visibility = Visibility.Visible;
                 CleanMonitorButton.Visibility = Visibility.Visible;
             }
             else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
             {
-                ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
+                GridMonitorSelect.Visibility = Visibility.Collapsed;
                 GridWallpaper.Visibility = Visibility.Collapsed;
+                WallpaperHeader.Visibility = Visibility.Collapsed;
                 SolidColorPicker.Visibility = Visibility.Visible;
                 CleanMonitorButton.Visibility = Visibility.Collapsed;
                 if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
@@ -293,9 +299,10 @@ namespace AutoDarkModeApp.Pages
 
         private void HandleSelectionGlobal()
         {
-            ComboBoxMonitorSelection.Visibility = Visibility.Collapsed;
+            GridMonitorSelect.Visibility = Visibility.Collapsed;
             SolidColorPicker.Visibility = Visibility.Collapsed;
             GridWallpaper.Visibility = Visibility.Visible;
+            WallpaperHeader.Visibility = Visibility.Visible;
             CleanMonitorButton.Visibility = Visibility.Collapsed;
 
             if (SelectedLight)
@@ -306,7 +313,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 else
                 {
-                    ImagePreview.Visibility = Visibility.Collapsed;
+                    StackPanelImagePreview.Visibility = Visibility.Collapsed;
                     TextBlockImagePath.Visibility = Visibility.Collapsed;
                 }
             }
@@ -318,7 +325,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 else
                 {
-                    ImagePreview.Visibility = Visibility.Collapsed;
+                    StackPanelImagePreview.Visibility = Visibility.Collapsed;
                     TextBlockImagePath.Visibility = Visibility.Collapsed;
                 }
             }

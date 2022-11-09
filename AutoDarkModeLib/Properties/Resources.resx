@@ -136,7 +136,7 @@
     <value>Enable features for Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Apps</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Custom start time</value>
@@ -163,7 +163,7 @@
     <value>Switch current theme</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System:</value>
+    <value>System</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Used third party software</value>
@@ -307,7 +307,7 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings. </value>
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
@@ -375,7 +375,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Open Folder</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dark Theme:</value>
+    <value>Dark Theme</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Create your themes</value>
@@ -384,7 +384,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Pick your themes</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Light Theme:</value>
+    <value>Light Theme</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Windows Theme (more features)</value>
@@ -779,9 +779,6 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Restart App</value>
-  </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
@@ -1105,5 +1102,23 @@ Do you really want to continue?</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>A downgrade is available</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Open script config</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Enable custom scripts</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Choose your wallpaper</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Image path</value>
   </data>
 </root>

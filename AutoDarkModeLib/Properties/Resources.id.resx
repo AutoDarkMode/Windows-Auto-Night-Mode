@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -219,6 +219,12 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="updateInfoText" xml:space="preserve">
     <value>Kami memeriksa pembaruan setiap program memulai</value>
   </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Selamat Datang</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
+  </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Translator: pc-v2</value>
   </data>
@@ -227,9 +233,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
     <value>Posisi</value>
-  </data>
-  <data name="cmb1903" xml:space="preserve">
-    <value>Opsi ini tidak tersedia, lakukan pembaruan ke versi Windows terbaru</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>Memulai ulang aplikasi dibutuhkan untuk melihat perubahan</value>
@@ -304,7 +307,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Hanya tersedia di mode gelap. Jika Anda mengalami isu: Coba untuk tingkatkan jeda di setelan.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>Informasi</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
     <value>Sistem waktu 12 jam</value>
@@ -321,12 +324,15 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Mencari update di latar belakang</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Maaf, tetapi kami tidak dapat menerapkan pengaturan Anda. Berikut adalah beberapa hal yang Anda dapat coba:
-- Mulai ulang layanan Auto Dark Mode
-- Periksa apakah layanan sedang berjalan- tutup layanan
-- Hapus file config.yaml dan konfigurasi ulang
-Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapat mengakses "Issue" dengan menekan tombol "Ya".</value>
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>Ada masalah dengan UI.
+
+Pastikan:
+- layanan berjalan
+- file config.yaml anda sudah benar
+
+Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
+Klik "Ya" untuk membuka jendela peramban baru.</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Kesalahan: inputmu tidak valid</value>
@@ -493,6 +499,24 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalisasi</value>
   </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Terapkan Koordinat</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Opsi ini tidak tersedia, lakukan pembaruan ke versi Windows terbaru</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Koordinat geografis</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Data lokasi</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Dari terbit hingga terbenam (koordinat geografis)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Koordinat geografis Anda</value>
+  </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Buka file konfigurasi</value>
   </data>
@@ -514,41 +538,17 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="lblPickWallpaper" xml:space="preserve">
     <value>Pilih latar belakang</value>
   </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Dinonaktifkan</value>
+  </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
     <value>Sembunyikan ikon tray (tidak direkomendasikan)</value>
-  </data>
-  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Jangan berganti ketika bermain video game</value>
-  </data>
-  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Cepat (1 sampel)</value>
-  </data>
-  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Sedang (2 sampel)</value>
-  </data>
-  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Lambat (3 sampel)</value>
-  </data>
-  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>Kecepatan deteksi penggunaan GPU</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Perangkat dengan tenaga baterai</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Kondisi</value>
-  </data>
-  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Batas minimum penggunaan GPU untuk menunda pergantian mode</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Fitur ini dinonaktifkan ketika mode tema diaktifkan</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
     <value>Fitur ini dinonaktifkan ketika mode latar belakang diaktifkan</value>
-  </data>
-  <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Koordinat geografis Anda</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel diashow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu</value>
@@ -562,6 +562,15 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Unduh otomatis dan pasang versi terbaru</value>
   </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Jangan perlihatkan notifikasi</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Pilih saluran pembaruan</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
+  </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
     <value>14 hari</value>
   </data>
@@ -570,6 +579,9 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
     <value>7 hari</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Terakhir diperiksa</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
     <value>tidak pernah</value>
@@ -616,11 +628,38 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Aktifkan perubahan layar</value>
   </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>Nyalakan kotak centang untuk mengaktifkan pergantian tema otomatis</value>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Jangan berganti ketika bermain video game</value>
   </data>
-  <data name="rbLocationGeo" xml:space="preserve">
-    <value>Dari terbit hingga terbenam (koordinat geografis)</value>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Cepat (1 sampel)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Sedang (2 sampel)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Lambat (3 sampel)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Kecepatan deteksi penggunaan GPU</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Perangkat dengan tenaga baterai</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Kondisi</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Batas minimum penggunaan GPU untuk menunda pergantian mode</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Kembalikan tema ketika diganti secara eksternal</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Garis lintang</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Garis bujur</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
     <value>Layanan sedang memulai, harap tunggu....</value>
@@ -643,78 +682,54 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
     <value>Ikuti Kami</value>
   </data>
-  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Kembalikan tema ketika diganti secara eksternal</value>
-  </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
     <value>Tema</value>
   </data>
-  <data name="applyGeoButton" xml:space="preserve">
-    <value>Terapkan Koordinat</value>
-  </data>
-  <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Koordinat geografis</value>
-  </data>
-  <data name="headerLocationData" xml:space="preserve">
-    <value>Data lokasi</value>
-  </data>
-  <data name="rbDisabled" xml:space="preserve">
-    <value>Dinonaktifkan</value>
-  </data>
-  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Jangan perlihatkan notifikasi</value>
-  </data>
-  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Pilih saluran pembaruan</value>
-  </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Bunga</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (Terang)</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>Gerakan Diambil</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (Gelap)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>Aliran</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>Sinar</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (Terang)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Matahari Terbit</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Garis lintang</value>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Setiap hari</value>
   </data>
-  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Garis bujur</value>
-  </data>
-  <data name="userFeedback" xml:space="preserve">
-    <value>Selamat Datang</value>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Tekan atur untuk menyimpan perubahan.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Gunakan aksen bilah tugas saat</value>
@@ -722,23 +737,11 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Dengan aksen</value>
   </data>
-  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Setiap hari</value>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Versi</value>
   </data>
-  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Terakhir diperiksa</value>
-  </data>
-  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
-  </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Tekan atur untuk menyimpan perubahan.</value>
-  </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Paksa Mode Gelap</value>
-  </data>
-  <data name="ForceLightTheme" xml:space="preserve">
-    <value>Paksa Mode Terang</value>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Salin</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
     <value>Mulai Auto Dark Mode Saat Masuk</value>
@@ -748,6 +751,15 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
     <value>Mode:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Alamat mulai otomatis</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Segarkan Mulai Otomatis</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Bahasa</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Dinonaktifkan</value>
@@ -759,37 +771,49 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
     <value>Tidak Ditemukan</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>Kunci Registry</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
     <value>Tugas</value>
   </data>
-  <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Alamat mulai otomatis</value>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Anda telah menonaktifkan entri otomatis melalui Windows</value>
   </data>
-  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Segarkan Mulai Otomatis</value>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Pembaruan selanjutnya pada</value>
   </data>
-  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Bahasa</value>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Warna</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceDarkHotkey" xml:space="preserve">
-    <value>Hotkey Paksa Mode Gelap</value>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderForceLightHotkey" xml:space="preserve">
-    <value>Hotkey Paksa Mode Terang</value>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Paksa mode gelap</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Paksa mode terang</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Hotkey</value>
   </data>
-  <data name="SwitchModesTextBlockHeaderNoForceHotkey" xml:space="preserve">
-    <value>Hotkey Paksa Berhentikan Tema</value>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Cegah memaksa tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Nyalakan hotkey secara system-wide</value>
   </data>
-  <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Pembaruan selanjutnya pada</value>
+  <data name="ForceDarkTheme" xml:space="preserve">
+    <value>Paksa Mode Gelap</value>
+  </data>
+  <data name="ForceLightTheme" xml:space="preserve">
+    <value>Paksa Mode Terang</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Menyembunyikan ikon tidak direkomendasikan. Apa anda ingin melanjutkan?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Sembunyikan Ikon Tray</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>Buka Folder Konfigurasi</value>
@@ -980,49 +1004,6 @@ Jika tetap bermasalah, Anda dapat membuat "Issue" di repo GitHub kami. Anda dapa
   <data name="SpecialThanks" xml:space="preserve">
     <value>Terima kasih spesial</value>
   </data>
-  <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Versi</value>
-  </data>
-  <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Salin</value>
-  </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Mulai ulang aplikasi</value>
-  </data>
-  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Anda telah menonaktifkan entri otomatis melalui Windows</value>
-  </data>
-  <data name="WallpaperColor" xml:space="preserve">
-    <value>Warna</value>
-  </data>
-  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Paksa mode gelap</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Paksa mode terang</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Cegah memaksa tema</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Menyembunyikan ikon tidak direkomendasikan. Apa anda ingin melanjutkan?</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Sembunyikan Ikon Tray</value>
-  </data>
-  <data name="ErrorMessageBox" xml:space="preserve">
-    <value>Ada masalah dengan UI.
-
-Pastikan:
-- layanan berjalan
-- file config.yaml anda sudah benar
-
-Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
-Klik "Ya" untuk membuka jendela peramban baru.</value>
-  </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Abaikan latar belakang</value>
   </data>
@@ -1070,6 +1051,7 @@ Klik "Ya" untuk membuka jendela peramban baru.</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
     <value>Versi baru {0} tersedia</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
     <value>Gagal menambal</value>
@@ -1094,11 +1076,30 @@ Klik "Ya" untuk membuka jendela peramban baru.</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Versi lama {0} tersedia</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Buka halaman unduhan</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>Versi sebelumnya tersedia</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Skrip</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Buka pengaturan skrip</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Skrip</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Aktifkan skrip kustom</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Pilih wallpaper</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Alamat gambar</value>
   </data>
 </root>

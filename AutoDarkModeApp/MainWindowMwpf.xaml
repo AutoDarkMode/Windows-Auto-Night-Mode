@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="{x:Static p:Resources.Title}"
         MinHeight="600"
-        MinWidth="850"
+        MinWidth="870"
         Height="760"
         Width="1050"
         ResizeMode="CanResize"
@@ -127,6 +127,15 @@
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon FontFamily="Segoe MDL2 Assets"
                                      Glyph="&#xE771;" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+
+                <ui:NavigationViewItem Tag="scripts"
+                                       Content="{x:Static p:Resources.NavbarScripts}"
+                                       Height="50">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xF000;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
 

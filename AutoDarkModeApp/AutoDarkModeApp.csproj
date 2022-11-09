@@ -67,6 +67,12 @@
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Resources\telegram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\telegram-light.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Microsoft_Edge_Logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="AboutWindow.xaml.cs" />
+    <None Remove="Pages\PageScripts.xaml~RFacb2461.TMP" />
+    <None Remove="Pages\telegram.png" />
     <Page Remove="AboutWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -129,12 +137,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
     <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">

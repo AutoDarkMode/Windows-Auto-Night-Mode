@@ -215,7 +215,7 @@ namespace AutoDarkModeLib.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Only visible in dark mode.
-        ///If you run into issues: please increase the switching delay in settings. .
+        ///If you run into issues: please increase the switching delay in settings..
         /// </summary>
         public static string cbAccentColor {
             get {
@@ -704,7 +704,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apps:.
+        ///   Looks up a localized string similar to Apps.
         /// </summary>
         public static string lblApps {
             get {
@@ -866,7 +866,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to System:.
+        ///   Looks up a localized string similar to System.
         /// </summary>
         public static string lblSystem {
             get {
@@ -1105,6 +1105,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scripts.
+        /// </summary>
+        public static string NavbarScripts {
+            get {
+                return ResourceManager.GetString("NavbarScripts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string NavbarSettings {
@@ -1164,6 +1173,33 @@ namespace AutoDarkModeLib.Properties {
         public static string or {
             get {
                 return ResourceManager.GetString("or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open script config.
+        /// </summary>
+        public static string PageScriptsButtonOpenConfig {
+            get {
+                return ResourceManager.GetString("PageScriptsButtonOpenConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scripts.
+        /// </summary>
+        public static string PageScriptsTextBlockHeader {
+            get {
+                return ResourceManager.GetString("PageScriptsTextBlockHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable custom scripts.
+        /// </summary>
+        public static string PageScriptsToggle {
+            get {
+                return ResourceManager.GetString("PageScriptsToggle", resourceCulture);
             }
         }
         
@@ -1551,15 +1587,6 @@ namespace AutoDarkModeLib.Properties {
         public static string SettingsPageLanguageSectionTitle {
             get {
                 return ResourceManager.GetString("SettingsPageLanguageSectionTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Restart App.
-        /// </summary>
-        public static string SettingsPageRestartButton {
-            get {
-                return ResourceManager.GetString("SettingsPageRestartButton", resourceCulture);
             }
         }
         
@@ -1988,7 +2015,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark Theme:.
+        ///   Looks up a localized string similar to Dark Theme.
         /// </summary>
         public static string ThemeDark {
             get {
@@ -2033,7 +2060,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Light Theme:.
+        ///   Looks up a localized string similar to Light Theme.
         /// </summary>
         public static string ThemeLight {
             get {
@@ -2889,6 +2916,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose your wallpaper.
+        /// </summary>
+        public static string WallpaperTextBlockChooseWallpaper {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockChooseWallpaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallpaper.
         /// </summary>
         public static string WallpaperTextBlockHeader {
@@ -2903,6 +2939,15 @@ namespace AutoDarkModeLib.Properties {
         public static string WallpaperTextBlockHeaderColor {
             get {
                 return ResourceManager.GetString("WallpaperTextBlockHeaderColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image path.
+        /// </summary>
+        public static string WallpaperTextBlockImagePath {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockImagePath", resourceCulture);
             }
         }
         

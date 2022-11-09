@@ -63,9 +63,15 @@ public partial class PageAbout : Page
     private void SystemTheme_ThemeChanged(object sender, EventArgs e)
     {
         if (SystemTheme.AppTheme.Equals(ApplicationTheme.Dark))
+        {     
             gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_White.png", UriKind.Relative));
+            telegramImage.Source = new BitmapImage(new Uri(@"/Resources/telegram-light.png", UriKind.Relative));
+        }
         else
+        { 
             gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_Black.png", UriKind.Relative));
+            telegramImage.Source = new BitmapImage(new Uri(@"/Resources/telegram.png", UriKind.Relative));
+        }
     }
 
     private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -416,6 +422,26 @@ public partial class PageAbout : Page
         catch (Exception ex)
         {
             ShowErrorMessage(ex, "About_CopyButton");
+        }
+    }
+
+    private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
+        new Process
+        {
+            StartInfo = new ProcessStartInfo(filepath)
+            {
+                UseShellExecute = true
+            }
+        }.Start();
+    }
+
+    private void HyperlinkOpenLogFile_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter | e.Key == Key.Space)
+        {
+            HyperlinkOpenLogFile_PreviewMouseDown(this, null);
         }
     }
 

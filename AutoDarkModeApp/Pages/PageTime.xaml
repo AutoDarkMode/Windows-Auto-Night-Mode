@@ -6,19 +6,22 @@
       xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
       mc:Ignorable="d"
       Title="PageTime"
       fw:PointerTracker.Enabled="True"
       Height="Auto"
       Width="Auto"
-      VerticalAlignment="Top"
-      HorizontalAlignment="Left">
+      VerticalAlignment="Top">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="10*"
+                              MaxWidth="1000"
+                              MinWidth="450" />
+            <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -47,72 +50,136 @@
                    FontFamily="Segoe UI Semilight"
                    FontSize="30" />
 
-        <!-- Mode Selection -->
-        <StackPanel Name="StackPanelRadioHolder"
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Margin="0,0,0,0"
-                    Orientation="Vertical"
-                    Width="Auto"
-                    Height="Auto">
+        <uc:Card x:Name="StackPanelRadioHolder"
+                 Grid.Row="3"
+                 Padding="15,4,5,3"
+                 Grid.Column="1"
+                 Margin="0,0,0,0">
 
-            <RadioButton Name="RadioButtonDisabled"
-                         Content="{x:Static p:Resources.rbDisabled}"
-                         IsChecked="True"
-                         Margin="0,0,0,0"
-                         Click="RadioButtonDisabled_Click" />
+            <StackPanel Margin="15,5,0,5">
+                <DockPanel LastChildFill="false">
+                    <TextBlock FontSize="14"
+                               FontFamily="Segoe UI Variable"
+                               Margin="0,7,0,8"
+                               Text="{x:Static p:Resources.autoCheckBox}" />
+                    <ui:ToggleSwitch DockPanel.Dock="Right"
+                                     x:Name="ToggleAutoSwitchEnabled"
+                                     Margin="0,0,-40,0"
+                                     Toggled="ToggleAutoSwitch_Toggled"
+                                     OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                     OnContent="{x:Static p:Resources.ToggleSwitchOn}" />
 
-            <RadioButton Name="RadioButtonCustomTimes"
-                         Content="{x:Static p:Resources.rbCustomHours}"
-                         Margin="0,5,0,0"
-                         Click="RadioButtonCustomTimes_Click" />
+                </DockPanel>
 
-            <RadioButton Name="RadioButtonLocationTimes"
-                         Content="{x:Static p:Resources.rbLocation}"
-                         Margin="0,5,0,0"
-                         Click="RadioButtonLocationTimes_Click" />
+                <!-- Mode Selection -->
+                <StackPanel Name="StackPanelModeSelection"
+                            Orientation="Vertical"
+                            Width="Auto"
+                            Height="Auto">
 
-            <RadioButton Name="RadioButtonCoordinateTimes"
-                         Content="{x:Static p:Resources.rbLocationGeo}"
-                         Margin="0,5,0,0"
-                         Click="RadioButtonCoordinateTimes_Click" />
-            <RadioButton Name="RadioButtonWindowsNightLight"
-                         Content="{x:Static p:Resources.TimePageFollowNightLight}"
-                         Margin="0,5,0,0"
-                         Click="RadioButtonWindowsNightLight_Click" />
-        </StackPanel>
+                    <Separator Margin="-30,5,-5,0"
+                               Background="{DynamicResource Win11Border}" />
+
+                    <RadioButton Name="RadioButtonCustomTimes"
+                                 Content="{x:Static p:Resources.rbCustomHours}"
+                                 Margin="0,5,0,0"
+                                 Click="RadioButtonCustomTimes_Click" />
+
+                    <Separator Margin="-30,5,-5,0"
+                               Background="{DynamicResource Win11Border}" />
+
+                    <RadioButton Name="RadioButtonLocationTimes"
+                                 Content="{x:Static p:Resources.rbLocation}"
+                                 Margin="0,5,0,0"
+                                 Click="RadioButtonLocationTimes_Click" />
+
+                    <Separator Margin="-30,5,-5,0"
+                               Background="{DynamicResource Win11Border}" />
+
+
+                    <RadioButton Name="RadioButtonCoordinateTimes"
+                                 Content="{x:Static p:Resources.rbLocationGeo}"
+                                 Margin="0,5,0,0"
+                                 Click="RadioButtonCoordinateTimes_Click" />
+
+                    <Separator Margin="-30,5,-5,0"
+                               Background="{DynamicResource Win11Border}" />
+
+                    <RadioButton Name="RadioButtonWindowsNightLight"
+                                 Content="{x:Static p:Resources.TimePageFollowNightLight}"
+                                 Margin="0,5,0,0"
+                                 Click="RadioButtonWindowsNightLight_Click" />
+                </StackPanel>
+            </StackPanel>
+        </uc:Card>
+
+        <TextBlock Name="TextBlockNightLightHeader"
+                   Margin="0,0,0,0"
+                   Grid.Row="5"
+                   Grid.Column="1"
+                   Text="{x:Static p:Resources.TimePageNightLightHeader}"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="14" />
+
+
+
 
         <!-- Night light settings-->
-        <ui:SimpleStackPanel Name="GridNightLight"
-                             Margin="0,25,0,0"
-                             Grid.Row="5"
-                             Grid.Column="1">
 
-            <TextBlock Name="TextBlockNightLightHeader"
-                       Grid.Row="0"
-                       Margin="0,0,0,5"
-                       Text="{x:Static p:Resources.TimePageNightLightHeader}"
-                       FontFamily="Segoe UI Semibold"
-                       FontSize="20" />
+        <uc:Card Grid.Row="5"
+                 x:Name="GridNightLight"
+                 Grid.Column="1"
+                 Margin="0,15,0,5"
+                 MouseDown="GridNightLight_MouseDown"
+                 Padding="10,5,5,15"
+                 Cursor="Hand">
 
-            <Button x:Name="ButtonOpenNightLightSettings"
-                    Content="{x:Static p:Resources.TimePageOpenNightLight}"
-                    VerticalAlignment="Bottom"
-                    MinWidth="150"
-                    Margin="0,10,0,0"
-                    Click="ButtonOpenNightLightSettings_Click" />
-        </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel>
+
+                <Grid Margin="0,15,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                          Margin="15,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Grid.Row="0"
+                                   Margin="0,0,0,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   FontSize="13"
+                                   Text="{x:Static p:Resources.TimePageOpenNightLight}"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="650" />
+
+                    </Grid>
+
+                    <ui:FontIcon Grid.Column="3"
+                                 Margin="15, 0, 10, 0"
+                                 FontSize="15"
+                                 FontFamily="Segoe fluent Icons"
+                                 Glyph="&#xe8a7;" />
+                </Grid>
+            </ui:SimpleStackPanel>
+        </uc:Card>
 
         <!-- Time selection -->
         <Grid Name="GridTimePicker"
               Grid.Row="6"
               Grid.Column="1"
-              Margin="0,0,0,0"
+              Margin="0,20,0,0"
               Height="Auto"
               Width="Auto">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="25" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
@@ -123,41 +190,56 @@
                        Margin="0,0,0,0"
                        Text="{x:Static p:Resources.lblCustomStart}"
                        FontFamily="Segoe UI Semibold"
-                       FontSize="20" />
+                       FontSize="14" />
 
-            <StackPanel Name="StackPanelTimePicker"
-                        Orientation="Vertical"
-                        Margin="0,0,0,0"
-                        Grid.Row="3"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Height="Auto"
-                        Width="Auto">
+            <uc:Card x:Name="StackPanelTimePicker"
+                     Grid.Row="3"
+                     Padding="10">
+                <StackPanel Orientation="Vertical"
+                            Margin="0,0,0,0"
+                            VerticalAlignment="Top">
 
-                <ui:SimpleTimePicker x:Name="TimePickerLight"
-                                     Margin="0,0,0,0"
-                                     Header="{x:Static p:Resources.lblLight}"
-                                     SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged" />
+                    <DockPanel LastChildFill="false">
+                        <TextBlock Margin="15,5,0,0"
+                                   Text="{x:Static p:Resources.lblLight}" />
+                        <ui:SimpleTimePicker x:Name="TimePickerLight"
+                                             Margin="0,0,0,0"
+                                             DockPanel.Dock="Right"
+                                             Header=""
+                                             SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged" />
+                    </DockPanel>
 
-                <ui:SimpleTimePicker x:Name="TimePickerDark"
-                                     Margin="00,25,0,0"
-                                     Header="{x:Static p:Resources.lblDark}"
-                                     SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged" />
 
-                <!-- Apply Button -->
-                <Button x:Name="applyButton"
-                        Content="{x:Static p:Resources.applyButton}"
-                        HorizontalAlignment="Left"
-                        Margin="0,25,0,0"
-                        VerticalAlignment="Top"
-                        Width="90"
-                        Click="ApplyButton_Click"
-                        IsEnabled="False"
-                        Height="30"
-                        Style="{StaticResource ButtonAccentRevealStyle}"
-                        BorderBrush="Black"
-                        Visibility="Collapsed" />
-            </StackPanel>
+
+                    <Separator Margin="-15,10,-15,10"
+                               Background="{DynamicResource Win11Border}" />
+
+                    <DockPanel LastChildFill="false">
+                        <TextBlock Margin="15,6,0,0"
+                                   Text="{x:Static p:Resources.lblDark}" />
+                        <ui:SimpleTimePicker x:Name="TimePickerDark"
+                                             Margin="0,0,0,0"
+                                             DockPanel.Dock="Right"
+                                             Header=""
+                                             SelectedDateTimeChanged="TimePicker_SelectedDateTimeChanged" />
+                    </DockPanel>
+
+
+                    <!-- Apply Button -->
+                    <Button x:Name="applyButton"
+                            Content="{x:Static p:Resources.applyButton}"
+                            HorizontalAlignment="Left"
+                            Margin="0,25,0,0"
+                            VerticalAlignment="Top"
+                            Width="90"
+                            Click="ApplyButton_Click"
+                            IsEnabled="False"
+                            Height="30"
+                            Style="{StaticResource ButtonAccentRevealStyle}"
+                            BorderBrush="Black"
+                            Visibility="Collapsed" />
+                </StackPanel>
+            </uc:Card>
         </Grid>
 
 
@@ -166,10 +248,10 @@
         <Grid Name="GridLocationTimeInfo"
               Grid.Row="7"
               Grid.Column="1"
-              Margin="0,0,0,0">
+              Margin="0,20,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
@@ -181,62 +263,65 @@
                        Margin="0,0,0,0"
                        Text="{x:Static p:Resources.headerLocationData}"
                        FontFamily="Segoe UI Semibold"
-                       FontSize="20" />
+                       FontSize="14" />
+            <uc:Card x:Name="StackPanelLocationTime"
+                     Grid.Row="3"
+                     Padding="15"
+                     Margin="0,0,0,0">
+                <StackPanel Margin="15,0,0,0">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top">
 
-            <StackPanel Name="StackPanelLocationTime"
-                        Grid.Row="3"
-                        Margin="0,0,0,0"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
+                        <TextBlock x:Name="locationBlock"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Margin="0,0,0,0"
+                                   TextWrapping="Wrap"
+                                   Height="Auto"
+                                   Width="Auto"
+                                   FontSize="14" />
 
-                <TextBlock x:Name="locationBlock"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top"
-                           Margin="0,0,0,0"
-                           TextWrapping="Wrap"
-                           Height="Auto"
-                           Width="Auto"
-                           FontSize="14" />
+                        <TextBlock Name="TextBlockLightTime"
+                                   Margin="20,0,0,0"
+                                   FontSize="14" />
 
-                <TextBlock Name="TextBlockLightTime"
-                           Margin="20,0,0,0"
-                           FontSize="14" />
+                        <TextBlock Name="TextBlockDarkTime"
+                                   Margin="20,0,0,0"
+                                   FontSize="14" />
+                    </StackPanel>
+                    <Grid Margin="0, 6, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                <TextBlock Name="TextBlockDarkTime"
-                           Margin="20,0,0,0"
-                           FontSize="14" />
-            </StackPanel>
+                        <TextBlock Grid.Column="0"
+                                   Foreground="#999999"
+                                   FontSize="12"
+                                   Text="{x:Static p:Resources.TimePageNextUpdateAt}" />
+                        <TextBlock Margin="4,0,0,0"
+                                   Grid.Column="1"
+                                   Foreground="#999999"
+                                   FontSize="12"
+                                   Name="LocationNextUpdateDate" />
+                    </Grid>
+                </StackPanel>
+            </uc:Card>
 
-            <Grid Grid.Row="4"
-                  Margin="0, 6, 0, 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0"
-                           Foreground="#999999"
-                           FontSize="12"
-                           Text="{x:Static p:Resources.TimePageNextUpdateAt}" />
-                <TextBlock Margin="4,0,0,0"
-                           Grid.Column="1"
-                           Foreground="#999999"
-                           FontSize="12"
-                           Name="LocationNextUpdateDate" />
-            </Grid>
         </Grid>
 
         <!-- Geographic Coordinates  -->
         <Grid Name="GridCoordinates"
               Grid.Row="8"
               Grid.Column="1"
-              Margin="0,0,0,0">
+              Margin="0,20,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
@@ -245,85 +330,121 @@
                        Grid.Row="1"
                        Text="{x:Static p:Resources.headerGeoCoordinates}"
                        FontFamily="Segoe UI Semibold"
-                       FontSize="20" />
+                       FontSize="14" />
 
-            <StackPanel x:Name="StackPanelCoordinates"
-                        Grid.Row="3"
-                        Orientation="Horizontal"
-                        Margin="0,0,0,0">
+            <uc:Card Padding="15"
+                     Grid.Row="3">
+                <StackPanel>
 
-                <Grid Margin="0,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{x:Static p:Resources.TimeNumberBoxHeaderLat}"
-                               FontFamily="Segoe UI"
-                               FontSize="14"
-                               Margin="0,0,0,4" />
-                    <TextBox Grid.Row="1"
-                             x:Name="NumberBoxLat"
-                             Width="150"
-                             Height="Auto"
-                             Margin="0,0,0,0"
-                             TextChanged="NumberBoxLatLon_TextChanged"
-                             LostFocus="NumberBox_Validate"
-                             Tag="coordinates"
-                             GotFocus="TextBox_GotFocus" />
+
+
+                    <DockPanel x:Name="StackPanelCoordinates"
+                               LastChildFill="False"
+                               Margin="0,0,0,0">
+
+                        <Grid Margin="15,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{x:Static p:Resources.TimeNumberBoxHeaderLat}"
+                                       FontFamily="Segoe UI"
+                                       FontSize="14"
+                                       Margin="0,0,0,4" />
+                            <TextBox Grid.Row="1"
+                                     x:Name="NumberBoxLat"
+                                     Width="120"
+                                     Height="Auto"
+                                     Margin="0,0,0,0"
+                                     TextChanged="NumberBoxLatLon_TextChanged"
+                                     LostFocus="NumberBox_Validate"
+                                     Tag="coordinates"
+                                     GotFocus="TextBox_GotFocus" />
+                        </Grid>
+
+                        <Grid Margin="25,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{x:Static p:Resources.TimeNumberBoxHeaderLon}"
+                                       FontFamily="Segoe UI"
+                                       FontSize="14"
+                                       Margin="0,0,0,4" />
+                            <TextBox Grid.Row="1"
+                                     x:Name="NumberBoxLon"
+                                     Width="120"
+                                     Height="Auto"
+                                     Margin="0,0,0,0"
+                                     TextChanged="NumberBoxLatLon_TextChanged"
+                                     LostFocus="NumberBox_Validate"
+                                     Tag="coordinates"
+                                     GotFocus="TextBox_GotFocus" />
+                        </Grid>
+
+                        <Button x:Name="ButtonApplyCoordinates"
+                                DockPanel.Dock="Right"
+                                Content="{x:Static p:Resources.applyGeoButton}"
+                                VerticalAlignment="Bottom"
+                                Margin="25,0,0,0"
+                                Click="ButtonApplyCoordinates_Click"
+                                PreviewTextInput="NumberBox_PreviewTextInput" />
+                    </DockPanel>
+                </StackPanel>
+            </uc:Card>
+
+            <uc:Card Grid.Row="4" Padding="15" Margin="0,1,0,0"
+                     MouseDown="TextBlockOpenLatLongWebsite_MouseDown"
+                     KeyDown="TextBlockOpenLatLongWebsite_KeyDown"
+                     Cursor="Hand"
+                     >
+
+                <Grid Margin="0,2,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                          Margin="15,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock x:Name="TextBlockOpenLatLongWebsite"
+                                   Margin="0,0,0,2"
+                                   Text="{x:Static p:Resources.tbGetCoordinates}"
+                                   FontSize="14"
+                                   Focusable="True">
+                            <!--
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground"
+                                            Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Foreground"
+                                                    Value="Gray" />
+                                            <Setter Property="Cursor"
+                                                    Value="Hand" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                            -->
+                        </TextBlock>
+                    </Grid>
+
+                    <ui:FontIcon Grid.Column="3"
+                                 Margin="15, 0, 10, 0"
+                                 FontSize="15"
+                                 FontFamily="Segoe fluent Icons"
+                                 Glyph="&#xe71b;" />
                 </Grid>
-
-                <Grid Margin="25,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="{x:Static p:Resources.TimeNumberBoxHeaderLon}"
-                               FontFamily="Segoe UI"
-                               FontSize="14"
-                               Margin="0,0,0,4" />
-                    <TextBox Grid.Row="1"
-                             x:Name="NumberBoxLon"
-                             Width="150"
-                             Height="Auto"
-                             Margin="0,0,0,0"
-                             TextChanged="NumberBoxLatLon_TextChanged"
-                             LostFocus="NumberBox_Validate"
-                             Tag="coordinates"
-                             GotFocus="TextBox_GotFocus" />
-                </Grid>
-
-                <Button x:Name="ButtonApplyCoordinates"
-                        Content="{x:Static p:Resources.applyGeoButton}"
-                        VerticalAlignment="Bottom"
-                        Margin="25,0,0,0"
-                        Click="ButtonApplyCoordinates_Click"
-                        PreviewTextInput="NumberBox_PreviewTextInput" />
-            </StackPanel>
-
-            <TextBlock x:Name="TextBlockOpenLatLongWebsite"
-                       Margin="0,15,0,0"
-                       Grid.Row="4"
-                       Text="{x:Static p:Resources.tbGetCoordinates}"
-                       FontSize="14"
-                       Focusable="True"
-                       MouseDown="TextBlockOpenLatLongWebsite_MouseDown"
-                       KeyDown="TextBlockOpenLatLongWebsite_KeyDown">
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Foreground"
-                                Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver"
-                                     Value="True">
-                                <Setter Property="Foreground"
-                                        Value="Gray" />
-                                <Setter Property="Cursor"
-                                        Value="Hand" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+            </uc:Card>
 
         </Grid>
 
@@ -334,7 +455,7 @@
               Margin="0,0,0,0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
+                <RowDefinition Height="15" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
@@ -345,150 +466,163 @@
                        Margin="0,0,0,0"
                        Text="{x:Static p:Resources.lblOffset}"
                        FontFamily="Segoe UI Semibold"
-                       FontSize="20" />
+                       FontSize="14" />
 
-            <StackPanel x:Name="StackpanelOffset"
-                        Grid.Row="3"
-                        Orientation="Horizontal"
-                        Width="Auto"
-                        Height="Auto"
-                        Margin="0,0,0,0">
+            <uc:Card x:Name="StackpanelOffset"
+                     Padding="30,15,15,15"
+                     Grid.Row="3">
 
-                <ui:NumberBox x:Name="NumberBoxOffsetLight"
-                              Width="150"
-                              Height="Auto"
-                              Margin="0,0,0,0"
-                              Value="0"
-                              Maximum="999"
-                              Header="{x:Static p:Resources.lblLight}"
-                              Tag="offset"
-                              SpinButtonPlacementMode="Inline"
-                              ContextMenuOpening="NumberBox_ContextMenuOpening"
-                              ValueChanged="NumberBox_ValueChanged"
-                              PreviewTextInput="NumberBox_PreviewTextInput" />
+                <DockPanel LastChildFill="False"
+                           Width="Auto"
+                           Height="Auto"
+                           Margin="0,0,0,5">
 
-                <ui:NumberBox x:Name="NumberboxOffsetDark"
-                              Width="150"
-                              Height="Auto"
-                              Margin="25,0,0,0.0"
-                              Value="0"
-                              Maximum="999"
-                              Header="{x:Static p:Resources.lblDark}"
-                              Tag="offset"
-                              SpinButtonPlacementMode="Inline"
-                              ContextMenuOpening="NumberBox_ContextMenuOpening"
-                              ValueChanged="NumberBox_ValueChanged"
-                              PreviewTextInput="NumberBox_PreviewTextInput" />
+                    <ui:NumberBox x:Name="NumberBoxOffsetLight"
+                                  Width="150"
+                                  Height="Auto"
+                                  Margin="0,0,0,0"
+                                  Value="0"
+                                  Maximum="999"
+                                  Header="{x:Static p:Resources.lblLight}"
+                                  Tag="offset"
+                                  SpinButtonPlacementMode="Inline"
+                                  ContextMenuOpening="NumberBox_ContextMenuOpening"
+                                  ValueChanged="NumberBox_ValueChanged"
+                                  PreviewTextInput="NumberBox_PreviewTextInput" />
 
-                <!--    
+                    <ui:NumberBox x:Name="NumberboxOffsetDark"
+                                  Width="150"
+                                  Height="Auto"
+                                  Margin="25,0,0,0.0"
+                                  Value="0"
+                                  Maximum="999"
+                                  Header="{x:Static p:Resources.lblDark}"
+                                  Tag="offset"
+                                  SpinButtonPlacementMode="Inline"
+                                  ContextMenuOpening="NumberBox_ContextMenuOpening"
+                                  ValueChanged="NumberBox_ValueChanged"
+                                  PreviewTextInput="NumberBox_PreviewTextInput" />
+
+                    <!--    
                 Legacy Code saved for later
                 PreviewTextInput="TextBox_BlockChars_TextInput_Offset" 
                 CommandManager.PreviewExecuted="TextBox_BlockCopyPaste_PreviewExecuted"
                 -->
 
-                <!-- Offset Set Button -->
-                <Button x:Name="OffsetButton"
-                        Content="{x:Static p:Resources.offsetButton}"
-                        VerticalAlignment="Bottom"
-                        Margin="25,0,0,0"
-                        Width="80"
-                        Height="30"
-                        Click="OffsetButton_Click"
-                        IsEnabled="False" />
+                    <!-- Offset Set Button -->
+                    <Button x:Name="OffsetButton"
+                            Content="{x:Static p:Resources.offsetButton}"
+                            VerticalAlignment="Bottom"
+                            DockPanel.Dock="Right"
+                            Margin="25,0,0,0"
+                            Width="80"
+                            Height="30"
+                            Click="OffsetButton_Click"
+                            IsEnabled="False" />
 
-            </StackPanel>
+                </DockPanel>
+            </uc:Card>
         </Grid>
 
-        <!-- Info -->
-        <TextBlock Grid.Row="10"
-                   Grid.Column="1"
-                   Margin="0,30,0,0"
-                   Text="{x:Static p:Resources.info}"
-                   FontFamily="Segoe UI Semibold"
-                   FontSize="20"
-                   Height="Auto"
-                   Width="Auto" />
-        <TextBlock Grid.Row="11"
-                   Grid.Column="1"
-                   x:Name="userFeedback"
-                   Margin="0,10,0,0"
-                   Text="{x:Static p:Resources.userFeedback}"
-                   FontSize="14" />
 
-        <ui:SimpleStackPanel Grid.Row="12"
+        <ui:SimpleStackPanel Grid.Row="10"
                              Grid.Column="1"
                              Name="StackPanelPostponeInfo">
 
             <TextBlock Margin="0,30,0,0"
                        Text="{x:Static p:Resources.TimePageTextBlockPostponeInfoHeader}"
                        FontFamily="Segoe UI Semibold"
-                       FontSize="20"
+                       FontSize="14"
                        Height="Auto"
                        Width="Auto" />
 
-            <ui:SimpleStackPanel Orientation="Horizontal">
-                <ComboBox Grid.Row="1"
-                          Grid.Column="1"
-                          Margin="0,15,0,0"
-                          MinWidth="200"
-                          Name="PostponeComboBox"
-                          ToolTipService.ShowOnDisabled="True"
-                          ToolTipService.InitialShowDelay="3"
-                          ToolTipService.HasDropShadow="True"
-                          SelectionChanged="PostponeComboBox_SelectionChanged"
-                          MinHeight="30">
+            <uc:Card Padding="30, 15, 15, 10"
+                     Margin="0,5,0,1">
+                <DockPanel LastChildFill="False">
+                    <ComboBox Grid.Row="1"
+                              Grid.Column="1"
+                              Margin="0,0,0,0"
+                              MinWidth="200"
+                              Name="PostponeComboBox"
+                              ToolTipService.ShowOnDisabled="True"
+                              ToolTipService.InitialShowDelay="3"
+                              ToolTipService.HasDropShadow="True"
+                              SelectionChanged="PostponeComboBox_SelectionChanged"
+                              MinHeight="30">
 
-                    <ComboBoxItem Name="Postpone15"
-                                  Content="{x:Static p:Resources.PostponeTime15}" />
-                    <ComboBoxItem Name="Postpone30"
-                                  Content="{x:Static p:Resources.PostponeTime30}" />
-                    <ComboBoxItem Name="Postpone60"
-                                  Content="{x:Static p:Resources.PostponeTime60}" />
-                    <ComboBoxItem Name="Postpone120"
-                                  Content="{x:Static p:Resources.PostponeTime120}" />
-                    <ComboBoxItem Name="Postpone180"
-                                  Content="{x:Static p:Resources.PostponeTime180}" />
-                    <ComboBoxItem Name="Postpone360"
-                                  Content="{x:Static p:Resources.PostponeTime360}" />
-                    <ComboBoxItem Name="Postpone720"
-                                  Content="{x:Static p:Resources.PostponeTime720}" />
-                    <ComboBoxItem Name="PostponeUntilNext"
-                                  IsSelected="True"
-                                  Content="{x:Static p:Resources.PostponeTimeSkipOnce}" />
-                </ComboBox>
+                        <ComboBoxItem Name="Postpone15"
+                                      Content="{x:Static p:Resources.PostponeTime15}" />
+                        <ComboBoxItem Name="Postpone30"
+                                      Content="{x:Static p:Resources.PostponeTime30}" />
+                        <ComboBoxItem Name="Postpone60"
+                                      Content="{x:Static p:Resources.PostponeTime60}" />
+                        <ComboBoxItem Name="Postpone120"
+                                      Content="{x:Static p:Resources.PostponeTime120}" />
+                        <ComboBoxItem Name="Postpone180"
+                                      Content="{x:Static p:Resources.PostponeTime180}" />
+                        <ComboBoxItem Name="Postpone360"
+                                      Content="{x:Static p:Resources.PostponeTime360}" />
+                        <ComboBoxItem Name="Postpone720"
+                                      Content="{x:Static p:Resources.PostponeTime720}" />
+                        <ComboBoxItem Name="PostponeUntilNext"
+                                      IsSelected="True"
+                                      Content="{x:Static p:Resources.PostponeTimeSkipOnce}" />
+                    </ComboBox>
 
-                <Button x:Name="ButtonControlPostponeQueue"
-                        Content="{x:Static p:Resources.PostponeButtonDelay}"
-                        VerticalAlignment="Bottom"
-                        MinWidth="80"
-                        Margin="25,0,0,0"
-                        Click="ButtonControlPostponeQueue_Click" />
-            </ui:SimpleStackPanel>
+                    <Button x:Name="ButtonControlPostponeQueue"
+                            DockPanel.Dock="Right"
+                            Content="{x:Static p:Resources.PostponeButtonDelay}"
+                            VerticalAlignment="Bottom"
+                            MinWidth="80"
+                            Margin="25,0,0,0"
+                            Click="ButtonControlPostponeQueue_Click" />
+                </DockPanel>
 
+            </uc:Card>
 
+            <uc:Card Padding="30,15,15,15">
+                <ui:SimpleStackPanel>
+                    <TextBlock Name="TextBlockActiveDelays"
+                               Margin="0,0,0,0"
+                               Text="{x:Static p:Resources.TimePageHeaderActiveDelays}"
+                               FontFamily="Segoe UI Semibold"
+                               FontSize="15" />
 
-            <TextBlock Name="TextBlockActiveDelays"
-                       Margin="0,20,0,0"
-                       Text="{x:Static p:Resources.TimePageHeaderActiveDelays}"
-                       FontFamily="Segoe UI"
-                       FontSize="18" />
+                    <TextBlock Name="TextBlockPostponeInfo"
+                               Margin="0,10,0,0"
+                               Text="{x:Static p:Resources.TimePagePostponeInfoNominal}"
+                               FontSize="14" />
 
-            <TextBlock Name="TextBlockPostponeInfo"
-                       Margin="0,10,0,0"
-                       Text="{x:Static p:Resources.TimePagePostponeInfoNominal}"
-                       FontSize="14" />
-
-            <TextBlock Name="TextBlockResumeInfo"
-                       Margin="0,5,0,0"
-                       VerticalAlignment="Top"
-                       HorizontalAlignment="Left"
-                       FontSize="13"
-                       Text="{x:Static p:Resources.TimePageResumeInfo}"
-                       Foreground="#D44440"
-                       FontFamily="Segoe UI"
-                       TextWrapping="Wrap" />
-
+                    <TextBlock Name="TextBlockResumeInfo"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="{x:Static p:Resources.TimePageResumeInfo}"
+                               Foreground="#D44440"
+                               FontFamily="Segoe UI"
+                               TextWrapping="Wrap" />
+                </ui:SimpleStackPanel>
+            </uc:Card>
 
         </ui:SimpleStackPanel>
+
+        <!-- Info -->
+        <TextBlock Grid.Row="11"
+                   Grid.Column="1"
+                   Margin="0,15,0,0"
+                   Text="{x:Static p:Resources.info}"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="14"
+                   Height="Auto"
+                   Width="Auto" />
+        <uc:Card Grid.Row="12"
+                 Grid.Column="1"
+                 Margin="0,5,0,0"
+                 Padding="30,15,15,15">
+            <TextBlock Text="{x:Static p:Resources.userFeedback}"
+                       x:Name="userFeedback"
+                       FontSize="14" />
+        </uc:Card>
     </Grid>
 </Page>

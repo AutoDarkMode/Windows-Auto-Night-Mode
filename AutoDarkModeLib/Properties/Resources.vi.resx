@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -306,8 +306,8 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Có lỗi đã xảy ra</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Chỉ có thể dùng được ở chủ đề tối.
-Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi chủ đề ở phần cài đặt.</value>
+    <value>Only visible in dark mode.
+If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Thông tin</value>
@@ -327,15 +327,16 @@ Nếu bạn gặp vấn đề: vui lòng tăng khoảng thời gian chờ đổi
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Kiểm tra cập nhật tự động</value>
   </data>
-  <data name="errorThemeApply" xml:space="preserve">
-    <value>Xin lỗi, nhưng ứng dụng không thể áp dụng cài đặt của bạn.
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>There was an issue with the UI.
 
-Dưới đây là một số điều bạn có thể thử:
-- Khởi động lại service Auto Dark Mode
-- Kiểm tra xem service có đang chạy không
-- Đóng service, xóa tập tin config.yaml và cấu hình lại
+Please ensure:
+- the service is running
+- your config.yaml file is correct
 
-Nếu những điều trên không hữu ích, bạn có thể tạo Issue trên GitHub. Bạn có thể truy cập Issue bằng cách nhấp vào nút "Có".</value>
+Would you like to create an issue on the Auto Dark Mode repository?
+Click "Yes" to open a new browser window.
+</value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
     <value>Lỗi: Thông tin bạn nhập không chính xác</value>
@@ -672,11 +673,9 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>Latitude</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
     <value>Longitude</value>
-    <comment>IMPORTANT: Do not translate this for latin languages!</comment>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
     <value>Service chưa được chạy, vui lòng đợi...</value>
@@ -704,43 +703,43 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Flowers</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (Light)</value>
-    <comment>Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>Captured Motion</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (Dark)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>Flow</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>Glow</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (Light)</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Sunrise</value>
-    <comment>Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Hằng ngày</value>
@@ -748,32 +747,77 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>Bấm vào Đặt để lưu thay đổi.</value>
   </data>
-  <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Sao chép</value>
-  </data>
-  <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Phiên bản</value>
-  </data>
-  <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>
-  </data>
-  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Màu nhấn cho thanh tiêu đề và viền cửa sổ</value>
-  </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Dùng màu nhấn của Thanh tác vụ khi</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Chỉ màu nhấn</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Tự động chuyển chủ đề</value>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Phiên bản</value>
   </data>
-  <data name="ButtonConfirm" xml:space="preserve">
-    <value>Xác nhận</value>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Sao chép</value>
   </data>
-  <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Chuyển ngay</value>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Khởi động Auto Dark Mode cùng Windows</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Tự khởi động</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Chế độ:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Đường dẫn:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Làm mới Tự khởi động</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>Chưa cấu hình</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Không tìm thấy</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Khóa Registry</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Tiến trình</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Cập nhật tiếp theo vào</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Màu sắc</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Bạn chỉ có thể sửa phím tắt khi chúng được tắt</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Cưỡng ép chủ đề tối</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Cưỡng ép chủ đề sáng</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Phím tắt</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Dừng cưỡng ép chủ đề</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Bật phím tắt cho toàn hệ thống</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề tối</value>
@@ -781,17 +825,39 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   <data name="ForceLightTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề sáng</value>
   </data>
-  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Hiển thị thông báo khi thay đổi</value>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Không khuyến khích ẩn biểu tượng ở khay hệ thống.
+Bạn có muốn tiếp tục?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Ẩn biểu tượng ở khay hệ thống</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>Mở thư mục thiết lập</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Để ứng dụng quyết định</value>
   </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Không chuyển chủ đề trừ khi hệ thống đang nghỉ</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Số phút chờ hệ thống rảnh</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Màu nhấn cho thanh tiêu đề và viền cửa sổ</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Tự động chuyển chủ đề</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Hiển thị thông báo khi thay đổi</value>
+  </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
     <value>Trì hoãn</value>
-  </data>
-  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Chức năng trì hoãn</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>Chức năng theo dõi GPU</value>
@@ -799,23 +865,128 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
     <value>Tạm dừng chức năng tự động chuyển</value>
   </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Kiểm tra hệ thống đang nghỉ</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Bấm xác nhận để yêu cầu chuyển chủ đề ngay.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Đảo ngược hành động này bằng cách bấm nút Đảo ngược bên dưới.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>- phím tắt</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Bật tắt tự động chuyển chủ đề</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Tắt tự động chuyển</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Đảo ngược</value>
+  </data>
+  <data name="ThemeSwitchPause" xml:space="preserve">
+    <value>Tạm dừng tự động chuyển</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Bạn có muốn tắt tự động chuyển?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Tự động chuyển sẽ được khởi động lại nếu bạn chuyển về chủ đề trước đó.</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Tự động chuyển được tạm dừng tới khi</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Tự động chuyển chủ đề đang được tạm dừng bởi chức năng:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Chỉ có thể tiếp tục với những trì hoãn có thời gian kết thúc</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Thiết lập trì hoãn</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Bật tắt chủ đề</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Tự động chuyển chủ đề được bật</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Xét theo chế độ đêm của Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Xét theo chế độ đêm của Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Tự động chuyển đã được hoãn một lần!</value>
+  </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>hoãn tới khi</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
     <value>hoãn tới khi điều kiện được đáp ứng</value>
   </data>
-  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Thông báo chuyển</value>
-  </data>
-  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>Kiểm tra hệ thống đang nghỉ</value>
-  </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
     <value>hoãn tới khi mặt trời mọc</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
     <value>hoãn tới khi mặt trời lặn</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>tới khi</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>đến khi mặt trời mọc</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>đến khi mặt trời lặn</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Bật tắt hoãn tự động chuyển chủ đề</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Tự động chuyển chủ đề được tiếp tục</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Mở thiết lập chế độ đêm</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Chế độ đêm</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Chủ động hoãn</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Bỏ qua tự động chuyển lần tiếp theo</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Thông báo trước khi tự động chuyển chủ đề</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Số phút chờ tác động của người dùng của thông báo</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Chế độ debug</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Cho phép chuyển chủ đề tại màn hình khóa (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Chuyển ngay</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Chức năng trì hoãn</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Thông báo chuyển</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
     <value>2 tiếng</value>
@@ -838,114 +1009,17 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
   <data name="PostponeTime720" xml:space="preserve">
     <value>12 tiếng</value>
   </data>
-  <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Bỏ qua tự động chuyển lần tiếp theo</value>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Đợi chuyển chủ đề</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Bấm xác nhận để yêu cầu chuyển chủ đề ngay.</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Tiếp tục</value>
-  </data>
-  <data name="RevertAction" xml:space="preserve">
-    <value>Đảo ngược hành động này bằng cách bấm nút Đảo ngược bên dưới.</value>
-  </data>
-  <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Khởi động Auto Dark Mode cùng Windows</value>
-  </data>
-  <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Tự khởi động</value>
-  </data>
-  <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Chế độ:</value>
-  </data>
-  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Tắt</value>
-  </data>
-  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>Chưa cấu hình</value>
-  </data>
-  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Không tìm thấy</value>
-  </data>
-  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Khóa Registry</value>
-  </data>
-  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Tiến trình</value>
-  </data>
-  <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Đường dẫn:</value>
-  </data>
-  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Làm mới Tự khởi động</value>
-  </data>
-  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Ngôn ngữ</value>
-  </data>
-  <data name="SettingsPageRestartButton" xml:space="preserve">
-    <value>Khởi động lại chương trình</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Không khuyến khích ẩn biểu tượng ở khay hệ thống.
-Bạn có muốn tiếp tục?</value>
-  </data>
-  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Ẩn biểu tượng ở khay hệ thống</value>
-  </data>
-  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Cho phép chuyển chủ đề tại màn hình khóa (Win10)</value>
-  </data>
-  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
-  </data>
-  <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Chế độ debug</value>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Bạn muốn chuyển ngay hay chờ thêm?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
     <value>Chế độ trace</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Trân trọng cảm ơn</value>
-  </data>
-  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Thông báo trước khi tự động chuyển chủ đề</value>
-  </data>
-  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Không chuyển chủ đề trừ khi hệ thống đang nghỉ</value>
-  </data>
-  <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>- phím tắt</value>
-  </data>
-  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Bạn chỉ có thể sửa phím tắt khi chúng được tắt</value>
-  </data>
-  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Số phút chờ tác động của người dùng của thông báo</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Cưỡng ép chủ đề tối</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Cưỡng ép chủ đề sáng</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Phím tắt</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Dừng cưỡng ép chủ đề</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Bật tắt tự động chuyển chủ đề</value>
-  </data>
-  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Bật tắt hoãn tự động chuyển chủ đề</value>
-  </data>
-  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Số phút chờ hệ thống rảnh</value>
-  </data>
-  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Bật phím tắt cho toàn hệ thống</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Bỏ qua hình nền</value>
@@ -965,82 +1039,84 @@ Bạn có muốn tiếp tục?</value>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
     <value>Cài đặt này không hỗ trợ chủ đề mặc định của Windows</value>
   </data>
-  <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Tắt tự động chuyển</value>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
   </data>
-  <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Đảo ngược</value>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Paused</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Tạm dừng tự động chuyển</value>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
   </data>
-  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Bạn có muốn tắt tự động chuyển?</value>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>An error occurred while patching.</value>
   </data>
-  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Tự động chuyển sẽ được khởi động lại nếu bạn chuyển về chủ đề trước đó.</value>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Current Version</value>
   </data>
-  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Tự động chuyển được tạm dừng tới khi</value>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Downgrading to</value>
   </data>
-  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Tự động chuyển đã được hoãn một lần!</value>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Downloading...</value>
   </data>
-  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>đến khi mặt trời mọc</value>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Download in progress</value>
   </data>
-  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>đến khi mặt trời lặn</value>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Message</value>
   </data>
-  <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Đợi chuyển chủ đề</value>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>New version {0} available</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
-  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Bạn muốn chuyển ngay hay chờ thêm?</value>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Patching failed</value>
   </data>
-  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Tự động chuyển chủ đề được tiếp tục</value>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Please check service.log and updater.log for infos</value>
   </data>
-  <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Xét theo chế độ đêm của Windows</value>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Updating to</value>
   </data>
-  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Chủ động hoãn</value>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Downgrade</value>
   </data>
-  <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Cập nhật tiếp theo vào</value>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Open log directory</value>
   </data>
-  <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Chế độ đêm</value>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Postpone</value>
   </data>
-  <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Mở thiết lập chế độ đêm</value>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Update</value>
   </data>
-  <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Tự động chuyển chủ đề đang được tạm dừng bởi chức năng:</value>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Downgrade {0} available</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
-  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Tự động chuyển chủ đề được bật</value>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Go to download page</value>
   </data>
-  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Xét theo chế độ đêm của Windows</value>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>A downgrade is available</value>
   </data>
-  <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Chỉ có thể tiếp tục với những trì hoãn có thời gian kết thúc</value>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
   </data>
-  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Thiết lập trì hoãn</value>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Open script config</value>
   </data>
-  <data name="ToggleTheme" xml:space="preserve">
-    <value>Bật tắt chủ đề</value>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
   </data>
-  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Mở thư mục thiết lập</value>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Enable custom scripts</value>
   </data>
-  <data name="UntilTime" xml:space="preserve">
-    <value>tới khi</value>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Choose your wallpaper</value>
   </data>
-  <data name="WallpaperColor" xml:space="preserve">
-    <value>Màu sắc</value>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Image path</value>
   </data>
 </root>

@@ -63,7 +63,7 @@ namespace AutoDarkModeApp.Pages
         private void UiHandler()
         {
             //collapse changes saved message
-            TextBlockUserFeedback.Visibility = Visibility.Collapsed;
+            TextBlockUserFeedback.Text = AdmProperties.Resources.welcomeText;
 
             //give numbers to the steps
             TextBlockStep1.Text = AdmProperties.Resources.ThemeTutorialStep + " 1)";
@@ -104,7 +104,6 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxLightTheme.IsEnabled = false;
                 theme1 = false;
                 theme2 = false;
-                TextBlockUserFeedback.Visibility = Visibility.Collapsed;
             }
 
             UpdateApplyFlagCheckBoxes();
@@ -147,12 +146,14 @@ namespace AutoDarkModeApp.Pages
             {
                 StackPanelIgnoreSettings.IsEnabled = false;
                 IgnoreDisableMessage.Visibility = Visibility.Visible;
+                IgnoreDisableSeparator.Visibility = Visibility.Visible;
                 if (!init) builder.Config.WindowsThemeMode.ApplyFlags.Clear();
                 UpdateApplyFlagCheckBoxes();
             }
             else
             {
                 StackPanelIgnoreSettings.IsEnabled = true;
+                IgnoreDisableSeparator.Visibility = Visibility.Collapsed;
                 IgnoreDisableMessage.Visibility = Visibility.Collapsed;
             }
         }
@@ -163,7 +164,6 @@ namespace AutoDarkModeApp.Pages
             ComboBoxLightTheme.IsEnabled = false;
             theme1 = false;
             theme2 = false;
-            TextBlockUserFeedback.Visibility = Visibility.Collapsed;
             RequestThemeSwitch();
         }
 
@@ -214,6 +214,7 @@ namespace AutoDarkModeApp.Pages
 
             //ui changes
             TextBlockUserFeedback.Visibility = Visibility.Visible;
+            TextBlockUserFeedback.Text = AdmProperties.Resources.msgChangesSaved;
 
             //apply theme
             try
@@ -406,6 +407,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
+                TextBlockUserFeedback.Text = AdmProperties.Resources.msgChangesSaved;
             }
             catch (Exception ex)
             {

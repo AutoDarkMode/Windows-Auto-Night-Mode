@@ -96,7 +96,7 @@ namespace AutoDarkModeSvc.Core
 
                     // for unmanaged with flags we need to set the unmanagedactivethemepath to our internal names
                     // This is because when using apply flags, the theme is reported as custom. However, our UnmanagedOriginalName
-                    // persists, so if we read that then we are aware of the origin theme
+                    // persists because we have set it originally when applying the theme, so if we read that then we are aware of the origin theme
                     if (config.WindowsThemeMode.ApplyFlags != null && config.WindowsThemeMode.ApplyFlags.Count > 0)
                     {
                         string customPath = Path.Combine(Helper.PathThemeFolder, "Custom.theme");

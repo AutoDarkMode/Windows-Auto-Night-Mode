@@ -145,6 +145,9 @@ namespace AutoDarkModeApp
                     case "wallpaper":
                         FrameNavbar.Navigate(typeof(PagePersonalization), null, new EntranceNavigationTransitionInfo());
                         break;
+                    case "scripts":
+                        FrameNavbar.Navigate(typeof(PageScripts), null, new EntranceNavigationTransitionInfo());
+                        break;
                     case "settings":
                         FrameNavbar.Navigate(typeof(PageSettings), null, new EntranceNavigationTransitionInfo());
                         break;
