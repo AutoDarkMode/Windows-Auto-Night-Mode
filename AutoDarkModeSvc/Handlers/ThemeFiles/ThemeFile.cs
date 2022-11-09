@@ -374,7 +374,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         /// <summary>
         /// Synchronizes the currently active Windows theme with Auto Dark Mode
         /// </summary>
-        /// <param name="patch">if the theme switch fix should be applied or not</param>
+        /// <param name="patch">Set to true if the theme switch fix should be applied or not. Set this to false if you plan to apply the active theme. <br/>
+        /// Otherwise you might face theme state desync with Windows 11 22H2 and get a buggy taskbar / explorer.</param>
         /// <param name="keepDisplayNameAndGuid">if the name and guid of the original theme should be preserved</param>
         public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid = false)
         {
@@ -459,11 +460,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             return target;
         }
 
-        public static void PatchColorsWin11AndSave(ThemeFile theme, string data)
+        public static void PatchColorsWin11AndSave(ThemeFile theme, string data = null)
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
-                theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
+                if (data != null) theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
                 PatchColorsWin11InMemory(theme);
             }
             theme.Save(managed: false);

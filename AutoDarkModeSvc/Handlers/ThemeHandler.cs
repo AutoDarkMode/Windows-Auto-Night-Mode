@@ -74,12 +74,23 @@ namespace AutoDarkModeSvc.Handlers
             {
                 WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
             }
+
+            // refresh active theme for syncing data into unmanaged themes
+            state.ManagedThemeFile.SyncWithActiveTheme(false);
+
             if (newTheme == Theme.Light)
             {
                 ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
                 light.UnmanagedOriginalName = light.DisplayName;
                 light.DisplayName = Helper.NameUnmanagedLightTheme;
-                ThemeFile.PatchColorsWin11AndSave(light, "0 0 1");
+                if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+                {
+                    ThemeFile.PatchColorsWin11AndSave(light);
+                }
+                else
+                {
+                    light.Save();
+                }
                 Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
             }
             else if (newTheme == Theme.Dark)
@@ -87,7 +98,14 @@ namespace AutoDarkModeSvc.Handlers
                 ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
                 dark.UnmanagedOriginalName = dark.DisplayName;
                 dark.DisplayName = Helper.NameUnmanagedDarkTheme;
-                ThemeFile.PatchColorsWin11AndSave(dark, "0 1 0");
+                if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+                {
+                    ThemeFile.PatchColorsWin11AndSave(dark);
+                }
+                else
+                {
+                    dark.Save();
+                }
                 Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
             }
         }
