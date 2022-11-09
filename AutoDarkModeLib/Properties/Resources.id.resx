@@ -307,7 +307,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Hanya tersedia di mode gelap. Jika Anda mengalami isu: Coba untuk tingkatkan jeda di setelan.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>Informasi</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
     <value>Sistem waktu 12 jam</value>
@@ -1091,15 +1091,15 @@ Klik "Ya" untuk membuka jendela peramban baru.</value>
     <value>Buka pengaturan skrip</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Skrip</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Aktifkan skrip kustom</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Pilih wallpaper</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Alamat gambar</value>
   </data>
 </root>
