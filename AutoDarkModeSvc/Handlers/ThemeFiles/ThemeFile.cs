@@ -201,6 +201,16 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             try
             {
                 new FileInfo(ThemeFilePath).Directory.Create();
+                //remove non ini portions from the theme file to ensure windows parses it properly
+                for(int i = 0; i < ThemeFileContent.Count; i++)
+                {
+                    string line = ThemeFileContent[i];
+                    if (line.Length != 0 && !line.Contains('=') && !line.StartsWith('[') && !line.StartsWith(';'))
+                    {
+                        ThemeFileContent.RemoveAt(i);
+                        i--;
+                    }
+                }
                 File.WriteAllLines(ThemeFilePath, ThemeFileContent, Encoding.GetEncoding(1252));
             }
             catch (Exception ex)
