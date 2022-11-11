@@ -207,6 +207,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     string line = ThemeFileContent[i];
                     if (line.Length != 0 && !line.Contains('=') && !line.StartsWith('[') && !line.StartsWith(';'))
                     {
+                        Logger.Warn($"invalid ini file entry detected: [{line}, removing line to preserve theme file integrity");
                         ThemeFileContent.RemoveAt(i);
                         i--;
                     }
