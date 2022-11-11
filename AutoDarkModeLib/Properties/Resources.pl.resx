@@ -605,7 +605,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Co 7 dni</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Ostatnie sprawdzenie</value>
+    <value>Ostatnio sprawdzane</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
     <value>nigdy</value>
