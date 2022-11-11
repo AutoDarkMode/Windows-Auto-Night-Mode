@@ -1049,7 +1049,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Pausiert</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Nur mit Office 2013-2019 zu verwenden, oder die Einstellung, sich dem System-Design anzupassen nicht funktioniert.</value>
+    <value>Nur mit Office 2013-2019 zu verwenden, oder wenn die Einstellung, sich dem System-Design anzupassen nicht funktioniert</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten.</value>

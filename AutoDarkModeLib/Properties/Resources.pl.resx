@@ -505,7 +505,7 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Resetuj</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Przełącz na ciemny motyw przy odłączeniu ładowarki</value>
+    <value>Przełącz na ciemny motyw w przypadku zasilania z baterii</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Domyślna wartość trybu oszczędzania energii</value>
@@ -605,7 +605,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Co 7 dni</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Ostatnie sprawdzenie</value>
+    <value>Ostatnio sprawdzane</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
     <value>nigdy</value>
@@ -810,7 +810,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Kolor</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Możesz edytować skróty tylko jak są wyłączone.</value>
+    <value>Możesz edytować skróty klawiszowe tylko wtedy, gdy są wyłączone.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
     <value>Wymuś tryb ciemny</value>
@@ -925,10 +925,10 @@ Czy chcesz kontynuować?</value>
     <value>Automatyczne przełączanie motywu jest włączone</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Śledź ustawienie Wyświetlanie systemu Windows</value>
+    <value>Śledź ustawienie Wyświetlanie nocne systemu Windows</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Śledź ustawienie Wyświetlanie systemu Windows</value>
+    <value>Śledź ustawienie Wyświetlanie nocne systemu Windows</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Przełączanie motywu zostało jednorazowo wstrzymane!</value>
@@ -991,7 +991,7 @@ Czy chcesz kontynuować?</value>
     <value>Przełącz teraz</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Opóźnij moduł</value>
+    <value>Moduł opóźnienia</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
     <value>Przełącz powiadomienie</value>
