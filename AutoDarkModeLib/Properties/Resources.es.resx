@@ -819,7 +819,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Dejar de forzar tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Activar atajos de sistema a nivel de sistema</value>
+    <value>Activar atajos de teclado a nivel de sistema</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
     <value>Forzar el tema oscuro</value>
@@ -880,7 +880,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Revertir esta acción pulsando en el botón deshacer de abajo.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>Atajo de teclado</value>
+    <value>atajo de teclado</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Activar cambio de tema automático</value>
