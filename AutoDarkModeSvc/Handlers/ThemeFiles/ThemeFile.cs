@@ -207,7 +207,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     string line = ThemeFileContent[i];
                     if (line.Length != 0 && !line.Contains('=') && !line.StartsWith('[') && !line.StartsWith(';'))
                     {
-                        Logger.Warn($"invalid ini file entry detected: [{line}], removing line to preserve theme file integrity");
+                        Logger.Warn($"invalid ini file entry detected: {line}, removing line to preserve theme file integrity");
                         ThemeFileContent.RemoveAt(i);
                         i--;
                     }
@@ -388,7 +388,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         /// <param name="patch">Set to true if the theme switch fix should be applied or not. Set this to false if you plan to apply the active theme. <br/>
         /// Otherwise you might face theme state desync with Windows 11 22H2 and get a buggy taskbar / explorer.</param>
         /// <param name="keepDisplayNameAndGuid">if the name and guid of the original theme should be preserved</param>
-        public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid = false)
+        public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid = false, bool logging = true)
         {
             try
             {
@@ -412,23 +412,23 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 
                 if (isCustom)
                 {
-                    Logger.Info($"theme used for synching is custom theme, path: {themePath}");
+                    if (logging) Logger.Info($"theme used for synching is custom theme, path: {themePath}");
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
                 else if (pathThemeName != null && pathThemeName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
                 {
-                    Logger.Info($"theme used for syncing is default theme with localized name, path: {themePath}");
+                    if (logging) Logger.Info($"theme used for syncing is default theme with localized name, path: {themePath}");
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
                 else if (pathThemeName == null || pathThemeName != activeThemeName)
                 {
-                    Logger.Info($"theme used for syncing has wrong name, using custom theme. expected: {activeThemeName} actual: {pathThemeName} with path: {themePath}");
+                    if (logging) Logger.Info($"theme used for syncing has wrong name, using custom theme. expected: {activeThemeName} actual: {pathThemeName} with path: {themePath}");
                     themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
                     ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
                 }
                 else
                 {
-                    Logger.Info($"theme used for syncing is {pathThemeName}, path: {themePath}");
+                    if (logging) Logger.Info($"theme used for syncing is {pathThemeName}, path: {themePath}");
                     ThemeFileContent = lines;
                 }
 
@@ -490,19 +490,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 _ = int.TryParse(rgb[1], out int g);
                 _ = int.TryParse(rgb[2], out int b);
 
+               
                 if (theme.themeFixShouldAdd)
-                {
-                    if (r == 0)
-                    {
-                        r++;
-                    }
-                    else
-                    {
-                        r--;
-                        theme.themeFixShouldAdd = false;
-                    }
-                }
-                else if (!theme.themeFixShouldAdd)
                 {
                     if (r == 255)
                     {
@@ -511,10 +500,22 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     else
                     {
                         r++;
+                        theme.themeFixShouldAdd = false;
+                    }
+                }
+                else if (!theme.themeFixShouldAdd)
+                {
+                    if (r == 0)
+                    {
+                        r++;
+                    }
+                    else
+                    {
+                        r--;
                         theme.themeFixShouldAdd = true;
                     }
                 }
-                Logger.Trace($"patched colors [{theme.Colors.InfoText.Item1}] to [{r} {g} {b}]");
+                Logger.Debug($"patched colors from [{theme.Colors.InfoText.Item1}] to [{r} {g} {b}]");
                 theme.Colors.InfoText = ($"{r} {g} {b}", theme.Colors.InfoText.Item2);
             }
         }

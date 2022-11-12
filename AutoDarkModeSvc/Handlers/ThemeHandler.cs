@@ -76,7 +76,7 @@ namespace AutoDarkModeSvc.Handlers
             }
 
             // refresh active theme for syncing data into unmanaged themes
-            state.ManagedThemeFile.SyncWithActiveTheme(false);
+            state.ManagedThemeFile.SyncWithActiveTheme(patch: false, logging: false);
 
             if (newTheme == Theme.Light)
             {
