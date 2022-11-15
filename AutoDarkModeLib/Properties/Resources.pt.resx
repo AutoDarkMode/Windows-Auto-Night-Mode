@@ -213,49 +213,49 @@ Você quer baixá-lo?
 Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
+    <value>Modo Escuro Automático</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Buscar por atualizações</value>
+    <value>Procurar por actualizações</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>nós verificamos novas atualizações sempre que o programa é iníciado.</value>
+    <value>Vamos procurar por actualizações cada vez que o programa iniciar.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Bem vindo</value>
+    <value>Bem-vindo</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Ative a caixa de seleção para habilitar a troca automatica de temas</value>
+    <value>Altere as definições aqui para modificar o comportamento da mudança automática de temas.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Tradutor: Vítor Gomes (vctgomes)</value>
+    <value>Tradutor: Hugo Simões</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Cidade</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Position</value>
+    <value>Posição</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>O aplicativo precisa reiniciar para gravar as mudanças</value>
+    <value>O reinicio da aplicação é necessário para ver as alterações</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Idioma:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Cor de destaque para a barra de tarefas</value>
+    <value>Côr do destaque para a barra de tarefas</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Atualmente:</value>
+    <value>Actualmente:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Papel de parede para o tema escuro</value>
+    <value>Fundo para o tema escuro</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Apagar/Desativar</value>
+    <value>Eliminar/Desactivar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>Escolher arquivo</value>
@@ -306,8 +306,8 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Um erro ocorreu</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Apenas visível no modo escuro.
+Se você tiver problemas: aumente o atraso da troca nas configurações.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informações</value>
