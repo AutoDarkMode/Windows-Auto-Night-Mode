@@ -1023,90 +1023,90 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Особлива подяка</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>Ігнорувати фон</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>Ігнорувати курсор</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>Ігнорувати значки на робочому столі</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>Ігнорувати звук</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
-    <value>Ignore settings</value>
+    <value>Ігнорувати налаштування</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>Цей параметр не підтримує стандартні теми Windows</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>хвилин</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Призупинено</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>Використовуйте лише з Office 2013-2019 або якщо у вас виникли проблеми з налаштуванням «використовувати систему» ​​Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>Під час виправлення сталася помилка.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>Поточна версія</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>Повернення до</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>Завантаження...</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>Виконується завантаження</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>Повідомлення</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>Доступна нова версія {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>Помилка виправлення</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Щоб отримати інформацію, перевірте service.log і updater.log</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>Оновлюється до</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>Повернутися до попередньої версії</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Відкрити теку log</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>Відкласти</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>Оновити</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>Доступне повернення до {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>Перейти на сторінку завантаження</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>Доступне повернення версії</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Скрипти</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Відкрити скрипт конфігурації</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>Скрипти</value>
