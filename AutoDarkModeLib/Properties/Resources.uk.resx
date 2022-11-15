@@ -213,7 +213,7 @@
 Зараз встановлена версія: {0}, нова версія: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
+    <value>Автоматичний темний режим</value>
   </data>
   <data name="updateButton" xml:space="preserve">
     <value>Перевірити оновлення</value>
@@ -306,8 +306,8 @@
     <value>Сталася помилка</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Видимий лише в темному режимі.
+Якщо у вас виникли проблеми: збільште затримку перемикання в налаштуваннях.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Інформація</value>
@@ -328,14 +328,13 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Фоновий пошук оновлень</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Виникла проблема з інтерфейсом користувача.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Будь ласка, переконайтеся, що:
+- служба запущена
+- ваш файл config.yaml правильний
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Чи хочете ви створити проблему в репозиторії програми? Натисніть «Так», щоб відкрити нове вікно браузера.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -736,7 +735,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (Світлий)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
@@ -807,16 +806,16 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Примусовий темний режим</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Примусовий світлий режим</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Гарячі клавіші</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Зупинити примусову тему</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Дозволити загальносистемні гарячі клавіші</value>
@@ -979,49 +978,49 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Дозволити зміну тем на екрані блокування (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Підтвердити</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>Перемкнути зараз</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>Модуль затримки</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
+    <value>Перемикнути сповіщення</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 години</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 хвилин</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 години</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 хвилин</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 годин</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 година</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 годин</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>Очікування зміни теми</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>Перемикнутися зараз чи відкласти?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>Режим трасування</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Особлива подяка</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Ignore background</value>
@@ -1110,15 +1109,15 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Open script config</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Скрипти</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Увімкнути користувацькі скрипти</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Вибрати фонове зображення</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Розташування зображення</value>
   </data>
 </root>
