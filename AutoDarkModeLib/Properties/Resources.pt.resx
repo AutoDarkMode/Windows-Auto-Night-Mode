@@ -426,97 +426,99 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Passo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Utilizar filtro de cores (envia Win + Ctrl + C)</value>
+    <value>Utilizar filtro de cor (envia Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use a tarefa de logon em vez da entrada de inicialização automática</value>
+    <value>Utilizar a tarefa de inicio de sessão em vez de uma entrada no arranque</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Modo de seleção:</value>
+    <value>Seleccionar modo:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Ocorreu um erro ao aplicar o tema, desativamos a troca de temas</value>
+    <value>Ocorreu um erro enquanto se aplicavam os temas seleccionados, desactivámos a mudança de temas</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Tema branco alternativo</value>
+    <value>Tema claro alternativo</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Extensão de Download</value>
+    <value>Decarregar Extensão</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
     <value>Ferramentas recomendadas</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Esta extensão faz com que sites no Chrome, Firefox e Edge respeitem o tema do sistema</value>
+    <value>Esta extensão de navegador faz os websites no Chrome, Firefox e Edge respeitar o tema do sistema.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>não encontrado</value>
+    <value>Não encontrado</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Por que doar?</value>
+    <value>Porque é que devo doar?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>Como doar?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Você pode me enviar dinheiro via PayPal. É completamente voluntário e você não deve esperar nenhuma compensação.</value>
+    <value>Pode enviar-me dinheiro via Paypal. É completamente voluntário e não deve esperar qualquer compensação.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Doar</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Olá! Obrigado por usar o Auto Dark Mode! Você está gostando?
+    <value>Olá! Obrigado por utilizar o Auto Dark Mode! Está a gostar dele até agora?
 
-Este aplicativo torna o seu dia a dia mais agradável, ajudando você a cuidar dos seus olhos. Ao mesmo tempo, é totalmente gratuito, sem anúncios, não coleta dados do usuário e é de código aberto. Não gero nenhum lucro com este projeto.
+Esta aplicação torna o seu dia-a-dia mais agradáveis, ao ajudá-lo a tormar conta dos seus olhos. Ao mesmo tempo, é completamente gratuito, livre de anúncios, não recolhe dados de utilizador e é de código de fonte aberta. Eu não obtenho qualquer lucro com este projecto.
 
-Por esse motivo, você poderia me apoiar com uma doação voluntária. Mesmo uma pequena quantia me faz pular feliz pelo meu apartamento. Apenas doe o quanto você valoriza o meu trabalho.</value>
+Por esta razão, deve suportar-me com uma doação voluntária. Até uma pequena quantidade faz-me dar saltos de alegria pelo meu apartamento. Apenas doe o quanto valoriza o meu trabalho.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Ocorreu um erro ao aplicar um arquivo .theme. Talvez o seu tema criado tenha sido excluído ou movido. É por isso que desativamos a troca de temas por enquanto. Para reativá-lo, abra o Modo escuro automático e defina {0} Configurações</value>
+    <value>Ocorreu um erro enquanto aplicava um ficheiro .theme. Talvez o seu tema criado foi eliminado ou movido. Foi por isto que desactivámos a mudança de temas por agora. Para activá-lo, abra o Auto Dark Mode e configure as definições de {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Nós encontramos o seguinte problema:  
-{0}. 
+    <value>Encontrámos o seguinte problema:
 
- Agora, tentaremos resolver esse problema executando um algoritmo como administrador. Talvez isso ajude. O Modo escuro automático será reiniciado depois disso e você precisará reaplicar suas configurações, desculpe!
+{0}
 
-E antes que eu me esqueça: NUNCA execute o Auto Dark Mode como administrador!</value>
+Iremos agora tentar resolver este problema ao correr um algoritmo como Administrador. Talvez isto vá ajudar.
+O Auto Dark Mode irá reiniciar depois e precisará de voltar a aplicar as suas definições, desculpe!
+
+Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Precisa de ajuda com um problema?</value>
+    <value>Ajuda</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Suporte multiusuário</value>
+    <value>Suporte de múltiplos utilizadores</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Atraso opcional para ativar o filtro de cores em escala de cinza:</value>
+    <value>Atraso opcional para adtivar o filtro de cores de escala de cinzentos:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Ajustar ao tema</value>
+    <value>Ajustar ao sistema</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Repor</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Enable dark mode when device is unplugged</value>
+    <value>Activar o tema escuro quando o dispositivo é desligado da corrente</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>O valor por defeito para o controlo deslizante da poupança de energia</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
+    <value>Mitigação da poupança de energia para a mudança de tema</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>Isto só funciona se não activou manualmente a poupança de bateria!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
+    <value>Modos de Mudança</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Personalização</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Apply Coordinates</value>
+    <value>Aplicar Coordenadas</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
     <value>Essa opção está desativada, porque você não instalou a atualização de abril de 2019 do Windows 10 April 2019 em sua máquina.</value>
