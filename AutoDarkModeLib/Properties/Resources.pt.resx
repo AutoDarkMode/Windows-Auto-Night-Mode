@@ -258,56 +258,56 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Eliminar/Desactivar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Escolher arquivo</value>
+    <value>Escolher ficheiro</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Papel de parede para o tema claro</value>
+    <value>Fundo para o tema claro</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fundo da área de trabalho</value>
+    <value>Fundo do Ambiente de Trabalho</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
     <value>Imagens</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor, selecione dois papeis de parede</value>
+    <value>Por favor, seleccione duas imagens de fundo</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor, selecione uma imagem</value>
+    <value>Por favor, seleccione uma imagem</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurar fundo da área de trabalho</value>
+    <value>Configurar o Fundo do Ambiente de Trabalho</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>usar o fundo atual</value>
+    <value>utilizar o fundo actual</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desativar</value>
+    <value>Desactivado</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Habilitar</value>
+    <value>Activado</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Salvar</value>
+    <value>Guardar</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Talvez o seu arquivo de imagem esteja corrompido ou a localização não exista.</value>
+    <value>Talvez o seu ficheiro de imagem está corrompido ou o caminho não existe.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Nós não conseguimos gerar a visualização da imagem, desculpe!</value>
+    <value>Não conseguimos gerar uma pré-visualização da sua imagem, desculpe!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Nós não conseguimos salvar suas configurações, desculpe!</value>
+    <value>Não conseguimos guardar as suas definições, desculpe!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Um erro ocorreu</value>
+    <value>Ocorreu um erro</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Apenas visível no modo escuro.
-Se você tiver problemas: aumente o atraso da troca nas configurações.</value>
+Se encontrar problemas, por favor, aumente o atraso da mudança nas definições.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informações</value>
@@ -325,47 +325,48 @@ Se você tiver problemas: aumente o atraso da troca nas configurações.</value>
     <value>Sim</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Procurar por atualizações em segundo plano</value>
+    <value>Procurar por actualizações em segundo plano</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Ocorreu um problema com o UI.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Por favor, certifique-se que:
+- o serviço está a ser executado
+- o seu ficheiro config.yaml está correcto
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Gostaria de criar um Issue no repositório Auto Dark Mode?
+Clique em "Sim" para abrir uma nova janela no navegador.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Erro: Sua entrada está inválida</value>
+    <value>Erro: A sua entrada está inválida</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Mudar após o modo de espera (não recomendado)</value>
+    <value>Mudar após o Modo de Espera (não recomendado)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão usando um novo tipo de modo de espera.
-Habilite essa opção para ter certeza que o Auto Dark Mode troque imediatamente o tema após o seu computar ligar/acordar.
-Isso também pode reduzir a duração da bateria! APENAS ative se for necessário!</value>
+    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão a utilizar um novo tipo de modo de espera.
+Activanda esta opção, faz com que o Auto Dark Mode mude imediatamente o tema depois de ligar o seu computador.
+Mas isso também pode reduzir a duração da bateria então SÓ active se for necessário!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Por conta da um problema com o Windows, a barra de tarefas não alterna corretamente sua cor no modo de economia de bateria. Por favor, desligue a economia de bateria se você estiver tendo problemas.</value>
+    <value>Por causa de um bug do Windows, a barra de tarefas não muda correctamente a sua cor no modo de poupança de bateria. Por favor, desactive a poupança de bateria se tiver problemas.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Deslocamento</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Set</value>
+    <value>Definir</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Essas opções são desativadas ao usar um Tema do Windows. Você pode configurá-lo individualmente no seu Tema do Windows.</value>
+    <value>Estas opções estão desactivadas enquanto utilizar um Tema do Windows.
+Pode defini-los individualmente no seu Tema do Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Aplicativos</value>
+    <value>Aplicações</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Definições</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Tempo</value>
@@ -374,40 +375,40 @@ Isso também pode reduzir a duração da bateria! APENAS ative se for necessári
     <value>Abrir Pasta</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Tema escuro:</value>
+    <value>Tema Escuro</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Crie seus temas</value>
+    <value>Crie os seus temas</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Escolha seus temas</value>
+    <value>Escolha os seus temas</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Tema claro:</value>
+    <value>Tema Claro</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Tema do Windows (mais recursos)</value>
+    <value>Tema do Windows (mais funcionalidades)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Papel de parede da área de trabalho (recomendado)</value>
+    <value>Fundo do Ambiente de Trabalho (recomendado)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Clique aqui para abrir as configurações de tema do Windows.</value>
+    <value>Clique aqui para abrir as definições do Tema do Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Agora defina a cor do Windows para o tema claro. Selecione seu papel de parede, cursor do mouse e cor de destaque favoritos.</value>
+    <value>Agora navegue até 'Cores' e altere a cor do sistema para 'Claro' para o tema claro. Seleccione a sua Imagem de Fundo favorito, Cursor de Rato e Cor de Destaque.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Volte para as configurações do tema e salve o seu tema.</value>
+    <value>Volte para as definições do tema e guarde o seu tema.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value>Repita o processo para o tema escuro.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Atraso na troca de cores da barra de tarefas (ms):</value>
+    <value>Atraso na mudança de cores da barra de tarefas (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>Sobre</value>
+    <value>Acerca</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>
@@ -419,13 +420,13 @@ Isso também pode reduzir a duração da bateria! APENAS ative se for necessári
     <value>Definir horários personalizados</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Do pôr do sol ao nascer do sol</value>
+    <value>Do pôr-do-sol ao nascer-do-sol</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Passo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Usar filtro de cores em escala de cinza (Win + Ctrl + C)</value>
+    <value>Utilizar filtro de cores (envia Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Use a tarefa de logon em vez da entrada de inicialização automática</value>
