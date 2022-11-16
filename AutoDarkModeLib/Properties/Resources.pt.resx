@@ -213,101 +213,101 @@ Você quer baixá-lo?
 Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
+    <value>Modo Escuro Automático</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Buscar por atualizações</value>
+    <value>Procurar por actualizações</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>nós verificamos novas atualizações sempre que o programa é iníciado.</value>
+    <value>Vamos procurar por actualizações cada vez que o programa iniciar.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Bem vindo</value>
+    <value>Bem-vindo</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Ative a caixa de seleção para habilitar a troca automatica de temas</value>
+    <value>Altere as definições aqui para modificar o comportamento da mudança automática de temas.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Tradutor: Vítor Gomes (vctgomes)</value>
+    <value>Tradutor: Hugo Simões</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Cidade</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Position</value>
+    <value>Posição</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>O aplicativo precisa reiniciar para gravar as mudanças</value>
+    <value>O reinicio da aplicação é necessário para ver as alterações</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Idioma:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Cor de destaque para a barra de tarefas</value>
+    <value>Côr do destaque para a barra de tarefas</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Atualmente:</value>
+    <value>Actualmente:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Papel de parede para o tema escuro</value>
+    <value>Fundo para o tema escuro</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Apagar/Desativar</value>
+    <value>Eliminar/Desactivar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Escolher arquivo</value>
+    <value>Escolher ficheiro</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Papel de parede para o tema claro</value>
+    <value>Fundo para o tema claro</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fundo da área de trabalho</value>
+    <value>Fundo do Ambiente de Trabalho</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
     <value>Imagens</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor, selecione dois papeis de parede</value>
+    <value>Por favor, seleccione duas imagens de fundo</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor, selecione uma imagem</value>
+    <value>Por favor, seleccione uma imagem</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurar fundo da área de trabalho</value>
+    <value>Configurar o Fundo do Ambiente de Trabalho</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>usar o fundo atual</value>
+    <value>utilizar o fundo actual</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desativar</value>
+    <value>Desactivado</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Habilitar</value>
+    <value>Activado</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Salvar</value>
+    <value>Guardar</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Talvez o seu arquivo de imagem esteja corrompido ou a localização não exista.</value>
+    <value>Talvez o seu ficheiro de imagem está corrompido ou o caminho não existe.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Nós não conseguimos gerar a visualização da imagem, desculpe!</value>
+    <value>Não conseguimos gerar uma pré-visualização da sua imagem, desculpe!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Nós não conseguimos salvar suas configurações, desculpe!</value>
+    <value>Não conseguimos guardar as suas definições, desculpe!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>Um erro ocorreu</value>
+    <value>Ocorreu um erro</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Apenas visível no modo escuro.
+Se encontrar problemas, por favor, aumente o atraso da mudança nas definições.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informações</value>
@@ -325,47 +325,48 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Sim</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Procurar por atualizações em segundo plano</value>
+    <value>Procurar por actualizações em segundo plano</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Ocorreu um problema com o UI.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Por favor, certifique-se que:
+- o serviço está a ser executado
+- o seu ficheiro config.yaml está correcto
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Gostaria de criar um Issue no repositório Auto Dark Mode?
+Clique em "Sim" para abrir uma nova janela no navegador.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Erro: Sua entrada está inválida</value>
+    <value>Erro: A sua entrada está inválida</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Mudar após o modo de espera (não recomendado)</value>
+    <value>Mudar após o Modo de Espera (não recomendado)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão usando um novo tipo de modo de espera.
-Habilite essa opção para ter certeza que o Auto Dark Mode troque imediatamente o tema após o seu computar ligar/acordar.
-Isso também pode reduzir a duração da bateria! APENAS ative se for necessário!</value>
+    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão a utilizar um novo tipo de modo de espera.
+Activanda esta opção, faz com que o Auto Dark Mode mude imediatamente o tema depois de ligar o seu computador.
+Mas isso também pode reduzir a duração da bateria então SÓ active se for necessário!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Por conta da um problema com o Windows, a barra de tarefas não alterna corretamente sua cor no modo de economia de bateria. Por favor, desligue a economia de bateria se você estiver tendo problemas.</value>
+    <value>Por causa de um bug do Windows, a barra de tarefas não muda correctamente a sua cor no modo de poupança de bateria. Por favor, desactive a poupança de bateria se tiver problemas.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Deslocamento</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Set</value>
+    <value>Definir</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Essas opções são desativadas ao usar um Tema do Windows. Você pode configurá-lo individualmente no seu Tema do Windows.</value>
+    <value>Estas opções estão desactivadas enquanto utilizar um Tema do Windows.
+Pode defini-los individualmente no seu Tema do Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Aplicativos</value>
+    <value>Aplicações</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Definições</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Tempo</value>
@@ -374,40 +375,40 @@ Isso também pode reduzir a duração da bateria! APENAS ative se for necessári
     <value>Abrir Pasta</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Tema escuro:</value>
+    <value>Tema Escuro</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Crie seus temas</value>
+    <value>Crie os seus temas</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Escolha seus temas</value>
+    <value>Escolha os seus temas</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Tema claro:</value>
+    <value>Tema Claro</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Tema do Windows (mais recursos)</value>
+    <value>Tema do Windows (mais funcionalidades)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Papel de parede da área de trabalho (recomendado)</value>
+    <value>Fundo do Ambiente de Trabalho (recomendado)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Clique aqui para abrir as configurações de tema do Windows.</value>
+    <value>Clique aqui para abrir as definições do Tema do Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Agora defina a cor do Windows para o tema claro. Selecione seu papel de parede, cursor do mouse e cor de destaque favoritos.</value>
+    <value>Agora navegue até 'Cores' e altere a cor do sistema para 'Claro' para o tema claro. Seleccione a sua Imagem de Fundo favorito, Cursor de Rato e Cor de Destaque.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Volte para as configurações do tema e salve o seu tema.</value>
+    <value>Volte para as definições do tema e guarde o seu tema.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value>Repita o processo para o tema escuro.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Atraso na troca de cores da barra de tarefas (ms):</value>
+    <value>Atraso na mudança de cores da barra de tarefas (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>Sobre</value>
+    <value>Acerca</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>
@@ -419,256 +420,258 @@ Isso também pode reduzir a duração da bateria! APENAS ative se for necessári
     <value>Definir horários personalizados</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Do pôr do sol ao nascer do sol</value>
+    <value>Do pôr-do-sol ao nascer-do-sol</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Passo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Usar filtro de cores em escala de cinza (Win + Ctrl + C)</value>
+    <value>Utilizar filtro de cor (envia Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use a tarefa de logon em vez da entrada de inicialização automática</value>
+    <value>Utilizar a tarefa de inicio de sessão em vez de uma entrada no arranque</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Modo de seleção:</value>
+    <value>Seleccionar modo:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Ocorreu um erro ao aplicar o tema, desativamos a troca de temas</value>
+    <value>Ocorreu um erro enquanto se aplicavam os temas seleccionados, desactivámos a mudança de temas</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Tema branco alternativo</value>
+    <value>Tema claro alternativo</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Extensão de Download</value>
+    <value>Decarregar Extensão</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
     <value>Ferramentas recomendadas</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Esta extensão faz com que sites no Chrome, Firefox e Edge respeitem o tema do sistema</value>
+    <value>Esta extensão de navegador faz os websites no Chrome, Firefox e Edge respeitar o tema do sistema.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>não encontrado</value>
+    <value>Não encontrado</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Por que doar?</value>
+    <value>Porque é que devo doar?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>Como doar?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Você pode me enviar dinheiro via PayPal. É completamente voluntário e você não deve esperar nenhuma compensação.</value>
+    <value>Pode enviar-me dinheiro via Paypal. É completamente voluntário e não deve esperar qualquer compensação.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Doar</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Olá! Obrigado por usar o Auto Dark Mode! Você está gostando?
+    <value>Olá! Obrigado por utilizar o Auto Dark Mode! Está a gostar dele até agora?
 
-Este aplicativo torna o seu dia a dia mais agradável, ajudando você a cuidar dos seus olhos. Ao mesmo tempo, é totalmente gratuito, sem anúncios, não coleta dados do usuário e é de código aberto. Não gero nenhum lucro com este projeto.
+Esta aplicação torna o seu dia-a-dia mais agradáveis, ao ajudá-lo a tormar conta dos seus olhos. Ao mesmo tempo, é completamente gratuito, livre de anúncios, não recolhe dados de utilizador e é de código de fonte aberta. Eu não obtenho qualquer lucro com este projecto.
 
-Por esse motivo, você poderia me apoiar com uma doação voluntária. Mesmo uma pequena quantia me faz pular feliz pelo meu apartamento. Apenas doe o quanto você valoriza o meu trabalho.</value>
+Por esta razão, deve suportar-me com uma doação voluntária. Até uma pequena quantidade faz-me dar saltos de alegria pelo meu apartamento. Apenas doe o quanto valoriza o meu trabalho.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Ocorreu um erro ao aplicar um arquivo .theme. Talvez o seu tema criado tenha sido excluído ou movido. É por isso que desativamos a troca de temas por enquanto. Para reativá-lo, abra o Modo escuro automático e defina {0} Configurações</value>
+    <value>Ocorreu um erro enquanto aplicava um ficheiro .theme. Talvez o seu tema criado foi eliminado ou movido. Foi por isto que desactivámos a mudança de temas por agora. Para activá-lo, abra o Auto Dark Mode e configure as definições de {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Nós encontramos o seguinte problema:  
-{0}. 
+    <value>Encontrámos o seguinte problema:
 
- Agora, tentaremos resolver esse problema executando um algoritmo como administrador. Talvez isso ajude. O Modo escuro automático será reiniciado depois disso e você precisará reaplicar suas configurações, desculpe!
+{0}
 
-E antes que eu me esqueça: NUNCA execute o Auto Dark Mode como administrador!</value>
+Iremos agora tentar resolver este problema ao correr um algoritmo como Administrador. Talvez isto vá ajudar.
+O Auto Dark Mode irá reiniciar depois e precisará de voltar a aplicar as suas definições, desculpe!
+
+Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Precisa de ajuda com um problema?</value>
+    <value>Ajuda</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Suporte multiusuário</value>
+    <value>Suporte de múltiplos utilizadores</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Atraso opcional para ativar o filtro de cores em escala de cinza:</value>
+    <value>Atraso opcional para adtivar o filtro de cores de escala de cinzentos:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Ajustar ao tema</value>
+    <value>Ajustar ao sistema</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Repor</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Enable dark mode when device is unplugged</value>
+    <value>Activar o tema escuro quando o dispositivo é desligado da corrente</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>O valor por defeito para o controlo deslizante da poupança de energia</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
+    <value>Mitigação da poupança de energia para a mudança de tema</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>Isto só funciona se não activou manualmente a poupança de bateria!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
+    <value>Modos de Mudança</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Personalização</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Apply Coordinates</value>
+    <value>Aplicar Coordenadas</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Essa opção está desativada, porque você não instalou a atualização de abril de 2019 do Windows 10 April 2019 em sua máquina.</value>
+    <value>Esta opção está desactivada porque não está instalado o Windows 10 Actualização de Abril de 2019 na sua máquina.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Geographic coordinates</value>
+    <value>Coordenadas Geográficas</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>Location data</value>
+    <value>Dados da localização</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>From sunset to sunrise (geographic coordinates)</value>
+    <value>Do pôr-do-sol até ao nascer-do-sol (coordenadas geográficas)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Find geo coordinates for your location</value>
+    <value>Encontrar as coordenadas geográficas para a sua localização</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>Open config file</value>
+    <value>Abrir o ficheiro de config</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Open config folder</value>
+    <value>Abrir a pasta de config</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Open log file</value>
+    <value>Abrir o ficheiro de registo</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>Config</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy):</value>
+    <value>Microsoft Office (legado):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
+    <value>Escolher um tema</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+    <value>Escolher um fundo</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Desactivado</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Hide tray icon (not recommended)</value>
+    <value>Esconder o ícone do tabuleiro do sistema (não recomendado)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while theme mode is enabled.</value>
+    <value>Esta funcionalidade está desactivada enquanto o modo de tema está activado.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>This feature is disabled while wallpaper mode is enabled.</value>
+    <value>Esta funcionalidade está desactivada enquanto o modo de imagem de fundo está activado.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds.</value>
+    <value>Oferece mais funcionalidades mas precisa de configurar um ficheiro .theme do Windows. Personalize a imagem de fundo do Ambiente de Trabalho por ecrã. defina um slideshow, altere o ponteiro do rato, defina uma cor de destaque e sons individuais.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
+    <value>Oferece manos funcionalidades mas é mais fácil configurar. Personalize a sua imagem de fundo do Ambiente de Trabalho para todos os ecrãs, ecrã individual ou uma cor de fundo.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
+    <value>Vamos procurar por novas versões do Auto Dark Mode em segundo plano. Quando uma actualização está disponível, vamos notificá-lo via notificação junto ao relógio</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Automatically download and install new versions</value>
+    <value>Automaticamente descarregar e instalar as novas versões</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+    <value>Não mostrar notificações</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Select update channel</value>
+    <value>Seleccione um canal de actualização</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+    <value>Procurar por actualizações quando o Auto Dark Mode inicia</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 days</value>
+    <value>14 dias</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 days</value>
+    <value>3 dias</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 days</value>
+    <value>7 dias</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Última verificação</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>never</value>
+    <value>nunca</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Change how often we check for updates</value>
+    <value>Alterar quantas vezes procuramos por actualizações</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>Tema Escuro</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>Tema Claro</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Imagem</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>Picture (multiple monitors)</value>
+    <value>Imagem (ecrãs múltiplos)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Solid color</value>
+    <value>Cor sólida</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Mode</value>
+    <value>Modo</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>Monitor</value>
+    <value>Ecrã</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Type</value>
+    <value>Tipo</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Remove disconnected monitors</value>
+    <value>Remover ecrãs desligados</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Imagem de fundo</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Cor</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Código Hex</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+    <value>Activar mudança de fundo</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Don't switch while playing video games</value>
+    <value>Não mudar enquando estiver a jogar jogos de vídeo</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Fast (1 sample)</value>
+    <value>Rápido (1 amostra)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Medium (2 samples)</value>
+    <value>Médio (2 amostras)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 samples)</value>
+    <value>Lento (3 amostras)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+    <value>Velocidade de detecção de utilização da GPU</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+    <value>Dispositivos alimentados por bateria</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Conditions</value>
+    <value>Condições</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+    <value>Utilização mínima da GPU para o atraso da mudança</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+    <value>Restaurar temas quando mudado externamente</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>Latitude</value>
@@ -677,31 +680,31 @@ E antes que eu me esqueça: NUNCA execute o Auto Dark Mode como administrador!</
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait...</value>
+    <value>O serviço ainda não está a correr, por favor, aguarde...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Launching Service</value>
+    <value>A lançar o serviço</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>O serviço não está a responder. Por favor, verifique se o AutoDarkModeSvc.exe está a correr e tente novamente!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Enable Windows theme switch</value>
+    <value>Activar a mudança do tema do Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Off</value>
+    <value>Desligado</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>On</value>
+    <value>Ligado</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Follow us</value>
+    <value>Siga-nos</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Theme</value>
+    <value>Tema</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>Flores</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
@@ -713,409 +716,409 @@ E antes que eu me esqueça: NUNCA execute o Auto Dark Mode como administrador!</
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (Claro)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>Movimento Capturado</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (Dark)</value>
+    <value>Windows (Escuro)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>Corrente</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Glow</value>
+    <value>Brilho</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (Claro)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Nascer-do-sol</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Every day</value>
+    <value>Todos os dias</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>Clique Definir para guardar as alterações.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+    <value>Utilizar a Cor de Destaque da Barra de Tarefas durante</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+    <value>Destaque apenas</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Version</value>
+    <value>Versão</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Copiar</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>Iniciar o Auto Dark Mode com o Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>Iniciar automaticamente</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Mode:</value>
+    <value>Modo:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Path:</value>
+    <value>Caminho:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>Refrescar Iniciar automaticamente</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
+    <value>Idioma</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Desactivado</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>None</value>
+    <value>Nenhum</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>Não encontrado</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>Chave de Registo</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>Tarefa</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>Desactivou a entrada do início automatico pelo Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
+    <value>Próxima actualização em</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Cor</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
+    <value>Só pode editar as teclas de atalho enquanto elas estiverem desactivadas.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Forçar o modo escuro</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Forçar o tema claro</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>Teclas de atalho</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Parar de forçar o tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Enable system-wide hotkeys</value>
+    <value>Activar as teclas de atalho por todo o sistema</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
+    <value>Forçar o Tema Escuro</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
+    <value>Forçar o Tema Claro</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>Escondar o ícone não é recomendado.
+Tem a certeza que quer continuar?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Hide Tray Icon</value>
+    <value>Esconder o Ícone do Tabuleiro do Sistema</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>Abrir a Pasta do Config</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>Deixar a aplicação decidir</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>Não mudar temas a não ser que o sistema não esteja a fazer nada</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>Minutos até que o sistema é considerado inactivo</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders</value>
+    <value>Cor de Destaque para as barras de título e os limites das janelas</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
+    <value>Informação da versão copiada para a Área de Transferência</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>Mudança automática do tema</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Show notification on toggle</value>
+    <value>Mostrar notificação na mudança</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>Atraso</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
+    <value>Módulo de monitorização da GPU</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
+    <value>Pausar módulo de mudança automática</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
+    <value>Verificador de ociosidade do sistema</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Prima Confirmar para pedir a mudança de tema imediata.</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>Retomar</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>Reverter esta acção ao clicar no botão Anular em baixo.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>tecla de atalho</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
+    <value>Alternar mudança de terma automática</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>Desactivar a mudança automática</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>Anular</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+    <value>Pausar mudança automática</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>Gostaria de desactivar a mudança automática?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>A mudança automática irá retomar também se regressar ao seu tema anterior.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>Mudança de tema pausada até</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>A mudança automática do tema está actualmente pausada devido aos seguintes módulos:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>Retomar só irá funcioar para adiamentos que têm um tempo de expiração</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>Adiar controlo</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>Alternar tema</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
+    <value>Mudança automática do tempa está activada</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Seguir a luz nocturna do Windows</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Seguir a luz nocturna do Windows</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>A mudança do tema está pausada uma vez!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
+    <value>adiar até</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
+    <value>adia até que haja condições</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
+    <value>adia até ao próximo nascer-do-sol</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
+    <value>adia até ao próximo pôr-do-sol</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>até</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
+    <value>até ao próximo nascer-do-sol</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
+    <value>até ao próximo pôr-do-sol</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Alternar a pausa da mudança de tema automática</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>Mudança automática do tema retomada</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
+    <value>Abrir as definições de luz nocturna</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Night light</value>
+    <value>Luz nocturna</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
+    <value>Atrasos activos</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
+    <value>Saltar mudança automática uma vez</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>Notificar antes de automaticamente mudar temas</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
+    <value>Tempo de notificação espera pelo entrada do utilizador em minutos</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Modo de depuração</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>Permitir a mudança de tema durante o ecrâ de bloqueio (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Confirmar</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>Mudar agora</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>Atrasar módulo</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
+    <value>Mudar notificação</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 horas</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 minutos</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 horas</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 minutos</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 horas</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 hora</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 horas</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>Mudança de tema pendente</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>Gostaria de mudar agora ou atrasar para mais tarde?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>Modo de rastreio</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Especial obrigado</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>Ignorar fundo</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>Ignorar ponteiro</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>Ignorar ícones do Ambiente de Trabalho</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>Ignorar som</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
-    <value>Ignore settings</value>
+    <value>Ignorar definições</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>Esta opção não suporta os temas por defeito do Windows</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minutos</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Pausado</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>Só utilizar com o Office 2013-2019 ou se estiver a ter problemas com o 'utilizar a definição do sistema' do Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>Ocorreu um erro enquanto fazia patching,.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>Versão Actual</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>Desactualizar para</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>A descarregar...</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>Descarga em progresso</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>Messagem</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>Nova versão {0} disponível</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>O patching falhou</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Por favor, verifique o service.log e updater.log para informações</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>A actulizar para</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>Desactualizar</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Abrir a pasta dos registos</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>Adiar</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>Actualizar</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>Versão anterior {0} disponível</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>Ir para a página de transferências</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>Uma versão anterior está disponível</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Abrir config do script</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Activar scripts personalizados</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Escolher a sua imagem de fundo</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Caminho da imagem</value>
   </data>
 </root>
