@@ -40,7 +40,7 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly GlobalState state = GlobalState.Instance();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
-        public static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
+        private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {

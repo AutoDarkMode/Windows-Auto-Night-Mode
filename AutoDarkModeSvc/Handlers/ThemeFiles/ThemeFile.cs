@@ -25,6 +25,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using YamlDotNet.Core;
@@ -32,7 +33,7 @@ using static System.Windows.Forms.LinkLabel;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
-    public class ThemeFile
+    public partial class ThemeFile
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public string ThemeFilePath { get; private set; }
@@ -261,6 +262,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 }
                 else if (iter.Current.Contains(Desktop.Section.Item1))
                 {
+                    Regex wallpaperRegex = WallpaperRegex();
                     while (iter.MoveNext())
                     {
                         if (iter.Current.StartsWith("["))
@@ -268,21 +270,21 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             processLastIterValue = true;
                             break;
                         }
-                        if (iter.Current.Contains("Wallpaper=")) Desktop.Wallpaper = iter.Current.Split('=')[1].Trim();
-                        else if (iter.Current.Contains("Pattern")) Desktop.Pattern = iter.Current.Split('=')[1].Trim();
-                        else if (iter.Current.Contains("PicturePosition"))
+                        if (iter.Current.StartsWith("Wallpaper=")) Desktop.Wallpaper = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.StartsWith("Pattern=")) Desktop.Pattern = iter.Current.Split('=')[1].Trim();
+                        else if (iter.Current.StartsWith("PicturePosition="))
                         {
                             if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int pos))
                             {
                                 Desktop.PicturePosition = pos;
                             }
                         }
-                        else if (iter.Current.Contains("MultimonBackgrounds"))
+                        else if (iter.Current.StartsWith("MultimonBackgrounds="))
                         {
                             bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
                             if (success) Desktop.MultimonBackgrounds = num;
                         }
-                        else if (iter.Current.Contains("Wallpaper") && !iter.Current.Contains("WallpaperWriteTime"))
+                        else if (wallpaperRegex.Matches(iter.Current).Count > 0)
                         {
                             string[] split = iter.Current.Split('=');
                             Desktop.MultimonWallpapers.Add((split[1], split[0].Replace("Wallpaper", "")));
@@ -537,6 +539,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
             originalName = lines.Where(x => x.StartsWith($"{nameof(UnmanagedOriginalName)}".Trim())).FirstOrDefault();
             if (originalName != null) originalName = originalName.Split("=")[1];
+            else originalName = "";
             return originalName.Trim();
         }
 
@@ -580,6 +583,9 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             .ToList();
             return props;
         }
+
+        [GeneratedRegex("^Wallpaper([0-9]+)=")]
+        private static partial Regex WallpaperRegex();
     }
 
 }
