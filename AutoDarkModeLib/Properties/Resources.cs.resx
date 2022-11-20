@@ -458,7 +458,7 @@ Můžete je však nastavit přímo v motivu Windows.</value>
     <value>Jak přispět?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Peníze mi můžete poslat skrze PayPal. Váš příspěvek je zcela dobrovolný a nezakládá se Vám za něj žádného odškodnění.</value>
+    <value>Peníze mi můžete poslat skrze PayPal. Váš příspěvek je zcela dobrovolný a neměli byste za něj očekávat žádné výhody.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Přispět</value>
@@ -484,7 +484,7 @@ Auto Dark Mode se poté restartuje. Bude však nezbytné vše znovu nastavit - m
 Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Potřebujete pomoc s problémem?</value>
+    <value>Nápověda</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Podpora více uživatelů</value>
