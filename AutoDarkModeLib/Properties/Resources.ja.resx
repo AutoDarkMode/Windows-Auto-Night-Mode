@@ -184,7 +184,7 @@
     <value>最新版をダウンロード</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>エラーが発生しました</value>
+    <value>エラーが発生しました :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>位置情報の使用許可が必要</value>
