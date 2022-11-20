@@ -268,8 +268,8 @@ namespace AutoDarkModeSvc.Handlers
 
                 // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
                 toast.Data.SequenceNumber = 0;
-                ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
                 ToastNotificationManagerCompat.History.Remove("adm_update");
+                ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
             });
         }
 
@@ -317,7 +317,6 @@ namespace AutoDarkModeSvc.Handlers
                    .AddButton(new ToastButton()
                    .SetContent(updateButton)
                    .AddArgument("action", updateAction))
-                   .SetBackgroundActivation()
                    .AddButton(new ToastButton()
                    .SetContent(AdmProperties.Resources.UpdateToastButtonPostpone)
                    .AddArgument("action", "postpone"))
@@ -381,7 +380,7 @@ namespace AutoDarkModeSvc.Handlers
                     else if (argument[0] == "action" && argument[1] == "downgrade")
                     {
                         Logger.Info("downgrading app, caller toast");
-                        Task.Run(() => _ = UpdateHandler.Downgrade()).Wait();
+                        Task.Run(() => _ = UpdateHandler.Downgrade(overrideSilent: true)).Wait();
                     }
                     else if (argument[0] == "action" && argument[1] == "postpone")
                     {

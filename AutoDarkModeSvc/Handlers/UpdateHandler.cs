@@ -245,7 +245,7 @@ namespace AutoDarkModeSvc.Handlers
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static bool Downgrade()
+        public static bool Downgrade(bool overrideSilent = false)
         {
             if (UpstreamResponse.StatusCode != StatusCode.Downgrade)
             {
@@ -260,7 +260,7 @@ namespace AutoDarkModeSvc.Handlers
             }
 
             Updating = true;
-            bool success = GetPatchData(false, out _, true);
+            bool success = GetPatchData(overrideSilent, out _, true);
             if (!success)
             {
                 ToastHandler.RemoveUpdaterToast();
