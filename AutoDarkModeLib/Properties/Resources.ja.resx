@@ -136,7 +136,7 @@
     <value>Windows 10 バージョン 1903 の機能を有効化</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>ソフトウェア:</value>
+    <value>アプリケーション:</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>開始時間の指定</value>
@@ -169,7 +169,7 @@
     <value>使用しているサードパーティーのソフトウェア</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>更新</value>
+    <value>アップデート</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
     <value>位置情報の使用</value>
@@ -228,7 +228,7 @@
     <value>ここで設定を変更すると、テーマ自動切り替えの動作を変更します。</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>翻訳者: maboroshin</value>
+    <value>翻訳者: maboroshin, zhixuan2333</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>都市</value>
@@ -306,8 +306,8 @@
     <value>エラーが発生しました。</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>ダークモードでのみ表示されます。
+問題が発生する場合、設定で切り替え遅延時間を増やしてください。</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>情報</value>
@@ -1101,24 +1101,24 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>ダウンロードページを開く</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>ダウングレードが可能です</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>スクリプト</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>スクリプトの構成を開く</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>スクリプト</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>カスタムスクリプトの有効化</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>壁紙を選択</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>画像のパス</value>
   </data>
 </root>
