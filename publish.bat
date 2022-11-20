@@ -22,6 +22,9 @@ echo AutoDarkModeConfig.pdb>> bin\Publish\Updater\whitelist.txt
 echo zh-tw>> bin\Publish\Updater\whitelist.txt
 echo zh>> bin\Publish\Updater\whitelist.txt
 echo mscordaccore>> bin\Publish\Updater\whitelist.txt
+echo api-ms-win>> bin\Publish\Updater\whitelist.txt
+echo dbgshim.dll>> bin\Publish\Updater\whitelist.txt
+echo ucrtbase.dll>> bin\Publish\Updater\whitelist.txt
 echo ThemeDll.dll>> bin\Publish\Updater\whitelist.txt
 echo IThemeManager2Bridge>> bin\Publish\Updater\whitelist.txt
 echo overrides.json>> bin\Publish\Updater\whitelist.txt
