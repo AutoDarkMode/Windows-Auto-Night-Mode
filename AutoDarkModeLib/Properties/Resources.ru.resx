@@ -683,10 +683,10 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Service not running yet, please wait...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Launching Service</value>
+    <value>Запуск службы</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>Служба не отвечает. Пожалуйста, проверьте, запущена ли AutoDarkModeSvc.exe и попробуйте снова!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Включить смену тем</value>
@@ -701,7 +701,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Следите за нами</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Theme</value>
+    <value>Тема</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Flowers</value>
@@ -728,7 +728,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>Поток</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
@@ -740,7 +740,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Рассвет</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
@@ -789,7 +789,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Не найдено</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>Ключ реестра</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
     <value>Task</value>
@@ -804,7 +804,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Цвет</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
+    <value>Вы можете редактировать горячие клавиши, только если они отключены.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
     <value>Force dark mode</value>
@@ -819,26 +819,26 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Stop forcing theme</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Enable system-wide hotkeys</value>
+    <value>Включить системные горячие клавиши</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
+    <value>Принудительно тёмная тема</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
+    <value>Принудительно светлая тема</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>Скрытие значка не рекомендуется.
+Вы действительно хотите продолжить?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Hide Tray Icon</value>
+    <value>Скрыть значок в трее</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>Открыть папку настроек</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>Определять программой</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
     <value>Don't switch themes unless the system is idle</value>
@@ -847,19 +847,19 @@ Do you really want to continue?</value>
     <value>Minutes until the system is considered idle</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders</value>
+    <value>Контрастный цвет заголовка и границ окна</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
+    <value>Номер версии скопирован в буфер обмена</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>Автоматическое переключение темы</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Show notification on toggle</value>
+    <value>Показать уведомление при переключении</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>Задержка</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPU monitor module</value>
@@ -874,10 +874,10 @@ Do you really want to continue?</value>
     <value>Hit confirm to request a theme switch immediately.</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>Возобновить</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>Отменить это действие, нажав на кнопку отмены ниже.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
     <value>hotkey</value>
@@ -886,22 +886,22 @@ Do you really want to continue?</value>
     <value>Toggle automatic theme switch</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>Отключить автопереключение</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>Отменить</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+    <value>Приостановить автопереключение</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>Хотели бы вы вместо этого отключить автоматическое переключение?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>Авто переключение возобновится, если вы вернете предыдущую тему.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>Смена темы приостановлена до</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
     <value>Auto theme switching is currently paused due to the following modules:</value>
@@ -913,10 +913,10 @@ Do you really want to continue?</value>
     <value>Postpone control</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>Переключить тему</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
+    <value>Авто переключение темы включено</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
     <value>Follow Windows night light</value>
@@ -940,13 +940,13 @@ Do you really want to continue?</value>
     <value>postpones until next sunset</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>до</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
+    <value>до следующего восхода</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
+    <value>до следующей заката</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
     <value>Toggle pause auto theme switch</value>
@@ -967,13 +967,13 @@ Do you really want to continue?</value>
     <value>Пропустить авто переключение один раз</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>Уведомлять при автоматическом переключении тем</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
     <value>Time the notification waits for user input in minutes</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Режим отладки</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
     <value>Allow theme switching during lockscreen (Win10)</value>
@@ -1039,7 +1039,7 @@ Do you really want to continue?</value>
     <value>Ignore settings</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>Эта опция не поддерживает темы Windows по умолчанию</value>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>minutes</value>
