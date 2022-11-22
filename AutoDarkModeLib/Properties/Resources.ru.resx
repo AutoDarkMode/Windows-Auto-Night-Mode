@@ -356,7 +356,7 @@
     <value>Смещение</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Установить</value>
+    <value>Задать</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Эти параметры выключены во время использования темы Windows.
@@ -747,13 +747,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Каждый день</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>Нажмите Задать, чтобы применить изменения.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+    <value>Только контрастный цвет</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
     <value>Версия</value>
@@ -798,7 +798,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
+    <value>Следующее обновление</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
     <value>Цвет</value>
@@ -807,16 +807,16 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Вы можете редактировать горячие клавиши, только если они отключены.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Темная тема принудительно</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Светлая тема принудительно</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Отключить принудительную тему</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Включить системные горячие клавиши</value>
@@ -865,7 +865,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>GPU monitor module</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
+    <value>Режим автопереключения</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
     <value>System idle checker</value>
@@ -883,7 +883,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>hotkey</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
+    <value>Автосмена темы</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
     <value>Отключить автопереключение</value>
@@ -919,16 +919,16 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Авто переключение темы включено</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Следовать системному времени ночного света</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Следовать системному времени ночного света</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Theme switching is paused once!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
+    <value>откладывается до</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
     <value>postpones until its condition is met</value>
@@ -949,22 +949,22 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>до следующей заката</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Пауза автосмены темы</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Auto theme switching resumed</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
+    <value>Открыть настройки ночного света</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Night light</value>
+    <value>Ночной свет</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
+    <value>Активные задержки</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Пропустить авто переключение один раз</value>
+    <value>Разово пропустить автопереключение</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
     <value>Уведомлять при автоматическом переключении тем</value>
@@ -985,7 +985,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Switch now</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>Режим задержки</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
     <value>Switch notification</value>
@@ -1042,7 +1042,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Эта опция не поддерживает темы Windows по умолчанию</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>минуты</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>Paused</value>
