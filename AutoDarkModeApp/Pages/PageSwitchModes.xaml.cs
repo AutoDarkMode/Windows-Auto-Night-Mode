@@ -75,12 +75,20 @@ namespace AutoDarkModeApp.Pages
             {
                 StackPanelAutoSwitchNotify.Visibility = Visibility.Collapsed;
             }
-            NumberBoxAutoSwitchNotifyGracePeriod.Value = Convert.ToDouble(builder.Config.AutoSwitchNotify.GracePeriodMinutes);
 
             ComboBoxGPUSamples.SelectedIndex = builder.Config.GPUMonitoring.Samples - 1;
-            NumberBoxGPUThreshold.Value = Convert.ToDouble(builder.Config.GPUMonitoring.Threshold);
-
-            NumberBoxIdleTimer.Value = Convert.ToDouble(builder.Config.IdleChecker.Threshold);
+            try
+            {
+                NumberBoxAutoSwitchNotifyGracePeriod.Value = Convert.ToDouble(builder.Config.AutoSwitchNotify.GracePeriodMinutes);
+                NumberBoxGPUThreshold.Value = Convert.ToDouble(builder.Config.GPUMonitoring.Threshold);
+                NumberBoxIdleTimer.Value = Convert.ToDouble(builder.Config.IdleChecker.Threshold);
+            }
+            catch
+            {
+                NumberBoxAutoSwitchNotifyGracePeriod.Value = 2;
+                NumberBoxGPUThreshold.Value = 30;
+                NumberBoxIdleTimer.Value = 5;
+            }
 
             CheckBoxBatteryDarkMode.IsChecked = builder.Config.Events.DarkThemeOnBattery;
 
@@ -192,10 +200,10 @@ namespace AutoDarkModeApp.Pages
                 if (double.IsNaN(NumberBoxGPUThreshold.Value)) //fixes crash when leaving box empty and clicking outside it
                     return;
 
-                builder.Config.GPUMonitoring.Threshold = Convert.ToInt32(NumberBoxGPUThreshold.Value);
 
                 try
                 {
+                    builder.Config.GPUMonitoring.Threshold = Convert.ToInt32(NumberBoxGPUThreshold.Value);
                     builder.Save();
                 }
                 catch (Exception ex)
@@ -212,9 +220,9 @@ namespace AutoDarkModeApp.Pages
                 if (double.IsNaN(NumberBoxIdleTimer.Value)) //fixes crash when leaving box empty and clicking outside it
                     return;
 
-                builder.Config.IdleChecker.Threshold = Convert.ToInt32(NumberBoxIdleTimer.Value);
                 try
                 {
+                    builder.Config.IdleChecker.Threshold = Convert.ToInt32(NumberBoxIdleTimer.Value);
                     builder.Save();
                 }
                 catch (Exception ex)
@@ -253,9 +261,9 @@ namespace AutoDarkModeApp.Pages
                 if (double.IsNaN(NumberBoxAutoSwitchNotifyGracePeriod.Value)) //fixes crash when leaving box empty and clicking outside it
                     return;
 
-                builder.Config.AutoSwitchNotify.GracePeriodMinutes = Convert.ToInt32(NumberBoxAutoSwitchNotifyGracePeriod.Value);
                 try
                 {
+                    builder.Config.AutoSwitchNotify.GracePeriodMinutes = Convert.ToInt32(NumberBoxAutoSwitchNotifyGracePeriod.Value);
                     builder.Save();
                 }
                 catch (Exception ex)
