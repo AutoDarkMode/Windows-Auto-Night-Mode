@@ -306,8 +306,8 @@
     <value>Произошла ошибка</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Видно только в темной теме.
+ Если у вас возникли проблемы: увеличьте задержку переключения в настройках.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Инфо</value>
@@ -328,18 +328,18 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Искать обновления в фоне</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Возникла проблема с интерфейсом.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Пожалуйста, убедитесь что:
+- служба запущена
+- Файл config.yaml в порядке.
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Хотите создать тему с проблемой в GitHub репозитории Auto Dark Mode?
+Нажмите "Да", чтобы открыть новое окно браузера.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Your input is invalid</value>
+    <value>Ошибка: введенные вами данные недействительны</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Изменение после Connected Standby (не рекомендуется)</value>
@@ -497,13 +497,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Зависит от текущей</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Сбросить</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
     <value>Включать темный режим, когда устройство отключается от сети</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>Значение по умолчанию для слайдера экономии энергии</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
     <value>Включить режим энергосбережения при смене тем</value>
@@ -548,7 +548,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Файлы настроек</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy):</value>
+    <value>Microsoft Office (устаревший):</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Выбрать тему</value>
@@ -602,7 +602,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Последняя проверка</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>never</value>
+    <value>никогда</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Интервал проверки обновлений</value>
@@ -756,37 +756,37 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Accent only</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Version</value>
+    <value>Версия</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Копировать</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>Запускать Auto Dark Mode при запуске Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>Автозапуск</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Mode:</value>
+    <value>Режим:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Path:</value>
+    <value>Путь:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>Обновить автозапуск</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
+    <value>Язык</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Отключено</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
     <value>None</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>Не найдено</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
     <value>Registry Key</value>
@@ -801,7 +801,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Next update at</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Цвет</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
     <value>You can only edit hotkeys while they are disabled.</value>
@@ -964,7 +964,7 @@ Do you really want to continue?</value>
     <value>Active delays</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
+    <value>Пропустить авто переключение один раз</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
     <value>Notify before automatically switching themes</value>
