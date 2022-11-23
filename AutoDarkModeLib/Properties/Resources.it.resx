@@ -485,7 +485,7 @@ Auto Dark Mode verrà riavviato e dovrai riconfigurare le impostazioni. Ci dispi
 PS: non avviare MAI Auto Dark Mode come amministratore!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Hai bisogno di aiuto?</value>
+    <value>Aiuto</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Supporto multiutente</value>
