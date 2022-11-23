@@ -74,7 +74,15 @@ namespace AutoDarkModeComms
             string selection = "";
             do
             {
-                selection = Prompt.Select("Select a command", fields);
+                try
+                {
+                    selection = Prompt.Select("Select a command", fields);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    //do nothing, retry prompt select in the next loop
+                    continue;
+                }
                 if (selection == Custom)
                 {
                     selection = Prompt.Input<string>("Enter command");
