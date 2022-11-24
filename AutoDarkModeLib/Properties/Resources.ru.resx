@@ -133,7 +133,7 @@
     <value>Всегда белая</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Включить фичи для Windows 1903</value>
+    <value>Включить функции для Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>Приложения:</value>
@@ -946,7 +946,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>до следующего восхода</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>до следующей заката</value>
+    <value>до следующего заката</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
     <value>Пауза автосмены темы</value>
