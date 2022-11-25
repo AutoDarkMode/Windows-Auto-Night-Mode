@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -136,7 +136,7 @@
     <value>Activar características para Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Aplicaciones:</value>
+    <value>Aplicaciones</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Hora de inicio personalizada</value>
@@ -163,7 +163,7 @@
     <value>Cambiar el tema actual</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>Sistema</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Software de terceros utilizado</value>
@@ -225,7 +225,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Bienvenido</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Activa la casilla para activar el cambio de tema automático</value>
+    <value>Cambie la configuración aquí para modificar el comportamiento del cambio automático de tema.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Traductor: Daniel Sevillano</value>
@@ -375,7 +375,7 @@ Puedes activarlas individualmente en tu tema de Windows.</value>
     <value>Abrir carpeta</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Tema oscuro:</value>
+    <value>Tema oscuro</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Crea tus temas</value>
@@ -384,7 +384,7 @@ Puedes activarlas individualmente en tu tema de Windows.</value>
     <value>Selecciona tus temas</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Tema claro:</value>
+    <value>Tema claro</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Tema de Windows (más características)</value>
@@ -485,7 +485,7 @@ Auto Dark Mode se reiniciará después de eso y tendrás que volver a aplicar to
 Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>¿Necesitas ayuda con un problema?</value>
+    <value>Ayuda</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Soporte para varios usuarios</value>
@@ -572,7 +572,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Ofrece más características, pero necesitas crear un archivo .theme de Windows. Personaliza tu fondo de escritorio para cada monitor, establecer una presentación de imágenes, cambiar tu cursor, establecer un color de acento y sonidos individuales.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Ofrece menos características, pero es más fácil de configurar. Personaliza tu fondo de pantalla para todos los monitores, monitores individuales o establece un color de fondo.</value>
+    <value>Ofrece menos funciones, pero es más fácil de configurar. Personalice su fondo de escritorio para todos los monitores, o establezca un color para el fondo.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Comprobamos si hay nuevas versiones de Auto Dark Mode en segundo plano. Cuando una actualización esté disponible, te avisaremos mediante una notificación</value>
@@ -686,7 +686,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Ejecutando servicio</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>El servicio no está respondiendo. Por favor, comprueba si AutoDarkModeSvc.exe se está ejecutando e inténtalo de nuevo.</value>
+    <value>El servicio no responde. ¡Compruebe si AutoDarkModeSvc.exe se está ejecutando y vuelva a intentarlo!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Activar cambio de temas de Windows</value>
