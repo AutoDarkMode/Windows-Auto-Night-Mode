@@ -136,7 +136,7 @@
     <value>Bật các tính năng cho Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Chủ đề cho ứng dụng:</value>
+    <value>Các ứng dụng</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Tuỳ chọn thời điểm chuyển đổi</value>
@@ -163,7 +163,7 @@
     <value>Chuyển chủ đề hiện tại</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Chủ đề cho hệ thống:</value>
+    <value>Hệ thống</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Các thành phần của bên thứ ba</value>
@@ -225,7 +225,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Chào mừng</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Tích vào để bật tính năng thay đổi chủ đề</value>
+    <value>Thay đổi cài đặt ở đây để hiệu chỉnh hành vi tự động chuyển theme chủ đề.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Dịch thuật: KhoiCanDev</value>
@@ -306,8 +306,8 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Có lỗi đã xảy ra</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Chỉ hiển thị trong chế độ tối.
+Nếu bạn gặp sự cố: vui lòng tăng độ trễ chuyển đổi trong cài đặt.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Thông tin</value>
@@ -328,14 +328,14 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Kiểm tra cập nhật tự động</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Đã xảy ra sự cố với giao diện người dùng.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Hãy chắc chắn rằng:
+- dịch vụ đang chạy
+- tệp config.yaml của bạn là chính xác
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Bạn có muốn tạo sự cố trên kho lưu trữ Chế độ tối tự động không?
+Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -375,7 +375,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Mở thư mục</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Chủ đề tối:</value>
+    <value>Chủ đề tối</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Tạo chủ đề của bạn</value>
@@ -384,7 +384,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Chọn chủ đề của bạn</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Chủ đề sáng:</value>
+    <value>Chủ đề sáng</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Chủ đề Windows (nhiều chức năng hơn)</value>
@@ -476,14 +476,16 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
     <value>Đã xảy ra lỗi khi áp dụng tập tin .theme. Có thể chủ đề bạn đã tạo đã bị xóa hoặc di chuyển. Đó là lý do tại sao ứng dụng sẽ tắt tính năng chuyển đổi chủ đề ngay bây giờ. Để bật lại tính năng này, vui lòng mở Auto Dark Mode và định cấu hình cài đặt {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Ứng dụng gặp phải vấn đề sau:{0}
+    <value>Chúng ta đã gặp phải vấn đề sau:
+{0}
 
-Bây giờ ứng dụng sẽ cố gắng giải quyết vấn đề này bằng cách chạy những đoạn mã với quyền quản trị viên. Auto Dark Mode sẽ khởi động lại sau đó và bạn sẽ cần phải thiết lập lại cài đặt của mình, xin thứ lỗi!
+Chúng ta sẽ thử giải quyết vấn đề này ngay bằng cách chạy một lập trình dưới tư cách quản trị viên. Có thể điều này sẽ giúp ích.
+Chủ đề tối tự động sẽ khởi động lại sau đó và bạn sẽ cần phải đặt lại các cài đặt của bạn, thông cảm nhoé!
 
-Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên bằng cách thủ công!</value>
+Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền quản trị viên bằng cách thủ công!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Bạn cần giúp đỡ?</value>
+    <value>Bạn cần giúp đỡ khum</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Hỗ trợ đa người dùng</value>
@@ -702,7 +704,7 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
     <value>Chủ đề</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>Hoa</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
@@ -714,11 +716,11 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (Nhẹ)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>Chuyển động đã chụp</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
@@ -726,19 +728,19 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>Dòng Flow</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Glow</value>
+    <value>Độ chói sáng</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (Nhẹ)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Bình minh</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
@@ -802,7 +804,7 @@ Lưu ý: KHÔNG BAO GIỜ chạy Auto Dark Mode với quyền quản trị viên
     <value>Màu sắc</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Bạn chỉ có thể sửa phím tắt khi chúng được tắt</value>
+    <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
     <value>Cưỡng ép chủ đề tối</value>
@@ -1043,22 +1045,22 @@ Bạn có muốn tiếp tục?</value>
     <value>minutes</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Tạm ngưng</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>Chỉ sử dụng với Office 2013-2019 hoặc nếu bạn gặp vấn đề với cài đặt 'sử dụng hệ thống' của Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>Một sự cố đã xảy ra trong khi patch.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>Phiên bản hiện tại</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>Hạ cấp xuống</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>Đang tải...</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
@@ -1067,56 +1069,56 @@ Bạn có muốn tiếp tục?</value>
     <value>Message</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>Phiên bản mới {0} khả dụng</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>Patch đã thất bại</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Xin hãy kiểm tra tệp service.log và tệp updater.log để được thông tin</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>Đang nâng cấp lên</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>Hạ cấp</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
     <value>Open log directory</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>Tạm hoãn</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>Hạ cấp {0} khả dụng</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Go to download page</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>Một bản hạ cấp được khả dụng</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Mở cấu hình tập lệnh</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Bật tệp lệnh tuỳ chọn</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Chọn màn hình nền</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Đường dẫn hình ảnh</value>
   </data>
 </root>
