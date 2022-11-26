@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -133,7 +133,7 @@
     <value>Всегда белая</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Включить фичи для Windows 1903</value>
+    <value>Включить функции для Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>Приложения:</value>
@@ -795,7 +795,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Task</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>Вы отключили автоматический запуск средствами Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>Следующее обновление</value>
@@ -813,7 +813,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Светлая тема принудительно</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>Горячие клавиши</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
     <value>Отключить принудительную тему</value>
@@ -871,7 +871,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>System idle checker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Нажмите подтвердить, чтобы переключить тему.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Возобновить</value>
@@ -880,7 +880,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Отменить это действие, нажав на кнопку отмены ниже.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>гор. кл.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Автосмена темы</value>
@@ -925,7 +925,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Следовать системному времени ночного света</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>Смена темы разово приостановлена!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>откладывается до</value>
@@ -946,13 +946,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>до следующего восхода</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>до следующей заката</value>
+    <value>до следующего заката</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
     <value>Пауза автосмены темы</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>Возобновить автопереключение темы</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
     <value>Открыть настройки ночного света</value>
@@ -976,13 +976,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Режим отладки</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>Разрешить переключение темы когда экран заблокирован (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Подтвердить</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>Переключить</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
     <value>Режим задержки</value>
@@ -991,37 +991,37 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Switch notification</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 часа</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 минут</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 часа</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 минут</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 часов</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 час</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 часов</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>Переключение темы приостановлено</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>Хотите переключить сейчас или отложить?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
     <value>Trace mode</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Особая благодарность</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Ignore background</value>
@@ -1045,7 +1045,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>минуты</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Приостановлено</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
     <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
@@ -1054,22 +1054,22 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>An error occurred while patching.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>Текущая версия</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
     <value>Downgrading to</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>Скачивание...</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>Идет скачивание</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
     <value>Message</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>Доступна новая версия {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
@@ -1085,7 +1085,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Downgrade</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Открыть папку с логами</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
     <value>Postpone</value>
@@ -1098,27 +1098,27 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>Перейти на страницу загрузки</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>A downgrade is available</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Скрипты</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Открыть конфигурацию скрипта</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Скрипты</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Включить пользовательский скрипт</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Выберите обои</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Путь к изображению</value>
   </data>
 </root>
