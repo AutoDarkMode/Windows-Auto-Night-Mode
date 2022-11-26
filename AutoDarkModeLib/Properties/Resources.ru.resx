@@ -795,7 +795,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Task</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>Вы отключили автоматический запуск средствами Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
     <value>Следующее обновление</value>
@@ -813,7 +813,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Светлая тема принудительно</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>Горячие клавиши</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
     <value>Отключить принудительную тему</value>
@@ -871,7 +871,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>System idle checker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Нажмите подтвердить, чтобы переключить тему.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Возобновить</value>
@@ -880,7 +880,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Отменить это действие, нажав на кнопку отмены ниже.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>гор. кл.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Автосмена темы</value>
@@ -925,7 +925,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Следовать системному времени ночного света</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>Смена темы разово приостановлена!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>откладывается до</value>
@@ -952,7 +952,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Пауза автосмены темы</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>Возобновить автопереключение темы</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
     <value>Открыть настройки ночного света</value>
@@ -976,13 +976,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Режим отладки</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>Разрешить переключение темы когда экран заблокирован (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Подтвердить</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>Переключить</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
     <value>Режим задержки</value>
@@ -1054,7 +1054,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>An error occurred while patching.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>Текущая версия</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
     <value>Downgrading to</value>
@@ -1063,13 +1063,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Скачивание...</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>Идет скачивание</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
     <value>Message</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>Доступна новая версия {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
@@ -1085,7 +1085,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Downgrade</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Открыть папку с логами</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
     <value>Postpone</value>
@@ -1098,27 +1098,27 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>Перейти на страницу загрузки</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>A downgrade is available</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Скрипты</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Открыть конфигурацию скрипта</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Скрипты</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Включить пользовательский скрипт</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Выберите обои</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Путь к изображению</value>
   </data>
 </root>
