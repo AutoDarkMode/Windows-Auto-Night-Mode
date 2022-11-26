@@ -946,7 +946,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>до следующего восхода</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>до следующего заката</value>
+    <value>до следующей заката</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
     <value>Пауза автосмены темы</value>
