@@ -994,13 +994,13 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>2 часа</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 минут</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
     <value>3 часа</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 минут</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
     <value>6 часов</value>
@@ -1021,7 +1021,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Trace mode</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Особая благодарность</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Ignore background</value>
@@ -1045,7 +1045,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>минуты</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Приостановлено</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
     <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
@@ -1060,7 +1060,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Downgrading to</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>Скачивание...</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
