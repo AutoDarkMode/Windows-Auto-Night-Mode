@@ -1113,17 +1113,10 @@ Bạn có muốn tiếp tục?</value>
     <value>Script</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-<<<<<<< HEAD
-    <value>Bật script tùy chỉnh</value>
-  </data>
-  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Chọn hình nền</value>
-=======
     <value>Bật tệp lệnh tuỳ chọn</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
     <value>Chọn màn hình nền</value>
->>>>>>> f044d15 (Translated using Weblate (Vietnamese))
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Đường dẫn hình ảnh</value>
