@@ -175,16 +175,16 @@
     <value>Usar el servicio de localización</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>¡Los cambios han sido guardados!</value>
+    <value>¡Tus cambios se han guardado!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Selecciona una hora y tus cambios serán guardados automáticamente.</value>
+    <value>Tus cambios se guardarán automáticamente.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Descargar actualización</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Ha ocurrido un error:(</value>
+    <value>ha ocurrido un error :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Esta aplicación necesita acceder a tu ubicación</value>
