@@ -207,8 +207,8 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Спасибо за использование Auto Dark Mode!
 
-Новая версия доступна на GitHub с исправлениями и новвоведениями.
-Хотите скачать её?
+Новая версия доступна на GitHub с исправлениями и улучшениями.
+Хотите загрузить?
 
 Сейчас установлена версия: {0}, новая: {1}</value>
   </data>
@@ -228,7 +228,7 @@
     <value>Поставьте галочку для включения автоматической смены тем</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun</value>
+    <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun, wileyfoxyx</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Город</value>
@@ -237,7 +237,7 @@
     <value>Position</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Перезагрузите приложение, чтобы изменения вступили в силу</value>
+    <value>Для применения изменений требуется перезагрузка приложения</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Язык:</value>
@@ -294,10 +294,10 @@
     <value>Сохранить</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Возможно изображение испорчено или не существует.</value>
+    <value>Файл с изображением поврежден или не существует.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Невозможно сгенерировать превью изображения!</value>
+    <value>Не удалось сгенерировать превью изображения, извините!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
     <value>Невозможно сохранить настройки!</value>
@@ -313,7 +313,7 @@
     <value>Инфо</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12-часовое время</value>
+    <value>12-часовой формат</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Закрыть</value>
@@ -350,7 +350,7 @@
 Но это также сокращает время работы от батареи, поэтому активируйте ТОЛЬКО при необходимости!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>Из-за бага Windows, панель задач не всегда меняет свой цвет в режиме экономии энергии. Пожалуйста, отключите режим экономии энергии, если у вас возникают проблемы.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Смещение</value>
@@ -485,7 +485,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
 И кстати: пожалуйста, НИКОГДА не запускайте Auto Dark Mode от имени администратора!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Нужна помощь в решении проблемы?</value>
+    <value>Помощь</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Поддержка нескольких пользователей</value>
@@ -500,7 +500,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Сбросить</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Включать темный режим, когда устройство отключается от сети</value>
+    <value>Включать темный режим, когда устройство отключено от сети</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Значение по умолчанию для слайдера экономии энергии</value>
@@ -641,7 +641,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Цвет</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Hex-код:</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Включить смену обоев</value>
@@ -680,7 +680,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Долгота</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait...</value>
+    <value>Сервис ещё не запущен. Пожалуйста, подождите...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Запуск службы</value>
@@ -704,7 +704,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Тема</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>Цветы</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
@@ -716,7 +716,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (светлая)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
@@ -736,7 +736,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (светлая)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
@@ -792,7 +792,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Ключ реестра</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>Задача</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
     <value>Вы отключили автоматический запуск средствами Windows.</value>
@@ -841,10 +841,10 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Определять программой</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>Переключить темы когда система бездействует</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>Минуты до того, как система будет считаться бездействующей</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
     <value>Контрастный цвет заголовка и границ окна</value>
@@ -904,7 +904,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Смена темы приостановлена до</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>Автоматическая смена темы приостановлена из-за следующих модулей:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
     <value>Resuming will only work for postpones that have an expiry time</value>
@@ -976,7 +976,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Режим отладки</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Разрешить переключение темы когда экран заблокирован (Win10)</value>
+    <value>Разрешить переключение темы на экране блокировки (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
     <value>Подтвердить</value>
