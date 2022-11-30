@@ -208,6 +208,8 @@
                                           Name="it" />
                             <ComboBoxItem Content="Nederlands (Dutch)"
                                           Name="nl" />
+                            <ComboBoxItem Content="Norwegian Bokmål"
+                                          Name="nb_no" />
                             <ComboBoxItem Content="Polski (Polish)"
                                           Name="pl" />
                             <ComboBoxItem Content="Magyarul (Hungarian)"
@@ -485,7 +487,7 @@
                                      Glyph="&#xe8a7;" />
                     </Grid>
                 </uc:Card>
-               
+
                 <uc:Card Padding="30,20,5,20"
                          Margin="0,2,0,0"
                          Cursor="Hand"
