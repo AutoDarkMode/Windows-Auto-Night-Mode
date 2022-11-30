@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -148,7 +148,7 @@
     <value>Dark theme</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy):</value>
+    <value>Edge (Legacy)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Light</value>
@@ -193,10 +193,10 @@
     <value>No new updates are available.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Getting your location...</value>
+    <value>Getting your location…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Looking for updates...</value>
+    <value>Looking for updates…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Warning: We couldn't read your current theme.</value>
@@ -548,7 +548,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Config</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy):</value>
+    <value>Microsoft Office (legacy)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Pick a theme</value>
@@ -680,7 +680,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait...</value>
+    <value>Service not running yet, please wait…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Launching Service</value>
@@ -1060,7 +1060,7 @@ Do you really want to continue?</value>
     <value>Downgrading to</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>Downloading…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>

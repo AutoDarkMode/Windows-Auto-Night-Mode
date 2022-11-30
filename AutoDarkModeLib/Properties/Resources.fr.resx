@@ -148,7 +148,7 @@
     <value>Thème sombre</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (ancienne version) :</value>
+    <value>Edge (ancienne version)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Clair</value>
@@ -199,7 +199,7 @@
     <value>Recherche de mises à jour…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Avertissement : Impossible de détecter votre thème actuel</value>
+    <value>Avertissement : Impossible de détecter votre thème actuel.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>Une nouvelle mise à jour est disponible !</value>
@@ -375,7 +375,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Ouvrir le dossier</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Thème sombre :</value>
+    <value>Thème sombre</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Créez vos thèmes</value>
@@ -466,6 +466,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
     <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous aimez l'application jusqu'à présent ?
+
 Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est complètement gratuite, sans publicité, ne collecte pas les données des utilisateurs et est open source.
 Je ne génère aucun profit avec ce projet.
 
@@ -547,7 +548,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Configuration</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (ancienne version) :</value>
+    <value>Microsoft Office (ancienne version)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Sélectionner un thème</value>
@@ -679,7 +680,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Le service n'est pas encore démarré, veuillez patienter...</value>
+    <value>Le service n'est pas encore démarré, veuillez patienter…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Démarrage du service</value>
@@ -1059,7 +1060,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Retourner à la version antérieure</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Téléchargement en cours...</value>
+    <value>Téléchargement en cours…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Téléchargement en cours</value>
