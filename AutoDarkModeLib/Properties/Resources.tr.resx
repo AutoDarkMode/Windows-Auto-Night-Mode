@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -148,7 +148,7 @@
     <value>Koyu tema</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Eski):</value>
+    <value>Edge (Eski)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Açık</value>
@@ -175,7 +175,7 @@
     <value>Konum Servisini Kullan</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Değişiklikler kaydedildi! </value>
+    <value>Değişiklikler kaydedildi!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Değişiklikleriniz otomatik olarak kaydedilecektir.</value>
@@ -193,10 +193,10 @@
     <value>Yeni güncelleme yok.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Konumunuz aranıyor...</value>
+    <value>Konumunuz aranıyor…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Güncellemelere bakılıyor...</value>
+    <value>Güncellemelere bakılıyor…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Uyarı: Mevcut temanızı okuyamadık.</value>
@@ -225,7 +225,7 @@ Bunu indirmek istiyor musunuz?
     <value>Hoş geldiniz</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Otomatik tema değiştirmeyi etkinleştirmek için ayarları buradan yapın</value>
+    <value>Otomatik tema değiştirmeyi etkinleştirmek için ayarları buradan yapın.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Çeviri: cmhrky (cumhur)</value>
@@ -359,7 +359,7 @@ Ama aynı zamanda pil ömrünü de azaltır. Bu yüzden SADECE gerekirse etkinle
     <value>Ayarla</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Bir Windows Teması kullanılırken bu seçenekler devre dışı bırakılır. 
+    <value>Bir Windows Teması kullanılırken bu seçenekler devre dışı bırakılır.
 Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
@@ -680,7 +680,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Boylam (Longitude)</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Hizmet henüz çalışmıyor, lütfen bekleyin...</value>
+    <value>Hizmet henüz çalışmıyor, lütfen bekleyin…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Hizmet Başlatma</value>
@@ -747,7 +747,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Her gün</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Değişiklikleri kaydetmek için Ayarla'ya basın</value>
+    <value>Değişiklikleri kaydetmek için Ayarla'ya basın.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Temadayken Görev Çubuğu Vurgu Rengi'ni kullan</value>
@@ -1060,7 +1060,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Sürüm düşürülüyor:</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>İndiriliyor...</value>
+    <value>İndiriliyor…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>İndirme durumu</value>
