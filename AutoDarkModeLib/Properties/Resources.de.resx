@@ -136,7 +136,7 @@
     <value>Features für Windows 1903 aktivieren</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Anwendungen:</value>
+    <value>Anwendungen</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Aktivierungszeit</value>
@@ -148,7 +148,7 @@
     <value>Dunkles Design</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (alte Version):</value>
+    <value>Edge (alte Version)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Hell</value>
@@ -163,7 +163,7 @@
     <value>Aktuelles Design wechseln</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System:</value>
+    <value>System</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Enthält Drittanbieter-Software</value>
@@ -175,10 +175,10 @@
     <value>Standort-Dienste verwenden</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Änderungen gespeichert</value>
+    <value>Änderungen gespeichert!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Klicke auf 'Anwenden' um die Änderungen zu speichern</value>
+    <value>Klicke auf 'Anwenden' um die Änderungen zu speichern.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Update herunterladen</value>
@@ -193,10 +193,10 @@
     <value>Keine Updates verfügbar.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Standort suchen...</value>
+    <value>Standort suchen…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Updates suchen...</value>
+    <value>Updates suchen…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Achtung: Das aktuelle Design kann nicht eingelesen werden.</value>
@@ -347,7 +347,6 @@ Drücke "ja" um ein neues Browserfenster zu öffnen.
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Mobile Geräte, wie Microsoft Surface-Prdukte, nutzen eine neue Art des Energiesparmodus.
 Wenn du diese Option aktivierst, wird Auto Dark Mode sofort nach dem Aufwecken deines Computers das Design wechseln.
-
 Jedoch senkt diese Option auch die Akkulaufzeit! Aktiviere sie deshalb nur, wenn es notwendig ist!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
@@ -681,7 +680,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Längengrad</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service läuft noch nicht, bitte warten...</value>
+    <value>Service läuft noch nicht, bitte warten…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Starte Service</value>
@@ -1061,7 +1060,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Zurückstufen auf</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Lädt herunter...</value>
+    <value>Lädt herunter…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Fortschritt</value>
