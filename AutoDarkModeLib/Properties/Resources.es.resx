@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -175,16 +175,16 @@
     <value>Usar el servicio de localización</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>¡Los cambios han sido guardados!</value>
+    <value>¡Tus cambios se han guardado!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Selecciona una hora y tus cambios serán guardados automáticamente.</value>
+    <value>Tus cambios se guardarán automáticamente.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Descargar actualización</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Ha ocurrido un error:(</value>
+    <value>ha ocurrido un error :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>Esta aplicación necesita acceder a tu ubicación</value>
@@ -345,12 +345,12 @@ Pulse "Sí" para abrir una nueva ventana del navegador.
     <value>Cambiar tras conexión en espera (no recomendado)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móviles, como los productos Microsoft Surface, están unsando un nuevo tipo de modo de espera. 
+    <value>Dispositivos móviles, como los productos Microsoft Surface, están usando un nuevo tipo de modo de espera. 
 Activar esta opción asegura que Auto Dark Mode cambie inmediatamente el tema tras encender tu ordenador. 
 ¡Pero también reduce tu tiempo de batería! ¡SOLO activar si es necesario!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Debido a un eror de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
+    <value>Debido a un error de Windows la barra de tares no cambia su color correctamente en el modo ahorro de energía. Por favor desactiva el ahorro de energía si encuentras fallos.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Demora</value>
@@ -396,7 +396,7 @@ Puedes activarlas individualmente en tu tema de Windows.</value>
     <value>Pulsa aquí para abrir los ajustes del tema de Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Ahora ve a 'Colores' y cambia el color del sistema a 'Claro' para el tema claro. Seleciona tu fondo de pantalla, cursor y color de acento favoritos.</value>
+    <value>Ahora ve a 'Colores' y cambia el color del sistema a 'Claro' para el tema claro. Selecciona tu fondo de pantalla, cursor y color de acento favoritos.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Vuelve a los ajustes del tema y guarda tu tema.</value>

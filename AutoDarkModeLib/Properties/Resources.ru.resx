@@ -207,8 +207,8 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Спасибо за использование Auto Dark Mode!
 
-Новая версия доступна на GitHub с исправлениями и новвоведениями.
-Хотите скачать её?
+Новая версия доступна на GitHub с исправлениями и улучшениями.
+Хотите загрузить?
 
 Сейчас установлена версия: {0}, новая: {1}</value>
   </data>
@@ -228,7 +228,7 @@
     <value>Поставьте галочку для включения автоматической смены тем</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun</value>
+    <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun, wileyfoxyx</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Город</value>
@@ -237,7 +237,7 @@
     <value>Position</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Перезагрузите приложение, чтобы изменения вступили в силу</value>
+    <value>Для применения изменений требуется перезагрузка приложения</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Язык:</value>
@@ -294,10 +294,10 @@
     <value>Сохранить</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Возможно изображение испорчено или не существует.</value>
+    <value>Файл с изображением поврежден или не существует.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Невозможно сгенерировать превью изображения!</value>
+    <value>Не удалось сгенерировать превью изображения, извините!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
     <value>Невозможно сохранить настройки!</value>
@@ -313,7 +313,7 @@
     <value>Инфо</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12-часовое время</value>
+    <value>12-часовой формат</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Закрыть</value>
@@ -350,7 +350,7 @@
 Но это также сокращает время работы от батареи, поэтому активируйте ТОЛЬКО при необходимости!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>Из-за бага Windows, панель задач не всегда меняет свой цвет в режиме экономии энергии. Пожалуйста, отключите режим экономии энергии, если у вас возникают проблемы.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Смещение</value>
@@ -450,7 +450,7 @@
     <value>Это расширение обеспечивает следование теме системы на сайтах в Chrome, Firefox и Edge</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>не найдено</value>
+    <value>Не найдено</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
     <value>Зачем пожертвовать?</value>
@@ -479,13 +479,13 @@
     <value>Мы столкнулись со следующей проблемой: 
 {0}. 
 
-Сейчас мы попробуем решить её запустив алгоритм как администратор. Возможно это поможет. 
-Auto Dark Mode will restart after that and you need to re-apply your settings, sorry!
+Сейчас мы попробуем решить её, запустив алгоритм от имени администратора. Возможно это поможет. 
+После этого Auto Dark Mode перезапустится, и нужно будет заново применить настройки!
 
-И кстати: пожалуйста, НИКОГДА не запускайте Auto Dark Mode от имени администратора!</value>
+И кстати: НИКОГДА не запускайте Auto Dark Mode от имени администратора самостоятельно!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Нужна помощь в решении проблемы?</value>
+    <value>Помощь</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Поддержка нескольких пользователей</value>
@@ -500,7 +500,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Сбросить</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Включать темный режим, когда устройство отключается от сети</value>
+    <value>Включать темный режим, когда устройство отключено от сети</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Значение по умолчанию для слайдера экономии энергии</value>
@@ -521,7 +521,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Применить координаты</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>Недоступно, потому-что вы не установили Windows 10 April 2019 Update.</value>
+    <value>Опция недоступна, потому что вы не установили Windows 10 April 2019 Update на свой компьютер.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>Географические координаты</value>
@@ -641,7 +641,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Цвет</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Hex-код:</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Включить смену обоев</value>
@@ -680,7 +680,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Долгота</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait...</value>
+    <value>Сервис ещё не запущен. Пожалуйста, подождите...</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Запуск службы</value>
@@ -704,7 +704,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Тема</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>Цветы</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
@@ -716,27 +716,27 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (светлая)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>Захваченное движение</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (Dark)</value>
+    <value>Windows (темная)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Поток</value>
+    <value>Течение</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Glow</value>
+    <value>Свечение</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (светлая)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
@@ -792,7 +792,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Ключ реестра</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>Задача</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
     <value>Вы отключили автоматический запуск средствами Windows.</value>
@@ -841,10 +841,10 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Определять программой</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>Переключить темы когда система бездействует</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>Минуты до того, как система будет считаться бездействующей</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
     <value>Контрастный цвет заголовка и границ окна</value>
@@ -871,7 +871,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>System idle checker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Нажмите подтвердить, чтобы переключить тему.</value>
+    <value>Нажмите "Подтвердить", чтобы переключить тему.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Возобновить</value>
@@ -895,7 +895,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Приостановить автопереключение</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Хотели бы вы вместо этого отключить автоматическое переключение?</value>
+    <value>Хотите вместо этого отключить автоматическое переключение?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Авто переключение возобновится, если вы вернете предыдущую тему.</value>
@@ -904,7 +904,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Смена темы приостановлена до</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>Автоматическая смена темы приостановлена из-за следующих модулей:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
     <value>Resuming will only work for postpones that have an expiry time</value>
@@ -934,7 +934,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>postpones until its condition is met</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
+    <value>отложено до следующего восхода</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
     <value>postpones until next sunset</value>
@@ -946,7 +946,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>до следующего восхода</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>до следующего заката</value>
+    <value>до следующей заката</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
     <value>Пауза автосмены темы</value>
@@ -976,7 +976,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Режим отладки</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Разрешить переключение темы когда экран заблокирован (Win10)</value>
+    <value>Разрешить переключение темы на экране блокировки (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
     <value>Подтвердить</value>
@@ -1048,7 +1048,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Приостановлено</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>Используйте только с Office 2013-2019, или если возникают проблемы при выборе варианта "Зависит от текущей"</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>An error occurred while patching.</value>
@@ -1066,7 +1066,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Идет скачивание</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>Сообщение</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
     <value>Доступна новая версия {0}</value>
@@ -1076,22 +1076,22 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Patching failed</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Пожалуйста, проверьте service.log и updater.log для информации</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>Обновляется до версии</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>Откатить</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
     <value>Открыть папку с логами</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>Отложить</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>Обновить</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Downgrade {0} available</value>
@@ -1113,7 +1113,7 @@ Auto Dark Mode will restart after that and you need to re-apply your settings, s
     <value>Скрипты</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Включить пользовательский скрипт</value>
+    <value>Включить пользовательские скрипты</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
     <value>Выберите обои</value>
