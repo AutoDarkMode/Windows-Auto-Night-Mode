@@ -88,7 +88,7 @@ Sometimes Windows or web browsers will show a security notice while downloading 
 
 ## Translations
 
-We use Weblate's free Libre plan that supports open source software projects!
+We use Weblate's cool [free Libre plan](https://hosted.weblate.org/hosting/) that supports open source software projects!
 You can find our project here: https://hosted.weblate.org/projects/auto-dark-mode/app/
 <p align="left">
 
