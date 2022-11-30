@@ -215,7 +215,9 @@
                             <ComboBoxItem Content="Magyarul (Hungarian)"
                                           Name="hu" />
                             <ComboBoxItem Content="Português (Portuguese)"
-                                          Name="pt" />
+                                          Name="pt_pt" />
+                            <ComboBoxItem Content="Português (Portuguese)"
+                                          Name="pt_br" />
                             <ComboBoxItem Content="Русский (Russian)"
                                           Name="ru" />
                             <ComboBoxItem Content="Español (Spanish)"
