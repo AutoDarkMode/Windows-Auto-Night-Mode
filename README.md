@@ -93,7 +93,7 @@ You can find our project here: https://hosted.weblate.org/projects/auto-dark-mod
 <p align="left">
 
 <a href="https://hosted.weblate.org/engage/auto-dark-mode/">
-<img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/multi-auto.svg" alt="Translation status" />
+<img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/app/multi-auto.svg" alt="Translation status" />
 </a>
 </p>
 
