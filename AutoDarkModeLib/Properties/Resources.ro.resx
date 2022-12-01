@@ -662,7 +662,7 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
     <value>Viteza de detectare a utilizării GPU</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+    <value>Dispozitive cu baterie</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
     <value>Condiții</value>
