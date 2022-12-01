@@ -136,7 +136,7 @@
     <value>Abilita funzionalità per Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Applicazioni:</value>
+    <value>Applicazioni</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Orari di inizio</value>
@@ -148,7 +148,7 @@
     <value>Tema scuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (vecchia versione):</value>
+    <value>Edge (vecchia versione)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Chiaro</value>
@@ -193,10 +193,10 @@
     <value>Nessun aggiornamento disponibile.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Ricerca della posizione...</value>
+    <value>Ricerca della posizione…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Ricerca di aggiornamenti...</value>
+    <value>Ricerca di aggiornamenti…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Attenzione: impossibile individuare il tema in uso.</value>
@@ -360,7 +360,7 @@ Controindicazione: consuma più batteria! Abilita SOLO se necessario!</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Queste opzioni sono disabilitate quando si usa un Tema di Windows.
-Puoi impostarle individualmente nel tuo Tema di Windows</value>
+Puoi impostarle individualmente nel tuo Tema di Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Applicazioni</value>
@@ -548,7 +548,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Configura</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (versione precedente):</value>
+    <value>Microsoft Office (versione precedente)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Scegli un tema</value>
@@ -680,7 +680,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Longitudine</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Il servizio non è ancora in esecuzione, attendi...</value>
+    <value>Il servizio non è ancora in esecuzione, attendi…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Avvio del servizio in corso</value>
@@ -692,7 +692,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Abilita il cambio di tema Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Off</value>
+    <value>Diattivato</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
     <value>On</value>
@@ -1060,7 +1060,7 @@ Vuoi davvero continuare?</value>
     <value>Retrocedendo a</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Scaricando...</value>
+    <value>Scaricando…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Scaricamento in corso</value>

@@ -330,12 +330,12 @@ Si vous rencontrez des problèmes : augmentez le délai de transition dans les p
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Il y a eu un problème avec l'interface utilisateur.
 
-Veuillez vous assurer :
-- le service est démarré
-- le fichier config.yaml est correct
+Veuillez vous assurer :
+- le service est en exécution ;
+- le fichier config.yaml est correct.
 
-Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?
-Cliquez sur "Oui" pour ouvrir une nouvelle fenêtre du navigateur.
+Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?
+Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
