@@ -148,7 +148,7 @@
     <value>Tema oscuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (versión alternativa)</value>
+    <value>Edge (versión antigua)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Claro</value>
@@ -193,7 +193,7 @@
     <value>No hay nuevas actualizaciones disponibles.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Encontrando tú ubicacion…</value>
+    <value>Obteniendo tu ubicación…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
     <value>Buscando actualizaciones…</value>
