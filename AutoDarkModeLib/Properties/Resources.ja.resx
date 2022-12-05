@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -148,7 +148,7 @@
     <value>ダークテーマ</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (旧バージョン用):</value>
+    <value>Edge (旧バージョン用)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>ライト</value>
@@ -175,7 +175,7 @@
     <value>位置情報の使用</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>変更が保存されました。</value>
+    <value>変更は保存されました！</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>変更内容は自動で保存されます。</value>
@@ -193,25 +193,24 @@
     <value>最新版はありません。</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>位置情報を取得中...</value>
+    <value>位置情報を取得中…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>最新版の確認中...</value>
+    <value>最新版の確認中…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>警告: システムの現在のテーマを読み込めませんでした。</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>新しい更新を利用できます</value>
+    <value>最新版があります！</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Auto Dark Modeをご利用いただきありがとうございます！
 
-修正と機能強化を含む新しいバージョンがGitHub上で利用可能です。 
-
+修正と機能強化を含む新しいバージョンがGitHub上で利用可能です。
 インストールしますか？
 
- お使いのバージョン: {0}, 新しいバージョン: {1}</value>
+お使いのバージョン: {0}, 新しいバージョン: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
@@ -238,7 +237,7 @@
     <value>位置</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>変更の反映にはプログラムの再起動が必要です。</value>
+    <value>変更の反映にはプログラムの再起動が必要です</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>言語:</value>
@@ -286,7 +285,7 @@
     <value>無効</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>有効にしました</value>
+    <value>有効化中</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>または</value>
@@ -295,7 +294,7 @@
     <value>保存</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>ファイルが破損しているか、パスが存在しません</value>
+    <value>ファイルが破損しているか、パスが存在しません。</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
     <value>画像のプレビューを生成できません。</value>
@@ -304,7 +303,7 @@
     <value>設定が保存できませんでした。</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>エラーが発生しました。</value>
+    <value>エラーが発生しました</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>ダークモードでのみ表示されます。
@@ -334,13 +333,13 @@
 以下を確認してください:
 - Auto Dark Mode のサービスが実行中になっている
 - config.yaml が正しいものである
-      
-Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
+
+Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
 「はい」のクリックで、ブラウザのウィンドウを表示します。
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>エラー: 入力が正しくありません。</value>
+    <value>エラー: 入力が正しくありません</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>スタンバイ後に切り替える (非推奨)</value>
@@ -549,7 +548,7 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>設定</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (旧):</value>
+    <value>Microsoft Office (旧)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>テーマの選択</value>
@@ -681,7 +680,7 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>経度 (Longitude)</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>サービスはまだ実行されていません。お待ちください...</value>
+    <value>サービスはまだ実行されていません。お待ちください…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>サービスの起動中</value>
@@ -878,7 +877,7 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>再開</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>この操作を戻すには下のボタンをクリック</value>
+    <value>この操作を戻すには下のボタンをクリック。</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
     <value>ホットキー</value>
@@ -1046,7 +1045,7 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>分</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>停止しました</value>
+    <value>停止中</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
     <value>Office 2013-2019 か、Office の設定「システム設定を使用する」を使用中に問題が発生している時にのみ使います</value>
@@ -1061,7 +1060,7 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>ダウングレード後のバージョン:</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>ダウンロード中...</value>
+    <value>ダウンロード中…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>ダウンロード進行状況</value>
@@ -1108,7 +1107,7 @@ Auto Dark Mode のリポジトリに  issue (問題) を投稿しますか？
     <value>スクリプト</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>スクリプトの構成を開く</value>
+    <value>スクリプトの設定を開く</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>スクリプト</value>
