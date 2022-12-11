@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -136,7 +136,7 @@
     <value>Включить функции для Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Приложения:</value>
+    <value>Приложения</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Время смены темы</value>
@@ -148,7 +148,7 @@
     <value>Темная тема</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Старая версия):</value>
+    <value>Edge (Старая версия)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Светлая</value>
@@ -163,7 +163,7 @@
     <value>Сменить текущую тему</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Система:</value>
+    <value>Система</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Используемое стороннее ПО</value>
@@ -178,7 +178,7 @@
     <value>Изменения сохранены!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Нажмите "Применить" для сохранения изменений</value>
+    <value>Ваши изменения будут сохранены автоматически.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Скачать обновление</value>
@@ -193,10 +193,10 @@
     <value>Нет новых обновлений.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Определяем локацию...</value>
+    <value>Определяем локацию…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Поиск обновлений...</value>
+    <value>Поиск обновлений…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Внимание: мы не можем определить текушую тему.</value>
@@ -225,7 +225,7 @@
     <value>Добро пожаловать</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Поставьте галочку для включения автоматической смены тем</value>
+    <value>Поставьте галочку для включения автоматической смены тем.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Переводчики: QuestYouCraft, Rikipm, Dvaderfun, wileyfoxyx</value>
@@ -375,7 +375,7 @@
     <value>Открыть папку</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Тёмная тема:</value>
+    <value>Тёмная тема</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Создайте свои темы</value>
@@ -384,7 +384,7 @@
     <value>Выберите свои темы</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Светлая тема:</value>
+    <value>Светлая тема</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Темы Windows (больше возможностей)</value>
@@ -399,10 +399,10 @@
     <value>Теперь установите светлый цвет Windows в разделе Цвета для светлой темы. Выберите любимый фон, курсор мыши и основной цвет.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Вернитесь обратно к настройкам темы и сохраните свою тему</value>
+    <value>Вернитесь обратно к настройкам темы и сохраните свою тему.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Повторите процесс для тёмной темы</value>
+    <value>Повторите процесс для тёмной темы.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
     <value>Задержка переключения цвета панели задач (мс):</value>
@@ -447,7 +447,7 @@
     <value>Рекомендованные инструменты</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Это расширение обеспечивает следование теме системы на сайтах в Chrome, Firefox и Edge</value>
+    <value>Это расширение обеспечивает следование теме системы на сайтах в Chrome, Firefox и Edge.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>Не найдено</value>
@@ -459,7 +459,7 @@
     <value>Как пожертвовать?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Вы можете отправить мне деньги через PayPal. Это полностью добровольно и не следует ожидать любой компенсации</value>
+    <value>Вы можете отправить мне деньги через PayPal. Это полностью добровольно и не вам следует ожидать любой компенсации.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Пожертвовать</value>
@@ -473,7 +473,7 @@
 По этой причине вы можете поддержать меня добровольным пожертвованием. Даже от небольшой суммы я буду прыгать от счастья по квартире. Просто пожертвуйте столько, насколько вы оцениваете мою работу.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Во время применения файла .theme произошла ошибка. Возможно, созданная вами тема была удалена или перемещена. Поэтому мы сейчас отключили переключение тем. Чтобы включить его заново, пожалуйста, откройте Auto Dark Mode и сконфигурируйте {0} Настройки</value>
+    <value>Во время применения файла .theme произошла ошибка. Возможно, созданная вами тема, была удалена или перемещена. Поэтому мы сейчас отключили переключение тем. Чтобы включить его заново, пожалуйста, откройте Auto Dark Mode и сконфигурируйте {0} Настройки.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Мы столкнулись со следующей проблемой: 
@@ -491,7 +491,7 @@
     <value>Поддержка нескольких пользователей</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Опциональная задержка для активации цветового фильтра в серых оттенках</value>
+    <value>Опциональная задержка для активации цветового фильтра в серых оттенках:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>Зависит от текущей</value>
@@ -548,7 +548,7 @@
     <value>Файлы настроек</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (устаревший):</value>
+    <value>Microsoft Office (устаревший)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Выбрать тему</value>
@@ -641,7 +641,7 @@
     <value>Цвет</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex-код:</value>
+    <value>Hex-код</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
     <value>Включить смену обоев</value>
@@ -680,7 +680,7 @@
     <value>Долгота</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Сервис ещё не запущен. Пожалуйста, подождите...</value>
+    <value>Сервис ещё не запущен. Пожалуйста, подождите…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Запуск службы</value>
@@ -1060,7 +1060,7 @@
     <value>Downgrading to</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Скачивание...</value>
+    <value>Скачивание…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Идет скачивание</value>
