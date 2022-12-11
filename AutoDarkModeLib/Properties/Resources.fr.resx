@@ -297,10 +297,10 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Peut-être que votre fichier d'image est corrompu ou que le chemin d'accès n'existe pas.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Nous n'avons pas pu générer d'aperçu pour votre image.</value>
+    <value>Nous n'avons pas pu générer d'aperçu pour votre image !</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Nous n'avons pas pu enregistrer vos paramètres.</value>
+    <value>Nous n'avons pas pu enregistrer vos paramètres, désolés !</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Une erreur est survenue</value>
@@ -485,7 +485,7 @@ Auto Dark Mode redémarrera ensuite et vous devrez réappliquer vos paramètres.
 Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellement !</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Vous rencontrez un problème et avez besoin d'aide ?</value>
+    <value>Aide</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Support multi-utilisateur</value>
