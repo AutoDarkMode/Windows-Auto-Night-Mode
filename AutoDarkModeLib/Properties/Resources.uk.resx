@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Про програму</value>
+    <value>Налаштування</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Застосувати</value>
@@ -136,7 +136,7 @@
     <value>Увімкнути функції для Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Програми:</value>
+    <value>Застосунки</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Оберіть свій час початку</value>
@@ -148,7 +148,7 @@
     <value>Темна тема</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (стара версія):</value>
+    <value>Edge (застарілий)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Світла</value>
@@ -163,7 +163,7 @@
     <value>Перемкнути поточну тему</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Система:</value>
+    <value>Система</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Використане стороннє програмне забезпечення</value>
@@ -178,7 +178,7 @@
     <value>Зміни збережені!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Натисніть на Застосувати для збереження налаштувань</value>
+    <value>Ваші зміни буде збережено автоматично.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Завантажити оновлення</value>
@@ -187,16 +187,16 @@
     <value>сталася помилка :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Програма потребує дозволу для визначення місцезнаходження</value>
+    <value>Застосунок потребує дозволу для визначення місцезнаходження</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>немає нових оновлень.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Пошук місцезнаходження...</value>
+    <value>Пошук місцезнаходження…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Пошук оновлень...</value>
+    <value>Пошук оновлень…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Попередження: Неможливо визначити поточну тему.</value>
@@ -225,7 +225,7 @@
     <value>Ласкаво просимо</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Активувати прапорець для автоматичного перемикання тем</value>
+    <value>Активувати прапорець для автоматичного перемикання тем.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Перекладачі: Mykhailo Lytvynenko, Vlad Anisimov</value>
@@ -237,7 +237,7 @@
     <value>Місцезнаходження</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Необхідний перезапуск програми для застосування змін</value>
+    <value>Необхідний перезапуск застосунка для застосування змін</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Мова:</value>
@@ -297,10 +297,10 @@
     <value>Можливо, файл із зображенням пошкоджений або до нього відсутній шлях.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Вибачте, попередньо переглянути зображення неможливо.</value>
+    <value>Вибачте, попередньо переглянути зображення неможливо!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Вибачте, налаштування не збережені.</value>
+    <value>Вибачте, налаштування не збережені!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Сталася помилка</value>
@@ -330,11 +330,12 @@
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Виникла проблема з інтерфейсом користувача.
 
+
 Будь ласка, переконайтеся, що:
 - служба запущена
 - ваш файл config.yaml правильний
 
-Чи хочете ви створити проблему в репозиторії програми? Натисніть «Так», щоб відкрити нове вікно браузера.
+Чи хочете ви створити проблему в репозиторії Auto Dark Mode? Натисніть «Так», щоб відкрити нове вікно браузера.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -374,7 +375,7 @@
     <value>Відкрити папку</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Темна тема:</value>
+    <value>Темна тема</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Створіть свої теми</value>
@@ -383,7 +384,7 @@
     <value>Оберіть теми</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Світла тема:</value>
+    <value>Світла тема</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Теми Windows (більше можливостей)</value>
@@ -446,7 +447,7 @@
     <value>Рекомендовані засоби</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>За допомогою цього розширення веб-сайти в Chrome, Firefox та Edge відповідатимуть системній темі</value>
+    <value>За допомогою цього розширення веб-сайти в Chrome, Firefox та Edge відповідатимуть системній темі.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>не знайдено</value>
@@ -472,19 +473,19 @@ Auto Dark Mode робить ваше повсякдення приємнішим
 З цієї причини ви могли б підтримати мене добровільним внеском. Навіть від невеликої суми я стрибатиму по квартирі. Просто пожертвуйте стільки, на скільки цінуєте мою роботу.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем  вимкнене. Аби знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри</value>
+    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем вимкнене. Аби знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри .</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Трапилась така проблема:
 {0}.
 
-Зараз ми спробуємо вирішити її, запустивши програму з правами адміністратора. Можливо, це допоможе.
+Зараз ми спробуємо вирішити її, запустивши застосунок з правами адміністратора. Можливо, це допоможе.
 Після цього Auto Dark Mode перезапуститься, і вам потрібно буде знову застосувати свої налаштування, вибачте!
 
 До речі, будь ласка, НІКОЛИ не запускайте Auto Dark Mode в режимі адміністратора!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Потрібна допомога у вирішенні проблеми?</value>
+    <value>Допомога</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Підтримка багатьох користувачів</value>
@@ -547,7 +548,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Конфігурація</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (оригінальний):</value>
+    <value>Microsoft Office (застарілий)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Виберіть тему</value>
@@ -679,7 +680,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Довгота</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Служба ще не працює, зачекайте...</value>
+    <value>Служба ще не працює, зачекайте…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Запуск служби</value>
@@ -1047,7 +1048,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Призупинено</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Використовуйте лише з Office 2013-2019 або якщо у вас виникли проблеми з налаштуванням «використовувати систему» ​​Office</value>
+    <value>Використовуйте лише з Office 2013-2019 або якщо у вас виникли проблеми з Office 'використанням системних' налаштувань</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Під час виправлення сталася помилка.</value>
@@ -1059,7 +1060,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Повернення до</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Завантаження...</value>
+    <value>Завантаження…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Виконується завантаження</value>
