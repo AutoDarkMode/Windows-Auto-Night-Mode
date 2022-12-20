@@ -16,13 +16,9 @@
 #endregion
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeLib.Interfaces;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {

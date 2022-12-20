@@ -462,7 +462,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
-        public static ThemeFile MakeUnmanagedTheme(string sourcePath, string targetPath)
+        public static ThemeFile LoadUnmanagedTheme(string sourcePath, string targetPath)
         {
             ThemeFile source = new(sourcePath);
             source.Load();

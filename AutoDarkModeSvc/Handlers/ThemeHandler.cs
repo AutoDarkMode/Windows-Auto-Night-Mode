@@ -80,7 +80,7 @@ namespace AutoDarkModeSvc.Handlers
 
             if (newTheme == Theme.Light)
             {
-                ThemeFile light = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
+                ThemeFile light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
                 light.UnmanagedOriginalName = light.DisplayName;
                 light.DisplayName = Helper.NameUnmanagedLightTheme;
                 if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
@@ -95,7 +95,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             else if (newTheme == Theme.Dark)
             {
-                ThemeFile dark = ThemeFile.MakeUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
+                ThemeFile dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
                 dark.UnmanagedOriginalName = dark.DisplayName;
                 dark.DisplayName = Helper.NameUnmanagedDarkTheme;
                 if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
