@@ -224,6 +224,8 @@
                                           Name="ro" />
                             <ComboBoxItem Content="Русский (Russian)"
                                           Name="ru" />
+                            <ComboBoxItem Content="Srpski (Serbian)"
+                                          Name="sr" />
                             <ComboBoxItem Content="Español (Spanish)"
                                           Name="es" />
                             <ComboBoxItem Content="Türkçe (Turkish)"
