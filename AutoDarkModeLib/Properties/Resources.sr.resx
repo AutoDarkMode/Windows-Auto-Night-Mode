@@ -118,593 +118,593 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Settings</value>
+    <value>Postavke</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Apply</value>
+    <value>Primeni</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Enable automatic theme switching</value>
+    <value>Omogući automatsku promenu tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Always dark</value>
+    <value>Uvek tamna</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Always light</value>
+    <value>Uvek svetla</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Enable features for Windows 1903</value>
+    <value>Omogući funkcije za Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>Aplikacije</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Custom start time</value>
+    <value>Prilagođeno vreme</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Tamna</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Dark theme</value>
+    <value>Tamna tema</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy)</value>
+    <value>Edge (zastareli)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Light</value>
+    <value>Svetla</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Light theme</value>
+    <value>Svetla tema</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Postavke</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Switch current theme</value>
+    <value>Promeni trenutnu temu</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System</value>
+    <value>Sistem</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Used third party software</value>
+    <value>Korišćeni softver treće strane</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Ažuriranja</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>Koristi uslugu lokacije</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Your changes have been saved!</value>
+    <value>Vaše promene su sačuvane!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Your changes will be saved automatically.</value>
+    <value>Vaše promene će biti automatski sačuvane.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Download update</value>
+    <value>Preuzmi ažuriranje</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>error occurred :(</value>
+    <value>Greška :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>This app needs access to your location</value>
+    <value>Ova aplikacija traži pristup vašoj lokaciji</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>No new updates are available.</value>
+    <value>Nema novih ažuriranja.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Getting your location…</value>
+    <value>Nalaženje vaše lokacije…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Looking for updates…</value>
+    <value>Provera ažuriranja…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>Upozorenje: nismo uspeli da učitamo vašu trenutnu temu.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>A new update is available!</value>
+    <value>Novo ažuriranje je dostupno!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Thank you for using Auto Dark Mode!
+    <value>Hvala vam što koristite Auto Dark Mode!
 
-A new version is available on GitHub with fixes and enhancements.
-Do you want to install it?
+Nova verzija je dostupna na GitHub-u sa ispravkama i poboljšanjima.
+Želite li da je instalirate?
 
-Currently installed version: {0}, new version: {1}</value>
+Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>Proveri ažuriranja</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>We check for updates at every program start.</value>
+    <value>Proveravamo ažuriranja pri svakom pokretanju programa.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Dobro došli</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Change settings here to modify the automatic theme switch behavior.</value>
+    <value>Ove postavke se odnose na ponašanje automatske promene tema.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
+    <value>Preveo: Dragan</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>City</value>
+    <value>Grad</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Position</value>
+    <value>Pozicija</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>App restart required to see changes</value>
+    <value>Neophodno je ponovno pokretanje da bi izmene stupile na snagu</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Language:</value>
+    <value>Jezik:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Accent Color for Taskbar</value>
+    <value>Boja naglašavanja na traci zadataka</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Otkaži</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Currently:</value>
+    <value>Trenutno:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Wallpaper for dark theme</value>
+    <value>Pozadina za tamnu temu</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Delete/Disable</value>
+    <value>Obriši/Onemogući</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>Izbor datoteke</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Wallpaper for light theme</value>
+    <value>Pozadina za svetlu temu</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Desktop Background</value>
+    <value>Pozadina radne površine</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pictures</value>
+    <value>Slike</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpapers</value>
+    <value>Molimo izaberite dve pozadine</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>Molimo izaberite sliku</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configure Desktop Background</value>
+    <value>Konfiguracija pozadine radne površine</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>use current background</value>
+    <value>koristi trenutnu pozadinu</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Onemogućeno</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Omogućeno</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>or</value>
+    <value>ili</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>Sačuvaj</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
+    <value>Možda je datoteka sa vašom slikom povređena, ili putanja ne postoji.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>We couldn't generate a preview of your image, sorry!</value>
+    <value>Generisanje pregleda vaše slike nije uspelo, izvinite!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>We couldn't save your settings, sorry!</value>
+    <value>Čuvanje vaših postavki nije uspelo, izvinite!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>An error has occured</value>
+    <value>Desila se greška</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Vidljivo samo sa tamnom temom.
+Ako budete imali probleme, molimo povećajte kašnjenje promene u postavkama.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 hour clock</value>
+    <value>12-časovni sat</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Close</value>
+    <value>Zatvori</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>Ne</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Da</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Automatic update check</value>
+    <value>Automatska provera ažuriranja</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Desila se greška sa korisničkim interfejsom.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Molimo se uverite da:
+- usluga radi
+- je vaša config.yaml datoteka ispravna
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Da li biste želeli da otvorite problem na repozitorijumu Auto Dark Mode-a?
+Pritisnite "Da" da otvorite novi prozor u pregledaču.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Your input is invalid</value>
+    <value>Greška: vaš unos je neispravan</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Switch after Connected Standby (not recommended)</value>
+    <value>Promena nakon Connected Standby-a (ne preporučuje se)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
-But it also reduces the battery life, so ONLY activate if necessary!</value>
+    <value>Prenosivi uređaji, kao što su Microsoft Surface proizvodi, koriste novu vrstu režima pripravnosti.
+Omogućavanje ove opcije će se postarati da Auto Dark Mode promeni temu odmah nakon buđenja računara.
+Ali to takođe smanjuje autonomiju, tako da omogućite SAMO ako je neophodno!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>Zbog baga u Windows-u, traka zadataka ne menja boju kako treba kada je aktivan režim uštede baterije. Molimo isključite režim uštede baterije ako budete imali probleme.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Pomak</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Set</value>
+    <value>Podesi</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme.
-You can set them up individually in your Windows Theme.</value>
+    <value>Ove opcije su onemogućene kada se koristi Windows tema.
+Možete ih podesiti pojedinačno u vašoj Windows temi.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>Aplikacije</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Postavke</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Time</value>
+    <value>Vreme</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Open Folder</value>
+    <value>Otvori fasciklu</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>Tamna tema</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Create your themes</value>
+    <value>Napravite svoje teme</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Pick your themes</value>
+    <value>Izaberite svoje teme</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>Svetla tema</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows Theme (more features)</value>
+    <value>Windows tema (više funkcija)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Desktop Wallpaper (recommended)</value>
+    <value>Pozadina radne površine (preporučuje se)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
+    <value>Pritisnite ovde da otvorite podešavanja Windows tema.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>Onda idite na "Boja" i pod "Izaberite režim" promenite sistemsku boju na "Svetlo" za svetlu temu. Izaberite svoju omiljenu pozadinu, kursor miša i boju naglašavanja.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
+    <value>Vratite se u podešavanja tema i sačuvajte svoju temu.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Repeat this process for the dark theme.</value>
+    <value>Ponovite ovaj proces za tamnu temu.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Delay for switching taskbar colors (ms):</value>
+    <value>Kašnjenje promene boje trake zadataka (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>About</value>
+    <value>O aplikaciji</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>Menu</value>
+    <value>Meni</value>
   </data>
   <data name="restart" xml:space="preserve">
-    <value>Restart</value>
+    <value>Ponovo pokreni</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set custom hours</value>
+    <value>Podesi prilagođeno vreme</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise</value>
+    <value>Od zalaska do izlaska sunca</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Step</value>
+    <value>Korak</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Use color filter (sends Win + Ctrl + C)</value>
+    <value>Koristi filter za boju (šalje Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use logon task instead of startup entry</value>
+    <value>Koristi zadatak pri prijavljivanju (logon task) umesto unosa za automatsko pokretanje</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Select mode:</value>
+    <value>Izaberite režim:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+    <value>Desila se greška tokom primene odabranih tema, onemogućili smo promenu tema</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative light theme</value>
+    <value>Alternativna svetla tema</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Download Extension</value>
+    <value>Preuzmi proširenje</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>Recommended tools</value>
+    <value>Preporučene alatke</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.</value>
+    <value>Ovo proširenje za pregledač čini da sajtovi u Chrome-u, Firefox-u i Edge-u poštuju sistemsku temu.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>Nije nađeno</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Why should you donate?</value>
+    <value>Zašto biste donirali?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>How to donate?</value>
+    <value>Kako donirati?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+    <value>Možete mi poslati novac preko PayPal-a. To je potpuno neobavezno, ne očekujte nikakvu kompenzaciju.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>Donate</value>
+    <value>Donirajte</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+    <value>Ćao! Hvala vam što koristite Auto Dark Mode! Da li vam se sviđa za sad?
 
-This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
-I don't generate any profit with this project.
+Ova aplikacija čini vašu svakodnevicu prijatnijom tako što vam pomaže da se brinete za svoj vid. Takođe je potpuno besplatna, bez reklama, ne prikuplja korisničke podatke, i otvorenog je koda.
+Nemam nikakvu zaradu od ovog projekta.
 
-For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina je dovoljna da skakućem po svom stanu od sreće. Donirajte koliko god smatrate da moj rad zaslužuje.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
+    <value>Desila se greška tokom primene .theme datoteke. Možda je vaša tema bila obrisana ili premeštena. Zato smo za sad deaktivirali promenu teme. Da biste je ponovo aktivirali, molimo otvorite Auto Dark Mode i podesite {0} postavke.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue:
+    <value>Naišli smo na sledeći problem:
 {0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
-Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
+Probaćemo to da rešimo tako što ćemo pokrenuti algoritam kao administrator. Možda to pomogne.
+Auto Dark Mode će se posle toga restartovati, i moraćete da podesite vaše postavke ispočetka, izvinite!
 
-Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
+Napomena: NIKAD ne pokrećite Auto Dark Mode kao administrator sami!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Help</value>
+    <value>Pomoć</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Multi-User support</value>
+    <value>Podrška za više korisnika</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Optional delay for activating grayscale color filter:</value>
+    <value>Opciono kašnjenje aktivacije crno-belog filtera za boju:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Adapt to system</value>
+    <value>Prilagodi prema sistemu</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Resetuj</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Enable dark mode when device is unplugged</value>
+    <value>Omogući tamnu temu kada se uređaj skine sa napajanja</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>Podrazumevana vrednost slajdera uštede energije</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
+    <value>Ublažavanje problema sa režimom uštede baterije pri promeni teme</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>Ovo radi samo ako niste ručno omogućili uštedu baterije!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
+    <value>Promena režima</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Personalizacija</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Apply Coordinates</value>
+    <value>Primeni koordinate</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
+    <value>Ova opcija je onemogućena zato što nemate instaliranu Windows 10 April 2019 nadogradnju na vašoj mašini.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Geographic coordinates</value>
+    <value>Geografske koordinate</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>Location data</value>
+    <value>Podaci o lokaciji</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>From sunset to sunrise (geographic coordinates)</value>
+    <value>Od zalaska do izlaska sunca (prema koordinatama)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Find geo coordinates for your location</value>
+    <value>Nađite geografske koordinate vašeg mesta</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>Open config file</value>
+    <value>Otvori konfiguracionu datoteku</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Open config folder</value>
+    <value>Otvori konfiguracionu fasciklu</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Open log file</value>
+    <value>Otvori datoteku evidencije</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Config</value>
+    <value>Konfiguracija</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy)</value>
+    <value>Microsoft Office (zastarelo)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
+    <value>Izaberite temu</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+    <value>Izaberite pozadinu</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Onemogućeno</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Hide tray icon (not recommended)</value>
+    <value>Sakrij ikonicu u sistemskoj paleti (ne preporučuje se)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while theme mode is enabled.</value>
+    <value>Ova funkcija je onemogućena kada je režim teme omogućen.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>This feature is disabled while wallpaper mode is enabled.</value>
+    <value>Ova funkcija je onemogućena kada je režim pozadine omogućen.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds.</value>
+    <value>Nudi više mogućnosti, ali morate sami da napravite Windows-ovu datoteku .theme. Podesite pozadinu za svaki monitor, podesite slajdšou, promenite vaš kursor miša, podesite boju naglašavanja i pojedinačne zvuke.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
+    <value>Nudi manje mogućnosti, ali je lakše za podešavanje. Podesite pozadinu za sve monitore, za pojedinačne monitore, ili pozadinsku boju.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
+    <value>Proveravamo nove verzije Auto Dark Mode-a u pozadini. Ako je dostupno ažuriranje, obavestićemo vas notifikacijom</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Automatically download and install new versions</value>
+    <value>Automatski preuzimaj i instaliraj nove verzije</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+    <value>Ne prikazuj obaveštenja</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Select update channel</value>
+    <value>Izaberite kanal ažuriranja</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+    <value>Proveri ažuriranja kad se Auto Dark Mode pokrene</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 days</value>
+    <value>14 dana</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 days</value>
+    <value>3 dana</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 days</value>
+    <value>7 dana</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>Poslednja provera</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>never</value>
+    <value>nikad</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Change how often we check for updates</value>
+    <value>Podesite koliko često proveravamo ažuriranja</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>Tamna tema</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>Svetla tema</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>Slika</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>Picture (multiple monitors)</value>
+    <value>Slika (više monitora)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Solid color</value>
+    <value>Samo boja</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Mode</value>
+    <value>Režim</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
     <value>Monitor</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Type</value>
+    <value>Tip</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Remove disconnected monitors</value>
+    <value>Ukloni monitore koji nisu povezani</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Pozadina</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Boja</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Heks kod</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+    <value>Omogući promenu pozadine</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Don't switch while playing video games</value>
+    <value>Ne menjaj dok igram video igre</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Fast (1 sample)</value>
+    <value>Brzo (1 prelaz)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Medium (2 samples)</value>
+    <value>Srednje (2 prelaza)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 samples)</value>
+    <value>Sporo (3 prelaza)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+    <value>Brzina detekcije zauzetosti GPU-a</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+    <value>Uređaji koji rade na baterije</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Conditions</value>
+    <value>Uslovi</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+    <value>Minimalna zauzetost GPU-a za odlaganje promene</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+    <value>Povrati teme kad se promene eksterno</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Latitude</value>
+    <value>Geografska širina</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Longitude</value>
+    <value>Geografska dužina</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait…</value>
+    <value>Usluga još ne radi, molimo sačekajte…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Launching Service</value>
+    <value>Pokretanje usluge</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>Usluga se ne odaziva. Molimo proverite da li je pokrenut AutoDarkModeSvc.exe, pa probajte ponovo!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Enable Windows theme switch</value>
+    <value>Omogući promenu Windows tema</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Off</value>
+    <value>Isključeno</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>On</value>
+    <value>Uključeno</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Follow us</value>
+    <value>Pratite nas</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Theme</value>
+    <value>Tema</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>Cveće</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
@@ -716,409 +716,409 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (svetlo)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>Snimljeno kretanje</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (Dark)</value>
+    <value>Windows (tamno)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>Tok</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Glow</value>
+    <value>Usijanje</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (svetlo)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Zora</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Every day</value>
+    <value>Svaki dan</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>Pritisnite "Podesi" da sačuvate izmene.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+    <value>Koristi boju za naglašavanje na traci zadataka tokom</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+    <value>Samo naglašavanje</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Version</value>
+    <value>Verzija</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Kopiraj</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>Pokreni Auto Dark Mode pri prijavljivanju</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>Automatsko pokretanje</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Mode:</value>
+    <value>Režim:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Path:</value>
+    <value>Putanja:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>Osveži automatsko pokretanje</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
+    <value>Jezik</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Onemogućeno</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>None</value>
+    <value>Nikakva</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>Nije nađeno</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>Ključ u registru</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>Zadatak</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>Onemogućili ste unos za automatsko pokretanje iz Windows-a.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
+    <value>Sledeća provera u</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>Color</value>
+    <value>Boja</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
+    <value>Možete da menjate prečice samo dok su onemogućene.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>Prisili tamni režim</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>Prisili svetli režim</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>Tasterske prečice</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>Ne prisiljavaj temu</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Enable system-wide hotkeys</value>
+    <value>Omogući tasterske prečice</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
+    <value>Prisili tamnu temu</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
+    <value>Prisili svetlu temu</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>Sakrivanje ikonice se ne preporučuje.
+Jeste li sigurni da želite da nastavite?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Hide Tray Icon</value>
+    <value>Sakrij ikonicu u sistemskoj paleti</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>Otvori konfiguracionu fasciklu</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>Neka aplikacija odluči</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>Ne menjaj teme ako sistem nije neaktivan</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>Vreme dok se sistem ne bude smatrao neaktivnim, u minutima</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders</value>
+    <value>Boja naglašavanja za naslovne trake i ivice prozora</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
+    <value>Informacije o verziji kopirane u ostavu</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>Automatska promena tema</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Show notification on toggle</value>
+    <value>Prikaži obaveštenje kad se pritisne</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>Kašnjenje</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
+    <value>Modul monitoringa GPU-a</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
+    <value>Modul pauziranja automatske promene</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
+    <value>Provera neaktivnosti sistema</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Pritisnite "Potvrdi" da zatražite promenu teme odmah.</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>Nastavi</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>Opozovite ovu akciju pritiskom na dugme "Opozovi" ispod.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>prečica</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
+    <value>Uklj/Isklj automatsku promenu teme</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>Onemogući automatsku promenu</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>Opozovi</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+    <value>Pauziraj automatsku promenu</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>Da li biste umesto toga hteli da onemogućite automatsku promenu?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>Automatska promena će se takođe nastaviti ako se vratite na vašu prethodnu temu.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>Promena teme pauzirana do</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>Automatska promena teme je trenutno pauzirana zbog sledećih modula:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>Nastavljanje će raditi samo za odlaganja koja imaju vreme isteka</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>Kontrola odlaganja</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>Promeni temu</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
+    <value>Automatska promena teme je omogućena</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Prati Windows noćno svetlo</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Prati Windows noćno svetlo</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>Promena tema je pauzirana jednokratno!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
+    <value>odlaže do</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
+    <value>odlaže dok njegov uslov ne bude ispunjen</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
+    <value>odlaže do sledećeg izlaska sunca</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
+    <value>odlaže do sledećeg zalaska sunca</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>do</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
+    <value>do sledećeg izlaska sunca</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
+    <value>do sledećeg zalaska sunca</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Uklj/Isklj pauziranje automatske promene teme</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>Automatska promena teme nastavljena</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
+    <value>Otvori postavke noćnog svetla</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Night light</value>
+    <value>Noćno svetlo</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
+    <value>Aktivna odlaganja</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
+    <value>Preskoči automatsku promenu jednom</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>Obavesti pre automatske promene teme</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
+    <value>Koliko dugo notifikacija čeka unos korisnika, u minutima</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Režim otklanjanja grešaka</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>Omogući promenu teme dok je ekran zaključan (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Potvrdi</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>Promeni sad</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>Modul koji odlaže</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
+    <value>Notifikacija promene</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 sata</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 minuta</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 sata</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 minuta</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 sati</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 sat</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 sati</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>Promena teme na čekanju</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>Želite li da promenite sad ili da još odložite?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>Trace režim</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Posebna zahvalnost</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>Ignoriši pozadinu</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>Ignoriši kursor</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>Ignoriši ikonice na radnoj površini</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>Ignoriši zvuke</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
-    <value>Ignore settings</value>
+    <value>Ignoriši postavke</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>Ova opcija ne podržava podrazumevane Windows teme</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minuta</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Pauzirano</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>Koristite samo sa Office-om 2013-2019 ako budete imali probleme sa Office-ovom postavkom "koristi sistemsku postavku"</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>Desila se greška tokom zakrpljivanja.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>Trenutna verzija</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>Daungrejdovanje na</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading…</value>
+    <value>Preuzimanje…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>Preuzimanje u toku</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>Poruka</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>Nova verzija {0} je dostupna</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>Zakrpljivanje nije uspelo</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Molimo vidite service.log i updater.log za dalje informacije</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>Ažuriranje na</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>Daungrejduj</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Otvori fasciklu sa evidencijom</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>Odloži</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>Ažuriraj</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>Daungrejd {0} dostupan</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>Idi na veb-stranu za preuzimanje</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>Dostupan je daungrejd</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Skripte</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>Otvori konfiguraciju skripti</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Skripte</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Omogući sopstvene skripte</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Izaberite vašu pozadinu</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Putanja do slike</value>
   </data>
 </root>
