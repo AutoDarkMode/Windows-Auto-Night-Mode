@@ -575,7 +575,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>功能较少，但设置方便。该模式下您可以自定义所有显示器或各个显示器的壁纸，或者设置纯色背景。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>我们将在后台检查新版 Auto Dark Mode，并通过桌面通知提醒您更新。</value>
+    <value>我们在后台检查新版 Auto Dark Mode，并通过桌面通知提醒您更新新版本</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>自动下载并安装新版本</value>
@@ -904,7 +904,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>主题切换已暂停至</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>自动主题切换目前已经暂停</value>
+    <value>由于下列模块自动主题切换目前处于暂停状态：</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
     <value>恢复将只会对有失效期限的推迟有效</value>
