@@ -124,7 +124,7 @@
     <value>Aplicar</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Habilitar a troca automatica de tema</value>
+    <value>Ativar a troca automática de tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Sempre escuro</value>
@@ -133,13 +133,13 @@
     <value>Sempre claro</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Ativar recursos para o Windows 1903</value>
+    <value>Ativar funcionalidades para o Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Apps</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Hora de início personalizada:</value>
+    <value>Hora de início personalizada</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Escuro</value>
@@ -148,7 +148,7 @@
     <value>Tema escuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (versão antiga):</value>
+    <value>Edge (versão antiga)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Claro</value>
@@ -160,66 +160,67 @@
     <value>Configurações</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Trocar o tema atual</value>
+    <value>Alternar tema</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>Sistema</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Software de terceiros usados</value>
+    <value>Software de terceiros utilizado</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>Atualizações</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Usar serviços de localização</value>
+    <value>Utilizar serviços de localização</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>mudanças foram salvas!</value>
+    <value>As alterações foram guardadas!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Clique em aplicar para salvar as mudanças</value>
+    <value>As alterações serão guardadas automaticamente.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Baixar atualização</value>
+    <value>Transferir atualização</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Erro ocorrido:(</value>
+    <value>Ocorreu um erro :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>O aplicativo precisa da permissão da localização</value>
+    <value>Esta aplicação precisa de acesso à sua localização</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>nenhuma nova atualização disponível</value>
+    <value>Não existem atualizações disponíveis.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>buscando sua localização...</value>
+    <value>A detetar a sua localização…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>buscando por atualizações...</value>
+    <value>A procurar atualizações…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Aviso: Nós não podemos detectar seu tema atual.</value>
+    <value>Aviso: Não foi possível detetar o tema atual.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>uma nova atualização está disponível!</value>
+    <value>Está disponível uma atualização nova!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Obrigado por usar o Auto Dark Mode!
+    <value>Obrigado por utilizar o Auto Dark Mode!
 
-Uma nova versão está disponível no GitHub com correções de bugs e aprimoramentos.
-Você quer baixá-lo?
+Está disponível uma nova versão no GitHub com correções de problemas e melhorias.
+Pretende transferi-la?
 
-Versão instalada atualmente: {0}, nova versão: {1}</value>
+Versão instalada: {0}
+Versão nova: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Modo Escuro Automático</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Procurar por actualizações</value>
+    <value>Procurar atualizações</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Vamos procurar por actualizações cada vez que o programa iniciar.</value>
+    <value>Procuramos atualizações de cada vez que o programa é iniciado.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Bem-vindo</value>
@@ -228,7 +229,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Altere as definições aqui para modificar o comportamento da mudança automática de temas.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Tradutor: Hugo Simões</value>
+    <value>Tradutores: Hugo Simões, Tiago Miranda</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Cidade</value>
@@ -237,25 +238,25 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Posição</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>O reinicio da aplicação é necessário para ver as alterações</value>
+    <value>É necessário reiniciar a aplicação para ver as alterações</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Idioma:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Côr do destaque para a barra de tarefas</value>
+    <value>Côr do destaque na barra de tarefas</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Actualmente:</value>
+    <value>Atualmente:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
     <value>Fundo para o tema escuro</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Eliminar/Desactivar</value>
+    <value>Eliminar/Desativar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>Escolher ficheiro</value>
@@ -270,22 +271,22 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Imagens</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor, seleccione duas imagens de fundo</value>
+    <value>Por favor, selecione duas imagens de fundo</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor, seleccione uma imagem</value>
+    <value>Por favor, selecione uma imagem</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Configurar o Fundo do Ambiente de Trabalho</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>utilizar o fundo actual</value>
+    <value>utilizar o fundo atual</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desactivado</value>
+    <value>Desativado</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Activado</value>
+    <value>Ativado</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
@@ -294,7 +295,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Guardar</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Talvez o seu ficheiro de imagem está corrompido ou o caminho não existe.</value>
+    <value>Talvez o seu ficheiro de imagem esteja corrompido ou o caminho não exista.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
     <value>Não conseguimos gerar uma pré-visualização da sua imagem, desculpe!</value>
@@ -307,7 +308,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Apenas visível no modo escuro.
-Se encontrar problemas, por favor, aumente o atraso da mudança nas definições.</value>
+Se encontrar problemas, por favor, aumente o atraso da troca nas definições.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informações</value>
@@ -325,7 +326,7 @@ Se encontrar problemas, por favor, aumente o atraso da mudança nas definições
     <value>Sim</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Procurar por actualizações em segundo plano</value>
+    <value>Procurar actualizações automaticamente</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Ocorreu um problema com o UI.
@@ -548,7 +549,7 @@ Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!<
     <value>Config</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legado):</value>
+    <value>Microsoft Office (versão antiga)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Escolher um tema</value>
@@ -680,7 +681,7 @@ Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!<
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>O serviço ainda não está a correr, por favor, aguarde...</value>
+    <value>O serviço ainda não está a correr, por favor, aguarde…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>A lançar o serviço</value>
@@ -1060,7 +1061,7 @@ Tem a certeza que quer continuar?</value>
     <value>Desactualizar para</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>A descarregar...</value>
+    <value>A descarregar…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Descarga em progresso</value>
