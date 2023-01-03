@@ -136,7 +136,7 @@
     <value>Functies voor Windows 1903 inschakelen</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Apps</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>Aangepaste starttijd</value>
@@ -148,7 +148,7 @@
     <value>Donker thema</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (oud):</value>
+    <value>Edge (oud)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Licht</value>
@@ -163,7 +163,7 @@
     <value>Van thema wisselen</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Systeem:</value>
+    <value>Systeem</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Gebruikte software van derden</value>
@@ -193,10 +193,10 @@
     <value>Er zijn geen nieuwe updates beschikbaar.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Zoeken naar uw locatie...</value>
+    <value>Zoeken naar uw locatie…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Zoeken naar updates...</value>
+    <value>Zoeken naar updates…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Let op: Uw huidige thema kon niet worden gelezen.</value>
@@ -548,7 +548,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Configuratie</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (oud):</value>
+    <value>Microsoft Office (oud)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Thema selecteren</value>
@@ -680,7 +680,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Lengtegraad</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service wordt niet uitgevoerd. Even geduld...</value>
+    <value>Service wordt niet uitgevoerd. Even geduld…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Service uitvoeren</value>
@@ -871,7 +871,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>System idle checker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Druk op bevestigen om direct een themawissel uit te voeren.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Hervatten</value>
@@ -919,7 +919,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Automatisch wisselen van thema is ingeschakeld</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>Windows nachtlamp volgen</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
     <value>Follow Windows night light</value>
