@@ -104,7 +104,7 @@ namespace AutoDarkModeLib
             }
 
             if (Expires) {
-                if (Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:dddd HH:mm}";
+                if (Expiry.HasValue && Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry.Value.ToString("dddd HH:mm", Culture)}";
                 else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}"; 
             }
             else if (Reason == Helper.PostponeItemPauseAutoSwitch) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
