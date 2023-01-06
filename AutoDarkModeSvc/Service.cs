@@ -204,7 +204,7 @@ namespace AutoDarkModeSvc
             {
                 DateTime expiry = tempDelay.Expiry ?? new();
                 pauseThemeSwitchItem.Checked = true;
-                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:ddd HH:mm})";
+                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
                 else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
             }
             else
@@ -213,7 +213,7 @@ namespace AutoDarkModeSvc
                 (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
                 if (expiry.Year != 1)
                 {
-                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:ddd HH:mm})";
+                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
                     else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
                 }
                 else
