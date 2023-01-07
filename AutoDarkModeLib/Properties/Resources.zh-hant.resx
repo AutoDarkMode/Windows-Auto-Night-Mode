@@ -124,7 +124,7 @@
     <value>套用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自動切換主題</value>
+    <value>啟用自動主題切換</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>總是深色</value>
@@ -133,10 +133,10 @@
     <value>總是淺色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>啟用 Windows 1903 功能</value>
+    <value>啟用適用於 Windows 1903的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>應用程式：</value>
+    <value>應用程式</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>自訂開始時間</value>
@@ -148,7 +148,7 @@
     <value>深色主題</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge（舊版）：</value>
+    <value>Edge （舊版）</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>淺色</value>
@@ -163,10 +163,10 @@
     <value>切換目前主題</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>系統：</value>
+    <value>系統</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>使用的第三方軟體</value>
+    <value>已使用的第三方軟體</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>更新</value>
@@ -178,7 +178,7 @@
     <value>已儲存變更！</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>點按「套用」以儲存變更。</value>
+    <value>您的變更會被自動儲存。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>下載更新</value>
@@ -187,28 +187,28 @@
     <value>發生錯誤 :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>應用程式需要您的位置存取權限</value>
+    <value>此程式需要存取您的位置</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>已是最新版本</value>
+    <value>已是最新版本。</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>正在搜尋您的位置…</value>
+    <value>正在存取您的位置…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>正在搜尋更新…</value>
+    <value>正在檢查更新…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>警告：我們無法取得您目前使用的主題。</value>
+    <value>警告：我們無法取得您目前的主題。</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>有可用的更新！</value>
+    <value>有新版本可用！</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>感謝您使用 Auto Dark Mode！
 
-在 Github 上有新版本，包含了 Bug 修補及一些新的功能。
-您想要前往下載嗎？
+在 GitHub 上有新版本，包含了修正及一些新功能。
+您想要安裝嗎？
 
 目前版本：{0}，新版本：{1}</value>
   </data>
@@ -225,7 +225,7 @@
     <value>歡迎</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>勾選核取方塊以啟用自動主題切換</value>
+    <value>變更此處的設定以修改自動主題切換的行為。</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>譯者：hugoalh、SiderealArt；臺灣在地化校正：jrthsr700tmax</value>
@@ -252,16 +252,16 @@
     <value>目前：</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>深色主題桌布</value>
+    <value>深色主題背景</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>刪除/停用</value>
+    <value>刪除／停用</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>選擇檔案</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>深色主題桌布</value>
+    <value>淺色主題背景</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>桌面背景</value>
@@ -270,7 +270,7 @@
     <value>圖片</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>請選擇兩個桌布</value>
+    <value>請選擇兩個背景</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>請選擇一張圖片</value>
@@ -279,13 +279,13 @@
     <value>設定桌面背景</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>使用目前的桌面背景</value>
+    <value>使用目前的背景</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>停用</value>
+    <value>已停用</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>啟用</value>
+    <value>已啟用</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>或</value>
@@ -297,23 +297,23 @@
     <value>您的圖片可能已經損毀或路徑不存在。</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>很抱歉，無法產生預覽！</value>
+    <value>抱歉，我們無法產生您的圖片預覽！</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>很抱歉，無法儲存您的設定！</value>
+    <value>抱歉，我們無法儲存您的設定！</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>發生錯誤</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>僅在深色模式下可見。
+如果您遇到問題：請在設定中增加切換延遲。</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>資訊</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 小時制</value>
+    <value>12小時制</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>關閉</value>
@@ -325,42 +325,42 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>是</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>在背景搜尋更新</value>
+    <value>自動檢查更新</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>介面發生一些問題。
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+請確保：
+- 服務正在執行
+- 您的 config.yaml 檔案是正確的
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+您想在 Auto Dark Mode 存儲庫上創建問題嗎？
+點擊「是」以開啟一個新的瀏覽器視窗。
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>錯誤：輸入無效</value>
+    <value>錯誤：您的輸入無效</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>連線待機模式後切換 (不建議)</value>
+    <value>連線待機後切換（不建議）</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>例如 Microsoft Surface 的行動裝置使用了一種新的待機模式。
-啟用這項功能可以確保 Auto Dark Mode 在您喚醒電腦後立刻切換主題。 
-但同時會增加耗電量，非必要請勿啟用！</value>
+    <value>行動裝置（例如 Microsoft Surface 產品）正在使用一種新的待機模式。
+啟用此選項可以確保 Auto Dark Mode 在您喚醒電腦後立刻切換主題。
+但是它也會縮短電池壽命，因此只在必要時啟用！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>由於 Windows 的 Bug，工作列在省電模式時無法正確切換顏色。如果您遇到相關問題，請關閉省電模式。</value>
+    <value>由於 Windows 的問題，工作列無法在省電模式時正確切換顏色。如果您遇到相關問題，請關閉省電模式。</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>偏移</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>設定</value>
+    <value>設置</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>由於您使用了 Windows 佈景主題，這些選項將會停用。
-    您可以在 Windows 佈景主題中個別設定。</value>
+    <value>使用 Windows 佈景主題時無法使用這些選項。
+您可以在 Windows 佈景主題中個別設定。</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>應用程式</value>
@@ -375,37 +375,37 @@ Click "Yes" to open a new browser window.
     <value>開啟資料夾</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>深色佈景主題：</value>
+    <value>深色主題</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>建立佈景主題</value>
+    <value>建立您的佈景主題</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
     <value>選擇您的佈景主題</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>淺色佈景主題：</value>
+    <value>淺色主題</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows 佈景主題 (更多功能)</value>
+    <value>Windows 佈景主題（更多功能）</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>桌布 (建議)</value>
+    <value>桌面背景（建議）</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>點按此處以開啟 Windows 佈景主題設定。</value>
+    <value>點擊此處以開啟 Windows 佈景主題設定。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>前往「色彩」並將系統顏色設為「淺色」。選擇您想要的桌布、游標、及輔色。</value>
+    <value>現在前往「色彩」，並將系統顏色設為「淺色」。選擇您想要的背景、滑鼠游標，和輔色。</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>返回主題設定並儲存您的佈景主題。</value>
+    <value>回到主題設定並儲存您的佈景主題。</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value>重複以上步驟以設定深色主題。</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>切換工作列顏色延遲 (毫秒)：</value>
+    <value>切換工作列輔色的延遲（毫秒）：</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
     <value>關於</value>
@@ -420,25 +420,25 @@ Click "Yes" to open a new browser window.
     <value>設定自訂時間</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>從日出到日落</value>
+    <value>從日落至日出</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>步驟</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>使用灰階濾鏡 (等同按下 Win + Ctrl + C)</value>
+    <value>使用顏色過濾器（等同按下 Win + Ctrl + C）</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>使用登入工作而非啟動項目</value>
+    <value>使用登錄任務而不是啟動項目</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>選擇模式：</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>套用您選擇的佈景主題時發生錯誤，已停用主題切換功能</value>
+    <value>套用選擇的佈景主題時發生錯誤，我們已停用主題切換功能</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>白色主題</value>
+    <value>替代的淺色主題</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>下載擴充功能</value>
@@ -447,51 +447,51 @@ Click "Yes" to open a new browser window.
     <value>建議工具</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>此擴充功能可以使 Chrome、Firefox 和 Edge 的網頁隨著系統主題切換顏色。</value>
+    <value>此瀏覽器擴充功能可以使 Chrome、Firefox 和 Edge 的網頁跟隨系統主題。</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>找不到</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>為什麼要贊助？</value>
+    <value>為什麼您應該贊助？</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>要怎麼贊助？</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>您可以透過 PayPal 贊助我。完全不強迫，您不應該期待有任何報酬。</value>
+    <value>您可以透過 PayPal 贊助我。這完全是自願的，您不應該期望任何賠償。</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>贊助</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>嗨！感謝您使用 Auto Dark Mode！到目前為止您還喜歡這個程式嗎？
+    <value>您好！感謝您使用 Auto Dark Mode！到目前為止您喜歡此程式嗎？
 
-此應用程式透過自動調整顏色保護您的眼睛，使您使用電腦時更加舒適。且同時免費、不收集使用者資料，且開放原始碼。
+此程式透過自動調整顏色保護您的眼睛，使您使用電腦時更加舒適。同時它完全免費、無廣告、不收集使用者資料，並且是開放原始碼的。
 我不會從此程式獲得任何收益。
 
-所以希望您能透過贊助支持我。即使是一小筆錢也能使我開心地活蹦亂跳。只要贊助您覺得此程式在您心中值多少錢即可。</value>
+所以希望您能夠自願透過贊助來支持我。即使是一小筆錢也能使我在我的公寓裡開心地活蹦亂跳。只要贊助您覺得此程式在您心中值多少錢即可。</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>套用 .theme-file 時發生錯誤。您建立的佈景主題可能被刪除或移動。我們暫時先停用自動主題切換。若要重新啟用，請開啟 Auto Dark Mode 並調整 {0} 設定。</value>
+    <value>套用 .theme-file 時發生錯誤。您建立的佈景主題可能被刪除或移動。我們暫時先停用主題切換。若要重新啟用，請開啟 Auto Dark Mode 並調整 {0} 設定。</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>我們遇到了以下問題： 
+    <value>我們遇到了以下問題：
 {0}
 
-我們現在會以管理員身分執行應用程式以嘗試修復。
-Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。造成不便，敬請見諒。
+我們現在會以系統管理員身分執行程式以嘗試修復。也許這會有所幫助。
+Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您的設定。造成不便，敬請見諒！
 
 提醒：永遠不要手動以系統管理員身分執行 Auto Dark Mode！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>需要協助嗎？</value>
+    <value>取得協助</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>支援多個使用者</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>啟用灰階濾鏡延遲 (選填)：</value>
+    <value>選用的啟用灰階濾鏡延遲：</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
     <value>跟隨系統</value>
@@ -500,7 +500,7 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>重設</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>未在充電時啟用深色模式</value>
+    <value>裝置未充電時啟用深色模式</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>省電滑條預設值</value>
@@ -548,7 +548,7 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>設定檔</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office 2013 - 2019：</value>
+    <value>Microsoft Office （舊版，2013 - 2019）</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>選擇主題</value>
@@ -575,7 +575,7 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>功能較少，但方便設置。為所有或個別顯示器自訂桌布或是背景顏色。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>我們會在背景檢查 Auto Dark Mode 的新版本。如果有新版本可用，我們將透過通知提示您。</value>
+    <value>我們會在背景檢查 Auto Dark Mode 的新版本。如果有新版本可用，我們將透過通知提示您</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>自動下載並安裝新版本</value>
@@ -680,7 +680,7 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>經度</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>服務尚未啟動，請稍候...</value>
+    <value>服務尚未啟動，請稍候…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>正在啟動服務</value>
@@ -807,16 +807,16 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>您只能在快捷鍵被停用的情況下進行編輯。</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>強制深色模式</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>強制淺色模式</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>快速鍵</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>停止強制使用主題</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>啟用全域快速鍵</value>
@@ -828,8 +828,8 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>強制使用淺色模式</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>不建議隱藏圖示。
-    您確定要繼續嗎？</value>
+    <value>不建議隱藏系統匣圖示。
+您確定要繼續嗎？</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>隱藏工具列圖示</value>
@@ -838,196 +838,196 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>開啟設定檔路徑</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>讓應用程式決定</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>只在系統處於空閒狀態時切換主題</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>系統空閒狀態判斷時間（分鐘）</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders</value>
+    <value>在標題列和視窗框線上顯示輔色</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
+    <value>版本資訊已複製到剪貼簿</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>自動切換主題</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Show notification on toggle</value>
+    <value>切換主題時顯示通知</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>延遲</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
+    <value>GPU 監控模組</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
+    <value>暫停自動切換模組</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
+    <value>系統空閒狀態檢查器</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>點擊確認以立即切換主題。</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>恢復</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>點擊下面的復原按鈕來恢復此動作。</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>快捷鍵</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
+    <value>啟用自動切換主題</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>停用自動切換</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>復原</value>
   </data>
   <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+    <value>暫停自動切換</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>您想要停用自動切換嗎？</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>如果您切換到之前的主題，自動切換也將恢復。</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>主題切換已暫停，直至</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>自動主題切換目前因為下列模組而暫停：</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>恢復只適用於有到期時間的延遲</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>延遲控制</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>切換主題</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
+    <value>自動主題切換已啟用</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>跟隨 Windows 夜間光線</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>跟隨 Windows 夜間光線</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>主題切換已暫停一次！</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
+    <value>延遲至</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
+    <value>延遲至直到滿足其條件</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
+    <value>延遲至下一個日出</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
+    <value>延遲至下一個日落</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>至</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
+    <value>至下一個日出</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
+    <value>至下一個日落</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>暫停自動主題切換</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>自動主題切換已恢復</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
+    <value>開啟夜間光線設定</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Night light</value>
+    <value>夜間光線</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
+    <value>生效的延遲</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
+    <value>略過自動切換一次</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>在自動切換主題前通知</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
+    <value>通知等待使用者輸入的時間（分鐘）</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Debug mode</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>允許在帳戶鎖定期間的主題切換（Windows 10）</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>確認</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>立即切換</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>延遲模組</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
+    <value>切換通知</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2小時</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15分鐘</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3小時</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30分鐘</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6小時</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1小時</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12小時</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>主題切換等待中</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>您想立即切換還是繼續延遲？</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>追蹤模式</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>特別鳴謝</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>忽略背景</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>忽略滑鼠游標</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
     <value>Ignore desktop icons</value>
@@ -1036,31 +1036,31 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>Ignore sound</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
-    <value>Ignore settings</value>
+    <value>忽略設定</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>此選項不支持預設的 Windows 佈景主題</value>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>minutes</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>已暫停</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>只與 Office 2013 - 2019，或當您遇到 Office 的「使用系統」設置問題時使用</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>修補時發生錯誤。</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>目前版本</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>正在降級至</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>正在下載…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
@@ -1069,56 +1069,56 @@ Auto Dark Mode 會自動重新啟動，但您必須重新套用您的設定。�
     <value>Message</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>新版本 {0} 可用</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>修補失敗</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>請查看 service.log 和 updater.log 以獲取資訊</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>正在更新至</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>降級</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
     <value>Open log directory</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>延遲</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>降級 {0} 可用</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Go to download page</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>有降級可用</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>開啟腳本配置</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>啟用自訂腳本</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>選擇您的背景</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>圖片路徑</value>
   </data>
 </root>
