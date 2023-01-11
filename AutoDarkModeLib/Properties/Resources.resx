@@ -319,7 +319,7 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Close</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Close</value>
+    <value>&amp;Close</value>
   </data>
   <data name="msgNo" xml:space="preserve">
     <value>No</value>
@@ -825,10 +825,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Enable system-wide hotkeys</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
+    <value>Force &amp;Dark Theme</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
+    <value>Force &amp;Light Theme</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Hiding the icon isn't recommended.
@@ -838,7 +838,7 @@ Do you really want to continue?</value>
     <value>Hide Tray Icon</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Let the app decide</value>
@@ -859,7 +859,7 @@ Do you really want to continue?</value>
     <value>Automatic theme switch</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>&amp;Automatic theme switch</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Show notification on toggle</value>
@@ -922,7 +922,7 @@ Do you really want to continue?</value>
     <value>Toggle theme</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>&amp;Toggle theme</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>Auto theme switching is enabled</value>

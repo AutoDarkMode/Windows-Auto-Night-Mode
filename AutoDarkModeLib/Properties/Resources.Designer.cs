@@ -2520,7 +2520,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic theme switch.
+        ///   Looks up a localized string similar to &amp;Automatic theme switch.
         /// </summary>
         public static string TrayMenuItemAutomaticThemeSwitch {
             get {
@@ -2529,7 +2529,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
+        ///   Looks up a localized string similar to &amp;Close.
         /// </summary>
         public static string TrayMenuItemClose {
             get {
@@ -2538,7 +2538,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Dark Theme.
+        ///   Looks up a localized string similar to Force &amp;Dark Theme.
         /// </summary>
         public static string TrayMenuItemForceDarkTheme {
             get {
@@ -2547,7 +2547,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Light Theme.
+        ///   Looks up a localized string similar to Force &amp;Light Theme.
         /// </summary>
         public static string TrayMenuItemForceLightTheme {
             get {
@@ -2556,7 +2556,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Config Directory.
+        ///   Looks up a localized string similar to &amp;Open Config Directory.
         /// </summary>
         public static string TrayMenuItemOpenConfigDir {
             get {
@@ -2565,7 +2565,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle theme.
+        ///   Looks up a localized string similar to &amp;Toggle theme.
         /// </summary>
         public static string TrayMenuItemToggleTheme {
             get {
