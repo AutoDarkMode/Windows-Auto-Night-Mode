@@ -2520,6 +2520,24 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic theme switch.
+        /// </summary>
+        public static string TrayMenuItemAutomaticThemeSwitch {
+            get {
+                return ResourceManager.GetString("TrayMenuItemAutomaticThemeSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string TrayMenuItemClose {
+            get {
+                return ResourceManager.GetString("TrayMenuItemClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Force Dark Theme.
         /// </summary>
         public static string TrayMenuItemForceDarkTheme {
@@ -2543,6 +2561,15 @@ namespace AutoDarkModeLib.Properties {
         public static string TrayMenuItemOpenConfigDir {
             get {
                 return ResourceManager.GetString("TrayMenuItemOpenConfigDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle theme.
+        /// </summary>
+        public static string TrayMenuItemToggleTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemToggleTheme", resourceCulture);
             }
         }
         

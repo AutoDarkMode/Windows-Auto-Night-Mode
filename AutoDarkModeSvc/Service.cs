@@ -74,8 +74,8 @@ namespace AutoDarkModeSvc
             pauseThemeSwitchItem.Name = "pauseThemeSwitch";
             forceDarkMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceDarkTheme;
             forceLightMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceLightTheme;
-            autoThemeSwitchingItem.Text = AdmProperties.Resources.AutomaticThemeSwitch;
-            toggleThemeItem.Text = AdmProperties.Resources.ToggleTheme;
+            autoThemeSwitchingItem.Text = AdmProperties.Resources.TrayMenuItemAutomaticThemeSwitch;
+            toggleThemeItem.Text = AdmProperties.Resources.TrayMenuItemToggleTheme;
 
             NotifyIcon = new NotifyIcon();
             state.SetNotifyIcon(NotifyIcon);
@@ -134,7 +134,7 @@ namespace AutoDarkModeSvc
 
         private void InitTray()
         {
-            ToolStripMenuItem exitMenuItem = new(AdmProperties.Resources.msgClose);
+            ToolStripMenuItem exitMenuItem = new(AdmProperties.Resources.TrayMenuItemClose);
             ToolStripMenuItem openConfigDirItem = new(AdmProperties.Resources.TrayMenuItemOpenConfigDir);
 
             exitMenuItem.Click += new EventHandler(RequestExit);

@@ -318,6 +318,9 @@ If you run into issues: please increase the switching delay in settings.</value>
   <data name="msgClose" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="msgNo" xml:space="preserve">
     <value>No</value>
   </data>
@@ -855,6 +858,9 @@ Do you really want to continue?</value>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatic theme switch</value>
   </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatic theme switch</value>
+  </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Show notification on toggle</value>
   </data>
@@ -913,6 +919,9 @@ Do you really want to continue?</value>
     <value>Postpone control</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
