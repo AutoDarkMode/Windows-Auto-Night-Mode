@@ -821,10 +821,10 @@
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Ενεργοποίηση πλήκτρων συντόμευσης σε όλο το σύστημα</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Επιβολή Σκοτεινής Λειτουργίας</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Επιβολή Φωτεινής Λειτουργίας</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

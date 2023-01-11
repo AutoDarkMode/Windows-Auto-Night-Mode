@@ -821,10 +821,10 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Abilita le scorciatoie a livello di sistema</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forza Tema Scuro</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Forza Tema Chiaro</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

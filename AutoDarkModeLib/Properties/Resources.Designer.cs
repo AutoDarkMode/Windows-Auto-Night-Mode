@@ -641,24 +641,6 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Dark Theme.
-        /// </summary>
-        public static string ForceDarkTheme {
-            get {
-                return ResourceManager.GetString("ForceDarkTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Force Light Theme.
-        /// </summary>
-        public static string ForceLightTheme {
-            get {
-                return ResourceManager.GetString("ForceLightTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Geographic coordinates.
         /// </summary>
         public static string headerGeoCoordinates {
@@ -2534,6 +2516,24 @@ namespace AutoDarkModeLib.Properties {
         public static string ToolTipOfficeDisclaimer {
             get {
                 return ResourceManager.GetString("ToolTipOfficeDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force Dark Theme.
+        /// </summary>
+        public static string TrayMenuItemForceDarkTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemForceDarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force Light Theme.
+        /// </summary>
+        public static string TrayMenuItemForceLightTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemForceLightTheme", resourceCulture);
             }
         }
         

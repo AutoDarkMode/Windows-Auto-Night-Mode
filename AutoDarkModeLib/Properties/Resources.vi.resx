@@ -821,10 +821,10 @@ Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền 
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Bật phím tắt cho toàn hệ thống</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề tối</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề sáng</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

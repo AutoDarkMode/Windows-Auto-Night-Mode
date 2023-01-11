@@ -821,10 +821,10 @@ Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!<
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Activar as teclas de atalho por todo o sistema</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forçar o Tema Escuro</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Forçar o Tema Claro</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

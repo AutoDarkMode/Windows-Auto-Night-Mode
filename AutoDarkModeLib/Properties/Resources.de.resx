@@ -821,10 +821,10 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Tastatur-Hotkeys aktivieren</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Erzwinge dunkles Design</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Erzwinge helles Design</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

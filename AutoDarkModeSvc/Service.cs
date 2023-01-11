@@ -72,8 +72,8 @@ namespace AutoDarkModeSvc
             autoThemeSwitchingItem.Name = "autoThemeSwitching";
             toggleThemeItem.Name = "toggleTheme";
             pauseThemeSwitchItem.Name = "pauseThemeSwitch";
-            forceDarkMenuItem.Text = AdmProperties.Resources.ForceDarkTheme;
-            forceLightMenuItem.Text = AdmProperties.Resources.ForceLightTheme;
+            forceDarkMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceDarkTheme;
+            forceLightMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceLightTheme;
             autoThemeSwitchingItem.Text = AdmProperties.Resources.AutomaticThemeSwitch;
             toggleThemeItem.Text = AdmProperties.Resources.ToggleTheme;
 

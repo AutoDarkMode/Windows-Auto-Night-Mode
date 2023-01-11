@@ -821,10 +821,10 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>システム全体でホットキーを有効にする</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>ダークテーマに変更</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>ライトテーマに変更</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

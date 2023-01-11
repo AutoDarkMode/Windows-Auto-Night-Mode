@@ -827,10 +827,10 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Włącz skróty klawiszowe</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Wymuś ciemny motyw</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Wymuś jasny motyw</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

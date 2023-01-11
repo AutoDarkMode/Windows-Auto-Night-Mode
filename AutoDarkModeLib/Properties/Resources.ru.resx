@@ -821,10 +821,10 @@
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Включить системные горячие клавиши</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Принудительно тёмная тема</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Принудительно светлая тема</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">

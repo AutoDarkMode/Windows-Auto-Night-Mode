@@ -821,10 +821,10 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Sneltoetsen in systeem inschakelen</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Donker thema forceren</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Licht thema forceren</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
