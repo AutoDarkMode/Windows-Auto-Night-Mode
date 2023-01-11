@@ -1127,4 +1127,13 @@ Czy chcesz kontynuować?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Ścieżka obrazu</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatyczne przełączanie motywu</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Przełącz motyw</value>
+  </data>
 </root>

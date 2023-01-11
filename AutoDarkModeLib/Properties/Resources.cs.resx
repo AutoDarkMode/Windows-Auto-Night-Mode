@@ -1120,4 +1120,13 @@ Do you really want to continue?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Image path</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatic theme switch</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
 </root>

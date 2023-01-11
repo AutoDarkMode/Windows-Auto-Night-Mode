@@ -1121,4 +1121,13 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Розташування зображення</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Закрити</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Автоматичне перемикання тем</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Перемкнути тему</value>
+  </data>
 </root>

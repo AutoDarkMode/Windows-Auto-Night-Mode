@@ -1101,4 +1101,13 @@ Click "Yes" to open a new browser window.
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Switch after Connected Standby (not recommended)</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatic theme switch</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
 </root>

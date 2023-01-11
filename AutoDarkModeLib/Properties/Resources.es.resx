@@ -1121,4 +1121,13 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Ruta de imagen</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Cambio de tema automático</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Cambiar tema</value>
+  </data>
 </root>

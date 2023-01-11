@@ -1121,4 +1121,13 @@ Jeste li sigurni da želite da nastavite?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Putanja do slike</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatska promena tema</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Promeni temu</value>
+  </data>
 </root>

@@ -1121,4 +1121,13 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Alamat gambar</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Pergantian tema otomatis</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Beralih tema</value>
+  </data>
 </root>

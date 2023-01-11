@@ -1121,4 +1121,13 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>图片路径</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>自动切换主题</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>启用主题</value>
+  </data>
 </root>

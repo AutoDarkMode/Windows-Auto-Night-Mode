@@ -1121,4 +1121,13 @@ Tényleg folytatni szeretné?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Kép elérési útja</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatikus témaváltás</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Téma váltása</value>
+  </data>
 </root>

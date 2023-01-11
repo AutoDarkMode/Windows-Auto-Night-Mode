@@ -1121,4 +1121,13 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Resim konumu</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Otomatik tema değişimi</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Temayı değiştir</value>
+  </data>
 </root>

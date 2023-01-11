@@ -1121,4 +1121,13 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Image path</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatische thema wissel</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
 </root>

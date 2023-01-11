@@ -1121,4 +1121,13 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>画像のパス</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>テーマを切り替える</value>
+  </data>
 </root>

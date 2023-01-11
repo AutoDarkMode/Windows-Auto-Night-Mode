@@ -1121,4 +1121,13 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>圖片路徑</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>自動切換主題</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>切換主題</value>
+  </data>
 </root>

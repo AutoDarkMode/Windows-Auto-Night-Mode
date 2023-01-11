@@ -1121,4 +1121,13 @@ Bạn có muốn tiếp tục?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Đường dẫn hình ảnh</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Tự động chuyển chủ đề</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Bật tắt chủ đề</value>
+  </data>
 </root>

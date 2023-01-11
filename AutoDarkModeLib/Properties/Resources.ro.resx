@@ -1121,4 +1121,13 @@ Chiar vreți să continuați?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Calea imaginii</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Închideți</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Schimbare automată a temei</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Schimbă tema</value>
+  </data>
 </root>

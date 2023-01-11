@@ -1121,4 +1121,13 @@
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Путь к изображению</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Автоматическое переключение темы</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Переключить тему</value>
+  </data>
 </root>

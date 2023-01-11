@@ -1121,4 +1121,13 @@ Möchten Sie wirklich fortfahren?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Dateipfad</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatischer Designwechsel</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Design umschalten</value>
+  </data>
 </root>

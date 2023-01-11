@@ -1121,4 +1121,13 @@
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Διαδρομή εικόνας</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Κλείσιμο</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Αυτόματη εναλλαγή θεματος</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση θέματος</value>
+  </data>
 </root>
