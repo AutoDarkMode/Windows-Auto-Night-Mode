@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Settings</value>
+    <value>הגדרות</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Apply</value>
@@ -127,10 +127,10 @@
     <value>Enable automatic theme switching</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Always dark</value>
+    <value>תמיד כהה</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Always light</value>
+    <value>תמיד בהיר</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>Enable features for Windows 1903</value>
@@ -216,10 +216,10 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>בדוק עדכונים</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>We check for updates at every program start.</value>
+    <value>אנו בודקים אם יש עדכונים בכל הפעלה של התוכנית.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Welcome</value>
@@ -231,7 +231,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>City</value>
+    <value>עיר</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
     <value>Position</value>
@@ -240,13 +240,13 @@ Currently installed version: {0}, new version: {1}</value>
     <value>App restart required to see changes</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Language:</value>
+    <value>שפה:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
     <value>Accent Color for Taskbar</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>ביטול</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
     <value>Currently:</value>
@@ -291,7 +291,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>or</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>שמור</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
     <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
@@ -310,19 +310,19 @@ Currently installed version: {0}, new version: {1}</value>
 If you run into issues: please increase the switching delay in settings.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>מידע</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 hour clock</value>
+    <value>שעון 12 שעות</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Close</value>
+    <value>סגור</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>לא</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>כן</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Automatic update check</value>
@@ -366,13 +366,13 @@ You can set them up individually in your Windows Theme.</value>
     <value>Apps</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>הגדרות</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Time</value>
+    <value>זמן</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Open Folder</value>
+    <value>פתח תיקייה</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
     <value>Dark Theme</value>
@@ -408,10 +408,10 @@ You can set them up individually in your Windows Theme.</value>
     <value>Delay for switching taskbar colors (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>About</value>
+    <value>אודות</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>Menu</value>
+    <value>תפריט</value>
   </data>
   <data name="restart" xml:space="preserve">
     <value>Restart</value>
@@ -485,7 +485,7 @@ Auto Dark Mode will restart afterwards and you'll need to re-apply your settings
 Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Help</value>
+    <value>עזרה</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Multi-User support</value>
@@ -494,7 +494,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Optional delay for activating grayscale color filter:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Adapt to system</value>
+    <value>התאמה למערכת</value>
   </data>
   <data name="lblReset" xml:space="preserve">
     <value>Reset</value>
@@ -512,7 +512,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>This only works if you haven't manually enabled battery saver!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
+    <value>החלף מצבים</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalization</value>
@@ -581,28 +581,28 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Automatically download and install new versions</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+    <value>אל תציג התראות</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
     <value>Select update channel</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+    <value>חפס עדכונים כאשר Auto Dark Mode מופעל</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 days</value>
+    <value>14 ימים</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 days</value>
+    <value>3 ימים</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 days</value>
+    <value>7 ימים</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
     <value>Last checked</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>never</value>
+    <value>אף פעם</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
     <value>Change how often we check for updates</value>
@@ -623,7 +623,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Solid color</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Mode</value>
+    <value>מצב</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
     <value>Monitor</value>
@@ -692,10 +692,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Enable Windows theme switch</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Off</value>
+    <value>כבוי</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>On</value>
+    <value>דלוק</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
     <value>Follow us</value>
@@ -744,7 +744,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Every day</value>
+    <value>כל יום</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
     <value>Click Set to save changes.</value>
@@ -756,13 +756,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Accent only</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Version</value>
+    <value>גירסה</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>העתק</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>הפעל את Auto Dark Mode עם וינדוס</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
     <value>Autostart</value>
@@ -777,7 +777,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Refresh Autostart</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
+    <value>שפה</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
     <value>Disabled</value>
