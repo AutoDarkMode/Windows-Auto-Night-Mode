@@ -898,7 +898,7 @@ Do you really want to continue?</value>
     <value>Undo</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+    <value>&amp;Pause auto switch</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Would you like to disable auto switching instead?</value>

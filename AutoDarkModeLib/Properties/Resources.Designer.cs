@@ -2556,7 +2556,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pause auto switch.
+        ///   Looks up a localized string similar to &amp;Pause auto switch.
         /// </summary>
         public static string TrayMenuItemThemeSwitchPause {
             get {
