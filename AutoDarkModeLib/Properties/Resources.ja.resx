@@ -891,7 +891,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>元に戻す</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>自動切替を停止</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

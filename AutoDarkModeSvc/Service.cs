@@ -204,8 +204,8 @@ namespace AutoDarkModeSvc
             {
                 DateTime expiry = tempDelay.Expiry ?? new();
                 pauseThemeSwitchItem.Checked = true;
-                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
+                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+                else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
             }
             else
             {
@@ -213,22 +213,22 @@ namespace AutoDarkModeSvc
                 (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
                 if (expiry.Year != 1)
                 {
-                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                    else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
+                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+                    else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
                 }
                 else
                 {
                     if (skipType == SkipType.Sunrise)
                     {
-                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
+                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
                     }
                     else if (skipType == SkipType.Sunset)
                     {
-                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
+                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
                     }
                     else
                     {
-                        pauseThemeSwitchItem.Text = AdmProperties.Resources.ThemeSwitchPause;
+                        pauseThemeSwitchItem.Text = AdmProperties.Resources.TrayMenuItemThemeSwitchPause;
                     }
                 }
             }           

@@ -891,7 +891,7 @@ Bạn có muốn tiếp tục?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Đảo ngược</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Tạm dừng tự động chuyển</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

@@ -891,7 +891,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Geri al</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Otomatik değişimi duraklat</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

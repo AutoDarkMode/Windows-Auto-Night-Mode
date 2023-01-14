@@ -892,7 +892,7 @@ Tem a certeza que quer continuar?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Anular</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pausar mudança automática</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

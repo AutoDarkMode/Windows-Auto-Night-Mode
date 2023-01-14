@@ -891,7 +891,7 @@ Jeste li sigurni da želite da nastavite?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Opozovi</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pauziraj automatsku promenu</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

@@ -891,7 +891,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Ongedaan maken</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Automatisch wisselen pauzeren</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

@@ -891,7 +891,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>撤销</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>暂停自动切换</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

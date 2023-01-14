@@ -891,7 +891,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>復原</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>暫停自動切換</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

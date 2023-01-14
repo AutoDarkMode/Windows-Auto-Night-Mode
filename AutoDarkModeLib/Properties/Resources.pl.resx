@@ -897,7 +897,7 @@ Czy chcesz kontynuować?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Cofnij</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Wstrzymaj automatyczne przełączanie</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

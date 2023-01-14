@@ -891,7 +891,7 @@ Tényleg folytatni szeretné?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Visszavonás</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Az automatikus váltás szüneteltetése</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

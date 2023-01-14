@@ -891,7 +891,7 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Undo</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pause auto switch</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

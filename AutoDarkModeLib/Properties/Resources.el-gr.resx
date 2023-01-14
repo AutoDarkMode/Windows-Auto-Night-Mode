@@ -891,7 +891,7 @@
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Αναίρεση</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Παύση αυτόματης εναλλαγής</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

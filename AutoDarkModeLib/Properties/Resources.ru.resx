@@ -891,7 +891,7 @@
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Отменить</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Приостановить автопереключение</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">

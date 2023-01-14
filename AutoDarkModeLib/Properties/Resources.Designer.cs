@@ -2195,15 +2195,6 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pause auto switch.
-        /// </summary>
-        public static string ThemeSwitchPause {
-            get {
-                return ResourceManager.GetString("ThemeSwitchPause", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Would you like to disable auto switching instead?.
         /// </summary>
         public static string ThemeSwitchPauseActionDisableQuestion {
@@ -2561,6 +2552,15 @@ namespace AutoDarkModeLib.Properties {
         public static string TrayMenuItemOpenConfigDir {
             get {
                 return ResourceManager.GetString("TrayMenuItemOpenConfigDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause auto switch.
+        /// </summary>
+        public static string TrayMenuItemThemeSwitchPause {
+            get {
+                return ResourceManager.GetString("TrayMenuItemThemeSwitchPause", resourceCulture);
             }
         }
         

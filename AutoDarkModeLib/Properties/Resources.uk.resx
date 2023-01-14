@@ -891,7 +891,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Скасувати</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Призупинити автоперемикання</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
