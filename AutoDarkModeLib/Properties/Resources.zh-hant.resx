@@ -813,13 +813,13 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>強制淺色模式</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>快速鍵</value>
+    <value>快捷鍵</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
     <value>停止強制使用主題</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>啟用全域快速鍵</value>
+    <value>啟用系統級快捷鍵</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>強制使用深色模式</value>
@@ -832,10 +832,10 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
 您確定要繼續嗎？</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>隱藏工具列圖示</value>
+    <value>隱藏系統匣圖示</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>開啟設定檔路徑</value>
+    <value>開啟設定檔資料夾</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>讓應用程式決定</value>
@@ -901,7 +901,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>如果您切換到之前的主題，自動切換也將恢復。</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>主題切換已暫停，直至</value>
+    <value>主題切換已暫停至</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
     <value>自動主題切換目前因為下列模組而暫停：</value>
@@ -973,7 +973,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>通知等待使用者輸入的時間（分鐘）</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>偵錯模式</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
     <value>允許在帳戶鎖定期間的主題切換（Windows 10）</value>
@@ -1030,10 +1030,10 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>忽略滑鼠游標</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>忽略桌面圖示</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>忽略聲音</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
     <value>忽略設定</value>
@@ -1042,7 +1042,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>此選項不支持預設的 Windows 佈景主題</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>分鐘</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>已暫停</value>
@@ -1063,10 +1063,10 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>正在下載…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>下載進行中</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>訊息</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
     <value>新版本 {0} 可用</value>
@@ -1085,32 +1085,32 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>降級</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>開啟記錄資料夾</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
     <value>延遲</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>更新</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>降級 {0} 可用</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>前往下載頁面</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
     <value>有降級可用</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>腳本</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>開啟腳本配置</value>
+    <value>開啟腳本設置</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>腳本</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
     <value>啟用自訂腳本</value>
