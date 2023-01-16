@@ -142,7 +142,7 @@
     <value>Custom start time</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Dark</value>
+    <value>כהה</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
     <value>Dark theme</value>
@@ -151,13 +151,13 @@
     <value>Edge (Legacy)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Light</value>
+    <value>בהיר</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>Light theme</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>הגדרות</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
     <value>Switch current theme</value>
@@ -169,7 +169,7 @@
     <value>Used third party software</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>עדכונים</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
     <value>Use Location Service</value>
@@ -181,7 +181,7 @@
     <value>Your changes will be saved automatically.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Download update</value>
+    <value>הורדת עדכון</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
     <value>error occurred :(</value>
@@ -222,7 +222,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>אנו בודקים אם יש עדכונים בכל הפעלה של התוכנית.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Welcome</value>
+    <value>ברוך הבא</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
     <value>Change settings here to modify the automatic theme switch behavior.</value>
@@ -270,10 +270,10 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Pictures</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpapers</value>
+    <value>אנא בחר שני רקעים</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>אנא בחר תמונה</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Configure Desktop Background</value>
@@ -375,16 +375,16 @@ You can set them up individually in your Windows Theme.</value>
     <value>פתח תיקייה</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>ערכת נושא כהה</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Create your themes</value>
+    <value>צור את ערכות הנושא שלך</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Pick your themes</value>
+    <value>בחר את ערכות הנושא שלך</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>ערכת נושא בהיר</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
     <value>Windows Theme (more features)</value>
@@ -393,7 +393,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Desktop Wallpaper (recommended)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
+    <value>לחץ כאן כדי לפתוח את הגדרות ערכת הנושא של Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
     <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
@@ -441,7 +441,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Alternative light theme</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Download Extension</value>
+    <value>הורד הרחבה</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
     <value>Recommended tools</value>
@@ -453,10 +453,10 @@ You can set them up individually in your Windows Theme.</value>
     <value>Not found</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Why should you donate?</value>
+    <value>למה כדאי לך לתרום?</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>How to donate?</value>
+    <value>איך לתרום?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
     <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
@@ -497,13 +497,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>התאמה למערכת</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>אתחול</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Enable dark mode when device is unplugged</value>
+    <value>הפעל מצב כהה כאשר המכשיר מנותק מהחשמל</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>ערך ברירת מחדל עבור מצב חיסכון בחשמל</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
     <value>Energy saver mitigation for theme switch</value>
@@ -551,22 +551,22 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Microsoft Office (legacy)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
+    <value>בחר ערכת נושא</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+    <value>בחר טפט</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Hide tray icon (not recommended)</value>
+    <value>הסתר את סמל המגש (לא מומלץ)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while theme mode is enabled.</value>
+    <value>תכונה זו מושבתת בזמן שמצב ערכת נושא מופעל.</value>
   </data>
   <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>This feature is disabled while wallpaper mode is enabled.</value>
+    <value>תכונה זו מושבתת בזמן שמצב טפט מופעל.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds.</value>
