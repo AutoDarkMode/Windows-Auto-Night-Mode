@@ -821,10 +821,10 @@
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Ενεργοποίηση πλήκτρων συντόμευσης σε όλο το σύστημα</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Επιβολή Σκοτεινής Λειτουργίας</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Επιβολή Φωτεινής Λειτουργίας</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Αναίρεση</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Παύση αυτόματης εναλλαγής</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Διαδρομή εικόνας</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Κλείσιμο</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Αυτόματη εναλλαγή θεματος</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Ενεργοποίηση/απενεργοποίηση θέματος</value>
   </data>
 </root>

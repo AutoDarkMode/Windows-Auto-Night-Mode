@@ -318,6 +318,9 @@ If you run into issues: please increase the switching delay in settings.</value>
   <data name="msgClose" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>&amp;Close</value>
+  </data>
   <data name="msgNo" xml:space="preserve">
     <value>No</value>
   </data>
@@ -821,11 +824,11 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Enable system-wide hotkeys</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
+    <value>Force &amp;Dark Theme</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
+    <value>Force &amp;Light Theme</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Hiding the icon isn't recommended.
@@ -835,7 +838,7 @@ Do you really want to continue?</value>
     <value>Hide Tray Icon</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Let the app decide</value>
@@ -854,6 +857,9 @@ Do you really want to continue?</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatic theme switch</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Automatic theme switch</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Show notification on toggle</value>
@@ -891,8 +897,8 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Undo</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Pause auto switch</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Would you like to disable auto switching instead?</value>
@@ -914,6 +920,9 @@ Do you really want to continue?</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>&amp;Toggle theme</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>Auto theme switching is enabled</value>

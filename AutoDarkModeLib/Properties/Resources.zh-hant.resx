@@ -821,10 +821,10 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>啟用系統級快捷鍵</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>強制使用深色模式</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>強制使用淺色模式</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>復原</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>暫停自動切換</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>圖片路徑</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>自動切換主題</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>切換主題</value>
   </data>
 </root>

@@ -821,10 +821,10 @@ Napomena: NIKAD ne pokrećite Auto Dark Mode kao administrator sami!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Omogući tasterske prečice</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Prisili tamnu temu</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Prisili svetlu temu</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ Jeste li sigurni da želite da nastavite?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Opozovi</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pauziraj automatsku promenu</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ Jeste li sigurni da želite da nastavite?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Putanja do slike</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatska promena tema</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Promeni temu</value>
   </data>
 </root>

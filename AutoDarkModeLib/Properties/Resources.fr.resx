@@ -821,10 +821,10 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Activer les raccourcis du système</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forcer le thème sombre</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Forcer le thème clair</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ Voulez-vous vraiment continuer ?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Suspendre le changement automatique</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ Voulez-vous vraiment continuer ?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Emplacement de l'image</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Basculement automatique du thème</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Basculer de thème</value>
   </data>
 </root>

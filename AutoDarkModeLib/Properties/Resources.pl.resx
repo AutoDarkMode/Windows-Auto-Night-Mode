@@ -827,10 +827,10 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Włącz skróty klawiszowe</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Wymuś ciemny motyw</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Wymuś jasny motyw</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -897,7 +897,7 @@ Czy chcesz kontynuować?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Cofnij</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Wstrzymaj automatyczne przełączanie</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1126,5 +1126,14 @@ Czy chcesz kontynuować?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Ścieżka obrazu</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Zamknij</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatyczne przełączanie motywu</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Przełącz motyw</value>
   </data>
 </root>

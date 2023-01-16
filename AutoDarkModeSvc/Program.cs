@@ -36,6 +36,12 @@ namespace AutoDarkModeSvc
         private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
         private static Service Service { get; set; }
 
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SystemParametersInfo(int uAction, int uParam, int lpvParam, int fuWinIni);
+
+        private const int SPI_SETKEYBOARDCUES = 4107; //100B
+        private const int SPIF_SENDWININICHANGE = 2;
+
         public static BlockingCollection<Action> ActionQueue = new();
         private static Thread queueThread;
 
@@ -239,6 +245,17 @@ namespace AutoDarkModeSvc
                 Application.SetCompatibleTextRenderingDefault(false);
                 Service = new Service(timerMillis);
                 Service.Text = "Auto Dark Mode";
+
+                try
+                {
+                    // always show accelerator underlines
+                    _ = SystemParametersInfo(SPI_SETKEYBOARDCUES, 0, 1, 0);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "could not set access key highlight flag");
+                }
+
                 Application.Run(Service);
 
             }
