@@ -145,7 +145,7 @@
     <value>כהה</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Dark theme</value>
+    <value>ערכת נושא כהה</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
     <value>Edge (Legacy)</value>
@@ -154,7 +154,7 @@
     <value>בהיר</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Light theme</value>
+    <value>ערכת נושא בהיר</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
     <value>הגדרות</value>
@@ -190,19 +190,19 @@
     <value>This app needs access to your location</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>No new updates are available.</value>
+    <value>אין עדכונים חדשים זמינים.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Getting your location…</value>
+    <value>מקבל את המיקום שלך…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Looking for updates…</value>
+    <value>מחפש עדכונים…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Warning: We couldn't read your current theme.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>A new update is available!</value>
+    <value>עדכון חדש זמין!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Thank you for using Auto Dark Mode!
@@ -252,22 +252,22 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Currently:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Wallpaper for dark theme</value>
+    <value>טפט לערכת נושא כהה</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Delete/Disable</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>בחר קובץ</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Wallpaper for light theme</value>
+    <value>טפט לערכת נושא בהיר</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Desktop Background</value>
+    <value>רקע שולחן העבודה</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pictures</value>
+    <value>תמונות</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
     <value>אנא בחר שני רקעים</value>
@@ -276,10 +276,10 @@ Currently installed version: {0}, new version: {1}</value>
     <value>אנא בחר תמונה</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configure Desktop Background</value>
+    <value>הגדר את רקע שולחן העבודה</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>use current background</value>
+    <value>השתמש ברקע הנוכחי</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Disabled</value>
@@ -325,7 +325,7 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>כן</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Automatic update check</value>
+    <value>בדיקת עדכונים אוטומטית</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>There was an issue with the UI.
@@ -575,16 +575,16 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
+    <value>אנחנו בודקים אם יש גרסאות חדשות של מצב כהה אוטומטי ברקע. כאשר יהיה עדכון זמין, אנחנו נודיע לך באמצעות הודעה קופצת</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Automatically download and install new versions</value>
+    <value>הורד והתקן גרסאות חדשות באופן אוטומטי</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
     <value>אל תציג התראות</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Select update channel</value>
+    <value>בחר ערוץ עדכונים</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
     <value>חפס עדכונים כאשר Auto Dark Mode מופעל</value>
@@ -599,19 +599,19 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>7 ימים</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>נבדק לאחרונה</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
     <value>אף פעם</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Change how often we check for updates</value>
+    <value>שנה את תדירות בדיקת העדכונים</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>ערכת נושא כהה</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>ערכת נושא בהיר</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
     <value>Picture</value>
@@ -629,25 +629,25 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Monitor</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Type</value>
+    <value>סוּג</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Remove disconnected monitors</value>
+    <value>הסר צגים מנותקים</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>טפט</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Color</value>
+    <value>צֶבַע</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Hex קוד</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+    <value>אפשר החלפת טפטים</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Don't switch while playing video games</value>
+    <value>אל תחליף בזמן משחקי וידאו</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
     <value>Fast (1 sample)</value>
@@ -662,31 +662,31 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>GPU usage detection speed</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+    <value>מכשירים המופעלים על ידי סוללה</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Conditions</value>
+    <value>תנאים</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+    <value>שימוש מינימלי ב-GPU % כדי לעכב את המעבר</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+    <value>שחזר ערכות נושא לאחר שינוי חיצוני</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Latitude</value>
+    <value>קו רוחב</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Longitude</value>
+    <value>קו אורך</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait…</value>
+    <value>השירות עדיין לא פועל, אנא המתן…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Launching Service</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>השירות לא מגיב. אנא בדוק אם AutoDarkModeSvc.exe פועל, ונסה שוב!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Enable Windows theme switch</value>
@@ -698,10 +698,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>דלוק</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Follow us</value>
+    <value>עקבו אחרינו</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Theme</value>
+    <value>ערכת נושא</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Flowers</value>
@@ -747,7 +747,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>כל יום</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>לחץ על הגדר כדי לשמור שינויים.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
@@ -765,7 +765,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>הפעל את Auto Dark Mode עם וינדוס</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>הפעלה אוטומטית</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
     <value>Mode:</value>
@@ -774,7 +774,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Path:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>רענן הפעלה אוטומטית</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>שפה</value>
@@ -807,10 +807,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>You can only edit hotkeys while they are disabled.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>כפה מצב כהה</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>כפה מצב בהיר</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Hotkeys</value>
@@ -822,10 +822,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Enable system-wide hotkeys</value>
   </data>
   <data name="ForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
+    <value>כפה ערכת נושא כהה</value>
   </data>
   <data name="ForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
+    <value>כפה ערכת נושא בהיר</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Hiding the icon isn't recommended.
@@ -991,25 +991,25 @@ Do you really want to continue?</value>
     <value>Switch notification</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 שעות</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 דקות</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 שעות</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 דקות</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 שעות</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 שעה</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 שעות</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
     <value>Theme switch pending</value>
@@ -1042,10 +1042,10 @@ Do you really want to continue?</value>
     <value>This option does not support default Windows themes</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>דקות</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>מושהה</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
     <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
@@ -1054,32 +1054,32 @@ Do you really want to continue?</value>
     <value>An error occurred while patching.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>גרסה נוכחית</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
     <value>Downgrading to</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading…</value>
+    <value>מוריד…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>ההורדה בתהליך</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>הוֹדָעָה</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>גרסה חדשה {0} זמינה</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>התיקון נכשל</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>אנא בדוק את service.log ו-updater.log לקבלת מידע</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>מעדכן ל</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
     <value>Downgrade</value>
@@ -1091,7 +1091,7 @@ Do you really want to continue?</value>
     <value>Postpone</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>עדכון</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Downgrade {0} available</value>
