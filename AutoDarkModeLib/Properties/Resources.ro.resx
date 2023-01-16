@@ -821,10 +821,10 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Activați tastele rapide la nivel de sistem</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forțați temă întunecată</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Forțați temă întunecată</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ Chiar vreți să continuați?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Anulează</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Întrerupeți schimbarea automată</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ Chiar vreți să continuați?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Calea imaginii</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Închideți</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Schimbare automată a temei</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Schimbă tema</value>
   </data>
 </root>

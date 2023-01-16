@@ -821,10 +821,10 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>启用系统级快捷键</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>强制深色主题</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>强制浅色主题</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>撤销</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>暂停自动切换</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>图片路径</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>自动切换主题</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>启用主题</value>
   </data>
 </root>

@@ -821,10 +821,10 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Sistem genelinde kısayol tuşlarını etkinleştir</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Koyu temayı zorla</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Açık temayı zorla</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Geri al</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Otomatik değişimi duraklat</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ Gerçekten devam etmek istiyor musunuz?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Resim konumu</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Otomatik tema değişimi</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Temayı değiştir</value>
   </data>
 </root>

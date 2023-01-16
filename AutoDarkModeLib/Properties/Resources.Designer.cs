@@ -641,24 +641,6 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Dark Theme.
-        /// </summary>
-        public static string ForceDarkTheme {
-            get {
-                return ResourceManager.GetString("ForceDarkTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Force Light Theme.
-        /// </summary>
-        public static string ForceLightTheme {
-            get {
-                return ResourceManager.GetString("ForceLightTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Geographic coordinates.
         /// </summary>
         public static string headerGeoCoordinates {
@@ -2213,15 +2195,6 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pause auto switch.
-        /// </summary>
-        public static string ThemeSwitchPause {
-            get {
-                return ResourceManager.GetString("ThemeSwitchPause", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Would you like to disable auto switching instead?.
         /// </summary>
         public static string ThemeSwitchPauseActionDisableQuestion {
@@ -2538,11 +2511,65 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Config Directory.
+        ///   Looks up a localized string similar to &amp;Automatic theme switch.
+        /// </summary>
+        public static string TrayMenuItemAutomaticThemeSwitch {
+            get {
+                return ResourceManager.GetString("TrayMenuItemAutomaticThemeSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Close.
+        /// </summary>
+        public static string TrayMenuItemClose {
+            get {
+                return ResourceManager.GetString("TrayMenuItemClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force &amp;Dark Theme.
+        /// </summary>
+        public static string TrayMenuItemForceDarkTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemForceDarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force &amp;Light Theme.
+        /// </summary>
+        public static string TrayMenuItemForceLightTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemForceLightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open Config Directory.
         /// </summary>
         public static string TrayMenuItemOpenConfigDir {
             get {
                 return ResourceManager.GetString("TrayMenuItemOpenConfigDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Pause auto switch.
+        /// </summary>
+        public static string TrayMenuItemThemeSwitchPause {
+            get {
+                return ResourceManager.GetString("TrayMenuItemThemeSwitchPause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Toggle theme.
+        /// </summary>
+        public static string TrayMenuItemToggleTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemToggleTheme", resourceCulture);
             }
         }
         

@@ -821,10 +821,10 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Sneltoetsen in systeem inschakelen</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Donker thema forceren</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Licht thema forceren</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Ongedaan maken</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Automatisch wisselen pauzeren</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Image path</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatische thema wissel</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
   </data>
 </root>

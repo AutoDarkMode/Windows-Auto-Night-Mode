@@ -821,10 +821,10 @@
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Включить системные горячие клавиши</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Принудительно тёмная тема</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Принудительно светлая тема</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Отменить</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Приостановить автопереключение</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Путь к изображению</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Автоматическое переключение темы</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Переключить тему</value>
   </data>
 </root>

@@ -821,10 +821,10 @@ Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền 
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Bật phím tắt cho toàn hệ thống</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề tối</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề sáng</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -891,7 +891,7 @@ Bạn có muốn tiếp tục?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Đảo ngược</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Tạm dừng tự động chuyển</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1120,5 +1120,14 @@ Bạn có muốn tiếp tục?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Đường dẫn hình ảnh</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Tự động chuyển chủ đề</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Bật tắt chủ đề</value>
   </data>
 </root>

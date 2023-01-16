@@ -72,10 +72,10 @@ namespace AutoDarkModeSvc
             autoThemeSwitchingItem.Name = "autoThemeSwitching";
             toggleThemeItem.Name = "toggleTheme";
             pauseThemeSwitchItem.Name = "pauseThemeSwitch";
-            forceDarkMenuItem.Text = AdmProperties.Resources.ForceDarkTheme;
-            forceLightMenuItem.Text = AdmProperties.Resources.ForceLightTheme;
-            autoThemeSwitchingItem.Text = AdmProperties.Resources.AutomaticThemeSwitch;
-            toggleThemeItem.Text = AdmProperties.Resources.ToggleTheme;
+            forceDarkMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceDarkTheme;
+            forceLightMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceLightTheme;
+            autoThemeSwitchingItem.Text = AdmProperties.Resources.TrayMenuItemAutomaticThemeSwitch;
+            toggleThemeItem.Text = AdmProperties.Resources.TrayMenuItemToggleTheme;
 
             NotifyIcon = new NotifyIcon();
             state.SetNotifyIcon(NotifyIcon);
@@ -134,7 +134,7 @@ namespace AutoDarkModeSvc
 
         private void InitTray()
         {
-            ToolStripMenuItem exitMenuItem = new(AdmProperties.Resources.msgClose);
+            ToolStripMenuItem exitMenuItem = new(AdmProperties.Resources.TrayMenuItemClose);
             ToolStripMenuItem openConfigDirItem = new(AdmProperties.Resources.TrayMenuItemOpenConfigDir);
 
             exitMenuItem.Click += new EventHandler(RequestExit);
@@ -204,8 +204,8 @@ namespace AutoDarkModeSvc
             {
                 DateTime expiry = tempDelay.Expiry ?? new();
                 pauseThemeSwitchItem.Checked = true;
-                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
+                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+                else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
             }
             else
             {
@@ -213,22 +213,22 @@ namespace AutoDarkModeSvc
                 (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
                 if (expiry.Year != 1)
                 {
-                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                    else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
+                    if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+                    else pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.UntilTime} {expiry:HH:mm})";
                 }
                 else
                 {
                     if (skipType == SkipType.Sunrise)
                     {
-                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
+                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
                     }
                     else if (skipType == SkipType.Sunset)
                     {
-                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.ThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
+                        pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
                     }
                     else
                     {
-                        pauseThemeSwitchItem.Text = AdmProperties.Resources.ThemeSwitchPause;
+                        pauseThemeSwitchItem.Text = AdmProperties.Resources.TrayMenuItemThemeSwitchPause;
                     }
                 }
             }           

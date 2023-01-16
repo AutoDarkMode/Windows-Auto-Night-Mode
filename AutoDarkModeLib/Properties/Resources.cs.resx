@@ -820,10 +820,10 @@ Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Enable system-wide hotkeys</value>
   </data>
-  <data name="ForceDarkTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Force Dark Theme</value>
   </data>
-  <data name="ForceLightTheme" xml:space="preserve">
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Force Light Theme</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
@@ -890,7 +890,7 @@ Do you really want to continue?</value>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Undo</value>
   </data>
-  <data name="ThemeSwitchPause" xml:space="preserve">
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pause auto switch</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
@@ -1119,5 +1119,14 @@ Do you really want to continue?</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Image path</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatic theme switch</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
   </data>
 </root>
