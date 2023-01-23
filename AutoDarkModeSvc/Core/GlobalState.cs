@@ -104,6 +104,7 @@ namespace AutoDarkModeSvc.Core
                         if (unmanagedCustom)
                         {
                             UnmanagedActiveThemePath = "";
+                            // retrieve theme names from configuration file and then compare them to the custom path
                             (_, string displayNameLight) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
                             (_, string displayNameDark) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
                             string sourceThemeNameCustom = ThemeFile.GetOriginalNameFromRaw(customPath);

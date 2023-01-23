@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 else
                 {
-                    light.Save();
+                    light.Save(managed: false);
                 }
                 Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
             }
@@ -104,7 +104,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 else
                 {
-                    dark.Save();
+                    dark.Save(managed: false);
                 }
                 Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
             }
