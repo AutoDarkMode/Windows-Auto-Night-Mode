@@ -124,7 +124,7 @@
     <value>Apply</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Enable automatic theme switching</value>
+    <value>הפעל החלפת ערכת נושא אוטומטית</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>תמיד כהה</value>
@@ -163,7 +163,7 @@
     <value>Switch current theme</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System</value>
+    <value>מערכת</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Used third party software</value>
