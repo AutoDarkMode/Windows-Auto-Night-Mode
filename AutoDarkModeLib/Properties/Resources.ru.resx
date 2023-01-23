@@ -835,7 +835,7 @@
     <value>Скрыть значок в трее</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>Открыть папку настроек</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Определять программой</value>

@@ -835,7 +835,7 @@ Chiar vreți să continuați?</value>
     <value>Ascunde pictograma din bara de activități</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>Deschideți directorul de configurare</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Lasă aplicația să decidă</value>

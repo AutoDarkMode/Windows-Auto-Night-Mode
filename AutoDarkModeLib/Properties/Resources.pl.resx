@@ -841,7 +841,7 @@ Czy chcesz kontynuować?</value>
     <value>Ukryj ikonę paska zadań</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>Otwórz katalog konfiguracji</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Pozwól decydować aplikacji</value>
