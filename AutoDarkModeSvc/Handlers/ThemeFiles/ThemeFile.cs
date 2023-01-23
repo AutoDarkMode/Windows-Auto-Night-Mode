@@ -29,6 +29,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using YamlDotNet.Core;
+using YamlDotNet.Core.Tokens;
 using static System.Windows.Forms.LinkLabel;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
@@ -61,6 +62,13 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             ThemeId = $"{{{Guid.NewGuid()}}}";
         }
 
+        /// <summary>
+        /// Updates a value for a given key within a section. <br/>
+        /// If the value doesn't exist, it will be added at the bottom of the section instead.
+        /// </summary>
+        /// <param name="section">The ini file section name</param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         private void UpdateValue(string section, string key, string value)
         {
             try
@@ -94,6 +102,33 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             catch (Exception ex)
             {
                 Logger.Error(ex, $"failed to update value {section}/{key} with value {value}, exception: ");
+                throw;
+            }
+        }
+
+        private void RemoveKey(string section, string key)
+        {
+            try
+            {
+                int found = ThemeFileContent.IndexOf(section);
+                int keyIdx = -1;
+                if (found != -1)
+                {
+                    for (int i = found + 1; i < ThemeFileContent.Count; i++)
+                    {
+                        if (ThemeFileContent[i].StartsWith('[')) break;
+                        else if (ThemeFileContent[i].StartsWith(key))
+                        {
+                            keyIdx = i;
+                            break;
+                        }
+                    }
+                }
+                if (keyIdx != -1) ThemeFileContent.RemoveAt(keyIdx);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"failed to remove key {section}/{key}, exception: ");
                 throw;
             }
         }
