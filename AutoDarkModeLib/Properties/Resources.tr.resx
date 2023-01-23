@@ -835,7 +835,7 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Bildirim Alanı Simgesi Gizleme</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Yapılandırma klasörünü aç</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Uygulama karar versin</value>

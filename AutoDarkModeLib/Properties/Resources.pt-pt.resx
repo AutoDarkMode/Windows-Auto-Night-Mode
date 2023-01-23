@@ -836,7 +836,7 @@ Tem a certeza que quer continuar?</value>
     <value>Esconder o Ícone do Tabuleiro do Sistema</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Abrir a Pasta do Config</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Deixar a aplicação decidir</value>

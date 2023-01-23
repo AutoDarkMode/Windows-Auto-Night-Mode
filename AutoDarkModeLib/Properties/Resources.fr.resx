@@ -835,7 +835,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Masquer l'icône de la barre des tâches</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Ouvrir le dossier de configuration</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Laisser l'application décider</value>

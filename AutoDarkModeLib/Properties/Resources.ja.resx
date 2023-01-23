@@ -835,7 +835,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>トレイアイコンの非表示</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>設定用フォルダを開く</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>アプリが判断</value>

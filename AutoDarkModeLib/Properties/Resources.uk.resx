@@ -835,7 +835,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Приховати значок в треї</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Відкрити каталог з конфігурацією</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Залишити на розсуд застосунку</value>

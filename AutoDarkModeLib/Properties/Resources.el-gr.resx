@@ -835,7 +835,7 @@
     <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Ανοιγμα καταλόγου ρυθμίσεων (config)</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Αφήστε την εφαρμογή να αποφασίσει</value>

@@ -835,7 +835,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>隱藏系統匣圖示</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>開啟設定檔資料夾</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>讓應用程式決定</value>

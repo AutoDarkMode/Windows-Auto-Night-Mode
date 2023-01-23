@@ -835,7 +835,7 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Sakrij ikonicu u sistemskoj paleti</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Otvori konfiguracionu fasciklu</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Neka aplikacija odluči</value>

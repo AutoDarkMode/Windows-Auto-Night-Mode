@@ -835,7 +835,7 @@ Do you really want to continue?</value>
     <value>Hide Tray Icon</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Let the app decide</value>

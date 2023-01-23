@@ -835,7 +835,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Esconder icono de la bandeja del sistema</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Abrir carpeta de configuración</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Dejar que la aplicación decida</value>
