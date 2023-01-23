@@ -124,13 +124,13 @@
     <value>应用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自动切换主题</value>
+    <value>启用自动主题切换</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>深色主题</value>
+    <value>总是深色</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>浅色主题</value>
+    <value>总是浅色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>启用与 Windows 1903 相关的功能</value>
