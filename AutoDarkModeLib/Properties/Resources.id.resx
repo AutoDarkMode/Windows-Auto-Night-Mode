@@ -835,7 +835,7 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Sembunyikan Ikon Tray</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Buka Folder Konfigurasi</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Biarkan aplikasi memilih</value>

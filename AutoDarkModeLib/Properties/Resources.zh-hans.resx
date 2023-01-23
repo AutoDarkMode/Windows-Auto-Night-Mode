@@ -124,13 +124,13 @@
     <value>应用</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>自动切换主题</value>
+    <value>启用自动主题切换</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>深色主题</value>
+    <value>总是深色</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>浅色主题</value>
+    <value>总是浅色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>启用与 Windows 1903 相关的功能</value>
@@ -485,7 +485,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
 注：请勿手动以管理员身份运行 Auto Dark Mode！</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>需要帮助吗？</value>
+    <value>帮助</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>多用户支持</value>
@@ -835,7 +835,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>隐藏托盘图标</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>打开配置文件夹</value>
+    <value>打开配置目录</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>由应用决定</value>

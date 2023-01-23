@@ -370,7 +370,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Battery powered devices</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait...</value>
+    <value>Service not running yet, please wait…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Launching Service</value>
@@ -504,7 +504,7 @@ Do you really want to continue?</value>
     <value>Hide Tray Icon</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Open Config Directory</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Let the app decide</value>
@@ -687,7 +687,7 @@ Do you really want to continue?</value>
     <value>Downgrading to</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading...</value>
+    <value>Downloading…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
@@ -956,10 +956,10 @@ Do you really want to continue?</value>
     <value>No new updates are available.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Getting your location...</value>
+    <value>Getting your location…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Looking for updates...</value>
+    <value>Looking for updates…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Warning: We couldn't read your current theme.</value>

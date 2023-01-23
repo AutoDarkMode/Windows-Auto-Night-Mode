@@ -835,7 +835,7 @@ Tényleg folytatni szeretné?</value>
     <value>Tálca ikon elrejtése</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Konfigurációs mappa megnyitása</value>
+    <value>&amp;Open Config Directory</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Hagyja, hogy az alkalmazás döntsön</value>

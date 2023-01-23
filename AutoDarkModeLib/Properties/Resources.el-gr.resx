@@ -822,10 +822,10 @@
     <value>Ενεργοποίηση πλήκτρων συντόμευσης σε όλο το σύστημα</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Επιβολή Σκοτεινής Λειτουργίας</value>
+    <value>Επιβολή &amp;Σκοτεινής Λειτουργίας</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Επιβολή Φωτεινής Λειτουργίας</value>
+    <value>Επιβολή &amp;Φωτεινής Λειτουργίας</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Η απόκρυψη του εικονιδίου δεν συνιστάται.
@@ -835,7 +835,7 @@
     <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Ανοιγμα καταλόγου ρυθμίσεων (config)</value>
+    <value>&amp;Ανοιγμα καταλόγου αρχείου ρυθμίσεων (config)</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Αφήστε την εφαρμογή να αποφασίσει</value>
@@ -892,7 +892,7 @@
     <value>Αναίρεση</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Παύση αυτόματης εναλλαγής</value>
+    <value>&amp;Παύση αυτόματης εναλλαγής</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Θα θέλατε αντί για αυτό να απενεργοποιήσετε την αυτόματη εναλλαγή;</value>
@@ -1122,12 +1122,12 @@
     <value>Διαδρομή εικόνας</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Κλείσιμο</value>
+    <value>&amp;Κλείσιμο</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Αυτόματη εναλλαγή θεματος</value>
+    <value>&amp;Αυτόματη εναλλαγή θέματος</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Ενεργοποίηση/απενεργοποίηση θέματος</value>
+    <value>&amp;Ενεργοποίηση/απενεργοποίηση θέματος</value>
   </data>
 </root>
