@@ -822,10 +822,10 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>システム全体でホットキーを有効にする</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>ダークテーマに変更</value>
+    <value>ダークテーマに変更(&amp;D)</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>ライトテーマに変更</value>
+    <value>ライトテーマに変更(&amp;L)</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>このアイコンの非表示は推奨しません。
@@ -835,7 +835,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>トレイアイコンの非表示</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>&amp;Open Config Directory(&amp;O)</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>アプリが判断</value>
@@ -892,7 +892,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>元に戻す</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>自動切替を停止</value>
+    <value>自動切替を停止(&amp;P)</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>代わりに自動切替を無効にしますか？</value>
@@ -1122,12 +1122,12 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>画像のパス</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>閉じる</value>
+    <value>閉じる(&amp;X)</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切替</value>
+    <value>テーマの自動切替(&amp;A)</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>テーマを切り替える</value>
+    <value>テーマを切り替える(&amp;T)</value>
   </data>
 </root>
