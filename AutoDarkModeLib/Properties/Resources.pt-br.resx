@@ -124,7 +124,7 @@
     <value>Aplicar</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Habilitar a troca automatica de tema</value>
+    <value>Habilitar a troca automática de tema</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Sempre escuro</value>
@@ -255,7 +255,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Fundo para o tema escuro</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Eliminar/Desactivar</value>
+    <value>Eliminar/Desativar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>Escolher ficheiro</value>
@@ -465,11 +465,11 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Doar</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Olá! Obrigado por utilizar o Auto Dark Mode! Está a gostar dele até agora?
+    <value>Olá! Obrigado por utilizar o Auto Dark Mode! Está gostanto dele até agora?
 
-Esta aplicação torna o seu dia-a-dia mais agradáveis, ao ajudá-lo a tormar conta dos seus olhos. Ao mesmo tempo, é completamente gratuito, livre de anúncios, não recolhe dados de utilizador e é de código de fonte aberta. Eu não obtenho qualquer lucro com este projecto.
+Esta aplicação torna o seu dia-a-dia mais agradáveis, ao ajudá-lo a cuidar dos seus olhos. Ao mesmo tempo, é completamente gratuito, livre de anúncios, não recolhe dados de utilizador e é de código fonte aberta. Eu não obtenho qualquer lucro com este projeto.
 
-Por esta razão, deve suportar-me com uma doação voluntária. Até uma pequena quantidade faz-me dar saltos de alegria pelo meu apartamento. Apenas doe o quanto valoriza o meu trabalho.</value>
+Por esta razão, você pode me dar um suportar com uma doação voluntária. Até uma pequena quantidade faz-me dar saltos de alegria pelo meu apartamento. Apenas doe o quanto valoriza o meu trabalho.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Ocorreu um erro enquanto aplicava um ficheiro .theme. Talvez o seu tema criado foi eliminado ou movido. Foi por isto que desactivámos a mudança de temas por agora. Para activá-lo, abra o Auto Dark Mode e configure as definições de {0}.</value>
@@ -479,10 +479,10 @@ Por esta razão, deve suportar-me com uma doação voluntária. Até uma pequena
 
 {0}
 
-Iremos agora tentar resolver este problema ao correr um algoritmo como Administrador. Talvez isto vá ajudar.
-O Auto Dark Mode irá reiniciar depois e precisará de voltar a aplicar as suas definições, desculpe!
+Iremos agora tentar resolver este problema ao executar um algoritmo como Administrador. Talvez isto vá ajudar.
+O Auto Dark Mode irá reiniciar depois e precisará voltar a aplicar as suas definições, desculpe!
 
-Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!</value>
+Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Ajuda</value>
@@ -545,7 +545,7 @@ Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!<
     <value>Abrir o ficheiro de registo</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Config</value>
+    <value>Configurações</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
     <value>Microsoft Office (legado):</value>
@@ -835,7 +835,7 @@ Tem a certeza que quer continuar?</value>
     <value>Esconder o Ícone do Tabuleiro do Sistema</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Abrir a Pasta do Config</value>
+    <value>Abrir a pasta de configurações</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Deixar a aplicação decidir</value>
