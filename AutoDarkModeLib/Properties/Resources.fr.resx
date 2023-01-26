@@ -228,7 +228,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Activez l'option pour activer le changement de thème automatique.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Traducteur : Nathan Bonnemains &amp; Damien Trouillet</value>
+    <value>Traducteurs : Nathan Bonnemains &amp; Damien Trouillet &amp; Maxence CHAIX</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Ville</value>
@@ -740,7 +740,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Lever de soleil</value>
+    <value>Lever du soleil</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
@@ -835,7 +835,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Masquer l'icône de la barre des tâches</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>&amp;Ouvrir le dossier de configuration</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Laisser l'application décider</value>
@@ -892,7 +892,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Annuler</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Suspendre le changement automatique</value>
+    <value>&amp;Suspendre le changement automatique</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Souhaitez-vous plutôt désactiver le changement automatique ?</value>
@@ -1122,12 +1122,12 @@ Voulez-vous vraiment continuer ?</value>
     <value>Emplacement de l'image</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Fermer</value>
+    <value>&amp;Fermer</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Basculement automatique du thème</value>
+    <value>&amp;Basculement automatique du thème</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Basculer de thème</value>
+    <value>&amp;Basculer de thème</value>
   </data>
 </root>
