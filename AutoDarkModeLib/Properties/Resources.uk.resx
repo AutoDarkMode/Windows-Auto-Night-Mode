@@ -178,7 +178,7 @@
     <value>Зміни збережені!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Ваші зміни буде збережено автоматично.</value>
+    <value>Зміни будуть збережені автоматично.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Завантажити оновлення</value>
@@ -208,12 +208,12 @@
     <value>Дякуємо за використання Auto Dark Mode!
 
 Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
-Ви хочете її завантажити?
+Хочете її встановити?
 
 Зараз встановлена версія: {0}, нова версія: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Автоматичний темний режим</value>
+    <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
     <value>Перевірити оновлення</value>
@@ -228,7 +228,7 @@
     <value>Активувати прапорець для автоматичного перемикання тем.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Перекладачі: Mykhailo Lytvynenko, Vlad Anisimov</value>
+    <value>Перекладачі: Mykhaïlo (Михайло) Lytvynenko, Vlad Anisimov</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>Місто</value>
@@ -307,7 +307,7 @@
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Видимий лише в темному режимі.
-Якщо у вас виникли проблеми: збільште затримку перемикання в налаштуваннях.</value>
+Якщо трапляються проблеми: будь ласка, збільште затримку перемикання в налаштуваннях.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Інформація</value>
@@ -317,6 +317,9 @@
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Закрити</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>&amp;Закрити</value>
   </data>
   <data name="msgNo" xml:space="preserve">
     <value>Ні</value>
@@ -330,16 +333,16 @@
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Виникла проблема з інтерфейсом користувача.
 
-
 Будь ласка, переконайтеся, що:
 - служба запущена
 - ваш файл config.yaml правильний
 
-Чи хочете ви створити проблему в репозиторії Auto Dark Mode? Натисніть «Так», щоб відкрити нове вікно браузера.
+Чи хочете створити питання в репозиторії Auto Dark Mode? 
+Натисніть «Так», щоб відкрити нове вікно браузера.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Помилка: введені Вами дані недійсні</value>
+    <value>Помилка: введені дані недійсні</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Перемикання після режиму очікування (не рекомендовано)</value>
@@ -350,7 +353,7 @@
 Але це також скорочує ресурс акумулятора, тому активуйте ЛИШЕ за необхідности!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Через помилку Windows панель завдань неправильно змінює колір у режимі економії заряду акумулятора. Вимкніть режим економії заряду акумулятора, якщо у вас виникнуть проблеми.</value>
+    <value>Через помилку Windows панель завдань неправильно змінює колір у режимі економії заряду акумулятора. Будь ласка, вимкніть режим економії заряду акумулятора, якщо зіткнетесь з проблемами.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Зміщення</value>
@@ -360,7 +363,7 @@
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Ці параметри вимкнені під час використання теми Windows.
-Ви можете налаштувати це окремо у вашій темі Windows.</value>
+Їх можна налаштувати окремо в темі Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Застосунки</value>
@@ -393,10 +396,10 @@
     <value>Фон робочого столу (рекомендовано)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Натисніть тут, щоб відкрити налаштування теми Windows.</value>
+    <value>Натисніть тут для відкриття налаштувань теми Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Тепер встановіть світлий колір Windows у розділі Кольори для світлої теми. Виберіть улюблений фон, курсор миші та основний колір.</value>
+    <value>Тепер перейдіть до «Кольори» і змініть колір системи на «Світлий» для світлої теми. Виберіть улюблений фон, курсор миші та основний колір.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Поверніться до налаштувань теми та збережіть свою тему.</value>
@@ -450,7 +453,7 @@
     <value>За допомогою цього розширення веб-сайти в Chrome, Firefox та Edge відповідатимуть системній темі.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>не знайдено</value>
+    <value>Не знайдено</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
     <value>Чому?</value>
@@ -459,7 +462,7 @@
     <value>Як підтримати?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Ви можете надіслати мені гроші через PayPal. Це повністю добровільно, і не слід очікувати жодної компенсації.</value>
+    <value>Ви можете надіслати мені гроші через PayPal. Це абслютно добровільна справа, і не слід очікувати жодної компенсації.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Підтримати</value>
@@ -467,20 +470,20 @@
   <data name="donationDescription" xml:space="preserve">
     <value>Вітаю! Дякую за використання Auto Dark Mode! Поки подобається цей застосунок?
 
-Auto Dark Mode робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час вона абсолютно безплатна, без реклами, не збирає даних про користувачів та з відкритим кодом.
+Auto Dark Mode робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час він абсолютно безплатний, без реклами, не збирає даних про користувачів та має відкриті джерела.
 Я не отримую жодного прибутку від цього проєкту.
 
 З цієї причини ви могли б підтримати мене добровільним внеском. Навіть від невеликої суми я стрибатиму по квартирі. Просто пожертвуйте стільки, на скільки цінуєте мою роботу.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена вами тема була видалена або переміщена. Тому зараз перемикання тем вимкнене. Аби знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте {0} Параметри .</value>
+    <value>Під час застосування файлу .theme сталася помилка. Можливо, створена тема була видалена або переміщена. Тому поки що перемикання тем вимкнене. Аби знову ввімкнути його, відкрийте Auto Dark Mode і налаштуйте параметри {0} .</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Трапилась така проблема:
 {0}.
 
 Зараз ми спробуємо вирішити її, запустивши застосунок з правами адміністратора. Можливо, це допоможе.
-Після цього Auto Dark Mode перезапуститься, і вам потрібно буде знову застосувати свої налаштування, вибачте!
+Після цього Auto Dark Mode перезапуститься, і потрібно буде знову застосувати свої налаштування, вибачте!
 
 До речі, будь ласка, НІКОЛИ не запускайте Auto Dark Mode в режимі адміністратора!</value>
   </data>
@@ -500,16 +503,16 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Скинути</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Дозволити темну тему коли пристрій не пд'єднаний до живлення</value>
+    <value>Дозволити темну тему коли пристрій не під'єднаний до живлення</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Типове значення для повзунка економії акумулятора</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Зменшення економії енергії для перемикання теми</value>
+    <value>Пом'якшення економії енергії для перемикання теми</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>Це працює за умови, що ви не ввімкнули вручну режим економії заряду акумулятора!</value>
+    <value>Це працює за умови, що режим економії заряду акумулятора не був увімкнений вручну!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Перемикання режимів</value>
@@ -533,7 +536,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Від світанку до смеркання (географічні координати)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Географічні координати Вашого місцезнаходження</value>
+    <value>Географічні координати місцезнаходження</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Відкрити файл конфігурації</value>
@@ -569,25 +572,25 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Ця функція вимкнена, коли ввімкнено режим фонів.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Пропонує більше функцій, але вам потрібно налаштувати файл Windows .theme. Налаштуйте фони робочого столу для кожного монітора, встановіть слайд-шоу, змініть курсор миші, встановіть колір акценту та окремі звуки.</value>
+    <value>Пропонує більше можливостей, але потрібно налаштувати файл .theme Windows. Можна змінити фони робочого столу для кожного монітора, встановити слайд-шоу, змінити курсор миші, встановити колір акценту та власні звуки.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Пропонує менше функцій, але його легше налаштувати. Налаштуйте фонові зображення робочого столу для всіх моніторів, окремих моніторів або встановіть фоновий колір.</value>
+    <value>Пропонує менше можливостей, але його легше налаштувати. Можна змінити фонові зображення робочого столу для всіх моніторів, окремих моніторів або встановити фоновий колір.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Наявність нових версій перевіряється Auto Dark Mode у фоновому режимі. Коли оновлення стане доступним, ми повідомимо вас за допомогою спливального сповіщення</value>
+    <value>Наявність нових версій перевіряється Auto Dark Mode у фоновому режимі. Коли оновлення стане доступним, ви отримаєте спливальне сповіщення</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Автоматично завантажуйте та встановлюйте нові версії</value>
+    <value>Автоматично завантажувати та встановлювати нові версії</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
     <value>Не показувати сповіщення</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Оберіть канал оновлення</value>
+    <value>Обрати канал оновлення</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Перевірте наявність оновлень, коли запуститься Auto Dark Mode</value>
+    <value>Перевіряти наявність оновлень, коли запуститься Auto Dark Mode</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
     <value>14 днів</value>
@@ -605,7 +608,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>ніколи</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Змініть, як часто перевіряється наявність оновлень</value>
+    <value>Змінити частоту перевірки наявности оновлень</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Темна тема</value>
@@ -686,7 +689,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Запуск служби</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Служба не відповідає. Перевірте, чи запущено AutoDarkModeSvc.exe, і повторіть спробу!</value>
+    <value>Служба не відповідає. Перевірте, чи працює AutoDarkModeSvc.exe, і повторіть спробу!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Увімкніть перемикач тем Windows</value>
@@ -807,25 +810,25 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Примусовий темний режим</value>
+    <value>Темний режим увімнути</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Примусовий світлий режим</value>
+    <value>Світлий режим увімкнути</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Гарячі клавіші</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Зупинити примусову тему</value>
+    <value>Примусову тему вимкнути</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Дозволити загальносистемні гарячі клавіші</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Примусова темна тема</value>
+    <value>Увімкнути &amp;темну тему</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Примусова світла тема</value>
+    <value>Увімкнути &amp;світлу тему</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Приховувати значок не рекомендується.
@@ -835,7 +838,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Приховати значок в треї</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Відкрити каталог конфігурацій</value>
+    <value>&amp;Відкрити каталог конфігурацій</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Залишити на розсуд застосунку</value>
@@ -854,6 +857,9 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Автоматичне перемикання тем</value>
+  </data>
+   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Автоматичне перемикання тем</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Показувати сповіщення за перемикання</value>
@@ -883,7 +889,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>гаряча клавіша</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Перемкнути автозміну тем</value>
+    <value>Автозміну тем перемкнути</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
     <value>Вимкнути автоперемикання</value>
@@ -892,13 +898,13 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Скасувати</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Призупинити автоперемикання</value>
+    <value>&amp;Призупинити автоперемикання</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Бажаєте натомість вимкнути автоперемикання?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Автоперемикання також поновиться якщо ви повернетесь до попередньої теми.</value>
+    <value>Автоперемикання також поновиться, якщо ви повернетесь до попередньої теми.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
     <value>Зміна тем призупинена до</value>
@@ -913,7 +919,10 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Відкласти керування</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Перемкнути тему</value>
+    <value>Тему перемкнути</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>&amp;Перемкнути тему</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>Автозміна теми активна</value>
@@ -949,7 +958,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>до наступного смеркання</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Перемкнути призупинення автозміни тем</value>
+    <value>Призупинення автозміни тем перемкнути</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
     <value>Автозміна тем поновлена</value>
@@ -1048,7 +1057,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Призупинено</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Використовуйте лише з Office 2013-2019 або якщо у вас виникли проблеми з Office 'використанням системних' налаштувань</value>
+    <value>Використовуйте лише з Office 2013-2019 або якщо у вас виникли проблеми з налаштуваням Office «використовувати системний параметр»</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Під час виправлення сталася помилка.</value>
@@ -1057,7 +1066,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Поточна версія</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Повернення до</value>
+    <value>Пониження до</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
     <value>Завантаження…</value>
@@ -1082,7 +1091,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Оновлюється до</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Повернутися до попередньої версії</value>
+    <value>Понизити версію</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
     <value>Відкрити теку log</value>
@@ -1094,14 +1103,14 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Оновити</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Доступне повернення до {0}</value>
+    <value>Доступне пониження версії до {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Перейти на сторінку завантаження</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>Доступне повернення версії</value>
+    <value>Доступне пониження версії</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
     <value>Скрипти</value>
@@ -1120,14 +1129,5 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Розташування зображення</value>
-  </data>
-  <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Закрити</value>
-  </data>
-  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Автоматичне перемикання тем</value>
-  </data>
-  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Перемкнути тему</value>
   </data>
 </root>
