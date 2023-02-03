@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             base.EnableHook();
         }
-
+        public override bool TriggersDwmRefresh => true;
         public override bool ThemeHandlerCompatibility { get; } = false;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)

@@ -190,8 +190,7 @@ namespace AutoDarkModeSvc.Core
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
 
-            List<ISwitchComponent> componentsToUpdate = cm.GetComponentsToUpdate(newTheme);
-
+            (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired) = cm.GetComponentsToUpdate(newTheme);
 
             // when the app ist launched for the first time, ask for notification
             if (!state.InitSyncSwitchPerformed)
@@ -232,12 +231,21 @@ namespace AutoDarkModeSvc.Core
                     state.ManagedThemeFile.SyncWithActiveTheme(true);
                 }
 
-                // regular modules that do not require theme file synchronization
+                // regular modules that do not need to modify the active theme
                 cm.RunPostSync(componentsToUpdate, newTheme, e);
+
+                if (dwmRefreshRequired && !themeModeNeedsUpdate)
+                {
+                    if (builder.Config.WindowsThemeMode.Enabled) ThemeHandler.RefreshDwm(managed: false);
+                    else ThemeHandler.RefreshDwm(managed: true);
+                }
             }
 
+
             // windows theme mode apply theme
-            if (themeModeNeedsUpdate) ThemeHandler.ApplyTheme(newTheme);
+            if (themeModeNeedsUpdate) {
+                ThemeHandler.ApplyTheme(newTheme);
+            }
 
 
             // non theme mode switches & cleanup

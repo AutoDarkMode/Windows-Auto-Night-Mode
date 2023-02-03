@@ -18,15 +18,18 @@ using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms.VisualStyles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
     {
         public override bool ThemeHandlerCompatibility => true;
+        public override bool NeedsDwmRefresh => true;
 
         public override bool Enabled
         {

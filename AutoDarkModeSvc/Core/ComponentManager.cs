@@ -127,11 +127,13 @@ namespace AutoDarkModeSvc.Core
         /// or the module has the force switch flag enabled <br/>
         /// or the module was disabled and is still initialized
         /// <param name="newTheme">The theme that should be checked against</param>
-        /// <returns>a list of components that require an update</returns>
+        /// <returns>a list of components that require an update and a boolean that informs whether a dwm refresh needs to be initiated manually</returns>
         /// </summary>
-        public List<ISwitchComponent> GetComponentsToUpdate(Theme newTheme)
+        public (List<ISwitchComponent>, bool) GetComponentsToUpdate(Theme newTheme)
         {
             List<ISwitchComponent> shouldUpdate = new();
+            bool triggersDwmRefresh = false;
+            bool needsDwmRefresh = false;
             foreach (ISwitchComponent c in Components)
             {
                 // require update if theme mode is enabled, the module is enabled and compatible with theme mode
@@ -141,6 +143,8 @@ namespace AutoDarkModeSvc.Core
 
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
+                        if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
+                        if (c.NeedsDwmRefresh) needsDwmRefresh = true;
                         shouldUpdate.Add(c);
                     }
                 }
@@ -151,21 +155,29 @@ namespace AutoDarkModeSvc.Core
 
                     if (c.ComponentNeedsUpdate(newTheme))
                     {
+                        if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
+                        if (c.NeedsDwmRefresh) needsDwmRefresh = true;
                         shouldUpdate.Add(c);
                     }
                 }
                 // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
                 else if (!c.Enabled && c.Initialized)
                 {
+                    if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
+                    if (c.NeedsDwmRefresh) needsDwmRefresh = true;
                     shouldUpdate.Add(c);
                 }
                 // if the force flag is set to true, we also need to update
                 else if (c.ForceSwitch)
                 {
+                    if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
+                    if (c.NeedsDwmRefresh) needsDwmRefresh = true;
                     shouldUpdate.Add(c);
                 }
             }
-            return shouldUpdate;
+            // if a different module will already trigger a dwm refresh, we don't need to perform an extra refresh
+            if (triggersDwmRefresh) needsDwmRefresh = false;
+            return (shouldUpdate, needsDwmRefresh);
         }
 
         /// <summary>

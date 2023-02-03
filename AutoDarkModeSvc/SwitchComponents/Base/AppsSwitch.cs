@@ -41,7 +41,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         }
 
         public override bool ThemeHandlerCompatibility { get; } = false;
-
         public override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)

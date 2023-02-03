@@ -250,9 +250,9 @@ namespace AutoDarkModeApp
         {
             if (!init || sender == null)
             {
-                builder.Config.SystemSwitch.Enabled = true;
                 if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemSwitch))
                 {
+                    builder.Config.SystemSwitch.Enabled = true;
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.Switch;
                     AccentColorCheckBox.IsEnabled = true;
                     AccentColorCheckBox.Visibility = Visibility.Visible;
@@ -279,6 +279,7 @@ namespace AutoDarkModeApp
                 }
                 else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemLightOnly))
                 {
+                    builder.Config.SystemSwitch.Enabled = true;
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.LightOnly;
                     AccentColorCheckBox.IsEnabled = false;
                     AccentColorCheckBox.Visibility = Visibility.Visible;
@@ -288,6 +289,7 @@ namespace AutoDarkModeApp
                 }
                 else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemDarkOnly))
                 {
+                    builder.Config.SystemSwitch.Enabled = true;
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.DarkOnly;
                     AccentColorCheckBox.IsEnabled = true;
                     AccentColorCheckBox.Visibility = Visibility.Visible;
@@ -297,6 +299,7 @@ namespace AutoDarkModeApp
                 }
                 else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemAccentOnly))
                 {
+                    builder.Config.SystemSwitch.Enabled = true;
                     if (sender != null) builder.Config.SystemSwitch.Component.Mode = Mode.AccentOnly;
                     AccentColorCheckBox.Visibility = Visibility.Collapsed;
                     if (!builder.Config.WindowsThemeMode.Enabled)
@@ -321,6 +324,7 @@ namespace AutoDarkModeApp
                 }
                 else if (SystemComboBox.SelectedItem.Equals(SystemComboBoxItemDisabled))
                 {
+                    builder.Config.SystemSwitch.Enabled = false;
                     if (sender != null) builder.Config.SystemSwitch.Enabled = false;
                     AccentColorCheckBox.IsEnabled = false;
                     AccentColorCheckBox.Visibility = Visibility.Visible;

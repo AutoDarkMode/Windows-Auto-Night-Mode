@@ -214,6 +214,44 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+        public static void RefreshDwm(bool managed)
+        {
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            {
+                try
+                {
+                    ThemeFile dwmRefreshTheme = new(Helper.PathManagedDwmRefreshTheme);
+                    if (!managed) state.ManagedThemeFile.SyncWithActiveTheme(false, false, true);
+                    dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+                    string lastColorizationDigitString = dwmRefreshTheme.VisualStyles.ColorizationColor.Item1[dwmRefreshTheme.VisualStyles.ColorizationColor.Item1.Length - 1].ToString();
+                    int lastColorizationDigit = int.Parse(lastColorizationDigitString);
+                    if (lastColorizationDigit >= 9) lastColorizationDigit--;
+                    else lastColorizationDigit++;
+                    string newColorizationColor = dwmRefreshTheme.VisualStyles.ColorizationColor.Item1[..(dwmRefreshTheme.VisualStyles.ColorizationColor.Item1.Length - 1)] + lastColorizationDigit.ToString();
+                    dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);
+                    dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
+                    dwmRefreshTheme.Save();
+
+                    List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
+                    
+                    if (!managed)
+                    {
+                        string oldThemePath = state.UnmanagedActiveThemePath;
+                        Apply(oldThemePath, true, null, flagList);
+                    }
+                    Logger.Info("refreshed dwm because a module requested it");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "could not refresh Dwm due to malformed colorization string: ");
+                }
+            }
+            else
+            {
+                Logger.Trace("no dwm refresh required needed in this windows version");
+            }
+        }
+
         private static bool ApplyIThemeManager(string originalPath, bool suppressLogging = false, ThemeFile unmanaged = null)
         {
             string themeFilePath = unmanaged != null ? unmanaged.ThemeFilePath : originalPath;

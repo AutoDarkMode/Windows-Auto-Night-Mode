@@ -71,6 +71,14 @@ namespace AutoDarkModeSvc.Interfaces
         /// <returns></returns>
         public void DisableHook();
         /// <summary>
+        /// Determines if the module is expected a dwm refresh when the theme is applied with the settings it modifies.
+        /// </summary>
+        public bool TriggersDwmRefresh { get; }
+        /// <summary>
+        /// Determines if the module requires dwm refresh
+        /// </summary>
+        public bool NeedsDwmRefresh { get; }
+        /// <summary>
         /// Determines if the module can be run with the windows theme switcher
         /// </summary>
         /// <returns></returns>
