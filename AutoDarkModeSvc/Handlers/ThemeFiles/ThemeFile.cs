@@ -191,6 +191,10 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
+        /// <summary>
+        /// Writes the theme file to disk at the specified ThemeFilePath
+        /// </summary>
+        /// <param name="managed"></param>
         public void Save(bool managed = true)
         {
             UpdateValue("[Theme]", nameof(ThemeId), ThemeId);
@@ -210,22 +214,26 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 UpdateValue(MasterThemeSelector.Section.Item1, nameof(MasterThemeSelector.MTSM), MasterThemeSelector.MTSM);
 
                 //Update Desktop class manually due to the way it is internally represented
-                List<string> desktopSerialized = new();
-                desktopSerialized.Add(Desktop.Section.Item1);
-                desktopSerialized.Add($"{nameof(Desktop.Wallpaper)}={Desktop.Wallpaper}");
-                desktopSerialized.Add($"{nameof(Desktop.Pattern)}={Desktop.Pattern}");
-                desktopSerialized.Add($"{nameof(Desktop.MultimonBackgrounds)}={Desktop.MultimonBackgrounds}");
-                desktopSerialized.Add($"{nameof(Desktop.PicturePosition)}={Desktop.PicturePosition}");
+                List<string> desktopSerialized = new()
+                {
+                    Desktop.Section.Item1,
+                    $"{nameof(Desktop.Wallpaper)}={Desktop.Wallpaper}",
+                    $"{nameof(Desktop.Pattern)}={Desktop.Pattern}",
+                    $"{nameof(Desktop.MultimonBackgrounds)}={Desktop.MultimonBackgrounds}",
+                    $"{nameof(Desktop.PicturePosition)}={Desktop.PicturePosition}"
+                };
                 Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
                 UpdateSection(Desktop.Section.Item1, desktopSerialized);
 
                 //Update Slideshow
                 if (Slideshow.Enabled)
                 {
-                    List<string> slideshowSerialized = new();
-                    slideshowSerialized.Add(Slideshow.Section.Item1);
-                    slideshowSerialized.Add($"{nameof(Slideshow.Interval)}={Slideshow.Interval}");
-                    slideshowSerialized.Add($"{nameof(Slideshow.Shuffle)}={Slideshow.Shuffle}");
+                    List<string> slideshowSerialized = new()
+                    {
+                        Slideshow.Section.Item1,
+                        $"{nameof(Slideshow.Interval)}={Slideshow.Interval}",
+                        $"{nameof(Slideshow.Shuffle)}={Slideshow.Shuffle}"
+                    };
                     if (Slideshow.ImagesRootPath != null) slideshowSerialized.Add($"{nameof(Slideshow.ImagesRootPath)}={Slideshow.ImagesRootPath}");
                     if (Slideshow.ImagesRootPIDL != null) slideshowSerialized.Add($"{nameof(Slideshow.ImagesRootPIDL)}={Slideshow.ImagesRootPIDL}");
                     Slideshow.ItemPaths.ForEach(w => slideshowSerialized.Add($"Item{w.Item2}Path={w.Item1}"));

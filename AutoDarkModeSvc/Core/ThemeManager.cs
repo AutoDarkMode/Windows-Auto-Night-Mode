@@ -235,6 +235,7 @@ namespace AutoDarkModeSvc.Core
                 // regular modules that do not require theme file synchronization
                 cm.RunPostSync(componentsToUpdate, newTheme, e);
             }
+
             // windows theme mode apply theme
             if (themeModeNeedsUpdate) ThemeHandler.ApplyTheme(newTheme);
 
@@ -248,7 +249,7 @@ namespace AutoDarkModeSvc.Core
                     try
                     {
                         state.ManagedThemeFile.Save();
-                        ThemeHandler.ApplyManagedTheme(builder.Config, Helper.PathManagedTheme);
+                        ThemeHandler.ApplyManagedTheme(builder.Config, state.ManagedThemeFile);
                     }
                     catch (Exception ex)
                     {

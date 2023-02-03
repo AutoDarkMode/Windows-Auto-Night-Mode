@@ -124,7 +124,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accent Color for title bars and window borders.
+        ///   Looks up a localized string similar to Accent Color for title bars and window borders during.
         /// </summary>
         public static string AppsCheckBoxDWMPrevalence {
             get {
@@ -731,7 +731,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edge (Legacy):.
+        ///   Looks up a localized string similar to Edge (Legacy).
         /// </summary>
         public static string lblEdge {
             get {
@@ -767,7 +767,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft Office (legacy):.
+        ///   Looks up a localized string similar to Microsoft Office (legacy).
         /// </summary>
         public static string lblOffice {
             get {
@@ -992,7 +992,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting your location....
+        ///   Looks up a localized string similar to Getting your location….
         /// </summary>
         public static string msgSearchLoc {
             get {
@@ -1001,7 +1001,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Looking for updates....
+        ///   Looks up a localized string similar to Looking for updates….
         /// </summary>
         public static string msgSearchUpd {
             get {
@@ -1637,7 +1637,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Service not running yet, please wait....
+        ///   Looks up a localized string similar to Service not running yet, please wait….
         /// </summary>
         public static string StartupLaunchingServiceText {
             get {
@@ -2772,7 +2772,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading....
+        ///   Looks up a localized string similar to Downloading….
         /// </summary>
         public static string UpdateToastDownloading {
             get {

@@ -25,6 +25,7 @@ using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
@@ -52,20 +53,22 @@ namespace AutoDarkModeSvc.Handlers
             }
         }
 
-        public static void ApplyManagedTheme(AdmConfig config, string path)
+        /// <summary>
+        /// Applies an ADM managed theme
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="theme"></param>
+        public static void ApplyManagedTheme(AdmConfig config, ThemeFile theme)
         {
             List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground };
-            Apply(path, flagList: flagList);
+            Apply(theme.ThemeFilePath, flagList: flagList);
         }
 
         /// <summary>
-        /// Applies the theme using the KAWAII Theme switcher logic for windows theme files
+        /// Applies an unmanaged theme to AutoDarkMode depending on whether the darkget theme is light or dark <br/>
+        /// Will copy the data from the source theme into the ADM unmanaged theme and patch colors if required.
         /// </summary>
-        /// <param name="config"></param>
         /// <param name="newTheme"></param>
-        /// <param name="automatic"></param>
-        /// <param name="sunset"></param>
-        /// <param name="sunrise"></param>
         /// <returns>true if an update was performed; false otherwise</returns>
         public static void ApplyTheme(Theme newTheme)
         {
@@ -210,6 +213,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             return false;
         }
+
         private static bool ApplyIThemeManager(string originalPath, bool suppressLogging = false, ThemeFile unmanaged = null)
         {
             string themeFilePath = unmanaged != null ? unmanaged.ThemeFilePath : originalPath;
@@ -249,6 +253,14 @@ namespace AutoDarkModeSvc.Handlers
             return success;
         }
 
+        /// <summary>
+        /// Applies a theme attempting to use IThemeManager2 first, falls back to IThemeManager if that fails
+        /// </summary>
+        /// <param name="originalPath">the original path of the theme</param>
+        /// <param name="suppressLogging"></param>
+        /// <param name="unmanagedPatched">An optional unmanaged theme path. Will use this theme path to apply the theme instead of the original path. <br/>
+        /// This is used such that a copied theme can be applied while still showing the correct origin path. Only set this if you have an unmanaged theme copy.</param>
+        /// <param name="flagList"></param>
         private static void ApplyIThemeManager2(string originalPath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
         {
             DateTime start = DateTime.Now;
