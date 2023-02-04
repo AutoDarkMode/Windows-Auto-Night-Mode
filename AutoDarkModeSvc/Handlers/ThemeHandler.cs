@@ -223,6 +223,7 @@ namespace AutoDarkModeSvc.Handlers
                     ThemeFile dwmRefreshTheme = new(Helper.PathManagedDwmRefreshTheme);
                     if (!managed) state.ManagedThemeFile.SyncWithActiveTheme(false, false, true);
                     dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+                    dwmRefreshTheme.RefreshGuid();
                     string lastColorizationDigitString = dwmRefreshTheme.VisualStyles.ColorizationColor.Item1[dwmRefreshTheme.VisualStyles.ColorizationColor.Item1.Length - 1].ToString();
                     int lastColorizationDigit = int.Parse(lastColorizationDigitString);
                     if (lastColorizationDigit >= 9) lastColorizationDigit--;

@@ -124,7 +124,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accent Color for title bars and window borders during.
+        ///   Looks up a localized string similar to Accent Color for title bars and window borders only during.
         /// </summary>
         public static string AppsCheckBoxDWMPrevalence {
             get {
