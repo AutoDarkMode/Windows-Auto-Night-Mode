@@ -835,7 +835,7 @@ Vuoi davvero continuare?</value>
     <value>Nascondi icona dell'area di notifica</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>Aprire l'elenco delle configurazioni</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Lascia decidere alla app</value>
@@ -847,7 +847,7 @@ Vuoi davvero continuare?</value>
     <value>Minuti prima che il sistema sia considerato inattivo</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Colore d'accento per la barra dei titoli e i bordi della finestra</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Le informazioni sulla versione sono state copiate negli appunti</value>

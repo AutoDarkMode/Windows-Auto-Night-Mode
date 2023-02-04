@@ -847,7 +847,7 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Vreme dok se sistem ne bude smatrao neaktivnim, u minutima</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Boja naglašavanja za naslovne trake i ivice prozora</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informacije o verziji kopirane u ostavu</value>

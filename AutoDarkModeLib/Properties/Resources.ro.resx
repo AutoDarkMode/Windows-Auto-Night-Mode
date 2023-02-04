@@ -847,7 +847,7 @@ Chiar vreți să continuați?</value>
     <value>Minute până când sistemul este considerat inactiv</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Culoare de accent pentru barele de titlu și marginile ferestrelor</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informațiile despre versiune au fost copiate în clipboard</value>

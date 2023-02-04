@@ -847,7 +847,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Minuten, bis das System als nicht beschäftigt angesehen wird</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Akzentfarbe für Titelleiste und Fensterränder</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Versionsinfo wurde kopiert</value>

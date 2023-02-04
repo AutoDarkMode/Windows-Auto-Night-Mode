@@ -835,7 +835,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Systeemvakicoon verbergen</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Configuratiemap openen</value>
+    <value>Configuratiemap &amp;openen</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Laat de app kiezen</value>
@@ -847,7 +847,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Minuten tot het systeem als inactief wordt beschouwd</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accentkleur voor titelbalken en vensterranden</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Versie-informatie gekopieerd naar klembord</value>

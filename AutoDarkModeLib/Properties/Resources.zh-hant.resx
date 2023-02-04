@@ -728,7 +728,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>流暢</value>
+    <value>Flow</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
@@ -835,7 +835,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>隱藏系統匣圖示</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>打開配寘資料夾</value>
+    <value>開啟設定檔資料夾</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>讓應用程式決定</value>
@@ -847,7 +847,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>系統空閒狀態判斷時間（分鐘）</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>在標題列和視窗框線上顯示輔色</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>版本資訊已複製到剪貼簿</value>
@@ -1104,16 +1104,16 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>有降級可用</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>腳本</value>
+    <value>指令碼</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>開啟腳本設置</value>
+    <value>開啟指令碼設置</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>腳本</value>
+    <value>指令碼</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>啟用自訂腳本</value>
+    <value>啟用自訂指令碼</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
     <value>選擇您的背景</value>

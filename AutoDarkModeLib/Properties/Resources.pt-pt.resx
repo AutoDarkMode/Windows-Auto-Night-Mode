@@ -848,7 +848,7 @@ Tem a certeza que quer continuar?</value>
     <value>Minutos até que o sistema é considerado inactivo</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Cor de Destaque para as barras de título e os limites das janelas</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informação da versão copiada para a Área de Transferência</value>

@@ -847,7 +847,7 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Jumlah menit hingga sistem dianggap menganggur</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Warna aksen untuk bilah judul dan bingkai jendela</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Info versi disalin ke papan klip</value>
