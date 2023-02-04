@@ -835,7 +835,7 @@ Vuoi davvero continuare?</value>
     <value>Nascondi icona dell'area di notifica</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>Aprire l'elenco delle configurazioni</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Lascia decidere alla app</value>
