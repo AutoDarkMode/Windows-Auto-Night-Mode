@@ -847,7 +847,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>系统空闲状态判断时间（分钟）</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>在标题栏和窗口边框使用主题色</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>版本信息已复制到剪贴板</value>

@@ -847,7 +847,7 @@
     <value>Минуты до того, как система будет считаться бездействующей</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Контрастный цвет заголовка и границ окна</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Номер версии скопирован в буфер обмена</value>

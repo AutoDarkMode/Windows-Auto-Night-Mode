@@ -850,7 +850,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Хвилин коли система вважатиметься в очікуванні</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Акцентний колір для рядку заголовка та меж вікон</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Інформація про версію скопійована до буферу обміну</value>
@@ -858,7 +858,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Автоматичне перемикання тем</value>
   </data>
-   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
     <value>&amp;Автоматичне перемикання тем</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">

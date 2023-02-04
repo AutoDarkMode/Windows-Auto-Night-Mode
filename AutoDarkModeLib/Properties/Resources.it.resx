@@ -847,7 +847,7 @@ Vuoi davvero continuare?</value>
     <value>Minuti prima che il sistema sia considerato inattivo</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Colore d'accento per la barra dei titoli e i bordi della finestra</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Le informazioni sulla versione sono state copiate negli appunti</value>

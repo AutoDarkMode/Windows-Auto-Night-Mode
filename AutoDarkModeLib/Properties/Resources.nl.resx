@@ -847,7 +847,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Minuten tot het systeem als inactief wordt beschouwd</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accentkleur voor titelbalken en vensterranden</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Versie-informatie gekopieerd naar klembord</value>

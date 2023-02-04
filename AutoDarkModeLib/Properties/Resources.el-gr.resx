@@ -847,7 +847,7 @@
     <value>Λεπτά μέχρι να θεωρείται ότι το σύστημα βρίσκεται σε αδράνεια</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Χρώμα έμφασης στις γραμμές τίτλου και τα περιγράμματα παραθύρων</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Οι πληροφορίες έκδοσης αντιγράφηκαν στο πρόχειρο</value>

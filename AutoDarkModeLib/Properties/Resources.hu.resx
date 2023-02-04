@@ -847,7 +847,7 @@ Tényleg folytatni szeretné?</value>
     <value>Percek, amíg a rendszer tétlennek minősül</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Kiemelő szín a címsorokhoz és az ablakszegélyekhez</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>A verzióadatok a vágólapra másolva</value>

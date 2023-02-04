@@ -847,7 +847,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Minutos hasta que el sistema esté considerado en resposo</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Color de acento para barras de título y bordes de ventana</value>
+    <value>Accent Color for title bars and window borders during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Información sobre la versión copiada al portapapeles</value>
