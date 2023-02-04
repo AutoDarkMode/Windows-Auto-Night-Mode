@@ -850,7 +850,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Хвилин коли система вважатиметься в очікуванні</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders during</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Інформація про версію скопійована до буферу обміну</value>

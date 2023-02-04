@@ -516,7 +516,7 @@ Do you really want to continue?</value>
     <value>Minutes until the system is considered idle</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders during</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Show notification on toggle</value>

@@ -847,7 +847,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>系統空閒狀態判斷時間（分鐘）</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders during</value>
+    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>版本資訊已複製到剪貼簿</value>
