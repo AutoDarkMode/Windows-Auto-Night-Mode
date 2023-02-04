@@ -835,7 +835,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>トレイアイコンの非表示</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory(&amp;O)</value>
+    <value>設定用フォルダを開く(&amp;O)</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>アプリが判断</value>
@@ -847,7 +847,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>システムがアイドル状態だと判定されるまでの分数</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders during</value>
+    <value>タイトルバーとウィンドウの境界線のアクセントカラー</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>バージョン情報をクリップボードにコピーしました</value>
