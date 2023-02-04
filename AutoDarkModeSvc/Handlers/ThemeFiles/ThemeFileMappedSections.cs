@@ -30,6 +30,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public string Pattern { get; set; } = "";
         public int PicturePosition { get; set; } = 4;
         public int MultimonBackgrounds { get; set; } = 0;
+        public int WindowsSpotlight { get; set; } = 0;
         public List<(string, string)> MultimonWallpapers { get; set; } = new();
     }
 

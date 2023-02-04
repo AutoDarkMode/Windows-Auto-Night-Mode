@@ -220,6 +220,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     $"{nameof(Desktop.Wallpaper)}={Desktop.Wallpaper}",
                     $"{nameof(Desktop.Pattern)}={Desktop.Pattern}",
                     $"{nameof(Desktop.MultimonBackgrounds)}={Desktop.MultimonBackgrounds}",
+                    $"{nameof(Desktop.WindowsSpotlight)}={Desktop.WindowsSpotlight}",
                     $"{nameof(Desktop.PicturePosition)}={Desktop.PicturePosition}"
                 };
                 Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
@@ -320,6 +321,13 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                             if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int pos))
                             {
                                 Desktop.PicturePosition = pos;
+                            }
+                        }
+                        else if (iter.Current.StartsWith("WindowsSpotlight="))
+                        {
+                            if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int enabled))
+                            {
+                                Desktop.WindowsSpotlight = enabled;
                             }
                         }
                         else if (iter.Current.StartsWith("MultimonBackgrounds="))
