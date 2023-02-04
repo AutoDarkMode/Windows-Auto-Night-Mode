@@ -233,12 +233,13 @@ namespace AutoDarkModeSvc.Handlers
                     dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
                     dwmRefreshTheme.Save();
 
+                    string oldUnmanagedThemePath = state.UnmanagedActiveThemePath;
                     List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
-                    
+                    Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
+
                     if (!managed)
                     {
-                        string oldThemePath = state.UnmanagedActiveThemePath;
-                        Apply(oldThemePath, true, null, flagList);
+                        Apply(oldUnmanagedThemePath, true, null, flagList);
                     }
                     Logger.Info("refreshed dwm because a module requested it");
                 }
