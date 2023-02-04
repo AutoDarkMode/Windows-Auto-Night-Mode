@@ -139,7 +139,7 @@
     <value>Apps</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Custom start time</value>
+    <value>זמן הפעלה מותאם אישית</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>כהה</value>
@@ -160,34 +160,34 @@
     <value>הגדרות</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Switch current theme</value>
+    <value>החלף ערכת נושא נוכחית</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>מערכת</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Used third party software</value>
+    <value>שימוש בתוכנת צד שלישי</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>עדכונים</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>השתמש בשירות המיקום</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Your changes have been saved!</value>
+    <value>השינויים שלך נשמרו!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Your changes will be saved automatically.</value>
+    <value>השינויים שלך יישמרו באופן אוטומטי.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>הורדת עדכון</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>error occurred :(</value>
+    <value>התרחשה שגיאה ):</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>This app needs access to your location</value>
+    <value>אפליקציה זו זקוקה לגישה למיקום שלך</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>אין עדכונים חדשים זמינים.</value>
@@ -199,7 +199,7 @@
     <value>מחפש עדכונים…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>אזהרה: לא הצלחנו לקרוא את ערכת הנושא הנוכחית שלך.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
     <value>עדכון חדש זמין!</value>
