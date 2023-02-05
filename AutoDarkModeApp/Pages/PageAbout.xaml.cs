@@ -21,6 +21,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -389,14 +390,12 @@ public partial class PageAbout : Page
         _ = msg.ShowDialog();
     }
 
-    private void ButtonCopyVersionInfo_Click(object sender, RoutedEventArgs e)
+    private async void ButtonCopyVersionInfo_Click(object sender, RoutedEventArgs e)
     {
         // most likely use case is to paste in an issue, so
         // we create a markddown string that will look nice
         // in that context
-        try
-        {
-            var versionText = new StringBuilder()
+        var versionText = new StringBuilder()
                 .Append("- Commit: `")
                 .Append(versionInfo.Commit)
                 .AppendLine("`")
@@ -415,14 +414,20 @@ public partial class PageAbout : Page
                 .Append("- Windows: `")
                 .Append(versionInfo.WindowsVersion)
                 .AppendLine("`");
-
-            Clipboard.SetData(DataFormats.Text, versionText);
-            TextBlockCopyInfo.Text = AutoDarkModeLib.Properties.Resources.AboutVersionInfoCopied;
-        }
-        catch (Exception ex)
+        for (int i = 0; i < 10; i++)
         {
-            ShowErrorMessage(ex, "About_CopyButton");
-        }
+            try
+            {
+                Clipboard.SetData(DataFormats.Text, versionText);
+                TextBlockCopyInfo.Text = AutoDarkModeLib.Properties.Resources.AboutVersionInfoCopied;
+                break;
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "About_CopyButton");
+                await Task.Delay(200);
+            }
+        }        
     }
 
     private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
