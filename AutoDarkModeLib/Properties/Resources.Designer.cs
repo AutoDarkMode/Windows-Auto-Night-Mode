@@ -2141,6 +2141,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spotlight.
+        /// </summary>
+        public static string ThemePickerTheme11Spotlight {
+            get {
+                return ResourceManager.GetString("ThemePickerTheme11Spotlight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sunrise.
         /// </summary>
         public static string ThemePickerTheme11Sunrise {
@@ -2903,6 +2912,15 @@ namespace AutoDarkModeLib.Properties {
         public static string WallpaperComboBoxItemSolidColor {
             get {
                 return ResourceManager.GetString("WallpaperComboBoxItemSolidColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows spotlight.
+        /// </summary>
+        public static string WallpaperComboBoxItemSpotlight {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemSpotlight", resourceCulture);
             }
         }
         

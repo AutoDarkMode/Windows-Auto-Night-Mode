@@ -59,8 +59,12 @@ namespace AutoDarkModeApp.Handlers
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeA.theme", AdmProperties.Resources.ThemePickerTheme11Glow));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeB.theme", AdmProperties.Resources.ThemePickerTheme11CapturedMotion));
                 themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeC.theme", AdmProperties.Resources.ThemePickerTheme11Sunrise));
-                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeD.theme", AdmProperties.Resources.ThemePickerTheme11Flow));
-
+                themeFiles.Add(new ThemeFile(@"C:\Windows\Resources\Themes\themeD.theme", AdmProperties.Resources.ThemePickerTheme11Flow)); 
+                ThemeFile spotlight = new(@"C:\Windows\Resources\Themes\spotlight.theme", AdmProperties.Resources.ThemePickerTheme11Spotlight);
+                if (File.Exists(spotlight.Path))
+                {
+                    themeFiles.Add(spotlight);
+                }
             }
             else
             {

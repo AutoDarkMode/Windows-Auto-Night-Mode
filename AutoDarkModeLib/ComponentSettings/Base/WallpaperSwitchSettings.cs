@@ -45,7 +45,8 @@ namespace AutoDarkModeLib.ComponentSettings.Base
         Individual = 0,
         Global = 1,
         All = 2,
-        SolidColor = 3
+        SolidColor = 3,
+        Spotlight = 4
     }
 
     public class GlobalWallpaper

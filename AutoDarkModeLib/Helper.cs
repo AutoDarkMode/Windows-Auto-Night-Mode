@@ -101,6 +101,11 @@ namespace AutoDarkModeLib
         Win11_22H2 = 22621,
     }
 
+    public enum WindowsBuildsUbr: int
+    {
+        Win11_22H2_Spotlight = 1105
+    }
+
     public static class Helper
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";

@@ -133,6 +133,7 @@
                                   Name="ComboBoxBackgroundSelectionIndividual" />
                     <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemSolidColor}"
                                   Name="ComboBoxBackgroundSelectionSolidColor" />
+                   
                 </ComboBox>
             </Grid>
         </uc:Card>
@@ -279,53 +280,52 @@
                        FontSize="14"
                        Text="{x:Static p:Resources.WallpaperColor}" />
             <uc:Card Padding="30,10,15,0"
-                 Grid.Row="10"
-                 Grid.Column="1"
+                     Grid.Row="10"
+                     Grid.Column="1"
+                     Visibility="Visible">
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                 Visibility="Visible">
-            <Grid Margin="0,0,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                    <Rectangle HorizontalAlignment="Left"
+                               Name="ColorPreview"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               Margin="0,0,0,6"
+                               Width="50"
+                               Height="50"
+                               Stroke="Gray"
+                               StrokeDashArray="1 2" />
+                    <TextBox Text="#"
+                             Grid.Column="1"
+                             Grid.Row="1"
+                             HorizontalAlignment="Left"
+                             ui:ControlHelper.Header="{x:Static p:Resources.WallpaperTextBoxHeaderHex}"
+                             Width="100"
+                             TextChanged="HexColorTextBox_TextChanged"
+                             Name="HexColorTextBox"
+                             Margin="0,5,0,20"
+                             FontSize="14"
+                             TextWrapping="Wrap" />
 
-                <Rectangle HorizontalAlignment="Left"
-                           Name="ColorPreview"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           Margin="0,0,0,6"
-                           Width="50"
-                           Height="50"
-                           Stroke="Gray"
-                           StrokeDashArray="1 2" />
-                <TextBox Text="#"
-                         Grid.Column="1"
-                         Grid.Row="1"
-                         HorizontalAlignment="Left"
-                         ui:ControlHelper.Header="{x:Static p:Resources.WallpaperTextBoxHeaderHex}"
-                         Width="100"
-                         TextChanged="HexColorTextBox_TextChanged"
-                         Name="HexColorTextBox"
-                         Margin="0,5,0,20"
-                         FontSize="14"
-                         TextWrapping="Wrap" />
-
-                <Button Name="ButtonColorSet"
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        Height="33"
-                        Margin="20,12,0,0"
-                        Width="80"
-                        Content="{x:Static p:Resources.offsetButton}"
-                        Click="ButtonColorSet_Click" />
-            </Grid>
-        </uc:Card>
+                    <Button Name="ButtonColorSet"
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            Height="33"
+                            Margin="20,12,0,0"
+                            Width="80"
+                            Content="{x:Static p:Resources.offsetButton}"
+                            Click="ButtonColorSet_Click" />
+                </Grid>
+            </uc:Card>
         </ui:SimpleStackPanel>
     </Grid>
 </ui:Page>

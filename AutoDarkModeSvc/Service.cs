@@ -379,24 +379,6 @@ namespace AutoDarkModeSvc
             }
         }
 
-        private void SwitchThemeNow(object sender, EventArgs e)
-        {
-            AdmConfig config = Builder.Config;
-            Logger.Info("ui signal received: switching theme");
-            if (RegistryHandler.AppsUseLightTheme())
-            {
-                if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
-                    state.UnmanagedActiveThemePath = "";
-                ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
-            }
-            else
-            {
-                if (config.WindowsThemeMode.Enabled && !config.WindowsThemeMode.MonitorActiveTheme)
-                    state.UnmanagedActiveThemePath = "";
-                ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
-            }
-        }
-
         private void OpenConfigDir(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new()

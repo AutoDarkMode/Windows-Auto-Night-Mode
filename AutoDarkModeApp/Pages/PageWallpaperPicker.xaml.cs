@@ -48,6 +48,8 @@ namespace AutoDarkModeApp.Pages
         private bool SelectedLight { get; set; } = true;
         private delegate void ShowPreviewDelegate(string picture);
         private delegate void NoArgDelegate();
+        private readonly ComboBoxItem ComboBoxBackgroundSelectionSpotlight = new();
+
 
         public PageWallpaperPicker()
         {
@@ -61,6 +63,14 @@ namespace AutoDarkModeApp.Pages
             }
 
             InitializeComponent();
+            bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
+            if (hasUbr && 
+               ((Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight) || 
+               Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win11_22H2))
+            {
+                ComboBoxBackgroundSelectionSpotlight.Content = AdmProperties.Resources.WallpaperComboBoxItemSpotlight;
+                ComboBoxWallpaperTypeSelection.Items.Add(ComboBoxBackgroundSelectionSpotlight);
+            }
         }
 
         private async Task DetectMonitors()
@@ -206,23 +216,16 @@ namespace AutoDarkModeApp.Pages
                 {
                     case WallpaperType.Global:
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionGlobal;
-                        GridWallpaper.Visibility = Visibility.Visible;
-                        WallpaperHeader.Visibility = Visibility.Visible;
-                        SolidColorPicker.Visibility = Visibility.Collapsed;
                         break;
 
                     case WallpaperType.Individual:
-                        GridWallpaper.Visibility = Visibility.Visible;
-                        SolidColorPicker.Visibility = Visibility.Collapsed;
-                        WallpaperHeader.Visibility = Visibility.Visible;
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionIndividual;
                         break;
-
                     case WallpaperType.SolidColor:
-                        GridWallpaper.Visibility = Visibility.Collapsed;
-                        WallpaperHeader.Visibility = Visibility.Collapsed;
-                        SolidColorPicker.Visibility = Visibility.Visible;
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
+                        break;
+                    case WallpaperType.Spotlight:
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSpotlight;
                         break;
                 }
             }
@@ -242,6 +245,9 @@ namespace AutoDarkModeApp.Pages
 
                     case WallpaperType.SolidColor:
                         ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSolidColor;
+                        break;
+                    case WallpaperType.Spotlight:
+                        ComboBoxWallpaperTypeSelection.SelectedItem = ComboBoxBackgroundSelectionSpotlight;
                         break;
                 }
             }
@@ -289,6 +295,14 @@ namespace AutoDarkModeApp.Pages
                     catch { }
                 }
 
+            }
+            else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSpotlight) 
+            {
+                GridMonitorSelect.Visibility = Visibility.Collapsed;
+                GridWallpaper.Visibility = Visibility.Collapsed;
+                WallpaperHeader.Visibility = Visibility.Collapsed;
+                SolidColorPicker.Visibility = Visibility.Collapsed;
+                CleanMonitorButton.Visibility = Visibility.Collapsed;
             }
             if (e is NoSaveEvent nse)
             {
@@ -370,6 +384,10 @@ namespace AutoDarkModeApp.Pages
             else if (item == ComboBoxBackgroundSelectionSolidColor)
             {
                 return WallpaperType.SolidColor;
+            }
+            else if (item == ComboBoxBackgroundSelectionSpotlight)
+            {
+                return WallpaperType.Spotlight;
             }
             return WallpaperType.Unknown;
         }

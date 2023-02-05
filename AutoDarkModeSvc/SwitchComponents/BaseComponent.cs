@@ -39,7 +39,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         public virtual bool NeedsDwmRefresh { get; }
         public virtual int PriorityToLight { get; }
         public virtual int PriorityToDark { get; }
-        public virtual HookPosition HookPosition { get; } = HookPosition.PostSync;
+        public virtual HookPosition HookPosition { get; protected set; } = HookPosition.PostSync;
         public bool ForceSwitch { get; set; }
         public virtual bool Enabled
         {

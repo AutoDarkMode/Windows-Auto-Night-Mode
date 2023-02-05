@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Windows.UI;
+using Windows.UI.Composition;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -30,10 +31,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override bool ThemeHandlerCompatibility => false;
         public override int PriorityToLight => 25;
         public override int PriorityToDark => 25;
-        public override HookPosition HookPosition => HookPosition.PreSync;
+        public override HookPosition HookPosition { get; protected set; } = HookPosition.PreSync;
         private Theme currentIndividualTheme = Theme.Unknown;
         private Theme currentGlobalTheme = Theme.Unknown;
         private Theme currentSolidColorTheme = Theme.Unknown;
+        private bool? spotlightEnabled = null;
         private WallpaperPosition currentWallpaperPosition;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
@@ -58,18 +60,31 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             // if all wallpaper mode is selected and one needs an update, component also does.
             if (type == WallpaperType.All && (currentGlobalTheme != targetTheme || currentIndividualTheme != targetTheme))
             {
+                HookPosition = HookPosition.PreSync;
                 return true;
             }
             else if (type == WallpaperType.Individual && currentIndividualTheme != targetTheme)
             {
+                HookPosition = HookPosition.PreSync;
                 return true;
             }
             else if (type == WallpaperType.SolidColor && currentSolidColorTheme != targetTheme)
             {
+                HookPosition = HookPosition.PreSync;
                 return true;
             }
             else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
             {
+                HookPosition = HookPosition.PreSync;
+                return true;
+            }
+            else if (type == WallpaperType.Spotlight)
+            {
+                if (spotlightEnabled.HasValue && spotlightEnabled.Value)
+                {
+                    return false;
+                }
+                HookPosition = HookPosition.PostSync;
                 return true;
             }
             return false;
@@ -81,6 +96,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             string oldIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
             string oldGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
             string oldSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
+            string oldSpotlight = spotlightEnabled.HasValue ? spotlightEnabled.Value.ToString().ToLower() : "unknown";
 
             string oldPos = Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition);
             try
@@ -101,15 +117,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
             if (newTheme == Theme.Dark)
             {
-                LogHandleSwitch(Settings.Component.TypeDark, oldGlobal, oldIndividual, oldSolid, oldPos);
+                LogHandleSwitch(Settings.Component.TypeDark, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
             }
             else if (newTheme == Theme.Light)
             {
-                LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos);
+                LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
             }
         }
 
-        private void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid, string oldPos)
+        private void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid, string oldPos, string oldSpotlight)
         {
             if (type == WallpaperType.All)
             {
@@ -148,6 +164,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                             $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
                             $"type: {Enum.GetName(typeof(WallpaperType), type)}");
             }
+            else if (type == WallpaperType.Spotlight)
+            {
+                Logger.Info($"update info - previous: {oldSpotlight}, " +
+                            $"now: {(spotlightEnabled.HasValue ? spotlightEnabled.Value.ToString().ToLower() : "unknown")}, " +
+                            $"type: {Enum.GetName(typeof(WallpaperType), type)}");
+            }
         }
 
         /// <summary>
@@ -163,6 +185,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = newTheme;
                 currentGlobalTheme = Theme.Unknown;
                 currentSolidColorTheme = Theme.Unknown;
+                spotlightEnabled = false;
             }
             else if (type == WallpaperType.Global)
             {
@@ -170,6 +193,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentGlobalTheme = newTheme;
                 currentIndividualTheme = Theme.Unknown;
                 currentSolidColorTheme = Theme.Unknown;
+                spotlightEnabled = false;
 
             }
             else if (type == WallpaperType.All)
@@ -187,6 +211,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentGlobalTheme = newTheme;
                 currentIndividualTheme = newTheme;
                 currentSolidColorTheme = Theme.Unknown;
+                spotlightEnabled = false;
             }
             else if (type == WallpaperType.SolidColor)
             {
@@ -194,6 +219,16 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentSolidColorTheme = newTheme;
                 currentGlobalTheme = Theme.Unknown;
                 currentIndividualTheme = Theme.Unknown;
+                spotlightEnabled = false;
+            }
+            else if (type == WallpaperType.Spotlight)
+            {
+                GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 1;
+                GlobalState.ManagedThemeFile.Desktop.Wallpaper = @"%SystemRoot%\web\wallpaper\spotlight\img50.jpg";
+                currentSolidColorTheme = Theme.Unknown;
+                currentGlobalTheme = Theme.Unknown;
+                currentIndividualTheme = Theme.Unknown;
+                spotlightEnabled = true;
             }
         }
 
@@ -223,6 +258,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             else if (current == WallpaperType.SolidColor)
             {
                 currentSolidColorTheme = Theme.Unknown;
+            }
+            else if (spotlightEnabled.HasValue)
+            {
+                spotlightEnabled = null;
             }
         }
 
@@ -278,6 +317,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             currentWallpaperPosition = WallpaperHandler.GetPosition();
             currentIndividualTheme = GetIndividualWallpapersState();
+            
+            // force spotlight state to null 
+            // todo maybe do some kind of detection beforehand,
+            // but might prove difficult because the managed theme is not necessarily the applied theme
+            // and theme state tracking is only done with unmanaged themes for disk access reasons.
+            spotlightEnabled = null;
 
             // global wallpaper enable state synchronization;
             string globalWallpaper = WallpaperHandler.GetGlobalWallpaper();
@@ -297,6 +342,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             currentSolidColorTheme = Theme.Unknown;
             currentGlobalTheme = Theme.Unknown;
+            spotlightEnabled = null;
             base.DisableHook();
         }
 
