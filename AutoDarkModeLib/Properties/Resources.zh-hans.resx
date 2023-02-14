@@ -133,7 +133,7 @@
     <value>总是浅色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用与 Windows 1903 相关的功能</value>
+    <value>启用适用 Windows 1903 特性的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>应用程序</value>
