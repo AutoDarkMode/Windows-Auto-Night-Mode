@@ -680,7 +680,7 @@
     <value>Γεωγραφικό μήκος</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Η υπηρεσία δεν λειτουργεί ακόμα, παρακαλώ περιμένετε...</value>
+    <value>Η υπηρεσία δεν λειτουργεί ακόμα, παρακαλώ περιμένετε…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Εκκίνηση Υπηρεσίας</value>
@@ -1060,7 +1060,7 @@
     <value>Υποβάθμιση σε</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Λήψη...</value>
+    <value>Λήψη…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Λήψη σε εξέλιξη</value>
