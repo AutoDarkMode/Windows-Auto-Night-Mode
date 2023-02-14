@@ -1110,4 +1110,10 @@ Click "Yes" to open a new browser window.
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
   </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
+  </data>
 </root>

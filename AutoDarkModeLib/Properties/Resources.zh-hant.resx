@@ -1130,4 +1130,10 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
     <value>切換主題</value>
   </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
+  </data>
 </root>
