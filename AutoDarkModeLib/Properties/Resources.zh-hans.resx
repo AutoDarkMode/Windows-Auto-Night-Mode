@@ -133,7 +133,7 @@
     <value>总是浅色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>启用适用 Windows 1903 特性的功能</value>
+    <value>启用适用于 Windows 1903 的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>应用程序</value>
@@ -822,10 +822,10 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>启用系统级快捷键</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>强制深色主题</value>
+    <value>强制深色主题(&amp;D)</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>强制浅色主题</value>
+    <value>强制浅色主题(&amp;L)</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>不建议隐藏托盘图标。
@@ -892,7 +892,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>撤销</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>暂停自动切换</value>
+    <value>暂停自动切换(&amp;P)</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>您想要转而禁用自动切换吗？</value>
@@ -1122,13 +1122,13 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>图片路径</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>关闭</value>
+    <value>关闭(&amp;C)</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>自动切换主题</value>
+    <value>自动切换主题(&amp;A)</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>启用主题</value>
+    <value>切换主题(&amp;T)</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
     <value>Spotlight</value>
