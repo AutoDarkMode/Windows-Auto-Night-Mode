@@ -1130,4 +1130,10 @@ Voulez-vous vraiment continuer ?</value>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
     <value>&amp;Basculer de thème</value>
   </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
+  </data>
 </root>

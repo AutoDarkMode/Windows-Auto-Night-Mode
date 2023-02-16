@@ -136,10 +136,10 @@
     <value>Ativar recursos para o Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps:</value>
+    <value>Apps</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Hora de início personalizada:</value>
+    <value>Hora de início personalizada</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Escuro</value>
@@ -148,7 +148,7 @@
     <value>Tema escuro</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (versão antiga):</value>
+    <value>Edge (versão antiga)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Claro</value>
@@ -163,7 +163,7 @@
     <value>Trocar o tema atual</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>Sistema:</value>
+    <value>Sistema</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
     <value>Software de terceiros usados</value>
@@ -178,7 +178,7 @@
     <value>mudanças foram salvas!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Clique em aplicar para salvar as mudanças</value>
+    <value>Suas alterações serão salvas automaticamente.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Baixar atualização</value>
@@ -190,13 +190,13 @@
     <value>O aplicativo precisa da permissão da localização</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>nenhuma nova atualização disponível</value>
+    <value>Não há atualizações disponíveis.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>buscando sua localização...</value>
+    <value>Buscando sua localização…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>buscando por atualizações...</value>
+    <value>Buscando por atualizações…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Aviso: Nós não podemos detectar seu tema atual.</value>
@@ -465,22 +465,22 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Doar</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Olá! Obrigado por utilizar o Auto Dark Mode! Está gostanto dele até agora?
+    <value>Olá! Obrigado por utilizar o Auto Dark Mode! Está gostando dele até agora?
 
-Esta aplicação torna o seu dia-a-dia mais agradáveis, ao ajudá-lo a cuidar dos seus olhos. Ao mesmo tempo, é completamente gratuito, livre de anúncios, não recolhe dados de utilizador e é de código fonte aberta. Eu não obtenho qualquer lucro com este projeto.
+Esta aplicação torna o seu dia-a-dia mais agradáveis, ao ajudá-lo a cuidar dos seus olhos. Ao mesmo tempo, é completamente gratuito, livre de anúncios, não recolhe dados do usuário e é de código aberto.
+Eu não obtenho qualquer lucro com este projeto.
 
-Por esta razão, você pode me dar um suportar com uma doação voluntária. Até uma pequena quantidade faz-me dar saltos de alegria pelo meu apartamento. Apenas doe o quanto valoriza o meu trabalho.</value>
+Por esta razão, você pode me apoiar com uma doação voluntária. Até uma pequena quantia me faz pular de alegria pelo meu apartamento. Apenas doe o quanto você valoriza o meu trabalho.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Ocorreu um erro enquanto aplicava um ficheiro .theme. Talvez o seu tema criado foi eliminado ou movido. Foi por isto que desactivámos a mudança de temas por agora. Para activá-lo, abra o Auto Dark Mode e configure as definições de {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Encontrámos o seguinte problema:
-
+    <value>Nos deparamos com o seguinte problema:
 {0}
 
-Iremos agora tentar resolver este problema ao executar um algoritmo como Administrador. Talvez isto vá ajudar.
-O Auto Dark Mode irá reiniciar depois e precisará voltar a aplicar as suas definições, desculpe!
+Tentaremos agora resolver este problema executando um algoritmo como Administrador. Talvez isto vá ajudar.
+O Auto Dark Mode irá reiniciar depois e você precisará reaplicar as suas configurações, desculpe!
 
 Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
   </data>
@@ -548,7 +548,7 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Configurações</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legado):</value>
+    <value>Microsoft Office (legado)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Escolher um tema</value>
@@ -680,7 +680,7 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Longitude</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>O serviço ainda não está a correr, por favor, aguarde...</value>
+    <value>O serviço ainda não está em execução, por favor aguarde…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>A lançar o serviço</value>
@@ -774,13 +774,13 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Caminho:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refrescar Iniciar automaticamente</value>
+    <value>Atualizar automaticamente</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
     <value>Idioma</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Desactivado</value>
+    <value>Desativado</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
     <value>Nenhum</value>
@@ -795,16 +795,16 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Tarefa</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>Desactivou a entrada do início automatico pelo Windows.</value>
+    <value>Desativou a entrada do início automático pelo Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Próxima actualização em</value>
+    <value>Próxima atualização em</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
     <value>Cor</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>Só pode editar as teclas de atalho enquanto elas estiverem desactivadas.</value>
+    <value>Só pode editar as teclas de atalho enquanto elas estiverem desativadas.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
     <value>Forçar o modo escuro</value>
@@ -819,7 +819,7 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Parar de forçar o tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Activar as teclas de atalho por todo o sistema</value>
+    <value>Ativar as teclas de atalho por todo o sistema</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forçar o Tema Escuro</value>
@@ -841,13 +841,13 @@ Tem a certeza que quer continuar?</value>
     <value>Deixar a aplicação decidir</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Não mudar temas a não ser que o sistema não esteja a fazer nada</value>
+    <value>Não altere os temas a menos que o sistema esteja parado</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutos até que o sistema é considerado inactivo</value>
+    <value>Minutos até que o sistema é considerado inativo</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Cor de destaque para barras de título e bordas de janela somente durante</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informação da versão copiada para a Área de Transferência</value>
@@ -1060,7 +1060,7 @@ Tem a certeza que quer continuar?</value>
     <value>Desactualizar para</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>A descarregar...</value>
+    <value>Baixando…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
     <value>Descarga em progresso</value>
@@ -1129,5 +1129,11 @@ Tem a certeza que quer continuar?</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
     <value>Alternar tema</value>
+  </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
   </data>
 </root>

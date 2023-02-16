@@ -1130,4 +1130,10 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
     <value>Beralih tema</value>
   </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
+  </data>
 </root>
