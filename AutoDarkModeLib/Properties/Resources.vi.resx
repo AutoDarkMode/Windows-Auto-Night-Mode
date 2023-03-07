@@ -835,7 +835,7 @@ Bạn có muốn tiếp tục?</value>
     <value>Ẩn biểu tượng ở khay hệ thống</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Mở thư mục thiết lập</value>
+    <value>&amp;Mở Thư mục Cấu hình Config</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Để ứng dụng quyết định</value>
