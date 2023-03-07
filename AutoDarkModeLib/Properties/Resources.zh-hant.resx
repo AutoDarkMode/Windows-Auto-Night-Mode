@@ -728,7 +728,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>流暢</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
@@ -847,7 +847,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>系統空閒狀態判斷時間（分鐘）</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>僅在使用所選主題時，套用相對應的輔色到標題列與視窗邊框</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>版本資訊已複製到剪貼簿</value>
@@ -1039,7 +1039,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>忽略設定</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>此選項不支持預設的 Windows 佈景主題</value>
+    <value>此選項不支援預設的 Windows 佈景主題</value>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>分鐘</value>

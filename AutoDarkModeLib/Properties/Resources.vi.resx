@@ -835,7 +835,7 @@ Bạn có muốn tiếp tục?</value>
     <value>Ẩn biểu tượng ở khay hệ thống</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Mở thư mục thiết lập</value>
+    <value>&amp;Mở Thư mục Cấu hình Config</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Để ứng dụng quyết định</value>
@@ -847,7 +847,7 @@ Bạn có muốn tiếp tục?</value>
     <value>Số phút chờ hệ thống rảnh</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Màu nhấn cho thanh tiêu đề và viền cửa sổ chỉ trong khi</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>

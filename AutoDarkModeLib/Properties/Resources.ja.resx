@@ -347,7 +347,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Microsoft Surface などモバイル端末では、新しいスタンバイモードを採用しています。
 このオプションを有効にするとパソコンの起動後、Auto Dark Mode がただちにテーマを切り替えます。
-しかし、充電池を浪費するので、必要な場合にのみ有効化してください。</value>
+しかし、バッテリーを浪費するので、必要な場合にのみ有効化してください！</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Windows にタスクバーのバグがあり、省電力モードでは適切に色を変更できません。問題が生じた場合、省電力機能をオフにしてください。</value>
