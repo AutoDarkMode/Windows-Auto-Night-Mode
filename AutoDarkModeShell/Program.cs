@@ -37,9 +37,10 @@ namespace AutoDarkModeComms
         {
             Console.WriteLine($"Auto Dark Mode Shell version {Version.Major}.{Version.Minor}");
             IMessageClient client = new PipeClient();
-            if (args.Length > 0)
+            List<string> argsList = args.ToList();
+            if (argsList.Count > 0)
             {
-                if (args.ToList().Contains("--and-launch-service"))
+                if (argsList.Contains("--and-launch-service"))
                 {
                     using Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
                     if (mutex.WaitOne(1))
@@ -51,13 +52,14 @@ namespace AutoDarkModeComms
                         svc.StartInfo.FileName = GetExecutionPathService();
                         _ = svc.Start();
                     }
+                    argsList.Remove("--and-launch-service");
                 }
                 int timeoutDefault = 10;
-                Console.WriteLine(args[0]);
-                if (args.Length == 2)
+                Console.WriteLine(argsList[0]);
+                if (argsList.Count == 2)
                 {
-                    Console.WriteLine($"custom timeout: {args[1]}s");
-                    bool success = int.TryParse(args[1], out timeoutDefault);
+                    Console.WriteLine($"custom timeout: {argsList[1]}s");
+                    bool success = int.TryParse(argsList[1], out timeoutDefault);
                     if (!success) timeoutDefault = 10;
                 }
                 Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: timeoutDefault)}");
