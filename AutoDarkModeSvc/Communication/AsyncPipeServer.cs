@@ -223,6 +223,7 @@ namespace AutoDarkModeSvc.Communication
             }
             catch (IOException ex)
             {
+                await Task.Delay(5000);
                 Logger.Warn("request pipe was closed prematurely");
                 Logger.Debug(ex, "exception:");
                 return new(null, responderPipeId);
