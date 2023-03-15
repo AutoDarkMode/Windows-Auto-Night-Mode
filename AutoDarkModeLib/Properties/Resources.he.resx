@@ -387,10 +387,10 @@ You can set them up individually in your Windows Theme.</value>
     <value>ערכת נושא בהיר</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows Theme (more features)</value>
+    <value>ערכת נושא של Windows (תכונות נוספות)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Desktop Wallpaper (recommended)</value>
+    <value>רקע שולחן העבודה (מומלץ)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
     <value>לחץ כאן כדי לפתוח את הגדרות ערכת הנושא של Windows.</value>
