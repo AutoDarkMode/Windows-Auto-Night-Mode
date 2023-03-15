@@ -225,7 +225,7 @@
     <value>Καλώς ορίσατε</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Τσεκάρετε το πλαίσιο ελέγχου για να ενεργοποιήσετε την αυτόματη εναλλαγή θέματος</value>
+    <value>Τσεκάρετε το πλαίσιο ελέγχου για να ενεργοποιήσετε την αυτόματη εναλλαγή θέματος.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Μετάφραση: Thunderstrike116</value>
@@ -485,7 +485,7 @@
 Υποσημείωση: ΠΟΤΕ μην εκτελείτε το Auto Dark Mode ως διαχειριστής χειροκίνητα!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Χρειάζεστε βοήθεια για ένα πρόβλημα;</value>
+    <value>Βοήθεια</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
     <value>Υποστήριξη πολλών χρηστών</value>
@@ -548,7 +548,7 @@
     <value>Διαμόρφωση</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (παλιά μέθοδος):</value>
+    <value>Microsoft Office (παλιά μέθοδος)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Επιλέξτε ένα θέμα</value>
@@ -847,7 +847,7 @@
     <value>Λεπτά μέχρι να θεωρείται ότι το σύστημα βρίσκεται σε αδράνεια</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Χρώμα έμφασης για γραμμές τίτλου και περιγράμματα παραθύρων μόνο όταν εφαρμόζεται</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Οι πληροφορίες έκδοσης αντιγράφηκαν στο πρόχειρο</value>
@@ -856,7 +856,7 @@
     <value>Αυτόματη εναλλαγή θεματος</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Εμφάνιση ειδοποίησης κατά την ενεργοποίηση/απενεργοποίηση </value>
+    <value>Εμφάνιση ειδοποίησης κατά την ενεργοποίηση/απενεργοποίηση</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
     <value>Καθυστέρηση</value>
