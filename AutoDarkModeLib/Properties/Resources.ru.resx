@@ -668,7 +668,7 @@
     <value>Условия</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+    <value>Минимальный % загрузки GPU для задержки переключения</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Восстанавливать темы при внешнем (ручном) изменении</value>
@@ -750,7 +750,7 @@
     <value>Нажмите Задать, чтобы применить изменения.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+    <value>Использовать цвет панели задач для</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Только контрастный цвет</value>
@@ -835,7 +835,7 @@
     <value>Скрыть значок в трее</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Открыть папку настроек</value>
+    <value>Открыть папку &amp;настроек</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Определять программой</value>
