@@ -120,6 +120,11 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void SystemEvents_Windows11_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
+            if (!builder.Config.AutoThemeSwitchingEnabled)
+            {
+                Logger.Info("system unlocked, auto switching disabled, no action");
+                return;
+            }
             if (e.Reason == SessionSwitchReason.SessionUnlock)
             {                
                 if (builder.Config.AutoSwitchNotify.Enabled)
@@ -148,6 +153,11 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void SystemEvents_Windows10_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
+            if (!builder.Config.AutoThemeSwitchingEnabled)
+            {
+                Logger.Info("system unlocked, auto switching disabled, no action");
+                return;
+            }
             if (e.Reason == SessionSwitchReason.SessionUnlock)
             {
                 if (builder.Config.AutoSwitchNotify.Enabled)
