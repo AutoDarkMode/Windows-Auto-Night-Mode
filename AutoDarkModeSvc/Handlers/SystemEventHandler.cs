@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Handlers
         private static bool darkThemeOnBatteryEnabled;
         private static bool resumeEventEnabled;
         private static GlobalState state = GlobalState.Instance();
-        private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
         public static void RegisterThemeEvent()
         {
@@ -123,6 +123,7 @@ namespace AutoDarkModeSvc.Handlers
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 Logger.Info("system unlocked, auto switching disabled, no action");
+                state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
                 return;
             }
             if (e.Reason == SessionSwitchReason.SessionUnlock)
@@ -156,6 +157,7 @@ namespace AutoDarkModeSvc.Handlers
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 Logger.Info("system unlocked, auto switching disabled, no action");
+                state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
                 return;
             }
             if (e.Reason == SessionSwitchReason.SessionUnlock)
