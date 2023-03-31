@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Definições</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Aplicar</value>
@@ -157,7 +157,7 @@
     <value>Tema claro</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Configurações</value>
+    <value>Definições</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
     <value>Alternar tema</value>
@@ -326,7 +326,7 @@ Se encontrar problemas, por favor, aumente o atraso da troca nas definições.</
     <value>Sim</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Procurar actualizações automaticamente</value>
+    <value>Procurar atualizações automaticamente</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Ocorreu um problema com o UI.

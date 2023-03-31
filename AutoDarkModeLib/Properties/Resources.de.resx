@@ -835,7 +835,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Systemtray-Icon verstecken</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>Konfigurationsordner öffnen</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Lass die App entscheiden</value>
