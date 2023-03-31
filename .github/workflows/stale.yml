@@ -25,4 +25,4 @@ jobs:
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
         days-before-pr-stale: -1
-        exempt-issue-labels: enhancement, pr-welcome, known-issue, UX, good first issue, bug, wontfix, in progress
+        exempt-issue-labels: enhancement, pr-welcome, known issue, UX, good first issue, bug, wontfix, in progress
