@@ -86,7 +86,6 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     Logger.Info("enabling theme refresh at system resume (win 10)");
                     SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
-                    SystemEvents.SessionSwitch += SystemEvents_Windows10_SessionSwitch;
                 }
                 else
                 {
