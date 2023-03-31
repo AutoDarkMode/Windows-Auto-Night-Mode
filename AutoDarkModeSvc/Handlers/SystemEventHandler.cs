@@ -119,7 +119,7 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void SystemEvents_Windows11_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            if (!builder.Config.AutoThemeSwitchingEnabled)
+            if (e.Reason == SessionSwitchReason.SessionUnlock && !builder.Config.AutoThemeSwitchingEnabled)
             {
                 Logger.Info("system unlocked, auto switching disabled, no action");
                 state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
@@ -153,7 +153,7 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void SystemEvents_Windows10_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            if (!builder.Config.AutoThemeSwitchingEnabled)
+            if (e.Reason == SessionSwitchReason.SessionUnlock && !builder.Config.AutoThemeSwitchingEnabled)
             {
                 Logger.Info("system unlocked, auto switching disabled, no action");
                 state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
