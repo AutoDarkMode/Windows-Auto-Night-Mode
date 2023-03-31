@@ -22,7 +22,7 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         stale-issue-message: 'No updates have been provided to this issue after 60 days of inactivity. The issue will be automatically closed in 7 days.'
-        stale-issue-label: 'no-issue-activity'
-        stale-pr-label: 'no-pr-activity'
+        stale-issue-label: 'no activity'
+        stale-pr-label: 'no activity'
         days-before-pr-stale: -1
         exempt-issue-labels: enhancement, pr-welcome, known issue, UX, good first issue, bug, wontfix, in progress
