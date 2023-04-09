@@ -153,8 +153,11 @@ namespace AutoDarkModeSvc.Core
                     TimedThemeState ts = new();
                     if (ts.TargetTheme != newTheme)
                     {
-                        if (state.PostponeManager.IsSkipNextSwitch) state.PostponeManager.UpdateSkipNextSwitchExpiry();
-                        else state.PostponeManager.AddSkipNextSwitch();
+                        if (!state.PostponeManager.IsUserDelayed)
+                        {
+                            if (state.PostponeManager.IsSkipNextSwitch) state.PostponeManager.UpdateSkipNextSwitchExpiry();
+                            else state.PostponeManager.AddSkipNextSwitch();
+                        }                        
                     }
                     else
                     {
@@ -163,10 +166,13 @@ namespace AutoDarkModeSvc.Core
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    if (state.NightLight.Requested != newTheme)
-                        state.PostponeManager.AddSkipNextSwitch();
-                    else
-                        state.PostponeManager.RemoveUserClearablePostpones();
+                    if (!state.PostponeManager.IsUserDelayed)
+                    {
+                        if (state.NightLight.Requested != newTheme)
+                            state.PostponeManager.AddSkipNextSwitch();
+                        else
+                            state.PostponeManager.RemoveUserClearablePostpones();
+                    }                   
                 }
             }
             return newTheme;
