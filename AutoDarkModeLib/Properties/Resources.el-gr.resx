@@ -819,7 +819,7 @@
     <value>Διακοπή επιβολής Θέματος</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Ενεργοποίηση πλήκτρων συντόμευσης σε όλο το σύστημα</value>
+    <value>Ενεργοποίηση πλήκτρων συντόμευσης</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Επιβολή &amp;Σκοτεινής Λειτουργίας</value>
