@@ -819,7 +819,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Tema zorlamayı durdur</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Sistem genelinde kısayol tuşlarını etkinleştir</value>
+    <value>Kısayol tuşlarını etkinleştir</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>&amp;Koyu temayı zorla</value>
