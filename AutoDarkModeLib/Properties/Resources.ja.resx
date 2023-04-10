@@ -819,7 +819,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>テーマの変更を中止する</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>システム全体でホットキーを有効にする</value>
+    <value>ホットキーを有効にする</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>ダークテーマに変更(&amp;D)</value>
