@@ -822,7 +822,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Stop forcing theme</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Enable system-wide hotkeys</value>
+    <value>Enable hotkeys</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Force &amp;Dark Theme</value>
