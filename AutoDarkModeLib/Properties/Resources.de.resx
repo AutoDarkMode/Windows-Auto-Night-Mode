@@ -139,7 +139,7 @@
     <value>Anwendungen</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Aktivierungszeit</value>
+    <value>Benutzerdefinierte Startzeit</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Dunkel</value>
@@ -169,7 +169,7 @@
     <value>Enthält Drittanbieter-Software</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Aktualisierungen</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
     <value>Standort-Dienste verwenden</value>
@@ -363,7 +363,7 @@ Jedoch senkt diese Option auch die Akkulaufzeit! Aktiviere sie deshalb nur, wenn
 Du kannst sie individuell in deinem Windows Design ändern.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>Anwendungen</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
     <value>Einstellungen</value>
@@ -819,13 +819,13 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Design erzwingen beenden</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Tastatur-Hotkeys aktivieren</value>
+    <value>Tastatur-Hotkeys systemweit aktivieren</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Erzwinge dunkles Design</value>
+    <value>Erzwinge &amp;dunkles Design</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Erzwinge helles Design</value>
+    <value>Erzwinge &amp;helles Design</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Das Icon zu verstecken ist nicht empfohlen.
@@ -847,7 +847,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Minuten, bis das System als nicht beschäftigt angesehen wird</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Akzentfarbe für Titelleisten und Fensterrahmen nur während</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Versionsinfo wurde kopiert</value>
@@ -892,7 +892,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Rückgängig</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Auto-Wechsel pausieren</value>
+    <value>&amp;Auto-Wechsel pausieren</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Möchtest du stattdessen den Auto-Wechsel deaktivieren?</value>
@@ -1082,7 +1082,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Aktualisieren auf</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>Vorherige Version</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
     <value>Log-Verzeichnis öffnen</value>
@@ -1122,18 +1122,18 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Dateipfad</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Schließen</value>
+    <value>&amp;Schließen</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatischer Designwechsel</value>
+    <value>&amp;Automatischer Designwechsel</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Design umschalten</value>
+    <value>&amp;Design umschalten</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Blickpunkt</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Windows-Blickpunkt</value>
   </data>
 </root>
