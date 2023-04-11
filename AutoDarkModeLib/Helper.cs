@@ -65,7 +65,8 @@ namespace AutoDarkModeLib
         ExternalThemeSwitch,
         Startup,
         SystemUnlock,
-        Api
+        Api,
+        SystemTimeChanged
     }
 
     public enum Governor
@@ -288,6 +289,18 @@ namespace AutoDarkModeLib
             var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             Dictionary<string, string> deserialized = yamlDeserializer.Deserialize<Dictionary<string, string>>(data);
             return deserialized;
+        }
+    }
+
+    public static class TimeZoneInfoExtensions
+    {
+        public static string ToUtcOffsetString(this TimeZoneInfo timeZone)
+        {
+            var utcOffset = timeZone.BaseUtcOffset;
+            var sign = utcOffset < TimeSpan.Zero ? "-" : "+";
+            var hours = Math.Abs(utcOffset.Hours).ToString("00");
+            var minutes = Math.Abs(utcOffset.Minutes).ToString("00");
+            return $"UTC{sign}{hours}:{minutes}";
         }
     }
 }

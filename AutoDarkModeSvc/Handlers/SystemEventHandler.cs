@@ -18,6 +18,8 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using Microsoft.Win32;
 using System;
+using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.System.Power;
@@ -29,6 +31,7 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static bool darkThemeOnBatteryEnabled;
         private static bool resumeEventEnabled;
+        private static DateTime lastSystemTimeChange;
         private static GlobalState state = GlobalState.Instance();
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
@@ -219,6 +222,59 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Info("system unlocked, theme state valid, not sending notification");
                 state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
+            }
+        }
+
+        public static void RegisterTimeChangedEvent()
+        {
+            SystemEvents.TimeChanged += new EventHandler(TimeChangedEvent);
+        }
+
+        public static void DeregisterTimeChangedEvent()
+        {
+            SystemEvents.TimeChanged -= new EventHandler(TimeChangedEvent);
+        }
+
+        private static void TimeChangedEvent(object sender, EventArgs e)
+        {
+            TimeZoneInfo oldTz = TimeZoneInfo.Local;
+            DateTime old = DateTime.Now;
+            bool oldIsDst = DateTime.Now.IsDaylightSavingTime();
+            TimeZoneInfo.ClearCachedData();
+            TimeZoneInfo newTz = TimeZoneInfo.Local;
+            if (!oldTz.Equals(newTz))
+            {
+                Logger.Info($"system time zone changed from {oldTz.ToUtcOffsetString()} dst={oldIsDst.ToString().ToLower()} " +
+                    $"to {newTz.ToUtcOffsetString()} dst={DateTime.Now.IsDaylightSavingTime().ToString().ToLower()} ");
+
+                // geolocator needs to be updated in case it retrieves data from the windows location service as most likely the geolocation has changed as well
+                if (builder.LocationData.DataSourceIsGeolocator != builder.Config.Location.UseGeolocatorService)
+                {
+                    LocationHandler.UpdateGeoposition(builder).Wait();
+
+                    if (builder.Config.AutoThemeSwitchingEnabled) ThemeManager.RequestSwitch(new(SwitchSource.SystemTimeChanged));
+                }
+            }
+            else
+            {
+                HandleTimeChangedEvent(old);
+            }
+        }
+
+        /// <summary>
+        /// ensure that themee change requests are only executed once because the Windows event is bugged and fires twice
+        /// </summary>
+        /// <param name="oldTime">the previous system time</param>
+        private static void HandleTimeChangedEvent(DateTime oldTime)
+        {
+            DateTime nowUtc = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
+            TimeSpan delta = nowUtc - lastSystemTimeChange;
+            lastSystemTimeChange = nowUtc;
+            // 500 ms timeout
+            if (delta > new TimeSpan(10000 * 500) || delta < new TimeSpan(0))
+            {
+                Logger.Info($"system time changed from {oldTime}");
+                if (builder.Config.AutoThemeSwitchingEnabled) ThemeManager.RequestSwitch(new(SwitchSource.SystemTimeChanged));
             }
         }
     }
