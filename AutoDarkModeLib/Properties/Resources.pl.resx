@@ -148,7 +148,7 @@
     <value>Ciemny motyw</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (starsza wersja):</value>
+    <value>Edge (starsza wersja)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Jasny</value>
@@ -193,10 +193,10 @@
     <value>Brak aktualizacji.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Szukanie lokalizacji...</value>
+    <value>Pozyskiwanie twojej lokalizacji…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Szukanie aktualizacji...</value>
+    <value>Szukanie aktualizacji…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
     <value>Uwaga: Nie można wczytać obecnego motywu.</value>
@@ -345,8 +345,9 @@ Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
     <value>Zmień po obudzeniu z InstantGo (niezalecane)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Urządzenia mobilne, takie jak Microsoft Surface, używają nowego rodzaju trybu uśpienia.
-Ta opcja włącza automatyczną zmianę motywu po obudzeniu komputera, jednak powoduje szybsze zużycie baterii.</value>
+    <value>Urządzenia mobilne, takie jak Microsoft Surface, korzystają z nowego rodzaju trybu czuwania.
+Włączenie tej opcji sprawia, że Auto Dark Mode natychmiast przełącza motyw po wybudzeniu komputera.
+Ale zmniejsza też żywotność baterii, więc włączaj ją TYLKO w razie potrzeby!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
     <value>Z powodu błędu Windowsa zmiana koloru paska zadań w trybie oszczędzania baterii nie działa poprawnie. W przypadku błędów zalecamy wyłączenie tego trybu.</value>
@@ -466,18 +467,13 @@ Możesz je dopasować indywidualnie w danej kompozycji.</value>
   <data name="donationDescription" xml:space="preserve">
     <value>Witaj! Dzięki, że używasz Auto Dark Mode! Jak Ci się podoba?
 
-Ta aplikacja sprawia każdy Twój dzień łatwiejszy i dba o Twoje oczy.
-Równocześnie jest całkowicie darmowa, bez reklam i nie szpieguje Twoich danych, a kod źródłowy jest otwarty i publiczny.
+Ta aplikacja sprawia każdy Twój dzień łatwiejszy i dba o Twoje oczy. Równocześnie jest całkowicie darmowa, bez reklam, nie zbiera Twoich danych, a kod źródłowy jest otwarty i publiczny.
 Dlatego niestety nie zarabiam ani grosza na tym projekcie.
 
-Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną.
-Nawet najmniejsza kwota sprawia, że skaczę szczęśliwy po mieszkaniu.
-Podaruj tyle, na ile cenisz moją pracę.</value>
+Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza kwota sprawia, że skaczę szczęśliwy po mieszkaniu. Podaruj tyle, na ile cenisz moją pracę.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Nastąpił błąd podczas stosowania motywu. Być może motyw został usunięty lub przeniesiony. 
-Z tego powodu zmiana motywu została tymczasowo wyłączona. 
-Aby zreaktywować ją, otwórz Auto Dark Mode i skonfiguruj: {0}.</value>
+    <value>Nastąpił błąd podczas stosowania motywu. Być może motyw został usunięty lub przeniesiony. Z tego powodu zmiana motywu została tymczasowo wyłączona. Aby zreaktywować ją, otwórz Auto Dark Mode i skonfiguruj: {0}.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Aplikacja napotkała błąd:

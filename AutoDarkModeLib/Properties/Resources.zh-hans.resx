@@ -819,7 +819,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>停止强制使用主题</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>启用系统级快捷键</value>
+    <value>启用快捷键</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>强制深色主题(&amp;D)</value>

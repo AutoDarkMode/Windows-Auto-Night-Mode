@@ -819,7 +819,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Dejar de forzar tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Activar atajos de teclado a nivel de sistema</value>
+    <value>Habilitar las teclas de acceso rápido</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forzar el &amp;Tema Oscuro</value>
