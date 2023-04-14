@@ -40,7 +40,11 @@ namespace AutoDarkModeSvc.Handlers
             if (newTheme == Theme.Dark)
             {
                 Color dark = HexToColor(colors.Dark);
-                handler.SetBackgroundColor(ToUint(dark));
+                int res = handler.SetBackgroundColor(ToUint(dark));
+                if (res != 0)
+                {
+                    Logger.Warn($"set background color exit code was {res}");
+                }
                 //Thread.Sleep(500);
                 handler.Enable(false);
 
@@ -48,7 +52,11 @@ namespace AutoDarkModeSvc.Handlers
             else if (newTheme == Theme.Light)
             {
                 Color light = HexToColor(colors.Light);
-                handler.SetBackgroundColor(ToUint(light));
+                int res = handler.SetBackgroundColor(ToUint(light));
+                if (res != 0)
+                {
+                    Logger.Warn($"set background color exit code was {res}");
+                }
                 //Thread.Sleep(500);
                 handler.Enable(false);
             }
@@ -199,7 +207,7 @@ namespace AutoDarkModeSvc.Handlers
             [return: MarshalAs(UnmanagedType.Struct)]
             Rect GetMonitorRECT([MarshalAs(UnmanagedType.LPWStr)] string monitorID);
 
-            void SetBackgroundColor([MarshalAs(UnmanagedType.U4)] uint color);
+            int SetBackgroundColor([MarshalAs(UnmanagedType.U4)] uint color);
             [return: MarshalAs(UnmanagedType.U4)]
             uint GetBackgroundColor();
 
