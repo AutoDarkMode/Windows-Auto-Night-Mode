@@ -25,6 +25,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
+using AutoDarkModeLib.ComponentSettings.Base;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -374,6 +375,17 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = statusCode
+                        }.ToString());
+                        break;
+                    #endregion
+
+                    #region RequestedTheme
+                    case Command.GetRequestedTheme:
+                        Logger.Info("signal received: get requested theme");
+                        SendResponse(new ApiResponse()
+                        {
+                            StatusCode = StatusCode.Ok,
+                            Message = Enum.GetName(typeof(Theme), state.RequestedTheme)
                         }.ToString());
                         break;
                     #endregion

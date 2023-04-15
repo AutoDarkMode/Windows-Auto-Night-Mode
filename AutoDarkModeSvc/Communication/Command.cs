@@ -94,6 +94,12 @@ namespace AutoDarkModeSvc.Communication
         public const string GetPostponeStatus = "--get-postpone-status";
 
         /// <summary>
+        /// Returns the internal theme that ADM is currently maintaining
+        /// </summary>
+        [Includable]
+        public const string GetRequestedTheme = "--get-requested-theme";
+
+        /// <summary>
         /// Checks for updates silently
         /// ApiResponse with StatusCode.New if an update is available, <br/>
         /// StatusCode.Ok if no update is available <br/>

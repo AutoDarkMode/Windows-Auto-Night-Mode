@@ -240,6 +240,9 @@ namespace AutoDarkModeSvc.Core
 
     public class NightLight
     {
+        /// <summary>
+        /// The theme that Windows night light is currently requesting to bet set
+        /// </summary>
         public Theme Requested { get; set; } = Theme.Unknown;
     }
 }

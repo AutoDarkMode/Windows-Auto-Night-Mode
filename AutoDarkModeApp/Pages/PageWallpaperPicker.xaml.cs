@@ -125,8 +125,30 @@ namespace AutoDarkModeApp.Pages
             ComboBoxMonitorSelection.ItemsSource = monitorIds;
             ComboBoxMonitorSelection.SelectedItem = monitorIds.FirstOrDefault();
 
-            //select light mode in combobox, this will fire selection changed
-            ComboBoxModeSelection.SelectedItem = ComboBoxModeSelectionLightTheme;
+            ApiResponse response = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetRequestedTheme));
+            if (response.StatusCode == StatusCode.Ok)
+            {
+                Theme requestedTheme = Theme.Unknown;
+                bool success = Enum.TryParse(typeof(Theme), response.Message, true, out object parsedTheme);
+                if (success) requestedTheme = (Theme)parsedTheme;
+                if (requestedTheme == Theme.Light)
+                {
+                    ComboBoxModeSelection.SelectedItem = ComboBoxModeSelectionLightTheme;
+                }
+                else if (requestedTheme == Theme.Dark)
+                {
+                    ComboBoxModeSelection.SelectedItem = ComboBoxModeSelectionDarkTheme;
+                }
+                else
+                {
+                    ComboBoxModeSelection.SelectedItem = ComboBoxModeSelectionLightTheme;
+                }
+            }
+            else
+            {
+                ComboBoxModeSelection.SelectedItem = ComboBoxModeSelectionLightTheme;
+                //select light mode in combobox, this will fire selection changed
+            }
 
             init = false;
         }
