@@ -708,6 +708,10 @@ namespace AutoDarkModeApp.Pages
                 builder.Config.Updater.VersionQueryUrl = BetaVersionQueryURL;
                 builder.Config.Updater.CheckOnStart = true;
                 ButtonSearchUpdate.IsEnabled = true;
+                builder.Config.Tunable.Debug = true;
+                CheckBoxTraceMode.Visibility = Visibility.Visible;
+                SeparatorTraceMode.Visibility = Visibility.Visible;
+                CheckBoxDebugMode.IsChecked = true;
             }
             try
             {
