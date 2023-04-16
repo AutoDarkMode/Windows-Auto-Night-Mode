@@ -239,7 +239,8 @@ namespace AutoDarkModeSvc.Core
 
                 // regular modules that do not need to modify the active theme
                 cm.RunPostSync(componentsToUpdate, newTheme, e);
-
+                
+                // if a new theme is being set then dwm updates regardless
                 if (dwmRefreshRequired && !themeModeNeedsUpdate)
                 {
                     if (builder.Config.WindowsThemeMode.Enabled) ThemeHandler.RefreshDwm(managed: false);

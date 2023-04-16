@@ -32,13 +32,15 @@ namespace AutoDarkModeSvc.Events
             Theme = requestedTheme;
         }
 
-        public SwitchEventArgs(SwitchSource source, Theme requestedTheme, DateTime time)
+        public SwitchEventArgs(SwitchSource source, Theme requestedTheme, DateTime time, bool refreshDwm = false)
         {
             Source = source;
             Theme = requestedTheme;
             Time = time;
+            RefreshDwm = refreshDwm;
         }
 
+        public bool RefreshDwm { get; }
         public SwitchSource Source { get; }
         public Theme? Theme { get; } = null;
         public DateTime? Time { get; } = null;

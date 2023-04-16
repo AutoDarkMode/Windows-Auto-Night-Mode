@@ -74,6 +74,7 @@ namespace AutoDarkModeSvc.Core
         public ThemeFile ManagedThemeFile { get; } = new(Helper.PathManagedTheme);
         public PostponeManager PostponeManager { get; }
         public NightLight NightLight { get; } = new();
+        public SystemIdleModuleState SystemIdleModuleState { get; } = new();
         public bool InitSyncSwitchPerformed { get; set; } = false;
         private NotifyIcon NotifyIcon { get; set; }
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
@@ -244,5 +245,10 @@ namespace AutoDarkModeSvc.Core
         /// The theme that Windows night light is currently requesting to bet set
         /// </summary>
         public Theme Requested { get; set; } = Theme.Unknown;
+    }
+
+    public class SystemIdleModuleState
+    {
+        public bool SystemIsIdle { get; set; } = false;
     }
 }
