@@ -281,12 +281,12 @@ namespace AutoDarkModeSvc.Communication
                         await sw.WriteAsync(builder, writeTimeoutTokenSource.Token);
                     }
                 }
-                catch (TaskCanceledException)
+                catch (OperationCanceledException)
                 {
                     Logger.Warn("no client available to consume data within response window");
                 }
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 Logger.Warn("no client waiting for response, processing request anyway");
                 MessageParser.Parse(new List<string>() { msg }, (message) => { }, Service);
