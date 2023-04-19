@@ -11,6 +11,7 @@
       mc:Ignorable="d"
       d:DesignWidth="750"
       Title="PageSettings"
+      Unloaded="Page_Unloaded"
       VerticalAlignment="Top">
 
     <Grid>

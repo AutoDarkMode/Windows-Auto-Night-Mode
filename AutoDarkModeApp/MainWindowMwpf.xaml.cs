@@ -45,6 +45,7 @@ namespace AutoDarkModeApp
     public partial class MainWindowMwpf : Window
     {
         private ResourceDictionary navbarDict;
+        private ManagementEventWatcher DWMPrevalenceWatcher;
 
         private static SecurityIdentifier SID
         {
@@ -74,7 +75,7 @@ namespace AutoDarkModeApp
                     $"'{sidString}\\\\" +
                     @"Software\\Microsoft\\Windows\\DWM' AND ValueName='ColorPrevalence'";
                 WqlEventQuery query = new WqlEventQuery(queryString);
-                ManagementEventWatcher DWMPrevalenceWatcher = new ManagementEventWatcher(query);
+                DWMPrevalenceWatcher = new ManagementEventWatcher(query);
                 DWMPrevalenceWatcher.EventArrived += new EventArrivedEventHandler((s, e) => Dispatcher.Invoke(RefreshDarkMode));
                 DWMPrevalenceWatcher.Start();
             }
@@ -209,6 +210,13 @@ namespace AutoDarkModeApp
         //application close behaviour
         private void Window_Closed(object sender, EventArgs e)
         {
+            try
+            {
+                DWMPrevalenceWatcher.Stop();
+                DWMPrevalenceWatcher.Dispose();
+            }
+            catch { }
+
             //NetMQConfig.Cleanup();
             Settings.Default.Save();
             Application.Current.Shutdown();

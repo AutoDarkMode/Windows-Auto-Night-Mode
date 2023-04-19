@@ -46,6 +46,7 @@ namespace AutoDarkModeApp.Pages
         private readonly string BetaVersionQueryURL = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
         private delegate void DispatcherDelegate();
         private const int fakeResponsiveUIDelay = 800;
+        private readonly ManagementEventWatcher autostartWatcher;
 
         public PageSettings()
         {
@@ -68,7 +69,7 @@ namespace AutoDarkModeApp.Pages
                     $"'{sidString}\\\\" +
                     @"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartupApproved\\Run' AND ValueName='AutoDarkMode'";
                 WqlEventQuery query = new WqlEventQuery(queryString);
-                ManagementEventWatcher autostartWatcher = new ManagementEventWatcher(query);
+                autostartWatcher = new ManagementEventWatcher(query);
                 autostartWatcher.EventArrived += new EventArrivedEventHandler(HandleAutostartEnabledEvent);
                 autostartWatcher.Start();
             }
@@ -84,6 +85,16 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "(non-critical) Settings Constructor Regkey Watcher");
             }
             init = false;
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                autostartWatcher.Stop();
+                autostartWatcher.Dispose();
+            }
+            catch { }            
         }
 
         private static SecurityIdentifier SID
