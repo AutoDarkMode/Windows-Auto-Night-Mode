@@ -28,9 +28,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
     {
-        private Theme currentComponentTheme = Theme.Unknown;
-        private bool themeModeEnabled;
-        private bool currentTaskbarColorActive;
+        protected Theme currentComponentTheme = Theme.Unknown;
+        protected bool themeModeEnabled;
+        protected bool currentTaskbarColorActive;
         public SystemSwitchThemeFile() : base() { }
 
         public override void EnableHook()
@@ -39,7 +39,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             base.EnableHook();
         }
 
-        private void RefreshRegkeys()
+        protected void RefreshRegkeys()
         {
             try
             {
@@ -139,7 +139,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             Task.Run(async() => { await SwitchSystemTheme(newTheme);}).Wait();
         }
 
-        private async Task SwitchSystemTheme(Theme newTheme)
+        protected async virtual Task SwitchSystemTheme(Theme newTheme)
         {
             bool oldAccent = currentTaskbarColorActive;
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
@@ -183,7 +183,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 $"accent: {accentInfo}");
         }
 
-        private async Task SwitchAccentOnly(Theme newTheme, int taskdelay)
+        protected async Task SwitchAccentOnly(Theme newTheme, int taskdelay)
         {
             if (currentComponentTheme != Theme.Dark && !themeModeEnabled)
             {
@@ -224,7 +224,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentComponentTheme = Theme.Dark;
         }
 
-        private void SwitchLightOnly()
+        protected void SwitchLightOnly()
         {
             if (Settings.Component.TaskbarColorOnAdaptive)
             {
@@ -236,7 +236,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentComponentTheme = Theme.Light;
         }
 
-        private void SwitchDarkOnly()
+        protected void SwitchDarkOnly()
         {
             if (currentComponentTheme != Theme.Dark)
             {
@@ -256,7 +256,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
-        private void SwitchAdaptive(Theme newTheme)
+        protected void SwitchAdaptive(Theme newTheme)
         {
             ThemeFile themeFile = GlobalState.ManagedThemeFile;
             if (newTheme == Theme.Light)

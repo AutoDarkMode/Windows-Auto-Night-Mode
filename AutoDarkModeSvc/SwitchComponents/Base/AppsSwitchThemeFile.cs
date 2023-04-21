@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
     {
-        private Theme currentComponentTheme;
+        protected Theme currentComponentTheme;
         public AppsSwitchThemeFile() : base() { }
 
         public override void EnableHook()

@@ -22,42 +22,12 @@ using System;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
-    class AppsSwitch : BaseComponent<AppsSwitchSettings>
+    /// <summary>
+    /// This class is a special case for the AppsSwitchThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
+    /// </summary>
+    class AppsSwitch : AppsSwitchThemeFile
     {
-        private Theme currentComponentTheme;
-        public AppsSwitch() : base() { }
-
-        public override void EnableHook()
-        {
-            try
-            {
-                currentComponentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "couldn't initialize apps theme state");
-            }
-            base.EnableHook();
-        }
-
-        public override bool ThemeHandlerCompatibility { get; } = false;
-        public override bool ComponentNeedsUpdate(Theme newTheme)
-        {
-            if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
-            {
-                return true;
-            }
-            else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
-            {
-                return true;
-            }
-            else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != newTheme)
-            {
-                return true;
-            }
-            return false;
-        }
-
+        public override bool TriggersDwmRefresh => true;
         protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
