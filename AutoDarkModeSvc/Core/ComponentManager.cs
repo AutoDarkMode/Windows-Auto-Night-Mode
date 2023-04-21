@@ -16,6 +16,7 @@
 #endregion
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
@@ -69,19 +70,36 @@ namespace AutoDarkModeSvc.Core
             ScriptSwitch.UpdateSettingsState(Builder.ScriptConfig);
         }
 
+        /// <summary>
+        /// Registers all components and handles version specific component management
+        /// </summary>
         ComponentManager()
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
-                Logger.Info($"using components for newer Windows version: {Environment.OSVersion.Version.Build}");
+                Logger.Info($"using apps and system components for newer Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitchThemeFile();
                 AppsSwitch = new AppsSwitchThemeFile();
             }
             else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
             {
-                Logger.Info($"using components for legacy Windows version: {Environment.OSVersion.Version.Build}");
+                Logger.Info($"using app and system components for legacy Windows version: {Environment.OSVersion.Version.Build}");
                 SystemSwitch = new SystemSwitch();
                 AppsSwitch = new AppsSwitch();
+            }
+
+            bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
+            if (hasUbr &&
+               ((Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight) ||
+               Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win11_22H2))
+            {
+                Logger.Info($"using wallpaper component for windows builds {(int)WindowsBuilds.Win11_22H2}.{(int)WindowsBuildsUbr.Win11_22H2_Spotlight} and up");
+                WallpaperSwitch = new WallpaperSwitchThemeFile();
+            }
+            else
+            {
+                WallpaperSwitch = new WallpaperSwitch();
+                Logger.Info($"using default wallpaper component");
             }
 
             Builder = AdmConfigBuilder.Instance();

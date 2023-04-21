@@ -81,6 +81,18 @@ namespace AutoDarkModeSvc.Handlers
             return Color.FromArgb(0, (byte)r, (byte)g, (byte)b);
         }
 
+        public static string HexToRgb(string hexString)
+        {
+            if (hexString.IndexOf('#') != -1)
+                hexString = hexString.Replace("#", "");
+
+            int r = int.Parse(hexString[..2], System.Globalization.NumberStyles.AllowHexSpecifier);
+            int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+            int b = int.Parse(hexString.Substring(4, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+
+            return $"{r} {g} {b}";
+        }
+
         public static bool SetEnabled(bool state)
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();

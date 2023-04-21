@@ -30,6 +30,12 @@ namespace AutoDarkModeSvc.Handlers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
+        public static string GetUbr()
+        {
+            var ubr = Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion", "UBR", null);
+            return ubr != null ? ubr.ToString() : "0";
+        }
+
         /// <summary>
         /// Switches system applications theme
         /// </summary>

@@ -18,11 +18,14 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
+using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Windows.System.Power;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -264,7 +267,16 @@ namespace AutoDarkModeSvc.Core
                     try
                     {
                         state.ManagedThemeFile.Save();
-                        ThemeHandler.ApplyManagedTheme(builder.Config, state.ManagedThemeFile);
+                        List<ThemeApplyFlags> flagList = null;
+
+                        // if we are using the wallpaper switcher that requires theme files then we cannot ignore the wallpaper settings anymore
+                        // This means that this type of wallpaper switch cannot be used for builds older than 22621.1105 because they do not natively support spotlight
+                        // Using this with a build that doesn't support spotlight would cause solid color or invalid wallpapers to appear whenever spotlight is enabled.
+                        if (!componentsToUpdate.Any(c => c is WallpaperSwitchThemeFile)) 
+                        {
+                            flagList = new() { ThemeApplyFlags.IgnoreBackground };
+                        }
+                        ThemeHandler.ApplyManagedTheme(state.ManagedThemeFile, flagList);
                     }
                     catch (Exception ex)
                     {

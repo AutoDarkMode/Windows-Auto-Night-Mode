@@ -25,7 +25,6 @@ using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
@@ -56,11 +55,10 @@ namespace AutoDarkModeSvc.Handlers
         /// <summary>
         /// Applies an ADM managed theme
         /// </summary>
-        /// <param name="config"></param>
-        /// <param name="theme"></param>
-        public static void ApplyManagedTheme(AdmConfig config, ThemeFile theme)
+        /// <param name="theme">the theme file that should be applied in managed mode</param>
+        /// <param name="flagList">the list of ignore flags that should be used when applying the theme</param>
+        public static void ApplyManagedTheme(ThemeFile theme, List<ThemeApplyFlags> flagList)
         {
-            List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground };
             Apply(theme.ThemeFilePath, flagList: flagList);
         }
 

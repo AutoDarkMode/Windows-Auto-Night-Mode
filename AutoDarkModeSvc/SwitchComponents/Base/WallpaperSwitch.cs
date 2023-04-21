@@ -32,11 +32,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override int PriorityToLight => 25;
         public override int PriorityToDark => 25;
         public override HookPosition HookPosition { get; protected set; } = HookPosition.PreSync;
-        private Theme currentIndividualTheme = Theme.Unknown;
-        private Theme currentGlobalTheme = Theme.Unknown;
-        private Theme currentSolidColorTheme = Theme.Unknown;
-        private bool? spotlightEnabled = null;
-        private WallpaperPosition currentWallpaperPosition;
+        protected Theme currentIndividualTheme = Theme.Unknown;
+        protected Theme currentGlobalTheme = Theme.Unknown;
+        protected Theme currentSolidColorTheme = Theme.Unknown;
+        protected bool? spotlightEnabled = null;
+        protected WallpaperPosition currentWallpaperPosition;
 
         public override bool ComponentNeedsUpdate(Theme newTheme)
         {
@@ -55,7 +55,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        private bool TypeNeedsUpdate(WallpaperType type, Theme targetTheme)
+        protected bool TypeNeedsUpdate(WallpaperType type, Theme targetTheme)
         {
             // if all wallpaper mode is selected and one needs an update, component also does.
             if (type == WallpaperType.All && (currentGlobalTheme != targetTheme || currentIndividualTheme != targetTheme))
@@ -70,8 +70,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.SolidColor && currentSolidColorTheme != targetTheme)
             {
-                HookPosition = HookPosition.PreSync;
-                return true;
+                return SolidColorNeedsUpdate();
             }
             else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
             {
@@ -88,6 +87,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 return true;
             }
             return false;
+        }
+
+        protected virtual bool SolidColorNeedsUpdate()
+        {
+            HookPosition = HookPosition.PreSync;
+            return true;
         }
 
         protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
@@ -125,7 +130,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
-        private void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid, string oldPos, string oldSpotlight)
+        protected void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid, string oldPos, string oldSpotlight)
         {
             if (type == WallpaperType.All)
             {
@@ -177,7 +182,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         /// </summary>
         /// <param name="type">The wallpaper type that is selected</param>
         /// <param name="newTheme">The new theme that is targeted to be set</param>
-        private void HandleSwitchByType(WallpaperType type, Theme newTheme)
+        protected void HandleSwitchByType(WallpaperType type, Theme newTheme)
         {
             if (type == WallpaperType.Individual)
             {
@@ -215,11 +220,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.SolidColor)
             {
-                WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
-                currentSolidColorTheme = newTheme;
-                currentGlobalTheme = Theme.Unknown;
-                currentIndividualTheme = Theme.Unknown;
-                spotlightEnabled = false;
+                SwitchSolidColor(newTheme);
             }
             else if (type == WallpaperType.Spotlight)
             {
@@ -230,6 +231,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = Theme.Unknown;
                 spotlightEnabled = true;
             }
+        }
+
+        protected virtual void SwitchSolidColor(Theme newTheme)
+        {
+            WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
+            currentSolidColorTheme = newTheme;
+            currentGlobalTheme = Theme.Unknown;
+            currentIndividualTheme = Theme.Unknown;
+            spotlightEnabled = false;
         }
 
         /// <summary>
@@ -245,7 +255,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             UpdateCurrentComponentState();
         }
 
-        private void StateUpdateOnTypeToggle(WallpaperType current)
+        protected void StateUpdateOnTypeToggle(WallpaperType current)
         {
             if (current == WallpaperType.All)
             {
@@ -265,7 +275,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
-        private void UpdateCurrentComponentState(bool isInitializing = false)
+        protected void UpdateCurrentComponentState(bool isInitializing = false)
         {
             if (Settings == null || SettingsBefore == null || (!Initialized && !isInitializing))
             {
@@ -329,10 +339,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             if (globalWallpaper == Settings.Component.GlobalWallpaper.Light) currentGlobalTheme = Theme.Light;
             else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
 
-            // solid color enable state synchronization
-            string solidColorHex = WallpaperHandler.GetSolidColor();
-            if (solidColorHex == Settings.Component.SolidColors.Light) currentSolidColorTheme = Theme.Light;
-            else if (solidColorHex == Settings.Component.SolidColors.Dark) currentSolidColorTheme = Theme.Dark;
+                        // solid color enable state synchronization
+            if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 && GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds == 0)
+            {
+                string solidColorHex = WallpaperHandler.GetSolidColor();
+                if (solidColorHex == Settings.Component.SolidColors.Light) currentSolidColorTheme = Theme.Light;
+                else if (solidColorHex == Settings.Component.SolidColors.Dark) currentSolidColorTheme = Theme.Dark;
+            }
 
             // base hook
             base.EnableHook();
@@ -346,7 +359,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             base.DisableHook();
         }
 
-        private Theme GetIndividualWallpapersState()
+        protected Theme GetIndividualWallpapersState()
         {
             List<Tuple<string, string>> wallpapers = WallpaperHandler.GetWallpapers();
             List<Theme> wallpaperStates = new();
