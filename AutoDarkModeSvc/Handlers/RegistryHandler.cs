@@ -32,8 +32,16 @@ namespace AutoDarkModeSvc.Handlers
 
         public static string GetUbr()
         {
-            var ubr = Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion", "UBR", null);
-            return ubr != null ? ubr.ToString() : "0";
+            try
+            {
+                var ubr = Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion", "UBR", null);
+                return ubr != null ? ubr.ToString() : "0";
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "error while retrieving ubr, assuming none present");
+            }
+            return "0";
         }
 
         /// <summary>
