@@ -219,7 +219,7 @@ namespace AutoDarkModeSvc.Core
 
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
-                if (PostponeManager.IsPostponed || PostponeManager.IsUserDelayed)
+                if (PostponeManager.IsUserDelayed || PostponeManager.IsSkipNextSwitch)
                 {
                     NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
                     NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.lblPaused}";
