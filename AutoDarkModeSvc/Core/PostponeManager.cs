@@ -68,6 +68,19 @@ namespace AutoDarkModeSvc.Core
                 return false;
             }
         }
+        /// <summary>
+        /// Checks if a grace period for theme switching is currently active
+        /// </summary>
+        /// <returns>True if a grace period item is queued; false otherwise</returns>
+        public bool IsGracePeriod
+        {
+            get
+            {
+                if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemDelayGracePeriod))
+                    return true;
+                return false;
+            }
+        }
 
         public bool IsPostponed
         {
