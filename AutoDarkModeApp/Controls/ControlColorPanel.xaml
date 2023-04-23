@@ -508,10 +508,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Border BorderThickness="0"
-                BorderBrush="Yellow"
-                CornerRadius="5"
-                Padding="2"
+        <Border BorderThickness="2"
+                BorderBrush="{DynamicResource Win11Background}"
+                CornerRadius="4"
+                Padding="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
@@ -520,7 +520,7 @@
                 <!-- Rounded mask (stretches to fill Grid) -->
                 <Border Name="mask"
                         Background="White"
-                        CornerRadius="5" />
+                        CornerRadius="4" />
 
                 <StackPanel>
 
@@ -576,12 +576,12 @@
 
         <Slider x:Name="sliderSpectrum"
                 Style="{StaticResource SliderHueComponent}"
-                BorderBrush="Black"
+                BorderBrush="{DynamicResource Win11Background}"
                 Focusable="False"
                 Maximum="360"
                 Foreground="#FF0071FF"
                 Margin="0"
-                Height="227"
+                Height="228"
                 PreviewMouseLeftButtonDown="Slider_PreviewMouseLeftButtonDown"
                 PreviewMouseLeftButtonUp="Slider_PreviewMouseLeftButtonUp"
                 MouseMove="Slider_MouseMoveHue"
@@ -841,7 +841,7 @@
                             BorderThickness="1,1,0,1"
                             ToolTip="Initial Color" />
                     <Rectangle Grid.ColumnSpan="2"
-                               Stroke="Black"
+                               Stroke="{DynamicResource Win11Border}"
                                StrokeThickness="1.2" />
                 </Grid>
             </Grid>
