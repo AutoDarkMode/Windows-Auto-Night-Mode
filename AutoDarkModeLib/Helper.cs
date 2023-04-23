@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -128,6 +129,7 @@ namespace AutoDarkModeLib
         public static string PathUnmanagedLightTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmanagedLight.theme");
         public static string NameUnmanagedLightTheme { get; } = "ADMUnmanagedLight";
         public static string NameUnmanagedDarkTheme { get; } = "ADMUnmanagedDark";
+        public static string Hegex { get; } = @"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$";
 
         public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
         {

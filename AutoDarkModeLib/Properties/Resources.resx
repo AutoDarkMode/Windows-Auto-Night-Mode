@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -572,10 +572,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>This feature is disabled while wallpaper mode is enabled.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
@@ -1135,5 +1135,14 @@ Do you really want to continue?</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
   </data>
 </root>

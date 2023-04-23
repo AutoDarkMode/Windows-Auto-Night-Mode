@@ -51,12 +51,20 @@ namespace AutoDarkModeApp.Pages
 
             if (builder.Config.WallpaperSwitch.Enabled & !builder.Config.WindowsThemeMode.Enabled)
             {
-                SetWallpaperPickerEnabled();
+                SelectAdmCustomizeEnabled();
             }
             if (!builder.Config.WallpaperSwitch.Enabled & !builder.Config.WindowsThemeMode.Enabled)
             {
                 WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
+                ColorizationDisabledMessage.Visibility = Visibility.Collapsed;
                 ThemeDisabledMessage.Visibility = Visibility.Collapsed;
+            }
+
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+            {
+                FontIconColorization.FontFamily = new("Segoe Fluent Icons");
+                FontIconTheme.FontFamily = new("Segoe Fluent Icons");
+                FontIconWallpaper.FontFamily = new("Segoe Fluent Icons");
             }
         }
 
@@ -65,14 +73,20 @@ namespace AutoDarkModeApp.Pages
             WallpaperDisabledMessage.Visibility = Visibility.Visible;
             WallpaperPickerCard.IsEnabled = false;
 
+            ColorizationDisabledMessage.Visibility = Visibility.Visible;
+            ColorizationPickerCard.IsEnabled = false;
+
             ThemeDisabledMessage.Visibility = Visibility.Collapsed;
             ThemePickerCard.IsEnabled = true;
         }
 
-        private void SetWallpaperPickerEnabled ()
+        private void SelectAdmCustomizeEnabled ()
         {
             WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
             WallpaperPickerCard.IsEnabled = true;
+
+            ColorizationDisabledMessage.Visibility = Visibility.Collapsed;
+            ColorizationPickerCard.IsEnabled = true;
 
             ThemeDisabledMessage.Visibility = Visibility.Visible;
             ThemePickerCard.IsEnabled = false;
@@ -123,6 +137,12 @@ namespace AutoDarkModeApp.Pages
         private void ThemePickerCard_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Frame.Navigate(typeof(PageThemePicker), null, new DrillInNavigationTransitionInfo());
+        }
+
+        private void ColorizationPickerCard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Navigate(typeof(PageColorization), null, new DrillInNavigationTransitionInfo());
+
         }
     }
 }

@@ -85,7 +85,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), newTheme), themeFile.VisualStyles.AppMode.Item2);
                 currentComponentTheme = newTheme;
             }
-            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+            Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }
     }
 }

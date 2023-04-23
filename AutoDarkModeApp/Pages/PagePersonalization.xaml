@@ -16,7 +16,9 @@
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />
-            <ColumnDefinition Width="10*" MaxWidth="1000" MinWidth="450" />
+            <ColumnDefinition Width="10*"
+                              MaxWidth="1000"
+                              MinWidth="450" />
             <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
 
@@ -24,6 +26,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -43,16 +46,15 @@
 
         <!-- content wallpaper pick-->
         <uc:Card Grid.Column="1"
-                Grid.Row="3"
-                Margin="0,10,0,0"
-                Padding="5,5,5,5"
-                MouseDown="WallpaperPickerCard_MouseDown"
-                x:Name="WallpaperPickerCard"
-                Cursor="Hand">
+                 Grid.Row="3"
+                 Margin="0,10,0,0"
+                 Padding="5,5,5,5"
+                 MouseDown="WallpaperPickerCard_MouseDown"
+                 x:Name="WallpaperPickerCard"
+                 Cursor="Hand">
 
 
-            <Grid
-                  Margin="0,15,0,15">
+            <Grid Margin="0,15,0,15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -61,6 +63,7 @@
 
                 <ui:FontIcon Grid.Column="0"
                              Margin="15, 0, 0, 0"
+                             x:Name="FontIconWallpaper"
                              FontFamily="Segoe MDL2 Assets"
                              Glyph="&#xe8b9;" />
 
@@ -110,17 +113,84 @@
 
 
             </Grid>
+        </uc:Card>
+
+        <!-- content colorization pick-->
+        <uc:Card Grid.Column="1"
+                 Grid.Row="4"
+                 Margin="0,2,0,0"
+                 Padding="5,5,5,5"
+                 MouseDown="ColorizationPickerCard_MouseDown"
+                 x:Name="ColorizationPickerCard"
+                 Cursor="Hand">
+            <Grid Margin="0,15,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ui:FontIcon Grid.Column="0"
+                             Margin="15, 0, 0, 0"
+                             x:Name="FontIconColorization"
+                             FontFamily="Segoe MDL2 Assets"
+                             Glyph="&#xe790;" />
+
+                <Grid Grid.Column="1"
+                      Margin="15,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Margin="0, 0, 0, 0"
+                               Grid.Row="0"
+                               FontFamily="Segoe UI"
+                               FontSize="17"
+                               Text="{x:Static p:Resources.ColorizationPick}" />
+
+                    <TextBlock Name="TextBlockColorizationPickerDescription"
+                               Grid.Row="1"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="13"
+                               Text="{x:Static p:Resources.ColorizationTextBlockDescription}"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+
+                    <TextBlock Name="ColorizationDisabledMessage"
+                               Grid.Row="3"
+                               Margin="0,5,0,0"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.tbFeatureDisabledWhileThemeMode}"
+                               Foreground="#D44440"
+                               FontFamily="Segoe UI"
+                               TextWrapping="Wrap" />
+
+                </Grid>
+
+                <ui:FontIcon Grid.Column="3"
+                             Margin="15, 0, 10, 0"
+                             FontSize="15"
+                             FontFamily="Segoe MDL2 Assets"
+                             Glyph="&#xe76C;" />
 
 
+            </Grid>
         </uc:Card>
 
         <uc:Card Margin="0,2,0,15"
-                Padding="5,0,5,0"
-                Grid.Column="1"
-                Grid.Row="4"
-                MouseDown="ThemePickerCard_MouseDown"
-                x:Name="ThemePickerCard"
-                Cursor="Hand">
+                 Padding="5,0,5,0"
+                 Grid.Column="1"
+                 Grid.Row="5"
+                 MouseDown="ThemePickerCard_MouseDown"
+                 x:Name="ThemePickerCard"
+                 Cursor="Hand">
 
             <Grid Margin="0,15,0,20">
                 <Grid.ColumnDefinitions>
@@ -131,8 +201,9 @@
 
                 <ui:FontIcon Grid.Column="0"
                              Margin="15, 0, 0, 0"
+                             x:Name="FontIconTheme"
                              FontFamily="Segoe MDL2 Assets"
-                             Glyph="&#xe790;" />
+                             Glyph="&#xe771;" />
 
                 <Grid Grid.Column="1"
                       Margin="15,0,0,0">

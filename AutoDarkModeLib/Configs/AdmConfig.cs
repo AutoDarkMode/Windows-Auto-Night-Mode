@@ -45,6 +45,7 @@ namespace AutoDarkModeLib.Configs
             ColorFilterSwitch = new();
             OfficeSwitch = new();
             WallpaperSwitch = new();
+            ColorizationSwitch = new();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
         public Governor Governor { get; set; } = Governor.Default;
@@ -52,6 +53,7 @@ namespace AutoDarkModeLib.Configs
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettingsEnabled<SystemSwitchSettings> SystemSwitch { get; set; }
+        public BaseSettings<ColorizationSwitchSettings> ColorizationSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);

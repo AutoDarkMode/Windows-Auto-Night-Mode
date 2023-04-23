@@ -21,6 +21,7 @@ using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace AutoDarkModeSvc.Core
@@ -50,6 +51,7 @@ namespace AutoDarkModeSvc.Core
         private readonly ISwitchComponent SystemSwitch;
         private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
+        private readonly ISwitchComponent ColorizationSwitch;
 
         /// <summary>
         /// Instructs all components to refresh their settings objects by injecting a new settings object
@@ -63,6 +65,10 @@ namespace AutoDarkModeSvc.Core
             SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
             AccentColorSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
             WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
+            if (ColorizationSwitch != null)
+            {
+                ColorizationSwitch.UpdateSettingsState(Builder.Config.ColorizationSwitch);
+            }
         }
 
         public void UpdateScriptSettings()
@@ -75,20 +81,21 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         ComponentManager()
         {
+            bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
+            Logger.Info($"current windows build: {Environment.OSVersion.Version.Build}.{(hasUbr ? ubr : 0)}");
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
-                Logger.Info($"using apps and system components for newer Windows version: {Environment.OSVersion.Version.Build}");
+                Logger.Info($"using apps and system components for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
                 SystemSwitch = new SystemSwitchThemeFile();
                 AppsSwitch = new AppsSwitchThemeFile();
             }
             else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
             {
-                Logger.Info($"using app and system components for legacy Windows version: {Environment.OSVersion.Version.Build}");
+                Logger.Info($"using app and system components for legacy builds");
                 SystemSwitch = new SystemSwitch();
                 AppsSwitch = new AppsSwitch();
             }
 
-            bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
             if (hasUbr &&
                ((Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight) ||
                Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win11_22H2))
@@ -113,6 +120,12 @@ namespace AutoDarkModeSvc.Core
                 WallpaperSwitch,
                 ScriptSwitch
             };
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+            {
+                Logger.Info($"using colorization switcher for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
+                ColorizationSwitch= new ColorizationSwitch();
+                Components.Add(ColorizationSwitch);
+            }
             UpdateSettings();
             UpdateScriptSettings();
         }
@@ -195,6 +208,7 @@ namespace AutoDarkModeSvc.Core
             }
             // if a different module will already trigger a dwm refresh, we don't need to perform an extra refresh
             if (triggersDwmRefresh) needsDwmRefresh = false;
+            Logger.Debug($"components queued for update: [{String.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
             return (shouldUpdate, needsDwmRefresh);
         }
 

@@ -361,6 +361,33 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pick an accent color.
+        /// </summary>
+        public static string ColorizationPick {
+            get {
+                return ResourceManager.GetString("ColorizationPick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customize the Windows system color scheme to your liking..
+        /// </summary>
+        public static string ColorizationTextBlockDescription {
+            get {
+                return ResourceManager.GetString("ColorizationTextBlockDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accent color.
+        /// </summary>
+        public static string ColorizationTextBlockHeader {
+            get {
+                return ResourceManager.GetString("ColorizationTextBlockHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open config file.
         /// </summary>
         public static string ConfigHyperLinkOpenConfig {
@@ -1844,7 +1871,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable system-wide hotkeys.
+        ///   Looks up a localized string similar to Enable hotkeys.
         /// </summary>
         public static string SwitchModesToggleHeaderHotkey {
             get {
@@ -1907,7 +1934,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offers more features, but you need to set up a windows .theme file. Customize your desktop wallpaper per monitor, set a slideshow, change your mouse cursor, set an accent color and individual sounds..
+        ///   Looks up a localized string similar to Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own..
         /// </summary>
         public static string tbPickTheme {
             get {
@@ -1916,7 +1943,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Offers less features, but is easier to set up. Customize your desktop wallpaper for all monitors, individual monitors or set a background color..
+        ///   Looks up a localized string similar to Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight..
         /// </summary>
         public static string tbPickWallpaper {
             get {

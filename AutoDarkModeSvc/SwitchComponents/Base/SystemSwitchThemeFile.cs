@@ -178,7 +178,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 accentInfo = Settings.Component.TaskbarColorOnAdaptive ? "yes" : "no";
             }
             Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "Accent" : "NoAccent")}, " +
-                $"now: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
+                $"pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
                 $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
                 $"accent: {accentInfo}");
         }

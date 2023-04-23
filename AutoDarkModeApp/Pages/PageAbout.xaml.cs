@@ -390,6 +390,20 @@ public partial class PageAbout : Page
         _ = msg.ShowDialog();
     }
 
+    private void ColorPicker_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        var text = "Copyright(c) 2017 zubetto \n\n";
+        text += File.ReadAllText(Path.Combine(AdmExtensions.ExecutionDir, "Licenses", "apache-2.0.txt"));
+        MsgBox msg = new(text, "ColorPicker License Information", "info", "close");
+        msg.Owner = Window.GetWindow(this);
+        _ = msg.ShowDialog();
+    }
+
+    private void ColorPicker_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter) ColorPicker_MouseDown(this, null);        
+    }
+
     private async void ButtonCopyVersionInfo_Click(object sender, RoutedEventArgs e)
     {
         // most likely use case is to paste in an issue, so

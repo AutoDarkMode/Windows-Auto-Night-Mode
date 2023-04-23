@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Monitors;
 using Microsoft.Win32;
@@ -513,6 +514,15 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
+        /// <summary>
+        /// Determines whether Auto Colorization is enabled
+        /// </summary>
+        /// <returns>true if enabled; false otherwise</returns>
+        public bool GetAutoColorizationState()
+        {
+            return VisualStyles.AutoColorization.Item1 == "1";
+        }
+
         public static ThemeFile LoadUnmanagedTheme(string sourcePath, string targetPath)
         {
             ThemeFile source = new(sourcePath);
@@ -593,6 +603,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             else originalName = "";
             return originalName.Trim();
         }
+
 
         private static void SetValues(string input, object obj)
         {

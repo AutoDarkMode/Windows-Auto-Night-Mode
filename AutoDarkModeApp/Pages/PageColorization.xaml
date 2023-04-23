@@ -1,0 +1,118 @@
+﻿<ui:Page x:Class="AutoDarkModeApp.Pages.PageColorization"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:ui="http://schemas.modernwpf.com/2019"
+         xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+         xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+         xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
+         mc:Ignorable="d"
+         d:DesignWidth="700"
+         Title="PageColorization">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="10*"
+                              MaxWidth="1000"
+                              MinWidth="450" />
+            <ColumnDefinition Width="0.4*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Name="TextBlockBackButton"
+                   Margin="0,13,0,0"
+                   FontFamily="Segoe MDL2 Assets"
+                   FontSize="20"
+                   Text="&#xe830;"
+                   Cursor="Hand"
+                   MouseDown="TextBlockBackButton_MouseDown" />
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="35,0,0,0"
+                   FontFamily="Segoe UI Semilight"
+                   FontSize="30"
+                   Text="{x:Static p:Resources.ColorizationTextBlockHeader}" />
+
+        <uc:Card Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="0,0,0,4"
+                 Padding="30,15,15,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Enable Accent color switch" VerticalAlignment="Center" FontSize="14"  Padding="0,0,0,1"/>
+                <ui:ToggleSwitch Name="ToggleSwitchAutoColorization"
+                                 OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                 OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                                 Grid.Column="2"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Right"
+                                 Margin="0,0,0,0"
+                                 Toggled="ToggleSwitchAutoColorization_Toggled" />
+            </Grid>
+        </uc:Card>
+
+        <TextBlock Margin="0,15,0,10"
+                   Name="LightThemeHeader"
+                   Grid.Row="4"
+                   Grid.Column="1"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="14"
+                   Text="{x:Static p:Resources.lblLightTheme}" />
+
+        <uc:Card Grid.Row="5"
+                 Grid.Column="1"
+                 Padding="30,20,15,10">
+            <ui:SimpleStackPanel>
+                <uc:ColorControlPanel x:Name="lightColorizationSetBox"
+                                      VerticalAlignment="Center" />
+            </ui:SimpleStackPanel>
+
+        </uc:Card>
+
+        <TextBlock Margin="0,25,0,10"
+                   Name="DarkThemeHeader"
+                   Grid.Row="6"
+                   Grid.Column="1"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="14"
+                   Text="{x:Static p:Resources.lblDarkTheme}" />
+
+        <uc:Card Grid.Row="7"
+                 Grid.Column="1"
+                 Margin="0,0,0,0"
+                 Padding="30,20,15,10">
+            <ui:SimpleStackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                </Grid>
+                <uc:ColorControlPanel x:Name="darkColorizationSetBox"
+                                      VerticalAlignment="Center" />
+            </ui:SimpleStackPanel>
+        </uc:Card>
+    </Grid>
+</ui:Page>
