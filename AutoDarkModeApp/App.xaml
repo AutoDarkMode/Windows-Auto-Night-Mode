@@ -11,7 +11,7 @@
             <Style TargetType="control:Card">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="control:Card">
+                        <ControlTemplate TargetType="control:Card" >
                             <Border
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource Win11Border}"
@@ -19,8 +19,25 @@
                                     Padding="{TemplateBinding Padding}"
                                     Margin="{TemplateBinding Margin}"
                                     Background="{DynamicResource Win11Background}">
-                                <ContentControl Content="{TemplateBinding Content}" />
+                                <ContentControl Focusable="False" Content="{TemplateBinding Content}" />
                             </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <!-- Remove until fix is found -->
+                            <!-- https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle?redirectedfrom=MSDN&view=netframeworkdesktop-4.8 -->
+                            <!--<Border CornerRadius="4"
+                                    BorderBrush="Black"
+                                    BorderThickness="2" />-->
+                            <Rectangle StrokeThickness="0"
+                                       Stroke="Black"
+                                       SnapsToDevicePixels="true" />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
