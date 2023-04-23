@@ -1145,4 +1145,7 @@ Do you really want to continue?</value>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
     <value>Customize the Windows system color scheme to your liking.</value>
   </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
 </root>

@@ -1,22 +1,9 @@
 ﻿using System;
 using System.Globalization;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
-using System.Diagnostics;
 
 namespace AutoDarkModeApp.Controls
 {
@@ -25,6 +12,13 @@ namespace AutoDarkModeApp.Controls
     /// </summary>
     public partial class ColorControlPanel : UserControl
     {
+        public static readonly DependencyProperty ShowAlphaProperty = DependencyProperty.Register("ShowAlpha", typeof(bool), typeof(ColorControlPanel), new FrameworkPropertyMetadata(ShowAlphaChanged));
+
+        public bool ShowAlpha
+        {
+            get { return (bool)GetValue(ShowAlphaProperty); }
+            set { SetValue(ShowAlphaProperty, value); }
+        }
         private bool ThumbsInitialised = false;
         private bool isDragging = false;
 
@@ -57,6 +51,21 @@ namespace AutoDarkModeApp.Controls
         private LinearGradientBrush GgardBrush;
         private LinearGradientBrush BgradBrush;
         private LinearGradientBrush AgradBrush;
+
+        private static void ShowAlphaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ColorControlPanel ccp = (ColorControlPanel)d;
+            bool b = (bool)e.NewValue;
+            ccp.SetValue(ShowAlphaProperty, b);
+            if (b)
+            {
+                ccp.dockAlpha.Visibility= Visibility.Visible;
+            }
+            else
+            {
+                ccp.dockAlpha.Visibility= Visibility.Collapsed;
+            }
+        }
 
         private void IniGradientBrushes()
         {
@@ -770,6 +779,14 @@ namespace AutoDarkModeApp.Controls
             RGBAdock.KeyDown += KeyDown_RGBApanel;
 
             rectInitialColor.MouseLeftButtonDown += RevertIniColor;
+            if (ShowAlpha)
+            {
+                dockAlpha.Visibility= Visibility.Visible;
+            }
+            else
+            {
+                dockAlpha.Visibility= Visibility.Collapsed;
+            }
         }
 
         // --------- Dependency Properties ---------

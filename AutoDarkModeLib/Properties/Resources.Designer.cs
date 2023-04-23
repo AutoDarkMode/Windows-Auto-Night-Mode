@@ -388,6 +388,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update colorization.
+        /// </summary>
+        public static string ColorizationTextBlockUpdate {
+            get {
+                return ResourceManager.GetString("ColorizationTextBlockUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open config file.
         /// </summary>
         public static string ConfigHyperLinkOpenConfig {

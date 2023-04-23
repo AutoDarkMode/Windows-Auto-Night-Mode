@@ -727,7 +727,6 @@
                     <TextBox x:Name="txtBvalue"
                              Text="255"
                              FontFamily="Segoe UI Semilight"
-                             BorderBrush="{x:Null}"
                              Margin="0"
                              VerticalAlignment="Center"
                              FontSize="16"
@@ -780,7 +779,6 @@
                              TextWrapping="Wrap"
                              Text="255"
                              FontFamily="Segoe UI Semilight"
-                             BorderBrush="{x:Null}"
                              Margin="0"
                              Width="80"
                              FontSize="16" />
