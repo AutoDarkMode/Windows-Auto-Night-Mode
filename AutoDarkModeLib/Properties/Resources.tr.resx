@@ -1134,18 +1134,18 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Windows spot ışığı</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Vurgu rengi</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Bir vurgu rengi seç</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Windows sistem renk düzenini istediğiniz gibi özelleştirebilirsiniz.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Renklendirmeyi güncelle</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
+    <value>Vurgu rengi ve/veya arka plan değiştirme etkinken bu özellik devre dışı bırakılır.</value>
   </data>
 </root>

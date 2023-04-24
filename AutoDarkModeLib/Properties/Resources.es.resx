@@ -566,10 +566,10 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Esta característica está deshabilitada mientras el modo tema está activado.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Selecciona un tema de Windows diferente para los modos oscuro y claro respectivamente. Permite la personalización completa del tema, pero requiere que configures los archivos .theme por tu cuenta.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Personaliza tu fondo de pantalla para todos los monitores, establece un color de fondo o activa el foco.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Comprobamos si hay nuevas versiones de Auto Dark Mode en segundo plano. Cuando una actualización esté disponible, te avisaremos mediante una notificación</value>
@@ -1134,18 +1134,18 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Contenido destacado de Windows</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Acentuar el color</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Elige un color del acento</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Personaliza el esquema de colores del sistema de Windows a tu gusto.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Actualizar la coloración</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
+    <value>Esta función está desactivada mientras está activado el cambio del color del acento y/o del fondo de pantalla.</value>
   </data>
 </root>
