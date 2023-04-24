@@ -23,6 +23,7 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using ModernWpf.Media.Animation;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -233,10 +234,13 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
+                var brush = ColorControlsLight.InitialColorBrush;
                 await RequestSwitch();
                 if (builder.Config.ColorizationSwitch.Component.LightAutoColorization)
                 {
-                    InitializeColors();
+                    Debug.WriteLine("waiting for colorization change");
+                    await WaitForColorizationChange(builder.Config.ColorizationSwitch.Component.LightHex.ToLower(), 5);
+                    Dispatcher.Invoke(InitializeColors);
                 }
             }
             catch (Exception ex)
@@ -267,6 +271,8 @@ namespace AutoDarkModeApp.Pages
                 await RequestSwitch();
                 if (builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
                 {
+                    Debug.WriteLine("waiting for colorization change");
+                    await WaitForColorizationChange(builder.Config.ColorizationSwitch.Component.DarkHex.ToLower(), 5);
                     Dispatcher.Invoke(InitializeColors);
                 }
             }
@@ -275,6 +281,29 @@ namespace AutoDarkModeApp.Pages
                 ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "Colorization_ToggleAutomaticDark");
             }
 
+        }
+
+        private async Task WaitForColorizationChange(string initial, int timeout)
+        {
+            int tries = 0;
+            while (tries < timeout)
+            {
+                string messageRaw = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GetCurrentColorization);
+                ApiResponse response = ApiResponse.FromString(messageRaw);
+                if (response.StatusCode == StatusCode.Ok)
+                {
+                    if (response.Message.ToLower() != initial)
+                    {
+                        Debug.WriteLine("colorization change detected, updating UI");
+                        Debug.WriteLine(response.Message);
+                        break;
+                    }
+                    else
+                    {
+                        await Task.Delay(1000);
+                    }
+                }
+            }            
         }
 
         private async Task RequestSwitch()
