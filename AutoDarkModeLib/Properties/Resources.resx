@@ -568,8 +568,8 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>This feature is disabled while theme mode is enabled.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>This feature is disabled while wallpaper mode is enabled.</value>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>

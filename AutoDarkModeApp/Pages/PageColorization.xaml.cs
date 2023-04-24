@@ -156,10 +156,11 @@ namespace AutoDarkModeApp.Pages
             Frame.Navigate(typeof(PagePersonalization), null, new DrillInNavigationTransitionInfo());
         }
 
-        private void ToggleSwitchColorizationEnabled_Toggled(object sender, RoutedEventArgs e)
+        private async void ToggleSwitchColorizationEnabled_Toggled(object sender, RoutedEventArgs e)
         {
             if (init) return;
             builder.Config.ColorizationSwitch.Enabled = ToggleSwitchColorizationEnabled.IsOn;
+            
             try
             {
                 builder.Save();
@@ -167,6 +168,12 @@ namespace AutoDarkModeApp.Pages
             catch (Exception ex)
             {
                 ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveBackendColorization");
+            }
+
+            if (ToggleSwitchColorizationEnabled.IsOn)
+            {
+                await RequestSwitch();
+                Dispatcher.Invoke(InitializeColors);
             }
         }
 

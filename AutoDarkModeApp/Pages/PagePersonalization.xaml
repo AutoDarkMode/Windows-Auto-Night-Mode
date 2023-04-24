@@ -235,7 +235,7 @@
                                VerticalAlignment="Top"
                                HorizontalAlignment="Left"
                                FontSize="14"
-                               Text="{x:Static p:Resources.tbFeatureDisabledWhileWallpaperMode}"
+                               Text="{x:Static p:Resources.tbFeatureDisabledWhileManagedMode}"
                                Foreground="#D44440"
                                FontFamily="Segoe UI"
                                TextWrapping="Wrap" />

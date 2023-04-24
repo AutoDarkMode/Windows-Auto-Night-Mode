@@ -1907,20 +1907,20 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This feature is disabled while accent color and/or wallpaper switching is enabled..
+        /// </summary>
+        public static string tbFeatureDisabledWhileManagedMode {
+            get {
+                return ResourceManager.GetString("tbFeatureDisabledWhileManagedMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This feature is disabled while theme mode is enabled..
         /// </summary>
         public static string tbFeatureDisabledWhileThemeMode {
             get {
                 return ResourceManager.GetString("tbFeatureDisabledWhileThemeMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This feature is disabled while wallpaper mode is enabled..
-        /// </summary>
-        public static string tbFeatureDisabledWhileWallpaperMode {
-            get {
-                return ResourceManager.GetString("tbFeatureDisabledWhileWallpaperMode", resourceCulture);
             }
         }
         

@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AutoDarkModeApp.Handlers;
 using AutoDarkModeLib;
 using ModernWpf.Media.Animation;
 using AdmProperties = AutoDarkModeLib.Properties;
@@ -44,16 +45,16 @@ namespace AutoDarkModeApp.Pages
             }
             InitializeComponent();
 
-            if (builder.Config.WindowsThemeMode.Enabled & !builder.Config.WallpaperSwitch.Enabled)
+            if (builder.Config.WindowsThemeMode.Enabled)
             {
                 SetThemePickerEnabled();
             }
 
-            if (builder.Config.WallpaperSwitch.Enabled & !builder.Config.WindowsThemeMode.Enabled)
+            if (builder.Config.WallpaperSwitch.Enabled || builder.Config.ColorizationSwitch.Enabled)
             {
                 SelectAdmCustomizeEnabled();
             }
-            if (!builder.Config.WallpaperSwitch.Enabled & !builder.Config.WindowsThemeMode.Enabled)
+            if (!builder.Config.WallpaperSwitch.Enabled && !builder.Config.WindowsThemeMode.Enabled && !builder.Config.ColorizationSwitch.Enabled)
             {
                 WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
                 ColorizationDisabledMessage.Visibility = Visibility.Collapsed;
@@ -78,9 +79,35 @@ namespace AutoDarkModeApp.Pages
 
             ThemeDisabledMessage.Visibility = Visibility.Collapsed;
             ThemePickerCard.IsEnabled = true;
+
+            if (builder.Config.ColorizationSwitch.Enabled)
+            {
+                builder.Config.ColorizationSwitch.Enabled = false;
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PersonalizationPage_SetThemePickerEnabled");
+                }
+            }
+
+            if (builder.Config.WallpaperSwitch.Enabled)
+            {
+                builder.Config.WallpaperSwitch.Enabled = false;
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PersonalizationPage_SetThemePickerEnabled");
+                }
+            }
         }
 
-        private void SelectAdmCustomizeEnabled ()
+        private void SelectAdmCustomizeEnabled()
         {
             WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
             WallpaperPickerCard.IsEnabled = true;
@@ -102,7 +129,7 @@ namespace AutoDarkModeApp.Pages
 
         private void HyperlinkWallpaper_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == Key.Enter || e.Key == Key.Space)
+            if (e.Key == Key.Enter || e.Key == Key.Space)
             {
                 WallpaperPickerCard_MouseDown(this, null);
             }
