@@ -138,11 +138,12 @@ namespace AutoDarkModeApp.Handlers
 
         public static void ShowErrorMessage(Exception ex, Window owner, string location, string extraInfo = "")
         {
-            string error = AdmProperties.Resources.ErrorMessageBox + $"\n\nError ocurred in: {location} " + ex.Source +
-                           "\n\n" + ex.Message;
+            string error = AdmProperties.Resources.ErrorMessageBox + $"\n\nError ocurred in: {location}" +
+                $"\nSource: {ex.Source}" +
+                $"\nMessage: {ex.Message}";
             if (extraInfo.Length > 0)
             {
-                error += "\n";
+                error += $"\nExtra Detail: {extraInfo}";
             }
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {

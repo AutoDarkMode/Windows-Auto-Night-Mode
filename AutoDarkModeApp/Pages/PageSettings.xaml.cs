@@ -307,7 +307,6 @@ namespace AutoDarkModeApp.Pages
                 }
                 else
                 {
-                    SetLanguage(selectedLanguage);
                     Translator.Text = AdmProperties.Resources.lblTranslator;
                     DockPanelLanguageRestart.Visibility = Visibility.Collapsed;
                     TextBlockLanguageRestart.Text = AdmProperties.Resources.restartNeeded;

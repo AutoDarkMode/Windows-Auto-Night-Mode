@@ -62,9 +62,7 @@ namespace AutoDarkModeApp
                 Environment.Exit(-1);
             }
 
-            bool serviceStartIssued = StartService();
-            Task serviceStart = Task.Run(() => WaitForServiceStart());
-
+            // must be initialized first, before any other message boxes, otherwise the window won't be displayed
             MainWindow mainWin = null;
             MainWindowMwpf mainWinMwpf = null;
 
@@ -76,6 +74,28 @@ namespace AutoDarkModeApp
             {
                 mainWin = new();
             }
+
+            try
+            {
+                AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+                builder.Load();
+                if (Settings.Default.Language != builder.Config.Tunable.UICulture)
+                {
+                    builder.Config.Tunable.UICulture = Settings.Default.Language;
+                    builder.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                string error = "failed initializing UI culture\n" + ex.Message;
+                Dispatcher.Invoke(() =>
+                {
+                    ErrorMessageBoxes.ShowErrorMessage(ex, null, "Startup", "Failed to force-set UI culture");
+                });
+            }
+
+            bool serviceStartIssued = StartService();
+            Task serviceStart = Task.Run(() => WaitForServiceStart());
 
             string message = AdmProperties.Resources.StartupLaunchingServiceText;
             MsgBox msg = new(message, AdmProperties.Resources.StartupLaunchingServiceTitle, "info", "none")
