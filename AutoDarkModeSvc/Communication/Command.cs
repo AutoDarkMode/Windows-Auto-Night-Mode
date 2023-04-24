@@ -100,6 +100,13 @@ namespace AutoDarkModeSvc.Communication
         public const string GetRequestedTheme = "--get-requested-theme";
 
         /// <summary>
+        /// Returns the current system colorization color (accent color)
+        /// Returns a hex string of the last parsed colorization color
+        /// </summary>
+        [Includable]
+        public const string GetCurrentColorization = "--get-colorization";
+
+        /// <summary>
         /// Checks for updates silently
         /// ApiResponse with StatusCode.New if an update is available, <br/>
         /// StatusCode.Ok if no update is available <br/>

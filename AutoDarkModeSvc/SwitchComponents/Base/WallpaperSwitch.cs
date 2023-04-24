@@ -70,7 +70,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.SolidColor && currentSolidColorTheme != targetTheme)
             {
-                return SolidColorNeedsUpdate();
+                return SolidColorNeedsUpdateHandler();
             }
             else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
             {
@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected virtual bool SolidColorNeedsUpdate()
+        protected virtual bool SolidColorNeedsUpdateHandler()
         {
             HookPosition = HookPosition.PreSync;
             return true;

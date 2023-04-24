@@ -272,7 +272,8 @@ namespace AutoDarkModeSvc.Core
                         // if we are using the wallpaper switcher that requires theme files then we cannot ignore the wallpaper settings anymore
                         // This means that this type of wallpaper switch cannot be used for builds older than 22621.1105 because they do not natively support spotlight
                         // Using this with a build that doesn't support spotlight would cause solid color or invalid wallpapers to appear whenever spotlight is enabled.
-                        if (!componentsToUpdate.Any(c => c is WallpaperSwitchThemeFile)) 
+                        // In addition, a colorization switch always needs a wallpaper refresh
+                        if (!componentsToUpdate.Any(c => c is WallpaperSwitchThemeFile) && !componentsToUpdate.Any(c => c is ColorizationSwitch))
                         {
                             flagList = new() { ThemeApplyFlags.IgnoreBackground };
                         }

@@ -20,8 +20,10 @@
 using AutoDarkModeApp.Controls;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
 using ModernWpf.Media.Animation;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -40,19 +42,92 @@ namespace AutoDarkModeApp.Pages
         public ColorControlPanel ColorControlsDark
         { get { return darkColorizationSetBox; } }
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private bool init = true;
 
         public PageColorization()
         {
             InitializeComponent();
 
-            // todo get from backend
-            if (builder.Config.ColorizationSwitch.Component.LightHex.Length == 0)
+            if (!builder.Config.ColorizationSwitch.Component.LightAutoColorization)
             {
-                builder.Config.ColorizationSwitch.Component.LightHex = "#FF000000";
+                LightExpander.IsExpanded = true;
+                LightAutoColorizationComboBox.SelectedItem = ManualLight;
             }
-            if (builder.Config.ColorizationSwitch.Component.DarkHex.Length == 0)
+            else
             {
-                builder.Config.ColorizationSwitch.Component.DarkHex = "#FF000000";
+                LightColorPickerStackPanel.IsEnabled = false;
+            }
+
+
+            if (!builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
+            {
+                DarkExpander.IsExpanded = true;
+                DarkAutoColorizationComboBox.SelectedItem = ManualDark;
+            }
+            else
+            {
+                DarkColorPickerStackPanel.IsEnabled = false;
+            }
+
+            if (builder.Config.ColorizationSwitch.Enabled)
+            {
+                ToggleSwitchColorizationEnabled.IsOn = true;
+            }
+            else
+            {
+                ToggleSwitchColorizationEnabled.IsOn = false;
+            }
+            init = false;
+        }
+
+        private void InitializeColors()
+        {
+            var Component = builder.Config.ColorizationSwitch.Component;
+
+            // If either the Light or Dark hex colors are unset, or auto colorization is enabled for any value,
+            // we need to retreive those values from the live theme file and set them
+            if (Component.LightHex.Length == 0 || Component.DarkHex.Length == 0 || Component.LightAutoColorization || Component.DarkAutoColorization)
+            {
+                string messageRaw = MessageHandler.Client.SendMessageAndGetReply(Command.GetCurrentColorization);
+                ApiResponse response = ApiResponse.FromString(messageRaw);
+                if (response.StatusCode == StatusCode.Ok)
+                {
+                    if (Component.LightHex.Length == 0) Component.LightHex = response.Message;
+                    if (Component.DarkHex.Length == 0) Component.DarkHex = response.Message;
+                    if (Component.LightAutoColorization) Component.LightHex = response.Message;
+                    if (Component.DarkAutoColorization) Component.DarkHex = response.Message;
+
+                    try
+                    {
+                        builder.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveBackendColorization");
+                    }
+                }
+                else
+                {
+                    ErrorMessageBoxes.ShowErrorMessageFromApi(response, Window.GetWindow(this));
+
+                    if (Component.LightHex.Length == 0)
+                    {
+                        Component.LightHex = "#C40078D4";
+                    }
+                    if (Component.DarkHex.Length == 0)
+                    {
+                        Component.DarkHex = "#C40078D4";
+                    }
+
+                    try
+                    {
+                        builder.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveDefaultColorization");
+                    }
+                }
             }
 
             Color lightColorizationColor = Color.FromRgb(0, 0, 0);
@@ -64,7 +139,7 @@ namespace AutoDarkModeApp.Pages
             }
             catch (Exception ex)
             {
-                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "ColorizationPage", "Your hex strings are invalid, please set correct hex strings");
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "ColorizationPage", "Hex strings are invalid");
             }
 
             lightColorizationColor.A = 255;
@@ -74,26 +149,6 @@ namespace AutoDarkModeApp.Pages
             ColorControlsLight.SelectedColorBrush = new(lightColorizationColor);
             ColorControlsDark.InitialColorBrush = new(darkColorizationColor);
             ColorControlsDark.SelectedColorBrush = new(darkColorizationColor);
-
-            if (!builder.Config.ColorizationSwitch.Component.LightAutoColorization)
-            {
-                LightExpander.IsExpanded = true;
-                LightAutoColorizationComboBox.SelectedItem = ManualLight;
-            }
-            if (!builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
-            {
-                DarkExpander.IsExpanded = true;
-                DarkAutoColorizationComboBox.SelectedItem = ManualDark;
-            }
-
-            if (builder.Config.ColorizationSwitch.Enabled)
-            {
-                ToggleSwitchColorizationEnabled.IsOn = true;
-            }
-            else
-            {
-                ToggleSwitchColorizationEnabled.IsOn = true;
-            }
         }
 
         private void TextBlockBackButton_MouseDown(object sender, MouseButtonEventArgs e)
@@ -101,19 +156,132 @@ namespace AutoDarkModeApp.Pages
             Frame.Navigate(typeof(PagePersonalization), null, new DrillInNavigationTransitionInfo());
         }
 
-        private void ToggleSwitchAutoColorization_Toggled(object sender, RoutedEventArgs e)
+        private void ToggleSwitchColorizationEnabled_Toggled(object sender, RoutedEventArgs e)
         {
-
+            if (init) return;
+            builder.Config.ColorizationSwitch.Enabled = ToggleSwitchColorizationEnabled.IsOn;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveBackendColorization");
+            }
         }
 
         private void darkColorizationSetBox_ColorChanged(object sender, ColorChangedEventArgs e)
         {
-
+            builder.Config.ColorizationSwitch.Component.DarkHex = e.CurrentColor.ToString();
         }
 
         private void lightColorizationSetBox_ColorChanged(object sender, ColorChangedEventArgs e)
         {
+            builder.Config.ColorizationSwitch.Component.LightHex = e.CurrentColor.ToString();
+        }
 
+        private async void DarkColorizationButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                darkColorizationSetBox.InitialColorBrush = new((Color)ColorConverter.ConvertFromString(builder.Config.ColorizationSwitch.Component.DarkHex));
+                builder.Save();
+                await RequestSwitch();
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "Colorization_SetLight");
+            }
+        }
+
+        private async void LightColorizationButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                lightColorizationSetBox.InitialColorBrush = new((Color)ColorConverter.ConvertFromString(builder.Config.ColorizationSwitch.Component.LightHex));
+                builder.Save();
+                await RequestSwitch();
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "Colorization_SetLight");
+            }
+        }
+
+        private async void LightAutoColorizationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (init) return;
+            if (LightAutoColorizationComboBox.SelectedItem == AutoLight)
+            {
+                builder.Config.ColorizationSwitch.Component.LightAutoColorization = true;
+                LightColorPickerStackPanel.IsEnabled = false;
+            }
+            else
+            {
+                builder.Config.ColorizationSwitch.Component.LightAutoColorization = false;
+                LightColorPickerStackPanel.IsEnabled = true;
+                LightExpander.IsExpanded = true;
+            }
+
+            try
+            {
+                builder.Save();
+                await RequestSwitch();
+                if (builder.Config.ColorizationSwitch.Component.LightAutoColorization)
+                {
+                    InitializeColors();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "Colorization_ToggleAutomaticLight");
+            }
+        }
+
+        private async void DarkAutoColorizationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (init) return;
+
+            if (DarkAutoColorizationComboBox.SelectedItem == AutoDark)
+            {
+                builder.Config.ColorizationSwitch.Component.DarkAutoColorization = true;
+                DarkColorPickerStackPanel.IsEnabled = false;
+            }
+            else
+            {
+                builder.Config.ColorizationSwitch.Component.DarkAutoColorization = false;
+                DarkColorPickerStackPanel.IsEnabled = true;
+                DarkExpander.IsExpanded = true;
+            }
+
+            try
+            {
+                builder.Save();
+                await RequestSwitch();
+                if (builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
+                {
+                    Dispatcher.Invoke(InitializeColors);
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "Colorization_ToggleAutomaticDark");
+            }
+
+        }
+
+        private async Task RequestSwitch()
+        {
+            string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException("Api " + result, "PageTime");
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            InitializeColors();
         }
     }
 }

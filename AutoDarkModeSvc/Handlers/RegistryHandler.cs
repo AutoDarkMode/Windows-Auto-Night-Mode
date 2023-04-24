@@ -174,6 +174,15 @@ namespace AutoDarkModeSvc.Handlers
             return themePath;
         }
 
+        public static string GetColorizationColor()
+        {
+            using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM");
+            int value = (int)key.GetValue("ColorizationColor");
+            string hexString = value.ToString("X");
+            hexString = "FF" + hexString[2..];
+            return $"#{hexString}";
+        }
+
         /// <summary>
         /// Retrieves the operating system version
         /// </summary>

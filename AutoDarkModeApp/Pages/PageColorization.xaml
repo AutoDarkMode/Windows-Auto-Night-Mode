@@ -9,7 +9,29 @@
          xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
          mc:Ignorable="d"
          d:DesignWidth="700"
+         Loaded="Page_Loaded"
          Title="PageColorization">
+    <ui:Page.Resources>
+        <Style TargetType="Grid"
+               x:Key="DisabledDarkGridStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=SetGridDark, Path=IsEnabled}"
+                             Value="False">
+                    <Setter Property="Opacity"
+                            Value="0.25" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style><Style TargetType="Grid"
+               x:Key="DisabledLightGridStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=SetGridLight, Path=IsEnabled}"
+                             Value="False">
+                    <Setter Property="Opacity"
+                            Value="0.25" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </ui:Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -52,7 +74,7 @@
         <uc:Card Grid.Row="3"
                  Grid.Column="1"
                  Margin="0,0,0,4"
-                 Padding="30,15,15,12">
+                 Padding="30,15,15,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -71,7 +93,7 @@
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
                                  Margin="0,0,0,0"
-                                 Toggled="ToggleSwitchAutoColorization_Toggled" />
+                                 Toggled="ToggleSwitchColorizationEnabled_Toggled" />
             </Grid>
         </uc:Card>
 
@@ -85,11 +107,12 @@
 
         <uc:Card Grid.Row="5"
                  Grid.Column="1"
-                 Padding="30,20,15,15">
+                 Padding="30,18,15,12">
 
             <Expander FlowDirection="RightToLeft" Name="LightExpander">
                 <Expander.Header>
                     <Grid Margin="0,0,0,0"
+                          Cursor="Hand"
                           FlowDirection="LeftToRight"
                           VerticalAlignment="Center"
                           HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource AncestorType=ContentPresenter}, Mode=OneWayToSource}">
@@ -113,6 +136,7 @@
                         <ComboBox Name="LightAutoColorizationComboBox"
                                   Grid.Column="2"
                                   Grid.Row="0"
+                                  SelectionChanged="LightAutoColorizationComboBox_SelectionChanged"
                                   MinWidth="120"
                                   SelectedIndex="0">
                             <ComboBoxItem Content="Automatic"
@@ -140,7 +164,9 @@
                     <Separator Margin="-30,10,-15,0"
                                Background="{DynamicResource Win11Border}" />
 
-                    <Grid Margin="0,10,0,0">
+                    <Grid Margin="0,10,0,0"
+                          Name="SetGridLight"
+                          Style="{StaticResource DisabledLightGridStyle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -154,6 +180,7 @@
                         <Button Content="{x:Static p:Resources.offsetButton}"
                                 Width="80"
                                 Grid.Column="2"
+                                Click="LightColorizationButton_Click"
                                 Name="LightColorizationButton"
                                 Height="30" />
 
@@ -174,11 +201,12 @@
         <uc:Card Grid.Row="7"
                  Grid.Column="1"
                  Margin="0,0,0,0"
-                 Padding="30,20,15,15">
+                 Padding="30,18,15,12">
             <ui:SimpleStackPanel>
                 <Expander FlowDirection="RightToLeft" Name="DarkExpander">
                     <Expander.Header>
                         <Grid Margin="0,0,0,0"
+                              Cursor="Hand"
                               FlowDirection="LeftToRight"
                               HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource AncestorType=ContentPresenter}, Mode=OneWayToSource}">
                             <Grid.ColumnDefinitions>
@@ -195,6 +223,7 @@
                             <ComboBox Name="DarkAutoColorizationComboBox"
                                       Grid.Column="2"
                                       MinWidth="120"
+                                      SelectionChanged="DarkAutoColorizationComboBox_SelectionChanged"
                                       SelectedIndex="0">
                                 <ComboBoxItem Content="Automatic"
                                               Name="AutoDark" />
@@ -222,7 +251,7 @@
                         <Separator Margin="-30,10,-15,0"
                                    Background="{DynamicResource Win11Border}" />
 
-                        <Grid Margin="0,10,0,0">
+                        <Grid Margin="0,10,0,0" Name="SetGridDark" Style="{StaticResource DisabledDarkGridStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
@@ -236,6 +265,7 @@
                             <Button Content="{x:Static p:Resources.offsetButton}"
                                     Width="80"
                                     Grid.Column="2"
+                                    Click="DarkColorizationButton_Click"
                                     Name="DarkColorizationButton"
                                     Height="30" />
 

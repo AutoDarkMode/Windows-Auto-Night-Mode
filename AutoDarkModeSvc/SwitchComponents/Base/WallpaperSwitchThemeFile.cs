@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentIndividualTheme = Theme.Unknown;
             spotlightEnabled = false;
         }
-        protected override bool SolidColorNeedsUpdate()
+        protected override bool SolidColorNeedsUpdateHandler()
         {
             HookPosition = HookPosition.PostSync;
             return true;

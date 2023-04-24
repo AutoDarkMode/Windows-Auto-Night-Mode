@@ -24,13 +24,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 if (autoColorizationState != Settings.Component.DarkAutoColorization) return true;
                 else if (invalidHexFound && (Settings.Component.DarkAutoColorization == false)) return false;
-                else if (GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1 != Settings.Component.DarkHex) return true;
+                else if (!Settings.Component.DarkAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.DarkHex) return true;
             }
             else if (newTheme == Theme.Light)
             {
                 if (autoColorizationState != Settings.Component.LightAutoColorization) return true;
                 else if (invalidHexFound && (Settings.Component.LightAutoColorization == false)) return false;
-                else if (GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1 != Settings.Component.LightHex) return true;
+                else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex) return true;
             }
             return false;
         }

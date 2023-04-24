@@ -26,6 +26,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeSvc.Handlers.IThemeManager2;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -387,6 +388,31 @@ namespace AutoDarkModeSvc.Communication
                             StatusCode = StatusCode.Ok,
                             Message = Enum.GetName(typeof(Theme), state.RequestedTheme)
                         }.ToString());
+                        break;
+                    #endregion
+
+                    #region CurrentColorization
+                    case Command.GetCurrentColorization:
+                        Logger.Info("signal received: current colorization");
+                        try
+                        {
+                            string colCol = RegistryHandler.GetColorizationColor();
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Ok,
+                                Message = colCol.Replace("0x", "#")
+                            }.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "error while retrieving colorizatoin color:");
+                            SendResponse(new ApiResponse()
+                            {
+                                StatusCode = StatusCode.Err,
+                                Message = ex.Message,
+                                Details = ex.Source
+                            }.ToString());
+                        }                        
                         break;
                     #endregion
 

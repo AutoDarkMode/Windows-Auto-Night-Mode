@@ -39,6 +39,7 @@ using AutoDarkModeLib.IThemeManager2;
 using AutoDarkModeSvc.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -110,6 +111,16 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
         private static bool SetThemeViaPath(string path, Interfaces.IThemeManager2 manager)
         {
             int res = manager.OpenTheme(IntPtr.Zero, path, ThemePackFlags.Silent);
+            if (res != 0)
+            {
+                throw new ExternalException($"error setting theme via path, hr: {res}", res);
+            }
+            return true;
+        }
+
+        private static bool SetThemeViaAddAndSelect(string path, Interfaces.IThemeManager2 manager, ThemeApplyFlags flags)
+        {
+            int res = manager.AddAndSelectTheme(IntPtr.Zero, path, flags, ThemePackFlags.Silent);
             if (res != 0)
             {
                 throw new ExternalException($"error setting theme via path, hr: {res}", res);
@@ -210,6 +221,9 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                         if (targetTheme != null)
                         {
                             found = true;
+
+                            // Using this enables setting themes without explicitly knowing the display name. May be useful for later
+                            // success = etThemeViaAddAndSelect(originalPath, manager, flags);
                             success = SetThemeViaIdx(targetTheme, manager, flags);
                             if (success)
                             {

@@ -501,7 +501,6 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     }
                 }
 
-
                 if (!keepDisplayNameAndGuid)
                 {
                     DisplayName = "ADMTheme";

@@ -63,7 +63,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
 
             void DeleteTheme(string unk1);
             int OpenTheme(IntPtr hwnd, string path, ThemePackFlags packFlags);
-            void AddAndSelectTheme(IntPtr hwnd, string path, ThemeApplyFlags applyFlags, ThemePackFlags packFlags);
+            int AddAndSelectTheme(IntPtr hwnd, string path, ThemeApplyFlags applyFlags, ThemePackFlags packFlags);
             void SQMCurrentTheme();
             void ExportRoamingThemeToStream(IStream stream, int unk1);
             void ImportRoamingThemeFromStream(IStream stream, int unk1);

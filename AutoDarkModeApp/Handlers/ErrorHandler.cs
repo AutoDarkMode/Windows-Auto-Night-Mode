@@ -111,13 +111,38 @@ namespace AutoDarkModeApp.Handlers
             return;
         }
 
+        public static void ShowErrorMessageFromApi(ApiResponse response, Window owner)
+        {
+            string error = $"{AdmProperties.Resources.ErrorMessageBox}\n\n" +
+                $"API Response:\n" +
+                $"Status Code: {response.StatusCode}\n" +
+                $"Message: {response.Message}\n" +
+                $"Details: {response.Details}";
+            MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
+            {
+                Owner = owner
+            };
+            msg.ShowDialog();
+            bool result = msg.DialogResult ?? false;
+            if (result)
+            {
+                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            }
+            return;
+        }
+
         public static void ShowErrorMessage(Exception ex, Window owner, string location, string extraInfo = "")
         {
             string error = AdmProperties.Resources.ErrorMessageBox + $"\n\nError ocurred in: {location} " + ex.Source +
                            "\n\n" + ex.Message;
             if (extraInfo.Length > 0)
             {
-                error = "\n";
+                error += "\n";
             }
             MsgBox msg = new(error, AdmProperties.Resources.errorOcurredTitle, "error", "yesno")
             {
