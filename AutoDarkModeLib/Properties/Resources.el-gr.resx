@@ -565,14 +565,11 @@
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Αυτή η δυνατότητα είναι απενεργοποιημένη όταν είναι ενεργοποιημένη η λειτουργία θέματος.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Αυτή η δυνατότητα είναι απενεργοποιημένη όταν είναι ενεργοποιημένη η λειτουργία ταπετσαρίας.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Προσφέρει περισσότερες δυνατότητες, αλλά πρέπει να ρυθμίσετε ένα αρχείο Windows .theme. Προσαρμόστε την ταπετσαρία της επιφάνειας εργασίας σας ανά οθόνη, ορίστε μια παρουσίαση, αλλάξτε τον δείκτη του ποντικιού σας, ορίστε ένα χρώμα έμφασης και μεμονωμένους ήχους.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Προσφέρει λιγότερες δυνατότητες, αλλά είναι πιο εύκολο να ρυθμιστεί. Προσαρμόστε την ταπετσαρία της επιφάνειας εργασίας σας για όλες τις οθόνες, μεμονωμένες οθόνες ή ορίστε ένα χρώμα φόντου.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Ελέγχουμε για νέες εκδόσεις του Auto Dark Mode στο παρασκήνιο. Οταν είναι διαθέσιμη μια ενημέρωση, θα σας ειδοποιήσουμε μέσω αναδυόμενης ειδοποίησης (toast)</value>
@@ -1135,5 +1132,20 @@
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

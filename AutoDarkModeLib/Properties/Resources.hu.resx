@@ -565,14 +565,11 @@ Mellékjegyzet: SOHA ne futtassa manuálisan rendszergazdaként az Auto Dark Mod
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Ez a funkció le van tiltva, ha a téma mód engedélyezve van.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Ez a funkció le van tiltva, ha a háttérkép mód engedélyezve van.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>További szolgáltatásokat kínál, de be kell állítania egy Windows .theme fájlt. Testreszabhatja az asztali háttérképet monitoronként, állítson be diavetítést, változtassa meg az egérmutatót, állítson be kiemelő színt és egyedi hangokat.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Kevesebb funkciót kínál, de könnyebben beállítható. Testreszabhatja az asztal háttérképét az összes monitorhoz, az egyes monitorokhoz, vagy beállíthat egy háttérszínt.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Ellenőrizzük az Auto Dark Mode új verzióit a háttérben. Ha frissítés áll rendelkezésre, felugró üzenettel értesítjük</value>
@@ -1135,5 +1132,20 @@ Tényleg folytatni szeretné?</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

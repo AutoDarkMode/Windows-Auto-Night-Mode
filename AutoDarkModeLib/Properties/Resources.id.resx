@@ -565,14 +565,11 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Fitur ini dinonaktifkan ketika mode tema diaktifkan.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Fitur ini dinonaktifkan ketika mode latar belakang diaktifkan.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Menawarkan lebih banyak fitur, tetapi Anda harus membuat file tema Windows (.themes) Anda sendiri. Kustomisasi latar belakang Anda per layar, menyetel diashow, mengganti kursor mouse Anda, menyetel aksen warna dan suara secara individu.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Menawarkan lebih sedikit fitur, tetapi lebih mudah disiapkan. Kustomisasi latar belakang desktop Anda untuk semua layar, layar individu atau warna latar.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Kami memeriksa versi terbaru dari Auto Dark Mode di latar belakang. Ketika pembaruan tersedia, kami akan memberitahukan Anda</value>
@@ -819,7 +816,7 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Cegah memaksa tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Nyalakan hotkey secara system-wide</value>
+    <value>Nyalakan hotkey secara menyeluruh</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Paksa Mode Gelap</value>
@@ -1135,5 +1132,20 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

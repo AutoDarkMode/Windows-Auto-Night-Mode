@@ -565,14 +565,11 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Tema modu etkinken bu özellik devre dışı bırakılır.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Arka plan modu etkinken bu özellik devre dışı bırakılır.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Daha fazla özellik sunar, ancak bir windows .theme dosyası ayarlamanız gerekir. Masaüstü arka plan resminizi her monitör için özelleştirebilir, bir slayt gösterisi ayarlayabilir, fare imlecini değiştirebilir, vurgu rengi ve sesleri ayarlayabilirsiniz.</value>
+    <value>Ayrı ayrı koyu ve açık mod için farklı bir Windows teması seçebilirsiniz. Tam tema özelleştirmesine izin verir ama .theme dosyalarını kendi başınıza ayarlamanız gerekir.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Daha az özellik sunar, ancak kurulumu daha kolaydır. Tüm monitörler ya da ayrı ayrı her biri için arka plan resmini özelleştirebilir, bir arka plan rengi ayarlayabilirsiniz.</value>
+    <value>Arka plan resminizi tüm monitörler ya da her biri için için özelleştirebilirsiniz. Bir arka plan rengi ayarlayabilir ya da spot ışığını etkinleştirebilirsiniz.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Arka planda Auto Dark Mode'un yeni sürümlerini kontrol ediyoruz. Bir güncelleme mevcut olduğunda sizi bilgilendireceğiz</value>
@@ -1131,9 +1128,24 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>&amp;Temayı değiştir</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Spot ışığı</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Windows spot ışığı</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

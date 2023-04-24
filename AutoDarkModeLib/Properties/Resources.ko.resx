@@ -553,14 +553,11 @@ Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>테마 모드가 활성화된 동안에는 이 기능을 사용할 수 없습니다.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>배경화면 모드가 활성화된 동안에는 이 기능을 사용할 수 없습니다.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>더 많은 기능을 제공하지만 Windows .theme 파일을 설정해야 합니다. 모니터별로 바탕 화면 배경화면을 사용자 지정하고, 디아시를 설정하고, 마우스 커서를 변경하고, 강조 색상과 개별 소리를 설정합니다.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>기능은 적지만 설정하기는 더 쉽습니다. 모든 모니터, 개별 모니터에 대해 바탕 화면 배경화면을 사용자 지정하거나 배경색을 설정합니다.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>백그라운드에서 새 버전의 Auto Dark Mode를 확인합니다. 업데이트가 가능하면 토스트 알림을 통해 알려드리겠습니다.</value>
@@ -1134,5 +1131,20 @@ Do you really want to continue?</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

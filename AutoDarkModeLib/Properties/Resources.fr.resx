@@ -565,14 +565,11 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Cette fonctionnalité est désactivée tant que le mode thème est activé.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Cette fonctionnalité est désactivée tant que le mode fond d'écran est activé.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Offre plus de fonctionnalités, mais vous devez configurer un fichier .theme pour Windows. Personnalisez votre fond d'écran par écran, utilisez un diaporama, modifiez le curseur de votre souris, sélectionnez une couleur d'accentuation et des sons spécifiques.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Offre moins de fonctionnalités, mais est plus facile à configurer. Personnalisez votre fond d'écran pour tous les écrans, les écrans individuellement ou sélectionnez une couleur d'arrière-plan.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Nous vérifions l'existence de nouvelles versions d'Auto Dark Mode en arrière-plan. Lorsqu'une mise à jour est disponible, nous vous en informons par une notification</value>
@@ -847,7 +844,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Minutes jusqu'à ce que le système soit considéré comme inactif</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Couleur d'accentuation de la barre de titre et des contours de la fenêtre seulement pendant</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Information de version copiée dans le presse-papier</value>
@@ -1134,6 +1131,21 @@ Voulez-vous vraiment continuer ?</value>
     <value>Spotlight</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Windows à la une</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

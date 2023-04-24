@@ -565,14 +565,11 @@ Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền 
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi chủ đề.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Chức năng này bị tắt khi đang sử dụng chế độ đổi hình nền.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Cung cấp nhiều tính năng hơn, nhưng bạn cần thiết lập tập tin .theme của Windows. Bạn có thể tùy chỉnh hình nền máy tính của bạn cho mỗi màn hình, thay đổi con trỏ chuột, đặt màu nhấn và âm thanh riêng lẻ.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Cung cấp ít tính năng hơn, nhưng dễ thiết lập hơn. Bạn có thể tùy chỉnh hình nền máy tính của bạn cho tất cả các màn hình, từng màn hình hoặc đặt màu nền.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Ứng dụng sẽ kiểm tra cập nhật cho Auto Dark Mode tự động. Khi có cập nhật, ứng dụng sẽ thông báo cho bạn</value>
@@ -1135,5 +1132,20 @@ Bạn có muốn tiếp tục?</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>
