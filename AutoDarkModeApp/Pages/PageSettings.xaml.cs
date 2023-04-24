@@ -31,6 +31,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Management;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -40,6 +41,7 @@ namespace AutoDarkModeApp.Pages
     public partial class PageSettings : Page
     {
         readonly string curLanguage = Settings.Default.Language;
+        string selectedLanguage = Settings.Default.Language;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private readonly bool init = true;
         readonly Updater updater = new();
@@ -293,30 +295,23 @@ namespace AutoDarkModeApp.Pages
         {
             if (!init)
             {
-                string selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString().Replace("_", "-");
+                selectedLanguage = ComboBoxLanguageSelection.SelectedValue.ToString().Replace("_", "-");
                 if (selectedLanguage != curLanguage)
                 {
-                    SetLanguage(selectedLanguage);
-                    Translator.Text = AdmProperties.Resources.lblTranslator;
+                    Translator.Text = AdmProperties.Resources.ResourceManager.GetString("lblTranslator", new(selectedLanguage));
                     DockPanelLanguageRestart.Visibility = Visibility.Visible;
-                    TextBlockLanguageRestart.Text = AdmProperties.Resources.restartNeeded;
-                    ButtonRestart.Content = AdmProperties.Resources.restart;
+                    TextBlockLanguageRestart.Text = AdmProperties.Resources.ResourceManager.GetString("restartNeeded", new(selectedLanguage));
+                    ButtonRestart.Content = AdmProperties.Resources.ResourceManager.GetString("restart", new(selectedLanguage));
                     Settings.Default.LanguageChanged = true;
-                    builder.Config.Tunable.UICulture = selectedLanguage;
-                    try
-                    {
-                        builder.Save();
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowErrorMessage(ex, "comboboxlanguageselection_builder_save");
-                    }
+
                 }
                 else
                 {
                     SetLanguage(selectedLanguage);
-                    DockPanelLanguageRestart.Visibility = Visibility.Visible;
                     Translator.Text = AdmProperties.Resources.lblTranslator;
+                    DockPanelLanguageRestart.Visibility = Visibility.Collapsed;
+                    TextBlockLanguageRestart.Text = AdmProperties.Resources.restartNeeded;
+                    ButtonRestart.Content = AdmProperties.Resources.restart;
                     Settings.Default.LanguageChanged = false;
                 }
             }
@@ -333,6 +328,17 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
+                SetLanguage(selectedLanguage);
+                builder.Config.Tunable.UICulture = selectedLanguage;
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "comboboxlanguageselection_builder_save");
+                }
+
                 MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
                 Settings.Default.Save();
                 Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp)

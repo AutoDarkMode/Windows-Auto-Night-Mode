@@ -128,7 +128,6 @@ namespace AutoDarkModeApp
                 Settings.Default.LanguageChanged = false;
             }
 
-
             if (mainWin != null)
             {
                 mainWin.Show();
