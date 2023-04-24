@@ -565,14 +565,11 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>テーマモードが有効の間、この機能は無効です。</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>壁紙モードが有効の間、この機能は無効です。</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>より多くの機能がありますが、Windows の .theme ファイルを設定する必要があります。モニターごとに、壁紙やスライドショー、マウスカーソル、アクセントカラーや個別のサウンドを設定できます。</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>機能は少ないですが設定が簡単です。すべてのモニターや、個々のモニターの壁紙を指定したり、背景色を設定できます。</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Auto Dark Mode の最新版をバックグラウンドで確認します。最新版が利用可能なら、ポップアップ通知でお知らせします</value>
@@ -1135,5 +1132,20 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

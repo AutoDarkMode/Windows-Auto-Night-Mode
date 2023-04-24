@@ -565,14 +565,11 @@
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Эта функция отключена, пока включен выбор темы.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Эта функция отключена, пока включен выбор обоев.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Предлагает больше возможностей, но вам необходимо настроить файлы тем. Настройте обои рабочего стола для каждого монитора, установите несколько обоев на слайд-шоу, измените курсор мыши, установите цвета и отдельные звуки.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Предлагает меньше функций, но проще в настройке. Настройте обои рабочего стола для всех мониторов, отдельных мониторов или установите цвет фона.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Мы проверяем наличие новых версий Auto Dark Mode в фоновом режиме. Когда обновление будет доступно, мы сообщим вам об этом с помощью всплывающего уведомления</value>
@@ -1135,5 +1132,20 @@
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

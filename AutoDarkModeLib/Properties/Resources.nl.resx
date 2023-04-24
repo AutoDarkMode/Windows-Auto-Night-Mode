@@ -565,14 +565,11 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Deze functie is uitgeschakeld wanneer het lichte thema is ingeschakeld.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Deze functie is uitgeschakeld wanneer de bureaubladachtergrondmodus is ingeschakeld.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Biedt meer functies, maar er moet een .theme-bestand worden ingesteld. Stel een andere bureaubladachtergrond in per beeldscherm, stel een diavoorstelling in of stel verschillende accentkleuren en geluiden in.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Biedt minder functies, maar is makkelijker om in te stellen. Stel een andere bureaubladachtergrond of -kleur in voor alle beeldschermen of voor individuele beeldschermen.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Er wordt op de achtergrond gezocht naar nieuwe versies van Auto Dark Mode. Wanneer er een update beschikbaar is, wordt u op de hoogte gesteld middels een melding.</value>
@@ -1135,5 +1132,20 @@ Wilt u alsnog doorgaan?</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>

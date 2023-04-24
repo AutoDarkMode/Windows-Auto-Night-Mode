@@ -566,14 +566,11 @@ Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!<
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Esta funcionalidade está desactivada enquanto o modo de tema está activado.</value>
   </data>
-  <data name="tbFeatureDisabledWhileWallpaperMode" xml:space="preserve">
-    <value>Esta funcionalidade está desactivada enquanto o modo de imagem de fundo está activado.</value>
-  </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Oferece mais funcionalidades mas precisa de configurar um ficheiro .theme do Windows. Personalize a imagem de fundo do Ambiente de Trabalho por ecrã. defina um slideshow, altere o ponteiro do rato, defina uma cor de destaque e sons individuais.</value>
+    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Oferece manos funcionalidades mas é mais fácil configurar. Personalize a sua imagem de fundo do Ambiente de Trabalho para todos os ecrãs, ecrã individual ou uma cor de fundo.</value>
+    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Vamos procurar por novas versões do Auto Dark Mode em segundo plano. Quando uma actualização está disponível, vamos notificá-lo via notificação junto ao relógio</value>
@@ -1136,5 +1133,20 @@ Tem a certeza que quer continuar?</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
     <value>Windows spotlight</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Accent color</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Update colorization</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
 </root>
