@@ -566,10 +566,10 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>启用主题模式时无法开启本功能。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>分别为深色和浅色模式选择不同的 Windows 主题。允许完全自定义主题，但需要您自行设置 .theme 文件。</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>为所有显示器或单个显示器自定义您的桌面壁纸，设置背景颜色或启用 Spotlight。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>我们在后台检查新版 Auto Dark Mode，并通过桌面通知提醒您更新新版本</value>
