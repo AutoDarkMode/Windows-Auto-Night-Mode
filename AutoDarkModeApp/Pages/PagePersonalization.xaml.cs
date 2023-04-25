@@ -67,6 +67,11 @@ namespace AutoDarkModeApp.Pages
                 FontIconTheme.FontFamily = new("Segoe Fluent Icons");
                 FontIconWallpaper.FontFamily = new("Segoe Fluent Icons");
             }
+
+            if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+            {
+                ColorizationPickerCard.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void SetThemePickerEnabled()

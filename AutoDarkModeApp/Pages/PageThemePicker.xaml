@@ -354,10 +354,12 @@
                    FontFamily="Segoe UI Semibold"
                    Margin="0,30,0,10"
                    FontSize="14"
+                   Name="IgnoreSettingsTextBlock"
                    Text="{x:Static p:Resources.ThemeHeaderIgnoreFlags}" />
 
 
         <uc:Card  Grid.Column="1"
+                  x:Name="IgnoreSettingsCard"
                   Grid.Row="11"
                   Padding="30,15,15,10">
             <ui:SimpleStackPanel Margin="0,0,0,0"

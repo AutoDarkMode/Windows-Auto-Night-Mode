@@ -65,6 +65,12 @@ namespace AutoDarkModeApp.Pages
                 FontIconLink.FontFamily = new("Segoe Fluent Icons");
             }
 
+            if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+            {
+                IgnoreSettingsTextBlock.Visibility = Visibility.Collapsed;
+                IgnoreSettingsCard.Visibility = Visibility.Collapsed;
+            }
+
             init = false;
         }
 

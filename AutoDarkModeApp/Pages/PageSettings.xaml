@@ -481,7 +481,7 @@
                                        Margin="0,0,0,0"
                                        VerticalAlignment="Top"
                                        HorizontalAlignment="Left"
-                                       FontSize="13"
+                                       FontSize="14"
                                        Text="{x:Static p:Resources.ConfigHyperLinkOpenConfig}"
                                        TextWrapping="Wrap"
                                        MaxWidth="650" />
@@ -519,7 +519,7 @@
                                        Margin="0,0,0,0"
                                        VerticalAlignment="Top"
                                        HorizontalAlignment="Left"
-                                       FontSize="13"
+                                       FontSize="14"
                                        Text="{x:Static p:Resources.ConfigHyperLinkOpenConfigFolder}"
                                        TextWrapping="Wrap"
                                        MaxWidth="650" />
@@ -561,6 +561,7 @@
                         <TextBlock Text="{x:Static p:Resources.SettingsPageAutostartDescription}"
                                    Grid.Column="0"
                                    Grid.Row="0"
+                                   FontSize="14"
                                    VerticalAlignment="Center" />
 
 
