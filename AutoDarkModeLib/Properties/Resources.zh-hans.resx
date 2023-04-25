@@ -1148,4 +1148,13 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
     <value>启用主题色和/或壁纸切换时无法开启本功能。</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
+    <value>Documentation for custom scriptxs</value>
+  </data>
+  <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
+    <value>Custom script user repository</value>
+  </data>
 </root>

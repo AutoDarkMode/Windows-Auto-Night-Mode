@@ -1150,4 +1150,13 @@ Czy chcesz kontynuować?</value>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
     <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
+    <value>Documentation for custom scriptxs</value>
+  </data>
+  <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
+    <value>Custom script user repository</value>
+  </data>
 </root>
