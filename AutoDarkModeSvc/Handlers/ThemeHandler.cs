@@ -239,6 +239,7 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Apply(oldUnmanagedThemePath, true, null, flagList);
                     }
+                    Thread.Sleep(4000);
                     Logger.Info("refreshed dwm because a module requested it");
                 }
                 catch (Exception ex)
