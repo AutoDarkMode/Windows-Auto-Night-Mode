@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization.NamingConventions;
@@ -25,7 +26,7 @@ using YamlDotNet.Serialization.NamingConventions;
 namespace AutoDarkModeLib
 {
     public enum Mode
-    {   
+    {
         Switch = 0,
         LightOnly = 1,
         DarkOnly = 2,
@@ -88,7 +89,8 @@ namespace AutoDarkModeLib
         PostSync
     }
 
-    public enum BridgeResponseCode {
+    public enum BridgeResponseCode
+    {
         InvalidArguments,
         Success,
         Fail,
@@ -102,7 +104,7 @@ namespace AutoDarkModeLib
         Win11_22H2 = 22621,
     }
 
-    public enum WindowsBuildsUbr: int
+    public enum WindowsBuildsUbr : int
     {
         Win11_22H2_Spotlight = 1105
     }
@@ -123,8 +125,8 @@ namespace AutoDarkModeLib
         public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
         public static readonly string UpdateDataDir = GetUpdateDataDir();
         public static string PathThemeFolder { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
-        public static string PathManagedTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes" ,"ADMTheme.theme");
-        public static string PathManagedDwmRefreshTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes" ,"DwmRefreshTheme.theme");
+        public static string PathManagedTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMTheme.theme");
+        public static string PathManagedDwmRefreshTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "DwmRefreshTheme.theme");
         public static string PathUnmanagedDarkTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmanagedDark.theme");
         public static string PathUnmanagedLightTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmanagedLight.theme");
         public static string NameUnmanagedLightTheme { get; } = "ADMUnmanagedLight";
@@ -280,7 +282,8 @@ namespace AutoDarkModeLib
             return !(ExecutionDir.Contains(pFilesx64) || ExecutionDir.Contains(pFilesx86));
         }
 
-        public static string SerializeLearnedThemesDict(Dictionary<string, string> dict) {
+        public static string SerializeLearnedThemesDict(Dictionary<string, string> dict)
+        {
             YamlDotNet.Serialization.ISerializer yamlSerializer = new YamlDotNet.Serialization.SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
             return yamlSerializer.Serialize(dict);
         }

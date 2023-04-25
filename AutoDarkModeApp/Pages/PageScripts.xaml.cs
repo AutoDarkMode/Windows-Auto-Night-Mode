@@ -34,6 +34,14 @@ namespace AutoDarkModeApp.Pages
             }
             StateUpdateHandler.OnScriptConfigUpdate += HandleConfigUpdate;
             StateUpdateHandler.StartScriptWatcher();
+
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+            {
+                OpenConfigCardIcon.FontFamily = new("Segoe Fluent Icons");
+                DocCardIcon.FontFamily = new("Segoe Fluent Icons");
+                RepoCardIcon.FontFamily = new("Segoe Fluent Icons");
+            }
+
             init = true;
         }
 
@@ -79,7 +87,7 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void ButtonOpenScriptsFile_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void CardOpenScriptsFile_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "scripts.yaml");
             new Process

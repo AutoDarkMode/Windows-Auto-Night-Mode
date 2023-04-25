@@ -57,6 +57,7 @@
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="0,5,15,0"
+                               Name="TextBlockApps"
                                FontFamily="Segoe MDL2 Assets"
                                FontSize="25" />
                     <TextBlock HorizontalAlignment="Left"
@@ -115,6 +116,7 @@
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Margin="0,0,15,0"
+                                   Name="TextBlockSystem"
                                    FontFamily="Segoe MDL2 Assets"
                                    FontSize="25" />
 

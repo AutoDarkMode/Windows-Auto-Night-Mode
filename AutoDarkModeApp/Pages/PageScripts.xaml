@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:helpers="clr-namespace:AutoDarkModeApp.Handlers"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:ui="http://schemas.modernwpf.com/2019"
       d:DesignHeight="900"
@@ -14,9 +15,11 @@
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*"/>
-            <ColumnDefinition Width="10*" MaxWidth="1000" MinWidth="450"/>
-            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="10*"
+                              MaxWidth="1000"
+                              MinWidth="450" />
+            <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -24,9 +27,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -37,120 +38,175 @@
                    FontSize="30"
                    Text="{x:Static p:Resources.PageScriptsTextBlockHeader}" />
 
-        <uc:Card Margin="0,10,0,0"
-                 Padding="15,5,5,15"
-                 Grid.Row="3"
-                 Grid.Column="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                
-
-                <ui:ToggleSwitch Name="ToggleSwitchScripts"
-                                 OffContent="{x:Static p:Resources.ToggleSwitchOff}"
-                                 OnContent="{x:Static p:Resources.ToggleSwitchOn}"
-                                 Grid.Row="0"
-                                 Margin="0,10,0,0"
-                                 Header="{x:Static p:Resources.PageScriptsToggle}"
-                                 Toggled="ToggleSwitchScripts_Toggled" />
-
-                <Button Name="ButtonOpenScriptsFile"
-                        Margin="0,25,0,0"
-                        Grid.Row="1"
-                        Content="{x:Static p:Resources.PageScriptsButtonOpenConfig}"
-                        Click="ButtonOpenScriptsFile_Click" />
-
-            </Grid>
-        </uc:Card>
-
-        <uc:Card Grid.Column="1"
-                 Grid.Row="5"
-                 Padding="5,5,5,5"
-                 MouseDown="CardDocumentationLink_MouseDown"
-                 x:Name="CardDocumentationLink"
-                 Cursor="Hand">
-
-            <Grid Margin="0,15,0,13">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.Column="0"
-                      Margin="15,0,0,0">
+        <ui:SimpleStackPanel Grid.Row="4"
+                             Grid.Column="1">
+            <uc:Card Margin="0,10,0,2"
+                     Padding="30,10,25,10">
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                    <TextBlock
+                    <TextBlock Margin="0,5,0,0"
+                               VerticalAlignment="Center"
                                Grid.Row="0"
-                               Margin="0,0,0,0"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Left"
-                               FontSize="13"
-                               Text="Documentation for custom scripts"
-                               TextWrapping="Wrap"
-                               MaxWidth="650" />
+                               Grid.Column="0"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.PageScriptsToggle}" />
 
+                    <ui:ToggleSwitch Name="ToggleSwitchScripts"
+                                     OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                     OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                                     Grid.Row="0"
+                                     Grid.Column="2"
+                                     Margin="0,5,0,0"
+                                     Toggled="ToggleSwitchScripts_Toggled" />
                 </Grid>
 
-                <ui:FontIcon Grid.Column="3"
-                             Margin="15, 0, 10, 0"
-                             FontSize="15"
-                             FontFamily="Segoe fluent Icons"
-                             Glyph="&#xe71b;" />
+            </uc:Card>
+
+            <uc:Card Grid.Column="1"
+                     Grid.Row="7"
+                     Padding="30,20,5,20"
+                     MouseDown="CardOpenScriptsFile_MouseDown"
+                     x:Name="CardOpenConfig"
+                     Cursor="Hand">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                          Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
 
-            </Grid>
-        </uc:Card>
+                        <TextBlock Grid.Row="0"
+                                   Margin="0,0,0,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   FontSize="14"
+                                   Text="{x:Static p:Resources.PageScriptsButtonOpenConfig}"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="650" />
 
-        <uc:Card Grid.Column="1"
-                Grid.Row="7"
-                Margin="0,0,0,0"
-                Padding="5,5,5,5"
-                MouseDown="CardScripts_MouseDown"
-                x:Name="CardScripts"
-                Cursor="Hand">
+                    </Grid>
 
-            <Grid Margin="0,15,0,13">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
+                    <ui:FontIcon Grid.Column="3"
+                                 Margin="15, 0, 10, 0"
+                                 FontSize="15"
+                                 Name="OpenConfigCardIcon"
+                                 FontFamily="Segoe MDL2 Assets"
+                                 Glyph="&#xe8a7;" />
+                </Grid>
+            </uc:Card>
 
-                </Grid.ColumnDefinitions>
+        </ui:SimpleStackPanel>
 
-                <Grid Grid.Column="0"
-                      Margin="15,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+        <ui:SimpleStackPanel Grid.Column="1"
+                             Grid.Row="5">
+
+            <TextBlock Margin="0,30,0,10"
+                       Grid.Row="7"
+                       Grid.Column="1"
+                       FontFamily="Segoe UI Semibold"
+                       FontSize="14"
+                       Text="{x:Static p:Resources.Links}" />
+
+            <uc:Card Padding="30,20,5,20"
+                     MouseDown="CardDocumentationLink_MouseDown"
+                     x:Name="CardDocumentationLink"
+                     Cursor="Hand">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
 
-                    <TextBlock
-                               Grid.Row="0"
-                               Margin="0,0,0,0"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Left"
-                               FontSize="13"
-                               Text="Custom script user repository"
-                               TextWrapping="Wrap"
-                               MaxWidth="650" />
+                        <TextBlock Grid.Row="0"
+                                   Margin="0,0,0,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   FontSize="14"
+                                   Text="{x:Static p:Resources.PageScriptsCardDocumentationTextBlock}"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="650" />
+
+                    </Grid>
+
+                    <ui:FontIcon Grid.Column="3"
+                                 Margin="15, 0, 10, 0"
+                                 FontSize="15"
+                                 Name="DocCardIcon"
+                                 FontFamily="Segoe MDL2 Assets"
+                                 Glyph="&#xe71b;" />
+
 
                 </Grid>
+            </uc:Card>
 
-                <ui:FontIcon Grid.Column="3"
-                             Margin="15, 0, 10, 0"
-                             FontSize="15"
-                             FontFamily="Segoe fluent Icons"
-                             Glyph="&#xe71b;" />
+            <uc:Card Grid.Column="1"
+                     Grid.Row="11"
+                     Padding="30,20,5,20"
+                     Margin="0,2,0,0"
+                     MouseDown="CardScripts_MouseDown"
+                     x:Name="CardScripts"
+                     Cursor="Hand">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
 
-            </Grid>
-        </uc:Card>
+                        <TextBlock Grid.Row="0"
+                                   Margin="0,0,0,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   FontSize="14"
+                                   Text="{x:Static p:Resources.PageScriptsCardUserRepositoryTextBlock}"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="650" />
 
+                    </Grid>
+
+                    <ui:FontIcon Grid.Column="3"
+                                 Margin="15, 0, 10, 0"
+                                 FontSize="15"
+                                 Name="RepoCardIcon"
+                                 FontFamily="Segoe MDL2 Assets"
+                                 Glyph="&#xe71b;" />
+
+
+                </Grid>
+            </uc:Card>
+        </ui:SimpleStackPanel>
     </Grid>
 </Page>

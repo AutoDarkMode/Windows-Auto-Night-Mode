@@ -920,6 +920,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Links.
+        /// </summary>
+        public static string Links {
+            get {
+                return ResourceManager.GetString("Links", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use Location Service.
         /// </summary>
         public static string locationCheckBox {
@@ -1200,6 +1209,24 @@ namespace AutoDarkModeLib.Properties {
         public static string PageScriptsButtonOpenConfig {
             get {
                 return ResourceManager.GetString("PageScriptsButtonOpenConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documentation for custom scriptxs.
+        /// </summary>
+        public static string PageScriptsCardDocumentationTextBlock {
+            get {
+                return ResourceManager.GetString("PageScriptsCardDocumentationTextBlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom script user repository.
+        /// </summary>
+        public static string PageScriptsCardUserRepositoryTextBlock {
+            get {
+                return ResourceManager.GetString("PageScriptsCardUserRepositoryTextBlock", resourceCulture);
             }
         }
         

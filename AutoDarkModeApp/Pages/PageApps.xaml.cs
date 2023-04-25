@@ -52,6 +52,12 @@ namespace AutoDarkModeApp
                 ShowErrorMessage(ex);
             }
 
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+            {
+                TextBlockApps.FontFamily = new("Segoe Fluent Icons");
+                TextBlockSystem.FontFamily = new("Segoe Fluent Icons");
+            }
+
             //if a windows theme file was picked
             if (builder.Config.WindowsThemeMode.Enabled)
             {

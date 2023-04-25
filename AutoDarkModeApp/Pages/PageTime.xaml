@@ -154,7 +154,7 @@
                                    Margin="0,0,0,0"
                                    VerticalAlignment="Top"
                                    HorizontalAlignment="Left"
-                                   FontSize="13"
+                                   FontSize="14"
                                    Text="{x:Static p:Resources.TimePageOpenNightLight}"
                                    TextWrapping="Wrap"
                                    MaxWidth="650" />
@@ -164,7 +164,8 @@
                     <ui:FontIcon Grid.Column="3"
                                  Margin="15, 0, 10, 0"
                                  FontSize="15"
-                                 FontFamily="Segoe fluent Icons"
+                                 Name="FontIconNightLightLink"
+                                 FontFamily="Segoe MDL2 Assets"
                                  Glyph="&#xe8a7;" />
                 </Grid>
             </ui:SimpleStackPanel>
@@ -266,30 +267,68 @@
                        FontSize="14" />
             <uc:Card x:Name="StackPanelLocationTime"
                      Grid.Row="3"
-                     Padding="15"
+                     Padding="15,22,15,15"
                      Margin="0,0,0,0">
                 <StackPanel Margin="15,0,0,0">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top">
+                    <Grid VerticalAlignment="Center"
+                          Margin="0,0,0,10">
 
-                        <TextBlock x:Name="locationBlock"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="0,0,0,0"
-                                   TextWrapping="Wrap"
-                                   Height="Auto"
-                                   Width="Auto"
-                                   FontSize="14" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                        <TextBlock Name="TextBlockLightTime"
-                                   Margin="20,0,0,0"
-                                   FontSize="14" />
+                        <ui:SimpleStackPanel Orientation="Horizontal">
+                            <ui:FontIcon Grid.Column="0"
+                                         Margin="0, 0, 10, 0"
+                                         Name="FontIconLocation"
+                                         FontFamily="Segoe MDL2 Assets"
+                                         Glyph="&#xE707;" />
+                            <TextBlock x:Name="locationBlock"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Margin="0,0,0,0"
+                                       TextWrapping="Wrap"
+                                       Height="Auto"
+                                       Width="Auto"
+                                       Text="LocationPlaceholder"
+                                       FontSize="14" />
+                        </ui:SimpleStackPanel>
 
-                        <TextBlock Name="TextBlockDarkTime"
-                                   Margin="20,0,0,0"
-                                   FontSize="14" />
-                    </StackPanel>
+
+                        <ui:SimpleStackPanel Margin="0,0,0,0"
+                                             Grid.Column="2"
+                                             Orientation="Horizontal">
+                            <ui:FontIcon Margin="0, 0, 10, 0"
+                                         FontFamily="Segoe MDL2 Assets"
+                                         Name="FontIconLight"
+                                         Glyph="&#xE706;" />
+                            <TextBlock Name="TextBlockLightTime"
+                                       Margin="0,0,0,0"
+                                       Text="LightPlaceholder"
+                                       FontSize="14" />
+                        </ui:SimpleStackPanel>
+
+
+                        <ui:SimpleStackPanel Margin="10,0,0,0"
+                                             Grid.Column="4"
+                                             Orientation="Horizontal">
+                            <ui:FontIcon Margin="0, 0, 10, 0"
+                                         FontFamily="Segoe MDL2 Assets"
+                                         Name="FontIconDark"
+                                         Glyph="&#xe708;" />
+                            <TextBlock Name="TextBlockDarkTime"
+                                       Margin="0,0,0,0"
+                                       Text="DarkPlaceHolder"
+                                       FontSize="14" />
+                        </ui:SimpleStackPanel>
+
+
+                    </Grid>
                     <Grid Margin="0, 6, 0, 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -393,11 +432,12 @@
                 </StackPanel>
             </uc:Card>
 
-            <uc:Card Grid.Row="4" Padding="15" Margin="0,1,0,0"
+            <uc:Card Grid.Row="4"
+                     Padding="15"
+                     Margin="0,1,0,0"
                      MouseDown="TextBlockOpenLatLongWebsite_MouseDown"
                      KeyDown="TextBlockOpenLatLongWebsite_KeyDown"
-                     Cursor="Hand"
-                     >
+                     Cursor="Hand">
 
                 <Grid Margin="0,2,0,0">
                     <Grid.ColumnDefinitions>
@@ -441,7 +481,8 @@
                     <ui:FontIcon Grid.Column="3"
                                  Margin="15, 0, 10, 0"
                                  FontSize="15"
-                                 FontFamily="Segoe fluent Icons"
+                                 Name="FontIconGeoLink"
+                                 FontFamily="Segoe MDL2 Assets"
                                  Glyph="&#xe71b;" />
                 </Grid>
             </uc:Card>

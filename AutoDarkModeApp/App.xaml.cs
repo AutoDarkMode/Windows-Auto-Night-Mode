@@ -66,7 +66,7 @@ namespace AutoDarkModeApp
             MainWindow mainWin = null;
             MainWindowMwpf mainWinMwpf = null;
 
-            if (Environment.OSVersion.Version.Build >= 22000)
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
             {
                 mainWinMwpf = new();
             }

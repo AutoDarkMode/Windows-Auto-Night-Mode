@@ -65,7 +65,7 @@
                              Margin="15, 0, 0, 0"
                              x:Name="FontIconWallpaper"
                              FontFamily="Segoe MDL2 Assets"
-                             Glyph="&#xe8b9;" />
+                             Glyph="&#xeb9f;" />
 
                 <Grid Grid.Column="1"
                       Margin="15,0,0,0">

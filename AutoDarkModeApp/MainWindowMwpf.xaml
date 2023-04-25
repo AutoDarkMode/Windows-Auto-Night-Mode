@@ -98,7 +98,7 @@
                                        Content="{x:Static p:Resources.NavbarTime}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE823;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -107,7 +107,7 @@
                                        Content="{x:Static p:Resources.NavbarSwitchModes}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE945;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -116,7 +116,7 @@
                                        Content="{x:Static p:Resources.NavbarApps}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE71D;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -125,7 +125,7 @@
                                        Content="{x:Static p:Resources.NavbarPersonalization}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE771;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -134,7 +134,7 @@
                                        Content="{x:Static p:Resources.NavbarScripts}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xF000;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -143,7 +143,7 @@
                                        Content="{x:Static p:Resources.NavbarSettings}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE713;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -154,7 +154,7 @@
                                        Content="{x:Static p:Resources.NavbarDonation}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xEB51;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -163,7 +163,7 @@
                                        Content="{x:Static p:Resources.NavbarAbout}"
                                        Height="50">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE946;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
@@ -175,7 +175,7 @@
                                        Height="50"
                                        MouseLeftButtonUp="HelpMenuItem_Clicked">
                     <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon FontFamily="Segoe MDL2 Assets"
+                        <ui:FontIcon FontFamily="Segoe Fluent Icons"
                                      Glyph="&#xE897;" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
