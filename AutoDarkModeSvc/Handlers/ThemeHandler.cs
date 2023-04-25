@@ -218,20 +218,29 @@ namespace AutoDarkModeSvc.Handlers
             {
                 try
                 {
+                    // prepare theme
                     ThemeFile dwmRefreshTheme = new(Helper.PathManagedDwmRefreshTheme);
                     if (!managed) state.ManagedThemeFile.SyncWithActiveTheme(false, false, true);
                     dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
                     dwmRefreshTheme.RefreshGuid();
-                    string lastColorizationDigitString = dwmRefreshTheme.VisualStyles.ColorizationColor.Item1[dwmRefreshTheme.VisualStyles.ColorizationColor.Item1.Length - 1].ToString();
-                    int lastColorizationDigit = int.Parse(lastColorizationDigitString);
+                    dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
+
+                    // get current accent color
+                    string currentColorization = RegistryHandler.GetAccentColor().Replace("#", "0X");
+                    string lastColorizationDigitString = currentColorization[currentColorization.Length - 1].ToString();
+                    int lastColorizationDigit = int.Parse(lastColorizationDigitString, System.Globalization.NumberStyles.HexNumber);
+
+                    // modify last digit
                     if (lastColorizationDigit >= 9) lastColorizationDigit--;
                     else lastColorizationDigit++;
-                    string newColorizationColor = dwmRefreshTheme.VisualStyles.ColorizationColor.Item1[..(dwmRefreshTheme.VisualStyles.ColorizationColor.Item1.Length - 1)] + lastColorizationDigit.ToString();
+                    string newColorizationColor = currentColorization[..(currentColorization.Length - 1)] + lastColorizationDigit.ToString("X");
+
+                    // update theme
                     dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);
                     dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
-                    dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
                     dwmRefreshTheme.Save();
 
+                    // restore previous settings if unmanaged
                     string oldUnmanagedThemePath = state.UnmanagedActiveThemePath;
                     List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
                     Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);

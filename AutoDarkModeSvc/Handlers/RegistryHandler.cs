@@ -19,7 +19,9 @@ using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading;
 using WindowsInput;
 using WindowsInput.Native;
@@ -176,11 +178,50 @@ namespace AutoDarkModeSvc.Handlers
 
         public static string GetColorizationColor()
         {
+            GetAccentColor();
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM");
             int value = (int)key.GetValue("ColorizationColor");
             string hexString = value.ToString("X");
             hexString = "FF" + hexString[2..];
             return $"#{hexString}";
+        }
+
+        public static string GetAccentColor()
+        {
+            using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Accent");
+            byte[] value = (byte[])key.GetValue("AccentPalette");
+            var palette = ParseAccentPalette(value);
+            if (palette.TryGetValue(3, out string colorizationColor))
+            {
+                return $"#{colorizationColor}";
+            }
+            else
+            {
+                Logger.Warn("could not get colorization color from accent pallete, using alternative colorizatino registry value as fallback");
+                return GetColorizationColor();
+            }
+        }
+
+        private static Dictionary<int, string> ParseAccentPalette(byte[] binPalette)
+        {
+            Dictionary<int, string> palette = new();
+
+            StringBuilder hexString = new();
+            int colorNum = 0;
+            for (int i = 0; i < binPalette.Length; i++)
+            {
+                if (i == 0 || (i+1) % 4 != 0)
+                {
+                    int value = binPalette[i];
+                    hexString.Append(value.ToString("X"));
+                }
+                else if (i != 0 && (i+1) % 4 == 0)
+                {
+                    palette.Add(colorNum++, hexString.ToString());
+                    hexString.Clear();
+                }
+            }
+            return palette;
         }
 
         /// <summary>

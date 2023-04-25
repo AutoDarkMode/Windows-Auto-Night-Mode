@@ -396,7 +396,7 @@ namespace AutoDarkModeSvc.Communication
                         Logger.Info("signal received: current colorization");
                         try
                         {
-                            string colCol = RegistryHandler.GetColorizationColor();
+                            string colCol = RegistryHandler.GetAccentColor();
                             SendResponse(new ApiResponse()
                             {
                                 StatusCode = StatusCode.Ok,
