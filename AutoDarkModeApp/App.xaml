@@ -11,15 +11,27 @@
             <Style TargetType="control:Card">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="control:Card" >
-                            <Border
-                                    BorderThickness="1"
+                        <ControlTemplate TargetType="control:Card">
+                            <Border BorderThickness="1"
                                     BorderBrush="{DynamicResource Win11Border}"
                                     CornerRadius="5"
                                     Padding="{TemplateBinding Padding}"
-                                    Margin="{TemplateBinding Margin}"
-                                    Background="{DynamicResource Win11Background}">
-                                <ContentControl Focusable="False" Content="{TemplateBinding Content}" />
+                                    Margin="{TemplateBinding Margin}">
+                                <ContentControl Focusable="False"
+                                                Content="{TemplateBinding Content}" />
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Background"
+                                                Value="{DynamicResource Win11Background}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver"
+                                                     Value="True">
+                                                <Setter Property="Background"
+                                                        Value="{DynamicResource Win11BackgroundHover}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
@@ -61,6 +73,9 @@
                                              Color="#e5e5e5"></SolidColorBrush>
                             <SolidColorBrush x:Key="AltHighClone"
                                              Color="#f3f3f3"></SolidColorBrush>
+                            <SolidColorBrush x:Key="Win11BackgroundHover"
+                                             Color="#fff6f6f6"
+                                             Opacity="0.6" />
                             <ResourceDictionary.MergedDictionaries>
                                 <ui:ColorPaletteResources TargetTheme="Light"
                                                           AltHigh="#f3f3f3" />
@@ -85,6 +100,9 @@
                                              Color="#1d1d1d"></SolidColorBrush>
                             <SolidColorBrush x:Key="AltHighClone"
                                              Color="#202020"></SolidColorBrush>
+                            <SolidColorBrush x:Key="Win11BackgroundHover"
+                                             Color="#fff6f6f6"
+                                             Opacity="0.09" />
                         </ResourceDictionary>
                     </ui:ThemeResources.ThemeDictionaries>
                 </ui:ThemeResources>
