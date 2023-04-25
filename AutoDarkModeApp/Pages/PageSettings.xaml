@@ -490,7 +490,8 @@
                         <ui:FontIcon Grid.Column="3"
                                      Margin="15, 0, 10, 0"
                                      FontSize="15"
-                                     FontFamily="Segoe fluent Icons"
+                                     Name="FontIconLinkConfig"
+                                     FontFamily="Segoe MDL2 Assets"
                                      Glyph="&#xe8a7;" />
                     </Grid>
                 </uc:Card>
@@ -527,7 +528,8 @@
                         <ui:FontIcon Grid.Column="3"
                                      Margin="15, 0, 10, 0"
                                      FontSize="15"
-                                     FontFamily="Segoe fluent Icons"
+                                     Name="FontIconLinkConfigFolder"
+                                     FontFamily="Segoe MDL2 Assets"
                                      Glyph="&#xe8a7;" />
                     </Grid>
                 </uc:Card>

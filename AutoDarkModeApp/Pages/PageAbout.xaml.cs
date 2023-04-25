@@ -28,6 +28,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using AutoDarkModeApp.Handlers;
+using AutoDarkModeLib;
 using SourceChord.FluentWPF;
 using AdmExtensions = AutoDarkModeLib.Helper;
 
@@ -49,6 +50,11 @@ public partial class PageAbout : Page
 
         SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
         SystemTheme_ThemeChanged(this, null);
+
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+        {
+            FontIconOpenLog.FontFamily = new("Segoe Fluent Icons");
+        }
     }
 
     private void UpdateVersionNumbers()

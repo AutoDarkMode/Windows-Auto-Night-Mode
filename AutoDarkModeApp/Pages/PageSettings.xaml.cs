@@ -64,6 +64,12 @@ namespace AutoDarkModeApp.Pages
             InitializeComponent();
             UiHandler();
 
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+            {
+                FontIconLinkConfig.FontFamily = new("Segoe Fluent Icons");
+                FontIconLinkConfigFolder.FontFamily = new("Segoe Fluent Icons");
+            }
+
             try
             {
                 string sidString = SID.ToString();
