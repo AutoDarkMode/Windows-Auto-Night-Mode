@@ -1149,12 +1149,12 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>启用主题色和/或壁纸切换时无法开启本功能。</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>链接</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scriptxs</value>
+    <value>自定义脚本的文档</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>自定义脚本的用户仓库</value>
   </data>
 </root>
