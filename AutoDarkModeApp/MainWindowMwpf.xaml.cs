@@ -76,7 +76,7 @@ namespace AutoDarkModeApp
                     @"Software\\Microsoft\\Windows\\DWM' AND ValueName='ColorPrevalence'";
                 WqlEventQuery query = new WqlEventQuery(queryString);
                 DWMPrevalenceWatcher = new ManagementEventWatcher(query);
-                DWMPrevalenceWatcher.EventArrived += new EventArrivedEventHandler((s, e) => Dispatcher.Invoke(RefreshDarkMode));
+                DWMPrevalenceWatcher.EventArrived += new EventArrivedEventHandler((s, e) => Dispatcher.Invoke(RefreshWindowStyle));
                 DWMPrevalenceWatcher.Start();
             }
             catch
@@ -99,8 +99,8 @@ namespace AutoDarkModeApp
                     2
                 );
                 RefreshFrame();
-                RefreshDarkMode();
-                ThemeManager.Current.ActualApplicationThemeChanged += (_, _) => RefreshDarkMode();
+                RefreshWindowStyle();
+                ThemeManager.Current.ActualApplicationThemeChanged += (_, _) => RefreshWindowStyle();
             }
             else
             {
@@ -128,33 +128,34 @@ namespace AutoDarkModeApp
             Methods.ExtendFrame(mainWindowSrc.Handle, margins);
         }
 
-        private void RefreshDarkMode()
+        private void RefreshWindowStyle()
         {
             var isDark = ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark;
             int flag = isDark ? 1 : 0;
 
-            if (!RegistryHandler.IsDWMPrevalence())
-            {
-                Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
-                var newResources = new ResourceDictionary
-                {
-                    ["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)),
-                    ["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)),
-                    ["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))
-                };
-                NavBar.Resources = newResources;
+            var newResources = new ResourceDictionary
+            {
+                ["NavigationViewTopPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)),
+                ["NavigationViewDefaultPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)),
+                ["NavigationViewExpandedPaneBackground"] = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0))
+            };
+            NavBar.Resources = newResources;
+
+            if (!RegistryHandler.IsDWMPrevalence())
+            {               
+                // allow full transparency except for close buttons
                 TopBarCloseButtonsOpaque.Visibility = Visibility.Hidden;
                 TopBarHeader.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                 TopBarTitle.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             }
             else
             {
+                // color top bar to avoid color prevalence from shining through
                 TopBarCloseButtonsOpaque.Visibility = Visibility.Visible;
-                SetResourceReference(BackgroundProperty, "AltHighClone");
-                NavBar.Resources = navbarDict;
                 TopBarHeader.SetResourceReference(BackgroundProperty, "AltHighClone");
-                TopBarTitle.SetResourceReference(BackgroundProperty, "NavbarFill");
+                TopBarTitle.SetResourceReference(BackgroundProperty, "AltHighClone");
             }
 
 
