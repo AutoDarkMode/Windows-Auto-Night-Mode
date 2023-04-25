@@ -1148,4 +1148,13 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
     <value>Vurgu rengi ve/veya arka plan değiştirme etkinken bu özellik devre dışı bırakılır.</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
+    <value>Documentation for custom scriptxs</value>
+  </data>
+  <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
+    <value>Custom script user repository</value>
+  </data>
 </root>
