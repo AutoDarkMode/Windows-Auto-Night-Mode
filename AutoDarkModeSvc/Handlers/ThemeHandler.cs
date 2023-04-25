@@ -228,6 +228,7 @@ namespace AutoDarkModeSvc.Handlers
                     else lastColorizationDigit++;
                     string newColorizationColor = dwmRefreshTheme.VisualStyles.ColorizationColor.Item1[..(dwmRefreshTheme.VisualStyles.ColorizationColor.Item1.Length - 1)] + lastColorizationDigit.ToString();
                     dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);
+                    dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
                     dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
                     dwmRefreshTheme.Save();
 
