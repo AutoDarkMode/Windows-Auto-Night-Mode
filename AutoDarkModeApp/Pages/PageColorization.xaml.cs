@@ -85,58 +85,52 @@ namespace AutoDarkModeApp.Pages
         {
             var Component = builder.Config.ColorizationSwitch.Component;
 
-            // If either the Light or Dark hex colors are unset, or auto colorization is enabled for any value,
-            // we need to retreive those values from the live theme file and set them
-            if (Component.LightHex.Length == 0 || Component.DarkHex.Length == 0 || Component.LightAutoColorization || Component.DarkAutoColorization)
-            {
-                string messageRaw = MessageHandler.Client.SendMessageAndGetReply(Command.GetCurrentColorization);
-                ApiResponse response = ApiResponse.FromString(messageRaw);
-                if (response.StatusCode == StatusCode.Ok)
-                {
-                    bool needsSave = false;
-                    if (Component.LightHex.Length == 0)
-                    {
-                        Component.LightHex = response.Message;
-                        needsSave = true;
-                    }
-                    if (Component.DarkHex.Length == 0)
-                    {
-                        Component.DarkHex = response.Message; 
-                        needsSave = true;
-                    }
-                    if (Component.LightAutoColorization && Component.LightHex != response.Message)
-                    {
-                        Component.LightHex = response.Message; 
-                        needsSave = true;
-                    }
-                    if (Component.DarkAutoColorization && Component.DarkHex != response.Message)
-                    {
-                        Component.DarkHex = response.Message; 
-                        needsSave = true;
-                    }
 
+            string messageRaw = MessageHandler.Client.SendMessageAndGetReply(Command.GetCurrentColorization);
+            ApiResponse response = ApiResponse.FromString(messageRaw);
+            if (response.StatusCode == StatusCode.Ok)
+            {
+
+                // if hexes are undefined pre-load them for the user
+                bool needsSave = false;
+                if (Component.LightHex.Length == 0)
+                {
+                    Component.LightHex = response.Message;
+                    needsSave = true;
+                }
+                if (Component.DarkHex.Length == 0)
+                {
+                    Component.DarkHex = response.Message;
+                    needsSave = true;
+                }
+                // if auto colorization is enabled, update the hex to the respective current colorization color
+                if (Component.LightAutoColorization || Component.DarkAutoColorization)
+                {
+                    Theme requestedTheme = Theme.Unknown;
                     try
                     {
-                        if (needsSave) builder.Save();
+                        requestedTheme = (Theme)Enum.Parse(typeof(Theme), response.Details);
+                        if (Component.LightAutoColorization && requestedTheme == Theme.Light)
+                        {
+                            Component.LightHex = response.Message;
+                            needsSave = true;
+
+                        }
+                        if (Component.DarkAutoColorization && requestedTheme == Theme.Dark)
+                        {
+                            Component.DarkHex = response.Message;
+                            needsSave = true;
+                        }
                     }
                     catch (Exception ex)
                     {
-                        ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveBackendColorization");
+                        ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveDefaultColorization_ParseRequestedTheme");
                     }
+
                 }
-                else
+
+                if (needsSave)
                 {
-                    ErrorMessageBoxes.ShowErrorMessageFromApi(response, Window.GetWindow(this));
-
-                    if (Component.LightHex.Length == 0)
-                    {
-                        Component.LightHex = "#C40078D4";
-                    }
-                    if (Component.DarkHex.Length == 0)
-                    {
-                        Component.DarkHex = "#C40078D4";
-                    }
-
                     try
                     {
                         builder.Save();
@@ -145,6 +139,28 @@ namespace AutoDarkModeApp.Pages
                     {
                         ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveDefaultColorization");
                     }
+                }
+            }
+            else
+            {
+                ErrorMessageBoxes.ShowErrorMessageFromApi(response, Window.GetWindow(this));
+
+                if (Component.LightHex.Length == 0)
+                {
+                    Component.LightHex = "#C40078D4";
+                }
+                if (Component.DarkHex.Length == 0)
+                {
+                    Component.DarkHex = "#C40078D4";
+                }
+
+                try
+                {
+                    builder.Save();
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessageBoxes.ShowErrorMessage(ex, Window.GetWindow(this), "PageColorization_SaveDefaultColorization");
                 }
             }
 

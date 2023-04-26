@@ -413,7 +413,6 @@ namespace AutoDarkModeSvc.Handlers
                         try
                         {
                             state.SkipConfigFileReload = true;
-                            AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
                             builder.Save();
                         }
                         catch (Exception ex)

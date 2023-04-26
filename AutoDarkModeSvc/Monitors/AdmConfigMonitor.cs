@@ -115,12 +115,13 @@ namespace AutoDarkModeSvc.Monitors
                         {
                             state.SkipConfigFileReload = false;
                             Logger.Debug("skipping config file reload, update source internal");
-                            state.ConfigIsUpdating = false;
-                            if (!state.ConfigIsUpdatingWaitHandle.Set()) Logger.Fatal("could not trigger reset event");
+                            PerformConfigUpdate(builder.Config, internalUpdate: true);
                             return;
                         }
-
-                        PerformConfigUpdate(builder.Config);
+                        else
+                        {
+                            PerformConfigUpdate(builder.Config);
+                        }
                     });
                 }
                 else
@@ -184,7 +185,8 @@ namespace AutoDarkModeSvc.Monitors
 
                 // update expiry on config update if necessary (handled by UpdateNextSwitchExpiry)
                 state.PostponeManager.UpdateSkipNextSwitchExpiry();
-                Logger.Debug("updated configuration file");
+                if (internalUpdate) Logger.Debug("updated configuration internally");
+                else Logger.Debug("updated configuration from file");
             }
             catch (Exception ex)
             {

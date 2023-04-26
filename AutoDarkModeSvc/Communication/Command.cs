@@ -102,7 +102,7 @@ namespace AutoDarkModeSvc.Communication
 
         /// <summary>
         /// Returns the current system colorization color (accent color)
-        /// Returns a hex string of the last parsed colorization color
+        /// Returns a hex string of the last parsed colorization color and the currently requested theme as details
         /// </summary>
         [Includable]
         public const string GetCurrentColorization = "--get-colorization";

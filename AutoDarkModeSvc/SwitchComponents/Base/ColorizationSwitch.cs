@@ -2,6 +2,7 @@
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,9 +101,45 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void Callback(SwitchEventArgs e)
         {
-            if (e.Theme == Theme.Dark)
-            {
+            bool darkAutoCol = Settings.Component.DarkAutoColorization;
+            bool lightAutoCol = Settings.Component.LightAutoColorization;
 
+            string accent = "";
+            if (darkAutoCol || lightAutoCol)
+            {
+                try
+                {
+                    accent = RegistryHandler.GetAccentColor();
+                }
+                catch (Exception ex) 
+                {
+                    Logger.Error(ex, "failed getting accent color state to update config");
+                    return;
+                }
+            }
+
+            bool save = false;
+            if (e.Theme == Theme.Dark && darkAutoCol)
+            {
+                Settings.Component.DarkHex = accent;
+                save = true;
+            }
+            else if (e.Theme == Theme.Light && lightAutoCol)
+            {
+                Settings.Component.LightHex = accent;
+                save = true;
+            }
+            if (save)
+            {
+                try
+                {
+                    GlobalState.SkipConfigFileReload = true;
+                    AdmConfigBuilder.Instance().Save();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"error auto updating colorization value {accent} for {Enum.GetName(e.Theme)}");
+                }
             }
         }
     }

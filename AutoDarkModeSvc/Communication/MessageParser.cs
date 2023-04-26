@@ -400,7 +400,8 @@ namespace AutoDarkModeSvc.Communication
                             SendResponse(new ApiResponse()
                             {
                                 StatusCode = StatusCode.Ok,
-                                Message = colCol.Replace("0x", "#")
+                                Message = colCol.Replace("0x", "#"),
+                                Details = Enum.GetName(state.RequestedTheme)
                             }.ToString());
                         }
                         catch (Exception ex)

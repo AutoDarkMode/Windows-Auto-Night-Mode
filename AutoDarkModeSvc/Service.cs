@@ -327,7 +327,6 @@ namespace AutoDarkModeSvc
                 Logger.Info("ui signal received: enabling auto theme switching");
                 state.SkipConfigFileReload = true;
                 builder.Config.AutoThemeSwitchingEnabled = true;
-                AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
                 ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                 mi.Checked = true;
             }

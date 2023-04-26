@@ -92,7 +92,6 @@ namespace AutoDarkModeSvc.Handlers
                     AdmConfig old = builder.Config;
                     state.SkipConfigFileReload = true;
                     builder.Config.AutoThemeSwitchingEnabled = !builder.Config.AutoThemeSwitchingEnabled;
-                    AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
                     builder.Save();
                     ToastHandler.InvokeAutoSwitchToggleToast();
                 });
