@@ -609,7 +609,7 @@ namespace AutoDarkModeApp.Pages
             }
             try
             {
-                builder.Save();
+                if (!init) builder.Save();
             }
             catch (Exception ex)
             {

@@ -32,6 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SwitchComponents\BaseComponent.cs~RFc134192.TMP" />
     <None Remove="ThemeManager.cs~RF40d17af8.TMP" />
   </ItemGroup>
 

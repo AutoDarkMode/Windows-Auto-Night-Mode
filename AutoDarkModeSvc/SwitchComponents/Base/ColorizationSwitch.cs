@@ -17,7 +17,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override bool ThemeHandlerCompatibility => false;
         public override bool TriggersDwmRefresh => true;
         private bool invalidHexFound = false;
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             bool autoColorizationState = GlobalState.ManagedThemeFile.GetAutoColorizationState();
             if (newTheme == Theme.Dark)
@@ -88,18 +88,19 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor = (newHex, sortOrderColCol);
         }
 
-        public override void UpdateSettingsState(object newSettings)
+        protected override void UpdateSettingsState()
         {
-            bool isInit = Settings == null;
-            base.UpdateSettingsState(newSettings);
-            if (isInit) return;
-
             Regex hexValidator = new(Helper.Hegex);
             if (invalidHexFound && hexValidator.IsMatch(Settings.Component.LightHex) && hexValidator.IsMatch(Settings.Component.DarkHex))
             {
                 Logger.Info("invalid hex color has been corrected, component will now function again");
                 invalidHexFound = false;
             }
+        }
+
+        protected override void Callback()
+        {
+
         }
     }
 }

@@ -33,10 +33,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         protected bool currentTaskbarColorActive;
         public SystemSwitchThemeFile() : base() { }
 
-        public override void EnableHook()
+        protected override void EnableHook()
         {
             RefreshRegkeys();
-            base.EnableHook();
         }
 
         protected void RefreshRegkeys()
@@ -55,7 +54,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override bool ThemeHandlerCompatibility => true;
 
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (Settings.Component.Mode == Mode.AccentOnly)
             {
@@ -286,9 +285,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentComponentTheme = newTheme;
         }
 
-        public override void UpdateSettingsState(object newSettings)
+        protected override void UpdateSettingsState()
         {
-            base.UpdateSettingsState(newSettings);
             AdmConfigBuilder builder = AdmConfigBuilder.Instance();
             themeModeEnabled = builder.Config.WindowsThemeMode.Enabled;
             RefreshRegkeys();

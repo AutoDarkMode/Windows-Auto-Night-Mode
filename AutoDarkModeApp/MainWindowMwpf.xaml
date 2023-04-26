@@ -184,7 +184,7 @@
             <!-- Content of Navbar, mainly the Frame which contains the Pages -->
             <ScrollViewer PanningMode="Both"
                           x:Name="ScrollViewerNavbar">
-                <ui:Frame Content="Something went wrong :("
+                <ui:Frame Content=""
                           Name="FrameNavbar"
                           Margin="0,0,0,0"
                           Height="Auto"

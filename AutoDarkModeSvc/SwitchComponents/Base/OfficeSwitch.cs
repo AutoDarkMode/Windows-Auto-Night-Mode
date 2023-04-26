@@ -33,7 +33,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override bool ThemeHandlerCompatibility { get; } = true;
 
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if(currentComponentTheme == Theme.Unknown)
             {

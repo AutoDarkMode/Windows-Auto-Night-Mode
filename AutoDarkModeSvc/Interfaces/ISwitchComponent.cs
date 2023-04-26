@@ -42,16 +42,15 @@ namespace AutoDarkModeSvc.Interfaces
         /// </summary>
         /// <param name="newTheme">The requested new theme</param>
         /// <returns>true if the component needs to be updated; false otherwise</returns>
-        public bool ComponentNeedsUpdate(Theme newTheme);
+        public bool RunComponentNeedsUpdate(Theme newTheme);
         /// <summary>
         /// Refreshes the local copy of the component settings. Should be called before invoking Switch() to make sure the config is up to date
         /// </summary>
         /// <param name="newSettings">the correct settings object for the switch component. Using the wrong object will result in no update.</param>
-        public void UpdateSettingsState(object newSettings);
+        public void RunUpdateSettingsState(object newSettings);
         /// <summary>
         /// Checks if the component needs to be updated, i.e Switch() needs to be called
         /// </summary>
-        /// <returns></returns>
         public int PriorityToDark { get; }
         /// <summary>
         /// Priority for switching to light mode
@@ -62,14 +61,17 @@ namespace AutoDarkModeSvc.Interfaces
         /// </summary>
         public HookPosition HookPosition { get; }
         /// <summary>
-        /// Initializes the module if necessary
+        /// Initializes the module if it has a hook specified. Does nothing otherwise.
         /// </summary>
-        public void EnableHook();
+        public void RunEnableHook();
         /// <summary>
-        /// Deinitializes the module and restores the original state
+        /// Deinitializes the module and restores the original state. Does nothing if no hook is specified.
         /// </summary>
-        /// <returns></returns>
-        public void DisableHook();
+        public void RunDisableHook();
+        /// <summary>
+        /// Executes the callback function of the component
+        /// </summary>
+        public void RunCallback();
         /// <summary>
         /// Determines if the module is expected a dwm refresh when the theme is applied with the settings it modifies.
         /// </summary>

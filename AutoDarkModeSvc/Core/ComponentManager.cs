@@ -32,10 +32,7 @@ namespace AutoDarkModeSvc.Core
         private static ComponentManager instance;
         public static ComponentManager Instance()
         {
-            if (instance == null)
-            {
-                instance = new ComponentManager();
-            }
+            instance ??= new ComponentManager();
             return instance;
         }
 
@@ -59,21 +56,18 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public void UpdateSettings()
         {
-            AppsSwitch.UpdateSettingsState(Builder.Config.AppsSwitch);
-            ColorFilterSwitch.UpdateSettingsState(Builder.Config.ColorFilterSwitch);
-            OfficeSwitch.UpdateSettingsState(Builder.Config.OfficeSwitch);
-            SystemSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
-            AccentColorSwitch.UpdateSettingsState(Builder.Config.SystemSwitch);
-            WallpaperSwitch.UpdateSettingsState(Builder.Config.WallpaperSwitch);
-            if (ColorizationSwitch != null)
-            {
-                ColorizationSwitch.UpdateSettingsState(Builder.Config.ColorizationSwitch);
-            }
+            AppsSwitch.RunUpdateSettingsState(Builder.Config.AppsSwitch);
+            ColorFilterSwitch.RunUpdateSettingsState(Builder.Config.ColorFilterSwitch);
+            OfficeSwitch.RunUpdateSettingsState(Builder.Config.OfficeSwitch);
+            SystemSwitch.RunUpdateSettingsState(Builder.Config.SystemSwitch);
+            AccentColorSwitch.RunUpdateSettingsState(Builder.Config.SystemSwitch);
+            WallpaperSwitch.RunUpdateSettingsState(Builder.Config.WallpaperSwitch);
+            ColorizationSwitch?.RunUpdateSettingsState(Builder.Config.ColorizationSwitch);
         }
 
         public void UpdateScriptSettings()
         {
-            ScriptSwitch.UpdateSettingsState(Builder.ScriptConfig);
+            ScriptSwitch.RunUpdateSettingsState(Builder.ScriptConfig);
         }
 
         /// <summary>
@@ -139,7 +133,7 @@ namespace AutoDarkModeSvc.Core
             {
                 if (!c.ThemeHandlerCompatibility)
                 {
-                    c.DisableHook();
+                    c.RunDisableHook();
                 }
             });
         }
@@ -154,7 +148,7 @@ namespace AutoDarkModeSvc.Core
 
         /// <summary>
         /// Checks whether components need an update, which is true: <br/>
-        /// if their <see cref="ISwitchComponent.ComponentNeedsUpdate(Theme)"/> method returns true <br/>
+        /// if their <see cref="ISwitchComponent.RunComponentNeedsUpdate(Theme)"/> method returns true <br/>
         /// or the module has the force switch flag enabled <br/>
         /// or the module was disabled and is still initialized
         /// <param name="newTheme">The theme that should be checked against</param>
@@ -170,9 +164,9 @@ namespace AutoDarkModeSvc.Core
                 // require update if theme mode is enabled, the module is enabled and compatible with theme mode
                 if (c.Enabled && c.ThemeHandlerCompatibility && Builder.Config.WindowsThemeMode.Enabled)
                 {
-                    if (!c.Initialized) c.EnableHook();
+                    if (!c.Initialized) c.RunEnableHook();
 
-                    if (c.ComponentNeedsUpdate(newTheme))
+                    if (c.RunComponentNeedsUpdate(newTheme))
                     {
                         if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
                         if (c.NeedsDwmRefresh) needsDwmRefresh = true;
@@ -182,9 +176,9 @@ namespace AutoDarkModeSvc.Core
                 // require update if module is enabled and theme mode is disabled (previously known as classic mode)
                 else if (c.Enabled && !Builder.Config.WindowsThemeMode.Enabled)
                 {
-                    if (!c.Initialized) c.EnableHook();
+                    if (!c.Initialized) c.RunEnableHook();
 
-                    if (c.ComponentNeedsUpdate(newTheme))
+                    if (c.RunComponentNeedsUpdate(newTheme))
                     {
                         if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
                         if (c.NeedsDwmRefresh) needsDwmRefresh = true;

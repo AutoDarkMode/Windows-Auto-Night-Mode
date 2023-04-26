@@ -245,13 +245,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         /// <summary>
         /// This module needs its componentstate fetched from the win32 api to correctly function after a settings update
         /// </summary>
-        /// <param name="newSettings"></param>
-        public override void UpdateSettingsState(object newSettings)
+        protected override void UpdateSettingsState()
         {
-
-            bool isInit = Settings == null;
-            base.UpdateSettingsState(newSettings);
-            if (isInit) return;
             UpdateCurrentComponentState();
         }
 
@@ -323,7 +318,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentWallpaperPosition = WallpaperHandler.GetPosition();
         }
 
-        public override void EnableHook()
+        protected override void EnableHook()
         {
             currentWallpaperPosition = WallpaperHandler.GetPosition();
             currentIndividualTheme = GetIndividualWallpapersState();
@@ -346,17 +341,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 if (solidColorHex == Settings.Component.SolidColors.Light) currentSolidColorTheme = Theme.Light;
                 else if (solidColorHex == Settings.Component.SolidColors.Dark) currentSolidColorTheme = Theme.Dark;
             }
-
-            // base hook
-            base.EnableHook();
         }
 
-        public override void DisableHook()
+        protected override void DisableHook()
         {
             currentSolidColorTheme = Theme.Unknown;
             currentGlobalTheme = Theme.Unknown;
             spotlightEnabled = null;
-            base.DisableHook();
         }
 
         protected Theme GetIndividualWallpapersState()

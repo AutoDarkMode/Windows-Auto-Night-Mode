@@ -33,7 +33,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         private Theme currentComponentTheme = Theme.Unknown;
         public override bool ThemeHandlerCompatibility { get; } = true;
 
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (currentComponentTheme != newTheme)
             {
@@ -70,23 +70,18 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}");
         }
 
-        public override void EnableHook()
+        protected override void EnableHook()
         {
             currentComponentTheme = Theme.Unknown;
-            base.EnableHook();
         }
 
-        public override void DisableHook()
+        protected override void DisableHook()
         {
             currentComponentTheme = Theme.Unknown;
-            base.DisableHook();
         }
 
-        public override void UpdateSettingsState(object newSettings)
+        protected override void UpdateSettingsState()
         {
-            bool isInit = Settings == null;
-            base.UpdateSettingsState(newSettings);
-            if (isInit) return;
             if (!Settings.Component.Equals(SettingsBefore.Component))
             {
                 currentComponentTheme = Theme.Unknown;

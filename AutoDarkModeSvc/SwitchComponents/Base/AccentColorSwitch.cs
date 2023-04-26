@@ -40,7 +40,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public AccentColorSwitch() : base() { }
 
-        public override void EnableHook()
+        protected override void EnableHook()
         {
             try
             {
@@ -50,10 +50,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "couldn't retrieve DWM prevalence state: ");
             }
-            base.EnableHook();
         }
 
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (newTheme == Theme.Dark)
             {

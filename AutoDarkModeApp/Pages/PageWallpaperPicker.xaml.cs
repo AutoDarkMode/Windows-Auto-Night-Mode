@@ -44,7 +44,7 @@ namespace AutoDarkModeApp.Pages
     public partial class PageWallpaperPicker : ModernWpf.Controls.Page
     {
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private bool init = true;
+        private bool initializing = true;
         private bool SelectedLight { get; set; } = true;
         private delegate void ShowPreviewDelegate(string picture);
         private delegate void NoArgDelegate();
@@ -64,8 +64,8 @@ namespace AutoDarkModeApp.Pages
 
             InitializeComponent();
             bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
-            if (hasUbr && 
-               ((Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight) || 
+            if (hasUbr &&
+               ((Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight) ||
                Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win11_22H2))
             {
                 ComboBoxBackgroundSelectionSpotlight.Content = AdmProperties.Resources.WallpaperComboBoxItemSpotlight;
@@ -150,15 +150,16 @@ namespace AutoDarkModeApp.Pages
                 //select light mode in combobox, this will fire selection changed
             }
 
-            init = false;
+            initializing = false;
         }
 
         private void ToggleSwitchWallpaper_Toggled(object sender, RoutedEventArgs e)
         {
+            if (initializing) return;
             if ((sender as ModernWpf.Controls.ToggleSwitch).IsOn)
             {
                 builder.Config.WallpaperSwitch.Enabled = true;
-                if (!init) Dispatcher.BeginInvoke(new NoArgDelegate(RequestThemeSwitch), null);
+                if (!initializing) Dispatcher.BeginInvoke(new NoArgDelegate(RequestThemeSwitch), null);
                 ChangeUiEnabledStatus(true);
             }
             else
@@ -318,7 +319,7 @@ namespace AutoDarkModeApp.Pages
                 }
 
             }
-            else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSpotlight) 
+            else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSpotlight)
             {
                 GridMonitorSelect.Visibility = Visibility.Collapsed;
                 GridWallpaper.Visibility = Visibility.Collapsed;
@@ -370,7 +371,7 @@ namespace AutoDarkModeApp.Pages
         private void SaveWallpaperTypeSelection(bool noSave)
         {
             // only save if sender is own combobox
-            if (noSave || init)
+            if (noSave || initializing)
             {
                 return;
             }
@@ -602,7 +603,7 @@ namespace AutoDarkModeApp.Pages
 
         private void CleanMonitorButton_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter || e.Key == Key.Space)
+            if (e.Key == Key.Enter || e.Key == Key.Space)
             {
                 CleanMonitorButton_PreviewMouseDown(this, null);
             }

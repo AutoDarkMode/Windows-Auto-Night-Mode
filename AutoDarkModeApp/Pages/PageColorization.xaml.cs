@@ -43,7 +43,7 @@ namespace AutoDarkModeApp.Pages
         public ColorControlPanel ColorControlsDark
         { get { return darkColorizationSetBox; } }
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private bool init = true;
+        private readonly bool init = true;
 
         public PageColorization()
         {
@@ -93,14 +93,31 @@ namespace AutoDarkModeApp.Pages
                 ApiResponse response = ApiResponse.FromString(messageRaw);
                 if (response.StatusCode == StatusCode.Ok)
                 {
-                    if (Component.LightHex.Length == 0) Component.LightHex = response.Message;
-                    if (Component.DarkHex.Length == 0) Component.DarkHex = response.Message;
-                    if (Component.LightAutoColorization) Component.LightHex = response.Message;
-                    if (Component.DarkAutoColorization) Component.DarkHex = response.Message;
+                    bool needsSave = false;
+                    if (Component.LightHex.Length == 0)
+                    {
+                        Component.LightHex = response.Message;
+                        needsSave = true;
+                    }
+                    if (Component.DarkHex.Length == 0)
+                    {
+                        Component.DarkHex = response.Message; 
+                        needsSave = true;
+                    }
+                    if (Component.LightAutoColorization && Component.LightHex != response.Message)
+                    {
+                        Component.LightHex = response.Message; 
+                        needsSave = true;
+                    }
+                    if (Component.DarkAutoColorization && Component.DarkHex != response.Message)
+                    {
+                        Component.DarkHex = response.Message; 
+                        needsSave = true;
+                    }
 
                     try
                     {
-                        builder.Save();
+                        if (needsSave) builder.Save();
                     }
                     catch (Exception ex)
                     {
@@ -161,7 +178,7 @@ namespace AutoDarkModeApp.Pages
         {
             if (init) return;
             builder.Config.ColorizationSwitch.Enabled = ToggleSwitchColorizationEnabled.IsOn;
-            
+
             try
             {
                 builder.Save();
@@ -178,12 +195,12 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void darkColorizationSetBox_ColorChanged(object sender, ColorChangedEventArgs e)
+        private void DarkColorizationSetBox_ColorChanged(object sender, ColorChangedEventArgs e)
         {
             builder.Config.ColorizationSwitch.Component.DarkHex = e.CurrentColor.ToString();
         }
 
-        private void lightColorizationSetBox_ColorChanged(object sender, ColorChangedEventArgs e)
+        private void LightColorizationSetBox_ColorChanged(object sender, ColorChangedEventArgs e)
         {
             builder.Config.ColorizationSwitch.Component.LightHex = e.CurrentColor.ToString();
         }
@@ -283,7 +300,7 @@ namespace AutoDarkModeApp.Pages
 
         }
 
-        private async Task WaitForColorizationChange(string initial, int timeout)
+        private static async Task WaitForColorizationChange(string initial, int timeout)
         {
             int tries = 0;
             while (tries < timeout)
@@ -304,10 +321,10 @@ namespace AutoDarkModeApp.Pages
                         timeout++;
                     }
                 }
-            }            
+            }
         }
 
-        private async Task RequestSwitch()
+        private static async Task RequestSwitch()
         {
             string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
             if (result != StatusCode.Ok)

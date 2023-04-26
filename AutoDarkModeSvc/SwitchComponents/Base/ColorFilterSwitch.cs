@@ -28,7 +28,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         private bool currentColorFilterActive;
         public ColorFilterSwitch() : base() { }
         public override bool ThemeHandlerCompatibility => true;
-        public override void EnableHook()
+        protected override void EnableHook()
         {
             try
             {
@@ -48,18 +48,16 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 Logger.Error(ex, "couldn't initialize color filter state");
             }
 
-            base.EnableHook();
         }
-        public override void DisableHook()
+        protected override void DisableHook()
         {
             if (!Settings.Enabled && currentColorFilterActive)
             {
                 RegistryHandler.ColorFilterKeySender(false);
                 currentColorFilterActive = false;
             }
-            base.DisableHook();
         }
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (!currentColorFilterActive && newTheme == Theme.Dark)
             {

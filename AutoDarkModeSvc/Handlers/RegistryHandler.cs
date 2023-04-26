@@ -186,6 +186,10 @@ namespace AutoDarkModeSvc.Handlers
             return $"#{hexString}";
         }
 
+        /// <summary>
+        /// Retrieves the system accent color, attempting to parse the accent color palette first. Then as a fallback, uses the colorization color
+        /// </summary>
+        /// <returns>a hex string prepended with a hashtag representing the current system accent color</returns>
         public static string GetAccentColor()
         {
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Accent");
@@ -198,7 +202,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             else
             {
-                Logger.Warn("could not get colorization color from accent pallete, using alternative colorization registry value as fallback");
+                Logger.Warn("could not get colorization color from accent palette, using alternative colorization registry value as fallback");
                 return GetColorizationColor();
             }
         }

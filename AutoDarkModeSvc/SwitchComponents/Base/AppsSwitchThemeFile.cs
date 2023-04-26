@@ -32,7 +32,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         protected Theme currentComponentTheme;
         public AppsSwitchThemeFile() : base() { }
 
-        public override void EnableHook()
+        protected override void EnableHook()
         {
             try
             {
@@ -42,12 +42,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 Logger.Error(ex, "couldn't initialize apps theme state");
             }
-            base.EnableHook();
         }
         public override bool TriggersDwmRefresh => true;
         public override bool ThemeHandlerCompatibility { get; } = false;
 
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
             {

@@ -314,6 +314,12 @@ namespace AutoDarkModeSvc.Core
                 // disable mitigation after all components and theme switch have been executed
                 PowerHandler.RequestRestoreEnergySaver(builder.Config);
             }
+
+            if (componentsToUpdate.Count > 0)
+            {
+
+            }
+
             #endregion
 
             if (!state.InitSyncSwitchPerformed)
