@@ -48,7 +48,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public void Switch(SwitchEventArgs e)
         {
-            Logger.Debug($"switch invoked for {GetType().Name} ({Enum.GetName(HookPosition)})");
+            Logger.Trace($"switch invoked for {GetType().Name} ({Enum.GetName(HookPosition)})");
             ForceSwitch = false;
             if (Enabled)
             {

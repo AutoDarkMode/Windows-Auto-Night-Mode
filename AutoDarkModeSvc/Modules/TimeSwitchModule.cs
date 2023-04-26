@@ -63,7 +63,7 @@ namespace AutoDarkModeSvc.Modules
             {
                 Task.Run(() =>
                 {
-                    ThemeManager.RequestSwitch(new(SwitchSource.TimeSwitchModule));
+                    ThemeManager.RequestSwitch(new(SwitchSource.TimeSwitchModule, Theme.Automatic));
                 });
             }
         }

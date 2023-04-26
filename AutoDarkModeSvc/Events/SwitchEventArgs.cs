@@ -44,7 +44,7 @@ namespace AutoDarkModeSvc.Events
 
         public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
         {
-            if (Theme == Theme.Unknown || Theme == Theme.Automatic)
+            if (Theme == Theme.Unknown)
             {
                 Theme = newTheme;
             }

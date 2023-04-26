@@ -42,6 +42,7 @@ namespace AutoDarkModeSvc.Communication
         private Task ConnectionHandler { get; set; }
         private readonly int streamTimeout;
         private readonly int abnormalWorkerCount = 2;
+        private bool disposed = false;
 
         public AsyncPipeServer(Service service, int numWorkers, int streamTimeout = 5000)
         {
@@ -51,9 +52,14 @@ namespace AutoDarkModeSvc.Communication
         }
         public void Start()
         {
+            if (disposed)
+            {
+                Logger.Error("cannot start async pipe server as it has already been disposed");
+                throw(new ObjectDisposedException(GetType().Name));
+            }
             Loop();
         }
-        public void Stop()
+        public void Dispose()
         {
             Workers.CompleteAdding();
             MonitoredStreams.CompleteAdding();
@@ -67,7 +73,8 @@ namespace AutoDarkModeSvc.Communication
                 ConnectionHandler.Wait();
             }
             WorkerTokenSource.Dispose();
-            Logger.Info("npipe server stopped");
+            Logger.Debug("npipe server stopped");
+            bool disposed = true;
         }
 
         private void Loop()

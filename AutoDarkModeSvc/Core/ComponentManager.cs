@@ -202,7 +202,7 @@ namespace AutoDarkModeSvc.Core
             }
             // if a different module will already trigger a dwm refresh, we don't need to perform an extra refresh
             if (triggersDwmRefresh) needsDwmRefresh = false;
-            if (shouldUpdate.Count > 0) Logger.Debug($"components queued for update: [{String.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
+            if (shouldUpdate.Count > 0) Logger.Info($"components queued for update: [{String.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
             return (shouldUpdate, needsDwmRefresh);
         }
 

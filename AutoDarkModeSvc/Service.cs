@@ -238,7 +238,7 @@ namespace AutoDarkModeSvc
         {
             Logger.Info("exiting service");
 
-            MessageServer.Stop();
+            MessageServer.Dispose();
             ConfigMonitor.Dispose();
             WindowsThemeMonitor.StopThemeMonitor();
             Timers.ForEach(t => t.Stop());

@@ -81,7 +81,7 @@ namespace AutoDarkModeSvc.Timers
                 }
                 Modules.Add(module);
                 Modules.Sort();
-                Logger.Info($"registered {module.Name} to timer {Name}");
+                Logger.Trace($"registered {module.Name} to timer {Name}");
             }
             // possible call OnTimedEvent here to reduce wait time after module has been added
             // maybe counters concurrency mitigation delay
@@ -93,7 +93,7 @@ namespace AutoDarkModeSvc.Timers
             {
                 module.DisableHook();
                 Modules.Remove(Modules.Find(m => m.Name == module.Name));
-                Logger.Info($"deregistered {module.Name} from timer {Name}");
+                Logger.Trace($"deregistered {module.Name} from timer {Name}");
             }
         }
 
@@ -110,7 +110,7 @@ namespace AutoDarkModeSvc.Timers
 
         public void Start()
         {
-            Logger.Debug($"starting {Name} timer with {Timer.Interval} ms timer interval");
+            Logger.Trace($"starting {Name} timer with {Timer.Interval} ms timer interval");
             Timer.Start();
             if (TickOnStart)
             {
@@ -120,14 +120,14 @@ namespace AutoDarkModeSvc.Timers
 
         public void Stop()
         {
-            Logger.Debug("shutting down {0} timer", Name);
+            Logger.Trace("shutting down {0} timer", Name);
             Timer.Stop();
         }
 
         public void Dispose()
         {
             Timer.Dispose();
-            Logger.Debug("{0} timer disposed", Name);
+            Logger.Trace("{0} timer disposed", Name);
         }
     }
 }

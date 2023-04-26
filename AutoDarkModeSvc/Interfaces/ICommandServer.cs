@@ -29,6 +29,6 @@ namespace AutoDarkModeSvc.Communication
         /// <summary>
         /// stop a command server and release all used resources
         /// </summary>
-        public void Stop();
+        public void Dispose();
     }
 }

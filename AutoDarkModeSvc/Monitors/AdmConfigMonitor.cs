@@ -245,6 +245,7 @@ namespace AutoDarkModeSvc.Monitors
             ScriptConfigWatcher.EnableRaisingEvents = false;
             ScriptConfigWatcher.Changed -= OnChangedScriptConfig;
             ScriptConfigWatcher.Dispose();
+            Logger.Debug("config monitors stopped");
         }
 
         public void RegisterWarden(IAutoDarkModeModule warden)

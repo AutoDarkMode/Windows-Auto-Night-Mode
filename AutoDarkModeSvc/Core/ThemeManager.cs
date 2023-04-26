@@ -39,6 +39,7 @@ namespace AutoDarkModeSvc.Core
         public static void RequestSwitch(SwitchEventArgs e)
         {
 
+            // process force switches
             if (state.ForcedTheme == Theme.Dark)
             {
                 e.OverrideTheme(Theme.Dark, ThemeOverrideSource.ForceFlag);
@@ -52,9 +53,18 @@ namespace AutoDarkModeSvc.Core
                 return;
             }
 
+            // apply last requested theme if switch is user-postponed
+            if (state.PostponeManager.IsUserDelayed || state.PostponeManager.IsSkipNextSwitch)
+            {
+                e.OverrideTheme(state.RequestedTheme, ThemeOverrideSource.PostponeManager);
+                UpdateTheme(e);
+                return;
+            }
+
+            // battery switch if the initial event was missed
             if (builder.Config.Events.DarkThemeOnBattery)
             {
-                if (PowerManager.BatteryStatus == BatteryStatus.Discharging)
+                if (PowerManager.PowerSupplyStatus == PowerSupplyStatus.NotPresent)
                 {
                     e.OverrideTheme(Theme.Dark, ThemeOverrideSource.BatteryStatus);
                     UpdateTheme(e);
@@ -68,21 +78,14 @@ namespace AutoDarkModeSvc.Core
                 }
             }
 
-            // apply last requested theme if switch is user-postponed
-            if (state.PostponeManager.IsUserDelayed || state.PostponeManager.IsSkipNextSwitch)
-            {
-                e.OverrideTheme(state.RequestedTheme, ThemeOverrideSource.PostponeManager);
-                UpdateTheme(e);
-                return;
-            }
-
-            // non auto switches have priority
+            // process switches with a requested theme set before automatic ones
             if (e.Theme != Theme.Automatic && e.Source != SwitchSource.NightLightTrackerModule)
             {
                 UpdateTheme(e);
                 return;
             }
 
+            // automatic switches
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
                 if (builder.Config.Governor == Governor.Default)
