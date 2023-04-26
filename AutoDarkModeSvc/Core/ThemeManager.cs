@@ -36,16 +36,19 @@ namespace AutoDarkModeSvc.Core
         private static readonly GlobalState state = GlobalState.Instance();
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
-        public static void RequestSwitch(SwitchEventArgs switchArgs)
+        public static void RequestSwitch(SwitchEventArgs e)
         {
+
             if (state.ForcedTheme == Theme.Dark)
             {
-                UpdateTheme(Theme.Dark, switchArgs);
+                e.OverrideTheme(Theme.Dark, ThemeOverrideSource.ForceFlag);
+                UpdateTheme(e);
                 return;
             }
             else if (state.ForcedTheme == Theme.Light)
             {
-                UpdateTheme(Theme.Light, switchArgs);
+                e.OverrideTheme(Theme.Light, ThemeOverrideSource.ForceFlag);
+                UpdateTheme(e);
                 return;
             }
 
@@ -53,12 +56,14 @@ namespace AutoDarkModeSvc.Core
             {
                 if (PowerManager.BatteryStatus == BatteryStatus.Discharging)
                 {
-                    UpdateTheme(Theme.Dark, switchArgs);
+                    e.OverrideTheme(Theme.Dark, ThemeOverrideSource.BatteryStatus);
+                    UpdateTheme(e);
                     return;
                 }
                 if (!builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    UpdateTheme(Theme.Light, switchArgs);
+                    e.OverrideTheme(Theme.Light, ThemeOverrideSource.BatteryStatus);
+                    UpdateTheme(e);
                     return;
                 }
             }
@@ -66,13 +71,15 @@ namespace AutoDarkModeSvc.Core
             // apply last requested theme if switch is user-postponed
             if (state.PostponeManager.IsUserDelayed || state.PostponeManager.IsSkipNextSwitch)
             {
-                UpdateTheme(state.RequestedTheme, switchArgs);
+                e.OverrideTheme(state.RequestedTheme, ThemeOverrideSource.PostponeManager);
+                UpdateTheme(e);
                 return;
             }
 
-            if (switchArgs.Theme.HasValue && switchArgs.Source != SwitchSource.NightLightTrackerModule)
+            // non auto switches have priority
+            if (e.Theme.HasValue && e.Source != SwitchSource.NightLightTrackerModule)
             {
-                UpdateTheme(switchArgs.Theme.Value, switchArgs);
+                UpdateTheme(e);
                 return;
             }
 
@@ -81,27 +88,19 @@ namespace AutoDarkModeSvc.Core
                 if (builder.Config.Governor == Governor.Default)
                 {
                     TimedThemeState ts = new();
-                    UpdateTheme(ts.TargetTheme, switchArgs, ts.CurrentSwitchTime);
+                    e.OverrideTheme(ts.TargetTheme, ThemeOverrideSource.TimedThemeState);
+                    e.TrySetTime(ts.CurrentSwitchTime);
+                    UpdateTheme(e);
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
-                    if (switchArgs.Theme.HasValue)
-                    {
-                        if (switchArgs.Time.HasValue)
-                        {
-                            UpdateTheme(switchArgs.Theme.Value, switchArgs, switchArgs.Time.Value);
-                        }
-                        else
-                        {
-                            UpdateTheme(switchArgs.Theme.Value, switchArgs);
-                        }
-                    }
-                    else UpdateTheme(state.NightLight.Requested, switchArgs);
+                    UpdateTheme(e);
                 }
             }
             else
             {
-                UpdateTheme(state.RequestedTheme, switchArgs);
+                e.OverrideTheme(state.RequestedTheme, ThemeOverrideSource.Default);
+                UpdateTheme(e);
             }
         }
 
@@ -121,7 +120,7 @@ namespace AutoDarkModeSvc.Core
         {
             Theme newTheme = PrepareSwitchAutoPause();
 
-            ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
+            ThemeHandler.EnforceNoMonitorUpdates(builder, state, newTheme);
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
                 if (state.PostponeManager.IsSkipNextSwitch)
@@ -160,7 +159,7 @@ namespace AutoDarkModeSvc.Core
                         {
                             if (state.PostponeManager.IsSkipNextSwitch) state.PostponeManager.UpdateSkipNextSwitchExpiry();
                             else state.PostponeManager.AddSkipNextSwitch();
-                        }                        
+                        }
                     }
                     else
                     {
@@ -175,7 +174,7 @@ namespace AutoDarkModeSvc.Core
                             state.PostponeManager.AddSkipNextSwitch();
                         else
                             state.PostponeManager.RemoveUserClearablePostpones();
-                    }                   
+                    }
                 }
             }
             return newTheme;
@@ -183,9 +182,17 @@ namespace AutoDarkModeSvc.Core
 
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static void UpdateTheme(Theme newTheme, SwitchEventArgs e, DateTime switchTime = new())
+        public static void UpdateTheme(SwitchEventArgs e)
         {
+            if (!e.Theme.HasValue)
+            {
+                Logger.Info("theme switch requested with no target theme");
+            }
+            Theme newTheme = e.Theme.Value;
             state.RequestedTheme = newTheme;
+
+            DateTime switchTime = new();
+            if (e.Time.HasValue) switchTime = e.Time.Value;
 
             // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
             //cm.UpdateSettings();
@@ -242,7 +249,7 @@ namespace AutoDarkModeSvc.Core
 
                 // regular modules that do not need to modify the active theme
                 cm.RunPostSync(componentsToUpdate, newTheme, e);
-                
+
                 // if a new theme is being set then dwm updates regardless
                 if (dwmRefreshRequired && !themeModeNeedsUpdate)
                 {
@@ -253,7 +260,8 @@ namespace AutoDarkModeSvc.Core
 
 
             // windows theme mode apply theme
-            if (themeModeNeedsUpdate) {
+            if (themeModeNeedsUpdate)
+            {
                 ThemeHandler.ApplyTheme(newTheme);
             }
 
@@ -317,7 +325,7 @@ namespace AutoDarkModeSvc.Core
 
             if (componentsToUpdate.Count > 0)
             {
-
+                cm.RunCallbacks(componentsToUpdate, newTheme, e);
             }
 
             #endregion

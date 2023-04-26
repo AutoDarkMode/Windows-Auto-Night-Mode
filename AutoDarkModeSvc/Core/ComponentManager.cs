@@ -261,5 +261,24 @@ namespace AutoDarkModeSvc.Core
                 }
             });
         }
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void RunCallbacks(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e) 
+        {
+            if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
+            {
+                components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
+                lastSorting = Theme.Dark;
+            }
+            else if (newTheme == Theme.Light && lastSorting != Theme.Light)
+            {
+                components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
+                lastSorting = Theme.Light;
+            }
+            components.ForEach(c =>
+            {
+                c.RunCallback(newTheme, e);
+            });
+        }
     }
 }

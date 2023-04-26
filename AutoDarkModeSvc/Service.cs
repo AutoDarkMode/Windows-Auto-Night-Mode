@@ -366,14 +366,14 @@ namespace AutoDarkModeSvc
                     Logger.Info("ui signal received: forcing light theme");
                     state.ForcedTheme = Theme.Light;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
-                    ThemeManager.UpdateTheme(Theme.Light, new(SwitchSource.Manual));
+                    ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
                 }
                 else if (mi.Name == "forceDark")
                 {
                     Logger.Info("ui signal received: forcing dark theme");
                     state.ForcedTheme = Theme.Dark;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
-                    ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.Manual));
+                    ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
                 }
                 mi.Checked = true;
             }

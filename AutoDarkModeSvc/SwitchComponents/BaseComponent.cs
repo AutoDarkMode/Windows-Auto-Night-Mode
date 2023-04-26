@@ -128,7 +128,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// <summary>
         /// Executes the callback method
         /// </summary>
-        public void RunCallback()
+        public void RunCallback(Theme newTheme, SwitchEventArgs e)
         {
             Logger.Debug($"running callback for {GetType().Name}");
             Callback();

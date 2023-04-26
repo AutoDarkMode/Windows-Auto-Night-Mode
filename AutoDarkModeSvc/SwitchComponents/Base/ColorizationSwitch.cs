@@ -100,7 +100,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void Callback()
         {
-
+            
         }
     }
 }

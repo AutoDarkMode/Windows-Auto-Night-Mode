@@ -38,7 +38,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         protected bool? spotlightEnabled = null;
         protected WallpaperPosition currentWallpaperPosition;
 
-        public override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(Theme newTheme)
         {
             if (newTheme == Theme.Dark)
             {

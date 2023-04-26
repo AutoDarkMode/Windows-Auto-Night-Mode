@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.Handlers
             if (PowerManager.PowerSupplyStatus == PowerSupplyStatus.NotPresent)
             {
                 Logger.Info("battery discharging, enabling dark mode");
-                ThemeManager.UpdateTheme(Theme.Dark, new(SwitchSource.BatteryStatusChanged));
+                ThemeManager.UpdateTheme(new(SwitchSource.BatteryStatusChanged, Theme.Dark));
             }
             else
             {

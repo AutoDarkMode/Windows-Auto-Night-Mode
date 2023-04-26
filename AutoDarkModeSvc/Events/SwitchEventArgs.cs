@@ -16,6 +16,8 @@
 #endregion
 using AutoDarkModeLib;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace AutoDarkModeSvc.Events
 {
@@ -40,9 +42,42 @@ namespace AutoDarkModeSvc.Events
             RefreshDwm = refreshDwm;
         }
 
+        public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
+        {
+            if (!Theme.HasValue)
+            {
+                Theme = newTheme;
+            }
+            else
+            {
+                Theme = newTheme;
+                _themeOverrideSources.Add(overrideSource);
+            }
+        }
+
+        /// <summary>
+        /// Tries to set a switch time
+        /// </summary>
+        /// <param name="time">the switch time to set</param>
+        /// <returns>true if a switch time was set; false if a switch time was already set</returns>
+        public bool TrySetTime(DateTime time)
+        {
+            if (!Time.HasValue)
+            {
+                Time = time;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool RefreshDwm { get; }
         public SwitchSource Source { get; }
-        public Theme? Theme { get; } = null;
-        public DateTime? Time { get; } = null;
+        private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
+        public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }
+        public Theme? Theme { get; private set; } = null;
+        public DateTime? Time { get; private set; } = null;
     }
 }

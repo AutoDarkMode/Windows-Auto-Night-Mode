@@ -71,7 +71,7 @@ namespace AutoDarkModeSvc.Interfaces
         /// <summary>
         /// Executes the callback function of the component
         /// </summary>
-        public void RunCallback();
+        public void RunCallback(Theme newTheme, SwitchEventArgs e);
         /// <summary>
         /// Determines if the module is expected a dwm refresh when the theme is applied with the settings it modifies.
         /// </summary>

@@ -70,6 +70,15 @@ namespace AutoDarkModeLib
         Api
     }
 
+    public enum ThemeOverrideSource
+    {
+        Default = 0,
+        TimedThemeState,
+        ForceFlag,
+        BatteryStatus,
+        PostponeManager
+    }
+
     public enum Governor
     {
         Default,
