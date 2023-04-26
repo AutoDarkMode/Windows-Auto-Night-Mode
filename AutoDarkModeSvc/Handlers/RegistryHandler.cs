@@ -193,11 +193,12 @@ namespace AutoDarkModeSvc.Handlers
             var palette = ParseAccentPalette(value);
             if (palette.TryGetValue(3, out string colorizationColor))
             {
-                return $"#{colorizationColor}";
+                Logger.Trace($"parsed accent color: #FF{colorizationColor}");
+                return $"#FF{colorizationColor}";
             }
             else
             {
-                Logger.Warn("could not get colorization color from accent pallete, using alternative colorizatino registry value as fallback");
+                Logger.Warn("could not get colorization color from accent pallete, using alternative colorization registry value as fallback");
                 return GetColorizationColor();
             }
         }
@@ -213,7 +214,7 @@ namespace AutoDarkModeSvc.Handlers
                 if (i == 0 || (i+1) % 4 != 0)
                 {
                     int value = binPalette[i];
-                    hexString.Append(value.ToString("X"));
+                    hexString.Append(value.ToString("X2"));
                 }
                 else if (i != 0 && (i+1) % 4 == 0)
                 {

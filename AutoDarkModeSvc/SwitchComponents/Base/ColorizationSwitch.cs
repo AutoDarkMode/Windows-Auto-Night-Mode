@@ -76,6 +76,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             if (newTheme == Theme.Dark) newHex = Settings.Component.DarkHex;
             else newHex = Settings.Component.LightHex;
 
+
             if (!hexValidator.IsMatch(newHex))
             {
                 Logger.Warn($"an invalid hex color ({newHex}) found, updating colorization (accent color) disabled until the hex color has been fixed");

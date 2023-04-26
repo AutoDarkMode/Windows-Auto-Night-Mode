@@ -301,6 +301,7 @@ namespace AutoDarkModeApp.Pages
                     else
                     {
                         await Task.Delay(1000);
+                        timeout++;
                     }
                 }
             }            

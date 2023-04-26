@@ -274,7 +274,7 @@ namespace AutoDarkModeSvc.Core
                         // Using this with a build that doesn't support spotlight would cause solid color or invalid wallpapers to appear whenever spotlight is enabled.
                         // In addition, a colorization switch always needs a wallpaper refresh
                         bool needsWallpaperRefresh = false;
-                        if (!componentsToUpdate.Any(c => c is ColorizationSwitch))
+                        if (componentsToUpdate.Any(c => c is ColorizationSwitch))
                         {
                             if (newTheme == Theme.Light && builder.Config.ColorizationSwitch.Component.LightAutoColorization) needsWallpaperRefresh = true;
                             else if (newTheme == Theme.Dark && builder.Config.ColorizationSwitch.Component.DarkAutoColorization) needsWallpaperRefresh = true;
