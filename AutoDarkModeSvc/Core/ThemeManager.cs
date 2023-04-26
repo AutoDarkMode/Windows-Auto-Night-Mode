@@ -77,7 +77,7 @@ namespace AutoDarkModeSvc.Core
             }
 
             // non auto switches have priority
-            if (e.Theme != Theme.Unknown && e.Source != SwitchSource.NightLightTrackerModule)
+            if (e.Theme != Theme.Automatic && e.Source != SwitchSource.NightLightTrackerModule)
             {
                 UpdateTheme(e);
                 return;
@@ -184,7 +184,7 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(SwitchEventArgs e)
         {
-            if (e.Theme == Theme.Unknown)
+            if (e.Theme == Theme.Unknown || e.Theme == Theme.Automatic)
             {
                 Logger.Info("theme switch requested with no target theme");
                 return;

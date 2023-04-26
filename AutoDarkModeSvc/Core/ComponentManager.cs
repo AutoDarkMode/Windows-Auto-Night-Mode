@@ -277,7 +277,7 @@ namespace AutoDarkModeSvc.Core
             }
             components.ForEach(c =>
             {
-                c.RunCallback(newTheme, e);
+                c.RunCallback(e);
             });
         }
     }

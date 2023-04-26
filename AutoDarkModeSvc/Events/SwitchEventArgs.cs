@@ -26,7 +26,6 @@ namespace AutoDarkModeSvc.Events
         public SwitchEventArgs(SwitchSource source)
         {
             Source = source;
-            Theme = Theme.Unknown;
         }
 
         public SwitchEventArgs(SwitchSource source, Theme requestedTheme)
@@ -45,7 +44,7 @@ namespace AutoDarkModeSvc.Events
 
         public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
         {
-            if (Theme == Theme.Unknown)
+            if (Theme == Theme.Unknown || Theme == Theme.Automatic)
             {
                 Theme = newTheme;
             }
@@ -69,7 +68,7 @@ namespace AutoDarkModeSvc.Events
         public SwitchSource Source { get; }
         private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
         public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }
-        public Theme Theme { get; private set; } = Theme.Unknown;
+        public Theme Theme { get; private set; } = Theme.Automatic;
         public DateTime? SwitchTime { get; private set; } = null;
     }
 }

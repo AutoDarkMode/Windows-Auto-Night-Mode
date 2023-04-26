@@ -42,7 +42,8 @@ namespace AutoDarkModeSvc.Communication
         public const string Swap = "--swap";
 
         /// <summary>
-        /// Requests Auto Dark Mode to switch to the light theme and pauses automatic switching once. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
+        /// Requests Auto Dark Mode to switch to the light theme and pauses 
+        /// switching once. Only returns an ApiResponse with StatusCode.Ok or a StatusCode.Timeout
         /// </summary>
         [Includable]
         public const string Light = "--light";

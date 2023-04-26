@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// A callback method that is invoked after the component has run to its completion and a theme switch was performed. 
         /// Adm at this point is in a stable state with the new theme settings being available
         /// </summary>
-        protected virtual void Callback() { }
+        protected virtual void Callback(SwitchEventArgs e) { }
 
         /// <summary>
         /// True when the component should be compatible with the ThemeHandler switching mode
@@ -128,10 +128,10 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// <summary>
         /// Executes the callback method
         /// </summary>
-        public void RunCallback(Theme newTheme, SwitchEventArgs e)
+        public void RunCallback(SwitchEventArgs e)
         {
             Logger.Trace($"running callback for {GetType().Name}");
-            Callback();
+            Callback(e);
         }
 
         /// <summary>

@@ -98,9 +98,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
-        protected override void Callback()
+        protected override void Callback(SwitchEventArgs e)
         {
-            
+            if (e.Theme == Theme.Dark)
+            {
+
+            }
         }
     }
 }
