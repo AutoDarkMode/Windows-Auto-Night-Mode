@@ -33,21 +33,21 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         private Theme currentComponentTheme = Theme.Unknown;
         public override bool ThemeHandlerCompatibility { get; } = true;
 
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
-            if (currentComponentTheme != newTheme)
+            if (currentComponentTheme != e.Theme)
             {
                 return true;
             }
             return false;
         }
 
-        protected override async void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override async void HandleSwitch(SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             Task switchTask = Task.Run(() =>
             {
-                if (newTheme == Theme.Light)
+                if (e.Theme == Theme.Light)
                 {
                     Settings.Component.Scripts.ForEach(s =>
                     {

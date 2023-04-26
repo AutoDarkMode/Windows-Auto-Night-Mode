@@ -77,7 +77,7 @@ namespace AutoDarkModeSvc.Core
             }
 
             // non auto switches have priority
-            if (e.Theme.HasValue && e.Source != SwitchSource.NightLightTrackerModule)
+            if (e.Theme != Theme.Unknown && e.Source != SwitchSource.NightLightTrackerModule)
             {
                 UpdateTheme(e);
                 return;
@@ -184,11 +184,12 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void UpdateTheme(SwitchEventArgs e)
         {
-            if (!e.Theme.HasValue)
+            if (e.Theme == Theme.Unknown)
             {
                 Logger.Info("theme switch requested with no target theme");
+                return;
             }
-            Theme newTheme = e.Theme.Value;
+            Theme newTheme = e.Theme;
             state.RequestedTheme = newTheme;
 
             DateTime switchTime = new();
@@ -240,7 +241,7 @@ namespace AutoDarkModeSvc.Core
 
                 // run modules that require their data to be re-synced with auto dark mode after running because they modify the active theme file
                 //todo change to switcheventargs
-                cm.RunPreSync(componentsToUpdate, newTheme, e);
+                cm.RunPreSync(componentsToUpdate, e);
 
                 //logic for our classic mode 2.0, gets the currently active theme for modification
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
@@ -251,7 +252,7 @@ namespace AutoDarkModeSvc.Core
 
                 //todo change to switcheventargs
                 // regular modules that do not need to modify the active theme
-                cm.RunPostSync(componentsToUpdate, newTheme, e);
+                cm.RunPostSync(componentsToUpdate, e);
 
                 // if a new theme is being set then dwm updates regardless
                 if (dwmRefreshRequired && !themeModeNeedsUpdate)

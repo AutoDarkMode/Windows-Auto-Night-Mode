@@ -33,16 +33,15 @@ namespace AutoDarkModeSvc.Interfaces
         /// If the component is disabled, and still initialized, the deinit hook will be called.<br></br>
         /// If the component is disabled and properly deinitialized, nothing will happen.
         /// </summary>
-        /// <param name="newTheme">the nwe theme that should be set</param>
-        /// <param name="e">the event args from the event source</param>
-        public void Switch(Theme newTheme, SwitchEventArgs e);
+        /// <param name="e">the event args from the event source, containing the new theme and information about the switch</param>
+        public void Switch(SwitchEventArgs e);
 
         /// <summary>
         /// Checks if the component needs to be updated according to its internal state
         /// </summary>
         /// <param name="newTheme">The requested new theme</param>
         /// <returns>true if the component needs to be updated; false otherwise</returns>
-        public bool RunComponentNeedsUpdate(Theme newTheme);
+        public bool RunComponentNeedsUpdate(SwitchEventArgs e);
         /// <summary>
         /// Refreshes the local copy of the component settings. Should be called before invoking Switch() to make sure the config is up to date
         /// </summary>

@@ -38,13 +38,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         protected bool? spotlightEnabled = null;
         protected WallpaperPosition currentWallpaperPosition;
 
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
-            if (newTheme == Theme.Dark)
+            if (e.Theme == Theme.Dark)
             {
                 return TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark);
             }
-            else if (newTheme == Theme.Light)
+            else if (e.Theme == Theme.Light)
             {
                 return TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light);
             }
@@ -95,8 +95,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return true;
         }
 
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
+            Theme newTheme = e.Theme;
             // todo change behavior for win11 22H2, write and apply custom theme file. Use Winforms Screens to assing correct monitors.
             string oldIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
             string oldGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);

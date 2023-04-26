@@ -63,10 +63,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-            newTheme = newTheme == Theme.Dark ? Theme.Dark : Theme.Light;
             ThemeFile themeFile = GlobalState.ManagedThemeFile;
 
             if (Settings.Component.Mode == Mode.DarkOnly)
@@ -82,7 +81,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             else
             {
                 themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), newTheme), themeFile.VisualStyles.AppMode.Item2);
-                currentComponentTheme = newTheme;
+                currentComponentTheme = e.Theme;
             }
             Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }

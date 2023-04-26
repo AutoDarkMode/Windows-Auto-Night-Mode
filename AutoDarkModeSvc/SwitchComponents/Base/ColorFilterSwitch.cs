@@ -57,26 +57,26 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentColorFilterActive = false;
             }
         }
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
-            if (!currentColorFilterActive && newTheme == Theme.Dark)
+            if (!currentColorFilterActive && e.Theme == Theme.Dark)
             {
                 return true;
             }
-            else if (currentColorFilterActive && newTheme == Theme.Light)
+            else if (currentColorFilterActive && e.Theme == Theme.Light)
             {
                 return true;
             }
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
             bool oldTheme = currentColorFilterActive;
             try
             {
                 RegistryHandler.ColorFilterSetup();
-                if (newTheme == Theme.Dark)
+                if (e.Theme == Theme.Dark)
                 {
                     RegistryHandler.ColorFilterKeySender(true);
                     currentColorFilterActive = true;

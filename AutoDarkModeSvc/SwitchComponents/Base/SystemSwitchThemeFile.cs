@@ -54,7 +54,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override bool ThemeHandlerCompatibility => true;
 
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
             if (Settings.Component.Mode == Mode.AccentOnly)
             {
@@ -62,13 +62,13 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // Do not return true on windows theme mode, as this would potentially modify the theme
                 if (currentComponentTheme != Theme.Dark && !themeModeEnabled) return true;
 
-                if (newTheme == Theme.Dark)
+                if (e.Theme == Theme.Dark)
                 {
                     // allow toggling of the taskbar color in dark mode if it is not active yet, or still active
                     if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark && !currentTaskbarColorActive) return true;
                     else if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Light && currentTaskbarColorActive) return true;
                 }
-                else if (newTheme == Theme.Light)
+                else if (e.Theme == Theme.Light)
                 {
                     // allow toggling of the taskbar color in light mode if it is not active yet, or still active (inverse of Theme.Dark if clause)
                     if (Settings.Component.TaskbarColorWhenNonAdaptive == Theme.Dark && currentTaskbarColorActive) return true;
@@ -109,12 +109,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             else if (Settings.Component.Mode == Mode.Switch)
             {
                 // Themes do not match
-                if (currentComponentTheme != newTheme)
+                if (currentComponentTheme != e.Theme)
                 {
                     return true;
                 }
                 // Task bar accent color should switch, target is light mode and the taskbar color hasn't switched yet
-                else if (Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive && newTheme == Theme.Light)
+                else if (Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive && e.Theme == Theme.Light)
                 {
                     return true;
                 }
@@ -124,7 +124,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     return true;
                 }
                 // task bar accent color should switch, target is dark mode and taskbar color hasn't switched yet
-                else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive && newTheme == Theme.Dark)
+                else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive && e.Theme == Theme.Dark)
                 {
                     return true;
                 }
@@ -133,9 +133,9 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
-            Task.Run(async() => { await SwitchSystemTheme(newTheme);}).Wait();
+            Task.Run(async () => { await SwitchSystemTheme(e.Theme); }).Wait();
         }
 
         protected async virtual Task SwitchSystemTheme(Theme newTheme)

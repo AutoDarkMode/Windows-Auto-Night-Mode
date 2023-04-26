@@ -28,7 +28,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     class AppsSwitch : AppsSwitchThemeFile
     {
         public override bool TriggersDwmRefresh => true;
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             try
@@ -45,8 +45,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 }
                 else
                 {
-                    RegistryHandler.SetAppsTheme((int)newTheme);
-                    currentComponentTheme = newTheme;
+                    RegistryHandler.SetAppsTheme((int)e.Theme);
+                    currentComponentTheme = e.Theme;
                 }
             }
             catch (Exception ex)

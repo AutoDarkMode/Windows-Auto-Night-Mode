@@ -35,19 +35,19 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
             var sortOrderAutoCol = GlobalState.ManagedThemeFile.VisualStyles.AutoColorization.Item2;
             var sortOrderColCol = GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item2;
             bool prevAutoColorizationState = GlobalState.ManagedThemeFile.GetAutoColorizationState();
 
             bool newAutoColorizationState = false;
-            if (newTheme == Theme.Dark)
+            if (e.Theme == Theme.Dark)
             {
                 if (Settings.Component.DarkAutoColorization) newAutoColorizationState = true;
                 else newAutoColorizationState = false;
             }
-            else if (newTheme == Theme.Light)
+            else if (e.Theme == Theme.Light)
             {
                 if (Settings.Component.LightAutoColorization) newAutoColorizationState = true;
                 else newAutoColorizationState = false;
@@ -58,7 +58,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             if (prevAutoColorizationState != newAutoColorizationState)
             {
                 Logger.Info($"update info - auto colorization - previous {(prevAutoColorizationState ? "enabled" : "disabled")}, " +
-                    $"pending: {(newAutoColorizationState ? "enabled" : "disabled")} ({Enum.GetName(typeof(Theme), newTheme).ToString().ToLower()})");
+                    $"pending: {(newAutoColorizationState ? "enabled" : "disabled")} ({Enum.GetName(typeof(Theme), e.Theme).ToString().ToLower()})");
             }
 
             // if auto colorization is enabled the hex value doesn't matter, so the rest can be skipped.
@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             string newHex;
             Regex hexValidator = new(Helper.Hegex);
 
-            if (newTheme == Theme.Dark) newHex = Settings.Component.DarkHex;
+            if (e.Theme == Theme.Dark) newHex = Settings.Component.DarkHex;
             else newHex = Settings.Component.LightHex;
 
 
@@ -83,7 +83,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 invalidHexFound = true;
                 return;
             }
-            Logger.Info($"update info - color - previous: {oldColor}, pending: {newHex} ({Enum.GetName(typeof(Theme), newTheme).ToString().ToLower()})");
+            Logger.Info($"update info - color - previous: {oldColor}, pending: {newHex} ({Enum.GetName(typeof(Theme), e.Theme).ToString().ToLower()})");
             newHex = newHex.Replace("#", "0X");
             GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor = (newHex, sortOrderColCol);
         }

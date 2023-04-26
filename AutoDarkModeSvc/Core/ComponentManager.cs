@@ -212,14 +212,14 @@ namespace AutoDarkModeSvc.Core
         /// <param name="components">The components to be run</param>
         /// <param name="newTheme">the requested theme to switch to</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void RunPostSync(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
+        public void RunPostSync(List<ISwitchComponent> components, SwitchEventArgs e)
         {
-            if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
+            if (e.Theme == Theme.Dark && lastSorting != Theme.Dark)
             {
                 components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
                 lastSorting = Theme.Dark;
             }
-            else if (newTheme == Theme.Light && lastSorting != Theme.Light)
+            else if (e.Theme == Theme.Light && lastSorting != Theme.Light)
             {
                 components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
                 lastSorting = Theme.Light;
@@ -228,8 +228,8 @@ namespace AutoDarkModeSvc.Core
             {
                 if (c.HookPosition == HookPosition.PostSync)
                 {
-                    if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility) c.Switch(newTheme, e);
-                    else if (!Builder.Config.WindowsThemeMode.Enabled) c.Switch(newTheme, e);
+                    if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility) c.Switch(e);
+                    else if (!Builder.Config.WindowsThemeMode.Enabled) c.Switch(e);
                 }
             });
         }
@@ -240,7 +240,7 @@ namespace AutoDarkModeSvc.Core
         /// <param name="components">The components to be run</param>
         /// <param name="newTheme">the requested theme to switch to</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void RunPreSync(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
+        public void RunPreSync(List<ISwitchComponent> components, SwitchEventArgs e)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
             {
@@ -256,8 +256,8 @@ namespace AutoDarkModeSvc.Core
             {
                 if (c.HookPosition == HookPosition.PreSync)
                 {
-                    if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility) c.Switch(newTheme, e);
-                    else if (!Builder.Config.WindowsThemeMode.Enabled) c.Switch(newTheme, e);
+                    if (Builder.Config.WindowsThemeMode.Enabled && c.ThemeHandlerCompatibility) c.Switch(e);
+                    else if (!Builder.Config.WindowsThemeMode.Enabled) c.Switch(e);
                 }
             });
         }

@@ -33,7 +33,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         public override bool ThemeHandlerCompatibility { get; } = true;
 
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
             if(currentComponentTheme == Theme.Unknown)
             {
@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 return true;
             }
-            else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != newTheme)
+            else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != e.Theme)
             {
                 return true;
             }
@@ -62,7 +62,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
-        protected override void HandleSwitch(Theme newTheme, SwitchEventArgs e)
+        protected override void HandleSwitch(SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
             try
@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 }
                 else
                 {
-                    if (newTheme == Theme.Dark)
+                    if (e.Theme == Theme.Dark)
                     {
                         OfficeTheme(Settings.Component.DarkTheme);
                     }
@@ -95,7 +95,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                     {
                         OfficeTheme(Settings.Component.LightTheme);
                     }
-                    currentComponentTheme = newTheme;
+                    currentComponentTheme = e.Theme;
                     ChoosenLightTheme = Settings.Component.LightTheme;
                 }
             }
