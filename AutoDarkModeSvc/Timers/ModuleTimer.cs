@@ -81,7 +81,7 @@ namespace AutoDarkModeSvc.Timers
                 }
                 Modules.Add(module);
                 Modules.Sort();
-                Logger.Trace($"registered {module.Name} to timer {Name}");
+                Logger.Debug($"registered {module.Name} to timer {Name}");
             }
             // possible call OnTimedEvent here to reduce wait time after module has been added
             // maybe counters concurrency mitigation delay
@@ -93,7 +93,7 @@ namespace AutoDarkModeSvc.Timers
             {
                 module.DisableHook();
                 Modules.Remove(Modules.Find(m => m.Name == module.Name));
-                Logger.Trace($"deregistered {module.Name} from timer {Name}");
+                Logger.Debug($"deregistered {module.Name} from timer {Name}");
             }
         }
 

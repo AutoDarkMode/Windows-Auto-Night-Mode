@@ -103,7 +103,7 @@ namespace AutoDarkModeSvc.Monitors
                 // only allow config updates every CacheTimeMilliseconds to counteract the bugged filesystemwatcher
                 if (configRefreshTask == null)
                 {
-                    Logger.Debug($"queueing config update to run in {CacheTimeMilliseconds}ms");
+                    Logger.Trace($"queueing config update to run in {CacheTimeMilliseconds}ms");
                     _ = state.ConfigIsUpdatingWaitHandle.Reset();
                     state.ConfigIsUpdating = true;
                     configRefreshTask = Task.Delay(CacheTimeMilliseconds).ContinueWith(o =>
