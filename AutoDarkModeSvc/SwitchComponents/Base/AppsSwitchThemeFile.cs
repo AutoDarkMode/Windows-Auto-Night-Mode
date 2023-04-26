@@ -46,7 +46,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override bool TriggersDwmRefresh => true;
         public override bool ThemeHandlerCompatibility { get; } = false;
 
-        protected override bool ComponentNeedsUpdate(Theme newTheme)
+        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
             if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
             {
@@ -56,7 +56,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 return true;
             }
-            else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != newTheme)
+            else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != e.Theme)
             {
                 return true;
             }
@@ -80,7 +80,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else
             {
-                themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), newTheme), themeFile.VisualStyles.AppMode.Item2);
+                themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), e.Theme), themeFile.VisualStyles.AppMode.Item2);
                 currentComponentTheme = e.Theme;
             }
             Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");

@@ -32,6 +32,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override int PriorityToLight => 30;
         private Theme currentComponentTheme = Theme.Unknown;
         public override bool ThemeHandlerCompatibility { get; } = true;
+        Task switchTask;
 
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
@@ -45,7 +46,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         protected override async void HandleSwitch(SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-            Task switchTask = Task.Run(() =>
+            switchTask = Task.Run(() =>
             {
                 if (e.Theme == Theme.Light)
                 {
@@ -87,5 +88,16 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentComponentTheme = Theme.Unknown;
             }
         }
+
+        /*
+        protected override async void Callback()
+        {
+            if (switchTask != null)
+            {
+                await switchTask;
+            }
+            Logger.Debug("test callback wait");
+        }
+        */
     }
 }

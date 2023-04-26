@@ -207,8 +207,7 @@ namespace AutoDarkModeSvc.Core
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
 
-            //todo change to switcheventargs
-            (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired) = cm.GetComponentsToUpdate(newTheme);
+            (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired) = cm.GetComponentsToUpdate(e);
 
             // when the app ist launched for the first time, ask for notification
             if (!state.InitSyncSwitchPerformed)
@@ -240,7 +239,6 @@ namespace AutoDarkModeSvc.Core
                 PowerHandler.RequestDisableEnergySaver(builder.Config);
 
                 // run modules that require their data to be re-synced with auto dark mode after running because they modify the active theme file
-                //todo change to switcheventargs
                 cm.RunPreSync(componentsToUpdate, e);
 
                 //logic for our classic mode 2.0, gets the currently active theme for modification
@@ -250,7 +248,6 @@ namespace AutoDarkModeSvc.Core
                     state.ManagedThemeFile.SyncWithActiveTheme(true);
                 }
 
-                //todo change to switcheventargs
                 // regular modules that do not need to modify the active theme
                 cm.RunPostSync(componentsToUpdate, e);
 

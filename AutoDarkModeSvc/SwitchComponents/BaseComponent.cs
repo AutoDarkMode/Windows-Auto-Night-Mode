@@ -48,7 +48,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         }
         public void Switch(SwitchEventArgs e)
         {
-            Logger.Debug($"switch invoked for {GetType().Name}");
+            Logger.Debug($"switch invoked for {GetType().Name} ({Enum.GetName(HookPosition)})");
             ForceSwitch = false;
             if (Enabled)
             {
@@ -130,7 +130,7 @@ namespace AutoDarkModeSvc.SwitchComponents
         /// </summary>
         public void RunCallback(Theme newTheme, SwitchEventArgs e)
         {
-            Logger.Debug($"running callback for {GetType().Name}");
+            Logger.Trace($"running callback for {GetType().Name}");
             Callback();
         }
 
@@ -168,11 +168,11 @@ namespace AutoDarkModeSvc.SwitchComponents
             Initialized = false;
         }
 
-        public bool RunComponentNeedsUpdate(Theme newTheme)
+        public bool RunComponentNeedsUpdate(SwitchEventArgs e)
         {
             try
             {
-                return ComponentNeedsUpdate(newTheme);
+                return ComponentNeedsUpdate(e);
             }
             catch (Exception ex)
             {

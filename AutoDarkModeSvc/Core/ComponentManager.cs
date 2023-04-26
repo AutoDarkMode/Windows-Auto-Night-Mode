@@ -154,7 +154,7 @@ namespace AutoDarkModeSvc.Core
         /// <param name="newTheme">The theme that should be checked against</param>
         /// <returns>a list of components that require an update and a boolean that informs whether a dwm refresh needs to be initiated manually</returns>
         /// </summary>
-        public (List<ISwitchComponent>, bool) GetComponentsToUpdate(Theme newTheme)
+        public (List<ISwitchComponent>, bool) GetComponentsToUpdate(SwitchEventArgs e)
         {
             List<ISwitchComponent> shouldUpdate = new();
             bool triggersDwmRefresh = false;
@@ -166,7 +166,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     if (!c.Initialized) c.RunEnableHook();
 
-                    if (c.RunComponentNeedsUpdate(newTheme))
+                    if (c.RunComponentNeedsUpdate(e))
                     {
                         if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
                         if (c.NeedsDwmRefresh) needsDwmRefresh = true;
@@ -178,7 +178,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     if (!c.Initialized) c.RunEnableHook();
 
-                    if (c.RunComponentNeedsUpdate(newTheme))
+                    if (c.RunComponentNeedsUpdate(e))
                     {
                         if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
                         if (c.NeedsDwmRefresh) needsDwmRefresh = true;
@@ -242,12 +242,12 @@ namespace AutoDarkModeSvc.Core
         [MethodImpl(MethodImplOptions.Synchronized)]
         public void RunPreSync(List<ISwitchComponent> components, SwitchEventArgs e)
         {
-            if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
+            if (e.Theme == Theme.Dark && lastSorting != Theme.Dark)
             {
                 components.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
                 lastSorting = Theme.Dark;
             }
-            else if (newTheme == Theme.Light && lastSorting != Theme.Light)
+            else if (e.Theme == Theme.Light && lastSorting != Theme.Light)
             {
                 components.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
                 lastSorting = Theme.Light;
