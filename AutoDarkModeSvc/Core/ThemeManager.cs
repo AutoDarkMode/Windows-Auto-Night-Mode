@@ -89,7 +89,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     TimedThemeState ts = new();
                     e.OverrideTheme(ts.TargetTheme, ThemeOverrideSource.TimedThemeState);
-                    e.TrySetTime(ts.CurrentSwitchTime);
+                    e.UpdateSwitchTime(ts.CurrentSwitchTime);
                     UpdateTheme(e);
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
@@ -192,7 +192,7 @@ namespace AutoDarkModeSvc.Core
             state.RequestedTheme = newTheme;
 
             DateTime switchTime = new();
-            if (e.Time.HasValue) switchTime = e.Time.Value;
+            if (e.SwitchTime.HasValue) switchTime = e.SwitchTime.Value;
 
             // this is possibly necessary in the future if the config is internally updated and switchtheme is called before it is saved
             //cm.UpdateSettings();
@@ -206,6 +206,7 @@ namespace AutoDarkModeSvc.Core
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
 
+            //todo change to switcheventargs
             (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired) = cm.GetComponentsToUpdate(newTheme);
 
             // when the app ist launched for the first time, ask for notification
@@ -238,6 +239,7 @@ namespace AutoDarkModeSvc.Core
                 PowerHandler.RequestDisableEnergySaver(builder.Config);
 
                 // run modules that require their data to be re-synced with auto dark mode after running because they modify the active theme file
+                //todo change to switcheventargs
                 cm.RunPreSync(componentsToUpdate, newTheme, e);
 
                 //logic for our classic mode 2.0, gets the currently active theme for modification
@@ -247,6 +249,7 @@ namespace AutoDarkModeSvc.Core
                     state.ManagedThemeFile.SyncWithActiveTheme(true);
                 }
 
+                //todo change to switcheventargs
                 // regular modules that do not need to modify the active theme
                 cm.RunPostSync(componentsToUpdate, newTheme, e);
 
@@ -325,6 +328,7 @@ namespace AutoDarkModeSvc.Core
 
             if (componentsToUpdate.Count > 0)
             {
+                //todo change to switcheventargs
                 cm.RunCallbacks(componentsToUpdate, newTheme, e);
             }
 

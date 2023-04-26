@@ -38,7 +38,7 @@ namespace AutoDarkModeSvc.Events
         {
             Source = source;
             Theme = requestedTheme;
-            Time = time;
+            SwitchTime = time;
             RefreshDwm = refreshDwm;
         }
 
@@ -56,21 +56,12 @@ namespace AutoDarkModeSvc.Events
         }
 
         /// <summary>
-        /// Tries to set a switch time
+        /// Updates the switch time
         /// </summary>
         /// <param name="time">the switch time to set</param>
-        /// <returns>true if a switch time was set; false if a switch time was already set</returns>
-        public bool TrySetTime(DateTime time)
+        public void UpdateSwitchTime(DateTime time)
         {
-            if (!Time.HasValue)
-            {
-                Time = time;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            SwitchTime = time;
         }
 
         public bool RefreshDwm { get; }
@@ -78,6 +69,6 @@ namespace AutoDarkModeSvc.Events
         private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
         public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }
         public Theme? Theme { get; private set; } = null;
-        public DateTime? Time { get; private set; } = null;
+        public DateTime? SwitchTime { get; private set; } = null;
     }
 }
