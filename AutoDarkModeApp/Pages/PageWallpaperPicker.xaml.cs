@@ -120,10 +120,32 @@ namespace AutoDarkModeApp.Pages
                 await DetectMonitors();
             }
 
-            //generate a list with all installed Monitors, select the first one
-            List<MonitorSettings> monitorIds = builder.Config.WallpaperSwitch.Component.Monitors;
-            ComboBoxMonitorSelection.ItemsSource = monitorIds;
-            ComboBoxMonitorSelection.SelectedItem = monitorIds.FirstOrDefault();
+            // generate a list with all installed Monitors, select the first one
+            List<MonitorSettings> monitors = builder.Config.WallpaperSwitch.Component.Monitors;
+            List<MonitorSettings> disconnected = new();
+            List<MonitorSettings> connected = monitors.Where(m =>
+            {
+                // preload tostring to avoid dropdown opening lag
+                m.ToString();
+                // return monitors connecte to system connected monitors
+                if (m.Connected)
+                {
+                    return true;
+                }
+                disconnected.Add(m);
+                return false;
+            }).ToList();
+
+            disconnected.ForEach(m =>
+            {
+                m.MonitorString = $"{AdmProperties.Resources.DisplayMonitorDisconnected} - {m.MonitorString}";
+            });
+
+            monitors.Clear();
+            monitors.AddRange(connected);
+            monitors.AddRange(disconnected);
+            ComboBoxMonitorSelection.ItemsSource = monitors;
+            ComboBoxMonitorSelection.SelectedItem = monitors.FirstOrDefault();
 
             ApiResponse response = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetRequestedTheme));
             if (response.StatusCode == StatusCode.Ok)
@@ -648,6 +670,7 @@ namespace AutoDarkModeApp.Pages
                 ShowErrorMessage(ex, "wallpaper position selection changed");
             }
         }
+
     }
 
     class NoSaveEvent : EventArgs

@@ -577,6 +577,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disconnected.
+        /// </summary>
+        public static string DisplayMonitorDisconnected {
+            get {
+                return ResourceManager.GetString("DisplayMonitorDisconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello! Thank you for using Auto Dark Mode! Do you like it so far?
         ///
         ///This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it&apos;s completely free, ad-free, doesn&apos;t collect user data and it&apos;s open source.

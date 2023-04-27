@@ -1169,4 +1169,7 @@ Do you really want to continue?</value>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
     <value>Choose a fit for your desktop image</value>
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
 </root>
