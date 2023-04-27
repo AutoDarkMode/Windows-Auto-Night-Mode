@@ -42,6 +42,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             GlobalState.ManagedThemeFile.Desktop.Wallpaper = "";
             GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+            GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
 
             // WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
             currentSolidColorTheme = newTheme;

@@ -40,6 +40,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
+            if (currentWallpaperPosition != Settings.Component.Position)
+            {
+                return true;
+            }
             if (e.Theme == Theme.Dark)
             {
                 return TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark);
@@ -48,10 +52,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 return TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light);
             }
-            else if (currentWallpaperPosition != Settings.Component.Position)
-            {
-                return true;
-            }
+            
             return false;
         }
 

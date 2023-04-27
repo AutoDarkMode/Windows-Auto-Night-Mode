@@ -2943,6 +2943,24 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fill.
+        /// </summary>
+        public static string WallpaperComboBoxItemFill {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fit.
+        /// </summary>
+        public static string WallpaperComboBoxItemFit {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemFit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light Theme.
         /// </summary>
         public static string WallpaperComboBoxItemLight {
@@ -2984,6 +3002,15 @@ namespace AutoDarkModeLib.Properties {
         public static string WallpaperComboBoxItemSpotlight {
             get {
                 return ResourceManager.GetString("WallpaperComboBoxItemSpotlight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stretch.
+        /// </summary>
+        public static string WallpaperComboBoxItemStretch {
+            get {
+                return ResourceManager.GetString("WallpaperComboBoxItemStretch", resourceCulture);
             }
         }
         
@@ -3056,6 +3083,15 @@ namespace AutoDarkModeLib.Properties {
         public static string WallpaperTextBlockImagePath {
             get {
                 return ResourceManager.GetString("WallpaperTextBlockImagePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a fit for your desktop image.
+        /// </summary>
+        public static string WallpaperTextBlockPosition {
+            get {
+                return ResourceManager.GetString("WallpaperTextBlockPosition", resourceCulture);
             }
         }
         

@@ -182,8 +182,10 @@ namespace AutoDarkModeApp.Pages
             ComboBoxModeSelection.IsEnabled = isEnabled;
             ComboBoxWallpaperTypeSelection.IsEnabled = isEnabled;
             ComboBoxMonitorSelection.IsEnabled = isEnabled;
+            ComboBoxWallpaperPositionSelection.IsEnabled = isEnabled;
             ButtonFilePicker.IsEnabled = isEnabled;
             CleanMonitorButton.IsEnabled = isEnabled;
+
         }
 
         private void ShowErrorMessage(Exception ex, string location)
@@ -291,6 +293,16 @@ namespace AutoDarkModeApp.Pages
                 ComboBoxMonitorSelection_SelectionChanged(this, null);
                 GridMonitorSelect.Visibility = Visibility.Visible;
                 CleanMonitorButton.Visibility = Visibility.Visible;
+                GridWallpaperPosition.Visibility = Visibility.Visible;
+                switch (builder.Config.WallpaperSwitch.Component.Position)
+                {
+                    case WallpaperPosition.Stretch:
+                        ComboBoxWallpaperPositionSelection.SelectedIndex = 2;
+                        break;
+                    case WallpaperPosition.Fit:
+                        ComboBoxWallpaperPositionSelection.SelectedIndex = 1;
+                        break;
+                }
             }
             else if ((sender as ComboBox).SelectedItem == ComboBoxBackgroundSelectionSolidColor)
             {
@@ -299,6 +311,7 @@ namespace AutoDarkModeApp.Pages
                 WallpaperHeader.Visibility = Visibility.Collapsed;
                 SolidColorPicker.Visibility = Visibility.Visible;
                 CleanMonitorButton.Visibility = Visibility.Collapsed;
+                GridWallpaperPosition.Visibility = Visibility.Collapsed;
                 if (ComboBoxModeSelection.SelectedItem == ComboBoxModeSelectionLightTheme)
                 {
                     HexColorTextBox.Text = builder.Config.WallpaperSwitch.Component.SolidColors.Light;
@@ -326,6 +339,7 @@ namespace AutoDarkModeApp.Pages
                 WallpaperHeader.Visibility = Visibility.Collapsed;
                 SolidColorPicker.Visibility = Visibility.Collapsed;
                 CleanMonitorButton.Visibility = Visibility.Collapsed;
+                GridWallpaperPosition.Visibility = Visibility.Collapsed;
             }
             if (e is NoSaveEvent nse)
             {
@@ -341,6 +355,7 @@ namespace AutoDarkModeApp.Pages
             GridWallpaper.Visibility = Visibility.Visible;
             WallpaperHeader.Visibility = Visibility.Visible;
             CleanMonitorButton.Visibility = Visibility.Collapsed;
+            GridWallpaperPosition.Visibility = Visibility.Collapsed;
 
             if (SelectedLight)
             {
@@ -606,6 +621,31 @@ namespace AutoDarkModeApp.Pages
             if (e.Key == Key.Enter || e.Key == Key.Space)
             {
                 CleanMonitorButton_PreviewMouseDown(this, null);
+            }
+        }
+
+        private void ComboBoxWallpaperPositionSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (ComboBoxWallpaperPositionSelection.SelectedIndex)
+            {
+                case 0:
+                    builder.Config.WallpaperSwitch.Component.Position = WallpaperPosition.Fill;
+                    break;
+                case 1:
+                    builder.Config.WallpaperSwitch.Component.Position = WallpaperPosition.Fit;
+                    break;
+                case 2:
+                    builder.Config.WallpaperSwitch.Component.Position = WallpaperPosition.Stretch;
+                    break;
+            }
+            try
+            {
+                builder.Save();
+                RequestThemeSwitch();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "wallpaper position selection changed");
             }
         }
     }

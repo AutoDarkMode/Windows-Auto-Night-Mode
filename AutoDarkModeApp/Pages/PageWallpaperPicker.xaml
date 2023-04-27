@@ -35,6 +35,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="1"
@@ -133,7 +134,7 @@
                                   Name="ComboBoxBackgroundSelectionIndividual" />
                     <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemSolidColor}"
                                   Name="ComboBoxBackgroundSelectionSolidColor" />
-                   
+
                 </ComboBox>
             </Grid>
         </uc:Card>
@@ -182,10 +183,54 @@
             </Grid>
         </uc:Card>
 
+        <uc:Card Padding="30,15,15,12"
+                 Grid.Row="7"
+                 Margin="0,2,0,0"
+                 Grid.Column="1"
+                 x:Name="GridWallpaperPosition">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Text="{x:Static p:Resources.WallpaperTextBlockPosition}"
+                           VerticalAlignment="Center"
+                           Grid.Row="0"
+                           TextWrapping="Wrap"
+                           FontSize="14"
+                           Grid.Column="0" />
+
+                <ComboBox Name="ComboBoxWallpaperPositionSelection"
+                          VerticalAlignment="Center"
+                          Grid.Column="1"
+                          Margin="0,0,0,0"
+                          MinWidth="250"
+                          SelectedIndex="0"
+                          SelectionChanged="ComboBoxWallpaperPositionSelection_SelectionChanged">
+
+                    <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemFill}"
+                                  Name="ComboBoxWallpaperPositionFill" />
+                    <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemFit}"
+                                  Name="ComboBoxWallpaperPositionFit" />
+                    <ComboBoxItem Content="{x:Static p:Resources.WallpaperComboBoxItemStretch}"
+                                  Name="ComboBoxWallpaperPositionStretch" />
+
+                </ComboBox>
+
+            </Grid>
+        </uc:Card>
+
 
         <TextBlock Margin="0,30,0,10"
                    Name="WallpaperHeader"
-                   Grid.Row="7"
+                   Grid.Row="8"
                    Grid.Column="1"
                    FontFamily="Segoe UI Semibold"
                    FontSize="14"
@@ -193,7 +238,7 @@
 
 
         <uc:Card x:Name="GridWallpaper"
-                 Grid.Row="8"
+                 Grid.Row="9"
                  Padding="30,15,15,15"
                  Grid.Column="1">
             <Grid Margin="0,0,0,0">
@@ -208,27 +253,35 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="9*" />
                 </Grid.ColumnDefinitions>
 
 
-                <TextBlock Margin="0,0,0,0"
-                           FontSize="14"
-                           Grid.Row="0"
-                           Text="{x:Static p:Resources.WallpaperTextBlockChooseWallpaper}"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Center"
-                           TextWrapping="Wrap" />
+                <Grid Grid.Row="0"
+                      Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                <Button Name="ButtonFilePicker"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Right"
-                        Margin="0,0,0,0"
-                        MinWidth="140"
-                        Content="{x:Static p:Resources.dbFilePicker}"
-                        Click="ButtonFilePicker_Click" />
+                    <TextBlock Margin="0,0,0,0"
+                               Padding="0,0,2,0"
+                               FontSize="14"
+                               Grid.Column="0"
+                               Text="{x:Static p:Resources.WallpaperTextBlockChooseWallpaper}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               TextWrapping="Wrap" />
+
+                    <Button Name="ButtonFilePicker"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,0,0"
+                            MinWidth="140"
+                            Content="{x:Static p:Resources.dbFilePicker}"
+                            Click="ButtonFilePicker_Click" />
+                </Grid>
 
                 <Separator Margin="-30,15,-15,0"
                            Grid.ColumnSpan="2"
@@ -252,7 +305,7 @@
                            FontSize="14"
                            TextWrapping="Wrap" />
 
-                <ui:SimpleStackPanel Margin="-5,20,0,0"
+                <ui:SimpleStackPanel Margin="-5,25,7,5"
                                      Grid.Row="4"
                                      Grid.ColumnSpan="2"
                                      Name="StackPanelImagePreview"
@@ -273,7 +326,7 @@
         </uc:Card>
 
         <ui:SimpleStackPanel x:Name="SolidColorPicker"
-                             Grid.Row="9"
+                             Grid.Row="10"
                              Grid.Column="1">
             <TextBlock Margin="0,30,0,10"
                        FontFamily="Segoe UI Semibold"

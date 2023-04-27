@@ -1157,4 +1157,16 @@ Do you really want to continue?</value>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Custom script user repository</value>
   </data>
+  <data name="WallpaperComboBoxItemFill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="WallpaperComboBoxItemFit" xml:space="preserve">
+    <value>Fit</value>
+  </data>
+  <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
+    <value>Stretch</value>
+  </data>
+  <data name="WallpaperTextBlockPosition" xml:space="preserve">
+    <value>Choose a fit for your desktop image</value>
+  </data>
 </root>
