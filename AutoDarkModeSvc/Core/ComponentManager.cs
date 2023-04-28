@@ -168,7 +168,7 @@ namespace AutoDarkModeSvc.Core
 
                     if (c.RunComponentNeedsUpdate(e))
                     {
-                        AddComponentToSwitchList(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
+                        AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
                     }
                 }
                 // require update if module is enabled and theme mode is disabled (previously known as classic mode)
@@ -178,18 +178,19 @@ namespace AutoDarkModeSvc.Core
 
                     if (c.RunComponentNeedsUpdate(e))
                     {
-                        AddComponentToSwitchList(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
+                        AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
                     }
                 }
                 // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
                 else if (!c.Enabled && c.Initialized)
                 {
+                    // we don't query for dwm info because a module that is about to be disabled is no longer triggered
                     shouldUpdate.Add(c);
                 }
                 // if the force flag is set to true, we also need to update
                 else if (c.ForceSwitch)
                 {
-                    AddComponentToSwitchList(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
+                    AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
                 }
             }
 
@@ -210,7 +211,7 @@ namespace AutoDarkModeSvc.Core
             return (shouldUpdate, needsDwmRefresh, dwmRefreshType);
         }
 
-        private static void AddComponentToSwitchList(ISwitchComponent c, List<ISwitchComponent> shouldUpdate, ref bool needsDwmRefresh, ref DwmRefreshType dwmRefreshType)
+        private static void AddComponentAndGetDwmInfo(ISwitchComponent c, List<ISwitchComponent> shouldUpdate, ref bool needsDwmRefresh, ref DwmRefreshType dwmRefreshType)
         {
             if (c.NeedsDwmRefresh)
             {
