@@ -79,16 +79,18 @@ namespace AutoDarkModeLib.ComponentSettings.Base
                 try
                 {
                     DisplayMonitor monitor = Task.Run(async () => await GetMonitorInfoAsync()).Result;
+                    if (monitor != null)
+                    {
+                        Connected = true;
+                    }
                     if (monitor != null && monitor.DisplayName.Length > 0)
                     {
                         MonitorString = $"{monitor.DisplayName} - {monitor.DisplayAdapterTargetId}";
-                        Connected = true;
                     }
                     else
                     {
                         string[] split = Id.Split('#', '&');
                         MonitorString = $"{split[1]} - {split[5][3..]}";
-                        Connected = false;
                     }
                 }
                 catch

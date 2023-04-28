@@ -74,7 +74,7 @@ namespace AutoDarkModeSvc.Communication
             }
             WorkerTokenSource.Dispose();
             Logger.Debug("npipe server stopped");
-            bool disposed = true;
+            disposed = true;
         }
 
         private void Loop()
