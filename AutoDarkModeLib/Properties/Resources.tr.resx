@@ -1158,33 +1158,33 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Özel komut dosyası kullanıcı deposu</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Doldur</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Sığdır</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Genişlet</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Arka plan resminiz için uygun olanı seçin</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Bağlantı kesildi</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Tema değişiminde DWM'yi her zaman yenile</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Dosya gezgininde, görev çubuğunda ve başlat menüsünde yanlış ara yüz renklerinin oluşumunu azaltmaya çalışır. Bunu sık sık yaşıyorsanız ya da bundan rahatsızsanız bu ayarı etkinleştirmeyi deneyin.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Bu, Windows 10'da olduğu gibi tema değişimi sırasında bazı sistemlerde hafif ila orta düzeyde gecikmeye neden olabilir.
+Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Windows bir bip sesi çıkarabilir.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>DWM yenilemeye zorlansın mı?</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Tamam</value>
   </data>
 </root>
