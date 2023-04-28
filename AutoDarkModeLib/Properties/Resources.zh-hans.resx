@@ -1158,22 +1158,22 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>自定义脚本的用户仓库</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>填充</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>适应</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>拉伸</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>为您的桌面图片选择一种适应方式</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>已断开</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>在切换主题时始终刷新 DWM</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
     <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
