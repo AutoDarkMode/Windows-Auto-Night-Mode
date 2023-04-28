@@ -210,8 +210,10 @@ namespace AutoDarkModeSvc.Core
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
 
-            (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired) = cm.GetComponentsToUpdate(e);
+            (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired, DwmRefreshType componentDwmRefreshType) = cm.GetComponentsToUpdate(e);
+            #endregion
 
+            #region logic for adm startup
             // when the app ist launched for the first time, ask for notification
             if (!state.InitSyncSwitchPerformed)
             {
@@ -232,13 +234,13 @@ namespace AutoDarkModeSvc.Core
                     return;
                 }
             }
-
             #endregion
 
+            bool themeSwitched = false;
+
             #region apply themes and run components
-            if (componentsToUpdate.Count > 0)
+            if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
             {
-                // if theme mode is disabled, we need to disable energy saver for the modules
                 PowerHandler.RequestDisableEnergySaver(builder.Config);
 
                 // run modules that require their data to be re-synced with auto dark mode after running because they modify the active theme file
@@ -254,26 +256,33 @@ namespace AutoDarkModeSvc.Core
                 // regular modules that do not need to modify the active theme
                 cm.RunPostSync(componentsToUpdate, e);
 
-                // if a new theme is being set then dwm updates regardless
+                #region dwm refresh
                 if (dwmRefreshRequired && !themeModeNeedsUpdate)
                 {
-                    if (builder.Config.WindowsThemeMode.Enabled) ThemeHandler.RefreshDwm(managed: false);
-                    else ThemeHandler.RefreshDwm(managed: true);
+                    if (builder.Config.WindowsThemeMode.Enabled)
+                    {
+                        ThemeHandler.RefreshDwmFull(managed: false, e);
+                        themeModeNeedsUpdate = true;
+                    }
+                    else ThemeHandler.RefreshDwmFull(managed: true, e);
                 }
-            }
+                else if (builder.Config.Tunable.AlwaysFullDwmRefresh && componentDwmRefreshType != DwmRefreshType.Full)
+                {
+                    Logger.Info("dwm management: full refresh requested by user");
+                    if (builder.Config.WindowsThemeMode.Enabled)
+                    {
+                        ThemeHandler.RefreshDwmFull(managed: false, e);
+                        themeModeNeedsUpdate = true;
+                    }
+                    else ThemeHandler.RefreshDwmFull(managed: true, e);
+                }
+                else if (dwmRefreshRequired && themeModeNeedsUpdate)
+                {
+                    Logger.Info($"dwm management: refresh will be auto-triggered on theme mode switch");
+                }
+                #endregion
 
-
-            // windows theme mode apply theme
-            if (themeModeNeedsUpdate)
-            {
-                ThemeHandler.ApplyTheme(newTheme);
-            }
-
-
-            // non theme mode switches & cleanup
-            if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
-            {
-                // Logic for our classic mode 2.0
+                // Logic for managed mode
                 if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
                 {
                     try
@@ -305,6 +314,31 @@ namespace AutoDarkModeSvc.Core
                     }
                 }
 
+                // windows theme mode apply theme
+                if (themeModeNeedsUpdate)
+                {
+                    // special case for dwm refresh when no components are due for update and dwm refresh is user requested
+                    if (componentsToUpdate.Count == 0 && builder.Config.Tunable.AlwaysFullDwmRefresh)
+                    {
+                        Logger.Info("dwm management: full refresh requested by user");
+                        ThemeHandler.RefreshDwmFull(managed: false, e);
+                    }
+                    PowerHandler.RequestDisableEnergySaver(builder.Config);
+                    ThemeHandler.ApplyTheme(newTheme);
+                    themeSwitched = true;
+                }
+
+                //todo change to switcheventargs
+                cm.RunCallbacks(componentsToUpdate, newTheme, e);
+                themeSwitched = true;
+
+                PowerHandler.RequestRestoreEnergySaver(builder.Config);
+
+            }
+            #endregion
+
+            if (themeSwitched)
+            {
                 if (e.Source == SwitchSource.TimeSwitchModule)
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}, " +
@@ -323,17 +357,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
-                // disable mitigation after all components and theme switch have been executed
-                PowerHandler.RequestRestoreEnergySaver(builder.Config);
-            }
-
-            if (componentsToUpdate.Count > 0)
-            {
-                //todo change to switcheventargs
-                cm.RunCallbacks(componentsToUpdate, newTheme, e);
-            }
-
-            #endregion
+            }                             
 
             if (!state.InitSyncSwitchPerformed)
             {

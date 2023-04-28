@@ -52,106 +52,105 @@
                     Width="Auto"
                     Height="Auto">
 
-            <uc:Card Padding="30,10,25,10">
-                <!-- Settings-->
-                <ui:SimpleStackPanel>
+            <!-- Settings-->
+            <ui:SimpleStackPanel>
+                <uc:Card Padding="30,10,25,10">
                     <CheckBox Name="CheckBoxAlterTime"
                               Content="{x:Static p:Resources.cb12HourTime}"
                               Margin="0,0,0,0"
                               Click="CheckBoxAlterTime_Click" />
+                </uc:Card>
 
-                    <Separator Margin="-30,5,-15,5"
-                               Background="{DynamicResource Win11Border}" />
-
+                <uc:Card Padding="30,10,25,10">
                     <CheckBox Name="CheckBoxHideTrayIcon"
                               Content="{x:Static p:Resources.SettingsCheckBoxHideTray}"
                               Margin="0,0,0,0"
                               Click="CheckBoxHideTrayIcon_Click" />
+                </uc:Card>
 
-                    <Separator Margin="-30,5,-15,0"
-                               Background="{DynamicResource Win11Border}" />
-
+                <uc:Card Padding="30,10,25,10">
                     <CheckBox Name="CheckBoxColourFilter"
                               Content="{x:Static p:Resources.cbSettingsColourFilter}"
-                              Margin="0,5,0,0"
+                              Margin="0,0,0,0"
                               Foreground="{DynamicResource SystemBaseHighColorBrush}"
                               Click="CheckBoxColourFilter_Click" />
+                </uc:Card>
 
-                    <Separator Margin="-30,5,-15,0"
-                               Background="{DynamicResource Win11Border}" />
+                <uc:Card Padding="30,10,25,10">
+                    <CheckBox Name="CheckBoxAlwaysDwmRefresh"
+                              Content="{x:Static p:Resources.SettingsPageCheckBoxAlwaysRefreshDwm}"
+                              Margin="0,0,0,0"
+                              Click="CheckBoxAlwaysRefreshDwm_Click" />
+                </uc:Card>
 
+                <uc:Card Padding="30,10,25,10" x:Name="CardWin10AllowLockscreenSwitch">
                     <CheckBox Name="CheckBoxWin10AllowLockscreenSwitch"
                               Content="{x:Static p:Resources.SettingsPageWin10AllowLockscreenSwitch}"
-                              Margin="0,5,0,0"
+                              Margin="0,0,0,0"
                               Click="CheckBoxWin10AllowLockscreenSwitch_Click" />
+                </uc:Card>
 
-                    <Separator Margin="-30,5,-15,0"
-                               Name="SeparatorWin10AllowLockscreenSwitch"
-                               Background="{DynamicResource Win11Border}" />
-
+                <uc:Card Padding="30,10,25,10">
                     <CheckBox Name="CheckBoxDebugMode"
                               Content="{x:Static p:Resources.SettngsPageDebugMode}"
-                              Margin="0,5,0,0"
+                              Margin="0,0,0,0"
                               Click="CheckBoxDebugMode_Click" />
+                </uc:Card>
 
-                    <Separator Margin="-30,5,-15,0"
-                               Name="SeparatorTraceMode"
-                               Background="{DynamicResource Win11Border}" />
-
+                <uc:Card Padding="30,10,25,10" x:Name="CardTraceMode">
                     <CheckBox Name="CheckBoxTraceMode"
                               Content="{x:Static p:Resources.SettngsPageTraceMode}"
-                              Margin="0,5,0,0"
+                              Margin="0,0,0,0"
                               Click="CheckBoxTraceMode_Click" />
-
-                    <Separator Margin="-30,5,-15,0"
-                               Name="SeparatorEnergySaverMitigation"
-                               Background="{DynamicResource Win11Border}" />
-
-                    <CheckBox Name="CheckBoxEnergySaverMitigation"
-                              Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}"
-                              Margin="0,5,0,0"
-                              ToolTipService.InitialShowDelay="150"
-                              ToolTipService.HasDropShadow="True"
-                              Foreground="{DynamicResource SystemBaseHighColorBrush}"
-                              Click="CheckBoxEnergySaverMitigation_Click" />
+                </uc:Card>
+                <uc:Card Padding="30,10,25,10" x:Name="CardEnergySaverMitigation">
+                    <ui:SimpleStackPanel>
+                        <CheckBox Name="CheckBoxEnergySaverMitigation"
+                                  Content="{x:Static p:Resources.cbSettingsEnergySaverMitigation}"
+                                  Margin="0,5,0,0"
+                                  ToolTipService.InitialShowDelay="150"
+                                  ToolTipService.HasDropShadow="True"
+                                  Foreground="{DynamicResource SystemBaseHighColorBrush}"
+                                  Click="CheckBoxEnergySaverMitigation_Click" />
 
 
-                    <!-- Battery Saver Slider -->
-                    <ui:SimpleStackPanel Name="StackPanelBatterySlider"
-                                         Margin="0,15,0,0">
+                        <!-- Battery Saver Slider -->
+                        <ui:SimpleStackPanel Name="StackPanelBatterySlider"
+                                             Margin="0,15,0,0">
 
-                        <TextBlock Name="BatterySliderLabel"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"
-                                   Margin="0,0,25,10"
-                                   TextWrapping="Wrap"
-                                   FontSize="14"
-                                   Text="{x:Static p:Resources.SettingsBatterySlider}" />
-
-                        <ui:SimpleStackPanel Orientation="Horizontal">
-                            <Slider Name="BatterySlider"
-                                    HorizontalAlignment="Left"
-                                    Width="250"
-                                    Margin="0,0,0,0"
-                                    Thumb.DragCompleted="BatterySlider_Save"
-                                    KeyUp="BatterySlider_Save"
-                                    Value="25"
-                                    Minimum="0"
-                                    Maximum="100"
-                                    IsSnapToTickEnabled="True" />
-                            <TextBlock Name="BatterySliderText"
+                            <TextBlock Name="BatterySliderLabel"
                                        HorizontalAlignment="Left"
-                                       Visibility="Visible"
-                                       Margin="15,5,0,0"
+                                       VerticalAlignment="Top"
+                                       Margin="0,0,25,10"
                                        TextWrapping="Wrap"
                                        FontSize="14"
-                                       Text="{Binding ElementName=BatterySlider,Path=Value}"
-                                       VerticalAlignment="Top" />
+                                       Text="{x:Static p:Resources.SettingsBatterySlider}" />
+
+                            <ui:SimpleStackPanel Orientation="Horizontal">
+                                <Slider Name="BatterySlider"
+                                        HorizontalAlignment="Left"
+                                        Width="250"
+                                        Margin="0,0,0,0"
+                                        Thumb.DragCompleted="BatterySlider_Save"
+                                        KeyUp="BatterySlider_Save"
+                                        TickFrequency="20"
+                                        Value="20"
+                                        Minimum="0"
+                                        Maximum="100"
+                                        IsSnapToTickEnabled="True" />
+                                <TextBlock Name="BatterySliderText"
+                                           HorizontalAlignment="Left"
+                                           Visibility="Visible"
+                                           Margin="15,5,0,0"
+                                           TextWrapping="Wrap"
+                                           FontSize="14"
+                                           Text="{Binding ElementName=BatterySlider,Path=Value}"
+                                           VerticalAlignment="Top" />
+                            </ui:SimpleStackPanel>
                         </ui:SimpleStackPanel>
                     </ui:SimpleStackPanel>
-                </ui:SimpleStackPanel>
-            </uc:Card>
-
+                </uc:Card>
+            </ui:SimpleStackPanel>
 
             <TextBlock Grid.Column="1"
                        Grid.Row="4"

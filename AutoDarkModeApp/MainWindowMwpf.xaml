@@ -38,7 +38,7 @@
 
             <StackPanel Grid.Column="0"
                        Name="TopBarTitle"
-                       Background="{DynamicResource NavbarFill}"
+                       Background="{DynamicResource AltHighClone}"
                        Width="Auto"
                        Height="Auto" />
             <StackPanel Grid.Column="1"

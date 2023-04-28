@@ -316,8 +316,9 @@ namespace AutoDarkModeApp.Pages
 
         }
 
-        private static async Task WaitForColorizationChange(string initial, int timeout)
+        private async Task WaitForColorizationChange(string initial, int timeout)
         {
+            if (!builder.Config.ColorizationSwitch.Enabled) return;
             int tries = 0;
             while (tries < timeout)
             {
@@ -334,7 +335,7 @@ namespace AutoDarkModeApp.Pages
                     else
                     {
                         await Task.Delay(1000);
-                        timeout++;
+                        tries++;
                     }
                 }
             }

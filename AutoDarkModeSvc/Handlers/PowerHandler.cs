@@ -26,9 +26,10 @@ namespace AutoDarkModeSvc.Handlers
     static class PowerHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static bool allowRestore;
+        public static bool EnergySaverMitigationActive { get; private set; }
         public static void RequestDisableEnergySaver(AdmConfig config)
         {
+            if (EnergySaverMitigationActive) return;
             if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
                 Logger.Debug($"energy saver mitigation disabled");
@@ -38,7 +39,7 @@ namespace AutoDarkModeSvc.Handlers
             if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
             {
                 ChangeBatterySlider(0);
-                allowRestore = true;
+                EnergySaverMitigationActive = true;
             }
         }
 
@@ -49,10 +50,10 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
 
-            if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && allowRestore)
+            if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && EnergySaverMitigationActive)
             {
                 ChangeBatterySlider(config.Tunable.BatterySliderDefaultValue);
-                allowRestore = false;
+                EnergySaverMitigationActive = false;
             }
         }
 

@@ -27,7 +27,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     /// </summary>
     class AppsSwitch : AppsSwitchThemeFile
     {
-        public override bool TriggersDwmRefresh => true;
         protected override void HandleSwitch(SwitchEventArgs e)
         {
             string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);

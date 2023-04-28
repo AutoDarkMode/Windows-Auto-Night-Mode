@@ -154,11 +154,11 @@ namespace AutoDarkModeSvc.Core
         /// <param name="newTheme">The theme that should be checked against</param>
         /// <returns>a list of components that require an update and a boolean that informs whether a dwm refresh needs to be initiated manually</returns>
         /// </summary>
-        public (List<ISwitchComponent>, bool) GetComponentsToUpdate(SwitchEventArgs e)
+        public (List<ISwitchComponent>, bool, DwmRefreshType dwmRefreshType) GetComponentsToUpdate(SwitchEventArgs e)
         {
             List<ISwitchComponent> shouldUpdate = new();
-            bool triggersDwmRefresh = false;
             bool needsDwmRefresh = false;
+            DwmRefreshType dwmRefreshType = DwmRefreshType.None;
             foreach (ISwitchComponent c in Components)
             {
                 // require update if theme mode is enabled, the module is enabled and compatible with theme mode
@@ -168,9 +168,7 @@ namespace AutoDarkModeSvc.Core
 
                     if (c.RunComponentNeedsUpdate(e))
                     {
-                        if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
-                        if (c.NeedsDwmRefresh) needsDwmRefresh = true;
-                        shouldUpdate.Add(c);
+                        AddComponentToSwitchList(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
                     }
                 }
                 // require update if module is enabled and theme mode is disabled (previously known as classic mode)
@@ -180,30 +178,50 @@ namespace AutoDarkModeSvc.Core
 
                     if (c.RunComponentNeedsUpdate(e))
                     {
-                        if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
-                        if (c.NeedsDwmRefresh) needsDwmRefresh = true;
-                        shouldUpdate.Add(c);
+                        AddComponentToSwitchList(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
                     }
                 }
                 // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
                 else if (!c.Enabled && c.Initialized)
                 {
-                    if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
-                    if (c.NeedsDwmRefresh) needsDwmRefresh = true;
                     shouldUpdate.Add(c);
                 }
                 // if the force flag is set to true, we also need to update
                 else if (c.ForceSwitch)
                 {
-                    if (c.TriggersDwmRefresh) triggersDwmRefresh = true;
-                    if (c.NeedsDwmRefresh) needsDwmRefresh = true;
-                    shouldUpdate.Add(c);
+                    AddComponentToSwitchList(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
                 }
             }
+
             // if a different module will already trigger a dwm refresh, we don't need to perform an extra refresh
-            if (triggersDwmRefresh) needsDwmRefresh = false;
-            if (shouldUpdate.Count > 0) Logger.Info($"components queued for update: [{String.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
-            return (shouldUpdate, needsDwmRefresh);
+            // if refresh is always set by user, then we set it in case triggersDwmRefresh is false.
+            // Because then, regardless of module state, we always want it applied
+            if ((int)dwmRefreshType >= (int)DwmRefreshType.Standard)
+            {
+                Logger.Info($"dwm management: {Enum.GetName(dwmRefreshType).ToLower()} refresh will be performed by component(s) in queue");
+                needsDwmRefresh = false;
+            }
+            else if (needsDwmRefresh)
+            {
+                Logger.Info("dwm management: refresh requested by component(s) in queue");
+            }
+
+            if (shouldUpdate.Count > 0) Logger.Info($"components queued for update: [{string.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
+            return (shouldUpdate, needsDwmRefresh, dwmRefreshType);
+        }
+
+        private static void AddComponentToSwitchList(ISwitchComponent c, List<ISwitchComponent> shouldUpdate, ref bool needsDwmRefresh, ref DwmRefreshType dwmRefreshType)
+        {
+            if (c.NeedsDwmRefresh)
+            {
+                needsDwmRefresh = true;
+            }
+
+            if ((int)c.TriggersDwmRefresh > (int)dwmRefreshType)
+            {
+                dwmRefreshType = c.TriggersDwmRefresh;
+            }
+            shouldUpdate.Add(c);
         }
 
         /// <summary>
@@ -263,7 +281,7 @@ namespace AutoDarkModeSvc.Core
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public void RunCallbacks(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e) 
+        public void RunCallbacks(List<ISwitchComponent> components, Theme newTheme, SwitchEventArgs e)
         {
             if (newTheme == Theme.Dark && lastSorting != Theme.Dark)
             {

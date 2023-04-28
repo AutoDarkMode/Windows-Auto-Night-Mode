@@ -16,22 +16,40 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
     {
         public override bool ThemeHandlerCompatibility => false;
-        public override bool TriggersDwmRefresh => true;
+        public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Full;
         private bool invalidHexFound = false;
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
             bool autoColorizationState = GlobalState.ManagedThemeFile.GetAutoColorizationState();
             if (e.Theme == Theme.Dark)
             {
-                if (autoColorizationState != Settings.Component.DarkAutoColorization) return true;
-                else if (invalidHexFound && (Settings.Component.DarkAutoColorization == false)) return false;
-                else if (!Settings.Component.DarkAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.DarkHex) return true;
+                if (autoColorizationState != Settings.Component.DarkAutoColorization)
+                {
+                    return true;
+                }
+                else if (invalidHexFound && (Settings.Component.DarkAutoColorization == false))
+                {
+                    return false;
+                }
+                else if (!Settings.Component.DarkAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.DarkHex)
+                {
+                    return true;
+                }
             }
             else if (e.Theme == Theme.Light)
             {
-                if (autoColorizationState != Settings.Component.LightAutoColorization) return true;
-                else if (invalidHexFound && (Settings.Component.LightAutoColorization == false)) return false;
-                else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex) return true;
+                if (autoColorizationState != Settings.Component.LightAutoColorization)
+                {
+                    return true;
+                }
+                else if (invalidHexFound && (Settings.Component.LightAutoColorization == false))
+                {
+                    return false;
+                }
+                else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex)
+                {
+                    return true;
+                }
             }
             return false;
         }

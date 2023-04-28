@@ -20,6 +20,7 @@
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Monitors;
 using System;
@@ -212,16 +213,51 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
-        public static void RefreshDwm(bool managed)
+        public static void RefreshDwmFull(bool managed, SwitchEventArgs e)
         {
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
             {
                 try
                 {
                     // prepare theme
-                    ThemeFile dwmRefreshTheme = new(Helper.PathManagedDwmRefreshTheme);
-                    if (!managed) state.ManagedThemeFile.SyncWithActiveTheme(false, false, true);
-                    dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+                    ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
+                    // if unmanaged we need to force-sync the theme
+                    if (!managed)
+                    {
+                        state.ManagedThemeFile.SyncWithActiveTheme(false, false, true);
+                        ThemeFile unmanagedTarget;
+                        if (e.Theme == Theme.Dark)
+                        {
+                            unmanagedTarget = new(builder.Config.WindowsThemeMode.DarkThemePath);
+                        }
+                        else
+                        {
+                            unmanagedTarget = new(builder.Config.WindowsThemeMode.LightThemePath);
+                        }
+                        try
+                        {
+                            unmanagedTarget.Load();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "dwm management: could not load unmanaged target theme while refreshing dwm, forcing refresh:");
+                        }
+                        if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "1")
+                        {
+                            Logger.Info("dwm management: no refresh required because auto colorization is enabled in the target theme");
+                            return;
+                        }
+                        else if (unmanagedTarget.VisualStyles.ColorizationColor.Item1 != state.ManagedThemeFile.VisualStyles.ColorizationColor.Item1)
+                        {
+                            Logger.Info("dwm management: no refresh required because target theme has different accent color");
+                            return;
+                        }
+                        dwmRefreshTheme.SetContentAndParse(unmanagedTarget.ThemeFileContent);
+                    }
+                    else
+                    {
+                        dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+                    }
                     dwmRefreshTheme.RefreshGuid();
                     dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
 
@@ -245,21 +281,16 @@ namespace AutoDarkModeSvc.Handlers
                     List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
                     Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
 
-                    if (!managed)
-                    {
-                        Apply(oldUnmanagedThemePath, true, null, flagList);
-                    }
-                    Thread.Sleep(4000);
-                    Logger.Info("refreshed dwm because a module requested it");
+                    Logger.Info("dwm management: refresh performed by theme handler");
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn(ex, "could not refresh Dwm due to malformed colorization string: ");
+                    Logger.Warn(ex, "dwm management: could not refresh dwm due to malformed colorization string: ");
                 }
             }
             else
             {
-                Logger.Trace("no dwm refresh required needed in this windows version");
+                Logger.Trace("dwm management: no refresh required needed in this windows version");
             }
         }
 

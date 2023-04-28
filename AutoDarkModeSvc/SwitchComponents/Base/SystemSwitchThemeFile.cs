@@ -50,7 +50,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 Logger.Error(ex, "couldn't initialize system apps theme state");
             }
         }
-        public override bool TriggersDwmRefresh => true;
+        public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Standard;
 
         public override bool ThemeHandlerCompatibility => true;
 

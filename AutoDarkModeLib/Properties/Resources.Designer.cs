@@ -1195,6 +1195,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string ok {
+            get {
+                return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Folder.
         /// </summary>
         public static string OpenPath {
@@ -1623,6 +1632,36 @@ namespace AutoDarkModeLib.Properties {
         public static string SettingsPageAutostartRefreshButton {
             get {
                 return ResourceManager.GetString("SettingsPageAutostartRefreshButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always refresh DWM on theme switch.
+        /// </summary>
+        public static string SettingsPageCheckBoxAlwaysRefreshDwm {
+            get {
+                return ResourceManager.GetString("SettingsPageCheckBoxAlwaysRefreshDwm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+        ///
+        ///This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
+        ///On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes..
+        /// </summary>
+        public static string SettingsPageCheckBoxAlwaysRefreshDwmExplanation {
+            get {
+                return ResourceManager.GetString("SettingsPageCheckBoxAlwaysRefreshDwmExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Force DWM refresh?.
+        /// </summary>
+        public static string SettingsPageCheckBoxAlwaysRefreshDwmHeader {
+            get {
+                return ResourceManager.GetString("SettingsPageCheckBoxAlwaysRefreshDwmHeader", resourceCulture);
             }
         }
         

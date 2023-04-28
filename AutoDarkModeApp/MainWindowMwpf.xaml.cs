@@ -39,6 +39,8 @@ using System.Runtime.InteropServices;
 using System.Management;
 using System.Security.Cryptography;
 using System.Security.Principal;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace AutoDarkModeApp
 {
@@ -46,6 +48,8 @@ namespace AutoDarkModeApp
     {
         private ResourceDictionary navbarDict;
         private ManagementEventWatcher DWMPrevalenceWatcher;
+        private bool micaInitialized = false;
+        private CancellationTokenSource refreshTitleBarCts = new();
 
         private static SecurityIdentifier SID
         {
@@ -144,18 +148,44 @@ namespace AutoDarkModeApp
             NavBar.Resources = newResources;
 
             if (!RegistryHandler.IsDWMPrevalence())
-            {               
-                // allow full transparency except for close buttons
-                TopBarCloseButtonsOpaque.Visibility = Visibility.Hidden;
-                TopBarHeader.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-                TopBarTitle.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            {
+                if (micaInitialized)
+                {
+                    CancellationToken token = refreshTitleBarCts.Token;
+                    Task.Delay(3000, token).ContinueWith(t =>
+                    {
+                        if (token.IsCancellationRequested)
+                        {
+                            return;
+                        }
+                        Dispatcher.Invoke(() =>
+                        {
+                            TopBarCloseButtonsOpaque.Visibility = Visibility.Hidden;
+                            TopBarHeader.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                            TopBarTitle.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                        });
+                    });
+                }
+                else
+                {
+                    TopBarCloseButtonsOpaque.Visibility = Visibility.Hidden;
+                    TopBarHeader.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                    TopBarTitle.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                    micaInitialized = true;
+                }              
             }
             else
             {
-                // color top bar to avoid color prevalence from shining through
+                // allow full transparency except for close buttons
+                if (!refreshTitleBarCts.IsCancellationRequested)
+                {
+                    refreshTitleBarCts.Cancel();
+                }
+                refreshTitleBarCts.Dispose();
+                refreshTitleBarCts = new();
                 TopBarCloseButtonsOpaque.Visibility = Visibility.Visible;
                 TopBarHeader.SetResourceReference(BackgroundProperty, "AltHighClone");
-                TopBarTitle.SetResourceReference(BackgroundProperty, "AltHighClone");
+                TopBarTitle.SetResourceReference(BackgroundProperty, "AltHighClone");      
             }
 
 

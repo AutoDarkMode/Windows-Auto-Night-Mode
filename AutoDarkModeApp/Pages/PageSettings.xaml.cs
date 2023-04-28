@@ -120,7 +120,7 @@ namespace AutoDarkModeApp.Pages
             if (PowerManager.BatteryStatus == BatteryStatus.NotPresent || Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 CheckBoxEnergySaverMitigation.Visibility = Visibility.Collapsed;
-                SeparatorEnergySaverMitigation.Visibility = Visibility.Collapsed;
+                CardEnergySaverMitigation.Visibility = Visibility.Collapsed;
             }
 
             //language ui
@@ -137,16 +137,15 @@ namespace AutoDarkModeApp.Pages
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
             CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             CheckBoxWin10AllowLockscreenSwitch.IsChecked = builder.Config.Events.Win10AllowLockscreenSwitch;
+            CheckBoxAlwaysDwmRefresh.IsChecked = builder.Config.Tunable.AlwaysFullDwmRefresh;
 
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
             {
-                CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
-                SeparatorWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
+                CardWin10AllowLockscreenSwitch.Visibility = Visibility.Collapsed;
             }
             else
             {
-                CheckBoxWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
-                SeparatorWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
+                CardWin10AllowLockscreenSwitch.Visibility = Visibility.Visible;
             }
 
             CheckBoxDebugMode.IsChecked = builder.Config.Tunable.Debug;
@@ -154,7 +153,7 @@ namespace AutoDarkModeApp.Pages
             if (!builder.Config.Tunable.Debug)
             {
                 CheckBoxTraceMode.Visibility = Visibility.Collapsed;
-                SeparatorTraceMode.Visibility = Visibility.Collapsed;
+                CardTraceMode.Visibility = Visibility.Collapsed;
             }
 
             //battery slider / energy saver mitigation
@@ -452,7 +451,7 @@ namespace AutoDarkModeApp.Pages
             {
                 builder.Config.Tunable.Debug = true;
                 CheckBoxTraceMode.Visibility = Visibility.Visible;
-                SeparatorTraceMode.Visibility = Visibility.Visible;
+                CardTraceMode.Visibility = Visibility.Visible;
             }
             else
             {
@@ -460,7 +459,7 @@ namespace AutoDarkModeApp.Pages
                 builder.Config.Tunable.Trace = false;
                 CheckBoxTraceMode.IsChecked = false;
                 CheckBoxTraceMode.Visibility = Visibility.Collapsed;
-                SeparatorTraceMode.Visibility = Visibility.Collapsed;
+                CardTraceMode.Visibility = Visibility.Collapsed;
             }
             try
             {
@@ -732,7 +731,7 @@ namespace AutoDarkModeApp.Pages
                 ButtonSearchUpdate.IsEnabled = true;
                 builder.Config.Tunable.Debug = true;
                 CheckBoxTraceMode.Visibility = Visibility.Visible;
-                SeparatorTraceMode.Visibility = Visibility.Visible;
+                CardTraceMode.Visibility = Visibility.Visible;
                 CheckBoxDebugMode.IsChecked = true;
             }
             try
@@ -904,5 +903,39 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
+        private void CheckBoxAlwaysRefreshDwm_Click(object sender, RoutedEventArgs e)
+        {
+            MsgBox confirm = new(AdmProperties.Resources.SettingsPageCheckBoxAlwaysRefreshDwmExplanation, 
+                AdmProperties.Resources.SettingsPageCheckBoxAlwaysRefreshDwmHeader, 
+                "info", 
+                "okcancel")
+            {
+                Owner = Window.GetWindow(this)
+            };
+            if (CheckBoxAlwaysDwmRefresh.IsChecked == true)
+            {
+                bool? result = confirm.ShowDialog();
+                if (result.HasValue && result.Value)
+                {
+                    builder.Config.Tunable.AlwaysFullDwmRefresh = true;
+                }
+                else
+                {
+                    CheckBoxAlwaysDwmRefresh.IsChecked = false;
+                }
+            }         
+            else
+            {
+                builder.Config.Tunable.AlwaysFullDwmRefresh = false;
+            }
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "CheckBoxAlwaysDwmRefresh");
+            }
+        }
     }
 }

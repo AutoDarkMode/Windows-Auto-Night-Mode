@@ -98,6 +98,13 @@ namespace AutoDarkModeLib
         PostSync
     }
 
+    public enum DwmRefreshType
+    {
+        None = 0,
+        Standard = 1,
+        Full = 2
+    }
+
     public enum BridgeResponseCode
     {
         InvalidArguments,
