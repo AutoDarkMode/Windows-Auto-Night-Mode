@@ -170,7 +170,7 @@ namespace AutoDarkModeSvc
 
         private void UpdateContextMenu(object sender, EventArgs e)
         {
-            if (state.RequestedTheme == Theme.Dark)
+            if (state.InternalTheme == Theme.Dark)
             {
                 NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
             }

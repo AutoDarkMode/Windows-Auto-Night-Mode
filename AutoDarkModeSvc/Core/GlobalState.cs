@@ -53,7 +53,7 @@ namespace AutoDarkModeSvc.Core
         /// The theme that was last requested to be set. This either reflects the already applied theme, 
         /// or the pending theme shortly before a switch will be performed
         /// </summary>
-        public Theme RequestedTheme
+        public Theme InternalTheme
         {
             get { return _requestedTheme; }
             set
@@ -205,9 +205,9 @@ namespace AutoDarkModeSvc.Core
             if (NotifyIcon == null) return;
 
             string themeState = "";
-            if (RequestedTheme != Theme.Unknown)
+            if (InternalTheme != Theme.Unknown)
             {
-                if (RequestedTheme == Theme.Light)
+                if (InternalTheme == Theme.Light)
                 {
                     themeState = AdmProperties.Resources.lblLight;
                 }

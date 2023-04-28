@@ -74,7 +74,7 @@ namespace AutoDarkModeSvc.Modules
             if (builder.Config.AutoSwitchNotify.Enabled && !init && state.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
                 if (!notified && Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay)
-                    && state.NightLight.Requested != state.RequestedTheme)
+                    && state.NightLight.Requested != state.InternalTheme)
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                     notified = true;

@@ -386,7 +386,7 @@ namespace AutoDarkModeSvc.Communication
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,
-                            Message = Enum.GetName(typeof(Theme), state.RequestedTheme)
+                            Message = Enum.GetName(typeof(Theme), state.InternalTheme)
                         }.ToString());
                         break;
                     #endregion
@@ -401,7 +401,7 @@ namespace AutoDarkModeSvc.Communication
                             {
                                 StatusCode = StatusCode.Ok,
                                 Message = colCol.Replace("0x", "#"),
-                                Details = Enum.GetName(state.RequestedTheme)
+                                Details = Enum.GetName(state.InternalTheme)
                             }.ToString());
                         }
                         catch (Exception ex)

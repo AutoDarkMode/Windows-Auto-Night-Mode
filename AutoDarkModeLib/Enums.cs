@@ -74,6 +74,7 @@ namespace AutoDarkModeLib
     {
         Default = 0,
         TimedThemeState,
+        NightLight,
         ForceFlag,
         BatteryStatus,
         PostponeManager

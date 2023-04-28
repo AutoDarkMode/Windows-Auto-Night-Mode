@@ -198,12 +198,12 @@ namespace AutoDarkModeSvc.Handlers
             bool shouldNotify = false;
             if (builder.Config.Governor == Governor.NightLight)
             {
-                if (state.NightLight.Requested != state.RequestedTheme) shouldNotify = true;
+                if (state.NightLight.Requested != state.InternalTheme) shouldNotify = true;
             }
             else if (builder.Config.Governor == Governor.Default)
             {
                 TimedThemeState ts = new();
-                if (ts.TargetTheme != state.RequestedTheme) shouldNotify = true;
+                if (ts.TargetTheme != state.InternalTheme) shouldNotify = true;
             }
 
             if (shouldNotify)

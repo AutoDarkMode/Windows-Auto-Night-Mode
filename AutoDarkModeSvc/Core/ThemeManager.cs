@@ -56,7 +56,7 @@ namespace AutoDarkModeSvc.Core
             // apply last requested theme if switch is user-postponed
             if (state.PostponeManager.IsUserDelayed || state.PostponeManager.IsSkipNextSwitch)
             {
-                e.OverrideTheme(state.RequestedTheme, ThemeOverrideSource.PostponeManager);
+                e.OverrideTheme(state.InternalTheme, ThemeOverrideSource.PostponeManager);
                 UpdateTheme(e);
                 return;
             }
@@ -97,12 +97,13 @@ namespace AutoDarkModeSvc.Core
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
                 {
+                    e.OverrideTheme(state.NightLight.Requested, ThemeOverrideSource.NightLight);
                     UpdateTheme(e);
                 }
             }
             else
             {
-                e.OverrideTheme(state.RequestedTheme, ThemeOverrideSource.Default);
+                e.OverrideTheme(state.InternalTheme, ThemeOverrideSource.Default);
                 UpdateTheme(e);
             }
         }
@@ -144,11 +145,11 @@ namespace AutoDarkModeSvc.Core
         {
             Theme newTheme;
             if (target != Theme.Unknown) newTheme = target;
-            else if (state.RequestedTheme == Theme.Light) newTheme = Theme.Dark;
+            else if (state.InternalTheme == Theme.Light) newTheme = Theme.Dark;
             else newTheme = Theme.Light;
 
             // pre-set requested theme to set skip times correctly
-            state.RequestedTheme = newTheme;
+            state.InternalTheme = newTheme;
 
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
@@ -193,7 +194,7 @@ namespace AutoDarkModeSvc.Core
                 return;
             }
             Theme newTheme = e.Theme;
-            state.RequestedTheme = newTheme;
+            state.InternalTheme = newTheme;
 
             DateTime switchTime = new();
             if (e.SwitchTime.HasValue) switchTime = e.SwitchTime.Value;
@@ -225,7 +226,7 @@ namespace AutoDarkModeSvc.Core
                     // this is necessary such that postpones have the correct requestedtheme!
                     try
                     {
-                        state.RequestedTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+                        state.InternalTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
                     }
                     catch (Exception ex)
                     {

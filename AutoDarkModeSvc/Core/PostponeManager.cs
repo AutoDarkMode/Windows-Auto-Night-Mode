@@ -184,7 +184,7 @@ namespace AutoDarkModeSvc.Core
         /// <returns>The time the next switch should expire and the skiptype as a tuple, or an empty datetime object if that information is unavailable</returns>
         public (DateTime, SkipType) GetSkipNextSwitchExpiryTime(Theme overrideTheme = Theme.Unknown)
         {
-            Theme newTheme = overrideTheme == Theme.Unknown ? state.RequestedTheme : overrideTheme;
+            Theme newTheme = overrideTheme == Theme.Unknown ? state.InternalTheme : overrideTheme;
 
             if (builder.Config.Governor != Governor.Default) return (new(), state.NightLight.Requested == Theme.Light ? SkipType.Sunset : SkipType.Sunrise);
 
