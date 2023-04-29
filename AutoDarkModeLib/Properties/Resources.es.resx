@@ -231,7 +231,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Traductor: Daniel Sevillano</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>Cuidad</value>
+    <value>Ciudad</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
     <value>Posición</value>
@@ -1156,5 +1156,35 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Repositorio personalizado del usuario de los script</value>
+  </data>
+  <data name="WallpaperComboBoxItemFill" xml:space="preserve">
+    <value>Rellenar</value>
+  </data>
+  <data name="WallpaperComboBoxItemFit" xml:space="preserve">
+    <value>Adaptar</value>
+  </data>
+  <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
+    <value>Estirar</value>
+  </data>
+  <data name="WallpaperTextBlockPosition" xml:space="preserve">
+    <value>elija un ajuste para su imagen de escritorio</value>
+  </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Desconectando</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
+    <value>Actualizar siempre DWM al cambiar de tema</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
+    <value>Intenta reducir la apariencia de colores de interfaz de usuario incorrectos en el administrador de archivos, la barra de tareas y el menú de inicio. Si experimenta este problema con frecuencia o le molesta, intente habilitar esta configuración.
+
+Esto puede introducir retrasos de cambio de tema leves a moderados en algunos sistemas, similar a lo que sucede en Windows 10.
+En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse durante una actualización de DWM.</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
+    <value>¿Forzar las actualización de DWM?</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>De acuerdo</value>
   </data>
 </root>

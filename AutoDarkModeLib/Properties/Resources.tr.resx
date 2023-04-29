@@ -1157,4 +1157,34 @@ Gerçekten devam etmek istiyor musunuz?</value>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Özel komut dosyası kullanıcı deposu</value>
   </data>
+  <data name="WallpaperComboBoxItemFill" xml:space="preserve">
+    <value>Doldur</value>
+  </data>
+  <data name="WallpaperComboBoxItemFit" xml:space="preserve">
+    <value>Sığdır</value>
+  </data>
+  <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="WallpaperTextBlockPosition" xml:space="preserve">
+    <value>Arka plan resminiz için uygun olanı seçin</value>
+  </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Bağlantı kesildi</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
+    <value>Tema değişiminde DWM'yi her zaman yenile</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
+    <value>Dosya gezgininde, görev çubuğunda ve başlat menüsünde yanlış ara yüz renklerinin oluşumunu azaltmaya çalışır. Bunu sık sık yaşıyorsanız ya da bundan rahatsızsanız bu ayarı etkinleştirmeyi deneyin.
+
+Bu, Windows 10'da olduğu gibi tema değişimi sırasında bazı sistemlerde hafif ila orta düzeyde gecikmeye neden olabilir.
+Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Windows bir bip sesi çıkarabilir.</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
+    <value>DWM yenilemeye zorlansın mı?</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
 </root>
