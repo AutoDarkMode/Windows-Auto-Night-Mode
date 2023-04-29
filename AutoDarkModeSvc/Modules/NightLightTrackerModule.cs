@@ -33,13 +33,12 @@ namespace AutoDarkModeSvc.Modules
         public override string TimerAffinity => TimerName.Main;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private DateTime lastNightLightQueryTime = DateTime.Now;
-        private Theme requestedTheme = Theme.Unknown;
+        private Theme nightLightState = Theme.Unknown;
         private static ManagementEventWatcher nightLightKeyWatcher;
         private GlobalState state = GlobalState.Instance();
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool queuePostponeRemove = false;
-        bool notified = false;
 
         public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -49,7 +48,7 @@ namespace AutoDarkModeSvc.Modules
             DateTime adjustedTime;
 
             //apply offsets to the latest available switch times
-            if (requestedTheme == Theme.Dark)
+            if (nightLightState == Theme.Dark)
             {
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunsetOffsetMin);
             }
@@ -62,24 +61,22 @@ namespace AutoDarkModeSvc.Modules
             // Otherwise the incorrect theme will show up
             if (DateTime.Compare(adjustedTime, DateTime.Now) > 0 && !init)
             {
-                if (requestedTheme == Theme.Light) state.NightLight.Requested = Theme.Dark;
-                else if (requestedTheme == Theme.Dark) state.NightLight.Requested = Theme.Light;
+                if (nightLightState == Theme.Light) state.NightLight.Requested = Theme.Dark;
+                else if (nightLightState == Theme.Dark) state.NightLight.Requested = Theme.Light;
             }
-            else if (state.NightLight.Requested != requestedTheme)
+            else if (state.NightLight.Requested != nightLightState)
             {
-                state.NightLight.Requested = requestedTheme;
+                state.NightLight.Requested = nightLightState;
             }
 
             // if auto switch notify is enabled and we are approaching the switch window, we need to show a notification
             if (builder.Config.AutoSwitchNotify.Enabled && !init && state.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
-                if (!notified && Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay)
+                if (!state.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay)
                     && state.NightLight.Requested != state.InternalTheme)
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
-                    notified = true;
                 }
-                else if (notified && DateTime.Compare(DateTime.Now, adjustedTime.AddMinutes(1)) > 0) notified = false;
             }
 
             // when the adjusted switch time is in the past and no postpones are queued, the theme should be updated
@@ -122,11 +119,11 @@ namespace AutoDarkModeSvc.Modules
                 Logger.Error(ex, "error retrieving night light enabled state:");
             }
             Theme newTheme = enabled ? Theme.Dark : Theme.Light;
-            if (newTheme != requestedTheme)
+            if (newTheme != nightLightState)
             {
                 if (init) lastNightLightQueryTime = DateTime.Now.AddHours(-24);
                 else lastNightLightQueryTime = DateTime.Now;
-                requestedTheme = newTheme;
+                nightLightState = newTheme;
                 Logger.Info($"night light status enabled changed to {enabled}");
                 bool isSkipNext = state.PostponeManager.GetSkipNextSwitchItem() != null;
                 // if we are on the right theme and postpone is still enabled, we need to clear postpone on the next switch

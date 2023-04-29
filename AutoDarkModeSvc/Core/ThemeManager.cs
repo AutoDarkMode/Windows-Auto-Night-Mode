@@ -79,13 +79,13 @@ namespace AutoDarkModeSvc.Core
             }
 
             // process switches with a requested theme set before automatic ones
-            if (e.Theme != Theme.Automatic && e.Source != SwitchSource.NightLightTrackerModule)
+            if (e.Theme != Theme.Automatic)
             {
                 UpdateTheme(e);
                 return;
             }
 
-            // automatic switches
+            // recalculate timed theme state on every call
             if (builder.Config.AutoThemeSwitchingEnabled)
             {
                 if (builder.Config.Governor == Governor.Default)
