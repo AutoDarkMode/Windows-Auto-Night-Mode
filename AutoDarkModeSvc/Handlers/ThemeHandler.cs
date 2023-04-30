@@ -358,7 +358,7 @@ namespace AutoDarkModeSvc.Handlers
                     if (flagList == null) flagList = builder.Config.WindowsThemeMode.ApplyFlags;
                     else builder.Config.WindowsThemeMode.ApplyFlags.ForEach(f => { if (!flagList.Contains(f)) flagList.Add(f); });
                 }
-                (_, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
+                (_, _, displayNameFromFile) = ThemeFile.GetDisplayNameFromRaw(themeFilePath);
                 (tm2Found, tm2Success) = IThemeManager2.Tm2Handler.SetTheme(displayNameFromFile, originalPath, flagList: flagList, suppressLogging: suppressLogging);
             }
             catch (Exception ex)

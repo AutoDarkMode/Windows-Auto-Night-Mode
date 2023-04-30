@@ -21,6 +21,7 @@ using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Windows.UI;
 using Windows.UI.Composition;
 
@@ -43,6 +44,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             GlobalState.ManagedThemeFile.Desktop.Wallpaper = "";
             GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
             GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
+            GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
 
             // WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
             currentSolidColorTheme = newTheme;
@@ -54,6 +56,20 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             HookPosition = HookPosition.PostSync;
             return true;
+        }
+
+        protected override void SwitchIndividual(Theme newTheme)
+        {
+            WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
+            if (currentSolidColorTheme != Theme.Unknown)
+            {
+                Logger.Debug("waiting for solid color to disable");
+                Thread.Sleep(100);
+            }
+            currentIndividualTheme = newTheme;
+            currentGlobalTheme = Theme.Unknown;
+            currentSolidColorTheme = Theme.Unknown;
+            spotlightEnabled = false;
         }
     }
 }

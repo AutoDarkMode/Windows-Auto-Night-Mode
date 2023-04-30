@@ -223,7 +223,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
                             found = true;
 
                             // Using this enables setting themes without explicitly knowing the display name. May be useful for later
-                            // success = etThemeViaAddAndSelect(originalPath, manager, flags);
+                            // success = SetThemeViaAddAndSelect(originalPath, manager, flags);
                             success = SetThemeViaIdx(targetTheme, manager, flags);
                             if (success)
                             {

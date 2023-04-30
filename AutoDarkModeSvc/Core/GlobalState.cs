@@ -106,8 +106,8 @@ namespace AutoDarkModeSvc.Core
                         {
                             UnmanagedActiveThemePath = "";
                             // retrieve theme names from configuration file and then compare them to the custom path
-                            (_, string displayNameLight) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
-                            (_, string displayNameDark) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
+                            (_, _, string displayNameLight) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
+                            (_, _, string displayNameDark) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
                             string sourceThemeNameCustom = ThemeFile.GetOriginalNameFromRaw(customPath);
                             if (sourceThemeNameCustom == displayNameDark)
                             {
@@ -131,7 +131,7 @@ namespace AutoDarkModeSvc.Core
                         if (unmanagedLight)
                         {
                             string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.PathUnmanagedLightTheme);
-                            (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
+                            (_, _, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
                             if (displayNameUnmanaged != displayNameSource)
                             {
                                 Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.LightThemePath}");
@@ -141,7 +141,7 @@ namespace AutoDarkModeSvc.Core
                         if (unmanagedDark)
                         {
                             string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.PathUnmanagedDarkTheme);
-                            (_, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
+                            (_, _, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
                             if (displayNameUnmanaged != displayNameSource)
                             {
                                 Logger.Debug($"detected change in unmanaged light theme, new origin: {config.WindowsThemeMode.DarkThemePath}");

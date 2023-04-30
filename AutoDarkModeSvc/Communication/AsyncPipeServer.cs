@@ -269,7 +269,7 @@ namespace AutoDarkModeSvc.Communication
 
                 DateTime end = DateTime.Now;
                 TimeSpan elapsed = end - start;
-                if (elapsed.TotalSeconds > 5)
+                if (elapsed.TotalSeconds > 7)
                 {
                     Logger.Warn($"processing message: {msg} took longer than expected ({Math.Round(elapsed.TotalSeconds, 2)} seconds), requested response channel: {responderPipeId}");
                 }

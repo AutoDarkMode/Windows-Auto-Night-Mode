@@ -21,6 +21,7 @@ using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Windows.UI;
 using Windows.UI.Composition;
 
@@ -188,11 +189,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             if (type == WallpaperType.Individual)
             {
-                WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
-                currentIndividualTheme = newTheme;
-                currentGlobalTheme = Theme.Unknown;
-                currentSolidColorTheme = Theme.Unknown;
-                spotlightEnabled = false;
+                SwitchIndividual(newTheme);
             }
             else if (type == WallpaperType.Global)
             {
@@ -233,6 +230,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = Theme.Unknown;
                 spotlightEnabled = true;
             }
+        }
+
+        protected virtual void SwitchIndividual(Theme newTheme)
+        {
+            WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
+            currentIndividualTheme = newTheme;
+            currentGlobalTheme = Theme.Unknown;
+            currentSolidColorTheme = Theme.Unknown;
+            spotlightEnabled = false;
         }
 
         protected virtual void SwitchSolidColor(Theme newTheme)

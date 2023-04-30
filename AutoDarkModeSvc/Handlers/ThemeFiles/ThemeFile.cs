@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -13,13 +14,12 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
+
 using AutoDarkModeLib;
-using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers.IThemeManager2;
-using AutoDarkModeSvc.Monitors;
 using Microsoft.Win32;
-using NLog.Targets;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,27 +28,13 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using YamlDotNet.Core;
-using YamlDotNet.Core.Tokens;
-using static System.Windows.Forms.LinkLabel;
+using Windows.Devices.PointOfService;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
     public partial class ThemeFile
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public string ThemeFilePath { get; private set; }
-        public List<string> ThemeFileContent { get; private set; } = new();
-        public string DisplayName { get; set; } = "ADMTheme";
-        public string UnmanagedOriginalName { get; set; } = "undefined";
-        public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";
-        public MasterThemeSelector MasterThemeSelector { get; set; } = new();
-        public Desktop Desktop { get; set; } = new();
-        public VisualStyles VisualStyles { get; set; } = new();
-        public Cursors Cursors { get; set; } = new();
-        public Colors Colors { get; set; } = new();
-        public Slideshow Slideshow { get; set; } = new();
         private bool themeFixShouldAdd = false;
         public ThemeFile(string path)
         {
@@ -57,139 +43,119 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             if (val == 0) themeFixShouldAdd = true;
             ThemeFilePath = path;
         }
+        public Encoding Encoding { get; set; } = Encoding.GetEncoding(1252);
+        public Colors Colors { get; set; } = new();
+        public Cursors Cursors { get; set; } = new();
+        public Desktop Desktop { get; set; } = new();
+        public string DisplayName { get; set; } = "ADMTheme";
+        public MasterThemeSelector MasterThemeSelector { get; set; } = new();
+        public Slideshow Slideshow { get; set; } = new();
+        public List<string> ThemeFileContent { get; private set; } = new();
+        public string ThemeFilePath { get; private set; }
+        public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";
+        public string UnmanagedOriginalName { get; set; } = "undefined";
+        public VisualStyles VisualStyles { get; set; } = new();
+
+        public static (List<string>, Encoding, string) GetDisplayNameFromRaw(string themePath)
+        {
+            List<string> lines = new();
+            string pathThemeName = null;
+            Encoding encoding;
+            (encoding, lines) = Read(themePath);
+            pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
+            if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
+            return (lines, encoding, pathThemeName.Trim());
+        }
+
+        public static string GetOriginalNameFromRaw(string themePath)
+        {
+            List<string> lines = new();
+            string originalName = null;
+            Encoding encoding;
+            (encoding, lines) = Read(themePath);
+            originalName = lines.Where(x => x.StartsWith($"{nameof(UnmanagedOriginalName)}".Trim())).FirstOrDefault();
+            if (originalName != null) originalName = originalName.Split("=")[1];
+            else originalName = "";
+            return originalName.Trim();
+        }
+
+        public static ThemeFile LoadUnmanagedTheme(string sourcePath, string targetPath)
+        {
+            ThemeFile source = new(sourcePath);
+            source.Load();
+
+            ThemeFile target = new(targetPath);
+            target.SetContentAndParse(source.ThemeFileContent);
+            target.RefreshGuid();
+            return target;
+        }
+
+        public static void PatchColorsWin11AndSave(ThemeFile theme, string data = null)
+        {
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            {
+                if (data != null) theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
+                PatchColorsWin11InMemory(theme);
+            }
+            theme.Save(managed: false);
+        }
+
+        public static void PatchColorsWin11InMemory(ThemeFile theme)
+        {
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            {
+                string[] rgb = theme.Colors.InfoText.Item1.Split(" ");
+                _ = int.TryParse(rgb[0], out int r);
+                _ = int.TryParse(rgb[1], out int g);
+                _ = int.TryParse(rgb[2], out int b);
+
+                if (theme.themeFixShouldAdd)
+                {
+                    if (r == 255)
+                    {
+                        r--;
+                    }
+                    else
+                    {
+                        r++;
+                        theme.themeFixShouldAdd = false;
+                    }
+                }
+                else if (!theme.themeFixShouldAdd)
+                {
+                    if (r == 0)
+                    {
+                        r++;
+                    }
+                    else
+                    {
+                        r--;
+                        theme.themeFixShouldAdd = true;
+                    }
+                }
+                Logger.Debug($"patched colors from [{theme.Colors.InfoText.Item1}] to [{r} {g} {b}]");
+                theme.Colors.InfoText = ($"{r} {g} {b}", theme.Colors.InfoText.Item2);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether Auto Colorization is enabled
+        /// </summary>
+        /// <returns>true if enabled; false otherwise</returns>
+        public bool GetAutoColorizationState()
+        {
+            return VisualStyles.AutoColorization.Item1 == "1";
+        }
+
+        public void Load()
+        {
+            (Encoding, ThemeFileContent) = Read(ThemeFilePath);
+            Parse();
+        }
 
         public void RefreshGuid()
         {
             ThemeId = $"{{{Guid.NewGuid()}}}";
-        }
-
-        /// <summary>
-        /// Updates a value for a given key within a section. <br/>
-        /// If the value doesn't exist, it will be added at the bottom of the section instead.
-        /// </summary>
-        /// <param name="section">The ini file section name</param>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        private void UpdateValue(string section, string key, string value)
-        {
-            try
-            {
-                int found = ThemeFileContent.IndexOf(section);
-                if (found != -1)
-                {
-                    bool updated = false;
-                    for (int i = found + 1; i < ThemeFileContent.Count; i++)
-                    {
-                        if (ThemeFileContent[i].StartsWith('[')) break;
-                        else if (ThemeFileContent[i].StartsWith(key))
-                        {
-                            ThemeFileContent[i] = $"{key}={value}";
-                            updated = true;
-                            break;
-                        }
-                    }
-                    if (!updated)
-                    {
-                        ThemeFileContent.Insert(found + 1, $"{key}={value}");
-                    }
-                }
-                else
-                {
-                    ThemeFileContent.Add("");
-                    ThemeFileContent.Add(section);
-                    ThemeFileContent.Add($"{key}={value}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"failed to update value {section}/{key} with value {value}, exception: ");
-                throw;
-            }
-        }
-
-        private void RemoveKey(string section, string key)
-        {
-            try
-            {
-                int found = ThemeFileContent.IndexOf(section);
-                int keyIdx = -1;
-                if (found != -1)
-                {
-                    for (int i = found + 1; i < ThemeFileContent.Count; i++)
-                    {
-                        if (ThemeFileContent[i].StartsWith('[')) break;
-                        else if (ThemeFileContent[i].StartsWith(key))
-                        {
-                            keyIdx = i;
-                            break;
-                        }
-                    }
-                }
-                if (keyIdx != -1) ThemeFileContent.RemoveAt(keyIdx);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"failed to remove key {section}/{key}, exception: ");
-                throw;
-            }
-        }
-
-        private void UpdateSection(string section, List<string> lines)
-        {
-            try
-            {
-                int found = ThemeFileContent.IndexOf(section);
-                if (found != -1)
-                {
-                    int i;
-                    for (i = found + 1; i < ThemeFileContent.Count; i++)
-                    {
-                        if (ThemeFileContent[i].StartsWith('['))
-                        {
-                            break;
-                        }
-                    }
-                    ThemeFileContent.RemoveRange(found, i - found);
-                    lines.Add("");
-                    ThemeFileContent.InsertRange(found, lines);
-                }
-                else
-                {
-                    ThemeFileContent.Add("");
-                    ThemeFileContent.AddRange(lines);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"failed to update section {section} with data: {string.Join('\n', lines)}\n exception: ");
-                throw;
-            }
-        }
-
-        private void RemoveSection(string section)
-        {
-            try
-            {
-                int found = ThemeFileContent.IndexOf(section);
-                if (found != -1)
-                {
-                    int i;
-                    for (i = found + 1; i < ThemeFileContent.Count; i++)
-                    {
-                        if (ThemeFileContent[i].StartsWith('['))
-                        {
-                            i--;
-                            break;
-                        }
-                    }
-                    ThemeFileContent.RemoveRange(found, i - found);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"failed to remove section {section}\n exception: ");
-                throw;
-            }
         }
 
         /// <summary>
@@ -242,23 +208,20 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     if (Slideshow.RssFeed != null) slideshowSerialized.Add($"{nameof(Slideshow.RssFeed)}={Slideshow.RssFeed}");
                     UpdateSection(Slideshow.Section.Item1, slideshowSerialized);
                 }
+                else
+                {
+                    RemoveSection(Slideshow.Section.Item1);
+                }
             }
 
             try
             {
+                // file integrity checking
                 new FileInfo(ThemeFilePath).Directory.Create();
-                //remove non ini portions from the theme file to ensure windows parses it properly
-                for(int i = 0; i < ThemeFileContent.Count; i++)
-                {
-                    string line = ThemeFileContent[i];
-                    if (line.Length != 0 && !line.Contains('=') && !line.StartsWith('[') && !line.StartsWith(';'))
-                    {
-                        Logger.Warn($"invalid ini file entry detected: {line}, removing line to preserve theme file integrity");
-                        ThemeFileContent.RemoveAt(i);
-                        i--;
-                    }
-                }
-                File.WriteAllLines(ThemeFilePath, ThemeFileContent, Encoding.GetEncoding(1252));
+                VerifyFile();
+                Logger.Trace($"theme file dump: {string.Join("\n", ThemeFileContent)}");
+                Logger.Trace($"saving {ThemeFilePath}");
+                File.WriteAllLines(ThemeFilePath, ThemeFileContent, Encoding);
             }
             catch (Exception ex)
             {
@@ -266,11 +229,171 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
-        public void RemoveSlideshow()
+        public void SetContentAndParse(List<string> newContent)
         {
-            Slideshow.Enabled = false;
-            RemoveSection(Slideshow.Section.Item1);
+            ThemeFileContent = newContent;
+            Parse();
         }
+
+        /// <summary>
+        /// Synchronizes the currently active Windows theme with Auto Dark Mode
+        /// </summary>
+        /// <param name="patch">Set to true if the theme switch fix should be applied or not. Set this to false if you plan to apply the active theme. <br/>
+        /// Otherwise you might face theme state desync with Windows 11 22H2 and get a buggy taskbar / explorer.</param>
+        /// <param name="keepDisplayNameAndGuid">if the name and guid of the original theme should be preserved</param>
+        public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid = false, bool logging = true)
+        {
+            try
+            {
+                string customPath = Path.Combine(Helper.PathThemeFolder, "Custom.theme");
+
+                // call first becaues it refreshes the regkey
+                (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
+                using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
+                string themePath = (string)key.GetValue("CurrentTheme") ?? customPath;
+
+                List<string> lines = new();
+                string newDisplayName = null;
+                if (themePath.Length > 0)
+                {
+                    (lines, Encoding, newDisplayName) = GetDisplayNameFromRaw(themePath);
+                }
+                else
+                {
+                    Logger.Warn("theme file path registry key empty, using custom theme");
+                    themePath = customPath;
+                    (Encoding, lines) = Read(themePath);
+                    isCustom = true;
+                }
+
+                if (isCustom)
+                {
+                    if (logging) Logger.Info($"theme used for synching is custom theme, path: {themePath}");
+                }
+                else if (newDisplayName != null && newDisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
+                {
+                    if (logging) Logger.Info($"theme used for syncing is default theme with localized name, path: {themePath}");
+                }
+                else if (newDisplayName == null || newDisplayName != activeThemeName)
+                {
+                    if (logging) Logger.Info($"theme used for syncing has wrong name, using custom theme. expected: {activeThemeName} actual: {newDisplayName} with path: {themePath}");
+                    themePath = customPath;
+                    (Encoding, lines) = Read(themePath);
+                }
+                else
+                {
+                    if (logging) Logger.Info($"theme used for syncing is {newDisplayName}, path: {themePath}");
+                }
+
+                ThemeFileContent = lines;
+
+                // save before parsing, because parsing updates the colors object
+                string oldInfoText = Colors.InfoText.Item1;
+
+                Parse();
+
+                // ensure theme switching works properly in Win11 22H2. This is monumentally stupid but it seems to work.
+                if (patch)
+                {
+                    if (Colors.InfoText.Item1 == oldInfoText) PatchColorsWin11InMemory(this);
+                    else
+                    {
+                        Logger.Trace($"no color patch necessary. target theme: [{Colors.InfoText.Item1}], we have: [{oldInfoText}]");
+                    }
+                }
+
+                if (!keepDisplayNameAndGuid)
+                {
+                    DisplayName = "ADMTheme";
+                    ThemeId = $"{{{Guid.NewGuid()}}}";
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"could not sync theme file at {ThemeFilePath}, using default values: ");
+            }
+        }
+
+        private void VerifyFile()
+        {
+            for (int i = 0; i < ThemeFileContent.Count; i++)
+            {
+                string line = ThemeFileContent[i];
+                // removes invalid entries
+                if (line.Length != 0 && !line.Contains('=') && !line.StartsWith('[') && !line.StartsWith(';'))
+                {
+                    Logger.Warn($"invalid ini file entry detected: {line}, removing line to preserve theme file integrity");
+                    ThemeFileContent.RemoveAt(i);
+                    i--;
+                }
+                // removes invalid sections
+                else if (line.Length != 0 && line.StartsWith('[') && !line.EndsWith(']'))
+                {
+                    Logger.Warn($"invalid section detected: {line}, removing section to preserve theme file integrity");
+                    line += "]";
+                    ThemeFileContent[i] = line;
+                    RemoveSection(line);
+                }
+                // removes spaces below a section header
+                else if (line.Length != 0 && line.StartsWith('['))
+                {
+                    if ((i + 1) < ThemeFileContent.Count && ThemeFileContent[i + 1].Length == 0)
+                    {
+                        ThemeFileContent.RemoveAt(i + 1);
+                        i--;
+                    }
+                }
+                // removes spaces between elements and inserts missing spaces between sections
+                else if (line.Length != 0 && (i + 2) < ThemeFileContent.Count)
+                {
+                    if (ThemeFileContent[i + 1].Length == 0)
+                    {
+                        if (!(ThemeFileContent[i + 2].StartsWith('[') || ThemeFileContent[i + 2].StartsWith(';')))
+                        {
+                            ThemeFileContent.RemoveAt(i + 1);
+                            i--;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static List<string> GetClassFieldsAndValues(object obj)
+        {
+            var flags = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public;
+            List<string> props = obj.GetType().GetProperties(flags)
+            .OrderBy(p =>
+            {
+                (string, int) propValue = ((string, int))p.GetValue(obj);
+                return propValue.Item2;
+            })
+            .Select(p =>
+            {
+                (string, int) propValue = ((string, int))p.GetValue(obj);
+                if (p.Name == "Section" || p.Name == "Description") return propValue.Item1;
+                else return $"{p.Name}={propValue.Item1}";
+            })
+            .ToList();
+            return props;
+        }
+
+        private static (Encoding, List<string>) Read(string ThemeFilePath, int attempts = 5)
+        {
+            List<string> themeFileContent = new();
+            Encoding encoding = Encoding.GetEncoding(1252);
+            try
+            {
+                themeFileContent = File.ReadAllLines(ThemeFilePath, encoding).ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
+            }
+            return (encoding, themeFileContent);
+        }
+
+        [GeneratedRegex("^Wallpaper([0-9]+)=")]
+        private static partial Regex WallpaperRegex();
 
         private void Parse()
         {
@@ -417,192 +540,89 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
-        public void SetContentAndParse(List<string> newContent)
-        {
-            ThemeFileContent = newContent;
-            Parse();
-        }
-
-        public void Load()
+        private void RemoveKey(string section, string key)
         {
             try
             {
-                ThemeFileContent = File.ReadAllLines(ThemeFilePath, Encoding.GetEncoding(1252)).ToList();
+                int found = ThemeFileContent.IndexOf(section);
+                int keyIdx = -1;
+                if (found != -1)
+                {
+                    for (int i = found + 1; i < ThemeFileContent.Count; i++)
+                    {
+                        if (ThemeFileContent[i].StartsWith('[')) break;
+                        else if (ThemeFileContent[i].StartsWith(key))
+                        {
+                            keyIdx = i;
+                            break;
+                        }
+                    }
+                }
+                if (keyIdx != -1) ThemeFileContent.RemoveAt(keyIdx);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
+                Logger.Error(ex, $"failed to remove key {section}/{key}, exception: ");
+                throw;
             }
-            Parse();
         }
 
-        /// <summary>
-        /// Synchronizes the currently active Windows theme with Auto Dark Mode
-        /// </summary>
-        /// <param name="patch">Set to true if the theme switch fix should be applied or not. Set this to false if you plan to apply the active theme. <br/>
-        /// Otherwise you might face theme state desync with Windows 11 22H2 and get a buggy taskbar / explorer.</param>
-        /// <param name="keepDisplayNameAndGuid">if the name and guid of the original theme should be preserved</param>
-        public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid = false, bool logging = true)
+        private void RemoveSection(string section)
         {
             try
             {
-                // call first becaues it refreshes the regkey
-                (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
-                using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
-                string themePath = (string)key.GetValue("CurrentTheme") ?? new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
-
-                List<string> lines = new();
-                string pathThemeName = null;
-                if (themePath.Length > 0)
+                int found = ThemeFileContent.IndexOf(section);
+                if (found != -1)
                 {
-                    (lines, pathThemeName) = GetDisplayNameFromRaw(themePath);
-                }
-                else
-                {
-                    Logger.Warn("theme file path registry key empty, using custom theme");
-                    isCustom = true;
-                }
-
-
-                if (isCustom)
-                {
-                    if (logging) Logger.Info($"theme used for synching is custom theme, path: {themePath}");
-                    ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-                }
-                else if (pathThemeName != null && pathThemeName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
-                {
-                    if (logging) Logger.Info($"theme used for syncing is default theme with localized name, path: {themePath}");
-                    ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-                }
-                else if (pathThemeName == null || pathThemeName != activeThemeName)
-                {
-                    if (logging) Logger.Info($"theme used for syncing has wrong name, using custom theme. expected: {activeThemeName} actual: {pathThemeName} with path: {themePath}");
-                    themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
-                    ThemeFileContent = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-                }
-                else
-                {
-                    if (logging) Logger.Info($"theme used for syncing is {pathThemeName}, path: {themePath}");
-                    ThemeFileContent = lines;
-                }
-
-                // save before parsing, because parsing updates the colors object
-                string oldInfoText = Colors.InfoText.Item1;
-
-                Parse();
-
-                // ensure theme switching works properly in Win11 22H2. This is monumentally stupid but it seems to work.
-                if (patch)
-                {
-                    if (Colors.InfoText.Item1 == oldInfoText) PatchColorsWin11InMemory(this);
-                    else
+                    int i;
+                    for (i = found + 1; i < ThemeFileContent.Count; i++)
                     {
-                        Logger.Trace($"no color patch necessary. target theme: [{Colors.InfoText.Item1}], we have: [{oldInfoText}]");
+                        if (ThemeFileContent[i].StartsWith('['))
+                        {
+                            break;
+                        }
                     }
-                }
-
-                if (!keepDisplayNameAndGuid)
-                {
-                    DisplayName = "ADMTheme";
-                    ThemeId = $"{{{Guid.NewGuid()}}}";
+                    ThemeFileContent.RemoveRange(found, i - found);
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, $"could not sync theme file at {ThemeFilePath}, using default values: ");
+                Logger.Error(ex, $"failed to remove section {section}\n exception: ");
+                throw;
             }
         }
 
-        /// <summary>
-        /// Determines whether Auto Colorization is enabled
-        /// </summary>
-        /// <returns>true if enabled; false otherwise</returns>
-        public bool GetAutoColorizationState()
+        private void UpdateSection(string section, List<string> lines)
         {
-            return VisualStyles.AutoColorization.Item1 == "1";
-        }
-
-        public static ThemeFile LoadUnmanagedTheme(string sourcePath, string targetPath)
-        {
-            ThemeFile source = new(sourcePath);
-            source.Load();
-
-            ThemeFile target = new(targetPath);
-            target.SetContentAndParse(source.ThemeFileContent);
-            target.RefreshGuid();
-            return target;
-        }
-
-        public static void PatchColorsWin11AndSave(ThemeFile theme, string data = null)
-        {
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            try
             {
-                if (data != null) theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
-                PatchColorsWin11InMemory(theme);
+                int found = ThemeFileContent.IndexOf(section);
+                if (found != -1)
+                {
+                    int i;
+                    for (i = found + 1; i < ThemeFileContent.Count; i++)
+                    {
+                        if (ThemeFileContent[i].StartsWith('['))
+                        {
+                            break;
+                        }
+                    }
+                    ThemeFileContent.RemoveRange(found, i - found);
+                    lines.Add("");
+                    ThemeFileContent.InsertRange(found, lines);
+                }
+                else
+                {
+                    ThemeFileContent.Add("");
+                    ThemeFileContent.AddRange(lines);
+                }
             }
-            theme.Save(managed: false);
-        }
-
-        public static void PatchColorsWin11InMemory(ThemeFile theme)
-        {
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+            catch (Exception ex)
             {
-                string[] rgb = theme.Colors.InfoText.Item1.Split(" ");
-                _ = int.TryParse(rgb[0], out int r);
-                _ = int.TryParse(rgb[1], out int g);
-                _ = int.TryParse(rgb[2], out int b);
-
-               
-                if (theme.themeFixShouldAdd)
-                {
-                    if (r == 255)
-                    {
-                        r--;
-                    }
-                    else
-                    {
-                        r++;
-                        theme.themeFixShouldAdd = false;
-                    }
-                }
-                else if (!theme.themeFixShouldAdd)
-                {
-                    if (r == 0)
-                    {
-                        r++;
-                    }
-                    else
-                    {
-                        r--;
-                        theme.themeFixShouldAdd = true;
-                    }
-                }
-                Logger.Debug($"patched colors from [{theme.Colors.InfoText.Item1}] to [{r} {g} {b}]");
-                theme.Colors.InfoText = ($"{r} {g} {b}", theme.Colors.InfoText.Item2);
+                Logger.Error(ex, $"failed to update section {section} with data: {string.Join('\n', lines)}\n exception: ");
+                throw;
             }
         }
-
-        public static (List<string>, string) GetDisplayNameFromRaw(string themePath)
-        {
-            List<string> lines = new();
-            string pathThemeName = null;
-            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-            pathThemeName = lines.Where(x => x.StartsWith($"{nameof(DisplayName)}".Trim())).FirstOrDefault();
-            if (pathThemeName != null) pathThemeName = pathThemeName.Split("=")[1];
-            return (lines, pathThemeName.Trim());
-        }
-
-        public static string GetOriginalNameFromRaw(string themePath)
-        {
-            List<string> lines = new();
-            string originalName = null;
-            lines = File.ReadAllLines(themePath, Encoding.GetEncoding(1252)).ToList();
-            originalName = lines.Where(x => x.StartsWith($"{nameof(UnmanagedOriginalName)}".Trim())).FirstOrDefault();
-            if (originalName != null) originalName = originalName.Split("=")[1];
-            else originalName = "";
-            return originalName.Trim();
-        }
-
 
         private static void SetValues(string input, object obj)
         {
@@ -626,27 +646,48 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             }
         }
 
-        private static List<string> GetClassFieldsAndValues(object obj)
+        /// <summary>
+        /// Updates a value for a given key within a section. <br/>
+        /// If the value doesn't exist, it will be added at the bottom of the section instead.
+        /// </summary>
+        /// <param name="section">The ini file section name</param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        private void UpdateValue(string section, string key, string value)
         {
-            var flags = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public;
-            List<string> props = obj.GetType().GetProperties(flags)
-            .OrderBy(p =>
+            try
             {
-                (string, int) propValue = ((string, int))p.GetValue(obj);
-                return propValue.Item2;
-            })
-            .Select(p =>
+                int found = ThemeFileContent.IndexOf(section);
+                if (found != -1)
+                {
+                    bool updated = false;
+                    for (int i = found + 1; i < ThemeFileContent.Count; i++)
+                    {
+                        if (ThemeFileContent[i].StartsWith('[')) break;
+                        else if (ThemeFileContent[i].StartsWith(key))
+                        {
+                            ThemeFileContent[i] = $"{key}={value}";
+                            updated = true;
+                            break;
+                        }
+                    }
+                    if (!updated)
+                    {
+                        ThemeFileContent.Insert(found + 1, $"{key}={value}");
+                    }
+                }
+                else
+                {
+                    ThemeFileContent.Add("");
+                    ThemeFileContent.Add(section);
+                    ThemeFileContent.Add($"{key}={value}");
+                }
+            }
+            catch (Exception ex)
             {
-                (string, int) propValue = ((string, int))p.GetValue(obj);
-                if (p.Name == "Section" || p.Name == "Description") return propValue.Item1;
-                else return $"{p.Name}={propValue.Item1}";
-            })
-            .ToList();
-            return props;
+                Logger.Error(ex, $"failed to update value {section}/{key} with value {value}, exception: ");
+                throw;
+            }
         }
-
-        [GeneratedRegex("^Wallpaper([0-9]+)=")]
-        private static partial Regex WallpaperRegex();
     }
-
 }
