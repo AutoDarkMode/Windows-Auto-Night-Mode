@@ -343,7 +343,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                         i--;
                     }
                 }
-                // removes spaces between elements and inserts missing spaces between sections
+                // removes spaces between elements
                 else if (line.Length != 0 && (i + 2) < ThemeFileContent.Count)
                 {
                     if (ThemeFileContent[i + 1].Length == 0)
@@ -577,7 +577,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                     int i;
                     for (i = found + 1; i < ThemeFileContent.Count; i++)
                     {
-                        if (ThemeFileContent[i].StartsWith('['))
+                        if (ThemeFileContent[i].StartsWith('[') && ThemeFileContent[i].EndsWith(']'))
                         {
                             break;
                         }
