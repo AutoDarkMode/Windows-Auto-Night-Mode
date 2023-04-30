@@ -36,9 +36,7 @@ namespace AutoDarkModeSvc.Communication
         {
             get { return Thread.VolatileRead(ref availableWorkers); }
         }
-        private BlockingCollection<TimeoutEventWrapper> MonitoredStreams { get; } = new();
         private BlockingCollection<Action> Workers { get; } = new();
-        private Task TimeoutHandler { get; set; }
         private Task ConnectionHandler { get; set; }
         private readonly int streamTimeout;
         private readonly int abnormalWorkerCount = 2;
@@ -62,12 +60,7 @@ namespace AutoDarkModeSvc.Communication
         public void Dispose()
         {
             Workers.CompleteAdding();
-            MonitoredStreams.CompleteAdding();
             WorkerTokenSource.Cancel();
-            if (TimeoutHandler != null)
-            {
-                TimeoutHandler.Wait();
-            }
             if (ConnectionHandler != null)
             {
                 ConnectionHandler.Wait();
@@ -128,14 +121,6 @@ namespace AutoDarkModeSvc.Communication
                     {
                         Logger.Error(ex, "error in request worker:");
                     }
-                }
-            });
-
-            TimeoutHandler = Task.Run(async () =>
-            {
-                while (MonitoredStreams.TryTake(out TimeoutEventWrapper stream, -1))
-                {
-                    await stream.Monitor();
                 }
             });
         }
