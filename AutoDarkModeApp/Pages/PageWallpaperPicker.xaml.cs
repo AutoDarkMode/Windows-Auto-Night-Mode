@@ -662,8 +662,11 @@ namespace AutoDarkModeApp.Pages
             }
             try
             {
-                builder.Save();
-                RequestThemeSwitch();
+                if (!initializing)
+                {
+                    builder.Save();
+                    RequestThemeSwitch();
+                }                
             }
             catch (Exception ex)
             {
