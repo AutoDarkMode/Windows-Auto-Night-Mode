@@ -263,7 +263,7 @@ namespace AutoDarkModeApp
                     AccentColorCheckBox.IsEnabled = true;
                     AccentColorCheckBox.Visibility = Visibility.Visible;
                     AccentColorCheckBox.IsChecked = builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
-                    if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+                    if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
                     {
                         NumberBoxColorDelay.Visibility = NumberBoxColorDelay.Visibility = Visibility.Collapsed;
                         TextBlockColorDelay.Visibility = Visibility.Collapsed;

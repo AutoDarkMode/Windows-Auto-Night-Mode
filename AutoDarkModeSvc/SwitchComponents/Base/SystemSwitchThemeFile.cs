@@ -50,14 +50,14 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 Logger.Error(ex, "couldn't initialize system apps theme state");
             }
         }
-        public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Standard;
-
         public override bool ThemeHandlerCompatibility => true;
 
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
             if (Settings.Component.Mode == Mode.AccentOnly)
             {
+                NeedsDwmRefresh = true;
+                TriggersDwmRefresh = DwmRefreshType.None;
                 // if theme does not match dark we need to report true, as accent color isn't available in light mode
                 // Do not return true on windows theme mode, as this would potentially modify the theme
                 if (currentComponentTheme != Theme.Dark && !themeModeEnabled) return true;
@@ -86,16 +86,22 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // Themes do not match
                 if (currentComponentTheme != Theme.Dark)
                 {
+                    NeedsDwmRefresh = false;
+                    TriggersDwmRefresh = DwmRefreshType.Standard;
                     return true;
                 }
                 // Task bar accent color is disabled, but still active
                 else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                 {
+                    NeedsDwmRefresh = true;
+                    TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 // task bar accent color should switch, and taskbar color hasn't switched yet
                 else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive)
                 {
+                    NeedsDwmRefresh = true;
+                    TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 return false;
@@ -103,7 +109,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (Settings.Component.Mode == Mode.LightOnly)
             {
-                if (currentComponentTheme != Theme.Light) return true;
+                if (currentComponentTheme != Theme.Light)
+                {
+                    NeedsDwmRefresh = false;
+                    TriggersDwmRefresh = DwmRefreshType.Standard;
+                    return true;
+                }
                 return false;
             }
             else if (Settings.Component.Mode == Mode.Switch)
@@ -111,21 +122,29 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // Themes do not match
                 if (currentComponentTheme != e.Theme)
                 {
+                    NeedsDwmRefresh = false;
+                    TriggersDwmRefresh = DwmRefreshType.Standard;
                     return true;
                 }
                 // Task bar accent color should switch, target is light mode and the taskbar color hasn't switched yet
                 else if (Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive && e.Theme == Theme.Light)
                 {
+                    NeedsDwmRefresh = true;
+                    TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 // Task bar accent color is disabled, but still active
                 else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                 {
+                    NeedsDwmRefresh = true;
+                    TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 // task bar accent color should switch, target is dark mode and taskbar color hasn't switched yet
                 else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive && e.Theme == Theme.Dark)
                 {
+                    NeedsDwmRefresh = true;
+                    TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 return false;
