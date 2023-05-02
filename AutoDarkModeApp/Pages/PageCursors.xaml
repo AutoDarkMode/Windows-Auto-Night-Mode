@@ -115,12 +115,14 @@
 
                     <Separator Margin="-30,20,-24,0"
                                Grid.Row="1"
+                               Visibility="Collapsed"
                                x:Name="LightImagePanelSeparator"
                                Grid.ColumnSpan="3"
                                Background="{DynamicResource Win11Border}" />
 
                     <WrapPanel Grid.Row="2"
                                Margin="0,15,0,5"
+                               Visibility="Collapsed"
                                Grid.ColumnSpan="3"
                                x:Name="LightImagePanel" />
 
@@ -161,11 +163,13 @@
                     <Separator Margin="-30,20,-24,0"
                                Grid.Row="1"
                                x:Name="DarkImagePanelSeparator"
+                               Visibility="Collapsed"
                                Grid.ColumnSpan="3"
                                Background="{DynamicResource Win11Border}" />
 
                     <WrapPanel x:Name="DarkImagePanel"
                                Grid.Row="2"
+                               Visibility="Collapsed"
                                Margin="0,15,0,5"
                                Grid.ColumnSpan="3"/>
                 </Grid>
