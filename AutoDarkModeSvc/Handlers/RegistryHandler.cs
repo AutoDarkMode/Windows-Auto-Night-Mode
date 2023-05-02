@@ -422,13 +422,14 @@ namespace AutoDarkModeSvc.Handlers
             List<string> cursorsUser = new();
             List<string> cursorsSystem = new();
 
-            var cursorsUserRaw = cursorsKeyUser.GetValueNames();
+            var cursorsUserRaw = cursorsKeyUser?.GetValueNames();
+
             if (cursorsUserRaw != null)
             {
                 cursorsUser = cursorsUserRaw.ToList();
             }
 
-            var cursorsSystemRaw = cursorsKeySystem.GetValueNames();
+            var cursorsSystemRaw = cursorsKeySystem?.GetValueNames();
             if (cursorsSystemRaw != null)
             {
                 cursorsSystem = cursorsSystemRaw.ToList();
@@ -439,7 +440,7 @@ namespace AutoDarkModeSvc.Handlers
 
             if (userTheme != null)
             {
-                string[] cursorsList = ((string)cursorsKeyUser.GetValue(userTheme)).Split(",");
+                string[] cursorsList = ((string)cursorsKeyUser?.GetValue(userTheme)).Split(",");
                 cursors = ParseCursors(cursorsList);
                 var cursorName = cursors.DefaultValue;
                 cursorName.Item1 = name;
@@ -447,7 +448,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             else if (systemTheme != null)
             {
-                string[] cursorsList = ((string)cursorsKeySystem.GetValue(systemTheme)).Split(",");
+                string[] cursorsList = ((string)cursorsKeySystem?.GetValue(systemTheme)).Split(",");
                 cursors = ParseCursors(cursorsList);
                 var cursorName = cursors.DefaultValue;
                 cursorName.Item1 = name;
@@ -460,6 +461,11 @@ namespace AutoDarkModeSvc.Handlers
         private static Cursors ParseCursors(string[] cursorsList)
         {
             Cursors cursors = new();
+            if (cursorsList == null)
+            {
+                Logger.Warn($"cursor parse called with null cursor list, assuming default cursor");
+                return cursors;
+            }
 
             var flags = BindingFlags.Instance | BindingFlags.Public;
             foreach (PropertyInfo p in cursors.GetType().GetProperties(flags))
@@ -493,6 +499,11 @@ namespace AutoDarkModeSvc.Handlers
         {
             Cursors cursors = new();
             using RegistryKey cursorsKey = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors");
+            if (cursorsKey == null)
+            {
+                Logger.Warn("failed to retrieve active cursors, regkey key was not found");
+                return cursors;
+            }
             string[] values = cursorsKey.GetValueNames();
             foreach (string value in values)
             {

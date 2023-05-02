@@ -17,6 +17,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,12 +31,15 @@ namespace AutoDarkModeApp.Handlers
             using RegistryKey cursorsKeyUser = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors\Schemes");
             using RegistryKey cursorsKeySystem = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes");
             List<string> cursors = new();
-            var userCursors = cursorsKeyUser.GetValueNames();
+
+            var userCursors = cursorsKeyUser?.GetValueNames();
             if (userCursors != null)
             {
                 cursors.AddRange(userCursors.ToArray().ToList());
             }
-            cursors.AddRange(cursorsKeySystem.GetValueNames());
+            var systemCursors = cursorsKeySystem?.GetValueNames();
+            if (systemCursors != null) cursors.AddRange(systemCursors);
+
             return cursors;
         }
 
@@ -54,15 +58,31 @@ namespace AutoDarkModeApp.Handlers
             List<string> cursorsUser = new();
             List<string> cursorsSystem = new();
 
-            var cursorsUserRaw = cursorsKeyUser.GetValueNames();
-            if (cursorsUserRaw != null)
+            try
             {
-                cursorsUser =  cursorsUserRaw.ToArray().ToList();
+                var cursorsUserRaw = cursorsKeyUser.GetValueNames();
+                if (cursorsUserRaw != null)
+                {
+                    cursorsUser =  cursorsUserRaw.ToArray().ToList();
+                }
+
             }
-            var cursorsSystemRaw = cursorsKeySystem.GetValueNames();
-            if (cursorsSystemRaw != null)
+            catch
             {
-                cursorsSystem = cursorsSystemRaw.ToArray().ToList();
+                Debug.WriteLine("no user cursors found");
+            }
+
+            try
+            {
+                var cursorsSystemRaw = cursorsKeySystem.GetValueNames();
+                if (cursorsSystemRaw != null)
+                {
+                    cursorsSystem = cursorsSystemRaw.ToArray().ToList();
+                }
+            }
+            catch
+            {
+                Debug.WriteLine("no system cursors found");
             }
 
             string userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();
