@@ -433,6 +433,51 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable mouse cursor switch.
+        /// </summary>
+        public static string CursorsPageEnable {
+            get {
+                return ResourceManager.GetString("CursorsPageEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Windows pointer settings.
+        /// </summary>
+        public static string CursorsPageOpenPointerSettings {
+            get {
+                return ResourceManager.GetString("CursorsPageOpenPointerSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select dark cursor.
+        /// </summary>
+        public static string CursorsPageSelectDark {
+            get {
+                return ResourceManager.GetString("CursorsPageSelectDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select light cursor.
+        /// </summary>
+        public static string CursorsPageSelectLight {
+            get {
+                return ResourceManager.GetString("CursorsPageSelectLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cursors.
+        /// </summary>
+        public static string CursorsPageTitle {
+            get {
+                return ResourceManager.GetString("CursorsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Currently:.
         /// </summary>
         public static string dbCurrently {
@@ -1231,7 +1276,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Documentation for custom scriptxs.
+        ///   Looks up a localized string similar to Documentation for custom scripts.
         /// </summary>
         public static string PageScriptsCardDocumentationTextBlock {
             get {
@@ -1263,6 +1308,42 @@ namespace AutoDarkModeLib.Properties {
         public static string PageScriptsToggle {
             get {
                 return ResourceManager.GetString("PageScriptsToggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configure different mouse cursors for dark and light modes..
+        /// </summary>
+        public static string PersonalizationPageCursorDescription {
+            get {
+                return ResourceManager.GetString("PersonalizationPageCursorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick mouse cursors.
+        /// </summary>
+        public static string PersonalizationPageCursorTitle {
+            get {
+                return ResourceManager.GetString("PersonalizationPageCursorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let Auto Dark Mode manage my theme.
+        /// </summary>
+        public static string PersonalizationPageManagedMode {
+            get {
+                return ResourceManager.GetString("PersonalizationPageManagedMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let Windows manage my theme.
+        /// </summary>
+        public static string PersonalizationPageUnmanagedMode {
+            get {
+                return ResourceManager.GetString("PersonalizationPageUnmanagedMode", resourceCulture);
             }
         }
         
@@ -1982,7 +2063,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This feature is disabled while accent color and/or wallpaper switching is enabled..
+        ///   Looks up a localized string similar to This feature is disabled while Auto Dark Mode manages your theme..
         /// </summary>
         public static string tbFeatureDisabledWhileManagedMode {
             get {
@@ -1991,7 +2072,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This feature is disabled while theme mode is enabled..
+        ///   Looks up a localized string similar to This feature is disabled while Windows manages your theme..
         /// </summary>
         public static string tbFeatureDisabledWhileThemeMode {
             get {

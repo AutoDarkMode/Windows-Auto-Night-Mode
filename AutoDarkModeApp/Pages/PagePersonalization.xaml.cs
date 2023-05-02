@@ -50,14 +50,15 @@ namespace AutoDarkModeApp.Pages
                 SetThemePickerEnabled();
             }
 
-            if (builder.Config.WallpaperSwitch.Enabled || builder.Config.ColorizationSwitch.Enabled)
+            if (builder.Config.WallpaperSwitch.Enabled || builder.Config.ColorizationSwitch.Enabled || builder.Config.CursorSwitch.Enabled)
             {
                 SelectAdmCustomizeEnabled();
             }
-            if (!builder.Config.WallpaperSwitch.Enabled && !builder.Config.WindowsThemeMode.Enabled && !builder.Config.ColorizationSwitch.Enabled)
+            if (!builder.Config.WallpaperSwitch.Enabled && !builder.Config.WindowsThemeMode.Enabled && !builder.Config.ColorizationSwitch.Enabled && !builder.Config.CursorSwitch.Enabled)
             {
                 WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
                 ColorizationDisabledMessage.Visibility = Visibility.Collapsed;
+                CursorsDisabledMessage.Visibility = Visibility.Collapsed;
                 ThemeDisabledMessage.Visibility = Visibility.Collapsed;
             }
 
@@ -81,6 +82,9 @@ namespace AutoDarkModeApp.Pages
 
             ColorizationDisabledMessage.Visibility = Visibility.Visible;
             ColorizationPickerCard.IsEnabled = false;
+
+            CursorsPickerCard.Visibility = Visibility.Visible;
+            CursorsPickerCard.IsEnabled = false;
 
             ThemeDisabledMessage.Visibility = Visibility.Collapsed;
             ThemePickerCard.IsEnabled = true;
@@ -114,6 +118,9 @@ namespace AutoDarkModeApp.Pages
 
         private void SelectAdmCustomizeEnabled()
         {
+            CursorsDisabledMessage.Visibility = Visibility.Collapsed;
+            CursorsPickerCard.IsEnabled = true;
+
             WallpaperDisabledMessage.Visibility = Visibility.Collapsed;
             WallpaperPickerCard.IsEnabled = true;
 
@@ -175,6 +182,11 @@ namespace AutoDarkModeApp.Pages
         {
             Frame.Navigate(typeof(PageColorization), null, new DrillInNavigationTransitionInfo());
 
+        }
+
+        private void CursorsPickerCard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Navigate(typeof(PageCursors), null, new DrillInNavigationTransitionInfo());
         }
     }
 }

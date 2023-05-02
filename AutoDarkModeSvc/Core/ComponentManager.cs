@@ -49,6 +49,7 @@ namespace AutoDarkModeSvc.Core
         private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
         private readonly ISwitchComponent ColorizationSwitch;
+        private readonly ISwitchComponent CursorSwitch;
 
         /// <summary>
         /// Instructs all components to refresh their settings objects by injecting a new settings object
@@ -56,13 +57,14 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public void UpdateSettings()
         {
-            AppsSwitch.RunUpdateSettingsState(Builder.Config.AppsSwitch);
-            ColorFilterSwitch.RunUpdateSettingsState(Builder.Config.ColorFilterSwitch);
-            OfficeSwitch.RunUpdateSettingsState(Builder.Config.OfficeSwitch);
-            SystemSwitch.RunUpdateSettingsState(Builder.Config.SystemSwitch);
-            AccentColorSwitch.RunUpdateSettingsState(Builder.Config.SystemSwitch);
-            WallpaperSwitch.RunUpdateSettingsState(Builder.Config.WallpaperSwitch);
+            AppsSwitch?.RunUpdateSettingsState(Builder.Config.AppsSwitch);
+            ColorFilterSwitch?.RunUpdateSettingsState(Builder.Config.ColorFilterSwitch);
+            OfficeSwitch?.RunUpdateSettingsState(Builder.Config.OfficeSwitch);
+            SystemSwitch?.RunUpdateSettingsState(Builder.Config.SystemSwitch);
+            AccentColorSwitch?.RunUpdateSettingsState(Builder.Config.SystemSwitch);
+            WallpaperSwitch?.RunUpdateSettingsState(Builder.Config.WallpaperSwitch);
             ColorizationSwitch?.RunUpdateSettingsState(Builder.Config.ColorizationSwitch);
+            CursorSwitch?.RunUpdateSettingsState(Builder.Config.CursorSwitch);
         }
 
         public void UpdateScriptSettings()
@@ -77,6 +79,7 @@ namespace AutoDarkModeSvc.Core
         {
             bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
             Logger.Info($"current windows build: {Environment.OSVersion.Version.Build}.{(hasUbr ? ubr : 0)}");
+
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 Logger.Info($"using apps and system components for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
@@ -116,9 +119,11 @@ namespace AutoDarkModeSvc.Core
             };
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
-                Logger.Info($"using colorization switcher for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
-                ColorizationSwitch= new ColorizationSwitch();
+                Logger.Info($"using colorization and cursor switcher for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
+                ColorizationSwitch = new ColorizationSwitch();
                 Components.Add(ColorizationSwitch);
+                CursorSwitch = new CursorSwitch();
+                Components.Add(CursorSwitch);
             }
             UpdateSettings();
             UpdateScriptSettings();

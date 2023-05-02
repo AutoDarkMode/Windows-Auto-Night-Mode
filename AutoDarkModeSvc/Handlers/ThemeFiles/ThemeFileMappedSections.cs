@@ -92,22 +92,24 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
     public class Cursors
     {
         public (string, int) Section { get; } = (@"[Control Panel\Cursors]", 0);
-        public (string, int) AppStarting { get; set; } = (@"%SystemRoot%\cursors\aero_working.ani", 0);
-        public (string, int) Crosshair { get; set; } = ("", 1);
-        public (string, int) Arrow { get; set; } = (@"%SystemRoot%\cursors\aero_arrow.cur", 2);
-        public (string, int) Hand { get; set; } = (@"%SystemRoot%\cursors\aero_link.cur", 3);
-        public (string, int) Help { get; set; } = (@"%SystemRoot%\cursors\aero_helpsel.cur", 4);
-        public (string, int) IBeam { get; set; } = ("", 5);
-        public (string, int) No { get; set; } = (@"%SystemRoot%\cursors\aero_unavail.cur", 6);
+        public (string, int) AppStarting { get; set; } = (@"%SystemRoot%\cursors\aero_working.ani", 3);
+        public (string, int) Crosshair { get; set; } = ("", 5);
+        public (string, int) Arrow { get; set; } = (@"%SystemRoot%\cursors\aero_arrow.cur", 1);
+        public (string, int) Hand { get; set; } = (@"%SystemRoot%\cursors\aero_link.cur", 15);
+        public (string, int) Help { get; set; } = (@"%SystemRoot%\cursors\aero_helpsel.cur", 2);
+        public (string, int) IBeam { get; set; } = ("", 6);
+        public (string, int) No { get; set; } = (@"%SystemRoot%\cursors\aero_unavail.cur", 8);
         public (string, int) NWPen { get; set; } = (@"%SystemRoot%\cursors\aero_pen.cur", 7);
-        public (string, int) SizeAll { get; set; } = (@"%SystemRoot%\cursors\aero_move.cur", 8);
-        public (string, int) SizeNESW { get; set; } = (@"%SystemRoot%\cursors\aero_nesw.cur", 9);
-        public (string, int) SizeNS { get; set; } = (@"%SystemRoot%\cursors\aero_ns.cur", 10);
+        public (string, int) Person { get; set; } = (@"%SystemRoot%\cursors\aero_person.cur", 17);
+        public (string, int) Pin { get; set; } = (@"%SystemRoot%\cursors\aero_pin.cur", 16);
+        public (string, int) SizeAll { get; set; } = (@"%SystemRoot%\cursors\aero_move.cur", 13);
+        public (string, int) SizeNESW { get; set; } = (@"%SystemRoot%\cursors\aero_nesw.cur", 12);
+        public (string, int) SizeNS { get; set; } = (@"%SystemRoot%\cursors\aero_ns.cur", 9);
         public (string, int) SizeNWSE { get; set; } = (@"%SystemRoot%\cursors\aero_nwse.cur", 11);
-        public (string, int) SizeWE { get; set; } = (@"%SystemRoot%\cursors\aero_ew.cur", 12);
-        public (string, int) UpArrow { get; set; } = (@"%SystemRoot%\cursors\aero_up.cur", 13);
-        public (string, int) Wait { get; set; } = (@"%SystemRoot%\cursors\aero_busy.ani", 14);
-        public (string, int) DefaultValue { get; set; } = (@"Windows Default", 15);
+        public (string, int) SizeWE { get; set; } = (@"%SystemRoot%\cursors\aero_ew.cur", 10);
+        public (string, int) UpArrow { get; set; } = (@"%SystemRoot%\cursors\aero_up.cur", 14);
+        public (string, int) Wait { get; set; } = (@"%SystemRoot%\cursors\aero_busy.ani", 4);
+        public (string, int) DefaultValue { get; set; } = (@"Windows Default", 18);
     }
 
     public class Slideshow

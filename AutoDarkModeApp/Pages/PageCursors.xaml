@@ -1,0 +1,230 @@
+﻿<ui:Page x:Class="AutoDarkModeApp.Pages.PageCursors"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:local="clr-namespace:AutoDarkModeApp.Pages"
+         xmlns:ui="http://schemas.modernwpf.com/2019"
+         xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+         xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
+         mc:Ignorable="d"
+         d:DesignHeight="450"
+         Loaded="Page_Loaded"
+         d:DesignWidth="800"
+         Title="PageCursors">
+
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="10*"
+                              MaxWidth="1000"
+                              MinWidth="450" />
+            <ColumnDefinition Width="0.4*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Name="TextBlockBackButton"
+                   Margin="0,13,0,0"
+                   FontFamily="Segoe MDL2 Assets"
+                   FontSize="20"
+                   Text="&#xe830;"
+                   Cursor="Hand"
+                   MouseDown="TextBlockBackButton_MouseDown" />
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="35,0,0,0"
+                   FontFamily="Segoe UI Semilight"
+                   FontSize="30"
+                   Text="{x:Static p:Resources.CursorsPageTitle}" />
+
+        <ui:SimpleStackPanel Grid.Row="4"
+                             Grid.Column="1">
+            <uc:Card Margin="0,10,0,2"
+                     Padding="30,15,25,15">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Margin="0,5,0,0"
+                               VerticalAlignment="Center"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.CursorsPageEnable}" />
+
+                    <ui:ToggleSwitch Name="ToggleSwitchCursors"
+                                     OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                     OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                                     Grid.Row="0"
+                                     Grid.Column="2"
+                                     Margin="0,5,0,0"
+                                     Toggled="ToggleSwitchCursors_Toggled" />
+                </Grid>
+
+            </uc:Card>
+
+            <uc:Card Margin="0,0,0,0"
+                     Padding="30,20,25,15">
+
+                <Grid x:Name="CursorLightGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Margin="0,0,0,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.CursorsPageSelectLight}"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+                    <ComboBox x:Name="CursorsComboBoxLight"
+                              DropDownOpened="CursorsComboBoxLight_DropDownOpened"
+                              SelectionChanged="CursorsComboBoxLight_SelectionChanged"
+                              MinWidth="250"
+                              Grid.Row="0"
+                              Grid.Column="2" />
+
+                    <Separator Margin="-30,20,-24,0"
+                               Grid.Row="1"
+                               Grid.ColumnSpan="3"
+                               Background="{DynamicResource Win11Border}" />
+
+                    <WrapPanel Grid.Row="2"
+                               Margin="0,15,0,5"
+                               Grid.ColumnSpan="3"
+                               x:Name="LightImages" />
+
+
+                </Grid>
+            </uc:Card>
+
+            <uc:Card Margin="0,2,0,0"
+                     Padding="30,20,25,15">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Margin="0,0,0,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"
+                               Text="{x:Static p:Resources.CursorsPageSelectDark}"
+                               TextWrapping="Wrap"
+                               MaxWidth="650" />
+                    <ComboBox x:Name="CursorsComboBoxDark"
+                              MinWidth="250"
+                              SelectionChanged="CursorsComboBoxDark_SelectionChanged"
+                              DropDownOpened="CursorsComboBoxDark_DropDownOpened"
+                              Grid.Column="2" />
+
+                    <Separator Margin="-30,20,-24,0"
+                               Grid.Row="1"
+                               Grid.ColumnSpan="3"
+                               Background="{DynamicResource Win11Border}" />
+
+                    <WrapPanel x:Name="DarkImages"
+                               Grid.Row="2"
+                               Margin="0,15,0,5"
+                               Grid.ColumnSpan="3"/>
+                </Grid>
+            </uc:Card>
+
+        </ui:SimpleStackPanel>
+
+        <ui:SimpleStackPanel Grid.Column="1"
+                             Grid.Row="5">
+
+            <TextBlock Margin="0,30,0,10"
+                       Grid.Row="7"
+                       Grid.Column="1"
+                       FontFamily="Segoe UI Semibold"
+                       FontSize="14"
+                       Text="{x:Static p:Resources.Links}" />
+
+            <uc:Card Padding="30,20,5,20"
+                     MouseDown="PointerSettingsLink_MouseDown"
+                     x:Name="PointerSettingsLink"
+                     Cursor="Hand">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock Grid.Row="0"
+                                   Margin="0,0,0,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
+                                   FontSize="14"
+                                   Text="{x:Static p:Resources.CursorsPageOpenPointerSettings}"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="650" />
+                        <TextBlock TextWrapping="Wrap"
+                                   Margin="0,5,0,0"
+                                   Grid.Row="1"
+                                   Text="You can define new cursor schemas in the Windows settings and then select them here afterwards." />
+
+                    </Grid>
+
+                    <ui:FontIcon Grid.Column="3"
+                                 Margin="15, 0, 10, 0"
+                                 FontSize="15"
+                                 Name="PointerSettingsCardIcon"
+                                 FontFamily="Segoe MDL2 Assets"
+                                 Glyph="&#xe8a7;" />
+
+
+                </Grid>
+            </uc:Card>
+        </ui:SimpleStackPanel>
+    </Grid>
+</ui:Page>

@@ -21,11 +21,14 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using WindowsInput;
 using WindowsInput.Native;
+using YamlDotNet.Core.Tokens;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -408,6 +411,102 @@ namespace AutoDarkModeSvc.Handlers
 
             filterType.SetValue("HotkeyEnabled", 1, RegistryValueKind.DWord); //and we activate the hotkey as free bonus :)
             filterType.Dispose();
+        }
+
+        public static Cursors GetCursorScheme(string name)
+        {
+            Cursors cursors = new();
+
+            using RegistryKey cursorsKeyUser = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors\Schemes");
+            using RegistryKey cursorsKeySystem = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes");
+            List<string> cursorsUser = cursorsKeyUser.GetValueNames().ToArray().ToList();
+            List<string> cursorsSystem = cursorsKeySystem.GetValueNames().ToArray().ToList();
+
+            string userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();
+            string systemTheme = cursorsSystem.Where(x => x == name).FirstOrDefault();
+
+            if (userTheme != null)
+            {
+                string[] cursorsList = ((string)cursorsKeyUser.GetValue(userTheme)).Split(",");
+                cursors = ParseCursors(cursorsList);
+                var cursorName = cursors.DefaultValue;
+                cursorName.Item1 = name;
+                cursors.DefaultValue = cursorName;
+            }
+            else if (systemTheme != null)
+            {
+                string[] cursorsList = ((string)cursorsKeySystem.GetValue(systemTheme)).Split(",");
+                cursors = ParseCursors(cursorsList);
+                var cursorName = cursors.DefaultValue;
+                cursorName.Item1 = name;
+                cursors.DefaultValue = cursorName;
+            }
+
+            return cursors;
+        }
+
+        private static Cursors ParseCursors(string[] cursorsList)
+        {
+            Cursors cursors = new();
+
+            var flags = BindingFlags.Instance | BindingFlags.Public;
+            foreach (PropertyInfo p in cursors.GetType().GetProperties(flags))
+            {
+                int i = 0;
+                try
+                {
+                    (string, int) propValue = ((string, int))p.GetValue(cursors);
+
+                    // quadratic runtime is okay here, but if one were to be pedantic it could be done in nlogn
+                    for (i = 0; i < cursorsList.Length; i++)
+                    {
+                        if (propValue.Item2 == i+1)
+                        {
+                            propValue.Item1 = cursorsList[i];
+                            p.SetValue(cursors, propValue);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, $"could not parse cursor value {cursorsList[i]}, exception: ");
+                    throw;
+                }
+            }
+
+            return cursors;
+        }
+
+        public static Cursors GetCursors()
+        {
+            Cursors cursors = new();
+            using RegistryKey cursorsKey = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors");
+            string[] values = cursorsKey.GetValueNames();
+            foreach (string value in values)
+            {
+                var flags = BindingFlags.Instance | BindingFlags.Public;
+                foreach (PropertyInfo p in cursors.GetType().GetProperties(flags))
+                {
+                    try
+                    {
+                        (string, int) propValue = ((string, int))p.GetValue(cursors);
+                        if (value.StartsWith(p.Name))
+                        {
+                            propValue.Item1 = (string)cursorsKey.GetValue(value);
+                            p.SetValue(cursors, propValue);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex, $"could not set cursor value {value}, exception: ");
+                    }
+                }
+            }
+            string schemeName = (string)cursorsKey.GetValue("");
+            (string, int) defaultValue = cursors.DefaultValue;
+            defaultValue.Item1 = schemeName;
+            cursors.DefaultValue = defaultValue;
+            return cursors;
         }
     }
 }

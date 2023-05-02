@@ -46,6 +46,7 @@ namespace AutoDarkModeLib.Configs
             OfficeSwitch = new();
             WallpaperSwitch = new();
             ColorizationSwitch = new();
+            CursorSwitch = new();
         }
         public bool AutoThemeSwitchingEnabled { get; set; }
         public Governor Governor { get; set; } = Governor.Default;
@@ -56,6 +57,7 @@ namespace AutoDarkModeLib.Configs
         public BaseSettings<ColorizationSwitchSettings> ColorizationSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
+        public BaseSettings<CursorSwitchSettings> CursorSwitch { get; set; }
         public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
         public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 20, 0, 0);
         public Location Location { get; set; }
