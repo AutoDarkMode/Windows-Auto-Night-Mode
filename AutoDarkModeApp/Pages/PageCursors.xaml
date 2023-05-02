@@ -108,20 +108,21 @@
                                MaxWidth="650" />
                     <ComboBox x:Name="CursorsComboBoxLight"
                               DropDownOpened="CursorsComboBoxLight_DropDownOpened"
-                              SelectionChanged="CursorsComboBoxLight_SelectionChanged"
+                              DropDownClosed="CursorsComboBoxLight_DropDownClosed"
                               MinWidth="250"
                               Grid.Row="0"
                               Grid.Column="2" />
 
                     <Separator Margin="-30,20,-24,0"
                                Grid.Row="1"
+                               x:Name="LightImagePanelSeparator"
                                Grid.ColumnSpan="3"
                                Background="{DynamicResource Win11Border}" />
 
                     <WrapPanel Grid.Row="2"
                                Margin="0,15,0,5"
                                Grid.ColumnSpan="3"
-                               x:Name="LightImages" />
+                               x:Name="LightImagePanel" />
 
 
                 </Grid>
@@ -153,16 +154,17 @@
                                MaxWidth="650" />
                     <ComboBox x:Name="CursorsComboBoxDark"
                               MinWidth="250"
-                              SelectionChanged="CursorsComboBoxDark_SelectionChanged"
+                              DropDownClosed="CursorsComboBoxDark_DropDownClosed"
                               DropDownOpened="CursorsComboBoxDark_DropDownOpened"
                               Grid.Column="2" />
 
                     <Separator Margin="-30,20,-24,0"
                                Grid.Row="1"
+                               x:Name="DarkImagePanelSeparator"
                                Grid.ColumnSpan="3"
                                Background="{DynamicResource Win11Border}" />
 
-                    <WrapPanel x:Name="DarkImages"
+                    <WrapPanel x:Name="DarkImagePanel"
                                Grid.Row="2"
                                Margin="0,15,0,5"
                                Grid.ColumnSpan="3"/>

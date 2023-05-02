@@ -58,31 +58,16 @@ namespace AutoDarkModeApp.Handlers
             List<string> cursorsUser = new();
             List<string> cursorsSystem = new();
 
-            try
+            var cursorsUserRaw = cursorsKeyUser?.GetValueNames();
+            if (cursorsUserRaw != null)
             {
-                var cursorsUserRaw = cursorsKeyUser.GetValueNames();
-                if (cursorsUserRaw != null)
-                {
-                    cursorsUser =  cursorsUserRaw.ToArray().ToList();
-                }
-
-            }
-            catch
-            {
-                Debug.WriteLine("no user cursors found");
+                cursorsUser = cursorsUserRaw.ToArray().ToList();
             }
 
-            try
+            var cursorsSystemRaw = cursorsKeySystem?.GetValueNames();
+            if (cursorsSystemRaw != null)
             {
-                var cursorsSystemRaw = cursorsKeySystem.GetValueNames();
-                if (cursorsSystemRaw != null)
-                {
-                    cursorsSystem = cursorsSystemRaw.ToArray().ToList();
-                }
-            }
-            catch
-            {
-                Debug.WriteLine("no system cursors found");
+                cursorsSystem = cursorsSystemRaw.ToArray().ToList();
             }
 
             string userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();

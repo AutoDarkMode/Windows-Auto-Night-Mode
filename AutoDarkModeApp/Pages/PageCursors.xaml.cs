@@ -70,8 +70,15 @@ namespace AutoDarkModeApp.Pages
 
         private void UpdateLightCursorPreviews(string scheme)
         {
+            LightImagePanel.Children.Clear();
             string[] cursors = CursorCollectionHandler.GetCursorScheme(scheme);
-            LightImages.Children.Clear();
+            if (cursors.Length == 0)
+            {
+                LightImagePanelSeparator.Visibility = Visibility.Collapsed;
+                return;
+            }
+            LightImagePanelSeparator.Visibility = Visibility.Visible;
+            LightImagePanel.Visibility = Visibility.Visible;
             foreach (string cursor in cursors)
             {
                 try
@@ -86,7 +93,7 @@ namespace AutoDarkModeApp.Pages
                         MaxHeight = 32,
                         Stretch = Stretch.Uniform
                     };
-                    LightImages.Children.Add(im);
+                    LightImagePanel.Children.Add(im);
                 }
                 catch { }
             }
@@ -94,8 +101,15 @@ namespace AutoDarkModeApp.Pages
 
         private void UpdateDarkCursorPreviews(string scheme)
         {
+            DarkImagePanel.Children.Clear();
             string[] cursors = CursorCollectionHandler.GetCursorScheme(scheme);
-            DarkImages.Children.Clear();
+            if (cursors.Length == 0)
+            {
+                DarkImagePanelSeparator.Visibility = Visibility.Collapsed;
+                return;
+            }
+            DarkImagePanelSeparator.Visibility = Visibility.Visible;
+            DarkImagePanel.Visibility = Visibility.Visible;
             foreach (string cursor in cursors)
             {
                 try
@@ -110,7 +124,7 @@ namespace AutoDarkModeApp.Pages
                         MaxHeight = 32,
                         Stretch = Stretch.Uniform
                     };
-                    DarkImages.Children.Add(im);
+                    DarkImagePanel.Children.Add(im);
                 }
                 catch { }
             }
@@ -213,7 +227,7 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private async void CursorsComboBoxLight_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void CursorsComboBoxLight_DropDownClosed(object sender, EventArgs e)
         {
             try
             {
@@ -228,7 +242,7 @@ namespace AutoDarkModeApp.Pages
 
         }
 
-        private async void CursorsComboBoxDark_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void CursorsComboBoxDark_DropDownClosed(object sender, EventArgs e)
         {
             try
             {

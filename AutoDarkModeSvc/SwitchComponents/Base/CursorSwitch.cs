@@ -29,7 +29,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 {
     internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
     {
-        public Theme currentTheme = Theme.Unknown;
+        private Theme currentTheme = Theme.Unknown;
         public override bool ThemeHandlerCompatibility => false;
 
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
@@ -72,7 +72,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             try
             {
                 Cursors current = RegistryHandler.GetCursors();
-                if (current.DefaultValue.Item1 == Settings.Component.CursorsLight)
+                if (Settings.Component.CursorsLight == Settings.Component.CursorsDark && current.DefaultValue.Item1 == Settings.Component.CursorsLight)
+                {
+                    currentTheme = GlobalState.InternalTheme;
+                }
+                else if (current.DefaultValue.Item1 == Settings.Component.CursorsLight)
                 {
                     currentTheme = Theme.Light;
                 }
