@@ -129,6 +129,10 @@ namespace AutoDarkModeSvc.Handlers
                         handler.SetWallpaper(monitorId, monitorSetting.LightThemeWallpaper);
                     }
                 }
+                else if (monitorId == "")
+                {
+                    Logger.Warn("invalid monitor id, skipping device. This most likely needs a windows restart to be fixed.");
+                }
                 else
                 {
                     Logger.Warn($"no wallpaper config found for monitor {monitorId}, adding missing monitors");
