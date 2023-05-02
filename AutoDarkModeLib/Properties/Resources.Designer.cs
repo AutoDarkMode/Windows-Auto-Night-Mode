@@ -451,6 +451,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can define new cursor schemes in the Windows settings and then select them here afterwards..
+        /// </summary>
+        public static string CursorsPageOpenPointerSettingsDescription {
+            get {
+                return ResourceManager.GetString("CursorsPageOpenPointerSettingsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select dark cursor.
         /// </summary>
         public static string CursorsPageSelectDark {

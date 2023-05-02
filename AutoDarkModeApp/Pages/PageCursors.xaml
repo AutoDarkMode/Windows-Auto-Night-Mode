@@ -8,7 +8,7 @@
          xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
          xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
          mc:Ignorable="d"
-         d:DesignHeight="450"
+         d:DesignHeight="850"
          Loaded="Page_Loaded"
          d:DesignWidth="800"
          Title="PageCursors">
@@ -210,8 +210,9 @@
                                    MaxWidth="650" />
                         <TextBlock TextWrapping="Wrap"
                                    Margin="0,5,0,0"
+                                   FontSize="11"
                                    Grid.Row="1"
-                                   Text="You can define new cursor schemas in the Windows settings and then select them here afterwards." />
+                                   Text="{x:Static p:Resources.CursorsPageOpenPointerSettingsDescription}" />
 
                     </Grid>
 
@@ -221,8 +222,6 @@
                                  Name="PointerSettingsCardIcon"
                                  FontFamily="Segoe MDL2 Assets"
                                  Glyph="&#xe8a7;" />
-
-
                 </Grid>
             </uc:Card>
         </ui:SimpleStackPanel>

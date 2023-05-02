@@ -29,7 +29,12 @@ namespace AutoDarkModeApp.Handlers
         {
             using RegistryKey cursorsKeyUser = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors\Schemes");
             using RegistryKey cursorsKeySystem = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes");
-            List<string> cursors = cursorsKeyUser.GetValueNames().ToArray().ToList();
+            List<string> cursors = new();
+            var userCursors = cursorsKeyUser.GetValueNames();
+            if (userCursors != null)
+            {
+                cursors.AddRange(userCursors.ToArray().ToList());
+            }
             cursors.AddRange(cursorsKeySystem.GetValueNames());
             return cursors;
         }
@@ -45,8 +50,20 @@ namespace AutoDarkModeApp.Handlers
 
             using RegistryKey cursorsKeyUser = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors\Schemes");
             using RegistryKey cursorsKeySystem = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes");
-            List<string> cursorsUser = cursorsKeyUser.GetValueNames().ToArray().ToList();
-            List<string> cursorsSystem = cursorsKeySystem.GetValueNames().ToArray().ToList();
+
+            List<string> cursorsUser = new();
+            List<string> cursorsSystem = new();
+
+            var cursorsUserRaw = cursorsKeyUser.GetValueNames();
+            if (cursorsUserRaw != null)
+            {
+                cursorsUser =  cursorsUserRaw.ToArray().ToList();
+            }
+            var cursorsSystemRaw = cursorsKeySystem.GetValueNames();
+            if (cursorsSystemRaw != null)
+            {
+                cursorsSystem = cursorsSystemRaw.ToArray().ToList();
+            }
 
             string userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();
             string systemTheme = cursorsSystem.Where(x => x == name).FirstOrDefault();
