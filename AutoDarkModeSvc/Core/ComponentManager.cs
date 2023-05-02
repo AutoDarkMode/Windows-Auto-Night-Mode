@@ -159,10 +159,10 @@ namespace AutoDarkModeSvc.Core
         /// <param name="newTheme">The theme that should be checked against</param>
         /// <returns>a list of components that require an update and a boolean that informs whether a dwm refresh needs to be initiated manually</returns>
         /// </summary>
-        public (List<ISwitchComponent>, bool, DwmRefreshType dwmRefreshType) GetComponentsToUpdate(SwitchEventArgs e)
+        public (List<ISwitchComponent>, DwmRefreshType needsDwmRefresh, DwmRefreshType dwmRefreshType) GetComponentsToUpdate(SwitchEventArgs e)
         {
             List<ISwitchComponent> shouldUpdate = new();
-            bool needsDwmRefresh = false;
+            DwmRefreshType needsDwmRefresh = DwmRefreshType.None;
             DwmRefreshType dwmRefreshType = DwmRefreshType.None;
             foreach (ISwitchComponent c in Components)
             {
@@ -199,28 +199,15 @@ namespace AutoDarkModeSvc.Core
                 }
             }
 
-            // if a different module will already trigger a dwm refresh, we don't need to perform an extra refresh
-            // if refresh is always set by user, then we set it in case triggersDwmRefresh is false.
-            // Because then, regardless of module state, we always want it applied
-            if ((int)dwmRefreshType >= (int)DwmRefreshType.Standard)
-            {
-                Logger.Info($"dwm management: {Enum.GetName(dwmRefreshType).ToLower()} refresh will be performed by component(s) in queue");
-                needsDwmRefresh = false;
-            }
-            else if (needsDwmRefresh)
-            {
-                Logger.Info("dwm management: refresh requested by component(s) in queue");
-            }
-
             if (shouldUpdate.Count > 0) Logger.Info($"components queued for update: [{string.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
             return (shouldUpdate, needsDwmRefresh, dwmRefreshType);
         }
 
-        private static void AddComponentAndGetDwmInfo(ISwitchComponent c, List<ISwitchComponent> shouldUpdate, ref bool needsDwmRefresh, ref DwmRefreshType dwmRefreshType)
+        private static void AddComponentAndGetDwmInfo(ISwitchComponent c, List<ISwitchComponent> shouldUpdate, ref DwmRefreshType needsDwmRefresh, ref DwmRefreshType dwmRefreshType)
         {
-            if (c.NeedsDwmRefresh)
+            if ((int)c.NeedsDwmRefresh > (int)needsDwmRefresh)
             {
-                needsDwmRefresh = true;
+                needsDwmRefresh = c.NeedsDwmRefresh;
             }
 
             if ((int)c.TriggersDwmRefresh > (int)dwmRefreshType)

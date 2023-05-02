@@ -32,7 +32,6 @@ namespace AutoDarkModeSvc.Handlers
             if (EnergySaverMitigationActive) return;
             if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
             {
-                Logger.Debug($"energy saver mitigation disabled");
                 return;
             }
 

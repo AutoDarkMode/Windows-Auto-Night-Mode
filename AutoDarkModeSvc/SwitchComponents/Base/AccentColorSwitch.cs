@@ -29,8 +29,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
     class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
     {
         public override bool ThemeHandlerCompatibility => true;
-        public override bool NeedsDwmRefresh => true;
-
+        public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
         public override bool Enabled
         {
             get { return Settings.Component.DWMPrevalenceSwitch; }

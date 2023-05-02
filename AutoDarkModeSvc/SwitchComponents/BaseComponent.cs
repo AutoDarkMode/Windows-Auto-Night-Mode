@@ -37,7 +37,7 @@ namespace AutoDarkModeSvc.SwitchComponents
             Logger = NLog.LogManager.GetLogger(GetType().ToString());
         }
         public virtual DwmRefreshType TriggersDwmRefresh { get; protected set; } = DwmRefreshType.None;
-        public virtual bool NeedsDwmRefresh { get; protected set; }
+        public virtual DwmRefreshType NeedsDwmRefresh { get; protected set; } = DwmRefreshType.None;
         public virtual int PriorityToLight { get; }
         public virtual int PriorityToDark { get; }
         public virtual HookPosition HookPosition { get; protected set; } = HookPosition.PostSync;

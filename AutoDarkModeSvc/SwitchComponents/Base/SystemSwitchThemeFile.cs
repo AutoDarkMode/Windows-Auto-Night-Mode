@@ -56,7 +56,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             if (Settings.Component.Mode == Mode.AccentOnly)
             {
-                NeedsDwmRefresh = true;
+                NeedsDwmRefresh = DwmRefreshType.Standard;
                 TriggersDwmRefresh = DwmRefreshType.None;
                 // if theme does not match dark we need to report true, as accent color isn't available in light mode
                 // Do not return true on windows theme mode, as this would potentially modify the theme
@@ -86,21 +86,21 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // Themes do not match
                 if (currentComponentTheme != Theme.Dark)
                 {
-                    NeedsDwmRefresh = false;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.Standard;
                     return true;
                 }
                 // Task bar accent color is disabled, but still active
                 else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                 {
-                    NeedsDwmRefresh = true;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 // task bar accent color should switch, and taskbar color hasn't switched yet
                 else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive)
                 {
-                    NeedsDwmRefresh = true;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
@@ -111,7 +111,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 if (currentComponentTheme != Theme.Light)
                 {
-                    NeedsDwmRefresh = false;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.Standard;
                     return true;
                 }
@@ -122,28 +122,28 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 // Themes do not match
                 if (currentComponentTheme != e.Theme)
                 {
-                    NeedsDwmRefresh = false;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.Standard;
                     return true;
                 }
                 // Task bar accent color should switch, target is light mode and the taskbar color hasn't switched yet
                 else if (Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive && e.Theme == Theme.Light)
                 {
-                    NeedsDwmRefresh = true;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 // Task bar accent color is disabled, but still active
                 else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
                 {
-                    NeedsDwmRefresh = true;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }
                 // task bar accent color should switch, target is dark mode and taskbar color hasn't switched yet
                 else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive && e.Theme == Theme.Dark)
                 {
-                    NeedsDwmRefresh = true;
+                    NeedsDwmRefresh = DwmRefreshType.Standard;
                     TriggersDwmRefresh = DwmRefreshType.None;
                     return true;
                 }

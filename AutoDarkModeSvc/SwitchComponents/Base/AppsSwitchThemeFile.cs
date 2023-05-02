@@ -44,6 +44,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
         public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Standard;
+        public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
         public override bool ThemeHandlerCompatibility { get; } = false;
 
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)

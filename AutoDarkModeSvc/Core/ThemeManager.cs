@@ -211,7 +211,7 @@ namespace AutoDarkModeSvc.Core
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
 
-            (List<ISwitchComponent> componentsToUpdate, bool dwmRefreshRequired, DwmRefreshType componentDwmRefreshType) = cm.GetComponentsToUpdate(e);
+            (List<ISwitchComponent> componentsToUpdate, DwmRefreshType neededDwmRefresh, DwmRefreshType providedDwmRefresh) = cm.GetComponentsToUpdate(e);
             #endregion
 
             #region logic for adm startup
@@ -258,16 +258,9 @@ namespace AutoDarkModeSvc.Core
                 cm.RunPostSync(componentsToUpdate, e);
 
                 #region dwm refresh
-                if (dwmRefreshRequired && !themeModeNeedsUpdate)
-                {
-                    if (builder.Config.WindowsThemeMode.Enabled)
-                    {
-                        ThemeHandler.RefreshDwmFull(managed: false, e);
-                        themeModeNeedsUpdate = true;
-                    }
-                    else ThemeHandler.RefreshDwmFull(managed: true, e);
-                }
-                else if (builder.Config.Tunable.AlwaysFullDwmRefresh && componentDwmRefreshType != DwmRefreshType.Full)
+                // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
+                if (builder.Config.Tunable.AlwaysFullDwmRefresh && (providedDwmRefresh != DwmRefreshType.Full &&
+                    neededDwmRefresh != DwmRefreshType.None || themeModeNeedsUpdate))
                 {
                     Logger.Info("dwm management: full refresh requested by user");
                     if (builder.Config.WindowsThemeMode.Enabled)
@@ -277,9 +270,25 @@ namespace AutoDarkModeSvc.Core
                     }
                     else ThemeHandler.RefreshDwmFull(managed: true, e);
                 }
-                else if (dwmRefreshRequired && themeModeNeedsUpdate)
+                // on managed mode if the dwm refresh is insufficient, queue a full refresh
+                else if (builder.Config.WindowsThemeMode.Enabled == false && (neededDwmRefresh < providedDwmRefresh))
                 {
-                    Logger.Info($"dwm management: refresh will be auto-triggered on theme mode switch");
+                    Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
+                    ThemeHandler.RefreshDwmFull(managed: true, e);
+                }
+                // on managed mode, if the dwm refresh is provided by the components, no refresh is required
+                else if ((providedDwmRefresh >= neededDwmRefresh) && (neededDwmRefresh != DwmRefreshType.None))
+                {
+                    Logger.Info($"dwm management: requested {Enum.GetName(providedDwmRefresh).ToLower()} refresh will be performed by component(s) in queue");
+                }
+                // if windows theme mode is enabled the user needs to ensure that the selected themes refresh properly
+                else if (themeModeNeedsUpdate)
+                {
+                    Logger.Info($"dwm management: refresh is expected to be handled by user");
+                }
+                else
+                {
+                    Logger.Info("dwm management: no refresh required");
                 }
                 #endregion
 

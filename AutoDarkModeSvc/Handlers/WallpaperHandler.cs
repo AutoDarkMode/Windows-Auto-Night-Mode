@@ -149,7 +149,10 @@ namespace AutoDarkModeSvc.Handlers
             {
                 string id = handler.GetMonitorDevicePathAt(i);
                 string wallpaper = handler.GetWallpaper(id);
-                wallpapers.Add(new Tuple<string, string>(id, wallpaper));
+                if (id.Length > 0)
+                {
+                    wallpapers.Add(new Tuple<string, string>(id, wallpaper));
+                }
             }
             return wallpapers;
         }

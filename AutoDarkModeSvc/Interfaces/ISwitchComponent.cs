@@ -74,7 +74,7 @@ namespace AutoDarkModeSvc.Interfaces
         /// <summary>
         /// Determines if the module requires dwm refresh
         /// </summary>
-        public bool NeedsDwmRefresh { get; }
+        public DwmRefreshType NeedsDwmRefresh { get; }
         /// <summary>
         /// Determines the quality of DWM refresh a module performs
         /// </summary>

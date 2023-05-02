@@ -151,7 +151,11 @@ namespace AutoDarkModeApp.Pages
 
             if (ToggleSwitchCursors.IsOn)
             {
-                builder.Config.CursorSwitch.Enabled = ToggleSwitchCursors.IsOn;
+                builder.Config.CursorSwitch.Enabled = true;
+            }
+            else
+            {
+                builder.Config.CursorSwitch.Enabled = false;
             }
             try
             {
