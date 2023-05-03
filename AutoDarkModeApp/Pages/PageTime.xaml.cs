@@ -37,6 +37,7 @@ using System.Resources;
 using System.Threading;
 using Windows.Foundation;
 using System.Windows.Navigation;
+using SourceChord.GridExtra;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -72,6 +73,15 @@ namespace AutoDarkModeApp.Pages
 
             //initialize ui components
             InitializeComponent();
+
+            BreakPoints bp = new()
+            {
+                XS_SM = 550,
+                SM_MD = ResponsiveLocationGrid.BreakPoints.SM_MD,
+                MD_LG= ResponsiveLocationGrid.BreakPoints.MD_LG
+            };
+            ResponsiveLocationGrid.BreakPoints = bp;
+
 
             NumberBoxOffsetLight.Header = $"{AdmProperties.Resources.lblLight} ({AdmProperties.Resources.Minutes})";
             NumberboxOffsetDark.Header = $"{AdmProperties.Resources.lblDark} ({AdmProperties.Resources.Minutes})";

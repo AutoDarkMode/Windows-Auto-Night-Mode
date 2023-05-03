@@ -137,6 +137,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="SourceChord.GridExtra\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

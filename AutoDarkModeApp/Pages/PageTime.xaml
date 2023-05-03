@@ -8,6 +8,7 @@
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+      xmlns:ge="clr-namespace:SourceChord.GridExtra"
       mc:Ignorable="d"
       Title="PageTime"
       fw:PointerTracker.Enabled="True"
@@ -267,30 +268,28 @@
                        FontSize="14" />
             <uc:Card x:Name="StackPanelLocationTime"
                      Grid.Row="3"
-                     Padding="15,22,15,15"
+                     Padding="15,7,15,15"
                      Margin="0,0,0,0">
-                <StackPanel Margin="15,0,0,0">
-                    <Grid VerticalAlignment="Center"
-                          Margin="0,0,0,10">
+                <Grid Margin="15,0,0,0">
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                        <ui:SimpleStackPanel Orientation="Horizontal">
-                            <ui:FontIcon Grid.Column="0"
-                                         Margin="0, 0, 10, 0"
+                    <ge:ResponsiveGrid Margin="0,0,0,0" x:Name="ResponsiveLocationGrid">
+
+                        <ui:SimpleStackPanel Orientation="Horizontal"
+                                             Margin="0,15,0,0"
+                                             ge:ResponsiveGrid.SM="5"
+                                             ge:ResponsiveGrid.XS="12">
+                            <ui:FontIcon Margin="0, 0, 10, 0"
                                          Name="FontIconLocation"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Top"
                                          FontFamily="Segoe MDL2 Assets"
                                          Glyph="&#xE707;" />
                             <TextBlock x:Name="locationBlock"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Top"
                                        Margin="0,0,0,0"
                                        TextWrapping="Wrap"
                                        Height="Auto"
@@ -300,12 +299,15 @@
                         </ui:SimpleStackPanel>
 
 
-                        <ui:SimpleStackPanel Margin="0,0,0,0"
-                                             Grid.Column="2"
+                        <ui:SimpleStackPanel Margin="0,15,0,0"
+                                             ge:ResponsiveGrid.SM="4"
+                                             ge:ResponsiveGrid.XS="6"
                                              Orientation="Horizontal">
                             <ui:FontIcon Margin="0, 0, 10, 0"
                                          FontFamily="Segoe MDL2 Assets"
                                          Name="FontIconLight"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Top"
                                          Glyph="&#xE706;" />
                             <TextBlock Name="TextBlockLightTime"
                                        Margin="0,0,0,0"
@@ -314,22 +316,25 @@
                         </ui:SimpleStackPanel>
 
 
-                        <ui:SimpleStackPanel Margin="10,0,0,0"
-                                             Grid.Column="4"
+                        <ui:SimpleStackPanel Margin="0,15,0,0"
+                                             ge:ResponsiveGrid.XS="6"
+                                             ge:ResponsiveGrid.SM="3"
                                              Orientation="Horizontal">
                             <ui:FontIcon Margin="0, 0, 10, 0"
                                          FontFamily="Segoe MDL2 Assets"
                                          Name="FontIconDark"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Top"
                                          Glyph="&#xe708;" />
                             <TextBlock Name="TextBlockDarkTime"
                                        Margin="0,0,0,0"
                                        Text="DarkPlaceHolder"
                                        FontSize="14" />
                         </ui:SimpleStackPanel>
+                    </ge:ResponsiveGrid>
 
-
-                    </Grid>
-                    <Grid Margin="0, 6, 0, 0">
+                    <Grid Margin="0, 8, 0, 0"
+                          Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -345,7 +350,7 @@
                                    FontSize="12"
                                    Name="LocationNextUpdateDate" />
                     </Grid>
-                </StackPanel>
+                </Grid>
             </uc:Card>
 
         </Grid>

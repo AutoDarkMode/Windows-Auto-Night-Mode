@@ -401,11 +401,10 @@
                   Grid.Column="1"
                   Padding="30,15,15,15">
             <StackPanel Name="StackPanelThirdPartySoftware"
-                       
                         Margin="0,0,0,0"
                         Orientation="Vertical">
 
-           
+
                 <TextBlock Name="TaskSchedulerLicense"
                            FontSize="14"
                            HorizontalAlignment="Left"
@@ -438,6 +437,32 @@
                            Margin="0,10,0,0"
                            TextWrapping="Wrap"
                            Text="FluentWPF"
+                           VerticalAlignment="Top"
+                           Focusable="True"
+                           MouseDown="FluentWPFLicense_MouseDown"
+                           KeyDown="FluentWPFLicense_KeyDown">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground"
+                                    Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Foreground"
+                                            Value="Gray" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock Name="GridExtraLicense"
+                           FontSize="14"
+                           HorizontalAlignment="Left"
+                           Margin="0,10,0,0"
+                           TextWrapping="Wrap"
+                           Text="GridExtra"
                            VerticalAlignment="Top"
                            Focusable="True"
                            MouseDown="FluentWPFLicense_MouseDown"
