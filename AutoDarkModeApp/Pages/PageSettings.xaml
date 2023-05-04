@@ -76,7 +76,7 @@
                               Click="CheckBoxColourFilter_Click" />
                 </uc:Card>
 
-                <uc:Card Padding="30,10,25,10">
+                <uc:Card Padding="30,10,25,10" x:Name="CardAlwaysDwmRefresh">
                     <CheckBox Name="CheckBoxAlwaysDwmRefresh"
                               Content="{x:Static p:Resources.SettingsPageCheckBoxAlwaysRefreshDwm}"
                               Margin="0,0,0,0"

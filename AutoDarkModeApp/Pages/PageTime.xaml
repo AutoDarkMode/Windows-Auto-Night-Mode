@@ -286,7 +286,7 @@
                             <ui:FontIcon Margin="0, 0, 10, 0"
                                          Name="FontIconLocation"
                                          HorizontalAlignment="Left"
-                                         VerticalAlignment="Top"
+                                         VerticalAlignment="Center"
                                          FontFamily="Segoe MDL2 Assets"
                                          Glyph="&#xE707;" />
                             <TextBlock x:Name="locationBlock"
@@ -303,11 +303,11 @@
                                              ge:ResponsiveGrid.SM="4"
                                              ge:ResponsiveGrid.XS="6"
                                              Orientation="Horizontal">
-                            <ui:FontIcon Margin="0, 0, 10, 0"
+                            <ui:FontIcon Margin="0, 1, 10, 0"
                                          FontFamily="Segoe MDL2 Assets"
                                          Name="FontIconLight"
                                          HorizontalAlignment="Left"
-                                         VerticalAlignment="Top"
+                                         VerticalAlignment="Center"
                                          Glyph="&#xE706;" />
                             <TextBlock Name="TextBlockLightTime"
                                        Margin="0,0,0,0"
@@ -324,7 +324,7 @@
                                          FontFamily="Segoe MDL2 Assets"
                                          Name="FontIconDark"
                                          HorizontalAlignment="Left"
-                                         VerticalAlignment="Top"
+                                         VerticalAlignment="Center"
                                          Glyph="&#xe708;" />
                             <TextBlock Name="TextBlockDarkTime"
                                        Margin="0,0,0,0"
