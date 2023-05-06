@@ -563,13 +563,13 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>System Tray-Icon verstecken (nicht empfohlen)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Diese Funktion ist nicht verfügbar wenn Windows das Theme verwaltet.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Konfiguriere unterschiedliche Windows Themes für das dunkle und helle Design. Dies erlaubt vollständige Anpassbarkeit, erfordert allerdings, ein Theme File vorher selbst zu erstellen.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Passe das Hintergrundbild für alle oder einzelne Monitore an, setze eine Hintergrundfarbe oder aktiviere Spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Wir suchen im Hintergrund nach Updates. Sobald eine neue Version verfügbar ist, senden wir eine Toast Benachrichtigung</value>
@@ -1134,87 +1134,87 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Windows-Blickpunkt</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Akzentfarbe</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Wähle eine Akzent Farbe</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Passe die Windows Akzentfarbe nach Präferenz an.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Farbwahl aktualisieren</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Diese Funktion ist nicht verfügbar wenn Auto Dark Mode das Theme verwaltet.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Dokumentation für benutzerdefinierte Skripte</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Sammlung für Benutzerskripte</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Füllen</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Anpassen</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Strecken</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Wähle eine Anpassung für das Hintergrundbild</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Nicht verbunden</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Immer DWM bei Farbwechsel aktualisieren</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren. Wenn dies oft auftritt und stört, bitte diese Einstellung ausprobieren.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Beim Themenwechsel kann es hierbei zu leichtem Stocken kommen, ähnlich wie dies bei Windows 10 schon der Fall war. 
+In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM Aktualisierung bewegt wird.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Erzwinge DWM Aktualisierung?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Mauszeiger Designwechsel aktivieren</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Windows Mauseinstellungen öffnen</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Zeiger für dunkles Design</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Zeiger für helles Design</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Mauszeiger</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Setze unterschiedliche Mauszeiger für dunkle und helle Designs.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Wähle Mauszeiger Designs aus</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Auto Dark Mode verwaltet das Theme</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Windows verwaltet das Theme</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Mauszeiger Schemas können in den Windows Einstellungen erstellt, angepasst und dann hier ausgewählt werden.</value>
   </data>
 </root>
