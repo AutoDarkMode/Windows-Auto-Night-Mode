@@ -563,7 +563,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>隐藏托盘图标（不推荐）</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Windows 管理你的主题时该功能被禁用。</value>
+    <value>当 Windows 管理您的主题时，此功能不可用。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>分别为深色和浅色模式选择不同的 Windows 主题。允许完全自定义主题，但需要您自行设置 .theme 文件。</value>
@@ -1146,7 +1146,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>更新颜色</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>Auto Dark Mode 管理你的主题时该功能被禁用。</value>
+    <value>当 Auto Dark Mode 管理您的主题时，此功能不可用。</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>链接</value>
