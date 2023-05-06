@@ -1134,55 +1134,55 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Warna aksen</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Pilih warna aksen</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Perbarui pewarnaan</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
     <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Tautan</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scriptxs</value>
+    <value>Dokumentasi untuk skrip kustom</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Repo pengguna untuk skrip kustom</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Isikan</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Paskan</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Rentangkan</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Pilih mode untuk latar belakang Anda</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Terputus</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Selalu segarkan DWM ketika pergantian tema</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Berupaya untuk mengurangi terjadinya warna UI yang salah di penjelajah, bilah tugas, dan menu mulai. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Hal ini dapat menyebabkan sedikit hingga sedang jeda pada beberapa sistem selama pergantian tema yang mirip dengan yang terjadi pada Windows 10. 
+Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika mouse digerakkan selama penyegaran DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Paksa penyegaran DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
