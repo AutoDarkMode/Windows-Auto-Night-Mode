@@ -1188,33 +1188,33 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>好</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>启用鼠标光标切换</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>打开 Windows 指针设置</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>选择深色光标</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>选择浅色光标</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>光标</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>为深色和浅色模式配置不同的鼠标光标。</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>选择鼠标光标</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>让 Auto Dark Mode 管理我的主题</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>让 Windows 管理我的主题</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>您可以在 Windows 设置中指定新的光标方案，然后在此处进行选择。</value>
   </data>
 </root>
