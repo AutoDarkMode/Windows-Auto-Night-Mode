@@ -175,7 +175,7 @@
     <value>Memakai layanan lokasi</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Perubahan anda telah tersimpan!</value>
+    <value>Perubahan Anda telah tersimpan!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis.</value>
@@ -563,13 +563,13 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Sembunyikan ikon tray (tidak direkomendasikan)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Fitur ini dinonaktifkan ketika Windows mengelola tema Anda.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>PIlih tema Windows yang berbeda untuk masing-masing mode gelap dan terang. memungkinkan kustomisasi tema secara penuh, tapi membutuhkan Anda untuk menyetel file .theme Anda sendiri.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Atur latar belakang desktop anda untuk semua monitor, beberapa monitor secara individu, atur warna latar belakang, atau nyalakan Windows Spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Kami memeriksa versi terbaru dari Auto Dark Mode di latar belakang. Ketika pembaruan tersedia, kami akan memberitahukan Anda</value>
@@ -1146,13 +1146,13 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Perbarui pewarnaan</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Fitur ini dinonaktifkan ketika Auto Dark Mode mengelola tema Anda.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Tautan</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Dokumentasi untuk skrip kustom</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Repo pengguna untuk skrip kustom</value>
@@ -1188,33 +1188,33 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Nyalakan pergantian kursor tetikus</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Buka setelan penunjuk Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>PIlih kursor gelap</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Pilih kursor terang</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Kursor</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Konfigurasikan kursor tetikus yang berbeda untuk mode gelap dan terang.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Pilih kursor tetikus</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Biarkan Auto Dark Mode yang mengatur tema saya</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Biarkan Windows yang mengatur tema saya</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Anda dapat menentukan skema kursor di setelan Windows dan kemudian memilihnya di sini sesudahnya.</value>
   </data>
 </root>
