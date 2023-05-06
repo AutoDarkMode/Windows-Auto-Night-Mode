@@ -816,7 +816,7 @@
     <value>Отключить принудительную тему</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Включить системные горячие клавиши</value>
+    <value>Включить горячие клавиши</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Принудительно тёмная тема</value>
@@ -859,13 +859,13 @@
     <value>Задержка</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
+    <value>Модуль отслеживания GPU</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
     <value>Режим автопереключения</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
+    <value>Проверка простоя системы</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
     <value>Нажмите "Подтвердить", чтобы переключить тему.</value>
@@ -904,10 +904,10 @@
     <value>Автоматическая смена темы приостановлена из-за следующих модулей:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>Возобновление будет работать только для отсрочек, у которых есть время истечения срока действия.</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>Контроль отсрочки</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Переключить тему</value>
@@ -928,13 +928,13 @@
     <value>откладывается до</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
+    <value>Откладывание до тех пор, пока не подойдёт его условие</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
     <value>отложено до следующего восхода</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
+    <value>Откладывания до следующего заката</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
     <value>до</value>
@@ -967,7 +967,7 @@
     <value>Уведомлять при автоматическом переключении тем</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
+    <value>Время ожидания уведомления для ввода пользователем в минутах</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Режим отладки</value>
@@ -985,7 +985,7 @@
     <value>Режим задержки</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
+    <value>Переключить уведомление</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
     <value>2 часа</value>
@@ -1015,13 +1015,13 @@
     <value>Хотите переключить сейчас или отложить?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>Режим трассировки</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Особая благодарность</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>Игнорировать задний фон</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
     <value>Ignore cursor</value>
