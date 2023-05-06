@@ -564,7 +564,7 @@ Uma nota à parte: NUNCA corra o Auto Dark Mode como Administrador manualmente!<
     <value>Esconder o ícone do tabuleiro do sistema (não recomendado)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Esta funcionalidade está desactivada enquanto o modo de tema está activado.</value>
+    <value>This feature is disabled while Windows manages your theme.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
@@ -1147,13 +1147,13 @@ Tem a certeza que quer continuar?</value>
     <value>Update colorization</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
+    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scriptxs</value>
+    <value>Documentation for custom scripts</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Custom script user repository</value>
@@ -1187,5 +1187,35 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Enable mouse cursor switch</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Open Windows pointer settings</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>Select dark cursor</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Select light cursor</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>Cursors</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Configure different mouse cursors for dark and light modes.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Pick mouse cursors</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Let Auto Dark Mode manage my theme</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Let Windows manage my theme</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
 </root>

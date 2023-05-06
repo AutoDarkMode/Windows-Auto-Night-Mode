@@ -563,7 +563,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Bildirim alanı simgesini gizle (tavsiye edilmez)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Tema modu etkinken bu özellik devre dışı bırakılır.</value>
+    <value>This feature is disabled while Windows manages your theme.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Ayrı ayrı koyu ve açık mod için farklı bir Windows teması seçebilirsiniz. Tam tema özelleştirmesine izin verir ama .theme dosyalarını kendi başınıza ayarlamanız gerekir.</value>
@@ -1146,13 +1146,13 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Renklendirmeyi güncelle</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>Vurgu rengi ve/veya arka plan değiştirme etkinken bu özellik devre dışı bırakılır.</value>
+    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Bağlantılar</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Özel komut dosyaları için dökümantasyon</value>
+    <value>Documentation for custom scripts</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Özel komut dosyası kullanıcı deposu</value>
@@ -1186,5 +1186,35 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   </data>
   <data name="ok" xml:space="preserve">
     <value>Tamam</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Enable mouse cursor switch</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Open Windows pointer settings</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>Select dark cursor</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Select light cursor</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>Cursors</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Configure different mouse cursors for dark and light modes.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Pick mouse cursors</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Let Auto Dark Mode manage my theme</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Let Windows manage my theme</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
 </root>

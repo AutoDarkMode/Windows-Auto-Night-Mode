@@ -563,7 +563,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>隐藏托盘图标（不推荐）</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>启用主题模式时无法开启本功能。</value>
+    <value>This feature is disabled while Windows manages your theme.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>分别为深色和浅色模式选择不同的 Windows 主题。允许完全自定义主题，但需要您自行设置 .theme 文件。</value>
@@ -1146,13 +1146,13 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>更新颜色</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>启用主题色和/或壁纸切换时无法开启本功能。</value>
+    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>链接</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>自定义脚本的文档</value>
+    <value>Documentation for custom scripts</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>自定义脚本的用户仓库</value>
@@ -1186,5 +1186,35 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="ok" xml:space="preserve">
     <value>好</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Enable mouse cursor switch</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Open Windows pointer settings</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>Select dark cursor</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Select light cursor</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>Cursors</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Configure different mouse cursors for dark and light modes.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Pick mouse cursors</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Let Auto Dark Mode manage my theme</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Let Windows manage my theme</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
 </root>
