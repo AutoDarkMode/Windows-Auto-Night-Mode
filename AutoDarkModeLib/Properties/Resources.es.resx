@@ -563,7 +563,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Esconder icono de la bandeja del sistema (no recomendado)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Esta función está desactivada mientras Windows gestiona tu tema.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Selecciona un tema de Windows diferente para los modos oscuro y claro respectivamente. Permite la personalización completa del tema, pero requiere que configures los archivos .theme por tu cuenta.</value>
@@ -1146,13 +1146,13 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Actualizar la coloración</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Esta función está desactivada mientras el Auto Dark Mode gestiona tu tema.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Enlaces</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Documentación para scripts personalizados</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Repositorio personalizado del usuario de los script</value>
@@ -1188,33 +1188,33 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
     <value>De acuerdo</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Habilitar el cambio del puntero del ratón</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Abrir la configuración del puntero de Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Seleccionar el cursor oscuro</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Seleccionar el cursor claro</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Cursores</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Configura los diferentes cursores del ratón para los modos oscuro y claro.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Elegir los cursores del ratón</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Permitir que Auto Dark Mode gestione mi tema</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Permitir que Windows gestione mi tema</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Puedes definir nuevos esquemas del cursor en la configuración de Windows y seleccionarlos aquí posteriormente.</value>
   </data>
 </root>
