@@ -225,7 +225,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Welkom</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Vink het selectievakje aan om automatische themawisseling in te schakelen</value>
+    <value>Wijzig het gedrag van automatische themawisseling met deze instellingen.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Vertalers: ChillTick en Quinten Althues</value>
@@ -566,10 +566,10 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Deze functie is uitgeschakeld wanneer het lichte thema is ingeschakeld.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Selecteer verschillende Windows-thema's voor het donkere en het lichte thema. Hiermee kunt u alles volledig aanpassen, maar u moet wel zelf uw .theme-bestanden voorbereiden.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Wijzig uw bureaubladachtergrond voor alle of individuele beeldschermen, stel een achtergrondkleur in of schakel Spotlight in.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Er wordt op de achtergrond gezocht naar nieuwe versies van Auto Dark Mode. Wanneer er een update beschikbaar is, wordt u op de hoogte gesteld middels een melding.</value>
@@ -813,16 +813,16 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Sneltoetsen</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop met forceren thema</value>
+    <value>Thema forceren stoppen</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Sneltoetsen in systeem inschakelen</value>
+    <value>Sneltoetsen inschakelen</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Donker thema forceren</value>
+    <value>&amp;Donker thema forceren</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Licht thema forceren</value>
+    <value>&amp;Licht thema forceren</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Het is niet aanbevolen om het icoon te verbergen.
@@ -838,19 +838,19 @@ Wilt u alsnog doorgaan?</value>
     <value>Laat de app kiezen</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Niet van thema's wisselen tenzij het systeem inactief is</value>
+    <value>Niet van thema wisselen tenzij het systeem inactief is</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>Minuten tot het systeem als inactief wordt beschouwd</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Accentkleur voor titelbalken en vensterranden alleen bij</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Versie-informatie gekopieerd naar klembord</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatische thema wissel</value>
+    <value>Automatische themawisseling</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Melding weergeven bij schakelen</value>
@@ -859,13 +859,13 @@ Wilt u alsnog doorgaan?</value>
     <value>Vertraag</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
+    <value>GPU-meetmodule</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
     <value>Automatische schakelmodule pauzeren</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
+    <value>Wachten tot systeem inactief is</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
     <value>Druk op bevestigen om direct een themawissel uit te voeren.</value>
@@ -880,7 +880,7 @@ Wilt u alsnog doorgaan?</value>
     <value>sneltoets</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatische thema wissel inschakelen</value>
+    <value>Automatische themawisseling in-/uitschakelen</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
     <value>Automatisch schakelen uitschakelen</value>
@@ -889,7 +889,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Ongedaan maken</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Automatisch wisselen pauzeren</value>
+    <value>Automatisch wisselen &amp;pauzeren</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Wilt u in plaats daarvan het automatisch schakelen uitschakelen?</value>
@@ -907,13 +907,13 @@ Wilt u alsnog doorgaan?</value>
     <value>Hervatten is alleen mogelijk wanneer de uitstelling een eindtijd heeft</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>Uitstel</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>Van thema wisselen</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Automatisch wisselen van thema is ingeschakeld</value>
+    <value>Automatische themawisseling is ingeschakeld</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
     <value>Windows nachtlamp volgen</value>
@@ -922,13 +922,13 @@ Wilt u alsnog doorgaan?</value>
     <value>Windows nachtlamp volgen</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>Themawisseling is eenmalig gepauzeerd!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>uitstellen tot</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>uitstellen tot conditie is voldaan</value>
+    <value>uitstellen tot er aan de voorwaarde wordt voldaan</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
     <value>uitstellen tot de volgende zonsopgang</value>
@@ -946,46 +946,46 @@ Wilt u alsnog doorgaan?</value>
     <value>tot volgende zonsondergang</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Automatische themawisseling pauzeren/hervatten</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>Automatische themawisseling hervat</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Open nachtlichtinstellingen</value>
+    <value>Nachtlamp-instellingen openen</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Nachtverlichting</value>
+    <value>Nachtlamp</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
     <value>Actieve vertragingen</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Automatisch wisselen éénmaal overslaan</value>
+    <value>Automatisch wisselen eenmalig overslaan</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>Notificatie voor automatische themawisseling</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
+    <value>Minuten wachten op terugkoppeling gebruiker</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Foutopsporingsmodus</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>Themawisseling toestaan op vergrendelingsscherm (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
     <value>Bevestigen</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Wissel nu</value>
+    <value>Nu wisselen</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>Module vertragen</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Wissel melding</value>
+    <value>Wisselnotificatie</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
     <value>2 uur</value>
@@ -1009,22 +1009,22 @@ Wilt u alsnog doorgaan?</value>
     <value>12 uur</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>Themawisseling in behandeling</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Wil je nu wisselen of verder uitstellen?</value>
+    <value>Wilt u nu van thema wisselen of verder uitstellen?</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>Traceermodus</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Speciale dank</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Negeer achtergrond</value>
+    <value>Achtergrond negeren</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Negeer cursor</value>
+    <value>Muisaanwijzer negeren</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
     <value>Bureaubladpictogrammen negeren</value>
@@ -1036,7 +1036,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Instellingen negeren</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>Deze optie ondersteunt geen standaard Windows thema's</value>
+    <value>Deze optie ondersteunt geen standaardthema's van Windows</value>
   </data>
   <data name="Minutes" xml:space="preserve">
     <value>minuten</value>
@@ -1045,10 +1045,10 @@ Wilt u alsnog doorgaan?</value>
     <value>Gepauzeerd</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>Alleen gebruiken met Office 2013-2019 of indien u problemen ervaart met de optie in Office 'systeemthema gebruiken'</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>Er is een fout opgetreden bij het toepassen.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
     <value>Huidige versie</value>
@@ -1070,10 +1070,10 @@ Wilt u alsnog doorgaan?</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>Toepassen mislukt</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Bekijk service.log en updater.log voor details</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
     <value>Updaten naar</value>
@@ -1082,10 +1082,10 @@ Wilt u alsnog doorgaan?</value>
     <value>Downgraden</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Logboekmap openen</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Stel uit</value>
+    <value>Uitstellen</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
     <value>Updaten</value>
@@ -1104,87 +1104,87 @@ Wilt u alsnog doorgaan?</value>
     <value>Scripts</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script configuratie</value>
+    <value>Scriptconfiguratie openen</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>Scripts</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>Aangepaste scripts inschakelen</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Kies uw achtergrond</value>
+    <value>Achtergrond selecteren</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>Afbeeldingspad</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Sluiten</value>
+    <value>&amp;Sluiten</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatische thema wissel</value>
+    <value>&amp;Automatische themawisseling</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>Van &amp;thema wisselen</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Windows-spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Accentkleur</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Accentkleur selecteren</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Pas het kleurenthema van Windows aan naar uw voorkeuren.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Kleuren updaten</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
+    <value>Deze functie is niet beschikbaar wanneer het wisselen van accentkleur of achtergrond is ingeschakeld.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Koppelingen</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scriptxs</value>
+    <value>Documentatie voor aangepaste scripts</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Repository met aangepaste scripts</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Opvullen</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Passend maken</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Uitrekken</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Kies de gewenste weergave voor uw bureaubladachtergrond</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Verbinding verbroken</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>DWM altijd vernieuwen bij themawisselen</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Probeert de frequentie van foute interfacekleuren in Verkenner, de taakbalk en menu Start te verminderen. Schakel dit in als u hier veel last van heeft.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van thema, vergelijkbaar aan het wisselen in Windows 10. 
+Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens het vernieuwen van DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>DWM-vernieuwing forceren?</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
 </root>
