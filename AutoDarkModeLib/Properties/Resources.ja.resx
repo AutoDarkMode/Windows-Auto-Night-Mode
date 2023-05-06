@@ -563,7 +563,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>トレイアイコンを非表示 (非推奨)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Windows がテーマを制御している間、この機能は無効です。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>ダークおよびライトモード用に異なる Windows テーマを選択します。テーマを完全にカスタマイズできますが .theme ファイルを自分で設定する必要があります。</value>
@@ -1146,13 +1146,13 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>今すぐ色を反映</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Auto Dark Mode がテーマを制御している間、この機能は無効です。</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>リンク</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>カスタムスクリプトの解説文書</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>様々なカスタムスクリプトの倉庫</value>
@@ -1188,33 +1188,33 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>OK</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>マウスカーソルの有効を切り替え</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Windows のポインターの設定を開く</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>ダーク用のカーソルを選択</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>ライト用のカーソルを選択</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>カーソル</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>ダークおよびライトモード用に異なるマウスカーソルを選択します。</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>マウスカーソルを選択</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Auto Dark Mode がテーマを管理</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Windows がテーマを管理</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Windows の設定から新たにカーソルのデザインを設定すると、ここで選択可能になります。</value>
   </data>
 </root>
