@@ -175,7 +175,7 @@
     <value>Memakai layanan lokasi</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Perubahan anda telah tersimpan!</value>
+    <value>Perubahan Anda telah tersimpan!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis.</value>
@@ -563,13 +563,13 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Sembunyikan ikon tray (tidak direkomendasikan)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Fitur ini dinonaktifkan ketika mode tema diaktifkan.</value>
+    <value>Fitur ini dinonaktifkan ketika Windows mengelola tema Anda.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>PIlih tema Windows yang berbeda untuk masing-masing mode gelap dan terang. memungkinkan kustomisasi tema secara penuh, tapi membutuhkan Anda untuk menyetel file .theme Anda sendiri.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Atur latar belakang desktop anda untuk semua monitor, beberapa monitor secara individu, atur warna latar belakang, atau nyalakan Windows Spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Kami memeriksa versi terbaru dari Auto Dark Mode di latar belakang. Ketika pembaruan tersedia, kami akan memberitahukan Anda</value>
@@ -1134,57 +1134,87 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Warna aksen</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Pilih warna aksen</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Perbarui pewarnaan</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
+    <value>Fitur ini dinonaktifkan ketika Auto Dark Mode mengelola tema Anda.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Tautan</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scriptxs</value>
+    <value>Dokumentasi untuk skrip kustom</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Repo pengguna untuk skrip kustom</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Isikan</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Paskan</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Rentangkan</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Pilih mode untuk latar belakang Anda</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Terputus</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Selalu segarkan DWM ketika pergantian tema</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Berupaya untuk mengurangi terjadinya warna UI yang salah di penjelajah, bilah tugas, dan menu mulai. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Hal ini dapat menyebabkan sedikit hingga sedang jeda pada beberapa sistem selama pergantian tema yang mirip dengan yang terjadi pada Windows 10. 
+Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika mouse digerakkan selama penyegaran DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Paksa penyegaran DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Nyalakan pergantian kursor tetikus</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Buka setelan penunjuk Windows</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>PIlih kursor gelap</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Pilih kursor terang</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>Kursor</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Konfigurasikan kursor tetikus yang berbeda untuk mode gelap dan terang.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Pilih kursor tetikus</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Biarkan Auto Dark Mode yang mengatur tema saya</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Biarkan Windows yang mengatur tema saya</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>Anda dapat menentukan skema kursor di setelan Windows dan kemudian memilihnya di sini sesudahnya.</value>
   </data>
 </root>

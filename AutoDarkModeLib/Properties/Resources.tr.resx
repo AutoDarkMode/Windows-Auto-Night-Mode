@@ -563,7 +563,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Bildirim alanı simgesini gizle (tavsiye edilmez)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Tema modu etkinken bu özellik devre dışı bırakılır.</value>
+    <value>Windows, temanızı yönetirken bu özellik devre dışı bırakılır.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Ayrı ayrı koyu ve açık mod için farklı bir Windows teması seçebilirsiniz. Tam tema özelleştirmesine izin verir ama .theme dosyalarını kendi başınıza ayarlamanız gerekir.</value>
@@ -1146,13 +1146,13 @@ Gerçekten devam etmek istiyor musunuz?</value>
     <value>Renklendirmeyi güncelle</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>Vurgu rengi ve/veya arka plan değiştirme etkinken bu özellik devre dışı bırakılır.</value>
+    <value>Auto Dark Mode, temanızı yönetirken bu özellik devre dışı bırakılır.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Bağlantılar</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Özel komut dosyaları için dökümantasyon</value>
+    <value>Özel komut dosyaları için dokümantasyon</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Özel komut dosyası kullanıcı deposu</value>
@@ -1186,5 +1186,35 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   </data>
   <data name="ok" xml:space="preserve">
     <value>Tamam</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Fare imleci değişimini etkinleştir</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Windows işaretçi ayarlarını aç</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>Koyu imleci seç</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Açık imleci seç</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>İmleçler</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Koyu ve açık modlar için farklı fare imleçlerini yapılandırabilirsiniz.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Fare imleçlerini seç</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Auto Dark Mod'un temamı yönetmesine izin ver</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Windows'un temamı yönetmesine izin ver</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>Windows ayarlarında yeni imleç düzenlerini tanımlayabilir ve daha sonra bunları burada seçebilirsiniz.</value>
   </data>
 </root>

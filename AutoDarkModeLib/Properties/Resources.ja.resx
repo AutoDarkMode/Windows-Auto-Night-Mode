@@ -554,7 +554,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>テーマの選択</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>壁紙の選択</value>
+    <value>壁紙を選択</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>無効</value>
@@ -563,13 +563,13 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>トレイアイコンを非表示 (非推奨)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>テーマモードが有効の間、この機能は無効です。</value>
+    <value>Windows がテーマを制御している間、この機能は無効です。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>ダークおよびライトモード用に異なる Windows テーマを選択します。テーマを完全にカスタマイズできますが .theme ファイルを自分で設定する必要があります。</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>モニターすべてまたは個別に、デスクトップの壁紙、背景色、スポットライトを設定します。</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Auto Dark Mode の最新版をバックグラウンドで確認します。最新版が利用可能なら、ポップアップ通知でお知らせします</value>
@@ -641,7 +641,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>16進の色コード</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>壁紙の有効を切り替え</value>
+    <value>壁紙の有効化</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>ビデオゲーム中は切り替えない</value>
@@ -1134,57 +1134,87 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>アクセントカラー</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>アクセントカラーを選択</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Windows の色の設定を好みに変更します。</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>今すぐ色を反映</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while accent color and/or wallpaper switching is enabled.</value>
+    <value>Auto Dark Mode がテーマを制御している間、この機能は無効です。</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>リンク</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>カスタムスクリプトの解説文章</value>
+    <value>カスタムスクリプトの解説文書</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>様々なカスタムスクリプトの倉庫</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>維持して拡大</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>維持して満たす</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>自由に伸ばす</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>デスクトップ画像に合うものを選択</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>切断済み</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>テーマ切替時に常に DWM を再描画</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>エクスプローラー、タスクバー、スタートメニュー内の間違ったUIの色の発生を抑えようと試みます。この現象がよく起きたり気になるなら、有効にしてみてください。
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+設定により Windows 10 で起きていたのと同様に、一部のシステムでのテーマ切り替え時に、極小から中等度の遅延が起こることがあります。
+まれに、DWM の再描画中にマウスを動かすと、Windows からビープ音が鳴ることがあります。</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>強制的に DWM を再描画しますか？</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>マウスカーソルの有効を切り替え</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Windows のポインターの設定を開く</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>ダーク用のカーソルを選択</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>ライト用のカーソルを選択</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>カーソル</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>ダークおよびライトモード用に異なるマウスカーソルを選択します。</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>マウスカーソルを選択</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Auto Dark Mode がテーマを管理</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Windows がテーマを管理</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>Windows の設定から新たにカーソルのデザインを設定すると、ここで選択可能になります。</value>
   </data>
 </root>
