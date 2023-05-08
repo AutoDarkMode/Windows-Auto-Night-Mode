@@ -124,8 +124,15 @@ namespace AutoDarkModeSvc.Handlers
         {
             if (e.Mode == PowerModes.Resume)
             {
-                Logger.Debug("resynchronizing postpone timers with system clock after resume");
-                state.PostponeManager.SyncExpiryTimesWithSystemClock();
+                try
+                {
+                    Logger.Debug("resynchronizing postpone timers with system clock after resume");
+                    state.PostponeManager.SyncExpiryTimesWithSystemClock();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error while synchronizing postpone timers with system clock: ");
+                }
             }
         }
 
