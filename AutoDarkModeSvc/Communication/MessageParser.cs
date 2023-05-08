@@ -498,9 +498,10 @@ namespace AutoDarkModeSvc.Communication
 
                     #region Test2
                     case Command.Test2:
-                        ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                        //ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                         //Cursors current = RegistryHandler.GetCursors();
                         //Cursors byName = RegistryHandler.GetCursorScheme("Posy's Cursor");
+                        state.PostponeManager.SyncExpiryTimesWithSystemClock();
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,

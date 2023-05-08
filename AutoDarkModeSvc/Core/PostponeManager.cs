@@ -286,6 +286,19 @@ namespace AutoDarkModeSvc.Core
             }
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void SyncExpiryTimesWithSystemClock()
+        {
+            List<PostponeItem> items = PostponeQueue.Where(x =>
+            {
+                if (x.Reason == Helper.PostponeItemPauseAutoSwitch) return true;
+                else if (x.Reason == Helper.PostponeItemDelayAutoSwitch) return true;
+                return false;
+            }).ToList();
+
+            items.ForEach(i => { if (i.Expires) i.SyncExpiryWithSystemClock(); });
+        }
+
         public void RemoveUserClearablePostpones()
         {
             List<PostponeItem> toClear = PostponeQueue.Select(i =>
@@ -347,8 +360,8 @@ namespace AutoDarkModeSvc.Core
         }
     }
 
-  
-public class PostponeItem
+
+    public class PostponeItem
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public string Reason { get; }
@@ -409,6 +422,19 @@ public class PostponeItem
             SkipType = skipType;
             CancelTokenSource = new();
             StartExpiry(suppressLaunchMessage: true);
+        }
+
+        public void SyncExpiryWithSystemClock()
+        {
+            if (Expiry == null) return;
+            DateTime expiryUnwrapped = Expiry.Value;
+            // if the expiry time is in the past we need to cancel it
+            if (DateTime.Compare(expiryUnwrapped, DateTime.Now) <= 0)
+            {
+                CancelExpiry();
+                PostponeManager pm = GlobalState.Instance().PostponeManager;
+                pm.Remove(Reason);
+            }
         }
 
         /// <summary>

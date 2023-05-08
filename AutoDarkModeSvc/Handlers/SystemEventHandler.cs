@@ -92,6 +92,8 @@ namespace AutoDarkModeSvc.Handlers
                     Logger.Info("enabling theme refresh at system unlock (win 10)");
                     SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;
                 }
+                // allow postpone timers to sync with system time after resume from sleep
+                SystemEvents.PowerModeChanged += SystemEvents_RefreshPostponeTimers;
 
                 resumeEventEnabled = true;
             }
@@ -108,12 +110,22 @@ namespace AutoDarkModeSvc.Handlers
                     SystemEvents.PowerModeChanged -= SystemEvents_PowerModeChanged;
                     SystemEvents.SessionSwitch -= SystemEvents_Windows10_SessionSwitch;
                     SystemEvents.SessionSwitch -= SystemEvents_Windows11_SessionSwitch;
+                    SystemEvents.PowerModeChanged -= SystemEvents_RefreshPostponeTimers;
                     resumeEventEnabled = false;
                 }
             }
             catch (InvalidOperationException ex)
             {
                 Logger.Error(ex, "while deregistering SystemEvents_PowerModeChanged ");
+            }
+        }
+
+        private static void SystemEvents_RefreshPostponeTimers(object sender, PowerModeChangedEventArgs e)
+        {
+            if (e.Mode == PowerModes.Resume)
+            {
+                Logger.Debug("resynchronizing postpone timers with system clock after resume");
+                state.PostponeManager.SyncExpiryTimesWithSystemClock();
             }
         }
 
