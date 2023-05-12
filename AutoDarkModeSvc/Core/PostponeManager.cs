@@ -435,6 +435,10 @@ namespace AutoDarkModeSvc.Core
                 PostponeManager pm = GlobalState.Instance().PostponeManager;
                 pm.Remove(Reason);
             }
+            else
+            {
+                UpdateExpiryTime(expiryUnwrapped);
+            }
         }
 
         /// <summary>
