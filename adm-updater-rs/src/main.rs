@@ -267,6 +267,7 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
     let mut p_shell = s.processes_by_name("AutoDarkModeShell");
     let mut shutdown_failed = false;
     while let Some(p) = p_service.next() {
+        info!("running adm service found");
         let user_id;
         match p.user_id() {
             Some(id) => user_id = id,
@@ -275,12 +276,16 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
         if let Some(user) = s.get_user_by_id(user_id) {
             warn!("service still running, force stopping");
             if user.name() == username {
-                info!("stopping service");
+                info!("stopping service for current user");
                 shutdown_failed = shutdown_failed || !p.kill();
+            }
+            else {
+                info!("service found running for different user {}, no action required", user.name())
             }
         }
     }
     while let Some(p) = p_app.next() {
+        info!("running adm app found");
         let user_id;
         match p.user_id() {
             Some(id) => user_id = id,
@@ -288,12 +293,15 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
         };
         if let Some(user) = s.get_user_by_id(user_id) {
             if user.name() == username {
-                info!("stopping app");
+                info!("stopping app for current user");
                 shutdown_failed = shutdown_failed || !p.kill();
+            } else {
+                info!("app found running for different user {}, no action required", user.name())
             }
         }
     }
     while let Some(p) = p_shell.next() {
+        info!("running adm shell found");
         let user_id;
         match p.user_id() {
             Some(id) => user_id = id,
@@ -301,8 +309,11 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
         };
         if let Some(user) = s.get_user_by_id(user_id) {
             if user.name() == username {
-                info!("stopping shell");
+                info!("stopping shell for current user");
                 shutdown_failed = shutdown_failed || !p.kill();
+            }
+            else {
+                info!("shell found running for different user {}, no action required", user.name())
             }
         }
     }
