@@ -71,7 +71,7 @@ namespace AutoDarkModeSvc.Modules
                         if (!PostponeDark)
                         {
                             Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
-                            State.PostponeManager.Add(new(Name, isUserClearable: false));
+                            State.PostponeManager.Add(new(Name, isUserClearable: true));
                             PostponeDark = true;
                         }
                     }
