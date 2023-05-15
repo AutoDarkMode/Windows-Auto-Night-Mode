@@ -460,10 +460,15 @@ fn setup_logger() -> Result<(), fern::InitError> {
 mod tests {
     use std::error::Error;
 
+    use crate::{
+        setup_logger,
+    };
+
     use super::*;
 
     #[test]
     fn test_adm_shutdown() -> Result<(), Box<dyn Error>> {
+        setup_logger()?;
         let username = whoami::username();
         shutdown_service(&username)?;
         Ok(())
