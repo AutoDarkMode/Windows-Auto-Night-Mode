@@ -4,23 +4,23 @@
 extern crate lazy_static;
 
 use crate::extensions::{get_service_path, get_update_data_dir};
-use windows::core::PCWSTR;
-use windows::Win32::Foundation::{HWND};
-use windows::Win32::UI::WindowsAndMessaging::SHOW_WINDOW_CMD;
-use windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole};
-use windows::Win32::UI::Shell::ShellExecuteW;
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
 use log::{debug, warn};
 use log::{error, info};
-use windows::w;
 use std::error::Error;
 use std::path::PathBuf;
 use std::process::Command;
 use std::rc::Rc;
 use std::{env, fmt, fs};
+use sysinfo::{System, UserExt};
 use sysinfo::{ProcessExt, SystemExt};
-use sysinfo::{Signal, System};
+use windows::core::PCWSTR;
+use windows::w;
+use windows::Win32::Foundation::HWND;
+use windows::Win32::System::Console::{AttachConsole, ATTACH_PARENT_PROCESS};
+use windows::Win32::UI::Shell::ShellExecuteW;
+use windows::Win32::UI::WindowsAndMessaging::SHOW_WINDOW_CMD;
 
 mod comms;
 mod extensions;
@@ -68,7 +68,9 @@ where
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    unsafe { AttachConsole(ATTACH_PARENT_PROCESS); }
+    unsafe {
+        AttachConsole(ATTACH_PARENT_PROCESS);
+    }
     if !setup_logger().is_ok() {
         print!("failed to setup logger");
     }
@@ -208,13 +210,12 @@ fn rollback(temp_dir: &PathBuf) -> Result<(), OpError> {
             }
         }
         Err(e) => {
-           warn!("could not retrieve directories to clean after rollback {}", e);
+            warn!("could not retrieve directories to clean after rollback {}", e);
         }
     }
     info!("rollback successful, no update has been performed, restarting auto dark mode");
     Ok(())
 }
-
 
 fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
     info!("patching auto dark mode");
@@ -233,7 +234,6 @@ fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
         warn!("could not remove old update files, manual investigation required: {}", e);
     }
     Ok(())
-
 }
 
 fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
@@ -257,26 +257,56 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
             }
         }
     }
+
     let mut s = System::new();
+    let username: String = whoami::username();
     s.refresh_processes();
-    let mut p_service = s.process_by_name("AutoDarkModeSvc");
-    let mut p_app = s.process_by_name("AutoDarkModeApp");
-    let mut p_shell = s.process_by_name("AutoDarkModeShell");
+    s.refresh_users_list();
+    let mut p_service = s.processes_by_name("AutoDarkModeSvc");
+    let mut p_app = s.processes_by_name("AutoDarkModeApp");
+    let mut p_shell = s.processes_by_name("AutoDarkModeShell");
     let mut shutdown_failed = false;
-    if let Some(p) = p_service.pop() {
-        warn!("service still running, force stopping");
-        shutdown_failed = shutdown_failed || !p.kill(Signal::Kill);
+    while let Some(p) = p_service.next() {
+        let user_id;
+        match p.user_id() {
+            Some(id) => user_id = id,
+            None => continue,
+        };
+        if let Some(user) = s.get_user_by_id(user_id) {
+            warn!("service still running, force stopping");
+            if user.name() == username {
+                info!("stopping service");
+                shutdown_failed = shutdown_failed || !p.kill();
+            }
+        }
+    }
+    while let Some(p) = p_app.next() {
+        let user_id;
+        match p.user_id() {
+            Some(id) => user_id = id,
+            None => continue,
+        };
+        if let Some(user) = s.get_user_by_id(user_id) {
+            if user.name() == username {
+                info!("stopping app");
+                shutdown_failed = shutdown_failed || !p.kill();
+            }
+        }
+    }
+    while let Some(p) = p_shell.next() {
+        let user_id;
+        match p.user_id() {
+            Some(id) => user_id = id,
+            None => continue,
+        };
+        if let Some(user) = s.get_user_by_id(user_id) {
+            if user.name() == username {
+                info!("stopping shell");
+                shutdown_failed = shutdown_failed || !p.kill();
+            }
+        }
     }
 
-    //todo kill all processes in the list and don't check for shutdown failed (resiliency for multi user updates)
-    if let Some(p) = p_app.pop() {
-        info!("stopping app");
-        shutdown_failed = shutdown_failed || !p.kill(Signal::Kill);
-    }
-    if let Some(p) = p_shell.pop() {
-        info!("stopping shell");
-        shutdown_failed = shutdown_failed || !p.kill(Signal::Kill);
-    }
     if shutdown_failed {
         let msg = "other auto dark mode components still running, skipping update".to_string();
         warn!("{}", &msg);
@@ -329,7 +359,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
     }
     if restart_shell {
         let shell_path_buf = extensions::get_shell_path();
-        let shell_path =  windows::core::HSTRING::from(shell_path_buf.as_os_str().to_os_string());
+        let shell_path = windows::core::HSTRING::from(shell_path_buf.as_os_str().to_os_string());
         info!("relaunching shell");
         debug!("shell path {}", shell_path_buf.display());
         let result = unsafe {
@@ -413,4 +443,18 @@ fn setup_logger() -> Result<(), fern::InitError> {
         .chain(fern::log_file(log_path)?)
         .apply()?;
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use std::error::Error;
+
+    use super::*;
+
+    #[test]
+    fn test_adm_shutdown() -> Result<(), Box<dyn Error>> {
+        let username = whoami::username();
+        shutdown_service(&username)?;
+        Ok(())
+    }
 }
