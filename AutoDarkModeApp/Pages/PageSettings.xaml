@@ -214,6 +214,8 @@
                                           Name="ja" />
                             <ComboBoxItem Content="Norwegian Bokmål"
                                           Name="nb_no" />
+                            <ComboBoxItem Content="Persian (Farsi)"
+                                          Name="fa" />
                             <ComboBoxItem Content="Polski (Polish)"
                                           Name="pl" />
                             <ComboBoxItem Content="Português (Portuguese)"
