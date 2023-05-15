@@ -566,13 +566,13 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Приховати піктограму в треї (не рекомендується)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Ця функція вимкнена, поки Windows керує вашою темою.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Вибір іншої теми Windows для темного і світлого режимів відповідно. Дозволяє повністю налаштувати тему, але вимагає самостійного налаштування файлів .theme.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Налаштуйте шпалери для робочого столу для всіх моніторів, окремих моніторів, встановіть колір фону або ввімкніть підсвічування.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Наявність нових версій перевіряється Auto Dark Mode у фоновому режимі. Коли оновлення стане доступним, ви отримаєте спливальне сповіщення</value>
@@ -819,7 +819,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Примусову тему вимкнути</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Дозволити загальносистемні гарячі клавіші</value>
+    <value>Ввімкнути гарячі клавіші</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Увімкнути &amp;темну тему</value>
@@ -847,7 +847,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Хвилин коли система вважатиметься в очікуванні</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Колір акценту для рядків заголовків і меж вікон тільки під час</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Інформація про версію скопійована до буферу обміну</value>
@@ -1134,87 +1134,87 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Акцентний колір</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Виберіть акцентний колір</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Налаштуйте кольорову схему системи Windows на свій смак.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Оновити забарвлення</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Цю функцію вимкнено, коли темою керує Auto Dark Mode.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Посилання</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Документація для користувацьких скриптів</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Репозиторій користувацьких скриптів</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Заповнити</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Адаптувати</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Розтягнути</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Виберіть відповідне зображення для вашого робочого столу</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Відключено</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Завжди оновлюйте DWM на перемикачі тем</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Спроба зменшити кількість неправильних кольорів інтерфейсу в провіднику, панелі завдань і меню "Пуск". Якщо це трапляється часто або вас це турбує, спробуйте ввімкнути цей параметр.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Це може спричинити незначні або помірні затримки під час перемикання тем на деяких системах, подібно до того, як це сталося у Windows 10.
+У рідкісних випадках Windows може видавати звуковий сигнал при переміщенні миші під час оновлення DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Примусове оновлення DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Ввімкнути перемикач курсору миші</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Відкрити налаштування вказівника Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Виберіть темний курсор</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Виберіть світловий курсор</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Курсори</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Налаштуйте різні курсори миші для темного та світлого режимів.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Виберіть курсори миші</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Дозволити Auto Dark Mode керувати моєю темою</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Дозволити Windows керувати моєю темою</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Ви можете визначити нові схеми курсору у налаштуваннях Windows, а потім вибрати їх тут.</value>
   </data>
 </root>
