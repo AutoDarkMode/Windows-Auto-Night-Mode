@@ -396,7 +396,7 @@ Anda dapat mengatur secara individu.</value>
     <value>Tekan ini untuk membuka setelan tema Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Kemudian arahkan ke 'Warna' dan ganti warna sistem ke 'Terang' untuk tema terang. Pilih latar belakang, Kursor Mouse dan Warna Aksen.</value>
+    <value>Kemudian arahkan ke 'Warna' dan ganti warna sistem ke 'Terang' untuk tema terang. Pilih latar belakang, kursor tetikus dan aksen warna.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
@@ -844,7 +844,7 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Jumlah menit hingga sistem dianggap menganggur</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Warna aksen untuk bilah judul dan batas jendela hanya dalam</value>
+    <value>Aksen warna untuk bilah judul dan batas jendela hanya dalam</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Info versi disalin ke papan klip</value>
@@ -1134,10 +1134,10 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Warna aksen</value>
+    <value>Aksen warna</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pilih warna aksen</value>
+    <value>Pilih aksen warna</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
     <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
