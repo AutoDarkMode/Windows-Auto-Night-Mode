@@ -37,8 +37,8 @@ namespace AutoDarkModeSvc.Handlers
     {
         private const string defaultVersionQueryUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
         private const string defaultDownloadBaseUrl = "https://github.com";
-        private static readonly Version minUpdaterVersion = new("2.0");
-        private static readonly Version maxUpdaterVersion = new("2.99");
+        private static readonly Version minUpdaterVersion = new("3.0");
+        private static readonly Version maxUpdaterVersion = new("3.99");
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
@@ -87,7 +87,7 @@ namespace AutoDarkModeSvc.Handlers
                         Message = "Update with custom URLs. Use at your own risk!",
                         Tag = "420.69",
                         AutoUpdateAvailable = true,
-                        UpdaterVersion = "2.0",
+                        UpdaterVersion = "3.0",
                         ChangelogUrl = "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode"
                     };
                     Logger.Info($"new custom version available");
@@ -210,15 +210,6 @@ namespace AutoDarkModeSvc.Handlers
 
             if (UpstreamResponse.StatusCode == StatusCode.New || UpstreamResponse.StatusCode == StatusCode.Downgrade)
             {
-                Version newVersion = new(UpstreamVersion.Tag);
-                if (newVersion.Major != currentVersion.Major && newVersion.Major != 420)
-                {
-                    return new ApiResponse
-                    {
-                        StatusCode = StatusCode.Disabled,
-                        Message = "major version upgrade pending, manual update required"
-                    };
-                }
                 try
                 {
                     Version updaterVersion = new(UpstreamVersion.UpdaterVersion);
@@ -346,15 +337,20 @@ namespace AutoDarkModeSvc.Handlers
             // NEVER SET WORKING DIRECTORY TO THE UPDATER DIRECTORY
             if (shellRestart || appRestart)
             {
-                List<string> arguments = new();
-                arguments.Add("--notify");
-                arguments.Add(shellRestart.ToString());
-                arguments.Add(appRestart.ToString());
-                Process.Start(Helper.ExecutionPathUpdater, arguments);
+                ProcessStartInfo startInfo = new();
+                startInfo.ArgumentList.Add("--notify");
+                startInfo.ArgumentList.Add(shellRestart.ToString());
+                startInfo.ArgumentList.Add(appRestart.ToString());
+                startInfo.FileName = Helper.ExecutionPathUpdater;
+                startInfo.WorkingDirectory = Helper.ExecutionDirUpdater;
+                Process.Start(startInfo);
             }
             else
             {
-                Process.Start(Helper.ExecutionPathUpdater);
+                ProcessStartInfo startInfo = new();
+                startInfo.FileName = Helper.ExecutionPathUpdater;
+                startInfo.WorkingDirectory = Helper.ExecutionDirUpdater;
+                Process.Start(startInfo);
             }
         }
 
@@ -404,7 +400,7 @@ namespace AutoDarkModeSvc.Handlers
                 baseUrlHash = builder.Config.Updater.HashCustomUrl;
                 useCustomUrls = true;
             }
-            string downloadPath = Path.Combine(Helper.UpdateDataDir, "Update.zip");
+            string downloadPath = Path.Combine(Helper.UpdateDataDir, "update.zip");
             try
             {
                 // show toast if UI components were open to inform the user that the program is being updated
@@ -533,7 +529,7 @@ namespace AutoDarkModeSvc.Handlers
             string tempDir = Path.Combine(Helper.ExecutionDir, "Temp");
             if (Directory.Exists(tempDir))
             {
-                Logger.Warn($"Temp directory {tempDir} already exists, cleaning");
+                Logger.Warn($"emp directory {tempDir} already exists, cleaning");
                 try
                 {
                     Directory.Delete(tempDir, true);

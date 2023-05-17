@@ -1,4 +1,4 @@
-use log::{debug, error, warn};
+use log::{debug, error, warn, info};
 use std::{
     ffi::c_void,
     fmt::Formatter,
@@ -92,6 +92,7 @@ pub fn get_dirs(path: &PathBuf, filter_criteria: fn(&Path) -> bool) -> Result<Ve
 /// returns all files that belong to Auto Dark Mode, excluding installer files and update directories.
 ///
 /// This is required for the update to complete, because the updater must not touch its own files
+#[allow(dead_code)]
 pub fn get_adm_files(path: &PathBuf) -> Result<Vec<PathBuf>, OpError> {
     let entries = fs::read_dir(path)
         .map_err(|e| OpError::new(&format!("could not read directory in get_files {:?}: {}", path, e), true))?;
@@ -109,7 +110,7 @@ pub fn get_adm_files(path: &PathBuf) -> Result<Vec<PathBuf>, OpError> {
 }
 
 /// Checks if files should be ignored by the file collector
-pub fn is_whitelisted(entry: &Path) -> bool {
+fn is_whitelisted(entry: &Path) -> bool {
     let execution_dir_str = get_assembly_dir().to_str().unwrap_or("").to_string();
     let update_data_dir_str = get_update_data_dir().to_str().unwrap_or("").to_string();
     //let work_dir_str = get_working_dir().to_str().unwrap_or("").to_string();
@@ -151,6 +152,7 @@ pub fn is_whitelisted(entry: &Path) -> bool {
     matches
 }
 
+#[allow(dead_code)]
 pub fn clean_adm_dir() -> Result<(), OpError> {
     let files = get_files_recurse(&extensions::get_working_dir(), is_whitelisted);
     for file in files {
@@ -168,6 +170,7 @@ pub fn clean_adm_dir() -> Result<(), OpError> {
 /// Moves files from source to destination
 /// ### Returns
 /// Ok if successful, an OpError with severity false if something went wrong
+#[allow(dead_code)]
 pub fn move_files(source: &PathBuf, target: &PathBuf, files: Vec<PathBuf>) -> Result<(), OpError> {
     for file in files {
         let relative_dir = file.strip_prefix(&source).unwrap();
@@ -263,6 +266,61 @@ pub fn get_file_version(path: PathBuf) -> Result<Version, OpError> {
     );
     Ok(version_info_string.into())
 }
+
+#[allow(dead_code)]
+pub fn rollback(temp_dir: &PathBuf) -> Result<(), OpError> {
+    info!("rolling back files");
+    let files = get_files_recurse(&temp_dir, |_| true);
+    let target = get_working_dir();
+    if let Err(mut e) = move_files(&temp_dir, &target, files) {
+        error!("{}", e);
+        e.severe = true;
+        return Err(e);
+    }
+
+    match get_dirs(&temp_dir, |_| true) {
+        Ok(dirs) => {
+            let mut error = false;
+            for dir in dirs {
+                if let Err(e) = fs::remove_dir(&dir) {
+                    warn!("could not remove temp subdirectory {}: {}", dir.display(), e);
+                    error = true;
+                }
+            }
+            if !error {
+                if let Err(e) = fs::remove_dir(temp_dir) {
+                    warn!("could not delete temp directory after rollback: {}", e);
+                }
+            }
+        }
+        Err(e) => {
+            warn!("could not retrieve directories to clean after rollback {}", e);
+        }
+    }
+    info!("rollback successful, no update has been performed, restarting auto dark mode");
+    Ok(())
+}
+
+#[allow(dead_code)]
+pub fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
+    info!("patching auto dark mode");
+    let files = get_files_recurse(&update_dir, |_| true);
+    if files.len() == 0 {
+        return Err(OpError::new("no files found in update directory", true));
+    }
+    let target = get_working_dir();
+    if let Err(mut e) = move_files(&update_dir, &target, files) {
+        error!("{}", e);
+        e.severe = true;
+        return Err(e);
+    }
+    info!("removing old files");
+    if let Err(e) = fs::remove_dir_all(get_update_data_dir()) {
+        warn!("could not remove old update files, manual investigation required: {}", e);
+    }
+    Ok(())
+}
+
 
 #[cfg(test)]
 mod tests {

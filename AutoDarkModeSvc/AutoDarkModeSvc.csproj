@@ -5,7 +5,7 @@
     <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>10.3.1.56</Version>
+    <Version>10.4.0.0</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <StartupObject>AutoDarkModeSvc.Program</StartupObject>
@@ -22,11 +22,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\adm-app</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug\adm-app</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
