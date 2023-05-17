@@ -484,7 +484,7 @@ namespace AutoDarkModeSvc.Handlers
             return true;
         }
 
-        private static void EndBlockingProcesses(out bool shellRestart, out bool appRestart)
+        public static void EndBlockingProcesses(out bool shellRestart, out bool appRestart)
         {
             shellRestart = false;
             appRestart = false;

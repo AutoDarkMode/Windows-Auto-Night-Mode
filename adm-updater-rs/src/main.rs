@@ -3,8 +3,8 @@
 #[macro_use]
 extern crate lazy_static;
 
-use crate::extensions::{get_service_path, get_update_data_dir, get_adm_app_dir};
-use crate::io_v3::{patch, rollback, move_to_temp, clean_update_files};
+use crate::extensions::{get_adm_app_dir, get_service_path, get_update_data_dir};
+use crate::io_v3::{clean_update_files, move_to_temp, patch, rollback};
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
 use log::{debug, warn};
@@ -115,7 +115,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let update_data_dir = get_update_data_dir();
     let temp_dir = &update_data_dir.join("tmp");
 
-    shutdown_service(&username).map_err(|op| {
+    shutdown_running_instances(&username).map_err(|op| {
         try_relaunch(restart_shell, restart_app, &username, false);
         op
     })?;
@@ -163,14 +163,14 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
-    info!("shutting down service");
+fn shutdown_running_instances(channel: &str) -> Result<(), Box<dyn Error>> {
+    info!("stopping service gracefully");
     let mut api_shutdown_confirmed = false;
     if let Err(e) = send_message_and_get_reply("--exit", 3000, channel) {
         if e.is_timeout {
             api_shutdown_confirmed = true;
         } else {
-            warn!("could not cleanly shut down service");
+            warn!("could not cleanly stop service");
             return Err(e.into());
         }
     }
@@ -185,74 +185,75 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
         }
     }
 
+    let retries = 3;
+    shutdown_with_retries("AutoDarkModeSvc", "service", retries)?;
+    shutdown_with_retries("AutoDarkModeApp", "app", retries)?;
+    shutdown_with_retries("AutoDarkModeShell", "shell", retries)?;
+
+    info!("adm has exited successfully");
+    Ok(())
+}
+
+/// Attempts to shut down the given process name for the current user
+///
+/// Returns true if the process was found and a signal was sent, false otherwise
+fn shutdown_with_retries(process_name: &str, process_description: &str, retries: u8) -> Result<(), OpError> {
+    let mut success = false;
+    for i in 0..retries {
+        if !shutdown_process(process_name, process_description) {
+            success = true;
+            break;
+        } else {
+            debug!(
+                "waiting for {} to stop, attempt {} out of {}",
+                process_description,
+                i + 1,
+                retries
+            );
+        }
+        std::thread::sleep(std::time::Duration::from_millis(1000));
+    }
+    if !success {
+        let msg = format!("could not stop {}, skipping update", process_description);
+        return Err(OpError::new(msg.as_str(), false));
+    }
+    Ok(())
+}
+
+/// Attempts to shut down the given process name for the current user
+///
+/// Returns true if the process was found and a signal was sent, false otherwise
+fn shutdown_process(process_name: &str, process_description: &str) -> bool {
     let mut s = System::new();
     let username: String = whoami::username();
     s.refresh_processes();
     s.refresh_users_list();
-    let mut p_service = s.processes_by_name("AutoDarkModeSvc");
-    let mut p_app = s.processes_by_name("AutoDarkModeApp");
-    let mut p_shell = s.processes_by_name("AutoDarkModeShell");
-    let mut shutdown_failed = false;
-    while let Some(p) = p_service.next() {
-        info!("running adm service found");
+    let mut p = s.processes_by_name(process_name);
+    while let Some(p) = p.next() {
+        info!("running adm {} found", process_description);
         let user_id;
         match p.user_id() {
             Some(id) => user_id = id,
-            None => continue,
-        };
-        if let Some(user) = s.get_user_by_id(user_id) {
-            warn!("service still running, force stopping");
-            if user.name() == username {
-                info!("stopping service for current user");
-                shutdown_failed = shutdown_failed || !p.kill();
-            } else {
-                info!("service found running for different user {}, no action required", user.name())
+            None => {
+                warn!("ghost process?");
+                continue;
             }
-        }
-    }
-    while let Some(p) = p_app.next() {
-        info!("running adm app found");
-        let user_id;
-        match p.user_id() {
-            Some(id) => user_id = id,
-            None => continue,
         };
         if let Some(user) = s.get_user_by_id(user_id) {
             if user.name() == username {
-                info!("stopping app for current user");
-                shutdown_failed = shutdown_failed || !p.kill();
+                info!("stopping {} for current user", process_description);
+                p.kill();
+                return true;
             } else {
-                info!("app found running for different user {}, no action required", user.name())
+                info!(
+                    "{} found running for different user {}, no action required",
+                    process_description,
+                    user.name()
+                )
             }
         }
     }
-    while let Some(p) = p_shell.next() {
-        info!("running adm shell found");
-        let user_id;
-        match p.user_id() {
-            Some(id) => user_id = id,
-            None => continue,
-        };
-        if let Some(user) = s.get_user_by_id(user_id) {
-            if user.name() == username {
-                info!("stopping shell for current user");
-                shutdown_failed = shutdown_failed || !p.kill();
-            } else {
-                info!("shell found running for different user {}, no action required", user.name())
-            }
-        }
-    }
-
-    if shutdown_failed {
-        let msg = "other auto dark mode components still running, skipping update".to_string();
-        warn!("{}", &msg);
-        return Err(Box::new(OpError {
-            message: msg,
-            severe: true,
-        }));
-    }
-    info!("service shutdown confirmed");
-    Ok(())
+    false
 }
 
 fn try_relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success: bool) {
@@ -397,7 +398,7 @@ mod tests {
     fn test_adm_shutdown() -> Result<(), Box<dyn Error>> {
         setup_logger()?;
         let username = whoami::username();
-        shutdown_service(&username)?;
+        shutdown_running_instances(&username)?;
         Ok(())
     }
 
