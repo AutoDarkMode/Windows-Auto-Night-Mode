@@ -211,4 +211,16 @@ namespace AutoDarkModeLib
             return deserialized;
         }
     }
+
+    public static class TimeZoneInfoExtensions
+    {
+        public static string ToUtcOffsetString(this TimeZoneInfo timeZone)
+        {
+            var utcOffset = timeZone.BaseUtcOffset;
+            var sign = utcOffset < TimeSpan.Zero ? "-" : "+";
+            var hours = Math.Abs(utcOffset.Hours).ToString("00");
+            var minutes = Math.Abs(utcOffset.Minutes).ToString("00");
+            return $"UTC{sign}{hours}:{minutes}";
+        }
+    }
 }

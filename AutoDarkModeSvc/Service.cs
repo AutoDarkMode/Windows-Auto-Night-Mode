@@ -121,6 +121,10 @@ namespace AutoDarkModeSvc
 
             // register resume event (mandatory)
             SystemEventHandler.RegisterResumeEvent();
+
+            // register system time change detection
+            SystemEventHandler.RegisterTimeChangedEvent();
+
             if (Builder.Config.AutoThemeSwitchingEnabled && Builder.Config.IdleChecker.Enabled)
             {
                 ThemeManager.RequestSwitch(new(SwitchSource.Startup));
