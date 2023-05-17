@@ -499,7 +499,7 @@ public partial class PageAbout : Page
             Svc = ValueOrNotFound(() =>
                 FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeSvc.exe").FileVersion);
             Updater = ValueOrNotFound(() =>
-                FileVersionInfo.GetVersionInfo(currentDirectory + @"\Updater\AutoDarkModeUpdater.exe").FileVersion);
+                FileVersionInfo.GetVersionInfo(AdmExtensions.ExecutionPathUpdater).FileVersion);
             Shell = ValueOrNotFound(() =>
                 FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe").FileVersion);
             NetCore = ValueOrNotFound(() => Environment.Version.ToString());
