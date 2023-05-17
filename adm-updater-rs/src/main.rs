@@ -270,7 +270,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         error!("could not set working directory to app dir: {}", e);
         warn!("subsequent update calls without restarting adm will fail");
     };
-    info!("new cwd: {}", get_adm_app_dir().display());
+    debug!("new cwd: {}", get_adm_app_dir().display());
     let service_path = Rc::new(extensions::get_service_path());
     Command::new(&*Rc::clone(&service_path)).spawn().map_err(|e| {
         Box::new(OpError {
