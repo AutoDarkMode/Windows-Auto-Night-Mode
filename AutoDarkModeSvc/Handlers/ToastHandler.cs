@@ -61,7 +61,7 @@ namespace AutoDarkModeSvc.Handlers
 
                 // retrieve data on whether to show sunrise/sunset in the postpone combobox.
                 (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-                string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
+                string until = skipType == SkipType.UntilSunset ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
 
                 Program.ActionQueue.Add(() =>
                 {
@@ -114,7 +114,7 @@ namespace AutoDarkModeSvc.Handlers
                     else
                     {
                         (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-                        string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
+                        string until = skipType == SkipType.UntilSunset ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
 
                         tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeaderNoExpiry}\n({until})");
                     }
@@ -188,7 +188,7 @@ namespace AutoDarkModeSvc.Handlers
                     else
                     {
                         (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-                        string until = skipType == SkipType.Sunrise ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
+                        string until = skipType == SkipType.UntilSunset ? AdmProperties.Resources.ThemeSwitchPauseUntilSunset : AdmProperties.Resources.ThemeSwitchPauseUntilSunrise;
                         tcb.AddText($"{AdmProperties.Resources.ThemeSwitchPauseHeaderNoExpiry}\n({until})");
                     }
                     string toastText = $"{AdmProperties.Resources.RevertAction}";
@@ -394,7 +394,7 @@ namespace AutoDarkModeSvc.Handlers
                     }
                     else if (argument[0] == "action" && argument[1] == "remove-skip-next")
                     {
-                        state.PostponeManager.RemoveUserClearablePostpones();
+                        state.PostponeManager.RemoveSkipNextSwitch();
                     }
                     else if (argument[0] == "action-toggle-auto-theme-switch")
                     {

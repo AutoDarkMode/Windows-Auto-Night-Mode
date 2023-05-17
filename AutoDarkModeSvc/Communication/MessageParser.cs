@@ -344,7 +344,7 @@ namespace AutoDarkModeSvc.Communication
                         {
                             StatusCode = StatusCode.Ok,
                             Message = state.PostponeManager.IsPostponed.ToString(),
-                            Details = state.PostponeManager.MakeDto().Serialize()
+                            Details = state.PostponeManager.MakeQueueDto().Serialize()
                         }.ToString());
                         break;
                     #endregion

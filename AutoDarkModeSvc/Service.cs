@@ -36,6 +36,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using static AutoDarkModeSvc.DarkColorTable;
 using AutoDarkModeLib.Configs;
+using System.Linq;
 
 namespace AutoDarkModeSvc
 {
@@ -88,6 +89,9 @@ namespace AutoDarkModeSvc
             ConfigMonitor = AdmConfigMonitor.Instance();
             ConfigMonitor.Start();
 
+            // load pending postpone events
+            state.PostponeManager.GetPostonesFromDisk();
+
             ModuleTimer MainTimer = new(timerMillis, TimerName.Main);
             ModuleTimer IOTimer = new(TimerFrequency.IO, TimerName.IO);
             ModuleTimer GeoposTimer = new(TimerFrequency.Location, TimerName.Geopos);
@@ -125,6 +129,7 @@ namespace AutoDarkModeSvc
             // register system time change detection
             SystemEventHandler.RegisterTimeChangedEvent();
 
+            // idle checker will prevent switches right after startup, so we request it here
             if (Builder.Config.AutoThemeSwitchingEnabled && Builder.Config.IdleChecker.Enabled)
             {
                 ThemeManager.RequestSwitch(new(SwitchSource.Startup));
@@ -222,11 +227,11 @@ namespace AutoDarkModeSvc
                 }
                 else
                 {
-                    if (skipType == SkipType.Sunrise)
+                    if (skipType == SkipType.UntilSunset)
                     {
                         pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunset})";
                     }
-                    else if (skipType == SkipType.Sunset)
+                    else if (skipType == SkipType.UntilSunrise)
                     {
                         pauseThemeSwitchItem.Text = $"{AdmProperties.Resources.TrayMenuItemThemeSwitchPause} ({AdmProperties.Resources.ThemeSwitchPauseUntilSunrise})";
                     }
@@ -241,6 +246,8 @@ namespace AutoDarkModeSvc
         private void Exit(object sender, EventArgs e)
         {
             Logger.Info("exiting service");
+
+            state.PostponeManager.FlushPostponesToDisk();
 
             MessageServer.Dispose();
             ConfigMonitor.Dispose();

@@ -18,7 +18,6 @@ using AutoDarkModeLib.ComponentSettings;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeLib.Configs;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
@@ -38,11 +37,13 @@ namespace AutoDarkModeLib
         public LocationData LocationData { get; private set; }
         public BaseSettings<ScriptSwitchSettings> ScriptConfig { get; private set; }
         public UpdaterData UpdaterData { get; private set; }
+        public PostponeData PostponeData { get; private set; }
         public static string ConfigDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
         public static string ConfigFilePath { get; } = Path.Combine(ConfigDir, "config.yaml");
         public static string LocationDataPath { get; } = Path.Combine(ConfigDir, "location_data.yaml");
         public static string UpdaterDataPath { get; } = Path.Combine(ConfigDir, "update.yaml");
         public static string ScriptConfigPath { get; } = Path.Combine(ConfigDir, "scripts.yaml");
+        public static string PostponeDataPath { get; } = Path.Combine(ConfigDir, "postpone_data.yaml");
         public bool Loading { get; private set; }
         private EventHandler<AdmConfig> configUpdatedHandler;
         public event EventHandler<AdmConfig> ConfigUpdatedHandler
@@ -81,6 +82,7 @@ namespace AutoDarkModeLib
                 LocationData = new();
                 UpdaterData = new();
                 ScriptConfig = new();
+                PostponeData = new();
             }
         }
 
@@ -111,6 +113,12 @@ namespace AutoDarkModeLib
         public void SaveScripts()
         {
             SaveConfig(ScriptConfigPath, ScriptConfig, true, true);
+        }
+
+        public void SavePostponeData()
+        {
+            PostponeData.LastModified = DateTime.Now;
+            SaveConfig(PostponeDataPath, PostponeData);
         }
 
         public static void MakeConfigBackup()
@@ -204,7 +212,15 @@ namespace AutoDarkModeLib
             Loading = true;
             BaseSettings<ScriptSwitchSettings> deser = Deserialize<BaseSettings<ScriptSwitchSettings>>(ScriptConfigPath, ScriptConfig, true);
             ScriptConfig = deser ?? ScriptConfig;
+            Loading = false;
+        }
+
+        public void LoadPostponeData()
+        {
             Loading = true;
+            PostponeData deser = Deserialize<PostponeData>(PostponeDataPath, PostponeData);
+            PostponeData = deser ?? PostponeData;
+            Loading = false;
         }
 
         /// <summary>

@@ -51,6 +51,7 @@ public partial class PageAbout : Page
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
         {
             FontIconOpenLog.FontFamily = new("Segoe Fluent Icons");
+            FontIconOpenUpdaterLog.FontFamily = new("Segoe Fluent Icons");
             FontIconOpenShell.FontFamily = new("Segoe Fluent Icons");
         }
     }
@@ -467,6 +468,26 @@ public partial class PageAbout : Page
             HyperlinkOpenLogFile_PreviewMouseDown(this, null);
         }
     }
+    
+    private void HyperlinkOpenUpdaterLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "updater.log");
+        new Process
+        {
+            StartInfo = new ProcessStartInfo(filepath)
+            {
+                UseShellExecute = true
+            }
+        }.Start();
+    }
+
+    private void HyperlinkOpenUpdaterLogFile_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter | e.Key == Key.Space)
+        {
+            HyperlinkOpenUpdaterLogFile_PreviewMouseDown(this, null);
+        }
+    }
 
     private void HyperlinkOpenShell_PreviewKeyDown(object sender, KeyEventArgs e)
     {
@@ -547,5 +568,10 @@ public partial class PageAbout : Page
         public string Shell { get; }
         public string NetCore { get; }
         public string WindowsVersion { get; }
+    }
+
+    private void Card_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+
     }
 }

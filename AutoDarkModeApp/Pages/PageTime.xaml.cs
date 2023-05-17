@@ -22,21 +22,15 @@ using System.Text.RegularExpressions;
 using Windows.System.Power;
 using AdmProperties = AutoDarkModeLib.Properties;
 using AutoDarkModeApp.Properties;
-using System.Diagnostics;
 using AutoDarkModeLib;
 using System.Globalization;
 using System.Threading.Tasks;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeApp.Handlers;
 using System.IO;
-using System.Timers;
-using System.Text;
 using System.Linq;
 using System.Collections.Generic;
-using System.Resources;
 using System.Threading;
-using Windows.Foundation;
-using System.Windows.Navigation;
 using SourceChord.GridExtra;
 
 namespace AutoDarkModeApp.Pages

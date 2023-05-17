@@ -90,8 +90,8 @@ namespace AutoDarkModeLib
     public enum SkipType
     {
         Unspecified,
-        Sunrise,
-        Sunset
+        UntilSunset,
+        UntilSunrise
     }
 
     public enum HookPosition

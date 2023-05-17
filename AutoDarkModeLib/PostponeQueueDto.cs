@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using Resources = AutoDarkModeLib.Properties.Resources;
 
@@ -28,7 +29,7 @@ namespace AutoDarkModeLib
 {
     public class PostponeQueueDto
     {
-        public List<PostponeItemDto> Items { get; set; }
+        public List<PostponeItemDto> Items { get; set; } = new();
 
         public PostponeQueueDto() { }
 
@@ -54,6 +55,7 @@ namespace AutoDarkModeLib
     public class PostponeItemDto
     {
         public string Reason { get; set; }
+        [YamlIgnore]
         public string TranslatedReason { get; set; }
         public DateTime? Expiry { get; set; }
         public bool Expires { get; set; }
@@ -92,20 +94,21 @@ namespace AutoDarkModeLib
                 string pausedUntilNextSunrise = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunset", Culture);
                 string pausedUntilNextSunset = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunrise", Culture);
 
-                if (SkipType == SkipType.Sunrise)
+                if (SkipType == SkipType.UntilSunset)
                 {
 
                     postponeReasonPostponesUntilNextSwitch = $"{pausedUntilNextSunrise}";
                 }
-                else if (SkipType == SkipType.Sunset)
+                else if (SkipType == SkipType.UntilSunrise)
                 {
                     postponeReasonPostponesUntilNextSwitch = $"{pausedUntilNextSunset}";
                 }
             }
 
-            if (Expires) {
+            if (Expires)
+            {
                 if (Expiry.HasValue && Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry.Value.ToString("dddd HH:mm", Culture)}";
-                else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}"; 
+                else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
             }
             else if (Reason == Helper.PostponeItemPauseAutoSwitch) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
             return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";

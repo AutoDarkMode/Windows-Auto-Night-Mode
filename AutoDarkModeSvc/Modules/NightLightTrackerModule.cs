@@ -138,7 +138,7 @@ namespace AutoDarkModeSvc.Modules
                 else if (isSkipNext && queuePostponeRemove)
                 {
                     queuePostponeRemove = false;
-                    state.PostponeManager.RemoveUserClearablePostpones();
+                    state.PostponeManager.RemoveSkipNextSwitch();
                 }
                 else if (queuePostponeRemove && !isSkipNext)
                 {

@@ -167,7 +167,7 @@ namespace AutoDarkModeSvc.Core
                     }
                     else
                     {
-                        state.PostponeManager.RemoveUserClearablePostpones();
+                        state.PostponeManager.RemoveSkipNextSwitch();
                     }
                 }
                 else if (builder.Config.Governor == Governor.NightLight)
@@ -177,7 +177,7 @@ namespace AutoDarkModeSvc.Core
                         if (state.NightLight.Requested != newTheme)
                             state.PostponeManager.AddSkipNextSwitch();
                         else
-                            state.PostponeManager.RemoveUserClearablePostpones();
+                            state.PostponeManager.RemoveSkipNextSwitch();
                     }
                 }
             }
@@ -226,7 +226,8 @@ namespace AutoDarkModeSvc.Core
                     // this is necessary such that postpones have the correct requestedtheme!
                     try
                     {
-                        state.InternalTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+                        if (builder.PostponeData.InternalThemeAtExit == Theme.Unknown) 
+                            state.InternalTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
                     }
                     catch (Exception ex)
                     {

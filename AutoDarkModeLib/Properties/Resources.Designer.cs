@@ -88,6 +88,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open updater log.
+        /// </summary>
+        public static string AboutHyperLinkOpenUpdaterLog {
+            get {
+                return ResourceManager.GetString("AboutHyperLinkOpenUpdaterLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follow us.
         /// </summary>
         public static string AboutTextBlockFollowUs {
