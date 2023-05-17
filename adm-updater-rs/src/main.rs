@@ -266,6 +266,11 @@ fn try_relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_suc
 
 fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success: bool) -> Result<(), Box<dyn Error>> {
     info!("starting service");
+    if let Err(e) = env::set_current_dir(get_adm_app_dir()) {
+        error!("could not set working directory to app dir: {}", e);
+        warn!("subsequent update calls without restarting adm will fail");
+    };
+    info!("new cwd: {}", get_adm_app_dir().display());
     let service_path = Rc::new(extensions::get_service_path());
     Command::new(&*Rc::clone(&service_path)).spawn().map_err(|e| {
         Box::new(OpError {
@@ -393,6 +398,14 @@ mod tests {
         setup_logger()?;
         let username = whoami::username();
         shutdown_service(&username)?;
+        Ok(())
+    }
+
+    #[test]
+    fn try_relaunch_adm() -> Result<(), Box<dyn Error>> {
+        setup_logger()?;
+        let username = whoami::username();
+        try_relaunch(true, true, &username, true);
         Ok(())
     }
 }
