@@ -38,6 +38,7 @@ namespace AutoDarkModeLib
         public static readonly string ExecutionPathApp = GetExecutionPathApp();
         public static readonly string ExecutionPathUpdater = GetExecutionPathUpdater();
         public static readonly string ExectuionPathThemeBridge = GetExecutionPathThemeBridge();
+        public static readonly string ExectuionPathShell = GetExecutionPathShell();
         public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
         public static readonly string UpdateDataDir = GetUpdateDataDir();
         public static string PathThemeFolder { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
@@ -159,6 +160,14 @@ namespace AutoDarkModeLib
             var executableName = UpdaterExecutableName;
             var executablePath = Directory.GetParent(assemblyLocation).FullName;
             return Path.Combine(executablePath, UpdaterDirName, executableName);
+        }
+
+        private static string GetExecutionPathShell()
+        {
+            var assemblyLocation = AppContext.BaseDirectory;
+            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeShell.exe";
+            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            return Path.Combine(executablePath + executableName);
         }
 
         private static string GetExecutionDir()

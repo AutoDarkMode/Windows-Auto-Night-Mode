@@ -1217,4 +1217,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
 </root>

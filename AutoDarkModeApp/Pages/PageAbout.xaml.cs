@@ -51,6 +51,7 @@ public partial class PageAbout : Page
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
         {
             FontIconOpenLog.FontFamily = new("Segoe Fluent Icons");
+            FontIconOpenShell.FontFamily = new("Segoe Fluent Icons");
         }
     }
 
@@ -67,12 +68,12 @@ public partial class PageAbout : Page
     private void SystemTheme_ThemeChanged(object sender, EventArgs e)
     {
         if (SystemTheme.AppTheme.Equals(ApplicationTheme.Dark))
-        {     
+        {
             gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_White.png", UriKind.Relative));
             telegramImage.Source = new BitmapImage(new Uri(@"/Resources/telegram-light.png", UriKind.Relative));
         }
         else
-        { 
+        {
             gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_Black.png", UriKind.Relative));
             telegramImage.Source = new BitmapImage(new Uri(@"/Resources/telegram.png", UriKind.Relative));
         }
@@ -404,7 +405,7 @@ public partial class PageAbout : Page
 
     private void ColorPicker_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.Enter) ColorPicker_MouseDown(this, null);        
+        if (e.Key == Key.Enter) ColorPicker_MouseDown(this, null);
     }
 
     private async void ButtonCopyVersionInfo_Click(object sender, RoutedEventArgs e)
@@ -444,7 +445,7 @@ public partial class PageAbout : Page
                 ShowErrorMessage(ex, "About_CopyButton");
                 await Task.Delay(200);
             }
-        }        
+        }
     }
 
     private void HyperlinkOpenLogFile_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -466,6 +467,27 @@ public partial class PageAbout : Page
             HyperlinkOpenLogFile_PreviewMouseDown(this, null);
         }
     }
+
+    private void HyperlinkOpenShell_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter | e.Key == Key.Space)
+        {
+            HyperlinkOpenLogFile_PreviewMouseDown(this, null);
+        }
+    }
+
+    private void HyperlinkOpenShell_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        var filepath = AdmExtensions.ExectuionPathShell;
+        new Process
+        {
+            StartInfo = new ProcessStartInfo(filepath)
+            {
+                UseShellExecute = true
+            }
+        }.Start();
+    }
+
 
     private void ShowErrorMessage(Exception ex, string v)
     {
@@ -503,7 +525,7 @@ public partial class PageAbout : Page
             Shell = ValueOrNotFound(() =>
                 FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe").FileVersion);
             NetCore = ValueOrNotFound(() => Environment.Version.ToString());
-            WindowsVersion = ValueOrNotFound(() => $"{ Environment.OSVersion.Version.Build}.{RegistryHandler.GetUbr()}");
+            WindowsVersion = ValueOrNotFound(() => $"{Environment.OSVersion.Version.Build}.{RegistryHandler.GetUbr()}");
 
             static string ValueOrNotFound(Func<string> value)
             {

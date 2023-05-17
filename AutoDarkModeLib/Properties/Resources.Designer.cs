@@ -79,6 +79,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open shell.
+        /// </summary>
+        public static string AboutHyperLinkOpenShell {
+            get {
+                return ResourceManager.GetString("AboutHyperLinkOpenShell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follow us.
         /// </summary>
         public static string AboutTextBlockFollowUs {
