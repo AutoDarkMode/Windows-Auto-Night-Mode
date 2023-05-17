@@ -67,7 +67,8 @@ namespace AutoDarkModeLib
         ExternalThemeSwitch,
         Startup,
         SystemUnlock,
-        Api
+        Api,
+        SystemTimeChanged
     }
 
     public enum ThemeOverrideSource
