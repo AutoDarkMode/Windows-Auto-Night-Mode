@@ -58,11 +58,11 @@
     <ManifestTimestampUrl>http://tsa.startssl.com/rfc3161</ManifestTimestampUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\adm-app</OutputPath>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\adm-app</OutputPath>
     <WarningLevel>0</WarningLevel>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>

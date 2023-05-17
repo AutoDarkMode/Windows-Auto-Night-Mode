@@ -28,7 +28,7 @@ namespace AutoDarkModeLib
     public static class Helper
     {
         public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
-        public const string UpdaterDirName = "Updater";
+        public const string UpdaterDirName = "adm-updater";
         public const string PostponeItemPauseAutoSwitch = "PauseAutoSwitch";
         public const string PostponeItemDelayAutoSwitch = "DelayAutoSwitch";
         public const string PostponeItemDelayGracePeriod = "SwitchNotification";
@@ -155,9 +155,9 @@ namespace AutoDarkModeLib
 
         private static string GetExecutionPathUpdater()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
+            var assemblyLocation = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
             var executableName = UpdaterExecutableName;
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
+            var executablePath = Directory.GetParent(assemblyLocation).FullName;
             return Path.Combine(executablePath, UpdaterDirName, executableName);
         }
 
@@ -171,9 +171,9 @@ namespace AutoDarkModeLib
 
         private static string GetExecutionDirUpdater()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath, UpdaterDirName);
+            var assemblyLocation = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+            var executablePath = Path.Combine(Directory.GetParent(assemblyLocation).FullName, "adm-updater");
+            return executablePath;
         }
 
         private static string GetExecutionPathThemeBridge()
@@ -186,8 +186,8 @@ namespace AutoDarkModeLib
 
         private static string GetUpdateDataDir()
         {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var dataPath = Path.Combine(Path.GetDirectoryName(assemblyLocation), "UpdateData");
+            var assemblyLocation = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+            var dataPath = Path.Combine(Directory.GetParent(assemblyLocation).FullName, "adm-update-data");
             return dataPath;
         }
 

@@ -3,18 +3,18 @@
 #[macro_use]
 extern crate lazy_static;
 
-use crate::extensions::{get_service_path, get_update_data_dir};
+use crate::extensions::{get_service_path, get_update_data_dir, get_adm_app_dir};
+use crate::io_v3::{patch, rollback, move_to_temp, clean_update_files};
 use comms::send_message_and_get_reply;
 use extensions::get_working_dir;
 use log::{debug, warn};
 use log::{error, info};
 use std::error::Error;
-use std::path::PathBuf;
 use std::process::Command;
 use std::rc::Rc;
-use std::{env, fmt, fs};
-use sysinfo::{System, UserExt};
+use std::{env, fmt};
 use sysinfo::{ProcessExt, SystemExt};
+use sysinfo::{System, UserExt};
 use windows::core::PCWSTR;
 use windows::w;
 use windows::Win32::Foundation::HWND;
@@ -24,7 +24,8 @@ use windows::Win32::UI::WindowsAndMessaging::SHOW_WINDOW_CMD;
 
 mod comms;
 mod extensions;
-mod io;
+mod io_v2;
+mod io_v3;
 mod license;
 mod regedit;
 
@@ -101,7 +102,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     info!("restart app: {}, restart shell: {}", restart_app, restart_shell);
 
     let username = whoami::username();
-    let _curver = io::get_file_version(get_service_path())
+    let _curver = io_v2::get_file_version(get_service_path())
         .and_then(|ver| {
             info!("currently installed version: {}", ver);
             Ok(ver)
@@ -111,45 +112,39 @@ fn main() -> Result<(), Box<dyn Error>> {
             Err(e)
         });
 
-    let temp_dir = get_update_data_dir().join("tmp");
+    let update_data_dir = get_update_data_dir();
+    let temp_dir = &update_data_dir.join("tmp");
 
     shutdown_service(&username).map_err(|op| {
         try_relaunch(restart_shell, restart_app, &username, false);
         op
     })?;
 
+    info!("moving current installation to temp directory");
     move_to_temp(&temp_dir).map_err(|op| {
-        if op.severe {
-            std::process::exit(-1);
-        }
-        error!("moving files to temp failed, attempting rollback");
-        if let Err(_) = rollback(&temp_dir) {
-            error!("rollback failed, this is non-recoverable, please reinstall auto dark mode");
+        error!("{}", op);
+        try_relaunch(restart_shell, restart_app, &username, false);
+        op
+    })?;
+
+    info!("patching auto dark mode");
+    patch(&update_data_dir, &get_adm_app_dir()).map_err(|op| {
+        error!("patching failed, attempting rollback: {}", op);
+        if let Err(e) = rollback(&temp_dir) {
+            error!("rollback failed, this is non-recoverable, please reinstall auto dark mode: {e}");
             std::process::exit(-1);
         } else {
+            info!("rollback successful, no update has been performed, restarting auto dark mode");
             try_relaunch(restart_shell, restart_app, &username, false);
         }
         op
     })?;
 
-    patch(&get_update_data_dir().join("unpacked")).map_err(|op| {
-        error!("patching failed, attempting rollback with cleanup: {}", op);
-        if let Err(e) = io::clean_adm_dir() {
-            error!("{}", e);
-            error!("preparing rollback failed, this is non-recoverable, please reinstall auto dark mode");
-            std::process::exit(-1);
-        }
-        if let Err(_) = rollback(&temp_dir) {
-            error!("rollback failed, this is non-recoverable, please reinstall auto dark mode");
-            std::process::exit(-1);
-        } else {
-            try_relaunch(restart_shell, restart_app, &username, false);
-        }
-        op
-    })?;
+    info!("removing temporary update files");
+    clean_update_files(&update_data_dir);
 
     let mut patch_success_msg = "patch_complete".to_string();
-    if let Ok(current_version) = io::get_file_version(get_service_path()) {
+    if let Ok(current_version) = io_v2::get_file_version(get_service_path()) {
         patch_success_msg.push_str(&format!(", installed version: {}", current_version).to_string());
         info!("updating setup version string");
         if let Err(e) = regedit::update_inno_installer_string(&username, &current_version.to_string()) {
@@ -165,74 +160,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     info!("{}", patch_success_msg);
 
     try_relaunch(restart_shell, restart_app, &username, true);
-    Ok(())
-}
-
-fn move_to_temp(temp_dir: &PathBuf) -> Result<(), OpError> {
-    info!("moving current installation to temp directory");
-    let source = get_working_dir();
-    let files = io::get_adm_files(&source)?;
-    if !files.contains(&get_service_path()) {
-        let msg = "service executable not found in working directory, aborting patch";
-        error!("{}", msg);
-        return Err(OpError::new(msg, true));
-    }
-    io::move_files(&source, temp_dir, files).map_err(|e| {
-        error!("{}", e);
-        e
-    })?;
-    Ok(())
-}
-
-fn rollback(temp_dir: &PathBuf) -> Result<(), OpError> {
-    info!("rolling back files");
-    let files = io::get_files_recurse(&temp_dir, |_| true);
-    let target = get_working_dir();
-    if let Err(mut e) = io::move_files(&temp_dir, &target, files) {
-        error!("{}", e);
-        e.severe = true;
-        return Err(e);
-    }
-
-    match io::get_dirs(&temp_dir, |_| true) {
-        Ok(dirs) => {
-            let mut error = false;
-            for dir in dirs {
-                if let Err(e) = fs::remove_dir(&dir) {
-                    warn!("could not remove temp subdirectory {}: {}", dir.display(), e);
-                    error = true;
-                }
-            }
-            if !error {
-                if let Err(e) = fs::remove_dir(temp_dir) {
-                    warn!("could not delete temp directory after rollback: {}", e);
-                }
-            }
-        }
-        Err(e) => {
-            warn!("could not retrieve directories to clean after rollback {}", e);
-        }
-    }
-    info!("rollback successful, no update has been performed, restarting auto dark mode");
-    Ok(())
-}
-
-fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
-    info!("patching auto dark mode");
-    let files = io::get_files_recurse(&update_dir, |_| true);
-    if files.len() == 0 {
-        return Err(OpError::new("no files found in update directory", true));
-    }
-    let target = get_working_dir();
-    if let Err(mut e) = io::move_files(&update_dir, &target, files) {
-        error!("{}", e);
-        e.severe = true;
-        return Err(e);
-    }
-    info!("removing old files");
-    if let Err(e) = fs::remove_dir_all(get_update_data_dir()) {
-        warn!("could not remove old update files, manual investigation required: {}", e);
-    }
     Ok(())
 }
 
@@ -278,8 +205,7 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
             if user.name() == username {
                 info!("stopping service for current user");
                 shutdown_failed = shutdown_failed || !p.kill();
-            }
-            else {
+            } else {
                 info!("service found running for different user {}, no action required", user.name())
             }
         }
@@ -311,8 +237,7 @@ fn shutdown_service(channel: &str) -> Result<(), Box<dyn Error>> {
             if user.name() == username {
                 info!("stopping shell for current user");
                 shutdown_failed = shutdown_failed || !p.kill();
-            }
-            else {
+            } else {
                 info!("shell found running for different user {}, no action required", user.name())
             }
         }
@@ -339,7 +264,6 @@ fn try_relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_suc
     }
 }
 
-#[allow(non_snake_case)]
 fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success: bool) -> Result<(), Box<dyn Error>> {
     info!("starting service");
     let service_path = Rc::new(extensions::get_service_path());
@@ -460,9 +384,7 @@ fn setup_logger() -> Result<(), fern::InitError> {
 mod tests {
     use std::error::Error;
 
-    use crate::{
-        setup_logger,
-    };
+    use crate::setup_logger;
 
     use super::*;
 

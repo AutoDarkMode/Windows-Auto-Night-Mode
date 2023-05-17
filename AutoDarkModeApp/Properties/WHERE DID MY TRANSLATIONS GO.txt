@@ -1,3 +1,3 @@
 ﻿Translations have moved to the AutoDarkModeLib project.
 This allows us to reuse existing translation strings for the tray icon.
-You can find (and edit) translations by opening AutoDarkModeConfig/Properties as usual.
+You can find (and edit) translations by opening AutoDarkModeLib/Properties as usual.
