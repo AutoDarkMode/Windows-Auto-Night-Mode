@@ -1218,7 +1218,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>您可以在 Windows 设置中指定新的光标方案，然后在此处进行选择。</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>打开 shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Open updater log</value>
