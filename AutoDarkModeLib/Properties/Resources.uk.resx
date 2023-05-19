@@ -1218,9 +1218,9 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Ви можете визначити нові схеми курсору у налаштуваннях Windows, а потім вибрати їх тут.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Відкрити shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Відкрити журнал оновлення</value>
   </data>
 </root>
