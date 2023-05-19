@@ -1221,6 +1221,6 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>打开 shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>打开更新程序日志</value>
   </data>
 </root>
