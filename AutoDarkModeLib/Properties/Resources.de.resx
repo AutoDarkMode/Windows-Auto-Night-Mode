@@ -1217,4 +1217,10 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Mauszeiger Schemas können in den Windows Einstellungen erstellt, angepasst und dann hier ausgewählt werden.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
 </root>

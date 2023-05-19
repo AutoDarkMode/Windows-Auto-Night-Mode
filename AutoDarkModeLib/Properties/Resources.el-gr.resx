@@ -1217,4 +1217,10 @@
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Μπορείτε να ορίσετε νέα σχήματα δείκτη στις ρυθμίσεις των Windows και στη συνέχεια να τα επιλέξετε εδώ.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
 </root>

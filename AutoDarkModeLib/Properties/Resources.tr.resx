@@ -1217,4 +1217,10 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Windows ayarlarında yeni imleç düzenlerini tanımlayabilir ve daha sonra bunları burada seçebilirsiniz.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
 </root>

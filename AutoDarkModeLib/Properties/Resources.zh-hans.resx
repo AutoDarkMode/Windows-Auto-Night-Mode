@@ -1217,4 +1217,10 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>您可以在 Windows 设置中指定新的光标方案，然后在此处进行选择。</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
 </root>
