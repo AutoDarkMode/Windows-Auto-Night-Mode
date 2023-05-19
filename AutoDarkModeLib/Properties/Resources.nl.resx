@@ -1217,4 +1217,10 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
 </root>

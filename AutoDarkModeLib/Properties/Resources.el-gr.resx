@@ -563,7 +563,7 @@
     <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων (δεν συνιστάται)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Αυτή η δυνατότητα είναι απενεργοποιημένη ενώ τα Windows διαχειρίζονται το θέμα σας.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Επιλέξτε ένα διαφορετικό θέμα των Windows για σκοτεινή και φωτεινή λειτουργία αντίστοιχα. Επιτρέπει την πλήρη προσαρμογή του θέματος, αλλά απαιτεί από εσάς να ρυθμίσετε μόνοι σας τα αρχεία .theme.</value>
@@ -1146,13 +1146,13 @@
     <value>Ενημέρωση χρωματισμού</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Αυτή η δυνατότητα είναι απενεργοποιημένη ενώ το Auto Dark Mode διαχειρίζεται το θέμα σας.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Σύνδεσμου\ι</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Τεκμηρίωση για προσαρμοσμένα scripts</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Αποθετήριο χρήστη προσαρμοσμένου script</value>
@@ -1216,5 +1216,11 @@
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Μπορείτε να ορίσετε νέα σχήματα δείκτη στις ρυθμίσεις των Windows και στη συνέχεια να τα επιλέξετε εδώ.</value>
+  </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Ανοιγμα κελύφους (shell)</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Ανοιγμα αρχείου καταγραφής προγράμματος αναβάθμισης</value>
   </data>
 </root>

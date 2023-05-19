@@ -1217,4 +1217,10 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Vous pouvez définir de nouveaux curseurs dans les paramètres de Windows et les sélectionner ensuite ici.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
 </root>

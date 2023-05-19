@@ -1217,4 +1217,10 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Puedes definir nuevos esquemas del cursor en la configuración de Windows y seleccionarlos aquí posteriormente.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Abrir shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Abrir el registro del actualizador</value>
+  </data>
 </root>

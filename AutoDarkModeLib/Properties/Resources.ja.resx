@@ -1217,4 +1217,10 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Windows の設定から新たにカーソルのデザインを設定すると、ここで選択可能になります。</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>シェルを開く</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>更新ツールの履歴を開く</value>
+  </data>
 </root>

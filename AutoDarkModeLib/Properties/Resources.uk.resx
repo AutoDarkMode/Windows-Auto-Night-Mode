@@ -1217,4 +1217,10 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>Ви можете визначити нові схеми курсору у налаштуваннях Windows, а потім вибрати їх тут.</value>
   </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Відкрити shell</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Відкрити журнал оновлення</value>
+  </data>
 </root>
