@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "adm-updater-rs"
-version = "3.1.0"
+version = "3.1.1"
 dependencies = [
  "chrono",
  "fern",
@@ -13,6 +13,7 @@ dependencies = [
  "named_pipe",
  "platform-dirs",
  "rand",
+ "static_vcruntime",
  "sysinfo",
  "walkdir",
  "whoami",
@@ -428,6 +429,12 @@ name = "serde"
 version = "1.0.163"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2113ab51b87a539ae008b5c6c02dc020ffa39afd2d83cffcb3f4eb2722cebec2"
+
+[[package]]
+name = "static_vcruntime"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "954e3e877803def9dc46075bf4060147c55cd70db97873077232eae0269dc89b"
 
 [[package]]
 name = "syn"

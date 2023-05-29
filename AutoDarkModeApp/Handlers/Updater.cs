@@ -39,7 +39,7 @@ namespace AutoDarkModeApp
 
         public bool UpdateAvailable()
         {
-            if (response.StatusCode == StatusCode.New)
+            if (response.StatusCode == StatusCode.New || response.StatusCode == StatusCode.Disabled)
             {
                 return true;
             }
