@@ -1223,4 +1223,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Open updater log</value>
   </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
 </root>

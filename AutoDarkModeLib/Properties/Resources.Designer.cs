@@ -379,6 +379,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable Accent color switch.
+        /// </summary>
+        public static string ColorizationEnableSwitch {
+            get {
+                return ResourceManager.GetString("ColorizationEnableSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick an accent color.
         /// </summary>
         public static string ColorizationPick {

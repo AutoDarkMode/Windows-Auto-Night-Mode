@@ -82,7 +82,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Text="Enable Accent color switch"
+                           Text="{x:Static p:Resources.ColorizationEnableSwitch}"
                            VerticalAlignment="Center"
                            FontSize="14"
                            Padding="0,0,0,1" />
