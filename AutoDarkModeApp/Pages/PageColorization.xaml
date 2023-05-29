@@ -107,7 +107,7 @@
 
         <uc:Card Grid.Row="5"
                  Grid.Column="1"
-                 Padding="30,18,15,12">
+                 Padding="30,18,15,15">
 
             <Expander FlowDirection="RightToLeft" Name="LightExpander">
                 <Expander.Header>
@@ -201,7 +201,7 @@
         <uc:Card Grid.Row="7"
                  Grid.Column="1"
                  Margin="0,0,0,0"
-                 Padding="30,18,15,12">
+                 Padding="30,18,15,15">
             <ui:SimpleStackPanel>
                 <Expander FlowDirection="RightToLeft" Name="DarkExpander">
                     <Expander.Header>

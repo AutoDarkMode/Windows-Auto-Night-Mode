@@ -576,7 +576,7 @@
                             VerticalAlignment="Bottom"
                             DockPanel.Dock="Right"
                             Margin="25,0,0,0"
-                            Width="80"
+                            MinWidth="80"
                             Height="30"
                             Click="OffsetButton_Click"
                             IsEnabled="False" />

@@ -330,6 +330,7 @@
                                    MaxWidth="600"
                                    Margin="0,15,15,0"
                                    Text="{x:Static p:Resources.tbUpdates}"
+                                   Foreground="#999999"
                                    TextWrapping="Wrap" />
 
                         <Separator Margin="-30,15,-15,12"

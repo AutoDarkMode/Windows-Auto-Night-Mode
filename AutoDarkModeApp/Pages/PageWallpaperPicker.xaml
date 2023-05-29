@@ -55,7 +55,7 @@
                    FontSize="30"
                    Text="{x:Static p:Resources.WallpaperTextBlockHeader}" />
 
-        <uc:Card  Padding="30, 15, 15, 12"
+        <uc:Card  Padding="30, 15, 15, 15"
                   Grid.Row="3"
                   Grid.Column="1">
             <Grid>
@@ -79,7 +79,7 @@
 
         <uc:Card Grid.Row="4"
                  Grid.Column="1"
-                 Padding="30,15,15,12"
+                 Padding="30,15,15,15"
                  Margin="0,2,0,0">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -108,7 +108,7 @@
 
         <uc:Card Grid.Row="5"
                  Grid.Column="1"
-                 Padding="30,15,15,12"
+                 Padding="30,15,15,15"
                  Margin="0,2,0,0">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -141,7 +141,7 @@
 
         <uc:Card Grid.Row="6"
                  Grid.Column="1"
-                 Padding="30,15,15,12"
+                 Padding="30,15,15,15"
                  x:Name="GridMonitorSelect"
                  Margin="0,2,0,0">
             <Grid>
@@ -183,7 +183,7 @@
             </Grid>
         </uc:Card>
 
-        <uc:Card Padding="30,15,15,12"
+        <uc:Card Padding="30,15,15,15"
                  Grid.Row="7"
                  Margin="0,2,0,0"
                  Grid.Column="1"
