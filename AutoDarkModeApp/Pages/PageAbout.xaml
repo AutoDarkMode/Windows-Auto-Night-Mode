@@ -99,7 +99,7 @@
                                  Grid.Row="0"
                                  VerticalAlignment="Center"
                                  Margin="-15,2,15,0"
-                                 FontFamily="Segoe Fluent Icons"
+                                 FontFamily="Segoe MDL2 Assets"
                                  Glyph="&#xe946;" />
 
                     <TextBlock Margin="0,0,0,0"
