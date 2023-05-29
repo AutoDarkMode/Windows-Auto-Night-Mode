@@ -230,12 +230,12 @@ fn shutdown_process(process_name: &str, process_description: &str) -> bool {
     s.refresh_users_list();
     let mut p = s.processes_by_name(process_name);
     while let Some(p) = p.next() {
-        info!("running adm {} found", process_description);
+        warn!("running adm {} found", process_description);
         let user_id;
         match p.user_id() {
             Some(id) => user_id = id,
             None => {
-                warn!("{} found running for unknown user, no action required", process_description);
+                info!("{} found running for unknown user, no action required", process_description);
                 continue;
             }
         };
