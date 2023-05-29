@@ -151,7 +151,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Touch keyboard and input.
+        ///   Looks up a localized string similar to Switch touch keyboard and input.
         /// </summary>
         public static string AppsLabelTouchKeyboard {
             get {
