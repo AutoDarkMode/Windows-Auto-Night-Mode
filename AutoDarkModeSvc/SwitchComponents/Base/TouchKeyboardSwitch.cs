@@ -56,7 +56,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             catch
             {
-                Logger.Warn("could not find or delete the Touch Keyboard registry keys");
+                Logger.Warn("could not find or delete the touch keyboard registry keys");
             }
         }
     }
