@@ -239,10 +239,9 @@ namespace AutoDarkModeApp.Pages
 
             //tick correct radio button and prepare UI
             //is auto theme switch enabled?
-            //disabled
+            //auto theme switch is: disabled
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
-                DisableTimePicker();
                 StackPanelModeSelection.IsEnabled = false;
                 SetPanelVisibility(false, false, false, false, false);
                 ToggleAutoSwitchEnabled.IsOn = false;
@@ -251,8 +250,11 @@ namespace AutoDarkModeApp.Pages
                 else if (!builder.Config.Location.Enabled) RadioButtonCustomTimes.IsChecked = true;
                 else if (builder.Config.Location.UseGeolocatorService) RadioButtonLocationTimes.IsChecked = true;
                 else RadioButtonCoordinateTimes.IsChecked = true;
+
+                // welcome text for disabled automatic theme switch
+                userFeedback.Text = AdmProperties.Resources.welcomeText;
             }
-            //enabled
+            //auto theme switch is: enabled
             else
             {
                 StackPanelModeSelection.IsEnabled = true;
@@ -266,6 +268,7 @@ namespace AutoDarkModeApp.Pages
                     {
                         RadioButtonCustomTimes.IsChecked = true;
                         SetPanelVisibility(true, false, false, false, true);
+                        userFeedback.Text = AdmProperties.Resources.msgChangesSaved;
                         applyButton.IsEnabled = false;
                     }
 
@@ -351,7 +354,7 @@ namespace AutoDarkModeApp.Pages
 
         private void SetPanelVisibility(bool timepicker = false, bool location = false, bool offset = false,
             bool coordinates = false, bool postpone = false, bool nightLight = false)
-        {
+            {
             if (timepicker) GridTimePicker.Visibility = Visibility.Visible;
             else GridTimePicker.Visibility = Visibility.Collapsed;
 
@@ -383,17 +386,17 @@ namespace AutoDarkModeApp.Pages
         //apply theme
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            int darkStart;
+            int darkStartHours;
             int darkStartMinutes;
-            int lightStart;
+            int lightStartHours;
             int lightStartMinutes;
 
             //get values from TextBox
             try
             {
-                darkStart = TimePickerDark.SelectedDateTime.Value.Hour;
+                darkStartHours = TimePickerDark.SelectedDateTime.Value.Hour;
                 darkStartMinutes = TimePickerDark.SelectedDateTime.Value.Minute;
-                lightStart = TimePickerLight.SelectedDateTime.Value.Hour;
+                lightStartHours = TimePickerLight.SelectedDateTime.Value.Hour;
                 lightStartMinutes = TimePickerLight.SelectedDateTime.Value.Minute;
             }
             catch
@@ -403,7 +406,6 @@ namespace AutoDarkModeApp.Pages
             }
 
             //check values from timepicker
-
             //currently nothing to check
 
             //display edited hour values for the user
@@ -412,9 +414,9 @@ namespace AutoDarkModeApp.Pages
             //TimePickerLight.SelectedDateTime = new DateTime(2000, 08, 22, lightStart, lightStartMinutes, 0);
 
             //Apply Theme
-            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStart,
+            builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, darkStartHours,
                 darkStartMinutes, 0);
-            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStart,
+            builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, lightStartHours,
                 lightStartMinutes, 0);
 
             try
@@ -581,31 +583,6 @@ namespace AutoDarkModeApp.Pages
             userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
         }
 
-
-        private void SetTimeBasedSwitchEnabled()
-        {
-            // check the right radio button
-            //RadioButtonCustomTimes.IsChecked = !builder.Config.Location.Enabled;
-            //RadioButtonLocationTimes.IsChecked = builder.Config.Location.Enabled && builder.Config.Location.UseGeolocatorService;
-            //RadioButtonCustomTimes.IsChecked = builder.Config.Location.Enabled && !builder.Config.Location.UseGeolocatorService;
-
-            StackPanelTimePicker.IsEnabled = true;
-            userFeedback.Text = AdmProperties.Resources.msgClickApply; //Click on apply to save changes
-
-            //this setting enables all the configuration possibilities of auto dark mode
-            if (!builder.Config.AutoThemeSwitchingEnabled)
-            {
-                builder.Config.AutoThemeSwitchingEnabled = true;
-            }
-        }
-
-        private void DisableTimePicker()
-        {
-            StackPanelTimePicker.IsEnabled = false;
-            userFeedback.Text =
-                AdmProperties.Resources.welcomeText; //Activate the checkbox to enable automatic theme switching
-        }
-
         private void UpdateSuntimes()
         {
             LocationHandler.GetSunTimesWithOffset(builder, out DateTime SunriseWithOffset,
@@ -655,7 +632,6 @@ namespace AutoDarkModeApp.Pages
 
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = false;
-            SetTimeBasedSwitchEnabled();
             try
             {
                 if (!init) builder.Save();
@@ -705,7 +681,6 @@ namespace AutoDarkModeApp.Pages
         {
             NumberboxOffsetDark.Minimum = -999;
             NumberBoxOffsetLight.Minimum = -999;
-            SetTimeBasedSwitchEnabled();
             DisableLocationMode();
             builder.Config.Governor = Governor.Default;
             //applyButton.IsEnabled = true;
@@ -724,7 +699,6 @@ namespace AutoDarkModeApp.Pages
         {
             NumberboxOffsetDark.Minimum = -999;
             NumberBoxOffsetLight.Minimum = -999;
-            SetTimeBasedSwitchEnabled();
             builder.Config.Location.Enabled = true;
             builder.Config.Location.UseGeolocatorService = true;
             builder.Config.Governor = Governor.Default;
