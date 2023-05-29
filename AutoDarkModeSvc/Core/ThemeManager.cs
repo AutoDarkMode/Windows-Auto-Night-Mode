@@ -272,7 +272,7 @@ namespace AutoDarkModeSvc.Core
                     else ThemeHandler.RefreshDwmFull(managed: true, e);
                 }
                 // on managed mode if the dwm refresh is insufficient, queue a full refresh
-                else if (builder.Config.WindowsThemeMode.Enabled == false && (neededDwmRefresh < providedDwmRefresh))
+                else if (builder.Config.WindowsThemeMode.Enabled == false && (providedDwmRefresh < neededDwmRefresh))
                 {
                     Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
                     ThemeHandler.RefreshDwmFull(managed: true, e);
