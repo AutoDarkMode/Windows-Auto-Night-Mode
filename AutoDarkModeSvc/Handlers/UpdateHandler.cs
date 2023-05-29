@@ -518,14 +518,14 @@ namespace AutoDarkModeSvc.Handlers
                 {
                     try
                     {
-                        Thread.Sleep(1000);
+                        Thread.Sleep(500);
                         Process[] pShellConfirm = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
                         Process[] pAppConfirm = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
                         if (pShellConfirm.Length == 0 && pAppConfirm.Length == 0)
                         {
                             shellExited = true;
                             appExited = true;
-                            Logger.Info("other auto dark mode components have been stopped");
+                            if (shellRestart || appRestart) Logger.Debug("other auto dark mode components have been stopped");
                             break;
                         }
                         if (pShellConfirm.Length == 0)

@@ -71,6 +71,7 @@ namespace AutoDarkModeApp.Pages
             if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 ColorizationPickerCard.Visibility = Visibility.Collapsed;
+                CursorsPickerCard.Visibility = Visibility.Collapsed;
             }
         }
 

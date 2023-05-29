@@ -258,7 +258,8 @@ namespace AutoDarkModeSvc
             {
                 if (closeApp)
                 {
-                    Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp");
+                    var currentSessionID = Process.GetCurrentProcess().SessionId;
+                    Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
                     if (pApp.Length != 0)
                     {
                         pApp[0].Kill();
