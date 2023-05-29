@@ -511,7 +511,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, "other auto dark mode components still running, skipping update");
+                Logger.Warn(ex, "other auto dark mode components still running");
             }
             finally
             {
