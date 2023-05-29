@@ -501,12 +501,12 @@ namespace AutoDarkModeSvc.Communication
                         //ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                         //Cursors current = RegistryHandler.GetCursors();
                         //Cursors byName = RegistryHandler.GetCursorScheme("Posy's Cursor");
-                        //state.PostponeManager.SyncExpiryTimesWithSystemClock();
-                        UpdateHandler.EndBlockingProcesses(out bool shellRestart, out bool appRestart);
+                        state.PostponeManager.SyncExpiryTimesWithSystemClock();
+                        //UpdateHandler.EndBlockingProcesses(out bool shellRestart, out bool appRestart);
                         SendResponse(new ApiResponse()
                         {
                             StatusCode = StatusCode.Ok,
-                            Message = $"shellRestart: {shellRestart}, appRestart: {appRestart}"
+                            //Message = $"shellRestart: {shellRestart}, appRestart: {appRestart}"
                         }.ToString());
                         break;
                     #endregion
