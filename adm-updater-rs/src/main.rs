@@ -235,7 +235,7 @@ fn shutdown_process(process_name: &str, process_description: &str) -> bool {
         match p.user_id() {
             Some(id) => user_id = id,
             None => {
-                warn!("ghost process?");
+                warn!("{} found running for unknown user, no action required", process_description);
                 continue;
             }
         };

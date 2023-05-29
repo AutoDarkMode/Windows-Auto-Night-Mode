@@ -1,6 +1,6 @@
 [package]
 name = "adm-updater-rs"
-version = "3.1.1"
+version = "3.1.2"
 authors = ["Sam <earthstamper@gmail.com>"]
 edition = "2021"
 license = "MIT"
@@ -8,7 +8,7 @@ license = "MIT"
 [package.metadata.winres]
 OriginalFilename = "AutoDarkModeUpdater"
 LegalCopyright = "Copyright © 2023"
-FileVersion = "3.1.0"
+FileVersion = "3.1.2"
 FileDescription = "Auto Dark Mode Updater"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
