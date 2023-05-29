@@ -151,6 +151,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Touch keyboard and input.
+        /// </summary>
+        public static string AppsLabelTouchKeyboard {
+            get {
+                return ResourceManager.GetString("AppsLabelTouchKeyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use Taskbar Accent Color during.
         /// </summary>
         public static string AppsTextBlockAdaptiveTaskbarAccent {

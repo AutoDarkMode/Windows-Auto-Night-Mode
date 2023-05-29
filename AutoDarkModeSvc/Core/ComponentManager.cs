@@ -50,6 +50,7 @@ namespace AutoDarkModeSvc.Core
         private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
         private readonly ISwitchComponent ColorizationSwitch;
         private readonly ISwitchComponent CursorSwitch;
+        private readonly ISwitchComponent TouchKeyboardSwitch = new TouchKeyboardSwitch();
 
         /// <summary>
         /// Instructs all components to refresh their settings objects by injecting a new settings object
@@ -65,6 +66,7 @@ namespace AutoDarkModeSvc.Core
             WallpaperSwitch?.RunUpdateSettingsState(Builder.Config.WallpaperSwitch);
             ColorizationSwitch?.RunUpdateSettingsState(Builder.Config.ColorizationSwitch);
             CursorSwitch?.RunUpdateSettingsState(Builder.Config.CursorSwitch);
+            TouchKeyboardSwitch?.RunUpdateSettingsState(Builder.Config.TouchKeyboardSwitch);
         }
 
         public void UpdateScriptSettings()
@@ -115,7 +117,8 @@ namespace AutoDarkModeSvc.Core
                 SystemSwitch,
                 AccentColorSwitch,
                 WallpaperSwitch,
-                ScriptSwitch
+                ScriptSwitch,
+                TouchKeyboardSwitch
             };
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {

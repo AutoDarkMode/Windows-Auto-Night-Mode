@@ -268,6 +268,48 @@
                     </Grid>
                 </ui:SimpleStackPanel>
             </uc:Card>
+            
+            <!-- Touch Keyboard -->
+            <uc:Card Padding="20,15,15,15" 
+                     Margin="0,2,0,0">
+
+                <Grid x:Name="GridTouchKeyboard"
+                      Margin="0,0,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="&#xE765;"
+                               Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0,5,15,0"
+                               Name="TextBlockTouchKeyboard"
+                               FontFamily="Segoe MDL2 Assets"
+                               FontSize="25" />
+                    
+                    <TextBlock  Grid.Column="1"
+                                HorizontalAlignment="Left"                               
+                                VerticalAlignment="Center"
+                                Margin="0,0,0,0"
+                                Text="{x:Static p:Resources.AppsLabelTouchKeyboard}"
+                                FontSize="14"
+                                Width="Auto" />
+
+                    <ui:ToggleSwitch Name="ToggleTouchkeyboard"
+                                     Grid.Column="2"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Center"
+                                     Margin="0,0,0,0"
+                                     MinWidth="200"
+                                     OffContent="{x:Static p:Resources.ToggleSwitchOff}"
+                                     OnContent="{x:Static p:Resources.ToggleSwitchOn}"
+                                     Toggled="ToggleTouchkeyboard_Toggled" />
+                </Grid>
+            </uc:Card>
 
             <!-- Office-->
             <uc:Card Padding="30,15,15,15" Margin="0,2,0,0">

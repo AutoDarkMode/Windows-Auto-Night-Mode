@@ -43,6 +43,7 @@ namespace AutoDarkModeApp
 
         private void UiHandler()
         {
+            // load config
             try
             {
                 builder.Load();
@@ -52,13 +53,15 @@ namespace AutoDarkModeApp
                 ShowErrorMessage(ex);
             }
 
+            // Use new Fluent Icons on machines with Windows 11 installed
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
             {
                 TextBlockApps.FontFamily = new("Segoe Fluent Icons");
                 TextBlockSystem.FontFamily = new("Segoe Fluent Icons");
+                TextBlockTouchKeyboard.FontFamily = new("Segoe Fluent Icons");
             }
 
-            //if a windows theme file was picked
+            // If a windows managed theme file was picked, block some settings
             if (builder.Config.WindowsThemeMode.Enabled)
             {
                 AccentColorCheckBox.IsEnabled = false;
@@ -115,7 +118,7 @@ namespace AutoDarkModeApp
             RadioButtonDWMPrevalenceOnLight.IsChecked = builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light;
 
 
-            //if the OS version is older than 1903
+            //if the OS version is older than 1903 block access to System Combobox
             if (int.Parse(RegistryHandler.GetOSversion()).CompareTo(1900) > 0) is1903 = true;
             if (!is1903)
             {
@@ -134,7 +137,6 @@ namespace AutoDarkModeApp
                 }
             }
             else
-            //os version 1903+
             {
                 //inform user about settings
                 if (!builder.Config.WindowsThemeMode.Enabled) AccentColorCheckBox.ToolTip = AdmProperties.Resources.cbAccentColor;
@@ -145,7 +147,7 @@ namespace AutoDarkModeApp
                 SystemComboBox_SelectionChanged(null, null);
             }
 
-            //combobox
+            // Initialize App combobox
             if (builder.Config.AppsSwitch.Enabled)
             {
                 AppComboBox.SelectedIndex = (int)builder.Config.AppsSwitch.Component.Mode;
@@ -155,6 +157,7 @@ namespace AutoDarkModeApp
                 AppComboBox.SelectedIndex = 3;
             }
 
+            // Initialize Office combobox
             if (builder.Config.OfficeSwitch.Enabled)
             {
                 if (builder.Config.OfficeSwitch.Component.Mode == Mode.FollowSystemTheme)
@@ -169,11 +172,20 @@ namespace AutoDarkModeApp
                 OfficeComboBox.SelectedIndex = 4;
             }
 
-
-            //checkbox
+            // Office checkbox
             if (builder.Config.OfficeSwitch.Component.LightTheme == 5)
             {
                 CheckBoxOfficeWhiteTheme.IsChecked = true;
+            }
+
+            // Initialize Touch Keyboard Toggle
+            if (builder.Config.TouchKeyboardSwitch.Enabled)
+            {
+                ToggleTouchkeyboard.IsOn = true;
+            }
+            else 
+            { 
+                ToggleTouchkeyboard.IsOn = false; 
             }
         }
 
@@ -548,6 +560,27 @@ namespace AutoDarkModeApp
         private void RadioButtonDWMPrevalenceOnDark_Click(object sender, RoutedEventArgs e)
         {
             builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Dark;
+            try
+            {
+                builder.Save();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex);
+            }
+            RequestThemeSwitch();
+        }
+
+        private void ToggleTouchkeyboard_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (init) return;
+
+            builder.Config.TouchKeyboardSwitch.Enabled = ToggleTouchkeyboard.IsOn;
+            SaveConfig();
+        }
+
+        private void SaveConfig()
+        {
             try
             {
                 builder.Save();

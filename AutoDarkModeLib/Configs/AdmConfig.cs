@@ -42,6 +42,7 @@ namespace AutoDarkModeLib.Configs
             // New Component Settings;
             AppsSwitch = new();
             SystemSwitch = new();
+            TouchKeyboardSwitch = new();
             ColorFilterSwitch = new();
             OfficeSwitch = new();
             WallpaperSwitch = new();
@@ -54,6 +55,7 @@ namespace AutoDarkModeLib.Configs
         public WindowsThemeMode WindowsThemeMode { get; set; }
         public BaseSettingsEnabled<AppsSwitchSettings> AppsSwitch { get; set; }
         public BaseSettingsEnabled<SystemSwitchSettings> SystemSwitch { get; set; }
+        public BaseSettings<object> TouchKeyboardSwitch { get; set; }
         public BaseSettings<ColorizationSwitchSettings> ColorizationSwitch { get; set; }
         public BaseSettings<object> ColorFilterSwitch { get; set; }
         public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }

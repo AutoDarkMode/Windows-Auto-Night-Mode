@@ -1226,4 +1226,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="ColorizationEnableSwitch" xml:space="preserve">
     <value>Enable Accent color switch</value>
   </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Touch keyboard and input</value>
+  </data>
 </root>
