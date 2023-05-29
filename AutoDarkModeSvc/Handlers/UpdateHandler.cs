@@ -31,6 +31,7 @@ using System.Threading.Tasks;
 using HttpClientProgress;
 using System.Net.Http.Headers;
 using System.Linq;
+using System.Threading;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -491,6 +492,7 @@ namespace AutoDarkModeSvc.Handlers
             appRestart = false;
             Process[] pShell = Array.Empty<Process>();
             Process[] pApp = Array.Empty<Process>();
+
             // kill auto dark mode app and shell if they were running to avoid file move/delete issues
             var currentSessionID = Process.GetCurrentProcess().SessionId;
             try
@@ -508,10 +510,55 @@ namespace AutoDarkModeSvc.Handlers
                     pApp[0].Kill();
                     appRestart = true;
                 }
+
+                bool shellExited = false;
+                bool appExited = false;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    try
+                    {
+                        Thread.Sleep(1000);
+                        Process[] pShellConfirm = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
+                        Process[] pAppConfirm = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
+                        if (pShellConfirm.Length == 0 && pAppConfirm.Length == 0)
+                        {
+                            shellExited = true;
+                            appExited = true;
+                            Logger.Info("other auto dark mode components have been stopped");
+                            break;
+                        }
+                        if (pShellConfirm.Length == 0)
+                        {
+                            appExited = true;
+                        }
+                        if (pAppConfirm.Length == 0)
+                        {
+                            shellExited = true;
+                        }
+                        foreach (Process p in pShellConfirm)
+                        {
+                            p.Dispose();
+                        }
+                        foreach (Process p in pAppConfirm)
+                        {
+                            p.Dispose();
+                        }
+                        Logger.Debug($"end blocking processes attempt: {i+1}/5");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Warn(ex, "could not verify if other auto dark mode components have been stopped:");
+                    }
+                    if (!shellExited || !appExited)
+                    {
+                        Logger.Warn("other auto dark mode components still running after grace period");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, "other auto dark mode components still running");
+                Logger.Warn(ex, "other auto dark mode components still running: ");
             }
             finally
             {
