@@ -398,7 +398,10 @@ mod tests {
     fn test_adm_shutdown() -> Result<(), Box<dyn Error>> {
         setup_logger()?;
         let username = whoami::username();
-        shutdown_running_instances(&username)?;
+        //shutdown_running_instances(&username)?;
+        shutdown_with_retries("AutoDarkModeSvc", "service", 5)?;
+        shutdown_with_retries("AutoDarkModeApp", "app", 5)?;
+        shutdown_with_retries("AutoDarkModeShell", "shell", 5)?;
         Ok(())
     }
 

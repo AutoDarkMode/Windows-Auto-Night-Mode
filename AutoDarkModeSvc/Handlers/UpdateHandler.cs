@@ -30,6 +30,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HttpClientProgress;
 using System.Net.Http.Headers;
+using System.Linq;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -491,10 +492,11 @@ namespace AutoDarkModeSvc.Handlers
             Process[] pShell = Array.Empty<Process>();
             Process[] pApp = Array.Empty<Process>();
             // kill auto dark mode app and shell if they were running to avoid file move/delete issues
+            var currentSessionID = Process.GetCurrentProcess().SessionId;
             try
             {
-                pShell = Process.GetProcessesByName("AutoDarkModeShell");
-                pApp = Process.GetProcessesByName("AutoDarkModeApp");
+                pShell = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
+                pApp = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
 
                 if (pShell.Length != 0)
                 {
