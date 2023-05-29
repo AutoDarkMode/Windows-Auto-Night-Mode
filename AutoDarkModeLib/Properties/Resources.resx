@@ -423,7 +423,7 @@ You can set them up individually in your Windows Theme.</value>
     <value>Set custom hours</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Step</value>

@@ -218,7 +218,8 @@
                                          DockPanel.Dock="Right"
                                          OffContent="{x:Static p:Resources.ToggleSwitchOff}"
                                          OnContent="{x:Static p:Resources.ToggleSwitchOn}"
-                                         Margin="0,0,-55,0"
+                                         HorizontalAlignment="Right"
+                                         Margin="0,0,0,0"
                                          Toggled="ToggleHotkeys_Toggled" />
                     </DockPanel>
 

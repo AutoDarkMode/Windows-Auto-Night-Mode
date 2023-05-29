@@ -202,7 +202,14 @@
                             VerticalAlignment="Top">
 
                     <DockPanel LastChildFill="false">
-                        <TextBlock Margin="15,5,0,0"
+                        <ui:FontIcon Margin="15, 0, 0, 0"
+                                         FontFamily="Segoe MDL2 Assets"
+                                         Name="FontIconLightTimePicker"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Glyph="&#xE706;" />
+                        <TextBlock Margin="15,0,0,0"
+                                   VerticalAlignment="Center"
                                    Text="{x:Static p:Resources.lblLight}" />
                         <ui:SimpleTimePicker x:Name="TimePickerLight"
                                              Margin="0,0,0,0"
@@ -217,7 +224,14 @@
                                Background="{DynamicResource Win11Border}" />
 
                     <DockPanel LastChildFill="false">
-                        <TextBlock Margin="15,6,0,0"
+                        <ui:FontIcon Margin="15, 0, 0, 0"
+                                         FontFamily="Segoe MDL2 Assets"
+                                         Name="FontIconDarkTimePicker"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Glyph="&#xe708;" />
+                        <TextBlock Margin="15,0,0,0"
+                                   VerticalAlignment="Center"
                                    Text="{x:Static p:Resources.lblDark}" />
                         <ui:SimpleTimePicker x:Name="TimePickerDark"
                                              Margin="0,0,0,0"
@@ -266,6 +280,7 @@
                        Text="{x:Static p:Resources.headerLocationData}"
                        FontFamily="Segoe UI Semibold"
                        FontSize="14" />
+
             <uc:Card x:Name="StackPanelLocationTime"
                      Grid.Row="3"
                      Padding="15,7,15,15"
@@ -281,7 +296,7 @@
 
                         <ui:SimpleStackPanel Orientation="Horizontal"
                                              Margin="0,15,0,0"
-                                             ge:ResponsiveGrid.SM="5"
+                                             ge:ResponsiveGrid.SM="4"
                                              ge:ResponsiveGrid.XS="12">
                             <ui:FontIcon Margin="0, 0, 10, 0"
                                          Name="FontIconLocation"
@@ -333,7 +348,7 @@
                         </ui:SimpleStackPanel>
                     </ge:ResponsiveGrid>
 
-                    <Grid Margin="0, 8, 0, 0"
+                    <Grid Margin="0, 10, 0, 0"
                           Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />

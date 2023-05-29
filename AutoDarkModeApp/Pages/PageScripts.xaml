@@ -67,6 +67,7 @@
                                      Grid.Row="0"
                                      Grid.Column="2"
                                      Margin="0,5,0,0"
+                                     HorizontalAlignment="Right"
                                      Toggled="ToggleSwitchScripts_Toggled" />
                 </Grid>
 

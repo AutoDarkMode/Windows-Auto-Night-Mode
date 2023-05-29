@@ -1573,7 +1573,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From sunset to sunrise.
+        ///   Looks up a localized string similar to From sunset to sunrise (location service).
         /// </summary>
         public static string rbLocation {
             get {
