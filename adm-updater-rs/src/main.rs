@@ -230,7 +230,6 @@ fn shutdown_process(process_name: &str, process_description: &str) -> bool {
     s.refresh_users_list();
     let mut p = s.processes_by_name(process_name);
     while let Some(p) = p.next() {
-        warn!("running adm {} found", process_description);
         let user_id;
         match p.user_id() {
             Some(id) => user_id = id,
@@ -251,6 +250,8 @@ fn shutdown_process(process_name: &str, process_description: &str) -> bool {
                     user.name()
                 )
             }
+        } else {
+            warn!("could not map user id {} to a user name", user_id.to_string());
         }
     }
     false
