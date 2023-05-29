@@ -48,13 +48,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             try
             {
                 RegistryKey mainKey = Registry.CurrentUser.OpenSubKey(keyboardPersonalizationKey, true);
+                mainKey.DeleteValue("SelectedThemeIndex", false);
+                mainKey.DeleteValue("SelectedThemeName", false);
                 mainKey.DeleteSubKeyTree("SelectedThemeDark", false);
                 mainKey.DeleteSubKeyTree("SelectedThemeLight", false);
                 mainKey.Close();
             }
             catch
             {
-                Logger.Warn("could not delete the Touch Keyboard registry keys");
+                Logger.Warn("could not find or delete the Touch Keyboard registry keys");
             }
         }
     }
