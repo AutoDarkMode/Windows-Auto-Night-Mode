@@ -139,9 +139,9 @@
                                   SelectionChanged="LightAutoColorizationComboBox_SelectionChanged"
                                   MinWidth="120"
                                   SelectedIndex="0">
-                            <ComboBoxItem Content="Automatic"
+                            <ComboBoxItem Content="{x:Static p:Resources.Automatic}"
                                           Name="AutoLight" />
-                            <ComboBoxItem Content="Manual"
+                            <ComboBoxItem Content="{x:Static p:Resources.Manual}"
                                           Name="ManualLight" />
                         </ComboBox>
                     </Grid>
@@ -225,9 +225,9 @@
                                       MinWidth="120"
                                       SelectionChanged="DarkAutoColorizationComboBox_SelectionChanged"
                                       SelectedIndex="0">
-                                <ComboBoxItem Content="Automatic"
+                                <ComboBoxItem Content="{x:Static p:Resources.Automatic}"
                                               Name="AutoDark" />
-                                <ComboBoxItem Content="Manual"
+                                <ComboBoxItem Content="{x:Static p:Resources.Manual}"
                                               Name="ManualDark" />
                             </ComboBox>
                         </Grid>

@@ -187,6 +187,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic.
+        /// </summary>
+        public static string Automatic {
+            get {
+                return ResourceManager.GetString("Automatic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatic theme switch.
         /// </summary>
         public static string AutomaticThemeSwitch {
@@ -1042,6 +1051,15 @@ namespace AutoDarkModeLib.Properties {
         public static string locationCityNotFound {
             get {
                 return ResourceManager.GetString("locationCityNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual.
+        /// </summary>
+        public static string Manual {
+            get {
+                return ResourceManager.GetString("Manual", resourceCulture);
             }
         }
         
