@@ -1218,9 +1218,9 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Anda dapat menentukan skema kursor di setelan Windows dan kemudian memilihnya di sini sesudahnya.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Buka shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Buka log pembaruan</value>
   </data>
 </root>
