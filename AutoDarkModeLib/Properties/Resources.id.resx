@@ -420,7 +420,7 @@ Anda dapat mengatur secara individu.</value>
     <value>Atur waktu kustom</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Dari terbenam hingga terbit (layanan lokasi)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Langkah</value>
@@ -1224,10 +1224,10 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Buka log pembaruan</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Nyalakan pergantian aksen warna</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Beralih ke papan ketik sentuh dan masukan</value>
   </data>
   <data name="Automatic" xml:space="preserve">
     <value>Automatic</value>
