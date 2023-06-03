@@ -1224,15 +1224,15 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>打开更新程序日志</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>启用主题色切换</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>自动</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>手动</value>
   </data>
 </root>
