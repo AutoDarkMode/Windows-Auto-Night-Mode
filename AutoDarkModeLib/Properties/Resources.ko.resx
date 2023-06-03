@@ -408,7 +408,7 @@ Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
     <value>사용자 지정 시간 설정</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>일몰부터 일출까지</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>단계</value>
@@ -1221,5 +1221,17 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Open updater log</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

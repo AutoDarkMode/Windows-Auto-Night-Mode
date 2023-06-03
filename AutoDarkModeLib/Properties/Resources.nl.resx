@@ -420,7 +420,7 @@ U kunt dit individueel instellen in uw Windows-thema.</value>
     <value>Aangepaste tijden kiezen</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Van zonsonder- tot -opgang</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Stap</value>
@@ -1222,5 +1222,17 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Open updater log</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

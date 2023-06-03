@@ -420,7 +420,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Benutzerdefinierte Uhrzeit</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Von Sonnenuntergang bis Sonnenaufgang</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Schritt</value>
@@ -1222,5 +1222,17 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Open updater log</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

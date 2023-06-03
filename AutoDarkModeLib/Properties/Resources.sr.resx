@@ -420,7 +420,7 @@ Možete ih podesiti pojedinačno u vašoj Windows temi.</value>
     <value>Podesi prilagođeno vreme</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Od zalaska do izlaska sunca</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Korak</value>
@@ -1222,5 +1222,17 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Otvori evidenciju ažuriranja</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>
