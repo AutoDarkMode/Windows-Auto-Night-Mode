@@ -420,7 +420,7 @@
     <value>Προσαρμοσμένες ώρες</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Από τη δύση έως την ανατολή του ηλίου (υπηρεσία τοποθεσίας)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Βήμα</value>
@@ -1224,15 +1224,15 @@
     <value>Ανοιγμα αρχείου καταγραφής προγράμματος αναβάθμισης</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Ενεργοποίηση εναλλαγής χρώματος έμφασης</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Εναλλαγή πληκτρολογίου αφής και εισόδου</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Αυτόματα</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Χειροκίνητα</value>
   </data>
 </root>
