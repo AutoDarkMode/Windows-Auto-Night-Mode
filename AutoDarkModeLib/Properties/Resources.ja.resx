@@ -420,7 +420,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>時間を指定</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>日の出から日没まで (位置情報)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>ステップ</value>
@@ -1188,7 +1188,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>OK</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>マウスカーソルの有効を切り替え</value>
+    <value>マウスカーソルの切替を有効化</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
     <value>Windows のポインターの設定を開く</value>
@@ -1224,15 +1224,15 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>更新ツールの履歴を開く</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>アクセントカラーの切替を有効化</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>入力、タッチキーボードでも切替</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>自動</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>手動</value>
   </data>
 </root>
