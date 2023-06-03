@@ -420,7 +420,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Özel zamanlama</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Gün batımından gün doğumuna (konum hizmeti)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Adım</value>
@@ -1224,15 +1224,15 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
     <value>Güncelleyici günlüğünü aç</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Vurgu rengi değişimini etkinleştir</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Dokunmatik klavyeyi ve girişi değiştir</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Otomatik</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Manuel</value>
   </data>
 </root>
