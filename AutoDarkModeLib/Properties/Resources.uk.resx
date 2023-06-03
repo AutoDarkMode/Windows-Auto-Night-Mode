@@ -1224,7 +1224,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Відкрити журнал оновлення</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Ввімкнути перемикач кольору акценту</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
