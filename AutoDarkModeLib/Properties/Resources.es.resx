@@ -420,7 +420,7 @@ Puedes activarlas individualmente en tu tema de Windows.</value>
     <value>Establecer horas personalizadas</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Desde el amanecer hasta el atardecer (servicio de localización)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Paso</value>
@@ -1224,13 +1224,13 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
     <value>Abrir el registro del actualizador</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Habilitar el cambio del color del acento</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Cambiar al teclado táctil y de entrada</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automático</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
