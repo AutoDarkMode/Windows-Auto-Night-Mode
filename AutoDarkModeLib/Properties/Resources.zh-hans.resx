@@ -420,7 +420,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>自定义时间</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>从日落到日出（位置服务）</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>步骤</value>
@@ -1227,7 +1227,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>启用主题色切换</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>切换触摸键盘和输入</value>
   </data>
   <data name="Automatic" xml:space="preserve">
     <value>自动</value>
