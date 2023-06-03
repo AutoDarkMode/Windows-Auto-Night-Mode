@@ -420,7 +420,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Benutzerdefinierte Uhrzeit</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Von Sonnenuntergang bis Sonnenaufgang</value>
+    <value>Von Sonnenaufgang bis Sonnenuntergang (Ortungsdienst)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Schritt</value>
@@ -1018,7 +1018,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Trace Modus</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Besonderer Dank</value>
+    <value>Besonderer Dank gebührt</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Hintergrundbild ignorieren</value>
@@ -1218,9 +1218,21 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
     <value>Mauszeiger Schemas können in den Windows Einstellungen erstellt, angepasst und dann hier ausgewählt werden.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Eingabeaufforderung öffnen</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Updater-Log öffnen</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Akzentfarbenwechsel aktivieren</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Bildschirmtastatur und Eingabe</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

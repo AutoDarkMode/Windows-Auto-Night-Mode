@@ -420,7 +420,7 @@ Anda dapat mengatur secara individu.</value>
     <value>Atur waktu kustom</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Dari terbit hingga terbenam</value>
+    <value>Dari terbenam hingga terbit (layanan lokasi)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Langkah</value>
@@ -1218,9 +1218,21 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Anda dapat menentukan skema kursor di setelan Windows dan kemudian memilihnya di sini sesudahnya.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Buka shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Buka log pembaruan</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Nyalakan pergantian aksen warna</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Beralih ke papan ketik sentuh dan masukan</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

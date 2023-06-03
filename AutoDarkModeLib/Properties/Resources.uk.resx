@@ -423,7 +423,7 @@
     <value>Встановити користувацький розклад</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Від світанку до смеркання</value>
+    <value>Від заходу до сходу сонця (послуга визначення розташування)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Крок</value>
@@ -1222,5 +1222,17 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Відкрити журнал оновлення</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Ввімкнути перемикач кольору акценту</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Перемикання сенсорної клавіатури та введення</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Автоматично</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Посібник</value>
   </data>
 </root>

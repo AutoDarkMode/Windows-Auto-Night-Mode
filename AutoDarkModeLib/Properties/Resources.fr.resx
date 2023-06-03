@@ -420,7 +420,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Définir des horaires personnalisés</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Du coucher au lever du soleil</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Étape</value>
@@ -1082,7 +1082,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Retourner à une version antérieure</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Ouvrir le répertoire des journaux</value>
+    <value>Ouvrir le fichier log (service.log)</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
     <value>Reporter</value>
@@ -1218,9 +1218,21 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
     <value>Vous pouvez définir de nouveaux curseurs dans les paramètres de Windows et les sélectionner ensuite ici.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Ouvrir le terminal shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Ouvrir les logs de MàJ (updater.log)</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Activer le changer de couleur d'accentuation</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatique</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

@@ -420,7 +420,7 @@ Možete ih podesiti pojedinačno u vašoj Windows temi.</value>
     <value>Podesi prilagođeno vreme</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Od zalaska do izlaska sunca</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Korak</value>
@@ -563,13 +563,13 @@ Napomena: NIKAD ne pokrećite Auto Dark Mode kao administrator sami!</value>
     <value>Sakrij ikonicu u sistemskoj paleti (ne preporučuje se)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Ova opcija je onemogućena kada Windows upravlja vašom temom.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Izaberite različitu Windows temu za svetli, odnosno tamni režim. Omogućava potpuno prilagođavanje tema, ali zahteva da prvo sami napravite .theme fajlove.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Podesite pozadinu radne površine za pojedinačne ili sve monitore, pozadinsku boju ili omogućite Windows interesovanja.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Proveravamo nove verzije Auto Dark Mode-a u pozadini. Ako je dostupno ažuriranje, obavestićemo vas notifikacijom</value>
@@ -832,7 +832,7 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Sakrij ikonicu u sistemskoj paleti</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Otvori konfiguracionu fasciklu</value>
+    <value>&amp;Otvori konfiguracionu fasciklu</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Neka aplikacija odluči</value>
@@ -844,7 +844,7 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Vreme dok se sistem ne bude smatrao neaktivnim, u minutima</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Boja naglašavanja na naslovnoj traci i ivicama prozora samo tokom</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informacije o verziji kopirane u ostavu</value>
@@ -1128,99 +1128,111 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Promeni temu</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Interesovanja</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Windows interesovanja</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Boja naglašavanja</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Izaberite boju naglašavanja</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Prilagodite sistemsku šemu boja Windows-a sebi.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Ažuriraj kolorizaciju</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Ova opcija je onemogućena kada Auto Dark Mode upravlja vašom temom.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Veze</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Dokumentacija za sopstvene skripte</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Repozitorijum za korisničke skripte</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Popuna</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Uklapanje</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Rastezanje</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Odaberite uklapanje za sliku radne površine</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Nije povezano</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Uvek osveži DWM pri promeni teme</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Pokušava da ispravi povremeno pojavljivanje pogrešnih boja u interfejsu Istraživača, trake zadataka i Start menija. Ako vam se ovo često dešava ili vas nervira, probajte da omogućite ovu postavku.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Može izazvati blaga do umerena kočenja na nekim sistemima tokom promene teme, slično kao što je bilo na Windows-u 10. 
+U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera tokom osvežavanja DWM-a.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Prinudno osvežiti DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Omogući promenu kursora miša</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Otvori Windows postavke pokazivača</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Izaberi tamni kursor</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Izaberi svetli kursor</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Kursori</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Konfigurišite različite kursore miša za tamni i svetli režim.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Izaberite kursore miša</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Neka Auto Dark Mode upravlja mojom temom</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Neka Windows upravlja mojom temom</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Možete da definišete nove šeme kursora u postavkama Windows-a, i posle ih izaberete ovde .</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Otvori interfejs komandne linije</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Otvori evidenciju ažuriranja</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

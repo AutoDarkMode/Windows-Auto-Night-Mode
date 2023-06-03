@@ -420,7 +420,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Đặt giờ tuỳ chọn</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Từ lúc mặt trời lặn tới lúc mặt trời mọc</value>
+    <value>From sunset to sunrise (location service)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Các bước thiết lập</value>
@@ -1222,5 +1222,17 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>Open updater log</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
 </root>

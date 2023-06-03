@@ -420,7 +420,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>自定义时间</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>日出至日落</value>
+    <value>从日落到日出（位置服务）</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>步骤</value>
@@ -1222,5 +1222,17 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
     <value>打开更新程序日志</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>启用主题色切换</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>切换触摸键盘和输入</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>手动</value>
   </data>
 </root>
