@@ -420,7 +420,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Définir des horaires personnalisés</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Du coucher au lever du soleil (service de localisation)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Étape</value>
@@ -1227,12 +1227,12 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
     <value>Activer le changer de couleur d'accentuation</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Basculer le clavier virtuel et la saisie</value>
   </data>
   <data name="Automatic" xml:space="preserve">
     <value>Automatique</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Manuel</value>
   </data>
 </root>
