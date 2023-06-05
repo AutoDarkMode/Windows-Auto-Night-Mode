@@ -16,6 +16,7 @@
 #endregion
 using AutoDarkModeLib;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -105,6 +106,8 @@ namespace AutoDarkModeApp.Pages
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
 
+            DataGridExcludedProcessesList.ItemsSource = builder.Config.ProcessBlockList.ProcessNames;
+            
             init = false;
         }
 
@@ -489,6 +492,48 @@ namespace AutoDarkModeApp.Pages
             {
                 ShowErrorMessage(ex, "HotkeyCheckboxToggleAutomaticThemeSwitchNotification_Click");
             }
+        }
+
+        private void SwitchModesAddSelectedProcess_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxProcessBlockList.SelectedItem is not string processName ||
+                builder.Config.ProcessBlockList.ProcessNames.Contains(processName)) return;
+            
+            builder.Config.ProcessBlockList.ProcessNames.Add(processName);
+            try
+            {
+                builder.Save();
+                DataGridExcludedProcessesList.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex, "SwitchModesAddSelectedProcess_OnClick");
+            }
+        }
+
+        private void SwitchModesRefreshProcessList_OnClick(object sender, RoutedEventArgs e)
+        {
+            var processes = Process.GetProcesses();
+            var filteredProcesses = new SortedSet<string>();
+            foreach (var process in processes)
+            {
+                // MainWindowHandle can throw exceptions, hence the try catch
+                try
+                {
+                    // A process without a main window handle probably isn't interactive and thus irrelevant to theme changes
+                    if (process.MainWindowHandle == -0) continue;
+                    // No point in showing a process' name in the dropdown if it's already being excluded out
+                    if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
+                    {
+                        filteredProcesses.Add(process.ProcessName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "SwitchModesRefreshProcessList_OnClick");
+                }
+            }
+            ComboBoxProcessBlockList.ItemsSource = filteredProcesses;
         }
     }
 }

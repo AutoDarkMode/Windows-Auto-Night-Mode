@@ -31,6 +31,7 @@ namespace AutoDarkModeLib.Configs
             Location = new();
             Tunable = new();
             GPUMonitoring = new();
+            ProcessBlockList = new();
             Events = new();
             WindowsThemeMode = new();
             Updater = new();
@@ -65,6 +66,7 @@ namespace AutoDarkModeLib.Configs
         public Location Location { get; set; }
         public Tunable Tunable { get; set; }
         public GPUMonitoring GPUMonitoring { get; set; }
+        public ProcessBlockList ProcessBlockList { get; set; }
         public Events Events { get; set; }
         public Notifications Notifications { get; set; }
         public AutoSwitchNotify AutoSwitchNotify { get; set; }
@@ -220,5 +222,10 @@ namespace AutoDarkModeLib.Configs
                 }
             }
         }
+    }
+
+    public class ProcessBlockList
+    {
+        public SortedSet<string> ProcessNames { get; set; } = new SortedSet<string>();
     }
 }

@@ -1235,4 +1235,7 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
+  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
+    <value>Wechsle nicht wenn einer der folgenden Anwendungen ausgeführt werden</value>
+  </data>
 </root>

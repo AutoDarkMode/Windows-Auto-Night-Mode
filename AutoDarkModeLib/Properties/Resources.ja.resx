@@ -1235,4 +1235,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Manual" xml:space="preserve">
     <value>手動</value>
   </data>
+  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
+    <value>Don't switch themes if any of these processes are running</value>
+  </data>
 </root>

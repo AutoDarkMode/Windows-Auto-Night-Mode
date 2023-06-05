@@ -88,7 +88,7 @@
                                    Background="{DynamicResource Win11Border}" />
 
                         <DockPanel LastChildFill="false"
-                                   Margin="0,5,0,0">
+                                   Margin="0,5,0,10">
                             <TextBlock Margin="0,10,0,0"
                                        VerticalAlignment="Center"
                                        Text="{x:Static p:Resources.SwitchModesTextBlockGPUUsageDetectionSpeed}"
@@ -109,7 +109,72 @@
                             </ComboBox>
                         </DockPanel>
 
+                        <Separator Margin="-30,0,-15,0"
+                                   Background="{DynamicResource Win11Border}" />
 
+                        <DockPanel LastChildFill="false"
+                                   Margin="0,5,0,0">
+                            <TextBlock Margin="0,10,0,0"
+                                       VerticalAlignment="Center"
+                                       Text="{x:Static p:Resources.SwitchModesTextProcessBlockList}"
+                                       FontSize="14" />
+
+                        </DockPanel>
+
+                        <DockPanel Margin="0,10,0,0">
+                            <Expander
+                                Margin="0,10,0,10"
+                                DockPanel.Dock="Bottom"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Stretch"
+                                Header="Excluded Processes"
+                                FlowDirection="RightToLeft">
+                                <Expander.HeaderTemplate>
+                                    <DataTemplate>
+                                        <!--Unsure why the negative left margin is necessary here, 
+                                            removing it cuts off the leading character-->
+                                        <TextBlock
+                                            Text="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=Header}"
+                                            Width="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=ActualWidth}"
+                                            Margin="-21,0,0,0"
+                                            FlowDirection="LeftToRight">
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Expander.HeaderTemplate>
+                                <DataGrid
+                                    Name="DataGridExcludedProcessesList"
+                                    FlowDirection="LeftToRight" AutoGenerateColumns="False" IsReadOnly="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding}" Header="Process Name"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Expander>
+
+
+                            <Button
+                                DockPanel.Dock="Right"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Click="SwitchModesAddSelectedProcess_OnClick">
+                                Add
+                            </Button>
+
+                            <Button
+                                DockPanel.Dock="Right"
+                                Margin="0,0,5,0"
+                                Click="SwitchModesRefreshProcessList_OnClick">
+                                Refresh
+                            </Button>
+
+                            <ComboBox
+                                Margin="0,5,0,0"
+                                DockPanel.Dock="Right"
+                                IsEditable="True"
+                                IsReadOnly="False"
+                                Name="ComboBoxProcessBlockList"
+                                MinWidth="250">
+                            </ComboBox>
+                        </DockPanel>
                     </ui:SimpleStackPanel>
                 </ui:SimpleStackPanel>
             </uc:Card>

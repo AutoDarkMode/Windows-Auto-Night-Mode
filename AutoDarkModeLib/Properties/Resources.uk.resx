@@ -1235,4 +1235,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="Manual" xml:space="preserve">
     <value>Посібник</value>
   </data>
+  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
+    <value>Don't switch themes if any of these processes are running</value>
+  </data>
 </root>

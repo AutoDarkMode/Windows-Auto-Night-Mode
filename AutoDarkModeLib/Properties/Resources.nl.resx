@@ -1235,4 +1235,7 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
+  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
+    <value>Don't switch themes if any of these processes are running</value>
+  </data>
 </root>
