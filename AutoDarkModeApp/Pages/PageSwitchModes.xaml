@@ -112,67 +112,74 @@
                         <Separator Margin="-30,0,-15,0"
                                    Background="{DynamicResource Win11Border}" />
 
-                        <DockPanel LastChildFill="false"
-                                   Margin="0,5,0,0">
-                            <TextBlock Margin="0,10,0,0"
-                                       VerticalAlignment="Center"
+                        <DockPanel
+                            Margin="0,5,0,0"
+                            LastChildFill="false">
+                            <TextBlock FontSize="14"
                                        Text="{x:Static p:Resources.SwitchModesTextProcessBlockList}"
-                                       FontSize="14" />
+                                       VerticalAlignment="Center"
+                                       Margin="0,10,0,0" />
 
                         </DockPanel>
 
                         <DockPanel Margin="0,10,0,0">
                             <Expander
-                                Margin="0,10,0,10"
                                 DockPanel.Dock="Bottom"
-                                VerticalAlignment="Bottom"
+                                FlowDirection="RightToLeft"
+                                Header="{x:Static p:Resources.SwitchModesExpanderHeaderBlockedProcesses}"
                                 HorizontalAlignment="Stretch"
-                                Header="Excluded Processes"
-                                FlowDirection="RightToLeft">
+                                Margin="0,10,0,10">
                                 <Expander.HeaderTemplate>
                                     <DataTemplate>
                                         <!--Unsure why the negative left margin is necessary here, 
                                             removing it cuts off the leading character-->
                                         <TextBlock
-                                            Text="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=Header}"
-                                            Width="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=ActualWidth}"
+                                            FlowDirection="LeftToRight"
                                             Margin="-21,0,0,0"
-                                            FlowDirection="LeftToRight">
+                                            Text="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=Header}"
+                                            Width="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=ActualWidth}">
                                         </TextBlock>
                                     </DataTemplate>
                                 </Expander.HeaderTemplate>
-                                <DataGrid
-                                    Name="DataGridExcludedProcessesList"
-                                    FlowDirection="LeftToRight" AutoGenerateColumns="False" IsReadOnly="True">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding}" Header="Process Name"></DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
+
+                                <ItemsControl
+                                    Margin="0,5,0,0"
+                                    Name="ItemsControlProcessBlockList">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <DockPanel
+                                                FlowDirection="LeftToRight"
+                                                HorizontalAlignment="Stretch"
+                                                LastChildFill="False"
+                                                Margin="0,5,0,5"
+                                                VerticalAlignment="Center">
+                                                <TextBlock
+                                                    Text="{Binding}"
+                                                    VerticalAlignment="Center" />
+                                                <Button
+                                                    Click="SwitchModesRemoveProcess_OnClick"
+                                                    Content="{x:Static p:Resources.SwitchModesButtonRemoveProcess}"
+                                                    DockPanel.Dock="Right"
+                                                    Tag="{Binding}"/>
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </Expander>
-
-
+                            
                             <Button
+                                Click="SwitchModesAddSelectedProcess_OnClick"
+                                Content="{x:Static p:Resources.SwitchModesButtonAddProcess}"
                                 DockPanel.Dock="Right"
-                                VerticalAlignment="Center"
                                 HorizontalAlignment="Right"
-                                Click="SwitchModesAddSelectedProcess_OnClick">
-                                Add
-                            </Button>
-
-                            <Button
-                                DockPanel.Dock="Right"
-                                Margin="0,0,5,0"
-                                Click="SwitchModesRefreshProcessList_OnClick">
-                                Refresh
-                            </Button>
-
+                                VerticalAlignment="Center"/>
+                            
                             <ComboBox
-                                Margin="0,5,0,0"
                                 DockPanel.Dock="Right"
-                                IsEditable="True"
-                                IsReadOnly="False"
-                                Name="ComboBoxProcessBlockList"
-                                MinWidth="250">
+                                IsReadOnly="True"
+                                Margin="0,5,0,0"
+                                MinWidth="250"
+                                Name="ComboBoxProcessBlockList">
                             </ComboBox>
                         </DockPanel>
                     </ui:SimpleStackPanel>

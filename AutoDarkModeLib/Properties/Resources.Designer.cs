@@ -1918,6 +1918,24 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string SwitchModesButtonAddProcess {
+            get {
+                return ResourceManager.GetString("SwitchModesButtonAddProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string SwitchModesButtonRemoveProcess {
+            get {
+                return ResourceManager.GetString("SwitchModesButtonRemoveProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notify before automatically switching themes.
         /// </summary>
         public static string SwitchModesCheckBoxAutoSwitchNotification {
@@ -1968,6 +1986,15 @@ namespace AutoDarkModeLib.Properties {
         public static string SwitchModesComboBoxItemSamplesSlow {
             get {
                 return ResourceManager.GetString("SwitchModesComboBoxItemSamplesSlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blocking Processes.
+        /// </summary>
+        public static string SwitchModesExpanderHeaderBlockedProcesses {
+            get {
+                return ResourceManager.GetString("SwitchModesExpanderHeaderBlockedProcesses", resourceCulture);
             }
         }
         

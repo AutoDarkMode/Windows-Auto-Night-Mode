@@ -106,7 +106,8 @@ namespace AutoDarkModeApp.Pages
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
 
-            DataGridExcludedProcessesList.ItemsSource = builder.Config.ProcessBlockList.ProcessNames;
+            ItemsControlProcessBlockList.ItemsSource = builder.Config.ProcessBlockList.ProcessNames;
+            ComboBoxProcessBlockList.DropDownOpened += (sender, args) => RefreshProcessComboBox();
             
             init = false;
         }
@@ -503,7 +504,7 @@ namespace AutoDarkModeApp.Pages
             try
             {
                 builder.Save();
-                DataGridExcludedProcessesList.Items.Refresh();
+                ItemsControlProcessBlockList.Items.Refresh();
             }
             catch (Exception ex)
             {
@@ -511,7 +512,7 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void SwitchModesRefreshProcessList_OnClick(object sender, RoutedEventArgs e)
+        private void RefreshProcessComboBox()
         {
             var processes = Process.GetProcesses();
             var filteredProcesses = new SortedSet<string>();
@@ -530,10 +531,23 @@ namespace AutoDarkModeApp.Pages
                 }
                 catch (Exception ex)
                 {
-                    ShowErrorMessage(ex, "SwitchModesRefreshProcessList_OnClick");
+                    ShowErrorMessage(ex, "RefreshProcessComboBox");
                 }
             }
+
             ComboBoxProcessBlockList.ItemsSource = filteredProcesses;
+        }
+
+        private void SwitchModesRemoveProcess_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button {Tag: string entry})
+            {
+                var result = builder.Config.ProcessBlockList.ProcessNames.Remove(entry);
+                if (result)
+                {
+                    ItemsControlProcessBlockList.Items.Refresh();
+                }
+            }
         }
     }
 }
