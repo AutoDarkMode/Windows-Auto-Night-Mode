@@ -224,8 +224,12 @@ namespace AutoDarkModeLib.Configs
         }
     }
 
+    /// <summary>
+    /// Configures the <see cref="AutoDarkModeSvc.Modules.BlockListModule"/>, used for postponing theme switches while
+    /// some processes are running
+    /// </summary>
     public class ProcessBlockList
     {
-        public SortedSet<string> ProcessNames { get; set; } = new SortedSet<string>();
+        public SortedSet<string> ProcessNames { get; set; } = new();
     }
 }
