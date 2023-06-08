@@ -127,6 +127,7 @@
 
                     <Separator Margin="-30,10,-15,0"
                                DockPanel.Dock="Top"
+                               Name="BlockListOptionsSeparator"
                                Background="{DynamicResource Win11Border}" />
 
                     <ui:SimpleStackPanel Name="SimpleStackPanelProcessBlockList">

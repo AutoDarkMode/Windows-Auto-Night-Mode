@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using AutoDarkModeSvc.Governors;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Events;
+using static System.Windows.Forms.AxHost;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -31,20 +32,26 @@ namespace AutoDarkModeSvc.Modules
                 AutoManageGovernors(Builder.Config.Governor);
             }
             GovernorEventArgs result = ActiveGovernor.Run();
-            if (result.InSwitchWindow && !State.ThemeSwitchApproaching)
+            if (result.InSwitchWindow && !State.SwitchApproach.ThemeSwitchApproaching)
             {
                 Logger.Debug($"theme switch window is approaching");
                 LastSwitchWindow = DateTime.Now;
-                State.ThemeSwitchApproaching = true;
+                State.SwitchApproach.ThemeSwitchApproaching = true;
+                if (ActiveGovernor is NightLightGovernor)
+                {
+                    State.SwitchApproach.TriggerDependencyModules();
+                    Logger.Debug($"theme switch approach window has passed");
+                    State.SwitchApproach.ThemeSwitchApproaching = false;
+                }
             }
             else if (result.SwitchEventArgs != null)
             {
                 ThemeManager.RequestSwitch(result.SwitchEventArgs);
             }
-            if (!result.InSwitchWindow && State.ThemeSwitchApproaching)
+            if (ActiveGovernor is not NightLightGovernor && !result.InSwitchWindow && State.SwitchApproach.ThemeSwitchApproaching)
             {
                 Logger.Debug($"theme switch approach window has passed");
-                State.ThemeSwitchApproaching = false;
+                State.SwitchApproach.ThemeSwitchApproaching = false;
             }
         }
 
@@ -53,7 +60,7 @@ namespace AutoDarkModeSvc.Modules
             if (ActiveGovernor?.Type != newGovernor)
             {
                 // not sure about this yet, but the idea is to reset the theme switch approaching flat in case the user config changes
-                State.ThemeSwitchApproaching = false;
+                State.SwitchApproach.ThemeSwitchApproaching = false;
                 ActiveGovernor?.DisableHook();
                 if (newGovernor == Governor.Default)
                 {

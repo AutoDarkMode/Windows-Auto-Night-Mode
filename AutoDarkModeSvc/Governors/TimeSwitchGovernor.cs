@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            bool reportSwitchWindow = State.SwitchApproachDependenciesPresent && !init; 
+            bool reportSwitchWindow = State.SwitchApproach.DependenciesPresent && !init; 
 
             // only do calculation when necessary
             if (reportSwitchWindow)

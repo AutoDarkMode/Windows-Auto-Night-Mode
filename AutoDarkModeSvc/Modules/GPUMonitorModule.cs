@@ -53,12 +53,12 @@ namespace AutoDarkModeSvc.Modules
         public override void Fire()
         {
             // prevents the module from activating again if it has completed its operations during the approach window
-            if (!State.ThemeSwitchApproaching && !MonitoringActive)
+            if (!State.SwitchApproach.ThemeSwitchApproaching && !MonitoringActive)
             {
                 AllowMonitoring = true;
             }
             // if a theme switch is approaching and the module is not monitoring yet, we need to enable the module
-            if (State.ThemeSwitchApproaching && !MonitoringActive && AllowMonitoring)
+            if (State.SwitchApproach.ThemeSwitchApproaching && !MonitoringActive && AllowMonitoring)
             {
                 Logger.Info($"starting GPU usage monitoring, theme switch pending");
                 State.PostponeManager.Add(new(Name, isUserClearable: true));
@@ -176,14 +176,14 @@ namespace AutoDarkModeSvc.Modules
 
         public override void EnableHook()
         {
-            State.AddSwitchApproachDependency(GetType().Name);
+            State.SwitchApproach.AddDependency(this);
         }
 
         public override void DisableHook()
         {
             Logger.Debug($"cleanup performed for module {Name}");
             State.PostponeManager.Remove(Name);
-            State.RemoveSwitchApproachDependency(GetType().Name);
+            State.SwitchApproach.RemoveDependency(this);
         }
     }
 }

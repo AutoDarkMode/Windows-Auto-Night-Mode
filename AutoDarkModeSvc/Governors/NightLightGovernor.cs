@@ -73,7 +73,7 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            bool reportSwitchWindow = state.SwitchApproachDependenciesPresent && !init;
+            bool reportSwitchWindow = state.SwitchApproach.DependenciesPresent && !init;
 
             // if reporting is enabled and we are not in the switch window, we need to set the report variable back to false
             if (reportSwitchWindow && 

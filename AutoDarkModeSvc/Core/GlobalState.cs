@@ -79,21 +79,7 @@ namespace AutoDarkModeSvc.Core
         private NotifyIcon NotifyIcon { get; set; }
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
         public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
-        public bool ThemeSwitchApproaching { get; set; }
-        private List<string> SwitchApproachDependencies { get; set; } = new();
-        public bool SwitchApproachDependenciesPresent { get { return SwitchApproachDependencies.Count > 0; } }
-        public void AddSwitchApproachDependency(string typeName)
-        {
-            if (!SwitchApproachDependencies.Contains(typeName))
-            {
-                SwitchApproachDependencies.Add(typeName);
-            }
-        }
-        public void RemoveSwitchApproachDependency(string typeName)
-        {
-            SwitchApproachDependencies.Remove(typeName);
-        }
-
+        public SwitchApproach SwitchApproach { get; } = new();
         private bool configIsUpdating;
         public bool ConfigIsUpdating
         {
@@ -262,5 +248,29 @@ namespace AutoDarkModeSvc.Core
     public class SystemIdleModuleState
     {
         public bool SystemIsIdle { get; set; } = false;
+    }
+
+    public class SwitchApproach
+    {
+        public bool ThemeSwitchApproaching { get; set; }
+        private List<IAutoDarkModeModule> Dependencies { get; set; } = new();
+        public bool DependenciesPresent { get { return Dependencies.Count > 0; } }
+        public void AddDependency(IAutoDarkModeModule module)
+        {
+            if (!Dependencies.Contains(module))
+            {
+                Dependencies.Add(module);
+            }
+        }
+        public void RemoveDependency(IAutoDarkModeModule module)
+        {
+            Dependencies.Remove(module);
+        }
+
+        public void TriggerDependencyModules()
+        {
+            Dependencies.ForEach(module => module.Fire());
+        }
+
     }
 }

@@ -35,14 +35,12 @@ public class ProcessBlockListModule : AutoDarkModeModule
         if (!ConfigBuilder.Config.ProcessBlockList.Enabled)
         {
             RemovePostpone();
-            Logger.Debug("No processes are excluded, skipping checks");
             return;
         }
 
         // While postponing, continue checking
-        if (!IsPostponing && !State.ThemeSwitchApproaching)
+        if (!IsPostponing && !State.SwitchApproach.ThemeSwitchApproaching)
         {
-            Logger.Debug("It's still a while until a time based switch would happen, skip checking processes");
             return;
         }
 
@@ -91,7 +89,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
 
     public override void EnableHook()
     {
-        State.AddSwitchApproachDependency(GetType().Name);
+        State.SwitchApproach.AddDependency(this);
         base.EnableHook();
     }
 
@@ -99,7 +97,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
     {
         Logger.Info("Removing any leftover process block list postones");
         RemovePostpone();
-        State.RemoveSwitchApproachDependency(GetType().Name);
+        State.SwitchApproach.RemoveDependency(this);
         base.DisableHook();
     }
 
@@ -109,7 +107,6 @@ public class ProcessBlockListModule : AutoDarkModeModule
     /// <returns>True if a new postpone was added</returns>
     private bool Postpone()
     {
-        Logger.Debug("Adding postpone from process exclusion");
         return State.PostponeManager.Add(new PostponeItem(Name));
     }
 
@@ -119,7 +116,6 @@ public class ProcessBlockListModule : AutoDarkModeModule
     /// <returns>True if a postpone was removed </returns>
     private bool RemovePostpone()
     {
-        Logger.Info("Clearing postpone from process exclusion");
         return State.PostponeManager.Remove(Name);
     }
 }
