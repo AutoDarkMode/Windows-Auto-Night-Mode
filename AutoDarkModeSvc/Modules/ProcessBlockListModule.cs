@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules;
@@ -19,7 +19,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private GlobalState State { get; }
-    private bool IsPostponing => State.PostponeManager.Get(ExcludedProcessIsRunningReason)!=null;
+    private bool IsPostponing => State.PostponeManager.Get(Name) != null;
     private AdmConfigBuilder ConfigBuilder { get; }
 
     public ProcessBlockListModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
@@ -28,13 +28,11 @@ public class ProcessBlockListModule : AutoDarkModeModule
         ConfigBuilder = AdmConfigBuilder.Instance();
     }
 
-    private const string ExcludedProcessIsRunningReason = "Blocked process is running";
-
     public override string TimerAffinity { get; } = TimerName.Main;
 
     public override void Fire()
     {
-        if (ConfigBuilder.Config.ProcessBlockList.ProcessNames.Count == 0)
+        if (!ConfigBuilder.Config.ProcessBlockList.Enabled)
         {
             RemovePostpone();
             Logger.Debug("No processes are excluded, skipping checks");
@@ -42,20 +40,23 @@ public class ProcessBlockListModule : AutoDarkModeModule
         }
 
         // While postponing, continue checking
-        if (!IsPostponing && !IsAboutToSwitchThemes(1))
+        if (!IsPostponing && !State.ThemeSwitchApproaching)
         {
             Logger.Debug("It's still a while until a time based switch would happen, skip checking processes");
             return;
         }
 
-        if (TestRunningProcesses())
+        Task.Run(() =>
         {
-            Postpone();
-        }
-        else
-        {
-            RemovePostpone();
-        }
+            if (TestRunningProcesses())
+            {
+                Postpone();
+            }
+            else
+            {
+                RemovePostpone();
+            }
+        });
     }
 
     /// <summary>
@@ -88,35 +89,17 @@ public class ProcessBlockListModule : AutoDarkModeModule
         return ConfigBuilder.Config.ProcessBlockList.ProcessNames.Any(p => activeProcesses.Contains(p));
     }
 
-
-    /// <summary>
-    /// Tests if the current time is before a planned theme switch
-    /// </summary>
-    /// <param name="grace">Minutes before the planned theme switch</param>
-    /// <returns>Returns true if the current time is within grace minutes before a time based theme switch</returns>
-    private bool IsAboutToSwitchThemes(int grace)
+    public override void EnableHook()
     {
-        var sunriseMonitor = ConfigBuilder.Config.Sunrise;
-        var sunsetMonitor = ConfigBuilder.Config.Sunset;
-        var now = DateTime.Now;
-
-        if (ConfigBuilder.Config.Location.Enabled)
-        {
-            LocationHandler.GetSunTimes(ConfigBuilder, out sunriseMonitor, out sunsetMonitor);
-        }
-
-        var isShortlyBeforeSwitchTime =
-            Helper.NowIsBetweenTimes(sunriseMonitor.AddMinutes(-Math.Abs(grace)).TimeOfDay, sunriseMonitor.TimeOfDay) ||
-            Helper.NowIsBetweenTimes(sunsetMonitor.AddMinutes(-Math.Abs(grace)).TimeOfDay, sunsetMonitor.TimeOfDay);
-
-        return isShortlyBeforeSwitchTime;
+        State.AddSwitchApproachDependency(GetType().Name);
+        base.EnableHook();
     }
-
 
     public override void DisableHook()
     {
         Logger.Info("Removing any leftover process block list postones");
         RemovePostpone();
+        State.RemoveSwitchApproachDependency(GetType().Name);
         base.DisableHook();
     }
 
@@ -127,7 +110,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
     private bool Postpone()
     {
         Logger.Debug("Adding postpone from process exclusion");
-        return State.PostponeManager.Add(new PostponeItem(ExcludedProcessIsRunningReason));
+        return State.PostponeManager.Add(new PostponeItem(Name));
     }
 
     /// <summary>
@@ -137,6 +120,6 @@ public class ProcessBlockListModule : AutoDarkModeModule
     private bool RemovePostpone()
     {
         Logger.Info("Clearing postpone from process exclusion");
-        return State.PostponeManager.Remove(ExcludedProcessIsRunningReason);
+        return State.PostponeManager.Remove(Name);
     }
 }
