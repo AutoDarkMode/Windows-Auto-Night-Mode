@@ -183,6 +183,7 @@
                                     Content="{x:Static p:Resources.SwitchModesButtonAddProcess}"
                                     DockPanel.Dock="Right"
                                     HorizontalAlignment="Right"
+                                    MinWidth="80"
                                     Margin="0,5,0,0"
                                     VerticalAlignment="Center" />
 
