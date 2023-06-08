@@ -122,10 +122,10 @@
                 <ui:SimpleStackPanel>
                     <CheckBox Click="CheckBoxProcessBlockList_Click"
                               Content="{x:Static p:Resources.SwitchModesCheckBoxProcessBlockList}"
-                              Margin="0,0,0,0"
+                              Margin="0,0,0,15"
                               Name="CheckBoxBlockList" />
 
-                    <Separator Margin="-30,10,-15,0"
+                    <Separator Margin="-30,0,-15,0"
                                DockPanel.Dock="Top"
                                Name="BlockListOptionsSeparator"
                                Background="{DynamicResource Win11Border}" />

@@ -114,6 +114,8 @@ namespace AutoDarkModeApp.Pages
 
             SimpleStackPanelProcessBlockList.Visibility =
                 builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
+            BlockListOptionsSeparator.Visibility =
+                builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
             CheckBoxBlockList.IsChecked = builder.Config.ProcessBlockList.Enabled;
             ItemsControlProcessBlockList.ItemsSource = builder.Config.ProcessBlockList.ProcessNames;
             DataContext = ViewModel;
