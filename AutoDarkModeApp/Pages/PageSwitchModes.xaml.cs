@@ -588,7 +588,7 @@ namespace AutoDarkModeApp.Pages
                 }
                 catch (Exception ex)
                 {
-                    ShowErrorMessage(ex, "RefreshProcessComboBox");
+                    Dispatcher.Invoke(() => ShowErrorMessage(ex, "RefreshProcessComboBox"));
                 }
             }
             if (!isEmpty)
