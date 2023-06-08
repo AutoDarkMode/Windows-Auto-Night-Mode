@@ -1235,4 +1235,16 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Manual" xml:space="preserve">
     <value>手動</value>
   </data>
+  <data name="SwitchModesButtonAddProcess" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
+    <value>Blocking Processes</value>
+  </data>
+  <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
+    <value>Don't switch while certain processes are running</value>
+  </data>
 </root>
