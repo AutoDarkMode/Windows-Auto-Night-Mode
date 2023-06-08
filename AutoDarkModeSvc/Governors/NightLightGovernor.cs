@@ -75,7 +75,7 @@ namespace AutoDarkModeSvc.Governors
 
             bool reportSwitchWindow = !init;
 
-            if (!Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMinutes(TimerFrequency.Main).TimeOfDay))
+            if (!Helper.NowIsBetweenTimes(adjustedTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMilliseconds(TimerFrequency.Main).TimeOfDay))
             {
                 reportSwitchWindow = false;
             }

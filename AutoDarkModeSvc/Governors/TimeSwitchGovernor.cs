@@ -46,7 +46,7 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            TimeSpan windowStartSpan = ts.NextSwitchTime.AddMinutes(-TimerFrequency.Main).TimeOfDay;
+            TimeSpan windowStartSpan = ts.NextSwitchTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay;
             TimeSpan windowEndSpan = ts.CurrentSwitchTime.TimeOfDay;
 
             bool reportSwitchWindow = !init;
