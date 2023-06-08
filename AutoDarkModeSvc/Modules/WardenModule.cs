@@ -60,7 +60,7 @@ namespace AutoDarkModeSvc.Modules
             AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
             //AutoManageModule(typeof(ThemeUpdateModule), true, config.WindowsThemeMode.Enabled && config.WindowsThemeMode.MonitorActiveTheme);
             AutoManageModule(typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
-            AutoManageModule(typeof(ProcessBlockListModule), true, config.ProcessBlockList.ProcessNames.Count > 0);
+            AutoManageModule(typeof(ProcessBlockListModule), true, config.ProcessBlockList.Enabled);
             AutoManageModule(typeof(UpdaterModule), true, config.Updater.Enabled);
             governorModule.AutoManageGovernors(config.Governor);
         }

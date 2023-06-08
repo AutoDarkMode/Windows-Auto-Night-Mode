@@ -1235,9 +1235,6 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
-  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
-    <value>Wechsle nicht wenn eine der folgenden Anwendungen ausgeführt werden</value>
-  </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
@@ -1246,5 +1243,8 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
     <value>Anwendungen</value>
+  </data>
+  <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
+    <value>Wechsle nicht das Design während manche Anwendungen ausgeführt werden</value>
   </data>
 </root>

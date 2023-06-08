@@ -1235,7 +1235,4 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   <data name="Manual" xml:space="preserve">
     <value>Manuel</value>
   </data>
-  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
-    <value>Don't switch themes if any of these processes are running</value>
-  </data>
 </root>

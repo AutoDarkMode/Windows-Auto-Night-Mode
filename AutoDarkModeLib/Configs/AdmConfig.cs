@@ -215,5 +215,6 @@ namespace AutoDarkModeLib.Configs
     public class ProcessBlockList
     {
         public SortedSet<string> ProcessNames { get; set; } = new();
+        public bool Enabled { get; set; }
     }
 }

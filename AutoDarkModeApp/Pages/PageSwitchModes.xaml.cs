@@ -106,6 +106,9 @@ namespace AutoDarkModeApp.Pages
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
             TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
 
+            SimpleStackPanelProcessBlockList.Visibility =
+                builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
+            CheckBoxBlockList.IsChecked = builder.Config.ProcessBlockList.Enabled;
             ItemsControlProcessBlockList.ItemsSource = builder.Config.ProcessBlockList.ProcessNames;
             ComboBoxProcessBlockList.DropDownOpened += (sender, args) => RefreshProcessComboBox();
             
@@ -499,12 +502,13 @@ namespace AutoDarkModeApp.Pages
         {
             if (ComboBoxProcessBlockList.SelectedItem is not string processName ||
                 builder.Config.ProcessBlockList.ProcessNames.Contains(processName)) return;
-            
+
             builder.Config.ProcessBlockList.ProcessNames.Add(processName);
             try
             {
                 builder.Save();
                 ItemsControlProcessBlockList.Items.Refresh();
+                ComboBoxProcessBlockList.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -546,8 +550,18 @@ namespace AutoDarkModeApp.Pages
                 if (result)
                 {
                     ItemsControlProcessBlockList.Items.Refresh();
+                    builder.Save();
                 }
             }
+        }
+
+        private void CheckBoxProcessBlockList_Click(object sender, RoutedEventArgs e)
+        {
+            builder.Config.ProcessBlockList.Enabled = !builder.Config.ProcessBlockList.Enabled;
+            CheckBoxBlockList.IsChecked = builder.Config.ProcessBlockList.Enabled;
+            SimpleStackPanelProcessBlockList.Visibility =
+                builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
+            builder.Save();
         }
     }
 }

@@ -1963,6 +1963,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t switch while certain processes are running.
+        /// </summary>
+        public static string SwitchModesCheckBoxProcessBlockList {
+            get {
+                return ResourceManager.GetString("SwitchModesCheckBoxProcessBlockList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fast (1 sample).
         /// </summary>
         public static string SwitchModesComboBoxItemSamplesFast {
@@ -2121,15 +2130,6 @@ namespace AutoDarkModeLib.Properties {
         public static string SwitchModesTextBlockMinimumUsage {
             get {
                 return ResourceManager.GetString("SwitchModesTextBlockMinimumUsage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t switch themes if any of these processes are running.
-        /// </summary>
-        public static string SwitchModesTextProcessBlockList {
-            get {
-                return ResourceManager.GetString("SwitchModesTextProcessBlockList", resourceCulture);
             }
         }
         

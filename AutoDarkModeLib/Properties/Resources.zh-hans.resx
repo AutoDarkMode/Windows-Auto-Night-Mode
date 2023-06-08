@@ -1235,7 +1235,4 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   <data name="Manual" xml:space="preserve">
     <value>手动</value>
   </data>
-  <data name="SwitchModesTextProcessBlockList" xml:space="preserve">
-    <value>Don't switch themes if any of these processes are running</value>
-  </data>
 </root>

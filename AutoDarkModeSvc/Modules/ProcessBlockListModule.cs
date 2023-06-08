@@ -42,7 +42,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
         }
 
         // While postponing, continue checking
-        if (IsPostponing && !IsAboutToSwitchThemes(1))
+        if (!IsPostponing && !IsAboutToSwitchThemes(1))
         {
             Logger.Debug("It's still a while until a time based switch would happen, skip checking processes");
             return;
@@ -116,7 +116,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
     public override void DisableHook()
     {
         Logger.Info("Removing any leftover process block list postones");
-        Postpone();
+        RemovePostpone();
         base.DisableHook();
     }
 
