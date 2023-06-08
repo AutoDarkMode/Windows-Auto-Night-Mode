@@ -14,6 +14,10 @@
       Height="Auto"
       Width="Auto">
 
+    <Page.DataContext>
+        <uc:PageSwitchModesViewModel />
+    </Page.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*" />
@@ -113,58 +117,59 @@
                 </ui:SimpleStackPanel>
             </uc:Card>
 
-            <uc:Card Padding="30,15,15,15" Margin="0,2,0,0">
+            <uc:Card Padding="30,15,15,0"
+                     Margin="0,2,0,0">
                 <ui:SimpleStackPanel>
-                    <CheckBox
-                        Click="CheckBoxProcessBlockList_Click"
-                        Content="{x:Static p:Resources.SwitchModesCheckBoxProcessBlockList}"
-                        Margin="0,0,0,0"
-                        Name="CheckBoxBlockList"/>
+                    <CheckBox Click="CheckBoxProcessBlockList_Click"
+                              Content="{x:Static p:Resources.SwitchModesCheckBoxProcessBlockList}"
+                              Margin="0,0,0,0"
+                              Name="CheckBoxBlockList" />
+
+                    <Separator Margin="-30,10,-15,0"
+                               DockPanel.Dock="Top"
+                               Background="{DynamicResource Win11Border}" />
 
                     <ui:SimpleStackPanel Name="SimpleStackPanelProcessBlockList">
                         <DockPanel Margin="0,10,0,0">
-                            <Expander
-                                DockPanel.Dock="Bottom"
-                                FlowDirection="RightToLeft"
-                                Header="{x:Static p:Resources.SwitchModesExpanderHeaderBlockedProcesses}"
-                                HorizontalAlignment="Stretch"
-                                Margin="0,10,0,10">
+                            <Expander DockPanel.Dock="Bottom"
+                                      FlowDirection="RightToLeft"
+                                      Header="{x:Static p:Resources.SwitchModesExpanderHeaderBlockedProcesses}"
+                                      HorizontalAlignment="Stretch"
+                                      Margin="0,15,0,10">
                                 <Expander.HeaderTemplate>
                                     <DataTemplate>
-                                        <!--Unsure why the negative left margin is necessary here, 
+                                        <ui:SimpleStackPanel Cursor="Hand">
+                                            <!--Unsure why the negative left margin is necessary here, 
                                             removing it cuts off the leading character-->
-                                        <TextBlock
-                                            FlowDirection="LeftToRight"
-                                            Margin="-23,0,0,0"
-                                            Text="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=Header}"
-                                            Width="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=ActualWidth}">
-                                        </TextBlock>
+                                            <TextBlock FlowDirection="LeftToRight"
+                                                       Margin="-23,0,0,5"
+                                                       Text="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=Header}"
+                                                       Width="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Path=ActualWidth}">
+                                            </TextBlock>
+                                        </ui:SimpleStackPanel>
                                     </DataTemplate>
                                 </Expander.HeaderTemplate>
 
-                                <ItemsControl
-                                    Margin="0,5,0,0"
-                                    Name="ItemsControlProcessBlockList">
+                                <ItemsControl Margin="0,10,0,0"
+                                              FlowDirection="LeftToRight"
+                                              Name="ItemsControlProcessBlockList">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <ui:SimpleStackPanel>
-                                                <Separator Margin="0,5"
+                                                <Separator Margin="-29,5,-14,5"
                                                            Background="{DynamicResource Win11Border}" />
 
-                                                <DockPanel
-                                                    FlowDirection="LeftToRight"
-                                                    HorizontalAlignment="Stretch"
-                                                    LastChildFill="False"
-                                                    Margin="0,5,0,5"
-                                                    VerticalAlignment="Center">
-                                                    <TextBlock
-                                                        Text="{Binding}"
-                                                        VerticalAlignment="Center" />
-                                                    <Button
-                                                        Click="SwitchModesRemoveProcess_OnClick"
-                                                        Content="{x:Static p:Resources.SwitchModesButtonRemoveProcess}"
-                                                        DockPanel.Dock="Right"
-                                                        Tag="{Binding}" />
+                                                <DockPanel FlowDirection="LeftToRight"
+                                                           HorizontalAlignment="Stretch"
+                                                           LastChildFill="False"
+                                                           Margin="3,5,0,5"
+                                                           VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding}"
+                                                               VerticalAlignment="Center" />
+                                                    <Button Click="SwitchModesRemoveProcess_OnClick"
+                                                            Content="{x:Static p:Resources.SwitchModesButtonRemoveProcess}"
+                                                            DockPanel.Dock="Right"
+                                                            Tag="{Binding}" />
                                                 </DockPanel>
                                             </ui:SimpleStackPanel>
 
@@ -173,21 +178,22 @@
                                 </ItemsControl>
                             </Expander>
 
-                            <Button
-                                Click="SwitchModesAddSelectedProcess_OnClick"
-                                Content="{x:Static p:Resources.SwitchModesButtonAddProcess}"
-                                DockPanel.Dock="Right"
-                                HorizontalAlignment="Right"
-                                Margin="0,5,0,0" 
-                                VerticalAlignment="Center"/>
+                            <Button Click="SwitchModesAddSelectedProcess_OnClick"
+                                    Content="{x:Static p:Resources.SwitchModesButtonAddProcess}"
+                                    DockPanel.Dock="Right"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,5,0,0"
+                                    VerticalAlignment="Center" />
 
-                            <ComboBox
-                                DockPanel.Dock="Right"
-                                HorizontalAlignment="Stretch"
-                                IsReadOnly="True"
-                                Margin="0,5,10,0"
-                                Name="ComboBoxProcessBlockList"
-                                VerticalAlignment="Center">
+                            <ComboBox DockPanel.Dock="Right"
+                                      HorizontalAlignment="Left"
+                                      IsReadOnly="True"
+                                      Margin="0,5,10,0"
+                                      Width="300"
+                                      ItemsSource="{Binding FilteredProcesses}"
+                                      DropDownOpened="ComboBoxProcessBlockList_DropDownOpened"
+                                      Name="ComboBoxProcessBlockList"
+                                      VerticalAlignment="Center">
                             </ComboBox>
                         </DockPanel>
                     </ui:SimpleStackPanel>
@@ -328,14 +334,13 @@
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="0">
-                    <Grid
-                               Margin="0,0,0,0">
+                    <Grid Margin="0,0,0,0">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <TextBlock FontSize="14"
                                    Grid.Column="0"
                                    Margin="0,0,10,0"
@@ -361,9 +366,8 @@
                 <uc:Card Padding="30,15,15,15"
                          Margin="0,2,0,0"
                          Grid.Row="1">
-                    <Grid
-                               Margin="0,0,0,0">
-                       
+                    <Grid Margin="0,0,0,0">
+
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />

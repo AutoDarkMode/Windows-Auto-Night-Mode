@@ -14,10 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using AutoDarkModeApp.Controls;
 using AutoDarkModeLib;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,6 +38,7 @@ namespace AutoDarkModeApp.Pages
     {
         private readonly bool init = true;
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+        private PageSwitchModesViewModel ViewModel = new();
 
         public PageSwitchModes()
         {
@@ -110,9 +116,9 @@ namespace AutoDarkModeApp.Pages
                 builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
             CheckBoxBlockList.IsChecked = builder.Config.ProcessBlockList.Enabled;
             ItemsControlProcessBlockList.ItemsSource = builder.Config.ProcessBlockList.ProcessNames;
-            ComboBoxProcessBlockList.DropDownOpened += (sender, args) => RefreshProcessComboBox();
-            
+            DataContext = ViewModel;
             init = false;
+
         }
 
         private void CheckBoxBatteryDarkMode_Click(object sender, RoutedEventArgs e)
@@ -516,35 +522,9 @@ namespace AutoDarkModeApp.Pages
             }
         }
 
-        private void RefreshProcessComboBox()
-        {
-            var processes = Process.GetProcesses();
-            var filteredProcesses = new SortedSet<string>();
-            foreach (var process in processes)
-            {
-                // MainWindowHandle can throw exceptions, hence the try catch
-                try
-                {
-                    // A process without a main window handle probably isn't interactive and thus irrelevant to theme changes
-                    if (process.MainWindowHandle == -0) continue;
-                    // No point in showing a process' name in the dropdown if it's already being excluded out
-                    if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
-                    {
-                        filteredProcesses.Add(process.ProcessName);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex, "RefreshProcessComboBox");
-                }
-            }
-
-            ComboBoxProcessBlockList.ItemsSource = filteredProcesses;
-        }
-
         private void SwitchModesRemoveProcess_OnClick(object sender, RoutedEventArgs e)
         {
-            if (sender is Button {Tag: string entry})
+            if (sender is Button { Tag: string entry })
             {
                 var result = builder.Config.ProcessBlockList.ProcessNames.Remove(entry);
                 if (result)
@@ -562,6 +542,75 @@ namespace AutoDarkModeApp.Pages
             SimpleStackPanelProcessBlockList.Visibility =
                 builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
             builder.Save();
+        }
+
+        private void ComboBoxProcessBlockList_DropDownOpened(object sender, EventArgs e)
+        {
+            SortedSet<string> filteredProcesses = new();
+            var processes = Process.GetProcesses();
+            {
+                Task.Run(() =>
+                {
+                    if (ViewModel.FilteredProcesses.Count > 0)
+                    {
+                        SortedSet<string> filteredProcesses = new();
+                        var processes = Process.GetProcesses();
+                        foreach (var process in processes)
+                        {
+                            try
+                            {
+                                if (process.MainWindowHandle == -0) continue;
+                                // No point in showing a process' name in the dropdown if it's already being excluded out
+                                if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
+                                {
+                                    filteredProcesses.Add(process.ProcessName);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ShowErrorMessage(ex, "RefreshProcessComboBox");
+                            }
+                        }
+
+                        Dispatcher.Invoke(() =>
+                        {
+                            ViewModel.FilteredProcesses.Clear();
+                            foreach (var process in filteredProcesses)
+                            {
+                                ViewModel.FilteredProcesses.Add(process);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        foreach (var process in processes)
+                        {
+                            try
+                            {
+                                if (process.MainWindowHandle == -0) continue;
+                                // No point in showing a process' name in the dropdown if it's already being excluded out
+                                if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
+                                {
+                                    Dispatcher.Invoke(() =>
+                                    {
+                                        if (!ViewModel.FilteredProcesses.Contains(process.ProcessName))
+                                        {
+                                            ViewModel.FilteredProcesses.Add(process.ProcessName);
+                                            var sorted = ViewModel.FilteredProcesses.OrderBy(i => i);
+                                            ViewModel.FilteredProcesses = new(sorted);
+                                        }
+                                    });
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ShowErrorMessage(ex, "RefreshProcessComboBox");
+                            }
+                        }
+                    }
+
+                });
+            }
         }
     }
 }
