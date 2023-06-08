@@ -22,6 +22,7 @@ using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -30,6 +31,8 @@ namespace AutoDarkModeSvc.Modules
         private AdmConfigBuilder ConfigBuilder { get; }
         private GlobalState State { get; }
         private List<ModuleTimer> Timers { get; }
+        private GovernorModule governorModule;
+
         public override string TimerAffinity { get; } = TimerName.Main;
 
 
@@ -44,7 +47,8 @@ namespace AutoDarkModeSvc.Modules
             State = GlobalState.Instance();
             State.SetWarden(this);
             Timers = timers;
-            Priority = 1;
+            Priority = 0;
+            RegisterGovernor();
         }
 
         /// <summary>
@@ -54,12 +58,10 @@ namespace AutoDarkModeSvc.Modules
         {
             AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
-            AutoManageModule(typeof(GeopositionUpdateModule), true, config.Location.Enabled);
-            AutoManageModule(typeof(TimeSwitchModule), true, config.AutoThemeSwitchingEnabled && config.Governor == Governor.Default);
-            AutoManageModule(typeof(NightLightTrackerModule), false, config.AutoThemeSwitchingEnabled && config.Governor == Governor.NightLight);
             //AutoManageModule(typeof(ThemeUpdateModule), true, config.WindowsThemeMode.Enabled && config.WindowsThemeMode.MonitorActiveTheme);
             AutoManageModule(typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(UpdaterModule), true, config.Updater.Enabled);
+            governorModule.AutoManageGovernors(config.Governor);
         }
 
         /// <summary>
@@ -89,6 +91,13 @@ namespace AutoDarkModeSvc.Modules
                     Timers.ForEach(t => t.DeregisterModule(moduleType.Name));
                 }
             }
+        }
+
+        private void RegisterGovernor()
+        {
+            governorModule = new GovernorModule(typeof(GovernorModule).Name, true);
+            var timer = Timers.Find(t => t.Name == governorModule.TimerAffinity);
+            timer?.RegisterModule(governorModule);
         }
     }
 }

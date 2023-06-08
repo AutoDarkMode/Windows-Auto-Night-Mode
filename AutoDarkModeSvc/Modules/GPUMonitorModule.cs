@@ -36,95 +36,47 @@ namespace AutoDarkModeSvc.Modules
         private static readonly string ThreshHigh = "threshold_high";
         //private static readonly string Frozen = "frozen";
 
-        public override string TimerAffinity { get; } = TimerName.Main;
+        public override string TimerAffinity { get; } = TimerName.Short;
         private GlobalState State { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
         private int Counter { get; set; }
-        private bool PostponeLight { get; set; }
-        private bool PostponeDark { get; set; }
         private bool Alerted { get; set; }
+        private bool AllowMonitoring { get; set; } = true;
+        private bool MonitoringActive { get; set; }
 
         public GPUMonitorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             State = GlobalState.Instance();
             ConfigBuilder = AdmConfigBuilder.Instance();
-            PostponeDark = false;
-            PostponeLight = false;
+            Priority = 2;
         }
 
         public override void Fire()
         {
             Task.Run(async () =>
             {
-                DateTime sunriseMonitor = ConfigBuilder.Config.Sunrise;
-                DateTime sunsetMonitor = ConfigBuilder.Config.Sunset;
-                if (ConfigBuilder.Config.Location.Enabled)
+                // prevents the module from activating again if it has completed its operations during the approach window
+                if (!State.ThemeSwitchApproaching && !MonitoringActive)
                 {
-                    LocationHandler.GetSunTimes(ConfigBuilder, out sunriseMonitor, out sunsetMonitor);
+                    AllowMonitoring = true;
                 }
-
-                //the time between sunrise and sunset, aka "day"
-                if (Helper.NowIsBetweenTimes(sunriseMonitor.TimeOfDay, sunsetMonitor.TimeOfDay))
+                // if a theme switch is approaching and the module is not monitoring yet, we need to enable the module
+                if (State.ThemeSwitchApproaching && !MonitoringActive && AllowMonitoring)
                 {
-                    if (SuntimeIsWithinSpan(sunsetMonitor))
-                    {
-                        if (!PostponeDark)
-                        {
-                            Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
-                            State.PostponeManager.Add(new(Name, isUserClearable: true));
-                            PostponeDark = true;
-                        }
-                    }
-                    // if it's already light, check if the theme switch from dark to light should be delayed
-                    else if (PostponeLight && DateTime.Now >= sunriseMonitor)
-                    {
-                        var result = await CheckForPostpone();
-                        if (result != ThreshHigh)
-                        {
-                            PostponeLight = false;
-                        }
-                    }
-                    else
-                    {
-                        if (PostponeDark || PostponeLight)
-                        {
-                            Logger.Info($"ending GPU usage monitoring");
-                            PostponeDark = false;
-                            PostponeLight = false;
-                            State.PostponeManager.Remove(Name);
-                        }
-                    }
+                    Logger.Info($"starting GPU usage monitoring, theme switch pending");
+                    State.PostponeManager.Add(new(Name, isUserClearable: true));
+                    // monitoring can only be used again once the reset condition has been met
+                    AllowMonitoring = false;
+                    MonitoringActive = true;
                 }
-                // the time between sunset and sunrise, aka "night"
-                else
+                // perform monitor operations
+                if (MonitoringActive)
                 {
-                    if (SuntimeIsWithinSpan(sunriseMonitor))
+                    var result = await CheckForPostpone();
+                    if (result != ThreshHigh)
                     {
-                        if (!PostponeLight)
-                        {
-                            Logger.Info($"starting GPU usage monitoring, theme switch pending within {Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)} minute(s)");
-                            State.PostponeManager.Add(new(Name, isUserClearable: false));
-                            PostponeLight = true;
-                        }
-                    }
-                    // if it's already dark, check if the theme switch from light to dark should be delayed
-                    else if (PostponeDark && DateTime.Now >= sunsetMonitor)
-                    {
-                        var result = await CheckForPostpone();
-                        if (result != ThreshHigh)
-                        {
-                            PostponeDark = false;
-                        }
-                    }
-                    else
-                    {
-                        if (PostponeDark || PostponeLight)
-                        {
-                            Logger.Info($"ending GPU usage monitoring");
-                            PostponeDark = false;
-                            PostponeLight = false;
-                            State.PostponeManager.Remove(Name);
-                        }
+                        MonitoringActive = false;
+                        State.PostponeManager.Remove(Name);
                     }
                 }
             });
@@ -152,6 +104,7 @@ namespace AutoDarkModeSvc.Modules
                     Logger.Info($"ending GPU usage monitoring, re-enabling theme switch, threshold: {gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%");
                     State.PostponeManager.Remove(Name);
                     Alerted = false;
+                    Counter = 0;
                     return ThreshLow;
                 }
                 Logger.Debug($"lower threshold sample {Counter} ({gpuUsage}% / {ConfigBuilder.Config.GPUMonitoring.Threshold}%)");
@@ -220,18 +173,6 @@ namespace AutoDarkModeSvc.Modules
             });
             counters.Clear();
             return (int)counterAccu;
-        }
-
-        /// <summary>
-        /// checks whether a time is within a grace period (within x minutes before a DateTime)
-        /// </summary>
-        /// <param name="time">time to be checked</param>
-        /// <returns>true if it's within the span; false otherwise</returns>
-        private bool SuntimeIsWithinSpan(DateTime time)
-        {
-            return Helper.NowIsBetweenTimes(
-                time.AddMinutes(-Math.Abs(ConfigBuilder.Config.GPUMonitoring.MonitorTimeSpanMin)).TimeOfDay,
-                time.TimeOfDay);
         }
 
         public override void DisableHook()

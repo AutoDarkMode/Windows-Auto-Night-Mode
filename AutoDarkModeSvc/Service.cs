@@ -93,6 +93,7 @@ namespace AutoDarkModeSvc
             state.PostponeManager.GetPostonesFromDisk();
 
             ModuleTimer MainTimer = new(timerMillis, TimerName.Main);
+            ModuleTimer ShortTimer = new(TimerFrequency.Short, TimerName.Short);
             ModuleTimer IOTimer = new(TimerFrequency.IO, TimerName.IO);
             ModuleTimer GeoposTimer = new(TimerFrequency.Location, TimerName.Geopos);
             ModuleTimer StateUpdateTimer = new(TimerFrequency.StateUpdate, TimerName.StateUpdate);
@@ -100,6 +101,7 @@ namespace AutoDarkModeSvc
             Timers = new List<ModuleTimer>()
             {
                 MainTimer,
+                ShortTimer,
                 IOTimer,
                 GeoposTimer,
                 StateUpdateTimer

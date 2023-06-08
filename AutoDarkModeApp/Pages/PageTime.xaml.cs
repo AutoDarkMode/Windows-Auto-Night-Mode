@@ -931,7 +931,7 @@ namespace AutoDarkModeApp.Pages
             {
                 MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {selectedPostponeMinutes}");
             }
-            else if (selectedPostponeMinutes == 0)
+            else if (selectedPostponeMinutes == 0 && !isDelayed)
             {
                 MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
                 if (isDelayed) MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);

@@ -1,49 +1,42 @@
-﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#endregion
-using AutoDarkModeLib;
+﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Interfaces;
+using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Management;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
-namespace AutoDarkModeSvc.Modules
+namespace AutoDarkModeSvc.Governors
 {
-    internal class NightLightTrackerModule : AutoDarkModeModule
+    public class NightLightGovernor : IAutoDarkModeGovernor
     {
-        public override string TimerAffinity => TimerName.Main;
+        public Governor Type => Governor.NightLight;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private DateTime lastNightLightQueryTime = DateTime.Now;
         private Theme nightLightState = Theme.Unknown;
-        private static ManagementEventWatcher nightLightKeyWatcher;
+        private ManagementEventWatcher nightLightKeyWatcher;
         private GlobalState state = GlobalState.Instance();
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool queuePostponeRemove = false;
+        private IAutoDarkModeModule Master { get; }
 
-        public NightLightTrackerModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
+        public NightLightGovernor(IAutoDarkModeModule master)
+        {
+            Master = master;
+        }
 
 
-        public override void Fire()
+        public GovernorEventArgs Run()
         {
             DateTime adjustedTime;
 
@@ -72,29 +65,35 @@ namespace AutoDarkModeSvc.Modules
             // if auto switch notify is enabled and we are approaching the switch window, we need to show a notification
             if (builder.Config.AutoSwitchNotify.Enabled && !init && state.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
-                if (!state.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-1).TimeOfDay, adjustedTime.AddMinutes(1).TimeOfDay)
+                if (!state.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(adjustedTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMilliseconds(TimerFrequency.Main).TimeOfDay)
                     && state.NightLight.Requested != state.InternalTheme)
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
+                    return new(true);
                 }
+            }
+
+            bool reportSwitchWindow = !init;
+
+            if (!Helper.NowIsBetweenTimes(adjustedTime.AddMinutes(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMinutes(TimerFrequency.Main).TimeOfDay))
+            {
+                reportSwitchWindow = false;
             }
 
             // when the adjusted switch time is in the past and no postpones are queued, the theme should be updated
             if (!state.PostponeManager.IsPostponed || init)
             {
                 if (init) init = false;
-
-                Task.Run(() =>
-                {
-                    ThemeManager.RequestSwitch(new(SwitchSource.NightLightTrackerModule, state.NightLight.Requested, adjustedTime));
-                });
+                return new(reportSwitchWindow, new(SwitchSource.NightLightTrackerModule, state.NightLight.Requested, adjustedTime));
             }
-            return;
+            else
+            {
+                return new(reportSwitchWindow);
+            }
         }
 
-        public override void DisableHook()
+        public void DisableHook()
         {
-            base.DisableHook();
             try
             {
                 nightLightKeyWatcher.Stop();
@@ -144,13 +143,13 @@ namespace AutoDarkModeSvc.Modules
                 {
                     queuePostponeRemove = false;
                 }
-                Fire();
+                Master.Fire();
             }
         }
 
-        public override void EnableHook()
+        public void EnableHook()
         {
-            base.EnableHook();
+            Logger.Info("night light governor selected");
             try
             {
                 nightLightKeyWatcher = WMIHandler.CreateHKCURegistryValueMonitor(UpdateNightLightState, "Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\CloudStore\\\\Store\\\\DefaultAccount\\\\Current\\\\default$windows.data.bluelightreduction.bluelightreductionstate\\\\windows.data.bluelightreduction.bluelightreductionstate", "Data");

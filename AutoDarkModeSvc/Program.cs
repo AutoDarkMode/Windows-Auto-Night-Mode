@@ -238,8 +238,15 @@ namespace AutoDarkModeSvc
                         ToastHandler.HandleToastAction(toastArgs);
                     };
                 });
-
-                timerMillis = (timerMillis == 0) ? TimerFrequency.Short : timerMillis;
+                
+                if (timerMillis != 0)
+                {
+                    TimerFrequency.Main = timerMillis;
+                }
+                else
+                {
+                    timerMillis = TimerFrequency.Main;
+                }
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

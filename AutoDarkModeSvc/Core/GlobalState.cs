@@ -78,6 +78,33 @@ namespace AutoDarkModeSvc.Core
         public bool InitSyncSwitchPerformed { get; set; } = false;
         private NotifyIcon NotifyIcon { get; set; }
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
+        public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
+        public bool ThemeSwitchApproaching { get; set; }
+
+        private bool configIsUpdating;
+        public bool ConfigIsUpdating
+        {
+            get { return configIsUpdating; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { configIsUpdating = value; }
+        }
+
+        private bool geolocatorIsUpdating;
+        public bool GeolocatorIsUpdating
+        {
+            get { return geolocatorIsUpdating; }
+
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
+            set { geolocatorIsUpdating = value; }
+        }
+
+        /// <summary>
+        /// Setting this value to true will skip the next config reload event when it has been saved
+        /// The setting will return to false after the first save
+        /// </summary>
+        public bool SkipConfigFileReload { get; set; }
+        public string CurrentWallpaperPath { get; set; }
 
         /// <summary>
         /// This method is responsible for updating the internal UnmanagedActiveThemePath variable. <br/>
@@ -161,34 +188,6 @@ namespace AutoDarkModeSvc.Core
                 ManagedThemeFile.SyncWithActiveTheme(false);
             }
         }
-
-        public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
-
-        private bool configIsUpdating;
-        public bool ConfigIsUpdating
-        {
-            get { return configIsUpdating; }
-
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
-            set { configIsUpdating = value; }
-        }
-
-        private bool geolocatorIsUpdating;
-        public bool GeolocatorIsUpdating
-        {
-            get { return geolocatorIsUpdating; }
-
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
-            set { geolocatorIsUpdating = value; }
-        }
-
-
-        /// <summary>
-        /// Setting this value to true will skip the next config reload event when it has been saved
-        /// The setting will return to false after the first save
-        /// </summary>
-        public bool SkipConfigFileReload { get; set; }
-        public string CurrentWallpaperPath { get; set; }
 
         public void SetWarden(WardenModule warden)
         {
