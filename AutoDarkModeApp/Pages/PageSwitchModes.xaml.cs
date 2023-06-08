@@ -550,69 +550,56 @@ namespace AutoDarkModeApp.Pages
 
         private void ComboBoxProcessBlockList_DropDownOpened(object sender, EventArgs e)
         {
-            SortedSet<string> filteredProcesses = new();
             var processes = Process.GetProcesses();
+            Task.Run(() => BuildProcessList(processes));
+        }
+
+        private void BuildProcessList(Process[] processes)
+        {
+            bool isEmpty = ViewModel.FilteredProcesses.Count == 0;
+            SortedSet<string> filteredProcesses = new();
+            foreach (var process in processes)
             {
-                Task.Run(() =>
+                try
                 {
-                    if (ViewModel.FilteredProcesses.Count > 0)
-                    {
-                        SortedSet<string> filteredProcesses = new();
-                        var processes = Process.GetProcesses();
-                        foreach (var process in processes)
-                        {
-                            try
-                            {
-                                if (process.MainWindowHandle == -0) continue;
-                                // No point in showing a process' name in the dropdown if it's already being excluded out
-                                if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
-                                {
-                                    filteredProcesses.Add(process.ProcessName);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                ShowErrorMessage(ex, "RefreshProcessComboBox");
-                            }
-                        }
+                    if (process.MainWindowHandle == -0) continue;
 
-                        Dispatcher.Invoke(() =>
-                        {
-                            ViewModel.FilteredProcesses.Clear();
-                            foreach (var process in filteredProcesses)
-                            {
-                                ViewModel.FilteredProcesses.Add(process);
-                            }
-                        });
-                    }
-                    else
+                    // No point in showing a process' name in the dropdown if it's already being excluded out
+                    if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
                     {
-                        foreach (var process in processes)
+                        if (isEmpty)
                         {
-                            try
+                            Dispatcher.Invoke(() =>
                             {
-                                if (process.MainWindowHandle == -0) continue;
-                                // No point in showing a process' name in the dropdown if it's already being excluded out
-                                if (!builder.Config.ProcessBlockList.ProcessNames.Contains(process.ProcessName))
+                                if (!ViewModel.FilteredProcesses.Contains(process.ProcessName))
                                 {
-                                    Dispatcher.Invoke(() =>
-                                    {
-                                        if (!ViewModel.FilteredProcesses.Contains(process.ProcessName))
-                                        {
-                                            ViewModel.FilteredProcesses.Add(process.ProcessName);
-                                            var sorted = ViewModel.FilteredProcesses.OrderBy(i => i);
-                                            ViewModel.FilteredProcesses = new(sorted);
-                                        }
-                                    });
+                                    ViewModel.FilteredProcesses.Add(process.ProcessName);
+                                    var sorted = ViewModel.FilteredProcesses.OrderBy(i => i);
+                                    ViewModel.FilteredProcesses = new(sorted);
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-                                ShowErrorMessage(ex, "RefreshProcessComboBox");
-                            }
+                            });
+                        }
+                        else
+                        {
+                            filteredProcesses.Add(process.ProcessName);
                         }
                     }
 
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex, "RefreshProcessComboBox");
+                }
+            }
+            if (!isEmpty)
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    ViewModel.FilteredProcesses.Clear();
+                    foreach (var process in filteredProcesses)
+                    {
+                        ViewModel.FilteredProcesses.Add(process);
+                    }
                 });
             }
         }
