@@ -43,6 +43,7 @@ namespace AutoDarkModeSvc.Modules
             {
                 Logger.Error(ex, "could not load last update time:");
             }
+            Priority = 0;
         }
         public override string TimerAffinity => TimerName.IO;
 

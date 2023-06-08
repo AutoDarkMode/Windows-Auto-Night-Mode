@@ -22,8 +22,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.UserDataAccounts.SystemAccess;
 using Windows.UI;
 using Windows.UI.Composition;
+using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -360,32 +363,44 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected Theme GetIndividualWallpapersState()
         {
-            List<Tuple<string, string>> wallpapers = WallpaperHandler.GetWallpapers();
+            // We no longer use this because it returns disconnected displays
+            // List<Tuple<string, string>> wallpapers = WallpaperHandler.GetWallpapers();
+            var monitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
             List<Theme> wallpaperStates = new();
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             // collect the wallpaper states of all wallpapers in the system
-            foreach (Tuple<string, string> wallpaperInfo in wallpapers)
+            foreach (var monitor in monitors)
             {
-                MonitorSettings settings = Settings.Component.Monitors.Find(m => m.Id == wallpaperInfo.Item1);
-                if (settings != null)
+                string monitorId = monitor.DeviceId;
+                if (monitorId == null)
                 {
-                    if (wallpaperInfo.Item2.ToLower().Equals(settings.DarkThemeWallpaper.ToLower()))
+                    wallpaperStates.Add(Theme.Unknown);
+                }
+                else
+                {
+                    string wallpaper = handler.GetWallpaper(monitorId);
+                    MonitorSettings settings = Settings.Component.Monitors.Find(m => m.Id == monitorId);
+                    if (settings != null)
                     {
-                        wallpaperStates.Add(Theme.Dark);
-                    }
-                    else if (wallpaperInfo.Item2.ToLower().Equals(settings.LightThemeWallpaper.ToLower()))
-                    {
-                        wallpaperStates.Add(Theme.Light);
+                        if (wallpaper.ToLower().Equals(settings.DarkThemeWallpaper.ToLower()))
+                        {
+                            wallpaperStates.Add(Theme.Dark);
+                        }
+                        else if (wallpaper.ToLower().Equals(settings.LightThemeWallpaper.ToLower()))
+                        {
+                            wallpaperStates.Add(Theme.Light);
+                        }
+                        else
+                        {
+                            wallpaperStates.Add(Theme.Unknown);
+                            break;
+                        }
                     }
                     else
                     {
                         wallpaperStates.Add(Theme.Unknown);
                         break;
                     }
-                }
-                else
-                {
-                    wallpaperStates.Add(Theme.Unknown);
-                    break;
                 }
             }
             // if one single wallpaper does not match a theme, then we don't know the state and it needs to be updated

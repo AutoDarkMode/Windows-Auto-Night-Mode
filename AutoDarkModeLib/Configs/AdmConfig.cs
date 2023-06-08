@@ -190,22 +190,6 @@ namespace AutoDarkModeLib.Configs
     {
         public bool Enabled { get; set; }
         public int Threshold { get; set; } = 30;
-        private int monitorTimeSpanMin;
-        public int MonitorTimeSpanMin
-        {
-            get { return monitorTimeSpanMin; }
-            set
-            {
-                if (value <= 1)
-                {
-                    monitorTimeSpanMin = 1;
-                }
-                else
-                {
-                    monitorTimeSpanMin = value;
-                }
-            }
-        }
         private int samples = 1;
         public int Samples
         {

@@ -441,6 +441,7 @@ namespace AutoDarkModeSvc.Core
                     builder.PostponeData.InternalThemeAtExit = state.InternalTheme;
                     PostponeQueueDto dto = state.PostponeManager.MakeQueueDto();
                     dto.Items = dto.Items.Where(i => i.IsUserClearable).ToList();
+                    dto.Items = dto.Items.Where(i => i.Reason == Helper.PostponeItemDelayAutoSwitch || i.Reason == Helper.PostponeItemPauseAutoSwitch).ToList();
                     builder.PostponeData.Queue = dto;
                     Logger.Info($"postpone items preserved for next start: [{string.Join(", ", builder.PostponeData.Queue.Items.Select(i => i.Reason))}]");
                     builder.SavePostponeData();

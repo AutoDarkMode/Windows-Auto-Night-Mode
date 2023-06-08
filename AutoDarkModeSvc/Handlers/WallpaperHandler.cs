@@ -47,7 +47,6 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 //Thread.Sleep(500);
                 handler.Enable(false);
-
             }
             else if (newTheme == Theme.Light)
             {
@@ -103,39 +102,40 @@ namespace AutoDarkModeSvc.Handlers
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             handler.SetPosition(position);
-            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
+            var monitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
+
+            foreach (var monitor in monitors)
             {
-                string monitorId = handler.GetMonitorDevicePathAt(i);
-                MonitorSettings monitorSetting = monitorSettings.Find(s => s.Id == monitorId);
+                MonitorSettings monitorSetting = monitorSettings.Find(s => s.Id == monitor.DeviceId);
                 if (monitorSetting != null)
                 {
                     if (newTheme == Theme.Dark)
                     {
                         if (!File.Exists(monitorSetting.DarkThemeWallpaper))
                         {
-                            Logger.Warn($"target {Enum.GetName(typeof(Theme), newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitorId}");
+                            Logger.Warn($"target {Enum.GetName(typeof(Theme), newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
                         }
                         else
                         {
-                            handler.SetWallpaper(monitorId, monitorSetting.DarkThemeWallpaper);
+                            handler.SetWallpaper(monitor.DeviceId, monitorSetting.DarkThemeWallpaper);
                         }
                     }
                     else
                     {
                         if (!File.Exists(monitorSetting.LightThemeWallpaper))
                         {
-                            Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitorId}");
+                            Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitor.DeviceId}");
                         }
-                        handler.SetWallpaper(monitorId, monitorSetting.LightThemeWallpaper);
+                        handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
                     }
                 }
-                else if (monitorId == "")
+                else if (monitor.DeviceId == "")
                 {
                     Logger.Warn("invalid monitor id, skipping device. This most likely needs a windows restart to be fixed.");
                 }
                 else
                 {
-                    Logger.Warn($"no wallpaper config found for monitor {monitorId}, adding missing monitors");
+                    Logger.Warn($"no wallpaper config found for monitor {monitor.DeviceId}, adding missing monitors");
                     DisplayHandler.DetectMonitors();
                 }
             }
