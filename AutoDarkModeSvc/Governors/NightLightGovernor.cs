@@ -73,9 +73,11 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            bool reportSwitchWindow = !init;
+            bool reportSwitchWindow = state.SwitchApproachDependenciesPresent && !init;
 
-            if (!Helper.NowIsBetweenTimes(adjustedTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMilliseconds(TimerFrequency.Main).TimeOfDay))
+            // if reporting is enabled and we are not in the switch window, we need to set the report variable back to false
+            if (reportSwitchWindow && 
+                !Helper.NowIsBetweenTimes(adjustedTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMilliseconds(TimerFrequency.Main).TimeOfDay))
             {
                 reportSwitchWindow = false;
             }

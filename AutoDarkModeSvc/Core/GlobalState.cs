@@ -80,6 +80,19 @@ namespace AutoDarkModeSvc.Core
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
         public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
         public bool ThemeSwitchApproaching { get; set; }
+        private List<string> SwitchApproachDependencies { get; set; } = new();
+        public bool SwitchApproachDependenciesPresent { get { return SwitchApproachDependencies.Count > 0; } }
+        public void AddSwitchApproachDependency(string typeName)
+        {
+            if (!SwitchApproachDependencies.Contains(typeName))
+            {
+                SwitchApproachDependencies.Add(typeName);
+            }
+        }
+        public void RemoveSwitchApproachDependency(string typeName)
+        {
+            SwitchApproachDependencies.Remove(typeName);
+        }
 
         private bool configIsUpdating;
         public bool ConfigIsUpdating

@@ -36,7 +36,7 @@ namespace AutoDarkModeSvc.Modules
         private static readonly string ThreshHigh = "threshold_high";
         //private static readonly string Frozen = "frozen";
 
-        public override string TimerAffinity { get; } = TimerName.Short;
+        public override string TimerAffinity { get; } = TimerName.Main;
         private GlobalState State { get; }
         private AdmConfigBuilder ConfigBuilder { get; }
         private int Counter { get; set; }
@@ -48,29 +48,28 @@ namespace AutoDarkModeSvc.Modules
         {
             State = GlobalState.Instance();
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Priority = 2;
         }
 
         public override void Fire()
         {
-            Task.Run(async () =>
+            // prevents the module from activating again if it has completed its operations during the approach window
+            if (!State.ThemeSwitchApproaching && !MonitoringActive)
             {
-                // prevents the module from activating again if it has completed its operations during the approach window
-                if (!State.ThemeSwitchApproaching && !MonitoringActive)
-                {
-                    AllowMonitoring = true;
-                }
-                // if a theme switch is approaching and the module is not monitoring yet, we need to enable the module
-                if (State.ThemeSwitchApproaching && !MonitoringActive && AllowMonitoring)
-                {
-                    Logger.Info($"starting GPU usage monitoring, theme switch pending");
-                    State.PostponeManager.Add(new(Name, isUserClearable: true));
-                    // monitoring can only be used again once the reset condition has been met
-                    AllowMonitoring = false;
-                    MonitoringActive = true;
-                }
-                // perform monitor operations
-                if (MonitoringActive)
+                AllowMonitoring = true;
+            }
+            // if a theme switch is approaching and the module is not monitoring yet, we need to enable the module
+            if (State.ThemeSwitchApproaching && !MonitoringActive && AllowMonitoring)
+            {
+                Logger.Info($"starting GPU usage monitoring, theme switch pending");
+                State.PostponeManager.Add(new(Name, isUserClearable: true));
+                // monitoring can only be used again once the reset condition has been met
+                AllowMonitoring = false;
+                MonitoringActive = true;
+            }
+            // perform monitor operations
+            if (MonitoringActive)
+            {
+                Task.Run(async () =>
                 {
                     var result = await CheckForPostpone();
                     if (result != ThreshHigh)
@@ -78,8 +77,8 @@ namespace AutoDarkModeSvc.Modules
                         MonitoringActive = false;
                         State.PostponeManager.Remove(Name);
                     }
-                }
-            });
+                });               
+            }
         }
 
         private async Task<string> CheckForPostpone()
@@ -175,10 +174,16 @@ namespace AutoDarkModeSvc.Modules
             return (int)counterAccu;
         }
 
+        public override void EnableHook()
+        {
+            State.AddSwitchApproachDependency(GetType().Name);
+        }
+
         public override void DisableHook()
         {
             Logger.Debug($"cleanup performed for module {Name}");
             State.PostponeManager.Remove(Name);
+            State.RemoveSwitchApproachDependency(GetType().Name);
         }
     }
 }

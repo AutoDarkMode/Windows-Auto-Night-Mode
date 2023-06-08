@@ -30,10 +30,7 @@ namespace AutoDarkModeSvc.Modules
         private GlobalState State { get; } = GlobalState.Instance();
         private AdmConfigBuilder builder { get; } = AdmConfigBuilder.Instance();
 
-        public SystemIdleCheckModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) 
-        { 
-            Priority = 2; 
-        }
+        public SystemIdleCheckModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
         public override void Fire()
         {

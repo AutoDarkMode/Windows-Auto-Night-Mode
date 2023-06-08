@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
 namespace AutoDarkModeSvc.Governors
 {
@@ -46,14 +47,18 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            TimeSpan windowStartSpan = ts.NextSwitchTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay;
-            TimeSpan windowEndSpan = ts.CurrentSwitchTime.TimeOfDay;
+            bool reportSwitchWindow = State.SwitchApproachDependenciesPresent && !init; 
 
-            bool reportSwitchWindow = !init;
-
-            if (!Helper.NowIsBetweenTimes(windowStartSpan, windowEndSpan))
+            // only do calculation when necessary
+            if (reportSwitchWindow)
             {
-                reportSwitchWindow = false;
+                TimeSpan windowStartSpan = ts.NextSwitchTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay;
+                TimeSpan windowEndSpan = ts.CurrentSwitchTime.TimeOfDay;
+                // if reporting is enabled and we are not in the switch window, we need to set the report variable back to false
+                if (!Helper.NowIsBetweenTimes(windowStartSpan, windowEndSpan))
+                {
+                    reportSwitchWindow = false;
+                }
             }
 
             if (!State.PostponeManager.IsPostponed)

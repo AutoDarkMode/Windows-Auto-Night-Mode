@@ -47,7 +47,7 @@ namespace AutoDarkModeSvc.Modules
             State = GlobalState.Instance();
             State.SetWarden(this);
             Timers = timers;
-            Priority = 0;
+            Priority = 2;
             RegisterGovernor();
         }
 

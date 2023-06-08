@@ -36,7 +36,6 @@ namespace AutoDarkModeSvc.Modules
         public GeopositionUpdateModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             ConfigBuilder = AdmConfigBuilder.Instance();
-            Priority = 3;
         }
 
         public override void Fire()
