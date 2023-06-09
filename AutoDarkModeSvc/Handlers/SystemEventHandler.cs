@@ -294,6 +294,7 @@ namespace AutoDarkModeSvc.Handlers
             {
                 Logger.Info($"system time changed from {oldTime}");
                 if (builder.Config.AutoThemeSwitchingEnabled) ThemeManager.RequestSwitch(new(SwitchSource.SystemTimeChanged));
+                state.PostponeManager.SyncExpiryTimesWithSystemClock();
             }
         }
     }

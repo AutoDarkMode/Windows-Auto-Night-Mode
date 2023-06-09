@@ -116,6 +116,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let temp_dir = &update_data_dir.join("tmp");
 
     shutdown_running_instances(&username).map_err(|op| {
+        error!("update process failed, restarting auto dark mode");
         try_relaunch(restart_shell, restart_app, &username, false);
         op
     })?;
@@ -170,7 +171,7 @@ fn shutdown_running_instances(channel: &str) -> Result<(), Box<dyn Error>> {
         if e.is_timeout {
             api_shutdown_confirmed = true;
         } else {
-            warn!("could not cleanly stop service");
+            warn!("could not cleanly stop service: {}", e);
             return Err(e.into());
         }
     }
