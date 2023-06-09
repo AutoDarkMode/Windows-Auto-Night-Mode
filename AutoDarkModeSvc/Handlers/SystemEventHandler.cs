@@ -289,8 +289,8 @@ namespace AutoDarkModeSvc.Handlers
             DateTime nowUtc = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
             TimeSpan delta = nowUtc - lastSystemTimeChange;
             lastSystemTimeChange = nowUtc;
-            // 500 ms timeout
-            if (delta > new TimeSpan(10000 * 500) || delta < new TimeSpan(0))
+            // 1000 ms by default, if time is set to the future always process it
+            if (delta > new TimeSpan(10000 * 1000) || delta < new TimeSpan(0))
             {
                 Logger.Info($"system time changed from {oldTime}");
                 if (builder.Config.AutoThemeSwitchingEnabled) ThemeManager.RequestSwitch(new(SwitchSource.SystemTimeChanged));
