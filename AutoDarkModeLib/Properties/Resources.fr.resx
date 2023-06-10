@@ -1236,15 +1236,15 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
     <value>Manuel</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Ajouter</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Retirer</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Processus bloqués</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Ne pas changer de thème quand certains processus sont en cours</value>
   </data>
 </root>
