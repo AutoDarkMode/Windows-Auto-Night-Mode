@@ -32,6 +32,7 @@ using HttpClientProgress;
 using System.Net.Http.Headers;
 using System.Linq;
 using System.Threading;
+using Windows.Media.Protection.PlayReady;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -47,6 +48,8 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly NumberFormatInfo nfi = new();
+        private static readonly string UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36";
+
         public static bool Updating
         {
             get; [MethodImpl(MethodImplOptions.Synchronized)]
@@ -184,8 +187,9 @@ namespace AutoDarkModeSvc.Handlers
                 NoCache = true,
                 MaxAge = TimeSpan.FromSeconds(1),
                 MaxStale = false,
-                NoStore = true
+                NoStore = true,
             };
+            client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
             Task<string> downloadString = client.GetStringAsync(GetUpdateUrl());
             downloadString.Wait();
             return downloadString.Result;
@@ -414,6 +418,7 @@ namespace AutoDarkModeSvc.Handlers
                 //download zip file file
                 Logger.Info("downloading update data");
                 using HttpClient client = new();
+                client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
                 try
                 {
                     client.GetStringAsync(UpstreamVersion.ChangelogUrl).Wait();
@@ -444,7 +449,8 @@ namespace AutoDarkModeSvc.Handlers
 
                 using (var file = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    Task.Run(async () => await client.DownloadDataAsync(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls), file, progress)).Wait();
+                    Task zipDownloadTask = client.DownloadDataAsync(UpstreamVersion.GetUpdateUrl(baseZipUrl, useCustomUrls), file, progress);
+                    zipDownloadTask.Wait();
                 }
 
                 // calculate hash of downloaded file, abort if hash mismatches
