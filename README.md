@@ -22,19 +22,23 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 
 ## Features
 ![Screenshot showing Apps-Page](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/screenshot4.png)
-- Compatible with Windows 10 and Windows 11.
+- Compatible with Windows 10* and Windows 11.
 - Theme switch based on sunrise and sunset.
 - Desktop wallpaper switch.
-- Windows .Theme switch, to also change Accent Color, Slideshow and Mouse Cursor.
-- Support for accent color on the Taskbar and title bars.
+- Mouse cursor switch.
+- Accent color switch.
 - Office theme switch.
-- Auto Dark Mode can enable the grayscale color filter of Windows.
-- Suitable for gamers: doesn't switch while playing games to avoid stuttering.
-- Run custom scripts.
+- Windows .theme switch file switch.
 - Keyboard shortcuts.
+- Support for turning on/off accent color on the Taskbar and title bars.
+- Auto Dark Mode can enable the grayscale color filter of Windows.
+- Suitable for gamers: Doesn't switch while playing games to avoid stuttering.
+- Run custom scripts.
 - Postpone or delay the next switch as you like.
 - Automatic updates.
 - Lightweight with clean uninstall. No admin rights needed.
+
+<sup>*Windows 10 versions older 21H1 and older are considered legacy and not all features may work</sup>
 
 ## Download
 
