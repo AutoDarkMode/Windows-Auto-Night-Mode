@@ -1236,15 +1236,15 @@
     <value>Χειροκίνητα</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Προσθήκη</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Αφαίρεση</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Δεν θα γίνεται εναλλαγή κατά τη διάρκεια εκτέλεσης των ακόλουθων διαδικασιών</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Να μην γίνεται εναλλαγή όταν εκτελούνται συγκεκριμένες διαδικασίες</value>
   </data>
 </root>
