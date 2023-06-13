@@ -1,6 +1,6 @@
 
 # Windows Auto Dark Mode
-![App Logo](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/master/Readme/msstore_award_banner.png)  
+![App Logo](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/master/Readme/msstore_award_banner.png)
 
 Switches between the dark and light theme of Windows at scheduled times.
 
@@ -14,11 +14,11 @@ Switches between the dark and light theme of Windows at scheduled times.
 ![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
 Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
 
-Android, iOS and MacOS already offer the possibility of changing the system design based on the time of the day. We're bringing this feature to Windows on a larger scale. 
+Android, iOS and MacOS already offer the possibility of changing the system design based on the time of the day. We're bringing this feature to Windows on a larger scale.
 
 Auto Dark Mode helps you to be more productive. Because you shouldn't care about changing Windows settings several times a day. As soon as the sun goes down, we'll take care of your eyes.
 
-Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts. 
+Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts.
 
 ## Features
 ![Screenshot showing Apps-Page](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/screenshot4.png)
@@ -38,7 +38,7 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Automatic updates.
 - Lightweight with clean uninstall. No admin rights needed.
 
-<sup>*Windows 10 versions older 21H1 and older are considered legacy and not all features may work</sup>
+<sup>*Windows 10 versions 21H1 and older are considered legacy, not all features may work</sup>
 
 ## Download
 
@@ -81,12 +81,12 @@ scoop install autodarkmode
 scoop bucket add nonportable
 scoop install auto-dark-mode-np
 ```
-  
+
 </details>
 
 
 #### Installation
-Installation is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window. 
+Installation is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window.
 <br> <br>
 Sometimes Windows or web browsers will show a security notice while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
 
