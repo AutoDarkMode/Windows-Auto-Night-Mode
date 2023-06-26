@@ -563,7 +563,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>トレイアイコンを非表示 (非推奨)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>Windows がテーマを制御している間、この機能は無効です。</value>
+    <value>Windows がテーマを管理している間、この機能は無効です。</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>ダークおよびライトモード用に異なる Windows テーマを選択します。テーマを完全にカスタマイズできますが .theme ファイルを自分で設定する必要があります。</value>
@@ -1146,7 +1146,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>今すぐ色を反映</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>Auto Dark Mode がテーマを制御している間、この機能は無効です。</value>
+    <value>Auto Dark Mode がテーマを管理している間、この機能は無効です。</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>リンク</value>
@@ -1236,15 +1236,15 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>手動</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>追加</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>除去</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>阻止するプロセス</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>指定のプロセスの実行中は切り替えない</value>
   </data>
 </root>
