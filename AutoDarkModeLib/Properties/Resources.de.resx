@@ -1230,10 +1230,10 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
     <value>Bildschirmtastatur und Eingabe</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatisch</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Manuell</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
     <value>Hinzufügen</value>

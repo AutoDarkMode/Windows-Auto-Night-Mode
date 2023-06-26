@@ -1230,21 +1230,21 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Beralih ke papan ketik sentuh dan masukan</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Otomatis</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Tambah</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Hapus</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Proses Yang Memblokir</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Jangan beralih ketika proses tertentu berjalan</value>
   </data>
 </root>
