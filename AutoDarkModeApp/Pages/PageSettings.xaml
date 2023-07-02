@@ -152,6 +152,7 @@
                 </uc:Card>
             </ui:SimpleStackPanel>
 
+            <!-- Language selection-->
             <TextBlock Grid.Column="1"
                        Grid.Row="4"
                        Margin="0,30,0,10"
@@ -159,7 +160,6 @@
                        FontSize="14"
                        Text="Language" />
 
-            <!-- Language selection-->
             <uc:Card Padding="30,15,15,15">
                 <ui:SimpleStackPanel>
 
@@ -176,7 +176,7 @@
                             <TextBlock Name="Translator"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Top"
-                                       Margin="0,0,10,0"
+                                       Margin="0,5,10,0"
                                        TextWrapping="Wrap"
                                        Text="{x:Static p:Resources.lblTranslator}"
                                        FontSize="14"
@@ -328,7 +328,7 @@
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    MaxWidth="600"
-                                   Margin="0,15,15,0"
+                                   Margin="0,10,15,0"
                                    Text="{x:Static p:Resources.tbUpdates}"
                                    Foreground="#999999"
                                    TextWrapping="Wrap" />
@@ -452,90 +452,7 @@
 
             </StackPanel>
 
-            <StackPanel Name="StackPanelConfigFolder"
-                        Margin="0,30,0,0"
-                        Orientation="Vertical">
-
-                <TextBlock Margin="0,0,0,10"
-                           Text="{x:Static p:Resources.ConfigTextBlockHeader}"
-                           FontFamily="Segoe UI Semibold"
-                           FontSize="14" />
-
-                <uc:Card Padding="30,20,5,20"
-                         Cursor="Hand"
-                         PreviewMouseDown="HyperlinkOpenConfigFile_PreviewMouseDown"
-                         PreviewKeyDown="HyperlinkOpenConfigFile_KeyDown">
-                    <Grid Margin="0,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Margin="0,0,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-
-                            <TextBlock Grid.Row="0"
-                                       Margin="0,0,0,0"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       FontSize="14"
-                                       Text="{x:Static p:Resources.ConfigHyperLinkOpenConfig}"
-                                       TextWrapping="Wrap"
-                                       MaxWidth="650" />
-                        </Grid>
-
-                        <ui:FontIcon Grid.Column="3"
-                                     Margin="15, 0, 10, 0"
-                                     FontSize="15"
-                                     Name="FontIconLinkConfig"
-                                     FontFamily="Segoe MDL2 Assets"
-                                     Glyph="&#xe8a7;" />
-                    </Grid>
-                </uc:Card>
-
-                <uc:Card Padding="30,20,5,20"
-                         Margin="0,2,0,0"
-                         Cursor="Hand"
-                         PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
-                         PreviewKeyDown="HyperlinkOpenAppDataFolder_KeyDown">
-                    <Grid Margin="0,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0"
-                              Margin="0,0,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-
-                            <TextBlock Grid.Row="0"
-                                       Margin="0,0,0,0"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Left"
-                                       FontSize="14"
-                                       Text="{x:Static p:Resources.ConfigHyperLinkOpenConfigFolder}"
-                                       TextWrapping="Wrap"
-                                       MaxWidth="650" />
-                        </Grid>
-
-                        <ui:FontIcon Grid.Column="3"
-                                     Margin="15, 0, 10, 0"
-                                     FontSize="15"
-                                     Name="FontIconLinkConfigFolder"
-                                     FontFamily="Segoe MDL2 Assets"
-                                     Glyph="&#xe8a7;" />
-                    </Grid>
-                </uc:Card>
-            </StackPanel>
+            <!-- Autostart -->
 
             <StackPanel Name="StackPanelAutostart"
                         Margin="0,30,0,0"
@@ -668,6 +585,92 @@
                                    Visibility="Collapsed" />
 
                     </ui:SimpleStackPanel>
+                </uc:Card>
+            </StackPanel>
+
+            <!-- Config -->
+            <StackPanel Name="StackPanelConfigFolder"
+                        Margin="0,30,0,0"
+                        Orientation="Vertical">
+
+                <TextBlock Margin="0,0,0,10"
+                           Text="{x:Static p:Resources.ConfigTextBlockHeader}"
+                           FontFamily="Segoe UI Semibold"
+                           FontSize="14" />
+
+                <uc:Card Padding="30,20,5,20"
+                         Cursor="Hand"
+                         PreviewMouseDown="HyperlinkOpenConfigFile_PreviewMouseDown"
+                         PreviewKeyDown="HyperlinkOpenConfigFile_KeyDown">
+                    <Grid Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+
+                            <TextBlock Grid.Row="0"
+                                       Margin="0,0,0,0"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Left"
+                                       FontSize="14"
+                                       Text="{x:Static p:Resources.ConfigHyperLinkOpenConfig}"
+                                       TextWrapping="Wrap"
+                                       MaxWidth="650" />
+                        </Grid>
+
+                        <ui:FontIcon Grid.Column="3"
+                                     Margin="15, 0, 10, 0"
+                                     FontSize="15"
+                                     Name="FontIconLinkConfig"
+                                     FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xe8a7;" />
+                    </Grid>
+                </uc:Card>
+
+                <uc:Card Padding="30,20,5,20"
+                         Margin="0,2,0,0"
+                         Cursor="Hand"
+                         PreviewMouseDown="HyperlinkOpenAppDataFolder_PreviewMouseDown"
+                         PreviewKeyDown="HyperlinkOpenAppDataFolder_KeyDown">
+                    <Grid Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+
+                            <TextBlock Grid.Row="0"
+                                       Margin="0,0,0,0"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Left"
+                                       FontSize="14"
+                                       Text="{x:Static p:Resources.ConfigHyperLinkOpenConfigFolder}"
+                                       TextWrapping="Wrap"
+                                       MaxWidth="650" />
+                        </Grid>
+
+                        <ui:FontIcon Grid.Column="3"
+                                     Margin="15, 0, 10, 0"
+                                     FontSize="15"
+                                     Name="FontIconLinkConfigFolder"
+                                     FontFamily="Segoe MDL2 Assets"
+                                     Glyph="&#xe8a7;" />
+                    </Grid>
                 </uc:Card>
             </StackPanel>
         </StackPanel>
