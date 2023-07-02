@@ -134,7 +134,7 @@ namespace AutoDarkModeApp.Pages
         {
             try
             {
-                Process.Start("control", "main.cpl");
+                Process.Start("control", "main.cpl,,1");
             }
             catch (Exception ex)
             {
