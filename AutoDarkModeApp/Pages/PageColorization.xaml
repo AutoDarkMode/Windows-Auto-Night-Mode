@@ -74,7 +74,7 @@
         <uc:Card Grid.Row="3"
                  Grid.Column="1"
                  Margin="0,0,0,4"
-                 Padding="30,15,15,10">
+                 Padding="30,15,0,15">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -85,14 +85,14 @@
                            Text="{x:Static p:Resources.ColorizationEnableSwitch}"
                            VerticalAlignment="Center"
                            FontSize="14"
-                           Padding="0,0,0,1" />
+                           Padding="0,5,0,5" />
                 <ui:ToggleSwitch Name="ToggleSwitchColorizationEnabled"
                                  OffContent="{x:Static p:Resources.ToggleSwitchOff}"
                                  OnContent="{x:Static p:Resources.ToggleSwitchOn}"
                                  Grid.Column="2"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
-                                 Margin="0,0,0,0"
+                                 Margin="0,5,0,5"
                                  Toggled="ToggleSwitchColorizationEnabled_Toggled" />
             </Grid>
         </uc:Card>
@@ -138,7 +138,8 @@
                                   Grid.Row="0"
                                   SelectionChanged="LightAutoColorizationComboBox_SelectionChanged"
                                   MinWidth="120"
-                                  SelectedIndex="0">
+                                  SelectedIndex="0"
+                                  Margin="0,0,5,0">
                             <ComboBoxItem Content="{x:Static p:Resources.Automatic}"
                                           Name="AutoLight" />
                             <ComboBoxItem Content="{x:Static p:Resources.Manual}"
@@ -178,11 +179,10 @@
                                    VerticalAlignment="Center" />
 
                         <Button Content="{x:Static p:Resources.offsetButton}"
-                                Width="80"
+                                MinWidth="95"
                                 Grid.Column="2"
                                 Click="LightColorizationButton_Click"
-                                Name="LightColorizationButton"
-                                Height="30" />
+                                Name="LightColorizationButton"/>
 
                     </Grid>
 
@@ -224,7 +224,8 @@
                                       Grid.Column="2"
                                       MinWidth="120"
                                       SelectionChanged="DarkAutoColorizationComboBox_SelectionChanged"
-                                      SelectedIndex="0">
+                                      SelectedIndex="0"
+                                      Margin="0,0,5,0">
                                 <ComboBoxItem Content="{x:Static p:Resources.Automatic}"
                                               Name="AutoDark" />
                                 <ComboBoxItem Content="{x:Static p:Resources.Manual}"
@@ -263,11 +264,10 @@
                                        VerticalAlignment="Center" />
 
                             <Button Content="{x:Static p:Resources.offsetButton}"
-                                    Width="80"
+                                    MinWidth="95"
                                     Grid.Column="2"
                                     Click="DarkColorizationButton_Click"
-                                    Name="DarkColorizationButton"
-                                    Height="30" />
+                                    Name="DarkColorizationButton"/>
 
                         </Grid>
                     </ui:SimpleStackPanel>
