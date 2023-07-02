@@ -207,8 +207,8 @@ namespace AutoDarkModeApp.Pages
 
             ToggleSwitchCursors.IsOn = builder.Config.CursorSwitch.Enabled;
 
-            UpdateLightCursorPreviews((string)CursorsComboBoxDark.SelectedItem);
-            UpdateDarkCursorPreviews((string)CursorsComboBoxLight.SelectedItem);
+            UpdateLightCursorPreviews((string)CursorsComboBoxLight.SelectedItem);
+            UpdateDarkCursorPreviews((string)CursorsComboBoxDark.SelectedItem);
 
             init = false;
         }
