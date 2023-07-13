@@ -38,17 +38,18 @@ namespace AutoDarkModeSvc.Modules
             ConfigBuilder = AdmConfigBuilder.Instance();
         }
 
-        public override void Fire()
+        public override Task Fire(object caller = null)
         {
             DateTime nextUpdate = ConfigBuilder.LocationData.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownTimeSpan);
             if (DateTime.Now >= nextUpdate || (ConfigBuilder.LocationData.DataSourceIsGeolocator != ConfigBuilder.Config.Location.UseGeolocatorService))
             {
-                _ = Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
+                return Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
             }
             else
             {
                 Logger.Debug($"Next location update scheduled: {nextUpdate}");
             }
+            return Task.CompletedTask;
         }
     }
 }

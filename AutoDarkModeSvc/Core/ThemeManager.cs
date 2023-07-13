@@ -53,8 +53,8 @@ namespace AutoDarkModeSvc.Core
                 return;
             }
 
-            // apply last requested theme if switch is user-postponed
-            if (state.PostponeManager.IsUserDelayed || state.PostponeManager.IsSkipNextSwitch)
+            // apply last requested theme if switch is postponed
+            if (state.PostponeManager.IsPostponed)
             {
                 e.OverrideTheme(state.InternalTheme, ThemeOverrideSource.PostponeManager);
                 UpdateTheme(e);

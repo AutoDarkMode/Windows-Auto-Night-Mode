@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
@@ -267,9 +268,12 @@ namespace AutoDarkModeSvc.Core
             Dependencies.Remove(module);
         }
 
-        public void TriggerDependencyModules()
+        public async Task TriggerDependencyModules()
         {
-            Dependencies.ForEach(module => module.Fire());
+            foreach (var module in Dependencies)
+            {
+                await module.Fire();
+            }
         }
 
     }

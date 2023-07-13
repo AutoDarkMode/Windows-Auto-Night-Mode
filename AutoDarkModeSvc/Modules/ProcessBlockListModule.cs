@@ -30,21 +30,21 @@ public class ProcessBlockListModule : AutoDarkModeModule
 
     public override string TimerAffinity { get; } = TimerName.Main;
 
-    public override void Fire()
+    public override Task Fire(object caller = null)
     {
         if (!ConfigBuilder.Config.ProcessBlockList.Enabled)
         {
             RemovePostpone();
-            return;
+            return Task.CompletedTask;
         }
 
         // While postponing, continue checking
         if (!IsPostponing && !State.SwitchApproach.ThemeSwitchApproaching)
         {
-            return;
+            return Task.CompletedTask;
         }
 
-        Task.Run(() =>
+        return Task.Run(() =>
         {
             if (TestRunningProcesses())
             {
@@ -107,7 +107,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
     /// <returns>True if a new postpone was added</returns>
     private bool Postpone()
     {
-        return State.PostponeManager.Add(new PostponeItem(Name));
+        return State.PostponeManager.Add(new PostponeItem(Name, isUserClearable: true));
     }
 
     /// <summary>

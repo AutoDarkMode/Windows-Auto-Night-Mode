@@ -22,6 +22,7 @@ using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace AutoDarkModeSvc.Modules
@@ -54,7 +55,7 @@ namespace AutoDarkModeSvc.Modules
         /// <summary>
         /// Registers all modules enabled in the AutoDarkMode Configuration
         /// </summary>
-        public override void Fire()
+        public override Task Fire(object caller = null)
         {
             AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
@@ -63,6 +64,7 @@ namespace AutoDarkModeSvc.Modules
             AutoManageModule(typeof(ProcessBlockListModule), true, config.ProcessBlockList.Enabled);
             AutoManageModule(typeof(UpdaterModule), true, config.Updater.Enabled);
             governorModule.AutoManageGovernors(config.Governor);
+            return Task.CompletedTask;
         }
 
         /// <summary>

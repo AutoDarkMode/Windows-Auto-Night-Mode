@@ -47,9 +47,9 @@ namespace AutoDarkModeSvc.Modules
         }
         public override string TimerAffinity => TimerName.IO;
 
-        public override void Fire()
+        public override Task Fire(object caller = null)
         {
-            _ = Task.Run(() =>
+            return Task.Run(() =>
             {
                 Check();
             });

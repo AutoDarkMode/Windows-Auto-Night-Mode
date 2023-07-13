@@ -19,7 +19,7 @@ using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Timers;
 using System;
 using System.Runtime.InteropServices;
-
+using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -32,7 +32,7 @@ namespace AutoDarkModeSvc.Modules
 
         public SystemIdleCheckModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
-        public override void Fire()
+        public override Task Fire(object caller = null)
         {
             LASTINPUTINFO lastinputStruct = new();
             lastinputStruct.cbSize = (uint)Marshal.SizeOf(lastinputStruct);
@@ -50,6 +50,7 @@ namespace AutoDarkModeSvc.Modules
                 State.SystemIdleModuleState.SystemIsIdle = false;
                 Logger.Info("postponing theme switch due to system idle timer");
             }
+            return Task.CompletedTask;
         }
 
         public override void DisableHook()

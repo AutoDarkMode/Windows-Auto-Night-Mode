@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using AutoDarkModeSvc.Monitors;
 
 namespace AutoDarkModeSvc.Modules
@@ -26,7 +27,7 @@ namespace AutoDarkModeSvc.Modules
         /// <summary>
         /// Polling method to be periodically called by <see cref="AutoDarkModeSvc.Timers.ModuleTimer.OnTimedEvent(object, System.Timers.ElapsedEventArgs)"/>
         /// </summary>
-        public void Fire();
+        public Task Fire(object caller = null);
         /// <summary>
         /// Performs operations that should be called upon instantiation
         /// </summary>

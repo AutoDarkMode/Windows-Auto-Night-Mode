@@ -14,13 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System.Threading.Tasks;
+
 namespace AutoDarkModeSvc.Modules
 {
     public abstract class AutoDarkModeModule : IAutoDarkModeModule
     {
         public string Name { get; }
         public abstract string TimerAffinity { get; }
-        public abstract void Fire();
+        public abstract Task Fire(object caller = null);
         public int Priority { get; set; }
         public bool FireOnRegistration { get; }
         /// <summary>

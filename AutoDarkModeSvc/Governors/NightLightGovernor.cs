@@ -28,7 +28,11 @@ namespace AutoDarkModeSvc.Governors
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private bool init = true;
         private bool queuePostponeRemove = false;
+        private bool switchQueuedButNotRequested = false;
+        private bool regkeyUpdatedJustNow = false;
         private IAutoDarkModeModule Master { get; }
+
+        public bool InstantSwitchWindow { get; set; } = false;
 
         public NightLightGovernor(IAutoDarkModeModule master)
         {
@@ -39,33 +43,47 @@ namespace AutoDarkModeSvc.Governors
         public GovernorEventArgs Run()
         {
             DateTime adjustedTime;
+            DateTime adjustedSwitchWindowStart;
+            DateTime adjustedSwitchWindowEnd;
 
             //apply offsets to the latest available switch times
             if (nightLightState == Theme.Dark)
             {
+
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunsetOffsetMin);
+                adjustedSwitchWindowStart = adjustedTime.AddMilliseconds(-TimerFrequency.Main);
+                adjustedSwitchWindowEnd = adjustedTime;
             }
             else
             {
                 adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
+                adjustedSwitchWindowStart = adjustedTime.AddMilliseconds(-TimerFrequency.Main);
+                adjustedSwitchWindowEnd = adjustedTime;
             }
 
-            // if the switch time is in the future, we need to set the global night light theme to the opposite of the internally tracked oned
+            DateTime callTime = DateTime.Now;
+
+            // if the switch time is in the future, we need to set the global night light theme to the opposite of the internally tracked one
             // Otherwise the incorrect theme will show up
-            if (DateTime.Compare(adjustedTime, DateTime.Now) > 0 && !init)
+            if (DateTime.Compare(adjustedTime, callTime) > 0 && !init)
             {
-                if (nightLightState == Theme.Light) state.NightLight.Requested = Theme.Dark;
-                else if (nightLightState == Theme.Dark) state.NightLight.Requested = Theme.Light;
+                if (!switchQueuedButNotRequested)
+                {
+                    if (nightLightState == Theme.Light) state.NightLight.Requested = Theme.Dark;
+                    else if (nightLightState == Theme.Dark) state.NightLight.Requested = Theme.Light;
+                    switchQueuedButNotRequested = true;
+                }
             }
             else if (state.NightLight.Requested != nightLightState)
             {
+                switchQueuedButNotRequested = false;
                 state.NightLight.Requested = nightLightState;
             }
 
             // if auto switch notify is enabled and we are approaching the switch window, we need to show a notification
             if (builder.Config.AutoSwitchNotify.Enabled && !init && state.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
-                if (!state.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(adjustedTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMilliseconds(TimerFrequency.Main).TimeOfDay)
+                if (!state.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(adjustedSwitchWindowStart.TimeOfDay, adjustedSwitchWindowEnd.TimeOfDay)
                     && state.NightLight.Requested != state.InternalTheme)
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
@@ -76,14 +94,24 @@ namespace AutoDarkModeSvc.Governors
             bool reportSwitchWindow = state.SwitchApproach.DependenciesPresent && !init;
 
             // if reporting is enabled and we are not in the switch window, we need to set the report variable back to false
-            if (reportSwitchWindow && 
-                !Helper.NowIsBetweenTimes(adjustedTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay, adjustedTime.AddMilliseconds(TimerFrequency.Main).TimeOfDay))
+            if (reportSwitchWindow &&
+                !Helper.NowIsBetweenTimes(adjustedSwitchWindowStart.TimeOfDay, adjustedSwitchWindowEnd.TimeOfDay))
             {
-                reportSwitchWindow = false;
+                // override if the instant switch window is possible and the registry key just updated
+                if (InstantSwitchWindow && regkeyUpdatedJustNow)
+                {
+                    reportSwitchWindow = true;
+                }
+                else
+                {
+                    reportSwitchWindow = false;
+                }
             }
 
-            // when the adjusted switch time is in the past and no postpones are queued, the theme should be updated
-            if (!state.PostponeManager.IsPostponed || init)
+            // set this back to false by default, doesn't matter
+            regkeyUpdatedJustNow = false;
+
+            if (!state.PostponeManager.IsPostponed)
             {
                 if (init) init = false;
                 return new(reportSwitchWindow, new(SwitchSource.NightLightTrackerModule, state.NightLight.Requested, adjustedTime));
@@ -92,6 +120,7 @@ namespace AutoDarkModeSvc.Governors
             {
                 return new(reportSwitchWindow);
             }
+
         }
 
         public void DisableHook()
@@ -125,6 +154,17 @@ namespace AutoDarkModeSvc.Governors
                 if (init) lastNightLightQueryTime = DateTime.Now.AddHours(-24);
                 else lastNightLightQueryTime = DateTime.Now;
                 nightLightState = newTheme;
+
+                // instantSwitchWindow is used to prevent the timer from duplicating the switch window operations when the event
+                // should be responsible for it
+                if (nightLightState == Theme.Dark && builder.Config.Location.SunsetOffsetMin == 0)
+                    InstantSwitchWindow = true;
+                else if (nightLightState == Theme.Light && builder.Config.Location.SunriseOffsetMin == 0)
+                    InstantSwitchWindow = true;
+                else
+                    InstantSwitchWindow = false;
+
+
                 Logger.Info($"night light status enabled changed to {enabled}");
                 bool isSkipNext = state.PostponeManager.GetSkipNextSwitchItem() != null;
                 // if we are on the right theme and postpone is still enabled, we need to clear postpone on the next switch
@@ -134,7 +174,6 @@ namespace AutoDarkModeSvc.Governors
                 {
                     queuePostponeRemove = true;
                     state.NightLight.Requested = newTheme;
-                    return;
                 }
                 else if (isSkipNext && queuePostponeRemove)
                 {
@@ -145,7 +184,8 @@ namespace AutoDarkModeSvc.Governors
                 {
                     queuePostponeRemove = false;
                 }
-                Master.Fire();
+                regkeyUpdatedJustNow = true;
+                Master.Fire(this);
             }
         }
 

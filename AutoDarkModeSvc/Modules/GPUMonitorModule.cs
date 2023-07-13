@@ -50,7 +50,7 @@ namespace AutoDarkModeSvc.Modules
             ConfigBuilder = AdmConfigBuilder.Instance();
         }
 
-        public override void Fire()
+        public override Task Fire(object caller = null)
         {
             // prevents the module from activating again if it has completed its operations during the approach window
             if (!State.SwitchApproach.ThemeSwitchApproaching && !MonitoringActive)
@@ -69,7 +69,13 @@ namespace AutoDarkModeSvc.Modules
             // perform monitor operations
             if (MonitoringActive)
             {
-                Task.Run(async () =>
+                if (State.PostponeManager.Get(Name) == null)
+                {
+                    Logger.Info("disabling monitoring because the postpone was removed by user input");
+                    MonitoringActive = false;
+                    return Task.CompletedTask;
+                }
+                return Task.Run(async () =>
                 {
                     var result = await CheckForPostpone();
                     if (result != ThreshHigh)
@@ -79,6 +85,7 @@ namespace AutoDarkModeSvc.Modules
                     }
                 });               
             }
+            return Task.CompletedTask;
         }
 
         private async Task<string> CheckForPostpone()

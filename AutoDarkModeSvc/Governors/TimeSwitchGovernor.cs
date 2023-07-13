@@ -47,28 +47,28 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            bool reportSwitchWindow = State.SwitchApproach.DependenciesPresent && !init; 
+            bool isInSwitchWindow = State.SwitchApproach.DependenciesPresent && !init; 
 
             // only do calculation when necessary
-            if (reportSwitchWindow)
+            if (isInSwitchWindow)
             {
                 TimeSpan windowStartSpan = ts.NextSwitchTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay;
                 TimeSpan windowEndSpan = ts.CurrentSwitchTime.TimeOfDay;
                 // if reporting is enabled and we are not in the switch window, we need to set the report variable back to false
                 if (!Helper.NowIsBetweenTimes(windowStartSpan, windowEndSpan))
                 {
-                    reportSwitchWindow = false;
+                    isInSwitchWindow = false;
                 }
             }
 
             if (!State.PostponeManager.IsPostponed)
             {
                 if (init) init = false;
-                return new(reportSwitchWindow, new(SwitchSource.TimeSwitchModule, Theme.Automatic));
+                return new(isInSwitchWindow, new(SwitchSource.TimeSwitchModule, Theme.Automatic));
             }
             else
             {
-                return new(reportSwitchWindow);
+                return new(isInSwitchWindow);
             }
         }
 
