@@ -420,7 +420,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Đặt giờ tuỳ chọn</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Từ hoàng hôn đến bình minh (dịch vụ định vị)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Các bước thiết lập</value>
@@ -563,13 +563,13 @@ Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền 
     <value>Ẩn biểu tượng ở khay hệ thống (không khuyến khích)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Tính năng này bị tắt trong khi Windows quản lý chủ đề của bạn.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Chọn một chủ đề Windows khác cho chế độ tối và sáng tương ứng. Cho phép tùy chỉnh toàn bộ chủ đề nhưng yêu cầu bạn phải tự thiết lập các tệp .theme.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Tùy chỉnh hình nền máy tính của bạn cho tất cả các màn hình, từng màn hình, đặt màu nền hoặc bật đèn chiếu.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Ứng dụng sẽ kiểm tra cập nhật cho Auto Dark Mode tự động. Khi có cập nhật, ứng dụng sẽ thông báo cho bạn</value>
@@ -816,7 +816,7 @@ Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền 
     <value>Dừng cưỡng ép chủ đề</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Bật phím tắt cho toàn hệ thống</value>
+    <value>Bật phím nóng</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Cưỡng ép chủ đề tối</value>
@@ -1128,123 +1128,123 @@ Bạn có muốn tiếp tục?</value>
     <value>Bật tắt chủ đề</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Điểm sáng</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Đèn chiếu cửa sổ</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Màu nhấn</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Chọn một màu nhấn</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Tùy chỉnh bảng màu hệ thống Windows theo ý thích của bạn.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Cập nhật màu sắc</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Tính năng này bị tắt trong khi Chế độ tối tự động quản lý chủ đề của bạn.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Liên kết</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Tài liệu cho tập lệnh tùy chỉnh</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Kho lưu trữ tập lệnh người dùng tùy chỉnh</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Lấp đầy</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Phù hợp</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Kéo dài</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Chọn một sự phù hợp cho hình ảnh máy tính để bàn của bạn</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Ngắt kết nối</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Luôn làm mới DWM khi chuyển đổi chủ đề</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Nỗ lực giảm sự xuất hiện sai màu của giao diện người dùng trong trình khám phá, thanh tác vụ và menu bắt đầu. Nếu bạn gặp vấn đề này thường xuyên hoặc bị làm phiền bởi nó, hãy thử bật cài đặt này.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Điều này có thể gây ra độ trễ nhẹ đến trung bình trên một số hệ thống trong quá trình chuyển đổi chủ đề tương tự như đã xảy ra trong Windows 10. 
+Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng bíp khi di chuyển chuột trong quá trình làm mới DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Buộc làm mới DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Được</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Kích hoạt chuyển đổi con trỏ chuột</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Mở cài đặt con trỏ Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Chọn con trỏ tối</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Chọn con trỏ sáng</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Con trỏ</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Định cấu hình các con trỏ chuột khác nhau cho chế độ tối và sáng.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Chọn con trỏ chuột</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Để Chế độ tối tự động quản lý chủ đề của tôi</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Để Windows quản lý chủ đề của tôi</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Bạn có thể xác định các lược đồ con trỏ mới trong cài đặt Windows và sau đó chọn chúng tại đây.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Mở shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Mở nhật ký cập nhật</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Bật công tắc màu nhấn</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Chuyển đổi bàn phím cảm ứng và đầu vào</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Tự động</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Thủ công</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Thêm</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Loại bỏ</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Quy trình chặn</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
   </data>
 </root>
