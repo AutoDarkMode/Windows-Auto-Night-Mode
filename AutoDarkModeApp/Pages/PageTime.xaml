@@ -326,7 +326,7 @@
                                          Glyph="&#xE706;" />
                             <TextBlock Name="TextBlockLightTime"
                                        Margin="0,0,0,0"
-                                       Text="LightPlaceholder"
+                                       Text="Sunrise"
                                        FontSize="14" />
                         </ui:SimpleStackPanel>
 
@@ -343,7 +343,7 @@
                                          Glyph="&#xe708;" />
                             <TextBlock Name="TextBlockDarkTime"
                                        Margin="0,0,0,0"
-                                       Text="DarkPlaceHolder"
+                                       Text="Sunset"
                                        FontSize="14" />
                         </ui:SimpleStackPanel>
                     </ge:ResponsiveGrid>
