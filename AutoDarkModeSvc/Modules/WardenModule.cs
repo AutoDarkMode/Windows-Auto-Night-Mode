@@ -59,6 +59,7 @@ namespace AutoDarkModeSvc.Modules
         {
             AdmConfig config = ConfigBuilder.Config;
             AutoManageModule(typeof(SystemIdleCheckModule), true, config.IdleChecker.Enabled);
+            AutoManageModule(typeof(GeopositionUpdateModule), true, config.Location.Enabled);
             //AutoManageModule(typeof(ThemeUpdateModule), true, config.WindowsThemeMode.Enabled && config.WindowsThemeMode.MonitorActiveTheme);
             AutoManageModule(typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(ProcessBlockListModule), true, config.ProcessBlockList.Enabled);
