@@ -175,7 +175,7 @@
     <value>Usar serviços de localização</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>mudanças foram salvas!</value>
+    <value>Suas mudanças foram salvas!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>Suas alterações serão salvas automaticamente.</value>
@@ -184,7 +184,7 @@
     <value>Baixar atualização</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>Erro ocorrido:(</value>
+    <value>Erro ocorrido :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
     <value>O aplicativo precisa da permissão da localização</value>
@@ -420,7 +420,7 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Definir horários personalizados</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Do pôr ao nascer do sol (serviço de localização)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Passo</value>
@@ -563,13 +563,13 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Esconder o ícone do tabuleiro do sistema (não recomendado)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Esta ferramenta está desativada enquanto o Windows gerencia seu tema.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Selecionar um tema diferente do Windows para os modos escuro e claro respectivamente. Permite personalização completa do tema, mas requer que você configure os arquivos .theme por si mesmo.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Personalizar seu papel de parede da área de trabalho para todos os monitores, monitores individuais, configurar uma cor de fundo ou ativar o spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Vamos procurar por novas versões do Auto Dark Mode em segundo plano. Quando uma actualização está disponível, vamos notificá-lo via notificação junto ao relógio</value>
@@ -725,7 +725,7 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Corrente</value>
+    <value>Fluxo</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
@@ -816,7 +816,7 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Parar de forçar o tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Ativar as teclas de atalho por todo o sistema</value>
+    <value>Ativar as teclas de atalho</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forçar o Tema Escuro</value>
@@ -1018,7 +1018,7 @@ Tem a certeza que quer continuar?</value>
     <value>Modo de rastreio</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Especial obrigado</value>
+    <value>Agradecimentos especiais</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>Ignorar fundo</value>
@@ -1134,117 +1134,117 @@ Tem a certeza que quer continuar?</value>
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Cor de destaque</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Escolher uma cor de destaque</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Personalize o esquema de cor do sistema Windows à sua vontade.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Atualizar colorização</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Esta ferramenta está desativada enquanto o Auto Dark Mode gerencia seu tema.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Documentação para os scripts personalizados</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Repositório do usuário de scripts personalizados</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Preencher</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Ajustar</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Estender</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Escolha um ajuste para sua imagem da área de trabalho</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Desconectado</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Sempre atualizar o DWM na mudança de temas</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Tenta reduzir a ocorrência de cores de interface de usuário erradas no Explorador, na barra de tarefas e no menu Iniciar. Se você experiencia isso com frequência ou se incomoda com isso, tente ativar esta configuração.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Isso pode introduzir um pequeno ou moderado lag em alguns sistemas durante a mudança de temas de forma similar ao que acontecia no Windows 10.
+Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movido durante atualizações do DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Forçar atualização do DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Ativar mudança do ponteiro do mouse</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Abrir configurações do ponteiro do Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Selecionar ponteiro escuro</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Selecionar ponteiro claro</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Ponteiros</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Configurar ponteiros do mouse diferentes para os modos escuro e claro.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Escolher ponteiros do mouse</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Deixar o Auto Dark Mode gerenciar meu tema</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Deixar o Windows gerenciar meu tema</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Você pode definir novos esquemas de ponteiros nas configurações do Windows e então selecioná-los aqui.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Abrir shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Abrir registro do atualizador</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Ativar mudança da cor de destaque</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automático</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Adicionar</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Remover</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
     <value>Blocking Processes</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Não trocar enquanto certos processos estejam executando</value>
   </data>
 </root>
