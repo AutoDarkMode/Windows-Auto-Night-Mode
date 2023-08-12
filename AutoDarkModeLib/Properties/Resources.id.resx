@@ -530,10 +530,10 @@ Pesan: tolong untuk TIDAK menjalankan Auto Dark Mode dengan Administrator!</valu
     <value>Data lokasi</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>Dari terbit hingga terbenam (koordinat geografis)</value>
+    <value>Dari terbenam hingga terbit (koordinat geografis)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Koordinat geografis Anda</value>
+    <value>Cari koordinat geografis Anda</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>Buka file konfigurasi</value>
