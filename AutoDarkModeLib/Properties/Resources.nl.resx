@@ -405,7 +405,7 @@ U kunt dit individueel instellen in uw Windows-thema.</value>
     <value>Herhaal dit proces voor het donkere thema.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Vertraging voor taakbalkkleurwisseling (ms):</value>
+    <value>Vertraging wisselen taakbalkkleur (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
     <value>Over</value>
@@ -420,7 +420,7 @@ U kunt dit individueel instellen in uw Windows-thema.</value>
     <value>Aangepaste tijden kiezen</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Van zonsonder- tot -opgang (GPS-locatie)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Stap</value>
@@ -512,7 +512,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Dit werkt alleen als energiebesparingsmodus niet handmatig is ingeschakeld!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Van modus wisselen</value>
+    <value>Wisselopties</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalisatie</value>
@@ -563,7 +563,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Systeemvakicoon verbergen (niet aanbevolen)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Deze functie is niet beschikbaar als Windows uw thema beheert.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Selecteer verschillende Windows-thema's voor het donkere en het lichte thema. Hiermee kunt u alles volledig aanpassen, maar u moet wel zelf uw .theme-bestanden voorbereiden.</value>
@@ -665,7 +665,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Voorwaarden</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimaal GPU-gebruik om themawisseling te vertragen</value>
+    <value>Minimaal GPU-gebruikspercentage voor uitstel</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
     <value>Thema herstellen wanneer extern gewijzigd</value>
@@ -804,16 +804,16 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>U kunt sneltoetsen alleen bewerken als ze zijn uitgeschakeld.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Donkere modus forceren</value>
+    <value>Donker thema forceren</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Lichte modus forceren</value>
+    <value>Licht thema forceren</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
     <value>Sneltoetsen</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Thema forceren stoppen</value>
+    <value>Forceren opheffen</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
     <value>Sneltoetsen inschakelen</value>
@@ -856,7 +856,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Melding weergeven bij schakelen</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Vertraag</value>
+    <value>Uitstellen</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>GPU-meetmodule</value>
@@ -877,7 +877,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Herstel deze actie door te klikken op de knop 'Ongedaan maken'.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>sneltoets</value>
+    <value> </value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Automatische themawisseling in-/uitschakelen</value>
@@ -916,10 +916,10 @@ Wilt u alsnog doorgaan?</value>
     <value>Automatische themawisseling is ingeschakeld</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Windows nachtlamp volgen</value>
+    <value>Windows-nachtlamp volgen</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Windows nachtlamp volgen</value>
+    <value>Windows-nachtlamp volgen</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Themawisseling is eenmalig gepauzeerd!</value>
@@ -958,7 +958,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Nachtlamp</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Actieve vertragingen</value>
+    <value>Actieve opschortingen</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
     <value>Automatisch wisselen eenmalig overslaan</value>
@@ -982,7 +982,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Nu wisselen</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Module vertragen</value>
+    <value>Uitstelmodule</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
     <value>Wisselnotificatie</value>
@@ -1146,13 +1146,13 @@ Wilt u alsnog doorgaan?</value>
     <value>Kleuren updaten</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Deze functie is niet beschikbaar als Auto Dark Mode uw thema beheert.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Koppelingen</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Documentatie voor aangepaste scripts</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Repository met aangepaste scripts</value>
@@ -1188,63 +1188,63 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
     <value>OK</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Dynamische muisaanwijzer</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Windows-muisinstellingen openen</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Aanwijzer donker thema</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Aanwijzer licht thema</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Muisaanwijzers</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Kies verschillende muisaanwijzers voor het lichte en het donkere thema.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Muisaanwijzers selecteren</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Laat Auto Dark Mode mijn thema beheren</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Laat Windows mijn thema beheren</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Selecteer hier de muisaanwijzerthema's die u heeft gemaakt in de instellingen van Windows.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Terminal openen</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Updatelogboek openen</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Dynamische accentkleur</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Aanraaktoetsenbord en invoer</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatisch</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Handmatig</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Toevoegen</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Verwijderen</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Blokkerende processen</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Niet van thema wisselen als bepaalde processen worden uitgevoerd</value>
   </data>
 </root>

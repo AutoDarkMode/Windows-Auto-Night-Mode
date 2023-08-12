@@ -342,7 +342,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>错误：您的输入无效</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Connected Standby 状态下仍然切换主题（不推荐）</value>
+    <value>新式待机状态下仍然切换主题（不推荐）</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Microsoft Surface 等移动设备正在使用一种新型待机模式。
@@ -1176,7 +1176,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>在切换主题时始终刷新 DWM</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色的出现。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
+    <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色出现的频率。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
 
 这可能会在某些系统上引入轻到中度的主题切换延迟，类似于 Windows 10 上发生的情况。
 在极少数情况下，当鼠标在 DWM 刷新期间移动时，Windows 可能会发出蜂鸣声。</value>
