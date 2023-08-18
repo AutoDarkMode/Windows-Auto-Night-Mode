@@ -67,7 +67,7 @@
                    Grid.Column="1"
                    Grid.Row="3"
                    Margin="95,56,0,0"
-                   Text="© 2022 Armin Osaj &amp; Samuel Schiegg"
+                   Text="© 2023 Armin Osaj &amp; Samuel Schiegg"
                    FontSize="14" />
 
         <!-- Version Numbers -->
