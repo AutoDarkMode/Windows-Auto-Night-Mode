@@ -101,7 +101,7 @@
                                FontSize="13"
                                Text="{x:Static p:Resources.tbPickWallpaper}"
                                TextWrapping="Wrap"
-                               MaxWidth="800" />
+                               MaxWidth="800"/>
 
                     <TextBlock Name="WallpaperDisabledMessage"
                                Grid.Row="3"

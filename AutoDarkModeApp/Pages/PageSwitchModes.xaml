@@ -312,7 +312,7 @@
 
                     <TextBlock Name="TextBlockHotkeyEditHint"
                                Foreground="#999999"
-                               Margin="0,5,0,0"
+                               Margin="0,2,0,0"
                                TextWrapping="Wrap"
                                DockPanel.Dock="Bottom"
                                Text="{x:Static p:Resources.SwitchModesHotkeyEditHint}"

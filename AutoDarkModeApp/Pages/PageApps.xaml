@@ -429,30 +429,14 @@
                     Click="ButtonWikiBrowserExtension_Click" />
         </StackPanel>
 
-        <TextBlock x:Name="TexblockSupportedApps"
-                   Grid.Row="5"
-                   Grid.Column="1"
-                   FontSize="14"
-                   Margin="0,30,0,0"
-                   Focusable="True"
-                   Text="Browse apps with Auto Dark Mode support"
-                   MouseLeftButtonDown="TexblockSupportedApps_MouseLeftButtonDown"
-                   KeyDown="TexblockSupportedApps_KeyDown">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground"
-                                    Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver"
-                                         Value="True">
-                            <Setter Property="Foreground"
-                                            Value="Gray" />
-                            <Setter Property="Cursor"
-                                            Value="Hand" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+        <ui:HyperlinkButton
+            x:Name="ButtonSupportedApps"
+            Content="Browse apps with Auto Dark Mode support"
+            Grid.Row="5"
+            Grid.Column="1"
+            Margin="0,30,0,0"
+            PreviewMouseDown="ButtonSupportedApps_PreviewMouseDown"
+            PreviewKeyDown="ButtonSupportedApps_PreviewKeyDown"
+            />
     </Grid>
 </Page>

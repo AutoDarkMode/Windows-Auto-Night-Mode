@@ -597,14 +597,14 @@ namespace AutoDarkModeApp
             RequestThemeSwitch();
         }
 
-        private void TexblockSupportedApps_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ButtonSupportedApps_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Apps-with-Auto-Dark-Mode-support");
         }
 
-        private void TexblockSupportedApps_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void ButtonSupportedApps_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter) TexblockSupportedApps_MouseLeftButtonDown(this, null);
+            ButtonSupportedApps_PreviewMouseDown(this,null);
         }
     }
 }

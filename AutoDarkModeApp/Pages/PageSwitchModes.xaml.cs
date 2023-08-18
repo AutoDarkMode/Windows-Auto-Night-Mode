@@ -110,7 +110,6 @@ namespace AutoDarkModeApp.Pages
 
 
             ToggleHotkeys.IsOn = builder.Config.Hotkeys.Enabled;
-            TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
 
             SimpleStackPanelProcessBlockList.Visibility =
                 builder.Config.ProcessBlockList.Enabled ? Visibility.Visible : Visibility.Collapsed;
@@ -304,7 +303,6 @@ namespace AutoDarkModeApp.Pages
 
         private void ToggleHotkeys_Toggled(object sender, RoutedEventArgs e)
         {
-            TextBlockHotkeyEditHint.Visibility = ToggleHotkeys.IsOn ? Visibility.Visible : Visibility.Hidden;
             if (ToggleHotkeys.IsOn) GridHotkeys.IsEnabled = false;
             else GridHotkeys.IsEnabled = true;
             if (init) return;

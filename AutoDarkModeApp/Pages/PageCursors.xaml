@@ -216,7 +216,7 @@
                                    MaxWidth="650" />
                         <TextBlock TextWrapping="Wrap"
                                    Margin="0,5,0,0"
-                                   FontSize="11"
+                                   FontSize="13"
                                    Grid.Row="1"
                                    Foreground="DarkGray"
                                    Text="{x:Static p:Resources.CursorsPageOpenPointerSettingsDescription}" />
