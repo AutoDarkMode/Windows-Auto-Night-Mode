@@ -7,6 +7,7 @@
       xmlns:ui="http://schemas.modernwpf.com/2019"
       xmlns:uc="clr-namespace:AutoDarkModeApp.Controls"
       xmlns:p="clr-namespace:AutoDarkModeLib.Properties;assembly=AutoDarkModeLib"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
       mc:Ignorable="d"
       d:DesignWidth="650"
       Title="PageApps">
@@ -23,6 +24,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="50" />
@@ -398,6 +400,7 @@
                    Margin="0,100,0,60"
                    FontSize="25"
                    FontFamily="Segoe MDL2 Assets" />
+        
         <StackPanel Orientation="Vertical"
                     Grid.Row="4"
                     Grid.Column="1"
@@ -425,5 +428,31 @@
                     Width="Auto"
                     Click="ButtonWikiBrowserExtension_Click" />
         </StackPanel>
+
+        <TextBlock x:Name="TexblockSupportedApps"
+                   Grid.Row="5"
+                   Grid.Column="1"
+                   FontSize="14"
+                   Margin="0,30,0,0"
+                   Focusable="True"
+                   Text="Browse apps with Auto Dark Mode support"
+                   MouseLeftButtonDown="TexblockSupportedApps_MouseLeftButtonDown"
+                   KeyDown="TexblockSupportedApps_KeyDown">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground"
+                                    Value="{Binding Path=(fw:AccentColors.ImmersiveSystemAccentBrush)}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                         Value="True">
+                            <Setter Property="Foreground"
+                                            Value="Gray" />
+                            <Setter Property="Cursor"
+                                            Value="Hand" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </Page>

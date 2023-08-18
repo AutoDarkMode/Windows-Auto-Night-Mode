@@ -22,6 +22,7 @@ using AutoDarkModeApp.Handlers;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeLib;
 using AdmProperties = AutoDarkModeLib.Properties;
+using System.Windows.Input;
 
 namespace AutoDarkModeApp
 {
@@ -594,6 +595,16 @@ namespace AutoDarkModeApp
                 ShowErrorMessage(ex);
             }
             RequestThemeSwitch();
+        }
+
+        private void TexblockSupportedApps_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Apps-with-Auto-Dark-Mode-support");
+        }
+
+        private void TexblockSupportedApps_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) TexblockSupportedApps_MouseLeftButtonDown(this, null);
         }
     }
 }
