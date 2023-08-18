@@ -60,6 +60,10 @@ namespace AutoDarkModeApp
                 TextBlockSystem.FontFamily = new("Segoe Fluent Icons");
                 TextBlockTouchKeyboard.FontFamily = new("Segoe Fluent Icons");
             }
+            else
+            {
+                CardTouchKeyboard.Visibility = Visibility.Collapsed;
+            }
 
             // If a windows managed theme file was picked, block some settings
             if (builder.Config.WindowsThemeMode.Enabled)
