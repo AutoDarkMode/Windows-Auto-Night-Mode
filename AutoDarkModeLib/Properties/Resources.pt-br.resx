@@ -1242,7 +1242,7 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
     <value>Remover</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Bloqueando Processos</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Não trocar enquanto certos processos estejam executando</value>
