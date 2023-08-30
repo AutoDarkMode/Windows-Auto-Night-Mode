@@ -420,7 +420,7 @@ Možete ih podesiti pojedinačno u vašoj Windows temi.</value>
     <value>Podesi prilagođeno vreme</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Od zalaska do izlaska sunca (koristi uslugu za lokaciju)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Korak</value>
@@ -819,10 +819,10 @@ Napomena: NIKAD ne pokrećite Auto Dark Mode kao administrator sami!</value>
     <value>Omogući tasterske prečice</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Prisili tamnu temu</value>
+    <value>Prisili &amp;tamnu temu</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Prisili svetlu temu</value>
+    <value>Prisili &amp;svetlu temu</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>Sakrivanje ikonice se ne preporučuje.
@@ -889,7 +889,7 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Opozovi</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>Pauziraj automatsku promenu</value>
+    <value>&amp;Pauziraj automatsku promenu</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
     <value>Da li biste umesto toga hteli da onemogućite automatsku promenu?</value>
@@ -1119,13 +1119,13 @@ Jeste li sigurni da želite da nastavite?</value>
     <value>Putanja do slike</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Zatvori</value>
+    <value>&amp;Zatvori</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatska promena tema</value>
+    <value>&amp;Automatska promena tema</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Promeni temu</value>
+    <value>Pro&amp;meni temu</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
     <value>Interesovanja</value>
@@ -1224,27 +1224,27 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
     <value>Otvori evidenciju ažuriranja</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Omogući promenu boje naglašavanja</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Promeni tastaturu na ekranu na dodir i unos</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatski</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Ručno</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Dodaj</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Ukloni</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Procesi koji blokiraju</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Ne menjaj dok određeni procesi rade</value>
   </data>
 </root>
