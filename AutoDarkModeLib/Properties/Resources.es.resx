@@ -907,7 +907,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Reanudar solo funcionará para elementos pospuestos que tienen un tiempo de expiración</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Control de posposición</value>
+    <value>Control de demora</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Cambiar tema</value>
