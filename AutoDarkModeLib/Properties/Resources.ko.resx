@@ -414,7 +414,7 @@ Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
     <value>단계</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>그레이스케일 컬러 필터 사용 (Win + Ctrl + C로 보내기)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>시작 항목 대신 로그온 작업 사용</value>
@@ -1245,5 +1245,17 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Don't switch while certain processes are running</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>

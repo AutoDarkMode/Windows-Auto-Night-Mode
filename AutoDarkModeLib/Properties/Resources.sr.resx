@@ -426,7 +426,7 @@ Možete ih podesiti pojedinačno u vašoj Windows temi.</value>
     <value>Korak</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Koristi filter za boju (šalje Win + Ctrl + C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Koristi zadatak pri prijavljivanju (logon task) umesto unosa za automatsko pokretanje</value>
@@ -1246,5 +1246,17 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Ne menjaj dok određeni procesi rade</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>
