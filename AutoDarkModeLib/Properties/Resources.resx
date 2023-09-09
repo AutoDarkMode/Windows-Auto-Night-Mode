@@ -1247,4 +1247,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Don't switch while certain processes are running</value>
   </data>
+  <data name="RecommendedApps" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
 </root>

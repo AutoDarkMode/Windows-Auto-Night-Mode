@@ -431,7 +431,7 @@
 
         <ui:HyperlinkButton
             x:Name="ButtonSupportedApps"
-            Content="Browse apps with Auto Dark Mode support"
+            Content="{x:Static p:Resources.RecommendedApps}"
             Grid.Row="5"
             Grid.Column="1"
             Margin="0,30,0,0"
