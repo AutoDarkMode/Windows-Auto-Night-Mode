@@ -135,7 +135,6 @@ namespace AutoDarkModeApp.Pages
             CheckBoxAlterTime.IsChecked = Settings.Default.AlterTime;
             CheckBoxLogonTask.IsChecked = builder.Config.Tunable.UseLogonTask;
             CheckBoxHideTrayIcon.IsChecked = !builder.Config.Tunable.ShowTrayIcon;
-            CheckBoxColourFilter.IsChecked = builder.Config.ColorFilterSwitch.Enabled;
             CheckBoxWin10AllowLockscreenSwitch.IsChecked = builder.Config.Events.Win10AllowLockscreenSwitch;
             CheckBoxAlwaysDwmRefresh.IsChecked = builder.Config.Tunable.AlwaysFullDwmRefresh;
 
@@ -368,27 +367,6 @@ namespace AutoDarkModeApp.Pages
             {
                 Settings.Default.AlterTime = false;
             }
-        }
-
-        private async void CheckBoxColourFilter_Click(object sender, RoutedEventArgs e)
-        {
-            if (CheckBoxColourFilter.IsChecked.Value)
-            {
-                builder.Config.ColorFilterSwitch.Enabled = true;
-            }
-            else
-            {
-                builder.Config.ColorFilterSwitch.Enabled = false;
-            }
-            try
-            {
-                builder.Save();
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex, "CheckBoxColourFilter_Click");
-            }
-            _ = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch);
         }
 
         private void ShowErrorMessage(Exception ex, string location)

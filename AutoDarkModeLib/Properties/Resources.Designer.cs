@@ -307,7 +307,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use color filter (sends Win + Ctrl + C).
+        ///   Looks up a localized string similar to Color filter (sends Win + Ctrl + C).
         /// </summary>
         public static string cbSettingsColourFilter {
             get {

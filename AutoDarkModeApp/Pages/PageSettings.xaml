@@ -68,14 +68,6 @@
                               Click="CheckBoxHideTrayIcon_Click" />
                 </uc:Card>
 
-                <uc:Card Padding="30,10,25,10">
-                    <CheckBox Name="CheckBoxColourFilter"
-                              Content="{x:Static p:Resources.cbSettingsColourFilter}"
-                              Margin="0,0,0,0"
-                              Foreground="{DynamicResource SystemBaseHighColorBrush}"
-                              Click="CheckBoxColourFilter_Click" />
-                </uc:Card>
-
                 <uc:Card Padding="30,10,25,10" x:Name="CardAlwaysDwmRefresh">
                     <CheckBox Name="CheckBoxAlwaysDwmRefresh"
                               Content="{x:Static p:Resources.SettingsPageCheckBoxAlwaysRefreshDwm}"

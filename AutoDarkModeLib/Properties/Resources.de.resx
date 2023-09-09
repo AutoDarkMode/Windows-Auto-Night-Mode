@@ -426,7 +426,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Schritt</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Farbfilter nutzen (sendet Win + Strg + C)</value>
+    <value>Farbfilter (sendet Win + Strg + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Login-Task statt Autostart-Eintrag</value>

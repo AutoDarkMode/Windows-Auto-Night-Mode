@@ -192,6 +192,17 @@ namespace AutoDarkModeApp
             { 
                 ToggleTouchkeyboard.IsOn = false; 
             }
+
+            // Initialize Color Filter Toggle
+            if (builder.Config.ColorFilterSwitch.Enabled)
+            {
+                ToggleColorFilter.IsOn = true;
+            }
+            else
+            {
+                ToggleColorFilter.IsOn = false;
+            }
+
         }
 
         private void ShowErrorMessage(Exception ex)
@@ -605,6 +616,13 @@ namespace AutoDarkModeApp
         private void ButtonSupportedApps_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             ButtonSupportedApps_PreviewMouseDown(this,null);
+        }
+
+        private void ToggleColorFilter_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (init) return;
+            builder.Config.ColorFilterSwitch.Enabled = ToggleColorFilter.IsOn;
+            SaveConfig();
         }
     }
 }
