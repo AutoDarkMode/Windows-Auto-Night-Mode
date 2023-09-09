@@ -1611,9 +1611,27 @@ namespace AutoDarkModeLib.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Browse apps with Auto Dark Mode support.
         /// </summary>
-        public static string RecommendedApps {
+        public static string RecommendedAppsButton {
             get {
-                return ResourceManager.GetString("RecommendedApps", resourceCulture);
+                return ResourceManager.GetString("RecommendedAppsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps..
+        /// </summary>
+        public static string RecommendedAppsDescription {
+            get {
+                return ResourceManager.GetString("RecommendedAppsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recommended apps.
+        /// </summary>
+        public static string RecommendedAppsTitle {
+            get {
+                return ResourceManager.GetString("RecommendedAppsTitle", resourceCulture);
             }
         }
         

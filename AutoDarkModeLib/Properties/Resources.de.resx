@@ -1247,7 +1247,13 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Wechsle nicht das Design während manche Anwendungen ausgeführt werden</value>
   </data>
-  <data name="RecommendedApps" xml:space="preserve">
+  <data name="RecommendedAppsButton" xml:space="preserve">
     <value>Durchsuche Apps mit Unterstützung für Auto Dark Mode</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Nicht jede App unterstützt standardmäßig Auto Dark Mode. Auf unserer Wiki-Seite pflegen wir eine Liste mit unterstützten Anwendungen.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Empfohlene Apps</value>
   </data>
 </root>

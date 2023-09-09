@@ -471,14 +471,43 @@
                     Click="ButtonWikiBrowserExtension_Click" />
         </StackPanel>
 
-        <ui:HyperlinkButton
-            x:Name="ButtonSupportedApps"
-            Content="{x:Static p:Resources.RecommendedApps}"
-            Grid.Row="5"
+        <!-- Recommended Apps -->
+        <TextBlock Text="&#xE71D;"
             Grid.Column="1"
-            Margin="0,30,0,0"
-            PreviewMouseDown="ButtonSupportedApps_PreviewMouseDown"
-            PreviewKeyDown="ButtonSupportedApps_PreviewKeyDown"
-            />
+            Grid.Row="5"
+            VerticalAlignment="Top"
+            Margin="0,42,0,0"
+            FontSize="25"
+            FontFamily="Segoe MDL2 Assets" />
+
+        <StackPanel Orientation="Vertical"
+             Grid.Row="5"
+             Grid.Column="1"
+             Margin="40,0,0,0"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top">
+            <TextBlock Text="{x:Static p:Resources.RecommendedAppsTitle}"
+                Margin="0,25,0,0"
+                FontSize="14" />
+            <TextBlock Text="{x:Static p:Resources.RecommendedAppsDescription}"
+                Margin="0,4,0,0"
+                TextWrapping="Wrap"
+                Width="350"
+                Grid.Column="1"
+                Grid.Row="1"
+                Foreground="Gray"
+                FontSize="14" />
+            <Button Name="ButtonRecommendedApps"
+             Content="{x:Static p:Resources.RecommendedAppsButton}"
+             Grid.Column="1"
+             Grid.Row="1"
+             Margin="0,10,0,0"
+             MinHeight="30"
+             MinWidth="320"
+             Width="Auto"
+             Click="ButtonRecommendedApps_Click" />
+        </StackPanel>
+
+
     </Grid>
 </Page>

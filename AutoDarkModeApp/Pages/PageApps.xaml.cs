@@ -608,21 +608,16 @@ namespace AutoDarkModeApp
             RequestThemeSwitch();
         }
 
-        private void ButtonSupportedApps_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Apps-with-Auto-Dark-Mode-support");
-        }
-
-        private void ButtonSupportedApps_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            ButtonSupportedApps_PreviewMouseDown(this,null);
-        }
-
         private void ToggleColorFilter_Toggled(object sender, RoutedEventArgs e)
         {
             if (init) return;
             builder.Config.ColorFilterSwitch.Enabled = ToggleColorFilter.IsOn;
             SaveConfig();
+        }
+
+        private void ButtonRecommendedApps_Click(object sender, RoutedEventArgs e)
+        {
+            StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Apps-with-Auto-Dark-Mode-support");
         }
     }
 }
