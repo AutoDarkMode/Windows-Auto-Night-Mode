@@ -14,9 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using SourceChord.FluentWPF;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace AutoDarkModeApp.Pages
 {
@@ -28,6 +31,21 @@ namespace AutoDarkModeApp.Pages
         public PageDonation()
         {
             InitializeComponent();
+
+            SystemTheme.ThemeChanged += SystemTheme_ThemeChanged;
+            SystemTheme_ThemeChanged(this, null);
+        }
+
+        private void SystemTheme_ThemeChanged(object sender, EventArgs e)
+        {
+            if (SystemTheme.AppTheme.Equals(ApplicationTheme.Dark))
+            {
+                gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_White.png", UriKind.Relative));
+            }
+            else
+            {
+                gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_Black.png", UriKind.Relative));
+            }
         }
 
         private void ButtonPayPal_Click(object sender, RoutedEventArgs e)
@@ -42,6 +60,11 @@ namespace AutoDarkModeApp.Pages
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+        private void ButtonGitHubSponsors_Click(object sender, RoutedEventArgs e)
+        {
+            StartProcessByProcessInfo("https://github.com/sponsors/Spiritreader");
         }
     }
 }

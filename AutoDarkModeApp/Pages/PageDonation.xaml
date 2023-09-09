@@ -21,6 +21,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
@@ -58,7 +59,7 @@
             FontSize="14"
             />
 
-        <!-- Donation Button -->
+        <!-- Paypal Donation Button -->
         <TextBlock 
             Text="{x:Static p:Resources.DonationHowTo}" 
             Margin="0,30,0,0" 
@@ -101,5 +102,45 @@
                     Click="ButtonPayPal_Click" 
                     />
         </StackPanel>
+
+
+        <!-- Paypal Donation Button -->
+        <Image 
+            x:Name="gitHubImage"
+            Width="25" 
+            Margin="0,40,0,0" 
+            Grid.Column="1" Grid.Row="4" 
+            VerticalAlignment="Top" HorizontalAlignment="Left" 
+            Source="/AutoDarkModeApp;component/Resources/GitHub_Logo_Black.png" 
+            />
+        <StackPanel 
+            Orientation="Vertical" 
+            Margin="40,25,0,0" 
+            Grid.Column="1" Grid.Row="4" 
+            HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock 
+                Text="GitHub Sponsors" 
+                Margin="0,0,0,0"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                FontSize="14"/>
+            <TextBlock 
+                Text="{x:Static p:Resources.DonationGitHubSponsorsDescription}" 
+                TextWrapping="Wrap" 
+                Width="320" 
+                Foreground="Gray" 
+                FontSize="14"
+                Margin="0,5,0,0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                />
+            <Button x:Name="ButtonGitHubSponsors" 
+                    Content="{x:Static p:Resources.NavbarDonation}" 
+                    Margin="0,5,0,0" 
+                    MinWidth="150"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Click="ButtonGitHubSponsors_Click" 
+                    />
+        </StackPanel>
+
+
     </Grid>
 </Page>

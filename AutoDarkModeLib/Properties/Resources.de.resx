@@ -1256,4 +1256,7 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="RecommendedAppsTitle" xml:space="preserve">
     <value>Empfohlene Apps</value>
   </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Als Alternative steht GitHub Sponsors zur Verfügung. Außerdem erlaubt dieser Dienst wiederkehrende, monatliche Spenden.</value>
+  </data>
 </root>

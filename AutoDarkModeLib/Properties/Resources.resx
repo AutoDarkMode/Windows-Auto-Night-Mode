@@ -1256,4 +1256,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="RecommendedAppsTitle" xml:space="preserve">
     <value>Recommended apps</value>
   </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+  </data>
 </root>

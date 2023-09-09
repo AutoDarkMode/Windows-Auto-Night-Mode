@@ -699,6 +699,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations..
+        /// </summary>
+        public static string DonationGitHubSponsorsDescription {
+            get {
+                return ResourceManager.GetString("DonationGitHubSponsorsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Why should you donate?.
         /// </summary>
         public static string DonationHeaderReason {
