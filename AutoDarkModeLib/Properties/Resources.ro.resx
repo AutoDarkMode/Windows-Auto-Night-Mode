@@ -426,7 +426,7 @@ Le puteți configura individual în Tema Windows.</value>
     <value>Pas</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Utilizați filtrul de culoare (apăsați Win + Ctrl + C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Utilizați sarcina la login în loc de la pornire</value>
@@ -1246,5 +1246,17 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Don't switch while certain processes are running</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>

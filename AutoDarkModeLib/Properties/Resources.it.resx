@@ -426,7 +426,7 @@ Puoi impostarle individualmente nel tuo Tema di Windows.</value>
     <value>Successivo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Usa il filtro colore (invia Win + Ctrl + C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Usa una attività di accesso invece di una voce di avvio</value>
@@ -1246,5 +1246,17 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Non cambiare mentre sono in esecuzione alcuni processi</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>

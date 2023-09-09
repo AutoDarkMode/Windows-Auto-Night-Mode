@@ -426,7 +426,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Étape</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Utiliser un filtre de couleur (envoie Win + Ctrl + C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Utiliser une tâche planifiée à la connexion plutôt qu'une entrée au démarrage</value>
@@ -1246,5 +1246,17 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Ne pas changer de thème quand certains processus sont en cours</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>

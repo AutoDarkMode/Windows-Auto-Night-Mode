@@ -426,7 +426,7 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Passo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Utilizar filtro de cor (envia Win + Ctrl + C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Utilizar a tarefa de inicio de sessão em vez de uma entrada no arranque</value>
@@ -1246,5 +1246,17 @@ Em raras ocasiões, o Windows pode emitir um sinal sonoro quando o rato é movid
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Não trocar enquanto certos processos estão a correr</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>

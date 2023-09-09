@@ -426,7 +426,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Các bước thiết lập</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Sử dụng bộ lọc màu thang độ xám (tổ hợp phím Win + Ctrl + C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Sử dụng logon task thay vì startup entry</value>
@@ -1246,5 +1246,17 @@ Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng 
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>

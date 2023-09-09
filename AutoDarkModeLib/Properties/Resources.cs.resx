@@ -426,7 +426,7 @@ Můžete je však nastavit přímo v motivu Windows.</value>
     <value>Krok</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Použít černobílý filtr (Win+Ctrl+C)</value>
+    <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Použít úlohu po přihlášení namísto programu po spuštění</value>
@@ -1246,5 +1246,17 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
     <value>Nepřepínejte, když jsou spuštěny určité procesy</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Browse apps with Auto Dark Mode support</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Recommended apps</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
   </data>
 </root>
