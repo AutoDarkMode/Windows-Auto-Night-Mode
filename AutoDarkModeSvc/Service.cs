@@ -281,9 +281,10 @@ namespace AutoDarkModeSvc
             Application.Exit();
         }
 
-        public void RequestExit(object sender, EventArgs e)
+        public void CheckReadyStatus()
         {
-            if (!admReady)
+            bool isInitializing = !admReady;
+            if (isInitializing)
             {
                 Logger.Warn("adm initialization in progress, waiting for completion before exiting service");
             }
@@ -291,6 +292,15 @@ namespace AutoDarkModeSvc
             {
                 Thread.Sleep(200);
             }
+            if (isInitializing)
+            {
+                Logger.Info("adm initialization complete");
+            }
+        }
+
+        public void RequestExit(object sender, EventArgs e)
+        {
+            CheckReadyStatus();
             if (e is ExitEventArgs exe)
             {
                 closeApp = exe.CloseApp;
