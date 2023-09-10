@@ -426,7 +426,7 @@ Puedes activarlas individualmente en tu tema de Windows.</value>
     <value>Paso</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Filtro de color (usa Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Usar tarea al iniciar sesión en lugar de durante el encendido</value>
@@ -1248,15 +1248,15 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
     <value>No cambiar mientras se ejecutan determinados procesos</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Explorar las aplicaciones compatibles con Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>No todas las aplicaciones de terceros soportan Auto Dark Mode por defecto. En nuestra página wiki ofrecemos una lista de aplicaciones compatibles.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Aplicaciones recomendadas</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>También puedes hacer una donación a través de GitHub Sponsors, que también admite programar donaciones mensuales.</value>
   </data>
 </root>

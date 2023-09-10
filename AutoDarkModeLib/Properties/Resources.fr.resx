@@ -1248,15 +1248,15 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
     <value>Ne pas changer de thème quand certains processus sont en cours</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Parcourir les applications prises en charge par Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Certaines applications tierces ne prennent pas en charge Auto Dark Mode par défaut. Nous fournissons sur notre page wiki une liste d'applications prises en charge.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Applications recommandées</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Vous pouvez également faire un don via GitHub Sponsors, qui prend également en charge les dons mensuels.</value>
   </data>
 </root>

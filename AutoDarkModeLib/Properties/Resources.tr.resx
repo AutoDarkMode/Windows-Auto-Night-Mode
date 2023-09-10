@@ -426,7 +426,7 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Adım</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Renk filtresi (Win + Ctrl + C gönderir)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Başlangıç girdisi yerine oturum açma görevi kullan</value>
@@ -1248,15 +1248,15 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
     <value>Belirli işlemler çalışırken değiştirme yapma</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Auto Dark Mode desteği olan uygulamalara gözat</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Her üçüncü taraf uygulaması varsayılan olarak Auto Dark Mode'u desteklemez. Wiki sayfamızda desteklenen uygulamaların yer aldığı özel bir liste sunuyoruz.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Önerilen uygulamalar</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Alternatif olarak, yinelenen aylık bağışları da destekleyen GitHub Sponsors aracılığıyla bağışta bulunabilirsiniz.</value>
   </data>
 </root>
