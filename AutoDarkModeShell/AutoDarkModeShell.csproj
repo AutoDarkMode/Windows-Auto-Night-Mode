@@ -6,7 +6,7 @@
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.3.2</Version>
+    <Version>1.3.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharprompt" Version="2.4.5" />
+    <PackageReference Include="Sharprompt" Version="3.0.0-preview4" />
   </ItemGroup>
 
   <ItemGroup>

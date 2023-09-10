@@ -64,6 +64,24 @@ namespace AutoDarkModeComms
                 }
                 Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: timeoutDefault)}");
                 Console.WriteLine("Please check service.log for more details");
+
+                if (argsList.Contains("--exit")) 
+                {
+                    int count = 0;
+                    while (true)
+                    {
+                        ApiResponse response = ApiResponse.FromString(client.SendMessageAndGetReply("--alive", timeoutSeconds: 1));
+                        if (response.StatusCode == StatusCode.Timeout)
+                        {
+                            Environment.Exit(0);
+                        }
+                        else if (count++ > 20)
+                        {
+                            Environment.Exit(-1);
+                        }
+                        Thread.Sleep(200);
+                    }
+                }
                 Environment.Exit(0);
             }
             var flags = BindingFlags.Static | BindingFlags.Public;
