@@ -75,11 +75,11 @@ namespace AutoDarkModeComms
                         {
                             Environment.Exit(0);
                         }
-                        else if (count++ > 20)
+                        else if (count++ > 10)
                         {
                             Environment.Exit(-1);
                         }
-                        Thread.Sleep(200);
+                        Thread.Sleep(1000);
                     }
                 }
                 Environment.Exit(0);

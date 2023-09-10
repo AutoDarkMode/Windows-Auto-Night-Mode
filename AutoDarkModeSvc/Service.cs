@@ -63,6 +63,7 @@ namespace AutoDarkModeSvc
         private readonly ToolStripProfessionalRenderer toolStripDefaultRenderer = new ToolStripProfessionalRenderer();
 
         private bool closeApp = true;
+        private bool admReady = false;
 
         public Service(int timerMillis)
         {
@@ -136,6 +137,7 @@ namespace AutoDarkModeSvc
             {
                 ThemeManager.RequestSwitch(new(SwitchSource.Startup));
             }
+            admReady = true;
         }
 
         protected override void SetVisibleCore(bool value)
@@ -281,6 +283,14 @@ namespace AutoDarkModeSvc
 
         public void RequestExit(object sender, EventArgs e)
         {
+            if (!admReady)
+            {
+                Logger.Warn("adm initialization in progress, waiting for completion before exiting service");
+            }
+            while (!admReady)
+            {
+                Thread.Sleep(200);
+            }
             if (e is ExitEventArgs exe)
             {
                 closeApp = exe.CloseApp;
