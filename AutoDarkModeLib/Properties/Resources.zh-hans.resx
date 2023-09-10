@@ -1248,15 +1248,15 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>当某些进程运行时不进行切换</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>浏览支持 Auto Dark Mode 的应用程序</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>不是每个第三方应用程序都默认支持 Auto Dark Mode。我们的 Wiki 页面上提供了支持的应用程序的精选列表。</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>推荐应用程序</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>您也可以通过 GitHub Sponsors 捐助，其同样支持每月持续捐助。</value>
   </data>
 </root>
