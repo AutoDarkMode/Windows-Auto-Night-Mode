@@ -15,11 +15,13 @@ body:
         If you live in China, the updater will not work because raw.githubusercontent is blocked. Instead, please use a VPN or go to the [Beta repository](https://github.com/AutoDarkMode/AutoDarkModeVersion/releases) and update manually.
         
         # Old Auto Dark Mode Versions
-        Please don't file issue reports if you are on versions 10.2 or earlier. There are known issue with them and you are required to update to further use the program.
+        Please don't file issue reports if you are on versions 10.3 or earlier.
+        We do not provide support for older versions of the software.
         
         Additional information:
         - Auto Dark Mode 10.1 is incompatible with Windows 11 22H2.
         - Auto Dark Mode 10.2 is partly incompatible with Windows 11 22H2.
+        - Auto Dark Mode 10.3 support ended on the 10th of September, 2023.
         
         # Issue Report
         
