@@ -212,7 +212,7 @@
                                           Name="pl" />
                             <ComboBoxItem Content="Português (Portuguese)"
                                           Name="pt_pt" />
-                            <ComboBoxItem Content="Português (Portuguese)"
+                            <ComboBoxItem Content="Português (Brazil)"
                                           Name="pt_br" />
                             <ComboBoxItem Content="Română (Romanian)"
                                           Name="ro" />
