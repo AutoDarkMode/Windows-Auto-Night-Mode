@@ -260,8 +260,8 @@ namespace AutoDarkModeSvc.Core
 
                 #region dwm refresh
                 // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
-                if (builder.Config.Tunable.AlwaysFullDwmRefresh && (providedDwmRefresh != DwmRefreshType.Full &&
-                    neededDwmRefresh != DwmRefreshType.None || themeModeNeedsUpdate))
+                if (builder.Config.Tunable.AlwaysFullDwmRefresh && 
+                   (providedDwmRefresh != DwmRefreshType.Full && neededDwmRefresh != DwmRefreshType.None || themeModeNeedsUpdate))
                 {
                     Logger.Info("dwm management: full refresh requested by user");
                     if (builder.Config.WindowsThemeMode.Enabled)
