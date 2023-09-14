@@ -273,8 +273,6 @@ namespace AutoDarkModeSvc.Handlers
                     dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
                     dwmRefreshTheme.Save();
 
-                    // restore previous settings if unmanaged
-                    string oldUnmanagedThemePath = state.UnmanagedActiveThemePath;
                     List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
                     Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
 
