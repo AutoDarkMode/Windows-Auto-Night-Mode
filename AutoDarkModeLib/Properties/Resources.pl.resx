@@ -178,7 +178,7 @@
     <value>Zapisano zmiany!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Kliknij 'Zastosuj', aby zapisać zmiany.</value>
+    <value>Twoje zmiany zostaną zapisane automatycznie.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Pobierz aktualizację</value>
@@ -420,13 +420,13 @@ Możesz je dopasować indywidualnie w danej kompozycji.</value>
     <value>Ustaw własne godziny</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>Od zachodu do wschodu słońca (usługa lokalizacji)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Krok</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Filtr kolorów (wysyła Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Użyj harmonogramu systemu Windows zamiast autostartu</value>
@@ -531,7 +531,7 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Dane lokalizacji</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>Od wschodu do zachodu słońca (współrzędne geograficzne)</value>
+    <value>Od zachodu do wschodu słońca (współrzędne geograficzne)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
     <value>Znajdź współrzędne dla Twojej lokalizacji</value>
@@ -549,7 +549,7 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Konfiguracja</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (starsza wersja):</value>
+    <value>Microsoft Office (starsza wersja)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Wybierz motyw</value>
@@ -679,7 +679,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Długość</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Proszę czekać, usługa systemu nie została jeszcze uruchomiona...</value>
+    <value>Proszę czekać, usługa systemu nie została jeszcze uruchomiona…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
     <value>Uruchamianie usługi</value>
@@ -1136,43 +1136,43 @@ Czy chcesz kontynuować?</value>
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Kolor akcentu</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Wybierz kolor akcentu</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Dostosuj kolor akcentu systemu Windows do swoich upodobań.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
     <value>Update colorization</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Ta funkcja jest wyłączona, gdy Auto Dark Mode zarządza twoim motywem.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Łącza</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Dokumentacja dla skryptów niestandardowych</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Repozytorium ze skryptami użytkowników</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Wypełnij</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Dopasuj</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Rozciągnij</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Wybierz dopasowanie dla obrazu pulpitu</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Odłączony</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
     <value>Always refresh DWM on theme switch</value>
@@ -1190,75 +1190,75 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Włącz zmianę kursora myszy</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Otwórz ustawienia wskaźnika systemu Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Wybierz kursor w motywie ciemnym</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Wybierz kursor w motywie jasnym</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Kursory</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Skonfiguruj różne kursory myszy dla ciemnego i jasnego motywu.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Wybierz kursory myszy</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Pozwól aplikacji Auto Dark Mode zarządzać moim motywem</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Pozwól systemowi Windows zarządzać moim motywem</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Możesz ustawić nowe schematy kursora w ustawieniach Windows, a następnie wybrać je tutaj.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Otwórz powłokę</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Otwórz dziennik aktualizacji</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Włącz zmianę koloru akcentu</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatycznie</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Ręcznie</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Dodaj</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Usuń</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Procesy blokujące zmianę</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Nie przełączaj, gdy określone procesy są uruchomione</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Przeglądaj aplikacje, które działają z Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Nie wszystkie aplikacje innych firm domyślnie obsługują automatyczny ciemny motyw. Na naszej stronie wiki znajduje się lista obsługiwanych aplikacji.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Polecane aplikacje</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Alternatywnie możesz przekazać darowiznę poprzez GitHuba, który obsługuje również regularne comiesięczne wpłaty.</value>
   </data>
 </root>
