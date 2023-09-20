@@ -1248,15 +1248,15 @@
     <value>Не переключать, пока запущены определённые процессы</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Просмотреть приложения с поддержкой Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Не каждое стороннее приложение поддерживает Auto Dark Mode по умолчанию. Мы предоставляем курируемый список поддерживаемых приложений на нашей вики-странице.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Рекомендуемые приложения</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Либо вы можете сделать пожертвование через GitHub Sponsors, также поддерживающий регулярные ежемесячные переводы.</value>
   </data>
 </root>
