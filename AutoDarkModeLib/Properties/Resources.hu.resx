@@ -717,7 +717,7 @@ Mellékjegyzet: SOHA ne futtassa manuálisan rendszergazdaként az Auto Dark Mod
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Rögzített mozgás</value>
+    <value>Captured Motion</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
