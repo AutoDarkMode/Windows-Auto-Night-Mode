@@ -426,7 +426,7 @@
     <value>Βήμα</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Φίλτρο χρώματος (αποστολή Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Χρήση διεργασίας σύνδεσης αντί για καταχώριση εκκίνησης</value>
@@ -907,7 +907,7 @@
     <value>Η συνέχιση θα λειτουργήσει μόνο για αναβολές που έχουν χρόνο λήξης</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Πληροφορίες</value>
+    <value>Διαχείριση αναβολής</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Ενεργοποίηση/απενεργοποίηση θέματος</value>
@@ -1248,15 +1248,15 @@
     <value>Να μην γίνεται εναλλαγή όταν εκτελούνται συγκεκριμένες διαδικασίες</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Περιηγηθείτε σε εφαρμογές που υποστηρίζουν το Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Το Auto Dark Mode δεν υποστηρίζεται από προεπιλογή από κάθε τρίτη εφαρμογή. Στη σελίδα wiki μας παρέχουμε μια επιμελημένη λίστα με υποστηριζόμενες εφαρμογές.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Προτεινόμενες εφαρμογές</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Εναλλακτικά μπορείτε να κάνετε δωρεά μέσω του GitHub Sponsors, το οποίο υποστηρίζει και επαναλαμβανόμενες μηνιαίες δωρεές.</value>
   </data>
 </root>
