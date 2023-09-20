@@ -429,7 +429,7 @@
     <value>Крок</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Кольоровий фільтр (сполучення Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Використовувати задачу входу в систему замість задіяння автозапуску</value>
@@ -862,7 +862,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Показувати сповіщення за перемикання</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Відкласти</value>
+    <value>Затримка</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>Модуль моніторину ГП</value>
@@ -1248,15 +1248,15 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Не перемикайтеся під час виконання певних процесів</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Перегляд застосунків з підтримкою автоматичного темного режиму</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Не кожна сторонній застосунок за замовчуванням підтримує автоматичний темний режим. На нашій сторінці вікі ми надаємо список з підтримуваними застосунками.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Рекомендовані застосунки</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Крім того, ви можете пожертвувати через GitHub Sponsors, які також підтримують щомісячні пожертви..</value>
   </data>
 </root>
