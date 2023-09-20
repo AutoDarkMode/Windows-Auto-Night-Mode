@@ -1248,15 +1248,15 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>指定のプロセスの実行中は切り替えない</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Auto Dark Mode 対応のアプリを見る</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>第三者作のすべてのアプリが Auto Dark Mode に対応するわけではありません。ウィキに対応アプリをまとめました。</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>おすすめアプリ</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>GitHub Sponsors からも寄付できます。定期的な毎月の寄付にも対応します。</value>
   </data>
 </root>
