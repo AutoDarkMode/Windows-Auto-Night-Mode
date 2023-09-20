@@ -1182,28 +1182,28 @@ This may introduce slight to moderate lag on some systems during theme switch si
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>強制重啟桌面視窗管理員 (DWM)？</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>啟用滑鼠游標轉換</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>開啟 Windows 游標設定</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>選取深色模式游標</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>選取淺色模式游標</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>游標</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>為淺色及深色模式設定不同的游標樣式</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
     <value>Pick mouse cursors</value>
