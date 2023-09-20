@@ -166,7 +166,7 @@
     <value>Sistema</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Software de terceiros usados</value>
+    <value>Softwares de terceiros usados</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>Atualizações</value>
@@ -187,7 +187,7 @@
     <value>Erro ocorrido :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>O aplicativo precisa da permissão da localização</value>
+    <value>O aplicativo precisa acessar sua localização</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>Não há atualizações disponíveis.</value>
@@ -199,16 +199,16 @@
     <value>Buscando por atualizações…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Aviso: Nós não podemos detectar seu tema atual.</value>
+    <value>Aviso: Nós não conseguimos detectar seu tema atual.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>uma nova atualização está disponível!</value>
+    <value>Uma nova atualização está disponível!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Obrigado por usar o Auto Dark Mode!
 
 Uma nova versão está disponível no GitHub com correções de bugs e aprimoramentos.
-Você quer baixá-lo?
+Você quer baixá-la?
 
 Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
@@ -216,10 +216,10 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Modo Escuro Automático</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Procurar por actualizações</value>
+    <value>Procurar por atualizações</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>Vamos procurar por actualizações cada vez que o programa iniciar.</value>
+    <value>Vamos procurar por atualizações a cada inicialização do programa.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>Bem-vindo</value>
@@ -237,77 +237,77 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Posição</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>O reinicio da aplicação é necessário para ver as alterações</value>
+    <value>Reinicialização necessário aplicativo para ver as alterações</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Idioma:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Côr do destaque para a barra de tarefas</value>
+    <value>Cor de destaque para a barra de tarefas</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Actualmente:</value>
+    <value>Atualmente:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Fundo para o tema escuro</value>
+    <value>Tela de Fundo para o tema escuro</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>Eliminar/Desativar</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Escolher ficheiro</value>
+    <value>Escolher arquivo</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Fundo para o tema claro</value>
+    <value>Tela de Fundo para o tema claro</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Fundo do Ambiente de Trabalho</value>
+    <value>Fundo da Área de Trabalho</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
     <value>Imagens</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Por favor, seleccione duas imagens de fundo</value>
+    <value>Por favor, selecione duas imagens de fundo</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Por favor, seleccione uma imagem</value>
+    <value>Por favor, selecione uma imagem</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configurar o Fundo do Ambiente de Trabalho</value>
+    <value>Configurar o Fundo da Área de Trabalho</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>utilizar o fundo actual</value>
+    <value>utilizar a tela de fundo atual</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Desactivado</value>
+    <value>Desativado</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Activado</value>
+    <value>Ativado</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>ou</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Salvar</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Talvez o seu ficheiro de imagem está corrompido ou o caminho não existe.</value>
+    <value>Talvez o seu arquivo está corrompido ou o caminho não existe.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
     <value>Não conseguimos gerar uma pré-visualização da sua imagem, desculpe!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>Não conseguimos guardar as suas definições, desculpe!</value>
+    <value>Não conseguimos salvar as suas configurações, desculpe!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>Ocorreu um erro</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Apenas visível no modo escuro.
-Se encontrar problemas, por favor, aumente o atraso da mudança nas definições.</value>
+Se encontrar problemas, por favor, aumente o atraso da mudança nas configurações.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Informações</value>
@@ -325,32 +325,32 @@ Se encontrar problemas, por favor, aumente o atraso da mudança nas definições
     <value>Sim</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Procurar por actualizações em segundo plano</value>
+    <value>Checar atualizações automaticamente</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>Ocorreu um problema com o UI.
+    <value>Ocorreu um problema com a IU.
 
-Por favor, certifique-se que:
-- o serviço está a ser executado
-- o seu ficheiro config.yaml está correcto
+Por favor, certifique-se de que:
+- o serviço está a sendo executado
+- o seu arquivo config.yaml está correto
 
-Gostaria de criar um Issue no repositório Auto Dark Mode?
+Gostaria de criar um tópico no repositório do Auto Dark Mode?
 Clique em "Sim" para abrir uma nova janela no navegador.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Erro: A sua entrada está inválida</value>
+    <value>Erro: A sua entrada é inválida</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
     <value>Mudar após o Modo de Espera (não recomendado)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão a utilizar um novo tipo de modo de espera.
-Activanda esta opção, faz com que o Auto Dark Mode mude imediatamente o tema depois de ligar o seu computador.
-Mas isso também pode reduzir a duração da bateria então SÓ active se for necessário!</value>
+    <value>Dispositivos móveis, como os produtos Microsoft Surface, estão utilizando um novo tipo de modo de espera.
+Ativar esta opção faz com que o Auto Dark Mode mude imediatamente o tema depois de ligar o seu computador.
+Mas isso também pode reduzir a duração da bateria, então SOMENTE ative se for necessário!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Por causa de um bug do Windows, a barra de tarefas não muda correctamente a sua cor no modo de poupança de bateria. Por favor, desactive a poupança de bateria se tiver problemas.</value>
+    <value>Devido a um bug do Windows, a barra de tarefas não muda corretamente a sua cor no modo de economia de bateria. Por favor, desative a economia de bateria se tiver problemas.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Deslocamento</value>
@@ -359,14 +359,14 @@ Mas isso também pode reduzir a duração da bateria então SÓ active se for ne
     <value>Definir</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>Estas opções estão desactivadas enquanto utilizar um Tema do Windows.
-Pode defini-los individualmente no seu Tema do Windows.</value>
+    <value>Estas opções estão desativadas enquanto se utiliza um Tema do Windows.
+Você pode defini-las individualmente no seu Tema do Windows.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Aplicações</value>
+    <value>Aplicativos</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Definições</value>
+    <value>Configurações</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
     <value>Tempo</value>
@@ -390,16 +390,16 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Tema do Windows (mais funcionalidades)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Fundo do Ambiente de Trabalho (recomendado)</value>
+    <value>Fundo da Área de Trabalho (recomendado)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Clique aqui para abrir as definições do Tema do Windows.</value>
+    <value>Clique aqui para abrir as configurações do Tema do Windows.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Agora navegue até 'Cores' e altere a cor do sistema para 'Claro' para o tema claro. Seleccione a sua Imagem de Fundo favorito, Cursor de Rato e Cor de Destaque.</value>
+    <value>Agora navegue até 'Cores' e altere a cor do sistema para 'Claro' para o tema claro. Selecione a sua Imagem de Fundo favorita, Cursor do Mouse e Cor de Destaque.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Volte para as definições do tema e guarde o seu tema.</value>
+    <value>Volte para as configurações e salve o seu tema.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value>Repita o processo para o tema escuro.</value>
@@ -408,7 +408,7 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Atraso na mudança de cores da barra de tarefas (ms):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>Acerca</value>
+    <value>Sobre</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>
@@ -426,10 +426,10 @@ Pode defini-los individualmente no seu Tema do Windows.</value>
     <value>Passo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Filtro de cores (clicar Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Utilizar a tarefa de inicio de sessão em vez de uma entrada no arranque</value>
+    <value>Utilizar a tarefa de início de sessão ao invés de entrada na inicialização</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>Seleccionar modo:</value>
@@ -1128,10 +1128,10 @@ Tem a certeza que quer continuar?</value>
     <value>Alternar tema</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Destaque</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Destaque do Windows</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
     <value>Cor de destaque</value>
@@ -1227,7 +1227,7 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
     <value>Ativar mudança da cor de destaque</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Alternar teclado de toque e entrada</value>
   </data>
   <data name="Automatic" xml:space="preserve">
     <value>Automático</value>
@@ -1248,15 +1248,15 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
     <value>Não trocar enquanto certos processos estejam executando</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Navegue por aplicativos com suporte para Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Nem todo aplicativo de terceiros suporta o Auto Dark Mode por padrão. Na nossa página wiki nós disponibilizamos uma lista com os aplicativos suportados.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Aplicativos recomendados</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Alternativamente você pode doar via Patrocinadores GitHub, que também suportam doações mensais.</value>
   </data>
 </root>
