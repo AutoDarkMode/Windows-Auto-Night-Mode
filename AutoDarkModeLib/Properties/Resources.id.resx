@@ -1248,15 +1248,15 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Jangan beralih ketika proses tertentu berjalan</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Jelajahi aplikasi dengan dukungan Mode Gelap Otomatis</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Tidak semua aplikasi pihak ketiga mendukung Mode Gelap Otomatis secara default. Pada halaman wiki kami, kami menyediakan daftar pilihan aplikasi yang mendukung.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Aplikasi yang direkomendasikan</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Alternatifnya, Anda dapat menyumbang melalui GitHub Sponsor, yang juga mendukung donasi berkala bulanan.</value>
   </data>
 </root>
