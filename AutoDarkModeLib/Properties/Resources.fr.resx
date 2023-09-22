@@ -426,7 +426,7 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
     <value>Étape</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Filtre de couleur (envoie Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Utiliser une tâche planifiée à la connexion plutôt qu'une entrée au démarrage</value>
@@ -617,7 +617,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Image (plusieurs écrans)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Couleur</value>
+    <value>Couleur unie</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
     <value>Thème</value>
@@ -1152,7 +1152,7 @@ Voulez-vous vraiment continuer ?</value>
     <value>Liens</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation pour des scripts personnaliser</value>
+    <value>Documentation pour les scripts personnalisés</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
     <value>Dépôt de scripts personnalisés par les utilisateurs</value>
@@ -1188,10 +1188,10 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Activer le changement de la sourie</value>
+    <value>Activer le changement de la souris</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Ouvrir les paramètres de la sourie</value>
+    <value>Ouvrir les paramètres de la souris</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
     <value>Sélectionner un curseur sombre</value>

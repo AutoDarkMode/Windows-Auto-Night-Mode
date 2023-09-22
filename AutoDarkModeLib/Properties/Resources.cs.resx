@@ -500,7 +500,7 @@ Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
     <value>Resetovat</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Povolit tmavý režim, když je zařízení odpojeno</value>
+    <value>Nastavit tmavý režim, když je zařízení napájeno bateriemi</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Výchozí hodnota pro posuvník spořiče energie</value>
@@ -1248,15 +1248,15 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
     <value>Nepřepínejte, když jsou spuštěny určité procesy</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Prohlédněte si aplikace podporující Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Všechny aplikace nepodporují Auto Dark Mode. Na naší wiki nabízíme aktuální seznam aplikací, které ano.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Doporučené aplikace</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Můžete nás podpořit také skrze GitHub Sponsors, kde je možné se zapsat i k pravidelným příspěvkům.</value>
   </data>
 </root>

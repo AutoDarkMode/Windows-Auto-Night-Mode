@@ -133,7 +133,7 @@
     <value>總是淺色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>啟用適用於 Windows 1903的功能</value>
+    <value>啟用適用於Windows 1903的功能</value>
   </data>
   <data name="lblApps" xml:space="preserve">
     <value>應用程式</value>
@@ -178,7 +178,7 @@
     <value>已儲存變更！</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>您的變更會被自動儲存。</value>
+    <value>您的變更將會自動儲存。</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>下載更新</value>
@@ -193,7 +193,7 @@
     <value>已是最新版本。</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>正在存取您的位置…</value>
+    <value>正在取得您的位置…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
     <value>正在檢查更新…</value>
@@ -1137,19 +1137,19 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>Accent color</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>選擇輔色</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
     <value>Customize the Windows system color scheme to your liking.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>個人化色彩</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
     <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>連結</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
     <value>Documentation for custom scripts</value>
@@ -1158,7 +1158,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>Custom script user repository</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>填滿</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
     <value>Fit</value>
@@ -1170,7 +1170,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>Choose a fit for your desktop image</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>中斷連結</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
     <value>Always refresh DWM on theme switch</value>
@@ -1182,64 +1182,64 @@ This may introduce slight to moderate lag on some systems during theme switch si
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>強制重啟桌面視窗管理員 (DWM)？</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>好</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>啟用滑鼠游標轉換</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>開啟 Windows 游標設定</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>選取深色模式游標</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>選取淺色模式游標</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>游標</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>為淺色及深色模式設定不同的游標樣式</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>選擇游標</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>以Auto Dark Mode管理我的主題</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>以Windows管理我的主題</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>開啟shell</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>開啟更新工具日誌</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>啟用輔色切換</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>自動</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>手動</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>新增</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>移除</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
     <value>Blocking Processes</value>
@@ -1254,7 +1254,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>建議的應用程式</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
