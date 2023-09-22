@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.Modules
             State.SetWarden(this);
             Timers = timers;
             Priority = 2;
-            RegisterGovernor();
+            governorModule = new GovernorModule(typeof(GovernorModule).Name, true);
         }
 
         /// <summary>
@@ -64,7 +64,11 @@ namespace AutoDarkModeSvc.Modules
             AutoManageModule(typeof(GPUMonitorModule), true, config.GPUMonitoring.Enabled);
             AutoManageModule(typeof(ProcessBlockListModule), true, config.ProcessBlockList.Enabled);
             AutoManageModule(typeof(UpdaterModule), true, config.Updater.Enabled);
-            governorModule.AutoManageGovernors(config.Governor);
+            AutoManageGovernorModule(config.AutoThemeSwitchingEnabled);
+            if (config.AutoThemeSwitchingEnabled)
+            {
+                governorModule.AutoManageGovernors(config.Governor);
+            }
             return Task.CompletedTask;
         }
 
@@ -97,11 +101,17 @@ namespace AutoDarkModeSvc.Modules
             }
         }
 
-        private void RegisterGovernor()
+        private void AutoManageGovernorModule(bool condition)
         {
-            governorModule = new GovernorModule(typeof(GovernorModule).Name, true);
-            var timer = Timers.Find(t => t.Name == governorModule.TimerAffinity);
-            timer?.RegisterModule(governorModule);
+            if (condition)
+            {
+                var timer = Timers.Find(t => t.Name == governorModule.TimerAffinity);
+                timer?.RegisterModule(governorModule);
+            }
+            else
+            {
+                Timers.ForEach(t => t.DeregisterModule(governorModule));
+            }
         }
     }
 }
