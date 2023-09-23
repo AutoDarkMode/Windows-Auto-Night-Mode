@@ -1248,15 +1248,15 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
     <value>Niet van thema wisselen als bepaalde processen worden uitgevoerd</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Zoek naar apps met Auto Dark Mode ondersteuning</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Niet elke app van een derde partij ondersteund standaard de automatische donkere modus. Op onze wikipagina hebben we een samengestelde lijst met ondersteunde apps.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Aanbevolen apps</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Als alternatief kunt u ook doneren via GitHub Sponsers, dit biedt ook de mogelijkheid om de donatie maandelijks te herhalen.</value>
   </data>
 </root>
