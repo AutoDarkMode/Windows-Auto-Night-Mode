@@ -426,7 +426,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>ステップ</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>カラーフィルター (Win + Ctrl + C を送信)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>スタートアップには登録せずログイン時のタスクとして実行</value>
