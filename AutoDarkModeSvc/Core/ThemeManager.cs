@@ -66,6 +66,8 @@ namespace AutoDarkModeSvc.Core
             {
                 if (PowerManager.PowerSupplyStatus == PowerSupplyStatus.NotPresent)
                 {
+                    // guard against auto switch triggering this event
+                    if (e.Source == SwitchSource.TimeSwitchModule) return;
                     e.OverrideTheme(Theme.Dark, ThemeOverrideSource.BatteryStatus);
                     UpdateTheme(e);
                     return;
