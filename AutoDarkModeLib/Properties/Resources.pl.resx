@@ -480,8 +480,7 @@ Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza
 {0}
 
 Spróbujemy naprawić problem, uruchamiając część aplikacji jako administrator.
-Auto Dark Mode zostanie zrestartowany, po czym będzie konieczna ponowna konfiguracja ustawień.
-Przepraszamy za to!
+Auto Dark Mode zostanie zrestartowany, po czym będzie konieczna ponowna konfiguracja ustawień. Przepraszamy za to!
 
 Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</value>
   </data>
@@ -564,17 +563,16 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Ukryj ikonę na pasku zadań (niezalecane)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Ta funkcja jest niedostępna kiedy Windows zarządza Twoim motywem.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Zaznacz różne motywy dla motywu ciemnego i jasnego. Pozwala na pełne dostosowanie, jednak wymaga skonfigurowania plików .theme na własną rękę.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Dostosuj tapetę dla wszystkich monitorów, dowolnych monitorów, ustaw kolor tła lub włącz spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Aplikacja automatycznie sprawdza dostępność aktualizacji w tle.
-Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
+    <value>Aplikacja automatycznie sprawdza dostępność aktualizacji w tle. Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Automatycznie pobieraj i instaluj nowe wersje</value>
@@ -749,7 +747,7 @@ Jeśli będzie dostępna aktualizacja, otrzymasz powiadomienie.</value>
     <value>Kliknij 'Zastosuj', aby zapisać zmiany.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Użyj koloru paska zadań dla motywu:</value>
+    <value>Użyj koloru paska zadań dla motywu</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
     <value>Tylko kolor paska zadań</value>
@@ -846,7 +844,7 @@ Czy chcesz kontynuować?</value>
     <value>Liczba minut, po której system jest uznawany jako bezczynny</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Kolor akcentu dla pasków tytułu i ramek okien dla motywu</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informacje o wersji skopiowano do schowka</value>
@@ -1127,7 +1125,7 @@ Czy chcesz kontynuować?</value>
     <value>Automatyczne przełączanie motywu</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>Przełącz motyw</value>
+    <value>Przełącz mo&amp;tyw</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
     <value>Spotlight</value>
@@ -1145,13 +1143,13 @@ Czy chcesz kontynuować?</value>
     <value>Dostosuj kolor akcentu systemu Windows do swoich upodobań.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Aktualizacja kolorystyki</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
     <value>Ta funkcja jest wyłączona, gdy Auto Dark Mode zarządza twoim motywem.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Łącza</value>
+    <value>Linki</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
     <value>Dokumentacja dla skryptów niestandardowych</value>
@@ -1175,16 +1173,16 @@ Czy chcesz kontynuować?</value>
     <value>Odłączony</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Zawsze odświeżaj DWM przy zmianie motywu</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Próbuje ograniczyć występowanie złych kolorów UI w eksploratorze, pasku zadań i menu start. Jeśli zdarza się to często spróbuj włączyć to ustawienie.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Może to spowodować delikatne lub średnie opóźnienie przy zmianie motywu w niektórych systemach, podobnie jak to się działo w Windows 10. 
+W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zostanie poruszona podczas odświeżania DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Wymusić odświeżenie DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
     <value>Ok</value>
@@ -1229,7 +1227,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Włącz zmianę koloru akcentu</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Przełącz klawiaturę ekranową i wprowadzanie</value>
   </data>
   <data name="Automatic" xml:space="preserve">
     <value>Automatycznie</value>

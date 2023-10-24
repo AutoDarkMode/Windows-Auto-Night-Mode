@@ -426,7 +426,7 @@ Bạn có thể thiết lập chúng trong Windows Theme của mình.</value>
     <value>Các bước thiết lập</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Bộ lọc màu (tổ hợp phím Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Sử dụng logon task thay vì startup entry</value>
@@ -1248,15 +1248,15 @@ Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng 
     <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Duyệt các ứng dụng có hỗ trợ Chế độ tối tự động</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Theo mặc định, không phải mọi ứng dụng của bên thứ ba đều hỗ trợ Chế độ tối tự động. Trên trang wiki của chúng tôi, chúng tôi cung cấp danh sách tuyển chọn các ứng dụng được hỗ trợ.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Ứng dụng được đề xuất</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Ngoài ra, bạn có thể quyên góp thông qua Nhà tài trợ GitHub, nhà tài trợ này cũng hỗ trợ quyên góp định kỳ hàng tháng.</value>
   </data>
 </root>

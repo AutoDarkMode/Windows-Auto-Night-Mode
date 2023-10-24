@@ -148,7 +148,7 @@
     <value>Tema întunecată</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Versiune veche):</value>
+    <value>Edge (Versiune veche)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>Luminos</value>
@@ -816,7 +816,7 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
     <value>Nu mai forțați tema</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Activați tastele rapide la nivel de sistem</value>
+    <value>Activați tastele rapide</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Forțați temă întunecată</value>
@@ -832,7 +832,7 @@ Chiar vreți să continuați?</value>
     <value>Ascunde pictograma din bara de activități</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>Deschideți directorul de configurare</value>
+    <value>&amp;Deschideți director config.</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Lasă aplicația să decidă</value>
@@ -856,7 +856,7 @@ Chiar vreți să continuați?</value>
     <value>Afișează notificarea la schimbare</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Întârziere</value>
+    <value>Amânare</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
     <value>Modulul de monitorizare GPU</value>
@@ -1149,7 +1149,7 @@ Chiar vreți să continuați?</value>
     <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Linkuri</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
     <value>Documentation for custom scripts</value>
