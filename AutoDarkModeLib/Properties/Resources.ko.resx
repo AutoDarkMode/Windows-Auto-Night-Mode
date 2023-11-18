@@ -150,7 +150,7 @@
     <value>Edge 브라우저 (레거시)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>밝은</value>
+    <value>밝음</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
     <value>밝은 테마</value>
