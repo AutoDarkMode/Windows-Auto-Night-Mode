@@ -277,8 +277,14 @@ namespace AutoDarkModeSvc.Handlers
         {
             try
             {
-                using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                if (registryKey == null)
+                {
+                    Logger.Warn("autostart master registry key does not exist, attempting to create it");
+                    registryKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+                }
                 registryKey.SetValue("AutoDarkMode", '\u0022' + Helper.ExecutionPath + '\u0022');
+                registryKey.Close();
                 return true;
             }
             catch (Exception ex)
