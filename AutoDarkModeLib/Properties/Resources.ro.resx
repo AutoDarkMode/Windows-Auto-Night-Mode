@@ -375,7 +375,7 @@ Le puteți configura individual în Tema Windows.</value>
     <value>Deschide Folder</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Tema întunecată:</value>
+    <value>Tema întunecată</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Creați temele dvs</value>
@@ -420,13 +420,13 @@ Le puteți configura individual în Tema Windows.</value>
     <value>Setați ore personalizate</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>De la apus către răsărit (serviciul locație)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Pas</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Filtre culori (trimite Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Utilizați sarcina la login în loc de la pornire</value>
@@ -503,7 +503,7 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
     <value>Activați modul întunecat când dispozitivul este deconectat</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>Valoare implicită ajustor salvare energie</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
     <value>Reducerea economisirii de energie pentru schimbarea temei</value>
@@ -548,7 +548,7 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
     <value>Configuración</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (versiunea veche):</value>
+    <value>Microsoft Office (versiunea veche)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Alegeți o temă</value>
@@ -563,13 +563,13 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
     <value>Ascunde pictograma din bara de activități (nu este recomandat)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>Această opțiune este dezactivată atunci când Windows gestionează temele tale.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>Alege o temă Windows pentru modul întunecat și luminos în mod independent. Permite ajustare totală a temei, dar solicită integrarea fișierelor pe cont propriu.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Ajustează fundalul ecranului pentru toate monitoarele, pentru fiecare individual, activează o culoare de fundal sau lumină de reflector.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Verificăm noi versiuni ale Auto Dark Mode în fundal. Când este disponibilă o actualizare, vă vom anunța prin notificare</value>
@@ -832,7 +832,7 @@ Chiar vreți să continuați?</value>
     <value>Ascunde pictograma din bara de activități</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Deschideți director config.</value>
+    <value>&amp;Deschideți director config</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
     <value>Lasă aplicația să decidă</value>
@@ -844,7 +844,7 @@ Chiar vreți să continuați?</value>
     <value>Minute până când sistemul este considerat inactiv</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>Culoarea accent pentru bara de titlu și pentru conturul ferestrelor numai în timpul</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Informațiile despre versiune au fost copiate în clipboard</value>
@@ -1128,135 +1128,135 @@ Chiar vreți să continuați?</value>
     <value>Schimbă tema</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Lumină reflector</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Lumină reflector Windows</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Nuanță culoare</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Alege o nuanță</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Ajustează schema de culori Windows după propriul gust.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>Actualizează colorare</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>Această opțiune este dezactivată atunci când modul automat întunecat gestionează tema ta.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Linkuri</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>Documentare pentru cod specific</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>Colecție cod utilizator speciale</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Completează</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Potrivește</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>Întinde</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Alege ceva potrivit pentru imagina de fundal</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>Deconectat</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>Întotdeauna reîmprospătează DWM la schimbarea temei</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Se încearcă reducerea ajustării greșite a culorii interfeței în explorator, bara cu evenimente sau meniul de start. Dacă pățești asta des sau te deranjează, activează această setare.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul schimbării temei, asemănător cu situația din Windows 10. 
+În câteva ocazii rare sistemul poate emite sunete scurte atunci când este mișcat cursorul în timpul împrospătării DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>Forțează reîmprospătare DWM?</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Da</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Activează schimbare cursor mouse</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Deschide setări cursor Windows</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Alege cursor întunecat</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Alege cursor luminos</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Cursoare</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Configurează cursoare de mouse diferite pentru modurile întunecat și luminos.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Alege cursor mouse</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Permite modului automat întunecat să gestioneze tema mea</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>Permite Windows să gestioneze tema mea</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>Poți defini noi scheme pentru cursor în setările Windows și apoi să le selectezi mai încolo.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>Deschide baza</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Deschide jurnal actualizări</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Activează schimbarea culori pentru accentuare</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>Schimbă tastatură touch și modul de introducere date</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automat</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>Adaugă</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>Elimină</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>Procese ce blochează</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>Nu schimb în timp ce rulează anumite procese</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Cercetează aplicații ce susțin modul automat întunecat</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Nu toate terțele părți susțin modul automat întunecat implicit. Pe pagina noastră de wiki actualizăm o listă cu toate aplicațiile compatibile.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Aplicații recomandate</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Poți dona prin intermediul sponsorilor GitHub, ceea ce presupune donații lunare actualizate.</value>
   </data>
 </root>

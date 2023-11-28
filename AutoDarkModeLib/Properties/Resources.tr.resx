@@ -270,7 +270,7 @@ Bunu indirmek istiyor musunuz?
     <value>Resimler</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Lütfen iki arka plan resimi seçin</value>
+    <value>Lütfen iki arka plan resmi seçin</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
     <value>Lütfen bir resim seçin</value>
@@ -297,7 +297,7 @@ Bunu indirmek istiyor musunuz?
     <value>Belki resim dosyanız bozuktur ya da yol mevcut değildir.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>Üzgünüz, resiminizin ön izlemesini oluşturamadık!</value>
+    <value>Üzgünüz, resminizin ön izlemesini oluşturamadık!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
     <value>Üzgünüz, ayarlarınızı kaydedemedik!</value>
@@ -334,7 +334,7 @@ Lütfen şunlardan emin olun:
 - Hizmet çalışıyor mu?
 - config.yaml dosyanız düzgün mü?
 
-Auto Dark Mode deposunda bir sorun oluşturmak ister misiniz?
+Auto Dark Mode deposunda bir sorun konusu oluşturmak ister misiniz?
 Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
 </value>
   </data>
@@ -390,13 +390,13 @@ Bunları Windows Temanızda ayrı ayrı yapılandırabilirsiniz.</value>
     <value>Windows Teması (daha fazla özellik)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Masaüstü Arka Plan Resimi (önerilir)</value>
+    <value>Masaüstü Arka Plan Resmi (önerilir)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
     <value>Windows Tema ayarlarını açmak için buraya tıklayın.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Şimdi 'Renkler' bölümüne gidin ve Açık Mod için sistem modunu 'Açık' olarak değiştirin. En sevdiğiniz arka plan resimini, fare imlecini ve vurgu rengini seçin.</value>
+    <value>Şimdi 'Renkler' bölümüne gidin ve Açık Mod için sistem modunu 'Açık' olarak değiştirin. En sevdiğiniz arka plan resmini, fare imlecini ve vurgu rengini seçin.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Tema ayarlarına geri dönün ve temanızı kaydedin.</value>

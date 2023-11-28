@@ -426,7 +426,7 @@ Puoi impostarle individualmente nel tuo Tema di Windows.</value>
     <value>Successivo</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Filtro colore (invia Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Usa una attività di accesso invece di una voce di avvio</value>
@@ -1248,15 +1248,15 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
     <value>Non cambiare mentre sono in esecuzione alcuni processi</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Sfoglia le app con il supporto della modalità oscura automatica</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Non tutte le app di terze parti supportano la modalità oscuramento automatico per impostazione predefinita. Nella nostra pagina wiki forniamo un elenco curato di app supportate.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>App consigliate</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>In alternativa puoi donare tramite GitHub Sponsors, che supporta anche donazioni mensili ricorrenti.</value>
   </data>
 </root>
