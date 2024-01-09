@@ -38,7 +38,6 @@ namespace AutoDarkModeSvc.Core
 
         public static void RequestSwitch(SwitchEventArgs e)
         {
-
             // process force switches
             if (state.ForcedTheme == Theme.Dark)
             {
@@ -209,7 +208,12 @@ namespace AutoDarkModeSvc.Core
             if (builder.Config.WindowsThemeMode.Enabled)
             {
 
-                if (e.Source == SwitchSource.SystemUnlock) themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme, skipCheck: true);
+                if (e.Source == SwitchSource.SystemUnlock || e.Source == SwitchSource.SystemResume)
+                {
+                    // check for theem changes on system unlock or resume
+                    GlobalState.Instance().RefreshThemes(AdmConfigBuilder.Instance().Config);
+                    themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
+                }
                 else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
             }
 
@@ -330,12 +334,6 @@ namespace AutoDarkModeSvc.Core
                 // windows theme mode apply theme
                 if (themeModeNeedsUpdate)
                 {
-                    // special case for dwm refresh when no components are due for update and dwm refresh is user requested
-                    if (componentsToUpdate.Count == 0 && builder.Config.Tunable.AlwaysFullDwmRefresh)
-                    {
-                        Logger.Info("dwm management: full refresh requested by user");
-                        ThemeHandler.RefreshDwmFull(managed: false, e);
-                    }
                     PowerHandler.RequestDisableEnergySaver(builder.Config);
                     ThemeHandler.ApplyTheme(newTheme);
                     themeSwitched = true;

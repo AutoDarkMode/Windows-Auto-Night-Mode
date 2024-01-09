@@ -256,6 +256,10 @@ namespace AutoDarkModeSvc.Handlers
 
         private static void TimeChangedEvent(object sender, EventArgs e)
         {
+            // Ignore system time events when we're in a session lock state
+            // as that will involuntarily trigger system time switch changes for ADM
+            if (state.PostponeManager.Get(Helper.PostponeItemSessionLock) != null) return;
+
             TimeZoneInfo oldTz = TimeZoneInfo.Local;
             DateTime old = DateTime.Now;
             bool oldIsDst = DateTime.Now.IsDaylightSavingTime();
@@ -289,8 +293,8 @@ namespace AutoDarkModeSvc.Handlers
             DateTime nowUtc = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
             TimeSpan delta = nowUtc - lastSystemTimeChange;
             lastSystemTimeChange = nowUtc;
-            // 1000 ms by default, if time is set to the future always process it
-            if (delta > new TimeSpan(10000 * 1000) || delta < new TimeSpan(0))
+            // 1000 ms by default
+            if (delta > new TimeSpan(10000 * 1000) || delta < new TimeSpan(10000 * 1000))
             {
                 Logger.Info($"system time changed from {oldTime}");
                 if (builder.Config.AutoThemeSwitchingEnabled) ThemeManager.RequestSwitch(new(SwitchSource.SystemTimeChanged));
