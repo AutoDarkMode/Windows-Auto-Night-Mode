@@ -52,6 +52,25 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentIndividualTheme = Theme.Unknown;
             spotlightEnabled = false;
         }
+
+        protected override void SwitchGlobal(Theme newTheme)
+        {
+            WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+            if (newTheme == Theme.Light)
+            {
+                GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
+            }
+            else
+            {
+                GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
+            }
+            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+            currentGlobalTheme = newTheme;
+            currentIndividualTheme = Theme.Unknown;
+            currentSolidColorTheme = Theme.Unknown;
+            spotlightEnabled = false;
+        }
+
         protected override bool SolidColorNeedsUpdateHandler()
         {
             HookPosition = HookPosition.PostSync;

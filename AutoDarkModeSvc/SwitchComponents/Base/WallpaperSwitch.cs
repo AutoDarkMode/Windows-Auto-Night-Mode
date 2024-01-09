@@ -79,7 +79,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
             {
-                HookPosition = HookPosition.PreSync;
+                HookPosition = HookPosition.PostSync;
                 return true;
             }
             else if (type == WallpaperType.Spotlight)
@@ -196,15 +196,12 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.Global)
             {
-                WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
-                currentGlobalTheme = newTheme;
-                currentIndividualTheme = Theme.Unknown;
-                currentSolidColorTheme = Theme.Unknown;
-                spotlightEnabled = false;
-
+                SwitchGlobal(newTheme);
             }
             else if (type == WallpaperType.All)
             {
+                Logger.Error("not implemented anymore");
+                /*
                 bool globalSwitched = false;
                 if (currentGlobalTheme != newTheme)
                 {
@@ -219,6 +216,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 currentIndividualTheme = newTheme;
                 currentSolidColorTheme = Theme.Unknown;
                 spotlightEnabled = false;
+                */
             }
             else if (type == WallpaperType.SolidColor)
             {
@@ -234,6 +232,15 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 spotlightEnabled = true;
             }
         }
+
+        protected virtual void SwitchGlobal(Theme newTheme)
+        {
+            WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+            currentGlobalTheme = newTheme;
+            currentIndividualTheme = Theme.Unknown;
+            currentSolidColorTheme = Theme.Unknown;
+            spotlightEnabled = false;
+        } 
 
         protected virtual void SwitchIndividual(Theme newTheme)
         {
