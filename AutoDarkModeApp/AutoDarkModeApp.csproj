@@ -103,7 +103,7 @@
     <PackageReference Include="ModernWpfUI" Version="0.9.6" />
     <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.5" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Management" Version="4.7.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Office_Logo.png" />
