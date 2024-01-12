@@ -66,5 +66,10 @@ namespace AutoDarkModeApp.Pages
         {
             StartProcessByProcessInfo("https://github.com/sponsors/Spiritreader");
         }
+
+        private void ButtonKofi_Click(object sender, RoutedEventArgs e)
+        {
+            StartProcessByProcessInfo("https://ko-fi.com/spiritreader");
+        }
     }
 }

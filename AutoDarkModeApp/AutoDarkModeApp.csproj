@@ -67,6 +67,7 @@
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Resources\Kofi_Logo.png" />
     <Resource Include="Resources\telegram.png" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +122,7 @@
     <Compile Remove="AboutWindow.xaml.cs" />
     <None Remove="Pages\PageScripts.xaml~RFacb2461.TMP" />
     <None Remove="Pages\telegram.png" />
+    <None Remove="Resources\Kofi_Logo.png" />
     <Page Remove="AboutWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
