@@ -50,7 +50,7 @@ namespace AutoDarkModeApp.Pages
 
         private void ButtonPayPal_Click(object sender, RoutedEventArgs e)
         {
-            StartProcessByProcessInfo("https://paypal.me/arminosaj");
+            StartProcessByProcessInfo("https://www.paypal.com/donate/?hosted_button_id=WHADHQNX67LKS");
         }
 
         private static void StartProcessByProcessInfo(string message)
