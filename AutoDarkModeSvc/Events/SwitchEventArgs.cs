@@ -42,6 +42,12 @@ namespace AutoDarkModeSvc.Events
             RefreshDwm = refreshDwm;
         }
 
+        public SwitchEventArgs(SwitchSource source, bool refreshDwm = false)
+        {
+            Source = source;
+            RefreshDwm = refreshDwm;
+        }   
+
         public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
         {
             if (Theme == Theme.Unknown)
@@ -64,7 +70,7 @@ namespace AutoDarkModeSvc.Events
             SwitchTime = time;
         }
 
-        public bool RefreshDwm { get; }
+        public bool RefreshDwm { get; } = false;
         public SwitchSource Source { get; }
         private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
         public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }

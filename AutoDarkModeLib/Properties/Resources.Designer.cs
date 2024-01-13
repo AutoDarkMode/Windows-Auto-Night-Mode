@@ -2910,6 +2910,15 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Try to fix the theme.
+        /// </summary>
+        public static string TrayMenuItemTryFixTheme {
+            get {
+                return ResourceManager.GetString("TrayMenuItemTryFixTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to until.
         /// </summary>
         public static string UntilTime {

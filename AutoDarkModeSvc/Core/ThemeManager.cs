@@ -218,6 +218,8 @@ namespace AutoDarkModeSvc.Core
             }
 
             (List<ISwitchComponent> componentsToUpdate, DwmRefreshType neededDwmRefresh, DwmRefreshType providedDwmRefresh) = cm.GetComponentsToUpdate(e);
+            if (e.RefreshDwm) neededDwmRefresh = DwmRefreshType.Full;
+
             #endregion
 
             #region logic for adm startup
@@ -247,7 +249,7 @@ namespace AutoDarkModeSvc.Core
             bool themeSwitched = false;
 
             #region apply themes and run components
-            if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
+            if (e.RefreshDwm || componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
             {
                 PowerHandler.RequestDisableEnergySaver(builder.Config);
 

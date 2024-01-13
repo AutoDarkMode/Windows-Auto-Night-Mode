@@ -58,6 +58,7 @@ namespace AutoDarkModeSvc
         public readonly ToolStripMenuItem autoThemeSwitchingItem = new();
         public readonly ToolStripMenuItem toggleThemeItem = new();
         public readonly ToolStripMenuItem pauseThemeSwitchItem = new();
+        public readonly ToolStripMenuItem tryFixTheme = new();
 
         private readonly ToolStripProfessionalRenderer toolStripDarkRenderer = new DarkRenderer();
         private readonly ToolStripProfessionalRenderer toolStripDefaultRenderer = new ToolStripProfessionalRenderer();
@@ -74,10 +75,12 @@ namespace AutoDarkModeSvc
             autoThemeSwitchingItem.Name = "autoThemeSwitching";
             toggleThemeItem.Name = "toggleTheme";
             pauseThemeSwitchItem.Name = "pauseThemeSwitch";
+            tryFixTheme.Name = "tryFixTheme";
             forceDarkMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceDarkTheme;
             forceLightMenuItem.Text = AdmProperties.Resources.TrayMenuItemForceLightTheme;
             autoThemeSwitchingItem.Text = AdmProperties.Resources.TrayMenuItemAutomaticThemeSwitch;
             toggleThemeItem.Text = AdmProperties.Resources.TrayMenuItemToggleTheme;
+            tryFixTheme.Text = AdmProperties.Resources.TrayMenuItemTryFixTheme;
 
             NotifyIcon = new NotifyIcon();
             state.SetNotifyIcon(NotifyIcon);
@@ -157,6 +160,7 @@ namespace AutoDarkModeSvc
             autoThemeSwitchingItem.Click += new EventHandler(ToggleAutoThemeSwitching);
             toggleThemeItem.Click += new EventHandler(ToggleTheme);
             pauseThemeSwitchItem.Click += new EventHandler(PauseThemeSwitch);
+            tryFixTheme.Click += new EventHandler(TryFixTheme);
 
             NotifyIcon.Text = "Auto Dark Mode";
             state.UpdateNotifyIcon(builder);
@@ -169,6 +173,7 @@ namespace AutoDarkModeSvc
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceDarkMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, forceLightMenuItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, new ToolStripSeparator());
+            NotifyIcon.ContextMenuStrip.Items.Insert(0, tryFixTheme);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, toggleThemeItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, pauseThemeSwitchItem);
             NotifyIcon.ContextMenuStrip.Items.Insert(0, autoThemeSwitchingItem);
@@ -179,6 +184,11 @@ namespace AutoDarkModeSvc
             {
                 NotifyIcon.Visible = true;
             }
+        }
+
+        private void TryFixTheme(object sender, EventArgs e)
+        {
+            ThemeManager.RequestSwitch(new(SwitchSource.Manual, refreshDwm: true));
         }
 
         private void UpdateContextMenu(object sender, EventArgs e)
