@@ -64,6 +64,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
             }
+            GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
             GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
             currentGlobalTheme = newTheme;
             currentIndividualTheme = Theme.Unknown;
