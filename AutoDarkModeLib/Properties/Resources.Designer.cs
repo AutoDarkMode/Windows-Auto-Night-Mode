@@ -298,7 +298,7 @@ namespace AutoDarkModeLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable dark mode when device is unplugged.
+        ///   Looks up a localized string similar to Switch to dark mode when device is unplugged.
         /// </summary>
         public static string cbSettingsBatteryDarkMode {
             get {
