@@ -4,8 +4,13 @@ if not exist bin\Publish\updater mkdir bin\Publish\adm-updater
 copy adm-updater-rs\target\release\adm-updater-rs.exe bin\Publish\adm-updater\AutoDarkModeUpdater.exe
 copy adm-updater-rs\license.html bin\Publish\adm-updater\license.html
 
-REM DOTNET BUILD AND PUBLISH
+REM DOTNET BUILD AND PUBLISH x86
 call dotnet publish AutoDarkModeApp\AutoDarkModeApp.csproj /p:PublishProfile=$(SolutionDir)AutoDarkModeApp\Properties\PublishProfiles\AppPublish.pubxml
 call dotnet publish AutoDarkModeSvc\AutoDarkModeSvc.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeSvc\Properties\PublishProfiles\ServicePublish.pubxml
-call dotnet publish AutoDarkModeShell\AutoDarkModeShell.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeShell\Properties\PublishProfiles\FolderProfile.pubxml
-REM call dotnet publish AutoDarkModeUpdater\AutoDarkModeupdater.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeupdater\Properties\PublishProfiles\FolderProfile.pubxml
+call dotnet publish AutoDarkModeShell\AutoDarkModeShell.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeShell\Properties\PublishProfiles\ShellPublish.pubxml
+REM call dotnet publish AutoDarkModeUpdater\AutoDarkModeupdater.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeupdater\Properties\PublishProfiles\LibPublish.pubxml
+
+REM DOTNET BUILD AND PUBLISH ARM64
+call dotnet publish AutoDarkModeApp\AutoDarkModeApp.csproj /p:PublishProfile=$(SolutionDir)AutoDarkModeApp\Properties\PublishProfiles\AppPublishARM64.pubxml
+call dotnet publish AutoDarkModeSvc\AutoDarkModeSvc.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeSvc\Properties\PublishProfiles\ServicePublishARM64.pubxml
+call dotnet publish AutoDarkModeShell\AutoDarkModeShell.csproj /p:PublishProfile=$(SolutionDir)\AutoDarkModeShell\Properties\PublishProfiles\ShellPublishARM64.pubxml

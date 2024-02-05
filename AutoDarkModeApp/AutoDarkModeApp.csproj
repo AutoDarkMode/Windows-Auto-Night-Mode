@@ -29,6 +29,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
@@ -61,7 +62,16 @@
     <OutputPath>..\bin\Debug\adm-app</OutputPath>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <OutputPath>..\bin\Debug\adm-app</OutputPath>
+    <NoWarn>1701;1702;CA1416</NoWarn>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release\adm-app</OutputPath>
+    <WarningLevel>0</WarningLevel>
+    <NoWarn>1701;1702;CA1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutputPath>..\bin\Release\adm-app</OutputPath>
     <WarningLevel>0</WarningLevel>
     <NoWarn>1701;1702;CA1416</NoWarn>

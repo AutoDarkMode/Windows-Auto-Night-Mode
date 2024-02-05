@@ -143,6 +143,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
 
                         </Grid.RowDefinitions>
 
@@ -223,6 +224,18 @@
                         <TextBlock Grid.Column="1"
                                    Grid.Row="5"
                                    Name="TextBlockWindowsVersion"
+                                   Margin="20,5,0,0"
+                                   FontSize="14" />
+
+                        <!-- Architecture -->
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="6"
+                                   Text="Arch"
+                                   Margin="0,5,0,0"
+                                   FontSize="14" />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="6"
+                                   Name="TextBlockArch"
                                    Margin="20,5,0,0"
                                    FontSize="14" />
 

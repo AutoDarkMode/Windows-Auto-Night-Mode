@@ -17,6 +17,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +28,7 @@ using System.Windows.Media.Imaging;
 using AutoDarkModeApp.Handlers;
 using AutoDarkModeLib;
 using SourceChord.FluentWPF;
+
 using AdmExtensions = AutoDarkModeLib.Helper;
 
 namespace AutoDarkModeApp.Pages;
@@ -64,6 +66,7 @@ public partial class PageAbout : Page
         TextBlockShellVersion.Text = versionInfo.Shell;
         TextBlockNetCoreVersion.Text = versionInfo.NetCore;
         TextBlockWindowsVersion.Text = versionInfo.WindowsVersion;
+        TextBlockArch.Text = versionInfo.Arch;
     }
 
     private void SystemTheme_ThemeChanged(object sender, EventArgs e)
@@ -432,6 +435,9 @@ public partial class PageAbout : Page
                 .AppendLine("`")
                 .Append("- Windows: `")
                 .Append(versionInfo.WindowsVersion)
+                .AppendLine("`")
+                .Append("- Arch: `")
+                .Append(versionInfo.Arch)
                 .AppendLine("`");
         for (int i = 0; i < 10; i++)
         {
@@ -547,6 +553,7 @@ public partial class PageAbout : Page
                 FileVersionInfo.GetVersionInfo(currentDirectory + @"\AutoDarkModeShell.exe").FileVersion);
             NetCore = ValueOrNotFound(() => Environment.Version.ToString());
             WindowsVersion = ValueOrNotFound(() => $"{Environment.OSVersion.Version.Build}.{RegistryHandler.GetUbr()}");
+            Arch = RuntimeInformation.ProcessArchitecture.ToString();
 
             static string ValueOrNotFound(Func<string> value)
             {
@@ -568,6 +575,7 @@ public partial class PageAbout : Page
         public string Shell { get; }
         public string NetCore { get; }
         public string WindowsVersion { get; }
+        public string Arch { get; }
     }
 
     private void Card_PreviewMouseDown(object sender, MouseButtonEventArgs e)
