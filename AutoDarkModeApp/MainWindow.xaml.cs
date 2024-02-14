@@ -24,6 +24,7 @@ using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Properties;
 using AutoDarkModeApp.Pages;
 using ModernWpf.Media.Animation;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeApp
 {
@@ -39,6 +40,20 @@ namespace AutoDarkModeApp
             LanguageHelper();
 
             InitializeComponent();
+
+            Architecture Arch = RuntimeInformation.ProcessArchitecture;
+            if (Arch == Architecture.Arm64)
+            {
+                string title = "ARMto Dark Mode";
+                WindowTitle.Text = title;
+                Title = title;
+            }
+            else
+            {
+                string title = "Auto Dark Mode";
+                WindowTitle.Text = title;
+                Title = title;
+            }
         }
 
         private void Window_OnSourceInitialized(object sender, EventArgs e)

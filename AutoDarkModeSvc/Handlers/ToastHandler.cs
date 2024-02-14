@@ -299,11 +299,15 @@ namespace AutoDarkModeSvc.Handlers
             {
                 return;
             }
+            string versionTag = UpdateHandler.UpstreamVersion.Tag;
+            if (UpdateHandler.IsARMUpgrade)
+            {
+                versionTag += " (ARM64)";
+            }
 
-            string updateString = downgrade ? string.Format(AdmProperties.Resources.UpdateToastDowngradeAvailable, UpdateHandler.UpstreamVersion.Tag) : string.Format(AdmProperties.Resources.UpdateToastNewVersionAvailable, UpdateHandler.UpstreamVersion.Tag);
+            string updateString = downgrade ? string.Format(AdmProperties.Resources.UpdateToastDowngradeAvailable, versionTag) : string.Format(AdmProperties.Resources.UpdateToastNewVersionAvailable, versionTag);
             string updateAction = downgrade ? "downgrade" : "update";
             string updateButton = downgrade ? AdmProperties.Resources.UpdateToastButtonDowngrade : AdmProperties.Resources.UpdateToastButtonUpdate;
-
 
             Program.ActionQueue.Add(() =>
             {

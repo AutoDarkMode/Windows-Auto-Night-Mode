@@ -91,6 +91,19 @@ namespace AutoDarkModeApp
 
             Loaded += OnLoaded;
 
+            Architecture Arch = RuntimeInformation.ProcessArchitecture;
+            if (Arch == Architecture.Arm64)
+            {
+                string title = "ARMto Dark Mode";
+                WindowTitle.Text = title;
+                Title = title;
+            }
+            else
+            {
+                string title = "Auto Dark Mode";
+                WindowTitle.Text = title;
+                Title = title;
+            }
         }
 
         private void ConfigureMica()

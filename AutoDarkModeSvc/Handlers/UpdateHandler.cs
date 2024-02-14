@@ -33,6 +33,7 @@ using System.Net.Http.Headers;
 using System.Linq;
 using System.Threading;
 using Windows.Media.Protection.PlayReady;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -45,6 +46,7 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
+        public static bool IsARMUpgrade { get; private set; }
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly NumberFormatInfo nfi = new();
@@ -71,6 +73,7 @@ namespace AutoDarkModeSvc.Handlers
         /// Details carries a yaml serialized UpdateInfo object</returns>
         public static ApiResponse CheckNewVersion()
         {
+            IsARMUpgrade = false;
             ApiResponse response = new();
             try
             {
@@ -117,6 +120,16 @@ namespace AutoDarkModeSvc.Handlers
                     response.Message = $"Version: {currentVersion}";
                     response.Details = data;
                     UpstreamResponse = response;
+                    return response;
+                }
+                else if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64 && currentVersion.CompareTo(newVersion) == 0 && UpstreamVersion.PathFileArm != null)
+                {
+                    Logger.Info($"upgrade to arm version available");
+                    response.StatusCode = StatusCode.New;
+                    response.Message = $"Version: {currentVersion} (ARM64)";
+                    response.Details = data;
+                    UpstreamResponse = response;
+                    IsARMUpgrade = true;
                     return response;
                 }
                 else
