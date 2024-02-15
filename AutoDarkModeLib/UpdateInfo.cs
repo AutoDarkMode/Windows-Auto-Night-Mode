@@ -53,7 +53,7 @@ namespace AutoDarkModeLib
             else
             {
                 string fileUrl;
-                if (PathFileArm != null && RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+                if (PathFileArm != null && RuntimeInformation.OSArchitecture == Architecture.Arm64)
                 {
                     fileUrl = $"{url}{PathFileArm}";
                 }
@@ -80,7 +80,7 @@ namespace AutoDarkModeLib
             {
                 string hashUrl;
 
-                if (PathChecksumArm != null && RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+                if (PathChecksumArm != null && RuntimeInformation.OSArchitecture == Architecture.Arm64)
                 {
                     hashUrl = $"{url}{PathChecksumArm}";
                 }
