@@ -122,7 +122,9 @@ namespace AutoDarkModeSvc.Handlers
                     UpstreamResponse = response;
                     return response;
                 }
-                else if (RuntimeInformation.OSArchitecture == Architecture.Arm64 && currentVersion.CompareTo(newVersion) == 0 && UpstreamVersion.PathFileArm != null)
+                else if (RuntimeInformation.OSArchitecture == Architecture.Arm64 
+                    && RuntimeInformation.ProcessArchitecture != Architecture.Arm64
+                    && currentVersion.CompareTo(newVersion) == 0 && UpstreamVersion.PathFileArm != null)
                 {
                     Logger.Info($"upgrade to arm version available");
                     response.StatusCode = StatusCode.New;
