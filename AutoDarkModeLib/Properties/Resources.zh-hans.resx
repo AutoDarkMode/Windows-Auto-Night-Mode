@@ -127,10 +127,10 @@
     <value>启用自动主题切换</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>总是深色</value>
+    <value>总是应用深色</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>总是浅色</value>
+    <value>总是应用浅色</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
     <value>启用适用于 Windows 1903 的功能</value>
@@ -207,7 +207,7 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>感谢您使用 Auto Dark Mode！
 
-GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
+GitHub 上发布了新版本，它修复了一些漏洞并增加了新功能。
 您想安装新版本吗？
 
 当前版本: {0}, 最新版本: {1}</value>
