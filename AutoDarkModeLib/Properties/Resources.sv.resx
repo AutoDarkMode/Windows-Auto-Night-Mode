@@ -252,28 +252,28 @@ Installerad version: {0}, ny version: {1}</value>
     <value>Currently:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Wallpaper for dark theme</value>
+    <value>Bakgrundsbild för mörkt läge</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Delete/Disable</value>
+    <value>Ta bort/Avaktivera</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>Välj fil</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Wallpaper for light theme</value>
+    <value>Bakgrundsbild för ljust läge</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Desktop Background</value>
+    <value>Bakgrundsbild</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pictures</value>
+    <value>Bilder</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpapers</value>
+    <value>Vänligen välj två bakgrundbilder</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>Vänligen välj en bild</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Configure Desktop Background</value>
