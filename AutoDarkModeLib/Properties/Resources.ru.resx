@@ -1260,6 +1260,6 @@
     <value>Либо вы можете сделать пожертвование через GitHub Sponsors, также поддерживающий регулярные ежемесячные переводы.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Попытаться исправить тему</value>
   </data>
 </root>
