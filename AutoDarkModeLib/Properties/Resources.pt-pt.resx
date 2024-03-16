@@ -1248,15 +1248,15 @@ Em raras ocasiões, o Windows pode emitir um sinal sonoro quando o rato é movid
     <value>Não trocar enquanto certos processos estão a correr</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>Navegue por apps com suporte para p Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>Nem todas apps de terceiros suportam o Auto Dark Mode por padrão. Na nossa página wiki, disponibilizamos uma lista com os apps suportadas.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>Apps recomendadas</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>Alternativamente pode doar via GitHub Sponsors, que também suportam doações mensais.</value>
   </data>
 </root>
