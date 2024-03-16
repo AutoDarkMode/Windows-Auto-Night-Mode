@@ -500,7 +500,7 @@ Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
     <value>Resetovat</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Nastavit tmavý režim, když je zařízení napájeno bateriemi</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Výchozí hodnota pro posuvník spořiče energie</value>
@@ -1258,5 +1258,8 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Můžete nás podpořit také skrze GitHub Sponsors, kde je možné se zapsat i k pravidelným příspěvkům.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

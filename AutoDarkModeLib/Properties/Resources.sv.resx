@@ -249,49 +249,49 @@ Installerad version: {0}, ny version: {1}</value>
     <value>Avbryt</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Currently:</value>
+    <value>För närvarande:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Wallpaper for dark theme</value>
+    <value>Bakgrundsbild för mörkt läge</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Delete/Disable</value>
+    <value>Ta bort/Avaktivera</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>Välj fil</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Wallpaper for light theme</value>
+    <value>Bakgrundsbild för ljust läge</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Desktop Background</value>
+    <value>Bakgrundsbild</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pictures</value>
+    <value>Bilder</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpapers</value>
+    <value>Vänligen välj två bakgrundbilder</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>Vänligen välj en bild</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configure Desktop Background</value>
+    <value>Konfigurera bakgrundsbild</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
     <value>use current background</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Inaktiverad</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Aktiverad</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>or</value>
+    <value>eller</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>Spara</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
     <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
@@ -500,7 +500,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Reset</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Enable dark mode when device is unplugged</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Default value for energy saver slider</value>
@@ -1258,5 +1258,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>
