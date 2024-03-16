@@ -1260,6 +1260,6 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
     <value>Vous pouvez également faire un don via GitHub Sponsors, qui prend également en charge les dons mensuels.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Essayer de corriger le thème</value>
   </data>
 </root>
