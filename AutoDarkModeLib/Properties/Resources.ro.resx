@@ -500,7 +500,7 @@ Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!<
     <value>Resetați</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Activați modul întunecat când dispozitivul este deconectat</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valoare implicită ajustor salvare energie</value>
@@ -1258,5 +1258,8 @@ Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul s
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Poți dona prin intermediul sponsorilor GitHub, ceea ce presupune donații lunare actualizate.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

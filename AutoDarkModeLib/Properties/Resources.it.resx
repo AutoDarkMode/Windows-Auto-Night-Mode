@@ -500,7 +500,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Resetta</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Abilita modalità scura quando il dispositivo è scollegato</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valore predefinito della barra del risparmio energetico</value>
@@ -1258,5 +1258,8 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>In alternativa puoi donare tramite GitHub Sponsors, che supporta anche donazioni mensili ricorrenti.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

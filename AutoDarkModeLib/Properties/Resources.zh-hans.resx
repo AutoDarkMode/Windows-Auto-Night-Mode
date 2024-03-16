@@ -500,7 +500,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>重置</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>未充电时启用深色模式</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>节电模式滑动条的默认值</value>
@@ -1258,5 +1258,8 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>您也可以通过 GitHub Sponsors 捐助，其同样支持每月持续捐助。</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

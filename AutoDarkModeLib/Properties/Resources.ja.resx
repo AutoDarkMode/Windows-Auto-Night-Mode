@@ -500,7 +500,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>初期化</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>端末の電源プラグを抜いたらダークモードを有効化</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>バッテリー節約機能のスライダーの初期値</value>
@@ -1258,5 +1258,8 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>GitHub Sponsors からも寄付できます。定期的な毎月の寄付にも対応します。</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>
