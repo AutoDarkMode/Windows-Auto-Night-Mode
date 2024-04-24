@@ -92,13 +92,5 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentSolidColorTheme = Theme.Unknown;
             spotlightEnabled = false;
         }
-
-        protected override void Callback(SwitchEventArgs e)
-        {
-            if (GlobalState.ManagedThemeFile.Slideshow.Enabled && (GlobalState.ManagedThemeFile.Slideshow.Shuffle == 1))
-            {
-                AdvanceSlideshow(DesktopSlideshowDirection.Forward);
-            }
-        }
     }
 }
