@@ -24,6 +24,7 @@ using System.Text;
 using System.Threading;
 using Windows.UI;
 using Windows.UI.Composition;
+using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -90,6 +91,14 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentGlobalTheme = Theme.Unknown;
             currentSolidColorTheme = Theme.Unknown;
             spotlightEnabled = false;
+        }
+
+        protected override void Callback(SwitchEventArgs e)
+        {
+            if (GlobalState.ManagedThemeFile.Slideshow.Enabled && (GlobalState.ManagedThemeFile.Slideshow.Shuffle == 1))
+            {
+                AdvanceSlideshow(DesktopSlideshowDirection.Forward);
+            }
         }
     }
 }

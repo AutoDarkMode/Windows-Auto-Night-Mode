@@ -38,7 +38,7 @@ namespace AutoDarkModeSvc.Handlers
         public static async Task<List<DisplayMonitor>> GetMonitorInfosAsync()
         {
             var deviceInfos = await DeviceInformation.FindAllAsync(DisplayMonitor.GetDeviceSelector());
-            List<DisplayMonitor> monitors = new();
+            List<DisplayMonitor> monitors = [];
             foreach (var deviceInfo in deviceInfos)
             {
                 DisplayMonitor monitor = await DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
@@ -54,7 +54,7 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         public static void DetectMonitors()
         {
-            var monitors = Task.Run(async () => await DisplayHandler.GetMonitorInfosAsync()).Result;
+            var monitors = Task.Run(GetMonitorInfosAsync).Result;
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             List<string> monitorIds = new();
             bool needsUpdate = false;
@@ -83,7 +83,7 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void CleanUpMonitors()
         {
-            var monitors = Task.Run(async () => await DisplayHandler.GetMonitorInfosAsync()).Result;
+            var monitors = Task.Run(GetMonitorInfosAsync).Result;
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
             List<MonitorSettings> connectedSettings = new();
             foreach (var monitor in monitors)

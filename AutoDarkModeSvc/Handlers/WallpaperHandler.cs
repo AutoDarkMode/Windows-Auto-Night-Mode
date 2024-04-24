@@ -279,6 +279,22 @@ namespace AutoDarkModeSvc.Handlers
             return false;
         }
 
+
+        /// <summary>
+        /// Advances the slideshow of all monitors by the specified direction.
+        /// 
+        /// <param name="direction">The direction to advance the slideshow.</param>"
+        /// </summary>
+        public static void AdvanceSlideshow(DesktopSlideshowDirection direction)
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
+            {
+                string id = handler.GetMonitorDevicePathAt(i);
+                handler.AdvanceSlideshow(id, direction);
+            }
+        }
+
         /// <summary>
         /// Gets the currenvt wallpaper
         /// </summary>
