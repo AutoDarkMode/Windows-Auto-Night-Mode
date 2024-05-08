@@ -282,6 +282,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             EndBlockingProcesses(out bool shellRestart, out bool appRestart);
 
+            /*
             string futureUpdaterDir = Path.Combine(Helper.ExecutionDir, "UpdaterFuture");
             string futureUpdaterExecutablePath = Path.Combine(futureUpdaterDir, Helper.UpdaterExecutableName);
             try
@@ -297,6 +298,7 @@ namespace AutoDarkModeSvc.Handlers
                 Updating = false;
                 return false;
             }
+            */
 
             Logger.Info("downgrade preparation complete");
 
@@ -312,7 +314,7 @@ namespace AutoDarkModeSvc.Handlers
             }
             else
             {
-                Process.Start(futureUpdaterExecutablePath);
+                Process.Start(Helper.ExecutionPathUpdater);
             }
             return false;
         }
