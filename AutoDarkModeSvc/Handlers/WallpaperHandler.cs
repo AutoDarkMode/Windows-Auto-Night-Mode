@@ -241,7 +241,7 @@ namespace AutoDarkModeSvc.Handlers
             [PreserveSig]
             uint GetSlideshowOptions(out DesktopSlideshowDirection options, out uint slideshowTick);
 
-            void AdvanceSlideshow([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.I4)] DesktopSlideshowDirection direction);
+            uint AdvanceSlideshow([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.I4)] DesktopSlideshowDirection direction);
 
             DesktopSlideshowDirection GetStatus();
 
@@ -288,10 +288,10 @@ namespace AutoDarkModeSvc.Handlers
         public static void AdvanceSlideshow(DesktopSlideshowDirection direction)
         {
             IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-            for (uint i = 0; i < handler.GetMonitorDevicePathCount(); i++)
+            for (uint i = 0; i < EnumDisplayDevicesWrapper.ListDisplays().Count; i++)
             {
-                string id = handler.GetMonitorDevicePathAt(i);
-                handler.AdvanceSlideshow(id, direction);
+                handler.AdvanceSlideshow(null, direction);
+                Thread.Sleep(200);
             }
         }
 

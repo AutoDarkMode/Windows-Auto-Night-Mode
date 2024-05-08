@@ -345,14 +345,27 @@ namespace AutoDarkModeSvc.Core
                 //todo change to switcheventargs
                 cm.RunCallbacks(componentsToUpdate, newTheme, e);
 
-                // remove this for now as it causes issues on some systems
-                // TODO: findout why this method is reported as non existent
-                // advance slideshow if it is enabled and shuffle is on
-                // remove this when proper slideshow support is added!!!
-                // if (state.ManagedThemeFile.Slideshow.Enabled && (state.ManagedThemeFile.Slideshow.Shuffle == 1))
-                // {
-                //   AdvanceSlideshow(DesktopSlideshowDirection.Forward);
-                // }
+                bool shuffleCondition = false;
+                if (builder.Config.WindowsThemeMode.Enabled == false)
+                {
+                    shuffleCondition = state.ManagedThemeFile.Slideshow.Enabled && (state.ManagedThemeFile.Slideshow.Shuffle == 1);
+                }
+                if (shuffleCondition)
+                {
+                    Logger.Debug("advancing slideshow in shuffled mode");
+                    AdvanceSlideshow(DesktopSlideshowDirection.Forward);
+
+                    /*
+                    // randomize slideshow forwarding when shuffle is enabled
+                    Logger.Debug("slideshow and shuffling enabled, rolling the dice...");
+                    Random rng = new();
+                    // 80% chance to advance slideshow
+                    if (rng.Next(0, 100) < 80)
+                    {
+                        Logger.Debug("dice rolled, advancing slideshow...");
+                    }
+                    */
+                }
 
                 themeSwitched = true;
 

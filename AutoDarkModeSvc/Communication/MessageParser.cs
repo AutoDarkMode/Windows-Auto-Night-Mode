@@ -501,7 +501,8 @@ namespace AutoDarkModeSvc.Communication
                         //ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                         //Cursors current = RegistryHandler.GetCursors();
                         //Cursors byName = RegistryHandler.GetCursorScheme("Posy's Cursor");
-                        state.PostponeManager.SyncExpiryTimesWithSystemClock();
+                        // state.PostponeManager.SyncExpiryTimesWithSystemClock();
+                        WallpaperHandler.AdvanceSlideshow(WallpaperHandler.DesktopSlideshowDirection.Forward);
                         //UpdateHandler.EndBlockingProcesses(out bool shellRestart, out bool appRestart);
                         SendResponse(new ApiResponse()
                         {
