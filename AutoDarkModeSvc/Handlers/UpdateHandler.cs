@@ -302,11 +302,13 @@ namespace AutoDarkModeSvc.Handlers
 
             if (shellRestart || appRestart)
             {
-                List<string> arguments = new();
-                arguments.Add("--notify");
-                arguments.Add(shellRestart.ToString());
-                arguments.Add(appRestart.ToString());
-                Process.Start(futureUpdaterExecutablePath, arguments);
+                ProcessStartInfo startInfo = new();
+                startInfo.ArgumentList.Add("--notify");
+                startInfo.ArgumentList.Add(shellRestart.ToString());
+                startInfo.ArgumentList.Add(appRestart.ToString());
+                startInfo.FileName = Helper.ExecutionPathUpdater;
+                startInfo.WorkingDirectory = Helper.ExecutionDirUpdater;
+                Process.Start(startInfo);
             }
             else
             {
@@ -355,7 +357,6 @@ namespace AutoDarkModeSvc.Handlers
 
             Updating = false;
 
-            // NEVER SET WORKING DIRECTORY TO THE UPDATER DIRECTORY
             if (shellRestart || appRestart)
             {
                 ProcessStartInfo startInfo = new();
