@@ -500,7 +500,7 @@ Not: Auto Dark Mode'u elle yönetici olarak ASLA çalıştırmayın!</value>
     <value>Sıfırla</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Cihazın fişi çekildiğinde koyu moda geç</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Enerji tasarrufu kaydırıcısı için varsayılan değer</value>
@@ -1260,6 +1260,6 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
     <value>Alternatif olarak, yinelenen aylık bağışları da destekleyen GitHub Sponsors aracılığıyla bağışta bulunabilirsiniz.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Temayı düzeltmeye çalış</value>
   </data>
 </root>
