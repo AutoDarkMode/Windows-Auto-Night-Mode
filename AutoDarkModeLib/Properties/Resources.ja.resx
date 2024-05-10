@@ -300,7 +300,7 @@
     <value>画像のプレビューを生成できません。</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>設定が保存できませんでした。</value>
+    <value>設定を保存できませんでした。</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
     <value>エラーが発生しました</value>
@@ -500,7 +500,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>初期化</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>端末の電源プラグを抜いたらダークモードに切り替える</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>バッテリー節約機能のスライダーの初期値</value>
@@ -816,7 +816,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>テーマの変更を中止する</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>ホットキーを有効にする</value>
+    <value>ホットキーを使用</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>ダークテーマに変更(&amp;D)</value>
@@ -1260,6 +1260,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>GitHub Sponsors からも寄付できます。定期的な毎月の寄付にも対応します。</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>テーマ適用を再試行</value>
   </data>
 </root>
