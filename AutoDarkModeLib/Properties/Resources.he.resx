@@ -1101,7 +1101,7 @@ Do you really want to continue?</value>
     <value>A downgrade is available</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>סקריפטים</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
     <value>Open script config</value>
