@@ -1260,6 +1260,6 @@ W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zo
     <value>Alternatywnie możesz przekazać darowiznę poprzez GitHuba, który obsługuje również regularne comiesięczne wpłaty.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Spróbuj naprawić motyw</value>
   </data>
 </root>
