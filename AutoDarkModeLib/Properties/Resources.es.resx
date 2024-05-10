@@ -1260,6 +1260,6 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
     <value>También puedes hacer una donación a través de GitHub Sponsors, que también admite programar donaciones mensuales.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Intentar arreglar el tema</value>
   </data>
 </root>
