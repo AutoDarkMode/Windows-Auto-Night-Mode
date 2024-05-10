@@ -503,7 +503,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Скинути</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Дозволити темну тему коли пристрій не під'єднаний до живлення</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Типове значення для повзунка економії акумулятора</value>
@@ -1258,5 +1258,8 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Крім того, ви можете пожертвувати через GitHub Sponsors, які також підтримують щомісячні пожертви..</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

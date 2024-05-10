@@ -500,7 +500,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Herstellen</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Donker thema inschakelen wanneer niet aangesloten</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Standaardwaarde voor energiebesparingsmodus</value>
@@ -1258,5 +1258,8 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Als alternatief kunt u ook doneren via GitHub Sponsers, dit biedt ook de mogelijkheid om de donatie maandelijks te herhalen.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

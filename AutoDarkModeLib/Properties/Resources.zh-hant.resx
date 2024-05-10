@@ -500,7 +500,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>重設</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>裝置未充電時啟用深色模式</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>省電滑條預設值</value>
@@ -1258,5 +1258,8 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>或者，您可以透過 GitHub Sponsors 進行贊助，它也支持每月定期贊助。</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

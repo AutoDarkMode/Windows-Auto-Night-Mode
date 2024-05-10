@@ -500,7 +500,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Reset</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Enable dark mode when device is unplugged</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Default value for energy saver slider</value>
@@ -1258,5 +1258,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

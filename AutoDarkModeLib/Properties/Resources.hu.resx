@@ -500,7 +500,7 @@ Mellékjegyzet: SOHA ne futtassa manuálisan rendszergazdaként az Auto Dark Mod
     <value>Visszaállítás</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Sötét mód engedélyezése amikor az eszköz nincs hálózathoz csatlakoztatva</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Az energiatakarékos csúszka alapértelmezett értéke</value>
@@ -1258,5 +1258,8 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Alternatívaként adományozhatsz a GitHub Sponsors-on keresztül is, amely támogatja az ismétlődő havi adományokat is.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>
