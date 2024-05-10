@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Settings</value>
+    <value>تنظیمات</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Apply</value>
+    <value>اعمال کردن</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Enable automatic theme switching</value>
+    <value>فعال کردن تغییر خودکار تم</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Always dark</value>
