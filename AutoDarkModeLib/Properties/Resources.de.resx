@@ -1260,6 +1260,6 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
     <value>Als Alternative steht GitHub Sponsors zur Verfügung. Außerdem erlaubt dieser Dienst wiederkehrende, monatliche Spenden.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Versuche das Design zu reparieren</value>
   </data>
 </root>
