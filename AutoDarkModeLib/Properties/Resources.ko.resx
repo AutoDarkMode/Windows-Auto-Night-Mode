@@ -488,7 +488,7 @@ Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
     <value>재설정</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>장치가 분리되면 어두운 형태로 전환됩니다</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>에너지 절약 슬라이더의 기본값</value>
@@ -660,14 +660,14 @@ Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
 
 다음 사항을 확인해 주시기 바랍니다:
 - 서비스가 실행 중입니다
-- config.svl 파일이 정확합니다
+- config.yaml 파일이 정확합니다
 
 자동 어두운 모드 저장소에 문제를 생성하시겠습니까?
 새 브라우저 창을 열려면 "예"를 누릅니다.
 </value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>외부에서 변경할 경우 테마 복원</value>
+    <value>외부에서 변경된 경우에 테마를 되돌립니다</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
     <value>위도</value>
@@ -1259,6 +1259,6 @@ Windows 테마에서 개별적으로 설정할 수 있습니다.</value>
     <value>또는 GitHub 스폰서를 통해 기부할 수 있으며, 이는 매월 반복되는 기부도 지원합니다.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>테마를 수정해 보세요</value>
   </data>
 </root>
