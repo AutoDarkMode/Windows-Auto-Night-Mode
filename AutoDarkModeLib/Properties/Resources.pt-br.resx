@@ -1260,6 +1260,6 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
     <value>Alternativamente você pode doar via Patrocinadores GitHub, que também suportam doações mensais.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Tente consertar o tema</value>
   </data>
 </root>
