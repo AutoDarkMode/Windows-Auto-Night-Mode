@@ -426,7 +426,7 @@
     <value>Шаг</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Цветовой фильтр (нажмите Win+Ctrl+C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Использовать задачу входа вместо записи в автозапуске</value>
@@ -500,7 +500,7 @@
     <value>Сбросить</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Включать темный режим, когда устройство отключено от сети</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Значение по умолчанию для ползунка энергосбережения</value>
