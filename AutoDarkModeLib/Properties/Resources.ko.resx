@@ -141,19 +141,19 @@
     <value>사용자 지정 시작 시간</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>어두움</value>
+    <value>다크</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>어두운 테마</value>
+    <value>다크테마</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge 브라우저 (레거시)</value>
+    <value>Edge (기존)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>밝음</value>
+    <value>라이트</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>밝은 테마</value>
+    <value>라이트테마</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
     <value>설정</value>
