@@ -1260,6 +1260,6 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
     <value>Als alternatief kunt u ook doneren via GitHub Sponsers, dit biedt ook de mogelijkheid om de donatie maandelijks te herhalen.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Probeer het thema te repareren</value>
   </data>
 </root>
