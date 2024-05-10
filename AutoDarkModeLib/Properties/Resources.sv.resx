@@ -249,7 +249,7 @@ Installerad version: {0}, ny version: {1}</value>
     <value>Avbryt</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Currently:</value>
+    <value>För närvarande:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
     <value>Bakgrundsbild för mörkt läge</value>
@@ -276,22 +276,22 @@ Installerad version: {0}, ny version: {1}</value>
     <value>Vänligen välj en bild</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configure Desktop Background</value>
+    <value>Konfigurera bakgrundsbild</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
     <value>use current background</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Inaktiverad</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Aktiverad</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>or</value>
+    <value>eller</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>Spara</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
     <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
