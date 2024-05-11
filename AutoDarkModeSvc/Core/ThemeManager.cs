@@ -26,6 +26,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Windows.System.Power;
 using static AutoDarkModeLib.IThemeManager2.Flags;
+using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -343,6 +344,29 @@ namespace AutoDarkModeSvc.Core
 
                 //todo change to switcheventargs
                 cm.RunCallbacks(componentsToUpdate, newTheme, e);
+
+                bool shuffleCondition = false;
+                if (builder.Config.WindowsThemeMode.Enabled == false)
+                {
+                    shuffleCondition = state.ManagedThemeFile.Slideshow.Enabled && (state.ManagedThemeFile.Slideshow.Shuffle == 1);
+                }
+                if (shuffleCondition)
+                {
+                    Logger.Debug("advancing slideshow in shuffled mode");
+                    AdvanceSlideshow(DesktopSlideshowDirection.Forward);
+
+                    /*
+                    // randomize slideshow forwarding when shuffle is enabled
+                    Logger.Debug("slideshow and shuffling enabled, rolling the dice...");
+                    Random rng = new();
+                    // 80% chance to advance slideshow
+                    if (rng.Next(0, 100) < 80)
+                    {
+                        Logger.Debug("dice rolled, advancing slideshow...");
+                    }
+                    */
+                }
+
                 themeSwitched = true;
 
                 PowerHandler.RequestRestoreEnergySaver(builder.Config);

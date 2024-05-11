@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System.Globalization;
+using System.Runtime.InteropServices;
 using YamlDotNet.Serialization.NamingConventions;
 
 namespace AutoDarkModeLib
@@ -23,7 +24,9 @@ namespace AutoDarkModeLib
     {
         public string Tag { get; set; }
         public string PathFile { get; set; }
+        public string PathFileArm { get; set; }
         public string PathChecksum { get; set; }
+        public string PathChecksumArm { get; set; }
         public bool AutoUpdateAvailable { get; set; }
         public string UpdaterVersion { get; set; }
         public string Message { get; set; }
@@ -49,7 +52,15 @@ namespace AutoDarkModeLib
             }
             else
             {
-                string fileUrl = $"{url}{PathFile}";
+                string fileUrl;
+                if (PathFileArm != null && RuntimeInformation.OSArchitecture == Architecture.Arm64)
+                {
+                    fileUrl = $"{url}{PathFileArm}";
+                }
+                else
+                {
+                    fileUrl = $"{url}{PathFile}";
+                }
                 return fileUrl;
             }
         }
@@ -67,7 +78,16 @@ namespace AutoDarkModeLib
             }
             else
             {
-                string hashUrl = $"{url}{PathChecksum}";
+                string hashUrl;
+
+                if (PathChecksumArm != null && RuntimeInformation.OSArchitecture == Architecture.Arm64)
+                {
+                    hashUrl = $"{url}{PathChecksumArm}";
+                }
+                else
+                {
+                    hashUrl = $"{url}{PathChecksum}";
+                }
                 return hashUrl;
             }
         }

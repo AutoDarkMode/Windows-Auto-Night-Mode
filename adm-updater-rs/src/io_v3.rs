@@ -60,7 +60,7 @@ pub fn patch(update_dir: &PathBuf, adm_app_dir: &PathBuf) -> Result<(), OpError>
     for i in 0..retries {
         if let Err(e) = fs::rename(&patch_content_dir, adm_app_dir) {
             let raw_os_err = e.raw_os_error().unwrap_or(-1);
-            if raw_os_err == 32 {
+            if raw_os_err == 32 || raw_os_err == 5 {
                 info!("waiting for os to release files, attempt {} of {}", i + 1, retries);
                 os_error_32 = Some(e);
                 thread::sleep(Duration::from_secs(1));

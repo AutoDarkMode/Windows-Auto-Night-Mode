@@ -33,6 +33,7 @@
 
         <!-- Title Bar -->
         <TextBlock HorizontalAlignment="Left"
+                   x:Name="WindowTitle"
                    Margin="10,0,0,0"
                    TextWrapping="Wrap"
                    Text="{x:Static p:Resources.Title}"

@@ -241,7 +241,7 @@ namespace AutoDarkModeSvc.Handlers
             [PreserveSig]
             uint GetSlideshowOptions(out DesktopSlideshowDirection options, out uint slideshowTick);
 
-            void AdvanceSlideshow([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.I4)] DesktopSlideshowDirection direction);
+            uint AdvanceSlideshow([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.I4)] DesktopSlideshowDirection direction);
 
             DesktopSlideshowDirection GetStatus();
 
@@ -277,6 +277,22 @@ namespace AutoDarkModeSvc.Handlers
                 return currentWallpaper == globalWallpaper.Light;
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// Advances the slideshow of all monitors by the specified direction.
+        /// 
+        /// <param name="direction">The direction to advance the slideshow.</param>"
+        /// </summary>
+        public static void AdvanceSlideshow(DesktopSlideshowDirection direction)
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            for (uint i = 0; i < EnumDisplayDevicesWrapper.ListDisplays().Count; i++)
+            {
+                handler.AdvanceSlideshow(null, direction);
+                Thread.Sleep(200);
+            }
         }
 
         /// <summary>

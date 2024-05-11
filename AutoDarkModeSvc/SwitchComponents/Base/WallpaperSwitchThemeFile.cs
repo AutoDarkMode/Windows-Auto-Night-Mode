@@ -24,6 +24,7 @@ using System.Text;
 using System.Threading;
 using Windows.UI;
 using Windows.UI.Composition;
+using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {

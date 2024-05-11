@@ -19,7 +19,9 @@ using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -70,29 +72,34 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         protected override void HandleSwitch(SwitchEventArgs e)
         {
-            bool oldTheme = currentColorFilterActive;
-            try
+            Task.Delay(250).ContinueWith(t =>
             {
-                RegistryHandler.ColorFilterSetup();
-                if (e.Theme == Theme.Dark)
+                bool oldTheme = currentColorFilterActive;
+                try
                 {
-                    RegistryHandler.ColorFilterKeySender(true);
-                    currentColorFilterActive = true;
-                }
-                else
-                {
-                    RegistryHandler.ColorFilterKeySender(false);
-                    currentColorFilterActive = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not enable color filter:");
-            }
-            Logger.Info($"update info - previous: {oldTheme}, now: {currentColorFilterActive}, enabled: {Settings.Enabled}");
+                    RegistryHandler.ColorFilterSetup();
+                    if (e.Theme == Theme.Dark)
+                    {
 
+                        RegistryHandler.ColorFilterKeySender(true);
+                        currentColorFilterActive = true;
+
+                    }
+                    else
+                    {
+                        RegistryHandler.ColorFilterKeySender(false);
+                        currentColorFilterActive = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "could not enable color filter:");
+                }
+                Logger.Info($"update info - previous: {oldTheme}, now: {currentColorFilterActive}, enabled: {Settings.Enabled}");
+            }).Wait();
         }
     }
 }

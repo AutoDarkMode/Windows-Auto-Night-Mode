@@ -224,6 +224,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
             else if (type == WallpaperType.Spotlight)
             {
+                GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
                 GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 1;
                 GlobalState.ManagedThemeFile.Desktop.Wallpaper = @"%SystemRoot%\web\wallpaper\spotlight\img50.jpg";
                 currentSolidColorTheme = Theme.Unknown;

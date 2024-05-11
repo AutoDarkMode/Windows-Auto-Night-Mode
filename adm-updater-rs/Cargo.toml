@@ -7,8 +7,8 @@ license = "MIT"
 
 [package.metadata.winres]
 OriginalFilename = "AutoDarkModeUpdater"
-LegalCopyright = "Copyright © 2023"
-FileVersion = "3.1.5"
+LegalCopyright = "Copyright © 2024"
+FileVersion = "3.1.6"
 FileDescription = "Auto Dark Mode Updater"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

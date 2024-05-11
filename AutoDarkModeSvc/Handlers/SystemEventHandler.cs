@@ -37,11 +37,16 @@ namespace AutoDarkModeSvc.Handlers
 
         public static void RegisterThemeEvent()
         {
+            if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
+            {
+                return;
+            }
             if (!darkThemeOnBatteryEnabled)
             {
                 Logger.Info("enabling event handler for dark mode on battery state discharging");
                 PowerManager.PowerSupplyStatusChanged += PowerManager_BatteryStatusChanged;
                 darkThemeOnBatteryEnabled = true;
+                PowerManager_BatteryStatusChanged(null, null);
             }
         }
 
