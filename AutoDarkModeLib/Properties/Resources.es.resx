@@ -500,7 +500,7 @@ Por cierto, ¡NUNCA ejecutes Auto Dark Mode como administrador manualmente!</val
     <value>Reiniciar</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Activar el tema oscuro cuando el dispositivo está desconectado</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valor por defecto para el control deslizante de ahorro de batería</value>
@@ -1258,5 +1258,8 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>También puedes hacer una donación a través de GitHub Sponsors, que también admite programar donaciones mensuales.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Intentar arreglar el tema</value>
   </data>
 </root>

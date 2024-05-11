@@ -500,7 +500,7 @@ Lưu chú: KHÔNG BAO GIỜ chạy Chủ đề tối tự động với quyền 
     <value>Đặt lại</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Bật chủ đề tối khi đang dùng pin</value>
+    <value>Chuyển sang chủ đề tối khi thiết bị rút sạc</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Giá trị mặc định cho thanh trượt trình tiết kiệm năng lượng</value>
@@ -1258,5 +1258,8 @@ Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng 
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Ngoài ra, bạn có thể quyên góp thông qua Nhà tài trợ GitHub, nhà tài trợ này cũng hỗ trợ quyên góp định kỳ hàng tháng.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Cố gắng sửa chủ đề</value>
   </data>
 </root>

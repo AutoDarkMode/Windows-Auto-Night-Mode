@@ -500,7 +500,7 @@ Nota: NUNCA execute o Auto Dark Mode como Administrador manualmente!</value>
     <value>Repor</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Activar o tema escuro quando o dispositivo é desligado da corrente</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>O valor por defeito para o controlo deslizante da poupança de energia</value>
@@ -1258,5 +1258,8 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Alternativamente você pode doar via Patrocinadores GitHub, que também suportam doações mensais.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Tente consertar o tema</value>
   </data>
 </root>

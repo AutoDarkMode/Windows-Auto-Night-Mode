@@ -500,7 +500,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Zurücksetzen</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Dunkles Design aktivieren, wenn Gerät im Batteriemodus läuft</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Stromsparmodus aktivieren bei folgendem Akkustand</value>
@@ -1258,5 +1258,8 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Als Alternative steht GitHub Sponsors zur Verfügung. Außerdem erlaubt dieser Dienst wiederkehrende, monatliche Spenden.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Versuche das Design zu reparieren</value>
   </data>
 </root>

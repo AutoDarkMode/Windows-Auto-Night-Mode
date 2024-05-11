@@ -500,7 +500,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Réinitialiser</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Activer le thème sombre lorsque l'appareil est débranché</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valeur par défaut du curseur d'économie d'énergie</value>
@@ -1258,5 +1258,8 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Vous pouvez également faire un don via GitHub Sponsors, qui prend également en charge les dons mensuels.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Essayer de corriger le thème</value>
   </data>
 </root>

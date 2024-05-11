@@ -166,7 +166,7 @@
     <value>系統</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>已使用的第三方軟體</value>
+    <value>使用的第三方軟體</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>更新</value>
@@ -252,7 +252,7 @@
     <value>目前：</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>深色主題背景</value>
+    <value>深色主題桌面背景</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>刪除／停用</value>
@@ -261,7 +261,7 @@
     <value>選擇檔案</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>淺色主題背景</value>
+    <value>淺色主題桌面背景</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
     <value>桌面背景</value>
@@ -334,8 +334,8 @@
 - 服務正在執行
 - 您的 config.yaml 檔案是正確的
 
-您想在 Auto Dark Mode 存儲庫上創建問題嗎？
-點擊「是」以開啟一個新的瀏覽器視窗。
+您想在 Auto Dark Mode 儲存庫上建立問題嗎？
+點按「是」以開啟新的瀏覽器視窗。
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -356,7 +356,7 @@
     <value>偏移</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>設置</value>
+    <value>設定</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>使用 Windows 佈景主題時無法使用這些選項。
@@ -393,10 +393,10 @@
     <value>桌面背景（建議）</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>點擊此處以開啟 Windows 佈景主題設定。</value>
+    <value>點按此處以開啟 Windows 佈景主題設定。</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>現在前往「色彩」，並將系統顏色設為「淺色」。選擇您想要的背景、滑鼠游標，和輔色。</value>
+    <value>現在前往「色彩」，並將系統顏色設為「淺色」。選擇您想要的桌面背景、滑鼠游標，和輔色。</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>回到主題設定並儲存您的佈景主題。</value>
@@ -429,7 +429,7 @@
     <value>色彩濾鏡（發送按鍵 Win + Ctrl + C）</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>使用登錄任務而不是啟動項目</value>
+    <value>使用登入工作而非啟動項目</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>選擇模式：</value>
@@ -456,7 +456,7 @@
     <value>為什麼您應該贊助？</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>要怎麼贊助？</value>
+    <value>如何贊助？</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
     <value>您可以透過 PayPal 贊助我。這完全是自願的，您不應該期望任何賠償。</value>
@@ -467,7 +467,7 @@
   <data name="donationDescription" xml:space="preserve">
     <value>您好！感謝您使用 Auto Dark Mode！到目前為止您喜歡此程式嗎？
 
-此程式透過自動調整顏色保護您的眼睛，使您使用電腦時更加舒適。同時它完全免費、無廣告、不收集使用者資料，並且是開放原始碼的。
+此程式透過自動調整色彩保護您的眼睛，讓您在使用電腦時更加舒適。同時完全免費、無廣告、不收集使用者資料，且開放原始碼。
 我不會從此程式獲得任何收益。
 
 所以希望您能夠自願透過贊助來支持我。即使是一小筆錢也能使我在我的公寓裡開心地活蹦亂跳。只要贊助您覺得此程式在您心中值多少錢即可。</value>
@@ -500,7 +500,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>重設</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>裝置未充電時啟用深色模式</value>
+    <value>當裝置未連接電源時切換至深色模式</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>省電滑條預設值</value>
@@ -521,7 +521,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>套用座標</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>您的電腦尚未安裝 Windows 10 2019 年 4 月更新，因此已停用這個選項。</value>
+    <value>您的電腦尚未安裝 Windows 10 的 2019 年 4 月更新，因此已停用這個選項。</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
     <value>地理座標</value>
@@ -533,7 +533,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>從日落到日出（根據地理座標）</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>您的位置的地理座標</value>
+    <value>您所在位置的地理座標</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
     <value>開啟設定檔</value>
@@ -554,7 +554,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>選擇主題</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>選擇桌布</value>
+    <value>選擇桌面背景</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>停用</value>
@@ -602,7 +602,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>從未</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>修改檢查更新頻率</value>
+    <value>變更檢查更新頻率</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>深色主題</value>
@@ -614,7 +614,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>圖片</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>圖片（多台顯示器）</value>
+    <value>圖片（多部顯示器）</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
     <value>純色</value>
@@ -632,16 +632,16 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>移除未連接的顯示器</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>桌布</value>
+    <value>桌面背景</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>顏色</value>
+    <value>色彩</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
     <value>十六進制色碼</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>啟用桌布切換</value>
+    <value>啟用桌面背景切換</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>不要在遊玩遊戲時切換</value>
@@ -713,7 +713,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows（淺色）</value>
+    <value>Windows（淡）</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
@@ -725,7 +725,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>流暢</value>
+    <value>Flow</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
@@ -744,7 +744,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>每天</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>點擊設置以儲存變更。</value>
+    <value>點按設定以儲存變更。</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>使用工具列輔色時機</value>
@@ -798,10 +798,10 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>下次更新時間</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>顏色</value>
+    <value>色彩</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>您只能在快捷鍵被停用的情況下進行編輯。</value>
+    <value>您只能在停用快速鍵的情況下進行編輯。</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
     <value>強制深色模式</value>
@@ -810,13 +810,13 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>強制淺色模式</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>快捷鍵</value>
+    <value>快速鍵</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
     <value>停止強制使用主題</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>啟用快捷鍵</value>
+    <value>啟用快速鍵</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>強制使用深色模式 (&amp;D)</value>
@@ -838,7 +838,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>讓應用程式決定</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>只在系統處於空閒狀態時切換主題</value>
+    <value>僅在系統處於空閒狀態時切換主題</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
     <value>系統空閒狀態判斷時間（分鐘）</value>
@@ -868,16 +868,16 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>系統空閒狀態檢查器</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>點擊確認以立即切換主題。</value>
+    <value>點按確認以立即切換主題。</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>恢復</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>點擊下面的復原按鈕來恢復此動作。</value>
+    <value>點按下方的 [復原] 按鈕來恢復此動作。</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>快捷鍵</value>
+    <value>快速鍵</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>啟用自動切換主題</value>
@@ -904,7 +904,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>自動主題切換目前因為下列模組而暫停：</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>恢復只適用於有到期時間的延遲</value>
+    <value>僅恢復有設定到期時間的延遲</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
     <value>延遲控制</value>
@@ -985,7 +985,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>延遲模組</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>切換通知</value>
+    <value>切換時顯示通知</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
     <value>2 小時</value>
@@ -1009,7 +1009,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>12 小時</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>主題切換等待中</value>
+    <value>正在等待主題切換</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
     <value>您想立即切換還是繼續延遲？</value>
@@ -1018,7 +1018,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>追蹤模式</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>特別鳴謝</value>
+    <value>特別感謝</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
     <value>忽略背景</value>
@@ -1045,7 +1045,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>已暫停</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>只與 Office 2013 - 2019，或當您遇到 Office 的「使用系統」設置問題時使用</value>
+    <value>僅適用於 Office 2013 - 2019，或當您遇到 Office 的「使用系統」設定問題時使用</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>修補時發生錯誤。</value>
@@ -1073,7 +1073,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>修補失敗</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>請查看 service.log 和 updater.log 以獲取資訊</value>
+    <value>請查看 service.log 與 updater.log 以取得資訊</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
     <value>正在更新至</value>
@@ -1104,7 +1104,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>指令碼</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>開啟指令碼設置</value>
+    <value>開啟指令碼設定</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
     <value>指令碼</value>
@@ -1173,12 +1173,12 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>已中斷連結</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>切換主題時始終重新啟動桌面視窗管理員（DWM）</value>
+    <value>始終在切換主題時重新啟動桌面視窗管理員（DWM）</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
     <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果您經常遇到這種情況或受到困擾，請嘗試啟用此設定。
 
-這可能會在切換主題期間在某些系統上造成輕微到中度的延遲，類似於在 Windows 10 中發生的情況。
+這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
 在極少數情況下，當重新啟動桌面視窗管理員（DWM）期間移動滑鼠時，Windows 可能會發出蜂鳴聲。</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
@@ -1203,7 +1203,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>游標</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>為深色和淺色模式設置不同的游標樣式。</value>
+    <value>針對深色與淺色模式分別設定不同的游標樣式。</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
     <value>選擇游標</value>
@@ -1215,7 +1215,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>以 Windows 管理我的主題</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>您可以在 Windows 設定中設定新的游標主題，然後在此處選擇它們。</value>
+    <value>您可以在 Windows [設定] 中設定新的游標主題，然後在此處選擇它們。</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
     <value>開啟命令列介面</value>
@@ -1245,7 +1245,7 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
     <value>阻止中的處理程序</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>在特定處理程序正在運行時不要切換</value>
+    <value>在特定處理程序正在執行時不要切換</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
     <value>瀏覽支援 Auto Dark Mode 的應用程式</value>
@@ -1258,5 +1258,8 @@ Auto Dark Mode 將在之後自動重新啟動，但是您必須重新套用您�
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>或者，您可以透過 GitHub Sponsors 進行贊助，它也支持每月定期贊助。</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>嘗試修正此主題</value>
   </data>
 </root>

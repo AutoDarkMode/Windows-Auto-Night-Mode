@@ -500,7 +500,7 @@
     <value>Επαναφορά</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Ενεργοποίηση σκοτεινής λειτουργίας όταν η συσκευή είναι αποσυνδεδεμένη από την πρίζα</value>
+    <value>Switch to dark mode when device is unplugged</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Προεπιλεγμένη τιμή για το ρυθμιστικό εξοικονόμησης ενέργειας</value>
@@ -1258,5 +1258,8 @@
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>Εναλλακτικά μπορείτε να κάνετε δωρεά μέσω του GitHub Sponsors, το οποίο υποστηρίζει και επαναλαμβανόμενες μηνιαίες δωρεές.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
   </data>
 </root>

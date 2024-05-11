@@ -160,7 +160,7 @@
     <value>Impostazioni</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Cambia il tema corrente</value>
+    <value>Cambia il tema attuale</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>Sistema</value>
@@ -208,9 +208,9 @@
     <value>Grazie per usare Auto Dark Mode!
 
 Una nuova versione è disponibile su GitHub con correzioni e miglioramenti.
-Vuoi scaricarla?
+Vuoi installarla?
 
-Versione in uso: {0}, nuova versione: {1}</value>
+Versione attualmente installata: {0}, nuova versione: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
@@ -500,7 +500,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>Resetta</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Abilita modalità scura quando il dispositivo è scollegato</value>
+    <value>Passa alla modalità scura quando il dispositivo è scollegato</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valore predefinito della barra del risparmio energetico</value>
@@ -602,7 +602,7 @@ PS: non avviare MAI Auto Dark Mode come amministratore!</value>
     <value>mai</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Ogni quanto controllare la disponibilità degli aggiornamenti:</value>
+    <value>Intervallo di tempo per controllare la disponibilità di aggiornamenti</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Tema scuro</value>
@@ -1051,7 +1051,7 @@ Vuoi davvero continuare?</value>
     <value>Si è verificato un errore durante la patch.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Versione corrente</value>
+    <value>Versione attuale</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
     <value>Ritorno alla versione</value>
@@ -1258,5 +1258,8 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>In alternativa puoi donare tramite GitHub Sponsors, che supporta anche donazioni mensili ricorrenti.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Prova a correggere il tema</value>
   </data>
 </root>

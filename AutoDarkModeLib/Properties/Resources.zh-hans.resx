@@ -207,10 +207,10 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>感谢您使用 Auto Dark Mode！
 
-GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
+GitHub 上发布的新版本包含一些漏洞修复和改进。
 您想安装新版本吗？
 
-当前版本: {0}, 最新版本: {1}</value>
+当前版本：{0}，新版本：{1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Auto Dark Mode</value>
@@ -500,7 +500,7 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
     <value>重置</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>未充电时启用深色模式</value>
+    <value>未充电时切换至深色模式</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>节电模式滑动条的默认值</value>
@@ -1258,5 +1258,8 @@ GitHub 上发布了新版本，修复了一些漏洞并增加了新功能。
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
     <value>您也可以通过 GitHub Sponsors 捐助，其同样支持每月持续捐助。</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>尝试修复主题</value>
   </data>
 </root>
