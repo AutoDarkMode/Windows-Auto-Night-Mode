@@ -500,7 +500,7 @@ Uwaga: NIGDY nie uruchamiaj Auto Dark Mode jako administrator samodzielnie!</val
     <value>Resetuj</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Przełącz w tryb ciemny po odłączeniu zasilania</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Domyślna wartość trybu oszczędzania energii</value>
