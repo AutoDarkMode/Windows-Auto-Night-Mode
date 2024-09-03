@@ -417,25 +417,25 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>איתחול</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set custom hours</value>
+    <value>הגדר שעות מותאמות אישית</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>מהשקיעה ועד הזריחה (שירות מיקום)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>שלב</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>מסנן צבע (שולח Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use logon task instead of startup entry</value>
+    <value>השתמש במשימת כניסה במקום ברשומת ההפעלה</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>בחר מצב:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+    <value>אירעה שגיאה בעת החלת העיצובים שנבחרו, השבתנו את החלפת העיצוב</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Alternative light theme</value>
@@ -563,13 +563,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>הסתר את סמל המגש (לא מומלץ)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>תכונה זו מושבתת בזמן ש-Windows מנהל את ערכת הנושא שלך.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>בחר ערכת נושא שונה של Windows עבור מצב כהה ואור בהתאמה. מאפשר התאמה אישית מלאה של ערכת הנושא, אך מחייב אותך להגדיר קבצי .theme בעצמך.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>התאם אישית את טפט שולחן העבודה שלך עבור כל המסכים, מסכים בודדים, הגדר צבע רקע או הפעל זרקור.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>אנחנו בודקים אם יש גרסאות חדשות של מצב כהה אוטומטי ברקע. כאשר יהיה עדכון זמין, אנחנו נודיע לך באמצעות הודעה קופצת</value>
@@ -647,13 +647,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>אל תחליף בזמן משחקי וידאו</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Fast (1 sample)</value>
+    <value>מהיר (דוגמה 1)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Medium (2 samples)</value>
+    <value>בינוני (2 דוגמאות)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 samples)</value>
+    <value>איטי (3 דוגמאות)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
     <value>GPU usage detection speed</value>
@@ -1146,7 +1146,7 @@ Do you really want to continue?</value>
     <value>Update colorization</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>תכונה זו מושבתת בזמן שמצב כהה אוטומטי מנהל את הנושא שלך.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
