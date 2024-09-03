@@ -148,7 +148,7 @@
     <value>نمایه تاریک</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy)</value>
+    <value>گوشه (قدیمی)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
     <value>روشن</value>
@@ -166,16 +166,16 @@
     <value>سامانه</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>استفاده از برنامه شخص ثالث</value>
+    <value>از برنامه شخص ثالث استفاده شده</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>بروزرسانیها</value>
+    <value>بروزرسانی ها</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>استفاده از خدمت مکان</value>
+    <value>استفاده از خدمت مکان یابی</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>تغییرات شما ذخیره شده است.</value>
+    <value>تغییرات شما ذخیره شده است!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
     <value>تغییرات شما خودکار ذخیره خواهد شد.</value>
@@ -187,7 +187,7 @@
     <value>خطایی رخ داد :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>این برنامه نیاز به دسترسی مکان شما دارد.</value>
+    <value>این برنامه نیاز به دسترسی مکان شما دارد</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>هیچ بروزرسانی جدیدی در دسترس نیست.</value>
@@ -205,12 +205,12 @@
     <value>یک بروزرسانی جدید در دسترس است!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Thank you for using Auto Dark Mode!
+    <value>از اینکه از نمایه تاریک خودکار استفاده میکنید متشکریم!
 
-A new version is available on GitHub with fixes and enhancements.
-Do you want to install it?
+نسخه جدیدی در گیت هات با حل مشکلات و بهبود بخشی تجربه شما موجود است.
+آیا می خواهید دانلودش کنید؟
 
-Currently installed version: {0}, new version: {1}</value>
+در حال نصب نسخه:{0}، نسخه جدید:{1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>حالت تاریک خوکار</value>
