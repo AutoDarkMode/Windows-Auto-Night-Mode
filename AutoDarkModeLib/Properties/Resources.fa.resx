@@ -124,85 +124,85 @@
     <value>اعمال کردن</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>فعال کردن تغییر خودکار تم</value>
+    <value>فعال کردن تغییر خودکار نمایه</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Always dark</value>
+    <value>همیشه تاریک</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Always light</value>
+    <value>همیشه روشن</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Enable features for Windows 1903</value>
+    <value>فعالسازی قابلیتها برای ویندوز ۱۹۰۳</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>برنامه ها</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Custom start time</value>
+    <value>زمان شروع سفارشی</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Dark</value>
+    <value>تاریک</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Dark theme</value>
+    <value>نمایه تاریک</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
     <value>Edge (Legacy)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Light</value>
+    <value>روشن</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Light theme</value>
+    <value>نمایه روشن</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>تنظیمات</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Switch current theme</value>
+    <value>تغییر نمایه فعلی</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System</value>
+    <value>سامانه</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Used third party software</value>
+    <value>استفاده از برنامه شخص ثالث</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>بروزرسانیها</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>استفاده از خدمت مکان</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Your changes have been saved!</value>
+    <value>تغییرات شما ذخیره شده است.</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Your changes will be saved automatically.</value>
+    <value>تغییرات شما خودکار ذخیره خواهد شد.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Download update</value>
+    <value>بارگیری بروزرسانی</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>error occurred :(</value>
+    <value>خطایی رخ داد :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>This app needs access to your location</value>
+    <value>این برنامه نیاز به دسترسی مکان شما دارد.</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>No new updates are available.</value>
+    <value>هیچ بروزرسانی جدیدی در دسترس نیست.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Getting your location…</value>
+    <value>در حال دریافت مکان شما…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Looking for updates…</value>
+    <value>در حال جستجوی بروزرسانی…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>هشدار: ما نمی توانیم نمایه فعلی شما را بخوانیم.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>A new update is available!</value>
+    <value>یک بروزرسانی جدید در دسترس است!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
     <value>Thank you for using Auto Dark Mode!
@@ -213,16 +213,16 @@ Do you want to install it?
 Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
+    <value>حالت تاریک خوکار</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>بررسی بروزرسانیها</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
     <value>We check for updates at every program start.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Welcome</value>
+    <value>خوش آمدید</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
     <value>Change settings here to modify the automatic theme switch behavior.</value>
@@ -231,31 +231,31 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Translator: None yet</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>City</value>
+    <value>شهر</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Position</value>
+    <value>موقعیت</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
     <value>App restart required to see changes</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Language:</value>
+    <value>زبان:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
     <value>Accent Color for Taskbar</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>لغو</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Currently:</value>
+    <value>فعلی:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
     <value>Wallpaper for dark theme</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Delete/Disable</value>
+    <value>حذف/غیرفعال</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
     <value>Pick file</value>
@@ -267,7 +267,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Desktop Background</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pictures</value>
+    <value>عکسها</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
     <value>Please select two wallpapers</value>
@@ -282,16 +282,16 @@ Currently installed version: {0}, new version: {1}</value>
     <value>use current background</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>غیرفعال شده</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>فعال شده</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>or</value>
+    <value>یا</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>ذخیره</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
     <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
@@ -313,19 +313,19 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 hour clock</value>
+    <value>ساعت ۱۲ ساعته</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Close</value>
+    <value>بستن</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>&amp;Close</value>
+    <value>و بستن</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>نه</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>آری</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
     <value>Automatic update check</value>
@@ -366,19 +366,19 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
 You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>برنامه ها</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>تنظیمات</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Time</value>
+    <value>زمان</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Open Folder</value>
+    <value>بازکردن پوشه</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>نمایه تاریک</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
     <value>Create your themes</value>
