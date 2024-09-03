@@ -136,7 +136,7 @@
     <value>אפשר תכונות עבור Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>אפליקציות</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>זמן הפעלה מותאם אישית</value>
@@ -282,10 +282,10 @@
     <value>השתמש ברקע הנוכחי</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>כבוי</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>פועל</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>or</value>
@@ -871,13 +871,13 @@ Do you really want to continue?</value>
     <value>Hit confirm to request a theme switch immediately.</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>המשך</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Revert this action by clicking on the undo button below.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>מקש קיצור</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Toggle automatic theme switch</value>
@@ -886,7 +886,7 @@ Do you really want to continue?</value>
     <value>Disable automatic switch</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>בטל</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pause auto switch</value>
@@ -937,7 +937,7 @@ Do you really want to continue?</value>
     <value>postpones until next sunset</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>עד</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
     <value>until next sunrise</value>
@@ -1085,7 +1085,7 @@ Do you really want to continue?</value>
     <value>Open log directory</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>דחה</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
     <value>עדכון</value>
@@ -1170,7 +1170,7 @@ Do you really want to continue?</value>
     <value>Choose a fit for your desktop image</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>מנותק</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
     <value>Always refresh DWM on theme switch</value>
