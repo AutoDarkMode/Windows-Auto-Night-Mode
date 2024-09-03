@@ -121,7 +121,7 @@
     <value>הגדרות</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Apply</value>
+    <value>החל</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
     <value>הפעל החלפת ערכת נושא אוטומטית</value>
@@ -500,7 +500,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>אתחול</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>החלף למצב כהה כאשר המכשיר מנותק מהחשמל</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>ערך ברירת מחדל עבור מצב חיסכון בחשמל</value>
@@ -976,7 +976,7 @@ Do you really want to continue?</value>
     <value>Allow theme switching during lockscreen (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>אשר</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
     <value>החלף עכשיו</value>
@@ -1218,19 +1218,19 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>הפעל מעטפת</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>פתח יומן עדכונים</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>הפעל מתג צבע הדגשה</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>אוטומטי</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
