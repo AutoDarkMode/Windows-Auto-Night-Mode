@@ -279,7 +279,7 @@ Installerad version: {0}, ny version: {1}</value>
     <value>Konfigurera bakgrundsbild</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>use current background</value>
+    <value>använd nuvarande bakgrund</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>Inaktiverad</value>
@@ -294,48 +294,48 @@ Installerad version: {0}, ny version: {1}</value>
     <value>Spara</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
+    <value>Antingen är filen trasig, eller så finns inte filsökvägen.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>We couldn't generate a preview of your image, sorry!</value>
+    <value>Det gick tyvärr inte att förhandsgranska din bild!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>We couldn't save your settings, sorry!</value>
+    <value>Det gick tyvärr inte att spara dina inställningar!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>An error has occured</value>
+    <value>Ett fel har inträffat</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>Endast synlig i mörkt läge.
+Om du får problem: vänligen öka bytesfördröjning under inställningar.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 hour clock</value>
+    <value>12-timmarsklocka</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Close</value>
+    <value>Stäng</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>Nej</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Automatic update check</value>
+    <value>Kontrollera uppdateringar automatiskt</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>Ett problem har uppstått med användargränssnittet.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+Vänligen tillse att:
+- tjänsten körs
+- din config.yaml är korrekt
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+Vill du skapa ett issue på Auto Dark Mode's repository?
+Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -350,7 +350,7 @@ Enabling this option makes sure that Auto Dark Mode immediately switches the the
 But it also reduces the battery life, so ONLY activate if necessary!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>På grund av en bugg i Windows, så byts inte färgen på aktivitetsfältet ordentligt. Vänligen stäng av batterisparläge om problem uppstår.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
@@ -363,13 +363,13 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
 You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>Appar</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Inställningar</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Time</value>
+    <value>Tid</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Open Folder</value>
@@ -1119,7 +1119,7 @@ Do you really want to continue?</value>
     <value>Image path</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>Close</value>
+    <value>Stäng</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
     <value>Automatic theme switch</value>

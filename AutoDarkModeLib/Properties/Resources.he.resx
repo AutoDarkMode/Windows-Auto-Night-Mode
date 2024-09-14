@@ -121,7 +121,7 @@
     <value>הגדרות</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Apply</value>
+    <value>החל</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
     <value>הפעל החלפת ערכת נושא אוטומטית</value>
@@ -136,7 +136,7 @@
     <value>אפשר תכונות עבור Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>אפליקציות</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
     <value>זמן הפעלה מותאם אישית</value>
@@ -282,10 +282,10 @@
     <value>השתמש ברקע הנוכחי</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>כבוי</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>פועל</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>or</value>
@@ -417,25 +417,25 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>איתחול</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set custom hours</value>
+    <value>הגדר שעות מותאמות אישית</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>מהשקיעה ועד הזריחה (שירות מיקום)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>שלב</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>מסנן צבע (שולח Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use logon task instead of startup entry</value>
+    <value>השתמש במשימת כניסה במקום ברשומת ההפעלה</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>בחר מצב:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+    <value>אירעה שגיאה בעת החלת העיצובים שנבחרו, השבתנו את החלפת העיצוב</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Alternative light theme</value>
@@ -500,7 +500,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>אתחול</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>החלף למצב כהה כאשר המכשיר מנותק מהחשמל</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>ערך ברירת מחדל עבור מצב חיסכון בחשמל</value>
@@ -563,13 +563,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>הסתר את סמל המגש (לא מומלץ)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>תכונה זו מושבתת בזמן ש-Windows מנהל את ערכת הנושא שלך.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>בחר ערכת נושא שונה של Windows עבור מצב כהה ואור בהתאמה. מאפשר התאמה אישית מלאה של ערכת הנושא, אך מחייב אותך להגדיר קבצי .theme בעצמך.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>התאם אישית את טפט שולחן העבודה שלך עבור כל המסכים, מסכים בודדים, הגדר צבע רקע או הפעל זרקור.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>אנחנו בודקים אם יש גרסאות חדשות של מצב כהה אוטומטי ברקע. כאשר יהיה עדכון זמין, אנחנו נודיע לך באמצעות הודעה קופצת</value>
@@ -647,13 +647,13 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>אל תחליף בזמן משחקי וידאו</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Fast (1 sample)</value>
+    <value>מהיר (דוגמה 1)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Medium (2 samples)</value>
+    <value>בינוני (2 דוגמאות)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 samples)</value>
+    <value>איטי (3 דוגמאות)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
     <value>GPU usage detection speed</value>
@@ -871,13 +871,13 @@ Do you really want to continue?</value>
     <value>Hit confirm to request a theme switch immediately.</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>המשך</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Revert this action by clicking on the undo button below.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>מקש קיצור</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Toggle automatic theme switch</value>
@@ -886,7 +886,7 @@ Do you really want to continue?</value>
     <value>Disable automatic switch</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>בטל</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
     <value>Pause auto switch</value>
@@ -937,7 +937,7 @@ Do you really want to continue?</value>
     <value>postpones until next sunset</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>עד</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
     <value>until next sunrise</value>
@@ -976,7 +976,7 @@ Do you really want to continue?</value>
     <value>Allow theme switching during lockscreen (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>אשר</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
     <value>החלף עכשיו</value>
@@ -1085,7 +1085,7 @@ Do you really want to continue?</value>
     <value>Open log directory</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>דחה</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
     <value>עדכון</value>
@@ -1146,7 +1146,7 @@ Do you really want to continue?</value>
     <value>Update colorization</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>תכונה זו מושבתת בזמן שמצב כהה אוטומטי מנהל את הנושא שלך.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
@@ -1170,7 +1170,7 @@ Do you really want to continue?</value>
     <value>Choose a fit for your desktop image</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>מנותק</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
     <value>Always refresh DWM on theme switch</value>
@@ -1218,19 +1218,19 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>הפעל מעטפת</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>פתח יומן עדכונים</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>הפעל מתג צבע הדגשה</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>אוטומטי</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
