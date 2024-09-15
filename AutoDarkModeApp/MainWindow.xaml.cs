@@ -75,7 +75,21 @@ namespace AutoDarkModeApp
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             LanguageHelper();
+            DonationScreen();
         }
+
+        private void DonationScreen()
+        {
+            //generate random number between 1 and 100. If the number is 50, show donation msgbox
+            Random rdmnumber = new Random();
+            int generatedNumber = rdmnumber.Next(1, 100);
+            Console.WriteLine("generated number: " + generatedNumber);
+            if (generatedNumber <= 2)
+            {
+                FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
+            }
+        }
+
 
         //region time and language
         private static void LanguageHelper()
