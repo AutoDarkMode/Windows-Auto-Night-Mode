@@ -47,12 +47,6 @@ namespace AutoDarkModeApp.Pages
                 gitHubImage.Source = new BitmapImage(new Uri(@"/Resources/GitHub_Logo_Black.png", UriKind.Relative));
             }
         }
-
-        private void ButtonPayPal_Click(object sender, RoutedEventArgs e)
-        {
-            StartProcessByProcessInfo("https://www.paypal.com/donate/?hosted_button_id=WHADHQNX67LKS");
-        }
-
         private static void StartProcessByProcessInfo(string message)
         {
             Process.Start(new ProcessStartInfo(message)
@@ -60,6 +54,11 @@ namespace AutoDarkModeApp.Pages
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+        private void ButtonPayPal_Click(object sender, RoutedEventArgs e)
+        {
+            StartProcessByProcessInfo("https://www.paypal.com/donate/?hosted_button_id=H65KZYMHKCB6E");
         }
 
         private void ButtonGitHubSponsors_Click(object sender, RoutedEventArgs e)
