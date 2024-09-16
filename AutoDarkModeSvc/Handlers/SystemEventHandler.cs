@@ -164,7 +164,7 @@ namespace AutoDarkModeSvc.Handlers
                     if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
                     {
                         Logger.Info("system unlocked, refreshing theme");
-                        ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                        ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock, refreshDwm: true));
                     }
                     else
                     {
