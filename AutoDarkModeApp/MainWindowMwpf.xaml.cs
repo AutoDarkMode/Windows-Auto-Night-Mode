@@ -232,14 +232,13 @@ namespace AutoDarkModeApp
 
         private void DonationScreen()
         {
-            //generate random number between 1 and 100. If the number is 50, show donation msgbox
+            //generate random number between 1 and 100. If the number is under or equals 2, show donation page
             Random rdmnumber = new Random();
             int generatedNumber = rdmnumber.Next(1, 100);
-            Console.WriteLine("generated number: " + generatedNumber);
-            FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
+            Debug.WriteLine("Donation gamble number: " + generatedNumber);
             if (generatedNumber <= 2)
             {
-                FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
+                NavBar.SelectedItem = NavBar.FooterMenuItems[0];
             }
         }
 
