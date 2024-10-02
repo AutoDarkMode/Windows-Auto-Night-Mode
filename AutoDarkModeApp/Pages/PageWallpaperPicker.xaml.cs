@@ -473,7 +473,7 @@ namespace AutoDarkModeApp.Pages
         {
             OpenFileDialog ofd = new()
             {
-                Filter = AdmProperties.Resources.dbPictures + "|*.png; *.jpg; *.jpeg; *.bmp",
+                Filter = AdmProperties.Resources.dbPictures + "|*.jpg; *.jpeg; *.bmp; *.dib; *.png; *.jff; *.jpe; *.gif; *.tif; *.tiff; *.wdp; *.heic; *.heif; *.heics; *.heifs; *.hif; *.avci; *.avcs; *.avif; *.avifs; *.jxr; *.jxl",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
             };
             bool? result = ofd.ShowDialog();
