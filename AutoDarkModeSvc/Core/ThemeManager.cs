@@ -338,7 +338,7 @@ namespace AutoDarkModeSvc.Core
                 if (themeModeNeedsUpdate)
                 {
                     PowerHandler.RequestDisableEnergySaver(builder.Config);
-                    ThemeHandler.ApplyTheme(newTheme);
+                    ThemeHandler.ApplyUnmanagedTheme(newTheme);
                     themeSwitched = true;
                 }
 

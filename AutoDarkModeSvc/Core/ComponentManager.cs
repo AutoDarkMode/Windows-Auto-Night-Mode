@@ -146,6 +146,11 @@ namespace AutoDarkModeSvc.Core
             });
         }
 
+        public void RunAllEnableHooks()
+        {
+            Components.ForEach(c => c.RunEnableHook());
+        }
+
         /// <summary>
         /// Sets the one time force flag for all modules
         /// </summary>

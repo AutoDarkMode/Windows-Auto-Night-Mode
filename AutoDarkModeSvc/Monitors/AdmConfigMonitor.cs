@@ -85,6 +85,7 @@ namespace AutoDarkModeSvc.Monitors
             IConfigUpdateEvent<AdmConfig> governorEvent = new GovernorEvent();
             IConfigUpdateEvent<AdmConfig> eventConfigChangeEvent = new EventConfigChangeEvent();
             IConfigUpdateEvent<AdmConfig> loggingVerbosityEvent = new LoggingVerbosityEvent();
+            IConfigUpdateEvent<AdmConfig> autoSwitchToggledEvent = new AutoSwitchToggledEvent();
 
             //change event trackers
             builder.ConfigUpdatedHandler += geolocatorEvent.OnConfigUpdate;
@@ -93,6 +94,7 @@ namespace AutoDarkModeSvc.Monitors
             builder.ConfigUpdatedHandler += governorEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += eventConfigChangeEvent.OnConfigUpdate;
             builder.ConfigUpdatedHandler += loggingVerbosityEvent.OnConfigUpdate;
+            builder.ConfigUpdatedHandler += autoSwitchToggledEvent.OnConfigUpdate;
 
         }
 

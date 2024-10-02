@@ -66,13 +66,15 @@ namespace AutoDarkModeSvc.Handlers
         /// </summary>
         /// <param name="newTheme"></param>
         /// <returns>true if an update was performed; false otherwise</returns>
-        public static void ApplyTheme(Theme newTheme)
+        public static void ApplyUnmanagedTheme(Theme newTheme)
         {
             PowerHandler.RequestDisableEnergySaver(builder.Config);
             if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
             {
-                WindowsThemeMonitor.PauseThemeMonitor(TimeSpan.FromSeconds(10));
+                WindowsThemeMonitor.PauseThemeMonitor();
             }
+
+            // string appliedThemeFilePath = null;
 
             // refresh active theme for syncing data into unmanaged themes
             state.ManagedThemeFile.SyncWithActiveTheme(patch: false, logging: false);
@@ -106,6 +108,13 @@ namespace AutoDarkModeSvc.Handlers
                     dark.Save(managed: false);
                 }
                 Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
+            }
+
+            
+
+            if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
+            {
+                WindowsThemeMonitor.ResumeThemeMonitor();
             }
         }
 

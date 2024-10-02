@@ -101,6 +101,24 @@ namespace AutoDarkModeSvc.Monitors
             }
         }
 
+        public static void PauseThemeMonitor()
+        {
+            if (globalThemeEventWatcher != null && !IsPaused)
+            {
+                globalThemeEventWatcher.Stop();
+                IsPaused = true;
+            }
+        }
+
+        public static void ResumeThemeMonitor()
+        {
+            if (globalThemeEventWatcher != null && IsPaused)
+            {
+                globalThemeEventWatcher.Start();
+                IsPaused = false;
+            }
+        }   
+
         public static void StopThemeMonitor()
         {
             try
