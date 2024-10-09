@@ -139,7 +139,7 @@
     <value>Applicazioni</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Orari di inizio</value>
+    <value>Orari di inizio personalizzati</value>
   </data>
   <data name="lblDark" xml:space="preserve">
     <value>Scuro</value>
@@ -175,19 +175,19 @@
     <value>Usa servizio di localizzazione</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>I cambiamenti sono stati salvati!</value>
+    <value>I tuoi cambiamenti sono stati salvati!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>I cambiamenti effettuati sono automaticamente salvati.</value>
+    <value>I tuoi cambiamenti effettuati saranno salvati automaticamente.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Scarica aggiornamento</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>errore :(</value>
+    <value>si è verificato un errore :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>L'app richiede il permesso di accedere alla posizione</value>
+    <value>L'app richiede il permesso di accedere alla tua posizione</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>Nessun aggiornamento disponibile.</value>
