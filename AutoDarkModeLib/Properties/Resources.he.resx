@@ -288,7 +288,7 @@
     <value>פועל</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>or</value>
+    <value>או</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>שמור</value>
@@ -328,14 +328,14 @@
     <value>בדיקת עדכונים אוטומטית</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>הייתה בעיה בממשק המשתמש.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+נא לוודא:
+- השירות פועל
+- הקובץ config.yaml שלך נכון
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+האם תרצה ליצור בעיה במאגר מצב כהה אוטומטי?
+לחץ על "כן" כדי לפתוח חלון דפדפן חדש.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -345,12 +345,12 @@ Click "Yes" to open a new browser window.
     <value>Switch after Connected Standby (not recommended)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
-But it also reduces the battery life, so ONLY activate if necessary!</value>
+    <value>מכשירים ניידים, כמו מוצרי Microsoft Surface, משתמשים בסוג חדש של מצב המתנה.
+הפעלת אפשרות זו מבטיחה שמצב כהה אוטומטי יחליף את ערכת הנושא מיד לאחר התעוררות המחשב.
+אבל זה גם מקטין את חיי הסוללה, אז הפעל רק במידת הצורך!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>עקב באג של Windows, שורת המשימות אינה מחליפה את צבעה כראוי במצב חיסכון בסוללה. אנא כבה את חיסכון בסוללה אם אתה נתקל בבעיות.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
@@ -363,7 +363,7 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
 אתה יכול להגדיר אותם בנפרד בעיצוב ערכות הנושא של Windows שלך.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>אפליקציות</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
     <value>הגדרות</value>
@@ -465,22 +465,22 @@ But it also reduces the battery life, so ONLY activate if necessary!</value>
     <value>לִתְרוֹם</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+    <value>שלום! תודה שהשתמשת בAuto Dark Mode! האם אתה אוהב את זה עד כה?
 
-This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
-I don't generate any profit with this project.
+אפליקציה זו הופכת את היומיום שלך לנעים יותר, בכך שהיא עוזרת לך לטפל בעיניים שלך. יחד עם זאת הוא חינמי לחלוטין, ללא פרסומות, אינו אוסף נתוני משתמשים והוא קוד פתוח.
+אני לא מייצר שום רווח עם הפרויקט הזה.
 
-For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+מסיבה זו תוכל לתמוך בי בתרומה מרצון. אפילו כמות קטנה גורמת לי לקפוץ מאושר דרך הדירה שלי. פשוט תרום כמה שאתה מעריך את העבודה שלי.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
     <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue:
+    <value>נתקלנו בבעיה הבאה:
 {0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
-Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
+כעת ננסה לפתור בעיה זו על ידי הפעלת אלגוריתם כמנהל. אולי זה יעזור.
+Auto Dark Mode יופעל מחדש לאחר מכן ותצטרך להחיל מחדש את ההגדרות שלך, מצטער!
 
 Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
@@ -488,7 +488,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>עזרה</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Multi-User support</value>
+    <value>תמיכה מרובה משתמשים</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
     <value>השהיה אופציונלית להפעלת מסנן צבע בגווני אפור:</value>
@@ -656,7 +656,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>איטי (3 דוגמאות)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+    <value>מהירות זיהוי שימוש ב-GPU</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
     <value>מכשירים המופעלים על ידי סוללה</value>
@@ -825,8 +825,8 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>כפה ערכת נושא בהיר</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>הסתרת הסמל אינה מומלצת.
+אתה באמת רוצה להמשיך?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>הסתר סמל מגש</value>
@@ -868,13 +868,13 @@ Do you really want to continue?</value>
     <value>System idle checker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>לחץ על אשר כדי לבקש החלפת ערכת נושא באופן מיידי.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>המשך</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>בטל פעולה זו על ידי לחיצה על כפתור הביטול למטה.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
     <value>מקש קיצור</value>
@@ -892,16 +892,16 @@ Do you really want to continue?</value>
     <value>Pause auto switch</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>האם תרצה להשבית את ההחלפה האוטומטית במקום זאת?</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
     <value>Automatic switching will also resume if you return to your previous theme.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>החלפת ערכות נושא הושהתה עד</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>החלפת עיצוב אוטומטי מושהית כעת עקב המודולים הבאים:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
     <value>Resuming will only work for postpones that have an expiry time</value>
@@ -1233,13 +1233,13 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>אוטומטי</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>ידני</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>הוסף</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>הסר</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
     <value>Blocking Processes</value>
