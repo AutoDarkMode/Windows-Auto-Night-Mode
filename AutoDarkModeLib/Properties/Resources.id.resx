@@ -1260,6 +1260,6 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
     <value>Alternatifnya, Anda dapat menyumbang melalui GitHub Sponsor, yang juga mendukung donasi berkala bulanan.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Cobalah untuk memperbaiki tema</value>
   </data>
 </root>
