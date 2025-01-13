@@ -426,7 +426,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>步骤</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>打开用户在windows设置中指定的“颜色滤镜”模式（快捷键Win+Ctrl+C）</value>
+    <value>颜色滤镜（发送 Win + Ctrl + C）</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>使用登录任务而非启动项</value>
@@ -1131,7 +1131,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>windows聚焦</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>windows聚焦</value>
+    <value>Windows 聚焦</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
     <value>主题色</value>
