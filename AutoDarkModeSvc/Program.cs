@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using System.Collections.Concurrent;
 using System.Reflection;
 using AutoDarkModeSvc.Core;
+using System.Runtime.InteropServices;
 
 namespace AutoDarkModeSvc
 {
@@ -98,6 +99,7 @@ namespace AutoDarkModeSvc
                 if (commitHash != "")
                 {
                     Logger.Info($"commit hash: {commitHash}, build: {Assembly.GetExecutingAssembly().GetName().Version}");
+                    Logger.Info($"process arch: {RuntimeInformation.ProcessArchitecture}, os arch: {RuntimeInformation.OSArchitecture}");
                     Logger.Info($"cwd: {Helper.ExecutionPath}");
                 }
                 else
@@ -264,7 +266,6 @@ namespace AutoDarkModeSvc
                     Logger.Warn(ex, "could not set access key highlight flag");
                 }
                 */
-
                 Application.Run(Service);
 
             }
