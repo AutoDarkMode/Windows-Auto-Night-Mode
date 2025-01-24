@@ -34,6 +34,14 @@ namespace AutoDarkModeSvc.Modules
 
         public override Task Fire(object caller = null)
         {
+            // Ignore the module on first startup such that themes are correctly applied at program startup
+            // which should be expected because if the user launches Auto Dark Mode it would want it
+            // to switch as it is a user-sanctioned operation
+            if (!State.InitSyncSwitchPerformed)
+            {
+                return Task.CompletedTask;
+            }
+
             LASTINPUTINFO lastinputStruct = new();
             lastinputStruct.cbSize = (uint)Marshal.SizeOf(lastinputStruct);
             GetLastInputInfo(ref lastinputStruct);
