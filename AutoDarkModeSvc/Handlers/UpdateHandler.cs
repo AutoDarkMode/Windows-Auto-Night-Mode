@@ -113,11 +113,17 @@ namespace AutoDarkModeSvc.Handlers
                 UpstreamVersion = UpdateInfo.Deserialize(data);
                 Version newVersion = new(UpstreamVersion.Tag);
 
+                if (RuntimeInformation.OSArchitecture == Architecture.Arm64)
+                {
+                    IsARMUpgrade = true;
+                }
+                string archString = IsARMUpgrade ? " (ARM64)" : "";
+
                 if (currentVersion.CompareTo(newVersion) < 0)
                 {
-                    Logger.Info($"new version {newVersion} available");
+                    Logger.Info($"new version {newVersion} available {archString}");
                     response.StatusCode = StatusCode.New;
-                    response.Message = $"Version: {currentVersion}";
+                    response.Message = $"Version: {currentVersion} {archString}";
                     response.Details = data;
                     UpstreamResponse = response;
                     return response;
@@ -126,12 +132,11 @@ namespace AutoDarkModeSvc.Handlers
                     && RuntimeInformation.ProcessArchitecture != Architecture.Arm64
                     && currentVersion.CompareTo(newVersion) == 0 && UpstreamVersion.PathFileArm != null)
                 {
-                    Logger.Info($"upgrade to arm version available");
+                    Logger.Info($"upgrade to arm version available {archString}");
                     response.StatusCode = StatusCode.New;
-                    response.Message = $"Version: {currentVersion} (ARM64)";
+                    response.Message = $"Version: {currentVersion} {archString}";
                     response.Details = data;
                     UpstreamResponse = response;
-                    IsARMUpgrade = true;
                     return response;
                 }
                 else
