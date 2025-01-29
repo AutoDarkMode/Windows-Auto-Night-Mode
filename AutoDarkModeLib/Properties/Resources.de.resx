@@ -124,7 +124,7 @@
     <value>Anwenden</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Automatischen Design-Wechsel aktivieren</value>
+    <value>Automatischen Designwechsel aktivieren</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Immer dunkel</value>
@@ -172,13 +172,13 @@
     <value>Aktualisierungen</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Standort-Dienste verwenden</value>
+    <value>Standortdienste verwenden</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
     <value>Änderungen gespeichert!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Klicke auf 'Anwenden' um die Änderungen zu speichern.</value>
+    <value>Deine Änderungen werden automatisch gespeichert.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Update herunterladen</value>
@@ -187,7 +187,7 @@
     <value>Ein Fehler ist aufgetreten :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>Die Anwendung benötigt Zugriff auf die Standort-Dienste von Windows</value>
+    <value>Die Anwendung benötigt Zugriff auf die Standortdienste von Windows</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
     <value>Keine Updates verfügbar.</value>
@@ -237,7 +237,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Standort</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>Ein Neustart wird benötigt</value>
+    <value>Ein Neustart ist erforderlich</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>Sprache:</value>
@@ -307,7 +307,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>Nur im dunklen Design sichtbar.
-Falls die Aktivierung Probleme verursacht: erhöhe bitte die Verzögerungszeit in den Einstellungen.</value>
+Falls die Aktivierung Probleme verursacht: Erhöhe bitte die Verzögerungszeit in den Einstellungen.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>Info</value>
@@ -330,19 +330,19 @@ Falls die Aktivierung Probleme verursacht: erhöhe bitte die Verzögerungszeit i
   <data name="ErrorMessageBox" xml:space="preserve">
     <value>Es ist ein Problem mit der Benutzeroberfläche aufgetreten.
 
-Bitte stelle sicher dass:
-- Der Service läuft
-- Die config.yaml Datei korrekt ist
+Bitte stelle sicher, dass:
+- der Service läuft
+- die config.yaml Datei korrekt ist
 
-Möchtest du eine Fehlermeldung in unserem Github Repo erstellen?
-Drücke "ja" um ein neues Browserfenster zu öffnen.
+Möchtest du eine Fehlermeldung in unserem GitHub Repo erstellen?
+Drücke "ja", um ein neues Browserfenster zu öffnen.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Fehler: deine Eingabe ist nicht zulässig</value>
+    <value>Fehler: Deine Eingabe ist nicht zulässig</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Design-Wechsel nach Connected Standby (nicht empfohlen)</value>
+    <value>Designwechsel nach Connected Standby (nicht empfohlen)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
     <value>Mobile Geräte, wie Microsoft Surface-Prdukte, nutzen eine neue Art des Energiesparmodus.
@@ -396,7 +396,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Klicke hier, um die Windows Design-Einstellungen zu öffnen.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Setze nun unter 'Farben' deine Windows Farbe auf 'Hell'. Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
+    <value>Setze nun unter "Farben" deine Windows Farbe auf "Hell". Wähle anschließend deine bevorzugten Hintergrundbilder, Mauszeiger oder eine Akzentfarbe aus.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Wechsle zurück zu den Design-Einstellungen und speichere das Design.</value>
@@ -420,13 +420,13 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Benutzerdefinierte Uhrzeit</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>Von Sonnenaufgang bis Sonnenuntergang (Ortungsdienst)</value>
+    <value>Von Sonnenuntergang bis Sonnenaufgang (Standortdienst)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
     <value>Schritt</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Farbfilter (Sendet Win + Strg + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Login-Task statt Autostart-Eintrag</value>
@@ -435,7 +435,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Modus wählen:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Ein Fehler ist beim Festlegen des Designs aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren</value>
+    <value>Ein Fehler ist beim Festlegen des Designs aufgetreten, weswegen wir nun den Windows Designwechsel deaktivieren</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>Alternatives helles Design</value>
@@ -447,7 +447,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Empfohlene Tools</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>Diese Browser-Erweiterung färbt Webseiten in Chrome, Firefox und Edge passend zur Systemfarbe dunkel ein.</value>
+    <value>Diese Browsererweiterung färbt Webseiten in Chrome, Firefox und Edge passend zur Systemfarbe dunkel ein.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
     <value>Nicht gefunden</value>
@@ -459,7 +459,7 @@ Du kannst sie individuell in deinem Windows Design ändern.</value>
     <value>Wie spenden?</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>Akzeptiert werden spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
+    <value>Akzeptiert werden Spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
     <value>Spenden</value>
@@ -473,7 +473,7 @@ Ich erziele keinerlei Einnahmen mit diesem Projekt.
 Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Selbst ein kleiner Betrag lässt mich vor Freude durch meine Wohnung springen. Spende einfach so viel, wie dir meine Arbeit wert ist.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Ein Fehler ist beim Anwenden der .Theme-Datei aufgetreten, weswegen wir nun den Windows Design-Wechsel deaktivieren. Vielleicht wurde die Datei gelöscht oder verschoben. Um die Funktion zu reaktivieren besuche bitte die {0} Einstellungen.</value>
+    <value>Ein Fehler ist beim Anwenden der .theme-Datei aufgetreten, weswegen wir nun den Windows Designwechsel deaktivieren. Vielleicht wurde die Datei gelöscht oder verschoben. Um die Funktion zu reaktivieren, besuche bitte die {0} Einstellungen.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
     <value>Folgender Fehler ist aufgetreten:
@@ -482,7 +482,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
 Wir versuchen ihn nun zu beheben, indem wir einen Algorithmus als Administrator ausführen. Vielleicht gelingt es uns, das Problem zu lösen!
 Allerdings müssen wir dafür Auto Dark Mode neu starten, weswegen du deine Einstellungen leider erneut anwenden musst.
 
-Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
+Hinweis: Bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
     <value>Hilfe</value>
@@ -500,7 +500,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Zurücksetzen</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Zum dunklen Design wechseln, wenn das Gerät vom Stromnetz getrennt wird</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Stromsparmodus aktivieren bei folgendem Akkustand</value>
@@ -512,7 +512,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Funktioniert nur, wenn der Energiesparmodus nicht manuell aktiviert wurde!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Wechsel-Modi</value>
+    <value>Wechselmodi</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
     <value>Personalisierung</value>
@@ -566,13 +566,13 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Diese Funktion ist nicht verfügbar wenn Windows das Theme verwaltet.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Konfiguriere unterschiedliche Windows Themes für das dunkle und helle Design. Dies erlaubt vollständige Anpassbarkeit, erfordert allerdings, ein Theme File vorher selbst zu erstellen.</value>
+    <value>Konfiguriere unterschiedliche Windows Themes für das dunkle und das helle Design. Dies erlaubt vollständige Anpassbarkeit, erfordert allerdings, eine .theme-Datei vorher selbst zu erstellen.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
     <value>Passe das Hintergrundbild für alle oder einzelne Monitore an, setze eine Hintergrundfarbe oder aktiviere Spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>Wir suchen im Hintergrund nach Updates. Sobald eine neue Version verfügbar ist, senden wir eine Toast Benachrichtigung</value>
+    <value>Wir suchen im Hintergrund nach Updates. Sobald eine neue Version verfügbar ist, senden wir eine Benachrichtigung</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>Automatischer Download und Installation</value>
@@ -602,7 +602,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>nie</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Ändere wie oft nach Updates gesucht wird</value>
+    <value>Ändere, wie oft nach Updates gesucht wird</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
     <value>Dunkles Design</value>
@@ -683,7 +683,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Starte Service</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>Der Dienst antwortet nicht. Prüfe ob AutoDarkModeSvc.exe läuft und versuche es erneut!</value>
+    <value>Der Dienst antwortet nicht. Prüfe, ob AutoDarkModeSvc.exe läuft und versuche es erneut!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
     <value>Windows-Designwechsel aktivieren</value>
@@ -744,7 +744,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Jeden Tag</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Klicke auf 'Anwenden', um die Änderungen zu speichern.</value>
+    <value>Klicke auf "Anwenden", um die Änderungen zu speichern.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Taskleistenakzentfarbe benutzen für</value>
@@ -816,7 +816,7 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Design erzwingen beenden</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Tastatur-Hotkeys systemweit aktivieren</value>
+    <value>Tastenkürzel systemweit aktivieren</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Erzwinge &amp;dunkles Design</value>
@@ -825,8 +825,8 @@ Hinweis: bitte starte Auto Dark Mode niemals manuell als Administrator!</value>
     <value>Erzwinge &amp;helles Design</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Das Icon zu verstecken ist nicht empfohlen.
-Möchten Sie wirklich fortfahren?</value>
+    <value>Das Icon zu verstecken, ist nicht empfohlen.
+Möchtest du wirklich fortfahren?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
     <value>Systemtray-Icon verstecken</value>
@@ -916,10 +916,10 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Auto-Wechsel ist aktiviert</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>So wie Windows Nachtlicht</value>
+    <value>So wie Windows Nachtmodus</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>So wie Windows Nachtlicht</value>
+    <value>So wie Windows Nachtmodus</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
     <value>Auto-Wechsel ist einmalig pausiert!</value>
@@ -928,7 +928,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>pausiert bis</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>pausiert bis dessen Kondition eintrifft</value>
+    <value>pausiert, bis dessen Kondition eintrifft</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
     <value>pausiert bis zum nächsten Sonnenaufgang</value>
@@ -952,10 +952,10 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Automatischer Wechsel fortgesetzt</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Nachtlichteinstellungen öffnen</value>
+    <value>Nachtmoduseinstellungen öffnen</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Nachtlicht</value>
+    <value>Nachtmodus</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
     <value>Aktive Verzögerungen</value>
@@ -973,7 +973,7 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Debug Modus</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Designwechsel während dem Sperrbildschirm erlauben (Win10)</value>
+    <value>Designwechsel während des Sperrbildschirms erlauben (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
     <value>Bestätigen</value>
@@ -1137,16 +1137,16 @@ Möchten Sie wirklich fortfahren?</value>
     <value>Akzentfarbe</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Wähle eine Akzent Farbe</value>
+    <value>Wähle eine Akzentfarbe</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Passe die Windows Akzentfarbe nach Präferenz an.</value>
+    <value>Passe die Windows Akzentfarbe nach deiner Präferenz an.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
     <value>Farbwahl aktualisieren</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>Diese Funktion ist nicht verfügbar wenn Auto Dark Mode das Theme verwaltet.</value>
+    <value>Diese Funktion ist nicht verfügbar, wenn Auto Dark Mode das Theme verwaltet.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
@@ -1260,6 +1260,6 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
     <value>Als Alternative steht GitHub Sponsors zur Verfügung. Außerdem erlaubt dieser Dienst wiederkehrende, monatliche Spenden.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Versuche das Design zu reparieren</value>
+    <value>Versuche, das Design zu reparieren</value>
   </data>
 </root>
