@@ -1251,7 +1251,7 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
     <value>Prohlédněte si aplikace podporující Auto Dark Mode</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Všechny aplikace nepodporují Auto Dark Mode. Na naší wiki nabízíme aktuální seznam aplikací, které ano.</value>
+    <value>Ne všechny aplikace třetích stran podporují Auto Dark Mode. Na naší wiki nabízíme aktuální seznam aplikací, které ano.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
     <value>Doporučené aplikace</value>
@@ -1260,6 +1260,6 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
     <value>Můžete nás podpořit také skrze GitHub Sponsors, kde je možné se zapsat i k pravidelným příspěvkům.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>Zkuste opravit motiv</value>
   </data>
 </root>
