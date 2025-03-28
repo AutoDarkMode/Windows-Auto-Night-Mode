@@ -14,15 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace AutoDarkModeLib.ComponentSettings.Base
 {
     public class AppsSwitchSettings
     {
-        public Mode Mode { get; set; }
+        public Mode Mode
+        {
+            get; set;
+        }
     }
 }

@@ -17,14 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeLib.ComponentSettings.Base
 {
     public class ScriptSwitchSettings
     {
-        public List<Script> Scripts { get; set; }
+        public List<Script> Scripts
+        {
+            get; set;
+        }
         public ScriptSwitchSettings()
         {
             Scripts = new();
@@ -54,13 +55,25 @@ namespace AutoDarkModeLib.ComponentSettings.Base
 
     public class Script
     {
-        public string Name { get; set; }
-        public string Command { get; set; }
-        public string WorkingDirectory { get; set; }
+        public string Name
+        {
+            get; set;
+        }
+        public string Command
+        {
+            get; set;
+        }
+        public string WorkingDirectory
+        {
+            get; set;
+        }
         public List<string> ArgsLight { get; set; } = new();
         public List<string> ArgsDark { get; set; } = new();
         public List<SwitchSource> AllowedSources { get; set; } = new() { SwitchSource.Any };
-        public int? TimeoutMillis { get; set; }
+        public int? TimeoutMillis
+        {
+            get; set;
+        }
         public override bool Equals(object obj)
         {
             if (obj is Script other)

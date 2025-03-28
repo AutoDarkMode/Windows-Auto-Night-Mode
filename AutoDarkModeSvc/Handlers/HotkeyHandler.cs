@@ -16,16 +16,14 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using AutoDarkModeSvc.Monitors;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Core;
 using System.Globalization;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -33,7 +31,10 @@ namespace AutoDarkModeSvc.Handlers
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        public static Service Service { get; set; }
+        public static Service Service
+        {
+            get; set;
+        }
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
         // Unregisters the hot key with Windows.
@@ -113,12 +114,12 @@ namespace AutoDarkModeSvc.Handlers
                         }
                     }
                 });
-            } 
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "could not register hotkeys:");
             }
-           
+
         }
 
         public static void UnregisterAllHotkeys()
@@ -210,10 +211,22 @@ namespace AutoDarkModeSvc.Handlers
 
     public class HotkeyInternal
     {
-        public int Id { get; set; }
-        public string StringCode { get; set; }
+        public int Id
+        {
+            get; set;
+        }
+        public string StringCode
+        {
+            get; set;
+        }
         public List<Keys> Modifiers { get; set; } = new();
-        public Keys Key { get; set; }
-        public Action Action { get; set; }
+        public Keys Key
+        {
+            get; set;
+        }
+        public Action Action
+        {
+            get; set;
+        }
     }
 }

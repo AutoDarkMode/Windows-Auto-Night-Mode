@@ -14,15 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Linq;
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {
@@ -30,7 +25,8 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
     {
         private readonly ComponentManager cm;
         private readonly GlobalState state = GlobalState.Instance();
-        public ThemeModeEvent(ComponentManager cm) {
+        public ThemeModeEvent(ComponentManager cm)
+        {
             this.cm = cm;
         }
         protected override void ChangeEvent()
@@ -39,7 +35,8 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
             // if the theme mode is toggled to off, we need to reinitialize all components
             if (themeModeToggled)
             {
-                if (newConfig.WindowsThemeMode.Enabled) {
+                if (newConfig.WindowsThemeMode.Enabled)
+                {
                     cm.InvokeDisableIncompatible();
                     if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
                     state.RefreshThemes(newConfig);
@@ -48,7 +45,7 @@ namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
                 {
                     WindowsThemeMonitor.StopThemeMonitor();
                 }
-            } 
+            }
             else if (newConfig.WindowsThemeMode.Enabled)
             {
 

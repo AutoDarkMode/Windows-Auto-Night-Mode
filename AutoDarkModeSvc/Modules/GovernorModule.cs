@@ -1,14 +1,11 @@
-﻿using AutoDarkModeLib.Configs;
+﻿using System;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Timers;
-using System;
-using System.Collections.Generic;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Governors;
 using AutoDarkModeSvc.Interfaces;
-using AutoDarkModeSvc.Events;
-using static System.Windows.Forms.AxHost;
-using System.Threading.Tasks;
+using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -17,10 +14,16 @@ namespace AutoDarkModeSvc.Modules
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         GlobalState State { get; } = GlobalState.Instance();
         AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-        DateTime LastSwitchWindow { get; set; }
-        private IAutoDarkModeGovernor ActiveGovernor { get; set; }
+        DateTime LastSwitchWindow
+        {
+            get; set;
+        }
+        private IAutoDarkModeGovernor ActiveGovernor
+        {
+            get; set;
+        }
         private bool NglInstantSwitchWindow { get; set; } = false;
-        public GovernorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) 
+        public GovernorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
             Priority = 1;
         }

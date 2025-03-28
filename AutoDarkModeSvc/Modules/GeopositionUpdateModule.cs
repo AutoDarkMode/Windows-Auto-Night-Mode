@@ -14,18 +14,21 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
-using System;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Modules
 {
     internal class GeopositionUpdateModule : AutoDarkModeModule
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private AdmConfigBuilder ConfigBuilder { get; }
+        private AdmConfigBuilder ConfigBuilder
+        {
+            get;
+        }
         public override string TimerAffinity { get; } = TimerName.Geopos;
 
         /// <summary>

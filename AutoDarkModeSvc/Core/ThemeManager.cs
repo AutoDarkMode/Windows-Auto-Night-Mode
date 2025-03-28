@@ -14,16 +14,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Events;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
-using AutoDarkModeSvc.SwitchComponents.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Interfaces;
+using AutoDarkModeSvc.SwitchComponents.Base;
 using Windows.System.Power;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
@@ -235,7 +235,7 @@ namespace AutoDarkModeSvc.Core
                     // this is necessary such that postpones have the correct requestedtheme!
                     try
                     {
-                        if (builder.PostponeData.InternalThemeAtExit == Theme.Unknown) 
+                        if (builder.PostponeData.InternalThemeAtExit == Theme.Unknown)
                             state.InternalTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
                     }
                     catch (Exception ex)
@@ -269,7 +269,7 @@ namespace AutoDarkModeSvc.Core
 
                 #region dwm refresh
                 // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
-                if (builder.Config.Tunable.AlwaysFullDwmRefresh && 
+                if (builder.Config.Tunable.AlwaysFullDwmRefresh &&
                    (providedDwmRefresh != DwmRefreshType.Full && neededDwmRefresh != DwmRefreshType.None || themeModeNeedsUpdate))
                 {
                     Logger.Info("dwm management: full refresh requested by user");
@@ -394,7 +394,7 @@ namespace AutoDarkModeSvc.Core
                 {
                     Logger.Info($"{Enum.GetName(typeof(Theme), newTheme).ToLower()} theme switch performed, source: {Enum.GetName(typeof(SwitchSource), e.Source)}");
                 }
-            }                             
+            }
 
             if (!state.InitSyncSwitchPerformed)
             {
@@ -411,11 +411,17 @@ namespace AutoDarkModeSvc.Core
         /// <summary>
         /// Sunrise given by geocoordinates, user input or location service
         /// </summary>
-        public DateTime Sunrise { get; private set; }
+        public DateTime Sunrise
+        {
+            get; private set;
+        }
         /// <summary>
         /// Sunrise given by geocoordinates, user input or location service
         /// </summary>
-        public DateTime Sunset { get; private set; }
+        public DateTime Sunset
+        {
+            get; private set;
+        }
 
         private DateTime _adjustedSunrise;
         /// <summary>
@@ -442,17 +448,26 @@ namespace AutoDarkModeSvc.Core
         /// <summary>
         /// The theme that should be active now
         /// </summary>
-        public Theme TargetTheme { get; private set; }
+        public Theme TargetTheme
+        {
+            get; private set;
+        }
         /// <summary>
         /// Precise Time when the next switch should occur (matches either adjusted sunset or sunrise)
         /// </summary>
-        public DateTime NextSwitchTime { get; private set; }
+        public DateTime NextSwitchTime
+        {
+            get; private set;
+        }
 
         /// <summary>
         /// Precise Time when the target theme entered its activation window <br/> 
         /// (when the last switch occurred or should have occurred)
         /// </summary>
-        public DateTime CurrentSwitchTime { get; private set; }
+        public DateTime CurrentSwitchTime
+        {
+            get; private set;
+        }
 
         /// <summary>
         /// Instantiates a new ThemeState class and automatically caluclates timed theme switching data

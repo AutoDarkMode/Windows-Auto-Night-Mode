@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel
+                MaxWidth="1000"
+                HorizontalAlignment="Stretch"
+                Spacing="{StaticResource SettingsCardSpacing}">
+
+                <StackPanel Orientation="Horizontal" Spacing="32">
+                    <Image
+                        Width="80"
+                        Height="80"
+                        Source="/Assets/AutoDarkModeIcon.ico" />
+                    <StackPanel
+                        Padding="16"
+                        Orientation="Vertical"
+                        Spacing="8">
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="22"
+                            FontWeight="SemiBold"
+                            Text="Auto Dark Mode X" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="14"
+                            Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=NavbarAbout}" />
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=AboutTextBlockVersion}" HeaderIcon="{ui:FontIcon Glyph=&#xe946;}">
+                    <Button Content="{helpers:ResourceString Name=AboutButtonCopy}" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <StackPanel Orientation="Vertical" Spacing="8">
+                                    <TextBlock Text="Commit" />
+                                    <TextBlock Text="App/Service" />
+                                    <TextBlock Text="Updater" />
+                                    <TextBlock Text="Shell" />
+                                    <TextBlock Text=".Net" />
+                                    <TextBlock Text="Windows" />
+                                    <TextBlock Text="Arch" />
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A5;}"
+                    Header="{helpers:ResourceString Name=ConfigHyperLinkOpenLog}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A5;}"
+                    Header="{helpers:ResourceString Name=AboutHyperLinkOpenUpdaterLog}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE756;}"
+                    Header="{helpers:ResourceString Name=AboutHyperLinkOpenShell}"
+                    IsClickEnabled="True" />
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
+                <controls:SettingsCard Header="namazso" />
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AboutTextBlockFollowUs}" />
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <TextBlock
+                                FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
+                                FontSize="28"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Text="A" />
+                            <HyperlinkButton Content="Github" />
+                            <TextBlock
+                                FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
+                                FontSize="28"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                Text="B" />
+                            <HyperlinkButton Content="Telegram" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <HyperlinkButton Content="WinUI" />
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+
+</Page>

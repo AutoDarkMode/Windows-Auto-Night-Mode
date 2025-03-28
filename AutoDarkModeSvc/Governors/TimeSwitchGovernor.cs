@@ -1,16 +1,10 @@
-﻿using AutoDarkModeLib;
+﻿using System;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
-using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.AxHost;
 
 namespace AutoDarkModeSvc.Governors
 {
@@ -18,7 +12,10 @@ namespace AutoDarkModeSvc.Governors
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public Governor Type => Governor.Default;
-        private AdmConfigBuilder Builder { get; }
+        private AdmConfigBuilder Builder
+        {
+            get;
+        }
         private GlobalState State { get; } = GlobalState.Instance();
         bool init = true;
 
@@ -39,7 +36,7 @@ namespace AutoDarkModeSvc.Governors
             {
                 if (State.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
                 {
-                    if (!State.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(ts.NextSwitchTime.TimeOfDay, ts.CurrentSwitchTime.AddMilliseconds(2*TimerFrequency.Main).TimeOfDay))
+                    if (!State.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(ts.NextSwitchTime.TimeOfDay, ts.CurrentSwitchTime.AddMilliseconds(2 * TimerFrequency.Main).TimeOfDay))
                     {
                         ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                         return new(true);
@@ -47,7 +44,7 @@ namespace AutoDarkModeSvc.Governors
                 }
             }
 
-            bool isInSwitchWindow = State.SwitchApproach.DependenciesPresent && !init; 
+            bool isInSwitchWindow = State.SwitchApproach.DependenciesPresent && !init;
 
             // only do calculation when necessary
             if (isInSwitchWindow)

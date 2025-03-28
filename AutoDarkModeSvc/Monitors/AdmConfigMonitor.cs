@@ -14,25 +14,34 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
-using AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
+using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
-using System;
-using System.IO;
-using AutoDarkModeLib.Configs;
-using System.Threading.Tasks;
+using AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
 namespace AutoDarkModeSvc.Monitors
 {
     class AdmConfigMonitor
     {
         private static AdmConfigMonitor instance;
-        private FileSystemWatcher ConfigWatcher { get; }
-        private FileSystemWatcher LocationDataWatcher { get; }
-        private FileSystemWatcher ScriptConfigWatcher { get; }
+        private FileSystemWatcher ConfigWatcher
+        {
+            get;
+        }
+        private FileSystemWatcher LocationDataWatcher
+        {
+            get;
+        }
+        private FileSystemWatcher ScriptConfigWatcher
+        {
+            get;
+        }
         private readonly ComponentManager componentManager = ComponentManager.Instance();
         private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private readonly GlobalState state = GlobalState.Instance();

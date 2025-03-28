@@ -14,26 +14,25 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using HttpClientProgress;
-using System.Net.Http.Headers;
-using System.Linq;
 using System.Threading;
-using Windows.Media.Protection.PlayReady;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
+using HttpClientProgress;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -46,7 +45,10 @@ namespace AutoDarkModeSvc.Handlers
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public static ApiResponse UpstreamResponse { get; private set; } = new();
         public static UpdateInfo UpstreamVersion { get; private set; } = new();
-        public static bool IsARMUpgrade { get; private set; }
+        public static bool IsARMUpgrade
+        {
+            get; private set;
+        }
         private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         private static readonly Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         private static readonly NumberFormatInfo nfi = new();
@@ -128,7 +130,7 @@ namespace AutoDarkModeSvc.Handlers
                     UpstreamResponse = response;
                     return response;
                 }
-                else if (RuntimeInformation.OSArchitecture == Architecture.Arm64 
+                else if (RuntimeInformation.OSArchitecture == Architecture.Arm64
                     && RuntimeInformation.ProcessArchitecture != Architecture.Arm64
                     && currentVersion.CompareTo(newVersion) == 0 && UpstreamVersion.PathFileArm != null)
                 {
@@ -573,7 +575,7 @@ namespace AutoDarkModeSvc.Handlers
                         {
                             p.Dispose();
                         }
-                        Logger.Debug($"end blocking processes attempt: {i+1}/5");
+                        Logger.Debug($"end blocking processes attempt: {i + 1}/5");
                     }
                     catch (Exception ex)
                     {

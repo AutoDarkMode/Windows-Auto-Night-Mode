@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
 
 namespace AutoDarkModeSvc.Handlers.IThemeManager
@@ -55,6 +51,8 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager
         }
         [ComImport, Guid("A2C56C2A-E63A-433E-9953-92E94F0122EA"), CoClass(typeof(ThemeManagerClass))]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public interface ThemeManager : IThemeManager { }
+        public interface ThemeManager : IThemeManager
+        {
+        }
     }
 }

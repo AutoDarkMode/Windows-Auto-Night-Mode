@@ -18,7 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -76,7 +75,7 @@ namespace AutoDarkModeSvc.Handlers
                 }
                 if (p.ExitCode != 0)
                 {
-                    Logger.Warn($"{name}'s exit code does not indicate success. exit code: { p.ExitCode }");
+                    Logger.Warn($"{name}'s exit code does not indicate success. exit code: {p.ExitCode}");
                 }
             }
             catch (Exception ex)

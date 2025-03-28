@@ -14,9 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Handlers.IThemeManager2;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,8 +21,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using Windows.Devices.PointOfService;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers.IThemeManager2;
+using Microsoft.Win32;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
@@ -48,7 +46,10 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public MasterThemeSelector MasterThemeSelector { get; set; } = new();
         public Slideshow Slideshow { get; set; } = new();
         public List<string> ThemeFileContent { get; private set; } = new();
-        public string ThemeFilePath { get; private set; }
+        public string ThemeFilePath
+        {
+            get; private set;
+        }
         public string ThemeId { get; set; } = $"{{{Guid.NewGuid()}}}";
         public string UnmanagedOriginalName { get; set; } = "undefined";
         public VisualStyles VisualStyles { get; set; } = new();

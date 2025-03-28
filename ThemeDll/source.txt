@@ -1,9 +1,0 @@
-At the moment this is a blob. However, the code for this dll is open source. 
-We will eventually integrate our forked version as submodule and hook it with auto-building.
-You can find it here:
-
-Original:
-https://github.com/namazso/SecureUxTheme/tree/library
-
-Modified (remove sig patching)
-https://github.com/spiritreader/SecureUxTheme/tree/library

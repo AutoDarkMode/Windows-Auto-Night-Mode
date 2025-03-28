@@ -14,24 +14,30 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Timers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace AutoDarkModeSvc.Modules
 {
     public class WardenModule : AutoDarkModeModule
     {
-        private AdmConfigBuilder ConfigBuilder { get; }
-        private GlobalState State { get; }
-        private List<ModuleTimer> Timers { get; }
+        private AdmConfigBuilder ConfigBuilder
+        {
+            get;
+        }
+        private GlobalState State
+        {
+            get;
+        }
+        private List<ModuleTimer> Timers
+        {
+            get;
+        }
         private GovernorModule governorModule;
 
         public override string TimerAffinity { get; } = TimerName.Main;

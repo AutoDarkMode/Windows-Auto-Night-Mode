@@ -47,7 +47,10 @@ namespace AutoDarkModeSvc.Core
             PostponeManager = new(this);
         }
 
-        private WardenModule Warden { get; set; }
+        private WardenModule Warden
+        {
+            get; set;
+        }
 
         public Theme _requestedTheme = Theme.Unknown;
         /// <summary>
@@ -56,7 +59,10 @@ namespace AutoDarkModeSvc.Core
         /// </summary>
         public Theme InternalTheme
         {
-            get { return _requestedTheme; }
+            get
+            {
+                return _requestedTheme;
+            }
             set
             {
                 _requestedTheme = value;
@@ -73,38 +79,62 @@ namespace AutoDarkModeSvc.Core
         public Theme ForcedTheme { get; set; } = Theme.Unknown;
         public string UnmanagedActiveThemePath { get; set; } = "";
         public ThemeFile ManagedThemeFile { get; } = new(Helper.PathManagedTheme);
-        public PostponeManager PostponeManager { get; }
+        public PostponeManager PostponeManager
+        {
+            get;
+        }
         public NightLight NightLight { get; } = new();
         public SystemIdleModuleState SystemIdleModuleState { get; } = new();
         public bool InitSyncSwitchPerformed { get; set; } = false;
-        private NotifyIcon NotifyIcon { get; set; }
+        private NotifyIcon NotifyIcon
+        {
+            get; set;
+        }
         public Dictionary<string, string> LearnedThemeNames { get; } = new();
         public EventWaitHandle ConfigIsUpdatingWaitHandle { get; } = new ManualResetEvent(true);
         public SwitchApproach SwitchApproach { get; } = new();
         private bool configIsUpdating;
         public bool ConfigIsUpdating
         {
-            get { return configIsUpdating; }
+            get
+            {
+                return configIsUpdating;
+            }
 
             [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
-            set { configIsUpdating = value; }
+            set
+            {
+                configIsUpdating = value;
+            }
         }
 
         private bool geolocatorIsUpdating;
         public bool GeolocatorIsUpdating
         {
-            get { return geolocatorIsUpdating; }
+            get
+            {
+                return geolocatorIsUpdating;
+            }
 
             [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
-            set { geolocatorIsUpdating = value; }
+            set
+            {
+                geolocatorIsUpdating = value;
+            }
         }
 
         /// <summary>
         /// Setting this value to true will skip the next config reload event when it has been saved
         /// The setting will return to false after the first save
         /// </summary>
-        public bool SkipConfigFileReload { get; set; }
-        public string CurrentWallpaperPath { get; set; }
+        public bool SkipConfigFileReload
+        {
+            get; set;
+        }
+        public string CurrentWallpaperPath
+        {
+            get; set;
+        }
 
         /// <summary>
         /// This method is responsible for updating the internal UnmanagedActiveThemePath variable. <br/>
@@ -253,9 +283,18 @@ namespace AutoDarkModeSvc.Core
 
     public class SwitchApproach
     {
-        public bool ThemeSwitchApproaching { get; set; }
+        public bool ThemeSwitchApproaching
+        {
+            get; set;
+        }
         private List<IAutoDarkModeModule> Dependencies { get; set; } = new();
-        public bool DependenciesPresent { get { return Dependencies.Count > 0; } }
+        public bool DependenciesPresent
+        {
+            get
+            {
+                return Dependencies.Count > 0;
+            }
+        }
         public void AddDependency(IAutoDarkModeModule module)
         {
             if (!Dependencies.Contains(module))

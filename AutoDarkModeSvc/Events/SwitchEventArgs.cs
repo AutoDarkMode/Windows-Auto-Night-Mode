@@ -14,10 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using AutoDarkModeLib;
 
 namespace AutoDarkModeSvc.Events
 {
@@ -46,7 +46,7 @@ namespace AutoDarkModeSvc.Events
         {
             Source = source;
             RefreshDwm = refreshDwm;
-        }   
+        }
 
         public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
         {
@@ -71,9 +71,18 @@ namespace AutoDarkModeSvc.Events
         }
 
         public bool RefreshDwm { get; } = false;
-        public SwitchSource Source { get; }
+        public SwitchSource Source
+        {
+            get;
+        }
         private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
-        public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }
+        public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources
+        {
+            get
+            {
+                return new(_themeOverrideSources);
+            }
+        }
         public Theme Theme { get; private set; } = Theme.Automatic;
         public DateTime? SwitchTime { get; private set; } = null;
     }

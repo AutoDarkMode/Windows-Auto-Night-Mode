@@ -14,15 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -37,7 +37,10 @@ namespace AutoDarkModeSvc.Core
         }
 
         private readonly List<ISwitchComponent> Components;
-        private AdmConfigBuilder Builder { get; }
+        private AdmConfigBuilder Builder
+        {
+            get;
+        }
         private Theme lastSorting = Theme.Unknown;
 
         // Components

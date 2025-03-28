@@ -14,7 +14,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using System.Globalization;
 using System.Runtime.InteropServices;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -22,15 +21,42 @@ namespace AutoDarkModeLib
 {
     public class UpdateInfo
     {
-        public string Tag { get; set; }
-        public string PathFile { get; set; }
-        public string PathFileArm { get; set; }
-        public string PathChecksum { get; set; }
-        public string PathChecksumArm { get; set; }
-        public bool AutoUpdateAvailable { get; set; }
-        public string UpdaterVersion { get; set; }
-        public string Message { get; set; }
-        public string ChangelogUrl { get; set; }
+        public string Tag
+        {
+            get; set;
+        }
+        public string PathFile
+        {
+            get; set;
+        }
+        public string PathFileArm
+        {
+            get; set;
+        }
+        public string PathChecksum
+        {
+            get; set;
+        }
+        public string PathChecksumArm
+        {
+            get; set;
+        }
+        public bool AutoUpdateAvailable
+        {
+            get; set;
+        }
+        public string UpdaterVersion
+        {
+            get; set;
+        }
+        public string Message
+        {
+            get; set;
+        }
+        public string ChangelogUrl
+        {
+            get; set;
+        }
         public static UpdateInfo Deserialize(string data)
         {
             var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();

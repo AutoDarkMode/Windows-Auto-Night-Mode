@@ -14,11 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Diagnostics;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using NLog;
-using System;
-using System.Diagnostics;
 
 namespace AutoDarkModeSvc.Handlers
 {

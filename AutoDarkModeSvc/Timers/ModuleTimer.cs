@@ -14,22 +14,33 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
 using System.Timers;
-using AutoDarkModeSvc.Monitors;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Timers
 {
     public class ModuleTimer
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private List<IAutoDarkModeModule> Modules { get; set; }
-        private Timer Timer { get; set; }
-        public string Name { get; }
-        private bool TickOnStart { get;  }
+        private List<IAutoDarkModeModule> Modules
+        {
+            get; set;
+        }
+        private Timer Timer
+        {
+            get; set;
+        }
+        public string Name
+        {
+            get;
+        }
+        private bool TickOnStart
+        {
+            get;
+        }
 
         readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 

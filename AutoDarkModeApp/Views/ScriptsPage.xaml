@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.ScriptsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel
+                MaxWidth="1000"
+                HorizontalAlignment="Stretch"
+                Spacing="{StaticResource SettingsCardSpacing}">
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=PageScriptsToggle}">
+                    <ToggleSwitch />
+                </controls:SettingsCard>
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE932;}"
+                    Header="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}"
+                    IsClickEnabled="True" />
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Header="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Header="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}"
+                    IsClickEnabled="True" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

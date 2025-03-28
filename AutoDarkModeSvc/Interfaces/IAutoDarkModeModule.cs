@@ -15,10 +15,7 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using AutoDarkModeSvc.Monitors;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -39,18 +36,30 @@ namespace AutoDarkModeSvc.Modules
         /// <summary>
         /// Unique timer identification
         /// </summary>
-        public string Name { get; }
+        public string Name
+        {
+            get;
+        }
         /// <summary>
         /// Unique timer name for automatic module registration and deregistration
         /// </summary>
-        public string TimerAffinity { get; }
+        public string TimerAffinity
+        {
+            get;
+        }
         /// <summary>
         /// Determines whether a moudle should fire when it is registered to a timer
         /// </summary>
-        public bool FireOnRegistration { get; }
+        public bool FireOnRegistration
+        {
+            get;
+        }
         /// <summary>
         /// Denotes in which order the module should fire
         /// </summary>
-        public int Priority { get; }
+        public int Priority
+        {
+            get;
+        }
     }
 }

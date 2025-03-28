@@ -14,17 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Events;
-using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
-using Windows.UI;
-using Windows.UI.Composition;
-using static AutoDarkModeSvc.Handlers.WallpaperHandler;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {

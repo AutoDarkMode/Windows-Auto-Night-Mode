@@ -1,216 +1,74 @@
-﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#endregion
-using System;
-using System.Windows;
-using System.Diagnostics;
-using System.Globalization;
-using System.Windows.Input;
-using System.Windows.Navigation;
-using AutoDarkModeApp.Handlers;
-using AutoDarkModeApp.Properties;
-using AutoDarkModeApp.Pages;
-using ModernWpf.Media.Animation;
-using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
+using Microsoft.UI.Xaml;
+using Windows.UI.ViewManagement;
 
-namespace AutoDarkModeApp
+namespace AutoDarkModeApp;
+
+public sealed partial class MainWindow : WindowEx
 {
-    public partial class MainWindow
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
+
+    private readonly UISettings settings;
+
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+
+        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        Content = null;
+
+        if (Debugger.IsAttached)
         {
-            DataContext = this;
-
-            Trace.WriteLine("--------- AppStart");
-
-            //set current UI language
-            LanguageHelper();
-
-            InitializeComponent();
-
-            Architecture Arch = RuntimeInformation.ProcessArchitecture;
-            if (Arch == Architecture.Arm64)
-            {
-                string title = "ARMto Dark Mode";
-                WindowTitle.Text = title;
-                Title = title;
-            }
-            else
-            {
-                string title = "Auto Dark Mode";
-                WindowTitle.Text = title;
-                Title = title;
-            }
+            Title = "Auto Dark Mode Dev";
+        }
+        else
+        {
+            Title = "Auto Dark Mode";
         }
 
-        private void Window_OnSourceInitialized(object sender, EventArgs e)
-        {
-            if (Settings.Default.Width != 0 || Settings.Default.Height != 0)
-            {
-                Top = Settings.Default.Top;
-                Left = Settings.Default.Left;
-                Height = Settings.Default.Height;
-                Width = Settings.Default.Width;
-            }
+        Closed += MainWindow_Closed;
 
-            if (Settings.Default.Maximized)
-            {
-                WindowState = WindowState.Maximized;
-            }
+        // Theme change code picked from https://github.com/microsoft/WinUI-Gallery/pull/1239
+        dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        settings = new UISettings();
+        settings.ColorValuesChanged += Settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event
+    }
+
+    // this handles updating the caption button colors correctly when indows system theme is changed
+    // while the app is open
+    private void Settings_ColorValuesChanged(UISettings sender, object args)
+    {
+        // This calls comes off-thread, hence we will need to dispatch it to current app's thread
+        dispatcherQueue.TryEnqueue(() =>
+        {
+            TitleBarHelper.ApplySystemThemeToCaptionButtons();
+        });
+    }
+
+    private async void MainWindow_Closed(object sender, WindowEventArgs args)
+    {
+        var postion = App.MainWindow.AppWindow.Position;
+        var size = App.MainWindow.AppWindow.Size;
+        var localSettings = App.GetService<ILocalSettingsService>();
+        await Task.Run(async () =>
+        {
+            await localSettings.SaveSettingAsync("X", postion.X);
+            await localSettings.SaveSettingAsync("Y", postion.Y);
+            await localSettings.SaveSettingAsync("Width", size.Width);
+            await localSettings.SaveSettingAsync("Height", size.Height);
+        });
+        //Debug.WriteLine("Save size: " + postion.X + "\t" + postion.Y + "\t" + bounds.Width + "\t" + bounds.Height);
+
+        //Debug.WriteLine("Will kill process");
+        try
+        {
+            Process.GetCurrentProcess().Kill();
         }
-
-        private void Window_ContentRendered(object sender, EventArgs e)
+        catch (Exception ex)
         {
-            LanguageHelper();
-            DonationScreen();
-        }
-
-        private void DonationScreen()
-        {
-            //generate random number between 1 and 100. If the number is under or equals 2, show donation page
-            Random rdmnumber = new Random();
-            int generatedNumber = rdmnumber.Next(1, 100);
-            Debug.WriteLine("Donation gamble number: " + generatedNumber);
-            if (generatedNumber <= 2)
-            {
-                NavBar.SelectedItem = NavBar.FooterMenuItems[0];
-            }
-        }
-
-
-        //region time and language
-        private static void LanguageHelper()
-        {
-            if (string.IsNullOrWhiteSpace(Settings.Default.Language.ToString()))
-            {
-                try
-                {
-                    Settings.Default.Language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToString();
-                }
-                catch
-                {
-                    Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
-                }
-            }
-
-            var langCode = new CultureInfo(Settings.Default.Language);
-            CultureInfo.CurrentUICulture = langCode;
-            CultureInfo.CurrentCulture = langCode;
-            CultureInfo.DefaultThreadCurrentUICulture = langCode;
-            CultureInfo.DefaultThreadCurrentCulture = langCode;
-        }
-
-        //application close behaviour
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            //NetMQConfig.Cleanup();
-            Settings.Default.Save();
-            Application.Current.Shutdown();
-            Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
-        }
-
-
-        private void Window_Closing(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
-            {
-                // Use the RestoreBounds as the current values will be 0, 0 and the size of the screen
-                Settings.Default.Top = RestoreBounds.Top;
-                Settings.Default.Left = RestoreBounds.Left;
-                Settings.Default.Height = RestoreBounds.Height;
-                Settings.Default.Width = RestoreBounds.Width;
-                Settings.Default.Maximized = true;
-            }
-            else
-            {
-                Settings.Default.Top = Top;
-                Settings.Default.Left = Left;
-                Settings.Default.Height = Height;
-                Settings.Default.Width = Width;
-                Settings.Default.Maximized = false;
-            }
-
-            Settings.Default.Save();
-        }
-
-        /// <summary>
-        /// Navbar / NavigationView
-        /// </summary>
-
-        //change displayed page based on selection
-        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender,
-            ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
-        {
-            if (args.SelectedItemContainer != null)
-            {
-                var navItemTag = args.SelectedItemContainer.Tag.ToString();
-                StateUpdateHandler.ClearAllEvents();
-
-
-                switch (navItemTag)
-                {
-                    case "time":
-                        FrameNavbar.Navigate(typeof(PageTime), new EntranceNavigationTransitionInfo());
-                        break;
-                    case "modes":
-                        FrameNavbar.Navigate(typeof(PageSwitchModes), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "apps":
-                        FrameNavbar.Navigate(typeof(PageApps), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "wallpaper":
-                        FrameNavbar.Navigate(typeof(PagePersonalization), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "scripts":
-                        FrameNavbar.Navigate(typeof(PageScripts), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "settings":
-                        FrameNavbar.Navigate(typeof(PageSettings), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "donation":
-                        FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "about":
-                        FrameNavbar.Navigate(typeof(PageAbout), null, new EntranceNavigationTransitionInfo());
-                        break;
-                }
-
-                ScrollViewerNavbar.ScrollToTop();
-            }
-        }
-
-        //startup page
-        private void NavBar_Loaded(object sender, RoutedEventArgs e)
-        {
-            NavBar.SelectedItem = NavBar.MenuItems[1];
-        }
-
-        //Block back and forward on the frame
-        private void FrameNavbar_Navigating(object sender, NavigatingCancelEventArgs e)
-        {
-            if (e.NavigationMode == NavigationMode.Forward | e.NavigationMode == NavigationMode.Back)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void HelpMenuItem_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            ProcessHandler.StartProcessByProcessInfo(
-                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+            Debug.WriteLine(ex.Message);
         }
     }
 }

@@ -16,9 +16,9 @@
 #endregion
 using System;
 using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
+using Windows.Devices.Geolocation;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -156,5 +156,5 @@ namespace AutoDarkModeSvc.Handlers
         }
     }
 
-    
+
 }

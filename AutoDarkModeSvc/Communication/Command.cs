@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
-using System.IO;
 using System.Linq;
 
 namespace AutoDarkModeSvc.Communication
@@ -229,9 +228,18 @@ namespace AutoDarkModeSvc.Communication
     public class ApiResponse
     {
         public const string separator = "\nAdmApiDataRow=";
-        public string StatusCode { get; set; }
-        public string Message { get; set; }
-        public string Details { get; set; }
+        public string StatusCode
+        {
+            get; set;
+        }
+        public string Message
+        {
+            get; set;
+        }
+        public string Details
+        {
+            get; set;
+        }
 
         public override string ToString()
         {

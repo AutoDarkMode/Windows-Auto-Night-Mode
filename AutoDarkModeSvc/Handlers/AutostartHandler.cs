@@ -14,13 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Linq;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -207,7 +204,7 @@ namespace AutoDarkModeSvc.Handlers
                         ApiResponse result = AddAutostart(modified: true);
                         result.Details += "\nvalidation mode: recreate task (wrong path)";
                         return result;
-                    } 
+                    }
                     else if (autostartPath != null)
                     {
                         Logger.Warn("autostart validation failed, wrong execution path. fixing autostart");
@@ -264,7 +261,7 @@ namespace AutoDarkModeSvc.Handlers
                         }
                     }
                 }
-               
+
                 if (recreate)
                 {
                     Logger.Warn($"autostart validation failed ({reason}), recreate autostart registry keys");

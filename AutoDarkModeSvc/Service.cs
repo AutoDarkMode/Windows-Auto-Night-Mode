@@ -17,26 +17,25 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
-using System.Windows.Forms;
-using AutoDarkModeSvc.Monitors;
-using AutoDarkModeSvc.Communication;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Modules;
-using AutoDarkModeSvc.Timers;
-using AutoDarkModeLib;
-using System.IO;
-using Microsoft.Win32;
-using AutoDarkModeSvc.Core;
-using AdmProperties = AutoDarkModeLib.Properties;
-using System.Globalization;
-using System.ComponentModel;
-using AutoDarkModeSvc.Events;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using static AutoDarkModeSvc.DarkColorTable;
-using AutoDarkModeLib.Configs;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
+using AutoDarkModeLib;
+using AutoDarkModeLib.Configs;
+using AutoDarkModeSvc.Communication;
+using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Modules;
+using AutoDarkModeSvc.Monitors;
+using AutoDarkModeSvc.Timers;
+using Microsoft.Win32;
+using static AutoDarkModeSvc.DarkColorTable;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 namespace AutoDarkModeSvc
 {
@@ -46,10 +45,22 @@ namespace AutoDarkModeSvc
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private NotifyIcon NotifyIcon { get; }
-        private List<ModuleTimer> Timers { get; set; }
-        private IMessageServer MessageServer { get; }
-        private AdmConfigMonitor ConfigMonitor { get; }
+        private NotifyIcon NotifyIcon
+        {
+            get;
+        }
+        private List<ModuleTimer> Timers
+        {
+            get; set;
+        }
+        private IMessageServer MessageServer
+        {
+            get;
+        }
+        private AdmConfigMonitor ConfigMonitor
+        {
+            get;
+        }
         private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
         GlobalState state = GlobalState.Instance();
 
@@ -254,7 +265,7 @@ namespace AutoDarkModeSvc
                         pauseThemeSwitchItem.Text = AdmProperties.Resources.TrayMenuItemThemeSwitchPause;
                     }
                 }
-            }           
+            }
         }
 
         private void Exit(object sender, EventArgs e)
@@ -534,36 +545,60 @@ namespace AutoDarkModeSvc
     {
         public override Color MenuItemBorder
         {
-            get { return Color.FromArgb(32, 32, 32); }
+            get
+            {
+                return Color.FromArgb(32, 32, 32);
+            }
         }
         public override Color MenuItemSelected
         {
-            get { return Color.FromArgb(32, 32, 32); }
+            get
+            {
+                return Color.FromArgb(32, 32, 32);
+            }
         }
 
         public override Color MenuItemSelectedGradientBegin
         {
-            get { return Color.FromArgb(64, 64, 64); }
+            get
+            {
+                return Color.FromArgb(64, 64, 64);
+            }
         }
         public override Color MenuItemSelectedGradientEnd
         {
-            get { return Color.FromArgb(64, 64, 64); }
+            get
+            {
+                return Color.FromArgb(64, 64, 64);
+            }
         }
         public override Color ToolStripDropDownBackground
         {
-            get {return Color.FromArgb(32, 32, 32); }
+            get
+            {
+                return Color.FromArgb(32, 32, 32);
+            }
         }
         public override Color ImageMarginGradientBegin
         {
-            get { return Color.FromArgb(32, 32, 32); }
+            get
+            {
+                return Color.FromArgb(32, 32, 32);
+            }
         }
         public override Color ImageMarginGradientMiddle
         {
-            get { return Color.FromArgb(32, 32, 32); }
+            get
+            {
+                return Color.FromArgb(32, 32, 32);
+            }
         }
         public override Color ImageMarginGradientEnd
         {
-            get { return Color.FromArgb(32, 32, 32); }
+            get
+            {
+                return Color.FromArgb(32, 32, 32);
+            }
         }
 
         public class DarkRenderer : ToolStripProfessionalRenderer

@@ -14,19 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
-using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
-using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Handlers.IThemeManager2;
 
 namespace AutoDarkModeSvc.Communication
 {
@@ -413,7 +408,7 @@ namespace AutoDarkModeSvc.Communication
                                 Message = ex.Message,
                                 Details = ex.Source
                             }.ToString());
-                        }                        
+                        }
                         break;
                     #endregion
 

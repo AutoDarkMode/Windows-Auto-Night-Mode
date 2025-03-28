@@ -14,13 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib.ComponentSettings;
-using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeLib.Configs;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using AutoDarkModeLib.ComponentSettings;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeLib.Configs;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
@@ -33,18 +33,36 @@ namespace AutoDarkModeLib
     public class AdmConfigBuilder
     {
         private static AdmConfigBuilder instance;
-        public AdmConfig Config { get; private set; }
-        public LocationData LocationData { get; private set; }
-        public BaseSettings<ScriptSwitchSettings> ScriptConfig { get; private set; }
-        public UpdaterData UpdaterData { get; private set; }
-        public PostponeData PostponeData { get; private set; }
+        public AdmConfig Config
+        {
+            get; private set;
+        }
+        public LocationData LocationData
+        {
+            get; private set;
+        }
+        public BaseSettings<ScriptSwitchSettings> ScriptConfig
+        {
+            get; private set;
+        }
+        public UpdaterData UpdaterData
+        {
+            get; private set;
+        }
+        public PostponeData PostponeData
+        {
+            get; private set;
+        }
         public static string ConfigDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
         public static string ConfigFilePath { get; } = Path.Combine(ConfigDir, "config.yaml");
         public static string LocationDataPath { get; } = Path.Combine(ConfigDir, "location_data.yaml");
         public static string UpdaterDataPath { get; } = Path.Combine(ConfigDir, "update.yaml");
         public static string ScriptConfigPath { get; } = Path.Combine(ConfigDir, "scripts.yaml");
         public static string PostponeDataPath { get; } = Path.Combine(ConfigDir, "postpone_data.yaml");
-        public bool Loading { get; private set; }
+        public bool Loading
+        {
+            get; private set;
+        }
         private EventHandler<AdmConfig> configUpdatedHandler;
         public event EventHandler<AdmConfig> ConfigUpdatedHandler
         {

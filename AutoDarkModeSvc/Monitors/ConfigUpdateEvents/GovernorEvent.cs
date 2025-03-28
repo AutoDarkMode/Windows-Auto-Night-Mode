@@ -15,12 +15,6 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using AutoDarkModeLib.Configs;
-using AutoDarkModeSvc.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {

@@ -14,12 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
@@ -115,7 +110,10 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
     public class Slideshow
     {
         public (string, int) Section { get; } = (@"[Slideshow]", 0);
-        public bool Enabled { get; set;  }
+        public bool Enabled
+        {
+            get; set;
+        }
         public int Interval { get; set; } = 1337000;
         public int Shuffle { get; set; } = 1;
         public string ImagesRootPath { get; set; } = null;

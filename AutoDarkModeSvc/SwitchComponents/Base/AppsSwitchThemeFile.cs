@@ -14,16 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeLib.Interfaces;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
-using AutoDarkModeSvc.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {

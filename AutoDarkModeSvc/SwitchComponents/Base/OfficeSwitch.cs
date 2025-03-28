@@ -14,15 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Win32;
 using AutoDarkModeSvc.Events;
+using Microsoft.Win32;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -35,7 +31,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
         {
-            if(currentComponentTheme == Theme.Unknown)
+            if (currentComponentTheme == Theme.Unknown)
             {
                 return true;
             }

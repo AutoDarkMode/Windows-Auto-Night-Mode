@@ -35,15 +35,12 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 
-using AutoDarkModeLib.IThemeManager2;
-using AutoDarkModeSvc.Core;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using AutoDarkModeSvc.Core;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers.IThemeManager2
@@ -313,8 +310,14 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
 
     public class Theme2Wrapper
     {
-        public string ThemeName { get; set; }
-        public int Idx { get; set; }
+        public string ThemeName
+        {
+            get; set;
+        }
+        public int Idx
+        {
+            get; set;
+        }
     }
 }
 

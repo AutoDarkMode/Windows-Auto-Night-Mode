@@ -31,9 +31,18 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface ITheme
         {
-            public string DisplayName { get; set; }
-            public string VisualStyle1 { get; set; }
-            public string VisualStyle2 { get; set; }
+            public string DisplayName
+            {
+                get; set;
+            }
+            public string VisualStyle1
+            {
+                get; set;
+            }
+            public string VisualStyle2
+            {
+                get; set;
+            }
         }
 
         [Guid("c1e8c83e-845d-4d95-81db-e283fdffc000")]

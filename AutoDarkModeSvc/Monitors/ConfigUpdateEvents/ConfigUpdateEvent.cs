@@ -14,20 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {
     public abstract class ConfigUpdateEvent<T> : IConfigUpdateEvent<T>
     {
-        protected NLog.Logger Logger { get; private set; }
+        protected NLog.Logger Logger
+        {
+            get; private set;
+        }
         protected T oldConfig;
         protected T newConfig;
         protected GlobalState State { get; } = GlobalState.Instance();

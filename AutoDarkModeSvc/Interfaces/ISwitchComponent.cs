@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using AutoDarkModeLib;
-using AutoDarkModeLib.Interfaces;
 using AutoDarkModeSvc.Events;
 
 namespace AutoDarkModeSvc.Interfaces
@@ -26,7 +25,10 @@ namespace AutoDarkModeSvc.Interfaces
         /// Returns if the module is enabled
         /// </summary>
         /// <returns>true if module is enabled; false otherwise</returns>
-        public bool Enabled { get; }
+        public bool Enabled
+        {
+            get;
+        }
         /// <summary>
         /// Calling this method will trigger a theme switch if the component is enabled and initialized.<br></br>
         /// The Init hook is called if the component has not been initialized yet.<br></br>
@@ -50,15 +52,24 @@ namespace AutoDarkModeSvc.Interfaces
         /// <summary>
         /// Checks if the component needs to be updated, i.e Switch() needs to be called
         /// </summary>
-        public int PriorityToDark { get; }
+        public int PriorityToDark
+        {
+            get;
+        }
         /// <summary>
         /// Priority for switching to light mode
         /// </summary>
-        public int PriorityToLight { get; }
+        public int PriorityToLight
+        {
+            get;
+        }
         /// <summary>
         /// Determines whether the component should be called before or after a theme file synchronization
         /// </summary>
-        public HookPosition HookPosition { get; }
+        public HookPosition HookPosition
+        {
+            get;
+        }
         /// <summary>
         /// Initializes the module if it has a hook specified. Does nothing otherwise.
         /// </summary>
@@ -74,25 +85,40 @@ namespace AutoDarkModeSvc.Interfaces
         /// <summary>
         /// Determines if the module requires dwm refresh
         /// </summary>
-        public DwmRefreshType NeedsDwmRefresh { get; }
+        public DwmRefreshType NeedsDwmRefresh
+        {
+            get;
+        }
         /// <summary>
         /// Determines the quality of DWM refresh a module performs
         /// </summary>
-        public DwmRefreshType TriggersDwmRefresh { get; }
+        public DwmRefreshType TriggersDwmRefresh
+        {
+            get;
+        }
         /// <summary>
         /// Determines if the module can be run with the windows theme switcher
         /// </summary>
         /// <returns></returns>
-        public bool ThemeHandlerCompatibility { get; }
+        public bool ThemeHandlerCompatibility
+        {
+            get;
+        }
         /// <summary>
         /// Check if the component has been properly initialized. Can be used to trigger hooks on disable/enable
         /// </summary>
-        public bool Initialized { get; }
+        public bool Initialized
+        {
+            get;
+        }
         /// <summary>
         /// If this flag is set, a theme switch will be forced.
         /// This will deactivate itself after performing this operation once
         /// </summary>
-        public bool ForceSwitch { get; set; }
+        public bool ForceSwitch
+        {
+            get; set;
+        }
 
     }
 }

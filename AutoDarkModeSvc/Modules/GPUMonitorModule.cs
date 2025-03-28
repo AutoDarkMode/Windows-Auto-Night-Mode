@@ -14,16 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Monitors;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Timers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules
 {
@@ -37,12 +34,27 @@ namespace AutoDarkModeSvc.Modules
         //private static readonly string Frozen = "frozen";
 
         public override string TimerAffinity { get; } = TimerName.Main;
-        private GlobalState State { get; }
-        private AdmConfigBuilder ConfigBuilder { get; }
-        private int Counter { get; set; }
-        private bool Alerted { get; set; }
+        private GlobalState State
+        {
+            get;
+        }
+        private AdmConfigBuilder ConfigBuilder
+        {
+            get;
+        }
+        private int Counter
+        {
+            get; set;
+        }
+        private bool Alerted
+        {
+            get; set;
+        }
         private bool AllowMonitoring { get; set; } = true;
-        private bool MonitoringActive { get; set; }
+        private bool MonitoringActive
+        {
+            get; set;
+        }
 
         public GPUMonitorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
         {
@@ -83,7 +95,7 @@ namespace AutoDarkModeSvc.Modules
                         MonitoringActive = false;
                         State.PostponeManager.Remove(Name);
                     }
-                });               
+                });
             }
             return Task.CompletedTask;
         }
@@ -93,7 +105,7 @@ namespace AutoDarkModeSvc.Modules
             int gpuUsage;
             try
             {
-               gpuUsage = await GetGPUUsage();
+                gpuUsage = await GetGPUUsage();
             }
             catch (Exception ex)
             {
@@ -147,7 +159,7 @@ namespace AutoDarkModeSvc.Modules
                                 counters.Add(counter);
                             }
                         }
-                    } 
+                    }
                     catch (InvalidOperationException ex)
                     {
                         Logger.Warn(ex, "counter went away:");

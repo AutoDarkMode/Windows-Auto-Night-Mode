@@ -14,18 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.UserDataAccounts.SystemAccess;
-using Windows.UI;
-using Windows.UI.Composition;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
@@ -56,7 +51,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 return TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light);
             }
-            
+
             return false;
         }
 
@@ -241,7 +236,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             currentIndividualTheme = Theme.Unknown;
             currentSolidColorTheme = Theme.Unknown;
             spotlightEnabled = false;
-        } 
+        }
 
         protected virtual void SwitchIndividual(Theme newTheme)
         {
@@ -341,7 +336,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         {
             currentWallpaperPosition = WallpaperHandler.GetPosition();
             currentIndividualTheme = GetIndividualWallpapersState();
-            
+
             // force spotlight state to null 
             // todo maybe do some kind of detection beforehand,
             // but might prove difficult because the managed theme is not necessarily the applied theme
@@ -353,7 +348,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             if (globalWallpaper == Settings.Component.GlobalWallpaper.Light) currentGlobalTheme = Theme.Light;
             else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
 
-                        // solid color enable state synchronization
+            // solid color enable state synchronization
             if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 && GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds == 0)
             {
                 string solidColorHex = WallpaperHandler.GetSolidColor();

@@ -14,20 +14,19 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeSvc.Monitors;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 using NLog;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Windows.Forms;
-using System.Collections.Concurrent;
-using System.Reflection;
-using AutoDarkModeSvc.Core;
-using System.Runtime.InteropServices;
 
 namespace AutoDarkModeSvc
 {
@@ -35,7 +34,10 @@ namespace AutoDarkModeSvc
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
-        private static Service Service { get; set; }
+        private static Service Service
+        {
+            get; set;
+        }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SystemParametersInfo(int uAction, int uParam, int lpvParam, int fuWinIni);
@@ -240,7 +242,7 @@ namespace AutoDarkModeSvc
                         ToastHandler.HandleToastAction(toastArgs);
                     };
                 });
-                
+
                 if (timerMillis != 0)
                 {
                     TimerFrequency.Main = timerMillis;

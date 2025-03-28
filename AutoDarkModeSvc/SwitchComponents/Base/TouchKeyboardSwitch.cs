@@ -1,13 +1,5 @@
 ﻿using AutoDarkModeLib;
-using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Win32;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base

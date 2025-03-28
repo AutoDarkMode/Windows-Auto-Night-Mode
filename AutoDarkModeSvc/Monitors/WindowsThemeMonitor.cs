@@ -14,17 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Management;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Monitors
 {
@@ -117,7 +114,7 @@ namespace AutoDarkModeSvc.Monitors
                 globalThemeEventWatcher.Start();
                 IsPaused = false;
             }
-        }   
+        }
 
         public static void StopThemeMonitor()
         {
@@ -129,7 +126,8 @@ namespace AutoDarkModeSvc.Monitors
                     globalThemeEventWatcher.Dispose();
                     globalThemeEventWatcher = null;
                     Logger.Info("theme monitor disabled");
-                };
+                }
+                ;
             }
             catch (Exception ex)
             {

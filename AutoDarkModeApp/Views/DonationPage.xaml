@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.DonationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel
+                MaxWidth="1000"
+                HorizontalAlignment="Stretch"
+                Spacing="{StaticResource SettingsCardSpacing}">
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHeaderReason}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=donationDescription}" />
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=DonationPayPalDescription}"
+                    Header="Paypal"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE8C7;}">
+                    <Button MinWidth="150" Content="{helpers:ResourceString Name=NavbarDonation}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="GitHub Sponsors" HeaderIcon="{ui:FontIcon Glyph=&#xF133;}">
+                    <Button MinWidth="150" Content="{helpers:ResourceString Name=NavbarDonation}" />
+                </controls:SettingsCard>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

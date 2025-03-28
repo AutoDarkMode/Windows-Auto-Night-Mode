@@ -14,15 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms.VisualStyles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -32,7 +28,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
         public override bool Enabled
         {
-            get { return Settings.Component.DWMPrevalenceSwitch; }
+            get
+            {
+                return Settings.Component.DWMPrevalenceSwitch;
+            }
         }
 
         private bool currentDWMColorActive;

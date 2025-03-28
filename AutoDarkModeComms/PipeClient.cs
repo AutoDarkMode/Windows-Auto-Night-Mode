@@ -14,15 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeSvc.Communication;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeComms
 {

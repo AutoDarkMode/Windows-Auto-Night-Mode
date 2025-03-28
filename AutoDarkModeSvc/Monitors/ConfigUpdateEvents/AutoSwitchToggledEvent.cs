@@ -1,10 +1,5 @@
 ﻿using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {

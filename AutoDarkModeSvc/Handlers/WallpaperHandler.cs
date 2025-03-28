@@ -16,17 +16,13 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Linq;
-using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeLib;
-using System.IO;
-using AutoDarkModeSvc.Monitors;
-using System.Threading.Tasks;
-using Windows.Devices.Enumeration;
-using Windows.Devices.Display;
-using System.Threading;
 using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -308,9 +304,9 @@ namespace AutoDarkModeSvc.Handlers
 
         internal sealed class Win32
         {
-            #pragma warning disable CA2101
+#pragma warning disable CA2101
             [DllImport("user32.dll", CharSet = CharSet.Auto)]
-            #pragma warning restore CA2101
+#pragma warning restore CA2101
             internal static extern int SystemParametersInfo(int uAction, int uParam, String lpvParam, int fuWinIni);
         }
 

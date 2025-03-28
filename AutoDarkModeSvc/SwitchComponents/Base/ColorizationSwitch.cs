@@ -14,18 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Text.RegularExpressions;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -86,7 +81,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 if (Settings.Component.LightAutoColorization) newAutoColorizationState = true;
                 else newAutoColorizationState = false;
-            }            
+            }
             if (newAutoColorizationState) GlobalState.ManagedThemeFile.VisualStyles.AutoColorization = ("1", sortOrderAutoCol);
             else GlobalState.ManagedThemeFile.VisualStyles.AutoColorization = ("0", sortOrderAutoCol);
 
@@ -145,7 +140,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 {
                     accent = RegistryHandler.GetAccentColor();
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     Logger.Error(ex, "failed getting accent color state to update config");
                     return;

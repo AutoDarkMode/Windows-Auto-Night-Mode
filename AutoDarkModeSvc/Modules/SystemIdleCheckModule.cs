@@ -14,12 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Timers;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules
 {

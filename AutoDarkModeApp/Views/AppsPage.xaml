@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.AppsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <!--  These are converters for different controls  -->
+        <helpers:NullableBoolToBoolConverter x:Key="NullableBoolToBoolConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid
+            x:Name="ContentArea"
+            Margin="{StaticResource NavigationViewPageContentMargin}"
+            VerticalAlignment="Top">
+            <StackPanel
+                MaxWidth="1000"
+                HorizontalAlignment="Stretch"
+                Spacing="{StaticResource SettingsCardSpacing}">
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSet}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=lblApps}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwDark}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=disabled}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblSystem}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SystemSwitchComponentMode, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwDark}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AppSystemComboBoxItemAccentOnly}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=disabled}" />
+                    </ComboBox>
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <CheckBox Content="{helpers:ResourceString Name=cmbAccentColor}" IsChecked="{x:Bind ViewModel.IsTaskbarColorOnAdaptive, Mode=TwoWay}" />
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox
+                                        x:Name="AdaptiveTaskbarAccentCheckBox"
+                                        Content="{helpers:ResourceString Name=AppsTextBlockAdaptiveTaskbarAccent}"
+                                        IsChecked="{x:Bind ViewModel.IsAdaptiveTaskbarAccent, Mode=OneWay}"
+                                        IsEnabled="False" />
+
+                                    <RadioButtons IsEnabled="{x:Bind AdaptiveTaskbarAccentCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                                        <RadioButton Content="{helpers:ResourceString Name=lblLightTheme}" IsChecked="{x:Bind ViewModel.IsAdaptiveTaskbarAccentOnLight, Mode=TwoWay}" />
+                                        <RadioButton Content="{helpers:ResourceString Name=lblDarkTheme}" IsChecked="{x:Bind ViewModel.IsAdaptiveTaskbarAccentOnDark, Mode=TwoWay}" />
+                                    </RadioButtons>
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox
+                                        x:Name="DWMPrevalenceSwitcCheckBox"
+                                        Content="{helpers:ResourceString Name=AppsCheckBoxDWMPrevalence}"
+                                        IsChecked="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
+
+                                    <RadioButtons IsEnabled="{x:Bind DWMPrevalenceSwitcCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                                        <RadioButton Content="{helpers:ResourceString Name=lblLightTheme}" IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeLight, Mode=TwoWay}" />
+                                        <RadioButton Content="{helpers:ResourceString Name=lblDarkTheme}" IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeDark, Mode=TwoWay}" />
+                                    </RadioButtons>
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AppsLabelTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTouchKeyboardSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=cbSettingsColourFilter}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblOffice}" HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.OfficeSwitchComponentMode, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwDark}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=LabelFollowSystemTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=disabled}" />
+                    </ComboBox>
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <CheckBox Content="{helpers:ResourceString Name=cbOfficeWhiteTheme}" IsChecked="{x:Bind ViewModel.IsOfficeSwitchComponentLightTheme, Mode=TwoWay}" />
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

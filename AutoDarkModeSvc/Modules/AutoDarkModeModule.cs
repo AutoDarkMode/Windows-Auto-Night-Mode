@@ -20,11 +20,23 @@ namespace AutoDarkModeSvc.Modules
 {
     public abstract class AutoDarkModeModule : IAutoDarkModeModule
     {
-        public string Name { get; }
-        public abstract string TimerAffinity { get; }
+        public string Name
+        {
+            get;
+        }
+        public abstract string TimerAffinity
+        {
+            get;
+        }
         public abstract Task Fire(object caller = null);
-        public int Priority { get; set; }
-        public bool FireOnRegistration { get; }
+        public int Priority
+        {
+            get; set;
+        }
+        public bool FireOnRegistration
+        {
+            get;
+        }
         /// <summary>
         /// Do not call logic in the constructor, as it is called whenever a name check is performed on a module
         /// </summary>

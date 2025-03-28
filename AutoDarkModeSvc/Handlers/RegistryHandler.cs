@@ -14,21 +14,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Handlers.IThemeManager2;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management;
 using System.Reflection;
 using System.Text;
-using System.Threading;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers.IThemeManager2;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
+using Microsoft.Win32;
 using WindowsInput;
 using WindowsInput.Native;
-using YamlDotNet.Core.Tokens;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -219,12 +216,12 @@ namespace AutoDarkModeSvc.Handlers
             int colorNum = 0;
             for (int i = 0; i < binPalette.Length; i++)
             {
-                if (i == 0 || (i+1) % 4 != 0)
+                if (i == 0 || (i + 1) % 4 != 0)
                 {
                     int value = binPalette[i];
                     hexString.Append(value.ToString("X2"));
                 }
-                else if (i != 0 && (i+1) % 4 == 0)
+                else if (i != 0 && (i + 1) % 4 == 0)
                 {
                     palette.Add(colorNum++, hexString.ToString());
                     hexString.Clear();
@@ -439,7 +436,7 @@ namespace AutoDarkModeSvc.Handlers
             if (cursorsSystemRaw != null)
             {
                 cursorsSystem = cursorsSystemRaw.ToList();
-            }         
+            }
 
             string userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();
             string systemTheme = cursorsSystem.Where(x => x == name).FirstOrDefault();
@@ -484,7 +481,7 @@ namespace AutoDarkModeSvc.Handlers
                     // quadratic runtime is okay here, but if one were to be pedantic it could be done in nlogn
                     for (i = 0; i < cursorsList.Length; i++)
                     {
-                        if (propValue.Item2 == i+1)
+                        if (propValue.Item2 == i + 1)
                         {
                             propValue.Item1 = cursorsList[i];
                             p.SetValue(cursors, propValue);

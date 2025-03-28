@@ -14,37 +14,59 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeSvc.Interfaces;
 using System;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Interfaces;
-using AutoDarkModeSvc.Events;
-using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Core;
-using Windows.ApplicationModel.VoiceCommands;
+using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Interfaces;
 
 namespace AutoDarkModeSvc.SwitchComponents
 {
     abstract class BaseComponent<T> : ISwitchComponent
     {
-        protected NLog.Logger Logger { get; private set; }
+        protected NLog.Logger Logger
+        {
+            get; private set;
+        }
         protected GlobalState GlobalState { get; } = GlobalState.Instance();
-        protected ISwitchComponentSettings<T> Settings { get; set; }
-        protected ISwitchComponentSettings<T> SettingsBefore { get; set; }
-        public bool Initialized { get; private set; }
+        protected ISwitchComponentSettings<T> Settings
+        {
+            get; set;
+        }
+        protected ISwitchComponentSettings<T> SettingsBefore
+        {
+            get; set;
+        }
+        public bool Initialized
+        {
+            get; private set;
+        }
         public BaseComponent()
         {
             Logger = NLog.LogManager.GetLogger(GetType().ToString());
         }
         public virtual DwmRefreshType TriggersDwmRefresh { get; protected set; } = DwmRefreshType.None;
         public virtual DwmRefreshType NeedsDwmRefresh { get; protected set; } = DwmRefreshType.None;
-        public virtual int PriorityToLight { get; }
-        public virtual int PriorityToDark { get; }
+        public virtual int PriorityToLight
+        {
+            get;
+        }
+        public virtual int PriorityToDark
+        {
+            get;
+        }
         public virtual HookPosition HookPosition { get; protected set; } = HookPosition.PostSync;
-        public bool ForceSwitch { get; set; }
+        public bool ForceSwitch
+        {
+            get; set;
+        }
         public virtual bool Enabled
         {
-            get { return Settings.Enabled; }
+            get
+            {
+                return Settings.Enabled;
+            }
         }
         public void Switch(SwitchEventArgs e)
         {
@@ -71,28 +93,39 @@ namespace AutoDarkModeSvc.SwitchComponents
             }
         }
 
-        protected virtual void UpdateSettingsState() { }
+        protected virtual void UpdateSettingsState()
+        {
+        }
 
         /// <summary>
         /// Initializes the module if it has a hook specified. Does nothing otherwise.
         /// </summary>
-        protected virtual void EnableHook() { }
+        protected virtual void EnableHook()
+        {
+        }
 
         /// <summary>
         /// Deinitializes the module and restores the original state. Does nothing if no hook is specified.
         /// </summary>
-        protected virtual void DisableHook() { }
+        protected virtual void DisableHook()
+        {
+        }
 
         /// <summary>
         /// A callback method that is invoked after the component has run to its completion and a theme switch was performed. 
         /// Adm at this point is in a stable state with the new theme settings being available
         /// </summary>
-        protected virtual void Callback(SwitchEventArgs e) { }
+        protected virtual void Callback(SwitchEventArgs e)
+        {
+        }
 
         /// <summary>
         /// True when the component should be compatible with the ThemeHandler switching mode
         /// </summary>
-        public abstract bool ThemeHandlerCompatibility { get; }
+        public abstract bool ThemeHandlerCompatibility
+        {
+            get;
+        }
 
         /// <summary>
         /// Entrypoint, called when a component needs to be updated

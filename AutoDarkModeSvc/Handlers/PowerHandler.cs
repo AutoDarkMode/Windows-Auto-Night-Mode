@@ -14,11 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib.Configs;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using AutoDarkModeLib.Configs;
 using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers
@@ -26,7 +24,10 @@ namespace AutoDarkModeSvc.Handlers
     static class PowerHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static bool EnergySaverMitigationActive { get; private set; }
+        public static bool EnergySaverMitigationActive
+        {
+            get; private set;
+        }
         public static void RequestDisableEnergySaver(AdmConfig config)
         {
             if (EnergySaverMitigationActive) return;

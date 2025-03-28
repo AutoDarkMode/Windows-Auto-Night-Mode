@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Devices.Display;
 using Windows.Devices.Enumeration;
-using Windows.UI;
 using YamlDotNet.Serialization;
 
 namespace AutoDarkModeLib.ComponentSettings.Base
@@ -35,9 +34,18 @@ namespace AutoDarkModeLib.ComponentSettings.Base
         public WallpaperType TypeLight { get; set; } = WallpaperType.Individual;
         public WallpaperType TypeDark { get; set; } = WallpaperType.Individual;
         public WallpaperPosition Position { get; set; } = WallpaperPosition.Fill;
-        public GlobalWallpaper GlobalWallpaper { get; set; }
-        public SolidColors SolidColors { get; set; }
-        public List<MonitorSettings> Monitors { get; set; }
+        public GlobalWallpaper GlobalWallpaper
+        {
+            get; set;
+        }
+        public SolidColors SolidColors
+        {
+            get; set;
+        }
+        public List<MonitorSettings> Monitors
+        {
+            get; set;
+        }
     }
 
     public enum WallpaperType
@@ -52,8 +60,14 @@ namespace AutoDarkModeLib.ComponentSettings.Base
 
     public class GlobalWallpaper
     {
-        public string Light { get; set; }
-        public string Dark { get; set; }
+        public string Light
+        {
+            get; set;
+        }
+        public string Dark
+        {
+            get; set;
+        }
     }
 
     public class SolidColors
@@ -64,13 +78,25 @@ namespace AutoDarkModeLib.ComponentSettings.Base
 
     public class MonitorSettings
     {
-        public string Id { get; set; }
+        public string Id
+        {
+            get; set;
+        }
         [YamlIgnore]
-        public string MonitorString { get; set; }
+        public string MonitorString
+        {
+            get; set;
+        }
         [YamlIgnore]
         public bool Connected { get; private set; } = false;
-        public string LightThemeWallpaper { get; set; }
-        public string DarkThemeWallpaper { get; set; }
+        public string LightThemeWallpaper
+        {
+            get; set;
+        }
+        public string DarkThemeWallpaper
+        {
+            get; set;
+        }
 
         public override string ToString()
         {

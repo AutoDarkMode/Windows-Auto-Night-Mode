@@ -14,12 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
-using System;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
 {

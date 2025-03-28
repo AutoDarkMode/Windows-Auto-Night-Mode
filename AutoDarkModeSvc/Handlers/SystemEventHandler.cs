@@ -14,14 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using Microsoft.Win32;
-using System;
-using System.Security.Cryptography;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers
@@ -153,7 +150,7 @@ namespace AutoDarkModeSvc.Handlers
                 return;
             }
             if (e.Reason == SessionSwitchReason.SessionUnlock)
-            {                
+            {
                 if (builder.Config.AutoSwitchNotify.Enabled)
                 {
                     NotifyAtResume();
@@ -170,7 +167,7 @@ namespace AutoDarkModeSvc.Handlers
                     {
                         Logger.Info($"system unlocked, no refresh due to active user postpones: {state.PostponeManager}");
                     }
-                }                
+                }
             }
             else if (e.Reason == SessionSwitchReason.SessionLock)
             {

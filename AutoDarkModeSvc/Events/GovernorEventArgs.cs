@@ -1,9 +1,4 @@
-﻿using AutoDarkModeLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace AutoDarkModeSvc.Events
 {
@@ -29,7 +24,10 @@ namespace AutoDarkModeSvc.Events
             InSwitchWindow = inSwitchWindow;
         }
 
-        public bool InSwitchWindow { get; }
+        public bool InSwitchWindow
+        {
+            get;
+        }
         public SwitchEventArgs SwitchEventArgs { get; } = null;
     }
 }

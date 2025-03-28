@@ -14,18 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeLib.Configs;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -44,12 +41,18 @@ namespace AutoDarkModeSvc.Core
 
         public int Count
         {
-            get { return PostponeQueue.Count; }
+            get
+            {
+                return PostponeQueue.Count;
+            }
         }
 
         public int CountUserClearable
         {
-            get { return PostponeQueue.Count(x => x.IsUserClearable); }
+            get
+            {
+                return PostponeQueue.Count(x => x.IsUserClearable);
+            }
         }
 
         /// <summary>
@@ -95,7 +98,10 @@ namespace AutoDarkModeSvc.Core
 
         public bool IsPostponed
         {
-            get { return PostponeQueue.Count > 0; }
+            get
+            {
+                return PostponeQueue.Count > 0;
+            }
         }
 
         /// <summary>
@@ -468,10 +474,22 @@ namespace AutoDarkModeSvc.Core
     public class PostponeItem
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public string Reason { get; }
-        public bool IsUserClearable { get; }
-        public DateTime? Expiry { get; private set; }
-        private Task Task { get; set; }
+        public string Reason
+        {
+            get;
+        }
+        public bool IsUserClearable
+        {
+            get;
+        }
+        public DateTime? Expiry
+        {
+            get; private set;
+        }
+        private Task Task
+        {
+            get; set;
+        }
         CancellationTokenSource CancelTokenSource { get; set; } = new CancellationTokenSource();
         public SkipType SkipType { get; set; } = SkipType.Unspecified;
         public bool Expires

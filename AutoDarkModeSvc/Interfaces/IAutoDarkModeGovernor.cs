@@ -1,16 +1,14 @@
 ﻿using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Interfaces
 {
     public interface IAutoDarkModeGovernor
     {
-        public abstract Governor Type { get; } 
+        public abstract Governor Type
+        {
+            get;
+        }
         /// <summary>
         /// Executes the governor logic
         /// </summary>

@@ -29,15 +29,27 @@ namespace AutoDarkModeSvc.Communication
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private CancellationTokenSource WorkerTokenSource { get; set; } = new();
-        private Service Service { get; }
-        private int WorkerCount { get; set; }
+        private Service Service
+        {
+            get;
+        }
+        private int WorkerCount
+        {
+            get; set;
+        }
         private int availableWorkers;
         public int AvailableWorkers
         {
-            get { return Thread.VolatileRead(ref availableWorkers); }
+            get
+            {
+                return Thread.VolatileRead(ref availableWorkers);
+            }
         }
         private BlockingCollection<Action> Workers { get; } = new();
-        private Task ConnectionHandler { get; set; }
+        private Task ConnectionHandler
+        {
+            get; set;
+        }
         private readonly int streamTimeout;
         private readonly int abnormalWorkerCount = 2;
         private bool disposed = false;
@@ -53,7 +65,7 @@ namespace AutoDarkModeSvc.Communication
             if (disposed)
             {
                 Logger.Error("cannot start async pipe server as it has already been disposed");
-                throw(new ObjectDisposedException(GetType().Name));
+                throw (new ObjectDisposedException(GetType().Name));
             }
             Loop();
         }
@@ -108,7 +120,7 @@ namespace AutoDarkModeSvc.Communication
                         }
 
                         Interlocked.Increment(ref availableWorkers);
-                        
+
                         if (AvailableWorkers == WorkerCount)
                         {
                             allowNotify = true;
@@ -266,7 +278,9 @@ namespace AutoDarkModeSvc.Communication
                     using CancellationTokenSource writeTimeoutTokenSource = new();
                     writeTimeoutTokenSource.CancelAfter(streamTimeout);
                     StreamWriter sw = new(responsePipe)
-                    { AutoFlush = true };
+                    {
+                        AutoFlush = true
+                    };
                     using (sw)
                     {
                         StringBuilder builder = new(response);

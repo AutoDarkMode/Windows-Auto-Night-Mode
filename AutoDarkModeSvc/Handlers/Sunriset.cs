@@ -15,10 +15,6 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Handlers
 {
@@ -481,6 +477,6 @@ namespace AutoDarkModeSvc.Handlers
             sidtim0 = revolution((180.0 + 356.0470 + 282.9404) + (0.9856002585 + 4.70935E-5) * d);
             return sidtim0;
         }
-        #pragma warning restore IDE1006, IDE0051, IDE0018, IDE0054
+#pragma warning restore IDE1006, IDE0051, IDE0018, IDE0054
     }
 }

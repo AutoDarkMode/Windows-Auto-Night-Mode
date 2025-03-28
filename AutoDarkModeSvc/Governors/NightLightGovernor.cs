@@ -1,19 +1,13 @@
-﻿using AutoDarkModeLib;
+﻿using System;
+using System.Management;
+using System.Runtime.CompilerServices;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Timers;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Management;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.AxHost;
 
 namespace AutoDarkModeSvc.Governors
 {
@@ -30,7 +24,10 @@ namespace AutoDarkModeSvc.Governors
         private bool queuePostponeRemove = false;
         private bool switchQueuedButNotRequested = false;
         private bool regkeyUpdatedJustNow = false;
-        private IAutoDarkModeModule Master { get; }
+        private IAutoDarkModeModule Master
+        {
+            get;
+        }
 
         public bool InstantSwitchWindow { get; set; } = false;
 

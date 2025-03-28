@@ -14,16 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Monitors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Devices.Display;
 using Windows.Devices.Enumeration;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
@@ -113,7 +110,8 @@ namespace AutoDarkModeSvc.Handlers
             {
                 foreach (var display in displayInfos)
                 {
-                    if (m.Id.Contains(display.DisplayName)) {
+                    if (m.Id.Contains(display.DisplayName))
+                    {
                         enumeratedDevices.Add((m.Id, display.DisplayNumber));
                     }
                 }
@@ -125,12 +123,30 @@ namespace AutoDarkModeSvc.Handlers
 
     public class DisplayInfo
     {
-        public string DeviceName { get; set; }
-        public string DisplayName { get; set; }
-        public string DisplayNumber { get; set; }
-        public string DeviceString { get; set; }
-        public string DeviceID { get; set; }
-        public string DeviceKey { get; set; }
+        public string DeviceName
+        {
+            get; set;
+        }
+        public string DisplayName
+        {
+            get; set;
+        }
+        public string DisplayNumber
+        {
+            get; set;
+        }
+        public string DeviceString
+        {
+            get; set;
+        }
+        public string DeviceID
+        {
+            get; set;
+        }
+        public string DeviceKey
+        {
+            get; set;
+        }
     }
 
     internal static class EnumDisplayDevicesWrapper

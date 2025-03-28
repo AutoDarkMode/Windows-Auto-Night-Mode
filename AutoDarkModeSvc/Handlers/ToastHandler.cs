@@ -14,19 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using Windows.UI.Notifications;
-using AutoDarkModeLib;
-using Microsoft.Toolkit.Uwp.Notifications;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using Windows.Foundation.Collections;
-using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Monitors;
-using System.Globalization;
-using AdmProperties = AutoDarkModeLib.Properties;
-using System.Collections.Generic;
+using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
+using AutoDarkModeSvc.Core;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.Foundation.Collections;
+using Windows.UI.Notifications;
+using AdmProperties = AutoDarkModeLib.Properties;
 
 
 // https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
@@ -93,7 +91,7 @@ namespace AutoDarkModeSvc.Handlers
             catch (Exception ex)
             {
                 Logger.Error(ex, "error invoking auto switch notify toast: ");
-            }            
+            }
         }
 
 

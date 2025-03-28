@@ -14,14 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.IO;
 using AutoDarkModeLib;
 using NLog;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Core
 {
@@ -31,7 +27,10 @@ namespace AutoDarkModeSvc.Core
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         // Targets where to log to: File and Console
-        public static NLog.Targets.FileTarget Logfile { get; } = new("logfile")
+        public static NLog.Targets.FileTarget Logfile
+        {
+            get;
+        } = new("logfile")
         {
             FileName = Path.Combine(configDir, "service.log"),
             Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
@@ -40,7 +39,10 @@ namespace AutoDarkModeSvc.Core
             "cleanNamesOfAsyncContinuations=true}: ${message} ${exception:format=ShortType,Message,Method:separator= > }",
             KeepFileOpen = false
         };
-        public static NLog.Targets.ColoredConsoleTarget Logconsole { get; } = new("logconsole")
+        public static NLog.Targets.ColoredConsoleTarget Logconsole
+        {
+            get;
+        } = new("logconsole")
         {
             Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} | ${level} | " +
             "${callsite:includeNamespace=False:" +

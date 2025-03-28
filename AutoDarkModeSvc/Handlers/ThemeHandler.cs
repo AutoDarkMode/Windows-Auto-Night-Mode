@@ -14,16 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib;
-using AutoDarkModeLib.Configs;
-using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Events;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
-using AutoDarkModeSvc.Monitors;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
+using AutoDarkModeSvc.Monitors;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
 
@@ -110,7 +109,7 @@ namespace AutoDarkModeSvc.Handlers
                 Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
             }
 
-            
+
 
             if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
             {
