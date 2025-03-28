@@ -16,73 +16,91 @@
 #endregion
 using System.Threading;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 
-namespace AutoDarkModeSvc.SwitchComponents.Base
+namespace AutoDarkModeSvc.SwitchComponents.Base;
+
+internal class WallpaperSwitchThemeFile : WallpaperSwitch
 {
-    internal class WallpaperSwitchThemeFile : WallpaperSwitch
+    protected override void SwitchSolidColor(Theme newTheme)
     {
-        protected override void SwitchSolidColor(Theme newTheme)
+        if (newTheme == Theme.Dark)
         {
-            if (newTheme == Theme.Dark)
-            {
-                GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Dark),
-                    GlobalState.ManagedThemeFile.Colors.Background.Item2);
-            }
-            else
-            {
-                GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Light),
-                    GlobalState.ManagedThemeFile.Colors.Background.Item2);
-            }
-            GlobalState.ManagedThemeFile.Desktop.Wallpaper = "";
-            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
-            GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
-            GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
-
-            // WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
-            currentSolidColorTheme = newTheme;
-            currentGlobalTheme = Theme.Unknown;
-            currentIndividualTheme = Theme.Unknown;
-            spotlightEnabled = false;
+            GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Dark),
+                GlobalState.ManagedThemeFile.Colors.Background.Item2);
         }
-
-        protected override void SwitchGlobal(Theme newTheme)
+        else
         {
-            WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
-            if (newTheme == Theme.Light)
-            {
-                GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
-            }
-            else
-            {
-                GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
-            }
-            GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
-            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
-            currentGlobalTheme = newTheme;
-            currentIndividualTheme = Theme.Unknown;
-            currentSolidColorTheme = Theme.Unknown;
-            spotlightEnabled = false;
+            GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Light),
+                GlobalState.ManagedThemeFile.Colors.Background.Item2);
         }
+        GlobalState.ManagedThemeFile.Desktop.Wallpaper = "";
+        GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+        GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
+        GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
 
-        protected override bool SolidColorNeedsUpdateHandler()
-        {
-            HookPosition = HookPosition.PostSync;
-            return true;
-        }
+        // WallpaperHandler.SetSolidColor(Settings.Component.SolidColors, newTheme);
+        currentSolidColorTheme = newTheme;
+        currentGlobalTheme = Theme.Unknown;
+        currentIndividualTheme = Theme.Unknown;
+        spotlightEnabled = false;
+    }
 
-        protected override void SwitchIndividual(Theme newTheme)
+    protected override void SwitchGlobal(Theme newTheme)
+    {
+        WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+        if (newTheme == Theme.Light)
         {
-            WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
-            if (currentSolidColorTheme != Theme.Unknown)
-            {
-                Logger.Debug("waiting for solid color to disable");
-                Thread.Sleep(100);
-            }
-            currentIndividualTheme = newTheme;
-            currentGlobalTheme = Theme.Unknown;
-            currentSolidColorTheme = Theme.Unknown;
-            spotlightEnabled = false;
+            GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
         }
+        else
+        {
+            GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
+        }
+        GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
+        GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+        currentGlobalTheme = newTheme;
+        currentIndividualTheme = Theme.Unknown;
+        currentSolidColorTheme = Theme.Unknown;
+        spotlightEnabled = false;
+    }
+
+    protected override bool SolidColorNeedsUpdateHandler()
+    {
+        HookPosition = HookPosition.PostSync;
+        return true;
+    }
+
+    protected override void SwitchIndividual(Theme newTheme)
+    {
+        WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
+
+        if (currentSolidColorTheme != Theme.Unknown)
+        {
+            Logger.Debug("waiting for solid color to disable");
+            Thread.Sleep(100);
+        }
+        currentIndividualTheme = newTheme;
+        currentGlobalTheme = Theme.Unknown;
+        currentSolidColorTheme = Theme.Unknown;
+        spotlightEnabled = false;
+    }
+
+    protected override void Callback(SwitchEventArgs e)
+    {
+
+        /*
+        GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
+        if (e.Theme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
+        {
+            GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
+            Settings.Component.Monitors.All(m => m.DarkThemeWallpaper == GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.)
+        }
+        else if (e.Theme == Theme.Light && Settings.Component.TypeLight == WallpaperType.Individual)
+        {
+            GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
+        }
+        */
     }
 }

@@ -20,39 +20,35 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
 
-namespace AutoDarkModeSvc.Modules
+namespace AutoDarkModeSvc.Modules;
+
+internal class GeopositionUpdateModule : AutoDarkModeModule
 {
-    internal class GeopositionUpdateModule : AutoDarkModeModule
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private AdmConfigBuilder ConfigBuilder { get; }
+    public override string TimerAffinity { get; } = TimerName.Geopos;
+
+    /// <summary>
+    /// Instantiates a new GeopositionUpdateModule.
+    /// This module updates the user's geolocation and saves the updated value to the configuration
+    /// </summary>
+    /// <param name="name">unique name of the module</param>
+    public GeopositionUpdateModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private AdmConfigBuilder ConfigBuilder
-        {
-            get;
-        }
-        public override string TimerAffinity { get; } = TimerName.Geopos;
+        ConfigBuilder = AdmConfigBuilder.Instance();
+    }
 
-        /// <summary>
-        /// Instantiates a new GeopositionUpdateModule.
-        /// This module updates the user's geolocation and saves the updated value to the configuration
-        /// </summary>
-        /// <param name="name">unique name of the module</param>
-        public GeopositionUpdateModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
+    public override Task Fire(object caller = null)
+    {
+        DateTime nextUpdate = ConfigBuilder.LocationData.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownTimeSpan);
+        if (DateTime.Now >= nextUpdate || (ConfigBuilder.LocationData.DataSourceIsGeolocator != ConfigBuilder.Config.Location.UseGeolocatorService))
         {
-            ConfigBuilder = AdmConfigBuilder.Instance();
+            return Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
         }
-
-        public override Task Fire(object caller = null)
+        else
         {
-            DateTime nextUpdate = ConfigBuilder.LocationData.LastUpdate.Add(ConfigBuilder.Config.Location.PollingCooldownTimeSpan);
-            if (DateTime.Now >= nextUpdate || (ConfigBuilder.LocationData.DataSourceIsGeolocator != ConfigBuilder.Config.Location.UseGeolocatorService))
-            {
-                return Task.Run(() => LocationHandler.UpdateGeoposition(ConfigBuilder));
-            }
-            else
-            {
-                Logger.Debug($"Next location update scheduled: {nextUpdate}");
-            }
-            return Task.CompletedTask;
+            Logger.Debug($"Next location update scheduled: {nextUpdate}");
         }
+        return Task.CompletedTask;
     }
 }

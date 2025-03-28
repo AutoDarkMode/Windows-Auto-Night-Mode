@@ -45,7 +45,7 @@ csharp_space_between_method_declaration_parameter_list_parentheses = false
 #Formatting - wrapping options
 
 #leave code block on separate lines
-csharp_preserve_single_line_blocks = false
+csharp_preserve_single_line_blocks = true
 
 #Style - Code block preferences
 
@@ -61,7 +61,8 @@ csharp_style_expression_bodied_constructors = false:suggestion
 #prefer expression bodies for methods
 csharp_style_expression_bodied_methods = when_on_single_line:silent
 #prefer expression-bodied members for properties
-csharp_style_expression_bodied_properties = true:warning
+csharp_style_expression_bodied_properties = false
+csharp_preserve_single_line_properties = true
 
 #Style - expression level options
 
@@ -129,6 +130,7 @@ csharp_style_expression_bodied_operators = false:silent
 csharp_style_expression_bodied_indexers = true:silent
 csharp_style_expression_bodied_lambdas = true:silent
 csharp_style_expression_bodied_local_functions = false:silent
+csharp_preserve_single_line_properties = true
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
@@ -144,6 +146,7 @@ dotnet_style_collection_initializer = true:suggestion
 dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 dotnet_style_prefer_conditional_expression_over_assignment = true:silent
 dotnet_style_prefer_conditional_expression_over_return = true:silent
+dotnet_diagnostic.IDE0007.severity = none
 [*.{cs,vb}]
 
 #Style - Unnecessary code rules

@@ -18,15 +18,9 @@ namespace AutoDarkModeSvc.Modules;
 public class ProcessBlockListModule : AutoDarkModeModule
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private GlobalState State
-    {
-        get;
-    }
+    private GlobalState State { get; }
     private bool IsPostponing => State.PostponeManager.Get(Name) != null;
-    private AdmConfigBuilder ConfigBuilder
-    {
-        get;
-    }
+    private AdmConfigBuilder ConfigBuilder { get; }
 
     public ProcessBlockListModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
     {

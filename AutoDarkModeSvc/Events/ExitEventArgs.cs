@@ -16,18 +16,14 @@
 #endregion
 using System;
 
-namespace AutoDarkModeSvc.Events
-{
-    class ExitEventArgs : EventArgs
-    {
-        public ExitEventArgs(bool closeApp)
-        {
-            CloseApp = closeApp;
-        }
+namespace AutoDarkModeSvc.Events;
 
-        public bool CloseApp
-        {
-            get;
-        }
+class ExitEventArgs : EventArgs
+{
+    public ExitEventArgs(bool closeApp)
+    {
+        CloseApp = closeApp;
     }
+
+    public bool CloseApp { get; }
 }

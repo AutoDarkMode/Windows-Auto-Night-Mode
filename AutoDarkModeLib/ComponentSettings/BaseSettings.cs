@@ -17,21 +17,14 @@
 using System;
 using AutoDarkModeLib.Interfaces;
 
-namespace AutoDarkModeLib.ComponentSettings
+namespace AutoDarkModeLib.ComponentSettings;
+
+public class BaseSettings<T> : ISwitchComponentSettings<T>
 {
-    public class BaseSettings<T> : ISwitchComponentSettings<T>
+    public virtual bool Enabled { get; set; }
+    public T Component { get; set; }
+    public BaseSettings()
     {
-        public virtual bool Enabled
-        {
-            get; set;
-        }
-        public T Component
-        {
-            get; set;
-        }
-        public BaseSettings()
-        {
-            Component = (T)Activator.CreateInstance(typeof(T));
-        }
+        Component = (T)Activator.CreateInstance(typeof(T));
     }
 }

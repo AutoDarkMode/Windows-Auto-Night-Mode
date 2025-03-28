@@ -14,24 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-namespace AutoDarkModeLib.ComponentSettings.Base
+namespace AutoDarkModeLib.ComponentSettings.Base;
+
+public class SystemSwitchSettings
 {
-    public class SystemSwitchSettings
-    {
-        public Mode Mode
-        {
-            get; set;
-        }
-        public int TaskbarSwitchDelay { get; set; } = 1200;
-        public bool TaskbarColorOnAdaptive
-        {
-            get; set;
-        }
-        public Theme TaskbarColorWhenNonAdaptive { get; set; } = Theme.Light;
-        public bool DWMPrevalenceSwitch
-        {
-            get; set;
-        }
-        public Theme DWMPrevalenceEnableTheme { get; set; } = Theme.Light;
-    }
+    public Mode Mode { get; set; }
+    public int TaskbarSwitchDelay { get; set; } = 1200;
+    public bool TaskbarColorOnAdaptive { get; set; }
+    public Theme TaskbarColorWhenNonAdaptive { get; set; } = Theme.Light;
+    public bool DWMPrevalenceSwitch { get; set; }
+    public Theme DWMPrevalenceEnableTheme { get; set; } = Theme.Light;
 }

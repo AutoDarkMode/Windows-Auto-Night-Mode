@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>AutoDarkModeApp</RootNamespace>
     <ApplicationIcon>Assets/AutoDarkModeIcon.ico</ApplicationIcon>
@@ -16,6 +16,7 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefaultLanguage>en-us</DefaultLanguage>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Styles\SettingsCard.xaml" />
@@ -24,7 +25,7 @@
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<OutputPath>..\bin\Debug\adm-app\</OutputPath>
+		<OutputPath>..\bin\Debug\adm-app\winui3</OutputPath>
 	</PropertyGroup>
 	
   <ItemGroup>

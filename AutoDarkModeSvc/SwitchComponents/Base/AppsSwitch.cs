@@ -19,39 +19,38 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 
-namespace AutoDarkModeSvc.SwitchComponents.Base
+namespace AutoDarkModeSvc.SwitchComponents.Base;
+
+/// <summary>
+/// This class is a special case for the AppsSwitchThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
+/// </summary>
+class AppsSwitch : AppsSwitchThemeFile
 {
-    /// <summary>
-    /// This class is a special case for the AppsSwitchThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
-    /// </summary>
-    class AppsSwitch : AppsSwitchThemeFile
+    protected override void HandleSwitch(SwitchEventArgs e)
     {
-        protected override void HandleSwitch(SwitchEventArgs e)
+        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        try
         {
-            string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-            try
+            if (Settings.Component.Mode == Mode.DarkOnly)
             {
-                if (Settings.Component.Mode == Mode.DarkOnly)
-                {
-                    RegistryHandler.SetAppsTheme((int)Theme.Dark);
-                    currentComponentTheme = Theme.Dark;
-                }
-                else if (Settings.Component.Mode == Mode.LightOnly)
-                {
-                    RegistryHandler.SetAppsTheme((int)Theme.Light);
-                    currentComponentTheme = Theme.Light;
-                }
-                else
-                {
-                    RegistryHandler.SetAppsTheme((int)e.Theme);
-                    currentComponentTheme = e.Theme;
-                }
+                RegistryHandler.SetAppsTheme((int)Theme.Dark);
+                currentComponentTheme = Theme.Dark;
             }
-            catch (Exception ex)
+            else if (Settings.Component.Mode == Mode.LightOnly)
             {
-                Logger.Error(ex, "could not set apps theme");
+                RegistryHandler.SetAppsTheme((int)Theme.Light);
+                currentComponentTheme = Theme.Light;
             }
-            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+            else
+            {
+                RegistryHandler.SetAppsTheme((int)e.Theme);
+                currentComponentTheme = e.Theme;
+            }
         }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "could not set apps theme");
+        }
+        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
     }
 }

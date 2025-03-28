@@ -14,17 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-namespace AutoDarkModeLib.ComponentSettings.Base
+namespace AutoDarkModeLib.ComponentSettings.Base;
+
+public class CursorSwitchSettings
 {
-    public class CursorSwitchSettings
-    {
-        public string CursorsLight
-        {
-            get; set;
-        }
-        public string CursorsDark
-        {
-            get; set;
-        }
-    }
+    public string CursorsLight { get; set; }
+    public string CursorsDark { get; set; }
 }

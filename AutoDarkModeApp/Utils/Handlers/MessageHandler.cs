@@ -16,10 +16,9 @@
 #endregion
 using AutoDarkModeComms;
 
-namespace AutoDarkModeApp.Utils.Handlers
+namespace AutoDarkModeApp.Utils.Handlers;
+
+class MessageHandler
 {
-    class MessageHandler
-    {
-        public static IMessageClient Client { get; } = new PipeClient();
-    }
+    public static IMessageClient Client { get; } = new PipeClient();
 }

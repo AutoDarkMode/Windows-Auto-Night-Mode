@@ -17,49 +17,36 @@
 using System;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Modules
+namespace AutoDarkModeSvc.Modules;
+
+public interface IAutoDarkModeModule : IEquatable<IAutoDarkModeModule>, IComparable<IAutoDarkModeModule>
 {
-    public interface IAutoDarkModeModule : IEquatable<IAutoDarkModeModule>, IComparable<IAutoDarkModeModule>
-    {
-        /// <summary>
-        /// Polling method to be periodically called by <see cref="AutoDarkModeSvc.Timers.ModuleTimer.OnTimedEvent(object, System.Timers.ElapsedEventArgs)"/>
-        /// </summary>
-        public Task Fire(object caller = null);
-        /// <summary>
-        /// Performs operations that should be called upon instantiation
-        /// </summary>
-        public void EnableHook();
-        /// <summary>
-        /// Performs cleanup operations before a module is deregistered
-        /// </summary>
-        public void DisableHook();
-        /// <summary>
-        /// Unique timer identification
-        /// </summary>
-        public string Name
-        {
-            get;
-        }
-        /// <summary>
-        /// Unique timer name for automatic module registration and deregistration
-        /// </summary>
-        public string TimerAffinity
-        {
-            get;
-        }
-        /// <summary>
-        /// Determines whether a moudle should fire when it is registered to a timer
-        /// </summary>
-        public bool FireOnRegistration
-        {
-            get;
-        }
-        /// <summary>
-        /// Denotes in which order the module should fire
-        /// </summary>
-        public int Priority
-        {
-            get;
-        }
-    }
+    /// <summary>
+    /// Polling method to be periodically called by <see cref="AutoDarkModeSvc.Timers.ModuleTimer.OnTimedEvent(object, System.Timers.ElapsedEventArgs)"/>
+    /// </summary>
+    public Task Fire(object caller = null);
+    /// <summary>
+    /// Performs operations that should be called upon instantiation
+    /// </summary>
+    public void EnableHook();
+    /// <summary>
+    /// Performs cleanup operations before a module is deregistered
+    /// </summary>
+    public void DisableHook();
+    /// <summary>
+    /// Unique timer identification
+    /// </summary>
+    public string Name { get; }
+    /// <summary>
+    /// Unique timer name for automatic module registration and deregistration
+    /// </summary>
+    public string TimerAffinity { get; }
+    /// <summary>
+    /// Determines whether a moudle should fire when it is registered to a timer
+    /// </summary>
+    public bool FireOnRegistration { get; }
+    /// <summary>
+    /// Denotes in which order the module should fire
+    /// </summary>
+    public int Priority { get; }
 }

@@ -20,89 +20,85 @@ using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 
-namespace AutoDarkModeSvc.SwitchComponents.Base
+namespace AutoDarkModeSvc.SwitchComponents.Base;
+
+class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
 {
-    class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
+    public override bool ThemeHandlerCompatibility => true;
+    public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
+    public override bool Enabled
     {
-        public override bool ThemeHandlerCompatibility => true;
-        public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
-        public override bool Enabled
+        get { return Settings.Component.DWMPrevalenceSwitch; }
+    }
+
+    private bool currentDWMColorActive;
+
+    public AccentColorSwitch() : base() { }
+
+    protected override void EnableHook()
+    {
+        try
         {
-            get
+            currentDWMColorActive = RegistryHandler.IsDWMPrevalence();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "couldn't retrieve DWM prevalence state: ");
+        }
+    }
+
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    {
+        if (e.Theme == Theme.Dark)
+        {
+            if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && !currentDWMColorActive)
             {
-                return Settings.Component.DWMPrevalenceSwitch;
+                return true;
+            }
+            else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && currentDWMColorActive)
+            {
+                return true;
             }
         }
-
-        private bool currentDWMColorActive;
-
-        public AccentColorSwitch() : base() { }
-
-        protected override void EnableHook()
+        else if (e.Theme == Theme.Light)
         {
-            try
+            if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && !currentDWMColorActive)
             {
-                currentDWMColorActive = RegistryHandler.IsDWMPrevalence();
+                return true;
             }
-            catch (Exception ex)
+            else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && currentDWMColorActive)
             {
-                Logger.Error(ex, "couldn't retrieve DWM prevalence state: ");
+                return true;
             }
         }
+        return false;
+    }
 
-        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    protected override void HandleSwitch(SwitchEventArgs e)
+    {
+        try
         {
-            if (e.Theme == Theme.Dark)
+            bool previousSetting = currentDWMColorActive;
+            if (e.Theme == Theme.Dark && Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark)
             {
-                if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && !currentDWMColorActive)
-                {
-                    return true;
-                }
-                else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && currentDWMColorActive)
-                {
-                    return true;
-                }
+                RegistryHandler.SetDWMPrevalence(1);
+                currentDWMColorActive = true;
             }
-            else if (e.Theme == Theme.Light)
+            else if (e.Theme == Theme.Light && Settings.Component.DWMPrevalenceEnableTheme == Theme.Light)
             {
-                if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && !currentDWMColorActive)
-                {
-                    return true;
-                }
-                else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && currentDWMColorActive)
-                {
-                    return true;
-                }
+                RegistryHandler.SetDWMPrevalence(1);
+                currentDWMColorActive = true;
             }
-            return false;
+            else
+            {
+                RegistryHandler.SetDWMPrevalence(0);
+                currentDWMColorActive = false;
+            }
+            Logger.Info($"update info - previous: dwm prevalence {previousSetting.ToString().ToLower()}, now: {currentDWMColorActive.ToString().ToLower()}, mode: during {Enum.GetName(typeof(Theme), Settings.Component.DWMPrevalenceEnableTheme).ToString().ToLower()}");
         }
-
-        protected override void HandleSwitch(SwitchEventArgs e)
+        catch (Exception ex)
         {
-            try
-            {
-                bool previousSetting = currentDWMColorActive;
-                if (e.Theme == Theme.Dark && Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark)
-                {
-                    RegistryHandler.SetDWMPrevalence(1);
-                    currentDWMColorActive = true;
-                }
-                else if (e.Theme == Theme.Light && Settings.Component.DWMPrevalenceEnableTheme == Theme.Light)
-                {
-                    RegistryHandler.SetDWMPrevalence(1);
-                    currentDWMColorActive = true;
-                }
-                else
-                {
-                    RegistryHandler.SetDWMPrevalence(0);
-                    currentDWMColorActive = false;
-                }
-                Logger.Info($"update info - previous: dwm prevalence {previousSetting.ToString().ToLower()}, now: {currentDWMColorActive.ToString().ToLower()}, mode: during {Enum.GetName(typeof(Theme), Settings.Component.DWMPrevalenceEnableTheme).ToString().ToLower()}");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not toggle DWM prevalence: ");
-            }
+            Logger.Error(ex, "could not toggle DWM prevalence: ");
         }
     }
 }

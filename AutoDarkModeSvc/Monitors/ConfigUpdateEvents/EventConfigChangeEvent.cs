@@ -17,18 +17,16 @@
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Handlers;
 
-namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
+
+public class EventConfigChangeEvent : ConfigUpdateEvent<AdmConfig>
 {
-    public class EventConfigChangeEvent : ConfigUpdateEvent<AdmConfig>
+    protected override void ChangeEvent()
     {
-        protected override void ChangeEvent()
+        if (oldConfig.Events.Win10AllowLockscreenSwitch != newConfig.Events.Win10AllowLockscreenSwitch)
         {
-            if (oldConfig.Events.Win10AllowLockscreenSwitch != newConfig.Events.Win10AllowLockscreenSwitch)
-            {
-                SystemEventHandler.DeregisterResumeEvent();
-                SystemEventHandler.RegisterResumeEvent();
-            }
+            SystemEventHandler.DeregisterResumeEvent();
+            SystemEventHandler.RegisterResumeEvent();
         }
     }
-
 }

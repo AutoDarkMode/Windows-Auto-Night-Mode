@@ -14,17 +14,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-namespace AutoDarkModeSvc.Communication
+namespace AutoDarkModeSvc.Communication;
+
+interface IMessageServer
 {
-    interface IMessageServer
-    {
-        /// <summary>
-        /// Start a command server that receives command messages
-        /// </summary>
-        public void Start();
-        /// <summary>
-        /// stop a command server and release all used resources
-        /// </summary>
-        public void Dispose();
-    }
+    /// <summary>
+    /// Start a command server that receives command messages
+    /// </summary>
+    public void Start();
+    /// <summary>
+    /// stop a command server and release all used resources
+    /// </summary>
+    public void Dispose();
 }

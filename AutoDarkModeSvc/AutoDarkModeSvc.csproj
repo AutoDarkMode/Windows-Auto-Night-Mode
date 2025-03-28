@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
     <Version>10.4.2.29</Version>
@@ -23,21 +23,21 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\bin\Release\adm-app</OutputPath>
+    <OutputPath>..\bin\Release\adm-app\backend</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <OutputPath>..\bin\Release\adm-app</OutputPath>
+    <OutputPath>..\bin\Release\adm-app\backend</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\bin\Debug\adm-app</OutputPath>
+    <OutputPath>..\bin\Debug\adm-app\backend</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <OutputPath>..\bin\Debug\adm-app</OutputPath>
+    <OutputPath>..\bin\Debug\adm-app\backend</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>

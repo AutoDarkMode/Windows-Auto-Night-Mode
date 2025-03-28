@@ -14,10 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-namespace AutoDarkModeLib.ComponentSettings
+namespace AutoDarkModeLib.ComponentSettings;
+
+public class BaseSettingsEnabled<T> : BaseSettings<T>
 {
-    public class BaseSettingsEnabled<T> : BaseSettings<T>
-    {
-        public override bool Enabled { get; set; } = true;
-    }
+    public override bool Enabled { get; set; } = true;
 }

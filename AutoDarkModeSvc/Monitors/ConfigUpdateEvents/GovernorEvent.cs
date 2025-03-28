@@ -16,18 +16,17 @@
 #endregion
 using AutoDarkModeLib.Configs;
 
-namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
+
+internal class GovernorEvent : ConfigUpdateEvent<AdmConfig>
 {
-    internal class GovernorEvent : ConfigUpdateEvent<AdmConfig>
+    protected override void ChangeEvent()
     {
-        protected override void ChangeEvent()
+        if (oldConfig.Governor != newConfig.Governor)
         {
-            if (oldConfig.Governor != newConfig.Governor)
+            if (State.PostponeManager.GetSkipNextSwitchItem() != null)
             {
-                if (State.PostponeManager.GetSkipNextSwitchItem() != null)
-                {
-                    State.PostponeManager.UpdateSkipNextSwitchExpiry();
-                }
+                State.PostponeManager.UpdateSkipNextSwitchExpiry();
             }
         }
     }

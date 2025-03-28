@@ -17,15 +17,14 @@
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
 
-namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
+
+internal class LoggingVerbosityEvent : ConfigUpdateEvent<AdmConfig>
 {
-    internal class LoggingVerbosityEvent : ConfigUpdateEvent<AdmConfig>
+    protected override void ChangeEvent()
     {
-        protected override void ChangeEvent()
-        {
-            bool debugToggled = newConfig.Tunable.Debug != oldConfig.Tunable.Debug;
-            bool traceToggled = newConfig.Tunable.Trace != oldConfig.Tunable.Trace;
-            if (debugToggled || traceToggled) LoggerSetup.UpdateLogmanConfig();
-        }
+        bool debugToggled = newConfig.Tunable.Debug != oldConfig.Tunable.Debug;
+        bool traceToggled = newConfig.Tunable.Trace != oldConfig.Tunable.Trace;
+        if (debugToggled || traceToggled) LoggerSetup.UpdateLogmanConfig();
     }
 }

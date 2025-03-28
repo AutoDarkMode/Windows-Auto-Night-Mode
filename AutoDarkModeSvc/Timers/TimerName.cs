@@ -14,14 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-namespace AutoDarkModeSvc.Timers
+namespace AutoDarkModeSvc.Timers;
+
+static class TimerName
 {
-    static class TimerName
-    {
-        public const string Main = "main";
-        public const string Short = "short";
-        public const string IO = "io";
-        public const string Geopos = "geopos";
-        public const string StateUpdate = "state_update";
-    }
+    public const string Main = "main";
+    public const string Short = "short";
+    public const string IO = "io";
+    public const string Geopos = "geopos";
+    public const string StateUpdate = "state_update";
 }

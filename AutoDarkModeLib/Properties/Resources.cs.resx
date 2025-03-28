@@ -1,0 +1,1265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Povolit automatické přepínání motivů</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Vždy tmavý</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Vždy světlý</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Zapnout možnosti pro Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Vlastní čas začátku</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Tmavý</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Tmavý motiv</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (stará verze)</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Světlý</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Světlý motiv</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Změnit současný motiv</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>Systém</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Použitý software třetích stran</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Aktualizace</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>Použít službu zjišťování polohy</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>Změny byly uloženy!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>Vaše změny budou automaticky uloženy.</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Nainstalovat aktualizaci</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>Nastala chyba</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>Aplikace vyžaduje přístup k Vaší poloze</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>Máte nejnovější verzi aplikace.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Hledání Vaší polohy…</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>Hledání aktualizace…</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Varování: Nemohli jsme zjistit současný motiv.</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>Nalezena nová aktualizace!</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Děkujeme, že používáte Auto Dark Mode!
+
+Na Github je k mání nová verze s mnoha vylepšeními.
+Chcete ji nainstalovat?
+
+Nainstalovaná verze: {0}, nová verze: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Zjistit aktualizace</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>Hledáme aktualizace při každém spuštění programu.</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Vítejte</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Pro automatickou změnu motivů zaškrtněte aktivační políčko.</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Překladatelé: Farmansn a zoe, korekce Dr.CRYO</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Město</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Pozice</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>K zobrazení změn je třeba restartovat aplikaci</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Jazyk:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Zvýraznění barev hlavního panelu</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>Současně:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Tapeta tmavého motivu</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Vymazat/Vypnout</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Vybrat soubor</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Tapeta světlého motivu</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Pozadí plochy</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Obrázky</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Zvolte prosím dvě tapety</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Zvolte prosím obrázek</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Nastavení pozadí plochy</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>použijte současné pozadí</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Vypnuto</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Zapnuto</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>nebo</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Váš obrázek je nečitelný, nebo jste zadali neplatnou cestu.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Nepodařilo se načíst náhled obrázku, omlouváme se!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Nastavení se nepodařilo uložit.</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>Nastala chyba</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Viditelné v tmavém motivu. 
+Při problémech prosím zvyšte zpoždění přepínání v nastavení.</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>12hodinové časy</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Vyhledávat aktualizace na pozadí</value>
+  </data>
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>Došlo k problému s uživatelským rozhraním.
+
+Ujistěte se, že:
+- služba běží
+- soubor config.yaml je platný
+
+Chcete vytvořit nový problém v repozitáři Auto Dark Mode?
+Klikněte na „Ano“ pro otevření nového okna v prohlížeči.
+</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Chyba: Vstup je neplatný</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Přepnout po Připojeném pohotovostním režimu (nedoporučuje se)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Mobilní zařízení, například produkty Microsoft Surface, používají moderní pohotovostní režim. 
+Povolením této možnosti zajistíte, že Auto Dark Mode přepne motiv ihned po probuzení počítače.
+Funkci povolte pouze v případě, že ji skutečně potřebujete, neboť snižuje výdrž baterie!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Kvůli chybě Windows nemění hlavní panel barvu tak, jak by měl, pokud je zapnutý spořič baterie. V případě problémů vypněte spořič baterie.</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Časový posun</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Nastavit</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Při používání motivu Windows jsou tyto možnosti vypnuté.
+Můžete je však nastavit přímo v motivu Windows.</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Čas</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Otevřít složku</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tmavý motiv</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Vytvořte si vlastní motivy</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Zvolte vlastní motivy</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Světlý motiv</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Windows motiv (více možností)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Tapeta na ploše (doporučené)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Klikutím sem přejděte do nastavení motivu Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Nyní přejděte na Barvy a změňte systémový režim na "Světlý". Nastavte si oblíbené pozadí, ukazatel myši či barvu zvýraznění.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Jděte zpět do nastavení motivů a uložte si svůj motiv.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Zopakujte postup pro tmavý motiv.</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Zpoždění změny barvy hlavního panelu (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>O programu</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Nabídka</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Restartovat</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Nastavit vlastní časy</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>Od západu do východu slunce (lokalizační služba)</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Krok</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Color filter (sends Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Použít úlohu po přihlášení namísto programu po spuštění</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Zvolit režim:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>Došlo k chybě při nastavování vybraných motivů; vypnuli jsme přepínání motivů</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Náhradní světlý motiv</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Nainstalovat rozšíření</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Doporučené nástroje</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Toto rozšíření prohlížeče donutí weby v Chrome, Firefox a Edge respektovat systémový motiv.</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>nenalezeno</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>Proč byste měli přispět?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Jak přispět?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Peníze mi můžete poslat skrze PayPal. Váš příspěvek je zcela dobrovolný a neměli byste za něj očekávat žádné výhody.</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Přispět</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Ahoj a děkuji, že používáte Auto Dark Mode.
+
+Auto Dark Mode se snaží zpříjemnit každodenní používání počítače tím, že se stará o Váš zrak. Přitom je zcela zdarma, bez reklam, open-source, ani nesbírá žádná data.
+Aplikace je nezisková.
+
+Jestli se Vám moje aplikace líbí, zvažte, zda byste mne nechtěli podpořit. I malý peněžní příspěvek mi udělá neskonalou radost; u větších budu přímo skákat radostí po bytě.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>Nastala chyba při zavádění .theme-file. Je možné, že Váš vlastní motiv už není dostupný. Proto jsme zatím omezili přepínání motivů. K opětovnému povolení přepínání motivů prosím otevřete Auto Dark Mode a upravte {0} nastavení.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Narazili jsme na následující problém: 
+{0}
+
+Zkusíme jej vyřešit spuštěním algoritmu s administrátorskými právy. To leckdy pomůže.
+Auto Dark Mode se poté restartuje. Bude však nezbytné vše znovu nastavit - mrzí nás to.
+
+Prosím NIKDY nespouštějte Auto Dark Mode coby administrátor!</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Podpora více uživatelů</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Dodatečné zpoždění černobílého filtru:</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Přizpůsobit motivu</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Resetovat</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Switch to dark mode when device is unplugged</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Výchozí hodnota pro posuvník spořiče energie</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Zmírnění úspory energie pro přepínač motivů</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Toto funguje pouze v případě, že jste manuálně nepovolili spořič baterie!</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Přepnout motivy</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Přizpůsobení</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Použít souřadnice</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Tato možnost je nedostupná, protože jste zatím neaktualizovali Windows na verzi z dubna 2019 (1903).</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Zeměpisné souřadnice</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Údaje o poloze</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>Od západu do východu slunce (zeměpisné souřadnice)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Najít zeměpisné souřadnice pro vaší polohu</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Otevřít konfigurační soubor</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Otevřít konfigurační složku</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Otevřít soubor protokolu</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Konfigurace</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office (zastaralé)</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Vyberte motiv</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Vyberte pozadí</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Zakázáno</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Skrýt ikonu v liště (nedoporučeno)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Tato funkce je zakázána, dokud systém Windows spravuje váš motiv.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Vyberte jiný motiv systému Windows pro tmavý a světlý režim. Umožňuje úplné přizpůsobení motivu, ale vyžaduje vlastní nastavení souborů s motivy.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Přizpůsobte si tapetu plochy pro všechny monitory, jednotlivé monitory, nastavte barvu pozadí nebo zapněte bodové osvětlení.</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Na pozadí kontrolujeme dostupnost nových verzí Auto Dark Mode. Jakmile je dostupná aktualizace, upozorníme vás pomocí vyskakovacího oznámení</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Automaticky stahovat a instalovat nové verze</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Nezobrazovat oznámení</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Vyberte aktualizační kanál</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Při spuštění Auto Dark Mode zkontrolovat aktualizace</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 dní</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 dny</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 dní</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Naposledy zkontrolováno</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>nikdy</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Změnit, jak často máme kontrolovat aktualizace</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Tmavý motiv</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Světlý motiv</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Obrázek</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Obrázek (více monitorů)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Jedna barva</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Režim</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Obrazovka</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Odebrat odpojené monitory</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Pozadí</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Barva</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Hex kód</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Povolit přepínání pozadí</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Nepřepínat při hraní videoher</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Rychlá (1 vzorek)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Střední (2 vzorky)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Pomalá (3 vzorky)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Rychlost detekce využití GPU</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Zařízení napájená baterií</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Podmínky</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Minimální % využití GPU pro zpoždění přepnutí</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Obnovit motivy při externí změně</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Zeměpisná šířka</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Zeměpisná délka</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Služba ještě není spuštěna, čekejte prosím…</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Spouštění služby</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Služba neodpovídá. Zkontrolujte prosím, zda proces AutoDarkModeSvc.exe běží a zkuste to znovu!</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Povolit přepnutí motivu Windows</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Vyp</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Zap</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Sledujte nás</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Motiv</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Květiny</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (světlé)</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Zachycený pohyb</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (tmavé)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Proudd</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Záře</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (světlé)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Východ slunce</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>Každý den</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Klikněte na Nastavit pro uložení změn.</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Použít barvu zvýraznění hlavního panelu při</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Pouze barva</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Verze</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Spustit Auto Dark Mode s Windows</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Automatické spuštění</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Režim:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Cesta:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Obnovit automatické spuštění</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Zakázáno</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>Žádné</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Nenalezeno</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Klíč registru</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Úloha</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Zakázali jste záznam automatického spuštění pomocí Windows.</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Další aktualizace za</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Barva</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Klávesové zkratky lze upravovat pouze v případě, že jsou vypnuté.</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Vynutit tmavý režim</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Vynutit světlý režim</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Klávesové zkratky</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Přestat vynucovat motiv</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Povolit klávesové zkratky</value>
+  </data>
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
+    <value>Vynutit tmavý motiv</value>
+  </data>
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
+    <value>Vynutit světlý motiv</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Skrytí této ikony se nedoporučuje. 
+Přejete si pokračovat?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Skrytí ikony na panelu</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>&amp;Otevřít adresář konfigurace</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Nechat rozhodnout aplikaci</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Neměnit motivy pokud systém není v nečinnosti</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Počet minut, po kterých je systém považován za nečinný</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Kontrastní barvy pro titulní pruhy a hranice okna pouze během</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Informace o verzi zkopírované do schránky</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatická změna motivu</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Zobrazit oznámení při přepnutí</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Zpoždění</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>modul monitorování GPU</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Pozastavit modul automatického přepínání</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Kontrola nečinnosti systému</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Stiskněte tlačítko potvrdit pro okamžité přepnutí motivu.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Obnovit</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Pro vrácení akce klikněte na tlačítko zrušit níže.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>klávesová zkratka</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Přepínač automatické změny motivů</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Vypnuní automatického přepínání</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Pozastavit automatické přepínání</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>Chcete místo toho zakázat automatické přepínání?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Automatické přepínání se také obnoví, pokud se vrátíte k předchozímu motivu.</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Přepínání motivů pozastaveno dokud</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Automatické přepínání motivů je v současné době pozastaveno kvůli následujícím modulům:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Obnovení bude fungovat pouze u odkladů, jejichž platnost vyprší</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Odložit kontrolu</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Přepnout téma</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Automatické přepínání motivu je aktivní</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Řídit se nočním osvětlením Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Řídit se nočním osvětlením Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Přepínání motivů je pozastaveno jednou!</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>Odložit dokud</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>odloženo dokud nejsou splněny podmínky</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>odloženo do dalšího východu slunce</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>odloženo do dalšího západu slunce</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>dokud</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>do příštího východu slunce</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>do příštího západu slunce</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Přepnout automatické pozastavení změny motivu</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Automatické přepínání motivu obnoveno</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Otevřít nastavení nočního osvětlení</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Noční osvětlení</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Aktivní prodlevy</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Jednou přeskočit automatické přepínání</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Zobrazit upozornění před automatickým přepnutím motivů</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Doba, po kterou oznámení čeká na vstup uživatele, v minutách</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Debug mode</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Povolení přepínání motivů během zamykací obrazovky (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Přepnout nyní</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Modul zpoždění</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Oznámení o přepnutí</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 hodiny</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 minutes</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 hodiny</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 hodin</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 hodina</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 hodin</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Čekání na přepnutí tématu</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Přepnout nyní, nebo dále odložit?</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Režim sledování</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Zvláštní poděkování</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Ignorovat pozadí</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Ignorovat kurzor</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignore desktop icons</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Ignore sound</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ignorovat nastavení</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Tato volba nepodporuje výchozí motivy Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Pozastaveno</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Používejte pouze s Office 2013-2019 nebo pokud máte problémy s nastavením Office 'dle systému'</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>Při záplatování došlo k chybě.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Aktuální verze</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Snížení verze na</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Stahování…</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Download in progress</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>K dispozici je nová verze {0}</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Oprava se nezdařila</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Informace naleznete v souborech service.log a updater.log</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Aktualizace na</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Snížení</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Open log directory</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Odložit</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Snížení verze {0} k dispozici</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Go to download page</value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Snížení verze je k dispozici</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Otevřít konfiguraci skriptu</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Povolení vlastních skriptů</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Zvolte si tapetu</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Cesta k obrázku</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>&amp;Zavřít</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Automatická změna motivu</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>&amp;Přepnout motiv</value>
+  </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Světelný bod</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Pozadí zamykací obrazovky</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Kontrastní barva</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Vyber kontrastní barvu</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Přizpůsobte si barevné schéma systému Windows podle svých představ.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Aktualizace zbarvení</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>Tato funkce je při správě motivu v Auto Dark Mode vypnutá.</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Odkazy</value>
+  </data>
+  <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
+    <value>Dokumentace k vlastním skriptům</value>
+  </data>
+  <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
+    <value>Uživatelské úložiště vlastních skriptů</value>
+  </data>
+  <data name="WallpaperComboBoxItemFill" xml:space="preserve">
+    <value>Vyplnit</value>
+  </data>
+  <data name="WallpaperComboBoxItemFit" xml:space="preserve">
+    <value>Přizpůsobit</value>
+  </data>
+  <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
+    <value>Roztáhnout</value>
+  </data>
+  <data name="WallpaperTextBlockPosition" xml:space="preserve">
+    <value>Zvolte přizpůsobení pro vaše pozadí plochy</value>
+  </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Odpojeno</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
+    <value>Vždy obnovit DWM při přepnutí motivu</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
+    <value>Snaží se o snížení výskytu nesprávných barev uživatelského rozhraní v průzkumníku, hlavním panelu a nabídce Start. Pokud se s tím setkáváte často nebo vás to obtěžuje, vyzkoušejte povolení toto nastavení.
+
+V některých systémech to může při přepínání motivů přinést mírné až střední zpoždění, podobně jako tomu bylo v systému Windows 10. 
+Ve vzácných případech může systém Windows při pohybu myší během obnovení DWM vydávat pípání.</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
+    <value>Vynutit obnovení DWM?</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Povolení přepínání kurzoru myši</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Otevření nastavení ukazatele systému Windows</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>Vyberte tmavý kurzor</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Vyberte světlý kurzor</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>Kurzory</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Konfigurace různých kurzorů myši pro tmavé a světlé režimy.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Vyberte kurzory myši</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Nechat Auto Dark Mode spravovat můj motiv</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Nechat systém Windows spravovat můj motiv</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>Nová schémata kurzorů můžete definovat v nastavení systému Windows a následně je zde vybrat.</value>
+  </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Otevřít příkazový řádek</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Otevřít protokol aktualizace</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Povolit kontrastní barvy</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Přepínání dotykové klávesnice a zadávání</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatický</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuální</value>
+  </data>
+  <data name="SwitchModesButtonAddProcess" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
+    <value>Blokování procesů</value>
+  </data>
+  <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
+    <value>Nepřepínejte, když jsou spuštěny určité procesy</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Prohlédněte si aplikace podporující Auto Dark Mode</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Všechny aplikace nepodporují Auto Dark Mode. Na naší wiki nabízíme aktuální seznam aplikací, které ano.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Doporučené aplikace</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Můžete nás podpořit také skrze GitHub Sponsors, kde je možné se zapsat i k pravidelným příspěvkům.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Try to fix the theme</value>
+  </data>
+</root>

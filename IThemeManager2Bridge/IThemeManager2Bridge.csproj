@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <NoWarn>1701;1702;CA1416</NoWarn>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
+    <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
+  </ItemGroup>
+
+  <Target Name="CopyThemeDll" AfterTargets="AfterBuild">
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.dll" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.exp" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.lib" DestinationFolder="$(OutDir)" />
+  </Target>
+  <Target Name="CopyThemeDllPublish" AfterTargets="Publish">
+    <Copy SourceFiles="..\ThemeDll\ThemeDll.dll" DestinationFolder="$(PublishDir)\" />
+  </Target>
+
+</Project>

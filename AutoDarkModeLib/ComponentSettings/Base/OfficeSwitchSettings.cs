@@ -14,15 +14,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-namespace AutoDarkModeLib.ComponentSettings.Base
+namespace AutoDarkModeLib.ComponentSettings.Base;
+
+public class OfficeSwitchSettings
 {
-    public class OfficeSwitchSettings
-    {
-        public Mode Mode
-        {
-            get; set;
-        }
-        public byte LightTheme { get; set; } = 0;
-        public byte DarkTheme { get; set; } = 4;
-    }
+    public Mode Mode { get; set; }
+    public byte LightTheme { get; set; } = 0;
+    public byte DarkTheme { get; set; } = 4;
 }
