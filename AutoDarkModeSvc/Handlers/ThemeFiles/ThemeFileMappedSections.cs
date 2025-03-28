@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,13 +26,23 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
 {
     public class Desktop
     {
-        public (string, int) Section { get; } = (@"[Control Panel\Desktop]", 0);
+        public virtual (string, int) Section { get; } = (@"[Control Panel\Desktop]", 0);
         public string Wallpaper { get; set; } = "";
         public string Pattern { get; set; } = "";
         public int PicturePosition { get; set; } = 4;
         public int MultimonBackgrounds { get; set; } = 0;
         public int WindowsSpotlight { get; set; } = 0;
         public List<(string, string)> MultimonWallpapers { get; set; } = new();
+    }
+
+    public class DesktopA : Desktop
+    {
+        public override (string, int) Section { get; } = (@"[Control Panel\Desktop.A]", 0);
+    }
+
+    public class DesktopW : Desktop
+    {
+        public override (string, int) Section { get; } = (@"[Control Panel\Desktop.W]", 0);
     }
 
     public class MasterThemeSelector

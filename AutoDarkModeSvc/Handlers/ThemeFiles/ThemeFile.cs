@@ -44,6 +44,8 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
         public Colors Colors { get; set; } = new();
         public Cursors Cursors { get; set; } = new();
         public Desktop Desktop { get; set; } = new();
+        public DesktopA DesktopA { get; set; } = new();
+        public DesktopW DesktopW { get; set; } = new();
         public string DisplayName { get; set; } = "ADMTheme";
         public MasterThemeSelector MasterThemeSelector { get; set; } = new();
         public Slideshow Slideshow { get; set; } = new();
@@ -189,6 +191,22 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 };
                 Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
                 UpdateSection(Desktop.Section.Item1, desktopSerialized);
+
+                List<string> desktopWSerialized =
+                [
+                    DesktopW.Section.Item1,
+                    $"{nameof(DesktopW.Wallpaper)}={DesktopW.Wallpaper}",
+                ];
+                DesktopW.MultimonWallpapers.ForEach(w => desktopWSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
+                UpdateSection(DesktopW.Section.Item1, desktopWSerialized);
+
+                List<string> desktopASerialized =
+                [
+                    DesktopA.Section.Item1,
+                    $"{nameof(DesktopA.Wallpaper)}={DesktopA.Wallpaper}",
+                ];
+                DesktopA.MultimonWallpapers.ForEach(w => desktopASerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
+                UpdateSection(DesktopA.Section.Item1, desktopASerialized);
 
                 //Update Slideshow
                 if (Slideshow.Enabled)
@@ -389,12 +407,54 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
             return (encoding, themeFileContent);
         }
 
+
+        private void ParseWallpaperSection(Desktop desktop, List<string>.Enumerator iter)
+        {
+            Regex wallpaperRegex = WallpaperRegex();
+            while (iter.MoveNext())
+            {
+                if (iter.Current.StartsWith("["))
+                {
+                    break;
+                }
+                if (iter.Current.StartsWith("Wallpaper=")) desktop.Wallpaper = iter.Current.Split('=')[1].Trim();
+                else if (iter.Current.StartsWith("Pattern=")) desktop.Pattern = iter.Current.Split('=')[1].Trim();
+                else if (iter.Current.StartsWith("PicturePosition="))
+                {
+                    if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int pos))
+                    {
+                        desktop.PicturePosition = pos;
+                    }
+                }
+                else if (iter.Current.StartsWith("WindowsSpotlight="))
+                {
+                    if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int enabled))
+                    {
+                        desktop.WindowsSpotlight = enabled;
+                    }
+                }
+                else if (iter.Current.StartsWith("MultimonBackgrounds="))
+                {
+                    bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
+                    if (success) desktop.MultimonBackgrounds = num;
+                }
+                else if (wallpaperRegex.Matches(iter.Current).Count > 0)
+                {
+                    string[] split = iter.Current.Split('=');
+                    desktop.MultimonWallpapers.Add((split[1], split[0].Replace("Wallpaper", "")));
+                }
+            }
+        }
+
+
         [GeneratedRegex("^Wallpaper([0-9]+)=")]
         private static partial Regex WallpaperRegex();
 
         private void Parse()
         {
             Desktop = new();
+            DesktopW = new();
+            DesktopA = new();
             VisualStyles = new();
             Cursors = new();
             Colors = new();
@@ -427,41 +487,15 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles
                 }
                 else if (iter.Current.Contains(Desktop.Section.Item1))
                 {
-                    Regex wallpaperRegex = WallpaperRegex();
-                    while (iter.MoveNext())
-                    {
-                        if (iter.Current.StartsWith("["))
-                        {
-                            processLastIterValue = true;
-                            break;
-                        }
-                        if (iter.Current.StartsWith("Wallpaper=")) Desktop.Wallpaper = iter.Current.Split('=')[1].Trim();
-                        else if (iter.Current.StartsWith("Pattern=")) Desktop.Pattern = iter.Current.Split('=')[1].Trim();
-                        else if (iter.Current.StartsWith("PicturePosition="))
-                        {
-                            if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int pos))
-                            {
-                                Desktop.PicturePosition = pos;
-                            }
-                        }
-                        else if (iter.Current.StartsWith("WindowsSpotlight="))
-                        {
-                            if (int.TryParse(iter.Current.Split('=')[1].Trim(), out int enabled))
-                            {
-                                Desktop.WindowsSpotlight = enabled;
-                            }
-                        }
-                        else if (iter.Current.StartsWith("MultimonBackgrounds="))
-                        {
-                            bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
-                            if (success) Desktop.MultimonBackgrounds = num;
-                        }
-                        else if (wallpaperRegex.Matches(iter.Current).Count > 0)
-                        {
-                            string[] split = iter.Current.Split('=');
-                            Desktop.MultimonWallpapers.Add((split[1], split[0].Replace("Wallpaper", "")));
-                        }
-                    }
+                    ParseWallpaperSection(Desktop, iter);
+                }
+                else if (iter.Current.Contains(DesktopA.Section.Item1))
+                {
+                    ParseWallpaperSection(DesktopA, iter);
+                }
+                else if (iter.Current.Contains(DesktopW.Section.Item1))
+                {
+                    ParseWallpaperSection(DesktopW, iter);
                 }
                 else if (iter.Current.Contains(VisualStyles.Section.Item1))
                 {
