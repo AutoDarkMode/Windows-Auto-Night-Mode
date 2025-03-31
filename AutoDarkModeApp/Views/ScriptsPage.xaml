@@ -11,29 +11,23 @@
 
     <ScrollViewer>
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-            <StackPanel
-                MaxWidth="1000"
-                HorizontalAlignment="Stretch"
-                Spacing="{StaticResource SettingsCardSpacing}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=PageScriptsToggle}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True">
                     <ToggleSwitch />
-                </controls:SettingsCard>
-                <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE932;}"
-                    Header="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}"
-                    IsClickEnabled="True" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <HyperlinkButton MinWidth="120" Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
-                <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
-                    Header="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}"
-                    IsClickEnabled="True" />
-                <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
-                    Header="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}"
-                    IsClickEnabled="True" />
+                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="" />
+                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="" />
             </StackPanel>
         </Grid>
     </ScrollViewer>

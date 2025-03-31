@@ -6,10 +6,10 @@
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:windowex="using:WinUIEx"
-    Width="1100"
-    Height="760"
-    MinWidth="870"
-    MinHeight="600"
+    Width="780"
+    Height="640"
+    MinWidth="680"
+    MinHeight="320"
     PersistenceId="MainWindow"
     mc:Ignorable="d">
     <Window.SystemBackdrop>

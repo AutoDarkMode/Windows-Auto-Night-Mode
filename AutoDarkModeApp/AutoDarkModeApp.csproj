@@ -16,16 +16,17 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefaultLanguage>en-us</DefaultLanguage>
-    <PlatformTarget>x64</PlatformTarget>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Styles\SettingsCard.xaml" />
+    <None Remove="Styles\Stackpanel.xaml" />
   </ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<OutputPath>..\bin\Debug\adm-app\winui3</OutputPath>
+		<OutputPath>..\bin\Debug\adm-app\</OutputPath>
 	</PropertyGroup>
 	
   <ItemGroup>
@@ -35,8 +36,9 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250205002" />
+    <PackageReference Include="CommunityToolkit.WinUI.Converters" Version="8.1.240916" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.0" />
     <PackageReference Include="WinUIEx" Version="2.5.1" />
   </ItemGroup>
@@ -59,6 +61,9 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Styles\StackPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Styles\SettingsCard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

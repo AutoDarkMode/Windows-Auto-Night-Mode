@@ -10,19 +10,14 @@
     <Page.Resources>
         <!--  These are converters for different controls  -->
         <helpers:NullableBoolToBoolConverter x:Key="NullableBoolToBoolConverter" />
-        <helpers:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
     <ScrollViewer>
         <Grid
             x:Name="ContentArea"
-            Margin="{StaticResource NavigationViewPageContentMargin}"
-            VerticalAlignment="Top">
+            Margin="{StaticResource NavigationViewPageContentMargin}">
 
-            <StackPanel
-                MaxWidth="1000"
-                HorizontalAlignment="Stretch"
-                Spacing="{StaticResource SettingsCardSpacing}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Conditions  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderConditions}" />

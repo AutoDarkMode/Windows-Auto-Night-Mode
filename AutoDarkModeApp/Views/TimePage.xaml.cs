@@ -19,15 +19,5 @@ public sealed partial class TimePage : Page
         ViewModel = App.GetService<TimeViewModel>();
         InitializeComponent();
     }
-
-    private async void NightLightSettingsCard_Clicked(object sender, RoutedEventArgs e)
-    {
-        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
-    }
-
-    private async void GetCoordinatesSettingsCard_Clicked(object sender, RoutedEventArgs e)
-    {
-        await Windows.System.Launcher.LaunchUriAsync(new Uri("https://www.latlong.net/"));
-    }
 }
 

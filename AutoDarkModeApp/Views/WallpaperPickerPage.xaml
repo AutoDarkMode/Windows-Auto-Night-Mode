@@ -11,12 +11,8 @@
     <ScrollViewer>
         <Grid
             x:Name="ContentArea"
-            Margin="{StaticResource NavigationViewPageContentMargin}"
-            VerticalAlignment="Top">
-            <StackPanel
-                MaxWidth="1000"
-                HorizontalAlignment="Stretch"
-                Spacing="{StaticResource SettingsCardSpacing}">
+            Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Wallpaper  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
@@ -37,7 +33,7 @@
                     </ComboBox>
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMonitor}">
-                    <StackPanel Spacing="15">
+                    <StackPanel Spacing="16">
                         <ComboBox HorizontalAlignment="Right" />
                         <Button Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
                     </StackPanel>

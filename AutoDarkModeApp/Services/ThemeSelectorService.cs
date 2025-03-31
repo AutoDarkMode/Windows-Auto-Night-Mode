@@ -28,7 +28,7 @@ public class ThemeSelectorService : IThemeSelectorService
     {
         Theme = theme;
 
-        await SetRequestedThemeAsync();
+        //await SetRequestedThemeAsync();
         await SaveThemeInSettingsAsync(Theme);
     }
 

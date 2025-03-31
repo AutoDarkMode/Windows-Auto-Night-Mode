@@ -16,13 +16,11 @@
 
     <ScrollViewer>
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-            <StackPanel
-                MaxWidth="1000"
-                HorizontalAlignment="Stretch"
-                Spacing="{StaticResource SettingsCardSpacing}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSettings}" />
                 <controls:SettingsCard>
+                    <!--  TODO: convert to drop-down control [12/24]  -->
                     <controls:SettingsCard.Header>
                         <CheckBox Content="{helpers:ResourceString Name=cb12HourTime}" IsChecked="{x:Bind ViewModel.Is12HourClock, Mode=TwoWay}" />
                     </controls:SettingsCard.Header>
@@ -55,24 +53,34 @@
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SettingsPageLanguage}" />
                 <controls:SettingsExpander Description="{helpers:ResourceString Name=lblTranslator}" Header="{helpers:ResourceString Name=lblLanguage}">
-                    <ComboBox SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
+                    <ComboBox MinWidth="120" SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
                         <x:String>English (English)</x:String>
                         <x:String>Français (French)</x:String>
                         <x:String>日本語 (Japanese)</x:String>
                         <x:String>简体中文 (Simplified Chinese)</x:String>
                     </ComboBox>
+                    <!--
+                        TODO:
+                        * don't use an expander to hide this,
+                        * use background logic to show an InfoBar with this Button when setting changed
+                    -->
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Header="{helpers:ResourceString Name=restartNeeded}">
                             <Button
-                                MinWidth="150"
+                                MinWidth="120"
                                 Command="{x:Bind ViewModel.RestartCommand}"
                                 Content="{helpers:ResourceString Name=restart}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  Updates  -->
+                <!--  TODO: refactor this UI  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblUpdates}" />
-                <controls:SettingsExpander Description="{helpers:ResourceString Name=tbUpdates}" Header="{helpers:ResourceString Name=cbBackgroundUpdate}">
+                <controls:SettingsExpander
+                    Description="{helpers:ResourceString Name=tbUpdates}"
+                    Header="{helpers:ResourceString Name=cbBackgroundUpdate}"
+                    IsExpanded="True">
                     <ToggleSwitch x:Name="EnableUpdaterToggleSwitch" IsOn="{x:Bind ViewModel.IsUpdaterEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
@@ -83,7 +91,8 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=UpdatesTextBlockUpdateInterval}" IsEnabled="{x:Bind EnableUpdaterToggleSwitch.IsOn, Mode=OneWay}">
+
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=UpdatesTextBlockUpdateInterval}" IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexDaysBetweenUpdateCheck, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval1}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval3}" />
@@ -108,7 +117,8 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=UpdatesCheckBoxUpdateChannel}">
+
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=UpdatesCheckBoxUpdateChannel}" IsExpanded="True">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
@@ -121,6 +131,7 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  Auto start  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SettingsPageAutostartHeader}" />
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=SettingsPageAutostartDescription}">
                     <ToggleSwitch x:Name="AutostartToggleSwitch" IsOn="{x:Bind ViewModel.IsAutostart, Mode=TwoWay}" />
@@ -132,32 +143,33 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-                <controls:SettingsExpander>
-                    <controls:SettingsExpander.Header>
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
                         <StackPanel Orientation="Vertical" Spacing="16">
                             <TextBlock>
                                 <Run Text="{helpers:ResourceString Name=SettingsPageAutostartMode}" />
-                                <Run Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
+                                <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
                             </TextBlock>
                             <TextBlock IsTextSelectionEnabled="True" ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}">
                                 <Run Text="{helpers:ResourceString Name=SettingsPageAutostartPath}" />
-                                <Run Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
+                                <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
                             </TextBlock>
                         </StackPanel>
-                    </controls:SettingsExpander.Header>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <Button
-                                    MinWidth="150"
-                                    Command="{x:Bind ViewModel.AutostartRefreshCommand}"
-                                    Content="{helpers:ResourceString Name=SettingsPageAutostartRefreshButton}" />
-                            </controls:SettingsCard.Header>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
+                    </controls:SettingsCard.Header>
+                    <controls:SettingsCard.Content>
+                        <Button
+                            MinWidth="120"
+                            Command="{x:Bind ViewModel.AutostartRefreshCommand}"
+                            Content="{helpers:ResourceString Name=SettingsPageAutostartRefreshButton}" />
+                    </controls:SettingsCard.Content>
+                </controls:SettingsCard>
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ConfigTextBlockHeader}" />
+                <!--
+                    TODO:
+                    * remove redundancy for these "links", with other pages
+                    * show file/folder name in TextBlock or ToolTip
+                -->
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE932;}"
                     Click="OpenConfigSettingsCard_Click"

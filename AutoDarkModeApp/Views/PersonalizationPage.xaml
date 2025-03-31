@@ -11,18 +11,15 @@
 
     <ScrollViewer>
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-            <StackPanel
-                MaxWidth="1000"
-                HorizontalAlignment="Stretch"
-                Spacing="{StaticResource SettingsCardSpacing}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageManagedMode}" />
                 <controls:SettingsCard
+                    Click="PickWallpaperSettingsCard_Click"
                     Description="{helpers:ResourceString Name=tbPickWallpaper}"
                     Header="{helpers:ResourceString Name=lblPickWallpaper}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}"
-                    IsClickEnabled="True" 
-                    Click="PickWallpaperSettingsCard_Click"/>
+                    IsClickEnabled="True" />
                 <controls:SettingsCard
                     Description="{helpers:ResourceString Name=ColorizationTextBlockDescription}"
                     Header="{helpers:ResourceString Name=ColorizationPick}"

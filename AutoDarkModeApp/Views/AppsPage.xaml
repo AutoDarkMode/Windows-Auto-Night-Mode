@@ -14,16 +14,11 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid
-            x:Name="ContentArea"
-            Margin="{StaticResource NavigationViewPageContentMargin}"
-            VerticalAlignment="Top">
-            <StackPanel
-                MaxWidth="1000"
-                HorizontalAlignment="Stretch"
-                Spacing="{StaticResource SettingsCardSpacing}">
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSet}" />
+
                 <controls:SettingsCard Header="{helpers:ResourceString Name=lblApps}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
@@ -32,6 +27,7 @@
                         <ComboBoxItem Content="{helpers:ResourceString Name=disabled}" />
                     </ComboBox>
                 </controls:SettingsCard>
+
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=lblSystem}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SystemSwitchComponentMode, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
@@ -40,6 +36,7 @@
                         <ComboBoxItem Content="{helpers:ResourceString Name=AppSystemComboBoxItemAccentOnly}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=disabled}" />
                     </ComboBox>
+
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
@@ -79,13 +76,16 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
                 <controls:SettingsCard Header="{helpers:ResourceString Name=AppsLabelTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsTouchKeyboardSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
+
                 <controls:SettingsCard Header="{helpers:ResourceString Name=cbSettingsColourFilter}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblOffice}" HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}">
+
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblOffice}" HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}" IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.OfficeSwitchComponentMode, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />

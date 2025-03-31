@@ -2,7 +2,6 @@
     x:Class="AutoDarkModeApp.Views.ShellPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:behaviors="using:AutoDarkModeApp.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
@@ -10,34 +9,36 @@
     Loaded="OnLoaded">
 
     <Grid>
-        <Grid
-            x:Name="AppTitleBar"
-            Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
-            VerticalAlignment="Top"
-            Canvas.ZIndex="1"
-            IsHitTestVisible="True">
-            <Image
-                Width="16"
-                Height="16"
-                HorizontalAlignment="Left"
-                Source="/Assets/AutoDarkModeIcon.ico" />
-            <TextBlock
-                x:Name="AppTitleBarText"
-                Margin="28,0,0,0"
-                VerticalAlignment="Center"
-                Style="{StaticResource CaptionTextBlockStyle}"
-                TextWrapping="NoWrap" />
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TitleBar
+            x:Name="TitleBar"
+            Title="Auto Dark Mode X"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            BackRequested="NavViewTitleBar_BackRequested"
+            IsBackButtonEnabled="{x:Bind NavigationFrame.CanGoBack, Mode=OneWay}"
+            IsBackButtonVisible="True"
+            IsHitTestVisible="True"
+            IsPaneToggleButtonVisible="True"
+            PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
+            <TitleBar.IconSource>
+                <BitmapIconSource UriSource="Assets\AutoDarkModeIcon.ico" />
+            </TitleBar.IconSource>
+        </TitleBar>
+
         <NavigationView
             x:Name="NavigationViewControl"
-            Canvas.ZIndex="0"
-            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            ExpandedModeThresholdWidth="1280"
+            Grid.Row="1"
+            OpenPaneLength="240"
             Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
-            IsBackButtonVisible="Visible"
-            IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+            IsBackButtonVisible="Collapsed"
+            IsBackEnabled="True"
+            IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
-            PaneDisplayMode="Left"
+            PaneDisplayMode="Auto"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
             <NavigationView.MenuItems>
                 <!--
@@ -49,62 +50,43 @@
                 -->
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.TimeViewModel" Content="{helpers:ResourceString Name=NavbarTime}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE823;" />
+                        <FontIcon Glyph="&#xE823;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.SwitchModesViewModel" Content="{helpers:ResourceString Name=NavbarSwitchModes}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE945;" />
+                        <FontIcon Glyph="&#xE945;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AppsViewModel" Content="{helpers:ResourceString Name=NavbarApps}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE71D;" />
+                        <FontIcon Glyph="&#xE71D;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.PersonalizationViewModel" Content="{helpers:ResourceString Name=NavbarPersonalization}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE771;" />
+                        <FontIcon Glyph="&#xE771;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.ScriptsViewModel" Content="{helpers:ResourceString Name=NavbarScripts}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF000;" />
+                        <FontIcon Glyph="&#xF000;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.DonationViewModel" Content="{helpers:ResourceString Name=NavbarDonation}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEB51;" />
+                        <FontIcon Glyph="&#xEB51;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AboutViewModel" Content="{helpers:ResourceString Name=NavbarAbout}">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE946;" />
+                        <FontIcon Glyph="&#xE946;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-            </NavigationView.MenuItems>
-
-            <NavigationView.HeaderTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding}" />
-                    </Grid>
-                </DataTemplate>
-            </NavigationView.HeaderTemplate>
-            <i:Interaction.Behaviors>
-                <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
-                    <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                </behaviors:NavigationViewHeaderBehavior>
-            </i:Interaction.Behaviors>
-            <Grid>
-                <Frame x:Name="NavigationFrame" />
-            </Grid>
+            </NavigationView.FooterMenuItems>
+            <Frame x:Name="NavigationFrame" ScrollViewer.VerticalScrollBarVisibility="Auto" />
         </NavigationView>
     </Grid>
 </Page>

@@ -21,6 +21,7 @@ public partial class TimeViewModel : ObservableRecipient
     [ObservableProperty]
     private bool _isAutoThemeSwitchingEnabled;
 
+    // TODO: replace bools with Enum
     [ObservableProperty]
     private bool _isCustomTimes;
     [ObservableProperty]
