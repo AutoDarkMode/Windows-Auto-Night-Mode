@@ -14,145 +14,140 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Win32;
 using AutoDarkModeSvc.Events;
+using Microsoft.Win32;
 
-namespace AutoDarkModeSvc.SwitchComponents.Base
+namespace AutoDarkModeSvc.SwitchComponents.Base;
+
+class OfficeSwitch : BaseComponent<OfficeSwitchSettings>
 {
-    class OfficeSwitch : BaseComponent<OfficeSwitchSettings>
+    private Theme currentComponentTheme = Theme.Unknown;
+    private int ChoosenLightTheme = 0;
+
+    public override bool ThemeHandlerCompatibility { get; } = true;
+
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        private Theme currentComponentTheme = Theme.Unknown;
-        private int ChoosenLightTheme = 0;
-
-        public override bool ThemeHandlerCompatibility { get; } = true;
-
-        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+        if (currentComponentTheme == Theme.Unknown)
         {
-            if(currentComponentTheme == Theme.Unknown)
-            {
-                return true;
-            }
-            if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
-            {
-                return true;
-            }
-            else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
-            {
-                return true;
-            }
-            else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != e.Theme)
-            {
-                return true;
-            }
-            else if (Settings.Component.Mode == Mode.FollowSystemTheme && currentComponentTheme != Theme.Automatic)
-            {
-                return true;
-            }
-            else if (ChoosenLightTheme != Settings.Component.LightTheme)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
-
-        protected override void HandleSwitch(SwitchEventArgs e)
+        if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
         {
-            string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-            try
+            return true;
+        }
+        else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
+        {
+            return true;
+        }
+        else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != e.Theme)
+        {
+            return true;
+        }
+        else if (Settings.Component.Mode == Mode.FollowSystemTheme && currentComponentTheme != Theme.Automatic)
+        {
+            return true;
+        }
+        else if (ChoosenLightTheme != Settings.Component.LightTheme)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    protected override void HandleSwitch(SwitchEventArgs e)
+    {
+        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        try
+        {
+            if (Settings.Component.Mode == Mode.DarkOnly)
             {
-                if (Settings.Component.Mode == Mode.DarkOnly)
+                OfficeTheme(Settings.Component.DarkTheme);
+                currentComponentTheme = Theme.Dark;
+
+            }
+            else if (Settings.Component.Mode == Mode.LightOnly)
+            {
+                OfficeTheme(Settings.Component.LightTheme);
+                currentComponentTheme = Theme.Light;
+                ChoosenLightTheme = Settings.Component.LightTheme;
+            }
+            else if (Settings.Component.Mode == Mode.FollowSystemTheme)
+            {
+                OfficeTheme(6);
+                currentComponentTheme = Theme.Automatic;
+                ChoosenLightTheme = 6;
+            }
+            else
+            {
+                if (e.Theme == Theme.Dark)
                 {
                     OfficeTheme(Settings.Component.DarkTheme);
-                    currentComponentTheme = Theme.Dark;
-
                 }
-                else if (Settings.Component.Mode == Mode.LightOnly)
+                else
                 {
                     OfficeTheme(Settings.Component.LightTheme);
-                    currentComponentTheme = Theme.Light;
-                    ChoosenLightTheme = Settings.Component.LightTheme;
                 }
-                else if (Settings.Component.Mode == Mode.FollowSystemTheme)
-                {
-                    OfficeTheme(6);
-                    currentComponentTheme = Theme.Automatic;
-                    ChoosenLightTheme = 6;
-                }
-                else
-                {
-                    if (e.Theme == Theme.Dark)
-                    {
-                        OfficeTheme(Settings.Component.DarkTheme);
-                    }
-                    else
-                    {
-                        OfficeTheme(Settings.Component.LightTheme);
-                    }
-                    currentComponentTheme = e.Theme;
-                    ChoosenLightTheme = Settings.Component.LightTheme;
-                }
+                currentComponentTheme = e.Theme;
+                ChoosenLightTheme = Settings.Component.LightTheme;
             }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not set office theme");
-            }
-            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
         }
-
-        /// <summary>
-        /// Changes the office theme
-        /// </summary>
-        /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white, 6 = follow_system</param>
-        private static void OfficeTheme(byte themeValue)
+        catch (Exception ex)
         {
-            string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
+            Logger.Error(ex, "could not set office theme");
+        }
+        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+    }
 
-            //edit first registry key
-            using RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
-            commonKey.SetValue("UI Theme", themeValue);
+    /// <summary>
+    /// Changes the office theme
+    /// </summary>
+    /// <param name="themeValue">0 = colorful, 3 = grey, 4 = black, 5 = white, 6 = follow_system</param>
+    private static void OfficeTheme(byte themeValue)
+    {
+        string officeCommonKey = @"Software\Microsoft\Office\16.0\Common";
 
-            //search for the second key and then change it
-            using RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
+        //edit first registry key
+        using RegistryKey commonKey = Registry.CurrentUser.OpenSubKey(officeCommonKey, true);
+        commonKey.SetValue("UI Theme", themeValue);
 
-            string msaSubkey = @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\";
-            string anonymousSubKey = msaSubkey + @"\PendingChanges";
+        //search for the second key and then change it
+        using RegistryKey identityKey = Registry.CurrentUser.OpenSubKey(officeCommonKey + @"\Roaming\Identities\", true);
 
-            foreach (var v in identityKey.GetSubKeyNames())
+        string msaSubkey = @"\Settings\1186\{00000000-0000-0000-0000-000000000000}\";
+        string anonymousSubKey = msaSubkey + @"\PendingChanges";
+
+        foreach (var v in identityKey.GetSubKeyNames())
+        {
+            //registry key for users logged in with msa
+            if (!v.Equals("Anonymous"))
             {
-                //registry key for users logged in with msa
-                if (!v.Equals("Anonymous"))
+                try
                 {
-                    try
-                    {
-                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
-                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                    catch
-                    {
-                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
-                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
+                    using RegistryKey settingsKey = identityKey.OpenSubKey(v + msaSubkey, true);
+                    settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
                 }
-                //registry key for users without msa
-                else
+                catch
                 {
-                    try
-                    {
-                        using RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
-                        settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
-                    catch
-                    {
-                        using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
-                        createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
-                    }
+                    using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + msaSubkey, true);
+                    createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                }
+            }
+            //registry key for users without msa
+            else
+            {
+                try
+                {
+                    using RegistryKey settingsKey = identityKey.OpenSubKey(v + anonymousSubKey, true);
+                    settingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
+                }
+                catch
+                {
+                    using RegistryKey createdSettingsKey = identityKey.CreateSubKey(v + anonymousSubKey, true);
+                    createdSettingsKey.SetValue("Data", new byte[] { themeValue, 0, 0, 0 });
                 }
             }
         }

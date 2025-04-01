@@ -1,174 +1,79 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>AutoDarkModeApp</RootNamespace>
-    <AssemblyName>AutoDarkModeApp</AssemblyName>
-    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <TargetCulture>en</TargetCulture>
-    <ProductName>Auto-Night Mode</ProductName>
-    <PublisherName>Armin Osaj</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>0.9.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <UseWPF>true</UseWPF>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Platforms>AnyCPU;ARM64</Platforms>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>FF582FA313E61B77B0FD3885AB6473A39A74DBA9</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>AutoDarkModeApp_1_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>AutoDarkModeIcon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>AutoDarkModeApp.App</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetZone>LocalIntranet</TargetZone>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestTimestampUrl>http://tsa.startssl.com/rfc3161</ManifestTimestampUrl>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\bin\Debug\adm-app</OutputPath>
-    <NoWarn>1701;1702;CA1416</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <OutputPath>..\bin\Debug\adm-app</OutputPath>
-    <NoWarn>1701;1702;CA1416</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\bin\Release\adm-app</OutputPath>
-    <WarningLevel>0</WarningLevel>
-    <NoWarn>1701;1702;CA1416</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <OutputPath>..\bin\Release\adm-app</OutputPath>
-    <WarningLevel>0</WarningLevel>
-    <NoWarn>1701;1702;CA1416</NoWarn>
+    <ApplicationIcon>Assets/AutoDarkModeIcon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <PublishProfile>Properties\PublishProfiles\win-$(Platform).pubxml</PublishProfile>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+	<UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefaultLanguage>en-us</DefaultLanguage>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Resource Include="Resources\Kofi_Logo.png" />
-    <Resource Include="Resources\telegram.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\telegram-light.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Microsoft_Edge_Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\GitHub_Logo_Black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Twitter_Logo_Blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\PayPal_Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Photo_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\GitHub_Logo_White.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Microsoft_Edge_Logo_White.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Settings_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="FluentWPF" Version="0.10.2" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.VisualStudio.VsixColorCompiler" Version="17.0.31709.430" />
-    <PackageReference Include="ModernWpfUI" Version="0.9.6" />
-    <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.5" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Management" Version="8.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Office_Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\DonationHeader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\UpdaterHeader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="AutoDarkModeIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="AboutWindow.xaml.cs" />
-    <None Remove="Pages\PageScripts.xaml~RFacb2461.TMP" />
-    <None Remove="Pages\telegram.png" />
-    <None Remove="Resources\Kofi_Logo.png" />
-    <Page Remove="AboutWindow.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SourceChord.GridExtra\" />
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
-    <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <None Remove="Styles\SettingsCard.xaml" />
+    <None Remove="Styles\Stackpanel.xaml" />
   </ItemGroup>
 
-  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
-    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(OutDir)\Licenses" />
-    <Copy SourceFiles="Licenses\lgpl.txt" DestinationFolder="$(OutDir)\Licenses" />
-  </Target>
-  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
-    <Copy SourceFiles="Licenses\apache-2.0.txt" DestinationFolder="$(PublishDir)\Licenses" />
-    <Copy SourceFiles="Licenses\lgpl.txt" DestinationFolder="$(PublishDir)\Licenses" />
-  </Target>
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<OutputPath>..\bin\Debug\adm-app\</OutputPath>
+	</PropertyGroup>
+	
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.Converters" Version="8.1.240916" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.0" />
+    <PackageReference Include="WinUIEx" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoDarkModeApp.Core\AutoDarkModeApp.Core.csproj" />
+		<ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
+		<ProjectReference Include="..\AutoDarkModeComms\AutoDarkModeComms.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Assets\AutoDarkModeIcon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\AutoDarkModeIconFont.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Page Update="Styles\StackPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\SettingsCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
 </Project>

@@ -15,20 +15,15 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Events
+namespace AutoDarkModeSvc.Events;
+
+class ExitEventArgs : EventArgs
 {
-    class ExitEventArgs : EventArgs
+    public ExitEventArgs(bool closeApp)
     {
-        public ExitEventArgs(bool closeApp)
-        {
-            CloseApp = closeApp;
-        }
-
-        public bool CloseApp { get; }
+        CloseApp = closeApp;
     }
+
+    public bool CloseApp { get; }
 }

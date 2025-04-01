@@ -14,94 +14,91 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeLib.Configs;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
+using AutoDarkModeLib.Configs;
 using Windows.System.Power;
 
-namespace AutoDarkModeSvc.Handlers
+namespace AutoDarkModeSvc.Handlers;
+
+static class PowerHandler
 {
-    static class PowerHandler
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    public static bool EnergySaverMitigationActive { get; private set; }
+    public static void RequestDisableEnergySaver(AdmConfig config)
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public static bool EnergySaverMitigationActive { get; private set; }
-        public static void RequestDisableEnergySaver(AdmConfig config)
+        if (EnergySaverMitigationActive) return;
+        if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
         {
-            if (EnergySaverMitigationActive) return;
-            if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
-            {
-                return;
-            }
-
-            if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
-            {
-                ChangeBatterySlider(0);
-                EnergySaverMitigationActive = true;
-            }
+            return;
         }
 
-        public static void RequestRestoreEnergySaver(AdmConfig config)
+        if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && PowerManager.EnergySaverStatus == EnergySaverStatus.On)
         {
-            if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
-            {
-                return;
-            }
+            ChangeBatterySlider(0);
+            EnergySaverMitigationActive = true;
+        }
+    }
 
-            if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && EnergySaverMitigationActive)
-            {
-                ChangeBatterySlider(config.Tunable.BatterySliderDefaultValue);
-                EnergySaverMitigationActive = false;
-            }
+    public static void RequestRestoreEnergySaver(AdmConfig config)
+    {
+        if (!config.Tunable.DisableEnergySaverOnThemeSwitch)
+        {
+            return;
         }
 
-        private static void ChangeBatterySlider(int value)
+        if (PowerManager.BatteryStatus != BatteryStatus.NotPresent && EnergySaverMitigationActive)
         {
-            using Process setBatterySlider = new();
-            setBatterySlider.StartInfo.FileName = "powercfg.exe";
-            setBatterySlider.StartInfo.Arguments = $"/setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD {value}";
-            setBatterySlider.StartInfo.UseShellExecute = false;
-            setBatterySlider.StartInfo.CreateNoWindow = true;
-            try
-            {
-                setBatterySlider.Start();
-                setBatterySlider.WaitForExit(1000);
-                if (!setBatterySlider.HasExited)
-                {
-                    Logger.Error("had to murder powercfg /setdcvalueindex process");
-                    setBatterySlider.Kill();
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "error modifying energy saver slider:");
-                return;
-            }
-            Logger.Debug($"set battery saver slider to {value}");
-
-            using Process setSchemeActive = new();
-            setSchemeActive.StartInfo.FileName = "powercfg.exe";
-            setSchemeActive.StartInfo.Arguments = "/setactive SCHEME_CURRENT";
-            setSchemeActive.StartInfo.UseShellExecute = false;
-            setSchemeActive.StartInfo.CreateNoWindow = true;
-            try
-            {
-                setSchemeActive.Start();
-                setSchemeActive.WaitForExit(1000);
-                if (!setBatterySlider.HasExited)
-                {
-                    Logger.Error("had to murder powercfg /setactive");
-                    setSchemeActive.Kill();
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "error modifying active power scheme state:");
-                return;
-            }
-            Logger.Debug($"updated active power scheme");
-
+            ChangeBatterySlider(config.Tunable.BatterySliderDefaultValue);
+            EnergySaverMitigationActive = false;
         }
+    }
+
+    private static void ChangeBatterySlider(int value)
+    {
+        using Process setBatterySlider = new();
+        setBatterySlider.StartInfo.FileName = "powercfg.exe";
+        setBatterySlider.StartInfo.Arguments = $"/setdcvalueindex SCHEME_CURRENT SUB_ENERGYSAVER ESBATTTHRESHOLD {value}";
+        setBatterySlider.StartInfo.UseShellExecute = false;
+        setBatterySlider.StartInfo.CreateNoWindow = true;
+        try
+        {
+            setBatterySlider.Start();
+            setBatterySlider.WaitForExit(1000);
+            if (!setBatterySlider.HasExited)
+            {
+                Logger.Error("had to murder powercfg /setdcvalueindex process");
+                setBatterySlider.Kill();
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "error modifying energy saver slider:");
+            return;
+        }
+        Logger.Debug($"set battery saver slider to {value}");
+
+        using Process setSchemeActive = new();
+        setSchemeActive.StartInfo.FileName = "powercfg.exe";
+        setSchemeActive.StartInfo.Arguments = "/setactive SCHEME_CURRENT";
+        setSchemeActive.StartInfo.UseShellExecute = false;
+        setSchemeActive.StartInfo.CreateNoWindow = true;
+        try
+        {
+            setSchemeActive.Start();
+            setSchemeActive.WaitForExit(1000);
+            if (!setBatterySlider.HasExited)
+            {
+                Logger.Error("had to murder powercfg /setactive");
+                setSchemeActive.Kill();
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "error modifying active power scheme state:");
+            return;
+        }
+        Logger.Debug($"updated active power scheme");
+
     }
 }

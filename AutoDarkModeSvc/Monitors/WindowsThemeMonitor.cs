@@ -14,128 +14,125 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Management;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Monitors
+namespace AutoDarkModeSvc.Monitors;
+
+public static class WindowsThemeMonitor
 {
-    public static class WindowsThemeMonitor
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private static ManagementEventWatcher globalThemeEventWatcher;
+    private static bool IsPaused
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private static ManagementEventWatcher globalThemeEventWatcher;
-        private static bool IsPaused
-        {
-            get;
+        get;
 
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set;
-        }
-        private static void HandleThemeMonitorEvent()
-        {
-            Logger.Debug("theme switch detected");
-            Thread thread = new(() =>
-            {
-                try
-                {
-                    GlobalState.Instance().RefreshThemes(AdmConfigBuilder.Instance().Config);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"could not update theme name");
-                }
-            })
-            {
-                Name = "COMThemeManagerThread"
-            };
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            try
-            {
-                thread.Join();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "error while waiting for thread to stop:");
-            }
-            ThemeManager.RequestSwitch(new(SwitchSource.ExternalThemeSwitch, GlobalState.Instance().InternalTheme));
-        }
-
-        public static void StartThemeMonitor()
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        set;
+    }
+    private static void HandleThemeMonitorEvent()
+    {
+        Logger.Debug("theme switch detected");
+        Thread thread = new(() =>
         {
             try
             {
-                if (globalThemeEventWatcher != null)
-                {
-                    return;
-                }
-                globalThemeEventWatcher = WMIHandler.CreateHKCURegistryValueMonitor(HandleThemeMonitorEvent, "SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Themes", "CurrentTheme");
-                globalThemeEventWatcher.Start();
-                Logger.Info("theme monitor enabled");
+                GlobalState.Instance().RefreshThemes(AdmConfigBuilder.Instance().Config);
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "could not start active theme monitor");
+                Logger.Error(ex, $"could not update theme name");
             }
-        }
-
-        public static void PauseThemeMonitor(TimeSpan timeSpan)
+        })
         {
-            if (globalThemeEventWatcher != null && !IsPaused)
+            Name = "COMThemeManagerThread"
+        };
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+        try
+        {
+            thread.Join();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "error while waiting for thread to stop:");
+        }
+        ThemeManager.RequestSwitch(new(SwitchSource.ExternalThemeSwitch, GlobalState.Instance().InternalTheme));
+    }
+
+    public static void StartThemeMonitor()
+    {
+        try
+        {
+            if (globalThemeEventWatcher != null)
             {
-                IsPaused = true;
-                globalThemeEventWatcher.Stop();
-                Task.Delay(timeSpan).ContinueWith(e =>
-                {
-                    if (globalThemeEventWatcher != null) globalThemeEventWatcher.Start();
-                    IsPaused = false;
-                });
+                return;
             }
+            globalThemeEventWatcher = WMIHandler.CreateHKCURegistryValueMonitor(HandleThemeMonitorEvent, "SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Themes", "CurrentTheme");
+            globalThemeEventWatcher.Start();
+            Logger.Info("theme monitor enabled");
         }
-
-        public static void PauseThemeMonitor()
+        catch (Exception ex)
         {
-            if (globalThemeEventWatcher != null && !IsPaused)
-            {
-                globalThemeEventWatcher.Stop();
-                IsPaused = true;
-            }
+            Logger.Error(ex, "could not start active theme monitor");
         }
+    }
 
-        public static void ResumeThemeMonitor()
+    public static void PauseThemeMonitor(TimeSpan timeSpan)
+    {
+        if (globalThemeEventWatcher != null && !IsPaused)
         {
-            if (globalThemeEventWatcher != null && IsPaused)
+            IsPaused = true;
+            globalThemeEventWatcher.Stop();
+            Task.Delay(timeSpan).ContinueWith(e =>
             {
-                globalThemeEventWatcher.Start();
+                if (globalThemeEventWatcher != null) globalThemeEventWatcher.Start();
                 IsPaused = false;
-            }
-        }   
-
-        public static void StopThemeMonitor()
-        {
-            try
-            {
-                if (globalThemeEventWatcher != null)
-                {
-                    globalThemeEventWatcher.Stop();
-                    globalThemeEventWatcher.Dispose();
-                    globalThemeEventWatcher = null;
-                    Logger.Info("theme monitor disabled");
-                };
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not stop active theme monitor");
-            }
-
+            });
         }
+    }
+
+    public static void PauseThemeMonitor()
+    {
+        if (globalThemeEventWatcher != null && !IsPaused)
+        {
+            globalThemeEventWatcher.Stop();
+            IsPaused = true;
+        }
+    }
+
+    public static void ResumeThemeMonitor()
+    {
+        if (globalThemeEventWatcher != null && IsPaused)
+        {
+            globalThemeEventWatcher.Start();
+            IsPaused = false;
+        }
+    }
+
+    public static void StopThemeMonitor()
+    {
+        try
+        {
+            if (globalThemeEventWatcher != null)
+            {
+                globalThemeEventWatcher.Stop();
+                globalThemeEventWatcher.Dispose();
+                globalThemeEventWatcher = null;
+                Logger.Info("theme monitor disabled");
+            }
+            ;
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "could not stop active theme monitor");
+        }
+
     }
 }

@@ -14,120 +14,118 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeSvc.Modules;
 using System;
 using System.Collections.Generic;
 using System.Timers;
-using AutoDarkModeSvc.Monitors;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Modules;
 
-namespace AutoDarkModeSvc.Timers
+namespace AutoDarkModeSvc.Timers;
+
+public class ModuleTimer
 {
-    public class ModuleTimer
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private List<IAutoDarkModeModule> Modules { get; set; }
+    private Timer Timer { get; set; }
+    public string Name { get; }
+    private bool TickOnStart { get; }
+
+    readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+
+    /// <summary>
+    /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
+    /// </summary>
+    /// <param name="interval">A timer interval to determine when <see cref="ModuleTimer.OnTimedEvent(object, ElapsedEventArgs)"/> should be invoked</param>
+    /// <param name="name">unique timer name</param>
+    public ModuleTimer(int interval, string name)
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private List<IAutoDarkModeModule> Modules { get; set; }
-        private Timer Timer { get; set; }
-        public string Name { get; }
-        private bool TickOnStart { get;  }
-
-        readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-
-        /// <summary>
-        /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
-        /// </summary>
-        /// <param name="interval">A timer interval to determine when <see cref="ModuleTimer.OnTimedEvent(object, ElapsedEventArgs)"/> should be invoked</param>
-        /// <param name="name">unique timer name</param>
-        public ModuleTimer(int interval, string name)
+        Name = name;
+        Modules = new List<IAutoDarkModeModule>();
+        Timer = new Timer
         {
-            Name = name;
-            Modules = new List<IAutoDarkModeModule>();
-            Timer = new Timer
-            {
-                Interval = interval,
-                Enabled = false,
-                AutoReset = true
-            };
-            Timer.Elapsed += OnTimedEvent;
+            Interval = interval,
+            Enabled = false,
+            AutoReset = true
+        };
+        Timer.Elapsed += OnTimedEvent;
+    }
+
+    private void OnTimedEvent(object source, ElapsedEventArgs e)
+    {
+        // copying allows dynamic updates of the Module list since it can only be changed once every OnTimedEvent
+        List<IAutoDarkModeModule> ready = new(Modules);
+        if (builder.Config.Tunable.DebugTimerMessage)
+        {
+            Logger.Debug($"{Name}timer signal received");
         }
 
-        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        ready.ForEach(t =>
         {
-            // copying allows dynamic updates of the Module list since it can only be changed once every OnTimedEvent
-            List<IAutoDarkModeModule> ready = new(Modules);
-            if (builder.Config.Tunable.DebugTimerMessage)
+            t.Fire();
+        });
+    }
+
+    /// <summary>
+    /// Register a new <see cref="IAutoDarkModeModule" module/>
+    /// </summary>
+    /// <param name="module"></param>
+    public void RegisterModule(IAutoDarkModeModule module)
+    {
+        if (!Modules.Contains(module))
+        {
+            module.EnableHook();
+            if (module.FireOnRegistration)
             {
-                Logger.Debug($"{Name}timer signal received");
+                module.Fire();
             }
-
-            ready.ForEach(t =>
-            {
-                t.Fire();
-            });
+            Modules.Add(module);
+            Modules.Sort();
+            Logger.Debug($"registered {module.Name} to timer {Name}");
         }
+        // possible call OnTimedEvent here to reduce wait time after module has been added
+        // maybe counters concurrency mitigation delay
+    }
 
-        /// <summary>
-        /// Register a new <see cref="IAutoDarkModeModule" module/>
-        /// </summary>
-        /// <param name="module"></param>
-        public void RegisterModule(IAutoDarkModeModule module)
+    public void DeregisterModule(IAutoDarkModeModule module)
+    {
+        if (Modules.Contains(module))
         {
-            if (!Modules.Contains(module))
-            {
-                module.EnableHook();
-                if (module.FireOnRegistration)
-                {
-                    module.Fire();
-                }
-                Modules.Add(module);
-                Modules.Sort();
-                Logger.Debug($"registered {module.Name} to timer {Name}");
-            }
-            // possible call OnTimedEvent here to reduce wait time after module has been added
-            // maybe counters concurrency mitigation delay
+            module.DisableHook();
+            Modules.Remove(Modules.Find(m => m.Name == module.Name));
+            Logger.Debug($"deregistered {module.Name} from timer {Name}");
         }
+    }
 
-        public void DeregisterModule(IAutoDarkModeModule module)
-        {
-            if (Modules.Contains(module))
-            {
-                module.DisableHook();
-                Modules.Remove(Modules.Find(m => m.Name == module.Name));
-                Logger.Debug($"deregistered {module.Name} from timer {Name}");
-            }
-        }
+    public void DeregisterModule(string moduleName)
+    {
+        IAutoDarkModeModule module = Modules.Find(m => m.Name == moduleName);
+        if (module != null) DeregisterModule(module);
+    }
 
-        public void DeregisterModule(string moduleName)
-        {
-            IAutoDarkModeModule module = Modules.Find(m => m.Name == moduleName);
-            if (module != null) DeregisterModule(module);
-        }
+    public List<IAutoDarkModeModule> GetModules()
+    {
+        return new List<IAutoDarkModeModule>(Modules);
+    }
 
-        public List<IAutoDarkModeModule> GetModules()
+    public void Start()
+    {
+        Logger.Trace($"starting {Name} timer with {Timer.Interval} ms timer interval");
+        Timer.Start();
+        if (TickOnStart)
         {
-            return new List<IAutoDarkModeModule>(Modules);
+            OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
         }
+    }
 
-        public void Start()
-        {
-            Logger.Trace($"starting {Name} timer with {Timer.Interval} ms timer interval");
-            Timer.Start();
-            if (TickOnStart)
-            {
-                OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
-            }
-        }
+    public void Stop()
+    {
+        Logger.Trace("shutting down {0} timer", Name);
+        Timer.Stop();
+    }
 
-        public void Stop()
-        {
-            Logger.Trace("shutting down {0} timer", Name);
-            Timer.Stop();
-        }
-
-        public void Dispose()
-        {
-            Timer.Dispose();
-            Logger.Trace("{0} timer disposed", Name);
-        }
+    public void Dispose()
+    {
+        Timer.Dispose();
+        Logger.Trace("{0} timer disposed", Name);
     }
 }

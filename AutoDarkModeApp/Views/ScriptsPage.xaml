@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.ScriptsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True">
+                    <ToggleSwitch />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <HyperlinkButton MinWidth="120" Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="" />
+                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

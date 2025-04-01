@@ -1,8 +1,11 @@
 {
   "profiles": {
-    "AutoDarkModeApp": {
+    "AutoDarkModeApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AutoDarkModeApp (Unpackaged)": {
       "commandName": "Project",
-      "commandLineArgs": "/debug"
+      "workingDirectory": "..\\bin\\Debug\\adm-app\\"
     }
   }
 }

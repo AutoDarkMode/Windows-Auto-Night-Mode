@@ -14,103 +14,98 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Timers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
 
-namespace AutoDarkModeSvc.Modules
+namespace AutoDarkModeSvc.Modules;
+
+class UpdaterModule : AutoDarkModeModule
 {
-    class UpdaterModule : AutoDarkModeModule
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private bool firstRun = true;
+    private bool checkFailed;
+    public UpdaterModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        private bool firstRun = true;
-        private bool checkFailed;
-        public UpdaterModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
+        try
         {
-            try
-            {
-                builder.LoadUpdaterData();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "could not load last update time:");
-            }
-            Priority = 0;
+            builder.LoadUpdaterData();
         }
-        public override string TimerAffinity => TimerName.IO;
-
-        public override Task Fire(object caller = null)
+        catch (Exception ex)
         {
-            return Task.Run(() =>
-            {
-                Check();
-            });
-            //Updater();
+            Logger.Error(ex, "could not load last update time:");
         }
+        Priority = 0;
+    }
+    public override string TimerAffinity => TimerName.IO;
 
-        /// <summary>
-        /// Checks for updates and applies them if enabled and available
-        /// </summary>
-        private void Check()
+    public override Task Fire(object caller = null)
+    {
+        return Task.Run(() =>
         {
-            try
+            Check();
+        });
+        //Updater();
+    }
+
+    /// <summary>
+    /// Checks for updates and applies them if enabled and available
+    /// </summary>
+    private void Check()
+    {
+        try
+        {
+            TimeSpan PollingCooldownTimeSpan = TimeSpan.FromDays(builder.Config.Updater.DaysBetweenUpdateCheck);
+            DateTime nextUpdate = builder.UpdaterData.LastCheck.Add(PollingCooldownTimeSpan);
+            if (DateTime.Now >= nextUpdate || (firstRun && builder.Config.Updater.CheckOnStart) || checkFailed)
             {
-                TimeSpan PollingCooldownTimeSpan = TimeSpan.FromDays(builder.Config.Updater.DaysBetweenUpdateCheck);
-                DateTime nextUpdate = builder.UpdaterData.LastCheck.Add(PollingCooldownTimeSpan);
-                if (DateTime.Now >= nextUpdate || (firstRun && builder.Config.Updater.CheckOnStart) || checkFailed)
+                //Logger.Debug("performing update check");
+                firstRun = false;
+                checkFailed = false;
+                _ = UpdateHandler.CheckNewVersion();
+                ApiResponse versionCheck = UpdateHandler.UpstreamResponse;
+
+                // check if a new version is available upstream
+                if (versionCheck.StatusCode == StatusCode.New)
                 {
-                    //Logger.Debug("performing update check");
-                    firstRun = false;
-                    checkFailed = false;
-                    _ = UpdateHandler.CheckNewVersion();
-                    ApiResponse versionCheck = UpdateHandler.UpstreamResponse;
-
-                    // check if a new version is available upstream
-                    if (versionCheck.StatusCode == StatusCode.New)
+                    ApiResponse canUseUpdater = UpdateHandler.CanUseUpdater();
+                    // will pass through the update message if auto updater can be used
+                    if (canUseUpdater.StatusCode == StatusCode.New)
                     {
-                        ApiResponse canUseUpdater = UpdateHandler.CanUseUpdater();
-                        // will pass through the update message if auto updater can be used
-                        if (canUseUpdater.StatusCode == StatusCode.New)
+                        // if mode is not silent, or auto install is disabled, show the notification to prompt the user
+                        if (!builder.Config.Updater.Silent || !builder.Config.Updater.AutoInstall)
                         {
-                            // if mode is not silent, or auto install is disabled, show the notification to prompt the user
-                            if (!builder.Config.Updater.Silent || !builder.Config.Updater.AutoInstall)
-                            {
-                                ToastHandler.InvokeUpdateToast();
-                            }
-                            if (builder.Config.Updater.AutoInstall)
-                            {
-                                Task.Run(() => UpdateHandler.Update()).Wait();
-                            }
+                            ToastHandler.InvokeUpdateToast();
                         }
-                        // display notification without update options if unavailable
-                        else if (canUseUpdater.StatusCode == StatusCode.UnsupportedOperation || canUseUpdater.StatusCode == StatusCode.Disabled)
+                        if (builder.Config.Updater.AutoInstall)
                         {
-                            ToastHandler.InvokeUpdateToast(canUseUpdater: false);
+                            Task.Run(() => UpdateHandler.Update()).Wait();
                         }
                     }
-                    else if (versionCheck.StatusCode == StatusCode.Err && versionCheck.Details != null && versionCheck.Details.Equals("WebException"))
+                    // display notification without update options if unavailable
+                    else if (canUseUpdater.StatusCode == StatusCode.UnsupportedOperation || canUseUpdater.StatusCode == StatusCode.Disabled)
                     {
-                        Logger.Warn("rescheduling update check on next timer tick");
-                        checkFailed = true;
+                        ToastHandler.InvokeUpdateToast(canUseUpdater: false);
                     }
                 }
-                else
+                else if (versionCheck.StatusCode == StatusCode.Err && versionCheck.Details != null && versionCheck.Details.Equals("WebException"))
                 {
-                    Logger.Debug($"Next update check scheduled: {nextUpdate}");
+                    Logger.Warn("rescheduling update check on next timer tick");
+                    checkFailed = true;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                Logger.Error(ex, "error while running update checker:");
+                Logger.Debug($"Next update check scheduled: {nextUpdate}");
             }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "error while running update checker:");
         }
     }
 }

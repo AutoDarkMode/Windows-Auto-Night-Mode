@@ -14,59 +14,55 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Linq;
 using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Core;
-using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents
+namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
+
+class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
 {
-    class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
+    private readonly ComponentManager cm;
+    private readonly GlobalState state = GlobalState.Instance();
+    public ThemeModeEvent(ComponentManager cm)
     {
-        private readonly ComponentManager cm;
-        private readonly GlobalState state = GlobalState.Instance();
-        public ThemeModeEvent(ComponentManager cm) {
-            this.cm = cm;
-        }
-        protected override void ChangeEvent()
+        this.cm = cm;
+    }
+    protected override void ChangeEvent()
+    {
+        bool themeModeToggled = newConfig.WindowsThemeMode.Enabled != oldConfig.WindowsThemeMode.Enabled;
+        // if the theme mode is toggled to off, we need to reinitialize all components
+        if (themeModeToggled)
         {
-            bool themeModeToggled = newConfig.WindowsThemeMode.Enabled != oldConfig.WindowsThemeMode.Enabled;
-            // if the theme mode is toggled to off, we need to reinitialize all components
-            if (themeModeToggled)
+            if (newConfig.WindowsThemeMode.Enabled)
             {
-                if (newConfig.WindowsThemeMode.Enabled) {
-                    cm.InvokeDisableIncompatible();
-                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
-                    state.RefreshThemes(newConfig);
-                }
-                else
-                {
-                    WindowsThemeMonitor.StopThemeMonitor();
-                }
-            } 
-            else if (newConfig.WindowsThemeMode.Enabled)
+                cm.InvokeDisableIncompatible();
+                if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+                state.RefreshThemes(newConfig);
+            }
+            else
             {
+                WindowsThemeMonitor.StopThemeMonitor();
+            }
+        }
+        else if (newConfig.WindowsThemeMode.Enabled)
+        {
 
-                bool darkThemeChanged = newConfig.WindowsThemeMode.DarkThemePath != oldConfig.WindowsThemeMode.DarkThemePath;
-                bool lightThemeChanged = newConfig.WindowsThemeMode.LightThemePath != oldConfig.WindowsThemeMode.LightThemePath;
-                bool flagsChanged = !newConfig.WindowsThemeMode.ApplyFlags.SequenceEqual(oldConfig.WindowsThemeMode.ApplyFlags);
-                if (darkThemeChanged || lightThemeChanged || flagsChanged)
-                {
-                    state.RefreshThemes(newConfig);
-                }
+            bool darkThemeChanged = newConfig.WindowsThemeMode.DarkThemePath != oldConfig.WindowsThemeMode.DarkThemePath;
+            bool lightThemeChanged = newConfig.WindowsThemeMode.LightThemePath != oldConfig.WindowsThemeMode.LightThemePath;
+            bool flagsChanged = !newConfig.WindowsThemeMode.ApplyFlags.SequenceEqual(oldConfig.WindowsThemeMode.ApplyFlags);
+            if (darkThemeChanged || lightThemeChanged || flagsChanged)
+            {
+                state.RefreshThemes(newConfig);
+            }
 
 
-                bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
-                if (monitorThemeToggled)
-                {
-                    if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
-                    else WindowsThemeMonitor.StopThemeMonitor();
-                }
+            bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
+            if (monitorThemeToggled)
+            {
+                if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
+                else WindowsThemeMonitor.StopThemeMonitor();
             }
         }
     }
