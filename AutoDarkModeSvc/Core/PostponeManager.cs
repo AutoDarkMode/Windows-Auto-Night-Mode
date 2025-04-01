@@ -57,9 +57,7 @@ public class PostponeManager
     {
         get
         {
-            if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemPauseAutoSwitch))
-                return true;
-            return false;
+            return PostponeQueue.Any(x => x.Reason == Helper.PostponeItemPauseAutoSwitch);
         }
     }
 
@@ -71,9 +69,7 @@ public class PostponeManager
     {
         get
         {
-            if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemDelayAutoSwitch))
-                return true;
-            return false;
+            return PostponeQueue.Any(x => x.Reason == Helper.PostponeItemDelayAutoSwitch);
         }
     }
     /// <summary>
@@ -84,9 +80,7 @@ public class PostponeManager
     {
         get
         {
-            if (PostponeQueue.Any(x => x.Reason == Helper.PostponeItemDelayGracePeriod))
-                return true;
-            return false;
+            return PostponeQueue.Any(x => x.Reason == Helper.PostponeItemDelayGracePeriod);
         }
     }
 

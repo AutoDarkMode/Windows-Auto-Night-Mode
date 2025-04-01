@@ -75,31 +75,28 @@
                 </controls:SettingsExpander>
 
                 <!--  Updates  -->
-                <!--  TODO: refactor this UI  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblUpdates}" />
-                <controls:SettingsExpander
-                    Description="{helpers:ResourceString Name=tbUpdates}"
-                    Header="{helpers:ResourceString Name=cbBackgroundUpdate}"
-                    IsExpanded="True">
+
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=cbBackgroundUpdate}" IsExpanded="True">
                     <ToggleSwitch x:Name="EnableUpdaterToggleSwitch" IsOn="{x:Bind ViewModel.IsUpdaterEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
                             <Button
-                                MinWidth="150"
+                                MinWidth="120"
                                 Command="{x:Bind ViewModel.CheckUpdateCommand}"
-                                Content="{helpers:ResourceString Name=updateButton}" />
+                                Content="{helpers:ResourceString Name=updateButton}"
+                                Style="{ThemeResource AccentButtonStyle}" />
                         </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=UpdatesTextBlockUpdateInterval}" IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexDaysBetweenUpdateCheck, Mode=TwoWay}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval1}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval3}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval7}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval14}" />
-                    </ComboBox>
-                    <controls:SettingsExpander.Items>
+                        <!--  frequency  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=UpdatesTextBlockUpdateInterval}" IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexDaysBetweenUpdateCheck, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval1}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval3}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval7}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval14}" />
+                            </ComboBox>
+                        </controls:SettingsCard>
+                        <!--  checkboxes  -->
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
                                 <StackPanel Orientation="Vertical" Spacing="16">
@@ -117,6 +114,15 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
+                <!--  new UpdateChannel  -->
+                <controls:SettingsCard Header="Update channel">
+                    <ComboBox>
+                        <!--<ComboBox SelectedValue="{x:Bind ViewModel.UpdateChannel, Mode=TwoWay}">-->
+                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesChannelStable}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesChannelBeta}" />
+                    </ComboBox>
+                </controls:SettingsCard>
 
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=UpdatesCheckBoxUpdateChannel}" IsExpanded="True">
                     <controls:SettingsExpander.Items>

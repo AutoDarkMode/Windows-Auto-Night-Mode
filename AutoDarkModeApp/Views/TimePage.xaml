@@ -24,14 +24,6 @@
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <!--
-                    IDEA:
-                    * always show the TimePicker controls for light and dark (but invert bool on `IsWindowsNightLight`),
-                    * fill in data in controls, matching every setting, bind wih TimePickHourClock
-                    * set IsEnabled to true or false (bool true for Custom time)
-                    [Jay, @Jay-o-Way, 28-3-2025]
-                -->
-
                 <controls:SettingsCard Visibility="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">
@@ -58,7 +50,6 @@
 
                             <!--  Custom Time  -->
                             <Grid
-                                Grid.Column="0"
                                 ColumnSpacing="8"
                                 RowSpacing="16"
                                 Visibility="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}">
@@ -72,7 +63,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.Resources>
-                                    <Style BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                     </Style>
                                 </Grid.Resources>
@@ -109,7 +100,11 @@
 
                             <!--  Location  -->
                             <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.IsLocationTimes, Mode=OneWay}">
-                                <!--  TODO: improve this XAML  -->
+                                <StackPanel.Resources>
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </StackPanel.Resources>
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <FontIcon
                                         FontSize="16"
@@ -127,15 +122,17 @@
                                         Glyph="&#xe708;" />
                                     <TextBlock Text="{x:Bind ViewModel.DarkTimeBlockText, Mode=OneWay}" />
                                 </StackPanel>
-                                <TextBlock
-                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
+                                <TextBlock Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
                             </StackPanel>
 
                             <!--  Geo Coordinates  -->
                             <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.IsCoordinateTimes, Mode=OneWay}">
-                                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
+                                <StackPanel.Resources>
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
                                 <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
 
                                 <!--  Margin 8+16=24  -->
@@ -180,30 +177,21 @@
                         <controls:SettingsCard.Header>
                             <StackPanel Orientation="Horizontal" Spacing="24">
                                 <NumberBox
-                                    MinWidth="120"
+                                    MinWidth="160"
                                     Header="{helpers:ResourceString Name=lblLight}"
                                     LargeChange="10"
-                                    Maximum="60"
-                                    Minimum="-60"
                                     SmallChange="1"
                                     SpinButtonPlacementMode="Inline"
                                     Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
                                 <NumberBox
-                                    MinWidth="120"
+                                    MinWidth="160"
                                     Header="{helpers:ResourceString Name=lblDark}"
                                     LargeChange="10"
-                                    Maximum="60"
-                                    Minimum="-60"
                                     SmallChange="1"
                                     SpinButtonPlacementMode="Inline"
                                     Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
                             </StackPanel>
                         </controls:SettingsCard.Header>
-                        <!--  TODO: remove this button!  -->
-                        <Button
-                            MinWidth="120"
-                            Command="{x:Bind ViewModel.SaveOffsetCommand}"
-                            Content="{helpers:ResourceString Name=offsetButton}" />
                     </controls:SettingsCard>
                 </StackPanel>
 
