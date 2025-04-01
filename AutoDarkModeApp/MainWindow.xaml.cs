@@ -11,16 +11,11 @@ public sealed partial class MainWindow : WindowEx
         InitializeComponent();
 
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         Content = null;
 
-        if (Debugger.IsAttached)
-        {
-            Title = "Auto Dark Mode Dev";
-        }
-        else
-        {
-            Title = "Auto Dark Mode";
-        }
+        Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
         Closed += MainWindow_Closed;
     }
