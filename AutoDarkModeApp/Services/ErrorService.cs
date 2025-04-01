@@ -24,8 +24,8 @@ public class ErrorService : IErrorService
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
             DefaultButton = ContentDialogButton.Primary,
-            PrimaryButtonText = "OK",
-            CloseButtonText = "Cancel",
+            PrimaryButtonText = "Yes",
+            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
         var result = await dialog.ShowAsync();
@@ -90,8 +90,8 @@ public class ErrorService : IErrorService
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
             DefaultButton = ContentDialogButton.Primary,
-            PrimaryButtonText = "OK",
-            CloseButtonText = "Cancel",
+            PrimaryButtonText = "Yes",
+            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
         var result = await dialog.ShowAsync();
