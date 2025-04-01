@@ -1,17 +1,11 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using Microsoft.UI.Xaml;
-using Windows.UI.ViewManagement;
 
 namespace AutoDarkModeApp;
 
 public sealed partial class MainWindow : WindowEx
 {
-    private readonly Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-
-    private readonly UISettings settings;
-
     public MainWindow()
     {
         InitializeComponent();
@@ -29,9 +23,6 @@ public sealed partial class MainWindow : WindowEx
         }
 
         Closed += MainWindow_Closed;
-
-        // Theme change code picked from https://github.com/microsoft/WinUI-Gallery/pull/1239
-        dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
     }
 
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
@@ -46,10 +37,9 @@ public sealed partial class MainWindow : WindowEx
             await localSettings.SaveSettingAsync("Width", size.Width);
             await localSettings.SaveSettingAsync("Height", size.Height);
         });
-        //Debug.WriteLine("Save size: " + postion.X + "\t" + postion.Y + "\t" + bounds.Width + "\t" + bounds.Height);
 
+        //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
         Close();
-        //Debug.WriteLine("Will kill process");
         try
         {
             Process.GetCurrentProcess().Kill();

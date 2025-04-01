@@ -13,27 +13,35 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  Logo  -->
                 <StackPanel Orientation="Horizontal" Spacing="32">
                     <Image
                         Width="64"
                         Height="64"
+                        PointerPressed="LogoImage_PointerPressed"
                         Source="/Assets/AutoDarkModeIcon.ico" />
                     <StackPanel Orientation="Vertical" Spacing="8">
-                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Auto Dark Mode X" />
+                        <TextBlock
+                            x:Name="AppNameTextBlock"
+                            Style="{StaticResource TitleTextBlockStyle}"
+                            Text="Auto Dark Mode X" />
                         <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
                     </StackPanel>
                 </StackPanel>
 
+                <!--  Version information  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=NavbarAbout}" />
-
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=AboutTextBlockVersion}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xe946;}"
                     IsExpanded="True">
-                    <Button Content="{helpers:ResourceString Name=AboutButtonCopy}" />
+                    <Button
+                        x:Name="CopyVersionInfoButton"
+                        Click="CopyVersionInfoButoon_Click"
+                        Content="{helpers:ResourceString Name=AboutButtonCopy}" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
                                 <StackPanel Orientation="Vertical" Spacing="8">
                                     <TextBlock Text="Commit" />
                                     <TextBlock Text="App/Service" />
@@ -43,58 +51,69 @@
                                     <TextBlock Text="Windows" />
                                     <TextBlock Text="Arch" />
                                 </StackPanel>
-                            </controls:SettingsCard.Header>
+                                <StackPanel Orientation="Vertical" Spacing="8">
+                                    <TextBlock Text="{x:Bind ViewModel.CommitHashText, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind ViewModel.SvcVersionText, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind ViewModel.UpdaterVersionText, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind ViewModel.ShellVersionText, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind ViewModel.DotNetVersionText, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind ViewModel.WindowsVersionText, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind ViewModel.ArchText, Mode=OneWay}" />
+                                </StackPanel>
+                            </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  CopyVersionInfoButoon TeachingTip  -->
+                <TeachingTip
+                    x:Name="CopyButtonTeachingTip"
+                    Title="{helpers:ResourceString Name=AboutButtonCopy}"
+                    Subtitle="{helpers:ResourceString Name=AboutVersionInfoCopied}"
+                    Target="{x:Bind CopyVersionInfoButton}">
+                    <TeachingTip.IconSource>
+                        <FontIconSource Glyph="&#xE930;" />
+                    </TeachingTip.IconSource>
+                </TeachingTip>
+
                 <!--  TODO: fill in Click or NavigateUri  -->
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <StackPanel Spacing="8">
-                            <HyperlinkButton Content="{helpers:ResourceString Name=ConfigHyperLinkOpenLog}" />
-                            <HyperlinkButton Content="{helpers:ResourceString Name=AboutHyperLinkOpenUpdaterLog}" />
-                            <HyperlinkButton Content="{helpers:ResourceString Name=AboutHyperLinkOpenShell}" />
-                        </StackPanel>
-                    </controls:SettingsCard.Header>
+                <!--  Log and Shell  -->
+                <controls:SettingsCard ContentAlignment="Left">
+                    <StackPanel Spacing="8">
+                        <HyperlinkButton Click="OpenLogHyperlinkButton_Click" Content="{helpers:ResourceString Name=ConfigHyperLinkOpenLog}" />
+                        <HyperlinkButton Click="OpenUpdaterLogHyperlinkButton_Click" Content="{helpers:ResourceString Name=AboutHyperLinkOpenUpdaterLog}" />
+                        <HyperlinkButton Click="OpenShellHyperlinkButton_Click" Content="{helpers:ResourceString Name=AboutHyperLinkOpenShell}" />
+                    </StackPanel>
                 </controls:SettingsCard>
 
-
+                <!--  SpecialThanks  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <StackPanel Spacing="8">
-                            <HyperlinkButton NavigateUri="https://github.com/namazso" ToolTipService.ToolTip="https://github.com/namazso">namaszo</HyperlinkButton>
-                        </StackPanel>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <HyperlinkButton NavigateUri="https://github.com/namazso" ToolTipService.ToolTip="https://github.com/namazso">namaszo</HyperlinkButton>
                 </controls:SettingsCard>
 
-
+                <!--  Follow us  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AboutTextBlockFollowUs}" />
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <StackPanel Orientation="Horizontal" Spacing="16">
-                            <TextBlock
-                                FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
-                                FontSize="24"
-                                Text="A" />
-                            <HyperlinkButton Content="Github" />
-                            <TextBlock
-                                FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
-                                FontSize="24"
-                                Text="B" />
-                            <HyperlinkButton Content="Telegram" />
-                        </StackPanel>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Spacing="16">
+                        <FontIcon
+                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
+                            FontSize="24"
+                            Glyph="&#xE902;" />
+                        <HyperlinkButton Content="Github" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" />
+                        <FontIcon
+                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
+                            FontSize="24"
+                            Foreground="#26A5E4"
+                            Glyph="&#xE901;" />
+                        <HyperlinkButton Content="Telegram" NavigateUri="https://t.me/autodarkmode" />
+                    </StackPanel>
                 </controls:SettingsCard>
 
+                <!--  Third Party  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <StackPanel Spacing="8">
-                            <HyperlinkButton Content="WinUI" />
-                        </StackPanel>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <HyperlinkButton Content="WinUI" NavigateUri="https://github.com/microsoft/WindowsAppSDK" />
                 </controls:SettingsCard>
             </StackPanel>
         </Grid>
