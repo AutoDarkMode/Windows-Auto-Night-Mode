@@ -28,7 +28,7 @@ public partial class App : Application
     public static T GetService<T>()
         where T : class
     {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
             throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
@@ -90,8 +90,6 @@ public partial class App : Application
             services.AddTransient<WallpaperPickerPage>();
             services.AddTransient<TimeViewModel>();
             services.AddTransient<TimePage>();
-            services.AddTransient<ShellPage>();
-            services.AddTransient<ShellViewModel>();
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
