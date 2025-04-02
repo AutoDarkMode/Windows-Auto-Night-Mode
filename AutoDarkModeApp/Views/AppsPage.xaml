@@ -85,22 +85,6 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblOffice}" HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}" IsExpanded="True">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.OfficeSwitchComponentMode, Mode=TwoWay}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwDark}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=LabelFollowSystemTheme}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=disabled}" />
-                    </ComboBox>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <CheckBox Content="{helpers:ResourceString Name=cbOfficeWhiteTheme}" IsChecked="{x:Bind ViewModel.IsOfficeSwitchComponentLightTheme, Mode=TwoWay}" />
-                            </controls:SettingsCard.Header>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
             </StackPanel>
         </Grid>
     </ScrollViewer>

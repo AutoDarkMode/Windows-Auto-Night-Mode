@@ -442,9 +442,6 @@ Would you like to create an issue on the Auto Dark Mode repository?
   <data name="ThemeApplyError1" xml:space="preserve">
     <value>Error occurred while applying the selected themes, theme switching disabled</value>
   </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative light theme</value>
-  </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Download Extension</value>
   </data>
@@ -552,10 +549,6 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>Configuration</value>
-  </data>
-  <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy)</value>
-    <comment>What does "legacy" mean??</comment>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Pick a theme</value>
@@ -1047,9 +1040,6 @@ Do you really want to continue?</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>Paused</value>
-  </data>
-  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>An error occurred while patching.</value>
