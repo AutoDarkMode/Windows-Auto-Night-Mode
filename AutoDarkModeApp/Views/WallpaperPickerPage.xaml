@@ -9,9 +9,7 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid
-            x:Name="ContentArea"
-            Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Wallpaper  -->
@@ -19,44 +17,152 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMode}">
+
+                <!--  Wallpaper Switch Theme  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMode}" Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexWallpaperMode, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=ThemeLight}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=ThemeDark}" />
                     </ComboBox>
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxType}">
-                    <ComboBox>
-                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemPictureMM}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemSolidColor}" />
-                    </ComboBox>
+
+                <!--  Wallpaper Type  -->
+                <controls:SettingsCard Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
+                    <controls:SettingsCard.Description>
+                        <StackPanel Spacing="12">
+                            <RadioButtons>
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}" IsChecked="{x:Bind ViewModel.IsPictureType, Mode=TwoWay}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemPictureMM}" IsChecked="{x:Bind ViewModel.IsPictureMMType, Mode=TwoWay}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemSolidColor}" IsChecked="{x:Bind ViewModel.IsSolidColorType, Mode=TwoWay}" />
+                                <RadioButton Content="{helpers:ResourceString Name=ThemePickerTheme11Spotlight}" IsChecked="{x:Bind ViewModel.IsSpotlightType, Mode=TwoWay}" />
+                            </RadioButtons>
+
+                            <!--  Image  -->
+                            <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.ImageSettingsCardVisibility, Mode=OneWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Border
+                                    Grid.Row="0"
+                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
+                                    BorderThickness="0,1,0,0" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                    Text="{helpers:ResourceString Name=WallpaperTextBlockChooseWallpaper}" />
+                                <Button
+                                    Grid.Row="1"
+                                    MinWidth="120"
+                                    HorizontalAlignment="Right"
+                                    Command="{x:Bind ViewModel.PickFileCommand}"
+                                    Content="{helpers:ResourceString Name=dbFilePicker}" />
+
+                                <TextBlock
+                                    Grid.Row="2"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                    Text="{helpers:ResourceString Name=WallpaperTextBlockImagePath}" />
+                                <HyperlinkButton
+                                    Grid.Row="2"
+                                    MinWidth="120"
+                                    HorizontalAlignment="Right"
+                                    Click="GlobalWallpaperPathHyperlinkButton_Click"
+                                    Content="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                            </Grid>
+
+                            <!--  Monitor  -->
+                            <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.MonitorSettingsCardVisibility, Mode=OneWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Border
+                                    Grid.Row="0"
+                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
+                                    BorderThickness="0,1,0,0" />
+                                <StackPanel
+                                    Grid.Row="1"
+                                    Orientation="Horizontal"
+                                    Spacing="12">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=WallpaperComboBoxMonitor}" />
+                                    <HyperlinkButton Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
+                                </StackPanel>
+                                <ComboBox
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Right"
+                                    ItemsSource="{x:Bind ViewModel.Monitors, Mode=OneWay}"
+                                    SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
+                            </Grid>
+
+                            <!--  Wallpaper Filling Way  -->
+                            <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.WallpaperFillingWaySettingsCardVisibility, Mode=OneWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Border
+                                    Grid.Row="0"
+                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
+                                    BorderThickness="0,1,0,0" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                    Text="{helpers:ResourceString Name=WallpaperTextBlockPosition}" />
+                                <ComboBox
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Right"
+                                    SelectedIndex="{x:Bind ViewModel.SelectIndexWallpaperFillingWay, Mode=TwoWay}">
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemStretch}" />
+                                </ComboBox>
+                            </Grid>
+
+                            <!--  Color  -->
+                            <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.ColorSettingsCardVisibility, Mode=OneWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Border
+                                    Grid.Row="0"
+                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
+                                    BorderThickness="0,1,0,0" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                    Text="{helpers:ResourceString Name=WallpaperColor}" />
+                                <Button
+                                    Grid.Row="1"
+                                    MinWidth="120"
+                                    HorizontalAlignment="Right"
+                                    Click="SetColorButton_Click"
+                                    Foreground="{x:Bind ViewModel.SetColorButtonForeground, Mode=OneWay}">
+                                    <FontIcon Glyph="&#xE790;" />
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </controls:SettingsCard.Description>
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMonitor}">
-                    <StackPanel Spacing="16">
-                        <ComboBox HorizontalAlignment="Right" />
-                        <Button Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
+
+                <!--  Color Picker Dialog  -->
+                <ContentDialog
+                    x:Name="ColorPickerContentDialog"
+                    CloseButtonText="{helpers:ResourceString Name=cancel}"
+                    DefaultButton="Primary"
+                    PrimaryButtonText="{helpers:ResourceString Name=lblSet}">
+                    <StackPanel>
+                        <ColorPicker x:Name="ChooseColorPicker" />
                     </StackPanel>
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockPosition}">
-                    <ComboBox>
-                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemStretch}" />
-                    </ComboBox>
-                </controls:SettingsCard>
-
-                <!--  PickWallpaper  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblPickWallpaper}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=WallpaperTextBlockChooseWallpaper}">
-                    <Button Content="{helpers:ResourceString Name=dbFilePicker}" />
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockImagePath}">
-                            <TextBlock />
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-
+                </ContentDialog>
             </StackPanel>
         </Grid>
     </ScrollViewer>
