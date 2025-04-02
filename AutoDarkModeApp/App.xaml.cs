@@ -28,7 +28,7 @@ public partial class App : Application
     public static T GetService<T>()
         where T : class
     {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
             throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
@@ -36,7 +36,7 @@ public partial class App : Application
         return service;
     }
 
-    public static WindowEx MainWindow { get; } = new MainWindow();
+    public static WindowEx MainWindow { get; set; }
 
     public static UIElement? AppTitlebar
     {
@@ -90,7 +90,6 @@ public partial class App : Application
             services.AddTransient<WallpaperPickerPage>();
             services.AddTransient<TimeViewModel>();
             services.AddTransient<TimePage>();
-            services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
 
             // Configuration
@@ -112,6 +111,9 @@ public partial class App : Application
         base.OnLaunched(args);
 
         await SetApplicationLanguageAsync();
+
+        var shellViewModel = App.GetService<ShellViewModel>();
+        MainWindow = new MainWindow(shellViewModel);
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }
