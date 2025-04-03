@@ -1,6 +1,5 @@
 ﻿using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
@@ -20,4 +19,3 @@ public sealed partial class TimePage : Page
         InitializeComponent();
     }
 }
-
