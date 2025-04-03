@@ -36,7 +36,7 @@ public partial class App : Application
         return service;
     }
 
-    public static WindowEx MainWindow { get; } = new MainWindow();
+    public static WindowEx MainWindow { get; set; }
 
     public static UIElement? AppTitlebar
     {
@@ -90,6 +90,7 @@ public partial class App : Application
             services.AddTransient<WallpaperPickerPage>();
             services.AddTransient<TimeViewModel>();
             services.AddTransient<TimePage>();
+            services.AddTransient<ShellViewModel>();
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
@@ -110,6 +111,9 @@ public partial class App : Application
         base.OnLaunched(args);
 
         await SetApplicationLanguageAsync();
+
+        var shellViewModel = App.GetService<ShellViewModel>();
+        MainWindow = new MainWindow(shellViewModel);
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }

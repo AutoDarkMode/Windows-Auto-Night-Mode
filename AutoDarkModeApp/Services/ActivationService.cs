@@ -1,6 +1,5 @@
 ﻿using AutoDarkModeApp.Activation;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Views;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
