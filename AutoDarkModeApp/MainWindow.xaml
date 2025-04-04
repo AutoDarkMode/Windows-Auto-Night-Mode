@@ -48,10 +48,9 @@
             IsBackEnabled="True"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
-            ItemInvoked="NavigationViewControl_ItemInvoked"
-            Loaded="NavigationViewControl_Loaded"
             OpenPaneLength="240"
-            PaneDisplayMode="Auto">
+            PaneDisplayMode="Auto"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
             <NavigationView.MenuItems>
                 <!--
               TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
@@ -60,56 +59,45 @@
               TODO: Update item icons by updating FontIcon.Glyph properties.
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarTime}" Tag="TimePage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.TimeViewModel" Content="{helpers:ResourceString Name=NavbarTime}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE823;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarSwitchModes}" Tag="SwitchModesPage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.SwitchModesViewModel" Content="{helpers:ResourceString Name=NavbarSwitchModes}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE945;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarApps}" Tag="AppsPage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AppsViewModel" Content="{helpers:ResourceString Name=NavbarApps}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE71D;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarPersonalization}" Tag="PersonalizationPage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.PersonalizationViewModel" Content="{helpers:ResourceString Name=NavbarPersonalization}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE771;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarScripts}" Tag="ScriptsPage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.ScriptsViewModel" Content="{helpers:ResourceString Name=NavbarScripts}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xF000;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarDonation}" Tag="DonationPage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.DonationViewModel" Content="{helpers:ResourceString Name=NavbarDonation}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB51;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarAbout}" Tag="AboutPage">
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AboutViewModel" Content="{helpers:ResourceString Name=NavbarAbout}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE946;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
-            <!--<NavigationView.PaneFooter>
-                <TextBlock
-                    x:Name="VersionTextBlock"
-                    Text="{x:Bind helpers:AppInfo.Version, Mode=OneWay}"
-                    Margin="12,0,0,0"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" />
-            </NavigationView.PaneFooter>-->
-            <ScrollViewer>
-                <Frame x:Name="NavigationFrame" NavigationFailed="ContentFrame_NavigationFailed" />
-            </ScrollViewer>
+            <Frame x:Name="NavigationFrame" />
         </NavigationView>
     </Grid>
 </windowex:WindowEx>

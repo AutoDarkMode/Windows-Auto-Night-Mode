@@ -9,33 +9,35 @@
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-        <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageManagedMode}" />
-            <controls:SettingsCard
-                Click="PickWallpaperSettingsCard_Click"
-                Description="{helpers:ResourceString Name=tbPickWallpaper}"
-                Header="{helpers:ResourceString Name=lblPickWallpaper}"
-                HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}"
-                IsClickEnabled="True" />
-            <controls:SettingsCard
-                Description="{helpers:ResourceString Name=ColorizationTextBlockDescription}"
-                Header="{helpers:ResourceString Name=ColorizationPick}"
-                HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
-                IsClickEnabled="True" />
-            <controls:SettingsCard
-                Description="{helpers:ResourceString Name=PersonalizationPageCursorDescription}"
-                Header="{helpers:ResourceString Name=PersonalizationPageCursorTitle}"
-                HeaderIcon="{ui:FontIcon Glyph=&#xE962;}"
-                IsClickEnabled="True" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageManagedMode}" />
+                <controls:SettingsCard
+                    Click="PickWallpaperSettingsCard_Click"
+                    Description="{helpers:ResourceString Name=tbPickWallpaper}"
+                    Header="{helpers:ResourceString Name=lblPickWallpaper}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=ColorizationTextBlockDescription}"
+                    Header="{helpers:ResourceString Name=ColorizationPick}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=PersonalizationPageCursorDescription}"
+                    Header="{helpers:ResourceString Name=PersonalizationPageCursorTitle}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE962;}"
+                    IsClickEnabled="True" />
 
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageUnmanagedMode}" />
-            <controls:SettingsCard
-                Description="{helpers:ResourceString Name=tbPickTheme}"
-                Header="{helpers:ResourceString Name=lblPickTheme}"
-                HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
-                IsClickEnabled="True" />
-        </StackPanel>
-    </Grid>
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageUnmanagedMode}" />
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=tbPickTheme}"
+                    Header="{helpers:ResourceString Name=lblPickTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
+                    IsClickEnabled="True" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>
