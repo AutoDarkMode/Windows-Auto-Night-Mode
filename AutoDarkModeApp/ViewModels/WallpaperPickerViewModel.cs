@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System.Data;
+using System.Diagnostics;
+using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
@@ -9,11 +11,15 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
 public partial class WallpaperPickerViewModel : ObservableRecipient
 {
+    private readonly Stopwatch stopWatch = new();
+
+    private bool _isLoaded = false;
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -79,20 +85,21 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
     public WallpaperPickerViewModel(IErrorService errorService)
     {
+        stopWatch.Start();
+
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+
+        SelectWallpaperThemeMode = App.Current.RequestedTheme;
 
         try
         {
             _builder.Load();
-            _builder.LoadLocationData();
         }
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
-
-        SelectWallpaperThemeMode = App.Current.RequestedTheme;
 
         LoadSettings();
 
@@ -117,6 +124,8 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         });
     }
 
+    public void OnNaOnNavigatedFrom(NavigationEventArgs e) => StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+
     private void LoadSettings()
     {
         IsWallpaperSwitchEnabled = _builder.Config.WallpaperSwitch.Enabled;
@@ -133,8 +142,8 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
         // Generate a list with all installed Monitors, select the first one
         List<MonitorSettings> monitors = _builder.Config.WallpaperSwitch.Component.Monitors;
-        List<MonitorSettings> disconnected = new();
-        List<MonitorSettings> connected = monitors.Where(m =>
+        var disconnected = new List<MonitorSettings>();
+        var connected = monitors.Where(m =>
         {
             // Preload tostring to avoid dropdown opening lag
             m.ToString();
@@ -147,20 +156,17 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             return false;
         }).ToList();
 
-        disconnected.ForEach(m =>
+        foreach (var monitor in disconnected)
         {
-            m.MonitorString = $"{"DisplayMonitorDisconnected".GetLocalized()} - {m.MonitorString}";
-        });
+            monitor.MonitorString = $"{"DisplayMonitorDisconnected".GetLocalized()} - {monitor.MonitorString}";
+        }
 
         monitors.Clear();
         monitors.AddRange(connected);
         monitors.AddRange(disconnected);
-        Monitors = monitors;
 
-        if (Monitors.Count > 0)
-        {
-            SelectMonitor = Monitors[0];
-        }
+        Monitors = monitors;
+        SelectMonitor = monitors.FirstOrDefault();
 
         var currentType = SelectWallpaperThemeMode == ApplicationTheme.Light
             ? _builder.Config.WallpaperSwitch.Component.TypeLight
@@ -192,7 +198,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
         else if (currentType == WallpaperType.Individual)
         {
-            MonitorSettings monitorSettings = (SelectMonitor != null) ? (MonitorSettings)SelectMonitor : (MonitorSettings)new object();
+            MonitorSettings monitorSettings = (SelectMonitor != null) ? (MonitorSettings)SelectMonitor : (MonitorSettings)new MonitorSettings() { MonitorString = "Waiting" };
             GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light
                 ? monitorSettings.LightThemeWallpaper
                 : monitorSettings.DarkThemeWallpaper;
@@ -207,6 +213,11 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         SetColorButtonForeground = SelectWallpaperThemeMode == ApplicationTheme.Light
             ? new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor())
             : new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor());
+
+        _isLoaded = true;
+
+        stopWatch.Stop();
+        Debug.WriteLine("Time:" + stopWatch.ElapsedMilliseconds);
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
@@ -237,7 +248,10 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
     partial void OnSelectWallpaperThemeModeChanged(ApplicationTheme value)
     {
-        LoadSettings();
+        if (_isLoaded == true)
+        {
+            LoadSettings();
+        }
     }
 
     partial void OnCurrentDisplayModeChanged(WallpaperDisplayMode value)
@@ -278,7 +292,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     {
         if (CurrentDisplayMode == WallpaperDisplayMode.Picture)
         {
-            if (SelectWallpaperThemeMode == 0)
+            if (SelectWallpaperThemeMode == ApplicationTheme.Light)
             {
                 _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light = value;
                 _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Global;
@@ -292,7 +306,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         else if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM)
         {
             MonitorSettings monitorSettings = (SelectMonitor != null) ? (MonitorSettings)SelectMonitor : (MonitorSettings)new object();
-            if (SelectWallpaperThemeMode == 0)
+            if (SelectWallpaperThemeMode == ApplicationTheme.Light)
             {
                 monitorSettings.LightThemeWallpaper = value;
                 _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;

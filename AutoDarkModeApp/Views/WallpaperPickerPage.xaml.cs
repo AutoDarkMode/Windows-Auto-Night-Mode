@@ -3,6 +3,7 @@ using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -11,10 +12,7 @@ public sealed partial class WallpaperPickerPage : Page
     private readonly IErrorService _errorService = App.GetService<IErrorService>();
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
 
-    public WallpaperPickerViewModel ViewModel
-    {
-        get;
-    }
+    public WallpaperPickerViewModel ViewModel { get; }
 
     public WallpaperPickerPage()
     {
@@ -54,4 +52,6 @@ public sealed partial class WallpaperPickerPage : Page
             await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
     }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnNaOnNavigatedFrom(e);
 }
