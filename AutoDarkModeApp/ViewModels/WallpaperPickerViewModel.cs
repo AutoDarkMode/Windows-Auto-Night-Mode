@@ -17,8 +17,6 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class WallpaperPickerViewModel : ObservableRecipient
 {
-    private readonly Stopwatch stopWatch = new();
-
     private bool _isLoaded = false;
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
@@ -85,8 +83,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
     public WallpaperPickerViewModel(IErrorService errorService)
     {
-        stopWatch.Start();
-
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
 
@@ -215,9 +211,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             : new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor());
 
         _isLoaded = true;
-
-        stopWatch.Stop();
-        Debug.WriteLine("Time:" + stopWatch.ElapsedMilliseconds);
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
