@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using AutoDarkModeApp.Contracts.Services;
+﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using CommunityToolkit.WinUI.Helpers;
@@ -25,41 +24,19 @@ public sealed partial class WallpaperPickerPage : Page
 
     private void GlobalWallpaperPathHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var filepath = (sender as HyperlinkButton)?.Content?.ToString();
-        if (!string.IsNullOrEmpty(filepath))
-        {
-            try
-            {
-                new Process
-                {
-                    StartInfo = new ProcessStartInfo(filepath)
-                    {
-                        UseShellExecute = true
-                    }
-                }.Start();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AboutPage");
-            }
-        }
+        WallpaperPreviewTeachingTip.IsOpen = true;
     }
 
     private async void SetColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if (ViewModel.SelectIndexWallpaperMode == 0)
-        {
-            ChooseColorPicker.Color = _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor();
-        }
-        else
-        {
-            ChooseColorPicker.Color = _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
-        }
+        ChooseColorPicker.Color = ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
+            ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
+            : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
 
         var result = await ColorPickerContentDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            if (ViewModel.SelectIndexWallpaperMode == 0)
+            if (ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light)
             {
                 _builder.Config.WallpaperSwitch.Component.SolidColors.Light = ChooseColorPicker.Color.ToHex();
             }
