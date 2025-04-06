@@ -119,7 +119,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         });
     }
 
-    public void OnNaOnNavigatedFrom(NavigationEventArgs e)
+    public void OnViewModelNavigatedFrom(NavigationEventArgs e)
     {
         StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
         StateUpdateHandler.StopConfigWatcher();

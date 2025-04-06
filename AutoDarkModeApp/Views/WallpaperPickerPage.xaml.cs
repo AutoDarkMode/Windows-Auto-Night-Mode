@@ -53,5 +53,5 @@ public sealed partial class WallpaperPickerPage : Page
         }
     }
 
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnNaOnNavigatedFrom(e);
+    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }
