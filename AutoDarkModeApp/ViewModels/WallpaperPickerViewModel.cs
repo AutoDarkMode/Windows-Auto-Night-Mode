@@ -17,7 +17,6 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class WallpaperPickerViewModel : ObservableRecipient
 {
-    private bool _isLoaded = false;
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -120,7 +119,11 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         });
     }
 
-    public void OnNaOnNavigatedFrom(NavigationEventArgs e) => StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+    public void OnNaOnNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
+    }
 
     private void LoadSettings()
     {
@@ -209,8 +212,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         SetColorButtonForeground = SelectWallpaperThemeMode == ApplicationTheme.Light
             ? new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor())
             : new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor());
-
-        _isLoaded = true;
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
@@ -241,10 +242,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
     partial void OnSelectWallpaperThemeModeChanged(ApplicationTheme value)
     {
-        if (_isLoaded == true)
-        {
-            LoadSettings();
-        }
+        LoadSettings();
     }
 
     partial void OnCurrentDisplayModeChanged(WallpaperDisplayMode value)
