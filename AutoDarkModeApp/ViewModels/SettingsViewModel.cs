@@ -11,6 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel;
+using Windows.Globalization;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -187,7 +188,7 @@ public partial class SettingsViewModel : ObservableRecipient
             var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
             if (languageText != null)
             {
-                Language = languageText;
+                Language = languageText.Replace("\"", "");
             }
             else
             {

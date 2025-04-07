@@ -1,23 +1,42 @@
 ﻿using System.Text;
-
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using AutoDarkModeApp.Contracts.Services;
-
-using Newtonsoft.Json;
 
 namespace AutoDarkModeApp.Services;
 
 public class FileService : IFileService
 {
-    public T Read<T>(string folderPath, string fileName)
+    private readonly JsonSerializerOptions _jsonOptions = new()
+    {
+        NumberHandling = JsonNumberHandling.AllowReadingFromString,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        WriteIndented = true
+    };
+
+    public T? Read<T>(string folderPath, string fileName)
     {
         var path = Path.Combine(folderPath, fileName);
-        if (File.Exists(path))
+        if (!File.Exists(path))
         {
-            var json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<T>(json);
+            return default;
         }
 
-        return default;
+        var json = File.ReadAllText(path);
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            return default;
+        }
+
+        try
+        {
+            return JsonSerializer.Deserialize<T>(json, _jsonOptions);
+        }
+        catch (JsonException ex)
+        {
+            throw new InvalidOperationException($"Failed to deserialize JSON from file: {path}", ex);
+        }
     }
 
     public void Save<T>(string folderPath, string fileName, T content)
@@ -27,7 +46,7 @@ public class FileService : IFileService
             Directory.CreateDirectory(folderPath);
         }
 
-        var fileContent = JsonConvert.SerializeObject(content, Formatting.Indented);
+        var fileContent = JsonSerializer.Serialize(content, _jsonOptions);
         WriteAllTextWithRetry(Path.Combine(folderPath, fileName), fileContent);
     }
 

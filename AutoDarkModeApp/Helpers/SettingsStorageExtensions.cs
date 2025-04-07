@@ -1,12 +1,8 @@
-﻿using AutoDarkModeApp.Helpers;
-
-using Windows.Storage;
+﻿using Windows.Storage;
 using Windows.Storage.Streams;
 
 namespace AutoDarkModeApp.Helpers;
 
-// Use these extension methods to store and retrieve local and roaming app data
-// More details regarding storing and retrieving app data at https://docs.microsoft.com/windows/apps/design/app-settings/store-and-retrieve-app-data
 public static class SettingsStorageExtensions
 {
     private const string FileExtension = ".json";
@@ -19,7 +15,7 @@ public static class SettingsStorageExtensions
     public static async Task SaveAsync<T>(this StorageFolder folder, string name, T content)
     {
         var file = await folder.CreateFileAsync(GetFileName(name), CreationCollisionOption.ReplaceExisting);
-        var fileContent = await Json.StringifyAsync(content);
+        var fileContent = await Json.StringifyAsync(content!);
 
         await FileIO.WriteTextAsync(file, fileContent);
     }
@@ -39,7 +35,7 @@ public static class SettingsStorageExtensions
 
     public static async Task SaveAsync<T>(this ApplicationDataContainer settings, string key, T value)
     {
-        settings.SaveString(key, await Json.StringifyAsync(value));
+        settings.SaveString(key, await Json.StringifyAsync(value!));
     }
 
     public static void SaveString(this ApplicationDataContainer settings, string key, string value)
