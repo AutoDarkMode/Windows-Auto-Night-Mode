@@ -1,5 +1,4 @@
-﻿using AutoDarkModeApp.Activation;
-using AutoDarkModeApp.Contracts.Services;
+﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Core.Contracts.Services;
 using AutoDarkModeApp.Core.Services;
 using AutoDarkModeApp.Models;
@@ -28,7 +27,7 @@ public partial class App : Application
     public static T GetService<T>()
         where T : class
     {
-        if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
+        if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
             throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
@@ -36,12 +35,7 @@ public partial class App : Application
         return service;
     }
 
-    public static WindowEx MainWindow { get; } = new MainWindow();
-
-    public static UIElement? AppTitlebar
-    {
-        get; set;
-    }
+    public static WindowEx MainWindow { get; set; } = null!;
 
     public App()
     {
@@ -52,15 +46,8 @@ public partial class App : Application
         UseContentRoot(AppContext.BaseDirectory).
         ConfigureServices((context, services) =>
         {
-            // Default Activation Handler
-            services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
-
-            // Other Activation Handlers
-
             // Services
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-            services.AddTransient<INavigationViewService, NavigationViewService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
@@ -90,8 +77,7 @@ public partial class App : Application
             services.AddTransient<WallpaperPickerPage>();
             services.AddTransient<TimeViewModel>();
             services.AddTransient<TimePage>();
-            services.AddTransient<ShellPage>();
-            services.AddTransient<ShellViewModel>();
+            services.AddTransient<MainViewModel>();
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
@@ -112,6 +98,9 @@ public partial class App : Application
         base.OnLaunched(args);
 
         await SetApplicationLanguageAsync();
+
+        var mainViewModel = App.GetService<MainViewModel>();
+        MainWindow = new MainWindow(mainViewModel);
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }
