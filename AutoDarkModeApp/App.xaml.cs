@@ -46,15 +46,13 @@ public partial class App : Application
         {
             // Services
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+            services.AddSingleton<IFileService, FileService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
 
             services.AddSingleton<IErrorService, ErrorService>();
-
-            // Core Services
-            services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();
