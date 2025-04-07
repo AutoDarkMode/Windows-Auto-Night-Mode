@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AutoDarkModeApp.Core.Helpers;
+namespace AutoDarkModeApp.Helpers;
 
 public static class Json
 {

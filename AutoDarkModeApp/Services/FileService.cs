@@ -1,10 +1,10 @@
 ﻿using System.Text;
 
-using AutoDarkModeApp.Core.Contracts.Services;
+using AutoDarkModeApp.Contracts.Services;
 
 using Newtonsoft.Json;
 
-namespace AutoDarkModeApp.Core.Services;
+namespace AutoDarkModeApp.Services;
 
 public class FileService : IFileService
 {

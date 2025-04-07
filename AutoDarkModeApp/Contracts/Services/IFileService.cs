@@ -1,4 +1,4 @@
-﻿namespace AutoDarkModeApp.Core.Contracts.Services;
+﻿namespace AutoDarkModeApp.Contracts.Services;
 
 public interface IFileService
 {

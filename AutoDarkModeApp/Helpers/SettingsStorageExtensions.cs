@@ -1,4 +1,4 @@
-﻿using AutoDarkModeApp.Core.Helpers;
+﻿using AutoDarkModeApp.Helpers;
 
 using Windows.Storage;
 using Windows.Storage.Streams;

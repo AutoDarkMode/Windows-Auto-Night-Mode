@@ -1,6 +1,4 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Core.Contracts.Services;
-using AutoDarkModeApp.Core.Helpers;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Models;
 
