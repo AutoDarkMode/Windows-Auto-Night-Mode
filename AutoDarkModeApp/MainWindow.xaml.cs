@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml;
 using Windows.UI.ViewManagement;
 
@@ -17,16 +18,11 @@ public sealed partial class MainWindow : WindowEx
         InitializeComponent();
 
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
-        Content = null;
+        AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
-        if (Debugger.IsAttached)
-        {
-            Title = "Auto Dark Mode Dev";
-        }
-        else
-        {
-            Title = "Auto Dark Mode";
-        }
+        Content = null;
 
         Closed += MainWindow_Closed;
 
@@ -48,7 +44,9 @@ public sealed partial class MainWindow : WindowEx
         });
         //Debug.WriteLine("Save size: " + postion.X + "\t" + postion.Y + "\t" + bounds.Width + "\t" + bounds.Height);
 
-        Close();
+        // TODO: Maybe we could delete it `Close()`. The reason why `Process.GetCurrentProcess().Kill();` is used, it because MapLocationFinder;
+        //Close();
+        
         //Debug.WriteLine("Will kill process");
         try
         {

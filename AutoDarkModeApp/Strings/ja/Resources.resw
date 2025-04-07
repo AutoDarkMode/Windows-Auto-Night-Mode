@@ -449,9 +449,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="ThemeApplyError1" xml:space="preserve">
     <value>選択したテーマの適用中にエラーが発生、テーマの切り替えを無効化しました</value>
   </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>別のライトテーマ</value>
-  </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>拡張機能のダウンロード</value>
   </data>
@@ -558,9 +555,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>設定</value>
-  </data>
-  <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (旧)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>テーマの選択</value>
@@ -1054,9 +1048,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>停止中</value>
-  </data>
-  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Office 2013-2019 か、Office の設定「システム設定を使用する」を使用中に問題が発生している時にのみ使います</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>更新プログラム適用中にエラーが発生しました。</value>

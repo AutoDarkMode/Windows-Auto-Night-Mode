@@ -25,7 +25,7 @@
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
             <TitleBar.IconSource>
-                <BitmapIconSource UriSource="Assets\AutoDarkModeIcon.ico" />
+                <ImageIconSource ImageSource="/Assets/AutoDarkModeIcon.ico"/>
             </TitleBar.IconSource>
         </TitleBar>
 
@@ -86,7 +86,10 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
-            <Frame x:Name="NavigationFrame" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+
+            <ScrollViewer>
+                <Frame x:Name="NavigationFrame" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            </ScrollViewer>
         </NavigationView>
     </Grid>
 </Page>

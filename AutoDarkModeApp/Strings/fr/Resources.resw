@@ -449,9 +449,6 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
   <data name="ThemeApplyError1" xml:space="preserve">
     <value>Une erreur s'est produite lors de l'application des thèmes sélectionnés. Nous avons désactivé le changement de thème</value>
   </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Thème clair alternatif</value>
-  </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Télécharger l'extension</value>
   </data>
@@ -558,9 +555,6 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>Configuration</value>
-  </data>
-  <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (ancienne version)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Sélectionner un thème</value>
@@ -1054,9 +1048,6 @@ Voulez-vous vraiment continuer ?</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>Suspendu</value>
-  </data>
-  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Utiliser uniquement avec Office 2013-2019 ou si vous rencontrez des problèmes avec le paramètre « système d'utilisation » d'Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Une erreur est survenue lors de la mise à jour.</value>

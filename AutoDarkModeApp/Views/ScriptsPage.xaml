@@ -9,26 +9,24 @@
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
-    <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True">
-                    <ToggleSwitch />
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <HyperlinkButton MinWidth="120" Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
-                            </controls:SettingsCard.Header>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
+            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
+            <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True">
+                <ToggleSwitch />
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard>
+                        <controls:SettingsCard.Header>
+                            <HyperlinkButton MinWidth="120" Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
+                        </controls:SettingsCard.Header>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
-                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="" />
-                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="" />
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+            <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="" />
+            <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="" />
+        </StackPanel>
+    </Grid>
 </Page>
