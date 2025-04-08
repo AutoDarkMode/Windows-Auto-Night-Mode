@@ -38,13 +38,14 @@
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}" />
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemPictureMM}" />
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemSolidColor}" />
-                                <RadioButton Content="{helpers:ResourceString Name=ThemePickerTheme11Spotlight}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemSpotlight}" />
                             </RadioButtons>
+
+                            <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
 
                             <!--  Image  -->
                             <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
@@ -53,19 +54,14 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Border
-                                    Grid.Row="0"
-                                    Grid.ColumnSpan="2"
-                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
-                                    BorderThickness="0,1,0,0" />
                                 <TextBlock
-                                    Grid.Row="1"
+                                    Grid.Row="0"
                                     Grid.Column="0"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=WallpaperTextBlockChooseWallpaper}" />
                                 <Button
-                                    Grid.Row="1"
+                                    Grid.Row="0"
                                     Grid.Column="1"
                                     MinWidth="120"
                                     HorizontalAlignment="Right"
@@ -73,14 +69,14 @@
                                     Content="{helpers:ResourceString Name=dbFilePicker}" />
 
                                 <TextBlock
-                                    Grid.Row="2"
+                                    Grid.Row="1"
                                     Grid.Column="0"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=WallpaperTextBlockImagePath}" />
                                 <HyperlinkButton
                                     x:Name="GlobalWallpaperPathHyperlinkButton"
-                                    Grid.Row="2"
+                                    Grid.Row="1"
                                     Grid.Column="1"
                                     MinWidth="120"
                                     HorizontalAlignment="Right"
@@ -144,10 +140,6 @@
 
                             <!--  Color  -->
                             <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="32" />
@@ -155,32 +147,29 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Border
-                                    Grid.Row="0"
-                                    Grid.ColumnSpan="4"
-                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
-                                    BorderThickness="0,1,0,0" />
                                 <TextBlock
-                                    Grid.Row="1"
                                     Grid.Column="0"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource BodyStrongTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=WallpaperColor}" />
                                 <Border
-                                    Grid.Row="1"
                                     Grid.Column="1"
                                     Background="{x:Bind ViewModel.SetColorButtonForeground, Mode=OneWay}"
                                     BorderBrush="{StaticResource AccentControlElevationBorderBrush}"
                                     BorderThickness="1"
                                     CornerRadius="4" />
                                 <Button
-                                    Grid.Row="1"
                                     Grid.Column="3"
                                     MinWidth="120"
                                     HorizontalAlignment="Right"
                                     Click="SetColorButton_Click">
                                     <FontIcon Glyph="&#xE790;" />
                                 </Button>
+                            </Grid>
+
+                            <!--  Windows Spotlight  -->
+                            <Grid Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowSpotlight, Mode=OneWay}">
+                                <HyperlinkButton Click="WindowsSpotlightHyperlinkButton_Click" Content="{helpers:ResourceString Name=WallpaperComboBoxItemSpotlight}" />
                             </Grid>
                         </StackPanel>
                     </controls:SettingsCard.Description>

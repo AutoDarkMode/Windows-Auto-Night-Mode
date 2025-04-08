@@ -36,12 +36,13 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         ShowMonitorSettings = 2,
         ShowFillingWaySettings = 4,
         ShowColorSettings = 8,
+        ShowSpotlight = 16,
 
         // Predefined combinations
         PictureMode = ShowImageSettings,
         PictureMMMode = ShowImageSettings | ShowMonitorSettings | ShowFillingWaySettings,
         SolidColorMode = ShowColorSettings,
-        SpotlightMode = None
+        SpotlightMode = ShowSpotlight
     }
 
     public enum WallpaperFillingMode

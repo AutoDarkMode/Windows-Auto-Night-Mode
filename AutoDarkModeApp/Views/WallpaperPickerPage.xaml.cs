@@ -53,5 +53,10 @@ public sealed partial class WallpaperPickerPage : Page
         }
     }
 
+    private async void WindowsSpotlightHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:personalization-background"));
+    }
+
     protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }
