@@ -155,9 +155,9 @@
                                 <Border
                                     Grid.Column="1"
                                     Background="{x:Bind ViewModel.SetColorButtonForeground, Mode=OneWay}"
-                                    BorderBrush="{StaticResource AccentControlElevationBorderBrush}"
+                                    BorderBrush="{StaticResource ControlElevationBorderBrush}"
                                     BorderThickness="1"
-                                    CornerRadius="4" />
+                                    CornerRadius="{StaticResource ControlCornerRadius}" />
                                 <Button
                                     Grid.Column="3"
                                     MinWidth="120"
@@ -183,7 +183,7 @@
                         <Border
                             MinHeight="100"
                             Margin="16"
-                            CornerRadius="8">
+                            CornerRadius="{StaticResource OverlayCornerRadius}">
                             <Image Source="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
                         </Border>
                     </TeachingTip.Content>
