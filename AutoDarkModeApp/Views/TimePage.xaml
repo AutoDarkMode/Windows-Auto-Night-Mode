@@ -14,215 +14,217 @@
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
     </Page.Resources>
 
-    <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-        <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-            <!--  AutoThemeSwitching  -->
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSwitch}" />
-            <controls:SettingsCard Header="{helpers:ResourceString Name=autoCheckBox}">
-                <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=TwoWay}" />
-            </controls:SettingsCard>
+                <!--  AutoThemeSwitching  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSwitch}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=autoCheckBox}">
+                    <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
 
-            <!--
-                IDEA:
-                * always show the TimePicker controls for light and dark (but invert bool on `IsWindowsNightLight`),
-                * fill in data in controls, matching every setting, bind wih TimePickHourClock
-                * set IsEnabled to true or false (bool true for Custom time)
-                [Jay, @Jay-o-Way, 28-3-2025]
-            -->
+                <!--
+                    IDEA:
+                    * always show the TimePicker controls for light and dark (but invert bool on `IsWindowsNightLight`),
+                    * fill in data in controls, matching every setting, bind wih TimePickHourClock
+                    * set IsEnabled to true or false (bool true for Custom time)
+                    [Jay, @Jay-o-Way, 28-3-2025]
+                -->
 
-            <controls:SettingsCard Visibility="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=OneWay}">
-                <controls:SettingsCard.Description>
-                    <StackPanel Spacing="12">
-                        <RadioButtons>
-                            <RadioButton
-                                x:Name="RadioButtonCustomTimes"
-                                Content="{helpers:ResourceString Name=rbCustomHours}"
-                                IsChecked="{x:Bind ViewModel.IsCustomTimes, Mode=TwoWay}" />
-                            <RadioButton
-                                x:Name="RadioButtonLocationTimes"
-                                Content="{helpers:ResourceString Name=rbLocation}"
-                                IsChecked="{x:Bind ViewModel.IsLocationTimes, Mode=TwoWay}" />
-                            <RadioButton
-                                x:Name="RadioButtonCoordinateTimes"
-                                Content="{helpers:ResourceString Name=rbLocationGeo}"
-                                IsChecked="{x:Bind ViewModel.IsCoordinateTimes, Mode=TwoWay}" />
-                            <RadioButton
-                                x:Name="RadioButtonWindowsNightLight"
-                                Content="{helpers:ResourceString Name=TimePageFollowNightLight}"
-                                IsChecked="{x:Bind ViewModel.IsWindowsNightLight, Mode=TwoWay}" />
-                        </RadioButtons>
+                <controls:SettingsCard Visibility="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=OneWay}">
+                    <controls:SettingsCard.Description>
+                        <StackPanel Spacing="12">
+                            <RadioButtons>
+                                <RadioButton
+                                    x:Name="RadioButtonCustomTimes"
+                                    Content="{helpers:ResourceString Name=rbCustomHours}"
+                                    IsChecked="{x:Bind ViewModel.IsCustomTimes, Mode=TwoWay}" />
+                                <RadioButton
+                                    x:Name="RadioButtonLocationTimes"
+                                    Content="{helpers:ResourceString Name=rbLocation}"
+                                    IsChecked="{x:Bind ViewModel.IsLocationTimes, Mode=TwoWay}" />
+                                <RadioButton
+                                    x:Name="RadioButtonCoordinateTimes"
+                                    Content="{helpers:ResourceString Name=rbLocationGeo}"
+                                    IsChecked="{x:Bind ViewModel.IsCoordinateTimes, Mode=TwoWay}" />
+                                <RadioButton
+                                    x:Name="RadioButtonWindowsNightLight"
+                                    Content="{helpers:ResourceString Name=TimePageFollowNightLight}"
+                                    IsChecked="{x:Bind ViewModel.IsWindowsNightLight, Mode=TwoWay}" />
+                            </RadioButtons>
 
-                        <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
+                            <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
 
-                        <!--  Custom Time  -->
-                        <Grid
-                            Grid.Column="0"
-                            ColumnSpacing="8"
-                            RowSpacing="16"
-                            Visibility="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.Resources>
-                                <Style BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center" />
-                                </Style>
-                            </Grid.Resources>
-                            <FontIcon
+                            <!--  Custom Time  -->
+                            <Grid
                                 Grid.Column="0"
-                                FontSize="16"
-                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                Glyph="&#xE706;" />
-                            <TextBlock Grid.Column="1" Text="{helpers:ResourceString Name=lblLight}" />
-                            <TimePicker
-                                Grid.Column="2"
-                                Margin="16,0,0,0"
-                                ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
-                                IsEnabled="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}"
-                                Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
-                            <FontIcon
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                FontSize="16"
-                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                Glyph="&#xe708;" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{helpers:ResourceString Name=lblDark}" />
-                            <TimePicker
-                                Grid.Row="1"
-                                Grid.Column="2"
-                                Margin="16,0,0,0"
-                                ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
-                                IsEnabled="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}"
-                                Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
-                        </Grid>
-
-                        <!--  Location  -->
-                        <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.IsLocationTimes, Mode=OneWay}">
-                            <!--  TODO: improve this XAML  -->
-                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                ColumnSpacing="8"
+                                RowSpacing="16"
+                                Visibility="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </Grid.Resources>
                                 <FontIcon
-                                    FontSize="16"
-                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                    Glyph="&#xE707;" />
-                                <TextBlock Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
-                                <FontIcon
+                                    Grid.Column="0"
                                     FontSize="16"
                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                     Glyph="&#xE706;" />
-                                <TextBlock Text="{x:Bind ViewModel.LightTimeBlockText, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Text="{helpers:ResourceString Name=lblLight}" />
+                                <TimePicker
+                                    Grid.Column="2"
+                                    Margin="16,0,0,0"
+                                    ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
+                                    IsEnabled="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}"
+                                    Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
                                 <FontIcon
+                                    Grid.Row="1"
+                                    Grid.Column="0"
                                     FontSize="16"
                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                     Glyph="&#xe708;" />
-                                <TextBlock Text="{x:Bind ViewModel.DarkTimeBlockText, Mode=OneWay}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{helpers:ResourceString Name=lblDark}" />
+                                <TimePicker
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="16,0,0,0"
+                                    ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
+                                    IsEnabled="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}"
+                                    Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
+                            </Grid>
+
+                            <!--  Location  -->
+                            <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.IsLocationTimes, Mode=OneWay}">
+                                <!--  TODO: improve this XAML  -->
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE707;" />
+                                    <TextBlock Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE706;" />
+                                    <TextBlock Text="{x:Bind ViewModel.LightTimeBlockText, Mode=OneWay}" />
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xe708;" />
+                                    <TextBlock Text="{x:Bind ViewModel.DarkTimeBlockText, Mode=OneWay}" />
+                                </StackPanel>
+                                <TextBlock
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
                             </StackPanel>
-                            <TextBlock
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
-                        </StackPanel>
 
-                        <!--  Geo Coordinates  -->
-                        <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.IsCoordinateTimes, Mode=OneWay}">
-                            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
-                            <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
+                            <!--  Geo Coordinates  -->
+                            <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.IsCoordinateTimes, Mode=OneWay}">
+                                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
+                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
 
-                            <!--  Margin 8+16=24  -->
-                            <StackPanel
-                                Margin="0,16,0,0"
-                                Orientation="Horizontal"
-                                Spacing="24">
-                                <!--  TODO: find a way to prevent scrolling from changing the value!  -->
-                                <NumberBox
-                                    MinWidth="120"
-                                    Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLat}"
-                                    Maximum="180"
-                                    Minimum="0"
-                                    Value="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
-                                <NumberBox
-                                    MinWidth="120"
-                                    Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLon}"
-                                    Maximum="90"
-                                    Minimum="0"
-                                    Value="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                <!--  Margin 8+16=24  -->
+                                <StackPanel
+                                    Margin="0,16,0,0"
+                                    Orientation="Horizontal"
+                                    Spacing="24">
+                                    <!--  TODO: find a way to prevent scrolling from changing the value!  -->
+                                    <NumberBox
+                                        MinWidth="120"
+                                        Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLat}"
+                                        Maximum="180"
+                                        Minimum="0"
+                                        Value="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                    <NumberBox
+                                        MinWidth="120"
+                                        Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLon}"
+                                        Maximum="90"
+                                        Minimum="0"
+                                        Value="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                </StackPanel>
+                                <TextBlock
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="{helpers:ResourceString Name=EnterToApply}" />
                             </StackPanel>
-                            <TextBlock
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="{helpers:ResourceString Name=EnterToApply}" />
+
+                            <!--  Follow Windows Night light  -->
+                            <HyperlinkButton
+                                Content="{helpers:ResourceString Name=TimePageOpenNightLight}"
+                                NavigateUri="ms-settings:nightlight"
+                                Visibility="{x:Bind ViewModel.IsWindowsNightLight, Mode=OneWay}" />
+
                         </StackPanel>
-
-                        <!--  Follow Windows Night light  -->
-                        <HyperlinkButton
-                            Content="{helpers:ResourceString Name=TimePageOpenNightLight}"
-                            NavigateUri="ms-settings:nightlight"
-                            Visibility="{x:Bind ViewModel.IsWindowsNightLight, Mode=OneWay}" />
-
-                    </StackPanel>
-                </controls:SettingsCard.Description>
-            </controls:SettingsCard>
-
-            <!--  Offset time  -->
-            <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblOffset}" />
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <StackPanel Orientation="Horizontal" Spacing="24">
-                            <NumberBox
-                                MinWidth="120"
-                                Header="{helpers:ResourceString Name=lblLight}"
-                                LargeChange="10"
-                                SmallChange="1"
-                                SpinButtonPlacementMode="Inline"
-                                Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
-                            <NumberBox
-                                MinWidth="120"
-                                Header="{helpers:ResourceString Name=lblDark}"
-                                LargeChange="10"
-                                SmallChange="1"
-                                SpinButtonPlacementMode="Inline"
-                                Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
-                        </StackPanel>
-                    </controls:SettingsCard.Header>
-                    <!--  TODO: remove this button!  -->
-                    <Button
-                        MinWidth="120"
-                        Command="{x:Bind ViewModel.SaveOffsetCommand}"
-                        Content="{helpers:ResourceString Name=offsetButton}" />
+                    </controls:SettingsCard.Description>
                 </controls:SettingsCard>
-            </StackPanel>
 
-            <!--  Postpone  -->
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=TimePageTextBlockPostponeInfoHeader}" />
-            <controls:SettingsCard IsEnabled="False">
-                <controls:SettingsCard.Header>
-                    <ComboBox MinWidth="200">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTimeSkipOnce}" IsSelected="True" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime15}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime30}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime60}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime120}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime180}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime360}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime720}" />
-                    </ComboBox>
-                </controls:SettingsCard.Header>
-                <ToggleSwitch OffContent="{helpers:ResourceString Name=PostponeButtonUnDelay}" OnContent="{helpers:ResourceString Name=PostponeButtonDelay}" />
-            </controls:SettingsCard>
-            <controls:SettingsCard
-                Description="{helpers:ResourceString Name=TimePagePostponeInfoNominal}"
-                Header="{helpers:ResourceString Name=TimePageHeaderActiveDelays}"
-                IsEnabled="False" />
-        </StackPanel>
-    </Grid>
+                <!--  Offset time  -->
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblOffset}" />
+                    <controls:SettingsCard>
+                        <controls:SettingsCard.Header>
+                            <StackPanel Orientation="Horizontal" Spacing="24">
+                                <NumberBox
+                                    MinWidth="120"
+                                    Header="{helpers:ResourceString Name=lblLight}"
+                                    LargeChange="10"
+                                    SmallChange="1"
+                                    SpinButtonPlacementMode="Inline"
+                                    Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
+                                <NumberBox
+                                    MinWidth="120"
+                                    Header="{helpers:ResourceString Name=lblDark}"
+                                    LargeChange="10"
+                                    SmallChange="1"
+                                    SpinButtonPlacementMode="Inline"
+                                    Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
+                            </StackPanel>
+                        </controls:SettingsCard.Header>
+                        <!--  TODO: remove this button!  -->
+                        <Button
+                            MinWidth="120"
+                            Command="{x:Bind ViewModel.SaveOffsetCommand}"
+                            Content="{helpers:ResourceString Name=offsetButton}" />
+                    </controls:SettingsCard>
+                </StackPanel>
+
+                <!--  Postpone  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=TimePageTextBlockPostponeInfoHeader}" />
+                <controls:SettingsCard IsEnabled="False">
+                    <controls:SettingsCard.Header>
+                        <ComboBox MinWidth="200">
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTimeSkipOnce}" IsSelected="True" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime15}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime30}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime60}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime120}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime180}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime360}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime720}" />
+                        </ComboBox>
+                    </controls:SettingsCard.Header>
+                    <ToggleSwitch OffContent="{helpers:ResourceString Name=PostponeButtonUnDelay}" OnContent="{helpers:ResourceString Name=PostponeButtonDelay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=TimePagePostponeInfoNominal}"
+                    Header="{helpers:ResourceString Name=TimePageHeaderActiveDelays}"
+                    IsEnabled="False" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

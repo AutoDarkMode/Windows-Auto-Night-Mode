@@ -8,52 +8,54 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-        <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-            <!--  Wallpaper  -->
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
-            <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}">
-                <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
-            </controls:SettingsCard>
-            <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMode}">
-                <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexWallpaperMode, Mode=TwoWay}">
-                    <ComboBoxItem Content="{helpers:ResourceString Name=ThemeLight}" />
-                    <ComboBoxItem Content="{helpers:ResourceString Name=ThemeDark}" />
-                </ComboBox>
-            </controls:SettingsCard>
-            <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxType}">
-                <ComboBox>
-                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}" />
-                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemPictureMM}" />
-                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemSolidColor}" />
-                </ComboBox>
-            </controls:SettingsCard>
-            <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMonitor}">
-                <StackPanel Spacing="16">
-                    <ComboBox HorizontalAlignment="Right" />
-                    <Button Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
-                </StackPanel>
-            </controls:SettingsCard>
-            <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockPosition}">
-                <ComboBox>
-                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
-                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
-                    <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemStretch}" />
-                </ComboBox>
-            </controls:SettingsCard>
+                <!--  Wallpaper  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMode}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexWallpaperMode, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=ThemeLight}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=ThemeDark}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxType}">
+                    <ComboBox>
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemPictureMM}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemSolidColor}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMonitor}">
+                    <StackPanel Spacing="16">
+                        <ComboBox HorizontalAlignment="Right" />
+                        <Button Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
+                    </StackPanel>
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockPosition}">
+                    <ComboBox>
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemStretch}" />
+                    </ComboBox>
+                </controls:SettingsCard>
 
-            <!--  PickWallpaper  -->
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblPickWallpaper}" />
-            <controls:SettingsExpander Header="{helpers:ResourceString Name=WallpaperTextBlockChooseWallpaper}">
-                <Button Content="{helpers:ResourceString Name=dbFilePicker}" />
-                <controls:SettingsExpander.Items>
-                    <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockImagePath}">
-                        <TextBlock />
-                    </controls:SettingsCard>
-                </controls:SettingsExpander.Items>
-            </controls:SettingsExpander>
+                <!--  PickWallpaper  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblPickWallpaper}" />
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=WallpaperTextBlockChooseWallpaper}">
+                    <Button Content="{helpers:ResourceString Name=dbFilePicker}" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockImagePath}">
+                            <TextBlock />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
-        </StackPanel>
-    </Grid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

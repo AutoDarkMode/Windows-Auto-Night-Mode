@@ -25,19 +25,19 @@
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
             <TitleBar.IconSource>
-                <ImageIconSource ImageSource="/Assets/AutoDarkModeIcon.ico"/>
+                <ImageIconSource ImageSource="/Assets/AutoDarkModeIcon.ico" />
             </TitleBar.IconSource>
         </TitleBar>
 
         <NavigationView
             x:Name="NavigationViewControl"
             Grid.Row="1"
-            OpenPaneLength="240"
             Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Collapsed"
             IsBackEnabled="True"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
+            OpenPaneLength="240"
             PaneDisplayMode="Auto"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
             <NavigationView.MenuItems>
@@ -87,9 +87,7 @@
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
 
-            <ScrollViewer>
-                <Frame x:Name="NavigationFrame" />
-            </ScrollViewer>
+            <Frame x:Name="NavigationFrame" />
         </NavigationView>
     </Grid>
 </Page>

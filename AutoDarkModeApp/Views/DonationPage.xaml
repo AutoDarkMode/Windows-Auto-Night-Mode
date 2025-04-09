@@ -9,25 +9,27 @@
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-        <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-            <TextBlock Text="{helpers:ResourceString Name=donationDescription}" TextWrapping="Wrap" />
+                <TextBlock Text="{helpers:ResourceString Name=donationDescription}" TextWrapping="Wrap" />
 
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
 
-            <controls:SettingsCard Description="{helpers:ResourceString Name=DonationPayPalDescription}" Header="Paypal">
-                <Button
-                    MinWidth="120"
-                    Content="{helpers:ResourceString Name=NavbarDonation}"
-                    Style="{ThemeResource AccentButtonStyle}" />
-            </controls:SettingsCard>
-            <controls:SettingsCard Header="GitHub Sponsors">
-                <Button
-                    MinWidth="120"
-                    Content="{helpers:ResourceString Name=NavbarDonation}"
-                    Style="{ThemeResource AccentButtonStyle}" />
-            </controls:SettingsCard>
-        </StackPanel>
-    </Grid>
+                <controls:SettingsCard Description="{helpers:ResourceString Name=DonationPayPalDescription}" Header="Paypal">
+                    <Button
+                        MinWidth="120"
+                        Content="{helpers:ResourceString Name=NavbarDonation}"
+                        Style="{ThemeResource AccentButtonStyle}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="GitHub Sponsors">
+                    <Button
+                        MinWidth="120"
+                        Content="{helpers:ResourceString Name=NavbarDonation}"
+                        Style="{ThemeResource AccentButtonStyle}" />
+                </controls:SettingsCard>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

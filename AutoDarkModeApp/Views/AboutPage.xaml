@@ -9,92 +9,94 @@
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
-        <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-            <StackPanel Orientation="Horizontal" Spacing="32">
-                <Image
-                    Width="64"
-                    Height="64"
-                    Source="/Assets/AutoDarkModeIcon.ico" />
-                <StackPanel Orientation="Vertical" Spacing="8">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Auto Dark Mode X" />
-                    <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
+                <StackPanel Orientation="Horizontal" Spacing="32">
+                    <Image
+                        Width="64"
+                        Height="64"
+                        Source="/Assets/AutoDarkModeIcon.ico" />
+                    <StackPanel Orientation="Vertical" Spacing="8">
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Auto Dark Mode X" />
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
+                    </StackPanel>
                 </StackPanel>
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=NavbarAbout}" />
+
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=AboutTextBlockVersion}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xe946;}"
+                    IsExpanded="True">
+                    <Button Content="{helpers:ResourceString Name=AboutButtonCopy}" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard>
+                            <controls:SettingsCard.Header>
+                                <StackPanel Orientation="Vertical" Spacing="8">
+                                    <TextBlock Text="Commit" />
+                                    <TextBlock Text="App/Service" />
+                                    <TextBlock Text="Updater" />
+                                    <TextBlock Text="Shell" />
+                                    <TextBlock Text=".Net" />
+                                    <TextBlock Text="Windows" />
+                                    <TextBlock Text="Arch" />
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  TODO: fill in Click or NavigateUri  -->
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <StackPanel Spacing="8">
+                            <HyperlinkButton Content="{helpers:ResourceString Name=ConfigHyperLinkOpenLog}" />
+                            <HyperlinkButton Content="{helpers:ResourceString Name=AboutHyperLinkOpenUpdaterLog}" />
+                            <HyperlinkButton Content="{helpers:ResourceString Name=AboutHyperLinkOpenShell}" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
+
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <StackPanel Spacing="8">
+                            <HyperlinkButton NavigateUri="https://github.com/namazso" ToolTipService.ToolTip="https://github.com/namazso">namaszo</HyperlinkButton>
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
+
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AboutTextBlockFollowUs}" />
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <TextBlock
+                                FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
+                                FontSize="24"
+                                Text="A" />
+                            <HyperlinkButton Content="Github" />
+                            <TextBlock
+                                FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
+                                FontSize="24"
+                                Text="B" />
+                            <HyperlinkButton Content="Telegram" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <StackPanel Spacing="8">
+                            <HyperlinkButton Content="WinUI" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
             </StackPanel>
-
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=NavbarAbout}" />
-
-            <controls:SettingsExpander
-                Header="{helpers:ResourceString Name=AboutTextBlockVersion}"
-                HeaderIcon="{ui:FontIcon Glyph=&#xe946;}"
-                IsExpanded="True">
-                <Button Content="{helpers:ResourceString Name=AboutButtonCopy}" />
-                <controls:SettingsExpander.Items>
-                    <controls:SettingsCard>
-                        <controls:SettingsCard.Header>
-                            <StackPanel Orientation="Vertical" Spacing="8">
-                                <TextBlock Text="Commit" />
-                                <TextBlock Text="App/Service" />
-                                <TextBlock Text="Updater" />
-                                <TextBlock Text="Shell" />
-                                <TextBlock Text=".Net" />
-                                <TextBlock Text="Windows" />
-                                <TextBlock Text="Arch" />
-                            </StackPanel>
-                        </controls:SettingsCard.Header>
-                    </controls:SettingsCard>
-                </controls:SettingsExpander.Items>
-            </controls:SettingsExpander>
-
-            <!--  TODO: fill in Click or NavigateUri  -->
-            <controls:SettingsCard>
-                <controls:SettingsCard.Header>
-                    <StackPanel Spacing="8">
-                        <HyperlinkButton Content="{helpers:ResourceString Name=ConfigHyperLinkOpenLog}" />
-                        <HyperlinkButton Content="{helpers:ResourceString Name=AboutHyperLinkOpenUpdaterLog}" />
-                        <HyperlinkButton Content="{helpers:ResourceString Name=AboutHyperLinkOpenShell}" />
-                    </StackPanel>
-                </controls:SettingsCard.Header>
-            </controls:SettingsCard>
-
-
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
-            <controls:SettingsCard>
-                <controls:SettingsCard.Header>
-                    <StackPanel Spacing="8">
-                        <HyperlinkButton NavigateUri="https://github.com/namazso" ToolTipService.ToolTip="https://github.com/namazso">namaszo</HyperlinkButton>
-                    </StackPanel>
-                </controls:SettingsCard.Header>
-            </controls:SettingsCard>
-
-
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AboutTextBlockFollowUs}" />
-            <controls:SettingsCard>
-                <controls:SettingsCard.Header>
-                    <StackPanel Orientation="Horizontal" Spacing="16">
-                        <TextBlock
-                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
-                            FontSize="24"
-                            Text="A" />
-                        <HyperlinkButton Content="Github" />
-                        <TextBlock
-                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#Glyphter"
-                            FontSize="24"
-                            Text="B" />
-                        <HyperlinkButton Content="Telegram" />
-                    </StackPanel>
-                </controls:SettingsCard.Header>
-            </controls:SettingsCard>
-
-            <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
-            <controls:SettingsCard>
-                <controls:SettingsCard.Header>
-                    <StackPanel Spacing="8">
-                        <HyperlinkButton Content="WinUI" />
-                    </StackPanel>
-                </controls:SettingsCard.Header>
-            </controls:SettingsCard>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
