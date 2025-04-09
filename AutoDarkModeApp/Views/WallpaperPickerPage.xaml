@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:FlagsToVisibilityConverter x:Key="FlagsToVisibilityConverter" />
@@ -18,12 +19,15 @@
 
                 <!--  Wallpaper  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <!--  Wallpaper Switch Theme  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMode}" Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
+                <controls:SettingsCard
+                    Header="{helpers:ResourceString Name=WallpaperComboBoxMode}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
+                    Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=ThemeLight}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=ThemeDark}" />
@@ -142,7 +146,7 @@
                             <Grid RowSpacing="12" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="32" />
+                                    <ColumnDefinition Width="36" />
                                     <ColumnDefinition Width="12" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
@@ -154,6 +158,8 @@
                                     Text="{helpers:ResourceString Name=WallpaperColor}" />
                                 <Border
                                     Grid.Column="1"
+                                    Width="36"
+                                    Height="32"
                                     Background="{x:Bind ViewModel.SetColorButtonForeground, Mode=OneWay}"
                                     BorderBrush="{StaticResource ControlElevationBorderBrush}"
                                     BorderThickness="1"
