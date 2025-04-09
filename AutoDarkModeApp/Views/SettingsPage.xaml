@@ -146,7 +146,7 @@
             <controls:SettingsExpander Header="{helpers:ResourceString Name=SettingsPageAutostartDescription}">
                 <ToggleSwitch x:Name="AutostartToggleSwitch" IsOn="{x:Bind ViewModel.IsAutostart, Mode=TwoWay}" />
                 <controls:SettingsExpander.Items>
-                    <controls:SettingsCard IsEnabled="{x:Bind AutostartToggleSwitch.IsOn, Mode=OneWay}">
+                    <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsAutostart, Mode=OneWay}">
                         <controls:SettingsCard.Header>
                             <CheckBox Content="{helpers:ResourceString Name=cbSettingsLogonTask}" IsChecked="{x:Bind ViewModel.IsLoginWithTask, Mode=TwoWay}" />
                         </controls:SettingsCard.Header>

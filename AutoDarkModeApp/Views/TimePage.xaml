@@ -182,8 +182,6 @@
                                 MinWidth="120"
                                 Header="{helpers:ResourceString Name=lblLight}"
                                 LargeChange="10"
-                                Maximum="60"
-                                Minimum="-60"
                                 SmallChange="1"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
@@ -191,8 +189,6 @@
                                 MinWidth="120"
                                 Header="{helpers:ResourceString Name=lblDark}"
                                 LargeChange="10"
-                                Maximum="60"
-                                Minimum="-60"
                                 SmallChange="1"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
@@ -210,7 +206,8 @@
             <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=TimePageTextBlockPostponeInfoHeader}" />
             <controls:SettingsCard IsEnabled="False">
                 <controls:SettingsCard.Header>
-                    <ComboBox Width="200" SelectedIndex="7">
+                    <ComboBox MinWidth="200">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTimeSkipOnce}" IsSelected="True" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime15}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime30}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime60}" />
@@ -218,7 +215,6 @@
                         <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime180}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime360}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime720}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTimeSkipOnce}" />
                     </ComboBox>
                 </controls:SettingsCard.Header>
                 <ToggleSwitch OffContent="{helpers:ResourceString Name=PostponeButtonUnDelay}" OnContent="{helpers:ResourceString Name=PostponeButtonDelay}" />
