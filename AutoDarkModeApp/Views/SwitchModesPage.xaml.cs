@@ -25,33 +25,27 @@ public sealed partial class SwitchModesPage : Page
 
     private static bool IsKeyDown(VirtualKey key)
     {
-        // 使用 InputKeyboardSource 获取按键状态
         var keyboardState = InputKeyboardSource.GetKeyStateForCurrentThread(key);
         return keyboardState.HasFlag(CoreVirtualKeyStates.Down);
     }
 
-    // 将 VirtualKey 转换为友好字符串
     private static string GetKeyString(VirtualKey key)
     {
-        // 处理字母键
         if (key >= VirtualKey.A && key <= VirtualKey.Z)
         {
             return key.ToString().ToUpper();
         }
 
-        // 处理数字键
         if (key >= VirtualKey.Number0 && key <= VirtualKey.Number9)
         {
             return ((int)(key - VirtualKey.Number0)).ToString();
         }
 
-        // 处理功能键
         if (key >= VirtualKey.F1 && key <= VirtualKey.F24)
         {
             return key.ToString();
         }
 
-        // 其他特殊键映射
         return key switch
         {
             VirtualKey.Add => "+",
@@ -78,16 +72,13 @@ public sealed partial class SwitchModesPage : Page
 
     private void HotkeyTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-        // 获取按下的键
         var key = e.Key;
 
-        // 检测修饰键状态
         var isCtrl = IsKeyDown(VirtualKey.Control);
         var isShift = IsKeyDown(VirtualKey.Shift);
         var isAlt = IsKeyDown(VirtualKey.Menu);
         var isWin = IsKeyDown(VirtualKey.LeftWindows) || IsKeyDown(VirtualKey.RightWindows);
 
-        // 构建快捷键字符串
         var hotkey = "";
         hotkey += isCtrl ? "Ctrl + " : "";
         hotkey += isShift ? "Shift + " : "";
@@ -95,7 +86,6 @@ public sealed partial class SwitchModesPage : Page
         hotkey += isWin ? "Win + " : "";
         hotkey += GetKeyString(key);
 
-        // 更新 TextBlock 显示内容
         if (!string.IsNullOrEmpty(hotkey))
         {
             if (sender is TextBox textBox)
@@ -130,7 +120,6 @@ public sealed partial class SwitchModesPage : Page
         }
         _builder.Save();
 
-        // 标记事件已处理
         e.Handled = true;
     }
 

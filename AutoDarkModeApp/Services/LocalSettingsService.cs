@@ -1,11 +1,8 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Core.Contracts.Services;
-using AutoDarkModeApp.Core.Helpers;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Models;
 
 using Microsoft.Extensions.Options;
-using Windows.Storage;
 
 namespace AutoDarkModeApp.Services;
 
@@ -48,39 +45,23 @@ public class LocalSettingsService : ILocalSettingsService
 
     public async Task<T?> ReadSettingAsync<T>(string key)
     {
-        if (RuntimeHelper.IsMSIX)
+        await InitializeAsync();
+        if (_settings != null && _settings.TryGetValue(key, out var obj))
         {
-            if (ApplicationData.Current.LocalSettings.Values.TryGetValue(key, out var obj))
-            {
-                return await Json.ToObjectAsync<T>((string)obj);
-            }
+            return await Json.ToObjectAsync<T>(obj.ToString()!);
         }
-        else
-        {
-            await InitializeAsync();
-
-            if (_settings != null && _settings.TryGetValue(key, out var obj))
-            {
-                return await Json.ToObjectAsync<T>((string)obj);
-            }
-        }
-
         return default;
     }
 
     public async Task SaveSettingAsync<T>(string key, T value)
     {
-        if (RuntimeHelper.IsMSIX)
+        if (value == null)
         {
-            ApplicationData.Current.LocalSettings.Values[key] = await Json.StringifyAsync(value);
+            throw new ArgumentNullException(nameof(value));
         }
-        else
-        {
-            await InitializeAsync();
 
-            _settings[key] = await Json.StringifyAsync(value);
-
-            await Task.Run(() => _fileService.Save(_applicationDataFolder, _localsettingsFile, _settings));
-        }
+        await InitializeAsync();
+        _settings[key] = await Json.StringifyAsync(value);
+        await Task.Run(() => _fileService.Save(_applicationDataFolder, _localsettingsFile, _settings));
     }
 }

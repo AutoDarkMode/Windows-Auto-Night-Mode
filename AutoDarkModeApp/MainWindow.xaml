@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:windowex="using:WinUIEx"
@@ -16,4 +18,86 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
     <!--  TO DO: use the new MinWidth/MinHeight AppWindow APIs in 1.7 Stable  -->
+    <Grid x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TitleBar
+            x:Name="TitleBar"
+            Title="Auto Dark Mode X"
+            Height="{StaticResource TitleBarExpandedHeight}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            BackRequested="NavViewTitleBar_BackRequested"
+            IsBackButtonEnabled="{x:Bind NavigationFrame.CanGoBack, Mode=OneWay}"
+            IsBackButtonVisible="True"
+            IsHitTestVisible="True"
+            IsPaneToggleButtonVisible="True"
+            PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="/Assets/AutoDarkModeIcon.ico" />
+            </TitleBar.IconSource>
+        </TitleBar>
+
+        <NavigationView
+            x:Name="NavigationViewControl"
+            Grid.Row="1"
+            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
+            IsBackButtonVisible="Collapsed"
+            IsBackEnabled="True"
+            IsPaneToggleButtonVisible="False"
+            IsSettingsVisible="True"
+            OpenPaneLength="240"
+            PaneDisplayMode="Auto"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+            <NavigationView.MenuItems>
+                <!--
+              TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
+              https://docs.microsoft.com/windows/uwp/app-resources/localize-strings-ui-manifest#refer-to-a-string-resource-identifier-from-xaml
+
+              TODO: Update item icons by updating FontIcon.Glyph properties.
+              https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
+                -->
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.TimeViewModel" Content="{helpers:ResourceString Name=NavbarTime}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE823;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.SwitchModesViewModel" Content="{helpers:ResourceString Name=NavbarSwitchModes}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE945;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AppsViewModel" Content="{helpers:ResourceString Name=NavbarApps}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE71D;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.PersonalizationViewModel" Content="{helpers:ResourceString Name=NavbarPersonalization}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE771;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.ScriptsViewModel" Content="{helpers:ResourceString Name=NavbarScripts}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xF000;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.DonationViewModel" Content="{helpers:ResourceString Name=NavbarDonation}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEB51;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AboutViewModel" Content="{helpers:ResourceString Name=NavbarAbout}">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE946;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+            <Frame x:Name="NavigationFrame" />
+        </NavigationView>
+    </Grid>
 </windowex:WindowEx>

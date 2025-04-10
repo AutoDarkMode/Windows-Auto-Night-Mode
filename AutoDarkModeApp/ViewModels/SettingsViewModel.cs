@@ -10,7 +10,6 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Windows.ApplicationModel;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -187,7 +186,7 @@ public partial class SettingsViewModel : ObservableRecipient
             var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
             if (languageText != null)
             {
-                Language = languageText;
+                Language = languageText.Replace("\"", "");
             }
             else
             {
@@ -487,23 +486,5 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessageFromApi(result, ex, App.MainWindow.Content.XamlRoot);
         }
-    }
-
-    private static string GetVersionDescription()
-    {
-        Version version;
-
-        if (RuntimeHelper.IsMSIX)
-        {
-            var packageVersion = Package.Current.Id.Version;
-
-            version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
-        }
-        else
-        {
-            version = Assembly.GetExecutingAssembly().GetName().Version!;
-        }
-
-        return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
 }

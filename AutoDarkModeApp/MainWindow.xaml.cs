@@ -1,20 +1,22 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.ViewModels;
+using Microsoft.UI.Windowing;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Xaml.Input;
+using Windows.System;
 
 namespace AutoDarkModeApp;
 
 public sealed partial class MainWindow : WindowEx
 {
-    private readonly Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
+    public MainViewModel ViewModel { get; }
 
-    private readonly UISettings settings;
-
-    public MainWindow()
+    public MainWindow(MainViewModel viewModel)
     {
+        ViewModel = viewModel;
         InitializeComponent();
 
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
@@ -22,12 +24,53 @@ public sealed partial class MainWindow : WindowEx
         AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
-        Content = null;
+        ViewModel.NavigationService.Frame = NavigationFrame;
+        ViewModel.NavigationService.InitializeNavigationView(NavigationViewControl);
+
+        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
+        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+
+        // TODO: Set the title bar icon by updating /Assets/WindowIcon.ico.
+        // A custom title bar is required for full window theme and Mica support.
+        // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
+        ExtendsContentIntoTitleBar = true;
+        SetTitleBar(TitleBar);
 
         Closed += MainWindow_Closed;
+    }
 
-        // Theme change code picked from https://github.com/microsoft/WinUI-Gallery/pull/1239
-        dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+    private void NavViewTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    {
+        if (NavigationFrame.CanGoBack)
+        {
+            NavigationFrame.GoBack();
+        }
+    }
+
+    private void NavViewTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    {
+        NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
+    }
+
+    private KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
+    {
+        var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
+
+        if (modifiers.HasValue)
+        {
+            keyboardAccelerator.Modifiers = modifiers.Value;
+        }
+
+        keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
+
+        return keyboardAccelerator;
+    }
+
+    private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        var navigationService = App.GetService<INavigationService>();
+        var result = navigationService.GoBack();
+        args.Handled = result;
     }
 
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
@@ -42,12 +85,7 @@ public sealed partial class MainWindow : WindowEx
             await localSettings.SaveSettingAsync("Width", size.Width);
             await localSettings.SaveSettingAsync("Height", size.Height);
         });
-        //Debug.WriteLine("Save size: " + postion.X + "\t" + postion.Y + "\t" + bounds.Width + "\t" + bounds.Height);
 
-        // TODO: Maybe we could delete it `Close()`. The reason why `Process.GetCurrentProcess().Kill();` is used, it because MapLocationFinder;
-        //Close();
-        
-        //Debug.WriteLine("Will kill process");
         try
         {
             Process.GetCurrentProcess().Kill();

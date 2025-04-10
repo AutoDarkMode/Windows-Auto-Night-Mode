@@ -7,29 +7,28 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
-public partial class ShellViewModel : ObservableRecipient
+public partial class MainViewModel : ObservableRecipient
 {
+    // TODO: Waiting for PR merge https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/pull/933
+
+    //[ObservableProperty]
+    //public bool IsBackEnabled;
+
+    //[ObservableProperty]
+    //public object? Selecte;
+
     [ObservableProperty]
     private bool isBackEnabled;
 
     [ObservableProperty]
     private object? selected;
 
-    public INavigationService NavigationService
-    {
-        get;
-    }
+    public INavigationService NavigationService { get; }
 
-    public INavigationViewService NavigationViewService
-    {
-        get;
-    }
-
-    public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
+    public MainViewModel(INavigationService navigationService)
     {
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
-        NavigationViewService = navigationViewService;
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
@@ -38,11 +37,11 @@ public partial class ShellViewModel : ObservableRecipient
 
         if (e.SourcePageType == typeof(SettingsPage))
         {
-            Selected = NavigationViewService.SettingsItem;
+            Selected = NavigationService.SettingsItem;
             return;
         }
 
-        var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
+        var selectedItem = NavigationService.GetSelectedItem(e.SourcePageType);
         if (selectedItem != null)
         {
             Selected = selectedItem;
