@@ -17,7 +17,10 @@
     <Window.SystemBackdrop>
         <MicaBackdrop />
     </Window.SystemBackdrop>
-    <!--  TO DO: use the new MinWidth/MinHeight AppWindow APIs in 1.7 Stable  -->
+    <!--
+        TO DO: use the new MinWidth/MinHeight AppWindow APIs in 1.7 Stable
+        https://learn.microsoft.com/windows/apps/windows-app-sdk/stable-channel#new-appwindow-apis
+    -->
     <Grid x:Name="RootGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
