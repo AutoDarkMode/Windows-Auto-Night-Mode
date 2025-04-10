@@ -36,8 +36,6 @@ public sealed partial class MainWindow : WindowEx
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
 
-        Content = null;
-
         Closed += MainWindow_Closed;
     }
 
