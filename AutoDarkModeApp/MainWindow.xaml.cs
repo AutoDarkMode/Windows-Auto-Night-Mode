@@ -2,8 +2,6 @@
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Windowing;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
 using Windows.System;
@@ -71,9 +69,15 @@ public sealed partial class MainWindow : WindowEx
 
     private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var navigationService = App.GetService<INavigationService>();
-        var result = navigationService.GoBack();
-        args.Handled = result;
+        if (NavigationFrame.CanGoBack)
+        {
+            NavigationFrame.GoBack();
+            args.Handled = true;
+        }
+        else
+        {
+            args.Handled = false;
+        }
     }
 
     private async void MainWindow_Closed(object sender, WindowEventArgs args)

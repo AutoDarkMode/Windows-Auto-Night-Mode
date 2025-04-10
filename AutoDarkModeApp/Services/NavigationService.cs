@@ -49,7 +49,6 @@ public class NavigationService : INavigationService
     public void InitializeNavigationView(NavigationView navigationView)
     {
         _navigationView = navigationView;
-        _navigationView.BackRequested += OnBackRequested;
         _navigationView.ItemInvoked += OnItemInvoked;
     }
 
@@ -67,16 +66,6 @@ public class NavigationService : INavigationService
         {
             _frame.Navigated -= OnNavigated;
         }
-    }
-
-    public bool GoBack()
-    {
-        if (CanGoBack)
-        {
-            _frame?.GoBack();
-            return true;
-        }
-        return false;
     }
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
@@ -109,8 +98,6 @@ public class NavigationService : INavigationService
             Navigated?.Invoke(sender, e);
         }
     }
-
-    private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => GoBack();
 
     private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
     {

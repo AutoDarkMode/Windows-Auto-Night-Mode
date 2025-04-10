@@ -18,9 +18,6 @@ public partial class MainViewModel : ObservableRecipient
     //public object? Selecte;
 
     [ObservableProperty]
-    private bool isBackEnabled;
-
-    [ObservableProperty]
     private object? selected;
 
     public INavigationService NavigationService { get; }
@@ -33,8 +30,6 @@ public partial class MainViewModel : ObservableRecipient
 
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
-        IsBackEnabled = NavigationService.CanGoBack;
-
         if (e.SourcePageType == typeof(SettingsPage))
         {
             Selected = NavigationService.SettingsItem;

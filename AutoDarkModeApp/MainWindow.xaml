@@ -45,7 +45,6 @@
             Grid.Row="1"
             Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Collapsed"
-            IsBackEnabled="True"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
             OpenPaneLength="240"
