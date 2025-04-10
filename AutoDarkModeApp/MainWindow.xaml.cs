@@ -20,6 +20,7 @@ public sealed partial class MainWindow : WindowEx
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
         ViewModel.NavigationService.Frame = NavigationFrame;
         ViewModel.NavigationService.InitializeNavigationView(NavigationViewControl);
@@ -33,12 +34,7 @@ public sealed partial class MainWindow : WindowEx
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
 
-#if DEBUG
-        Title = "Auto Dark Mode Dev";
-        TitleBar.Subtitle = "Dev";
-#else
-        Title = "Auto Dark Mode";
-#endif
+        Content = null;
 
         Closed += MainWindow_Closed;
     }
