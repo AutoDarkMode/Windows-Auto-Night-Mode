@@ -449,9 +449,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="ThemeApplyError1" xml:space="preserve">
     <value>应用所选主题时发生错误，已禁用主题切换</value>
   </data>
-  <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>使用新版白色主题</value>
-  </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>下载扩展</value>
   </data>
@@ -559,9 +556,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>配置</value>
-  </data>
-  <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office（旧版）</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>选择主题</value>
@@ -1055,9 +1049,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="lblPaused" xml:space="preserve">
     <value>已暂停</value>
-  </data>
-  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>仅在 Office 2013-2019 中或您使用 Office 的“使用系统设置”遇到问题时使用</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>应用补丁时出现了错误。</value>

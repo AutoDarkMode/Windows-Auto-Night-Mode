@@ -2,6 +2,8 @@
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Windowing;
+using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
 using Windows.System;

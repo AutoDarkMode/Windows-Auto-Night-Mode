@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <Style x:Key="PageBaseStackPanelStyle" TargetType="StackPanel">
-        <Setter Property="Spacing" Value="{StaticResource SettingsCardSpacing}" />
-    </Style>
-</ResourceDictionary>

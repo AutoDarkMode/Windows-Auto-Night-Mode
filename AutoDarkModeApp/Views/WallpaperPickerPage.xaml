@@ -9,9 +9,7 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid
-            x:Name="ContentArea"
-            Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Wallpaper  -->

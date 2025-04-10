@@ -19,8 +19,7 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Styles\SettingsCard.xaml" />
-    <None Remove="Styles\Stackpanel.xaml" />
+    <None Remove="Styles\CustomStyles.xaml" />
   </ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -61,10 +60,7 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Page Update="Styles\StackPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Styles\SettingsCard.xaml">
+    <Page Update="Styles\CustomStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
