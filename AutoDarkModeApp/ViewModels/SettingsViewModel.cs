@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -10,6 +9,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -23,17 +23,22 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     private bool _is12HourClock;
+
     [ObservableProperty]
     private bool _isHideTray;
+
     [ObservableProperty]
     private bool _isAlwaysFullDwmRefresh;
+
     [ObservableProperty]
     private bool _isTunableDebug;
+
     [ObservableProperty]
     private bool _isTunableTrace;
 
     [ObservableProperty]
     private bool _isUpdaterEnabled;
+
     [ObservableProperty]
     private string? _updatesDate;
 
@@ -42,41 +47,39 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     private int _selectIndexDaysBetweenUpdateCheck;
+
     [ObservableProperty]
     private bool _isCheckOnStart;
+
     [ObservableProperty]
     private bool _isAutoInstall;
+
     [ObservableProperty]
     private bool _isUpdateSilent;
 
     [ObservableProperty]
     private bool _isUpdatesChannelStable;
+
     [ObservableProperty]
     private bool _isUpdatesChannelBeta;
 
     [ObservableProperty]
     private bool _isAutostart;
+
     [ObservableProperty]
     private bool _isLoginWithTask;
+
     [ObservableProperty]
     private string? _autostartMode;
+
     [ObservableProperty]
     private string? _autostartPath;
 
-    public ICommand RestartCommand
-    {
-        get;
-    }
+    public ICommand RestartCommand { get; }
 
-    public ICommand CheckUpdateCommand
-    {
-        get;
-    }
+    public ICommand CheckUpdateCommand { get; }
 
-    public ICommand AutostartRefreshCommand
-    {
-        get;
-    }
+    public ICommand AutostartRefreshCommand { get; }
 
     public SettingsViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
     {
@@ -102,11 +105,7 @@ public partial class SettingsViewModel : ObservableRecipient
         RestartCommand = new RelayCommand(() =>
         {
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
-            Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp)
-            {
-                UseShellExecute = false,
-                Verb = "open"
-            });
+            Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
             App.Current.Exit();
         });
 
@@ -408,11 +407,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
     partial void OnIsAutostartChanged(bool value)
     {
-        ApiResponse result = new()
-        {
-            StatusCode = StatusCode.Err,
-            Message = "error setting autostart entry"
-        };
+        ApiResponse result = new() { StatusCode = StatusCode.Err, Message = "error setting autostart entry" };
         if (value)
         {
             try
@@ -486,5 +481,11 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessageFromApi(result, ex, App.MainWindow.Content.XamlRoot);
         }
+    }
+
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
     }
 }
