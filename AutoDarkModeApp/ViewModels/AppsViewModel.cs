@@ -4,6 +4,7 @@ using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -342,4 +343,9 @@ public partial class AppsViewModel : ObservableRecipient
         }
     }
 
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
+    }
 }

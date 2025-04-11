@@ -3,6 +3,7 @@ using AutoDarkModeLib;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Navigation;
 using Windows.System;
 using Windows.UI.Core;
 
@@ -12,10 +13,7 @@ public sealed partial class SwitchModesPage : Page
 {
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
 
-    public SwitchModesViewModel ViewModel
-    {
-        get;
-    }
+    public SwitchModesViewModel ViewModel { get; }
 
     public SwitchModesPage()
     {
@@ -66,7 +64,7 @@ public sealed partial class SwitchModesPage : Page
             VirtualKey.Up => "↑",
             VirtualKey.Down => "↓",
             VirtualKey.CapitalLock => "CapsLock",
-            _ => key.ToString()
+            _ => key.ToString(),
         };
     }
 
@@ -157,4 +155,6 @@ public sealed partial class SwitchModesPage : Page
         }
         _builder.Save();
     }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }

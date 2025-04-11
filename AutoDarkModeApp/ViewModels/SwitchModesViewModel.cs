@@ -3,6 +3,7 @@ using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Xaml.Navigation;
 using Windows.System.Power;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -17,49 +18,62 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     [ObservableProperty]
     private bool _isGPUMonitoring;
+
     [ObservableProperty]
     private int _gPUMonitoringThreshold;
+
     [ObservableProperty]
     private int _gPUMonitoringSamples;
 
     [ObservableProperty]
     private bool _isIdleChecker;
+
     [ObservableProperty]
     private int _idleCheckerThreshold;
 
     [ObservableProperty]
     private bool _isAutoSwitchNotify;
+
     [ObservableProperty]
     private int _autoSwitchNotifyGracePeriodMinutes;
 
     [ObservableProperty]
     private bool _isBatteryDarkModeEnable;
+
     [ObservableProperty]
     private bool _isBatteryDarkMode;
 
     [ObservableProperty]
     private bool _isHotkeysEnabled;
+
     [ObservableProperty]
     private bool _isSettingsCardEnabled;
+
     [ObservableProperty]
     private string? _hotkeyForceLight;
+
     [ObservableProperty]
     private string? _hotkeyForceDark;
+
     [ObservableProperty]
     private string? _hotkeyNoForce;
+
     [ObservableProperty]
     private string? _hotkeyToggleTheme;
+
     [ObservableProperty]
     private string? _hotkeyToggleAutomaticTheme;
+
     [ObservableProperty]
     private bool _isHotkeyToggleAutomaticThemeNotification;
+
     [ObservableProperty]
     private string? _hotkeyTogglePostpone;
+
     [ObservableProperty]
     private bool _isHotkeyTogglePostponeNotification;
 
     // TODO: The logic part about BatteryDarkMode is not written
-
     public SwitchModesViewModel(IErrorService errorService)
     {
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
@@ -165,7 +179,6 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnGPUMonitoringSamplesChanged(int value)
     {
-
         _builder.Config.GPUMonitoring.Samples = value + 1;
         try
         {
@@ -266,5 +279,10 @@ public partial class SwitchModesViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModePage");
         }
     }
-}
 
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
+    }
+}
