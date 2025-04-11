@@ -190,7 +190,7 @@
                             MinHeight="100"
                             Margin="16"
                             CornerRadius="{StaticResource OverlayCornerRadius}">
-                            <Image Source="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                            <Image x:Name="WallpaperPreviewImage" />
                         </Border>
                     </TeachingTip.Content>
                 </TeachingTip>

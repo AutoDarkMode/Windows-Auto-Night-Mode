@@ -3,6 +3,7 @@ using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
@@ -22,6 +23,10 @@ public sealed partial class WallpaperPickerPage : Page
 
     private void GlobalWallpaperPathHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        if(ViewModel.GlobalWallpaperPath != null)
+        {
+            WallpaperPreviewImage.Source = new BitmapImage(new Uri(ViewModel.GlobalWallpaperPath)); ;
+        }
         WallpaperPreviewTeachingTip.IsOpen = true;
     }
 
