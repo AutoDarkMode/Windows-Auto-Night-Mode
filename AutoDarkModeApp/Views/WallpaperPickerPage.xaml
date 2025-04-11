@@ -158,19 +158,19 @@
                                     Text="{helpers:ResourceString Name=WallpaperColor}" />
                                 <Border
                                     Grid.Column="1"
-                                    Width="36"
-                                    Height="32"
-                                    Background="{x:Bind ViewModel.SetColorButtonForeground, Mode=OneWay}"
+                                    Width="34"
+                                    Height="30"
+                                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
                                     BorderBrush="{StaticResource ControlElevationBorderBrush}"
                                     BorderThickness="1"
                                     CornerRadius="{StaticResource ControlCornerRadius}" />
+                                <!--  TODO: Replace Content to Res  -->
                                 <Button
                                     Grid.Column="3"
                                     MinWidth="120"
                                     HorizontalAlignment="Right"
-                                    Click="SetColorButton_Click">
-                                    <FontIcon Glyph="&#xE790;" />
-                                </Button>
+                                    Click="CheckColorButton_Click"
+                                    Content="Check color" />
                             </Grid>
 
                             <!--  Windows Spotlight  -->
@@ -202,7 +202,7 @@
                     DefaultButton="Primary"
                     PrimaryButtonText="{helpers:ResourceString Name=lblSet}">
                     <StackPanel>
-                        <ColorPicker x:Name="ChooseColorPicker" />
+                        <ColorPicker x:Name="CheckColorColorPicker" />
                     </StackPanel>
                 </ContentDialog>
             </StackPanel>

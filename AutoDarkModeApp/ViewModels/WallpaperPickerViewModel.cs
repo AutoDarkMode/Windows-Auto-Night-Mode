@@ -77,7 +77,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial WallpaperFillingMode SelectWallpaperFillingMode { get; set; }
 
     [ObservableProperty]
-    public partial SolidColorBrush? SetColorButtonForeground { get; set; }
+    public partial SolidColorBrush? ColorPreviewBorderBackground { get; set; }
 
     public ICommand PickFileCommand { get; }
 
@@ -118,12 +118,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 GlobalWallpaperPath = file.Path;
             }
         });
-    }
-
-    public void OnViewModelNavigatedFrom(NavigationEventArgs e)
-    {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
     }
 
     private void LoadSettings()
@@ -210,7 +204,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
         }
 
-        SetColorButtonForeground = SelectWallpaperThemeMode == ApplicationTheme.Light
+        ColorPreviewBorderBackground = SelectWallpaperThemeMode == ApplicationTheme.Light
             ? new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor())
             : new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor());
     }
@@ -336,5 +330,11 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
+    }
+
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
     }
 }

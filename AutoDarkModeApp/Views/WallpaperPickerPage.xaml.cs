@@ -30,9 +30,9 @@ public sealed partial class WallpaperPickerPage : Page
         WallpaperPreviewTeachingTip.IsOpen = true;
     }
 
-    private async void SetColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void CheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        ChooseColorPicker.Color = ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
+        CheckColorColorPicker.Color = ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
             ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
             : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
 
@@ -41,11 +41,11 @@ public sealed partial class WallpaperPickerPage : Page
         {
             if (ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light)
             {
-                _builder.Config.WallpaperSwitch.Component.SolidColors.Light = ChooseColorPicker.Color.ToHex();
+                _builder.Config.WallpaperSwitch.Component.SolidColors.Light = CheckColorColorPicker.Color.ToHex();
             }
             else
             {
-                _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = ChooseColorPicker.Color.ToHex();
+                _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = CheckColorColorPicker.Color.ToHex();
             }
         }
         try
