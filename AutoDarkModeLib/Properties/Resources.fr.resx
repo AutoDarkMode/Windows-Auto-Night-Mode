@@ -500,7 +500,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Réinitialiser</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Passer en mode sombre lorsque l'appareil est débranché</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valeur par défaut du curseur d'économie d'énergie</value>
