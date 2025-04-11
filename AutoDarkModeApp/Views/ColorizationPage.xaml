@@ -1,0 +1,90 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.ColorizationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <!--  Colorization  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ColorizationTextBlockHeader}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ColorizationEnableSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorizationEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <!--  Light  -->
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblLightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
+                    </ComboBox>
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsLightThemeSettingsCardEnabled, Mode=OneWay}">
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <Border
+                                    Width="30"
+                                    Height="28"
+                                    Background="{x:Bind ViewModel.LightModeColorPreviewBorderBackground, Mode=OneWay}"
+                                    BorderBrush="{StaticResource ControlElevationBorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="{StaticResource ControlCornerRadius}" />
+                                <!--  TODO: Replace Content to Res  -->
+                                <Button
+                                    MinWidth="120"
+                                    Click="LightModeCheckColorButton_Click"
+                                    Content="Check color" />
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Dark  -->
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
+                    </ComboBox>
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsDarkThemeSettingsCardEnabled, Mode=OneWay}">
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <Border
+                                    Width="30"
+                                    Height="28"
+                                    Background="{x:Bind ViewModel.DarkModeColorPreviewBorderBackground, Mode=OneWay}"
+                                    BorderBrush="{StaticResource ControlElevationBorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="{StaticResource ControlCornerRadius}" />
+                                <!--  TODO: Replace Content to Res  -->
+                                <Button
+                                    MinWidth="120"
+                                    Click="DarkModeCheckColorButton_Click"
+                                    Content="Check color" />
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Color Picker Dialog  -->
+                <ContentDialog
+                    x:Name="ColorPickerContentDialog"
+                    CloseButtonText="{helpers:ResourceString Name=cancel}"
+                    DefaultButton="Primary"
+                    PrimaryButtonText="{helpers:ResourceString Name=lblSet}">
+                    <StackPanel>
+                        <ColorPicker x:Name="CheckColorColorPicker" />
+                    </StackPanel>
+                </ContentDialog>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

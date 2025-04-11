@@ -26,4 +26,13 @@ public sealed partial class PersonalizationPage : Page
             navigation.NavigateTo(typeof(WallpaperPickerViewModel).FullName!);
         }
     }
+
+    private void ColorizationPickSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        var navigation = App.GetService<INavigationService>();
+        if (navigation?.Frame != null)
+        {
+            navigation.NavigateTo(typeof(ColorizationViewModel).FullName!);
+        }
+    }
 }
