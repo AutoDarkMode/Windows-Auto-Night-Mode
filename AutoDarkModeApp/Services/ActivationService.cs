@@ -1,6 +1,5 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
-using Microsoft.UI.Xaml;
 
 namespace AutoDarkModeApp.Services;
 
@@ -33,6 +32,6 @@ public class ActivationService : IActivationService
         var top = await _localSettings.ReadSettingAsync<int>("Y");
         var width = await _localSettings.ReadSettingAsync<int>("Width");
         var height = await _localSettings.ReadSettingAsync<int>("Height");
-        App.MainWindow.MoveAndResize(left, top, width, height);
+        App.MainWindow.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(left, top, width, height));
     }
 }

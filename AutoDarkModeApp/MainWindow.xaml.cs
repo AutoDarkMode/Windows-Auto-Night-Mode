@@ -8,7 +8,7 @@ using Windows.System;
 
 namespace AutoDarkModeApp;
 
-public sealed partial class MainWindow : WindowEx
+public sealed partial class MainWindow : Window
 {
     public MainViewModel ViewModel { get; }
 
@@ -16,6 +16,12 @@ public sealed partial class MainWindow : WindowEx
     {
         ViewModel = viewModel;
         InitializeComponent();
+
+        // TODO: No one knows what the correct way to use it is. Waiting for official examples.
+        var overlappedPresenter = OverlappedPresenter.Create();
+        overlappedPresenter.PreferredMinimumWidth = 680;
+        overlappedPresenter.PreferredMinimumHeight = 320;
+        AppWindow.SetPresenter(overlappedPresenter);
 
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
