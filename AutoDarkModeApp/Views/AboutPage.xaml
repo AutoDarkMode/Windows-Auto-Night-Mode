@@ -109,12 +109,11 @@
                         <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <FontIcon
-                                    VerticalAlignment="Center"
                                     FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
                                     FontSize="24"
                                     Foreground="#26A5E4"
                                     Glyph="&#xE901;" />
-                                <TextBlock Text="Telegram" />
+                                <TextBlock VerticalAlignment="Center" Text="Telegram" />
                             </StackPanel>
                         </HyperlinkButton>
                     </StackPanel>
