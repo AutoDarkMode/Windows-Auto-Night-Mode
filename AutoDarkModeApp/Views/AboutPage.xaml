@@ -96,24 +96,39 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AboutTextBlockFollowUs}" />
                 <controls:SettingsCard ContentAlignment="Left">
                     <StackPanel Orientation="Horizontal" Spacing="16">
-                        <FontIcon
-                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
-                            FontSize="24"
-                            Glyph="&#xE902;" />
-                        <HyperlinkButton Content="Github" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" />
-                        <FontIcon
-                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
-                            FontSize="24"
-                            Foreground="#26A5E4"
-                            Glyph="&#xE901;" />
-                        <HyperlinkButton Content="Telegram" NavigateUri="https://t.me/autodarkmode" />
+                        <HyperlinkButton NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" ToolTipService.ToolTip="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon
+                                    FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
+                                    FontSize="24"
+                                    Glyph="&#xE902;" />
+                                <TextBlock VerticalAlignment="Center" Text="GitHub" />
+                            </StackPanel>
+                        </HyperlinkButton>
+
+                        <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon
+                                    VerticalAlignment="Center"
+                                    FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
+                                    FontSize="24"
+                                    Foreground="#26A5E4"
+                                    Glyph="&#xE901;" />
+                                <TextBlock Text="Telegram" />
+                            </StackPanel>
+                        </HyperlinkButton>
                     </StackPanel>
                 </controls:SettingsCard>
 
                 <!--  Third Party  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
                 <controls:SettingsCard ContentAlignment="Left">
-                    <HyperlinkButton Content="WinUI" NavigateUri="https://github.com/microsoft/WindowsAppSDK" />
+                    <HyperlinkButton NavigateUri="https://github.com/microsoft/WindowsAppSDK" ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <!--  icon  -->
+                            <TextBlock Text="WinUI" />
+                        </StackPanel>
+                    </HyperlinkButton>
                 </controls:SettingsCard>
             </StackPanel>
         </Grid>
