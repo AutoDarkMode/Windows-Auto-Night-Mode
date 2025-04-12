@@ -20,7 +20,7 @@
 
                 <!--  AutoThemeSwitching  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSwitch}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=autoCheckBox}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=autoCheckBox}" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}">
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 

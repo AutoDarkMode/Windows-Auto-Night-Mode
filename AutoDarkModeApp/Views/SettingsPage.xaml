@@ -53,7 +53,10 @@
 
                 <!--  language  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SettingsPageLanguage}" />
-                <controls:SettingsExpander Description="{helpers:ResourceString Name=lblTranslator}" Header="{helpers:ResourceString Name=lblLanguage}">
+                <controls:SettingsExpander
+                    Description="{helpers:ResourceString Name=lblTranslator}"
+                    Header="{helpers:ResourceString Name=lblLanguage}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                     <ComboBox MinWidth="120" SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
                         <x:String>English (English)</x:String>
                         <x:String>Français (French)</x:String>
@@ -78,7 +81,17 @@
                 <!--  updates  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblUpdates}" />
                 <!--  check now  -->
-                <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
+                <controls:SettingsCard>
+                    <controls:SettingsCard.Header>
+                        <StackPanel>
+                            <!--  TODO: fill in actual version  -->
+                            <TextBlock Text="{helpers:ResourceString Name=AboutTextBlockVersion}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}" />
+                        </StackPanel>
+                    </controls:SettingsCard.Header>
                     <Button
                         MinWidth="120"
                         Command="{x:Bind ViewModel.CheckUpdateCommand}"

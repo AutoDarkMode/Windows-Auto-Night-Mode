@@ -28,7 +28,7 @@
                 <controls:SettingsCard
                     Description="{helpers:ResourceString Name=PersonalizationPageCursorDescription}"
                     Header="{helpers:ResourceString Name=PersonalizationPageCursorTitle}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE962;}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE8B0;}"
                     IsClickEnabled="True" />
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageUnmanagedMode}" />
