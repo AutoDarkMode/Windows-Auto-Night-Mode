@@ -122,12 +122,36 @@
                 <!--  Third Party  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
                 <controls:SettingsCard ContentAlignment="Left">
-                    <HyperlinkButton NavigateUri="https://github.com/microsoft/WindowsAppSDK" ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK">
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <!--  icon  -->
-                            <TextBlock Text="WinUI" />
-                        </StackPanel>
-                    </HyperlinkButton>
+                    <StackPanel>
+                        <HyperlinkButton
+                            Content="WinUI"
+                            NavigateUri="https://github.com/microsoft/WindowsAppSDK"
+                            ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK" />
+                        <HyperlinkButton
+                            Content=".NET Community Toolkit"
+                            NavigateUri="https://github.com/CommunityToolkit/dotnet"
+                            ToolTipService.ToolTip="https://github.com/CommunityToolkit/dotnet" />
+                        <HyperlinkButton
+                            Content="InputSimulator"
+                            NavigateUri="https://archive.codeplex.com/?p=inputsimulator"
+                            ToolTipService.ToolTip="https://archive.codeplex.com/?p=inputsimulator" />
+                        <HyperlinkButton
+                            Content="NLog"
+                            NavigateUri="https://nlog-project.org/"
+                            ToolTipService.ToolTip="https://nlog-project.org/" />
+                        <HyperlinkButton
+                            Content="Sharprompt"
+                            NavigateUri="https://github.com/shibayan/Sharprompt"
+                            ToolTipService.ToolTip="https://github.com/shibayan/Sharprompt" />
+                        <HyperlinkButton
+                            Content="TaskScheduler"
+                            NavigateUri="https://github.com/dahall/taskscheduler"
+                            ToolTipService.ToolTip="https://github.com/dahall/taskscheduler" />
+                        <HyperlinkButton
+                            Content="YamlDotNet"
+                            NavigateUri="https://github.com/aaubry/YamlDotNet"
+                            ToolTipService.ToolTip="https://github.com/aaubry/YamlDotNet" />
+                    </StackPanel>
                 </controls:SettingsCard>
             </StackPanel>
         </Grid>
