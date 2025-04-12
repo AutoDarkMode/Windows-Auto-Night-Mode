@@ -33,7 +33,7 @@ public partial class App : Application
         return service;
     }
 
-    public static WindowEx MainWindow { get; set; } = null!;
+    public static Window MainWindow { get; set; } = null!;
 
     public App()
     {
