@@ -480,7 +480,7 @@ namespace AutoDarkModeApp.Pages
             if (result == true)
             {
                 ProcessHandler.StartProcessByProcessInfo(
-                    "https://github.com/Armin2208/Windows-Auto-Night-Mode/issues/44");
+                    "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues/44");
             }
         }
 
@@ -746,7 +746,7 @@ namespace AutoDarkModeApp.Pages
         private void TextBlockHelpWiki_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ProcessHandler.StartProcessByProcessInfo(
-                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+                "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
 
         private void TextBlockHelpWiki_KeyDown(object sender, KeyEventArgs e)
