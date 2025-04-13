@@ -85,7 +85,7 @@ public partial class PageAbout : Page
 
     private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode");
+        StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode");
     }
 
     private void TelegramTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
