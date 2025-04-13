@@ -81,7 +81,7 @@ internal class Updater
         var result = msg.DialogResult;
         if (result == true)
         {
-            var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+            var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
             Process.Start(new ProcessStartInfo(issueUri)
             {
                 UseShellExecute = true,

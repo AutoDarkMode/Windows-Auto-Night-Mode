@@ -4,14 +4,14 @@
 
 Switches between the dark and light theme of Windows at scheduled times.
 
-[Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
+[Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
 <a href="https://hosted.weblate.org/engage/auto-dark-mode/">
 <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
 </a>
 
 ## Overview
-![Screenshot showing Time-Page](https://github.com/Armin2208/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
+![Screenshot showing Time-Page](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/screenshot1.png)
 Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
 
 Android, iOS and MacOS already offer the possibility of changing the system design based on the time of the day. We're bringing this feature to Windows on a larger scale.
@@ -50,7 +50,7 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 
 
 #### Download from GitHub
-[Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases/latest)
+[Click here to download the newest version of Auto Dark Mode!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/latest)
 
 
 #### Even more download options
@@ -105,4 +105,4 @@ Alternatively, you can manually edit the translation files in `AutoDarkModeLib/P
 
 
 ## More information
-You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
+You still have open questions? [Check out our wiki!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)

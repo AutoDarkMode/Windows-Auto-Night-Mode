@@ -28,7 +28,7 @@ public class ErrorService : IErrorService
         };
         await dialog.ShowAsync();
 
-        var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+        var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
         Process.Start(new ProcessStartInfo(issueUri)
         {
             UseShellExecute = true,
@@ -55,7 +55,7 @@ public class ErrorService : IErrorService
         };
         await dialog.ShowAsync();
 
-        var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+        var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
         Process.Start(new ProcessStartInfo(issueUri)
         {
             UseShellExecute = true,
@@ -84,7 +84,7 @@ public class ErrorService : IErrorService
         };
         await dialog.ShowAsync();
 
-        var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+        var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
         Process.Start(new ProcessStartInfo(issueUri)
         {
             UseShellExecute = true,

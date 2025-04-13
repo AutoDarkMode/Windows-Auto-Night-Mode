@@ -16,7 +16,7 @@ Auto Dark Mode helps you to be more productive. Because you shouldn't care about
 
 Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts.
 
-[Features](#features) • [Download](#download) • [Release Notes](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
+[Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
 > [!NOTE]
 This version is under development. The function is not complete, and there may be some errors. Hope you can participate in the feedback of the problem and the modification and addition of the code. Thank you very much.
@@ -51,7 +51,7 @@ This version is under development. The function is not complete, and there may b
 
 #### Download from GitHub
 
-[Click here to download the newest version of Auto Dark Mode!](https://github.com/Armin2208/Windows-Auto-Night-Mode/releases/latest)
+[Click here to download the newest version of Auto Dark Mode!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/latest)
 
 #### Even more download options
 
@@ -115,4 +115,4 @@ Alternatively, you can manually edit the translation files in `AutoDarkModeApp\S
 
 ## More information
 
-You still have open questions? [Check out our wiki!](https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki)
+You still have open questions? [Check out our wiki!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)
