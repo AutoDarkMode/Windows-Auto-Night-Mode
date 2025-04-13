@@ -216,7 +216,7 @@ namespace AutoDarkModeApp
             var result = msg.DialogResult;
             if (result == true)
             {
-                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                string issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)
                 {
                     UseShellExecute = true,
@@ -496,7 +496,7 @@ namespace AutoDarkModeApp
 
         private void ButtonWikiBrowserExtension_Click(object sender, RoutedEventArgs e)
         {
-            StartProcessByProcessInfo("https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
+            StartProcessByProcessInfo("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser");
         }
 
         private static void StartProcessByProcessInfo(string message)
