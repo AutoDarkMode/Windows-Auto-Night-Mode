@@ -42,7 +42,7 @@
                                 <Button
                                     MinWidth="120"
                                     Click="LightModeCheckColorButton_Click"
-                                    Content="Check color" />
+                                    Content="Select color" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
@@ -68,7 +68,7 @@
                                 <Button
                                     MinWidth="120"
                                     Click="DarkModeCheckColorButton_Click"
-                                    Content="Check color" />
+                                    Content="Select color" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

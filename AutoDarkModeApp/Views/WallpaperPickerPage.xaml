@@ -170,7 +170,7 @@
                                     MinWidth="120"
                                     HorizontalAlignment="Right"
                                     Click="CheckColorButton_Click"
-                                    Content="Check color" />
+                                    Content="Select color" />
                             </Grid>
 
                             <!--  Windows Spotlight  -->
