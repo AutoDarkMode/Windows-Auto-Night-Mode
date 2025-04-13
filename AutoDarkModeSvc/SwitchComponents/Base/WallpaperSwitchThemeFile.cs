@@ -97,6 +97,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
 
         protected override void Callback(SwitchEventArgs e)
         {
+            /*
             GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
             if (e.Theme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
             {
@@ -107,6 +108,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
             }
+            */
         }
     }
 }
