@@ -178,7 +178,7 @@
     <value>Οι αλλαγές σας έχουν αποθηκευτεί!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Ορίστε μια ώρα και οι αλλαγές σας θα αποθηκευτούν αυτόματα.</value>
+    <value>Οι αλλαγές σας θα αποθηκευτούν αυτόματα.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
     <value>Λήψη ενημέρωσης</value>
@@ -285,7 +285,7 @@
     <value>Ανενεργό</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Ενεργοποιημένο</value>
   </data>
   <data name="or" xml:space="preserve">
     <value>ή</value>
@@ -500,7 +500,7 @@
     <value>Επαναφορά</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Εναλλαγή σε σκοτεινή λειτουργία όταν η συσκευή αποσυνδέεται από την πρίζα</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Προεπιλεγμένη τιμή για το ρυθμιστικό εξοικονόμησης ενέργειας</value>
@@ -1128,10 +1128,10 @@
     <value>&amp;Ενεργοποίηση/απενεργοποίηση θέματος</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Προβολέας</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Προβολέας των Windows</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
     <value>Χρώμα έμφασης</value>
@@ -1248,10 +1248,10 @@
     <value>Να μην γίνεται εναλλαγή όταν εκτελούνται συγκεκριμένες διαδικασίες</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Περιηγηθείτε σε εφαρμογές που υποστηρίζουν το Auto Dark Mode</value>
+    <value>Εξερευνήστε εφαρμογές που υποστηρίζουν Αυτόματη Σκοτεινή Λειτουργία</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Το Auto Dark Mode δεν υποστηρίζεται από προεπιλογή από κάθε τρίτη εφαρμογή. Στη σελίδα wiki μας παρέχουμε μια επιμελημένη λίστα με υποστηριζόμενες εφαρμογές.</value>
+    <value>Η λειτουργία Αυτόματης Σκοτεινής Λειτουργίας δεν υποστηρίζεται αυτόματα από όλες τις εφαρμογές τρίτων. Στη σελίδα wiki προσφέρουμε μία λίστα με ελεγμένες εφαρμογές που την υποστηρίζουν.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
     <value>Προτεινόμενες εφαρμογές</value>

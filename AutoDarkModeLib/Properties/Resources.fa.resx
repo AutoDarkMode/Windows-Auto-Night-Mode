@@ -166,7 +166,7 @@
     <value>سامانه</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>از برنامه شخص ثالث استفاده شده</value>
+    <value>از برنامه واسط استفاده شده</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
     <value>بروزرسانی ها</value>
@@ -207,7 +207,7 @@
   <data name="msgUpdaterText" xml:space="preserve">
     <value>از اینکه از نمایه تاریک خودکار استفاده میکنید متشکریم!
 
-نسخه جدیدی در گیت هات با حل مشکلات و بهبود بخشی تجربه شما موجود است.
+نسخه جدیدی در گیت هاب با حل مشکلات و برخی بهبودها موجود است.
 آیا می خواهید دانلودش کنید؟
 
 در حال نصب نسخه:{0}، نسخه جدید:{1}</value>
@@ -216,19 +216,19 @@
     <value>حالت تاریک خوکار</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>بررسی بروزرسانیها</value>
+    <value>بررسی بروزرسانی‌ها</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>We check for updates at every program start.</value>
+    <value>در هربار اجرای برنامه، بروزرسانی‌ جدید بررسی می‌شود.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
     <value>خوش آمدید</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Change settings here to modify the automatic theme switch behavior.</value>
+    <value>در اینجا تنظیمات مربوط به رفتار تغییر نمایه خودکار را تغییر دهید.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Translator: None yet</value>
+    <value>Translator: Hamed Rezaei(himon7)</value>
   </data>
   <data name="lblCity" xml:space="preserve">
     <value>شهر</value>
@@ -237,13 +237,13 @@
     <value>موقعیت</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>App restart required to see changes</value>
+    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است.</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>زبان:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Accent Color for Taskbar</value>
+    <value>رنگ تأکیدی برای نوار وظیفه</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>لغو</value>
@@ -252,34 +252,34 @@
     <value>فعلی:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Wallpaper for dark theme</value>
+    <value>پس‌زمینه برای نمایه‌ی تاریک</value>
   </data>
   <data name="dbDel" xml:space="preserve">
     <value>حذف/غیرفعال</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>انتخاب پرونده</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Wallpaper for light theme</value>
+    <value>پس‌زمینه برای نمایه‌ی روشن</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Desktop Background</value>
+    <value>پس‌زمینه‌ی میزکار</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>عکسها</value>
+    <value>عکس‌ها</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpapers</value>
+    <value>لطفا دو پس‌زمینه انتخاب کنید.</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>لطفا یک عکس انتخاب کنید.</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configure Desktop Background</value>
+    <value>پیکربندی پس‌زمینه میزکار</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>use current background</value>
+    <value>استفاده از پس‌زمینه کنونی</value>
   </data>
   <data name="disabled" xml:space="preserve">
     <value>غیرفعال شده</value>
@@ -294,23 +294,23 @@
     <value>ذخیره</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
+    <value>شاید تصویر خراب است یا چنین مسیری وجود ندارد.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>We couldn't generate a preview of your image, sorry!</value>
+    <value>متأسفیم! نتوانستیم  پیش‌نمایشی از تصویر شما بسازیم.</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>We couldn't save your settings, sorry!</value>
+    <value>متأسفیم! نتوانستیم تنظیمات شما را ذخیره کنیم.</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>An error has occured</value>
+    <value>یک خطا رخ داده است.</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>فقط در حالت تاریک نمایان است.
+اگر به مشکلی برخوردید، لطفا مقدار تأخیر در تغییر نمایه را  در بخش تنظیمات افزایش دهید.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>اطلاعات</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
     <value>ساعت ۱۲ ساعته</value>
@@ -328,42 +328,42 @@ If you run into issues: please increase the switching delay in settings.</value>
     <value>آری</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Automatic update check</value>
+    <value>بررسی خودکار بروزرسانی</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>مشکلی در رابط کاربری بود.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+لطفا اطمینان حاصل کنید:
+- سرویس برنامه در حال اجرا است
+- فایل config.yaml شما سالم است
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+آیا می‌خواهید یک تیکت در ریپوزیتوری Auto Dark Mode ایجاد کنید؟
+برای باز کردن یک پنجره جدید در مرورگر روی «آری» کلید کنید.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Your input is invalid</value>
+    <value>خطا: ورودی شما اشتباه است.</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Switch after Connected Standby (not recommended)</value>
+    <value>تغییر پس از آماده به کار متصل (پیشنهاد نمی شود)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
-But it also reduces the battery life, so ONLY activate if necessary!</value>
+    <value>دستگاه‌های موبایلی مانند محصولات Microsoft Surface از نوع جدید از حالت آماده به کار استفاده می‌کنند.
+فعال کردن این گزینه از اینکه Auto Dark Mode بلافاصله پس بیدار شدن رایانه‌ی شما تغییر حالت انجام دهد، اطمینان حاصل می‌کند.
+اما همچنان عمر باتری را نیز کاهش می‌دهد؛ پس فقط در صورت نیاز فعال کنید!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>به خاطر یک باگ در ویندوز، نوار وظیفه رنگ‌ خود را در حالت ذخیره‌ انرژی به درستی تغییر نمی‌دهد. در صورت مواجهه با این مشکل، لطفا حالت ذخیره انرژی را غیرفعال کنید.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>جابجایی</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Set</value>
+    <value>تنظیم کردن</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme.
-You can set them up individually in your Windows Theme.</value>
+    <value>این گزینه‌ها به هنگام استفاده از Windows Theme غیرفعال اند.
+شما می‌توانید ‌آن‌ها را در Windows Theme  به طور جداگانه تغییر دهید.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>برنامه ها</value>
@@ -381,333 +381,332 @@ You can set them up individually in your Windows Theme.</value>
     <value>نمایه تاریک</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Create your themes</value>
+    <value>نمایه‌ی خود را بسازید.</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Pick your themes</value>
+    <value>نمایه‌ی خود را انتخاب کنید.</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>نمایه‌ی روشن</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows Theme (more features)</value>
+    <value>Windows Theme (ویژگی‌های بیشتر)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Desktop Wallpaper (recommended)</value>
+    <value>پس‌زمینه میزکار (پیشنهادی)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
+    <value>برای باز کردن تنظیمات Windows Themes کلیک کنید.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>اکنون به "Colors"‌بروید و رنگ سیستم را به "Light"‌ برای نمایه‌ی روشن تغییر دهید. پس‌زمینه، مکان‌نما‌ی موشواره، و رنگ تأکیدی موردپسند خود را انتخاب کنید.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
+    <value>به تنظیمات نمایه برگردید و نمایه‌ی خود را ذخیره کنید.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Repeat this process for the dark theme.</value>
+    <value>همین مراحل را برای نمایه‌ی تاریک انجام دهید.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Delay for switching taskbar colors (ms):</value>
+    <value>تأخیر برای تغییر رنگ نوار وظیفه (میلی ثانیه):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>About</value>
+    <value>درباره</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>Menu</value>
+    <value>منو</value>
   </data>
   <data name="restart" xml:space="preserve">
-    <value>Restart</value>
+    <value>اجرای دوباره</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set custom hours</value>
+    <value>تنظیم ساعت سفارشی</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>از طلوع تا غروب (سرویس مکان‌یاب)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Step</value>
+    <value>مرحله</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>فیلتر رنگی (ارسال با Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use logon task instead of startup entry</value>
+    <value>استفاده از Logon Task به جای Startup entry</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Select mode:</value>
+    <value>انتخاب حالت:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+    <value>به‌ هنگام اعمال نمایه‌ی انتخاب شده، خطایی رخ داد. ما تغییر نمایه‌را غیر فعال کردیم.</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative light theme</value>
+    <value>نمایه‌ی  روشن جایگزین</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Download Extension</value>
+    <value>بارگیری افزونه</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>Recommended tools</value>
+    <value>ابزار پیشنهادی</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.</value>
+    <value>این افزونه‌ی مرورگر باعث می‌شود مرورگرهای Edge، Firefox و Chrome‌ از نمایه‌ی سیستم پیروی کنند.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>پیدا نشد</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Why should you donate?</value>
+    <value>چرا اعانه بدهیم؟</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>How to donate?</value>
+    <value>چگونه اعانه بدهیم؟</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+    <value>شما می‌توانید از طریق PayPal پول واریز کنید. این یک کمک بلاعوض و اختیاری است.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>Donate</value>
+    <value>اعانه دادن</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+    <value>سلام، سپاس برای استفاده شما از Auto Dark Mode! آیا تا کنون آن‌را دوست داشته اید؟ 
 
-This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
-I don't generate any profit with this project.
+این برنامه با کمک به مراقبت از چشمانتان روز لذت بخش‌تری را برایتان به ارمغان می‌آورد .
+من با این پروژه هیچ سودی بدست نمی آورم.
 
-For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+به همین دلیل می‌توانید با یک کمک مالی داوطلبانه از من حمایت کنید. حتی مقدار کمی می‌تواند باعث خوشحالی من بشود. فقط به‌ اندازه‌ای که برای کار من ارزش قائلید کمک کنید.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
+    <value>خطایی هنگان اعمال یک فایل .theme رخ داد. شاید نمایه‌ی ایجاد شده‌ی شما حذف یا جابجا شده است. به همین دلیل حالت تغییر نمایه را غیر فعال کردیم. برای باز فعالسازی آن، لطفا Auto Dark Mode را باز کنید و تنظیمات {0} را پیکربندی کنید.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue:
+    <value>ما به مشکلات زیر برخوردیم:
 {0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
-Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
-
-Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
+هم‌اکنون تلاش می‌کنیم که این‌ مشکل را با جرای الگوریتم به صورت administrator حل کنیم. شاید این کمک کننده باشد.
+Auto Dark Mode پس از این دوباره اجرا می‌شود و شما نیاز به اعمال دوباره تنظیمات دارید. متأسفیم!
+توجه: هیچ وقت به صورت دستی Auto Dark Mode ‌را به صورت administrator اجرا نکنید!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Help</value>
+    <value>کمک</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Multi-User support</value>
+    <value>پشتیبانی چند کاربره</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Optional delay for activating grayscale color filter:</value>
+    <value>تأخیر اختیاری برای فعالسازی فیلتر رنگی خاکستری:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Adapt to system</value>
+    <value>سازگاری با سیستم</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>بازنشانی</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>تغییر به حالت تاریک برای وقتی که دستگاه در حالت شارژ نیست</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>مقدار دلخواه برای نوار لغزنده‌ی ذخیره‌ی انرژی</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
+    <value>تعدیل صرفه‌جوی انرژی برای تغییر نمایه</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>این فقط زمانی کار می‌کند که شما به صورت دستی حالت ذخیره‌ انرژی را فعال نکرده باشید.</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
+    <value>تغیر حالت‌ها</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Personalization</value>
+    <value>شخصی سازی</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Apply Coordinates</value>
+    <value>اعمال مختصات</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
+    <value>این گزینه غیر فعال است؛ زیرا شما بروزرسانی  Windows 10 April 2019 را نصب نکرده اید.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Geographic coordinates</value>
+    <value>مختصات جغرافیایی</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>Location data</value>
+    <value>داده‌های مکانی</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>From sunset to sunrise (geographic coordinates)</value>
+    <value>از طلوع تا غروب (مختصات جغرافیایی)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Find geo coordinates for your location</value>
+    <value>یافتن مختصات جغرافیایی برای مکان شما</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>Open config file</value>
+    <value>باز کردن پرونده‌ی پیکربندی</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Open config folder</value>
+    <value>باز کردن پوشه‌ی پیکربندی</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Open log file</value>
+    <value>باز کردن پرونده‌ی گزارش</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Config</value>
+    <value>پیکربندی</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy)</value>
+    <value>Microsoft Office (قدیمی)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
+    <value>یک نمایه انتخاب کنید</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+    <value>یک پس‌زمینه انتخاب کنید</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>غیرفعال شده</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Hide tray icon (not recommended)</value>
+    <value>پنهان کردن آیکون tray (پیشنهاد نمی‌شود)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>هنگامی که ویندوز نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>هنگامی که Auto Dark Mode نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>انتخاب یک نمایه‌‌ي ویندوز دیگر برای حالت تاریک و روشن. امکان سفارشی سازی کامل، اما نیاز به تنظیم پرونده‌های .themes توسط شما دارد.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>پس‌زمینه‌ی میزکارتان را برای همه‌ی صفحه‌نمایش‌ها یا به صورت جداگانه برای هرکدام و رنگ پس‌زمینه یا حالت spotlight را سفارشی کنید.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
+    <value>ما ویرایش‌های جدید Auto Dark Mode را در پس‌زمنیه بررسی می کنیم. در صورت وجود بروزرسانی جدید، شما را از طریق اعلانات مطلع می‌کنیم</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Automatically download and install new versions</value>
+    <value>بار گیری و نصب خودکار ویرایش‌های جدید</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+    <value>عدم نمایش اعلانات</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Select update channel</value>
+    <value>انتخاب کانال بروزرسانی</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+    <value>بررسی بروزرسانی همزمان با اجرای Auto Dark Mode</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 days</value>
+    <value>۱۴ روز</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 days</value>
+    <value>۳ روز</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 days</value>
+    <value>۷ روز</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>آخرین بررسی</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>never</value>
+    <value>هیچ‌وقت</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Change how often we check for updates</value>
+    <value>تغییر بررسی برورز رسانی هر چند وقت یک بار</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>نمایه‌ی تاریک</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>نمای‌ی روشن</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>تصویر</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>Picture (multiple monitors)</value>
+    <value>تصویر (چند صفحه‌نمایش)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Solid color</value>
+    <value>رنگ یک‌پارچه</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Mode</value>
+    <value>حالت</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>Monitor</value>
+    <value>صفحه نمایش</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Type</value>
+    <value>نوع</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Remove disconnected monitors</value>
+    <value>حدف صفحه‌نمایش‌های قطع شده</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>پس‌زمینه</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Color</value>
+    <value>رنگ</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>کد hex</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+    <value>فعالسازی تغییر پس‌زمینه</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Don't switch while playing video games</value>
+    <value>عدم تغییر حالت در هنگام پخش ویدئو</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Fast (1 sample)</value>
+    <value>سریع (یک نمونه)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Medium (2 samples)</value>
+    <value>متوسط (دو نمونه)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 samples)</value>
+    <value>آهسته (سه نمونه)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+    <value>سرعت تشخیص مصرف پردازنده گرافیک</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+    <value>دستگاه‌های مجهز به باتری</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Conditions</value>
+    <value>شرایط</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+    <value>حداقل درصد مصرف پردازنده گرافیکی برای تأخیر تغییر حالت</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+    <value>بازگردانی نمایه‌ها هنگامی که به صورت خارجی تغییر کرده‌اند</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Latitude</value>
+    <value>عرض جغرافیایی</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Longitude</value>
+    <value>طول جغرافیایی</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait…</value>
+    <value>سرویس برنامه هنوز اجرا نشده است، لطفا صبر کنید…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Launching Service</value>
+    <value>در حال اجرای سرویس برنامه</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>سرویس برنامه پاسخگو نیست! لطفا بررسی کنید آیا AutoDarkModeSvc.exe در حال اجراست، و دوباره تلاش کنید!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Enable Windows theme switch</value>
+    <value>فعالسازی تغییر نمایه‌ی ویندوز</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Off</value>
+    <value>خاموش</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>On</value>
+    <value>روشن</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Follow us</value>
+    <value>ما را دنبال کنید</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Theme</value>
+    <value>نمایه</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>گل‌ها</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
@@ -719,7 +718,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>Windows (روشن)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
@@ -727,7 +726,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (Dark)</value>
+    <value>Windows (تاریک)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
@@ -747,10 +746,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Every day</value>
+    <value>هر روز</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>برای ذخیره تغییرات کلیک کنید.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
@@ -759,70 +758,70 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Accent only</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Version</value>
+    <value>نگارش</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>رونوشت</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>اجرای Auto Dark Mode به همراه ویندوز</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>اجرای خودکار</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Mode:</value>
+    <value>حالت:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Path:</value>
+    <value>مسیر:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>تازه‌سازی جرای خودکار</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
+    <value>زبان</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>غیرفعال شده</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>None</value>
+    <value>هیچ</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>پیدا نشد</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
     <value>Registry Key</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>فعالیت</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>شما اجرای خودکار با ویندوز را غیر فعال کرده اید.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
+    <value>بروزرسانی بعدی در</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>Color</value>
+    <value>رنگ</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
+    <value>شما فقط در زمانی که کلیدهای میانبر غیر فعال هستند می‌توانید آن‌ها را ویرایش کنید.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>حالت تاریک اجباری</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>حالت روشن اجباری</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>میانبرها</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>توقف نمایه‌ی اجباری</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Enable hotkeys</value>
+    <value>فعالسازی میانبرها</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
     <value>Force &amp;Dark Theme</value>
@@ -831,11 +830,11 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Force &amp;Light Theme</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>پنهان کردن این آیکون پیشنهاد نمی‌شود.
+آیا واقعا می‌خواهید ادامه دهید؟</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Hide Tray Icon</value>
+    <value>پنهان کردن آیکون tray</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>&amp;Open Config Directory</value>

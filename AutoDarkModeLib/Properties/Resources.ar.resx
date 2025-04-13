@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -118,1017 +118,1015 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Settings</value>
+    <value>إعدادات</value>
   </data>
   <data name="applyButton" xml:space="preserve">
-    <value>Apply</value>
+    <value>طبق</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Enable automatic theme switching</value>
+    <value>تمكين التبديل التلقائي للنسق</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
-    <value>Always dark</value>
+    <value>داكن دائماً</value>
   </data>
   <data name="cmbAlwWhite" xml:space="preserve">
-    <value>Always light</value>
+    <value>دائماً فاتح</value>
   </data>
   <data name="debugModeCheckBox" xml:space="preserve">
-    <value>Enable features for Windows 1903</value>
+    <value>تمكين الميزات لنظام التشغيل Windows 1903</value>
   </data>
   <data name="lblApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>تطبيقات</value>
   </data>
   <data name="lblCustomStart" xml:space="preserve">
-    <value>Custom start time</value>
+    <value>وقت البدء المخصّص</value>
   </data>
   <data name="lblDark" xml:space="preserve">
-    <value>Dark</value>
+    <value>داكن</value>
   </data>
   <data name="lblDarkTheme" xml:space="preserve">
-    <value>Dark theme</value>
+    <value>نسق داكنة</value>
   </data>
   <data name="lblEdge" xml:space="preserve">
-    <value>Edge (Legacy)</value>
+    <value>إيدج (الإصدار القديم)</value>
   </data>
   <data name="lblLight" xml:space="preserve">
-    <value>Light</value>
+    <value>فاتح</value>
   </data>
   <data name="lblLightTheme" xml:space="preserve">
-    <value>Light theme</value>
+    <value>نسق فاتح</value>
   </data>
   <data name="lblSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>الإعدادات</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Switch current theme</value>
+    <value>تبديل النسق الحالي</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
-    <value>System</value>
+    <value>النظام</value>
   </data>
   <data name="lblThirdParty" xml:space="preserve">
-    <value>Used third party software</value>
+    <value>برامج الطرف الثالث المستخدمة</value>
   </data>
   <data name="lblUpdates" xml:space="preserve">
-    <value>Updates</value>
+    <value>التحديثات</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>استخدام خدمة الموقع</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
-    <value>Your changes have been saved!</value>
+    <value>تم حفظ تغييراتك!</value>
   </data>
   <data name="msgClickApply" xml:space="preserve">
-    <value>Your changes will be saved automatically.</value>
+    <value>سيتم حفظ تغييراتك تلقائياً.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Download update</value>
+    <value>تنزيل التحديث</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
-    <value>error occurred :(</value>
+    <value>حدث خطأ :(</value>
   </data>
   <data name="msgLocPerm" xml:space="preserve">
-    <value>This app needs access to your location</value>
+    <value>يحتاج هذا التطبيق إلى الوصول إلى موقعك</value>
   </data>
   <data name="msgNoUpd" xml:space="preserve">
-    <value>No new updates are available.</value>
+    <value>لا تتوفر تحديثات جديدة.</value>
   </data>
   <data name="msgSearchLoc" xml:space="preserve">
-    <value>Getting your location…</value>
+    <value>الحصول على موقعك…</value>
   </data>
   <data name="msgSearchUpd" xml:space="preserve">
-    <value>Looking for updates…</value>
+    <value>البحث عن تحديثات…</value>
   </data>
   <data name="msgThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
+    <value>تحذير: لم نتمكن من قراءة نسقك الحالي.</value>
   </data>
   <data name="msgUpdateAvail" xml:space="preserve">
-    <value>A new update is available!</value>
+    <value>يتوفر تحديث جديد!</value>
   </data>
   <data name="msgUpdaterText" xml:space="preserve">
-    <value>Thank you for using Auto Dark Mode!
-
-A new version is available on GitHub with fixes and enhancements.
-Do you want to install it?
-
-Currently installed version: {0}, new version: {1}</value>
+    <value>شكراً لك على استخدامك Auto Dark Mode!
+ يتوفر إصدار جديد على GitHub مع إصلاحات وتحسينات.
+ هل تريد تثبيته؟ 
+الإصدار المثبت حالياً: {0}، الإصدار الجديد: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Auto Dark Mode</value>
+    <value>وضع الداكن التلقائي</value>
   </data>
   <data name="updateButton" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>تحقق من وجود تحديثات</value>
   </data>
   <data name="updateInfoText" xml:space="preserve">
-    <value>We check for updates at every program start.</value>
+    <value>نتحقق من وجود تحديثات في كل مرة يبدأ فيها البرنامج.</value>
   </data>
   <data name="userFeedback" xml:space="preserve">
-    <value>Welcome</value>
+    <value>أهلاً وسهلاً بك</value>
   </data>
   <data name="welcomeText" xml:space="preserve">
-    <value>Change settings here to modify the automatic theme switch behavior.</value>
+    <value>قم بتغيير الإعدادات هنا لتعديل سلوك التبديل التلقائي للنسق.</value>
   </data>
   <data name="lblTranslator" xml:space="preserve">
-    <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
+    <value>مترجم: أرمين أوساج وصموئيل شيغ</value>
   </data>
   <data name="lblCity" xml:space="preserve">
-    <value>City</value>
+    <value>المدينة</value>
   </data>
   <data name="lblPosition" xml:space="preserve">
-    <value>Position</value>
+    <value>الموقع الجغرافي</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>App restart required to see changes</value>
+    <value>يلزم إعادة تشغيل التطبيق لرؤية التغييرات</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
-    <value>Language:</value>
+    <value>اللغة:</value>
   </data>
   <data name="cmbAccentColor" xml:space="preserve">
-    <value>Accent Color for Taskbar</value>
+    <value>لون التمييز لشريط المهام</value>
   </data>
   <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>إلغاء</value>
   </data>
   <data name="dbCurrently" xml:space="preserve">
-    <value>Currently:</value>
+    <value>حاليا:</value>
   </data>
   <data name="dbDark" xml:space="preserve">
-    <value>Wallpaper for dark theme</value>
+    <value>خلفية للنسق الداكن</value>
   </data>
   <data name="dbDel" xml:space="preserve">
-    <value>Delete/Disable</value>
+    <value>حذف/تعطيل</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>اختر الملف</value>
   </data>
   <data name="dbLight" xml:space="preserve">
-    <value>Wallpaper for light theme</value>
+    <value>خلفية للنسق الفاتح</value>
   </data>
   <data name="dbMainHeader" xml:space="preserve">
-    <value>Desktop Background</value>
+    <value>خلفية سطح المكتب</value>
   </data>
   <data name="dbPictures" xml:space="preserve">
-    <value>Pictures</value>
+    <value>الصور</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>Please select two wallpapers</value>
+    <value>يُرجى اختيار خلفيتين</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>يرجى تحديد صورة</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
-    <value>Configure Desktop Background</value>
+    <value>تكوين خلفية سطح المكتب</value>
   </data>
   <data name="dbUseCurrent" xml:space="preserve">
-    <value>use current background</value>
+    <value>استخدام الخلفية الحالية</value>
   </data>
   <data name="disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>معطل</value>
   </data>
   <data name="enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>ممكّن</value>
   </data>
   <data name="or" xml:space="preserve">
-    <value>or</value>
+    <value>أو</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>الحفظ</value>
   </data>
   <data name="dbErrorText" xml:space="preserve">
-    <value>Maybe your picture file is corrupted or the path doesn't exist.</value>
+    <value>ربما يكون ملف الصورة تالفاً أو أن المسار غير موجود.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>We couldn't generate a preview of your image, sorry!</value>
+    <value>لم نتمكن من إنشاء معاينة لصورتك، آسف!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>We couldn't save your settings, sorry!</value>
+    <value>لم نتمكن من حفظ إعداداتك، آسف!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>An error has occured</value>
+    <value>حدث خطأ</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
-    <value>Only visible in dark mode.
-If you run into issues: please increase the switching delay in settings.</value>
+    <value>مرئي فقط في الوضع الداكن
+. إذا واجهت مشاكل: يُرجى زيادة تأخير التبديل في الإعدادات.</value>
   </data>
   <data name="info" xml:space="preserve">
-    <value>Info</value>
+    <value>المعلومات</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 hour clock</value>
+    <value>نظام 12 ساعة</value>
   </data>
   <data name="msgClose" xml:space="preserve">
-    <value>Close</value>
+    <value>إغلاق</value>
   </data>
   <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>&amp;Close</value>
+    <value>&amp;amp;إغلاق</value>
   </data>
   <data name="msgNo" xml:space="preserve">
-    <value>No</value>
+    <value>لا</value>
   </data>
   <data name="MsgYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>نعم</value>
   </data>
   <data name="cbBackgroundUpdate" xml:space="preserve">
-    <value>Automatic update check</value>
+    <value>التحقق من التحديث التلقائي</value>
   </data>
   <data name="ErrorMessageBox" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>كانت هناك مشكلة في واجهة المستخدم.
 
-Please ensure:
-- the service is running
-- your config.yaml file is correct
+ يُرجى التأكد من:
+ - الخدمة قيد التشغيل 
+- ملف config.yaml الخاص بك صحيح 
 
-Would you like to create an issue on the Auto Dark Mode repository?
-Click "Yes" to open a new browser window.
+هل ترغب في إنشاء مشكلة في مستودع الوضع الداكن التلقائي؟
+ انقر فوق "نعم" لفتح نافذة متصفح جديدة.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>Error: Your input is invalid</value>
+    <value>خطأ: الإدخال الخاص بك غير صالح</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>Switch after Connected Standby (not recommended)</value>
+    <value>التبديل بعد وضع الاستعداد المتصل (غير مستحسن)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>Mobile devices, like Microsoft Surface products, are using a new kind of standby mode.
-Enabling this option makes sure that Auto Dark Mode immediately switches the theme after waking up your computer.
-But it also reduces the battery life, so ONLY activate if necessary!</value>
+    <value>تستخدم الأجهزة المحمولة، مثل منتجات Microsoft Surface، نوعًا جديدًا من وضع الاستعداد.
+ يؤدي تمكين هذا الخيار إلى التأكد من أن الوضع الداكن التلقائي يقوم بتبديل النسق فورًا بعد إيقاظ جهاز الكمبيوتر الخاص بك.
+ ولكنه يقلل أيضًا من عمر البطارية، لذا قم بتفعيله فقط عند الضرورة!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>Due to a Windows bug, the taskbar doesn't properly switch its color in battery saver mode. Please turn off battery saver if you run into issues.</value>
+    <value>بسبب خطأ في نظام التشغيل Windows، لا يقوم شريط المهام بتبديل لونه بشكل صحيح في وضع حفظ البطارية. يُرجى إيقاف تشغيل موفر البطارية إذا واجهتك مشاكل.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>Offset</value>
+    <value>تَكَافَأَ</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
-    <value>Set</value>
+    <value>تعيين</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme.
-You can set them up individually in your Windows Theme.</value>
+    <value>يتم تعطيل هذه الخيارات أثناء استخدام نسق ويندوز.
+ يمكنك إعدادها بشكل فردي في نسق ويندوز.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
-    <value>Apps</value>
+    <value>التطبيقات</value>
   </data>
   <data name="NavbarSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>الإعدادات</value>
   </data>
   <data name="NavbarTime" xml:space="preserve">
-    <value>Time</value>
+    <value>الوقت</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Open Folder</value>
+    <value>فتح المجلد</value>
   </data>
   <data name="ThemeDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>نسق داكن</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>Create your themes</value>
+    <value>إنشاء السمات الخاصة بك</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Pick your themes</value>
+    <value>اختر سماتك</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>نسق فاتح</value>
   </data>
   <data name="ThemeSelectionTheme" xml:space="preserve">
-    <value>Windows Theme (more features)</value>
+    <value>نسق ويندوز (المزيد من الميزات)</value>
   </data>
   <data name="ThemeSelectionWallaper" xml:space="preserve">
-    <value>Desktop Wallpaper (recommended)</value>
+    <value>خلفية سطح المكتب (موصى بها)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
+    <value>انقر هنا لفتح إعدادات نسق ويندوز.</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>انتقل الآن إلى "الألوان" وغيّر لون النظام إلى "فاتح" لنسق الألوان الفاتح. اختر خلفية الشاشة المفضلة لديك، ومؤشر الماوس، ولون التمييز.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
+    <value>ارجع إلى إعدادات النسق واحفظ النسق الخاص بك.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
-    <value>Repeat this process for the dark theme.</value>
+    <value>كرر هذه العملية للنسق الداكن.</value>
   </data>
   <data name="SettingsAccentColorTimeout" xml:space="preserve">
-    <value>Delay for switching taskbar colors (ms):</value>
+    <value>تأخير تبديل ألوان شريط المهام (مللي ثانية):</value>
   </data>
   <data name="NavbarAbout" xml:space="preserve">
-    <value>About</value>
+    <value>نبذة عن</value>
   </data>
   <data name="NavbarTitle" xml:space="preserve">
-    <value>Menu</value>
+    <value>القائمة</value>
   </data>
   <data name="restart" xml:space="preserve">
-    <value>Restart</value>
+    <value>إعادة التشغيل</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set custom hours</value>
+    <value>تعيين ساعات مخصصة</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
+    <value>من غروب الشمس إلى شروقها (خدمة الموقع)</value>
   </data>
   <data name="ThemeTutorialStep" xml:space="preserve">
-    <value>Step</value>
+    <value>خطوة</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>فلتر الألوان (يرسل Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>Use logon task instead of startup entry</value>
+    <value>استخدام مهمة تسجيل الدخول بدلاً من إدخال بدء التشغيل</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
-    <value>Select mode:</value>
+    <value>اختر الوضع:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>Error occurred while applying the selected themes, we disabled theme switching</value>
+    <value>حدث خطأ أثناء تطبيق النسق المحدد، وتم تعطيل التبديل بين النسق.</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
-    <value>Alternative light theme</value>
+    <value>النسق الفاتح البديل</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Download Extension</value>
+    <value>تنزيل الإضافة</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
-    <value>Recommended tools</value>
+    <value>الأدوات الموصى بها</value>
   </data>
   <data name="tbDarkReaderDescription" xml:space="preserve">
-    <value>This browser extension makes websites in Chrome, Firefox and Edge respect the system theme.</value>
+    <value>يجعل امتداد المتصفح هذا مواقع الويب في كروم وفايرفوكس وإيدج تحترم نسق النظام.</value>
   </data>
   <data name="locationCityNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>غير موجود</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>Why should you donate?</value>
+    <value>لماذا يجب أن تتبرع؟</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>How to donate?</value>
+    <value>كيف تتبرع؟</value>
   </data>
   <data name="DonationPayPalDescription" xml:space="preserve">
-    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+    <value>يمكنك إرسال الأموال عبر PayPal. إنه أمر تطوعي تماماً ولا يجب أن تتوقع أي تعويض.</value>
   </data>
   <data name="NavbarDonation" xml:space="preserve">
-    <value>Donate</value>
+    <value>تبرع</value>
   </data>
   <data name="donationDescription" xml:space="preserve">
-    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+    <value>مرحبًا! شكرًا لك على استخدام الوضع الداكن التلقائي! هل أعجبك حتى الآن؟
 
-This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
-I don't generate any profit with this project.
+ هذا التطبيق يجعل حياتك اليومية أكثر متعة، من خلال مساعدتك في العناية بعينيك. في نفس الوقت هو مجاني تمامًا وخالٍ من الإعلانات ولا يجمع بيانات المستخدم وهو مفتوح المصدر.
+ أنا لا أحقق أي ربح من هذا المشروع.
 
-For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+ لهذا السبب يمكنك دعمي بتبرع طوعي. حتى لو كان مبلغًا صغيرًا يجعلني أقفز سعيدًا من خلال شقتي. فقط تبرع بقدر ما تقدر عملي.</value>
   </data>
   <data name="ThemeApplyError2" xml:space="preserve">
-    <value>Error occured while applying a .theme-file. Maybe your created theme got deleted or moved. This is why we deactivated theme switching for now. To re-enable it, please open Auto Dark Mode and configure {0} Settings.</value>
+    <value>حدث خطأ أثناء تطبيق ملف .theme-file. ربما تم حذف القالب الذي تم إنشاؤه أو نقله. لهذا السبب ألغينا تفعيل تبديل القالب في الوقت الحالي. لإعادة تمكينه، يُرجى فتح الوضع الداكن التلقائي وتهيئة {0} الإعدادات.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>We ran into the following issue:
-{0}
+    <value>واجهتنا المشكلة التالية:
+ {0}
 
-We will now try to solve this problem by running an algorithm as administrator. Maybe this will help.
-Auto Dark Mode will restart afterwards and you'll need to re-apply your settings, sorry!
+ سنحاول الآن حل هذه المشكلة عن طريق تشغيل خوارزمية كمسؤول. ربما هذا سيساعدك.
+ سيُعاد تشغيل الوضع المظلم التلقائي بعد ذلك وستحتاج إلى إعادة تطبيق إعداداتك، آسف!
 
-Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
+ ملاحظة جانبية: لا تقم أبدًا بتشغيل الوضع الداكن التلقائي كمسؤول يدويًا!</value>
   </data>
   <data name="tbHelp" xml:space="preserve">
-    <value>Help</value>
+    <value>المساعدة</value>
   </data>
   <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
-    <value>Multi-User support</value>
+    <value>دعم تعدد المستخدمين</value>
   </data>
   <data name="tbSettingsColourFilterDelay" xml:space="preserve">
-    <value>Optional delay for activating grayscale color filter:</value>
+    <value>تأخير اختياري لتفعيل فلتر ألوان التدرج الرمادي:</value>
   </data>
   <data name="cmbAdjTheme" xml:space="preserve">
-    <value>Adapt to system</value>
+    <value>التكيف مع النظام</value>
   </data>
   <data name="lblReset" xml:space="preserve">
-    <value>Reset</value>
+    <value>إعادة تعيين</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>قم بالتبديل إلى الوضع الداكن عند فصل الجهاز</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
+    <value>القيمة الافتراضية لشريط تمرير توفير الطاقة</value>
   </data>
   <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
+    <value>تخفيف توفير الطاقة لمفتاح تبديل النسق</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>يعمل هذا فقط إذا لم تقم بتمكين موفر البطارية يدوياً!</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
+    <value>تبديل الأوضاع</value>
   </data>
   <data name="NavbarPersonalization" xml:space="preserve">
-    <value>Personalization</value>
+    <value>التخصيص</value>
   </data>
   <data name="applyGeoButton" xml:space="preserve">
-    <value>Apply Coordinates</value>
+    <value>تطبيق الإحداثيات</value>
   </data>
   <data name="cmb1903" xml:space="preserve">
-    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
+    <value>تم تعطيل هذا الخيار، لأنك لم تقم بتثبيت تحديث Windows 10 April 2019 على جهازك.</value>
   </data>
   <data name="headerGeoCoordinates" xml:space="preserve">
-    <value>Geographic coordinates</value>
+    <value>الإحداثيات الجغرافية</value>
   </data>
   <data name="headerLocationData" xml:space="preserve">
-    <value>Location data</value>
+    <value>بيانات الموقع</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>From sunset to sunrise (geographic coordinates)</value>
+    <value>من غروب الشمس إلى شروقها (الإحداثيات الجغرافية)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
-    <value>Find geo coordinates for your location</value>
+    <value>ابحث عن الإحداثيات الجغرافية لموقعك</value>
   </data>
   <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
-    <value>Open config file</value>
+    <value>فتح ملف التكوين المفتوح</value>
   </data>
   <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
-    <value>Open config folder</value>
+    <value>فتح مجلد التكوين</value>
   </data>
   <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
-    <value>Open log file</value>
+    <value>فتح ملف السجل المفتوح</value>
   </data>
   <data name="ConfigTextBlockHeader" xml:space="preserve">
-    <value>Config</value>
+    <value>التكوين</value>
   </data>
   <data name="lblOffice" xml:space="preserve">
-    <value>Microsoft Office (legacy)</value>
+    <value>مايكروسوفت أوفيس (قديم)</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
+    <value>اختر نسق</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+    <value>اختر خلفية</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>معطل</value>
   </data>
   <data name="SettingsCheckBoxHideTray" xml:space="preserve">
-    <value>Hide tray icon (not recommended)</value>
+    <value>إخفاء أيقونة الدرج (غير مستحسن)</value>
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+    <value>يتم تعطيل هذه الميزة أثناء إدارة Windows للنسق الخاص بك.</value>
   </data>
   <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+    <value>يتم تعطيل هذه الميزة أثناء إدارة الوضع الداكن التلقائي للنسق الخاص بك.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
+    <value>حدد نسق ويندوز مختلفة للوضع المظلم والفاتح على التوالي. يتيح التخصيص الكامل للنسق، لكنه يتطلب منك إعداد ملفات .theme بنفسك.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>قم بتخصيص خلفية سطح المكتب لجميع الشاشات، أو الشاشات الفردية، أو قم بتعيين لون الخلفية أو قم بتمكين تسليط الضوء.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>We check for new versions of Auto Dark Mode in the background. When an update is available, we will notify you via toast notification</value>
+    <value>نقوم بالتحقق من وجود إصدارات جديدة من "الوضع الداكن التلقائي" في الخلفية. عند توفر تحديث، سنقوم بإعلامك عبر إشعار منبثق.</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
-    <value>Automatically download and install new versions</value>
+    <value>تنزيل الإصدارات الجديدة وتثبيتها تلقائياً</value>
   </data>
   <data name="UpdatesCheckBoxSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+    <value>عدم إظهار الإشعارات</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Select update channel</value>
+    <value>تحديد قناة التحديث</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+    <value>تحقق من وجود تحديثات عند بدء تشغيل وضع الداكن التلقائي</value>
   </data>
   <data name="UpdatesComboBoxInterval14" xml:space="preserve">
-    <value>14 days</value>
+    <value>14 يوماً</value>
   </data>
   <data name="UpdatesComboBoxInterval3" xml:space="preserve">
-    <value>3 days</value>
+    <value>3 أيام</value>
   </data>
   <data name="UpdatesComboBoxInterval7" xml:space="preserve">
-    <value>7 days</value>
+    <value>7 أيام</value>
   </data>
   <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
-    <value>Last checked</value>
+    <value>آخر فحص</value>
   </data>
   <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
-    <value>never</value>
+    <value>أبداً</value>
   </data>
   <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
-    <value>Change how often we check for updates</value>
+    <value>تغيير عدد مرات التحقق من التحديثات</value>
   </data>
   <data name="WallpaperComboBoxItemDark" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>نسق داكن</value>
   </data>
   <data name="WallpaperComboBoxItemLight" xml:space="preserve">
-    <value>Light Theme</value>
+    <value>نسق فاتح</value>
   </data>
   <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
-    <value>Picture</value>
+    <value>صورة</value>
   </data>
   <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
-    <value>Picture (multiple monitors)</value>
+    <value>صورة (شاشات متعددة)</value>
   </data>
   <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
-    <value>Solid color</value>
+    <value>لون خالص</value>
   </data>
   <data name="WallpaperComboBoxMode" xml:space="preserve">
-    <value>Mode</value>
+    <value>الوضع</value>
   </data>
   <data name="WallpaperComboBoxMonitor" xml:space="preserve">
-    <value>Monitor</value>
+    <value>الشاشة</value>
   </data>
   <data name="WallpaperComboBoxType" xml:space="preserve">
-    <value>Type</value>
+    <value>النوع</value>
   </data>
   <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
-    <value>Remove disconnected monitors</value>
+    <value>إزالة الشاشات المفصولة</value>
   </data>
   <data name="WallpaperTextBlockHeader" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>الخلفية</value>
   </data>
   <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
-    <value>Color</value>
+    <value>اللون</value>
   </data>
   <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
-    <value>Hex code</value>
+    <value>رمز سداسي عشري</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+    <value>تمكين مفتاح تبديل الخلفية</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
-    <value>Don't switch while playing video games</value>
+    <value>لا تقم بالتبديل أثناء لعب ألعاب الفيديو</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
-    <value>Fast (1 sample)</value>
+    <value>سريع (1 عينة)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
-    <value>Medium (2 samples)</value>
+    <value>متوسط (2 عينة)</value>
   </data>
   <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
-    <value>Slow (3 samples)</value>
+    <value>بطيء (3 عينات)</value>
   </data>
   <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+    <value>سرعة اكتشاف استخدام وحدة معالجة الرسومات</value>
   </data>
   <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+    <value>الأجهزة التي تعمل بالبطارية</value>
   </data>
   <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
-    <value>Conditions</value>
+    <value>الشروط</value>
   </data>
   <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+    <value>الحد الأدنى لاستخدام وحدة معالجة الرسومات % لتأخير التبديل</value>
   </data>
   <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+    <value>استعادة النسق عند تغييرها خارجيًا</value>
   </data>
   <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
-    <value>Latitude</value>
+    <value>خط العرض</value>
   </data>
   <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
-    <value>Longitude</value>
+    <value>خط الطول</value>
   </data>
   <data name="StartupLaunchingServiceText" xml:space="preserve">
-    <value>Service not running yet, please wait…</value>
+    <value>الخدمة لم تعمل بعد، الرجاء الانتظار…</value>
   </data>
   <data name="StartupLaunchingServiceTitle" xml:space="preserve">
-    <value>Launching Service</value>
+    <value>إطلاق الخدمة</value>
   </data>
   <data name="StartupServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>الخدمة لا تستجيب. يُرجى التحقق مما إذا كان AutoDarkModeSvc.exe.exe قيد التشغيل، ثم حاول مرة أخرى!</value>
   </data>
   <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
-    <value>Enable Windows theme switch</value>
+    <value>تمكين تبديل نسق Windows</value>
   </data>
   <data name="ToggleSwitchOff" xml:space="preserve">
-    <value>Off</value>
+    <value>إيقاف التشغيل</value>
   </data>
   <data name="ToggleSwitchOn" xml:space="preserve">
-    <value>On</value>
+    <value>مشغل</value>
   </data>
   <data name="AboutTextBlockFollowUs" xml:space="preserve">
-    <value>Follow us</value>
+    <value>تابعنا</value>
   </data>
   <data name="ThemeTextBlockHeader" xml:space="preserve">
-    <value>Theme</value>
+    <value>النسق</value>
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
-    <value>Flowers</value>
+    <value>الزهور</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
-    <value>Windows</value>
+    <value>ويندوز</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
-    <value>Windows 10</value>
+    <value>ويندوز 10</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>ويندوز (فاتحة)</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>الحركة الملتقطة</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
-    <value>Windows (Dark)</value>
+    <value>ويندوز(داكنة)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>التدفق</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Glow</value>
+    <value>توهج</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>ويندوز (فاتحة)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>شروق الشمس</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
-    <value>Every day</value>
+    <value>كل يوم</value>
   </data>
   <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
+    <value>انقر فوق تعيين لحفظ التغييرات.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+    <value>استخدم لون التمييز لشريط المهام أثناء</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+    <value>فقط التمييز</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
-    <value>Version</value>
+    <value>الإصدار</value>
   </data>
   <data name="AboutButtonCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>نسخ</value>
   </data>
   <data name="SettingsPageAutostartDescription" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>بدء تشغيل الوضع الداكن التلقائي مع Windows</value>
   </data>
   <data name="SettingsPageAutostartHeader" xml:space="preserve">
-    <value>Autostart</value>
+    <value>التشغيل التلقائي</value>
   </data>
   <data name="SettingsPageAutostartMode" xml:space="preserve">
-    <value>Mode:</value>
+    <value>الوضع:</value>
   </data>
   <data name="SettingsPageAutostartPath" xml:space="preserve">
-    <value>Path:</value>
+    <value>المسار:</value>
   </data>
   <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>تحديث التشغيل التلقائي</value>
   </data>
   <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
-    <value>Language</value>
+    <value>اللغة</value>
   </data>
   <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>معطل</value>
   </data>
   <data name="SettingsPageAutostartModeNone" xml:space="preserve">
-    <value>None</value>
+    <value>لا يوجد</value>
   </data>
   <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
-    <value>Not found</value>
+    <value>غير موجود</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>مفتاح السجل</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
-    <value>Task</value>
+    <value>المهمة</value>
   </data>
   <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
+    <value>لقد قمت بتعطيل إدخال بدء التشغيل التلقائي عبر Windows.</value>
   </data>
   <data name="TimePageNextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
+    <value>التحديث التالي في</value>
   </data>
   <data name="WallpaperColor" xml:space="preserve">
-    <value>Color</value>
+    <value>اللون</value>
   </data>
   <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
+    <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
+    <value>فرض الوضع الداكن</value>
   </data>
   <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
-    <value>Force light mode</value>
+    <value>فرض وضع الفاتح</value>
   </data>
   <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
+    <value>مفاتيح التشغيل السريع</value>
   </data>
   <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
-    <value>Stop forcing theme</value>
+    <value>التوقف عن إجبار النسق</value>
   </data>
   <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
-    <value>Enable hotkeys</value>
+    <value>تمكين مفاتيح الاختصار</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Force &amp;Dark Theme</value>
+    <value>فرض&amp; نسق الداكن</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Force &amp;Light Theme</value>
+    <value>فرض &amp;النسق الفاتح</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
+    <value>لا يُنصح بإخفاء الأيقونة.
+ هل تريد حقاً المتابعة؟</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Hide Tray Icon</value>
+    <value>إخفاء أيقونة الدرج</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>&amp;amp;دليل التكوين المفتوح</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>دع التطبيق يقرر</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>لا تقم بتبديل النسق إلا إذا كان النظام خاملاً</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>الدقائق حتى يعتبر النظام خاملاً</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>لون مميز لأشرطة العناوين وحدود النوافذ فقط أثناء</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
+    <value>معلومات الإصدار المنسوخة إلى الحافظة</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>تبديل النسق التلقائي</value>
   </data>
   <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Automatic theme switch</value>
+    <value>&amp;amp;التبديل التلقائي للنسق</value>
   </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
-    <value>Show notification on toggle</value>
+    <value>إظهار الإشعار عند التبديل</value>
   </data>
   <data name="PostponeButtonDelay" xml:space="preserve">
-    <value>Delay</value>
+    <value>التأخير</value>
   </data>
   <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
+    <value>وحدة مراقبة وحدة معالجة الرسومات</value>
   </data>
   <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
+    <value>وحدة الإيقاف المؤقت للتبديل التلقائي</value>
   </data>
   <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
+    <value>أداة التحقق من خمول النظام</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>اضغط على تأكيد لطلب تبديل النسق على الفور.</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
+    <value>استئناف</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>قم بإلغاء هذا الإجراء بالنقر على زر التراجع أدناه.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value>hotkey</value>
+    <value>مفتاح التشغيل السريع</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
+    <value>تبديل تبديل النسق التلقائي</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>تعطيل التبديل التلقائي</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
-    <value>Undo</value>
+    <value>التراجع</value>
   </data>
   <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Pause auto switch</value>
+    <value>&amp;amp;التبديل التلقائي للإيقاف المؤقت</value>
   </data>
   <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>هل ترغب في تعطيل التبديل التلقائي بدلاً من ذلك؟</value>
   </data>
   <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>سيُستأنف التبديل التلقائي أيضًا إذا عدت إلى نسقك السابق.</value>
   </data>
   <data name="ThemeSwitchPauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>توقف تبديل النسق مؤقتاً حتى</value>
   </data>
   <data name="TimePagePostponeInfo" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
+    <value>يتم إيقاف التبديل التلقائي للنسق مؤقتًا حاليًا بسبب الوحدات التالية:</value>
   </data>
   <data name="TimePageResumeInfo" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
+    <value>الاستئناف سيعمل فقط مع التأجيلات التي لها وقت انتهاء صلاحية</value>
   </data>
   <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>تأجيل التحكم المؤجل</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>تبديل النسق</value>
   </data>
   <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>&amp;Toggle theme</value>
+    <value>&amp;تبديل النسق</value>
   </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
+    <value>تم تمكين التبديل التلقائي للنسق</value>
   </data>
   <data name="TimePageRadioButtonNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>اتبع الضوء الليلي لويندوز</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>اتبع الضوء الليلي لويندوز</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>يتم إيقاف تبديل النسق مؤقتاً مرة واحدة!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
+    <value>يؤجل حتى</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
+    <value>يؤجل حتى يتحقق شرطه</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
+    <value>يؤجل حتى شروق الشمس التالي</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
+    <value>يؤجل حتى غروب الشمس القادم</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
-    <value>until</value>
+    <value>حتى</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
+    <value>حتى شروق الشمس القادم</value>
   </data>
   <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
+    <value>حتى غروب الشمس التالي</value>
   </data>
   <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>تبديل مفتاح تبديل النسق التلقائي للإيقاف المؤقت</value>
   </data>
   <data name="ThemeSwitchResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>استئناف التبديل التلقائي للنسق</value>
   </data>
   <data name="TimePageOpenNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
+    <value>فتح إعدادات الإضاءة الليلية</value>
   </data>
   <data name="TimePageNightLightHeader" xml:space="preserve">
-    <value>Night light</value>
+    <value>إضاءة ليلية</value>
   </data>
   <data name="TimePageHeaderActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
+    <value>التأخيرات النشطة</value>
   </data>
   <data name="PostponeTimeSkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
+    <value>تخطي التبديل التلقائي مرة واحدة</value>
   </data>
   <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>الإخطار قبل التبديل التلقائي للنسق</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
+    <value>الوقت الذي ينتظر فيه الإشعار إدخال المستخدم بالدقائق</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>وضع التصحيح</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
-    <value>Allow theme switching during lockscreen (Win10)</value>
+    <value>السماح بتبديل النسق أثناء قفل الشاشة (Win10)</value>
   </data>
   <data name="ButtonConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>تأكيد</value>
   </data>
   <data name="ButtonSwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>قم بالتبديل الآن</value>
   </data>
   <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
+    <value>وحدة التأخير</value>
   </data>
   <data name="PostponeReasonSwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
+    <value>إشعار التبديل</value>
   </data>
   <data name="PostponeTime120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 ساعة</value>
   </data>
   <data name="PostponeTime15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 دقيقة</value>
   </data>
   <data name="PostponeTime180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 ساعات</value>
   </data>
   <data name="PostponeTime30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 دقيقة</value>
   </data>
   <data name="PostponeTime360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 ساعات</value>
   </data>
   <data name="PostponeTime60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 ساعة</value>
   </data>
   <data name="PostponeTime720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 ساعة</value>
   </data>
   <data name="ThemeSwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>تبديل النسق في انتظار</value>
   </data>
   <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>هل ترغب في التبديل الآن أم التأخير أكثر من ذلك؟</value>
   </data>
   <data name="SettngsPageTraceMode" xml:space="preserve">
-    <value>Trace mode</value>
+    <value>وضع التتبع</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>شكر خاص</value>
   </data>
   <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>تجاهل الخلفية</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>تجاهل المؤشر</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>تجاهل أيقونات سطح المكتب</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>تجاهل الصوت</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
-    <value>Ignore settings</value>
+    <value>تجاهل الإعدادات</value>
   </data>
   <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>لا يدعم هذا الخيار نسق Windows الافتراضية</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>الدقائق</value>
   </data>
   <data name="lblPaused" xml:space="preserve">
-    <value>Paused</value>
+    <value>متوقف مؤقتاً</value>
   </data>
   <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
-    <value>Only use with Office 2013-2019 or if you experience issues with Office's 'use system' setting</value>
+    <value>يُستخدم فقط مع Office 2013-2019 أو إذا كنت تواجه مشكلات في إعداد "استخدام النظام" في Office</value>
   </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>حدث خطأ أثناء التصحيح.</value>
   </data>
   <data name="UpdateToastCurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>الإصدار الحالي</value>
   </data>
   <data name="UpdateToastDowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>تخفيض الرتبة إلى</value>
   </data>
   <data name="UpdateToastDownloading" xml:space="preserve">
-    <value>Downloading…</value>
+    <value>تنزيل…</value>
   </data>
   <data name="UpdateToastDownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>التنزيل قيد التنفيذ</value>
   </data>
   <data name="UpdateToastMessage" xml:space="preserve">
-    <value>Message</value>
+    <value>الرسالة</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>الإصدار الجديد {0} متوفر</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>فشل الترقيع</value>
   </data>
   <data name="UpdateToastSeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>يُرجى التحقق من service.log و updater.log للحصول على المعلومات</value>
   </data>
   <data name="UpdateToastUpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>التحديث إلى</value>
   </data>
   <data name="UpdateToastButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>تخفيض التصنيف</value>
   </data>
   <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>فتح دليل السجل المفتوح</value>
   </data>
   <data name="UpdateToastButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>التأجيل</value>
   </data>
   <data name="UpdateToastButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>تحديث</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>تخفيض {0} متوفر {0} متاح</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>انتقل إلى صفحة التنزيل</value>
   </data>
   <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
+    <value>يتوفر ترقية إلى درجة أقل</value>
   </data>
   <data name="NavbarScripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>البرامج النصية</value>
   </data>
   <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
-    <value>Open script config</value>
+    <value>فتح تكوين البرنامج النصي</value>
   </data>
   <data name="PageScriptsTextBlockHeader" xml:space="preserve">
-    <value>Scripts</value>
+    <value>البرامج النصية</value>
   </data>
   <data name="PageScriptsToggle" xml:space="preserve">
-    <value>Enable custom scripts</value>
+    <value>تمكين البرامج النصية المخصصة</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>اختر الخلفية الخاصة بك</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>مسار الصورة</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
     <value>Spotlight</value>
@@ -1137,129 +1135,128 @@ Do you really want to continue?</value>
     <value>Windows spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
-    <value>Accent color</value>
+    <value>لون مميز</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>اختر لون التمييز</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>قم بتخصيص نظام ألوان نظام Windows حسب رغبتك.</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
-    <value>Update colorization</value>
+    <value>تحديث التلوين</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>الروابط</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
+    <value>توثيق النصوص البرمجية المخصصة</value>
   </data>
   <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
-    <value>Custom script user repository</value>
+    <value>مستودع مستخدم البرنامج النصي المخصص</value>
   </data>
   <data name="WallpaperComboBoxItemFill" xml:space="preserve">
-    <value>Fill</value>
+    <value>تعبئة</value>
   </data>
   <data name="WallpaperComboBoxItemFit" xml:space="preserve">
-    <value>Fit</value>
+    <value>تناسب</value>
   </data>
   <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
-    <value>Stretch</value>
+    <value>التمدد</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>اختر ما يناسب صورة سطح المكتب</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>غير متصل</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
+    <value>تحديث DWM دائمًا عند تبديل النسق</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>محاولات لتقليل حدوث ألوان واجهة المستخدم غير الصحيحة في مستكشف الملفات، شريط المهام، وقائمة ابدأ. إذا كنت تواجه هذه المشكلة بشكل متكرر أو تجدها مزعجة، حاول تمكين هذا الإعداد.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+قد يؤدي ذلك إلى تأخير طفيف إلى متوسط في بعض الأنظمة أثناء تغيير السمات، مشابه لما حدث في Windows 10. في حالات نادرة، قد يصدر Windows صوت تنبيه عند تحريك الماوس أثناء تحديثات DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
-    <value>Force DWM refresh?</value>
+    <value>فرض تحديث DWM بالقوة؟</value>
   </data>
   <data name="ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>حسناً</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>تمكين تبديل مؤشر الماوس</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>فتح إعدادات مؤشر ويندوز</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>حدد المؤشر الداكن</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>تحديد المؤشر الفاتح</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>المؤشرات</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>تكوين مؤشرات ماوس مختلفة لأوضاع الفاتحة والداكنة.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>اختيار مؤشرات الفأرة</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>دع الوضع الداكن التلقائي يدير نسقي</value>
   </data>
   <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
-    <value>Let Windows manage my theme</value>
+    <value>السماح لـ Windows بإدارة نسقي</value>
   </data>
   <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
+    <value>يمكنك تحديد مخططات مؤشر جديدة في إعدادات Windows ثم تحديدها هنا بعد ذلك.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>فتح واجهة المستخدم</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>فتح سجل المحدثين</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>تمكين مفتاح تبديل لون التمييز</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>تبديل لوحة المفاتيح والإدخال باللمس</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>تلقائي</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>يدوي</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>إضافة</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>إزالة</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>حظر العمليات</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>لا تقم بالتبديل أثناء تشغيل عمليات معينة</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>تصفح التطبيقات مع دعم الوضع الداكن التلقائي</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>لا يدعم كل تطبيق تابع لجهة خارجية وضع الداكن التلقائي بشكل افتراضي. نقدم في صفحة الويكي الخاصة بنا قائمة منسقة بالتطبيقات المدعومة.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>التطبيقات الموصى بها</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>وبدلاً من ذلك، يمكنك التبرع عبر رعاة GitHub، الذي يدعم أيضاً التبرعات الشهرية المتكررة.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>حاول إصلاح النسق</value>
   </data>
 </root>
