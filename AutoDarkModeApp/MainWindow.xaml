@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
         <TitleBar
             x:Name="TitleBar"
-            Title="Auto Dark Mode X"
+            Title="Auto Dark Mode"
             Height="{StaticResource TitleBarExpandedHeight}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"

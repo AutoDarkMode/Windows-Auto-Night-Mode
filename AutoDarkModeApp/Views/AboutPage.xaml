@@ -19,7 +19,7 @@
                         Height="64"
                         Source="/Assets/AutoDarkModeIcon.ico" />
                     <StackPanel Orientation="Vertical" Spacing="8">
-                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Auto Dark Mode X" />
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Auto Dark Mode" />
                         <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
                     </StackPanel>
                 </StackPanel>
