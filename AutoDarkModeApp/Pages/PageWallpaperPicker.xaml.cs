@@ -221,7 +221,7 @@ namespace AutoDarkModeApp.Pages
             var result = msg.DialogResult;
             if (result == true)
             {
-                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                string issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)
                 {
                     UseShellExecute = true,
