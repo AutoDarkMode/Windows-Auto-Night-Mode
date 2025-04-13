@@ -101,7 +101,7 @@ namespace AutoDarkModeApp.Handlers
             bool result = msg.DialogResult ?? false;
             if (result)
             {
-                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                string issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)
                 {
                     UseShellExecute = true,
@@ -126,7 +126,7 @@ namespace AutoDarkModeApp.Handlers
             bool result = msg.DialogResult ?? false;
             if (result)
             {
-                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                string issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)
                 {
                     UseShellExecute = true,
@@ -153,7 +153,7 @@ namespace AutoDarkModeApp.Handlers
             bool result = msg.DialogResult ?? false;
             if (result)
             {
-                string issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                string issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
                 Process.Start(new ProcessStartInfo(issueUri)
                 {
                     UseShellExecute = true,
