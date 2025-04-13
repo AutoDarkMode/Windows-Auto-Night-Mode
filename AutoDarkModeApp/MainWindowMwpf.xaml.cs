@@ -368,7 +368,7 @@ namespace AutoDarkModeApp
         private void HelpMenuItem_Clicked(object sender, MouseButtonEventArgs e)
         {
             ProcessHandler.StartProcessByProcessInfo(
-                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+                "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Troubleshooting");
         }
     }
 }
