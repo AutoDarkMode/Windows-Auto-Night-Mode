@@ -122,7 +122,7 @@ namespace AutoThemeChanger
 
         private void GitHubTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/Armin2208/Windows-Auto-Night-Mode");
+            System.Diagnostics.Process.Start("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode");
         }
 
         private void TwitterTextBlock_MouseEnter(object sender, MouseEventArgs e)
