@@ -50,21 +50,23 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 if (e.Theme == Theme.Light)
                 {
+                    currentComponentTheme = Theme.Light;
                     Settings.Component.Scripts.ForEach(s =>
                     {
                         if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
                             ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis, s.WorkingDirectory);
                     });
-                    currentComponentTheme = Theme.Light;
+                    
                 }
                 else
                 {
+                    currentComponentTheme = Theme.Dark;
                     Settings.Component.Scripts.ForEach(s =>
                     {
                         if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
                             ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis, s.WorkingDirectory);
                     });
-                    currentComponentTheme = Theme.Dark;
+                    
                 }
             });
             await switchTask;           
