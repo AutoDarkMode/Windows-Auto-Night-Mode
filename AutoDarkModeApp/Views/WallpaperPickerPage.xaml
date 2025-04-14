@@ -107,12 +107,12 @@
                                         VerticalAlignment="Center"
                                         Style="{StaticResource BodyStrongTextBlockStyle}"
                                         Text="{helpers:ResourceString Name=WallpaperComboBoxMonitor}" />
-                                    <HyperlinkButton Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
+                                    <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
                                 </StackPanel>
                                 <ComboBox
+                                    x:Name="MonitorsComboBox"
                                     Grid.Row="1"
                                     HorizontalAlignment="Right"
-                                    ItemsSource="{x:Bind ViewModel.Monitors, Mode=OneWay}"
                                     SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
                             </Grid>
 
@@ -184,6 +184,8 @@
                 <TeachingTip
                     x:Name="WallpaperPreviewTeachingTip"
                     Title="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}"
+                    CloseButtonContent="{helpers:ResourceString Name=msgClose}"
+                    IsLightDismissEnabled="True"
                     Target="{x:Bind GlobalWallpaperPathHyperlinkButton}">
                     <TeachingTip.Content>
                         <Border

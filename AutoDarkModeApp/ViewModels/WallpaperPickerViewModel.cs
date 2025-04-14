@@ -1,8 +1,5 @@
-﻿using System.Data;
-using System.Diagnostics;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
@@ -71,9 +68,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial object? SelectMonitor { get; set; }
 
     [ObservableProperty]
-    public partial List<MonitorSettings>? Monitors { get; set; }
-
-    [ObservableProperty]
     public partial WallpaperFillingMode SelectWallpaperFillingMode { get; set; }
 
     [ObservableProperty]
@@ -134,34 +128,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
         CurrentDisplayFlags = WallpaperDisplayFlags.None;
 
-        // Generate a list with all installed Monitors, select the first one
-        List<MonitorSettings> monitors = _builder.Config.WallpaperSwitch.Component.Monitors;
-        var disconnected = new List<MonitorSettings>();
-        var connected = monitors.Where(m =>
-        {
-            // Preload tostring to avoid dropdown opening lag
-            m.ToString();
-            // Return monitors connecte to system connected monitors
-            if (m.Connected)
-            {
-                return true;
-            }
-            disconnected.Add(m);
-            return false;
-        }).ToList();
-
-        foreach (var monitor in disconnected)
-        {
-            monitor.MonitorString = $"{"DisplayMonitorDisconnected".GetLocalized()} - {monitor.MonitorString}";
-        }
-
-        monitors.Clear();
-        monitors.AddRange(connected);
-        monitors.AddRange(disconnected);
-
-        Monitors = monitors;
-        SelectMonitor = monitors.FirstOrDefault();
-
         var currentType = SelectWallpaperThemeMode == ApplicationTheme.Light
             ? _builder.Config.WallpaperSwitch.Component.TypeLight
             : _builder.Config.WallpaperSwitch.Component.TypeDark;
@@ -190,9 +156,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light
                 : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
         }
-        else if (currentType == WallpaperType.Individual)
+        else if (currentType == WallpaperType.Individual && SelectMonitor != null)
         {
-            MonitorSettings monitorSettings = (SelectMonitor != null) ? (MonitorSettings)SelectMonitor : (MonitorSettings)new MonitorSettings() { MonitorString = "Waiting" };
+            MonitorSettings monitorSettings = (MonitorSettings)SelectMonitor;
             GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light
                 ? monitorSettings.LightThemeWallpaper
                 : monitorSettings.DarkThemeWallpaper;
@@ -289,9 +255,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Global;
             }
         }
-        else if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM)
+        else if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM && SelectMonitor != null)
         {
-            MonitorSettings monitorSettings = (SelectMonitor != null) ? (MonitorSettings)SelectMonitor : (MonitorSettings)new object();
+            MonitorSettings monitorSettings = (MonitorSettings)SelectMonitor;
             if (SelectWallpaperThemeMode == ApplicationTheme.Light)
             {
                 monitorSettings.LightThemeWallpaper = value;
@@ -310,6 +276,25 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
+        }
+    }
+
+    partial void OnSelectMonitorChanged(object? value)
+    {
+        if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM)
+        {
+            if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM && value != null)
+            {
+                MonitorSettings monitorSettings = (MonitorSettings)value;
+                if (SelectWallpaperThemeMode == ApplicationTheme.Light)
+                {
+                    GlobalWallpaperPath = monitorSettings.LightThemeWallpaper;
+                }
+                else
+                {
+                    GlobalWallpaperPath = monitorSettings.DarkThemeWallpaper;
+                }
+            }
         }
     }
 

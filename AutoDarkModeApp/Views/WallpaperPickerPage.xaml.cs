@@ -1,6 +1,11 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.Services;
+using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -19,15 +24,75 @@ public sealed partial class WallpaperPickerPage : Page
     {
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
+
+        DispatcherQueue.TryEnqueue(() => LoadMonitors());
+    }
+
+    private void LoadMonitors()
+    {
+        // Generate a list with all installed Monitors, select the first one
+        List<MonitorSettings> monitors = _builder.Config.WallpaperSwitch.Component.Monitors;
+        var disconnected = new List<MonitorSettings>();
+        var connected = monitors.Where(m =>
+        {
+            // Preload tostring to avoid dropdown opening lag
+            m.ToString();
+            // Return monitors connecte to system connected monitors
+            if (m.Connected)
+            {
+                return true;
+            }
+            disconnected.Add(m);
+            return false;
+        }).ToList();
+
+        foreach (var monitor in disconnected)
+        {
+            monitor.MonitorString = $"{"DisplayMonitorDisconnected".GetLocalized()} - {monitor.MonitorString}";
+        }
+
+        monitors.Clear();
+        monitors.AddRange(connected);
+        monitors.AddRange(disconnected);
+
+        MonitorsComboBox.ItemsSource = monitors;
+        ViewModel.SelectMonitor = monitors.FirstOrDefault();
     }
 
     private void GlobalWallpaperPathHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if(ViewModel.GlobalWallpaperPath != null)
+        if (ViewModel.GlobalWallpaperPath != null)
         {
             WallpaperPreviewImage.Source = new BitmapImage(new Uri(ViewModel.GlobalWallpaperPath)); ;
         }
         WallpaperPreviewTeachingTip.IsOpen = true;
+    }
+
+    private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        try
+        {
+            string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CleanMonitors);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException($"Couldn't clean up monitor list, {result}", "WallpaperPickerPage");
+            }
+            try
+            {
+                _builder.Load();
+                List<MonitorSettings> monitors = _builder.Config.WallpaperSwitch.Component.Monitors;
+                MonitorsComboBox.ItemsSource = monitors;
+                MonitorsComboBox.SelectedItem = monitors.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CleanMonitors");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CleanMonitors");
+        }
     }
 
     private async void CheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
