@@ -23,17 +23,22 @@ public class ErrorService : IErrorService
         {
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
-            CloseButtonText = "OK",
+            DefaultButton = ContentDialogButton.Primary,
+            PrimaryButtonText = "Yes",
+            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
-        await dialog.ShowAsync();
+        var result = await dialog.ShowAsync();
 
-        var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
-        Process.Start(new ProcessStartInfo(issueUri)
+        if(result == ContentDialogResult.Primary)
         {
-            UseShellExecute = true,
-            Verb = "open"
-        });
+            var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
+            Process.Start(new ProcessStartInfo(issueUri)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
+        }
         return;
     }
 
@@ -50,17 +55,22 @@ public class ErrorService : IErrorService
         {
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
-            CloseButtonText = "OK",
+            DefaultButton = ContentDialogButton.Primary,
+            PrimaryButtonText = "Yes",
+            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
-        await dialog.ShowAsync();
+        var result = await dialog.ShowAsync();
 
-        var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
-        Process.Start(new ProcessStartInfo(issueUri)
+        if (result == ContentDialogResult.Primary)
         {
-            UseShellExecute = true,
-            Verb = "open"
-        });
+            var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+            Process.Start(new ProcessStartInfo(issueUri)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
+        }
         return;
     }
 
@@ -79,17 +89,22 @@ public class ErrorService : IErrorService
         {
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
-            CloseButtonText = "OK",
+            DefaultButton = ContentDialogButton.Primary,
+            PrimaryButtonText = "Yes",
+            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
-        await dialog.ShowAsync();
+        var result = await dialog.ShowAsync();
 
-        var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
-        Process.Start(new ProcessStartInfo(issueUri)
+        if (result == ContentDialogResult.Primary)
         {
-            UseShellExecute = true,
-            Verb = "open"
-        });
+            var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+            Process.Start(new ProcessStartInfo(issueUri)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            });
+        }
         return;
     }
 }
