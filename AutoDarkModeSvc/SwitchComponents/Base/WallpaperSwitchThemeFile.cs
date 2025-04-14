@@ -89,24 +89,22 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
                 Logger.Debug("waiting for solid color to disable");
                 Thread.Sleep(100);
             }
-            currentIndividualTheme = newTheme;
-            currentGlobalTheme = Theme.Unknown;
-            currentSolidColorTheme = Theme.Unknown;
-            spotlightEnabled = false;
-        }
 
-        protected override void Callback(SwitchEventArgs e)
-        {
             GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
-            if (e.Theme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
+            if (newTheme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
             {
                 GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
                 Settings.Component.Monitors.All(m => m.DarkThemeWallpaper == GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.)
             }
-            else if (e.Theme == Theme.Light && Settings.Component.TypeLight == WallpaperType.Individual)
+            else if (newTheme == Theme.Light && Settings.Component.TypeLight == WallpaperType.Individual)
             {
                 GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
             }
+
+            currentIndividualTheme = newTheme;
+            currentGlobalTheme = Theme.Unknown;
+            currentSolidColorTheme = Theme.Unknown;
+            spotlightEnabled = false;
         }
     }
 }
