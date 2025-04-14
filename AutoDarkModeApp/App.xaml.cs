@@ -3,6 +3,7 @@ using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -55,6 +56,10 @@ public partial class App : Application
             services.AddSingleton<IErrorService, ErrorService>();
 
             // Views and ViewModels
+            services.AddTransient<CursorsViewModel>();
+            services.AddTransient<CursorsPage>();
+            services.AddTransient<ColorizationViewModel>();
+            services.AddTransient<ColorizationPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<AboutViewModel>();

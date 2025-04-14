@@ -26,6 +26,7 @@ public sealed partial class MainWindow : Window
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+
         Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
         ViewModel.NavigationService.Frame = NavigationFrame;
@@ -99,6 +100,7 @@ public sealed partial class MainWindow : Window
             await localSettings.SaveSettingAsync("Height", size.Height);
         });
 
+        //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
         try
         {
             Process.GetCurrentProcess().Kill();

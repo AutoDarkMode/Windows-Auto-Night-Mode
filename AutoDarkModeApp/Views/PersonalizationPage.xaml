@@ -21,11 +21,13 @@
                     HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}"
                     IsClickEnabled="True" />
                 <controls:SettingsCard
+                    Click="ColorizationPickSettingsCard_Click"
                     Description="{helpers:ResourceString Name=ColorizationTextBlockDescription}"
                     Header="{helpers:ResourceString Name=ColorizationPick}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                     IsClickEnabled="True" />
                 <controls:SettingsCard
+                    Click="CursorsSettingsCard_Click"
                     Description="{helpers:ResourceString Name=PersonalizationPageCursorDescription}"
                     Header="{helpers:ResourceString Name=PersonalizationPageCursorTitle}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8B0;}"
