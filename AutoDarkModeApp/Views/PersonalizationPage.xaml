@@ -27,6 +27,7 @@
                     HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                     IsClickEnabled="True" />
                 <controls:SettingsCard
+                    Click="CursorsSettingsCard_Click"
                     Description="{helpers:ResourceString Name=PersonalizationPageCursorDescription}"
                     Header="{helpers:ResourceString Name=PersonalizationPageCursorTitle}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE962;}"
