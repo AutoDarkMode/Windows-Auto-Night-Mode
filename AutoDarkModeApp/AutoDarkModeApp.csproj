@@ -9,6 +9,7 @@
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>Properties\PublishProfiles\win-$(Platform).pubxml</PublishProfile>
+		<LangVersion>Preview</LangVersion>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<UseWinUI>true</UseWinUI>
@@ -40,6 +41,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.4" />
     <PackageReference Include="WinUIEx" Version="2.5.1" />
   </ItemGroup>
 
