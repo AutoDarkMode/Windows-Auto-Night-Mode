@@ -11,7 +11,7 @@
     <Window.SystemBackdrop>
         <MicaBackdrop />
     </Window.SystemBackdrop>
-    <Grid x:Name="RootGrid">
+    <Grid x:Name="RootGrid" PointerPressed="RootGrid_PointerPressed">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -19,7 +19,6 @@
         <TitleBar
             x:Name="TitleBar"
             Title="Auto Dark Mode"
-            Height="{StaticResource TitleBarExpandedHeight}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             BackRequested="NavViewTitleBar_BackRequested"

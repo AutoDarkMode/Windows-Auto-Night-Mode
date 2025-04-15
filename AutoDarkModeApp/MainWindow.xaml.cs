@@ -87,6 +87,28 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private void RootGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        var properties = e.GetCurrentPoint(null).Properties;
+
+        if (properties.IsXButton1Pressed)
+        {
+            if (NavigationFrame.CanGoBack)
+            {
+                NavigationFrame.GoBack();
+                e.Handled = true;
+            }
+        }
+        else if (properties.IsXButton2Pressed)
+        {
+            if (NavigationFrame.CanGoForward)
+            {
+                NavigationFrame.GoForward();
+                e.Handled = true;
+            }
+        }
+    }
+
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
     {
         var postion = App.MainWindow.AppWindow.Position;
