@@ -40,4 +40,13 @@ public sealed partial class PersonalizationPage : Page
             navigation.NavigateTo(typeof(CursorsViewModel).FullName!);
         }
     }
+
+    private void ThemePickerSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        var navigation = App.GetService<INavigationService>();
+        if (navigation?.Frame != null)
+        {
+            navigation.NavigateTo(typeof(ThemePickerViewModel).FullName!);
+        }
+    }
 }

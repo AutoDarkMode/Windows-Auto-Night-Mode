@@ -23,6 +23,7 @@ public class PageService : IPageService
         Configure<WallpaperPickerViewModel, WallpaperPickerPage>();
         Configure<ColorizationViewModel, ColorizationPage>();
         Configure<CursorsViewModel, CursorsPage>();
+        Configure<ThemePickerViewModel, ThemePickerPage>();
     }
 
     public Type GetPageType(string key)
