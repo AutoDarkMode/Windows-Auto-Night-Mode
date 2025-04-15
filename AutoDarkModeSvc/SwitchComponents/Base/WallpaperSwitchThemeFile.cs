@@ -15,17 +15,8 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using AutoDarkModeLib;
-using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using Windows.UI;
-using Windows.UI.Composition;
-using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base
 {
@@ -83,24 +74,11 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
         protected override void SwitchIndividual(Theme newTheme)
         {
             WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
-
             if (currentSolidColorTheme != Theme.Unknown)
             {
                 Logger.Debug("waiting for solid color to disable");
                 Thread.Sleep(100);
             }
-
-            GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
-            if (newTheme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
-            {
-                GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
-                Settings.Component.Monitors.All(m => m.DarkThemeWallpaper == GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.)
-            }
-            else if (newTheme == Theme.Light && Settings.Component.TypeLight == WallpaperType.Individual)
-            {
-                GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
-            }
-
             currentIndividualTheme = newTheme;
             currentGlobalTheme = Theme.Unknown;
             currentSolidColorTheme = Theme.Unknown;

@@ -426,5 +426,10 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             }
         }
 
+        protected override void Callback(SwitchEventArgs e)
+        {
+            if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
+        }
+
     }
 }
