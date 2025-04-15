@@ -1,23 +1,18 @@
 ﻿using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
 public sealed partial class TimePage : Page
 {
-    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-
-    public TimeViewModel ViewModel
-    {
-        get;
-    }
+    public TimeViewModel ViewModel { get; }
 
     public TimePage()
     {
         ViewModel = App.GetService<TimeViewModel>();
         InitializeComponent();
     }
-}
 
+    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
+}

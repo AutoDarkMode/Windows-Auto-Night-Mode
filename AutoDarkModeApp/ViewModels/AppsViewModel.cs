@@ -4,6 +4,7 @@ using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -45,12 +46,6 @@ public partial class AppsViewModel : ObservableRecipient
 
     [ObservableProperty]
     private bool _isColorFilterSwitch;
-
-    [ObservableProperty]
-    private int _officeSwitchComponentMode;
-
-    [ObservableProperty]
-    private bool _isOfficeSwitchComponentLightTheme;
 
     public AppsViewModel(IErrorService errorService)
     {
@@ -113,6 +108,7 @@ public partial class AppsViewModel : ObservableRecipient
         {
             SystemSwitchComponentMode = 4;
         }
+
         IsTaskbarColorOnAdaptive = _builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
         if (_builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Light)
         {
@@ -124,6 +120,7 @@ public partial class AppsViewModel : ObservableRecipient
             IsAdaptiveTaskbarAccentOnLight = false;
             IsAdaptiveTaskbarAccentOnDark = true;
         }
+
         IsDWMPrevalenceSwitch = _builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch;
         if (_builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light)
         {
@@ -135,31 +132,9 @@ public partial class AppsViewModel : ObservableRecipient
             IsDWMPrevalenceEnableThemeLight = false;
             IsDWMPrevalenceEnableThemeDark = true;
         }
+
         IsTouchKeyboardSwitch = _builder.Config.TouchKeyboardSwitch.Enabled;
         IsColorFilterSwitch = _builder.Config.ColorFilterSwitch.Enabled;
-        if (_builder.Config.OfficeSwitch.Enabled)
-        {
-            OfficeSwitchComponentMode = _builder.Config.OfficeSwitch.Component.Mode switch
-            {
-                Mode.Switch => 0,
-                Mode.LightOnly => 1,
-                Mode.DarkOnly => 2,
-                Mode.FollowSystemTheme => 3,
-                _ => 0,
-            };
-        }
-        else
-        {
-            OfficeSwitchComponentMode = 4;
-        }
-        if (_builder.Config.OfficeSwitch.Component.LightTheme == 5)
-        {
-            IsOfficeSwitchComponentLightTheme = true;
-        }
-        else
-        {
-            IsOfficeSwitchComponentLightTheme = false;
-        }
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
@@ -208,6 +183,7 @@ public partial class AppsViewModel : ObservableRecipient
         {
             _builder.Config.AppsSwitch.Enabled = false;
         }
+
         try
         {
             _builder.Save();
@@ -367,52 +343,9 @@ public partial class AppsViewModel : ObservableRecipient
         }
     }
 
-    partial void OnOfficeSwitchComponentModeChanged(int value)
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
     {
-        if (value != 4)
-        {
-            _builder.Config.OfficeSwitch.Enabled = true;
-            _builder.Config.OfficeSwitch.Component.Mode = value switch
-            {
-                0 => Mode.Switch,
-                1 => Mode.LightOnly,
-                2 => Mode.DarkOnly,
-                3 => Mode.FollowSystemTheme,
-                _ => Mode.Switch,
-            };
-        }
-        else
-        {
-            _builder.Config.OfficeSwitch.Enabled = false;
-        }
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AppsPage");
-        }
-        RequestThemeSwitch();
-    }
-
-    partial void OnIsOfficeSwitchComponentLightThemeChanged(bool value)
-    {
-        if (value)
-        {
-            _builder.Config.OfficeSwitch.Component.LightTheme = 5;
-        }
-        else
-        {
-            _builder.Config.OfficeSwitch.Component.LightTheme = 0;
-        }
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AppsPage");
-        }
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
     }
 }

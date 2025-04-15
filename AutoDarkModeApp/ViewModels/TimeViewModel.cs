@@ -8,6 +8,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -24,50 +25,58 @@ public partial class TimeViewModel : ObservableRecipient
     // TODO: replace bools with Enum
     [ObservableProperty]
     private bool _isCustomTimes;
+
     [ObservableProperty]
     private bool _isLocationTimes;
+
     [ObservableProperty]
     private bool _isCoordinateTimes;
+
     [ObservableProperty]
     private bool _isWindowsNightLight;
 
     [ObservableProperty]
     private string? _locationNextUpdateDateDescription;
+
     [ObservableProperty]
     private string? _locationBlockText;
+
     [ObservableProperty]
     private string? _lightTimeBlockText;
+
     [ObservableProperty]
     private string? _darkTimeBlockText;
 
     [ObservableProperty]
     private TimeSpan _timeLightStart;
+
     [ObservableProperty]
     private TimeSpan _timeDarkStart;
+
     [ObservableProperty]
     private string? _timePickHourClock;
 
     [ObservableProperty]
     private double _latValue;
+
     [ObservableProperty]
     private double _lonValue;
 
     [ObservableProperty]
     private Visibility _locationSettingsCardVisibility;
+
     [ObservableProperty]
     private Visibility _offsetTimeSettingsCardVisibility;
+
     [ObservableProperty]
     private int _offsetLight;
+
     [ObservableProperty]
     private int _offsetDark;
 
-    public ICommand SaveOffsetCommand
-    {
-        get;
-    }
+    public ICommand SaveOffsetCommand { get; }
 
     //TODO The logic part about Postpone is not written
-
     public TimeViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
@@ -166,9 +175,16 @@ public partial class TimeViewModel : ObservableRecipient
             }
             else if (!_builder.Config.Location.UseGeolocatorService)
             {
-                LocationBlockText = "lblPosition".GetLocalized() + ": " + "TimeNumberBoxHeaderLat".GetLocalized() +
-                    " " + Math.Round(_builder.LocationData.Lat, 3) + " / " + "TimeNumberBoxHeaderLon".GetLocalized() +
-                    " " + Math.Round(_builder.LocationData.Lon, 3);
+                LocationBlockText =
+                    "lblPosition".GetLocalized()
+                    + ": "
+                    + "TimeNumberBoxHeaderLat".GetLocalized()
+                    + " "
+                    + Math.Round(_builder.LocationData.Lat, 3)
+                    + " / "
+                    + "TimeNumberBoxHeaderLon".GetLocalized()
+                    + " "
+                    + Math.Round(_builder.LocationData.Lon, 3);
             }
         }
         catch
@@ -418,5 +434,12 @@ public partial class TimeViewModel : ObservableRecipient
     }
 
     partial void OnLatValueChanged(double value) => UpdateCoordinates();
+
     partial void OnLonValueChanged(double value) => UpdateCoordinates();
+
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
+    }
 }

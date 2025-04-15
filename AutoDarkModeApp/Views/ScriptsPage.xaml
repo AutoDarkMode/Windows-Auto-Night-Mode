@@ -14,7 +14,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True" HeaderIcon="{ui:FontIcon Glyph=&#xE943;}">
                     <ToggleSwitch />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>

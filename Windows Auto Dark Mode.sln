@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeComms", "AutoDa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoDarkModeShell", "AutoDarkModeShell\AutoDarkModeShell.csproj", "{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDarkModeApp.Core", "AutoDarkModeApp.Core\AutoDarkModeApp.Core.csproj", "{E71B524A-953F-82CA-A42B-C7FAD0C69928}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,22 +116,6 @@ Global
 		{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}.Release|x64.Build.0 = Release|Any CPU
 		{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}.Release|x86.ActiveCfg = Release|Any CPU
 		{6F2891B5-1A79-4A99-802B-7BEA88C2F6F6}.Release|x86.Build.0 = Release|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|ARM64.ActiveCfg = Debug|arm64
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|ARM64.Build.0 = Debug|arm64
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|x64.Build.0 = Debug|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|x86.ActiveCfg = Debug|x86
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Debug|x86.Build.0 = Debug|x86
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|ARM64.ActiveCfg = Release|arm64
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|ARM64.Build.0 = Release|arm64
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|x64.ActiveCfg = Release|x64
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|x64.Build.0 = Release|x64
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|x86.ActiveCfg = Release|x86
-		{E71B524A-953F-82CA-A42B-C7FAD0C69928}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
