@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.ThemePickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <!--  Theme  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeTextBlockHeader}" />
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=ThemeToggleSwichEnableTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsThemeSwitchEnabled, Mode=TwoWay}" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <CheckBox Content="{helpers:ResourceString Name=ThemePickerComboBoxKeepActive}" IsChecked="{x:Bind ViewModel.IsThemeKeepActiveEnabled, Mode=TwoWay}" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Theme Tutorial Step  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeHeaderCreate}" />
+                <InfoBar
+                    x:Name="ThemeTutorialFirstStepInfoBar"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="{helpers:ResourceString Name=ThemeTutorialStep2}">
+                    <InfoBar.ActionButton>
+                        <HyperlinkButton Click="OpenWindowsThemePageHyperlinkButton_Click" Content="{helpers:ResourceString Name=ThemeTutorialStep1}" />
+                    </InfoBar.ActionButton>
+                </InfoBar>
+                <InfoBar
+                    x:Name="ThemeTutorialSecondStepInfoBar"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="{helpers:ResourceString Name=ThemeTutorialStep3}" />
+                <InfoBar
+                    x:Name="ThemeTutorialThirdStepInfoBar"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="{helpers:ResourceString Name=ThemeTutorialStep4}" />
+
+                <!--  Pick Theme  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeHeaderPick}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ThemeLight}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                    <ComboBox x:Name="LightThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectLightTheme, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ThemeDark}" HeaderIcon="{ui:FontIcon Glyph=&#xE708;}">
+                    <ComboBox x:Name="DarkThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectDarkTheme, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <HyperlinkButton Click="OpenThemeFolderHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenPath}" />
+                </controls:SettingsCard>
+
+                <!--  Ignore  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeHeaderIgnoreFlags}" />
+                <InfoBar
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="{helpers:ResourceString Name=ThemeIgnoreDisabledMessage}"
+                    Severity="Warning" />
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=ThemeCheckBoxIgnoreBackground}" IsChecked="{x:Bind ViewModel.IsIgnoreBackgroundEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=ThemeCheckBoxIgnoreCursor}" IsChecked="{x:Bind ViewModel.IsIgnoreCursorEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=ThemeCheckBoxIgnoreSound}" IsChecked="{x:Bind ViewModel.IsIgnoreSoundEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=ThemeCheckBoxIgnoreDesktopIcons}" IsChecked="{x:Bind ViewModel.IsIgnoreDesktopIconsEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+
+</Page>

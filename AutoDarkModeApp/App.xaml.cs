@@ -73,6 +73,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<ThemePickerViewModel>();
+            services.AddTransient<ThemePickerPage>();
             services.AddTransient<CursorsViewModel>();
             services.AddTransient<CursorsPage>();
             services.AddTransient<ColorizationViewModel>();
