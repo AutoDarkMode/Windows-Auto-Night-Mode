@@ -100,6 +100,24 @@ public partial class App : Application
 
         await SetApplicationLanguageAsync();
 
+        // Autostart logic
+        var localSettings = App.GetService<ILocalSettingsService>();
+        var isFirstRun = await localSettings.ReadSettingAsync<bool>("FirstRun");
+
+        if (isFirstRun)
+        {
+            // Enable autostart on first run
+            AutostartHandler.EnableAutoStart(null);
+
+            // Perform other first-run tasks if needed
+            await localSettings.SaveSettingAsync("FirstRun", false);
+        }
+        else
+        {
+            // Ensure autostart is valid on subsequent runs
+            AutostartHandler.EnsureAutostart(null);
+        }
+
         var mainViewModel = App.GetService<MainViewModel>();
         MainWindow = new MainWindow(mainViewModel);
 
