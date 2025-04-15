@@ -304,7 +304,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         currentWallpaperPosition = WallpaperHandler.GetPosition();
         currentIndividualTheme = GetIndividualWallpapersState();
 
-        // force spotlight state to null 
+        // force spotlight state to null
         // todo maybe do some kind of detection beforehand,
         // but might prove difficult because the managed theme is not necessarily the applied theme
         // and theme state tracking is only done with unmanaged themes for disk access reasons.
@@ -388,5 +388,10 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             return Theme.Unknown;
         }
+    }
+
+    protected override void Callback(SwitchEventArgs e)
+    {
+        if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
     }
 }

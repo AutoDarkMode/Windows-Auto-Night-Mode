@@ -48,6 +48,17 @@ static class RegistryHandler
     }
 
     /// <summary>
+    /// Switches spotlight state
+    /// </summary>
+    /// <param name="enabled">false for disabled, true for enabled</param>
+    public static void SetSpotlightState(bool enabled)
+    {
+        var value = enabled ? 1 : 0;
+        using var key = GetSpotlightKey();
+        key.SetValue("EnabledState", value, RegistryValueKind.DWord);
+    }
+
+    /// <summary>
     /// Switches system applications theme
     /// </summary>
     /// <param name="theme">0 for dark, 1 for light theme</param>
@@ -247,6 +258,12 @@ static class RegistryHandler
     private static RegistryKey GetPersonalizeKey()
     {
         RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);
+        return registryKey;
+    }
+
+    private static RegistryKey GetSpotlightKey()
+    {
+        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\DesktopSpotlight\Settings", true);
         return registryKey;
     }
 
