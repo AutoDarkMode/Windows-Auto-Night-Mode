@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using Microsoft.UI.Xaml.Controls;
@@ -35,9 +35,9 @@ public sealed partial class ThemePickerPage : Page
         ThemeFile? lightSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.LightThemePath);
         ThemeFile? darkSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.DarkThemePath);
         if (lightSelected != null)
-            ViewModel.SelectLightTheme = lightSelected.ToString();
+            ViewModel.SelectedLightTheme = lightSelected.ToString();
         if (darkSelected != null)
-            ViewModel.SelectDarkTheme = darkSelected.ToString();
+            ViewModel.SelectedDarkTheme = darkSelected.ToString();
     }
 
     private async void OpenWindowsThemePageHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

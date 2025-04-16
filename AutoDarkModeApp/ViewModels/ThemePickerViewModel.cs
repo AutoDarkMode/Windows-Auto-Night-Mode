@@ -1,5 +1,4 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Handlers;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -15,28 +14,28 @@ public partial class ThemePickerViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
 
     [ObservableProperty]
-    public partial bool IsThemeSwitchEnabled { get; set; }
+    public partial bool ThemeSwitchEnabled { get; set; }
 
     [ObservableProperty]
-    public partial bool IsThemeKeepActiveEnabled { get; set; }
+    public partial bool ThemeKeepActiveEnabled { get; set; }
 
     [ObservableProperty]
-    public partial object? SelectLightTheme { get; set; }
+    public partial object? SelectedLightTheme { get; set; }
 
     [ObservableProperty]
-    public partial object? SelectDarkTheme { get; set; }
+    public partial object? SelectedDarkTheme { get; set; }
 
     [ObservableProperty]
-    public partial bool IsIgnoreBackgroundEnabled { get; set; }
+    public partial bool IgnoreBackgroundEnabled { get; set; }
 
     [ObservableProperty]
-    public partial bool IsIgnoreCursorEnabled { get; set; }
+    public partial bool IgnoreCursorEnabled { get; set; }
 
     [ObservableProperty]
-    public partial bool IsIgnoreSoundEnabled { get; set; }
+    public partial bool IgnoreSoundEnabled { get; set; }
 
     [ObservableProperty]
-    public partial bool IsIgnoreDesktopIconsEnabled { get; set; }
+    public partial bool IgnoreDesktopIconsEnabled { get; set; }
 
     public ThemePickerViewModel(IErrorService errorService)
     {
@@ -60,27 +59,27 @@ public partial class ThemePickerViewModel : ObservableRecipient
 
     private void LoadSettings()
     {
-        IsThemeSwitchEnabled = _builder.Config.WindowsThemeMode.Enabled;
-        IsThemeKeepActiveEnabled = _builder.Config.WindowsThemeMode.MonitorActiveTheme;
+        ThemeSwitchEnabled = _builder.Config.WindowsThemeMode.Enabled;
+        ThemeKeepActiveEnabled = _builder.Config.WindowsThemeMode.MonitorActiveTheme;
 
         var applyFlags = _builder.Config.WindowsThemeMode.ApplyFlags;
         var flagsSet = new HashSet<ThemeApplyFlags>(applyFlags);
-        IsIgnoreBackgroundEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreBackground);
-        IsIgnoreCursorEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreCursor);
-        IsIgnoreDesktopIconsEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreDesktopIcons);
-        IsIgnoreSoundEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreSound);
+        IgnoreBackgroundEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreBackground);
+        IgnoreCursorEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreCursor);
+        IgnoreDesktopIconsEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreDesktopIcons);
+        IgnoreSoundEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreSound);
     }
 
     private void WriteSettings()
     {
         List<ThemeApplyFlags> flags = new();
-        if (IsIgnoreBackgroundEnabled == true)
+        if (IgnoreBackgroundEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreBackground);
-        if (IsIgnoreCursorEnabled == true)
+        if (IgnoreCursorEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreCursor);
-        if (IsIgnoreSoundEnabled == true)
+        if (IgnoreSoundEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreSound);
-        if (IsIgnoreDesktopIconsEnabled == true)
+        if (IgnoreDesktopIconsEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreDesktopIcons);
         _builder.Config.WindowsThemeMode.ApplyFlags = flags;
         try
@@ -106,7 +105,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         });
     }
 
-    partial void OnIsThemeSwitchEnabledChanged(bool value)
+    partial void OnThemeSwitchEnabledChanged(bool value)
     {
         _builder.Config.WindowsThemeMode.Enabled = value;
         try
@@ -119,7 +118,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
     }
 
-    partial void OnIsThemeKeepActiveEnabledChanged(bool value)
+    partial void OnThemeKeepActiveEnabledChanged(bool value)
     {
         _builder.Config.WindowsThemeMode.MonitorActiveTheme = value;
         try
@@ -132,7 +131,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectLightThemeChanged(object? value)
+    partial void OnSelectedLightThemeChanged(object? value)
     {
         List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
         IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
@@ -147,10 +146,10 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
         catch
         {
-            SelectLightTheme = null;
+            SelectedLightTheme = null;
         }
 
-        if (IsThemeSwitchEnabled)
+        if (ThemeSwitchEnabled)
         {
             _builder.Config.WallpaperSwitch.Enabled = false;
             _builder.Config.WindowsThemeMode.Enabled = true;
@@ -166,7 +165,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectDarkThemeChanged(object? value)
+    partial void OnSelectedDarkThemeChanged(object? value)
     {
         List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
         IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
@@ -181,10 +180,10 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
         catch
         {
-            SelectDarkTheme = null;
+            SelectedDarkTheme = null;
         }
 
-        if (IsThemeSwitchEnabled)
+        if (ThemeSwitchEnabled)
         {
             _builder.Config.WallpaperSwitch.Enabled = false;
             _builder.Config.WindowsThemeMode.Enabled = true;
@@ -200,22 +199,22 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
     }
 
-    partial void OnIsIgnoreBackgroundEnabledChanged(bool value)
+    partial void OnIgnoreBackgroundEnabledChanged(bool value)
     {
         WriteSettings();
     }
 
-    partial void OnIsIgnoreCursorEnabledChanged(bool value)
+    partial void OnIgnoreCursorEnabledChanged(bool value)
     {
         WriteSettings();
     }
 
-    partial void OnIsIgnoreSoundEnabledChanged(bool value)
+    partial void OnIgnoreSoundEnabledChanged(bool value)
     {
         WriteSettings();
     }
 
-    partial void OnIsIgnoreDesktopIconsEnabledChanged(bool value)
+    partial void OnIgnoreDesktopIconsEnabledChanged(bool value)
     {
         WriteSettings();
     }
