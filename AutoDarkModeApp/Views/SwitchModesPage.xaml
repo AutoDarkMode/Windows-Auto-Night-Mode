@@ -13,10 +13,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid
-            x:Name="ContentArea"
-            Margin="{StaticResource NavigationViewPageContentMargin}">
-
+        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Conditions  -->
@@ -29,14 +26,14 @@
                             IsChecked="{x:Bind ViewModel.IsGPUMonitoring, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockMinimumUsage}" IsEnabled="{x:Bind GPUMonitoringCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockMinimumUsage}" IsEnabled="{x:Bind ViewModel.IsGPUMonitoring, Mode=OneWay}">
                             <NumberBox
                                 Minimum="0"
                                 SmallChange="5"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.GPUMonitoringThreshold, Mode=TwoWay}" />
                         </controls:SettingsCard>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockGPUUsageDetectionSpeed}" IsEnabled="{x:Bind GPUMonitoringCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockGPUUsageDetectionSpeed}" IsEnabled="{x:Bind ViewModel.IsGPUMonitoring, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.GPUMonitoringSamples, Mode=TwoWay}">
                                 <ComboBoxItem Content="{helpers:ResourceString Name=SwitchModesComboBoxItemSamplesFast}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=SwitchModesComboBoxItemSamplesMedium}" />
@@ -51,6 +48,10 @@
                         <CheckBox x:Name="BlockListCheckBox" Content="{helpers:ResourceString Name=SwitchModesCheckBoxProcessBlockList}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
+                        <!--
+                            use ViewModel.IsBlockListEnabled to enable/disable the card
+                            then, NullableBoolToBoolConverter can be removed
+                        -->
                         <controls:SettingsCard IsEnabled="{x:Bind BlockListCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
                             <controls:SettingsCard.Header>
                                 <ComboBox />
@@ -68,7 +69,7 @@
                             IsChecked="{x:Bind ViewModel.IsIdleChecker, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockIdleTimerDescription}" IsEnabled="{x:Bind IdleTimerCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockIdleTimerDescription}" IsEnabled="{x:Bind ViewModel.IsIdleChecker, Mode=OneWay}">
                             <NumberBox
                                 Minimum="1"
                                 SpinButtonPlacementMode="Inline"
@@ -85,7 +86,7 @@
                             IsChecked="{x:Bind ViewModel.IsAutoSwitchNotify, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockAutoSwitchGracePeriod}" IsEnabled="{x:Bind AutoSwitchNotifyCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockAutoSwitchGracePeriod}" IsEnabled="{x:Bind ViewModel.IsAutoSwitchNotify, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
                             <NumberBox
                                 Minimum="1"
                                 SpinButtonPlacementMode="Inline"

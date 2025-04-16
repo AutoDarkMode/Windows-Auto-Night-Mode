@@ -1,8 +1,8 @@
-﻿namespace AutoDarkModeApp.Core.Contracts.Services;
+﻿namespace AutoDarkModeApp.Contracts.Services;
 
 public interface IFileService
 {
-    T Read<T>(string folderPath, string fileName);
+    T? Read<T>(string folderPath, string fileName);
 
     void Save<T>(string folderPath, string fileName, T content);
 

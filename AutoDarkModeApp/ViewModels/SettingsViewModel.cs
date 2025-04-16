@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -10,7 +9,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Windows.ApplicationModel;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -24,17 +23,22 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     private bool _is12HourClock;
+
     [ObservableProperty]
     private bool _isHideTray;
+
     [ObservableProperty]
     private bool _isAlwaysFullDwmRefresh;
+
     [ObservableProperty]
     private bool _isTunableDebug;
+
     [ObservableProperty]
     private bool _isTunableTrace;
 
     [ObservableProperty]
     private bool _isUpdaterEnabled;
+
     [ObservableProperty]
     private string? _updatesDate;
 
@@ -43,41 +47,39 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     private int _selectIndexDaysBetweenUpdateCheck;
+
     [ObservableProperty]
     private bool _isCheckOnStart;
+
     [ObservableProperty]
     private bool _isAutoInstall;
+
     [ObservableProperty]
     private bool _isUpdateSilent;
 
     [ObservableProperty]
     private bool _isUpdatesChannelStable;
+
     [ObservableProperty]
     private bool _isUpdatesChannelBeta;
 
     [ObservableProperty]
     private bool _isAutostart;
+
     [ObservableProperty]
     private bool _isLoginWithTask;
+
     [ObservableProperty]
     private string? _autostartMode;
+
     [ObservableProperty]
     private string? _autostartPath;
 
-    public ICommand RestartCommand
-    {
-        get;
-    }
+    public ICommand RestartCommand { get; }
 
-    public ICommand CheckUpdateCommand
-    {
-        get;
-    }
+    public ICommand CheckUpdateCommand { get; }
 
-    public ICommand AutostartRefreshCommand
-    {
-        get;
-    }
+    public ICommand AutostartRefreshCommand { get; }
 
     public SettingsViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
     {
@@ -103,11 +105,7 @@ public partial class SettingsViewModel : ObservableRecipient
         RestartCommand = new RelayCommand(() =>
         {
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
-            Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp)
-            {
-                UseShellExecute = false,
-                Verb = "open"
-            });
+            Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
             App.Current.Exit();
         });
 
@@ -187,7 +185,7 @@ public partial class SettingsViewModel : ObservableRecipient
             var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
             if (languageText != null)
             {
-                Language = languageText;
+                Language = languageText.Replace("\"", "");
             }
             else
             {
@@ -409,11 +407,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
     partial void OnIsAutostartChanged(bool value)
     {
-        ApiResponse result = new()
-        {
-            StatusCode = StatusCode.Err,
-            Message = "error setting autostart entry"
-        };
+        ApiResponse result = new() { StatusCode = StatusCode.Err, Message = "error setting autostart entry" };
         if (value)
         {
             try
@@ -489,21 +483,9 @@ public partial class SettingsViewModel : ObservableRecipient
         }
     }
 
-    private static string GetVersionDescription()
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
     {
-        Version version;
-
-        if (RuntimeHelper.IsMSIX)
-        {
-            var packageVersion = Package.Current.Id.Version;
-
-            version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
-        }
-        else
-        {
-            version = Assembly.GetExecutingAssembly().GetName().Version!;
-        }
-
-        return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+        StateUpdateHandler.StopConfigWatcher();
     }
 }

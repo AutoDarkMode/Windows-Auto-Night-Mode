@@ -1,23 +1,90 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.ViewModels;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
+using Windows.System;
 
 namespace AutoDarkModeApp;
 
-public sealed partial class MainWindow : WindowEx
+public sealed partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainViewModel ViewModel { get; }
+
+    public MainWindow(MainViewModel viewModel)
     {
+        ViewModel = viewModel;
         InitializeComponent();
+
+        // TODO: No one knows what the correct way to use it is. Waiting for official examples.
+        var overlappedPresenter = OverlappedPresenter.Create();
+        overlappedPresenter.PreferredMinimumWidth = 680;
+        overlappedPresenter.PreferredMinimumHeight = 320;
+        AppWindow.SetPresenter(overlappedPresenter);
 
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
-        Content = null;
 
         Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
+        ViewModel.NavigationService.Frame = NavigationFrame;
+        ViewModel.NavigationService.InitializeNavigationView(NavigationViewControl);
+
+        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
+        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+
+        // TODO: Set the title bar icon by updating /Assets/WindowIcon.ico.
+        // A custom title bar is required for full window theme and Mica support.
+        // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
+        ExtendsContentIntoTitleBar = true;
+        SetTitleBar(TitleBar);
+#if DEBUG
+        TitleBar.Subtitle = "Debug";
+#endif
+
         Closed += MainWindow_Closed;
+    }
+
+    private void NavViewTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    {
+        if (NavigationFrame.CanGoBack)
+        {
+            NavigationFrame.GoBack();
+        }
+    }
+
+    private void NavViewTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    {
+        NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
+    }
+
+    private KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
+    {
+        var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
+
+        if (modifiers.HasValue)
+        {
+            keyboardAccelerator.Modifiers = modifiers.Value;
+        }
+
+        keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
+
+        return keyboardAccelerator;
+    }
+
+    private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        if (NavigationFrame.CanGoBack)
+        {
+            NavigationFrame.GoBack();
+            args.Handled = true;
+        }
+        else
+        {
+            args.Handled = false;
+        }
     }
 
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
@@ -34,7 +101,6 @@ public sealed partial class MainWindow : WindowEx
         });
 
         //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
-        Close();
         try
         {
             Process.GetCurrentProcess().Kill();

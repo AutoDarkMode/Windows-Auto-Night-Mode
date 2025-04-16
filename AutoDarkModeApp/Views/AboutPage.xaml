@@ -21,10 +21,10 @@
                         PointerPressed="LogoImage_PointerPressed"
                         Source="/Assets/AutoDarkModeIcon.ico" />
                     <StackPanel Orientation="Vertical" Spacing="8">
-                        <TextBlock
+                        <TextBlock 
                             x:Name="AppNameTextBlock"
                             Style="{StaticResource TitleTextBlockStyle}"
-                            Text="Auto Dark Mode X" />
+                            Text="Auto Dark Mode" />
                         <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
                     </StackPanel>
                 </StackPanel>
