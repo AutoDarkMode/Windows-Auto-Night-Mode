@@ -3,10 +3,12 @@ using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
+using AutoDarkModeApp.Handlers;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeApp;
 
@@ -115,7 +117,7 @@ public partial class App : Application
         else
         {
             // Ensure autostart is valid on subsequent runs
-            AutostartHandler.EnsureAutostart(null);
+            AutoStartHandler.EnsureAutostart(null);
         }
 
         var mainViewModel = App.GetService<MainViewModel>();

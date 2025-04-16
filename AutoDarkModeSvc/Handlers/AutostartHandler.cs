@@ -18,6 +18,7 @@ using System;
 using System.Linq;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoDarkModeSvc.Handlers;
 
@@ -275,5 +276,47 @@ public static class AutoStartHandler
             StatusCode = StatusCode.Ok,
             Message = "autostart entries valid"
         };
+    }
+
+    public static void EnsureAutostart(Window owner)
+    {
+        ApiResponse result = new()
+        {
+            StatusCode = StatusCode.Err,
+            Message = "error in frontend: EnsureAutostart()"
+        };
+        try
+        {
+            _ = MessageHandler.Client.SendMessageAndGetReply(Command.ValidateAutostart);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, owner);
+        }
+    }
+
+
+    /// <summary>
+    /// Autostart
+    /// </summary>
+    public static async void EnableAutoStart(Window owner)
+    {
+        ApiResponse result = new()
+        {
+            StatusCode = StatusCode.Err,
+            Message = "error in frontend: EnableAutostart()"
+        };
+        try
+        {
+            result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+            if (result.StatusCode != StatusCode.Ok)
+            {
+                throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessageBoxes.ShowErrorMessageFromApi(result, ex, owner);
+        }
     }
 }
