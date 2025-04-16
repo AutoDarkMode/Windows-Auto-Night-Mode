@@ -35,6 +35,7 @@
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageUnmanagedMode}" />
                 <controls:SettingsCard
+                    Click="ThemePickerSettingsCard_Click"
                     Description="{helpers:ResourceString Name=tbPickTheme}"
                     Header="{helpers:ResourceString Name=lblPickTheme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
