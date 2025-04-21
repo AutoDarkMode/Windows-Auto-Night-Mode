@@ -30,7 +30,7 @@ public static class ThemeCollectionHandler
     {
         try
         {
-            var files = Directory.EnumerateFiles(ThemeFolderPath, "*.*", SearchOption.AllDirectories).ToList();
+            var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList();
             files = files
                 .Where(f => f.EndsWith(".theme") && !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme))
                 .ToList();
