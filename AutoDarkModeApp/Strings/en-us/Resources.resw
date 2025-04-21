@@ -401,13 +401,13 @@ Would you like to create an issue on the Auto Dark Mode repository?
     <value>Desktop Wallpaper (recommended)</value>
   </data>
   <data name="ThemeTutorialStep1" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
+    <value>Go to Windows Theme settings</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
+    <value>Navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse cursor and accent color.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
+    <value>Go to theme settings and save your theme.</value>
   </data>
   <data name="ThemeTutorialStep4" xml:space="preserve">
     <value>Repeat this process for the dark theme.</value>

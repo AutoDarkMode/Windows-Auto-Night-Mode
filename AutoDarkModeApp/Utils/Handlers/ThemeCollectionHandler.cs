@@ -25,6 +25,7 @@ public static class ThemeCollectionHandler
     public static readonly string WindowsPath = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
 
     //get a list of all files the theme folder contains. If there is no theme-folder, create one.
+    //TODO: Do not use the file names, because they are trimmed at 9 characters.
     public static List<ThemeFile> GetUserThemes()
     {
         try
@@ -70,14 +71,8 @@ public static class ThemeCollectionHandler
     }
 }
 
-public class ThemeFile
+public class ThemeFile(string path)
 {
-    public ThemeFile(string path)
-    {
-        Path = path;
-        Name = System.IO.Path.GetFileNameWithoutExtension(path) ?? "Undefined";
-    }
-
     public ThemeFile(string path, string name)
         : this(path)
     {
@@ -85,8 +80,8 @@ public class ThemeFile
         IsWindowsTheme = true;
     }
 
-    public string Path { get; }
-    public string Name { get; }
+    public string Path { get; } = path;
+    public string Name { get; } = System.IO.Path.GetFileNameWithoutExtension(path) ?? "Undefined";
     public bool IsWindowsTheme { get; }
 
     public override string ToString()

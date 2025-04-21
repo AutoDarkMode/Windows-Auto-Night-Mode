@@ -15,8 +15,11 @@
 
                 <!--  Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeTextBlockHeader}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=ThemeToggleSwichEnableTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=TwoWay}" />
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=ThemeToggleSwichEnableTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
+                    IsExpanded="True">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsThemeSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <CheckBox Content="{helpers:ResourceString Name=ThemePickerComboBoxKeepActive}" IsChecked="{x:Bind ViewModel.ThemeKeepActiveEnabled, Mode=TwoWay}" />
@@ -49,10 +52,16 @@
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeHeaderPick}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ThemeLight}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
-                    <ComboBox x:Name="LightThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedLightTheme, Mode=TwoWay}" />
+                    <ComboBox
+                        x:Name="LightThemeComboBox"
+                        MinWidth="120"
+                        SelectedItem="{x:Bind ViewModel.SelectLightTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ThemeDark}" HeaderIcon="{ui:FontIcon Glyph=&#xE708;}">
-                    <ComboBox x:Name="DarkThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
+                    <ComboBox
+                        x:Name="DarkThemeComboBox"
+                        MinWidth="120"
+                        SelectedItem="{x:Bind ViewModel.SelectDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
                     <HyperlinkButton Click="OpenThemeFolderHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenPath}" />
