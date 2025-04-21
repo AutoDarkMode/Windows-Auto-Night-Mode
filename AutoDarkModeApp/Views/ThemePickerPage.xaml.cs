@@ -36,12 +36,12 @@ public sealed partial class ThemePickerPage : Page
         ThemeFile? darkSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.DarkThemePath);
         if (lightSelected != null)
         {
-            ViewModel.SelectLightTheme = lightSelected.ToString();
+            ViewModel.SelectedLightTheme = lightSelected.ToString();
         }
 
         if (darkSelected != null)
         {
-            ViewModel.SelectDarkTheme = darkSelected.ToString();
+            ViewModel.SelectedDarkTheme = darkSelected.ToString();
         }
     }
 
