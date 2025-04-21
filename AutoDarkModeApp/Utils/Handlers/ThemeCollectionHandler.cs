@@ -32,7 +32,7 @@ public static class ThemeCollectionHandler
         {
             var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList();
             files = files
-                .Where(f => f.EndsWith(".theme") && !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme))
+                .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme))
                 .ToList();
             var themeFiles = files.Select(f => new ThemeFile(f)).ToList();
             InjectWindowsThemes(themeFiles);
