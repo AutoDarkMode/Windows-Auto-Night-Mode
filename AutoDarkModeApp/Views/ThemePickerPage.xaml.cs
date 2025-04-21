@@ -35,9 +35,14 @@ public sealed partial class ThemePickerPage : Page
         ThemeFile? lightSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.LightThemePath);
         ThemeFile? darkSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.DarkThemePath);
         if (lightSelected != null)
-            ViewModel.SelectedLightTheme = lightSelected.ToString();
+        {
+            ViewModel.SelectLightTheme = lightSelected.ToString();
+        }
+
         if (darkSelected != null)
-            ViewModel.SelectedDarkTheme = darkSelected.ToString();
+        {
+            ViewModel.SelectDarkTheme = darkSelected.ToString();
+        }
     }
 
     private async void OpenWindowsThemePageHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
