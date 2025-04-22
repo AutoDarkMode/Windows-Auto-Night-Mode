@@ -1,24 +1,14 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Views;
-
 using CommunityToolkit.Mvvm.ComponentModel;
-
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
 public partial class MainViewModel : ObservableRecipient
 {
-    // TODO: Waiting for PR merge https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/pull/933
-
-    //[ObservableProperty]
-    //public bool IsBackEnabled;
-
-    //[ObservableProperty]
-    //public object? Selecte;
-
     [ObservableProperty]
-    private object? selected;
+    public partial object? Selected { get; set; }
 
     public INavigationService NavigationService { get; }
 

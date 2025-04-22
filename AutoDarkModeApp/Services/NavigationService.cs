@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.ViewModels;
+using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
@@ -9,7 +8,6 @@ namespace AutoDarkModeApp.Services;
 
 public class NavigationService : INavigationService
 {
-    private readonly IPageService _pageService;
     private object? _lastParameterUsed;
     private Frame? _frame;
     private NavigationView? _navigationView;
@@ -41,15 +39,10 @@ public class NavigationService : INavigationService
     [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
     public bool CanGoBack => Frame != null && Frame.CanGoBack;
 
-    public NavigationService(IPageService pageService)
-    {
-        _pageService = pageService;
-    }
-
     public void InitializeNavigationView(NavigationView navigationView)
     {
         _navigationView = navigationView;
-        _navigationView.ItemInvoked += OnItemInvoked;
+        _navigationView.SelectionChanged += OnSelectionChanged;
     }
 
     private void RegisterFrameEvents()
@@ -70,9 +63,14 @@ public class NavigationService : INavigationService
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
     {
-        var pageType = _pageService.GetPageType(pageKey);
+        if (_frame == null)
+            return false;
 
-        if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
+        var pageType = Type.GetType(pageKey);
+        if (pageType == null)
+            return false;
+
+        if (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed)))
         {
             _frame.Tag = clearNavigation;
             var navigated = _frame.Navigate(pageType, parameter);
@@ -99,16 +97,16 @@ public class NavigationService : INavigationService
         }
     }
 
-    private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+    private void OnSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        if (args.IsSettingsInvoked)
+        if (args.IsSettingsSelected)
         {
-            NavigateTo(typeof(SettingsViewModel).FullName!);
+            NavigateTo(typeof(SettingsPage).FullName!);
         }
-        else
+        else if (args.SelectedItem is NavigationViewItem selectedItem)
         {
-            var selectedItem = args.InvokedItemContainer as NavigationViewItem;
-            if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+            var pageKey = selectedItem.Tag?.ToString();
+            if (!string.IsNullOrEmpty(pageKey))
             {
                 NavigateTo(pageKey);
             }
@@ -119,35 +117,35 @@ public class NavigationService : INavigationService
     {
         if (_navigationView != null)
         {
-            return GetSelectedItem(_navigationView.MenuItems, pageType) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType);
+            var pageTypeName = pageType.FullName;
+            return FindItemByPageType(_navigationView.MenuItems, pageTypeName) ?? FindItemByPageType(_navigationView.FooterMenuItems, pageTypeName);
         }
         return null;
     }
 
-    private NavigationViewItem? GetSelectedItem(IEnumerable<object> menuItems, Type pageType)
+    private NavigationViewItem? FindItemByPageType(IEnumerable<object> menuItems, string pageTypeName)
     {
         foreach (var item in menuItems.OfType<NavigationViewItem>())
         {
-            if (IsMenuItemForPageType(item, pageType))
+            if (item.Tag?.ToString() == pageTypeName)
             {
                 return item;
             }
 
-            var selectedChild = GetSelectedItem(item.MenuItems, pageType);
-            if (selectedChild != null)
+            var foundInChildren = FindItemByPageType(item.MenuItems, pageTypeName);
+            if (foundInChildren != null)
             {
-                return selectedChild;
+                return foundInChildren;
             }
         }
         return null;
     }
 
-    private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
+    public void GoBack()
     {
-        if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+        if (CanGoBack)
         {
-            return _pageService.GetPageType(pageKey) == sourcePageType;
+            Frame.GoBack();
         }
-        return false;
     }
 }

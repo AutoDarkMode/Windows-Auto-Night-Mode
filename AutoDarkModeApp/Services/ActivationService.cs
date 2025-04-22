@@ -17,7 +17,7 @@ public class ActivationService : IActivationService
     public async Task ActivateAsync(object activationArgs)
     {
         // Navigate to default page
-        _navigationService.NavigateTo(typeof(TimeViewModel).FullName!);
+        _navigationService.NavigateTo("AutoDarkModeApp.Views.TimePage");
 
         // Move window to config position
         await MoveWindowAsync();
