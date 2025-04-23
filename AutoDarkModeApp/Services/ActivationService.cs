@@ -2,15 +2,8 @@
 
 namespace AutoDarkModeApp.Services;
 
-public class ActivationService : IActivationService
+public class ActivationService(ILocalSettingsService localSettingsService) : IActivationService
 {
-    private readonly ILocalSettingsService _localSettings;
-
-    public ActivationService(ILocalSettingsService localSettingsService)
-    {
-        _localSettings = localSettingsService;
-    }
-
     public async Task ActivateAsync(object activationArgs)
     {
         // Move window to config position
@@ -22,10 +15,10 @@ public class ActivationService : IActivationService
 
     private async Task MoveWindowAsync()
     {
-        var left = await _localSettings.ReadSettingAsync<int>("X");
-        var top = await _localSettings.ReadSettingAsync<int>("Y");
-        var width = await _localSettings.ReadSettingAsync<int>("Width");
-        var height = await _localSettings.ReadSettingAsync<int>("Height");
+        var left = await localSettingsService.ReadSettingAsync<int>("X");
+        var top = await localSettingsService.ReadSettingAsync<int>("Y");
+        var width = await localSettingsService.ReadSettingAsync<int>("Width");
+        var height = await localSettingsService.ReadSettingAsync<int>("Height");
         App.MainWindow.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(left, top, width, height));
     }
 }

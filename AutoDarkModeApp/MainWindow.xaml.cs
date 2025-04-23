@@ -26,7 +26,7 @@ public sealed partial class MainWindow : Window
         AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
 
-        Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
+        Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
 
         _navigationService.Frame = NavigationFrame;
         _navigationService.InitializeNavigationView(NavigationViewControl);
@@ -90,21 +90,15 @@ public sealed partial class MainWindow : Window
     {
         var properties = e.GetCurrentPoint(null).Properties;
 
-        if (properties.IsXButton1Pressed)
+        if (properties.IsXButton1Pressed && NavigationFrame.CanGoBack)
         {
-            if (NavigationFrame.CanGoBack)
-            {
-                NavigationFrame.GoBack();
-                e.Handled = true;
-            }
+            NavigationFrame.GoBack();
+            e.Handled = true;
         }
-        else if (properties.IsXButton2Pressed)
+        else if (properties.IsXButton2Pressed && NavigationFrame.CanGoForward)
         {
-            if (NavigationFrame.CanGoForward)
-            {
-                NavigationFrame.GoForward();
-                e.Handled = true;
-            }
+            NavigationFrame.GoForward();
+            e.Handled = true;
         }
     }
 
