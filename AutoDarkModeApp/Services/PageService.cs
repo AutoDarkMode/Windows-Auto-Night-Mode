@@ -14,7 +14,7 @@ public class PageService : IPageService
     {
         Configure<TimeViewModel, TimePage>();
         Configure<SwitchModesViewModel, SwitchModesPage>();
-        Configure<AppsViewModel, AppsPage>();
+        Configure<SystemAreasViewModel, SystemAreasPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<ScriptsViewModel, ScriptsPage>();
         Configure<DonationViewModel, DonationPage>();

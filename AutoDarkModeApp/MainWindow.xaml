@@ -58,9 +58,10 @@
                         <FontIcon Glyph="&#xE945;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarApps}" Tag="AutoDarkModeApp.ViewModels.AppsViewModel">
+                <!--  TODO: Update item content in resource  -->
+                <NavigationViewItem Content="System Areas" Tag="AutoDarkModeApp.ViewModels.SystemAreasViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE71D;" />
+                        <FontIcon Glyph="&#xEC4E;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem Content="{helpers:ResourceString Name=NavbarPersonalization}" Tag="AutoDarkModeApp.ViewModels.PersonalizationViewModel">

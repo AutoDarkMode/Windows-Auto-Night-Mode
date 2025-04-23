@@ -67,8 +67,8 @@ public partial class App : Application
                     services.AddTransient<ScriptsPage>();
                     services.AddTransient<PersonalizationViewModel>();
                     services.AddTransient<PersonalizationPage>();
-                    services.AddTransient<AppsViewModel>();
-                    services.AddTransient<AppsPage>();
+                    services.AddTransient<SystemAreasViewModel>();
+                    services.AddTransient<SystemAreasPage>();
                     services.AddTransient<SwitchModesViewModel>();
                     services.AddTransient<SwitchModesPage>();
                     services.AddTransient<WallpaperPickerViewModel>();

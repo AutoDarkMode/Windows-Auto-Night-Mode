@@ -4,13 +4,13 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
-public sealed partial class AppsPage : Page
+public sealed partial class SystemAreasPage : Page
 {
-    public AppsViewModel ViewModel { get; }
+    public SystemAreasViewModel ViewModel { get; }
 
-    public AppsPage()
+    public SystemAreasPage()
     {
-        ViewModel = App.GetService<AppsViewModel>();
+        ViewModel = App.GetService<SystemAreasViewModel>();
         InitializeComponent();
     }
 
