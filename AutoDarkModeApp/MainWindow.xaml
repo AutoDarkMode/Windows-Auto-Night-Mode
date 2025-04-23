@@ -24,7 +24,6 @@
             BackRequested="NavViewTitleBar_BackRequested"
             IsBackButtonEnabled="{x:Bind NavigationFrame.CanGoBack, Mode=OneWay}"
             IsBackButtonVisible="True"
-            IsHitTestVisible="True"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
             <TitleBar.IconSource>

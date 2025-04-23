@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Services;
 
@@ -29,15 +30,9 @@ public class NavigationService : INavigationService
         _navigationView = navigationView;
         _navigationView.SelectionChanged += OnSelectionChanged;
 
-        if (_navigationView.MenuItems.Count > 0)
+        if (_frame != null)
         {
-            var firstItem = _navigationView.MenuItems[0] as NavigationViewItem;
-            _navigationView.SelectedItem = firstItem;
-
-            if (firstItem?.Tag is string pageKey)
-            {
-                NavigateTo(pageKey);
-            }
+            _frame.Navigated += OnNavigated;
         }
     }
 
@@ -61,18 +56,61 @@ public class NavigationService : INavigationService
         if (args.IsSettingsSelected)
         {
             NavigateTo(typeof(SettingsViewModel).FullName!);
-            if (args.SelectedItemContainer is NavigationViewItem item && item.Content is string content)
-            {
-                _navigationView!.Header = content;
-            }
         }
         else if (args.SelectedItemContainer?.Tag is string pageKey)
         {
             NavigateTo(pageKey);
-            if (args.SelectedItemContainer is NavigationViewItem item && item.Content is string content)
+        }
+    }
+
+    private void OnNavigated(object sender, NavigationEventArgs e)
+    {
+        if (_navigationView == null)
+            return;
+
+        var selectedItem = GetSelectedItem(e.SourcePageType);
+        if (selectedItem != null)
+        {
+            _navigationView.SelectedItem = selectedItem;
+            _navigationView.Header = selectedItem.Content;
+        }
+    }
+
+    public NavigationViewItem? GetSelectedItem(Type pageType)
+    {
+        if (_navigationView != null)
+        {
+            return GetSelectedItem(_navigationView.MenuItems, pageType) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType);
+        }
+
+        return null;
+    }
+
+    private NavigationViewItem? GetSelectedItem(IEnumerable<object> menuItems, Type pageType)
+    {
+        foreach (var item in menuItems.OfType<NavigationViewItem>())
+        {
+            if (IsMenuItemForPageType(item, pageType))
             {
-                _navigationView!.Header = content;
+                return item;
+            }
+
+            var selectedChild = GetSelectedItem(item.MenuItems, pageType);
+            if (selectedChild != null)
+            {
+                return selectedChild;
             }
         }
+
+        return null;
+    }
+
+    private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
+    {
+        if (menuItem.Tag is string pageKey)
+        {
+            return _pageService.GetPageType(pageKey) == sourcePageType;
+        }
+        return false;
     }
 }
