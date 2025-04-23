@@ -59,6 +59,7 @@ public class NavigationService : INavigationService
         }
         else if (args.SelectedItemContainer?.Tag is string pageKey)
         {
+            pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
             NavigateTo(pageKey);
         }
     }
@@ -109,6 +110,7 @@ public class NavigationService : INavigationService
     {
         if (menuItem.Tag is string pageKey)
         {
+            pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
             return _pageService.GetPageType(pageKey) == sourcePageType;
         }
         return false;
