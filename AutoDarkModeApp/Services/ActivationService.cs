@@ -1,24 +1,18 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.ViewModels;
 
 namespace AutoDarkModeApp.Services;
 
 public class ActivationService : IActivationService
 {
-    private readonly INavigationService _navigationService;
     private readonly ILocalSettingsService _localSettings;
 
-    public ActivationService(INavigationService navigationService, ILocalSettingsService localSettingsService)
+    public ActivationService(ILocalSettingsService localSettingsService)
     {
-        _navigationService = navigationService;
         _localSettings = localSettingsService;
     }
 
     public async Task ActivateAsync(object activationArgs)
     {
-        // Navigate to default page
-        _navigationService.NavigateTo("AutoDarkModeApp.Views.TimePage");
-
         // Move window to config position
         await MoveWindowAsync();
 

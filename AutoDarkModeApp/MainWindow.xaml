@@ -35,13 +35,11 @@
         <NavigationView
             x:Name="NavigationViewControl"
             Grid.Row="1"
-            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Collapsed"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
             OpenPaneLength="240"
-            PaneDisplayMode="Auto"
-            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+            PaneDisplayMode="Auto">
             <NavigationView.MenuItems>
                 <!--
               TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
@@ -50,39 +48,39 @@
               TODO: Update item icons by updating FontIcon.Glyph properties.
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarTime}" Tag="AutoDarkModeApp.Views.TimePage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarTime}" Tag="AutoDarkModeApp.ViewModels.TimeViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE823;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarSwitchModes}" Tag="AutoDarkModeApp.Views.SwitchModesPage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarSwitchModes}" Tag="AutoDarkModeApp.ViewModels.SwitchModesViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE945;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarApps}" Tag="AutoDarkModeApp.Views.AppsPage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarApps}" Tag="AutoDarkModeApp.ViewModels.AppsViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE71D;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarPersonalization}" Tag="AutoDarkModeApp.Views.PersonalizationPage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarPersonalization}" Tag="AutoDarkModeApp.ViewModels.PersonalizationViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE771;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarScripts}" Tag="AutoDarkModeApp.Views.ScriptsPage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarScripts}" Tag="AutoDarkModeApp.ViewModels.ScriptsViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xF000;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarDonation}" Tag="AutoDarkModeApp.Views.DonationPage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarDonation}" Tag="AutoDarkModeApp.ViewModels.DonationViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB51;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarAbout}" Tag="AutoDarkModeApp.Views.AboutPage">
+                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarAbout}" Tag="AutoDarkModeApp.ViewModels.AboutViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE946;" />
                     </NavigationViewItem.Icon>

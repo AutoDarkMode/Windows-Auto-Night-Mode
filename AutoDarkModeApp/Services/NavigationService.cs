@@ -1,63 +1,43 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Views;
+﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Services;
 
 public class NavigationService : INavigationService
 {
-    private object? _lastParameterUsed;
+    private readonly IPageService _pageService;
     private Frame? _frame;
     private NavigationView? _navigationView;
-
-    public event NavigatedEventHandler? Navigated;
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public object? SettingsItem => _navigationView?.SettingsItem;
 
     public Frame? Frame
     {
-        get
-        {
-            if (_frame == null)
-            {
-                _frame = App.MainWindow.Content as Frame;
-                RegisterFrameEvents();
-            }
-            return _frame;
-        }
-        set
-        {
-            UnregisterFrameEvents();
-            _frame = value;
-            RegisterFrameEvents();
-        }
+        get => _frame;
+        set => _frame = value;
     }
 
-    [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
-    public bool CanGoBack => Frame != null && Frame.CanGoBack;
+    public NavigationService(IPageService pageService)
+    {
+        _pageService = pageService;
+    }
 
     public void InitializeNavigationView(NavigationView navigationView)
     {
         _navigationView = navigationView;
         _navigationView.SelectionChanged += OnSelectionChanged;
-    }
 
-    private void RegisterFrameEvents()
-    {
-        if (_frame != null)
+        if (_navigationView.MenuItems.Count > 0)
         {
-            _frame.Navigated += OnNavigated;
-        }
-    }
+            var firstItem = _navigationView.MenuItems[0] as NavigationViewItem;
+            _navigationView.SelectedItem = firstItem;
 
-    private void UnregisterFrameEvents()
-    {
-        if (_frame != null)
-        {
-            _frame.Navigated -= OnNavigated;
+            if (firstItem?.Tag is string pageKey)
+            {
+                NavigateTo(pageKey);
+            }
         }
     }
 
@@ -66,86 +46,33 @@ public class NavigationService : INavigationService
         if (_frame == null)
             return false;
 
-        var pageType = Type.GetType(pageKey);
-        if (pageType == null)
-            return false;
+        var pageType = _pageService.GetPageType(pageKey);
 
-        if (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed)))
+        if (clearNavigation)
         {
-            _frame.Tag = clearNavigation;
-            var navigated = _frame.Navigate(pageType, parameter);
-            if (navigated)
-            {
-                _lastParameterUsed = parameter;
-            }
-            return navigated;
+            _frame.BackStack.Clear();
         }
-        return false;
-    }
 
-    private void OnNavigated(object sender, NavigationEventArgs e)
-    {
-        if (sender is Frame frame)
-        {
-            var clearNavigation = (bool)frame.Tag;
-            if (clearNavigation)
-            {
-                frame.BackStack.Clear();
-            }
-
-            Navigated?.Invoke(sender, e);
-        }
+        return _frame.Navigate(pageType, parameter);
     }
 
     private void OnSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
         if (args.IsSettingsSelected)
         {
-            NavigateTo(typeof(SettingsPage).FullName!);
-        }
-        else if (args.SelectedItem is NavigationViewItem selectedItem)
-        {
-            var pageKey = selectedItem.Tag?.ToString();
-            if (!string.IsNullOrEmpty(pageKey))
+            NavigateTo(typeof(SettingsViewModel).FullName!);
+            if (args.SelectedItemContainer is NavigationViewItem item && item.Content is string content)
             {
-                NavigateTo(pageKey);
+                _navigationView!.Header = content;
             }
         }
-    }
-
-    public NavigationViewItem? GetSelectedItem(Type pageType)
-    {
-        if (_navigationView != null)
+        else if (args.SelectedItemContainer?.Tag is string pageKey)
         {
-            var pageTypeName = pageType.FullName;
-            return FindItemByPageType(_navigationView.MenuItems, pageTypeName) ?? FindItemByPageType(_navigationView.FooterMenuItems, pageTypeName);
-        }
-        return null;
-    }
-
-    private NavigationViewItem? FindItemByPageType(IEnumerable<object> menuItems, string pageTypeName)
-    {
-        foreach (var item in menuItems.OfType<NavigationViewItem>())
-        {
-            if (item.Tag?.ToString() == pageTypeName)
+            NavigateTo(pageKey);
+            if (args.SelectedItemContainer is NavigationViewItem item && item.Content is string content)
             {
-                return item;
+                _navigationView!.Header = content;
             }
-
-            var foundInChildren = FindItemByPageType(item.MenuItems, pageTypeName);
-            if (foundInChildren != null)
-            {
-                return foundInChildren;
-            }
-        }
-        return null;
-    }
-
-    public void GoBack()
-    {
-        if (CanGoBack)
-        {
-            Frame.GoBack();
         }
     }
 }

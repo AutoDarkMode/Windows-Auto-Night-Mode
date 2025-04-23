@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
@@ -10,11 +9,11 @@ namespace AutoDarkModeApp;
 
 public sealed partial class MainWindow : Window
 {
-    public MainViewModel ViewModel { get; }
+    private readonly INavigationService _navigationService;
 
-    public MainWindow(MainViewModel viewModel)
+    public MainWindow(INavigationService navigationService)
     {
-        ViewModel = viewModel;
+        _navigationService = navigationService;
         InitializeComponent();
 
         // TODO: No one knows what the correct way to use it is. Waiting for official examples.
@@ -29,8 +28,8 @@ public sealed partial class MainWindow : Window
 
         Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
 
-        ViewModel.NavigationService.Frame = NavigationFrame;
-        ViewModel.NavigationService.InitializeNavigationView(NavigationViewControl);
+        _navigationService.Frame = NavigationFrame;
+        _navigationService.InitializeNavigationView(NavigationViewControl);
 
         RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
         RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
