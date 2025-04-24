@@ -1,5 +1,6 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
+using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
@@ -68,6 +69,13 @@ public class NavigationService : INavigationService
     {
         if (_navigationView == null)
             return;
+
+        if (e.SourcePageType == typeof(SettingsPage))
+        {
+            _navigationView.SelectedItem = _navigationView.SettingsItem;
+            _navigationView.Header = ((ContentControl)_navigationView.SettingsItem).Content;
+            return;
+        }
 
         var selectedItem = GetSelectedItem(e.SourcePageType);
         if (selectedItem != null)
