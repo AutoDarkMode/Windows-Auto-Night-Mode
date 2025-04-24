@@ -7,6 +7,7 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
         <MicaBackdrop />
@@ -47,44 +48,56 @@
               TODO: Update item icons by updating FontIcon.Glyph properties.
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarTime}" Tag="Time">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE823;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarSwitchModes}" Tag="SwitchModes">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE945;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarTime}"
+                    Icon="{ui:FontIcon Glyph=&#xE823;}"
+                    Tag="Time" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarSwitchModes}"
+                    Icon="{ui:FontIcon Glyph=&#xE945;}"
+                    Tag="SwitchModes" />
                 <!--  TODO: Update item content in resource  -->
-                <NavigationViewItem Content="System Areas" Tag="SystemAreas">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEC4E;" />
-                    </NavigationViewItem.Icon>
+                <NavigationViewItem
+                    Content="System Areas"
+                    Icon="{ui:FontIcon Glyph=&#xEC4E;}"
+                    Tag="SystemAreas" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarPersonalization}"
+                    Icon="{ui:FontIcon Glyph=&#xE771;}"
+                    Tag="Personalization">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem
+                            Content="{helpers:ResourceString Name=WallpaperTextBlockHeader}"
+                            Icon="{ui:FontIcon Glyph=&#xE91B;}"
+                            Tag="WallpaperPicker" />
+                        <NavigationViewItem
+                            Content="{helpers:ResourceString Name=ColorizationTextBlockHeader}"
+                            Icon="{ui:FontIcon Glyph=&#xE790;}"
+                            Tag="Colorization" />
+                        <NavigationViewItem
+                            Content="{helpers:ResourceString Name=CursorsPageTitle}"
+                            Icon="{ui:FontIcon Glyph=&#xE8B0;}"
+                            Tag="Cursors" />
+                        <NavigationViewItem
+                            Content="{helpers:ResourceString Name=ThemeTextBlockHeader}"
+                            Icon="{ui:FontIcon Glyph=&#xe771;}"
+                            Tag="ThemePicker" />
+                    </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarPersonalization}" Tag="Personalization">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE771;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarScripts}" Tag="Scripts">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF000;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarScripts}"
+                    Icon="{ui:FontIcon Glyph=&#xF000;}"
+                    Tag="Scripts" />
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarDonation}" Tag="Donation">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEB51;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem Content="{helpers:ResourceString Name=NavbarAbout}" Tag="About">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE946;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarDonation}"
+                    Icon="{ui:FontIcon Glyph=&#xEB51;}"
+                    Tag="Donation" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarAbout}"
+                    Icon="{ui:FontIcon Glyph=&#xE946;}"
+                    Tag="About" />
             </NavigationView.FooterMenuItems>
             <Frame x:Name="NavigationFrame" />
         </NavigationView>
