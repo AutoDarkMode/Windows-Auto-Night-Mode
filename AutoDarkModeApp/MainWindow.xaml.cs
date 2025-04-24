@@ -2,8 +2,6 @@
 using AutoDarkModeApp.Contracts.Services;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Input;
-using Windows.System;
 
 namespace AutoDarkModeApp;
 
@@ -31,9 +29,6 @@ public sealed partial class MainWindow : Window
         _navigationService.Frame = NavigationFrame;
         _navigationService.InitializeNavigationView(NavigationViewControl);
 
-        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
-        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
-
         // TODO: Set the title bar icon by updating /Assets/WindowIcon.ico.
         // A custom title bar is required for full window theme and Mica support.
         // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
@@ -59,49 +54,6 @@ public sealed partial class MainWindow : Window
         NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
     }
 
-    private KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
-    {
-        var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
-
-        if (modifiers.HasValue)
-        {
-            keyboardAccelerator.Modifiers = modifiers.Value;
-        }
-
-        keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
-
-        return keyboardAccelerator;
-    }
-
-    private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-    {
-        if (NavigationFrame.CanGoBack)
-        {
-            NavigationFrame.GoBack();
-            args.Handled = true;
-        }
-        else
-        {
-            args.Handled = false;
-        }
-    }
-
-    private void RootGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
-    {
-        var properties = e.GetCurrentPoint(null).Properties;
-
-        if (properties.IsXButton1Pressed && NavigationFrame.CanGoBack)
-        {
-            NavigationFrame.GoBack();
-            e.Handled = true;
-        }
-        else if (properties.IsXButton2Pressed && NavigationFrame.CanGoForward)
-        {
-            NavigationFrame.GoForward();
-            e.Handled = true;
-        }
-    }
-
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
     {
         var postion = App.MainWindow.AppWindow.Position;
@@ -113,16 +65,16 @@ public sealed partial class MainWindow : Window
             await localSettings.SaveSettingAsync("Y", postion.Y);
             await localSettings.SaveSettingAsync("Width", size.Width);
             await localSettings.SaveSettingAsync("Height", size.Height);
-        });
 
-        //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
-        try
-        {
-            Process.GetCurrentProcess().Kill();
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex.Message);
-        }
+            //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
+            try
+            {
+                Process.GetCurrentProcess().Kill();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        });
     }
 }

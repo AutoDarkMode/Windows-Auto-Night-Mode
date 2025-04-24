@@ -2,7 +2,9 @@
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.System;
 
 namespace AutoDarkModeApp.Services;
 
@@ -21,6 +23,7 @@ public class NavigationService : INavigationService
         set => _frame = value;
     }
 
+    // Please do not use Primary Constructors here
     public NavigationService(IPageService pageService)
     {
         _pageService = pageService;
@@ -30,9 +33,13 @@ public class NavigationService : INavigationService
     {
         _navigationView = navigationView;
         _navigationView.SelectionChanged += OnSelectionChanged;
+        _navigationView.PointerPressed += NavigationView_PointerPressed;
 
         if (_frame != null)
         {
+            _frame.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
+            _frame.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Right, VirtualKeyModifiers.Menu));
+            _frame.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
             _frame.Navigated += OnNavigated;
         }
     }
@@ -62,6 +69,80 @@ public class NavigationService : INavigationService
         {
             pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
             NavigateTo(pageKey);
+        }
+    }
+
+    private KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
+    {
+        var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
+
+        if (modifiers.HasValue)
+        {
+            keyboardAccelerator.Modifiers = modifiers.Value;
+        }
+
+        keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
+
+        return keyboardAccelerator;
+    }
+
+    private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        if (_frame == null)
+        {
+            args.Handled = false;
+            return;
+        }
+
+        if (sender.Key == VirtualKey.Left && sender.Modifiers == VirtualKeyModifiers.Menu)
+        {
+            if (_frame.CanGoBack)
+            {
+                _frame.GoBack();
+                args.Handled = true;
+            }
+            else
+            {
+                args.Handled = false;
+            }
+        }
+        else if (sender.Key == VirtualKey.Right && sender.Modifiers == VirtualKeyModifiers.Menu)
+        {
+            if (_frame.CanGoForward)
+            {
+                _frame.GoForward();
+                args.Handled = true;
+            }
+            else
+            {
+                args.Handled = false;
+            }
+        }
+        else
+        {
+            args.Handled = false;
+        }
+    }
+
+    private void NavigationView_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        var properties = e.GetCurrentPoint(null).Properties;
+
+        if (properties.IsLeftButtonPressed || properties.IsRightButtonPressed || properties.IsMiddleButtonPressed)
+            return;
+
+        if (_frame != null)
+        {
+            if (properties.IsXButton1Pressed && _frame.CanGoBack)
+            {
+                _frame.GoBack();
+                e.Handled = true;
+            }
+            else if (properties.IsXButton2Pressed && _frame.CanGoForward)
+            {
+                _frame.GoForward();
+                e.Handled = true;
+            }
         }
     }
 
