@@ -33,13 +33,15 @@ public class NavigationService : INavigationService
     {
         _navigationView = navigationView;
         _navigationView.SelectionChanged += OnSelectionChanged;
+
         _navigationView.PointerPressed += NavigationView_PointerPressed;
+        _navigationView.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
+        _navigationView.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Right, VirtualKeyModifiers.Menu));
+        _navigationView.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+        _navigationView.KeyboardAcceleratorPlacementMode = KeyboardAcceleratorPlacementMode.Hidden;
 
         if (_frame != null)
         {
-            _frame.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
-            _frame.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Right, VirtualKeyModifiers.Menu));
-            _frame.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
             _frame.Navigated += OnNavigated;
         }
     }
