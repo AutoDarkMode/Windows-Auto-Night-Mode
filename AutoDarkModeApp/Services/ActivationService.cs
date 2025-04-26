@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
@@ -7,6 +8,7 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml.Controls;
+using Windows.UI.StartScreen;
 
 namespace AutoDarkModeApp.Services;
 
@@ -85,6 +87,29 @@ public class ActivationService : IActivationService
         {
             loadingDialog.Hide();
         }
+
+        // Only run at first startup
+        if (!await _localSettings.ReadSettingAsync<bool>("NotFirstRun"))
+        {
+            AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
+
+            await SystemTimeFormatAsync();
+
+            await AddJumpListAsync();
+
+            await _localSettings.SaveSettingAsync("NotFirstRun", true);
+        }
+        else
+        {
+            AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
+        }
+
+        // When language changed, add jumplist in new language
+        if (await _localSettings.ReadSettingAsync<bool>("LanguageChanged"))
+        {
+            await AddJumpListAsync();
+            await _localSettings.SaveSettingAsync("LanguageChanged", false);
+        }
     }
 
     private async Task MoveWindowAsync()
@@ -155,5 +180,43 @@ public class ActivationService : IActivationService
             await Task.Delay(1000);
         }
         return !response.Contains(StatusCode.Timeout);
+    }
+
+    private async Task SystemTimeFormatAsync()
+    {
+        string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+        sysFormat = sysFormat[..sysFormat.IndexOf(':')];
+        if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+        {
+            if (!await _localSettings.ReadSettingAsync<bool>("NotFirstRun"))
+                await _localSettings.SaveSettingAsync("TwelveHourClock", true);
+        }
+    }
+
+    private static async Task AddJumpListAsync()
+    {
+        if (JumpList.IsSupported())
+        {
+            var jumpList = await JumpList.LoadCurrentAsync();
+
+            jumpList.Items.Clear();
+
+            var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "lblDarkTheme".GetLocalized());
+            darkJumpTask.GroupName = "lblSwitchTheme".GetLocalized();
+
+            var lightJumpTask = JumpListItem.CreateWithArguments(Command.Light, "lblLightTheme".GetLocalized());
+            lightJumpTask.GroupName = "lblSwitchTheme".GetLocalized();
+
+            var resetJumpTask = JumpListItem.CreateWithArguments(Command.NoForce, "lblReset".GetLocalized());
+            resetJumpTask.GroupName = "lblSwitchTheme".GetLocalized();
+
+            jumpList.Items.Add(darkJumpTask);
+            jumpList.Items.Add(lightJumpTask);
+            jumpList.Items.Add(resetJumpTask);
+
+            jumpList.SystemGroupKind = JumpListSystemGroupKind.None;
+
+            await jumpList.SaveAsync();
+        }
     }
 }
