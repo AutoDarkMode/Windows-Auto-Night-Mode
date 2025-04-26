@@ -64,26 +64,7 @@
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=NavbarPersonalization}"
                     Icon="{ui:FontIcon Glyph=&#xE771;}"
-                    Tag="Personalization">
-                    <NavigationViewItem.MenuItems>
-                        <NavigationViewItem
-                            Content="{helpers:ResourceString Name=WallpaperTextBlockHeader}"
-                            Icon="{ui:FontIcon Glyph=&#xE91B;}"
-                            Tag="WallpaperPicker" />
-                        <NavigationViewItem
-                            Content="{helpers:ResourceString Name=ColorizationTextBlockHeader}"
-                            Icon="{ui:FontIcon Glyph=&#xE790;}"
-                            Tag="Colorization" />
-                        <NavigationViewItem
-                            Content="{helpers:ResourceString Name=CursorsPageTitle}"
-                            Icon="{ui:FontIcon Glyph=&#xE8B0;}"
-                            Tag="Cursors" />
-                        <NavigationViewItem
-                            Content="{helpers:ResourceString Name=ThemeTextBlockHeader}"
-                            Icon="{ui:FontIcon Glyph=&#xe771;}"
-                            Tag="ThemePicker" />
-                    </NavigationViewItem.MenuItems>
-                </NavigationViewItem>
+                    Tag="Personalization" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=NavbarScripts}"
                     Icon="{ui:FontIcon Glyph=&#xF000;}"
