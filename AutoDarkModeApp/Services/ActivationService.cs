@@ -82,6 +82,7 @@ public class ActivationService : IActivationService
                     },
                 },
             };
+            return;
         }
         else if (serviceStartIssued && verifyResult)
         {
@@ -173,13 +174,21 @@ public class ActivationService : IActivationService
     private static async Task<bool> VerifyServiceStartupAsync()
     {
         const int maxRetries = 5;
-        string response = null!;
+        ApiResponse response = null!;
         for (int i = 0; i < maxRetries; i++)
         {
-            response = await Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Alive));
+            response = await Task.Run(() => ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.Alive)));
             await Task.Delay(1000);
         }
-        return !response.Contains(StatusCode.Timeout);
+
+        if (response.StatusCode == StatusCode.Timeout)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private async Task SystemTimeFormatAsync()
