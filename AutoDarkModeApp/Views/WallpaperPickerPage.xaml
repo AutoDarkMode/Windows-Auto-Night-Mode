@@ -34,6 +34,19 @@
                         ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
                 </Border>
 
+                <Border
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    BorderBrush="{ThemeResource FocusStrokeColorOuterBrush}"
+                    BorderThickness="8"
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <Image
+                        Width="320"
+                        Height="180"
+                        Source="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}"
+                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                </Border>
+
                 <!--  Wallpaper  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
