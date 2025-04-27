@@ -15,11 +15,10 @@
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageManagedMode}" />
                 <InfoBar
-                    Title="{helpers:ResourceString Name=info}"
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=tbFeatureDisabledWhileThemeMode}"
-                    Severity="Warning">
+                    Severity="Informational">
                     <InfoBar.ActionButton>
                         <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="Disable Windows manages your theme" />
                     </InfoBar.ActionButton>
@@ -48,11 +47,10 @@
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageUnmanagedMode}" />
                 <InfoBar
-                    Title="{helpers:ResourceString Name=info}"
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.ThemeSwitchDisabled, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=tbFeatureDisabledWhileManagedMode}"
-                    Severity="Warning" />
+                    Severity="Informational" />
                 <controls:SettingsCard
                     Click="ThemePickerSettingsCard_Click"
                     Description="{helpers:ResourceString Name=tbPickTheme}"
