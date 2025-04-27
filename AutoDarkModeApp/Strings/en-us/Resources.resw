@@ -1112,7 +1112,7 @@ Do you really want to continue?</value>
     <value>Enable custom scripts</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>Select an image</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Image path</value>
@@ -1154,7 +1154,7 @@ Do you really want to continue?</value>
     <value>Stretch</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
+    <value>Adapt image to fit on desktop</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Disconnected</value>
@@ -1250,7 +1250,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Try to fix the theme</value>
   </data>
   <data name="lblSet" xml:space="preserve">
-    <value>Settings</value>
+    <value>Select</value>
   </data>
   <data name="lblScripts" xml:space="preserve">
     <value>Scripts</value>

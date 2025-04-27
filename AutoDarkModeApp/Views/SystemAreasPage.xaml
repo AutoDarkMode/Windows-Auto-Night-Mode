@@ -17,8 +17,6 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSet}" />
-
                 <controls:SettingsCard Header="{helpers:ResourceString Name=lblApps}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />

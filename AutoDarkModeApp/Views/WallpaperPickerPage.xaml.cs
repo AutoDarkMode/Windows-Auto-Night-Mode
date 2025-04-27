@@ -59,15 +59,6 @@ public sealed partial class WallpaperPickerPage : Page
         ViewModel.SelectMonitor = monitors.FirstOrDefault();
     }
 
-    private void GlobalWallpaperPathHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        if (ViewModel.GlobalWallpaperPath != null)
-        {
-            WallpaperPreviewImage.Source = new BitmapImage(new Uri(ViewModel.GlobalWallpaperPath)); ;
-        }
-        WallpaperPreviewTeachingTip.IsOpen = true;
-    }
-
     private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         try
