@@ -14,32 +14,52 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageManagedMode}" />
+                <InfoBar
+                    Title="{helpers:ResourceString Name=info}"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}"
+                    Message="{helpers:ResourceString Name=tbFeatureDisabledWhileThemeMode}"
+                    Severity="Warning">
+                    <InfoBar.ActionButton>
+                        <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="Disable Windows manages your theme" />
+                    </InfoBar.ActionButton>
+                </InfoBar>
                 <controls:SettingsCard
                     Click="PickWallpaperSettingsCard_Click"
                     Description="{helpers:ResourceString Name=tbPickWallpaper}"
                     Header="{helpers:ResourceString Name=lblPickWallpaper}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}"
-                    IsClickEnabled="True" />
+                    IsClickEnabled="True"
+                    IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
                 <controls:SettingsCard
                     Click="ColorizationPickSettingsCard_Click"
                     Description="{helpers:ResourceString Name=ColorizationTextBlockDescription}"
                     Header="{helpers:ResourceString Name=ColorizationPick}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
-                    IsClickEnabled="True" />
+                    IsClickEnabled="True"
+                    IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
                 <controls:SettingsCard
                     Click="CursorsSettingsCard_Click"
                     Description="{helpers:ResourceString Name=PersonalizationPageCursorDescription}"
                     Header="{helpers:ResourceString Name=PersonalizationPageCursorTitle}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8B0;}"
-                    IsClickEnabled="True" />
+                    IsClickEnabled="True"
+                    IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PersonalizationPageUnmanagedMode}" />
+                <InfoBar
+                    Title="{helpers:ResourceString Name=info}"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.ThemeSwitchDisabled, Mode=OneWay}"
+                    Message="{helpers:ResourceString Name=tbFeatureDisabledWhileManagedMode}"
+                    Severity="Warning" />
                 <controls:SettingsCard
                     Click="ThemePickerSettingsCard_Click"
                     Description="{helpers:ResourceString Name=tbPickTheme}"
                     Header="{helpers:ResourceString Name=lblPickTheme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
-                    IsClickEnabled="True" />
+                    IsClickEnabled="True"
+                    IsEnabled="{x:Bind ViewModel.UnmanagedModeSettingsCardEnabled, Mode=OneWay}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>
