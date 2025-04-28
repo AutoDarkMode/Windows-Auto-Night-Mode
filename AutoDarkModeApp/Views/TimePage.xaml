@@ -12,6 +12,8 @@
     <Page.Resources>
         <!--  These are converters for different controls  -->
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+        <helpers:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
     </Page.Resources>
 
     <ScrollViewer>
@@ -21,7 +23,7 @@
                 <!--  AutoThemeSwitching  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSwitch}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=autoCheckBox}" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}">
-                    <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=TwoWay}" />
+                    <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <!--
@@ -32,26 +34,14 @@
                     [Jay, @Jay-o-Way, 28-3-2025]
                 -->
 
-                <controls:SettingsCard Visibility="{x:Bind ViewModel.IsAutoThemeSwitchingEnabled, Mode=OneWay}">
+                <controls:SettingsCard Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">
-                            <RadioButtons>
-                                <RadioButton
-                                    x:Name="RadioButtonCustomTimes"
-                                    Content="{helpers:ResourceString Name=rbCustomHours}"
-                                    IsChecked="{x:Bind ViewModel.IsCustomTimes, Mode=TwoWay}" />
-                                <RadioButton
-                                    x:Name="RadioButtonLocationTimes"
-                                    Content="{helpers:ResourceString Name=rbLocation}"
-                                    IsChecked="{x:Bind ViewModel.IsLocationTimes, Mode=TwoWay}" />
-                                <RadioButton
-                                    x:Name="RadioButtonCoordinateTimes"
-                                    Content="{helpers:ResourceString Name=rbLocationGeo}"
-                                    IsChecked="{x:Bind ViewModel.IsCoordinateTimes, Mode=TwoWay}" />
-                                <RadioButton
-                                    x:Name="RadioButtonWindowsNightLight"
-                                    Content="{helpers:ResourceString Name=TimePageFollowNightLight}"
-                                    IsChecked="{x:Bind ViewModel.IsWindowsNightLight, Mode=TwoWay}" />
+                            <RadioButtons SelectedIndex="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                                <RadioButton x:Name="RadioButtonCustomTimes" Content="{helpers:ResourceString Name=rbCustomHours}" />
+                                <RadioButton x:Name="RadioButtonLocationTimes" Content="{helpers:ResourceString Name=rbLocation}" />
+                                <RadioButton x:Name="RadioButtonCoordinateTimes" Content="{helpers:ResourceString Name=rbLocationGeo}" />
+                                <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=TimePageFollowNightLight}" />
                             </RadioButtons>
 
                             <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
@@ -61,7 +51,7 @@
                                 Grid.Column="0"
                                 ColumnSpacing="8"
                                 RowSpacing="16"
-                                Visibility="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}">
+                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CustomTimes, Mode=OneWay}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
@@ -86,7 +76,6 @@
                                     Grid.Column="2"
                                     Margin="16,0,0,0"
                                     ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
-                                    IsEnabled="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
                                 <FontIcon
                                     Grid.Row="1"
@@ -103,12 +92,11 @@
                                     Grid.Column="2"
                                     Margin="16,0,0,0"
                                     ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
-                                    IsEnabled="{x:Bind ViewModel.IsCustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
                             </Grid>
 
                             <!--  Location  -->
-                            <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.IsLocationTimes, Mode=OneWay}">
+                            <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
                                 <!--  TODO: improve this XAML  -->
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <FontIcon
@@ -134,7 +122,7 @@
                             </StackPanel>
 
                             <!--  Geo Coordinates  -->
-                            <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.IsCoordinateTimes, Mode=OneWay}">
+                            <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                                 <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
                                 <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
 
@@ -167,7 +155,7 @@
                             <HyperlinkButton
                                 Content="{helpers:ResourceString Name=TimePageOpenNightLight}"
                                 NavigateUri="ms-settings:nightlight"
-                                Visibility="{x:Bind ViewModel.IsWindowsNightLight, Mode=OneWay}" />
+                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
 
                         </StackPanel>
                     </controls:SettingsCard.Description>
@@ -224,6 +212,7 @@
                     Description="{helpers:ResourceString Name=TimePagePostponeInfoNominal}"
                     Header="{helpers:ResourceString Name=TimePageHeaderActiveDelays}"
                     IsEnabled="False" />
+
             </StackPanel>
         </Grid>
     </ScrollViewer>

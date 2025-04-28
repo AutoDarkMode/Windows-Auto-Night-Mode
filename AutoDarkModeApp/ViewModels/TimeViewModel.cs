@@ -8,7 +8,6 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -19,60 +18,58 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
     private readonly ILocalSettingsService _localSettingsService;
 
-    [ObservableProperty]
-    private bool _isAutoThemeSwitchingEnabled;
-
-    // TODO: replace bools with Enum
-    [ObservableProperty]
-    private bool _isCustomTimes;
-
-    [ObservableProperty]
-    private bool _isLocationTimes;
+    public enum TimeSourceMode
+    {
+        CustomTimes,
+        LocationTimes,
+        CoordinateTimes,
+        WindowsNightLight,
+    }
 
     [ObservableProperty]
-    private bool _isCoordinateTimes;
+    public partial bool AutoThemeSwitchingEnabled { get; set; }
 
     [ObservableProperty]
-    private bool _isWindowsNightLight;
+    public partial TimeSourceMode SelectedTimeSource { get; set; }
 
     [ObservableProperty]
-    private string? _locationNextUpdateDateDescription;
+    public partial string? LocationNextUpdateDateDescription { get; set; }
 
     [ObservableProperty]
-    private string? _locationBlockText;
+    public partial string? LocationBlockText { get; set; }
 
     [ObservableProperty]
-    private string? _lightTimeBlockText;
+    public partial string? LightTimeBlockText { get; set; }
 
     [ObservableProperty]
-    private string? _darkTimeBlockText;
+    public partial string? DarkTimeBlockText { get; set; }
 
     [ObservableProperty]
-    private TimeSpan _timeLightStart;
+    public partial TimeSpan TimeLightStart { get; set; }
 
     [ObservableProperty]
-    private TimeSpan _timeDarkStart;
+    public partial TimeSpan TimeDarkStart { get; set; }
 
     [ObservableProperty]
-    private string? _timePickHourClock;
+    public partial string? TimePickHourClock { get; set; }
 
     [ObservableProperty]
-    private double _latValue;
+    public partial double LatValue { get; set; }
 
     [ObservableProperty]
-    private double _lonValue;
+    public partial double LonValue { get; set; }
 
     [ObservableProperty]
-    private Visibility _locationSettingsCardVisibility;
+    public partial Visibility LocationSettingsCardVisibility { get; set; }
 
     [ObservableProperty]
-    private Visibility _offsetTimeSettingsCardVisibility;
+    public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
 
     [ObservableProperty]
-    private int _offsetLight;
+    public partial int OffsetLight { get; set; }
 
     [ObservableProperty]
-    private int _offsetDark;
+    public partial int OffsetDark { get; set; }
 
     public ICommand SaveOffsetCommand { get; }
 
@@ -90,13 +87,13 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
 
         LoadSettings();
 
-        StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
-        StateUpdateHandler.StartConfigWatcher();
+        StateUpdateHandler.StartConfigWatcherWithoutEvents();
+        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
 
         SaveOffsetCommand = new RelayCommand(() =>
         {
@@ -127,29 +124,23 @@ public partial class TimeViewModel : ObservableRecipient
             if (!twelveHourClock)
             {
                 TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
-                LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString(CultureInfo.CreateSpecificCulture("de"));
-                LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture);
-                DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.InvariantCulture);
+                LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString(CultureInfo.CurrentCulture);
+                LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.CurrentCulture);
+                DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.CurrentCulture);
             }
             else
             {
                 TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwelveHour;
-                LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString(CultureInfo.CreateSpecificCulture("en"));
-                LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture);
-                DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.InvariantCulture);
+                LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString(CultureInfo.CurrentCulture);
+                LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.CurrentCulture);
+                DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.CurrentCulture);
             }
         });
 
-        ResetAllOptions();
+        LocationSettingsCardVisibility = Visibility.Collapsed;
+        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
 
-        if (!_builder.Config.AutoThemeSwitchingEnabled)
-        {
-            HandleAutoThemeDisabled();
-        }
-        else
-        {
-            HandleAutoThemeEnabled();
-        }
+        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
     }
 
     private async Task LoadGeolocationData()
@@ -193,101 +184,57 @@ public partial class TimeViewModel : ObservableRecipient
         }
     }
 
-    private void ResetAllOptions()
+    private void HandleAutoTheme(bool value)
     {
-        IsCustomTimes = false;
-        IsLocationTimes = false;
-        IsCoordinateTimes = false;
-        IsWindowsNightLight = false;
-        LocationSettingsCardVisibility = Visibility.Collapsed;
-        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-    }
-
-    private void HandleAutoThemeDisabled()
-    {
-        IsAutoThemeSwitchingEnabled = false;
+        AutoThemeSwitchingEnabled = value;
 
         if (_builder.Config.Governor == Governor.NightLight)
         {
-            IsWindowsNightLight = true;
+            SelectedTimeSource = TimeSourceMode.WindowsNightLight;
+            OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
             return;
         }
 
         if (!_builder.Config.Location.Enabled)
         {
-            IsCustomTimes = true;
-        }
-        else if (_builder.Config.Location.UseGeolocatorService)
-        {
-            IsLocationTimes = true;
-            LocationSettingsCardVisibility = Visibility.Visible;
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
-        }
-        else
-        {
-            IsCoordinateTimes = true;
-        }
-    }
-
-    private void HandleAutoThemeEnabled()
-    {
-        IsAutoThemeSwitchingEnabled = true;
-
-        if (_builder.Config.Governor == Governor.NightLight)
-        {
-            IsWindowsNightLight = true;
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
-            return;
-        }
-
-        if (!_builder.Config.Location.Enabled)
-        {
-            IsCustomTimes = true;
+            SelectedTimeSource = TimeSourceMode.CustomTimes;
             return;
         }
 
         if (_builder.Config.Location.UseGeolocatorService)
         {
-            IsLocationTimes = true;
-            LocationSettingsCardVisibility = Visibility.Visible;
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
+            SelectedTimeSource = TimeSourceMode.LocationTimes;
+            LocationSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         }
         else
         {
-            IsCoordinateTimes = true;
-            LocationSettingsCardVisibility = Visibility.Visible;
+            SelectedTimeSource = TimeSourceMode.CoordinateTimes;
+            LocationSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 
     private void SafeApplyTheme()
     {
-        _dispatcherQueue?.TryEnqueue(async () => await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15));
+        _dispatcherQueue.TryEnqueue(async () => await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15));
     }
 
-    private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
+    private void HandleConfigUpdate()
     {
+        StateUpdateHandler.StopConfigWatcher();
         _dispatcherQueue.TryEnqueue(() =>
         {
-            StateUpdateHandler.StopConfigWatcher();
-
             _builder.Load();
             LoadSettings();
-
-            StateUpdateHandler.StartConfigWatcher();
         });
+        StateUpdateHandler.StartConfigWatcher();
     }
 
-    partial void OnIsAutoThemeSwitchingEnabledChanged(bool value)
+    partial void OnAutoThemeSwitchingEnabledChanged(bool value)
     {
-        if (value)
-        {
-            _builder.Config.AutoThemeSwitchingEnabled = true;
-        }
-        else
-        {
-            _builder.Config.AutoThemeSwitchingEnabled = false;
-        }
+        HandleAutoTheme(value);
 
+        _builder.Config.AutoThemeSwitchingEnabled = value;
         try
         {
             _builder.Save();
@@ -298,93 +245,50 @@ public partial class TimeViewModel : ObservableRecipient
         }
     }
 
-    partial void OnIsCustomTimesChanged(bool value)
+    partial void OnSelectedTimeSourceChanged(TimeSourceMode value)
     {
-        if (value)
+        switch (value)
         {
-            _builder.Config.Governor = Governor.Default;
-            _builder.Config.Location.Enabled = false;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
-            }
+            case TimeSourceMode.CustomTimes:
+                _builder.Config.Governor = Governor.Default;
+                _builder.Config.Location.Enabled = false;
+                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                break;
 
-            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+            case TimeSourceMode.LocationTimes:
+                _builder.Config.Location.Enabled = true;
+                _builder.Config.Location.UseGeolocatorService = true;
+                _builder.Config.Governor = Governor.Default;
+                OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                break;
 
-            SafeApplyTheme();
+            case TimeSourceMode.CoordinateTimes:
+                _builder.Config.Governor = Governor.Default;
+                _builder.Config.Location.Enabled = true;
+                _builder.Config.Location.UseGeolocatorService = false;
+                _builder.Config.Location.CustomLat = LatValue;
+                _builder.Config.Location.CustomLon = LonValue;
+                OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                break;
+
+            case TimeSourceMode.WindowsNightLight:
+                _builder.Config.Governor = Governor.NightLight;
+                _builder.Config.AutoThemeSwitchingEnabled = true;
+                _builder.Config.Location.Enabled = false;
+                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                break;
         }
-    }
 
-    partial void OnIsLocationTimesChanged(bool value)
-    {
-        if (value)
+        try
         {
-            _builder.Config.Location.Enabled = true;
-            _builder.Config.Location.UseGeolocatorService = true;
-            _builder.Config.Governor = Governor.Default;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
-            }
-
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
-
-            SafeApplyTheme();
+            _builder.Save();
         }
-    }
-
-    partial void OnIsCoordinateTimesChanged(bool value)
-    {
-        if (value)
+        catch (Exception ex)
         {
-            _builder.Config.Governor = Governor.Default;
-            _builder.Config.Location.Enabled = true;
-            _builder.Config.Location.UseGeolocatorService = false;
-            _builder.Config.Location.CustomLat = LatValue;
-            _builder.Config.Location.CustomLon = LonValue;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
-            }
-
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
-
-            SafeApplyTheme();
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
-    }
 
-    partial void OnIsWindowsNightLightChanged(bool value)
-    {
-        if (value)
-        {
-            _builder.Config.Governor = Governor.NightLight;
-            _builder.Config.AutoThemeSwitchingEnabled = true;
-            _builder.Config.Location.Enabled = false;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
-            }
-
-            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-
-            SafeApplyTheme();
-        }
+        SafeApplyTheme();
     }
 
     partial void OnTimeLightStartChanged(TimeSpan value)
@@ -396,7 +300,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
 
         SafeApplyTheme();
@@ -411,7 +315,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
 
         SafeApplyTheme();
@@ -427,7 +331,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
 
         SafeApplyTheme();
@@ -436,10 +340,4 @@ public partial class TimeViewModel : ObservableRecipient
     partial void OnLatValueChanged(double value) => UpdateCoordinates();
 
     partial void OnLonValueChanged(double value) => UpdateCoordinates();
-
-    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
-    {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
-    }
 }
