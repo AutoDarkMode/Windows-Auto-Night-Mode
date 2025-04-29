@@ -338,4 +338,5 @@ public partial class TimeViewModel : ObservableRecipient
     partial void OnLatValueChanged(double value) => UpdateCoordinates();
 
     partial void OnLonValueChanged(double value) => UpdateCoordinates();
+
 }
