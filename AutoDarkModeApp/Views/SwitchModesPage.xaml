@@ -198,7 +198,9 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>
