@@ -34,7 +34,7 @@
                         ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay, FallbackValue=''}" />
                 </Border>
 
-                <!--  Wallpaper  -->
+                <!--  Desktop background  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
@@ -53,7 +53,7 @@
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
-                        <!--  Wallpaper Type  -->
+                        <!--  Background Type  -->
                         <controls:SettingsCard ContentAlignment="Left">
                             <RadioButtons SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperComboBoxItemPicture}" />
@@ -63,7 +63,7 @@
                             </RadioButtons>
                         </controls:SettingsCard>
 
-                        <!--  Image  -->
+                        <!--  Picture  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
                             <Button
                                 MinWidth="120"
@@ -83,7 +83,7 @@
                             </StackPanel>
                         </controls:SettingsCard>
 
-                        <!--  Wallpaper Filling Way  -->
+                        <!--  Picture fit  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockPosition}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
@@ -112,7 +112,7 @@
                         </controls:SettingsCard>
 
                         <!--  Windows Spotlight  -->
-                        <controls:SettingsCard Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowSpotlight, Mode=OneWay}">
+                        <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowSpotlight, Mode=OneWay}">
                             <HyperlinkButton Click="WindowsSpotlightHyperlinkButton_Click" Content="{helpers:ResourceString Name=WallpaperComboBoxItemSpotlight}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

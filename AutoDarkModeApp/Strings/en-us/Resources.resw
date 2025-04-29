@@ -127,7 +127,7 @@
     <value>Switch theme</value>
   </data>
   <data name="autoCheckBox" xml:space="preserve">
-    <value>Enable automatic theme switching</value>
+    <value>Automatically switch themes</value>
   </data>
   <data name="About" xml:space="preserve">
     <value>Settings</value>
@@ -231,9 +231,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="userFeedback" xml:space="preserve">
     <value>Welcome</value>
   </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>Change settings here to modify the automatic theme switch behavior.</value>
-  </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
   </data>
@@ -265,7 +262,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Delete/Disable</value>
   </data>
   <data name="dbFilePicker" xml:space="preserve">
-    <value>Pick file</value>
+    <value>Browse photos</value>
   </data>
   <data name="dbLight" xml:space="preserve">
     <value>Wallpaper for light theme</value>
@@ -280,7 +277,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Please select two wallpapers</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>Please select an image</value>
+    <value>Select an image</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>Configure Desktop Background</value>
@@ -344,8 +341,7 @@ Please ensure:
 - the service is running
 - the config.yaml file is correct
 
-Would you like to create an issue on the Auto Dark Mode repository?
-</value>
+Would you like to create an issue on the Auto Dark Mode repository?</value>
     <comment>Text like "Click yes to..." is (and should be) obvious</comment>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
@@ -364,11 +360,8 @@ Would you like to create an issue on the Auto Dark Mode repository?
   <data name="lblOffset" xml:space="preserve">
     <value>Offset</value>
   </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>Set</value>
-  </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
-    <value>These options are disabled while using a Windows Theme. You can set them up individually in your Windows Theme.</value>
+    <value>These options are disabled when using a Windows Theme. You can set them up individually in your Windows Theme.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>Apps</value>
@@ -389,7 +382,7 @@ Would you like to create an issue on the Auto Dark Mode repository?
     <value>Create your themes</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>Pick your themes</value>
+    <value>Select your themes</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
     <value>Light theme</value>
@@ -404,7 +397,7 @@ Would you like to create an issue on the Auto Dark Mode repository?
     <value>Go to Windows Theme settings</value>
   </data>
   <data name="ThemeTutorialStep2" xml:space="preserve">
-    <value>Navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse cursor and accent color.</value>
+    <value>Go to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse pointers and accent color.</value>
   </data>
   <data name="ThemeTutorialStep3" xml:space="preserve">
     <value>Go to theme settings and save your theme.</value>
@@ -425,7 +418,7 @@ Would you like to create an issue on the Auto Dark Mode repository?
     <value>Restart</value>
   </data>
   <data name="rbCustomHours" xml:space="preserve">
-    <value>Set custom time</value>
+    <value>Custom time</value>
   </data>
   <data name="rbLocation" xml:space="preserve">
     <value>From sunset to sunrise (location service)</value>
@@ -513,7 +506,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Energy saver mitigation for theme switch</value>
   </data>
   <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
-    <value>This only works if you haven't manually enabled battery saver!</value>
+    <value>This only works if you haven't manually enabled battery saver</value>
   </data>
   <data name="NavbarSwitchModes" xml:space="preserve">
     <value>Switch modes</value>
@@ -554,10 +547,10 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Configuration</value>
   </data>
   <data name="lblPickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
+    <value>Select a theme</value>
   </data>
   <data name="lblPickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+    <value>Personalize your background</value>
   </data>
   <data name="rbDisabled" xml:space="preserve">
     <value>Disabled</value>
@@ -575,7 +568,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files.</value>
   </data>
   <data name="tbPickWallpaper" xml:space="preserve">
-    <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Customize your desktop for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
     <value>Check for new versions of Auto Dark Mode in the background. When an update is available, you will be notified.</value>
@@ -648,7 +641,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
     <value>Hex code</value>
   </data>
   <data name="WallpaperToggleSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+    <value>Switch desktop background</value>
   </data>
   <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
     <value>Don't switch while playing games</value>
@@ -740,9 +733,6 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Every day</value>
   </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Click Set to save changes.</value>
-  </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
   </data>
@@ -826,7 +816,7 @@ Sidenote: NEVER run Auto Dark Mode as administrator manually!</value>
 Do you really want to continue?</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
-    <value>Hide Tray Icon</value>
+    <value>Hide tray icon</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
     <value>&amp;Open Config Directory</value>
@@ -869,7 +859,7 @@ Do you really want to continue?</value>
     <value>System idle checker</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Confirm to request a theme switch immediately.</value>
   </data>
   <data name="Resume" xml:space="preserve">
     <value>Resume</value>
@@ -1028,13 +1018,13 @@ Do you really want to continue?</value>
     <value>Ignore background</value>
   </data>
   <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>Ignore pointers</value>
   </data>
   <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
     <value>Ignore desktop icons</value>
   </data>
   <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>Ignore sounds</value>
   </data>
   <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
     <value>Ignore settings</value>
@@ -1112,7 +1102,7 @@ Do you really want to continue?</value>
     <value>Enable custom scripts</value>
   </data>
   <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
-    <value>Select an image</value>
+    <value>Choose a photo</value>
   </data>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Image path</value>
@@ -1127,7 +1117,7 @@ Do you really want to continue?</value>
     <value>Accent color</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Select an accent color</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
     <value>Customize the Windows system color scheme to your liking.</value>
@@ -1154,7 +1144,8 @@ Do you really want to continue?</value>
     <value>Stretch</value>
   </data>
   <data name="WallpaperTextBlockPosition" xml:space="preserve">
-    <value>Adapt image to fit on desktop</value>
+    <value>Choose a fit for your desktop image</value>
+    <comment>Must match Windows settings</comment>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Disconnected</value>
@@ -1163,9 +1154,9 @@ Do you really want to continue?</value>
     <value>Always refresh DWM on theme switch</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
+This may introduce slight to moderate lag on some systems during theme switch, similar to how it happened in Windows 10. 
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
@@ -1175,25 +1166,25 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Ok</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>Switch mouse pointers</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
     <value>Open Windows pointer settings</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Select dark cursor</value>
+    <value>Select dark pointers</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Select light cursor</value>
+    <value>Select light pointers</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
-    <value>Cursors</value>
+    <value>Mouse pointers</value>
   </data>
   <data name="PersonalizationPageCursorDescription" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
+    <value>Configure different mouse pointers for dark and light modes.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Pick mouse cursors</value>
+    <value>Select mouse pointers</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
     <value>Let Auto Dark Mode manage my theme</value>
@@ -1211,7 +1202,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Open updater log</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>Switch accent colors</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
     <value>Switch touch keyboard and input</value>
@@ -1269,5 +1260,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="PostponeButtonUnDelay" xml:space="preserve">
     <value>UnDelay</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Set</value>
   </data>
 </root>
