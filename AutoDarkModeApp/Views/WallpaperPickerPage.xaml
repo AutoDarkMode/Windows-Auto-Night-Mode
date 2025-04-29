@@ -30,10 +30,11 @@
                     BorderBrush="Black"
                     BorderThickness="8"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <Image
-                        x:Name="DesktopPreviewImage"
-                        Width="320"
-                        Height="180" />
+                    <Image  
+                       x:Name="DesktopPreviewImage"  
+                       Width="320"  
+                       Height="180"  
+                       Stretch="{Binding Converter={StaticResource EnumToStretchConverter}, Path=SelectWallpaperFillingMode, Mode=OneWay}" />
                 </Border>
 
                 <!--  Desktop background  -->
