@@ -16,6 +16,8 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+
+    //TODO: Temporary reservation
     private readonly ILocalSettingsService _localSettingsService;
 
     public enum TimeSourceMode
@@ -73,11 +75,12 @@ public partial class TimeViewModel : ObservableRecipient
 
     public ICommand SaveOffsetCommand { get; }
 
-    //TODO The logic part about Postpone is not written
+    //TODO: The logic part about Postpone is not written
     public TimeViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+        //TODO: Temporary reservation
         _localSettingsService = localSettingsService;
 
         try
@@ -118,23 +121,18 @@ public partial class TimeViewModel : ObservableRecipient
         LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
         _dispatcherQueue.TryEnqueue(async () =>
         {
+            //TODO: A/B Testing. Let the time format completely follow the system settings
             await LoadGeolocationData();
 
-            var twelveHourClock = await _localSettingsService.ReadSettingAsync<bool>("TwelveHourClock");
-            if (!twelveHourClock)
-            {
-                TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
-                LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString(CultureInfo.CurrentCulture);
-                LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("HH:mm", CultureInfo.CurrentCulture);
-                DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("HH:mm", CultureInfo.CurrentCulture);
-            }
-            else
-            {
-                TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwelveHour;
-                LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString(CultureInfo.CurrentCulture);
-                LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("hh:mm tt", CultureInfo.CurrentCulture);
-                DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("hh:mm tt", CultureInfo.CurrentCulture);
-            }
+            string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+
+            LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("t", CultureInfo.CurrentCulture);
+            DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("t", CultureInfo.CurrentCulture);
+
+            LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
+
+            bool isSystem12HourFormat = timeFormat.Contains('h');
+            TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         });
 
         LocationSettingsCardVisibility = Visibility.Collapsed;
