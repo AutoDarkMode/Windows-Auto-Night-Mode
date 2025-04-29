@@ -23,17 +23,17 @@
                         <CheckBox
                             x:Name="GPUMonitoringCheckBox"
                             Content="{helpers:ResourceString Name=SwitchModesCheckBoxGPUMonitoring}"
-                            IsChecked="{x:Bind ViewModel.IsGPUMonitoring, Mode=TwoWay}" />
+                            IsChecked="{x:Bind ViewModel.GPUMonitoringEnabled, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockMinimumUsage}" IsEnabled="{x:Bind ViewModel.IsGPUMonitoring, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockMinimumUsage}" IsEnabled="{x:Bind ViewModel.GPUMonitoringEnabled, Mode=OneWay}">
                             <NumberBox
                                 Minimum="0"
                                 SmallChange="5"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.GPUMonitoringThreshold, Mode=TwoWay}" />
                         </controls:SettingsCard>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockGPUUsageDetectionSpeed}" IsEnabled="{x:Bind ViewModel.IsGPUMonitoring, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockGPUUsageDetectionSpeed}" IsEnabled="{x:Bind ViewModel.GPUMonitoringEnabled, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.GPUMonitoringSamples, Mode=TwoWay}">
                                 <ComboBoxItem Content="{helpers:ResourceString Name=SwitchModesComboBoxItemSamplesFast}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=SwitchModesComboBoxItemSamplesMedium}" />
@@ -66,10 +66,10 @@
                         <CheckBox
                             x:Name="IdleTimerCheckBox"
                             Content="{helpers:ResourceString Name=SwitchModesCheckBoxIdleTimer}"
-                            IsChecked="{x:Bind ViewModel.IsIdleChecker, Mode=TwoWay}" />
+                            IsChecked="{x:Bind ViewModel.IdleCheckerEnabled, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockIdleTimerDescription}" IsEnabled="{x:Bind ViewModel.IsIdleChecker, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockIdleTimerDescription}" IsEnabled="{x:Bind ViewModel.IdleCheckerEnabled, Mode=OneWay}">
                             <NumberBox
                                 Minimum="1"
                                 SpinButtonPlacementMode="Inline"
@@ -83,10 +83,10 @@
                         <CheckBox
                             x:Name="AutoSwitchNotifyCheckBox"
                             Content="{helpers:ResourceString Name=SwitchModesCheckBoxAutoSwitchNotification}"
-                            IsChecked="{x:Bind ViewModel.IsAutoSwitchNotify, Mode=TwoWay}" />
+                            IsChecked="{x:Bind ViewModel.AutoSwitchNotifyEnabled, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockAutoSwitchGracePeriod}" IsEnabled="{x:Bind ViewModel.IsAutoSwitchNotify, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchModesTextBlockAutoSwitchGracePeriod}" IsEnabled="{x:Bind ViewModel.AutoSwitchNotifyEnabled, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
                             <NumberBox
                                 Minimum="1"
                                 SpinButtonPlacementMode="Inline"
@@ -96,7 +96,7 @@
                 </controls:SettingsExpander>
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderBatteryPowered}" />
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsBatteryDarkModeEnable, Mode=OneWay}">
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <CheckBox Content="{helpers:ResourceString Name=cbSettingsBatteryDarkMode}" />
                     </controls:SettingsCard.Header>
@@ -104,9 +104,9 @@
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderHotkeys}" />
                 <controls:SettingsCard Description="{helpers:ResourceString Name=SwitchModesHotkeyEditHint}" Header="{helpers:ResourceString Name=SwitchModesToggleHeaderHotkey}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsHotkeysEnabled, Mode=TwoWay}" />
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsSettingsCardEnabled, Mode=OneWay}">
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <TextBlock>
                             <Run Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderForceLight}" />
@@ -119,7 +119,7 @@
                         Text="{x:Bind ViewModel.HotkeyForceLight, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsSettingsCardEnabled, Mode=OneWay}">
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <TextBlock>
                             <Run Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderForceDark}" />
@@ -132,7 +132,7 @@
                         Text="{x:Bind ViewModel.HotkeyForceDark, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsSettingsCardEnabled, Mode=OneWay}">
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <TextBlock>
                             <Run Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderNoForce}" />
@@ -145,7 +145,7 @@
                         Text="{x:Bind ViewModel.HotkeyNoForce, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsSettingsCardEnabled, Mode=OneWay}">
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <TextBlock>
                             <Run Text="{helpers:ResourceString Name=ToggleTheme}" />
@@ -158,7 +158,7 @@
                         Text="{x:Bind ViewModel.HotkeyToggleTheme, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsExpander IsEnabled="{x:Bind ViewModel.IsSettingsCardEnabled, Mode=OneWay}">
+                <controls:SettingsExpander IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsExpander.Header>
                         <TextBlock>
                             <Run Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch}" />
@@ -173,12 +173,12 @@
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
-                                <CheckBox Content="{helpers:ResourceString Name=HotkeyCheckboxToggleAutomaticThemeSwitchNotification}" IsChecked="{x:Bind ViewModel.IsHotkeyToggleAutomaticThemeNotification, Mode=TwoWay}" />
+                                <CheckBox Content="{helpers:ResourceString Name=HotkeyCheckboxToggleAutomaticThemeSwitchNotification}" IsChecked="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-                <controls:SettingsExpander IsEnabled="{x:Bind ViewModel.IsSettingsCardEnabled, Mode=OneWay}">
+                <controls:SettingsExpander IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsExpander.Header>
                         <TextBlock>
                             <Run Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderTogglePostpone}" />
@@ -193,7 +193,7 @@
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
-                                <CheckBox Content="{helpers:ResourceString Name=HotkeyCheckboxToggleAutomaticThemeSwitchNotification}" IsChecked="{x:Bind ViewModel.IsHotkeyTogglePostponeNotification, Mode=TwoWay}" />
+                                <CheckBox Content="{helpers:ResourceString Name=HotkeyCheckboxToggleAutomaticThemeSwitchNotification}" IsChecked="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

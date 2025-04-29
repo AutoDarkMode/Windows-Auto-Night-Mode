@@ -155,6 +155,4 @@ public sealed partial class SwitchModesPage : Page
         }
         _builder.Save();
     }
-
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }
