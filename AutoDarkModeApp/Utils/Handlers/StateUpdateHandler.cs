@@ -1,159 +1,158 @@
 ﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// TODO: Should we reduced copyright header? Made it more concise while keeping all important info
+// Copyright (C) 2025 Auto Dark Mode
+// This program is free software under GNU GPL v3.0
 #endregion
+
+using System.Collections.Concurrent;
 using System.Security.Principal;
 using System.Timers;
 using AutoDarkModeLib;
+using Microsoft.Extensions.Logging;
+using Microsoft.UI.Dispatching;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 
-
 public static class StateUpdateHandler
 {
-    public static SecurityIdentifier SID
-    {
-        get
-        {
-            var identity = WindowsIdentity.GetCurrent();
-            return identity.User;
-        }
-    }
+    private static readonly ConcurrentBag<ElapsedEventHandler> _delegatesTimer = new();
+    private static readonly ConcurrentBag<FileSystemEventHandler> _delegatesConfigWatcher = new();
+    private static readonly ConcurrentBag<FileSystemEventHandler> _delegatesScriptConfigWatcher = new();
+    private static readonly DispatcherQueueTimer _debounceTimer;
+    private static Action? _debounceAction;
+
+    public static SecurityIdentifier SID => WindowsIdentity.GetCurrent().User!;
 
     static StateUpdateHandler()
     {
-        PostponeRefreshTimer.Interval = 2000;
+        try
+        {
+            PostponeRefreshTimer.Interval = 2000;
+            ConfigWatcher.NotifyFilter = NotifyFilters.LastWrite;
+            ScriptConfigWatcher.NotifyFilter = NotifyFilters.LastWrite;
+
+            _debounceTimer = DispatcherQueue.GetForCurrentThread().CreateTimer();
+            _debounceTimer.Interval = TimeSpan.FromMilliseconds(100);
+            _debounceTimer.Tick += (s, e) =>
+            {
+                _debounceAction?.Invoke();
+                _debounceTimer.Stop();
+            };
+        }
+        catch (Exception ex)
+        {
+            throw new ArgumentException(ex.Message);
+        }
     }
 
-    private static List<ElapsedEventHandler> delegatesTimer = new();
-    private static List<FileSystemEventHandler> delegatesConfigWatcher = new();
-    private static List<FileSystemEventHandler> delegatesScriptConfigWatcher = new();
-
-
-    private static FileSystemWatcher ConfigWatcher
-    {
-        get;
-    } = new FileSystemWatcher
+    private static FileSystemWatcher ConfigWatcher { get; } = new()
     {
         Path = AdmConfigBuilder.ConfigDir,
-        Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
-        NotifyFilter = NotifyFilters.LastWrite
+        Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath)
     };
 
-    private static FileSystemWatcher ScriptConfigWatcher
-    {
-        get;
-    } = new FileSystemWatcher
+    private static FileSystemWatcher ScriptConfigWatcher { get; } = new()
     {
         Path = AdmConfigBuilder.ConfigDir,
-        Filter = Path.GetFileName(AdmConfigBuilder.ScriptConfigPath),
-        NotifyFilter = NotifyFilters.LastWrite
+        Filter = Path.GetFileName(AdmConfigBuilder.ScriptConfigPath)
     };
 
     private static System.Timers.Timer PostponeRefreshTimer { get; } = new();
 
     public static void ClearAllEvents()
     {
-        foreach (var eh in delegatesTimer)
+        ClearEventHandlers(_delegatesTimer, eh => PostponeRefreshTimer.Elapsed -= eh);
+        ClearEventHandlers(_delegatesConfigWatcher, eh => ConfigWatcher.Changed -= eh);
+        ClearEventHandlers(_delegatesScriptConfigWatcher, eh => ScriptConfigWatcher.Changed -= eh);
+    }
+
+    private static void ClearEventHandlers<T>(ConcurrentBag<T> handlers, Action<T> removeAction)
+    {
+        foreach (var handler in handlers)
         {
-            PostponeRefreshTimer.Elapsed -= eh;
+            removeAction(handler);
         }
-        delegatesTimer.Clear();
-        foreach (var eh in delegatesConfigWatcher)
-        {
-            ConfigWatcher.Changed -= eh;
-        }
-        delegatesConfigWatcher.Clear();
-        foreach (var eh in delegatesScriptConfigWatcher)
-        {
-            ScriptConfigWatcher.Changed -= eh;
-        }
-        delegatesScriptConfigWatcher.Clear();
+        handlers.Clear();
     }
 
-    public static void StartScriptWatcher()
+    public static void StartScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => ScriptConfigWatcher.EnableRaisingEvents = true);
+
+    public static void StopScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => ScriptConfigWatcher.EnableRaisingEvents = false);
+
+    public static void StartPostponeTimer() => PostponeRefreshTimer.Start();
+
+    public static void StopPostponeTimer() => PostponeRefreshTimer.Stop();
+
+    public static void StartConfigWatcher() => SafetyExtensions.IgnoreExceptions(() => ConfigWatcher.EnableRaisingEvents = true);
+
+    public static void StartConfigWatcherWithoutEvents()
     {
-        ScriptConfigWatcher.EnableRaisingEvents = true;
+        ClearEventHandlers(_delegatesConfigWatcher, eh => ConfigWatcher.Changed -= eh);
+        SafetyExtensions.IgnoreExceptions(() => ConfigWatcher.EnableRaisingEvents = true);
     }
 
-    public static void StopScriptWatcher()
-    {
-        ScriptConfigWatcher.EnableRaisingEvents = false;
-    }
+    public static void StopConfigWatcher() => SafetyExtensions.IgnoreExceptions(() => ConfigWatcher.EnableRaisingEvents = false);
 
-    public static void StartPostponeTimer()
+    public static void StopConfigWatcherWithoutEvents()
     {
-        PostponeRefreshTimer.Start();
-    }
-
-    public static void StopPostponeTimer()
-    {
-        PostponeRefreshTimer.Stop();
-    }
-
-    public static void StartConfigWatcher()
-    {
-        ConfigWatcher.EnableRaisingEvents = true;
-    }
-
-    public static void StopConfigWatcher()
-    {
-        ConfigWatcher.EnableRaisingEvents = false;
+        SafetyExtensions.IgnoreExceptions(() => ConfigWatcher.EnableRaisingEvents = false);
+        ClearEventHandlers(_delegatesConfigWatcher, eh => ConfigWatcher.Changed -= eh);
     }
 
     public static event FileSystemEventHandler OnScriptConfigUpdate
     {
-        add
-        {
-            ScriptConfigWatcher.Changed += value;
-            delegatesScriptConfigWatcher.Add(value);
-        }
-        remove
-        {
-            ScriptConfigWatcher.Changed -= value;
-            delegatesScriptConfigWatcher.Remove(value);
-        }
+        add => ScriptConfigWatcher.Changed += value;
+        remove => ScriptConfigWatcher.Changed -= value;
     }
 
     public static event FileSystemEventHandler OnConfigUpdate
     {
-        add
-        {
-            ConfigWatcher.Changed += value;
-            delegatesConfigWatcher.Add(value);
-        }
-        remove
-        {
-            ConfigWatcher.Changed -= value;
-            delegatesConfigWatcher.Remove(value);
-        }
+        add => ConfigWatcher.Changed += value;
+        remove => ConfigWatcher.Changed -= value;
     }
 
+    public static void AddDebounceEventOnConfigUpdate(Action action)
+    {
+        _debounceAction = action;
+        OnConfigUpdate += DebounceAction;
+    }
 
     public static event ElapsedEventHandler OnPostponeTimerTick
     {
-        add
+        add => PostponeRefreshTimer.Elapsed += value;
+        remove => PostponeRefreshTimer.Elapsed -= value;
+    }
+
+    private static void DebounceAction(object sender, FileSystemEventArgs e)
+    {
+        if (!_debounceTimer.IsRunning)
         {
-            PostponeRefreshTimer.Elapsed += value;
-            delegatesTimer.Add(value);
-        }
-        remove
-        {
-            PostponeRefreshTimer.Elapsed -= value;
-            delegatesTimer.Remove(value);
+            _debounceTimer.Start();
         }
     }
 
+    public static void Dispose()
+    {
+        ConfigWatcher.Dispose();
+        ScriptConfigWatcher.Dispose();
+        PostponeRefreshTimer.Dispose();
+        _debounceTimer.Stop();
+    }
+
+    private static class SafetyExtensions
+    {
+        public static bool IgnoreExceptions(Action action, ILogger? logger = null, Type? exceptionToIgnore = null)
+        {
+            try
+            {
+                action();
+                return true;
+            }
+            catch (Exception ex) when (exceptionToIgnore == null || exceptionToIgnore.IsAssignableFrom(ex.GetType()))
+            {
+                logger?.LogInformation(ex, ex.Message);
+                return false;
+            }
+        }
+    }
 }

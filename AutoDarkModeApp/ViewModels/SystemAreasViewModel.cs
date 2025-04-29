@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
-public partial class AppsViewModel : ObservableRecipient
+public partial class SystemAreasViewModel : ObservableRecipient
 {
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
@@ -47,7 +47,7 @@ public partial class AppsViewModel : ObservableRecipient
     [ObservableProperty]
     private bool _isColorFilterSwitch;
 
-    public AppsViewModel(IErrorService errorService)
+    public SystemAreasViewModel(IErrorService errorService)
     {
         _errorService = errorService;
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
