@@ -7,11 +7,12 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
         <MicaBackdrop />
     </Window.SystemBackdrop>
-    <Grid x:Name="RootGrid">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -19,13 +20,11 @@
         <TitleBar
             x:Name="TitleBar"
             Title="Auto Dark Mode"
-            Height="{StaticResource TitleBarExpandedHeight}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             BackRequested="NavViewTitleBar_BackRequested"
             IsBackButtonEnabled="{x:Bind NavigationFrame.CanGoBack, Mode=OneWay}"
             IsBackButtonVisible="True"
-            IsHitTestVisible="True"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
             <TitleBar.IconSource>
@@ -36,13 +35,11 @@
         <NavigationView
             x:Name="NavigationViewControl"
             Grid.Row="1"
-            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
             IsBackButtonVisible="Collapsed"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
             OpenPaneLength="240"
-            PaneDisplayMode="Auto"
-            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+            PaneDisplayMode="Auto">
             <NavigationView.MenuItems>
                 <!--
               TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
@@ -51,43 +48,37 @@
               TODO: Update item icons by updating FontIcon.Glyph properties.
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.TimeViewModel" Content="{helpers:ResourceString Name=NavbarTime}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE823;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.SwitchModesViewModel" Content="{helpers:ResourceString Name=NavbarSwitchModes}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE945;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AppsViewModel" Content="{helpers:ResourceString Name=NavbarApps}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE71D;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.PersonalizationViewModel" Content="{helpers:ResourceString Name=NavbarPersonalization}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE771;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.ScriptsViewModel" Content="{helpers:ResourceString Name=NavbarScripts}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xF000;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarTime}"
+                    Icon="{ui:FontIcon Glyph=&#xE823;}"
+                    Tag="Time" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarSwitchModes}"
+                    Icon="{ui:FontIcon Glyph=&#xE945;}"
+                    Tag="SwitchModes" />
+                <!--  TODO: Update item content in resource  -->
+                <NavigationViewItem
+                    Content="System Areas"
+                    Icon="{ui:FontIcon Glyph=&#xEC4E;}"
+                    Tag="SystemAreas" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarPersonalization}"
+                    Icon="{ui:FontIcon Glyph=&#xE771;}"
+                    Tag="Personalization" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarScripts}"
+                    Icon="{ui:FontIcon Glyph=&#xF000;}"
+                    Tag="Scripts" />
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.DonationViewModel" Content="{helpers:ResourceString Name=NavbarDonation}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEB51;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem helpers:NavigationHelper.NavigateTo="AutoDarkModeApp.ViewModels.AboutViewModel" Content="{helpers:ResourceString Name=NavbarAbout}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE946;" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarDonation}"
+                    Icon="{ui:FontIcon Glyph=&#xEB51;}"
+                    Tag="Donation" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=NavbarAbout}"
+                    Icon="{ui:FontIcon Glyph=&#xE946;}"
+                    Tag="About" />
             </NavigationView.FooterMenuItems>
             <Frame x:Name="NavigationFrame" />
         </NavigationView>

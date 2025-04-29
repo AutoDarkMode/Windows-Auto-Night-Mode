@@ -1,20 +1,17 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Input;
-using Windows.System;
 
 namespace AutoDarkModeApp;
 
 public sealed partial class MainWindow : Window
 {
-    public MainViewModel ViewModel { get; }
+    private readonly INavigationService _navigationService;
 
-    public MainWindow(MainViewModel viewModel)
+    public MainWindow(INavigationService navigationService)
     {
-        ViewModel = viewModel;
+        _navigationService = navigationService;
         InitializeComponent();
 
         // TODO: No one knows what the correct way to use it is. Waiting for official examples.
@@ -27,13 +24,10 @@ public sealed partial class MainWindow : Window
         AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
         AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
 
-        Title = Debugger.IsAttached ? "Auto Dark Mode Dev" : "Auto Dark Mode";
+        Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
 
-        ViewModel.NavigationService.Frame = NavigationFrame;
-        ViewModel.NavigationService.InitializeNavigationView(NavigationViewControl);
-
-        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
-        RootGrid.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+        _navigationService.Frame = NavigationFrame;
+        _navigationService.InitializeNavigationView(NavigationViewControl);
 
         // TODO: Set the title bar icon by updating /Assets/WindowIcon.ico.
         // A custom title bar is required for full window theme and Mica support.
@@ -60,33 +54,6 @@ public sealed partial class MainWindow : Window
         NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
     }
 
-    private KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
-    {
-        var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
-
-        if (modifiers.HasValue)
-        {
-            keyboardAccelerator.Modifiers = modifiers.Value;
-        }
-
-        keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
-
-        return keyboardAccelerator;
-    }
-
-    private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-    {
-        if (NavigationFrame.CanGoBack)
-        {
-            NavigationFrame.GoBack();
-            args.Handled = true;
-        }
-        else
-        {
-            args.Handled = false;
-        }
-    }
-
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
     {
         var postion = App.MainWindow.AppWindow.Position;
@@ -98,16 +65,16 @@ public sealed partial class MainWindow : Window
             await localSettings.SaveSettingAsync("Y", postion.Y);
             await localSettings.SaveSettingAsync("Width", size.Width);
             await localSettings.SaveSettingAsync("Height", size.Height);
-        });
 
-        //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
-        try
-        {
-            Process.GetCurrentProcess().Kill();
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex.Message);
-        }
+            //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
+            try
+            {
+                Process.GetCurrentProcess().Kill();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        });
     }
 }

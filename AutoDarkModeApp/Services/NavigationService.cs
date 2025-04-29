@@ -1,46 +1,29 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
+﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
+using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.System;
 
 namespace AutoDarkModeApp.Services;
 
 public class NavigationService : INavigationService
 {
     private readonly IPageService _pageService;
-    private object? _lastParameterUsed;
     private Frame? _frame;
     private NavigationView? _navigationView;
-
-    public event NavigatedEventHandler? Navigated;
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public object? SettingsItem => _navigationView?.SettingsItem;
 
     public Frame? Frame
     {
-        get
-        {
-            if (_frame == null)
-            {
-                _frame = App.MainWindow.Content as Frame;
-                RegisterFrameEvents();
-            }
-            return _frame;
-        }
-        set
-        {
-            UnregisterFrameEvents();
-            _frame = value;
-            RegisterFrameEvents();
-        }
+        get => _frame;
+        set => _frame = value;
     }
 
-    [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
-    public bool CanGoBack => Frame != null && Frame.CanGoBack;
-
+    // Please do not use Primary Constructors here
     public NavigationService(IPageService pageService)
     {
         _pageService = pageService;
@@ -49,69 +32,139 @@ public class NavigationService : INavigationService
     public void InitializeNavigationView(NavigationView navigationView)
     {
         _navigationView = navigationView;
-        _navigationView.ItemInvoked += OnItemInvoked;
-    }
+        _navigationView.SelectionChanged += OnSelectionChanged;
 
-    private void RegisterFrameEvents()
-    {
+        _navigationView.PointerPressed += NavigationView_PointerPressed;
+        _navigationView.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu));
+        _navigationView.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.Right, VirtualKeyModifiers.Menu));
+        _navigationView.KeyboardAccelerators.Add(BuildKeyboardAccelerator(VirtualKey.GoBack));
+        _navigationView.KeyboardAcceleratorPlacementMode = KeyboardAcceleratorPlacementMode.Hidden;
+
         if (_frame != null)
         {
             _frame.Navigated += OnNavigated;
         }
     }
 
-    private void UnregisterFrameEvents()
+    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
     {
-        if (_frame != null)
+        if (_frame == null)
+            return false;
+
+        var pageType = _pageService.GetPageType(pageKey);
+
+        if (clearNavigation)
         {
-            _frame.Navigated -= OnNavigated;
+            _frame.BackStack.Clear();
+        }
+
+        return _frame.Navigate(pageType, parameter);
+    }
+
+    private void OnSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    {
+        if (args.IsSettingsSelected)
+        {
+            NavigateTo(typeof(SettingsViewModel).FullName!);
+        }
+        else if (args.SelectedItemContainer?.Tag is string pageKey)
+        {
+            pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
+            NavigateTo(pageKey);
         }
     }
 
-    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
+    private KeyboardAccelerator BuildKeyboardAccelerator(VirtualKey key, VirtualKeyModifiers? modifiers = null)
     {
-        var pageType = _pageService.GetPageType(pageKey);
+        var keyboardAccelerator = new KeyboardAccelerator() { Key = key };
 
-        if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
+        if (modifiers.HasValue)
         {
-            _frame.Tag = clearNavigation;
-            var navigated = _frame.Navigate(pageType, parameter);
-            if (navigated)
-            {
-                _lastParameterUsed = parameter;
-            }
-            return navigated;
+            keyboardAccelerator.Modifiers = modifiers.Value;
         }
-        return false;
+
+        keyboardAccelerator.Invoked += OnKeyboardAcceleratorInvoked;
+
+        return keyboardAccelerator;
+    }
+
+    private void OnKeyboardAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        if (_frame == null)
+        {
+            args.Handled = false;
+            return;
+        }
+
+        if (sender.Key == VirtualKey.Left && sender.Modifiers == VirtualKeyModifiers.Menu)
+        {
+            if (_frame.CanGoBack)
+            {
+                _frame.GoBack();
+                args.Handled = true;
+            }
+            else
+            {
+                args.Handled = false;
+            }
+        }
+        else if (sender.Key == VirtualKey.Right && sender.Modifiers == VirtualKeyModifiers.Menu)
+        {
+            if (_frame.CanGoForward)
+            {
+                _frame.GoForward();
+                args.Handled = true;
+            }
+            else
+            {
+                args.Handled = false;
+            }
+        }
+        else
+        {
+            args.Handled = false;
+        }
+    }
+
+    private void NavigationView_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        var properties = e.GetCurrentPoint(null).Properties;
+
+        if (properties.IsLeftButtonPressed || properties.IsRightButtonPressed || properties.IsMiddleButtonPressed)
+            return;
+
+        if (_frame != null)
+        {
+            if (properties.IsXButton1Pressed && _frame.CanGoBack)
+            {
+                _frame.GoBack();
+                e.Handled = true;
+            }
+            else if (properties.IsXButton2Pressed && _frame.CanGoForward)
+            {
+                _frame.GoForward();
+                e.Handled = true;
+            }
+        }
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
-        if (sender is Frame frame)
-        {
-            var clearNavigation = (bool)frame.Tag;
-            if (clearNavigation)
-            {
-                frame.BackStack.Clear();
-            }
+        if (_navigationView == null)
+            return;
 
-            Navigated?.Invoke(sender, e);
+        if (e.SourcePageType == typeof(SettingsPage))
+        {
+            _navigationView.SelectedItem = _navigationView.SettingsItem;
+            _navigationView.Header = ((ContentControl)_navigationView.SettingsItem).Content;
+            return;
         }
-    }
 
-    private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-    {
-        if (args.IsSettingsInvoked)
+        var selectedItem = GetSelectedItem(e.SourcePageType);
+        if (selectedItem != null)
         {
-            NavigateTo(typeof(SettingsViewModel).FullName!);
-        }
-        else
-        {
-            var selectedItem = args.InvokedItemContainer as NavigationViewItem;
-            if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
-            {
-                NavigateTo(pageKey);
-            }
+            _navigationView.SelectedItem = selectedItem;
+            _navigationView.Header = selectedItem.Content;
         }
     }
 
@@ -121,6 +174,7 @@ public class NavigationService : INavigationService
         {
             return GetSelectedItem(_navigationView.MenuItems, pageType) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType);
         }
+
         return null;
     }
 
@@ -139,13 +193,15 @@ public class NavigationService : INavigationService
                 return selectedChild;
             }
         }
+
         return null;
     }
 
     private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
     {
-        if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+        if (menuItem.Tag is string pageKey)
         {
+            pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
             return _pageService.GetPageType(pageKey) == sourcePageType;
         }
         return false;

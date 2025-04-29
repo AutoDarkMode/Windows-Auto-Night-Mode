@@ -1,9 +1,7 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
-
 using CommunityToolkit.Mvvm.ComponentModel;
-
 using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Services;
@@ -16,7 +14,7 @@ public class PageService : IPageService
     {
         Configure<TimeViewModel, TimePage>();
         Configure<SwitchModesViewModel, SwitchModesPage>();
-        Configure<AppsViewModel, AppsPage>();
+        Configure<SystemAreasViewModel, SystemAreasPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<ScriptsViewModel, ScriptsPage>();
         Configure<DonationViewModel, DonationPage>();

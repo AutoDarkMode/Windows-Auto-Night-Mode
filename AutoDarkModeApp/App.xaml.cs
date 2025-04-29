@@ -3,7 +3,6 @@ using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
-
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -18,10 +17,7 @@ public partial class App : Application
     // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
     // https://docs.microsoft.com/dotnet/core/extensions/configuration
     // https://docs.microsoft.com/dotnet/core/extensions/logging
-    public IHost Host
-    {
-        get;
-    }
+    public IHost Host { get; }
 
     public static T GetService<T>()
         where T : class
@@ -102,8 +98,8 @@ public partial class App : Application
 
         await SetApplicationLanguageAsync();
 
-        var mainViewModel = App.GetService<MainViewModel>();
-        MainWindow = new MainWindow(mainViewModel);
+        var navigationService = App.GetService<INavigationService>();
+        MainWindow = new MainWindow(navigationService);
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }
