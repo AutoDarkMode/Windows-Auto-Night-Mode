@@ -338,4 +338,9 @@ public partial class TimeViewModel : ObservableRecipient
     partial void OnLatValueChanged(double value) => UpdateCoordinates();
 
     partial void OnLonValueChanged(double value) => UpdateCoordinates();
+
+    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    {
+        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
+    }
 }

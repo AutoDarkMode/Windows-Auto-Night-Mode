@@ -18,24 +18,25 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
                 <!--
                     TODO:
-                    * get system display size (aspect ratio) and apply it to the image (width)
-                    * if fill = Center: show BackgroundColor SettingsCard to set a color to fill the desktop
+                    * Get system display size (aspect ratio) and apply it to the image (width)
+                    * Hide Border when setting == Spotlight
+                    * Hide DesktopPreviewImage when setting == Solid Color
+                    * Stretch = ViewModel.SelectWallpaperFillingMode
                 -->
                 <Border
+                    Margin="0,0,0,12"
                     HorizontalAlignment="Left"
-                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                    BorderBrush="{ThemeResource FocusStrokeColorOuterBrush}"
+                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
+                    BorderBrush="Black"
                     BorderThickness="8"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
                     <Image
+                        x:Name="DesktopPreviewImage"
                         Width="320"
-                        Height="180"
-                        Source="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay, FallbackValue=''}"
-                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay, FallbackValue=''}" />
+                        Height="180" />
                 </Border>
 
                 <!--  Desktop background  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=WallpaperTextBlockHeader}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperToggleSwitch}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
@@ -72,17 +73,6 @@
                                 Content="{helpers:ResourceString Name=dbFilePicker}" />
                         </controls:SettingsCard>
 
-                        <!--  Monitor  -->
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMonitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
-                            <StackPanel>
-                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
-                                <ComboBox
-                                    x:Name="MonitorsComboBox"
-                                    HorizontalAlignment="Right"
-                                    SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
-                            </StackPanel>
-                        </controls:SettingsCard>
-
                         <!--  Picture fit  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockPosition}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
@@ -90,6 +80,17 @@
                                 <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemStretch}" />
                             </ComboBox>
+                        </controls:SettingsCard>
+
+                        <!--  Monitor  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperComboBoxMonitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
+                                <ComboBox
+                                    x:Name="MonitorsComboBox"
+                                    HorizontalAlignment="Right"
+                                    SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
+                            </StackPanel>
                         </controls:SettingsCard>
 
                         <!--  Color  -->
