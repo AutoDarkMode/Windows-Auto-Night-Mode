@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:numberformatting="using:Windows.Globalization.NumberFormatting"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Page.Resources>
@@ -137,13 +138,21 @@
                                         Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLat}"
                                         Maximum="180"
                                         Minimum="0"
-                                        Value="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                        Value="{x:Bind ViewModel.LatValue, Mode=TwoWay}">
+                                        <NumberBox.NumberFormatter>
+                                            <numberformatting:DecimalFormatter FractionDigits="6" />
+                                        </NumberBox.NumberFormatter>
+                                    </NumberBox>
                                     <NumberBox
                                         MinWidth="120"
                                         Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLon}"
                                         Maximum="90"
                                         Minimum="0"
-                                        Value="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                        Value="{x:Bind ViewModel.LonValue, Mode=TwoWay}">
+                                        <NumberBox.NumberFormatter>
+                                            <numberformatting:DecimalFormatter FractionDigits="6" />
+                                        </NumberBox.NumberFormatter>
+                                    </NumberBox>
                                 </StackPanel>
                                 <TextBlock
                                     Foreground="{ThemeResource TextFillColorSecondaryBrush}"
@@ -216,4 +225,5 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>
