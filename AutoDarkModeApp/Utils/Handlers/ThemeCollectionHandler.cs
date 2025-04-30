@@ -1,19 +1,10 @@
 ﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// TODO: Should we reduced copyright header? Made it more concise while keeping all important info
+// Copyright (C) 2025 Auto Dark Mode
+// This program is free software under GNU GPL v3.0
 #endregion
+using System.Globalization;
+using System.Text;
 using AutoDarkModeLib;
 using AdmProperties = AutoDarkModeLib.Properties;
 
@@ -24,17 +15,21 @@ public static class ThemeCollectionHandler
     public static readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
     public static readonly string WindowsPath = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
 
-    //get a list of all files the theme folder contains. If there is no theme-folder, create one.
-    //TODO: Do not use the file names, because they are trimmed at 9 characters.
+    //  Get a list of all files the theme folder contains. If there is no theme-folder, create one.
     public static List<ThemeFile> GetUserThemes()
     {
         try
         {
             var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList();
-            files = files
-                .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme))
-                .ToList();
-            var themeFiles = files.Select(f => new ThemeFile(f)).ToList();
+            //files = files.Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
+
+            var themeFiles = new List<ThemeFile>();
+            foreach (var file in files)
+            {
+                string displayName = GetThemeDisplayName(file);
+                themeFiles.Add(new ThemeFile(file, displayName));
+            }
+
             InjectWindowsThemes(themeFiles);
             return themeFiles;
         }
@@ -42,6 +37,29 @@ public static class ThemeCollectionHandler
         {
             Directory.CreateDirectory(ThemeFolderPath);
             return GetUserThemes();
+        }
+    }
+
+    // Thanks Jay and Copilot
+    private static string GetThemeDisplayName(string themePath)
+    {
+        try
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            var lines = File.ReadAllLines(themePath, Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage));
+            var displayNameLine = lines.FirstOrDefault(l => l.StartsWith("DisplayName="));
+            if (displayNameLine != null)
+            {
+                return displayNameLine.Split('=')[1].Trim();
+            }
+            else
+            {
+                return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
+            }
+        }
+        catch
+        {
+            return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
         }
     }
 
