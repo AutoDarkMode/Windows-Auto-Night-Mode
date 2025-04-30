@@ -8,6 +8,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -96,7 +97,7 @@ public partial class TimeViewModel : ObservableRecipient
         LoadSettings();
 
         StateUpdateHandler.StartConfigWatcherWithoutEvents();
-        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+        StateUpdateHandler.AddDebounceEventOnConfigUpdate(HandleConfigUpdate);
 
         SaveOffsetCommand = new RelayCommand(() =>
         {

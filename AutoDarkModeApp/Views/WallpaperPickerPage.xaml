@@ -11,6 +11,7 @@
     <Page.Resources>
         <helpers:FlagsToVisibilityConverter x:Key="FlagsToVisibilityConverter" />
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+        <helpers:EnumToStretchConverter x:Key="EnumToStretchConverter" />
     </Page.Resources>
 
     <ScrollViewer>
@@ -33,7 +34,8 @@
                     <Image
                         x:Name="DesktopPreviewImage"
                         Width="320"
-                        Height="180" />
+                        Height="180"
+                        Stretch="{Binding Converter={StaticResource EnumToStretchConverter}, Path=SelectWallpaperFillingMode, Mode=OneWay}"/>
                 </Border>
 
                 <!--  Desktop background  -->
