@@ -3,7 +3,7 @@
 // Copyright (C) 2025 Auto Dark Mode
 // This program is free software under GNU GPL v3.0
 #endregion
-using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 using AutoDarkModeLib;
 using AdmProperties = AutoDarkModeLib.Properties;
@@ -21,7 +21,7 @@ public static class ThemeCollectionHandler
         try
         {
             var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList();
-            //files = files.Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
+            files = files.Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
 
             var themeFiles = new List<ThemeFile>();
             foreach (var file in files)
@@ -41,21 +41,16 @@ public static class ThemeCollectionHandler
     }
 
     // Thanks Jay and Copilot
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+    private static extern int GetPrivateProfileString(string section, string key, string defaultValue, StringBuilder retVal, int size, string filePath);
+
     private static string GetThemeDisplayName(string themePath)
     {
         try
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var lines = File.ReadAllLines(themePath, Encoding.GetEncoding(CultureInfo.CurrentCulture.TextInfo.ANSICodePage));
-            var displayNameLine = lines.FirstOrDefault(l => l.StartsWith("DisplayName="));
-            if (displayNameLine != null)
-            {
-                return displayNameLine.Split('=')[1].Trim();
-            }
-            else
-            {
-                return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
-            }
+            StringBuilder displayName = new StringBuilder(255);
+            _ = GetPrivateProfileString("Theme", "DisplayName", "", displayName, displayName.Capacity, themePath);
+            return displayName.ToString();
         }
         catch
         {
