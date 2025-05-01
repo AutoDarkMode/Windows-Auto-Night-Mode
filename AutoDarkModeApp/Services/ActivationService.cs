@@ -102,7 +102,7 @@ public class ActivationService : IActivationService
         }
         else
         {
-            AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
+            AutostartHandler.EnsureAutostart(App.MainWindow.Content.XamlRoot);
         }
 
         // When language changed, add jumplist in new language
