@@ -17,9 +17,6 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
 
-    //TODO: Temporary reservation
-    private readonly ILocalSettingsService _localSettingsService;
-
     public enum TimeSourceMode
     {
         CustomTimes,
@@ -56,13 +53,12 @@ public partial class TimeViewModel : ObservableRecipient
     public partial string? TimePickHourClock { get; set; }
 
     [ObservableProperty]
-    public partial double LatValue { get; set; }
+    public partial string? LatValue { get; set; }
 
     [ObservableProperty]
-    public partial double LonValue { get; set; }
+    public partial string? LonValue { get; set; }
 
-    [ObservableProperty]
-    public partial Visibility LocationSettingsCardVisibility { get; set; }
+    public ICommand SaveCoordinatesCommand { get; set; }
 
     [ObservableProperty]
     public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
@@ -76,12 +72,10 @@ public partial class TimeViewModel : ObservableRecipient
     public ICommand SaveOffsetCommand { get; }
 
     //TODO: The logic part about Postpone is not written
-    public TimeViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
+    public TimeViewModel(IErrorService errorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
-        //TODO: Temporary reservation
-        _localSettingsService = localSettingsService;
 
         try
         {
@@ -98,6 +92,11 @@ public partial class TimeViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcherWithoutEvents();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
 
+        SaveCoordinatesCommand = new RelayCommand(() =>
+        {
+            UpdateCoordinates();
+        });
+
         SaveOffsetCommand = new RelayCommand(() =>
         {
             _builder.Config.Location.SunriseOffsetMin = OffsetLight;
@@ -113,15 +112,14 @@ public partial class TimeViewModel : ObservableRecipient
         TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
-        LatValue = _builder.Config.Location.CustomLat;
-        LonValue = _builder.Config.Location.CustomLon;
+        LatValue = _builder.Config.Location.CustomLat.ToString();
+        LonValue = _builder.Config.Location.CustomLon.ToString();
 
         LocationBlockText = "msgSearchLoc".GetLocalized();
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
         LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            //TODO: A/B Testing. Let the time format completely follow the system settings
             await LoadGeolocationData();
 
             string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
@@ -135,7 +133,6 @@ public partial class TimeViewModel : ObservableRecipient
             TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         });
 
-        LocationSettingsCardVisibility = Visibility.Collapsed;
         OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
 
         HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
@@ -202,13 +199,12 @@ public partial class TimeViewModel : ObservableRecipient
         if (_builder.Config.Location.UseGeolocatorService)
         {
             SelectedTimeSource = TimeSourceMode.LocationTimes;
-            LocationSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         }
         else
         {
             SelectedTimeSource = TimeSourceMode.CoordinateTimes;
-            LocationSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 
@@ -239,7 +235,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
     }
 
@@ -264,8 +260,6 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = false;
-                _builder.Config.Location.CustomLat = LatValue;
-                _builder.Config.Location.CustomLon = LonValue;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 break;
 
@@ -321,8 +315,36 @@ public partial class TimeViewModel : ObservableRecipient
 
     private void UpdateCoordinates()
     {
-        _builder.Config.Location.CustomLat = LatValue;
-        _builder.Config.Location.CustomLon = LonValue;
+        if (double.TryParse(LatValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lat))
+        {
+            if (lat > 90)
+                lat = 90.000000;
+            if (lat < -90)
+                lat = -90.000000;
+
+            LatValue = lat.ToString("0.######", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            LatValue = "0";
+        }
+        if (double.TryParse(LonValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lon))
+        {
+            if (lon > 180)
+                lon = 180.000000;
+            if (lon < -180)
+                lon = -180.000000;
+
+            LonValue = lon.ToString("0.######", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            LonValue = "0";
+        }
+
+        _builder.Config.Location.CustomLat = lat;
+        _builder.Config.Location.CustomLon = lon;
+
         try
         {
             _builder.Save();
@@ -331,11 +353,6 @@ public partial class TimeViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
-
         SafeApplyTheme();
     }
-
-    partial void OnLatValueChanged(double value) => UpdateCoordinates();
-
-    partial void OnLonValueChanged(double value) => UpdateCoordinates();
 }

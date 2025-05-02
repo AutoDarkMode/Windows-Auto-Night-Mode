@@ -98,7 +98,7 @@
 
                             <!--  Location  -->
                             <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
-                                <!--  TODO: improve this XAML  -->
+                                <!--  TODO: Improve this XAML  -->
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <FontIcon
                                         FontSize="16"
@@ -124,6 +124,30 @@
 
                             <!--  Geo Coordinates  -->
                             <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE707;" />
+                                    <TextBlock Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE706;" />
+                                    <TextBlock Text="{x:Bind ViewModel.LightTimeBlockText, Mode=OneWay}" />
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xe708;" />
+                                    <TextBlock Text="{x:Bind ViewModel.DarkTimeBlockText, Mode=OneWay}" />
+                                </StackPanel>
+                                <TextBlock
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
+
+                                <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
+
                                 <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
                                 <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
 
@@ -132,32 +156,24 @@
                                     Margin="0,16,0,0"
                                     Orientation="Horizontal"
                                     Spacing="24">
-                                    <!--  TODO: find a way to prevent scrolling from changing the value!  -->
-                                    <NumberBox
+                                    <TextBox
                                         MinWidth="120"
+                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
                                         Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLat}"
-                                        Maximum="180"
-                                        Minimum="0"
-                                        Value="{x:Bind ViewModel.LatValue, Mode=TwoWay}">
-                                        <NumberBox.NumberFormatter>
-                                            <numberformatting:DecimalFormatter FractionDigits="6" />
-                                        </NumberBox.NumberFormatter>
-                                    </NumberBox>
-                                    <NumberBox
+                                        InputScope="Number"
+                                        Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                    <TextBox
                                         MinWidth="120"
+                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
                                         Header="{helpers:ResourceString Name=TimeNumberBoxHeaderLon}"
-                                        Maximum="90"
-                                        Minimum="0"
-                                        Value="{x:Bind ViewModel.LonValue, Mode=TwoWay}">
-                                        <NumberBox.NumberFormatter>
-                                            <numberformatting:DecimalFormatter FractionDigits="6" />
-                                        </NumberBox.NumberFormatter>
-                                    </NumberBox>
+                                        InputScope="Number"
+                                        Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                    <Button
+                                        Height="Auto"
+                                        Margin="0,28,0,0"
+                                        Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
+                                        Content="{helpers:ResourceString Name=applyGeoButton}" />
                                 </StackPanel>
-                                <TextBlock
-                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="{helpers:ResourceString Name=EnterToApply}" />
                             </StackPanel>
 
                             <!--  Follow Windows Night light  -->
