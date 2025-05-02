@@ -123,7 +123,7 @@
                             </StackPanel>
 
                             <!--  Geo Coordinates  -->
-                            <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
+                            <StackPanel Spacing="20" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <FontIcon
                                         FontSize="16"
@@ -148,14 +148,7 @@
 
                                 <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
 
-                                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="{helpers:ResourceString Name=headerGeoCoordinates}" />
-                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
-
-                                <!--  Margin 8+16=24  -->
-                                <StackPanel
-                                    Margin="0,16,0,0"
-                                    Orientation="Horizontal"
-                                    Spacing="24">
+                                <StackPanel Orientation="Horizontal" Spacing="24">
                                     <TextBox
                                         MinWidth="120"
                                         BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
@@ -174,6 +167,8 @@
                                         Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
                                         Content="{helpers:ResourceString Name=applyGeoButton}" />
                                 </StackPanel>
+
+                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
                             </StackPanel>
 
                             <!--  Follow Windows Night light  -->
@@ -189,30 +184,25 @@
                 <!--  Offset time  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblOffset}" />
-                    <controls:SettingsCard>
-                        <controls:SettingsCard.Header>
-                            <StackPanel Orientation="Horizontal" Spacing="24">
-                                <NumberBox
-                                    MinWidth="120"
-                                    Header="{helpers:ResourceString Name=lblLight}"
-                                    LargeChange="10"
-                                    SmallChange="1"
-                                    SpinButtonPlacementMode="Inline"
-                                    Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
-                                <NumberBox
-                                    MinWidth="120"
-                                    Header="{helpers:ResourceString Name=lblDark}"
-                                    LargeChange="10"
-                                    SmallChange="1"
-                                    SpinButtonPlacementMode="Inline"
-                                    Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
-                            </StackPanel>
-                        </controls:SettingsCard.Header>
-                        <!--  TODO: remove this button!  -->
-                        <Button
-                            MinWidth="120"
-                            Command="{x:Bind ViewModel.SaveOffsetCommand}"
-                            Content="{helpers:ResourceString Name=offsetButton}" />
+                    <controls:SettingsCard
+                        Description="Positive values are later, negative values are earlier"
+                        Header="Delay the switching with a number of minutes">
+                        <StackPanel Orientation="Horizontal" Spacing="24">
+                            <NumberBox
+                                MinWidth="120"
+                                Header="{helpers:ResourceString Name=lblLight}"
+                                LargeChange="10"
+                                SmallChange="1"
+                                SpinButtonPlacementMode="Inline"
+                                Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
+                            <NumberBox
+                                MinWidth="120"
+                                Header="{helpers:ResourceString Name=lblDark}"
+                                LargeChange="10"
+                                SmallChange="1"
+                                SpinButtonPlacementMode="Inline"
+                                Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
+                        </StackPanel>
                     </controls:SettingsCard>
                 </StackPanel>
 
