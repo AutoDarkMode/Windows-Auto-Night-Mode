@@ -19,7 +19,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
                 <!--
                     TODO:
-                    * Hide Border when setting == Spotlight
+                    * Hide Border when setting == Spotlight?
                     * Hide DesktopPreviewImage when setting == Solid Color
                     * Stretch = ViewModel.SelectWallpaperFillingMode
                     * Get system display size (aspect ratio) and apply it to the image (width) ?
@@ -99,16 +99,13 @@
                         <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperColor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <Border
-                                    Width="34"
-                                    Height="30"
+                                    Width="32"
+                                    Height="32"
                                     Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
-                                    BorderBrush="{StaticResource ControlElevationBorderBrush}"
-                                    BorderThickness="1"
                                     CornerRadius="{StaticResource ControlCornerRadius}" />
                                 <!--  TODO: Replace Content to Resource  -->
                                 <Button
                                     MinWidth="120"
-                                    HorizontalAlignment="Right"
                                     Click="CheckColorButton_Click"
                                     Content="Select color" />
                             </StackPanel>

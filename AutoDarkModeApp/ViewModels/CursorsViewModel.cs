@@ -16,10 +16,10 @@ public partial class CursorsViewModel : ObservableRecipient
     public partial bool IsCursorsEnabled { get; set; }
 
     [ObservableProperty]
-    public partial object? SelectLightCusor { get; set; }
+    public partial object? SelectLightCursor { get; set; }
 
     [ObservableProperty]
-    public partial object? SelectDarkCusor { get; set; }
+    public partial object? SelectDarkCursor { get; set; }
 
     public CursorsViewModel(IErrorService errorService)
     {
@@ -44,8 +44,8 @@ public partial class CursorsViewModel : ObservableRecipient
     private void LoadSettings()
     {
         IsCursorsEnabled = _builder.Config.CursorSwitch.Enabled;
-        SelectLightCusor = _builder.Config.CursorSwitch.Component.CursorsLight;
-        SelectDarkCusor = _builder.Config.CursorSwitch.Component.CursorsDark;
+        SelectLightCursor = _builder.Config.CursorSwitch.Component.CursorsLight;
+        SelectDarkCursor = _builder.Config.CursorSwitch.Component.CursorsDark;
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
@@ -74,7 +74,7 @@ public partial class CursorsViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectLightCusorChanged(object? value)
+    partial void OnSelectLightCursorChanged(object? value)
     {
         if (value != null)
         {
@@ -90,7 +90,7 @@ public partial class CursorsViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectDarkCusorChanged(object? value)
+    partial void OnSelectDarkCursorChanged(object? value)
     {
         if (value != null)
         {

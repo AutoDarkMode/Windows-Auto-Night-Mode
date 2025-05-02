@@ -13,21 +13,22 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <!--  Cursors  -->
+                <!--  Pointers  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=CursorsPageTitle}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=CursorsPageEnable}" HeaderIcon="{ui:FontIcon Glyph=&#xE962;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsCursorsEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <!--  Light Cursors  -->
+                <!--  Light Pointers  -->
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=CursorsPageSelectLight}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
+                    IsEnabled="{x:Bind ViewModel.IsCursorsEnabled, Mode=OneWay}"
                     IsExpanded="True">
                     <ComboBox
-                        x:Name="LightCurosComboBox"
-                        SelectedItem="{x:Bind ViewModel.SelectLightCusor, Mode=TwoWay}"
-                        SelectionChanged="LightCurosComboBox_SelectionChanged" />
+                        x:Name="LightCursorComboBox"
+                        SelectedItem="{x:Bind ViewModel.SelectLightCursor, Mode=TwoWay}"
+                        SelectionChanged="LightCursorComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
                             <StackPanel
@@ -38,15 +39,16 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  Dark Cursors  -->
+                <!--  Dark Pointers  -->
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=CursorsPageSelectDark}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                    IsEnabled="{x:Bind ViewModel.IsCursorsEnabled, Mode=OneWay}"
                     IsExpanded="True">
                     <ComboBox
-                        x:Name="DarkCurosComboBox"
-                        SelectedItem="{x:Bind ViewModel.SelectDarkCusor, Mode=TwoWay}"
-                        SelectionChanged="DarkCurosComboBox_SelectionChanged" />
+                        x:Name="DarkCursorComboBox"
+                        SelectedItem="{x:Bind ViewModel.SelectDarkCursor, Mode=TwoWay}"
+                        SelectionChanged="DarkCursorComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
                             <StackPanel
