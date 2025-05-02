@@ -161,7 +161,7 @@ public class ActivationService : IActivationService
             {
                 using Process svc = new();
                 svc.StartInfo.UseShellExecute = false;
-                svc.StartInfo.FileName = Path.Combine(Helper.ExecutionDir, "core\\AutoDarkModeSvc.exe");
+                svc.StartInfo.FileName = Helper.ExecutionPathService;
                 svc.StartInfo.CreateNoWindow = true;
                 svc.Start();
                 serviceRunning.ReleaseMutex();

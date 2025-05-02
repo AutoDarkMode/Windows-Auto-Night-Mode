@@ -37,6 +37,7 @@ public static class Helper
     public static readonly string ExectuionPathThemeBridge = GetExecutionPathThemeBridge();
     public static readonly string ExectuionPathShell = GetExecutionPathShell();
     public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
+    public static readonly string ExecutionPathService = GetExecutionPathService();
     public static readonly string UpdateDataDir = GetUpdateDataDir();
     public static string PathThemeFolder { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
     public static string PathManagedTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMTheme.theme");
