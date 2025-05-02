@@ -37,6 +37,7 @@ public static class Helper
     public static readonly string ExectuionPathThemeBridge = GetExecutionPathThemeBridge();
     public static readonly string ExectuionPathShell = GetExecutionPathShell();
     public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
+    public static readonly string ExecutionPathService = GetExecutionPathService();
     public static readonly string UpdateDataDir = GetUpdateDataDir();
     public static string PathThemeFolder { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
     public static string PathManagedTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMTheme.theme");
@@ -135,25 +136,41 @@ public static class Helper
             time.AddMinutes(Math.Abs(grace)).TimeOfDay);
     }
 
+    private static string GetValidatedBasePath()
+    {
+        var currentPath = AppContext.BaseDirectory;
+        var directoryInfo = new DirectoryInfo(currentPath);
+
+        // Check if current directory is "ui" or "core"
+        if (directoryInfo.Name.Equals("ui", StringComparison.OrdinalIgnoreCase) ||
+            directoryInfo.Name.Equals("core", StringComparison.OrdinalIgnoreCase))
+        {
+            directoryInfo = directoryInfo.Parent ?? throw new InvalidOperationException("Parent directory is missing.");
+        }
+
+        if (!directoryInfo.Name.Equals("adm-app", StringComparison.OrdinalIgnoreCase))
+        {
+            throw new InvalidOperationException($"Expected directory 'adm-app' but found '{directoryInfo.Name}'.");
+        }
+
+        return directoryInfo.FullName;
+    }
+
     private static string GetExecutionPathService()
     {
-        var assemblyLocation = AppContext.BaseDirectory;
-        var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
-        var executablePath = Path.GetDirectoryName(assemblyLocation);
-        return Path.Combine(executablePath + executableName);
+        var assemblyLocation = GetValidatedBasePath();
+        return Path.Combine(assemblyLocation, "core", "AutoDarkModeSvc.exe");
     }
 
     private static string GetExecutionPathApp()
     {
-        var assemblyLocation = AppContext.BaseDirectory;
-        var executableName = Path.DirectorySeparatorChar + "AutoDarkModeApp.exe";
-        var executablePath = Path.GetDirectoryName(assemblyLocation);
-        return Path.Combine(executablePath + executableName);
+        var assemblyLocation = GetValidatedBasePath();
+        return Path.Combine(assemblyLocation, "ui", "AutoDarkModeApp.exe");
     }
 
     private static string GetExecutionPathUpdater()
     {
-        var assemblyLocation = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+        var assemblyLocation = GetValidatedBasePath().TrimEnd(Path.DirectorySeparatorChar);
         var executableName = UpdaterExecutableName;
         var executablePath = Directory.GetParent(assemblyLocation).FullName;
         return Path.Combine(executablePath, UpdaterDirName, executableName);
@@ -161,15 +178,13 @@ public static class Helper
 
     private static string GetExecutionPathShell()
     {
-        var assemblyLocation = AppContext.BaseDirectory;
-        var executableName = Path.DirectorySeparatorChar + "AutoDarkModeShell.exe";
-        var executablePath = Path.GetDirectoryName(assemblyLocation);
-        return Path.Combine(executablePath + executableName);
+        var assemblyLocation = GetValidatedBasePath();
+        return Path.Combine(assemblyLocation, "core", "AutoDarkModeShell.exe");
     }
 
     private static string GetExecutionDir()
     {
-        var assemblyLocation = AppContext.BaseDirectory;
+        var assemblyLocation = GetValidatedBasePath();
         var executablePath = Path.GetDirectoryName(assemblyLocation);
         return executablePath;
     }
@@ -177,22 +192,20 @@ public static class Helper
 
     private static string GetExecutionDirUpdater()
     {
-        var assemblyLocation = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+        var assemblyLocation = GetValidatedBasePath().TrimEnd(Path.DirectorySeparatorChar);
         var executablePath = Path.Combine(Directory.GetParent(assemblyLocation).FullName, "adm-updater");
         return executablePath;
     }
 
     private static string GetExecutionPathThemeBridge()
     {
-        var assemblyLocation = AppContext.BaseDirectory;
-        var executableName = Path.DirectorySeparatorChar + "IThemeManager2Bridge";
-        var executablePath = Path.GetDirectoryName(assemblyLocation);
-        return Path.Combine(executablePath + executableName);
+        var assemblyLocation = GetValidatedBasePath();
+        return Path.Combine(assemblyLocation, "core", "IThemeManager2Bridge");
     }
 
     private static string GetUpdateDataDir()
     {
-        var assemblyLocation = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+        var assemblyLocation = GetValidatedBasePath().TrimEnd(Path.DirectorySeparatorChar);
         var dataPath = Path.Combine(Directory.GetParent(assemblyLocation).FullName, "adm-update-data");
         return dataPath;
     }

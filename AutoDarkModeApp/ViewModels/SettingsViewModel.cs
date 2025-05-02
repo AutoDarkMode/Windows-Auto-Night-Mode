@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.UI.StartScreen;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -319,10 +320,12 @@ public partial class SettingsViewModel : ObservableRecipient
             if (value != null)
             {
                 await _localSettingsService.SaveSettingAsync("Language", value);
+                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
             }
             else
             {
                 await _localSettingsService.SaveSettingAsync("Language", "English (English)");
+                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
             }
         });
     }
