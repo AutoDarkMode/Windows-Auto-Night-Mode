@@ -120,17 +120,16 @@ public partial class TimeViewModel : ObservableRecipient
         LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            await LoadGeolocationData();
-
             string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+            bool isSystem12HourFormat = timeFormat.Contains('h');
+            TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
+
+            await LoadGeolocationData();
 
             LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("t", CultureInfo.CurrentCulture);
             DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("t", CultureInfo.CurrentCulture);
 
             LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
-
-            bool isSystem12HourFormat = timeFormat.Contains('h');
-            TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         });
 
         OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
