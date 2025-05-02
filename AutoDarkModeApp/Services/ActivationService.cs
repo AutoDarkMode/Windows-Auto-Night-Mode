@@ -161,7 +161,7 @@ public class ActivationService : IActivationService
             {
                 using Process svc = new();
                 svc.StartInfo.UseShellExecute = false;
-                svc.StartInfo.FileName = Path.Combine(Helper.ExecutionDir, "AutoDarkModeSvc.exe");
+                svc.StartInfo.FileName = Path.Combine(Helper.ExecutionDir, "backend\\AutoDarkModeSvc.exe");
                 svc.StartInfo.CreateNoWindow = true;
                 svc.Start();
                 serviceRunning.ReleaseMutex();
@@ -178,6 +178,7 @@ public class ActivationService : IActivationService
         for (int i = 0; i < maxRetries; i++)
         {
             response = await Task.Run(() => ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.Alive)));
+            if (response.StatusCode == StatusCode.Ok) break;
             await Task.Delay(1000);
         }
 

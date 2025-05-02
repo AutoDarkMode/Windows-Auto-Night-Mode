@@ -1,4 +1,5 @@
-﻿using AutoDarkModeApp.Contracts.Services;
+﻿using System.Diagnostics;
+using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.ViewModels;
@@ -13,6 +14,8 @@ namespace AutoDarkModeApp;
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
 public partial class App : Application
 {
+    public static Mutex Mutex { get; private set; } = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
+
     // The .NET Generic Host provides dependency injection, configuration, logging, and other services.
     // https://docs.microsoft.com/dotnet/core/extensions/generic-host
     // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
@@ -34,10 +37,25 @@ public partial class App : Application
         return service;
     }
 
+    public static void CheckAppMutex()
+    {
+        if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(50), false))
+        {
+            List<Process> processes = [.. Process.GetProcessesByName("AutoDarkModeApp")];
+            if (processes.Count > 0)
+            {
+                Helpers.WindowHelper.BringProcessToFront(processes[0]);
+                Environment.Exit(-1);
+            }
+        }
+    }
+
     public static Window MainWindow { get; set; } = null!;
 
     public App()
     {
+
+        CheckAppMutex();
         InitializeComponent();
 
         Host = Microsoft.Extensions.Hosting.Host.
