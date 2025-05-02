@@ -81,7 +81,7 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
         }
 
         // Only run at first startup
-        if (!await _localSettings.ReadSettingAsync<bool>("NotFirstRun"))
+        if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
         {
             AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
 
@@ -89,7 +89,7 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
 
             await AddJumpListAsync();
 
-            await _localSettings.SaveSettingAsync("NotFirstRun", true);
+            await localSettingsService.SaveSettingAsync("NotFirstRun", true);
         }
         else
         {
@@ -97,10 +97,10 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
         }
 
         // When language changed, add jumplist in new language
-        if (await _localSettings.ReadSettingAsync<bool>("LanguageChanged"))
+        if (await localSettingsService.ReadSettingAsync<bool>("LanguageChanged"))
         {
             await AddJumpListAsync();
-            await _localSettings.SaveSettingAsync("LanguageChanged", false);
+            await localSettingsService.SaveSettingAsync("LanguageChanged", false);
         }
     }
 
@@ -189,8 +189,8 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
         sysFormat = sysFormat[..sysFormat.IndexOf(':')];
         if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
         {
-            if (!await _localSettings.ReadSettingAsync<bool>("NotFirstRun"))
-                await _localSettings.SaveSettingAsync("TwelveHourClock", true);
+            if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
+                await localSettingsService.SaveSettingAsync("TwelveHourClock", true);
         }
     }
 
