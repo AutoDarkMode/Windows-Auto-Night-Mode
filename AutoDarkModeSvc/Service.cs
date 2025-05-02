@@ -446,7 +446,7 @@ class Service : Form
                         Console.WriteLine("Start App");
                         using Process app = new();
                         app.StartInfo.UseShellExecute = false;
-                        app.StartInfo.FileName = Path.Combine(Helper.ExecutionDir, "AutoDarkModeApp.exe");
+                        app.StartInfo.FileName = Helper.ExecutionPathApp;
                         app.Start();
                         appMutex.ReleaseMutex();
                     }
