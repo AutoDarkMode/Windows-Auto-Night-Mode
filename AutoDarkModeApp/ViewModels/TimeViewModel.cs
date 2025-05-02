@@ -112,8 +112,8 @@ public partial class TimeViewModel : ObservableRecipient
         TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
-        LatValue = _builder.Config.Location.CustomLat.ToString();
-        LonValue = _builder.Config.Location.CustomLon.ToString();
+        LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
+        LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
         LocationBlockText = "msgSearchLoc".GetLocalized();
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
