@@ -29,11 +29,17 @@
                         SelectedItem="{x:Bind ViewModel.SelectLightCusor, Mode=TwoWay}"
                         SelectionChanged="LightCurosComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <StackPanel
-                                x:Name="LightImageStackPanel"
-                                Orientation="Horizontal"
-                                Spacing="8" />
+                        <controls:SettingsCard Margin="-54,0,-40,0" ContentAlignment="Left">
+                            <ScrollView
+                                Width="Auto"
+                                HorizontalScrollBarVisibility="Auto"
+                                HorizontalScrollMode="Auto">
+                                <StackPanel
+                                    x:Name="LightImageStackPanel"
+                                    Margin="12"
+                                    Orientation="Horizontal"
+                                    Spacing="8" />
+                            </ScrollView>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
@@ -48,11 +54,17 @@
                         SelectedItem="{x:Bind ViewModel.SelectDarkCusor, Mode=TwoWay}"
                         SelectionChanged="DarkCurosComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <StackPanel
-                                x:Name="DarkImageStackPanel"
-                                Orientation="Horizontal"
-                                Spacing="8" />
+                        <controls:SettingsCard Margin="-54,0,-40,0" ContentAlignment="Left">
+                            <ScrollView
+                                Width="Auto"
+                                HorizontalScrollBarVisibility="Auto"
+                                HorizontalScrollMode="Auto">
+                                <StackPanel
+                                    x:Name="DarkImageStackPanel"
+                                    Margin="12"
+                                    Orientation="Horizontal"
+                                    Spacing="8" />
+                            </ScrollView>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
