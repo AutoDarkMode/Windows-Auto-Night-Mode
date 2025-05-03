@@ -16,14 +16,15 @@
                 <!--  Cursors  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=CursorsPageTitle}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=CursorsPageEnable}" HeaderIcon="{ui:FontIcon Glyph=&#xE962;}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsCursorsEnabled, Mode=TwoWay}" />
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.CursorsEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <!--  Light Cursors  -->
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=CursorsPageSelectLight}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
-                    IsExpanded="True">
+                    IsExpanded="True"
+                    Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
                     <ComboBox
                         x:Name="LightCurosComboBox"
                         SelectedItem="{x:Bind ViewModel.SelectLightCusor, Mode=TwoWay}"
@@ -48,7 +49,8 @@
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=CursorsPageSelectDark}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
-                    IsExpanded="True">
+                    IsExpanded="True"
+                    Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
                     <ComboBox
                         x:Name="DarkCurosComboBox"
                         SelectedItem="{x:Bind ViewModel.SelectDarkCusor, Mode=TwoWay}"
