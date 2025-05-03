@@ -35,7 +35,9 @@
                         x:Name="DesktopPreviewImage"
                         Width="320"
                         Height="180"
-                        Stretch="{Binding Converter={StaticResource EnumToStretchConverter}, Path=SelectWallpaperFillingMode, Mode=OneWay}"/>
+                        Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
+                        Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}"
+                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
                 </Border>
 
                 <!--  Desktop background  -->
@@ -78,9 +80,10 @@
                         <!--  Picture fit  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperTextBlockPosition}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                                <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
+                                <ComboBoxItem Content="Center" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemStretch}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFit}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperComboBoxItemFill}" />
                             </ComboBox>
                         </controls:SettingsCard>
 

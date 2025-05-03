@@ -8,7 +8,6 @@ using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
@@ -24,18 +23,6 @@ public sealed partial class WallpaperPickerPage : Page
     {
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
-        // Update the problematic line to convert the string to an ImageSource
-        if (ViewModel.GlobalWallpaperPath != null)
-        {
-            DesktopPreviewImage.Source = new BitmapImage(new Uri(ViewModel.GlobalWallpaperPath));
-            ToolTipService.SetToolTip(DesktopPreviewImage, ViewModel.GlobalWallpaperPath);
-            DesktopPreviewImage.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
-        }
-        else
-        {
-            // Handle the case where GlobalWallpaperPath is null, if necessary
-            DesktopPreviewImage.Visibility = Microsoft.UI.Xaml.Visibility.Collapsed;
-        }
 
         DispatcherQueue.TryEnqueue(LoadMonitors);
     }
