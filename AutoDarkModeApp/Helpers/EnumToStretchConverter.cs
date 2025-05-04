@@ -10,7 +10,7 @@ public partial class EnumToStretchConverter : IValueConverter
         var mode = (WallpaperFillingMode)value;
         return mode switch
         {
-            WallpaperFillingMode.Center => Stretch.None,
+            WallpaperFillingMode.Center => Stretch.Uniform,
             WallpaperFillingMode.Stretch => Stretch.Fill,
             WallpaperFillingMode.Fit => Stretch.Uniform,
             WallpaperFillingMode.Fill => Stretch.UniformToFill,

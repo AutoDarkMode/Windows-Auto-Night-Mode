@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
@@ -25,7 +24,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         Picture,
         PictureMM,
         SolidColor,
-        Spotlight
+        Spotlight,
     }
 
     public enum WallpaperDisplayFlags
@@ -38,10 +37,10 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         ShowSpotlight = 16,
 
         // Predefined combinations
-        PictureMode = ShowImageSettings | ShowFillingWaySettings,
+        PictureMode = ShowImageSettings | ShowFillingWaySettings | ShowColorSettings,
         PictureMMMode = ShowImageSettings | ShowMonitorSettings | ShowFillingWaySettings,
         SolidColorMode = ShowColorSettings,
-        SpotlightMode = ShowSpotlight
+        SpotlightMode = ShowSpotlight,
     }
 
     public enum WallpaperFillingMode
@@ -49,7 +48,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         Center,
         Stretch,
         Fit,
-        Fill
+        Fill,
     }
 
     [ObservableProperty]
@@ -131,7 +130,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                     ".avif",
                     ".avifs",
                     ".jxr",
-                    ".jxl"
+                    ".jxl",
                 },
             };
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
@@ -194,7 +193,8 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
         else
         {
-            GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
+            GlobalWallpaperPath =
+                SelectWallpaperThemeMode == ApplicationTheme.Light ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
             if (GlobalWallpaperPath != null)
             {
                 GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
