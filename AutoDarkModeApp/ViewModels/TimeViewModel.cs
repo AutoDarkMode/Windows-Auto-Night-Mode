@@ -16,6 +16,7 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private bool _isInitializing;
 
     public enum TimeSourceMode
     {
@@ -38,12 +39,6 @@ public partial class TimeViewModel : ObservableRecipient
     public partial string? LocationBlockText { get; set; }
 
     [ObservableProperty]
-    public partial string? LightTimeBlockText { get; set; }
-
-    [ObservableProperty]
-    public partial string? DarkTimeBlockText { get; set; }
-
-    [ObservableProperty]
     public partial TimeSpan TimeLightStart { get; set; }
 
     [ObservableProperty]
@@ -51,6 +46,12 @@ public partial class TimeViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial string? TimePickHourClock { get; set; }
+
+    [ObservableProperty]
+    public partial Visibility TimePickerVisibility { get; set; }
+
+    [ObservableProperty]
+    public partial Visibility DividerBorderVisibility { get; set; }
 
     [ObservableProperty]
     public partial string? LatValue { get; set; }
@@ -71,7 +72,18 @@ public partial class TimeViewModel : ObservableRecipient
 
     public ICommand SaveOffsetCommand { get; }
 
-    //TODO: The logic part about Postpone is not written
+    [ObservableProperty]
+    public partial bool IsPostponed { get; set; }
+
+    [ObservableProperty]
+    public partial int SelectedPostponeIndex { get; set; }
+
+    [ObservableProperty]
+    public partial string? PostponeInfoText { get; set; }
+
+    [ObservableProperty]
+    public partial bool ResumeInfoBarEnabled { get; set; }
+
     public TimeViewModel(IErrorService errorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
@@ -88,6 +100,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         LoadSettings();
+        LoadPostponeTimer();
 
         StateUpdateHandler.StartConfigWatcherWithoutEvents();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
@@ -107,8 +120,12 @@ public partial class TimeViewModel : ObservableRecipient
 
     private void LoadSettings()
     {
-        TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-        TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+        _isInitializing = true;
+
+        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+
+        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
+
         TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
@@ -117,7 +134,6 @@ public partial class TimeViewModel : ObservableRecipient
 
         LocationBlockText = "msgSearchLoc".GetLocalized();
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
-        LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
         _dispatcherQueue.TryEnqueue(async () =>
         {
             string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
@@ -126,15 +142,23 @@ public partial class TimeViewModel : ObservableRecipient
 
             await LoadGeolocationData();
 
-            LightTimeBlockText = "lblLight".GetLocalized() + ": " + SunriseWithOffset.ToString("t", CultureInfo.CurrentCulture);
-            DarkTimeBlockText = "lblDark".GetLocalized() + ": " + SunsetWithOffset.ToString("t", CultureInfo.CurrentCulture);
+            LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+
+            if (SelectedTimeSource == TimeSourceMode.CustomTimes)
+            {
+                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+            }
+            else
+            {
+                TimeLightStart = SunriseWithOffset.TimeOfDay;
+                TimeDarkStart = SunsetWithOffset.TimeOfDay;
+            }
 
             LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
         });
 
-        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-
-        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
+        _isInitializing = false;
     }
 
     private async Task LoadGeolocationData()
@@ -185,6 +209,8 @@ public partial class TimeViewModel : ObservableRecipient
         if (_builder.Config.Governor == Governor.NightLight)
         {
             SelectedTimeSource = TimeSourceMode.WindowsNightLight;
+            TimePickerVisibility = Visibility.Collapsed;
+            DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
             return;
         }
@@ -192,19 +218,94 @@ public partial class TimeViewModel : ObservableRecipient
         if (!_builder.Config.Location.Enabled)
         {
             SelectedTimeSource = TimeSourceMode.CustomTimes;
+            TimePickerVisibility = Visibility.Visible;
+            DividerBorderVisibility = Visibility.Collapsed;
             return;
         }
 
         if (_builder.Config.Location.UseGeolocatorService)
         {
             SelectedTimeSource = TimeSourceMode.LocationTimes;
-            OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         }
         else
         {
             SelectedTimeSource = TimeSourceMode.CoordinateTimes;
-            OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         }
+        OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+        TimePickerVisibility = Visibility.Visible;
+        DividerBorderVisibility = Visibility.Visible;
+    }
+
+    private void LoadPostponeTimer()
+    {
+        _isInitializing = true;
+
+        ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
+        if (reply.StatusCode != StatusCode.Timeout)
+        {
+            if (_builder.Config.AutoThemeSwitchingEnabled)
+            {
+                try
+                {
+                    if (reply.Message == "True")
+                    {
+                        bool anyNoExpiry = false;
+                        bool canResume = false;
+                        PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+                        List<string> itemsStringList = dto
+                            .Items.Select(i =>
+                            {
+                                if (i.Expiry == null)
+                                    anyNoExpiry = true;
+                                if (i.IsUserClearable)
+                                    canResume = true;
+
+                                i.SetCulture(CultureInfo.CurrentCulture);
+
+                                // Retrieve the value of the specified key
+                                i.TranslatedReason = ("PostponeReason" + i.Reason).GetLocalized() ?? i.Reason;
+
+                                return i.ToString();
+                            })
+                            .ToList();
+                        _dispatcherQueue.TryEnqueue(() =>
+                        {
+                            if (anyNoExpiry && !canResume)
+                            {
+                                ResumeInfoBarEnabled = true;
+                            }
+                            else
+                            {
+                                ResumeInfoBarEnabled = false;
+                            }
+
+                            if (canResume)
+                            {
+                                IsPostponed = true;
+                            }
+                            else
+                            {
+                                IsPostponed = false;
+                            }
+
+                            PostponeInfoText = "TimePageHeaderActiveDelays".GetLocalized() + ": " + string.Join('\n', itemsStringList);
+                        });
+                    }
+                    else
+                    {
+                        _dispatcherQueue.TryEnqueue(() =>
+                        {
+                            IsPostponed = false;
+                            PostponeInfoText = "TimePageHeaderActiveDelays".GetLocalized() + ": " + "TimePagePostponeInfoNominal".GetLocalized();
+                            ResumeInfoBarEnabled = false;
+                        });
+                    }
+                }
+                catch { }
+            }
+        }
+
+        _isInitializing = false;
     }
 
     private void SafeApplyTheme()
@@ -225,6 +326,9 @@ public partial class TimeViewModel : ObservableRecipient
 
     partial void OnAutoThemeSwitchingEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         HandleAutoTheme(value);
 
         _builder.Config.AutoThemeSwitchingEnabled = value;
@@ -240,6 +344,9 @@ public partial class TimeViewModel : ObservableRecipient
 
     partial void OnSelectedTimeSourceChanged(TimeSourceMode value)
     {
+        if (_isInitializing)
+            return;
+
         switch (value)
         {
             case TimeSourceMode.CustomTimes:
@@ -284,6 +391,9 @@ public partial class TimeViewModel : ObservableRecipient
 
     partial void OnTimeLightStartChanged(TimeSpan value)
     {
+        if (_isInitializing || SelectedTimeSource != TimeSourceMode.CustomTimes)
+            return;
+
         _builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
         try
         {
@@ -299,6 +409,9 @@ public partial class TimeViewModel : ObservableRecipient
 
     partial void OnTimeDarkStartChanged(TimeSpan value)
     {
+        if (_isInitializing || SelectedTimeSource != TimeSourceMode.CustomTimes)
+            return;
+
         _builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
         try
         {
@@ -353,5 +466,42 @@ public partial class TimeViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
         SafeApplyTheme();
+    }
+
+    partial void OnIsPostponedChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        var postponeMinutes = (SelectedPostponeIndex) switch
+        {
+            0 => 15,
+            1 => 30,
+            2 => 60,
+            3 => 120,
+            4 => 180,
+            5 => 360,
+            6 => 720,
+            7 => 0,
+            _ => 0,
+        };
+
+        if (postponeMinutes != 0 && value)
+        {
+            MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {postponeMinutes}");
+        }
+        else if (postponeMinutes == 0 && value)
+        {
+            MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+            if (!value)
+                MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
+        }
+        else
+        {
+            MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
+            MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
+        }
+
+        LoadPostponeTimer();
     }
 }
