@@ -31,16 +31,10 @@
                         SelectionChanged="LightCurosComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Margin="-54,0,-40,0" ContentAlignment="Left">
-                            <ScrollView
-                                Width="Auto"
-                                HorizontalScrollBarVisibility="Auto"
-                                HorizontalScrollMode="Auto">
-                                <StackPanel
-                                    x:Name="LightImageStackPanel"
-                                    Margin="12"
-                                    Orientation="Horizontal"
-                                    Spacing="8" />
-                            </ScrollView>
+                            <VariableSizedWrapGrid
+                                x:Name="LightImageStackPanel"
+                                Margin="12"
+                                Orientation="Horizontal" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
@@ -57,20 +51,16 @@
                         SelectionChanged="DarkCurosComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Margin="-54,0,-40,0" ContentAlignment="Left">
-                            <ScrollView
-                                Width="Auto"
-                                HorizontalScrollBarVisibility="Auto"
-                                HorizontalScrollMode="Auto">
-                                <StackPanel
-                                    x:Name="DarkImageStackPanel"
-                                    Margin="12"
-                                    Orientation="Horizontal"
-                                    Spacing="8" />
-                            </ScrollView>
+                            <VariableSizedWrapGrid
+                                x:Name="DarkImageStackPanel"
+                                Margin="12"
+                                Orientation="Horizontal" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>
