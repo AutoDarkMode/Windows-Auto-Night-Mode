@@ -211,7 +211,7 @@ public partial class TimeViewModel : ObservableRecipient
             SelectedTimeSource = TimeSourceMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
-            OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
             return;
         }
 
